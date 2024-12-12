@@ -6,6 +6,7 @@ services:
     volumes:
       - ./workspace/ts/:/var/www/workspace/ts/:delegated
     ports:
+      - 8083:8083
       - 3000:3000
     networks:
       - workspace-jaisocx-tools
@@ -36,6 +37,8 @@ services:
     extra_hosts:
       - "host.docker.internal:host-gateway"
 
+  # You need to add a text line in file /etc/hosts like this:
+  # 127.0.0.1    workspace.brightday.email
   jaisocx_http:
     build:
       context: ./docker/jaisocx-http

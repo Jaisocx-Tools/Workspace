@@ -14,11 +14,12 @@ RUN mkdir -p /entrypoint
 COPY ./entrypoint.sh /entrypoint/entrypoint.sh
 RUN chmod -R a+rwx /entrypoint
 
-ENTRYPOINT [ "/entrypoint/entrypoint.sh" ]
-
 # Expose the application's port
 EXPOSE 3000
+EXPOSE 8083
 
-#CMD ["bash", "-c", "tail -f < /dev/null"]
+ENTRYPOINT [ "/entrypoint/entrypoint.sh" ]
 
-CMD ["npm", "start"]
+CMD ["bash", "-c", "tail -f < /dev/null"]
+
+

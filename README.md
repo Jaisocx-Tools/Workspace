@@ -2,38 +2,25 @@
 
 ## STATUS OF THE PROJECT
 
-The Project is under development now, 2024-12-04.
+The Project is under development now, 10 December 2024.
 
-The infrastructure for building a multi submodules .ts libraries is ready to use.
-packages in `workspace/ts/www` catalog are ready to use, too.
-
-1. You can open an example .html file with "open with" => "browser",
-
-2. Here in this project there is also npm commad to use an `http server` for development. [https://www.npmjs.com/package/http-server](https://www.npmjs.com/package/http-server)
-
-
-For this `http-server` here in Project already defined reference and npm script in `workspace/ts/package.json`.
-
-open terminal and cd to `workspace/ts/` first.
-
-if did not install npm packages, do so:
-
-```
-npm install
-```
-
-start `Your http endpoint` like this:
-
-```
-npm run server
-```
-
-this command starts the server and opens the browser with the default listing of `workspace/ts/www` catalog.
-
-
-
-- Assets feature for css and images files to enable a .ts lib to work after *npm install <of Your .ts lib>* is not started.
-
+### The features ready to use:
+1. The infrastructure for **development of Typescript libraries**.
+2. The intercative **sites tools** packages in `workspace/ts/www` catalog, however still under development.
+3. **Dockerized services**, to use in development:
+    1. HTTPS server, serving volumes `workspace/ts/www` and `workspace/php`, with the **brightday.email** wildcard TLS cert, valid til November 2025. Locally, when set some subdomain entry of `brightday.email` domain in `/etc/hosts` file, this is helpful to test with valid **https endpoints**.
+    2. **JWT protection** feature for **https** endpoints under **Jaisocx** dockerized service `jaisocx_http`.
+    3. **NodeJS 23** dockerized volume with services:
+        1. **node** command line interface.
+        2. **npm** command line interface.
+        3. **Express** NodeJS Framework example application in `workspace/ts/express/app` https://localhost:3000/
+        4. **Node http server** endpoint https://localhost:8083/, serving volume `workspace/ts`.
+    4. Backend interpreting language **PHP 8.3** dockerized service
+    with **XDebug** installed and configured, to use with Jaisocx https server, serving volume `workspace/php`, too.
+    5. Backend interpreting language **Python 3** dockerized service
+        1. **Django** Framework
+        2. **UWSGI** http server endpoint https://localhost:8000/, serving Django framework app in volume `workspace/py`.
+    6. **MySQL Database** dockerized service, e.g. to test Typescript tools, rendering JSON data, by delivering JSON http responses, built by backend scripting languages, read tables records from a database.
 
 
 

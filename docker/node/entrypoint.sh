@@ -1,12 +1,30 @@
 #!/bin/bash
 set -e
 
-cd /var/www/workspace/ts/express/app
 
-# Optional: install dependencies
+
+## STARTING Node http-server on port 8083
+cd /var/www/workspace/ts
+
 if [ "$NODE_ENV" != "production" ]; then
     npm install
 fi
 
-# Start the application
-exec npm start
+npm run server & echo \"$!\" > server.pid && \
+
+
+
+## STARTING EXPRESS FRAMEWORK HTTP ENDPOINT ON PORT 3000
+cd /var/www/workspace/ts/express/app
+
+if [ "$NODE_ENV" != "production" ]; then
+    npm install
+fi
+
+npm start & echo \"$!\" > serverExpress.pid
+
+
+
+
+exec "$@"
+
