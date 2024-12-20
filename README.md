@@ -17,10 +17,7 @@ The Project is under development now, 10 December 2024.
         4. **Node http server** endpoint https://localhost:8083/, serving volume `workspace/ts`.
     4. Backend interpreting language **PHP 8.3** dockerized service
     with **XDebug** installed and configured, to use with Jaisocx https server, serving volume `workspace/php`, too.
-    5. Backend interpreting language **Python 3** dockerized service
-        1. **Django** Framework
-        2. **UWSGI** http server endpoint https://localhost:8000/, serving Django framework app in volume `workspace/py`.
-    6. **MySQL Database** dockerized service, e.g. to test Typescript tools, rendering JSON data, by delivering JSON http responses, built by backend scripting languages, read tables records from a database.
+    5. **MySQL Database** dockerized service, e.g. to test Typescript tools, rendering JSON data, by delivering JSON http responses, built by backend scripting languages, read tables records from a database.
 
 
 
