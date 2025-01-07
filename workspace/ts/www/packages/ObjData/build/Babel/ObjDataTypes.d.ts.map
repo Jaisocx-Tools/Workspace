@@ -1,0 +1,1 @@
+{"version":3,"file":"ObjDataTypes.d.ts","sourceRoot":"","sources":["../../src/ObjDataTypes.ts"],"names":[],"mappings":"AAEA,qBAAa,mBAAmB;IAE9B,SAAS,EAAE,MAAM,CAAC;IAClB,QAAQ,EAAE,MAAM,CAAC;IACjB,eAAe,EAAE,MAAM,CAAC;IACxB,WAAW,EAAE,MAAM,CAAC;IACpB,kBAAkB,EAAE,MAAM,CAAC;IAC3B,iBAAiB,EAAE,MAAM,CAAC;IAE1B,mBAAmB,EAAE,MAAM,CAAC;IAC5B,kBAAkB,EAAE,MAAM,CAAC;;CAa5B"}
