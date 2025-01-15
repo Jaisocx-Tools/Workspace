@@ -52,7 +52,7 @@ Since the JSON format is hardly editable when a .json document is big, and the d
 
 
 
-## Fields Datatype and NumberValueUnit
+## Fields DATATYPE and NUMBER_VALUE_UNIT
 For now just text and numeric values apply to Datatype field,
 and the unit is always zero.
 
