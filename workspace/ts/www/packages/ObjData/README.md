@@ -17,12 +17,19 @@ const obj: any = ObjData.parse( objdataFormattedBytebuf );
 ```
 
 
+## What is this
+
+This is just another try to implement a binary data format for objects and arrays.
+
+
+## This format info
+
+The objdata format is not being parsed by chars comparisons, but like in the good old style packets prefixes fixed positions and lengths binary fields with numeric values kept. 
+
 
 ## For what to use
 
-1. This is just another try to implement a binary data format for objects and arrays.
-2. The objdata format is not being parsed by chars comparisons, but like in the good old style packets prefixes fixed positions and lengths binary fields with numeric values kept. 
-3. Since the JSON format is hardly editable when a .json document is big, and the depth of the nested objects grows, then the usage of the visual tool to edit objects becomes a must, and contents preview can be done by viewing json text when serialized to JSON format, or visualized with a JSTree js browser tool. The JS object remains still the same.
+Since the JSON format is hardly editable when a .json document is big, and the depth of the nested objects grows, then the usage of the visual tool to edit objects becomes a must, and contents preview can be done by viewing json text when serialized to JSON format, or visualized with a JSTree js browser tool. The JS object remains still the same.
 
 
 
@@ -70,7 +77,7 @@ in the object, serialized to objdata format.
 
 ## The further improvals
 
-### The fixed format objdata version one prefix for the entire serialized bytebuf at the bytebuf begin
+### 1. The fixed format objdata version one prefix for the entire serialized bytebuf at the bytebuf begin
 
 #### In order to work with large data amounts and keeping in big .obj files the 64 bits long numeric values are required, since the numeric value can be over 4 billions.
 
@@ -85,6 +92,13 @@ however to work with not very many if statements to checkout the action for the 
 since additional actions in a loop use more resources, however doing the same task.
 
 
+## The further improvals, however seem to be published in another package.
+### 2. JPath querying
+### 3. SAX flavoured chunked responses JPath querying
+### 4. JPathIndex, Indexes for fast JPath querying
+### 5. JPathIndexes kept in datafiles
+
+
 ## HELLO WORLD MESSAGE:
 
 GOOD LUCK AND HAVE FUN WITH CODING ))
@@ -93,5 +107,9 @@ GOOD LUCK AND HAVE FUN WITH CODING ))
 Yours [jaisocx.com](https://jaisocx.com/) Software Architect and dev,
 
 Elias
+
+
+
+
 
 
