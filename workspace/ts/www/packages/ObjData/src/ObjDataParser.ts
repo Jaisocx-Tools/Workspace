@@ -1,4 +1,4 @@
-import { ObjDataHelper } from "./ObjDataHelper.js";
+import { ObjDataPackage } from "./ObjDataPackage.js";
 import { ObjDataConstants } from "./ObjDataConstants.js";
 import { ObjDataHelpingProps } from "./ObjDataTypes.js";
 
@@ -64,7 +64,7 @@ export class ObjDataParser {
       }
 
     } else if ( dataHelper.datatype === ObjDataConstants.DATA_TYPES.NUMBER ) {
-      retValue = ObjDataHelper.parseByteBufToNumber (
+      retValue = ObjDataPackage.parseByteBufToNumber (
         objDataByteBuf,
         ( 
           offset + dataHelper.propertyValueStart ),
@@ -72,7 +72,7 @@ export class ObjDataParser {
       );
 
     } else if ( dataHelper.datatype === ObjDataConstants.DATA_TYPES.TEXT_PLAIN ) {
-      retValue = ObjDataHelper.parseByteBufToText (
+      retValue = ObjDataPackage.parseByteBufToText (
         objDataByteBuf,
         ( 
           offset + dataHelper.propertyValueStart ),
@@ -88,7 +88,7 @@ export class ObjDataParser {
     if ( parentObject !== null ) {
       let propName: any = null;
       if ( Array.isArray( parentObject ) ) {
-        propName = ObjDataHelper.parseByteBufToNumber (
+        propName = ObjDataPackage.parseByteBufToNumber (
           objDataByteBuf,
           ( 
             offset + dataHelper.propertyNameStart ),
@@ -96,7 +96,7 @@ export class ObjDataParser {
         );
   
       } else {
-        propName = ObjDataHelper.parseByteBufToText (
+        propName = ObjDataPackage.parseByteBufToText (
           objDataByteBuf,
           ( 
             offset + dataHelper.propertyNameStart ),
@@ -121,7 +121,7 @@ export class ObjDataParser {
     const dataHelper: ObjDataHelpingProps = new ObjDataHelpingProps();
 
     let fieldOffset: number = offset;
-    dataHelper.lengthAll = ObjDataHelper.parseByteBufToNumber (
+    dataHelper.lengthAll = ObjDataPackage.parseByteBufToNumber (
       byteBuf,
       fieldOffset,
       ObjDataConstants.FIELDS_POINTERS.LENGTH_ALL_FIELD_LEN
@@ -129,7 +129,7 @@ export class ObjDataParser {
 
     fieldOffset += ObjDataConstants.FIELDS_POINTERS.LENGTH_ALL_FIELD_LEN;
 
-    dataHelper.datatype = ObjDataHelper.parseByteBufToNumber (
+    dataHelper.datatype = ObjDataPackage.parseByteBufToNumber (
       byteBuf,
       fieldOffset,
       ObjDataConstants.FIELDS_POINTERS.DATATYPE_FIELD_LEN
@@ -137,7 +137,7 @@ export class ObjDataParser {
 
     fieldOffset += ObjDataConstants.FIELDS_POINTERS.DATATYPE_FIELD_LEN;
 
-    dataHelper.numberValueUnit = ObjDataHelper.parseByteBufToNumber (
+    dataHelper.numberValueUnit = ObjDataPackage.parseByteBufToNumber (
       byteBuf,
       fieldOffset,
       ObjDataConstants.FIELDS_POINTERS.NUMBER_VALUE_UNIT_FIELD_LEN
@@ -145,7 +145,7 @@ export class ObjDataParser {
 
     fieldOffset += ObjDataConstants.FIELDS_POINTERS.NUMBER_VALUE_UNIT_FIELD_LEN;
 
-    dataHelper.propsAmount = ObjDataHelper.parseByteBufToNumber (
+    dataHelper.propsAmount = ObjDataPackage.parseByteBufToNumber (
       byteBuf,
       fieldOffset,
       ObjDataConstants.FIELDS_POINTERS.PROPS_AMOUNT_FIELD_LEN
@@ -153,7 +153,7 @@ export class ObjDataParser {
 
     fieldOffset += ObjDataConstants.FIELDS_POINTERS.PROPS_AMOUNT_FIELD_LEN;
 
-    dataHelper.propertyNameLength = ObjDataHelper.parseByteBufToNumber (
+    dataHelper.propertyNameLength = ObjDataPackage.parseByteBufToNumber (
       byteBuf,
       fieldOffset,
       ObjDataConstants.FIELDS_POINTERS.PROPERTY_NAME_LENGTH_FIELD_LEN

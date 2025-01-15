@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.ObjData = exports.ObjDataSerializer = exports.ObjDataParser = exports.ObjDataHelper = exports.ObjDataConstants = exports.ObjDataHelpingProps = void 0;
+exports.ObjData = exports.ObjDataSerializer = exports.ObjDataParser = exports.ObjDataPackage = exports.ObjDataConstants = exports.ObjDataHelpingProps = void 0;
 var ObjDataTypes_js_1 = require("./ObjDataTypes.js");
 Object.defineProperty(exports, "ObjDataHelpingProps", {
   enumerable: true,
@@ -18,11 +18,11 @@ Object.defineProperty(exports, "ObjDataConstants", {
     return ObjDataConstants_js_1.ObjDataConstants;
   }
 });
-var ObjDataHelper_js_1 = require("./ObjDataHelper.js");
-Object.defineProperty(exports, "ObjDataHelper", {
+var ObjDataPackage_js_1 = require("./ObjDataPackage.js");
+Object.defineProperty(exports, "ObjDataPackage", {
   enumerable: true,
   get: function () {
-    return ObjDataHelper_js_1.ObjDataHelper;
+    return ObjDataPackage_js_1.ObjDataPackage;
   }
 });
 var ObjDataParser_js_1 = require("./ObjDataParser.js");

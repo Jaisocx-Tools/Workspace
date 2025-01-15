@@ -19,20 +19,20 @@ class ObjDataSerializer {
 
     if (typeof propName === "number") {
       propertyNameSerialized = new Uint8Array(ObjDataConstants.FIELDS_POINTERS.PROPERTY_NAME_LENGTH_FIELD_LEN);
-      ObjDataHelper.serializeNumberToByteBuf(
+      ObjDataPackage.serializeNumberToByteBuf(
         propName, 
         ObjDataConstants.FIELDS_POINTERS.PROPERTY_NAME_LENGTH_FIELD_LEN, 
         0, 
         propertyNameSerialized);
     }
     else if (typeof propName === "string") {
-      propertyNameSerialized = ObjDataHelper.serializeTextToByteBuf(propName);
+      propertyNameSerialized = ObjDataPackage.serializeTextToByteBuf(propName);
     }
 
     if (dataType === "number") {
       dataHelper.datatype = ObjDataConstants.DATA_TYPES.NUMBER;
       propertyValueSerialized = new Uint8Array(4);
-      ObjDataHelper.serializeNumberToByteBuf(
+      ObjDataPackage.serializeNumberToByteBuf(
         propValue, 
         4, 
         0, 
@@ -40,7 +40,7 @@ class ObjDataSerializer {
     }
     else if (dataType === "string") {
       dataHelper.datatype = ObjDataConstants.DATA_TYPES.TEXT_PLAIN;
-      propertyValueSerialized = ObjDataHelper.serializeTextToByteBuf(propValue);
+      propertyValueSerialized = ObjDataPackage.serializeTextToByteBuf(propValue);
     }
     else if (dataType === "boolean") {
       dataHelper.datatype = ObjDataConstants.DATA_TYPES.NUMBER;
@@ -61,7 +61,7 @@ class ObjDataSerializer {
         byteBufs.push(subPropValueSerialized);
       }
 
-      propertyValueSerialized = ObjDataHelper.concatByteArrays(byteBufs);
+      propertyValueSerialized = ObjDataPackage.concatByteArrays(byteBufs);
     }
     else if (dataType === "array") {
       dataHelper.datatype = ObjDataConstants.DATA_TYPES.ARRAY;
@@ -76,7 +76,7 @@ class ObjDataSerializer {
         byteBufs.push(subPropValueSerialized);
       }
 
-      propertyValueSerialized = ObjDataHelper.concatByteArrays(byteBufs);
+      propertyValueSerialized = ObjDataPackage.concatByteArrays(byteBufs);
     }
     else {
       dataHelper.datatype = ObjDataConstants.DATA_TYPES.BINARY;
@@ -87,12 +87,12 @@ class ObjDataSerializer {
     dataHelper.propertyNameLength = propertyNameSerialized.length;
     dataHelper.propertyValueStart = dataHelper.propertyNameStart + dataHelper.propertyNameLength;
     dataHelper.propertyValueLength = propertyValueSerialized.length;
-    dataHelper.lengthAll = ((ObjDataConstants.HEADERS_LEN)
+    dataHelper.lengthAll = ((ObjDataConstants.HEADERS_LENGTH)
             + (dataHelper.propertyNameLength)
             + (dataHelper.propertyValueLength));
     const headers = ObjDataSerializer.serializePropHeaders(dataHelper);
 
-    return ObjDataHelper.concatByteArrays([
+    return ObjDataPackage.concatByteArrays([
       headers,
       propertyNameSerialized,
       propertyValueSerialized,
@@ -100,28 +100,28 @@ class ObjDataSerializer {
   }
 
   static serializePropHeaders(dataHelper) {
-    const headersBuf = new Uint8Array(ObjDataConstants.HEADERS_LEN);
-    ObjDataHelper.serializeNumberToByteBuf(
+    const headersBuf = new Uint8Array(ObjDataConstants.HEADERS_LENGTH);
+    ObjDataPackage.serializeNumberToByteBuf(
       dataHelper.lengthAll, 
       ObjDataConstants.FIELDS_POINTERS.LENGTH_ALL_FIELD_LEN, 
       ObjDataConstants.FIELDS_POINTERS.LENGTH_ALL, 
       headersBuf);
-    ObjDataHelper.serializeNumberToByteBuf(
+    ObjDataPackage.serializeNumberToByteBuf(
       dataHelper.datatype, 
       ObjDataConstants.FIELDS_POINTERS.DATATYPE_FIELD_LEN, 
       ObjDataConstants.FIELDS_POINTERS.DATATYPE, 
       headersBuf);
-    ObjDataHelper.serializeNumberToByteBuf(
+    ObjDataPackage.serializeNumberToByteBuf(
       dataHelper.numberValueUnit, 
       ObjDataConstants.FIELDS_POINTERS.NUMBER_VALUE_UNIT_FIELD_LEN, 
       ObjDataConstants.FIELDS_POINTERS.NUMBER_VALUE_UNIT, 
       headersBuf);
-    ObjDataHelper.serializeNumberToByteBuf(
+    ObjDataPackage.serializeNumberToByteBuf(
       dataHelper.propsAmount, 
       ObjDataConstants.FIELDS_POINTERS.PROPS_AMOUNT_FIELD_LEN, 
       ObjDataConstants.FIELDS_POINTERS.PROPS_AMOUNT, 
       headersBuf);
-    ObjDataHelper.serializeNumberToByteBuf(
+    ObjDataPackage.serializeNumberToByteBuf(
       dataHelper.propertyNameLength, 
       ObjDataConstants.FIELDS_POINTERS.PROPERTY_NAME_LENGTH_FIELD_LEN, 
       ObjDataConstants.FIELDS_POINTERS.PROPERTY_NAME_LENGTH, 

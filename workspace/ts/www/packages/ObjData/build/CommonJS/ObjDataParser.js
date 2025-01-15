@@ -1,7 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.ObjDataParser = void 0;
-const ObjDataHelper_js_1 = require("./ObjDataHelper.js");
+const ObjDataPackage_js_1 = require("./ObjDataPackage.js");
 const ObjDataConstants_js_1 = require("./ObjDataConstants.js");
 const ObjDataTypes_js_1 = require("./ObjDataTypes.js");
 class ObjDataParser {
@@ -29,10 +29,10 @@ class ObjDataParser {
             }
         }
         else if (dataHelper.datatype === ObjDataConstants_js_1.ObjDataConstants.DATA_TYPES.NUMBER) {
-            retValue = ObjDataHelper_js_1.ObjDataHelper.parseByteBufToNumber(objDataByteBuf, (offset + dataHelper.propertyValueStart), dataHelper.propertyValueLength);
+            retValue = ObjDataPackage_js_1.ObjDataPackage.parseByteBufToNumber(objDataByteBuf, (offset + dataHelper.propertyValueStart), dataHelper.propertyValueLength);
         }
         else if (dataHelper.datatype === ObjDataConstants_js_1.ObjDataConstants.DATA_TYPES.TEXT_PLAIN) {
-            retValue = ObjDataHelper_js_1.ObjDataHelper.parseByteBufToText(objDataByteBuf, (offset + dataHelper.propertyValueStart), dataHelper.propertyValueLength, "utf8");
+            retValue = ObjDataPackage_js_1.ObjDataPackage.parseByteBufToText(objDataByteBuf, (offset + dataHelper.propertyValueStart), dataHelper.propertyValueLength, "utf8");
         }
         else {
             retValue = "Hu hu";
@@ -40,10 +40,10 @@ class ObjDataParser {
         if (parentObject !== null) {
             let propName = null;
             if (Array.isArray(parentObject)) {
-                propName = ObjDataHelper_js_1.ObjDataHelper.parseByteBufToNumber(objDataByteBuf, (offset + dataHelper.propertyNameStart), dataHelper.propertyNameLength);
+                propName = ObjDataPackage_js_1.ObjDataPackage.parseByteBufToNumber(objDataByteBuf, (offset + dataHelper.propertyNameStart), dataHelper.propertyNameLength);
             }
             else {
-                propName = ObjDataHelper_js_1.ObjDataHelper.parseByteBufToText(objDataByteBuf, (offset + dataHelper.propertyNameStart), dataHelper.propertyNameLength, "utf8");
+                propName = ObjDataPackage_js_1.ObjDataPackage.parseByteBufToText(objDataByteBuf, (offset + dataHelper.propertyNameStart), dataHelper.propertyNameLength, "utf8");
             }
             parentObject[propName] = retValue;
         }
@@ -52,15 +52,15 @@ class ObjDataParser {
     static parsePropHeaders(byteBuf, offset) {
         const dataHelper = new ObjDataTypes_js_1.ObjDataHelpingProps();
         let fieldOffset = offset;
-        dataHelper.lengthAll = ObjDataHelper_js_1.ObjDataHelper.parseByteBufToNumber(byteBuf, fieldOffset, ObjDataConstants_js_1.ObjDataConstants.FIELDS_POINTERS.LENGTH_ALL_FIELD_LEN);
+        dataHelper.lengthAll = ObjDataPackage_js_1.ObjDataPackage.parseByteBufToNumber(byteBuf, fieldOffset, ObjDataConstants_js_1.ObjDataConstants.FIELDS_POINTERS.LENGTH_ALL_FIELD_LEN);
         fieldOffset += ObjDataConstants_js_1.ObjDataConstants.FIELDS_POINTERS.LENGTH_ALL_FIELD_LEN;
-        dataHelper.datatype = ObjDataHelper_js_1.ObjDataHelper.parseByteBufToNumber(byteBuf, fieldOffset, ObjDataConstants_js_1.ObjDataConstants.FIELDS_POINTERS.DATATYPE_FIELD_LEN);
+        dataHelper.datatype = ObjDataPackage_js_1.ObjDataPackage.parseByteBufToNumber(byteBuf, fieldOffset, ObjDataConstants_js_1.ObjDataConstants.FIELDS_POINTERS.DATATYPE_FIELD_LEN);
         fieldOffset += ObjDataConstants_js_1.ObjDataConstants.FIELDS_POINTERS.DATATYPE_FIELD_LEN;
-        dataHelper.numberValueUnit = ObjDataHelper_js_1.ObjDataHelper.parseByteBufToNumber(byteBuf, fieldOffset, ObjDataConstants_js_1.ObjDataConstants.FIELDS_POINTERS.NUMBER_VALUE_UNIT_FIELD_LEN);
+        dataHelper.numberValueUnit = ObjDataPackage_js_1.ObjDataPackage.parseByteBufToNumber(byteBuf, fieldOffset, ObjDataConstants_js_1.ObjDataConstants.FIELDS_POINTERS.NUMBER_VALUE_UNIT_FIELD_LEN);
         fieldOffset += ObjDataConstants_js_1.ObjDataConstants.FIELDS_POINTERS.NUMBER_VALUE_UNIT_FIELD_LEN;
-        dataHelper.propsAmount = ObjDataHelper_js_1.ObjDataHelper.parseByteBufToNumber(byteBuf, fieldOffset, ObjDataConstants_js_1.ObjDataConstants.FIELDS_POINTERS.PROPS_AMOUNT_FIELD_LEN);
+        dataHelper.propsAmount = ObjDataPackage_js_1.ObjDataPackage.parseByteBufToNumber(byteBuf, fieldOffset, ObjDataConstants_js_1.ObjDataConstants.FIELDS_POINTERS.PROPS_AMOUNT_FIELD_LEN);
         fieldOffset += ObjDataConstants_js_1.ObjDataConstants.FIELDS_POINTERS.PROPS_AMOUNT_FIELD_LEN;
-        dataHelper.propertyNameLength = ObjDataHelper_js_1.ObjDataHelper.parseByteBufToNumber(byteBuf, fieldOffset, ObjDataConstants_js_1.ObjDataConstants.FIELDS_POINTERS.PROPERTY_NAME_LENGTH_FIELD_LEN);
+        dataHelper.propertyNameLength = ObjDataPackage_js_1.ObjDataPackage.parseByteBufToNumber(byteBuf, fieldOffset, ObjDataConstants_js_1.ObjDataConstants.FIELDS_POINTERS.PROPERTY_NAME_LENGTH_FIELD_LEN);
         dataHelper.propertyValueStart = (dataHelper.propertyNameStart
             + dataHelper.propertyNameLength);
         dataHelper.propertyValueLength = (dataHelper.lengthAll

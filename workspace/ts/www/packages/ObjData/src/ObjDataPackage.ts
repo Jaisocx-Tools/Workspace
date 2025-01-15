@@ -1,4 +1,4 @@
-export class ObjDataHelper {
+export class ObjDataPackage {
 
   static concatByteArrays(
     arrays: Uint8Array[]

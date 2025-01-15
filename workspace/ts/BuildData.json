@@ -113,7 +113,7 @@
       "build-files": [
         "ObjDataConstants.js",
         "ObjDataTypes.js",
-        "ObjDataHelper.js",
+        "ObjDataPackage.js",
         "ObjDataParser.js",
         "ObjDataSerializer.js",
         "ObjData.js"

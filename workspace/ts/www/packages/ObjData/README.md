@@ -37,16 +37,16 @@ Since the JSON format is hardly editable when a .json document is big, and the d
 
 ### Prefix fields list, and their fixed offsets and lengths in bytes and bits
 1. LENGTH_ALL : 0-3, 4 bytes long, 32 bits
-2. DATATYPE : 4-4, 1 byte long, 8 bits
-3. NUMBER_VALUE_UNIT : 5-5, 1 byte long, 8 bits
-4. PROPS_AMOUNT : 6-9, 4 bytes long, 32 bits
-5. PROPERTY_NAME_LENGTH : 10-11, 2 bytes long, 16 bits
-6. PROPERTY_NAME : 12-, PROPERTY_NAME_LENGTH bytes long
+2. DATATYPE : 4-7, 4 bytes long, 32 bits
+3. NUMBER_VALUE_UNIT : 8-11, 4 bytes long, 32 bits
+4. PROPS_AMOUNT : 12-15, 4 bytes long, 32 bits
+5. PROPERTY_NAME_LENGTH : 16-19, 4 bytes long, 32 bits
+6. PROPERTY_NAME : 20-, PROPERTY_NAME_LENGTH bytes long
 7. PROPERTY_VALUE
 
 
 ### The further fields offsets and lengths arythmetics
-1. PROPERTY_NAME_START = 12;
+1. PROPERTY_NAME_START = 20;
 2. PROPERTY_VALUE_START = ( PROPERTY_NAME_START + PROPERTY_NAME_LENGTH );
 3. PROPERTY_VALUE_LENGTH = ( LENGTH_ALL - PROPERTY_VALUE_START );
 

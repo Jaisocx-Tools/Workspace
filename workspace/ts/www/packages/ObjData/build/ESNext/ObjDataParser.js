@@ -1,4 +1,4 @@
-import { ObjDataHelper } from "./ObjDataHelper.js";
+import { ObjDataPackage } from "./ObjDataPackage.js";
 import { ObjDataConstants } from "./ObjDataConstants.js";
 import { ObjDataHelpingProps } from "./ObjDataTypes.js";
 export class ObjDataParser {
@@ -26,10 +26,10 @@ export class ObjDataParser {
             }
         }
         else if (dataHelper.datatype === ObjDataConstants.DATA_TYPES.NUMBER) {
-            retValue = ObjDataHelper.parseByteBufToNumber(objDataByteBuf, (offset + dataHelper.propertyValueStart), dataHelper.propertyValueLength);
+            retValue = ObjDataPackage.parseByteBufToNumber(objDataByteBuf, (offset + dataHelper.propertyValueStart), dataHelper.propertyValueLength);
         }
         else if (dataHelper.datatype === ObjDataConstants.DATA_TYPES.TEXT_PLAIN) {
-            retValue = ObjDataHelper.parseByteBufToText(objDataByteBuf, (offset + dataHelper.propertyValueStart), dataHelper.propertyValueLength, "utf8");
+            retValue = ObjDataPackage.parseByteBufToText(objDataByteBuf, (offset + dataHelper.propertyValueStart), dataHelper.propertyValueLength, "utf8");
         }
         else {
             retValue = "Hu hu";
@@ -37,10 +37,10 @@ export class ObjDataParser {
         if (parentObject !== null) {
             let propName = null;
             if (Array.isArray(parentObject)) {
-                propName = ObjDataHelper.parseByteBufToNumber(objDataByteBuf, (offset + dataHelper.propertyNameStart), dataHelper.propertyNameLength);
+                propName = ObjDataPackage.parseByteBufToNumber(objDataByteBuf, (offset + dataHelper.propertyNameStart), dataHelper.propertyNameLength);
             }
             else {
-                propName = ObjDataHelper.parseByteBufToText(objDataByteBuf, (offset + dataHelper.propertyNameStart), dataHelper.propertyNameLength, "utf8");
+                propName = ObjDataPackage.parseByteBufToText(objDataByteBuf, (offset + dataHelper.propertyNameStart), dataHelper.propertyNameLength, "utf8");
             }
             parentObject[propName] = retValue;
         }
@@ -49,15 +49,15 @@ export class ObjDataParser {
     static parsePropHeaders(byteBuf, offset) {
         const dataHelper = new ObjDataHelpingProps();
         let fieldOffset = offset;
-        dataHelper.lengthAll = ObjDataHelper.parseByteBufToNumber(byteBuf, fieldOffset, ObjDataConstants.FIELDS_POINTERS.LENGTH_ALL_FIELD_LEN);
+        dataHelper.lengthAll = ObjDataPackage.parseByteBufToNumber(byteBuf, fieldOffset, ObjDataConstants.FIELDS_POINTERS.LENGTH_ALL_FIELD_LEN);
         fieldOffset += ObjDataConstants.FIELDS_POINTERS.LENGTH_ALL_FIELD_LEN;
-        dataHelper.datatype = ObjDataHelper.parseByteBufToNumber(byteBuf, fieldOffset, ObjDataConstants.FIELDS_POINTERS.DATATYPE_FIELD_LEN);
+        dataHelper.datatype = ObjDataPackage.parseByteBufToNumber(byteBuf, fieldOffset, ObjDataConstants.FIELDS_POINTERS.DATATYPE_FIELD_LEN);
         fieldOffset += ObjDataConstants.FIELDS_POINTERS.DATATYPE_FIELD_LEN;
-        dataHelper.numberValueUnit = ObjDataHelper.parseByteBufToNumber(byteBuf, fieldOffset, ObjDataConstants.FIELDS_POINTERS.NUMBER_VALUE_UNIT_FIELD_LEN);
+        dataHelper.numberValueUnit = ObjDataPackage.parseByteBufToNumber(byteBuf, fieldOffset, ObjDataConstants.FIELDS_POINTERS.NUMBER_VALUE_UNIT_FIELD_LEN);
         fieldOffset += ObjDataConstants.FIELDS_POINTERS.NUMBER_VALUE_UNIT_FIELD_LEN;
-        dataHelper.propsAmount = ObjDataHelper.parseByteBufToNumber(byteBuf, fieldOffset, ObjDataConstants.FIELDS_POINTERS.PROPS_AMOUNT_FIELD_LEN);
+        dataHelper.propsAmount = ObjDataPackage.parseByteBufToNumber(byteBuf, fieldOffset, ObjDataConstants.FIELDS_POINTERS.PROPS_AMOUNT_FIELD_LEN);
         fieldOffset += ObjDataConstants.FIELDS_POINTERS.PROPS_AMOUNT_FIELD_LEN;
-        dataHelper.propertyNameLength = ObjDataHelper.parseByteBufToNumber(byteBuf, fieldOffset, ObjDataConstants.FIELDS_POINTERS.PROPERTY_NAME_LENGTH_FIELD_LEN);
+        dataHelper.propertyNameLength = ObjDataPackage.parseByteBufToNumber(byteBuf, fieldOffset, ObjDataConstants.FIELDS_POINTERS.PROPERTY_NAME_LENGTH_FIELD_LEN);
         dataHelper.propertyValueStart = (dataHelper.propertyNameStart
             + dataHelper.propertyNameLength);
         dataHelper.propertyValueLength = (dataHelper.lengthAll

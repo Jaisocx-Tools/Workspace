@@ -1,7 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.ObjDataSerializer = void 0;
-const ObjDataHelper_js_1 = require("./ObjDataHelper.js");
+const ObjDataPackage_js_1 = require("./ObjDataPackage.js");
 const ObjDataConstants_js_1 = require("./ObjDataConstants.js");
 const ObjDataTypes_js_1 = require("./ObjDataTypes.js");
 class ObjDataSerializer {
@@ -18,19 +18,19 @@ class ObjDataSerializer {
         }
         if (typeof propName === "number") {
             propertyNameSerialized = new Uint8Array(ObjDataConstants_js_1.ObjDataConstants.FIELDS_POINTERS.PROPERTY_NAME_LENGTH_FIELD_LEN);
-            ObjDataHelper_js_1.ObjDataHelper.serializeNumberToByteBuf(propName, ObjDataConstants_js_1.ObjDataConstants.FIELDS_POINTERS.PROPERTY_NAME_LENGTH_FIELD_LEN, 0, propertyNameSerialized);
+            ObjDataPackage_js_1.ObjDataPackage.serializeNumberToByteBuf(propName, ObjDataConstants_js_1.ObjDataConstants.FIELDS_POINTERS.PROPERTY_NAME_LENGTH_FIELD_LEN, 0, propertyNameSerialized);
         }
         else if (typeof propName === "string") {
-            propertyNameSerialized = ObjDataHelper_js_1.ObjDataHelper.serializeTextToByteBuf(propName);
+            propertyNameSerialized = ObjDataPackage_js_1.ObjDataPackage.serializeTextToByteBuf(propName);
         }
         if (dataType === "number") {
             dataHelper.datatype = ObjDataConstants_js_1.ObjDataConstants.DATA_TYPES.NUMBER;
             propertyValueSerialized = new Uint8Array(4);
-            ObjDataHelper_js_1.ObjDataHelper.serializeNumberToByteBuf(propValue, 4, 0, propertyValueSerialized);
+            ObjDataPackage_js_1.ObjDataPackage.serializeNumberToByteBuf(propValue, 4, 0, propertyValueSerialized);
         }
         else if (dataType === "string") {
             dataHelper.datatype = ObjDataConstants_js_1.ObjDataConstants.DATA_TYPES.TEXT_PLAIN;
-            propertyValueSerialized = ObjDataHelper_js_1.ObjDataHelper.serializeTextToByteBuf(propValue);
+            propertyValueSerialized = ObjDataPackage_js_1.ObjDataPackage.serializeTextToByteBuf(propValue);
         }
         else if (dataType === "boolean") {
             dataHelper.datatype = ObjDataConstants_js_1.ObjDataConstants.DATA_TYPES.NUMBER;
@@ -47,7 +47,7 @@ class ObjDataSerializer {
                 const subPropValueSerialized = ObjDataSerializer.serializeProperty(subPropName, subPropValue);
                 byteBufs.push(subPropValueSerialized);
             }
-            propertyValueSerialized = ObjDataHelper_js_1.ObjDataHelper.concatByteArrays(byteBufs);
+            propertyValueSerialized = ObjDataPackage_js_1.ObjDataPackage.concatByteArrays(byteBufs);
         }
         else if (dataType === "array") {
             dataHelper.datatype = ObjDataConstants_js_1.ObjDataConstants.DATA_TYPES.ARRAY;
@@ -58,7 +58,7 @@ class ObjDataSerializer {
                 const subPropValueSerialized = ObjDataSerializer.serializeProperty(i, subPropValue);
                 byteBufs.push(subPropValueSerialized);
             }
-            propertyValueSerialized = ObjDataHelper_js_1.ObjDataHelper.concatByteArrays(byteBufs);
+            propertyValueSerialized = ObjDataPackage_js_1.ObjDataPackage.concatByteArrays(byteBufs);
         }
         else {
             dataHelper.datatype = ObjDataConstants_js_1.ObjDataConstants.DATA_TYPES.BINARY;
@@ -68,23 +68,23 @@ class ObjDataSerializer {
         dataHelper.propertyNameLength = propertyNameSerialized.length;
         dataHelper.propertyValueStart = dataHelper.propertyNameStart + dataHelper.propertyNameLength;
         dataHelper.propertyValueLength = propertyValueSerialized.length;
-        dataHelper.lengthAll = ((ObjDataConstants_js_1.ObjDataConstants.HEADERS_LEN)
+        dataHelper.lengthAll = ((ObjDataConstants_js_1.ObjDataConstants.HEADERS_LENGTH)
             + (dataHelper.propertyNameLength)
             + (dataHelper.propertyValueLength));
         const headers = ObjDataSerializer.serializePropHeaders(dataHelper);
-        return ObjDataHelper_js_1.ObjDataHelper.concatByteArrays([
+        return ObjDataPackage_js_1.ObjDataPackage.concatByteArrays([
             headers,
             propertyNameSerialized,
             propertyValueSerialized,
         ]);
     }
     static serializePropHeaders(dataHelper) {
-        const headersBuf = new Uint8Array(ObjDataConstants_js_1.ObjDataConstants.HEADERS_LEN);
-        ObjDataHelper_js_1.ObjDataHelper.serializeNumberToByteBuf(dataHelper.lengthAll, ObjDataConstants_js_1.ObjDataConstants.FIELDS_POINTERS.LENGTH_ALL_FIELD_LEN, ObjDataConstants_js_1.ObjDataConstants.FIELDS_POINTERS.LENGTH_ALL, headersBuf);
-        ObjDataHelper_js_1.ObjDataHelper.serializeNumberToByteBuf(dataHelper.datatype, ObjDataConstants_js_1.ObjDataConstants.FIELDS_POINTERS.DATATYPE_FIELD_LEN, ObjDataConstants_js_1.ObjDataConstants.FIELDS_POINTERS.DATATYPE, headersBuf);
-        ObjDataHelper_js_1.ObjDataHelper.serializeNumberToByteBuf(dataHelper.numberValueUnit, ObjDataConstants_js_1.ObjDataConstants.FIELDS_POINTERS.NUMBER_VALUE_UNIT_FIELD_LEN, ObjDataConstants_js_1.ObjDataConstants.FIELDS_POINTERS.NUMBER_VALUE_UNIT, headersBuf);
-        ObjDataHelper_js_1.ObjDataHelper.serializeNumberToByteBuf(dataHelper.propsAmount, ObjDataConstants_js_1.ObjDataConstants.FIELDS_POINTERS.PROPS_AMOUNT_FIELD_LEN, ObjDataConstants_js_1.ObjDataConstants.FIELDS_POINTERS.PROPS_AMOUNT, headersBuf);
-        ObjDataHelper_js_1.ObjDataHelper.serializeNumberToByteBuf(dataHelper.propertyNameLength, ObjDataConstants_js_1.ObjDataConstants.FIELDS_POINTERS.PROPERTY_NAME_LENGTH_FIELD_LEN, ObjDataConstants_js_1.ObjDataConstants.FIELDS_POINTERS.PROPERTY_NAME_LENGTH, headersBuf);
+        const headersBuf = new Uint8Array(ObjDataConstants_js_1.ObjDataConstants.HEADERS_LENGTH);
+        ObjDataPackage_js_1.ObjDataPackage.serializeNumberToByteBuf(dataHelper.lengthAll, ObjDataConstants_js_1.ObjDataConstants.FIELDS_POINTERS.LENGTH_ALL_FIELD_LEN, ObjDataConstants_js_1.ObjDataConstants.FIELDS_POINTERS.LENGTH_ALL, headersBuf);
+        ObjDataPackage_js_1.ObjDataPackage.serializeNumberToByteBuf(dataHelper.datatype, ObjDataConstants_js_1.ObjDataConstants.FIELDS_POINTERS.DATATYPE_FIELD_LEN, ObjDataConstants_js_1.ObjDataConstants.FIELDS_POINTERS.DATATYPE, headersBuf);
+        ObjDataPackage_js_1.ObjDataPackage.serializeNumberToByteBuf(dataHelper.numberValueUnit, ObjDataConstants_js_1.ObjDataConstants.FIELDS_POINTERS.NUMBER_VALUE_UNIT_FIELD_LEN, ObjDataConstants_js_1.ObjDataConstants.FIELDS_POINTERS.NUMBER_VALUE_UNIT, headersBuf);
+        ObjDataPackage_js_1.ObjDataPackage.serializeNumberToByteBuf(dataHelper.propsAmount, ObjDataConstants_js_1.ObjDataConstants.FIELDS_POINTERS.PROPS_AMOUNT_FIELD_LEN, ObjDataConstants_js_1.ObjDataConstants.FIELDS_POINTERS.PROPS_AMOUNT, headersBuf);
+        ObjDataPackage_js_1.ObjDataPackage.serializeNumberToByteBuf(dataHelper.propertyNameLength, ObjDataConstants_js_1.ObjDataConstants.FIELDS_POINTERS.PROPERTY_NAME_LENGTH_FIELD_LEN, ObjDataConstants_js_1.ObjDataConstants.FIELDS_POINTERS.PROPERTY_NAME_LENGTH, headersBuf);
         return headersBuf;
     }
 }
