@@ -4,7 +4,9 @@ import { ObjDataHelpingProps } from "./ObjDataTypes.js";
 
 export class ObjDataParser {
 
-  static parse( objDataByteBuf: Uint8Array ): any {
+  static parse ( 
+    objDataByteBuf: Uint8Array
+  ): any {
 
     const dataHelper: ObjDataHelpingProps = ObjDataParser.parsePropHeaders (
       objDataByteBuf,
@@ -199,3 +201,5 @@ export class ObjDataParser {
     return; // this.deserialize(uint8Array);
   }
 }
+
+

@@ -8,3 +8,6 @@
 /docker/mysql/volumes
 
 /workspace/ts/www/ExampleWebpack_TreeHeavyJson.html
+
+/docs/readme-development-rules.md
+
