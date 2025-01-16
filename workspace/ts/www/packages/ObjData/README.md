@@ -1,7 +1,7 @@
 # JS PACKAGE jaisocx/objdata
 
 
-## How to use in js code
+## How to use in ts code
 
 ### Serialize
 
