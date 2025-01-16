@@ -2,9 +2,25 @@
   "npm-registry-name": "@jaisocx",
   "packages": [
     {
+      "path": "packages/ObjData",
+      "name": "objdata",
+      "build": false,
+      "build-simple-enable": true,
+      "dependencies": [
+      ],
+      "build-files": [
+        "ObjDataConstants.js",
+        "ObjDataTypes.js",
+        "ObjDataPackage.js",
+        "ObjDataParser.js",
+        "ObjDataSerializer.js",
+        "ObjData.js"
+      ]
+    },
+    {
       "path": "packages/EventEmitter",
       "name": "event-emitter",
-      "build": true,
+      "build": false,
       "build-simple-enable": true,
       "build-files": [
         "EventEmitter.js",
@@ -14,7 +30,7 @@
     {
       "path": "packages/TemplateRenderer",
       "name": "template-renderer",
-      "build": true,
+      "build": false,
       "build-simple-enable": true,
       "dependencies": [
         {
@@ -54,7 +70,7 @@
     {
       "path": "examples/ExampleTemplateRenderer",
       "name": "example-template-renderer",
-      "build": true,
+      "build": false,
       "build-simple-enable": true,
       "dependencies": [
         {
@@ -102,22 +118,6 @@
           }
         ]
       }
-    },
-    {
-      "path": "packages/ObjData",
-      "name": "objdata",
-      "build": false,
-      "build-simple-enable": true,
-      "dependencies": [
-      ],
-      "build-files": [
-        "ObjDataConstants.js",
-        "ObjDataTypes.js",
-        "ObjDataPackage.js",
-        "ObjDataParser.js",
-        "ObjDataSerializer.js",
-        "ObjData.js"
-      ]
     }
   ]
 }
