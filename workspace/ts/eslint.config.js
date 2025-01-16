@@ -4,7 +4,7 @@ import typescriptEslintPlugin from "@typescript-eslint/eslint-plugin";
 import typescriptEslintParser from "@typescript-eslint/parser";
 import jaisocxPlugin from "eslint-plugin-jaisocx";
 
-const MAX_LINE_LENGTH = 128;
+const MAX_LINE_LENGTH = 255;
 const INDENT = 2;
 
 // Resolve paths for tsconfig in an ESM context

@@ -19,6 +19,6 @@ export interface EventEmitResult {
   selector: string|null;
   eventName: string;
   payload: any;
-  result: EventHandlerReturnValue | null | undefined;
+  result: EventHandlerReturnValue|null|undefined|void;
 }
 

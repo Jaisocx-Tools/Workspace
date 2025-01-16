@@ -17,8 +17,8 @@ export class ExampleTree {
             .setNodesOpenedMode(TreeConstants.NodesOpenedMode.ALL_HIDDEN)
             .setRenderingMode(TreeConstants.RenderingMode.Ease)
             .setModifiable(false)
-            .addJSTreeEventListener(TreeConstants.TreeEventsNames.EVENT_NAME__TREE_NODE_LABEL__CLICK, (evt) => {
-            console.log(evt);
+            .addJSTreeEventListener(TreeConstants.TreeEventsNames.EVENT_NAME__TREE_NODE_LABEL__CLICK, (eventName, payload) => {
+            console.log(payload);
         })
             .load(url);
     }

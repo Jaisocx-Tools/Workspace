@@ -16,7 +16,7 @@ class ExampleTemplateRenderer {
     this.TemplateRenderer = new template_renderer_1.TemplateRenderer();
     this.holderHtmlNodeSelector = null;
   }
-  init() {
+  run() {
     let holderHtmlNode = null;
     if (!this.holderHtmlNodeSelector) {
       this.holderHtmlNodeSelector = "body";

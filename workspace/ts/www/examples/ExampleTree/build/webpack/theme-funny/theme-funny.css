@@ -3,8 +3,8 @@
 .theme-funny .tree > ul > li > pre > pre.jstree-html-node-holder-icon.icon-show,
 .tree.theme-funny > ul > li > pre > pre.jstree-html-node-holder-icon.icon-show
 {
-  --datatype-array--image-url: url('examples/ExampleTree/build/webpack/theme-funny/mini-images/data-types/house.png');
-  --datatype-object--image-url: url('examples/ExampleTree/build/webpack/theme-funny/mini-images/data-types/house.png');
+  --datatype-array--image-url: url('./../themes/theme-funny/mini-images/data-types/house.png');
+  --datatype-object--image-url: url('./../themes/theme-funny/mini-images/data-types/house.png');
 }
 
 .theme-funny .tree, 
@@ -12,15 +12,11 @@
 
   --node-label--font-family: 'Niconne';
 
-  --datatype-array--image-url: url('examples/ExampleTree/build/webpack/theme-funny/mini-images/data-types/house.png');
-  --datatype-object--image-url: url('examples/ExampleTree/build/webpack/theme-funny/mini-images/data-types/house.png');
-  --datatype-number--image-url: url('examples/ExampleTree/build/webpack/theme-funny/mini-images/data-types/track.png');
-  --datatype-string--image-url: url('examples/ExampleTree/build/webpack/theme-funny/mini-images/data-types/money-transfer.png');
-  --datatype-boolean--image-url: url('examples/ExampleTree/build/webpack/theme-funny/mini-images/data-types/html-intence.png');
-
-  --background-color--tree: #fff;
-  --size--jstree-html-node: 1.0rem;
-  --icon-holder-size: 0.9rem;
+  --datatype-array--image-url: url('./../themes/theme-funny/mini-images/data-types/house.png');
+  --datatype-object--image-url: url('./../themes/theme-funny/mini-images/data-types/house.png');
+  --datatype-number--image-url: url('./../themes/theme-funny/mini-images/data-types/track.png');
+  --datatype-string--image-url: url('./../themes/theme-funny/mini-images/data-types/money-transfer.png');
+  --datatype-boolean--image-url: url('./../themes/theme-funny/mini-images/data-types/html-intence.png');
 }
 
 

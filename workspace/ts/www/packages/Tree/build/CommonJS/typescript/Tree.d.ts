@@ -1,8 +1,8 @@
-import { ImprovedRenderEventEmitter } from "@jaisocx/event-emitter";
+import { ImprovedRenderEventEmitter, EventHandlerReturnValue } from "@jaisocx/event-emitter";
 import { TemplateRenderer } from "@jaisocx/template-renderer";
 import { ITreeRenderRetValue, IRenderTemplateRendererData, ITreeAdapter } from "./Types.js";
 import { TreeMetadata } from "./TreeMetadata.js";
-import "@jaisocx-tree-assets/tree-styles-main-node_modules.css";
+import "@jaisocx-tree-assets/tree-styles-main-webpack.css";
 export declare class Tree extends ImprovedRenderEventEmitter {
     debug: boolean;
     mainHtmlNodeId: string;
@@ -49,7 +49,7 @@ export declare class Tree extends ImprovedRenderEventEmitter {
     getSubtreeNodeToRender(loopPropertyValue: any, loopPropertyKey: any): any;
     getDataForRendering(node: any, flatNodeClone: any, dataTypeString: string, hasSubtree: boolean): IRenderTemplateRendererData;
     getTreeNodeCssClasses(dataType: string, node: any): string;
-    addJSTreeEventListener(eventName: string, eventHandler: CallableFunction): Tree;
+    addJSTreeEventListener(eventName: string, eventHandler: (eventName: string, payload: any) => EventHandlerReturnValue | null | undefined | void): Tree;
     addJSTreeEventListeners(): Tree;
     openButtonClickHandler(eventPayload: any): void;
     treeNodeLableClickHandler(eventPayload: any): void;

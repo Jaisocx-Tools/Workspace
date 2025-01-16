@@ -26,8 +26,8 @@ class ExampleTree {
       .setModifiable(false)
       .addJSTreeEventListener(
         TreeConstants.TreeEventsNames.EVENT_NAME__TREE_NODE_LABEL__CLICK, 
-        (evt) => {
-          console.log(evt);
+        (eventName, payload) => {
+          console.log(payload);
         })
       .load(url);
   }

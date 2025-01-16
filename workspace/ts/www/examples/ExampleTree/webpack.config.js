@@ -1,11 +1,24 @@
+import path from 'path';
+import { fileURLToPath } from 'url';
 import { createRequire } from 'module';
+//import jaisocxTreeAliasConfig from '@jaisocx/tree/webpack.aliases.js';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 const require = createRequire(import.meta.url);
 
-const path = require('path');
-const jaisocxTreeAliasConfig = require('@jaisocx/tree/webpack.aliases.js');
+// Directly reference the file
+const jaisocxTreeAliasConfig = require(path.resolve(
+  __dirname,
+  'node_modules/@jaisocx/tree/webpack.aliases.js'
+)).default;
+
+console.log(jaisocxTreeAliasConfig);
+
+
 
 export default {
-  entry: './src/index.ts', // Entry point for your TypeScript code
+  entry: './build/ESNext/index.js', // Entry point for your TypeScript code
   output: {
     filename: 'bundle.js', // Output bundle name
     path: path.resolve(__dirname, 'build/webpack'), // Output directory
@@ -14,14 +27,21 @@ export default {
     alias: {
       ...jaisocxTreeAliasConfig.resolve.alias,
     },
-    extensions: ['.ts', '.js'], // File extensions to resolve
+    extensions: ['.js'], // File extensions to resolve
   },
   module: {
     rules: [
       {
-        test: /\.ts$/, // Process TypeScript files
-        use: 'ts-loader',
+        test: /\.js$/,
         exclude: /node_modules/,
+        use: {
+          loader: 'babel-loader',
+          options: {
+            presets: [
+              ['@babel/preset-env', { targets: '> 0.25%, not dead' }], // Adjust target environments
+            ],
+          },
+        },
       },
       {
         test: /\.css$/,

@@ -33,8 +33,8 @@ export class ExampleTree {
       .setModifiable(false)
       .addJSTreeEventListener(
         TreeConstants.TreeEventsNames.EVENT_NAME__TREE_NODE_LABEL__CLICK,
-        (evt: any) => {
-          console.log(evt);
+        (eventName: any, payload: any) => {
+          console.log(payload);
         }
       )
       .load(url);

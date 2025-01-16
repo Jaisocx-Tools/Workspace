@@ -15,7 +15,7 @@ class ExampleTemplateRenderer {
     this.holderHtmlNodeSelector = null;
   }
 
-  init() {
+  run() {
     let holderHtmlNode = null;
 
     if (!this.holderHtmlNodeSelector) {

@@ -12,7 +12,7 @@ import { TreeAdapterModeMetadata } from "./TreeAdapterModeMetadata.js";
 import { TreeAdapterModeEase } from "./TreeAdapterModeEase.js";
 import { ArrayOrObjectPackage } from "./ArrayOrObjectPackage.js";
 
-import "@jaisocx-tree-assets/tree-styles-main-node_modules.css";
+import "@jaisocx-tree-assets/tree-styles-main-webpack.css";
 
 // Tree main class
 export class Tree extends ImprovedRenderEventEmitter {
@@ -656,9 +656,9 @@ export class Tree extends ImprovedRenderEventEmitter {
   // FINISH BLOCK ADAPTIVE PLACEHOLDERS
 
   // EVENTS BLOCK
-  addJSTreeEventListener(
+  addJSTreeEventListener (
     eventName: string,
-    eventHandler: CallableFunction
+    eventHandler: (eventName: string, payload: any) => EventHandlerReturnValue|null|undefined|void
   ): Tree {
     // the holder class LargeDomEventListenersOverheadOptimizer method call
     this.addThisClassEventListener(

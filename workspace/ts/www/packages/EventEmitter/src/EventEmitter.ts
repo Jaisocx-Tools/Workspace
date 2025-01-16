@@ -51,7 +51,7 @@ export class EventEmitter {
   // where You wish to provide the interface of optional adding a custom event listener in Your JS class.
   addThisClassEventListener(
     eventName: string,
-    eventHandler: (eventName: string, payload: any) => EventHandlerReturnValue
+    eventHandler: (eventName: string, payload: any) => EventHandlerReturnValue|null|undefined|void
   ): EventEmitter {
     if (!this.eventsHandlersSetThisClass[eventName]) {
       this.eventsHandlersSetThisClass[eventName] = [];
@@ -120,7 +120,7 @@ export class EventEmitter {
         );
       }
 
-      const eventHandlerResult: EventHandlerReturnValue | null | undefined = eventHandler.call (
+      const eventHandlerResult: EventHandlerReturnValue|null|undefined|void = eventHandler.call (
         this,
         eventName,
         payload
@@ -132,7 +132,7 @@ export class EventEmitter {
         selector: string|null = null;
         eventName: string = eventName;
         payload: any = payload;
-        result: any = eventHandlerResult;
+        result: EventHandlerReturnValue|null|undefined|void = eventHandlerResult;
       };
 
       eventEmitResults.push( eventEmitResult );

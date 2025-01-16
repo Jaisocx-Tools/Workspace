@@ -6,7 +6,7 @@ export declare class EventEmitter {
     constructor();
     setDebug(toDebug: boolean): EventEmitter;
     isObjectEmpty(obj: object): boolean;
-    addThisClassEventListener(eventName: string, eventHandler: (eventName: string, payload: any) => EventHandlerReturnValue): EventEmitter;
+    addThisClassEventListener(eventName: string, eventHandler: (eventName: string, payload: any) => EventHandlerReturnValue | null | undefined | void): EventEmitter;
     emitEvent(eventName: string, payload: any): EventEmitResult[];
 }
 //# sourceMappingURL=EventEmitter.d.ts.map

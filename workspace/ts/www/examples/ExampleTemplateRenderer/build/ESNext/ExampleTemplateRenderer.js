@@ -14,7 +14,7 @@ export class ExampleTemplateRenderer {
         this.TemplateRenderer = new TemplateRenderer();
         this.holderHtmlNodeSelector = null;
     }
-    init() {
+    run() {
         let holderHtmlNode = null;
         if (!this.holderHtmlNodeSelector) {
             this.holderHtmlNodeSelector = "body";

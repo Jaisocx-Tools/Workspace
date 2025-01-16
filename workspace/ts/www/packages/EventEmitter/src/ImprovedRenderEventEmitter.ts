@@ -96,7 +96,7 @@ export class ImprovedRenderEventEmitter extends EventEmitter {
           continue;
         }
 
-        const result: EventHandlerReturnValue|undefined = eventHandler.call(
+        const result: EventHandlerReturnValue|null|undefined|void = eventHandler.call(
           this,
           payload
         );

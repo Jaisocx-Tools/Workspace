@@ -5,6 +5,6 @@ export declare class ExampleTemplateRenderer {
     data: object;
     template: string;
     constructor();
-    init(): void;
+    run(): void;
 }
 //# sourceMappingURL=ExampleTemplateRenderer.d.ts.map

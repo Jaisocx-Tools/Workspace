@@ -5,7 +5,7 @@ import { TreeMetadata } from "./TreeMetadata.js";
 import { TreeAdapterModeMetadata } from "./TreeAdapterModeMetadata.js";
 import { TreeAdapterModeEase } from "./TreeAdapterModeEase.js";
 import { ArrayOrObjectPackage } from "./ArrayOrObjectPackage.js";
-import "@jaisocx-tree-assets/tree-styles-main-node_modules.css";
+import "@jaisocx-tree-assets/tree-styles-main-webpack.css";
 // Tree main class
 export class Tree extends ImprovedRenderEventEmitter {
     debug;
