@@ -1,3 +1,9 @@
+# JS PACKAGE jaisocx/template-renderer
+
+
+## How to use in ts code
+
+```
 import { TemplateRenderer } from "@jaisocx/template-renderer";
 import { EventHandlerReturnValue } from "@jaisocx/event-emitter";
 
@@ -81,5 +87,68 @@ export class ExampleTemplateRenderer {
 
   }
 }
+
+```
+
+index.html
+
+```
+<html>
+  <head>
+    <title>TemplateRenderer Example</title>
+  </head>
+  <body>
+
+    <script src="packages/EventEmitter/build/Simple/EventEmitter.js"></script>
+    <script src="packages/TemplateRenderer/build/Simple/TemplateRenderer.js"></script>
+  
+    <script src="examples/ExampleTemplateRenderer/build/Simple/ExampleTemplateRenderer.js"></script>
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        const example = new ExampleTemplateRenderer();
+        example.run();
+      });
+    </script>
+  </body>
+</html>
+```
+
+
+## What is this
+
+The very lightweight class to populate an html template with values from a js object or json.
+
+The template has just one placeholder available, like this: `{{ someValueFromJson }}`.
+
+e.g.:
+```
+const data: any = {
+  "message": "Hello World!"
+}
+
+const template: any = "<h3>{{ message }}</h3>";
+
+const templateRenderer: TemplateRenderer = new TemplateRenderer();
+const html: any = templateRenderer
+  .setTemplate(template)
+  .setData(data)
+  .render();
+
+```
+
+
+
+## HELLO WORLD MESSAGE:
+
+GOOD LUCK AND HAVE FUN WITH CODING ))
+
+
+Yours [jaisocx.com](https://jaisocx.com/) Software Architect and Dev,
+
+Elias
+
+
+
+
 
 
