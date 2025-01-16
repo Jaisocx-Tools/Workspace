@@ -18,8 +18,12 @@
     "README.md",
     "LICENSE"
   ],
-  "keywords": [],
-  "author": "",
+  "keywords": [
+    "event",
+    "efficiency",
+    "improval"
+  ],
+  "author": "Jaisocx",
   "license": "ISC"
 }
 
