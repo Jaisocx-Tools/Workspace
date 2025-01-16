@@ -114,15 +114,16 @@ export class SomeClass extends EventEmitter {
 
 ## What is this
 
+The classes to extend in Your other classes, so that the new classes can have an improved way to emit events,
+and at the classes instances one can add an event handler.
 
 
 
 ## For what to use
 
-
-
-
-## The further improvals
+1. When You have developed a Typescript class, and can foresee, that on some code pont there can be an additional method subcall,
+You can emit an event there. When some event handler will be set, it will be invoked at the code point where code line resides .emtEvent().
+2. When a site ui tool was rendered by a big size json data, this tool will have many DOM Event Handlers set. The ImprovedRenderEventEmitter does this amount of similar DOM events to one, and, therefore, improves resources usage.
 
 
 
