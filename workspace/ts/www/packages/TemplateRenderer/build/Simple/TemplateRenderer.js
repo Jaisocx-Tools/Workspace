@@ -48,7 +48,21 @@ class TemplateRenderer extends EventEmitter {
 
     if (eventResult.length > 0) {
       const last = eventResult.length - 1;
-      renderedHtml = eventResult[last].result.payloadReturned.html;
+      let payloadReturned = null;
+
+      for (let eventResultsStep = last; eventResultsStep > (-1); eventResultsStep--) {
+        try {
+          // @ts-ignore
+          payloadReturned = eventResult[eventResultsStep].result.payloadReturned;
+        }
+        catch (e) { }
+
+        if (!payloadReturned) {
+          continue;
+        }
+
+        renderedHtml = payloadReturned.html;
+      }
 
       if (this.debug) {
         console.log(

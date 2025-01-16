@@ -1,29 +1,23 @@
-import { EventEmitter } from "./EventEmitter.js";
-import { EventHandlerReturnValue, EventEmitResult } from "./Types.js";
+"use strict";
 
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.ImprovedRenderEventEmitter = void 0;
+const EventEmitter_js_1 = require("./EventEmitter.js");
 // This class is used with JSTree to keep browser working with ease, even with several tens of MBs JSON data file.
-export class LargeDomEventEmitter extends EventEmitter {
-  eventsHandlersSetDom: any;
-
-  mainHolderHtmlNode: HTMLElement|null;
-
-  EventArtDOMEventOptimized: string;
-
+class ImprovedRenderEventEmitter extends EventEmitter_js_1.EventEmitter {
   constructor() {
     super();
-
     this.eventsHandlersSetDom = {};
     this.mainHolderHtmlNode = null;
-
     this.EventArtDOMEventOptimized = "DOMEventOptimized";
   }
-
-  setDebug(debug: boolean): LargeDomEventEmitter {
+  setDebug(debug) {
     this.debug = debug;
     return this;
   }
-
-  addDomEventListeners(): LargeDomEventEmitter {
+  addDomEventListeners() {
     // here is just the right assignment of few dom event listeners.
     // Don't edit here, please!
     for (const eventName in this.eventsHandlersSetDom) {
@@ -31,120 +25,84 @@ export class LargeDomEventEmitter extends EventEmitter {
       if (this.isObjectEmpty(eventHandlers)) {
         continue;
       }
-
       // here we add one dom event listener for each event, like click, contextmenu, dblcick and others, when any
       // @ts-ignore
-      this.mainHolderHtmlNode.addEventListener(
-        eventName,
-        this.optimizedDomEventHandler.bind(this)
-      );
+      this.mainHolderHtmlNode.addEventListener(eventName, this.optimizedDomEventHandler.bind(this));
     }
-
     return this;
   }
-
   // this method just sets an event handler function by event name and a holder elem selector to an object,
   // and then all event handlers are executed on this.emitDomEvent method call.
   // The difference is, that we addEventListener once to the main html node,
-  // and not to each html node, it is best, when the html tool is populated with a larger json data file of several tens or hundreds MBs, for example.
-  addDomEventListener(
-    eventName: string,
-    selector: string,
-    eventHandler: CallableFunction
-  ): LargeDomEventEmitter {
+  // and not to each html node, it is best, 
+  // when the html tool is populated with a larger json data file of several tens or hundreds MBs, for example.
+  addDomEventListener(eventName, selector, eventHandler) {
     if (!this.eventsHandlersSetDom[eventName]) {
       this.eventsHandlersSetDom[eventName] = {};
     }
-
     if (!this.eventsHandlersSetDom[eventName][selector]) {
       this.eventsHandlersSetDom[eventName][selector] = [];
     }
-
     this.eventsHandlersSetDom[eventName][selector].push(eventHandler);
-
     return this;
   }
-
   // Don't edit here, please
-  emitDomEvent(
-    eventName: string,
-    payload: any
-  ): EventEmitResult[] {
-    const results: EventEmitResult[] = [];
-
+  emitDomEvent(eventName, payload) {
+    const results = [];
     const eventHandlersBySelectors = this.eventsHandlersSetDom[eventName];
     if (this.isObjectEmpty(eventHandlersBySelectors)) {
       return results;
     }
-
     for (const selector in eventHandlersBySelectors) {
       const eventHandlers = eventHandlersBySelectors[selector];
       if (!eventHandlers || eventHandlers.length === 0) {
         continue;
       }
-
       const eventTarget = payload.event.target.closest(selector);
       if (!eventTarget) {
         continue;
       }
-
       payload.eventTarget = eventTarget;
-
       for (const eventHandler of eventHandlers) {
-        if (!eventHandler || (typeof eventHandler) !== "function") {
+        if (!eventHandler || typeof eventHandler !== "function") {
           continue;
         }
-
-        const result: EventHandlerReturnValue|undefined = eventHandler.call(
-          this,
-          payload
-        );
+        const result = eventHandler.call(this, payload);
         results.push({
           eventArt: this.EventArtDOMEventOptimized,
           eventName,
           selector,
           payload,
-          result,
+          result
         });
         if (result && result.payloadReturned) {
           payload = result.payloadReturned;
         }
       }
     }
-
     return results;
   }
-
-  optimizedDomEventHandler(event: Event): void {
-    const eventTarget: HTMLElement|null = event.target as HTMLElement;
-    if (
-      eventTarget
-            && eventTarget.nodeName === "A"
-            && eventTarget.getAttribute("HREF") !== "javascript: void(0);"
-    ) {
+  optimizedDomEventHandler(event) {
+    const eventTarget = event.target;
+    if (eventTarget && eventTarget.nodeName === "A" && eventTarget.getAttribute("HREF") !== "javascript: void(0);") {
       return;
     }
-
     event.preventDefault();
     event.stopPropagation();
-
     if (this.isObjectEmpty(this.eventsHandlersSetDom)) {
       return;
     }
-
-    const eventName: string = event.type;
-    const eventHandlers: any = this.eventsHandlersSetDom[eventName];
+    const eventName = event.type;
+    const eventHandlers = this.eventsHandlersSetDom[eventName];
     if (this.isObjectEmpty(eventHandlers)) {
       return;
     }
-
     if (this.debug === true) {
       console.log("optimized event handler");
     }
-
-    this.emitDomEvent(
-      eventName,
-      { event, }
-    );
+    this.emitDomEvent(eventName, {
+      event
+    });
   }
 }
+exports.ImprovedRenderEventEmitter = ImprovedRenderEventEmitter;

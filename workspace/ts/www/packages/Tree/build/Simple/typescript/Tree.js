@@ -1,4 +1,4 @@
-class Tree extends LargeDomEventEmitter {
+class Tree extends ImprovedRenderEventEmitter {
   debug;
   mainHtmlNodeId;
   mainHolderHtmlNode;

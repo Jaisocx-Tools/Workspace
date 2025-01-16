@@ -84,12 +84,19 @@ in the object, serialized to objdata format.
 I have an idea of a more extensive storage usage the same objdata format,
 however working with js object BigInt for all numeric values,
 and aligned each prefix field always 8 bytes long values ( 64 bits ).
-This will have a 40 bytes long prefix, more than 3 times long than this 12 bytes long prefix format here in this pack.
+This will have a 40 bytes long prefix, more than 2 times long than this 20 bytes long prefix format here in this pack.
 
 The reason why this package is published, but without this feature has been implemented:
 I still don't have the idea, to keep the algorythm here the same without copy-paste to another Serializer .ts class,
 however to work with not very many if statements to checkout the action for the current format,
 since additional actions in a loop use more resources, however doing the same task.
+
+
+### 2. Classes instances Datatype support
+Easily done in some time. This will be just an object with constant property names:
+1. class name
+2. namespace, package or url in the npmjs.com))
+3. an object, serialized to objdata class instance, with every property and their values, without no methods.
 
 
 ## The further improvals, however seem to be published in another package.
@@ -104,7 +111,7 @@ since additional actions in a loop use more resources, however doing the same ta
 GOOD LUCK AND HAVE FUN WITH CODING ))
 
 
-Yours [jaisocx.com](https://jaisocx.com/) Software Architect and dev,
+Yours [jaisocx.com](https://jaisocx.com/) Software Architect and Dev,
 
 Elias
 

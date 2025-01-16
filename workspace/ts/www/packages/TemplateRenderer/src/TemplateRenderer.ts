@@ -44,7 +44,7 @@ export class TemplateRenderer extends EventEmitter {
       );
     }
 
-    const eventResult: EventEmitResult[] = this.emitEvent(
+    const eventResult: EventEmitResult[] = this.emitEvent (
       this.EVENT_NAME__AFTER_RENDER,
       {
         html: renderedHtml,
@@ -54,7 +54,20 @@ export class TemplateRenderer extends EventEmitter {
 
     if (eventResult.length > 0) {
       const last: number = eventResult.length - 1;
-      renderedHtml = eventResult[last].result.payloadReturned.html;
+
+      let payloadReturned: any = null;
+      for ( let eventResultsStep = last; eventResultsStep > (-1); eventResultsStep-- ) {
+        try {
+          // @ts-ignore
+          payloadReturned = eventResult[eventResultsStep].result.payloadReturned; 
+        } catch (e) {}
+        
+        if ( !payloadReturned ) {
+          continue;
+        }
+
+        renderedHtml = payloadReturned.html;
+      }
 
       if (this.debug) {
         console.log(
@@ -66,7 +79,7 @@ export class TemplateRenderer extends EventEmitter {
     } else if (this.debug) {
       console.log("afterRender event did not change html");
     }
-
+    
     return renderedHtml;
   }
 

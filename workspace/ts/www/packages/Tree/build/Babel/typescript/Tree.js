@@ -13,7 +13,7 @@ const TreeAdapterModeEase_js_1 = require("./TreeAdapterModeEase.js");
 const ArrayOrObjectPackage_js_1 = require("./ArrayOrObjectPackage.js");
 require("@jaisocx-tree-assets/tree-styles-main-node_modules.css");
 // Tree main class
-class Tree extends event_emitter_1.LargeDomEventEmitter {
+class Tree extends event_emitter_1.ImprovedRenderEventEmitter {
   constructor() {
     super();
     this.debug = TreeConstants_js_1.TreeConstants.Defaults.debug;

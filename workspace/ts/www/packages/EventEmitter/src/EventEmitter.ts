@@ -1,5 +1,11 @@
 import { EventHandlerReturnValue, EventEmitResult } from "./Types.js";
 
+// The purpose is, when had extended EventEmitter,
+// the class can add event listeners callable functoins,
+// and then, during development,
+// we can in some code areas emit these events.
+// This is the nice solution, more convinient,
+// thn just passing a method arg callback or of type function. 
 export class EventEmitter {
   eventsHandlersSetThisClass: any;
 
@@ -45,7 +51,7 @@ export class EventEmitter {
   // where You wish to provide the interface of optional adding a custom event listener in Your JS class.
   addThisClassEventListener(
     eventName: string,
-    eventHandler: CallableFunction
+    eventHandler: (eventName: string, payload: any) => EventHandlerReturnValue
   ): EventEmitter {
     if (!this.eventsHandlersSetThisClass[eventName]) {
       this.eventsHandlersSetThisClass[eventName] = [];
@@ -58,11 +64,11 @@ export class EventEmitter {
 
   // this.emitEvent method call You can place inside Your js code,
   // where You wish to provide the interface of optional adding a custom event listener in Your JS class.
-  emitEvent(
+  emitEvent (
     eventName: string,
     payload: any
   ): EventEmitResult[] {
-    const results: EventEmitResult[] = [];
+    const eventEmitResults: EventEmitResult[] = [];
 
     if (this.debug) {
       console.log(
@@ -72,7 +78,7 @@ export class EventEmitter {
     }
 
     if (this.isObjectEmpty(this.eventsHandlersSetThisClass)) {
-      return results;
+      return eventEmitResults;
     }
 
     const eventHandlers = this.eventsHandlersSetThisClass[eventName];
@@ -84,7 +90,7 @@ export class EventEmitter {
         );
       }
 
-      return results;
+      return eventEmitResults;
     }
 
     for (const eventHandler of eventHandlers) {
@@ -114,31 +120,33 @@ export class EventEmitter {
         );
       }
 
-      const result: any = eventHandler.call(
+      const eventHandlerResult: EventHandlerReturnValue | null | undefined = eventHandler.call (
         this,
+        eventName,
         payload
       );
 
       const thisClass: EventEmitter = this;
-      results.push((new class implements EventEmitResult {
+      const eventEmitResult: EventEmitResult = new class implements EventEmitResult {
         eventArt: string = thisClass.EventArtJSEvent;
-
-        eventName: string = eventName;
-
         selector: string|null = null;
-
+        eventName: string = eventName;
         payload: any = payload;
+        result: any = eventHandlerResult;
+      };
 
-        result: any = result;
-      }()));
+      eventEmitResults.push( eventEmitResult );
 
-      if (result && result.payloadReturned) {
+      if (eventHandlerResult && eventHandlerResult.payloadReturned) {
         // @ts-ignore
-
-        payload = result.payloadReturned;
+        payload = eventHandlerResult.payloadReturned;
       }
     }
 
-    return results;
+    return eventEmitResults;
   }
 }
+
+
+
+

@@ -47,7 +47,7 @@ class EventEmitter {
   emitEvent(
     eventName, 
     payload) {
-    const results = [];
+    const eventEmitResults = [];
 
     if (this.debug) {
       console.log(
@@ -56,7 +56,7 @@ class EventEmitter {
     }
 
     if (this.isObjectEmpty(this.eventsHandlersSetThisClass)) {
-      return results;
+      return eventEmitResults;
     }
 
     const eventHandlers = this.eventsHandlersSetThisClass[eventName];
@@ -68,7 +68,7 @@ class EventEmitter {
           eventName);
       }
 
-      return results;
+      return eventEmitResults;
     }
 
     for (const eventHandler of eventHandlers) {
@@ -96,25 +96,27 @@ class EventEmitter {
           eventHandler);
       }
 
-      const result = eventHandler.call(
+      const eventHandlerResult = eventHandler.call(
         this, 
+        eventName, 
         payload);
       const thisClass = this;
-      results.push((new class {
+      const eventEmitResult = new class {
         eventArt = thisClass.EventArtJSEvent;
-        eventName = eventName;
         selector = null;
+        eventName = eventName;
         payload = payload;
-        result = result;
-      }()));
+        result = eventHandlerResult;
+      };
+      eventEmitResults.push(eventEmitResult);
 
-      if (result && result.payloadReturned) {
+      if (eventHandlerResult && eventHandlerResult.payloadReturned) {
         // @ts-ignore
-        payload = result.payloadReturned;
+        payload = eventHandlerResult.payloadReturned;
       }
     }
 
-    return results;
+    return eventEmitResults;
   }
 }
 //# sourceMappingURL=EventEmitter.js.map

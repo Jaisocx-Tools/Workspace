@@ -1,9 +1,9 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.LargeDomEventEmitter = void 0;
+exports.ImprovedRenderEventEmitter = void 0;
 const EventEmitter_js_1 = require("./EventEmitter.js");
 // This class is used with JSTree to keep browser working with ease, even with several tens of MBs JSON data file.
-class LargeDomEventEmitter extends EventEmitter_js_1.EventEmitter {
+class ImprovedRenderEventEmitter extends EventEmitter_js_1.EventEmitter {
     constructor() {
         super();
         this.eventsHandlersSetDom = {};
@@ -31,7 +31,8 @@ class LargeDomEventEmitter extends EventEmitter_js_1.EventEmitter {
     // this method just sets an event handler function by event name and a holder elem selector to an object,
     // and then all event handlers are executed on this.emitDomEvent method call.
     // The difference is, that we addEventListener once to the main html node,
-    // and not to each html node, it is best, when the html tool is populated with a larger json data file of several tens or hundreds MBs, for example.
+    // and not to each html node, it is best, 
+    // when the html tool is populated with a larger json data file of several tens or hundreds MBs, for example.
     addDomEventListener(eventName, selector, eventHandler) {
         if (!this.eventsHandlersSetDom[eventName]) {
             this.eventsHandlersSetDom[eventName] = {};
@@ -101,5 +102,5 @@ class LargeDomEventEmitter extends EventEmitter_js_1.EventEmitter {
         this.emitDomEvent(eventName, { event, });
     }
 }
-exports.LargeDomEventEmitter = LargeDomEventEmitter;
-//# sourceMappingURL=LargeDomEventEmitter.js.map
+exports.ImprovedRenderEventEmitter = ImprovedRenderEventEmitter;
+//# sourceMappingURL=ImprovedRenderEventEmitter.js.map

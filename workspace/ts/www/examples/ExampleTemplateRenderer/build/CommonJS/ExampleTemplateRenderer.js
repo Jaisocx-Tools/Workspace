@@ -22,10 +22,32 @@ class ExampleTemplateRenderer {
         if (!holderHtmlNode) {
             return;
         }
-        const html = this.TemplateRenderer
+        this.TemplateRenderer
             .setTemplate(this.template)
-            .setData(this.data)
-            .render();
+            .setData(this.data);
+        const eventHandler1 = (eventName, payload) => {
+            payload.html = payload.html.replaceAll("<", "&lt;");
+            const eventHandlerReturnValue = new class {
+                constructor() {
+                    this.payloadReturned = payload;
+                    this.value = "";
+                }
+            }();
+            return eventHandlerReturnValue;
+        };
+        this.TemplateRenderer.addThisClassEventListener(this.TemplateRenderer.EVENT_NAME__AFTER_RENDER, eventHandler1);
+        const eventHandler2 = (eventName, payload) => {
+            payload.html = payload.html.replaceAll(">", "&gt;");
+            const eventHandlerReturnValue = new class {
+                constructor() {
+                    this.payloadReturned = payload;
+                    this.value = "";
+                }
+            }();
+            return eventHandlerReturnValue;
+        };
+        this.TemplateRenderer.addThisClassEventListener(this.TemplateRenderer.EVENT_NAME__AFTER_RENDER, eventHandler2);
+        const html = this.TemplateRenderer.render();
         holderHtmlNode.insertAdjacentHTML("afterbegin", html);
     }
 }

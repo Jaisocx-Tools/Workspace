@@ -1,4 +1,4 @@
-class LargeDomEventEmitter extends EventEmitter {
+class ImprovedRenderEventEmitter extends EventEmitter {
   eventsHandlersSetDom;
   mainHolderHtmlNode;
   EventArtDOMEventOptimized;
@@ -133,4 +133,4 @@ class LargeDomEventEmitter extends EventEmitter {
       { event, });
   }
 }
-//# sourceMappingURL=LargeDomEventEmitter.js.map
+//# sourceMappingURL=ImprovedRenderEventEmitter.js.map

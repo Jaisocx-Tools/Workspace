@@ -1,9 +1,9 @@
-import { LargeDomEventEmitter } from "@jaisocx/event-emitter";
+import { ImprovedRenderEventEmitter } from "@jaisocx/event-emitter";
 import { TemplateRenderer } from "@jaisocx/template-renderer";
 import { ITreeRenderRetValue, IRenderTemplateRendererData, ITreeAdapter } from "./Types.js";
 import { TreeMetadata } from "./TreeMetadata.js";
 import "@jaisocx-tree-assets/tree-styles-main-node_modules.css";
-export declare class Tree extends LargeDomEventEmitter {
+export declare class Tree extends ImprovedRenderEventEmitter {
     debug: boolean;
     mainHtmlNodeId: string;
     mainHolderHtmlNode: HTMLElement | null;
