@@ -1,7 +1,7 @@
 import { ImprovedRenderEventEmitter, EventHandlerReturnValue } from "@jaisocx/event-emitter";
 import { TemplateRenderer } from "@jaisocx/template-renderer";
 import { ITreeRenderRetValue, IRenderTemplateRendererData, ITreeAdapter } from "./Types.js";
-import { TreeMetadata } from "./TreeMetadata.js";
+import { TreeConf } from "./TreeConf.js";
 import "@jaisocx-tree-assets/tree-styles-main-webpack.css";
 export declare class Tree extends ImprovedRenderEventEmitter {
     debug: boolean;
@@ -9,7 +9,7 @@ export declare class Tree extends ImprovedRenderEventEmitter {
     mainHolderHtmlNode: HTMLElement | null;
     url: string | null;
     data: any | null;
-    metadata: TreeMetadata;
+    metadata: TreeConf;
     subtreeLength: number;
     subtreeLengthDeep: number;
     templateRenderer: TemplateRenderer;
@@ -26,7 +26,7 @@ export declare class Tree extends ImprovedRenderEventEmitter {
     setNodesOpenedMode(openedMode: number): Tree;
     setUrl(url: string | null): Tree;
     setMainHtmlNodeId(mainHtmlNodeId: string): Tree;
-    setMetadata(metadata: TreeMetadata): Tree;
+    setConf(metadata: TreeConf): Tree;
     setModifiable(isModifiable: boolean): Tree;
     setRenderingMode(mode: number): Tree;
     setDataTypesCssClassesEnabled(dataTypesCssEnabled: boolean): Tree;
@@ -54,7 +54,7 @@ export declare class Tree extends ImprovedRenderEventEmitter {
     initializeCustomJsTreeImprovedEventHandler(jsTreeEventName: any, customEventHandler: any): (eventPayload: any) => void;
     openButtonClickHandler(eventPayload: any): void;
     treeNodeLableClickHandler(eventPayload: any): void;
-    getInModeMetadataDataNodeIsTreeItem(node: object): boolean;
+    getInModeConfDataNodeIsTreeItem(node: object): boolean;
     escapeHTMLForAttribute(str: string): string;
     unescapeHTMLFromAttribute(str: string | undefined): string;
     getTreeHtmlNodeDatasetJson(htmlNode: HTMLElement | null): string;

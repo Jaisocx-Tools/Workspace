@@ -1,12 +1,12 @@
 import { TreeConstants } from "./TreeConstants.js";
-import { TreeMetadata } from "./TreeMetadata.js";
+import { TreeConf } from "./TreeConf.js";
 export class TreeAdapter {
     metadata;
     nodesWithIcons;
     nodesOpenedMode;
     dataTypesCssClassesEnabled;
     constructor() {
-        this.metadata = new TreeMetadata();
+        this.metadata = new TreeConf();
         this.nodesWithIcons = TreeConstants.Defaults.nodesWithIcons;
         this.nodesOpenedMode = TreeConstants.Defaults.nodesOpenedMode;
         this.dataTypesCssClassesEnabled = TreeConstants.Defaults.dataTypesCssClassesEnabled;

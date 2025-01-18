@@ -1,7 +1,7 @@
 export class TreeConstants {
     static RenderingMode = {
         Ease: 1,
-        Metadata: 2,
+        Conf: 2,
     };
     static NodesOpenedMode = {
         ALL_SHOWN: 1,

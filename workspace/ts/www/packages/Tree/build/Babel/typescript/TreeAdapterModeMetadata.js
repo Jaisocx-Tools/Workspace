@@ -3,10 +3,10 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.TreeAdapterModeMetadata = void 0;
+exports.TreeAdapterModeConf = void 0;
 const TreeAdapter_js_1 = require("./TreeAdapter.js");
 const TreeConstants_js_1 = require("./TreeConstants.js");
-class TreeAdapterModeMetadata extends TreeAdapter_js_1.TreeAdapter {
+class TreeAdapterModeConf extends TreeAdapter_js_1.TreeAdapter {
   getSubtreeNodeToRender(loopPropertyValue, loopPropertyKey) {
     return loopPropertyValue;
   }
@@ -57,4 +57,4 @@ class TreeAdapterModeMetadata extends TreeAdapter_js_1.TreeAdapter {
     throw new Error("Method not implemented.");
   }
 }
-exports.TreeAdapterModeMetadata = TreeAdapterModeMetadata;
+exports.TreeAdapterModeConf = TreeAdapterModeConf;

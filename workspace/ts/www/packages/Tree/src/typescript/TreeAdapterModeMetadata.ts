@@ -2,7 +2,7 @@ import { TreeAdapter } from "./TreeAdapter.js";
 import { TreeConstants } from "./TreeConstants.js";
 import { IRenderTemplateRendererData, ITreeAdapter } from "./Types.js";
 
-export class TreeAdapterModeMetadata extends TreeAdapter implements ITreeAdapter {
+export class TreeAdapterModeConf extends TreeAdapter implements ITreeAdapter {
   getSubtreeNodeToRender(
     loopPropertyValue: any,
     loopPropertyKey: any

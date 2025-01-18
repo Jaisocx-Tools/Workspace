@@ -1,4 +1,4 @@
-class TreeMetadata {
+class TreeConf {
   NODE_ICON__SRC;
   NODE_LABEL__TEXT;
   SUBTREE;
@@ -25,4 +25,4 @@ class TreeMetadata {
     this.NODE__ART = "art";
   }
 }
-//# sourceMappingURL=TreeMetadata.js.map
+//# sourceMappingURL=TreeConf.js.map

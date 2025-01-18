@@ -1,6 +1,6 @@
-import { TreeMetadata } from "./TreeMetadata.js";
+import { TreeConf } from "./TreeConf.js";
 export declare class TreeAdapter {
-    metadata: TreeMetadata;
+    metadata: TreeConf;
     nodesWithIcons: boolean;
     nodesOpenedMode: number;
     dataTypesCssClassesEnabled: boolean;

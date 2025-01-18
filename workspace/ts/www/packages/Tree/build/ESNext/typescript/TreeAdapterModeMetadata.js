@@ -1,6 +1,6 @@
 import { TreeAdapter } from "./TreeAdapter.js";
 import { TreeConstants } from "./TreeConstants.js";
-export class TreeAdapterModeMetadata extends TreeAdapter {
+export class TreeAdapterModeConf extends TreeAdapter {
     getSubtreeNodeToRender(loopPropertyValue, loopPropertyKey) {
         return loopPropertyValue;
     }
@@ -64,4 +64,4 @@ export class TreeAdapterModeMetadata extends TreeAdapter {
         throw new Error("Method not implemented.");
     }
 }
-//# sourceMappingURL=TreeAdapterModeMetadata.js.map
+//# sourceMappingURL=TreeAdapterModeConf.js.map

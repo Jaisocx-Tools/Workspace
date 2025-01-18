@@ -16,7 +16,7 @@ export interface IRenderSubtreeResult {
 }
 export interface IRenderingMode {
     Ease: number;
-    Metadata: number;
+    Conf: number;
 }
 export interface INodesOpenedMode {
     ALL_SHOWN: number;

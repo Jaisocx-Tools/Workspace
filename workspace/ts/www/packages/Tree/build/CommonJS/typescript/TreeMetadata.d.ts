@@ -1,4 +1,4 @@
-export declare class TreeMetadata {
+export declare class TreeConf {
     NODE_ICON__SRC: string;
     NODE_LABEL__TEXT: string;
     SUBTREE: string;
@@ -12,4 +12,4 @@ export declare class TreeMetadata {
     NODE__ART: string;
     constructor();
 }
-//# sourceMappingURL=TreeMetadata.d.ts.map
+//# sourceMappingURL=TreeConf.d.ts.map

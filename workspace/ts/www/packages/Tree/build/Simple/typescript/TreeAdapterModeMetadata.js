@@ -1,4 +1,4 @@
-class TreeAdapterModeMetadata extends TreeAdapter {
+class TreeAdapterModeConf extends TreeAdapter {
   getSubtreeNodeToRender(
     loopPropertyValue, 
     loopPropertyKey) {
@@ -85,4 +85,4 @@ class TreeAdapterModeMetadata extends TreeAdapter {
     throw new Error("Method not implemented.");
   }
 }
-//# sourceMappingURL=TreeAdapterModeMetadata.js.map
+//# sourceMappingURL=TreeAdapterModeConf.js.map

@@ -6,7 +6,7 @@ import {
 export class TreeConstants {
   static RenderingMode: IRenderingMode = {
     Ease: 1,
-    Metadata: 2,
+    Conf: 2,
   };
 
   static NodesOpenedMode: INodesOpenedMode = {

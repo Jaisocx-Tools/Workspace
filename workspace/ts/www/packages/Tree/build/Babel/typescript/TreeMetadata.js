@@ -3,8 +3,8 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.TreeMetadata = void 0;
-class TreeMetadata {
+exports.TreeConf = void 0;
+class TreeConf {
   constructor() {
     this.NODE_ICON__SRC = "icon";
     this.NODE_LABEL__TEXT = "label";
@@ -19,4 +19,4 @@ class TreeMetadata {
     this.NODE__ART = "art";
   }
 }
-exports.TreeMetadata = TreeMetadata;
+exports.TreeConf = TreeConf;

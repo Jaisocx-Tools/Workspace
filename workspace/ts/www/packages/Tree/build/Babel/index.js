@@ -4,7 +4,7 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.Tree = exports.TreeMetadata = exports.TreeConstants = exports.TreeAdapterModeMetadata = exports.TreeAdapterModeEase = exports.TreeAdapter = void 0;
+exports.Tree = exports.TreeConf = exports.TreeConstants = exports.TreeAdapterModeConf = exports.TreeAdapterModeEase = exports.TreeAdapter = void 0;
 var TreeAdapter_js_1 = require("./typescript/TreeAdapter.js");
 Object.defineProperty(exports, "TreeAdapter", {
   enumerable: true,
@@ -19,11 +19,11 @@ Object.defineProperty(exports, "TreeAdapterModeEase", {
     return TreeAdapterModeEase_js_1.TreeAdapterModeEase;
   }
 });
-var TreeAdapterModeMetadata_js_1 = require("./typescript/TreeAdapterModeMetadata.js");
-Object.defineProperty(exports, "TreeAdapterModeMetadata", {
+var TreeAdapterModeConf_js_1 = require("./typescript/TreeAdapterModeConf.js");
+Object.defineProperty(exports, "TreeAdapterModeConf", {
   enumerable: true,
   get: function () {
-    return TreeAdapterModeMetadata_js_1.TreeAdapterModeMetadata;
+    return TreeAdapterModeConf_js_1.TreeAdapterModeConf;
   }
 });
 var TreeConstants_js_1 = require("./typescript/TreeConstants.js");
@@ -33,11 +33,11 @@ Object.defineProperty(exports, "TreeConstants", {
     return TreeConstants_js_1.TreeConstants;
   }
 });
-var TreeMetadata_js_1 = require("./typescript/TreeMetadata.js");
-Object.defineProperty(exports, "TreeMetadata", {
+var TreeConf_js_1 = require("./typescript/TreeConf.js");
+Object.defineProperty(exports, "TreeConf", {
   enumerable: true,
   get: function () {
-    return TreeMetadata_js_1.TreeMetadata;
+    return TreeConf_js_1.TreeConf;
   }
 });
 var Tree_js_1 = require("./typescript/Tree.js");

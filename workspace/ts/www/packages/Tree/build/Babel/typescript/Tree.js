@@ -7,8 +7,8 @@ exports.Tree = void 0;
 const event_emitter_1 = require("@jaisocx/event-emitter");
 const template_renderer_1 = require("@jaisocx/template-renderer");
 const TreeConstants_js_1 = require("./TreeConstants.js");
-const TreeMetadata_js_1 = require("./TreeMetadata.js");
-const TreeAdapterModeMetadata_js_1 = require("./TreeAdapterModeMetadata.js");
+const TreeConf_js_1 = require("./TreeConf.js");
+const TreeAdapterModeConf_js_1 = require("./TreeAdapterModeConf.js");
 const TreeAdapterModeEase_js_1 = require("./TreeAdapterModeEase.js");
 const ArrayOrObjectPackage_js_1 = require("./ArrayOrObjectPackage.js");
 require("@jaisocx-tree-assets/tree-styles-main-webpack.css");
@@ -21,7 +21,7 @@ class Tree extends event_emitter_1.ImprovedRenderEventEmitter {
     this.mainHolderHtmlNode = null;
     this.url = "";
     this.data = null;
-    this.metadata = new TreeMetadata_js_1.TreeMetadata();
+    this.metadata = new TreeConf_js_1.TreeConf();
     this.subtreeLength = 0;
     this.subtreeLengthDeep = 0;
     this.templateRenderer = new template_renderer_1.TemplateRenderer();
@@ -77,7 +77,7 @@ class Tree extends event_emitter_1.ImprovedRenderEventEmitter {
     this.mainHtmlNodeId = mainHtmlNodeId;
     return this;
   }
-  setMetadata(metadata) {
+  setConf(metadata) {
     // optional method
     this.metadata = metadata;
     return this;
@@ -109,8 +109,8 @@ class Tree extends event_emitter_1.ImprovedRenderEventEmitter {
     return this;
   }
   adaptRenderingModeSubcalls() {
-    if (this.renderingMode === TreeConstants_js_1.TreeConstants.RenderingMode.Metadata) {
-      this.adapter = new TreeAdapterModeMetadata_js_1.TreeAdapterModeMetadata();
+    if (this.renderingMode === TreeConstants_js_1.TreeConstants.RenderingMode.Conf) {
+      this.adapter = new TreeAdapterModeConf_js_1.TreeAdapterModeConf();
       if (this.dataTypesCssClassesEnabled === true) {
         this.getTreeNodeCssClasses = this.adapter.getTreeNodeCssClasses__dataTypesCssClassesEnabled.bind(this);
       } else {
@@ -121,7 +121,7 @@ class Tree extends event_emitter_1.ImprovedRenderEventEmitter {
       if (this.dataTypesCssClassesEnabled === true) {
         this.getTreeNodeCssClasses = this.adapter.getTreeNodeCssClasses__dataTypesCssClassesEnabled.bind(this);
       } else {
-        // this.getTreeNodeCssClasses = this.getTreeNodeCssClasses__dataTypesCssClassesDisabled__renderingModeMetadata.bind(this);
+        // this.getTreeNodeCssClasses = this.getTreeNodeCssClasses__dataTypesCssClassesDisabled__renderingModeConf.bind(this);
       }
     }
     this.getSubtreeNodeToRender = this.adapter.getSubtreeNodeToRender.bind(this);
@@ -179,7 +179,7 @@ class Tree extends event_emitter_1.ImprovedRenderEventEmitter {
       _pathArray: ["this.data"]
     };
     let subtreeRenderResult;
-    if (this.renderingMode === TreeConstants_js_1.TreeConstants.RenderingMode.Metadata) {
+    if (this.renderingMode === TreeConstants_js_1.TreeConstants.RenderingMode.Conf) {
       if (isArray === 1) {
         subtreeRenderResult = this.renderSubtree(isArray, this.data, flatNodeHolderClone, objectKeys, ul);
         // @ts-ignore
@@ -187,7 +187,7 @@ class Tree extends event_emitter_1.ImprovedRenderEventEmitter {
         // @ts-ignore
         this.subtreeLengthDeep = subtreeRenderResult;
       } else if (isArray === 0) {
-        const isTreeItem = this.getInModeMetadataDataNodeIsTreeItem(this.data);
+        const isTreeItem = this.getInModeConfDataNodeIsTreeItem(this.data);
         // the root json data node is the tree item data node
         if (isTreeItem) {
           const renderResult = this.renderOneTreeNode(this.data, 0, "Top", {
@@ -236,7 +236,7 @@ class Tree extends event_emitter_1.ImprovedRenderEventEmitter {
   checkDataNodeSubtree(node) {
     let hasSubtree = false;
     let subtreeJsonNodes = null;
-    if (this.renderingMode === TreeConstants_js_1.TreeConstants.RenderingMode.Metadata) {
+    if (this.renderingMode === TreeConstants_js_1.TreeConstants.RenderingMode.Conf) {
       subtreeJsonNodes = node[this.metadata.SUBTREE];
     } else if (this.renderingMode === TreeConstants_js_1.TreeConstants.RenderingMode.Ease) {
       subtreeJsonNodes = Object.values(node)[0];
@@ -352,7 +352,7 @@ class Tree extends event_emitter_1.ImprovedRenderEventEmitter {
     const flatCloneHolderId = flatNodeHolderClone._flatClone ? flatNodeHolderClone._flatClone[this.metadata.NODE__ID] : null;
     const pathInJsonOfNodeHolder = (_c = flatNodeHolderClone._pathArray) !== null && _c !== void 0 ? _c : ["ROOT-unhandled"];
     let pathKeyInNodeHolder = JSON.stringify(nodeKey);
-    if (pathInJsonOfNodeHolder.length > 1 && this.renderingMode === TreeConstants_js_1.TreeConstants.RenderingMode.Metadata) {
+    if (pathInJsonOfNodeHolder.length > 1 && this.renderingMode === TreeConstants_js_1.TreeConstants.RenderingMode.Conf) {
       const subtreePropName = JSON.stringify(this.metadata.SUBTREE);
       pathKeyInNodeHolder = `[${subtreePropName}][${pathKeyInNodeHolder}]`;
     } else if (this.renderingMode === TreeConstants_js_1.TreeConstants.RenderingMode.Ease) {
@@ -469,7 +469,7 @@ class Tree extends event_emitter_1.ImprovedRenderEventEmitter {
     // example for custom event handler, the placeholder
   }
   // END EVENTS BLOCK
-  getInModeMetadataDataNodeIsTreeItem(node) {
+  getInModeConfDataNodeIsTreeItem(node) {
     // @ts-ignore
     const nodeLabelTextPropertyValue = node[this.metadata.NODE_LABEL__TEXT];
     // the main metadata required dsts json field is label text. and it cannot be an object, but a string or number.

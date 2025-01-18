@@ -1,4 +1,4 @@
-export class TreeMetadata {
+export class TreeConf {
   NODE_ICON__SRC: string;
   NODE_LABEL__TEXT: string;
   SUBTREE: string;

@@ -1,4 +1,4 @@
-export class TreeMetadata {
+export class TreeConf {
     NODE_ICON__SRC;
     NODE_LABEL__TEXT;
     SUBTREE;
@@ -24,4 +24,4 @@ export class TreeMetadata {
         this.NODE__ART = "art";
     }
 }
-//# sourceMappingURL=TreeMetadata.js.map
+//# sourceMappingURL=TreeConf.js.map

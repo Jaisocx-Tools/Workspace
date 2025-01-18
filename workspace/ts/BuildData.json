@@ -59,10 +59,10 @@
       ],
       "build-files": [
         "typescript/Tree.js",
-        "typescript/TreeMetadata.js",
+        "typescript/TreeConf.js",
         "typescript/TreeConstants.js",
         "typescript/TreeAdapter.js",
-        "typescript/TreeAdapterModeMetadata.js",
+        "typescript/TreeAdapterModeConf.js",
         "typescript/TreeAdapterModeEase.js",
         "typescript/ArrayOrObjectPackage.js"
       ]

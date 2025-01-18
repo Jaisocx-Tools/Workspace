@@ -94,7 +94,7 @@ add new json entry for Your new .ts module
       ],
       "build-files": [
         "Tree.js",
-        "TreeMetadata.js",
+        "TreeConf.js",
         "TreeConstants.js"
       ]
     },

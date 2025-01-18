@@ -6,7 +6,7 @@ class TreeConstants {
 exports.TreeConstants = TreeConstants;
 TreeConstants.RenderingMode = {
     Ease: 1,
-    Metadata: 2,
+    Conf: 2,
 };
 TreeConstants.NodesOpenedMode = {
     ALL_SHOWN: 1,

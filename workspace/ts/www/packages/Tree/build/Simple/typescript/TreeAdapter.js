@@ -5,7 +5,7 @@ class TreeAdapter {
   dataTypesCssClassesEnabled;
 
   constructor() {
-    this.metadata = new TreeMetadata();
+    this.metadata = new TreeConf();
     this.nodesWithIcons = TreeConstants.Defaults.nodesWithIcons;
     this.nodesOpenedMode = TreeConstants.Defaults.nodesOpenedMode;
     this.dataTypesCssClassesEnabled = TreeConstants.Defaults.dataTypesCssClassesEnabled;
