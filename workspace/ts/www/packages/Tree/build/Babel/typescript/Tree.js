@@ -229,7 +229,7 @@ class Tree extends event_emitter_1.ImprovedRenderEventEmitter {
       console.log("Tree.data", this.data);
     }
     // all eventsHandlers, assigned with addJSTreeEventListener,
-    // here will be attached to single DOM event listener
+    // here will be attached to one DOM event listener
     this.addJSTreeEventListeners();
     return this;
   }
@@ -418,8 +418,8 @@ class Tree extends event_emitter_1.ImprovedRenderEventEmitter {
     // Here is the predefined open button handler,
     // In Your custom code, this way You can define event handlers for heavy tree json data,
     // and the tree will not be overloaded of large number of events listeners on many html nodes.
-    this.addDomEventListener("click", ".open-button", this.openButtonClickHandler.bind(this));
-    this.addDomEventListener("click", ".jstree-html-node-label", this.treeNodeLableClickHandler.bind(this));
+    this.addDomEventListener("click", ".open-button", this.initializeCustomJsTreeImprovedEventHandler(TreeConstants_js_1.TreeConstants.TreeEventsNames.EVENT_NAME__TREE_NODE_EXPAND_BUTTON__CLICK, this.openButtonClickHandler.bind(this)));
+    this.addDomEventListener("click", ".jstree-html-node-label", this.initializeCustomJsTreeImprovedEventHandler(TreeConstants_js_1.TreeConstants.TreeEventsNames.EVENT_NAME__TREE_NODE_LABEL__CLICK, this.treeNodeLableClickHandler.bind(this)));
     /* if (this.isModifiable) {
       this.addDomEventListener(
         "dblclick",
@@ -431,14 +431,29 @@ class Tree extends event_emitter_1.ImprovedRenderEventEmitter {
     this.addDomEventListeners();
     return this;
   }
+  // here are set the JsTree event handlers actions, always needed, to reuse always in every JsTreeDomEventHndler.
+  initializeCustomJsTreeImprovedEventHandler(jsTreeEventName, customEventHandler) {
+    return eventPayload => {
+      const treeHtmlNode = eventPayload.eventTarget.closest(".jstree-html-node");
+      const jsonNode = JSON.parse(this.unescapeHTMLFromAttribute(treeHtmlNode.dataset.json));
+      if (this.debug === true) {
+        console.log(eventPayload.event.type, treeHtmlNode, jsonNode);
+      }
+      eventPayload = Object.assign(Object.assign({}, eventPayload), {
+        jsonNode,
+        treeHtmlNode,
+        treeHtmlNodeHolder: treeHtmlNode.closest("li")
+      });
+      customEventHandler.call(this, eventPayload);
+      this.emitEvent(jsTreeEventName, eventPayload);
+    };
+  }
   // the predefined events handlers
   openButtonClickHandler(eventPayload) {
     const toggleButton = eventPayload.eventTarget;
     if (toggleButton.classList.contains(TreeConstants_js_1.TreeConstants.TreeCssClassNames.CLASS_WITHOUT_SUBTREE)) {
       return;
     }
-    eventPayload.event.preventDefault();
-    eventPayload.event.stopPropagation();
     const subtreeContainer = toggleButton.closest("li").getElementsByTagName("ul")[0];
     const isOpened = toggleButton.classList.contains(TreeConstants_js_1.TreeConstants.TreeCssClassNames.CLASS_OPENED);
     if (isOpened) {
@@ -448,20 +463,10 @@ class Tree extends event_emitter_1.ImprovedRenderEventEmitter {
       toggleButton.classList.add(TreeConstants_js_1.TreeConstants.TreeCssClassNames.CLASS_OPENED);
       subtreeContainer.style.display = "block";
     }
-    this.emitEvent(TreeConstants_js_1.TreeConstants.TreeEventsNames.EVENT_NAME__TREE_NODE_EXPAND_BUTTON__CLICK, eventPayload);
   }
   // the predefined events handlers
   treeNodeLableClickHandler(eventPayload) {
-    const treeHtmlNode = eventPayload.eventTarget.closest(".jstree-html-node");
-    const jsonNode = JSON.parse(this.unescapeHTMLFromAttribute(treeHtmlNode.dataset.json));
-    if (this.debug === true) {
-      console.log(eventPayload.event.type, treeHtmlNode, jsonNode);
-    }
-    this.emitEvent(TreeConstants_js_1.TreeConstants.TreeEventsNames.EVENT_NAME__TREE_NODE_LABEL__CLICK, Object.assign(Object.assign({}, eventPayload), {
-      jsonNode,
-      treeHtmlNode,
-      treeHtmlNodeHolder: treeHtmlNode.closest("li")
-    }));
+    // example for custom event handler, the placeholder
   }
   // END EVENTS BLOCK
   getInModeMetadataDataNodeIsTreeItem(node) {

@@ -45,7 +45,7 @@
     {
       "path": "packages/Tree",
       "name": "tree",
-      "build": false,
+      "build": true,
       "build-simple-enable": true,
       "dependencies": [
         {

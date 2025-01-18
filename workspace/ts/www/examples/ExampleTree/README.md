@@ -24,3 +24,15 @@
 8. have to try with other data, like .json and other.
 9. in json the urls have to be absolute, or base64 contents.
 
+
+### index.ts
+
+the classes, required in script tags and other custom js, using this js ui tool, have to be avaliable like this:
+```
+import { Tree, TreeConstants } from "@jaisocx/tree";
+export { Tree, TreeConstants } from "@jaisocx/tree";
+
+(window as any).Tree = Tree;
+(window as any).TreeConstants = TreeConstants;
+```
+

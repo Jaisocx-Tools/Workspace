@@ -580,11 +580,15 @@ class Tree extends ImprovedRenderEventEmitter {
     this.addDomEventListener(
       "click", 
       ".open-button", 
-      this.openButtonClickHandler.bind(this));
+      this.initializeCustomJsTreeImprovedEventHandler(
+        TreeConstants.TreeEventsNames.EVENT_NAME__TREE_NODE_EXPAND_BUTTON__CLICK, 
+        this.openButtonClickHandler.bind(this)));
     this.addDomEventListener(
       "click", 
       ".jstree-html-node-label", 
-      this.treeNodeLableClickHandler.bind(this));
+      this.initializeCustomJsTreeImprovedEventHandler(
+        TreeConstants.TreeEventsNames.EVENT_NAME__TREE_NODE_LABEL__CLICK, 
+        this.treeNodeLableClickHandler.bind(this)));
     /* if (this.isModifiable) {
           this.addDomEventListener(
             "dblclick",
@@ -597,6 +601,35 @@ class Tree extends ImprovedRenderEventEmitter {
 
     return this;
   }
+  // here are set the JsTree event handlers actions, always needed, to reuse always in every JsTreeDomEventHndler.
+  initializeCustomJsTreeImprovedEventHandler(
+    jsTreeEventName, 
+    customEventHandler) {
+    return (eventPayload) => {
+      const treeHtmlNode = eventPayload.eventTarget.closest(".jstree-html-node");
+      const jsonNode = JSON.parse(this.unescapeHTMLFromAttribute(treeHtmlNode.dataset.json));
+
+      if (this.debug === true) {
+        console.log(
+          eventPayload.event.type, 
+          treeHtmlNode, 
+          jsonNode);
+      }
+
+      eventPayload = {
+        ...eventPayload,
+        jsonNode,
+        treeHtmlNode,
+        treeHtmlNodeHolder: treeHtmlNode.closest("li"),
+      };
+      customEventHandler.call(
+        this, 
+        eventPayload);
+      this.emitEvent(
+        jsTreeEventName, 
+        eventPayload);
+    };
+  }
   // the predefined events handlers
   openButtonClickHandler(eventPayload) {
     const toggleButton = eventPayload.eventTarget;
@@ -605,8 +638,6 @@ class Tree extends ImprovedRenderEventEmitter {
       return;
     }
 
-    eventPayload.event.preventDefault();
-    eventPayload.event.stopPropagation();
     const subtreeContainer = toggleButton.closest("li").getElementsByTagName("ul")[0];
     const isOpened = toggleButton.classList.contains(TreeConstants.TreeCssClassNames.CLASS_OPENED);
 
@@ -618,31 +649,10 @@ class Tree extends ImprovedRenderEventEmitter {
       toggleButton.classList.add(TreeConstants.TreeCssClassNames.CLASS_OPENED);
       subtreeContainer.style.display = "block";
     }
-
-    this.emitEvent(
-      TreeConstants.TreeEventsNames.EVENT_NAME__TREE_NODE_EXPAND_BUTTON__CLICK, 
-      eventPayload);
   }
   // the predefined events handlers
   treeNodeLableClickHandler(eventPayload) {
-    const treeHtmlNode = eventPayload.eventTarget.closest(".jstree-html-node");
-    const jsonNode = JSON.parse(this.unescapeHTMLFromAttribute(treeHtmlNode.dataset.json));
-
-    if (this.debug === true) {
-      console.log(
-        eventPayload.event.type, 
-        treeHtmlNode, 
-        jsonNode);
-    }
-
-    this.emitEvent(
-      TreeConstants.TreeEventsNames.EVENT_NAME__TREE_NODE_LABEL__CLICK, 
-      {
-        ...eventPayload,
-        jsonNode,
-        treeHtmlNode,
-        treeHtmlNodeHolder: treeHtmlNode.closest("li"),
-      });
+    // example for custom event handler, the placeholder
   }
   // END EVENTS BLOCK
   getInModeMetadataDataNodeIsTreeItem(node) {

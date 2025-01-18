@@ -51,6 +51,7 @@ export declare class Tree extends ImprovedRenderEventEmitter {
     getTreeNodeCssClasses(dataType: string, node: any): string;
     addJSTreeEventListener(eventName: string, eventHandler: (eventName: string, payload: any) => EventHandlerReturnValue | null | undefined | void): Tree;
     addJSTreeEventListeners(): Tree;
+    initializeCustomJsTreeImprovedEventHandler(jsTreeEventName: any, customEventHandler: any): (eventPayload: any) => void;
     openButtonClickHandler(eventPayload: any): void;
     treeNodeLableClickHandler(eventPayload: any): void;
     getInModeMetadataDataNodeIsTreeItem(node: object): boolean;
