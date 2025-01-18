@@ -37,8 +37,8 @@
           .setModifiable(false)
           .addJSTreeEventListener(
             TreeConstants.TreeEventsNames.EVENT_NAME__TREE_NODE_LABEL__CLICK,
-            (evt) => {
-              console.log(evt);
+            (eventName, eventPayload) => {
+              console.log(eventName, eventPayload);
             }
           )
           .load('https://api.artic.edu/api/v1/artworks');

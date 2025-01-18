@@ -83,8 +83,8 @@ The js site ui tool to render a multilevel nested objects json.
           .setRenderingMode(TreeConstants.RenderingMode.Conf)
           .addJSTreeEventListener (
             TreeConstants.TreeEventsNames.EVENT_NAME__TREE_NODE_LABEL__CLICK,
-            (evt) => {
-              console.log(evt);
+            (eventName, eventPayload) => {
+              console.log(eventName, eventPayload);
             }
           )
           .render(treeJson_SubtreeArrayOfObjects);
