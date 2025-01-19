@@ -27,7 +27,6 @@ export declare class ProjectBuilder {
     buildSimple(packageJson: any, packagePath: string): void;
     transpileTypeScriptSources(tsconfigCatalogPath: string, tsconfigFileName: string, logToConsole: boolean): any;
     transpileTypescriptSourcesWithPath(packagePath: string, tsconfigPath: string): any;
-    babelize(packagePath: string): any;
     prettifyWithEslint(packagePath: string, pathToPrettify: string, logToConsole: boolean): any;
     runCommandLine(configCatalogPath: string, consoleCommand: string, logToConsole: boolean): any;
     getSpawnSyncPayload(contextRoot: string): any;

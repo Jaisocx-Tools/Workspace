@@ -14,9 +14,6 @@ commands_array=(
   "export NODE_OPTIONS=\"--no-warnings\""
   "npx tsc -p \"./tsconfig.ESNext.overrides.json\""
   "npx tsc -p \"./tsconfig.CommonJS.overrides.json\""
-  "npx babel \"${dockerWorkingDir}/build_tools/ProjectBuilder/build/CommonJS\" --out-dir \"${dockerWorkingDir}/build_tools/ProjectBuilder/build/Babel\" --extensions \".js\""
-  "npx cpx \"${dockerWorkingDir}/build_tools/ProjectBuilder/build/CommonJS/**/*.d.ts\" \"${dockerWorkingDir}/build_tools/ProjectBuilder/build/Babel/\""
-  "npx cpx \"${dockerWorkingDir}/build_tools/ProjectBuilder/build/CommonJS/**/*.map\" \"${dockerWorkingDir}/build_tools/ProjectBuilder/build/Babel/\""
 )
 
 commands_concatenated=$(printf " && %s" "${commands_array[@]}")

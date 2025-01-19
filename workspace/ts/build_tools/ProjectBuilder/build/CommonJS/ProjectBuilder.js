@@ -137,8 +137,6 @@ class ProjectBuilder {
         const tsconfigCommonJSName = 'tsconfig.CommonJS.json';
         const tsconfigCommonJSPath = `${this.absolutePathToProjectRoot}/${tsconfigCommonJSName}`;
         this.transpileTypescriptSourcesWithPath(packagePath, tsconfigCommonJSPath);
-        // apply babel polyfills
-        this.babelize(packagePath);
         // link this package for usage in local development in other .ts files
         if (this.getIsLocalDevelopment()) {
             console.log(`Package [ ${packageJson.name} ]: npm link package ${packageJson.name} for local usage with other`);
@@ -244,11 +242,6 @@ class ProjectBuilder {
         // cd packagePath ensures usage of package.json installed deps for this exact subpackage.
         const transpileCommand = `cd "${packagePath}" && npx tsc ${filesListJoinedString} ${transpileOptionsString}`;
         return this.runCommandLine(`${packagePath}`, transpileCommand, true);
-    }
-    babelize(packagePath) {
-        const packagePathRelative = packagePath.replace(`${this.absolutePathToProjectRoot}/`, '');
-        const babelCommand = `cd "${this.absolutePathToProjectRoot}" && npx cpx "${packagePathRelative}/build/CommonJS/**/*.d.ts" "${packagePathRelative}/build/Babel/" && npx cpx "${packagePathRelative}/build/CommonJS/**/*.map" "${packagePathRelative}/build/Babel/" && npx babel "${packagePathRelative}/build/CommonJS" --out-dir "${packagePathRelative}/build/Babel" --extensions ".js"`;
-        return this.runCommandLine(`${packagePath}`, babelCommand, true);
     }
     prettifyWithEslint(packagePath, pathToPrettify, logToConsole) {
         const consoleCommand = `cd "${packagePath}" && npx eslint "${pathToPrettify}" --fix`;

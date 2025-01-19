@@ -3,15 +3,15 @@
   "version": "1.2.01",
   "private": false,
   "type": "module",
-  "main": "./build/Babel/index.js",
+  "main": "./build/CommonJS/index.js",
   "types": "./build/ESNext/index.d.ts",
   "module": "./build/ESNext/index.js",
   "exports": {
-    "require": "./build/Babel/index.js",
+    "require": "./build/CommonJS/index.js",
     "import": "./build/ESNext/index.js"
   },
   "files": [
-    "build/Babel",
+    "build/CommonJS",
     "build/ESNext",
     "assets/",
     "README.md",
