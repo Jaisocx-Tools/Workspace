@@ -8,7 +8,7 @@ The Project is under development now, 10 December 2024.
 1. The infrastructure for **development of Typescript libraries**.
 2. The intercative **sites tools** packages in `workspace/ts/www` catalog, however still under development.
 3. **Dockerized services**, to use in development:
-    1. HTTPS server, serving volumes `workspace/ts/www` and `workspace/php`, with the **brightday.email** wildcard TLS cert, valid til November 2025. Locally, when set some subdomain entry of `brightday.email` domain in `/etc/hosts` file, this is helpful to test with valid **https endpoints**.
+    1. HTTPS server, serving volumes `workspace/ts/www` and `workspace/php`, with the **brightday.email** wildcard TLS cert, valid til November 2025. Locally, when set some subdomain entry of `brightday.email` domain in `/etc/hosts` file, this is helpful to test with valid **https endpoints**. And in the config file `docker/jaisocx-http/conf/http-conf.xml`, don't set the domain name `workspace.brightday.email` for Your local tests, this is reserved already, here are the examples published.
     2. **JWT protection** feature for **https** endpoints under **Jaisocx** dockerized service `jaisocx_http`.
     3. **NodeJS 23** dockerized volume with services:
         1. **node** command line interface.
