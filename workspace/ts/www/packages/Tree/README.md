@@ -2,6 +2,29 @@
 
 # JS PACKAGE jaisocx/tree
 
+## preview in action here:
+
+[https://workspace.brightday.email/ExampleSimple_TreeRenderingModeConf.html](https://workspace.brightday.email/ExampleSimple_TreeRenderingModeConf.html)
+
+[https://workspace.brightday.email/ExampleSimple_TreeRenderingModeEase.html](https://workspace.brightday.email/ExampleSimple_TreeRenderingModeEase.html)
+
+
+
+## a little outdated version of .ts code here:
+[https://github.com/Jaisocx-Tools/Workspace/tree/893773a85e33f103d8b0b838bf4004bd45a4e164/workspace/ts/www/packages/Tree](https://github.com/Jaisocx-Tools/Workspace/tree/893773a85e33f103d8b0b838bf4004bd45a4e164/workspace/ts/www/packages/Tree)
+
+In Project "Workspace"
+[https://github.com/Jaisocx-Tools/Workspace](https://github.com/Jaisocx-Tools/Workspace)
+
+git clone ssh:
+`git@github.com:Jaisocx-Tools/Workspace.git`
+
+git clone https:
+`https://github.com/Jaisocx-Tools/Workspace.git`
+
+at relative path `workspace/ts/www/packages/Tree`
+
+
 
 ## What is this
 
