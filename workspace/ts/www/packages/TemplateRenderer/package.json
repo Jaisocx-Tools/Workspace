@@ -21,6 +21,9 @@
   "optionalDependencies": {
     "@jaisocx/event-emitter": "^1.4.x"
   },
+  "publishConfig": {
+    "access": "public"
+  },
   "keywords": [],
   "author": "",
   "license": "ISC"

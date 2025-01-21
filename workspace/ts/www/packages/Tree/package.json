@@ -26,6 +26,9 @@
     "json",
     "tree"
   ],
+  "publishConfig": {
+    "access": "public"
+  },
   "author": "Jaisocx",
   "license": "ISC"
 }

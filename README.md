@@ -11,10 +11,11 @@ The Project is under development now, 10 December 2024.
     1. HTTPS server, serving volumes `workspace/ts/www` and `workspace/php`, with the **brightday.email** wildcard TLS cert, valid til November 2025. Locally, when set some subdomain entry of `brightday.email` domain in `/etc/hosts` file, this is helpful to test with valid **https endpoints**. And in the config file `docker/jaisocx-http/conf/http-conf.xml`, don't set the domain name `workspace.brightday.email` for Your local tests, this is reserved already, here are the examples published.
     2. **JWT protection** feature for **https** endpoints under **Jaisocx** dockerized service `jaisocx_http`.
     3. **NodeJS 23** dockerized volume with services:
-        1. **node** command line interface.
-        2. **npm** command line interface.
-        3. **Express** NodeJS Framework example application in `workspace/ts/express/app` https://localhost:3000/
-        4. **Node http server** endpoint https://localhost:8083/, serving volume `workspace/ts`.
+        1. **node** command line interface. node --version: v23.3.0.
+        2. **npm** command line interface. npm --version: 10.9.0.
+        3. **yarn@1.22.19** package manager is installed in the node docker service, however is not used by ProjectBuilder. You are free to rebuild the PackageBuilder to use yarn. I shall note to develop .env setting for the choice of npm or yarn.
+        3. **Express** NodeJS Framework example application in `workspace/ts/express/app` http://localhost:3000/
+        4. **Node http server** endpoint http://localhost:8083/, serving volume `workspace/ts`.
     4. Backend interpreting language **PHP 8.3** dockerized service
     with **XDebug** installed and configured, to use with Jaisocx https server, serving volume `workspace/php`, too.
     5. **MySQL Database** dockerized service, e.g. to test Typescript tools, rendering JSON data, by delivering JSON http responses, built by backend scripting languages, read tables records from a database.

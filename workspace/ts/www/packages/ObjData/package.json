@@ -26,6 +26,9 @@
     "serialize",
     "object"
   ],
+  "publishConfig": {
+    "access": "public"
+  },
   "author": "Jaisocx",
   "license": "nope"
 }

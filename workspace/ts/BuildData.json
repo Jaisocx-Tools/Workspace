@@ -58,13 +58,14 @@
         }
       ],
       "build-files": [
+        "typescript/ArrayOrObjectPackage.js",
         "typescript/Tree.js",
-        "typescript/TreeConf.js",
-        "typescript/TreeConstants.js",
         "typescript/TreeAdapter.js",
         "typescript/TreeAdapterModeConf.js",
         "typescript/TreeAdapterModeEase.js",
-        "typescript/ArrayOrObjectPackage.js"
+        "typescript/TreeConf.js",
+        "typescript/TreeConstants.js",
+        "typescript/Types.js"
       ]
     },
     {
