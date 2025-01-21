@@ -356,21 +356,29 @@ export class Tree extends ImprovedRenderEventEmitter {
         const flatCloneHolderId = flatNodeHolderClone._flatClone ? flatNodeHolderClone._flatClone[this.metadata.NODE__ID] : null;
         const pathInJsonOfNodeHolder = flatNodeHolderClone._pathArray ?? ["ROOT-unhandled",];
         let pathKeyInNodeHolder = JSON.stringify(nodeKey);
+        let pathInJsonArray = [
+            ...pathInJsonOfNodeHolder,
+        ];
         if ((pathInJsonOfNodeHolder.length > 1) && this.renderingMode === TreeConstants.RenderingMode.Conf) {
             const subtreePropName = JSON.stringify(this.metadata.SUBTREE);
-            pathKeyInNodeHolder = `[${subtreePropName}][${pathKeyInNodeHolder}]`;
+            pathInJsonArray.push(this.metadata.SUBTREE);
+            pathInJsonArray.push(nodeKey);
+            //pathKeyInNodeHolder = `[${subtreePropName}][${pathKeyInNodeHolder}]`;
         }
         else if (this.renderingMode === TreeConstants.RenderingMode.Ease) {
-            pathKeyInNodeHolder = `[${pathKeyInNodeHolder}]`;
+            //pathKeyInNodeHolder = `[${pathKeyInNodeHolder}]`;
+            pathInJsonArray.push(nodeKey);
         }
         else {
-            pathKeyInNodeHolder = `[${pathKeyInNodeHolder}]`;
+            //pathKeyInNodeHolder = `[${pathKeyInNodeHolder}]`;
+            pathInJsonArray.push(nodeKey);
         }
-        const pathInJsonArray = [
-            ...pathInJsonOfNodeHolder,
-            pathKeyInNodeHolder,
-        ];
-        const pathInJsonString = pathInJsonArray.join("");
+        const pathInJsonString = pathInJsonArray
+            .map((jPathIndex, index) => {
+            const jPathIndexText = JSON.stringify(jPathIndex);
+            return (index === 0) ? jPathIndex : `[${jPathIndexText}]`;
+        })
+            .join("");
         const flatNodeClone = {};
         for (const propName in node) {
             const propValue = node[propName];
@@ -391,6 +399,22 @@ export class Tree extends ImprovedRenderEventEmitter {
             _path: pathInJsonString,
         };
         return nodeClone;
+    }
+    getTreeDataNodeByJsonnodePathArray(jPathArray) {
+        // since complexity of building jPath array in modeEase and modeConf, the JPathArray is not the same, 
+        // and modeEase was built from item at index 2, since it has array item at index 1 "Top": this.data["Top"], and modeConf does not have this array item.
+        // modeConf was built recursively already from item at index 1.
+        const startingIndexValidJpath = (this.renderingMode === TreeConstants.RenderingMode.Conf) ? 1 : 2;
+        return jPathArray
+            .reduce((reducedRetValue, arrayItem, arrayItemIndex) => {
+            return (arrayItemIndex < startingIndexValidJpath) ? reducedRetValue : reducedRetValue[arrayItem];
+        }, this.data);
+    }
+    getByJPath(data, jPathArray) {
+        return jPathArray
+            .reduce((reducedRetValue, arrayItem) => {
+            return reducedRetValue[arrayItem];
+        }, data);
     }
     // ADAPTIVE PLACEHOLDERS
     getSubtreeNodeToRender(loopPropertyValue, loopPropertyKey) {

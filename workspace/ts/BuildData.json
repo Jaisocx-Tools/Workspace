@@ -4,7 +4,7 @@
     {
       "path": "packages/ObjData",
       "name": "objdata",
-      "build": true,
+      "build": false,
       "build-simple-enable": true,
       "dependencies": [
       ],
@@ -20,7 +20,7 @@
     {
       "path": "packages/EventEmitter",
       "name": "event-emitter",
-      "build": true,
+      "build": false,
       "build-simple-enable": true,
       "build-files": [
         "EventEmitter.js",
@@ -30,7 +30,7 @@
     {
       "path": "packages/TemplateRenderer",
       "name": "template-renderer",
-      "build": true,
+      "build": false,
       "build-simple-enable": true,
       "dependencies": [
         {
@@ -70,7 +70,7 @@
     {
       "path": "examples/ExampleTemplateRenderer",
       "name": "example-template-renderer",
-      "build": true,
+      "build": false,
       "build-simple-enable": true,
       "dependencies": [
         {
@@ -89,7 +89,7 @@
     {
       "path": "examples/ExampleTree",
       "name": "example-tree",
-      "build": true,
+      "build": false,
       "build-simple-enable": true,
       "dependencies": [
         {

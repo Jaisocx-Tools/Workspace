@@ -46,6 +46,8 @@ export declare class Tree extends ImprovedRenderEventEmitter {
     renderSubtreeCallback(isArray: number, loopCounter: number, loopPropertyValue: any, loopPropertyKey: any, arrayOrObject: any, previousCallbackResult: number | null, callbackPayload: any): number;
     renderOneTreeNode(node: any, nodePosition: number, nodeKey: any, flatNodeHolderClone: any, holder: HTMLElement): ITreeRenderRetValue;
     updateDataNodeIdAndPath(node: any, nodePosition: number, nodeKey: any, flatNodeHolderClone: any, holder: HTMLElement): any;
+    getTreeDataNodeByJsonnodePathArray(jPathArray: string[]): any;
+    getByJPath(data: any, jPathArray: string[]): any;
     getSubtreeNodeToRender(loopPropertyValue: any, loopPropertyKey: any): any;
     getDataForRendering(node: any, flatNodeClone: any, dataTypeString: string, hasSubtree: boolean): IRenderTemplateRendererData;
     getTreeNodeCssClasses(dataType: string, node: any): string;

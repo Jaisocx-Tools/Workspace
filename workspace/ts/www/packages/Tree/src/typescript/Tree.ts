@@ -577,20 +577,31 @@ export class Tree extends ImprovedRenderEventEmitter {
     const pathInJsonOfNodeHolder: string[] = flatNodeHolderClone._pathArray ?? ["ROOT-unhandled",];
     let pathKeyInNodeHolder = JSON.stringify(nodeKey);
 
+    let pathInJsonArray: string[] = [
+      ...pathInJsonOfNodeHolder,
+    ];
     if ((pathInJsonOfNodeHolder.length > 1) && this.renderingMode === TreeConstants.RenderingMode.Conf) {
       const subtreePropName: string = JSON.stringify(this.metadata.SUBTREE);
-      pathKeyInNodeHolder = `[${subtreePropName}][${pathKeyInNodeHolder}]`;
+      pathInJsonArray.push(this.metadata.SUBTREE);
+      pathInJsonArray.push(nodeKey);
+      //pathKeyInNodeHolder = `[${subtreePropName}][${pathKeyInNodeHolder}]`;
     } else if (this.renderingMode === TreeConstants.RenderingMode.Ease) {
-      pathKeyInNodeHolder = `[${pathKeyInNodeHolder}]`;
+      //pathKeyInNodeHolder = `[${pathKeyInNodeHolder}]`;
+      pathInJsonArray.push(nodeKey);
     } else {
-      pathKeyInNodeHolder = `[${pathKeyInNodeHolder}]`;
+      //pathKeyInNodeHolder = `[${pathKeyInNodeHolder}]`;
+      pathInJsonArray.push(nodeKey);
     }
 
-    const pathInJsonArray: string[] = [
-      ...pathInJsonOfNodeHolder,
-      pathKeyInNodeHolder,
-    ];
-    const pathInJsonString: string = pathInJsonArray.join("");
+    const pathInJsonString: string = pathInJsonArray
+      .map((
+        jPathIndex: any,
+        index: number
+      ) => {
+        const jPathIndexText: string = JSON.stringify( jPathIndex );
+        return (index === 0) ? jPathIndex : `[${jPathIndexText}]`;
+      })
+      .join("");
 
     const flatNodeClone: any = {};
     for (const propName in node) {
@@ -615,6 +626,41 @@ export class Tree extends ImprovedRenderEventEmitter {
     };
 
     return nodeClone;
+  }
+
+  getTreeDataNodeByJsonnodePathArray ( jPathArray: string[] ): any {
+
+    // since complexity of building jPath array in modeEase and modeConf, the JPathArray is not the same, 
+    // and modeEase was built from item at index 2, since it has array item at index 1 "Top": this.data["Top"], and modeConf does not have this array item.
+    // modeConf was built recursively already from item at index 1.
+    const startingIndexValidJpath: number = ( this.renderingMode === TreeConstants.RenderingMode.Conf ) ? 1 : 2; 
+    return jPathArray
+      .reduce (
+        (
+          reducedRetValue: any,
+          arrayItem: any,
+          arrayItemIndex: number
+        ) => {
+          return ( arrayItemIndex < startingIndexValidJpath ) ? reducedRetValue : reducedRetValue[arrayItem];
+        }, 
+        this.data
+      );
+  }
+
+  getByJPath( 
+    data: any,
+    jPathArray: string[] 
+  ): any {
+    return jPathArray
+      .reduce (
+        (
+          reducedRetValue: any,
+          arrayItem: any
+        ) => {
+          return reducedRetValue[arrayItem];
+        }, 
+        data
+      );
   }
 
   // ADAPTIVE PLACEHOLDERS

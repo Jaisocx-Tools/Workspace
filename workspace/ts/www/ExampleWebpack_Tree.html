@@ -39,6 +39,9 @@
             TreeConstants.TreeEventsNames.EVENT_NAME__TREE_NODE_LABEL__CLICK,
             (eventName, eventPayload) => {
               console.log(eventName, eventPayload);
+
+              // on click payload has the pointer to the tree.data json, and here we show in console it's value:
+              console.log( tree.getTreeDataNodeByJsonnodePathArray( eventPayload.jsonNode._pathArray ) );
             }
           )
           .load('https://api.artic.edu/api/v1/artworks');
