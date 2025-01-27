@@ -199,8 +199,8 @@ export class Tooltip implements TooltipInterface {
     return this;
   }
   
-  // setAlternativeTabBorderSides: method adds alternative array of values in the order, to try to plce on the site ui the tooltip.
-  setAlternativeTabBorderSides( alternativeTabBorderSides: number[] ): TooltipInterface {
+  // setAlignDimensionOneValueOrder: method adds alternative array of values in the order, to try to plce on the site ui the tooltip.
+  setAlignDimensionOneValueOrder( alternativeTabBorderSides: number[] ): TooltipInterface {
     this.alternativeTabBorderSides = alternativeTabBorderSides;
 
     return this;
@@ -349,9 +349,9 @@ export class Tooltip implements TooltipInterface {
 
     let arrowSize: number = this.arrowSize; // numeric value, if set, default is 0, set in constructor()
     let arrowSizeDim: any = this.arrowSizeDim; // px, % or rem
-    let arrowSizeCssText: any = "";
+    let arrowSizeCssValue: any = "";
     let arrowPixelSize: number = 0;
-    let arrowSquareSideSize: number = 0;
+    let arrowRectSideSize: number = 0;
     let browserTabBorderSide: number = this.tooltipAlignDimensionOne;
 
     // we check whether the tooltip is set to be rendered with an arrow
@@ -360,198 +360,101 @@ export class Tooltip implements TooltipInterface {
       // in this if condition the css theme variable value will be set.
       if ( arrowSize === 0 ) {
         //@ts-ignore
-        arrowSizeCssText = window
-          .getComputedStyle( this.arrowHtmlNode as Element )
-          .getPropertyValue(
-            Constants.CssClassNames.CSS_VARIABLE_NAME__ARROW_SIZE
+        arrowSizeCssValue = this.lib.getCssVariableForNode (
+          this.arrowHtmlNode,
+          Constants.CssClassNames.CSS_VARIABLE_NAME__ARROW_SIZE
+        ); 
+        
+        if (
+          ( arrowSizeCssValue ) && 
+          ( arrowSizeCssValue !== "0" )
+        ) {
+          arrowPixelSize = this.lib.translateCssDimToPixelValue (
+            arrowSizeCssValue
           );
-        arrowSize = parseFloat(arrowSizeCssText);
-        const arrowSizeText: any = `${arrowSize}`;
-        arrowSizeDim = arrowSizeCssText.substring( arrowSizeText.length );
-  
-        // this method throws Error if the css dimension is not supported. Supported are px, % and rem.
-        this.validateCssSizeDim( arrowSizeDim );
+
+        }
+      } else {
+        arrowPixelSize = this.lib.translateToPixelValue(
+          arrowSize,
+          arrowSizeDim
+        );
       }
 
-      arrowPixelSize = this.lib.translateCssDimToPixelValue (
-        this.mainHtmlNode as HTMLElement,
-        arrowSize,
-        arrowSizeDim
-      );
-  
-      arrowSquareSideSize = this.lib.getSquareSideSizeByMidTilConerLineSize (
+      arrowRectSideSize = this.lib.getRectSideSizeByMidTilConerLineSize (
         arrowPixelSize
       );
     }
-
-    // to check, whether the space for the tooltip is enough til the browser tab border
-    // if (
-    //   this.lib.doesTooltipSuitsTilBrowserTabBorder ( 
-    //     // @ts-ignore
-    //     this.eventTargetHtmlNode,
-    //     this.mainHtmlNode,
-    //     this.tooltipAlignDimensionOne,
-    //     this.tooltipAlignDimensionTwo,
-    //     this.tooltipPaddingAlignDimensionTwo,
-    //     this.tooltipPaddingSizeDimAlignDimensionTwo,
-    //     arrowSize
-    //   )
-    // ) {
-    // the css rules will apply to the mainHtmlNode, this is the tooltip rendered,
-    // with the constant value to place the tooltip relative to the event target,
-    // the constant value was set in the method constructor() this.tooltipAlignDimensionOne = Constants.tooltipAlignDimensionOne;
-    // or later optionally in the method Tooltip.setTooltipAlignDimensionOne(TooltipLib.getInstance().BROWSER_TAB_BORDER_TOP);
-
-    // this.lib.setTooltipDimensions (
-    //   this.eventTargetHtmlNode,
-    //   this.mainHtmlNode,
-    //   this.tooltipAlignDimensionOne,
-    //   this.tooltipAlignDimensionTwo,
-    //   this.tooltipPaddingAlignDimensionTwo,
-    //   this.tooltipPaddingSizeDimAlignDimensionTwo,
-    //   arrowSize
-    // );
-
-    const tooltipHtmlNodeDimensions: Dimensions = this.lib.calculateTooltipDimensions (
-      this.eventTargetHtmlNode,
-      this.mainHtmlNode,
-      this.tooltipAlignDimensionOne,
-      this.tooltipAlignDimensionTwo,
-      this.tooltipPaddingAlignDimensionTwo,
-      this.tooltipPaddingSizeDimAlignDimensionTwo,
-      arrowSize
-    );
-
-    let arrowDimensions: Dimensions = new Dimensions();
-    if ( this.withArrow === 1 ) {
-      arrowDimensions = this.lib.setTooltipArrowDimensions (
-          this.eventTargetHtmlNode as HTMLElement,
-          this.mainHtmlNode as HTMLElement,
-          this.arrowHtmlNode as HTMLElement,
-          arrowSize,
-          arrowSizeDim,
-          this.tooltipAlignDimensionOne,
-          tooltipHtmlNodeDimensions
-      );
-    }
-  
-    // after the tooltip placement, via css rules assigned, was fnished,
-    // this method setTooltipPosistionCss() exits here.
-    // return this;
-    // }
-
 
     // in this cycle we get the first best available window edge side,
     // where the tooltip matches in the space til the browser's window edge
 
     // side variable obtains in every iteration one constant value,
     // from the array Tooltip.alternativeTabBorderSides,
-    // // where to place the tooltip relative to event target
-    // let browserTabBorderSide: number = 0;
-    // for ( browserTabBorderSide of this.alternativeTabBorderSides ) {
-    //   if ( 
-    //     // if condition checks, whether the tooltip can be placed between the event target and browser tab border.
-    //     this.lib.doesTooltipSuitsTilBrowserTabBorder ( 
-    //       this.eventTargetHtmlNode,
-    //       this.mainHtmlNode,
-    //       browserTabBorderSide,
-    //       this.tooltipAlignDimensionTwo,
-    //       this.tooltipPaddingAlignDimensionTwo,
-    //       this.tooltipPaddingSizeDimAlignDimensionTwo,
-    //       arrowSize
-    //     ) 
-    //   ) {
-    //     // we stop iterating the loop,
-    //     // since the if statement above tells here inside,
-    //     // that the tooltip can be viewed between the eventTarget and the browser's tab border on the side this is chosen in this loop ( top, right or left ).
-    //     break;
-    //   }
-    // }
+    // where to place the tooltip relative to event target
+    const browserTabDimensions: Dimensions = this.lib.getBrowserTabDimensions();
+    const eventTargetDimensions: Dimensions = this.lib.getHtmlNodeDimensions(
+      this.eventTargetHtmlNode
+    );
+    const mainHtmlNodeDimensions: Dimensions = this.lib.getHtmlNodeDimensions(
+      this.mainHtmlNode
+    );
+    let tooltipHtmlNodeDimensions: Dimensions|null = null;
 
-    // // the method of the TooltipLib class to set the top and left css rules values in pixels,
-    // // that the tooltip is placed on the site ui in the browser's tab the right way.
-    
-    // // this.lib.setTooltipDimensions (
-    // //   this.eventTargetHtmlNode,
-    // //   this.mainHtmlNode,
-    // //   side,
-    // //   this.tooltipAlignDimensionTwo,
-    // //   this.tooltipPaddingAlignDimensionTwo,
-    // //   this.tooltipPaddingSizeDimAlignDimensionTwo,
-    // //   arrowSize
-    // // );
+    browserTabBorderSide = 0;
+    for ( browserTabBorderSide of this.alternativeTabBorderSides ) {
 
-    // const tooltipHtmlNodeDimensions: Dimensions = this.lib.calculateTooltipDimensions (
-    //   this.eventTargetHtmlNode,
-    //   this.mainHtmlNode,
-    //   this.tooltipAlignDimensionOne,
-    //   this.tooltipAlignDimensionTwo,
-    //   this.tooltipPaddingAlignDimensionTwo,
-    //   this.tooltipPaddingSizeDimAlignDimensionTwo,
-    //   arrowSize
-    // );
-    
-    // let arrowDimensions: Dimensions = new Dimensions();
-    // if ( this.withArrow === 1 ) {
-    //   arrowDimensions = this.lib.setTooltipArrowDimensions (
-    //     this.eventTargetHtmlNode as HTMLElement,
-    //     this.mainHtmlNode as HTMLElement,
-    //     this.arrowHtmlNode as HTMLElement,
-    //     arrowSize,
-    //     arrowSizeDim,
-    //     browserTabBorderSide,
-    //     tooltipHtmlNodeDimensions
-    //   );
-    // }
+      tooltipHtmlNodeDimensions = this.lib.calculateTooltipDimensions (
+        eventTargetDimensions,
+        mainHtmlNodeDimensions,
+        browserTabBorderSide,
+        this.tooltipAlignDimensionTwo,
+        this.tooltipPaddingAlignDimensionTwo,
+        this.tooltipPaddingSizeDimAlignDimensionTwo,
+        arrowPixelSize
+      );
 
-
-    if (
-      ( browserTabBorderSide === Constants.AlignDimensionOne.BROWSER_TAB_BORDER_TOP ) 
-    ) {
-      tooltipHtmlNodeDimensions.top -= arrowPixelSize;
-
-    } else if (
-      ( browserTabBorderSide === Constants.AlignDimensionOne.BROWSER_TAB_BORDER_RIGHT ) 
-    ) {
-      tooltipHtmlNodeDimensions.left += arrowPixelSize;
-
-    } else if (
-      ( browserTabBorderSide === Constants.AlignDimensionOne.BROWSER_TAB_BORDER_LEFT )
-    ) {
-      tooltipHtmlNodeDimensions.left -= arrowPixelSize;
-
-    } else if (
-      ( browserTabBorderSide === Constants.AlignDimensionOne.BROWSER_TAB_BORDER_BOTTOM )
-    ) {
-      tooltipHtmlNodeDimensions.top += arrowPixelSize;
-
+      if ( 
+        // if condition checks, whether the tooltip can be placed between the event target and browser tab border.
+        this.lib.doesTooltipSuitsTilBrowserTabBorder ( 
+          browserTabDimensions,
+          tooltipHtmlNodeDimensions,
+          browserTabBorderSide,
+          arrowPixelSize
+        ) 
+      ) {
+        // we stop iterating the loop,
+        // since the if statement above tells here inside,
+        // that the tooltip can be viewed between the eventTarget and the browser's tab border on the side this is chosen in this loop ( top, right or left ).
+        break;
+      }
     }
 
-    //@ts-ignore
-    this.mainHtmlNode.style.top = `${tooltipHtmlNodeDimensions.top}px`;
-    //@ts-ignore
-    this.mainHtmlNode.style.left = `${tooltipHtmlNodeDimensions.left}px`;
+    // the method of the TooltipLib class to set the top and left css rules values in pixels,
+    // that the tooltip is placed on the site ui in the browser's tab the right way.
+    this.lib.setTooltipDimensions (
+      this.mainHtmlNode,
+      //@ts-ignore
+      tooltipHtmlNodeDimensions
+    );
+
+    if ( this.withArrow === 1 ) {
+      const arrowDimensions: Dimensions = this.lib.calculateTooltipArrowDimensions (
+        eventTargetDimensions,
+        arrowPixelSize,
+        browserTabBorderSide
+      );
+
+      this.lib.setTooltipArrowDimensions(
+        this.arrowHtmlNode,
+        arrowDimensions
+      );
+    }
 
     return this;
   }
 
-  validateCssSizeDim( cssSizeDimInputArg: any ): number {
-    let isValid: number = 0;
-
-    // arrow size dim text value validation code block 
-    let arrowSizeDimMatched: number = 0;
-    for ( let sizeDimKey in Constants.CssSizeDim ) {
-      const sizeDim: any = ( Constants.CssSizeDim as any )[sizeDimKey];
-      arrowSizeDimMatched = ( cssSizeDimInputArg == sizeDim ) ? 1 : 0;
-    }
-
-    if ( arrowSizeDimMatched === 0 ) {
-      const sizeDimsSupported: any = Object.keys( Constants.CssSizeDim as any ).join( ", " );
-      throw new Error( `Arrow Size dim ${cssSizeDimInputArg} not supported, supported are: (${sizeDimsSupported})` );
-    }
-
-    return isValid;
-  }
+  
 }
 
 

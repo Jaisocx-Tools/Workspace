@@ -8,7 +8,7 @@ export interface TooltipInterface {
     setTooltipAlignDimensionOne(tooltipAlignDimensionOne: number): TooltipInterface;
     setTooltipAlignDimensionTwo(tooltipAlignDimensionTwo: number): TooltipInterface;
     setTooltipPaddingAlignDimensionTwo(tooltipPaddingAlignDimensionTwo: number, tooltipPaddingSizeDimAlignDimensionTwo: number): TooltipInterface;
-    setAlternativeTabBorderSides(alternativeTabBorderSides: number[]): TooltipInterface;
+    setAlignDimensionOneValueOrder(alternativeTabBorderSides: number[]): TooltipInterface;
     render(): TooltipInterface;
     addEventHandlers(): TooltipInterface;
     showTooltip(): TooltipInterface;

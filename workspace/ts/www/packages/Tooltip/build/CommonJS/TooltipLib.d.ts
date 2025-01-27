@@ -3,14 +3,19 @@ export declare class TooltipLib {
     static instance: TooltipLib | undefined;
     constructor();
     static getInstance(): TooltipLib;
-    setTooltipDimensions(eventTargetHtmlNode: HTMLElement | null, tooltipHtmlNode: HTMLElement | null, browserTabBorderSide: number, tooltipAlignDimensionTwo: number, tooltipPaddingAlignDimensionTwo: number, tooltipPaddingSizeDimAlignDimensionTwo: number, arrowSize: number): void;
-    calculateTooltipDimensions(eventTargetHtmlNode: HTMLElement | null, tooltipHtmlNode: HTMLElement | null, browserTabBorderSide: number, tooltipAlignDimensionTwo: number, tooltipPaddingAlignDimensionTwo: number, tooltipPaddingSizeDimAlignDimensionTwo: number, arrowSize: number): Dimensions;
+    setTooltipDimensions(tooltipHtmlNode: HTMLElement | null, tooltipHtmlNodeDimensions: Dimensions): void;
+    calculateTooltipDimensions(eventTargetHtmlNodeDimensions: Dimensions, tooltipHtmlNodeDimensions: Dimensions, browserTabBorderSide: number, tooltipAlignDimensionTwo: number, tooltipPaddingAlignDimensionTwo: number, tooltipPaddingSizeDimAlignDimensionTwo: number, arrowPixelSize: number): Dimensions;
     calculateTooltipDimensionTwo(eventTargetHtmlNodeDimensions: Dimensions, tooltipHtmlNodeDimensions: Dimensions, browserTabBorderSide: number, tooltipAlignDimensionTwo: number, tooltipPaddingAlignDimensionTwo: number, tooltipPaddingSizeDimAlignDimensionTwo: number): Dimensions;
-    doesTooltipSuitsTilBrowserTabBorder(eventTargetHtmlNode: HTMLElement | null, tooltipHtmlNode: HTMLElement | null, browserTabBorderSide: number, tooltipAlignDimensionTwo: number, tooltipPaddingAlignDimensionTwo: number, tooltipPaddingSizeDimAlignDimensionTwo: number, arrowSize: number): number;
-    setTooltipArrowDimensions(eventTargetHtmlNode: HTMLElement, tooltipHtmlNode: HTMLElement, arrowHtmlNode: HTMLElement, arrowSize: number, arrowSizeDim: any, browserTabBorderSide: number, tooltipHtmlNodeDimensions: Dimensions): Dimensions;
-    getSquareSideSizeByMidTilConerLineSize(midTilCornerLineSize: number): number;
-    translateCssDimToPixelValue(tooltipHtmlNode: HTMLElement, arrowSize: number, arrowSizeDim: any): number;
+    doesTooltipSuitsTilBrowserTabBorder(browserTabDimensions: Dimensions, tooltipHtmlNodeDimensions: Dimensions, browserTabBorderSide: number, arrowPixelSize: number): number;
+    setTooltipArrowDimensions(arrowHtmlNode: HTMLElement | null | undefined, arrowDimensions: Dimensions): undefined;
+    calculateTooltipArrowDimensions(eventTargetDimensions: Dimensions, arrowPixelSize: number, alignDimensionOne: number): Dimensions;
     getBrowserTabDimensions(): Dimensions;
     getHtmlNodeDimensions(htmlNode: HTMLElement | null): Dimensions;
+    getRectSideSizeByMidTilConerLineSize(midTilCornerLineSize: number): number;
+    translateToPixelValue(sizeNumeric: number, sizeUnit: any): number;
+    translateCssDimToPixelValue(sizeCssValue: any): number;
+    getRemRelativePixelValue(): number;
+    validateCssSizeDim(cssSizeDimInputArg: any): number;
+    getCssVariableForNode(htmlNode: HTMLElement | Element | null | undefined, cssVariableName: any): any;
 }
 //# sourceMappingURL=TooltipLib.d.ts.map

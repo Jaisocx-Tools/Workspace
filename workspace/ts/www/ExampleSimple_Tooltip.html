@@ -34,17 +34,17 @@
 
 
 
-    <!-- <script src="examples/ExampleTooltip/build/webpack/bundle.js"></script> -->
+    <script src="examples/ExampleTooltip/build/webpack/bundle.js"></script>
   
     <script>
       document.addEventListener('DOMContentLoaded', () => {
 
-        // const example = new ExampleTooltip();
-        // example.addTooltip (
-        //   "tooltip-show-button2",
-        //   "theme-darkmode",
-        //   "Hello World!"
-        // );
+        const example = new ExampleTooltip();
+        example.addTooltip (
+          "tooltip-show-button2",
+          "theme-darkmode",
+          "Hello World!"
+        );
         //return;
 
         const tooltip = new Tooltip();
@@ -57,24 +57,24 @@
               "text": "Hello World!",
             }
           )
-          //.setTooltipAlignDimensionOne(Constants.AlignDimensionOne.BROWSER_TAB_BORDER_TOP)
-          //.setTooltipAlignDimensionOne(Constants.AlignDimensionOne.BROWSER_TAB_BORDER_RIGHT)
-          //.setTooltipAlignDimensionOne(Constants.AlignDimensionOne.BROWSER_TAB_BORDER_LEFT)
-          //.setTooltipAlignDimensionOne(Constants.AlignDimensionOne.BROWSER_TAB_BORDER_BOTTOM)
-          .setAlternativeTabBorderSides(
+          .setAlignDimensionOneValueOrder (
             [
-              Constants.AlignDimensionOne.BROWSER_TAB_BORDER_TOP,
+              //Constants.AlignDimensionOne.BROWSER_TAB_BORDER_TOP,
               Constants.AlignDimensionOne.BROWSER_TAB_BORDER_RIGHT,
+              Constants.AlignDimensionOne.BROWSER_TAB_BORDER_TOP,
               Constants.AlignDimensionOne.BROWSER_TAB_BORDER_LEFT,
               Constants.AlignDimensionOne.BROWSER_TAB_BORDER_BOTTOM,
             ]
           )
           .setTooltipAlignDimensionTwo(Constants.AlignDimensionTwo.EVENT_TARGET_MID)
-          // .setTooltipAlignDimensionTwo(Constants.AlignDimensionTwo.EVENT_TARGET_START)
+          //.setTooltipAlignDimensionTwo(Constants.AlignDimensionTwo.EVENT_TARGET_START)
           // .setTooltipPaddingAlignDimensionTwo (
-          //   8,
+          //   20,
           //   Constants.CssSizeDim.PX
           // )
+          .setArrowSize(0)
+          .setArrowSizeDim("rem")
+          .setIsWithArrow(1)
           .render();
         
         tooltip.showTooltip();

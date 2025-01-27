@@ -5,29 +5,26 @@ const tooltip_1 = require("@jaisocx/tooltip");
 class ExampleTooltip {
     addTooltip(eventTargetId, themeName, tooltipText) {
         const tooltip = new tooltip_1.Tooltip();
-        tooltip.mainHtmlNodeId = "tooltip";
         tooltip
             .setDebug(true)
             .setEventTargetHtmlNodeId(eventTargetId)
-            .setCssClasses(`tooltip ${themeName}`)
-            //.setTooltipAlignDimensionOne(Constants.AlignDimensionOne.BROWSER_TAB_BORDER_TOP)
-            .setTooltipAlignDimensionOne(tooltip_1.Constants.AlignDimensionOne.BROWSER_TAB_BORDER_RIGHT)
-            //.setTooltipAlignDimensionOne(Constants.AlignDimensionOne.BROWSER_TAB_BORDER_LEFT)
-            //.setTooltipAlignDimensionOne(Constants.AlignDimensionOne.BROWSER_TAB_BORDER_BOTTOM)
-            .setAlternativeTabBorderSides([
-            tooltip_1.Constants.AlignDimensionOne.BROWSER_TAB_BORDER_TOP,
+            .setCssClasses(themeName)
+            .setTemplateData({
+            "text": tooltipText,
+        })
+            .setAlignDimensionOneValueOrder([
+            //Constants.AlignDimensionOne.BROWSER_TAB_BORDER_TOP,
             tooltip_1.Constants.AlignDimensionOne.BROWSER_TAB_BORDER_RIGHT,
+            tooltip_1.Constants.AlignDimensionOne.BROWSER_TAB_BORDER_TOP,
             tooltip_1.Constants.AlignDimensionOne.BROWSER_TAB_BORDER_LEFT,
             tooltip_1.Constants.AlignDimensionOne.BROWSER_TAB_BORDER_BOTTOM,
         ])
-            .setTooltipAlignDimensionTwo(tooltip_1.Constants.AlignDimensionTwo.EVENT_TARGET_START)
-            .setTooltipPaddingAlignDimensionTwo(2, tooltip_1.Constants.CssSizeDim.PX)
-            .setTemplate(tooltip_1.Constants.Defaults.template)
-            .setTemplateData({
-            "id": tooltip.mainHtmlNodeId,
-            "cssClasses": tooltip.cssClasses,
-            "text": tooltipText,
-        })
+            .setTooltipAlignDimensionTwo(tooltip_1.Constants.AlignDimensionTwo.EVENT_TARGET_MID)
+            //.setTooltipAlignDimensionTwo(Constants.AlignDimensionTwo.EVENT_TARGET_START)
+            // .setTooltipPaddingAlignDimensionTwo (
+            //   20,
+            //   Constants.CssSizeDim.PX
+            // )
             .render();
     }
 }

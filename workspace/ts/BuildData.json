@@ -141,7 +141,7 @@
     {
       "path": "examples/ExampleTooltip",
       "name": "example-tooltip",
-      "build": false,
+      "build": true,
       "build-simple-enable": true,
       "dependencies": [
         {

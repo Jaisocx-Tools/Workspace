@@ -40,7 +40,7 @@ export class Constants {
     ];
 
     static withArrow: number = 1;
-    static arrowSize: number = 0;
+    static arrowSize: any = 0;
     static arrowSizeDim: any = Constants.CssSizeDim.REM;  
   
     static cssClasses: any = "tooltip";

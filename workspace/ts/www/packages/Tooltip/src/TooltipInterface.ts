@@ -17,7 +17,7 @@ export interface TooltipInterface {
     tooltipPaddingAlignDimensionTwo: number,
     tooltipPaddingSizeDimAlignDimensionTwo: number
   ): TooltipInterface; // optional
-  setAlternativeTabBorderSides( alternativeTabBorderSides: number[] ): TooltipInterface; // optional
+  setAlignDimensionOneValueOrder( alternativeTabBorderSides: number[] ): TooltipInterface; // optional
   
 
   // final render method to initialize the tooltip for an html node.

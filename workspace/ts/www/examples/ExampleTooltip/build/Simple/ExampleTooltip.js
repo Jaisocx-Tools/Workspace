@@ -4,31 +4,26 @@ class ExampleTooltip {
     themeName, 
     tooltipText) {
     const tooltip = new Tooltip();
-    tooltip.mainHtmlNodeId = "tooltip";
     tooltip
       .setDebug(true)
       .setEventTargetHtmlNodeId(eventTargetId)
-      .setCssClasses(`tooltip ${themeName}`)
-    //.setTooltipAlignDimensionOne(Constants.AlignDimensionOne.BROWSER_TAB_BORDER_TOP)
-      .setTooltipAlignDimensionOne(Constants.AlignDimensionOne.BROWSER_TAB_BORDER_RIGHT)
-    //.setTooltipAlignDimensionOne(Constants.AlignDimensionOne.BROWSER_TAB_BORDER_LEFT)
-    //.setTooltipAlignDimensionOne(Constants.AlignDimensionOne.BROWSER_TAB_BORDER_BOTTOM)
-      .setAlternativeTabBorderSides([
-        Constants.AlignDimensionOne.BROWSER_TAB_BORDER_TOP,
+      .setCssClasses(themeName)
+      .setTemplateData({
+        "text": tooltipText,
+      })
+      .setAlignDimensionOneValueOrder([
+        //Constants.AlignDimensionOne.BROWSER_TAB_BORDER_TOP,
         Constants.AlignDimensionOne.BROWSER_TAB_BORDER_RIGHT,
+        Constants.AlignDimensionOne.BROWSER_TAB_BORDER_TOP,
         Constants.AlignDimensionOne.BROWSER_TAB_BORDER_LEFT,
         Constants.AlignDimensionOne.BROWSER_TAB_BORDER_BOTTOM,
       ])
-      .setTooltipAlignDimensionTwo(Constants.AlignDimensionTwo.EVENT_TARGET_START)
-      .setTooltipPaddingAlignDimensionTwo(
-        2, 
-        Constants.CssSizeDim.PX)
-      .setTemplate(Constants.Defaults.template)
-      .setTemplateData({
-        "id": tooltip.mainHtmlNodeId,
-        "cssClasses": tooltip.cssClasses,
-        "text": tooltipText,
-      })
+      .setTooltipAlignDimensionTwo(Constants.AlignDimensionTwo.EVENT_TARGET_MID)
+    //.setTooltipAlignDimensionTwo(Constants.AlignDimensionTwo.EVENT_TARGET_START)
+    // .setTooltipPaddingAlignDimensionTwo (
+    //   20,
+    //   Constants.CssSizeDim.PX
+    // )
       .render();
   }
 }

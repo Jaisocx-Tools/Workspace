@@ -8,11 +8,10 @@
   --tooltip__border_width: 0.5px;
   --tooltip__border_style: solid;
   --tooltip__border_color: #885;
-  --tooltip__border_radius: 1rem;
+  --tooltip__border_radius: 0.3rem;
 
-  --tooltip__padding: 2rem;
-  --tooltip_arrow__size: 0.48rem;
-
+  --tooltip__padding: 0.8rem;
+  --tooltip_arrow__size: 8px;
 
   --tooltip_arrow__background: var(--tooltip__background);
   
@@ -22,8 +21,8 @@
 
 
   /* testing purpose variables */
-  --tooltip__width: 8rem;
-  --tooltip__height: 8rem;
+  --tooltip__width: 12rem;
+  --tooltip__height: 4rem;
 }
 
 @media ( (max-width: 440px) and (orientation: portrait) ) {

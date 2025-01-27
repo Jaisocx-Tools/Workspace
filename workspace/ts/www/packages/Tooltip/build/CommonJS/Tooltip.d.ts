@@ -31,7 +31,7 @@ export declare class Tooltip implements TooltipInterface {
     setTooltipPaddingAlignDimensionTwo(tooltipPaddingAlignDimensionTwo: number, tooltipPaddingSizeDimAlignDimensionTwo: any): TooltipInterface;
     setEventTargetHtmlNodeId(id: any): TooltipInterface;
     setEventTargetHtmlNode(eventTarget: HTMLElement): TooltipInterface;
-    setAlternativeTabBorderSides(alternativeTabBorderSides: number[]): TooltipInterface;
+    setAlignDimensionOneValueOrder(alternativeTabBorderSides: number[]): TooltipInterface;
     setIsWithArrow(withArrow: number): TooltipInterface;
     setArrowSize(arrowSize: number): TooltipInterface;
     setArrowSizeDim(arrowSizeDim: number): TooltipInterface;
@@ -40,6 +40,5 @@ export declare class Tooltip implements TooltipInterface {
     addEventHandlers(): TooltipInterface;
     showTooltip(): TooltipInterface;
     setTooltipAlignDimensionOneCss(): TooltipInterface;
-    validateCssSizeDim(cssSizeDimInputArg: any): number;
 }
 //# sourceMappingURL=Tooltip.d.ts.map

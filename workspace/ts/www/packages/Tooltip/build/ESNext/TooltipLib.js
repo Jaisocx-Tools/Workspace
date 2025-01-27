@@ -10,8 +10,10 @@ export class TooltipLib {
         }
         return TooltipLib.instance;
     }
-    setTooltipDimensions(eventTargetHtmlNode, tooltipHtmlNode, browserTabBorderSide, tooltipAlignDimensionTwo, tooltipPaddingAlignDimensionTwo, tooltipPaddingSizeDimAlignDimensionTwo, arrowSize) {
-        const tooltipHtmlNodeDimensions = this.calculateTooltipDimensions(eventTargetHtmlNode, tooltipHtmlNode, browserTabBorderSide, tooltipAlignDimensionTwo, tooltipPaddingAlignDimensionTwo, tooltipPaddingSizeDimAlignDimensionTwo, arrowSize);
+    setTooltipDimensions(tooltipHtmlNode, tooltipHtmlNodeDimensions) {
+        if (!tooltipHtmlNode) {
+            throw new Error("the first input arg tooltipHtmlNode has null value");
+        }
         // the css rule top will be set for the tooltip
         //@ts-ignore
         tooltipHtmlNode.style.top = `${tooltipHtmlNodeDimensions.top}px`;
@@ -19,34 +21,31 @@ export class TooltipLib {
         //@ts-ignore
         tooltipHtmlNode.style.left = `${tooltipHtmlNodeDimensions.left}px`;
     }
-    calculateTooltipDimensions(eventTargetHtmlNode, tooltipHtmlNode, browserTabBorderSide, tooltipAlignDimensionTwo, tooltipPaddingAlignDimensionTwo, tooltipPaddingSizeDimAlignDimensionTwo, arrowSize) {
-        const retVal = new Dimensions();
-        const eventTargetHtmlNodeDimensions = this.getHtmlNodeDimensions(eventTargetHtmlNode);
-        let tooltipHtmlNodeDimensions = this.getHtmlNodeDimensions(tooltipHtmlNode);
+    calculateTooltipDimensions(eventTargetHtmlNodeDimensions, tooltipHtmlNodeDimensions, browserTabBorderSide, tooltipAlignDimensionTwo, tooltipPaddingAlignDimensionTwo, tooltipPaddingSizeDimAlignDimensionTwo, arrowPixelSize) {
+        const retVal = this.calculateTooltipDimensionTwo(eventTargetHtmlNodeDimensions, tooltipHtmlNodeDimensions, browserTabBorderSide, tooltipAlignDimensionTwo, tooltipPaddingAlignDimensionTwo, tooltipPaddingSizeDimAlignDimensionTwo);
         retVal.width = tooltipHtmlNodeDimensions.width;
         retVal.height = tooltipHtmlNodeDimensions.height;
-        tooltipHtmlNodeDimensions = this.calculateTooltipDimensionTwo(eventTargetHtmlNodeDimensions, tooltipHtmlNodeDimensions, browserTabBorderSide, tooltipAlignDimensionTwo, tooltipPaddingAlignDimensionTwo, tooltipPaddingSizeDimAlignDimensionTwo);
         if (browserTabBorderSide === Constants.AlignDimensionOne.BROWSER_TAB_BORDER_TOP) {
             retVal.top = eventTargetHtmlNodeDimensions.top
                 - tooltipHtmlNodeDimensions.height
-                - arrowSize; // TODO - padding DimensionOne
+                - arrowPixelSize; // TODO - padding DimensionOne
             retVal.left = tooltipHtmlNodeDimensions.left;
         }
         else if (browserTabBorderSide === Constants.AlignDimensionOne.BROWSER_TAB_BORDER_RIGHT) {
             retVal.top = tooltipHtmlNodeDimensions.top;
             retVal.left = eventTargetHtmlNodeDimensions.left
                 + eventTargetHtmlNodeDimensions.width
-                + arrowSize; // TODO + padding DimensionOne
+                + arrowPixelSize; // TODO + padding DimensionOne
         }
         else if (browserTabBorderSide === Constants.AlignDimensionOne.BROWSER_TAB_BORDER_LEFT) {
             retVal.top = tooltipHtmlNodeDimensions.top;
             retVal.left = eventTargetHtmlNodeDimensions.left
-                - arrowSize
+                - arrowPixelSize
                 - tooltipHtmlNodeDimensions.width; // TODO - padding DimensionOne
         }
         else if (browserTabBorderSide === Constants.AlignDimensionOne.BROWSER_TAB_BORDER_BOTTOM) {
             retVal.top = eventTargetHtmlNodeDimensions.bottom
-                + arrowSize; // TODO + padding DimensionOne
+                + arrowPixelSize; // TODO + padding DimensionOne
             retVal.left = tooltipHtmlNodeDimensions.left;
         }
         retVal.right = retVal.left + retVal.width;
@@ -96,10 +95,8 @@ export class TooltipLib {
         }
         return tooltipHtmlNodeDimensions;
     }
-    doesTooltipSuitsTilBrowserTabBorder(eventTargetHtmlNode, tooltipHtmlNode, browserTabBorderSide, tooltipAlignDimensionTwo, tooltipPaddingAlignDimensionTwo, tooltipPaddingSizeDimAlignDimensionTwo, arrowSize) {
+    doesTooltipSuitsTilBrowserTabBorder(browserTabDimensions, tooltipHtmlNodeDimensions, browserTabBorderSide, arrowPixelSize) {
         let retVal = 0;
-        const browserTabDimensions = this.getBrowserTabDimensions();
-        const tooltipHtmlNodeDimensions = this.calculateTooltipDimensions(eventTargetHtmlNode, tooltipHtmlNode, browserTabBorderSide, tooltipAlignDimensionTwo, tooltipPaddingAlignDimensionTwo, tooltipPaddingSizeDimAlignDimensionTwo, arrowSize);
         if (browserTabBorderSide === Constants.AlignDimensionOne.BROWSER_TAB_BORDER_TOP) {
             if ((browserTabDimensions.top < tooltipHtmlNodeDimensions.top) &&
                 (browserTabDimensions.left < tooltipHtmlNodeDimensions.left) &&
@@ -126,70 +123,43 @@ export class TooltipLib {
         }
         return retVal;
     }
-    setTooltipArrowDimensions(eventTargetHtmlNode, tooltipHtmlNode, arrowHtmlNode, arrowSize, arrowSizeDim, browserTabBorderSide, tooltipHtmlNodeDimensions) {
+    setTooltipArrowDimensions(arrowHtmlNode, arrowDimensions) {
+        if (!arrowHtmlNode) {
+            throw new Error("arrowHtmlNode is null or undefined");
+        }
+        arrowHtmlNode.style.width = `${arrowDimensions.width}px`;
+        arrowHtmlNode.style.height = `${arrowDimensions.height}px`;
+        arrowHtmlNode.style.top = `${arrowDimensions.top}px`;
+        arrowHtmlNode.style.left = `${arrowDimensions.left}px`;
+    }
+    calculateTooltipArrowDimensions(eventTargetDimensions, arrowPixelSize, alignDimensionOne) {
         let arrowDimensions = new Dimensions();
-        let arrowPixelSize = this.translateCssDimToPixelValue(tooltipHtmlNode, arrowSize, arrowSizeDim);
-        let arrowSquareSideSize = this.getSquareSideSizeByMidTilConerLineSize(arrowPixelSize);
+        let arrowSquareSideSize = this.getRectSideSizeByMidTilConerLineSize(arrowPixelSize);
         arrowDimensions.width = arrowSquareSideSize;
         arrowDimensions.height = arrowSquareSideSize;
-        const eventTargetDimensions = this.getHtmlNodeDimensions(eventTargetHtmlNode);
-        // const tooltipHtmlNodeDimensions: Dimensions = this.getHtmlNodeDimensions( tooltipHtmlNode );
-        if ((browserTabBorderSide === Constants.AlignDimensionOne.BROWSER_TAB_BORDER_TOP)) {
+        if ((alignDimensionOne === Constants.AlignDimensionOne.BROWSER_TAB_BORDER_TOP)) {
             const eventTargetWidthMid = (eventTargetDimensions.width / 2) + eventTargetDimensions.left;
             arrowDimensions.left = eventTargetWidthMid - (arrowSquareSideSize / 2);
             arrowDimensions.top = eventTargetDimensions.top - (arrowPixelSize * 2); //TDOD: - dimensionOnePadding
         }
-        else if ((browserTabBorderSide === Constants.AlignDimensionOne.BROWSER_TAB_BORDER_RIGHT)) {
+        else if ((alignDimensionOne === Constants.AlignDimensionOne.BROWSER_TAB_BORDER_RIGHT)) {
             const eventTargetHeightMid = eventTargetDimensions.top + (eventTargetDimensions.height / 2);
             arrowDimensions.top = eventTargetHeightMid - arrowPixelSize;
             arrowDimensions.left = eventTargetDimensions.right + (arrowSquareSideSize - arrowPixelSize); //TDOD: + dimensionOnePadding
         }
-        else if ((browserTabBorderSide === Constants.AlignDimensionOne.BROWSER_TAB_BORDER_LEFT)) {
+        else if ((alignDimensionOne === Constants.AlignDimensionOne.BROWSER_TAB_BORDER_LEFT)) {
             const eventTargetHeightMid = eventTargetDimensions.top + (eventTargetDimensions.height / 2);
             arrowDimensions.top = eventTargetHeightMid - arrowPixelSize;
             arrowDimensions.left = eventTargetDimensions.left - (arrowPixelSize * 2); //TDOD: - dimensionOnePadding
         }
-        else if ((browserTabBorderSide === Constants.AlignDimensionOne.BROWSER_TAB_BORDER_BOTTOM)) {
+        else if ((alignDimensionOne === Constants.AlignDimensionOne.BROWSER_TAB_BORDER_BOTTOM)) {
             const eventTargetWidthMid = (eventTargetDimensions.width / 2) + eventTargetDimensions.left;
             arrowDimensions.left = eventTargetWidthMid - (arrowSquareSideSize / 2);
             arrowDimensions.top = eventTargetDimensions.bottom + (arrowSquareSideSize - arrowPixelSize); //TDOD: + dimensionOnePadding
         }
         //arrowDimensions.right = arrowDimensions.left + arrowDimensions.width; encommented, since not clear, whether translateX is doint what with top and left css rules, and right and bottom then?
         //arrowDimensions.bottom = arrowDimensions.top - arrowDimensions.height; 
-        arrowHtmlNode.style.width = `${arrowDimensions.width}px`;
-        arrowHtmlNode.style.height = `${arrowDimensions.height}px`;
-        arrowHtmlNode.style.top = `${arrowDimensions.top}px`;
-        arrowHtmlNode.style.left = `${arrowDimensions.left}px`;
         return arrowDimensions;
-    }
-    getSquareSideSizeByMidTilConerLineSize(midTilCornerLineSize) {
-        let retVal = 0;
-        // in a square, the mid til corner line is the side of a little triangle, 
-        // with 2 angles of 45deg and the square side is then the hypothenouse of the little square triangle.
-        // the sin(45deg) is then the catet / hypoothenouse, and midTilCornerLineSize / retVal
-        // midTilCornerLineSize / retVal = sin(45deg);
-        // m / retVal = sin45
-        // retVal * ( m / retVal ) = sin45 * retVal
-        // m = sin45 * retVal
-        // retVal = m / sin45
-        retVal = Math.floor(midTilCornerLineSize / Math.sin((45 * (Math.PI / 180))));
-        return retVal;
-    }
-    translateCssDimToPixelValue(tooltipHtmlNode, arrowSize, arrowSizeDim) {
-        let pixelValue = 0;
-        if (arrowSizeDim == Constants.CssSizeDim.PX) {
-            pixelValue = arrowSize;
-        }
-        else if (arrowSizeDim == Constants.CssSizeDim.REM) {
-            const htmlNodeHtml = document.getElementsByTagName("HTML")[0];
-            const fontSize = window.getComputedStyle(htmlNodeHtml).getPropertyValue("font-size");
-            const remRelativePixelValue = Math.floor(parseFloat(fontSize));
-            pixelValue = (arrowSize * remRelativePixelValue);
-        }
-        else {
-            throw new Error("Css Dim ${arrowSizeDim} not supported");
-        }
-        return pixelValue;
     }
     getBrowserTabDimensions() {
         const zero = 0;
@@ -208,6 +178,74 @@ export class TooltipLib {
         dimensions.left = Math.floor(rect.left) + Math.floor(window.scrollX);
         dimensions.bottom = Math.floor(rect.bottom);
         return dimensions;
+    }
+    getRectSideSizeByMidTilConerLineSize(midTilCornerLineSize) {
+        let retVal = 0;
+        // in a square, the mid til corner line is the side of a little triangle, 
+        // with 2 angles of 45deg and the square side is then the hypothenouse of the little square triangle.
+        // the sin(45deg) is then the catet / hypoothenouse, and midTilCornerLineSize / retVal
+        // midTilCornerLineSize / retVal = sin(45deg);
+        // m / retVal = sin45
+        // retVal * ( m / retVal ) = sin45 * retVal
+        // m = sin45 * retVal
+        // retVal = m / sin45
+        retVal = Math.floor(midTilCornerLineSize / Math.sin((45 * (Math.PI / 180))));
+        return retVal;
+    }
+    translateToPixelValue(sizeNumeric, sizeUnit) {
+        let pixelValue = 0;
+        // this method throws Error if the css dimension is not supported. Supported are px, % and rem.
+        this.validateCssSizeDim(sizeUnit);
+        if (sizeUnit == Constants.CssSizeDim.PX) {
+            pixelValue = sizeNumeric;
+        }
+        else if (sizeUnit == Constants.CssSizeDim.REM) {
+            const remRelativePixelValue = this.getRemRelativePixelValue();
+            pixelValue = (sizeNumeric * remRelativePixelValue);
+        }
+        return pixelValue;
+    }
+    translateCssDimToPixelValue(sizeCssValue) {
+        let pixelValue = 0;
+        const sizeNumeric = parseFloat(sizeCssValue);
+        const sizeNumericAsText = `${sizeNumeric}`;
+        const sizeUnit = sizeCssValue.substring(sizeNumericAsText.length);
+        pixelValue = this.translateToPixelValue(sizeNumeric, sizeUnit);
+        return pixelValue;
+    }
+    getRemRelativePixelValue() {
+        const HtmlTagNameRemRule = "HTML";
+        const CssRemRuleName = "font-size";
+        const htmlNodeHtml = document.getElementsByTagName(HtmlTagNameRemRule)[0];
+        const fontSize = window.getComputedStyle(htmlNodeHtml).getPropertyValue(CssRemRuleName);
+        const remRelativePixelValue = Math.floor(parseFloat(fontSize));
+        return remRelativePixelValue;
+    }
+    validateCssSizeDim(cssSizeDimInputArg) {
+        let isValid = 0;
+        // arrow size dim text value validation code block 
+        let arrowSizeDimMatched = 0;
+        const sizeDimSupported = Constants.CssSizeDim;
+        for (let sizeDimKey in sizeDimSupported) {
+            const sizeDim = sizeDimSupported[sizeDimKey];
+            arrowSizeDimMatched = (cssSizeDimInputArg == sizeDim) ? 1 : 0;
+            if (arrowSizeDimMatched === 1) {
+                break;
+            }
+        }
+        if (arrowSizeDimMatched === 0) {
+            const sizeDimsSupported = Object.keys(Constants.CssSizeDim).join(", ");
+            throw new Error(`Arrow Size dim ${cssSizeDimInputArg} not supported, supported are: (${sizeDimsSupported})`);
+        }
+        return isValid;
+    }
+    getCssVariableForNode(htmlNode, cssVariableName) {
+        if (!htmlNode) {
+            throw new Error("htmlNode is null or undefined");
+        }
+        return window
+            .getComputedStyle(htmlNode)
+            .getPropertyValue(cssVariableName);
     }
 }
 //# sourceMappingURL=TooltipLib.js.map

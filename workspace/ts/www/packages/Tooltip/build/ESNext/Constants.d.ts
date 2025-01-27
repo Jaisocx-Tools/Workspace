@@ -32,7 +32,7 @@ export declare class Constants {
         tooltipPaddingSizeDimAlignDimensionTwo: any;
         alternativeTabBorderSides: number[];
         withArrow: number;
-        arrowSize: number;
+        arrowSize: any;
         arrowSizeDim: any;
         cssClasses: any;
         template: any;
