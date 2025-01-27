@@ -55,7 +55,17 @@ export class Constants {
       "text": "Hello!",
     };
   };
-  
+
+  static tooltipMainTemplate: any = `
+  <tooltip-main id="{{ id }}" class="{{ cssClasses }}">
+     <tooltip-arrow class="tooltip-arrow"></tooltip-arrow>
+     <tooltip-content class="tooltip-content">{{ tooltipContent }}</tooltip-content>
+  </tooltip-main>
+  `;
+
+  static tooltipMainTemplateData: object = {
+  };
+
 }
 
 

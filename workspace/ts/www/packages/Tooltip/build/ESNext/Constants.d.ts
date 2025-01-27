@@ -38,5 +38,7 @@ export declare class Constants {
         template: any;
         templateData: object;
     };
+    static tooltipMainTemplate: any;
+    static tooltipMainTemplateData: object;
 }
 //# sourceMappingURL=Constants.d.ts.map

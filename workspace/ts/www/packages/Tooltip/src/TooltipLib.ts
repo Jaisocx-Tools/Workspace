@@ -273,23 +273,23 @@ export class TooltipLib {
     } else if (
       ( browserTabBorderSide === Constants.AlignDimensionOne.BROWSER_TAB_BORDER_RIGHT ) 
     ) {
-      const eventTargetHeightMid: number = ( eventTargetDimensions.height / 2 ) + eventTargetDimensions.top;
+      const eventTargetHeightMid: number = eventTargetDimensions.top + ( eventTargetDimensions.height / 2 );
       arrowDimensions.top = eventTargetHeightMid - arrowPixelSize;
-      arrowDimensions.left = eventTargetDimensions.right; //TDOD: + dimensionOnePadding
+      arrowDimensions.left = eventTargetDimensions.right + ( arrowSquareSideSize - arrowPixelSize ); //TDOD: + dimensionOnePadding
 
     } else if (
       ( browserTabBorderSide === Constants.AlignDimensionOne.BROWSER_TAB_BORDER_LEFT )
     ) {
-      const eventTargetHeightMid: number = ( eventTargetDimensions.height / 2 ) + eventTargetDimensions.top;
+      const eventTargetHeightMid: number = eventTargetDimensions.top + ( eventTargetDimensions.height / 2 );
       arrowDimensions.top = eventTargetHeightMid - arrowPixelSize;
-      arrowDimensions.left = eventTargetDimensions.left - tooltipHtmlNodeDimensions.width - arrowPixelSize; //TDOD: - dimensionOnePadding
+      arrowDimensions.left = eventTargetDimensions.left - ( arrowPixelSize * 2 ); //TDOD: - dimensionOnePadding
 
     } else if (
       ( browserTabBorderSide === Constants.AlignDimensionOne.BROWSER_TAB_BORDER_BOTTOM )
     ) {
       const eventTargetWidthMid: number = ( eventTargetDimensions.width / 2 ) + eventTargetDimensions.left;
-      arrowDimensions.left = eventTargetWidthMid - arrowPixelSize;
-      arrowDimensions.top = eventTargetDimensions.bottom; //TDOD: + dimensionOnePadding
+      arrowDimensions.left = eventTargetWidthMid - ( arrowSquareSideSize / 2 );
+      arrowDimensions.top = eventTargetDimensions.bottom + ( arrowSquareSideSize - arrowPixelSize ); //TDOD: + dimensionOnePadding
 
     }
 

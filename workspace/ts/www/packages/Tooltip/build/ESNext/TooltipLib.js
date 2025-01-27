@@ -140,19 +140,19 @@ export class TooltipLib {
             arrowDimensions.top = eventTargetDimensions.top - (arrowPixelSize * 2); //TDOD: - dimensionOnePadding
         }
         else if ((browserTabBorderSide === Constants.AlignDimensionOne.BROWSER_TAB_BORDER_RIGHT)) {
-            const eventTargetHeightMid = (eventTargetDimensions.height / 2) + eventTargetDimensions.top;
+            const eventTargetHeightMid = eventTargetDimensions.top + (eventTargetDimensions.height / 2);
             arrowDimensions.top = eventTargetHeightMid - arrowPixelSize;
-            arrowDimensions.left = eventTargetDimensions.right; //TDOD: + dimensionOnePadding
+            arrowDimensions.left = eventTargetDimensions.right + (arrowSquareSideSize - arrowPixelSize); //TDOD: + dimensionOnePadding
         }
         else if ((browserTabBorderSide === Constants.AlignDimensionOne.BROWSER_TAB_BORDER_LEFT)) {
-            const eventTargetHeightMid = (eventTargetDimensions.height / 2) + eventTargetDimensions.top;
+            const eventTargetHeightMid = eventTargetDimensions.top + (eventTargetDimensions.height / 2);
             arrowDimensions.top = eventTargetHeightMid - arrowPixelSize;
-            arrowDimensions.left = eventTargetDimensions.left - tooltipHtmlNodeDimensions.width - arrowPixelSize; //TDOD: - dimensionOnePadding
+            arrowDimensions.left = eventTargetDimensions.left - (arrowPixelSize * 2); //TDOD: - dimensionOnePadding
         }
         else if ((browserTabBorderSide === Constants.AlignDimensionOne.BROWSER_TAB_BORDER_BOTTOM)) {
             const eventTargetWidthMid = (eventTargetDimensions.width / 2) + eventTargetDimensions.left;
-            arrowDimensions.left = eventTargetWidthMid - arrowPixelSize;
-            arrowDimensions.top = eventTargetDimensions.bottom; //TDOD: + dimensionOnePadding
+            arrowDimensions.left = eventTargetWidthMid - (arrowSquareSideSize / 2);
+            arrowDimensions.top = eventTargetDimensions.bottom + (arrowSquareSideSize - arrowPixelSize); //TDOD: + dimensionOnePadding
         }
         //arrowDimensions.right = arrowDimensions.left + arrowDimensions.width; encommented, since not clear, whether translateX is doint what with top and left css rules, and right and bottom then?
         //arrowDimensions.bottom = arrowDimensions.top - arrowDimensions.height; 

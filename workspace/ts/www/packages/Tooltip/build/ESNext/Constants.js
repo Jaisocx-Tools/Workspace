@@ -44,5 +44,12 @@ export class Constants {
             "text": "Hello!",
         };
     };
+    static tooltipMainTemplate = `
+  <tooltip-main id="{{ id }}" class="{{ cssClasses }}">
+     <tooltip-arrow class="tooltip-arrow"></tooltip-arrow>
+     <tooltip-content class="tooltip-content">{{ tooltipContent }}</tooltip-content>
+  </tooltip-main>
+  `;
+    static tooltipMainTemplateData = {};
 }
 //# sourceMappingURL=Constants.js.map

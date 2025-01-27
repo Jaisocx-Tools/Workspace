@@ -7,13 +7,21 @@
   --tooltip__font_size: 1rem;
   --tooltip__border_width: 0.5px;
   --tooltip__border_style: solid;
-  --tooltip__border_color: beige;
+  --tooltip__border_color: #885;
   --tooltip__border_radius: 1rem;
 
-  --tooltip__padding: 1rem;
-  --tooltip_arrow__size: 1rem;
+  --tooltip__padding: 2rem;
+  --tooltip_arrow__size: 0.48rem;
 
-  /* testing opurpose variables */
+
+  --tooltip_arrow__background: var(--tooltip__background);
+  
+  --tooltip_arrow__border_color: var(--tooltip__border_color);
+  --tooltip_arrow__border_style: var(--tooltip__border_style);
+  --tooltip_arrow__border_width: var(--tooltip__border_width);
+
+
+  /* testing purpose variables */
   --tooltip__width: 8rem;
   --tooltip__height: 8rem;
 }

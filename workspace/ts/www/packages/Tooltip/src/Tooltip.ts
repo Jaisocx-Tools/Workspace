@@ -239,21 +239,36 @@ export class Tooltip implements TooltipInterface {
     }
 
     // the TemplateRenderer produces the html from the html template and json data via .render() method call.
-    let html: any = this.templateRenderer.render();
-    let node: HTMLElement = document.createElement("tooltip-main");
-    node.id = this.mainHtmlNodeId;
-    node.className = `${Constants.CssClassNames.TOOLTIP_MAIN} ${this.cssClasses}`;
-    node.innerHTML = html;
+    const contentHtml: any = this.templateRenderer.render();
+
+    // the main template contains in the placeholder {{ tooltipContent }} the rendered template from the custom template and data
+    const templateRedererTechniq = new TemplateRenderer();
+    const html: any = templateRedererTechniq
+      .setTemplate( Constants.tooltipMainTemplate )
+      .setData(
+        {
+          "id": this.mainHtmlNodeId,
+          "cssClasses": `${Constants.CssClassNames.TOOLTIP_MAIN} ${this.cssClasses}`,
+          "tooltipContent": contentHtml,
+        }
+      )
+      .render();
+    
     // at the end of the html BODY in the current html document,
     // the html from the tooltip is being inserted, with html attributes id="" and class=""
-    document.getElementsByTagName("BODY")[0].append(node);
-
-    // @ts-ignore      
+    document.getElementsByTagName("BODY")[0]
+      .insertAdjacentHTML (
+        "beforeend",
+        html
+      );
+    
+    //@ts-ignore      
     this.mainHtmlNode = document.getElementById( this.mainHtmlNodeId );
-
-    if ( this.withArrow === 1 ) {
-      this.renderTooltipArrowHtmlNode();
-    }
+    
+    //@ts-ignore
+    this.arrowHtmlNode = this.mainHtmlNode.getElementsByClassName (
+      Constants.CssClassNames.TOOLTIP_ARROW
+    )[0] as HTMLElement;
 
     // TODO: rewrite, using improved DOM events hanlder
     this.addEventHandlers();
@@ -508,7 +523,7 @@ export class Tooltip implements TooltipInterface {
     } else if (
       ( browserTabBorderSide === Constants.AlignDimensionOne.BROWSER_TAB_BORDER_BOTTOM )
     ) {
-      tooltipHtmlNodeDimensions.bottom += arrowPixelSize;
+      tooltipHtmlNodeDimensions.top += arrowPixelSize;
 
     }
 

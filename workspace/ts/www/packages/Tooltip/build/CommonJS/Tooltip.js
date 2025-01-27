@@ -132,19 +132,39 @@ class Tooltip {
             this.mainHtmlNodeId = "jaisocx_tooltip_" + Math.random() + (new Date()).getTime();
         }
         // the TemplateRenderer produces the html from the html template and json data via .render() method call.
-        let html = this.templateRenderer.render();
-        let node = document.createElement("tooltip-main");
-        node.id = this.mainHtmlNodeId;
-        node.className = `${Constants_js_1.Constants.CssClassNames.TOOLTIP_MAIN} ${this.cssClasses}`;
-        node.innerHTML = html;
+        const contentHtml = this.templateRenderer.render();
+        // the main template contains in the placeholder {{ tooltipContent }} the rendered template from the custom template and data
+        const templateRedererTechniq = new template_renderer_1.TemplateRenderer();
+        const html = templateRedererTechniq
+            .setTemplate(Constants_js_1.Constants.tooltipMainTemplate)
+            .setData({
+            "id": this.mainHtmlNodeId,
+            "cssClasses": `${Constants_js_1.Constants.CssClassNames.TOOLTIP_MAIN} ${this.cssClasses}`,
+            "tooltipContent": contentHtml,
+        })
+            .render();
         // at the end of the html BODY in the current html document,
         // the html from the tooltip is being inserted, with html attributes id="" and class=""
-        document.getElementsByTagName("BODY")[0].append(node);
-        // @ts-ignore      
+        document.getElementsByTagName("BODY")[0]
+            .insertAdjacentHTML("beforeend", html);
+        //@ts-ignore      
         this.mainHtmlNode = document.getElementById(this.mainHtmlNodeId);
-        if (this.withArrow === 1) {
-            this.renderTooltipArrowHtmlNode();
-        }
+        //@ts-ignore
+        this.arrowHtmlNode = this.mainHtmlNode.getElementsByClassName(Constants_js_1.Constants.CssClassNames.TOOLTIP_ARROW)[0];
+        // let node: HTMLElement = document.createElement("tooltip-main");
+        // node.id = this.mainHtmlNodeId;
+        // node.className = `${Constants.CssClassNames.TOOLTIP_MAIN} ${this.cssClasses}`;
+        // at the end of the html BODY in the current html document,
+        // the html from the tooltip is being inserted, with html attributes id="" and class=""
+        // document.getElementsByTagName("BODY")[0].append(node);
+        // if ( this.withArrow === 1 ) {
+        //   this.renderTooltipArrowHtmlNode();
+        // }
+        // //@ts-ignore
+        // this.mainHtmlNode.insertAdjacentHTML (
+        //   "afterbegin",
+        //   html
+        // );
         // TODO: rewrite, using improved DOM events hanlder
         this.addEventHandlers();
         return this;
@@ -325,7 +345,7 @@ class Tooltip {
             tooltipHtmlNodeDimensions.left -= arrowPixelSize;
         }
         else if ((browserTabBorderSide === Constants_js_1.Constants.AlignDimensionOne.BROWSER_TAB_BORDER_BOTTOM)) {
-            tooltipHtmlNodeDimensions.bottom += arrowPixelSize;
+            tooltipHtmlNodeDimensions.top += arrowPixelSize;
         }
         //@ts-ignore
         this.mainHtmlNode.style.top = `${tooltipHtmlNodeDimensions.top}px`;
