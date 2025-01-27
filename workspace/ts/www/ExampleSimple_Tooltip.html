@@ -1,0 +1,79 @@
+<html>
+  <head>
+    <title>Tooltip Example</title>
+
+    <link rel="stylesheet" href="packages/Tooltip/assets/themes/theme-darkmode/tooltip-theme-darkmode.css" />
+    <link rel="stylesheet" href="packages/Tooltip/assets/tooltip-styles-main.css" />
+
+    <style>
+    .tooltip-show-button-holder {
+      position: fixed;
+      top: 250px;
+      left: 500px;
+    }
+    </style>
+  </head>
+  <body>
+
+    <h1>Tooltip Example</h1>
+
+    <div class="tooltip-show-button-holder overflow-hidden">
+      <button id="tooltip-show-button">B</button>
+      <button id="tooltip-show-button2">B2</button>
+    </div>
+ 
+    <script src="packages/EventEmitter/build/Simple/EventEmitter.js"></script>
+    <script src="packages/EventEmitter/build/Simple/ImprovedRenderEventEmitter.js"></script>
+
+    <script src="packages/TemplateRenderer/build/Simple/TemplateRenderer.js"></script>
+
+    <script src="packages/Tooltip/build/Simple/Types.js"></script>
+    <script src="packages/Tooltip/build/Simple/Constants.js"></script>
+    <script src="packages/Tooltip/build/Simple/TooltipLib.js"></script>
+    <script src="packages/Tooltip/build/Simple/Tooltip.js"></script>
+
+
+
+    <!-- <script src="examples/ExampleTooltip/build/webpack/bundle.js"></script> -->
+  
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+
+        // const example = new ExampleTooltip();
+        // example.addTooltip (
+        //   "tooltip-show-button2",
+        //   "theme-darkmode",
+        //   "Hello World!"
+        // );
+        //return;
+
+        const tooltip = new Tooltip();
+        tooltip
+          .setDebug(true)
+          .setEventTargetHtmlNodeId("tooltip-show-button")
+          //.setCssClasses("tooltip theme-darkmode")
+          //.setTooltipAlignDimensionOne(Constants.AlignDimensionOne.BROWSER_TAB_BORDER_TOP)
+          .setTooltipAlignDimensionOne(Constants.AlignDimensionOne.BROWSER_TAB_BORDER_RIGHT)
+          //.setTooltipAlignDimensionOne(Constants.AlignDimensionOne.BROWSER_TAB_BORDER_LEFT)
+          //.setTooltipAlignDimensionOne(Constants.AlignDimensionOne.BROWSER_TAB_BORDER_BOTTOM)
+          .setAlternativeTabBorderSides(
+            [
+              Constants.AlignDimensionOne.BROWSER_TAB_BORDER_TOP,
+              Constants.AlignDimensionOne.BROWSER_TAB_BORDER_RIGHT,
+              Constants.AlignDimensionOne.BROWSER_TAB_BORDER_LEFT,
+              Constants.AlignDimensionOne.BROWSER_TAB_BORDER_BOTTOM,
+            ]
+          )
+          .setTooltipAlignDimensionTwo(Constants.AlignDimensionTwo.EVENT_TARGET_START)
+          .setTooltipPaddingAlignDimensionTwo (
+            24,
+            Constants.CssPaddingUnits.PERCENTAGE
+          )
+          .render();
+        
+        tooltip.showTooltip();
+      });
+    </script>
+  </body>
+</html>
+

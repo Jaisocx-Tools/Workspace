@@ -45,7 +45,7 @@
     {
       "path": "packages/Tree",
       "name": "tree",
-      "build": true,
+      "build": false,
       "build-simple-enable": true,
       "dependencies": [
         {
@@ -119,7 +119,42 @@
           }
         ]
       }
+    },
+    {
+      "path": "packages/Tooltip",
+      "name": "tooltip",
+      "build": true,
+      "build-simple-enable": true,
+      "dependencies": [
+        {
+          "name": "@jaisocx/template-renderer",
+          "path": "packages/TemplateRenderer"
+        }
+      ],
+      "build-files": [
+        "Tooltip.js",
+        "Constants.js",
+        "Types.js",
+        "TooltipLib.js"
+      ]
+    },
+    {
+      "path": "examples/ExampleTooltip",
+      "name": "example-tooltip",
+      "build": true,
+      "build-simple-enable": true,
+      "dependencies": [
+        {
+          "name": "@jaisocx/tooltip",
+          "path": "packages/Tooltip"
+        }
+      ],
+      "build-files": [
+        "ExampleTooltip.js"
+      ]
     }
   ]
 }
+
+
 

@@ -9,7 +9,7 @@ export declare class Tree extends ImprovedRenderEventEmitter {
     mainHolderHtmlNode: HTMLElement | null;
     url: string | null;
     data: any | null;
-    metadata: TreeConf;
+    conf: TreeConf;
     subtreeLength: number;
     subtreeLengthDeep: number;
     templateRenderer: TemplateRenderer;
@@ -26,7 +26,7 @@ export declare class Tree extends ImprovedRenderEventEmitter {
     setNodesOpenedMode(openedMode: number): Tree;
     setUrl(url: string | null): Tree;
     setMainHtmlNodeId(mainHtmlNodeId: string): Tree;
-    setConf(metadata: TreeConf): Tree;
+    setConf(conf: TreeConf): Tree;
     setModifiable(isModifiable: boolean): Tree;
     setRenderingMode(mode: number): Tree;
     setDataTypesCssClassesEnabled(dataTypesCssEnabled: boolean): Tree;

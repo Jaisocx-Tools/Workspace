@@ -2,7 +2,7 @@ import { TreeConstants } from "./TreeConstants.js";
 import { TreeConf } from "./TreeConf.js";
 
 export class TreeAdapter {
-  metadata: TreeConf;
+  conf: TreeConf;
 
   nodesWithIcons: boolean;
 
@@ -11,7 +11,7 @@ export class TreeAdapter {
   dataTypesCssClassesEnabled: boolean;
 
   constructor() {
-    this.metadata = new TreeConf();
+    this.conf = new TreeConf();
     this.nodesWithIcons = TreeConstants.Defaults.nodesWithIcons;
     this.nodesOpenedMode = TreeConstants.Defaults.nodesOpenedMode;
     this.dataTypesCssClassesEnabled = TreeConstants.Defaults.dataTypesCssClassesEnabled;

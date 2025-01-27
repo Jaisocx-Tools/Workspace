@@ -26,7 +26,7 @@ export class Tree extends ImprovedRenderEventEmitter {
 
   data: any|null;
 
-  metadata: TreeConf;
+  conf: TreeConf;
 
   subtreeLength: number;
 
@@ -59,7 +59,7 @@ export class Tree extends ImprovedRenderEventEmitter {
     this.url = "";
 
     this.data = null;
-    this.metadata = new TreeConf();
+    this.conf = new TreeConf();
 
     this.subtreeLength = 0;
     this.subtreeLengthDeep = 0;
@@ -128,9 +128,9 @@ export class Tree extends ImprovedRenderEventEmitter {
     return this;
   }
 
-  setConf(metadata: TreeConf): Tree {
+  setConf(conf: TreeConf): Tree {
     // optional method
-    this.metadata = metadata;
+    this.conf = conf;
     return this;
   }
 
@@ -204,9 +204,9 @@ export class Tree extends ImprovedRenderEventEmitter {
 
     if (
       !this.data
-        || !this.metadata
+        || !this.conf
     ) {
-      throw new Error(`Empty: data ${this.data} or metadata ${this.metadata}`);
+      throw new Error(`Empty: data ${this.data} or conf ${this.conf}`);
     }
 
     this.mainHolderHtmlNode = document.getElementById(this.mainHtmlNodeId);
@@ -357,7 +357,7 @@ export class Tree extends ImprovedRenderEventEmitter {
 
     let subtreeJsonNodes: any = null;
     if (this.renderingMode === TreeConstants.RenderingMode.Conf) {
-      subtreeJsonNodes = node[this.metadata.SUBTREE];
+      subtreeJsonNodes = node[this.conf.SUBTREE];
     } else if (this.renderingMode === TreeConstants.RenderingMode.Ease) {
       subtreeJsonNodes = Object.values(node)[0];
     }
@@ -530,12 +530,12 @@ export class Tree extends ImprovedRenderEventEmitter {
     if (this.nodesOpenedMode === TreeConstants.NodesOpenedMode.ALL_HIDDEN) {
       ul.style.display = "none";
     } else if (
-      (!node[this.metadata.NODE__OPENED])
+      (!node[this.conf.NODE__OPENED])
       && (this.nodesOpenedMode === TreeConstants.NodesOpenedMode.JSON_DATA_DEFINED)
     ) {
       ul.style.display = "none";
     } else if (
-      (node[this.metadata.NODE__OPENED] === true)
+      (node[this.conf.NODE__OPENED] === true)
       && (this.nodesOpenedMode === TreeConstants.NodesOpenedMode.JSON_DATA_DEFINED)
     ) {
       ul.style.display = "block";
@@ -570,9 +570,9 @@ export class Tree extends ImprovedRenderEventEmitter {
     flatNodeHolderClone: any,
     holder: HTMLElement
   ): any {
-    const id: string = node[this.metadata.NODE__ID] ?? null;
-    const holderId: string = node[this.metadata.NODE__HOLDER_ID] ?? null;
-    const flatCloneHolderId: string = flatNodeHolderClone._flatClone ? flatNodeHolderClone._flatClone[this.metadata.NODE__ID] : null;
+    const id: string = node[this.conf.NODE__ID] ?? null;
+    const holderId: string = node[this.conf.NODE__HOLDER_ID] ?? null;
+    const flatCloneHolderId: string = flatNodeHolderClone._flatClone ? flatNodeHolderClone._flatClone[this.conf.NODE__ID] : null;
 
     const pathInJsonOfNodeHolder: string[] = flatNodeHolderClone._pathArray ?? ["ROOT-unhandled",];
     let pathKeyInNodeHolder = JSON.stringify(nodeKey);
@@ -581,8 +581,8 @@ export class Tree extends ImprovedRenderEventEmitter {
       ...pathInJsonOfNodeHolder,
     ];
     if ((pathInJsonOfNodeHolder.length > 1) && this.renderingMode === TreeConstants.RenderingMode.Conf) {
-      const subtreePropName: string = JSON.stringify(this.metadata.SUBTREE);
-      pathInJsonArray.push(this.metadata.SUBTREE);
+      const subtreePropName: string = JSON.stringify(this.conf.SUBTREE);
+      pathInJsonArray.push(this.conf.SUBTREE);
       pathInJsonArray.push(nodeKey);
       //pathKeyInNodeHolder = `[${subtreePropName}][${pathKeyInNodeHolder}]`;
     } else if (this.renderingMode === TreeConstants.RenderingMode.Ease) {
@@ -615,8 +615,8 @@ export class Tree extends ImprovedRenderEventEmitter {
     }
 
     const nodeClone: any = {
-      [this.metadata.NODE__ID]: id,
-      [this.metadata.NODE__HOLDER_ID]: holderId,
+      [this.conf.NODE__ID]: id,
+      [this.conf.NODE__HOLDER_ID]: holderId,
       _flatCloneHolderId: flatCloneHolderId,
       _id: nodePosition,
       _key: nodeKey,
@@ -821,9 +821,9 @@ export class Tree extends ImprovedRenderEventEmitter {
 
   getInModeConfDataNodeIsTreeItem(node: object): boolean {
     // @ts-ignore
-    const nodeLabelTextPropertyValue: any = node[this.metadata.NODE_LABEL__TEXT];
+    const nodeLabelTextPropertyValue: any = node[this.conf.NODE_LABEL__TEXT];
 
-    // the main metadata required dsts json field is label text. and it cannot be an object, but a string or number.
+    // the main conf required dsts json field is label text. and it cannot be an object, but a string or number.
     const isTreeItem: boolean = (nodeLabelTextPropertyValue && ((nodeLabelTextPropertyValue) !== "object"));
 
     return isTreeItem;

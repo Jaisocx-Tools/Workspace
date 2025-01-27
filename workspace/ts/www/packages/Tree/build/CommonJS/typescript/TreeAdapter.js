@@ -5,7 +5,7 @@ const TreeConstants_js_1 = require("./TreeConstants.js");
 const TreeConf_js_1 = require("./TreeConf.js");
 class TreeAdapter {
     constructor() {
-        this.metadata = new TreeConf_js_1.TreeConf();
+        this.conf = new TreeConf_js_1.TreeConf();
         this.nodesWithIcons = TreeConstants_js_1.TreeConstants.Defaults.nodesWithIcons;
         this.nodesOpenedMode = TreeConstants_js_1.TreeConstants.Defaults.nodesOpenedMode;
         this.dataTypesCssClassesEnabled = TreeConstants_js_1.TreeConstants.Defaults.dataTypesCssClassesEnabled;

@@ -1,0 +1,22 @@
+
+
+.tooltip {
+  --tooltip__background: #fffffa;
+  --tooltip__text_color: maroon;
+  --tooltip__font_family: Courier;
+  --tooltip__font_size: 1rem;
+  --tooltip__border_width: 0.5px;
+  --tooltip__border_style: solid;
+  --tooltip__border_color: beige;
+  --tooltip__border_radius: 1rem;
+
+  --tooltip__padding: 1rem;
+
+  --tooltip__width: 8rem;
+  --tooltip__height: 38rem;
+}
+
+@media ( (max-width: 440px) and (orientation: portrait) ) {
+
+}
+

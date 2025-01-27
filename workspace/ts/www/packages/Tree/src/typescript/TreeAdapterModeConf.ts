@@ -27,7 +27,7 @@ export class TreeAdapterModeConf extends TreeAdapter implements ITreeAdapter {
     ) {
       openButtonClassName = TreeConstants.TreeCssClassNames.CLASS_OPENED;
     } else if (
-      (node[this.metadata.NODE__OPENED] === true)
+      (node[this.conf.NODE__OPENED] === true)
       && (this.nodesOpenedMode === TreeConstants.NodesOpenedMode.JSON_DATA_DEFINED)
     ) {
       openButtonClassName = TreeConstants.TreeCssClassNames.CLASS_OPENED;
@@ -39,16 +39,16 @@ export class TreeAdapterModeConf extends TreeAdapter implements ITreeAdapter {
     );
 
     const dataForRendering: IRenderTemplateRendererData = {
-      dataId: node[this.metadata.NODE__ID],
-      dataHolderId: node[this.metadata.NODE__HOLDER_ID],
-      dataOrder: node[this.metadata.NODE__ORDER],
+      dataId: node[this.conf.NODE__ID],
+      dataHolderId: node[this.conf.NODE__HOLDER_ID],
+      dataOrder: node[this.conf.NODE__ORDER],
       dataJson: this.escapeHTMLForAttribute(JSON.stringify(flatNodeClone)),
       openButtonStateClassName: openButtonClassName,
       cssClasses,
-      iconSrc: node[this.metadata.NODE_ICON__SRC],
-      iconShowClassName: (this.nodesWithIcons || node[this.metadata.NODE_ICON__SRC]) ? "icon-show" : "icon-hide",
-      labelText: node[this.metadata.NODE_LABEL__TEXT],
-      hyperlink: node[this.metadata.NODE__HYPERLINK] ?? "javascript: void(0);",
+      iconSrc: node[this.conf.NODE_ICON__SRC],
+      iconShowClassName: (this.nodesWithIcons || node[this.conf.NODE_ICON__SRC]) ? "icon-show" : "icon-hide",
+      labelText: node[this.conf.NODE_LABEL__TEXT],
+      hyperlink: node[this.conf.NODE__HYPERLINK] ?? "javascript: void(0);",
       hasSubtree,
     };
 
@@ -59,7 +59,7 @@ export class TreeAdapterModeConf extends TreeAdapter implements ITreeAdapter {
     dataTypeString: string,
     node: any
   ): string {
-    const cssClassesNodeValue: string = node[this.metadata.NODE__CSS_CLASS_NAME];
+    const cssClassesNodeValue: string = node[this.conf.NODE__CSS_CLASS_NAME];
 
     const cssClassesArray: string[] = [
       ("class=\""),
@@ -79,7 +79,7 @@ export class TreeAdapterModeConf extends TreeAdapter implements ITreeAdapter {
     dataTypeString: string,
     node: any
   ): string {
-    const cssClassesNodeValue: string = node[this.metadata.NODE__CSS_CLASS_NAME];
+    const cssClassesNodeValue: string = node[this.conf.NODE__CSS_CLASS_NAME];
 
     const cssClassesArray: string[] = [
       ("class=\""),

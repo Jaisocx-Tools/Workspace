@@ -1,0 +1,30 @@
+@import url( '@jaisocx-tooltip-assets/themes/theme-base/tooltip-theme-base.css' );
+@import url( '@jaisocx-tooltip-assets/themes/theme-darkmode/tooltip-theme-darkmode.css' );
+
+
+.tooltip {
+  background: var(--tooltip__background);
+  
+  font-family: var(--tooltip__font_family);
+  font-size: var(--tooltip__font_size);
+  color: var(--tooltip__text_color);
+
+  border-width: var(--tooltip__border_width);
+  border-style: var(--tooltip__border_style);
+  border-color: var(--tooltip__border_color);
+  border-radius: var(--tooltip__border_radius);
+
+  padding: var(--tooltip__padding);
+
+  position: fixed;
+  display: none;
+
+
+  /* temporary code block */
+  min-width: var(--tooltip__width);
+  min-height: var(--tooltip__height);
+
+  width: var(--tooltip__width);
+  height: var(--tooltip__height);
+}
+

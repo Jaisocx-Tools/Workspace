@@ -18,7 +18,7 @@ class Tree extends event_emitter_1.ImprovedRenderEventEmitter {
         this.mainHolderHtmlNode = null;
         this.url = "";
         this.data = null;
-        this.metadata = new TreeConf_js_1.TreeConf();
+        this.conf = new TreeConf_js_1.TreeConf();
         this.subtreeLength = 0;
         this.subtreeLengthDeep = 0;
         this.templateRenderer = new template_renderer_1.TemplateRenderer();
@@ -76,9 +76,9 @@ class Tree extends event_emitter_1.ImprovedRenderEventEmitter {
         this.mainHtmlNodeId = mainHtmlNodeId;
         return this;
     }
-    setConf(metadata) {
+    setConf(conf) {
         // optional method
-        this.metadata = metadata;
+        this.conf = conf;
         return this;
     }
     setModifiable(isModifiable) {
@@ -140,8 +140,8 @@ class Tree extends event_emitter_1.ImprovedRenderEventEmitter {
             this.data = nodes;
         }
         if (!this.data
-            || !this.metadata) {
-            throw new Error(`Empty: data ${this.data} or metadata ${this.metadata}`);
+            || !this.conf) {
+            throw new Error(`Empty: data ${this.data} or conf ${this.conf}`);
         }
         this.mainHolderHtmlNode = document.getElementById(this.mainHtmlNodeId);
         if (!this.mainHolderHtmlNode) {
@@ -234,7 +234,7 @@ class Tree extends event_emitter_1.ImprovedRenderEventEmitter {
         let hasSubtree = false;
         let subtreeJsonNodes = null;
         if (this.renderingMode === TreeConstants_js_1.TreeConstants.RenderingMode.Conf) {
-            subtreeJsonNodes = node[this.metadata.SUBTREE];
+            subtreeJsonNodes = node[this.conf.SUBTREE];
         }
         else if (this.renderingMode === TreeConstants_js_1.TreeConstants.RenderingMode.Ease) {
             subtreeJsonNodes = Object.values(node)[0];
@@ -318,11 +318,11 @@ class Tree extends event_emitter_1.ImprovedRenderEventEmitter {
         if (this.nodesOpenedMode === TreeConstants_js_1.TreeConstants.NodesOpenedMode.ALL_HIDDEN) {
             ul.style.display = "none";
         }
-        else if ((!node[this.metadata.NODE__OPENED])
+        else if ((!node[this.conf.NODE__OPENED])
             && (this.nodesOpenedMode === TreeConstants_js_1.TreeConstants.NodesOpenedMode.JSON_DATA_DEFINED)) {
             ul.style.display = "none";
         }
-        else if ((node[this.metadata.NODE__OPENED] === true)
+        else if ((node[this.conf.NODE__OPENED] === true)
             && (this.nodesOpenedMode === TreeConstants_js_1.TreeConstants.NodesOpenedMode.JSON_DATA_DEFINED)) {
             ul.style.display = "block";
         }
@@ -339,17 +339,17 @@ class Tree extends event_emitter_1.ImprovedRenderEventEmitter {
     // TEMPORARY IMPL TO KEEP POINTERS TO JSON DATA NODES IN HTML TREE NODES IN HTML NODE DATA ATTRIBUTES
     updateDataNodeIdAndPath(node, nodePosition, nodeKey, flatNodeHolderClone, holder) {
         var _a, _b, _c;
-        const id = (_a = node[this.metadata.NODE__ID]) !== null && _a !== void 0 ? _a : null;
-        const holderId = (_b = node[this.metadata.NODE__HOLDER_ID]) !== null && _b !== void 0 ? _b : null;
-        const flatCloneHolderId = flatNodeHolderClone._flatClone ? flatNodeHolderClone._flatClone[this.metadata.NODE__ID] : null;
+        const id = (_a = node[this.conf.NODE__ID]) !== null && _a !== void 0 ? _a : null;
+        const holderId = (_b = node[this.conf.NODE__HOLDER_ID]) !== null && _b !== void 0 ? _b : null;
+        const flatCloneHolderId = flatNodeHolderClone._flatClone ? flatNodeHolderClone._flatClone[this.conf.NODE__ID] : null;
         const pathInJsonOfNodeHolder = (_c = flatNodeHolderClone._pathArray) !== null && _c !== void 0 ? _c : ["ROOT-unhandled",];
         let pathKeyInNodeHolder = JSON.stringify(nodeKey);
         let pathInJsonArray = [
             ...pathInJsonOfNodeHolder,
         ];
         if ((pathInJsonOfNodeHolder.length > 1) && this.renderingMode === TreeConstants_js_1.TreeConstants.RenderingMode.Conf) {
-            const subtreePropName = JSON.stringify(this.metadata.SUBTREE);
-            pathInJsonArray.push(this.metadata.SUBTREE);
+            const subtreePropName = JSON.stringify(this.conf.SUBTREE);
+            pathInJsonArray.push(this.conf.SUBTREE);
             pathInJsonArray.push(nodeKey);
             //pathKeyInNodeHolder = `[${subtreePropName}][${pathKeyInNodeHolder}]`;
         }
@@ -377,8 +377,8 @@ class Tree extends event_emitter_1.ImprovedRenderEventEmitter {
             flatNodeClone[propName] = propValue;
         }
         const nodeClone = {
-            [this.metadata.NODE__ID]: id,
-            [this.metadata.NODE__HOLDER_ID]: holderId,
+            [this.conf.NODE__ID]: id,
+            [this.conf.NODE__HOLDER_ID]: holderId,
             _flatCloneHolderId: flatCloneHolderId,
             _id: nodePosition,
             _key: nodeKey,
@@ -490,8 +490,8 @@ class Tree extends event_emitter_1.ImprovedRenderEventEmitter {
     // END EVENTS BLOCK
     getInModeConfDataNodeIsTreeItem(node) {
         // @ts-ignore
-        const nodeLabelTextPropertyValue = node[this.metadata.NODE_LABEL__TEXT];
-        // the main metadata required dsts json field is label text. and it cannot be an object, but a string or number.
+        const nodeLabelTextPropertyValue = node[this.conf.NODE_LABEL__TEXT];
+        // the main conf required dsts json field is label text. and it cannot be an object, but a string or number.
         const isTreeItem = (nodeLabelTextPropertyValue && ((nodeLabelTextPropertyValue) !== "object"));
         return isTreeItem;
     }
