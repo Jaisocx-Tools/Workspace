@@ -12,22 +12,30 @@ export declare class Constants {
         EVENT_TARGET_MID: number;
         EVENT_TARGET_END: number;
     };
-    static CssPaddingUnits: {
+    static CssSizeDim: {
         new (): {};
-        NONE: number;
-        PX: number;
-        PERCENTAGE: number;
-        REM: number;
+        NONE: any;
+        PX: any;
+        REM: any;
+    };
+    static CssClassNames: {
+        new (): {};
+        TOOLTIP_MAIN: any;
+        TOOLTIP_ARROW: any;
+        CSS_VARIABLE_NAME__ARROW_SIZE: any;
     };
     static Defaults: {
         new (): {};
         tooltipAlignDimensionOne: number;
         tooltipAlignDimensionTwo: number;
         tooltipPaddingAlignDimensionTwo: number;
-        tooltipPaddingUnitAlignDimensionTwo: number;
+        tooltipPaddingSizeDimAlignDimensionTwo: any;
         alternativeTabBorderSides: number[];
-        cssClasses: string;
-        template: string;
+        withArrow: number;
+        arrowSize: number;
+        arrowSizeDim: any;
+        cssClasses: any;
+        template: any;
         templateData: object;
     };
 }

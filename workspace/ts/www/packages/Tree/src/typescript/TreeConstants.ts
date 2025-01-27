@@ -41,7 +41,7 @@ export class TreeConstants {
     EVENT_NAME__TREE_NODE_LABEL__CLICK: "treeNodeLabelClick",
   };
 
-  static TEMPLATE__TREE_HTML_NODE: string = `
+  static TEMPLATE__TREE_HTML_NODE: any = `
 <li 
     data-id="{{ dataId }}" 
     data-holder-id="{{ dataHolderId }}" 

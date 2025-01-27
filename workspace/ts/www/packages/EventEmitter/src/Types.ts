@@ -4,7 +4,7 @@
 // then this function 
 // has to accept input arg of this interface datatype EventHandlerInputArg
 export interface EventHandlerInputArg {
-  eventName: string;
+  eventName: any;
   payload: any;
 }
 
@@ -15,9 +15,9 @@ export interface EventHandlerReturnValue {
 }
 
 export interface EventEmitResult {
-  eventArt: string;
-  selector: string|null;
-  eventName: string;
+  eventArt: any;
+  selector: any|null;
+  eventName: any;
   payload: any;
   result: EventHandlerReturnValue|null|undefined|void;
 }

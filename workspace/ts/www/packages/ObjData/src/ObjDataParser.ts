@@ -176,8 +176,8 @@ export class ObjDataParser {
 
   // Fetch method to get and parse data from the server with flexible headers and method options
   static async fetchData(
-    url: string, 
-    method: string = "GET", 
+    url: any, 
+    method: any = "GET", 
     headers: Record<string, string> = {}
   ): Promise<any> {
     // Fetch request with flexible headers and method

@@ -38,15 +38,15 @@ export class ObjDataPackage {
     byteBuf: Uint8Array, 
     offset: number, 
     len: number,
-    charsetName: string
-  ): string {
+    charsetName: any
+  ): any {
     return new TextDecoder(charsetName).decode(byteBuf.slice(
       offset, 
       offset + len));
   }
 
   static serializeTextToByteBuf (
-    text: string
+    text: any
   ): Uint8Array {
     return  new TextEncoder().encode(text);
   }

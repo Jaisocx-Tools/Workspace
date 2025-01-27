@@ -179,11 +179,11 @@ class ProjectBuilder {
         }
     }
     buildSimple(packageJson, packagePath) {
-        //let buildFileName: string = '';
+        //let buildFileName: any = '';
         let buildCatalogPath = '';
-        //let buildFilePath: string = '';
+        //let buildFilePath: any = '';
         let buildSimpleCatalogPath = '';
-        //let buildSimpleFilePath: string = '';
+        //let buildSimpleFilePath: any = '';
         const buildFiles = packageJson["build-files"];
         if (!buildFiles || (0 === buildFiles.length)) {
             throw new Error(`Package [ ${packageJson.name} ]: You forgot to set "build-files" array, You wish to provide for Simple Build!`);
@@ -236,7 +236,7 @@ class ProjectBuilder {
             return fs.lstatSync(absPath).isFile();
         });
         const packagePathRelative = packagePath.replace(`${this.absolutePathToProjectRoot}/`, '');
-        //const filesListJoinedString: string = `${packagePathRelative}/src/` + filesList.join(` ${packagePathRelative}/src/`);
+        //const filesListJoinedString: any = `${packagePathRelative}/src/` + filesList.join(` ${packagePathRelative}/src/`);
         const filesListJoinedString = `src/` + filesList.join(` src/`);
         const transpileOptionsString = transpileOptions.join(" ");
         // cd packagePath ensures usage of package.json installed deps for this exact subpackage.

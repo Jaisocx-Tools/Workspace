@@ -1,11 +1,11 @@
 import { EventEmitter, EventEmitResult, EventHandlerReturnValue } from "@jaisocx/event-emitter";
 
 export class TemplateRenderer extends EventEmitter {
-  EVENT_NAME__AFTER_RENDER: string;
+  EVENT_NAME__AFTER_RENDER: any;
 
   data: object;
 
-  template: string;
+  template: any;
 
   constructor() {
     super();
@@ -26,12 +26,12 @@ export class TemplateRenderer extends EventEmitter {
     return this;
   }
 
-  setTemplate(template: string): TemplateRenderer {
+  setTemplate(template: any): TemplateRenderer {
     this.template = template;
     return this;
   }
 
-  render(): string {
+  render(): any {
     let renderedHtml = this.replaceTemplateRendererWithDataForRendering(
       this.template,
       this.data
@@ -84,9 +84,9 @@ export class TemplateRenderer extends EventEmitter {
   }
 
   replaceTemplateRendererWithDataForRendering(
-    template: string,
+    template: any,
     dataForRendering: object
-  ): string {
+  ): any {
     let renderedHtml = template;
 
     for (const placeholderName in dataForRendering) {

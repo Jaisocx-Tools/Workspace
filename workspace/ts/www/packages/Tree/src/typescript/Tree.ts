@@ -18,11 +18,11 @@ import "@jaisocx-tree-assets/tree-styles-main-webpack.css";
 export class Tree extends ImprovedRenderEventEmitter {
   debug: boolean;
 
-  mainHtmlNodeId: string;
+  mainHtmlNodeId: any;
 
   mainHolderHtmlNode: HTMLElement|null;
 
-  url: string|null;
+  url: any|null;
 
   data: any|null;
 
@@ -71,7 +71,7 @@ export class Tree extends ImprovedRenderEventEmitter {
                 this.templateRenderer.EVENT_NAME__AFTER_RENDER,
                 // @ts-ignore
                 (payload: {html, data}) => {
-                    let renderedHtml: string = payload.html;
+                    let renderedHtml: any = payload.html;
                     let value: any = null;
 
                     if (!payload.data.hasSubtree) {
@@ -116,13 +116,13 @@ export class Tree extends ImprovedRenderEventEmitter {
     return this;
   }
 
-  setUrl(url: string|null): Tree {
+  setUrl(url: any|null): Tree {
     // optional method
     this.url = url;
     return this;
   }
 
-  setMainHtmlNodeId(mainHtmlNodeId: string): Tree {
+  setMainHtmlNodeId(mainHtmlNodeId: any): Tree {
     // required method
     this.mainHtmlNodeId = mainHtmlNodeId;
     return this;
@@ -151,7 +151,7 @@ export class Tree extends ImprovedRenderEventEmitter {
     return this;
   }
 
-  load(url: string|null): Tree {
+  load(url: any|null): Tree {
     if (url && url.length) {
       this.url = url;
     }
@@ -348,10 +348,10 @@ export class Tree extends ImprovedRenderEventEmitter {
   ): {
       isArray: number,
       subtreeNodeDataType: number,
-      subtreeNodeDataTypeString: string,
+      subtreeNodeDataTypeString: any,
       hasSubtree: boolean,
       subtreeJsonNodes: any,
-      objectKeys: string[]|null
+      objectKeys: any[]|null
     } {
     let hasSubtree: boolean = false;
 
@@ -402,7 +402,7 @@ export class Tree extends ImprovedRenderEventEmitter {
     isArray: number,
     subtreeNodes: any,
     flatNodeHolderClone: any,
-    objectKeys: string[]|null,
+    objectKeys: any[]|null,
     subtreeHtmlHolder: HTMLElement
   ): number {
     const renderSubtreeResult: any = ArrayOrObjectPackage.iterateOverArrayOrObjectDefined(
@@ -474,10 +474,10 @@ export class Tree extends ImprovedRenderEventEmitter {
     }: {
           isArray: number;
           subtreeNodeDataType: number;
-          subtreeNodeDataTypeString: string;
+          subtreeNodeDataTypeString: any;
           hasSubtree: boolean;
           subtreeJsonNodes: any;
-          objectKeys: string[]|null;
+          objectKeys: any[]|null;
         } = this.checkDataNodeSubtree(node);
 
     // TODO: EXTENSIBILITY FEATURE
@@ -488,7 +488,7 @@ export class Tree extends ImprovedRenderEventEmitter {
       hasSubtree
     );
 
-    const nodeHtml: string = this.templateRenderer
+    const nodeHtml: any = this.templateRenderer
       .setTemplate(TreeConstants.TEMPLATE__TREE_HTML_NODE)
     // @ts-ignore
       .setData(dataForRendering)
@@ -570,18 +570,18 @@ export class Tree extends ImprovedRenderEventEmitter {
     flatNodeHolderClone: any,
     holder: HTMLElement
   ): any {
-    const id: string = node[this.conf.NODE__ID] ?? null;
-    const holderId: string = node[this.conf.NODE__HOLDER_ID] ?? null;
-    const flatCloneHolderId: string = flatNodeHolderClone._flatClone ? flatNodeHolderClone._flatClone[this.conf.NODE__ID] : null;
+    const id: any = node[this.conf.NODE__ID] ?? null;
+    const holderId: any = node[this.conf.NODE__HOLDER_ID] ?? null;
+    const flatCloneHolderId: any = flatNodeHolderClone._flatClone ? flatNodeHolderClone._flatClone[this.conf.NODE__ID] : null;
 
-    const pathInJsonOfNodeHolder: string[] = flatNodeHolderClone._pathArray ?? ["ROOT-unhandled",];
+    const pathInJsonOfNodeHolder: any[] = flatNodeHolderClone._pathArray ?? ["ROOT-unhandled",];
     let pathKeyInNodeHolder = JSON.stringify(nodeKey);
 
-    let pathInJsonArray: string[] = [
+    let pathInJsonArray: any[] = [
       ...pathInJsonOfNodeHolder,
     ];
     if ((pathInJsonOfNodeHolder.length > 1) && this.renderingMode === TreeConstants.RenderingMode.Conf) {
-      const subtreePropName: string = JSON.stringify(this.conf.SUBTREE);
+      const subtreePropName: any = JSON.stringify(this.conf.SUBTREE);
       pathInJsonArray.push(this.conf.SUBTREE);
       pathInJsonArray.push(nodeKey);
       //pathKeyInNodeHolder = `[${subtreePropName}][${pathKeyInNodeHolder}]`;
@@ -593,12 +593,12 @@ export class Tree extends ImprovedRenderEventEmitter {
       pathInJsonArray.push(nodeKey);
     }
 
-    const pathInJsonString: string = pathInJsonArray
+    const pathInJsonString: any = pathInJsonArray
       .map((
         jPathIndex: any,
         index: number
       ) => {
-        const jPathIndexText: string = JSON.stringify( jPathIndex );
+        const jPathIndexText: any = JSON.stringify( jPathIndex );
         return (index === 0) ? jPathIndex : `[${jPathIndexText}]`;
       })
       .join("");
@@ -606,7 +606,7 @@ export class Tree extends ImprovedRenderEventEmitter {
     const flatNodeClone: any = {};
     for (const propName in node) {
       const propValue: any = node[propName];
-      const dataType: string = (typeof propValue);
+      const dataType: any = (typeof propValue);
       if (dataType === "object") {
         continue;
       }
@@ -628,7 +628,7 @@ export class Tree extends ImprovedRenderEventEmitter {
     return nodeClone;
   }
 
-  getTreeDataNodeByJsonnodePathArray ( jPathArray: string[] ): any {
+  getTreeDataNodeByJsonnodePathArray ( jPathArray: any[] ): any {
 
     // since complexity of building jPath array in modeEase and modeConf, the JPathArray is not the same, 
     // and modeEase was built from item at index 2, since it has array item at index 1 "Top": this.data["Top"], and modeConf does not have this array item.
@@ -649,7 +649,7 @@ export class Tree extends ImprovedRenderEventEmitter {
 
   getByJPath( 
     data: any,
-    jPathArray: string[] 
+    jPathArray: any[] 
   ): any {
     return jPathArray
       .reduce (
@@ -674,7 +674,7 @@ export class Tree extends ImprovedRenderEventEmitter {
   getDataForRendering(
     node: any,
     flatNodeClone: any,
-    dataTypeString: string,
+    dataTypeString: any,
     hasSubtree: boolean
   ): IRenderTemplateRendererData {
     return {
@@ -693,9 +693,9 @@ export class Tree extends ImprovedRenderEventEmitter {
   }
 
   getTreeNodeCssClasses(
-    dataType: string,
+    dataType: any,
     node: any
-  ): string {
+  ): any {
     return "";
   }
 
@@ -703,8 +703,8 @@ export class Tree extends ImprovedRenderEventEmitter {
 
   // EVENTS BLOCK
   addJSTreeEventListener (
-    eventName: string,
-    eventHandler: (eventName: string, payload: any) => EventHandlerReturnValue|null|undefined|void
+    eventName: any,
+    eventHandler: (eventName: any, payload: any) => EventHandlerReturnValue|null|undefined|void
   ): Tree {
     // the holder class LargeDomEventListenersOverheadOptimizer method call
     this.addThisClassEventListener (
@@ -829,7 +829,7 @@ export class Tree extends ImprovedRenderEventEmitter {
     return isTreeItem;
   }
 
-  escapeHTMLForAttribute(str: string): string {
+  escapeHTMLForAttribute(str: any): any {
     return str
       .replace(
         /"/g,
@@ -849,7 +849,7 @@ export class Tree extends ImprovedRenderEventEmitter {
       ); // Replace >
   }
 
-  unescapeHTMLFromAttribute(str: string|undefined): string {
+  unescapeHTMLFromAttribute(str: any|undefined): any {
     if (!str) {
       return "";
     }
@@ -872,7 +872,7 @@ export class Tree extends ImprovedRenderEventEmitter {
       ); // Replace >
   }
 
-  getTreeHtmlNodeDatasetJson(htmlNode: HTMLElement|null): string {
+  getTreeHtmlNodeDatasetJson(htmlNode: HTMLElement|null): any {
     if (htmlNode === null) {
       return "";
     }

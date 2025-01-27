@@ -21,8 +21,8 @@ class ExampleTooltip {
       ])
       .setTooltipAlignDimensionTwo(Constants.AlignDimensionTwo.EVENT_TARGET_START)
       .setTooltipPaddingAlignDimensionTwo(
-        10, 
-        Constants.CssPaddingUnits.PERCENTAGE)
+        2, 
+        Constants.CssSizeDim.PX)
       .setTemplate(Constants.Defaults.template)
       .setTemplateData({
         "id": tooltip.mainHtmlNodeId,

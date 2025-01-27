@@ -6,6 +6,9 @@
   --tooltip__border_width: 2px;
   --tooltip__border_style: dashed;
   --tooltip__border_color: #5bf;
+
+  --tooltip_arrow__background: yellow;
+  --tooltip_arrow__border_color: red;
 }
 
 @media ( (max-width: 440px) and (orientation: portrait) ) {

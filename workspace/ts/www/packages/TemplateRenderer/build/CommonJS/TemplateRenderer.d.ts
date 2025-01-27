@@ -1,13 +1,13 @@
 import { EventEmitter } from "@jaisocx/event-emitter";
 export declare class TemplateRenderer extends EventEmitter {
-    EVENT_NAME__AFTER_RENDER: string;
+    EVENT_NAME__AFTER_RENDER: any;
     data: object;
-    template: string;
+    template: any;
     constructor();
     setDebug(debug: boolean): TemplateRenderer;
     setData(data: object): TemplateRenderer;
-    setTemplate(template: string): TemplateRenderer;
-    render(): string;
-    replaceTemplateRendererWithDataForRendering(template: string, dataForRendering: object): string;
+    setTemplate(template: any): TemplateRenderer;
+    render(): any;
+    replaceTemplateRendererWithDataForRendering(template: any, dataForRendering: object): any;
 }
 //# sourceMappingURL=TemplateRenderer.d.ts.map

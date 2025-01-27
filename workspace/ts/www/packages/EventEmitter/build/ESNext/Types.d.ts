@@ -1,5 +1,5 @@
 export interface EventHandlerInputArg {
-    eventName: string;
+    eventName: any;
     payload: any;
 }
 export interface EventHandlerReturnValue {
@@ -7,9 +7,9 @@ export interface EventHandlerReturnValue {
     value: any;
 }
 export interface EventEmitResult {
-    eventArt: string;
-    selector: string | null;
-    eventName: string;
+    eventArt: any;
+    selector: any | null;
+    eventName: any;
     payload: any;
     result: EventHandlerReturnValue | null | undefined | void;
 }

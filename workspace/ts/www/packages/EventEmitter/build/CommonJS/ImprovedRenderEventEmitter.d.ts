@@ -3,12 +3,12 @@ import { EventEmitResult } from "./Types.js";
 export declare class ImprovedRenderEventEmitter extends EventEmitter {
     eventsHandlersSetDom: any;
     mainHolderHtmlNode: HTMLElement | null;
-    EventArtDOMEventOptimized: string;
+    EventArtDOMEventOptimized: any;
     constructor();
     setDebug(debug: boolean): ImprovedRenderEventEmitter;
     addDomEventListeners(): ImprovedRenderEventEmitter;
-    addDomEventListener(eventName: string, selector: string, eventHandler: CallableFunction): ImprovedRenderEventEmitter;
-    emitDomEvent(eventName: string, payload: any): EventEmitResult[];
+    addDomEventListener(eventName: any, selector: any, eventHandler: CallableFunction): ImprovedRenderEventEmitter;
+    emitDomEvent(eventName: any, payload: any): EventEmitResult[];
     optimizedDomEventHandler(event: Event): void;
 }
 //# sourceMappingURL=ImprovedRenderEventEmitter.d.ts.map

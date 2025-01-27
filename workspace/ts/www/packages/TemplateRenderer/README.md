@@ -10,11 +10,11 @@ import { EventHandlerReturnValue } from "@jaisocx/event-emitter";
 export class ExampleTemplateRenderer {
   TemplateRenderer: TemplateRenderer;
 
-  holderHtmlNodeSelector: string|null;
+  holderHtmlNodeSelector: any|null;
 
   data: object;
 
-  template: string;
+  template: any;
 
   constructor() {
     this.data = {

@@ -6,18 +6,19 @@ export interface TooltipInterface {
 
   // initialization methods to set properies of a tooltip for a html node.
   setDebug(debug: boolean): TooltipInterface; // optional
-  setCssClasses( cssClasses: string ): TooltipInterface; // optional
+  setEventTargetHtmlNodeId( id: any ): TooltipInterface; // required
+  setEventTargetHtmlNode( eventTarget: HTMLElement ): TooltipInterface; // required or .setEventTargetHtmlNodeId()
+  setTemplate( template: any ): TooltipInterface; // optional
+  setTemplateData( data: any ): TooltipInterface; // required. e.g. setTemplateData( { "text": "The Text this will be rendered in the tooltip" } )
+  setCssClasses( cssClasses: any ): TooltipInterface; // optional
   setTooltipAlignDimensionOne( tooltipAlignDimensionOne: number ): TooltipInterface; // optional
   setTooltipAlignDimensionTwo( tooltipAlignDimensionTwo: number ): TooltipInterface; // optional
   setTooltipPaddingAlignDimensionTwo ( 
     tooltipPaddingAlignDimensionTwo: number,
-    tooltipPaddingUnitAlignDimensionTwo: number
+    tooltipPaddingSizeDimAlignDimensionTwo: number
   ): TooltipInterface; // optional
-  setEventTargetHtmlNodeId( id: any ): TooltipInterface; // required
-  setEventTargetHtmlNode( eventTarget: HTMLElement ): TooltipInterface; // required or .setEventTargetHtmlNodeId()
   setAlternativeTabBorderSides( alternativeTabBorderSides: number[] ): TooltipInterface; // optional
-  setTemplate( template: any ): TooltipInterface; // optional
-  setTemplateData( data: any ): TooltipInterface; // required. e.g. setTemplateData( { "text": "The Text this will be rendered in the tooltip" } )
+  
 
   // final render method to initialize the tooltip for an html node.
   render(): TooltipInterface; // required

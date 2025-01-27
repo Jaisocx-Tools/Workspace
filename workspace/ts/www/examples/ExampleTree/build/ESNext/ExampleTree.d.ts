@@ -1,7 +1,7 @@
 export declare class ExampleTree {
-    holderId: string;
-    url: string;
-    constructor(id: string, url: string);
-    render(id: string, url: string): void;
+    holderId: any;
+    url: any;
+    constructor(id: any, url: any);
+    render(id: any, url: any): void;
 }
 //# sourceMappingURL=ExampleTree.d.ts.map

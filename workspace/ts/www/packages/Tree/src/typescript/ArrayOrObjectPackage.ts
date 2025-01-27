@@ -6,7 +6,7 @@ export interface IJsonDataType {
   BOOLEAN: number;
   NO_SUBTREE: number;
 
-  [key: string]: number;
+  [key: any]: number;
 }
 
 export class ArrayOrObjectPackage {
@@ -19,8 +19,8 @@ export class ArrayOrObjectPackage {
     NO_SUBTREE: 6,
   };
 
-  public static getDataTypeStringAndConst(value: any): { dataTypeString: string, dataType: number } {
-    const dataTypeString: string = Array.isArray(value) ? "array" : (typeof value);
+  public static getDataTypeStringAndConst(value: any): { dataTypeString: any, dataType: number } {
+    const dataTypeString: any = Array.isArray(value) ? "array" : (typeof value);
     const dataType: number = ArrayOrObjectPackage.JsonDataType[dataTypeString.toUpperCase()];
 
     return {
@@ -30,7 +30,7 @@ export class ArrayOrObjectPackage {
   }
 
   public static getDataType(value: any): number {
-    const dataTypeString: string = Array.isArray(value) ? "array" : (typeof value);
+    const dataTypeString: any = Array.isArray(value) ? "array" : (typeof value);
     const dataType: number = ArrayOrObjectPackage.JsonDataType[dataTypeString.toUpperCase()];
 
     return dataType;
@@ -39,9 +39,9 @@ export class ArrayOrObjectPackage {
   public static getArrayOrObjectItemsAmount(
     isArray: number,
     arrayOrObject: any
-  ): {itemsAmount: number, objectKeys: string[]|null} {
+  ): {itemsAmount: number, objectKeys: any[]|null} {
     let itemsAmount: number = 0;
-    let objectKeys: string[]|null = null;
+    let objectKeys: any[]|null = null;
 
     if (isArray === 1) {
       itemsAmount = arrayOrObject.length;
@@ -61,7 +61,7 @@ export class ArrayOrObjectPackage {
     arrayOrObject: any,
     callback: CallableFunction,
     callbackPayload: any,
-    objectKeys: string[]|null
+    objectKeys: any[]|null
   ): any {
     const isArray: number = ((dataType === ArrayOrObjectPackage.JsonDataType.ARRAY) ? 1 : 0);
     const callbackResult: any = ArrayOrObjectPackage.iterateOverArrayOrObjectDefined(
@@ -80,16 +80,16 @@ export class ArrayOrObjectPackage {
     arrayOrObject: any,
     callback: CallableFunction,
     callbackPayload: any,
-    objectKeys: string[]|null
+    objectKeys: any[]|null
   ): any {
     // expects isArray = 1 true
 
     let loopCounter: number = 0;
     let arrayElement: any = {};
 
-    let subtreeNodesKeys: string[] = [];
+    let subtreeNodesKeys: any[] = [];
     let subtreeNodesValues: any[] = [];
-    let loopPropertyName: string = "";
+    let loopPropertyName: any = "";
     let loopPropertyValue: any = {};
 
     let arrayOrObjectItemsAmount: number = 1;

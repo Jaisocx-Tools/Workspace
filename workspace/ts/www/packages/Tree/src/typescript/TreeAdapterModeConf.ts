@@ -13,10 +13,10 @@ export class TreeAdapterModeConf extends TreeAdapter implements ITreeAdapter {
   getDataForRendering(
     node: any,
     flatNodeClone: any,
-    dataTypeString: string,
+    dataTypeString: any,
     hasSubtree: boolean
   ): IRenderTemplateRendererData {
-    let openButtonClassName: string = "";
+    let openButtonClassName: any = "";
 
     if (!hasSubtree) {
       openButtonClassName = TreeConstants.TreeCssClassNames.CLASS_WITHOUT_SUBTREE;
@@ -33,7 +33,7 @@ export class TreeAdapterModeConf extends TreeAdapter implements ITreeAdapter {
       openButtonClassName = TreeConstants.TreeCssClassNames.CLASS_OPENED;
     }
 
-    const cssClasses: string = this.getTreeNodeCssClasses(
+    const cssClasses: any = this.getTreeNodeCssClasses(
       dataTypeString,
       node
     );
@@ -56,12 +56,12 @@ export class TreeAdapterModeConf extends TreeAdapter implements ITreeAdapter {
   }
 
   getTreeNodeCssClasses__dataTypesCssClassesEnabled(
-    dataTypeString: string,
+    dataTypeString: any,
     node: any
-  ): string {
-    const cssClassesNodeValue: string = node[this.conf.NODE__CSS_CLASS_NAME];
+  ): any {
+    const cssClassesNodeValue: any = node[this.conf.NODE__CSS_CLASS_NAME];
 
-    const cssClassesArray: string[] = [
+    const cssClassesArray: any[] = [
       ("class=\""),
       (cssClassesNodeValue),
       (" "),
@@ -70,37 +70,37 @@ export class TreeAdapterModeConf extends TreeAdapter implements ITreeAdapter {
       ("\""),
     ];
 
-    const cssClasses: string = cssClassesArray.join("");
+    const cssClasses: any = cssClassesArray.join("");
 
     return cssClasses;
   }
 
   getTreeNodeCssClasses__dataTypesCssClassesDisabled(
-    dataTypeString: string,
+    dataTypeString: any,
     node: any
-  ): string {
-    const cssClassesNodeValue: string = node[this.conf.NODE__CSS_CLASS_NAME];
+  ): any {
+    const cssClassesNodeValue: any = node[this.conf.NODE__CSS_CLASS_NAME];
 
-    const cssClassesArray: string[] = [
+    const cssClassesArray: any[] = [
       ("class=\""),
       (cssClassesNodeValue),
       ("\""),
     ];
 
-    const cssClasses: string = cssClassesArray.join("");
+    const cssClasses: any = cssClassesArray.join("");
 
     return cssClasses;
   }
 
   // dummy placeholders
-  escapeHTMLForAttribute(arg: string): string {
+  escapeHTMLForAttribute(arg: any): any {
     throw new Error("Method not implemented.");
   }
 
   getTreeNodeCssClasses(
-    dataTypeString: string,
+    dataTypeString: any,
     value: any
-  ): string {
+  ): any {
     throw new Error("Method not implemented.");
   }
   // finish dummy placeholders

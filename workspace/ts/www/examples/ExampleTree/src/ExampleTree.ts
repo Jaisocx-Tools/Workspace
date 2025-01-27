@@ -1,13 +1,13 @@
 import { Tree, TreeConstants } from "@jaisocx/tree";
 
 export class ExampleTree {
-  holderId: string;
+  holderId: any;
 
-  url: string;
+  url: any;
 
   constructor(
-    id: string,
-    url: string
+    id: any,
+    url: any
   ) {
     this.holderId = id;
     this.url = url;
@@ -19,8 +19,8 @@ export class ExampleTree {
   }
 
   render(
-    id: string,
-    url: string
+    id: any,
+    url: any
   ): void {
     const tree = new Tree();
     tree

@@ -1,4 +1,4 @@
 export interface IDependency {
-  name: string;
-  path: string;
+  name: any;
+  path: any;
 }

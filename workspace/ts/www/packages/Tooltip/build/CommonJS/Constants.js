@@ -3,7 +3,7 @@ var __setFunctionName = (this && this.__setFunctionName) || function (f, name, p
     if (typeof name === "symbol") name = name.description ? "[".concat(name.description, "]") : "";
     return Object.defineProperty(f, "name", { configurable: true, value: prefix ? "".concat(prefix, " ", name) : name });
 };
-var _a, _b, _c, _d;
+var _a, _b, _c, _d, _e;
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Constants = void 0;
 class Constants {
@@ -24,35 +24,44 @@ Constants.AlignDimensionTwo = (_b = class {
     _b.EVENT_TARGET_MID = 3,
     _b.EVENT_TARGET_END = 5,
     _b);
-Constants.CssPaddingUnits = (_c = class {
+Constants.CssSizeDim = (_c = class {
     },
-    __setFunctionName(_c, "CssPaddingUnits"),
-    _c.NONE = 0,
-    _c.PX = 1,
-    _c.PERCENTAGE = 2,
-    _c.REM = 3,
+    __setFunctionName(_c, "CssSizeDim"),
+    _c.NONE = "",
+    _c.PX = "px",
+    _c.REM = "rem",
     _c);
-Constants.Defaults = (_d = class {
+Constants.CssClassNames = (_d = class {
     },
-    __setFunctionName(_d, "Defaults"),
-    _d.tooltipAlignDimensionOne = Constants.AlignDimensionOne.BROWSER_TAB_BORDER_TOP,
-    _d.tooltipAlignDimensionTwo = Constants.AlignDimensionTwo.EVENT_TARGET_MID,
-    _d.tooltipPaddingAlignDimensionTwo = 0,
-    _d.tooltipPaddingUnitAlignDimensionTwo = Constants.CssPaddingUnits.PX,
-    _d.alternativeTabBorderSides = [
+    __setFunctionName(_d, "CssClassNames"),
+    _d.TOOLTIP_MAIN = "tooltip",
+    _d.TOOLTIP_ARROW = "tooltip-arrow",
+    _d.CSS_VARIABLE_NAME__ARROW_SIZE = "--tooltip_arrow__size",
+    _d);
+Constants.Defaults = (_e = class {
+    },
+    __setFunctionName(_e, "Defaults"),
+    _e.tooltipAlignDimensionOne = Constants.AlignDimensionOne.BROWSER_TAB_BORDER_TOP,
+    _e.tooltipAlignDimensionTwo = Constants.AlignDimensionTwo.EVENT_TARGET_MID,
+    _e.tooltipPaddingAlignDimensionTwo = 0,
+    _e.tooltipPaddingSizeDimAlignDimensionTwo = Constants.CssSizeDim.PX,
+    _e.alternativeTabBorderSides = [
         Constants.AlignDimensionOne.BROWSER_TAB_BORDER_TOP,
         Constants.AlignDimensionOne.BROWSER_TAB_BORDER_RIGHT,
         Constants.AlignDimensionOne.BROWSER_TAB_BORDER_LEFT,
         Constants.AlignDimensionOne.BROWSER_TAB_BORDER_BOTTOM,
     ],
-    _d.cssClasses = "tooltip",
-    _d.template = `
+    _e.withArrow = 1,
+    _e.arrowSize = 0,
+    _e.arrowSizeDim = Constants.CssSizeDim.REM,
+    _e.cssClasses = "tooltip",
+    _e.template = `
   <tooltip>
     {{ text }}
   </tooltip>    
     `,
-    _d.templateData = {
+    _e.templateData = {
         "text": "Hello!",
     },
-    _d);
+    _e);
 //# sourceMappingURL=Constants.js.map

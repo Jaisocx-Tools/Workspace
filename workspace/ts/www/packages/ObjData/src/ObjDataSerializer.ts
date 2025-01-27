@@ -18,7 +18,7 @@ export class ObjDataSerializer {
     let propertyNameSerialized: Uint8Array = new Uint8Array();
     let propertyValueSerialized: Uint8Array = new Uint8Array();
     let dataHelper: ObjDataHelpingProps = new ObjDataHelpingProps();
-    let dataType: string = typeof propValue;
+    let dataType: any = typeof propValue;
     if ( (dataType === "object") && (Array.isArray(propValue))  ) {
       dataType = "array";
     }
@@ -63,7 +63,7 @@ export class ObjDataSerializer {
 
     } else if ( dataType === "object" ) {
       dataHelper.datatype = ObjDataConstants.DATA_TYPES.OBJECT;
-      let objectKeys: string[] = Object.keys(propValue);
+      let objectKeys: any[] = Object.keys(propValue);
       dataHelper.propsAmount = objectKeys.length;
       const byteBufs: Uint8Array[] = [];
       for (let subPropName of objectKeys ) {

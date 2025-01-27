@@ -1,5 +1,5 @@
 export interface IDependency {
-    name: string;
-    path: string;
+    name: any;
+    path: any;
 }
 //# sourceMappingURL=types.d.ts.map

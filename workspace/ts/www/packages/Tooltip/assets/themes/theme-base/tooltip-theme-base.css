@@ -11,9 +11,11 @@
   --tooltip__border_radius: 1rem;
 
   --tooltip__padding: 1rem;
+  --tooltip_arrow__size: 1rem;
 
+  /* testing opurpose variables */
   --tooltip__width: 8rem;
-  --tooltip__height: 38rem;
+  --tooltip__height: 8rem;
 }
 
 @media ( (max-width: 440px) and (orientation: portrait) ) {

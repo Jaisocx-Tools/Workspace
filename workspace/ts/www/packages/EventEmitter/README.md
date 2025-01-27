@@ -10,7 +10,7 @@
 import { EventEmitter, EventEmitResult, EventHandlerReturnValue } from "@jaisocx/event-emitter";
 
 export class SomeClass extends EventEmitter {
-  EVENT_NAME__AFTER_SOMESUBCALL: string;
+  EVENT_NAME__AFTER_SOMESUBCALL: any;
 
   constructor() {
     super();
@@ -35,7 +35,7 @@ export class SomeClass extends EventEmitter {
 ```
 // example code from class TemplateRenderer
 
-  render(): string {
+  render(): any {
     let renderedHtml = this.replaceTemplateRendererWithDataForRendering(
       this.template,
       this.data

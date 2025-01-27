@@ -15,24 +15,24 @@ export class TreeAdapterModeEase extends TreeAdapter implements ITreeAdapter {
   getDataForRendering(
     node: any,
     flatNodeClone: any,
-    dataTypeString: string,
+    dataTypeString: any,
     nodeHasSubtree: boolean
   ): IRenderTemplateRendererData {
-    const key: string = Object.keys(node)[0];
+    const key: any = Object.keys(node)[0];
     const value: any = node[key] ?? "";
 
-    let openButtonClassName: string = "";
-    let labelText: string = `"${key}"`;
+    let openButtonClassName: any = "";
+    let labelText: any = `"${key}"`;
 
     if (!nodeHasSubtree) {
       openButtonClassName = TreeConstants.TreeCssClassNames.CLASS_WITHOUT_SUBTREE;
-      const serializedJsonValue: string = this.escapeHTMLForAttribute(JSON.stringify(value));
+      const serializedJsonValue: any = this.escapeHTMLForAttribute(JSON.stringify(value));
       labelText = `"${key}": ${serializedJsonValue}`;
     } else if (this.nodesOpenedMode === TreeConstants.NodesOpenedMode.ALL_SHOWN) {
       openButtonClassName = TreeConstants.TreeCssClassNames.CLASS_OPENED;
     }
 
-    const cssClasses: string = (this.dataTypesCssClassesEnabled === true) ? this.getTreeNodeCssClasses(
+    const cssClasses: any = (this.dataTypesCssClassesEnabled === true) ? this.getTreeNodeCssClasses(
       dataTypeString,
       value
     ) : "";
@@ -55,37 +55,37 @@ export class TreeAdapterModeEase extends TreeAdapter implements ITreeAdapter {
   }
 
   getTreeNodeCssClasses__dataTypesCssClassesEnabled(
-    dataTypeString: string,
+    dataTypeString: any,
     node: any
-  ): string {
-    const cssClassesArray: string[] = [
+  ): any {
+    const cssClassesArray: any[] = [
       ("class=\""),
       (TreeConstants.TreeCssClassNames.PREFIX__CLASS_DATATYPE),
       (dataTypeString),
       ("\""),
     ];
 
-    const cssClasses: string = cssClassesArray.join("");
+    const cssClasses: any = cssClassesArray.join("");
 
     return cssClasses;
   }
 
   getTreeNodeCssClasses__dataTypesCssClassesDisabled(
-    dataTypeString: string,
+    dataTypeString: any,
     node: any
-  ): string {
+  ): any {
     throw new Error("Method not implemented.");
   }
 
   // dummy placeholders
-  escapeHTMLForAttribute(arg: string): string {
+  escapeHTMLForAttribute(arg: any): any {
     throw new Error("Method not implemented.");
   }
 
   getTreeNodeCssClasses(
-    dataTypeString: string,
+    dataTypeString: any,
     value: any
-  ): string {
+  ): any {
     throw new Error("Method not implemented.");
   }
   // finish dummy placeholders

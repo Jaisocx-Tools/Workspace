@@ -17,17 +17,17 @@ argv.forEach( ( arg ) => {
 
 console.log("commandArgs", commandArgs);
 
-const buildDataPath: string = path.resolve( commandArgs.ProjectRoot, commandArgs.BuildData );
+const buildDataPath: any = path.resolve( commandArgs.ProjectRoot, commandArgs.BuildData );
 if (false === fs.existsSync( buildDataPath ) ) {
   throw new Error(`BuildData.json not available at path: ${buildDataPath}`);
 }
 
-const packagesPath: string = path.resolve( commandArgs.ProjectRoot, commandArgs.PackagesPath );
+const packagesPath: any = path.resolve( commandArgs.ProjectRoot, commandArgs.PackagesPath );
 if (false === fs.existsSync( packagesPath ) ) {
   throw new Error(`modulesPath not available at path: ${packagesPath}`);
 }
 
-const buildDataJson: string = fs.readFileSync(
+const buildDataJson: any = fs.readFileSync(
   path.resolve( commandArgs.ProjectRoot, commandArgs.BuildData ), 
   'utf8'
 );

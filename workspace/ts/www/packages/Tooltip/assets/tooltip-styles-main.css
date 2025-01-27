@@ -28,5 +28,21 @@
 
   width: var(--tooltip__width);
   height: var(--tooltip__height);
+
+  z-index: 18;
 }
+
+
+.tooltip .tooltip-arrow {
+  position: fixed;
+  transform: rotate(45deg);
+  border-width: var(--tooltip__border_width);
+  border-style: solid;
+  border-color: var(--tooltip_arrow__border_color);
+  background: var(--tooltip_arrow__background);
+  z-index: 190;
+}
+
+
+
 

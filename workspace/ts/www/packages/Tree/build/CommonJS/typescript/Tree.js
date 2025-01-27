@@ -27,7 +27,7 @@ class Tree extends event_emitter_1.ImprovedRenderEventEmitter {
                     this.templateRenderer.EVENT_NAME__AFTER_RENDER,
                     // @ts-ignore
                     (payload: {html, data}) => {
-                        let renderedHtml: string = payload.html;
+                        let renderedHtml: any = payload.html;
                         let value: any = null;
     
                         if (!payload.data.hasSubtree) {

@@ -14,18 +14,23 @@ export class Constants {
     static EVENT_TARGET_END: number = 5;
   };
 
-  static CssPaddingUnits = class {
-    static NONE: number = 0;
-    static PX: number = 1;
-    static PERCENTAGE: number = 2;
-    static REM: number = 3;
+  static CssSizeDim = class {
+    static NONE: any = "";
+    static PX: any = "px";
+    static REM: any = "rem";
+  };
+
+  static CssClassNames = class {
+    static TOOLTIP_MAIN: any = "tooltip";
+    static TOOLTIP_ARROW: any = "tooltip-arrow";
+    static CSS_VARIABLE_NAME__ARROW_SIZE: any = "--tooltip_arrow__size";
   };
 
   static Defaults = class {
     static tooltipAlignDimensionOne: number = Constants.AlignDimensionOne.BROWSER_TAB_BORDER_TOP;
     static tooltipAlignDimensionTwo: number = Constants.AlignDimensionTwo.EVENT_TARGET_MID;
     static tooltipPaddingAlignDimensionTwo: number = 0;
-    static tooltipPaddingUnitAlignDimensionTwo: number = Constants.CssPaddingUnits.PX;
+    static tooltipPaddingSizeDimAlignDimensionTwo: any = Constants.CssSizeDim.PX;
   
     static alternativeTabBorderSides: number[] = [
       Constants.AlignDimensionOne.BROWSER_TAB_BORDER_TOP,
@@ -33,10 +38,14 @@ export class Constants {
       Constants.AlignDimensionOne.BROWSER_TAB_BORDER_LEFT,
       Constants.AlignDimensionOne.BROWSER_TAB_BORDER_BOTTOM,
     ];
+
+    static withArrow: number = 1;
+    static arrowSize: number = 0;
+    static arrowSizeDim: any = Constants.CssSizeDim.REM;  
   
-    static cssClasses: string = "tooltip";
+    static cssClasses: any = "tooltip";
   
-    static template: string = `
+    static template: any = `
   <tooltip>
     {{ text }}
   </tooltip>    

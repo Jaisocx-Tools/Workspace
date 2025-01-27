@@ -98,7 +98,7 @@ export class ExampleTooltip {
       .setTooltipAlignDimensionTwo(Constants.AlignDimensionTwo.EVENT_TARGET_START)
       .setTooltipPaddingAlignDimensionTwo (
         10,
-        Constants.CssPaddingUnits.PERCENTAGE
+        Constants.CssSizeDim.PERCENTAGE
       )
       .render();
   }

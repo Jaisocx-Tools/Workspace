@@ -180,7 +180,7 @@ export class TreeConstants {
     EVENT_NAME__TREE_NODE_LABEL__CLICK: "treeNodeLabelClick",
   };
 
-  static TEMPLATE__TREE_HTML_NODE: string = `
+  static TEMPLATE__TREE_HTML_NODE: any = `
 <li 
     data-id="{{ dataId }}" 
     data-holder-id="{{ dataHolderId }}" 
@@ -253,44 +253,44 @@ export interface INodesOpenedMode {
 }
 
 export interface IRenderTemplateRendererData {
-  iconSrc: string;
-  iconShowClassName: string;
-  labelText: string;
-  hyperlink: string;
-  cssClasses: string;
-  dataId: string;
-  dataHolderId: string;
-  dataOrder: string;
-  dataJson: string;
-  openButtonStateClassName: string;
+  iconSrc: any;
+  iconShowClassName: any;
+  labelText: any;
+  hyperlink: any;
+  cssClasses: any;
+  dataId: any;
+  dataHolderId: any;
+  dataOrder: any;
+  dataJson: any;
+  openButtonStateClassName: any;
   hasSubtree: boolean;
 }
 
 export interface ITreeCssClassNames {
-  MAIN_CLASS_NAME: string;
+  MAIN_CLASS_NAME: any;
 
-  CLASS_NAME_WITH_ICONS: string;
+  CLASS_NAME_WITH_ICONS: any;
 
-  CLASS_OPENED: string;
-  CLASS_WITHOUT_SUBTREE: string;
-  CLASS_ICON_SHOW: string;
-  CLASS_ICON_HIDE: string;
+  CLASS_OPENED: any;
+  CLASS_WITHOUT_SUBTREE: any;
+  CLASS_ICON_SHOW: any;
+  CLASS_ICON_HIDE: any;
 
-  CLASS_AND_ID__CONTEXT_MENU: string;
+  CLASS_AND_ID__CONTEXT_MENU: any;
 
-  CLASS_DATATYPE_OBJECT: string;
-  CLASS_DATATYPE_ARRAY: string;
-  CLASS_DATATYPE_STRING: string;
-  CLASS_DATATYPE_NUMBER: string;
-  CLASS_DATATYPE_BOOLEAN: string;
+  CLASS_DATATYPE_OBJECT: any;
+  CLASS_DATATYPE_ARRAY: any;
+  CLASS_DATATYPE_STRING: any;
+  CLASS_DATATYPE_NUMBER: any;
+  CLASS_DATATYPE_BOOLEAN: any;
 
-  PREFIX__CLASS_DATATYPE: string;
+  PREFIX__CLASS_DATATYPE: any;
 }
 
 export interface ITreeEventsNames {
-  EVENT_NAME__AFTER_RENDER_ONE_NODE: string;
-  EVENT_NAME__TREE_NODE_EXPAND_BUTTON__CLICK: string;
-  EVENT_NAME__TREE_NODE_LABEL__CLICK: string;
+  EVENT_NAME__AFTER_RENDER_ONE_NODE: any;
+  EVENT_NAME__TREE_NODE_EXPAND_BUTTON__CLICK: any;
+  EVENT_NAME__TREE_NODE_LABEL__CLICK: any;
 }
 
 export interface ITreeAdapter {
@@ -303,19 +303,19 @@ export interface ITreeAdapter {
   getDataForRendering (
     node: any,
     flatNodeClone: any,
-    dataTypeString: string,
+    dataTypeString: any,
     nodeHasSubtree: boolean
   ): IRenderTemplateRendererData;
 
   getTreeNodeCssClasses__dataTypesCssClassesEnabled (
-    dataType: string,
+    dataType: any,
     node: any
-  ): string;
+  ): any;
 
   getTreeNodeCssClasses__dataTypesCssClassesDisabled (
-    dataType: string,
+    dataType: any,
     node: any
-  ): string;
+  ): any;
 }
 
 ```
@@ -324,17 +324,17 @@ export interface ITreeAdapter {
 
 ```
 export class TreeConf {
-  NODE_ICON__SRC: string;
-  NODE_LABEL__TEXT: string;
-  SUBTREE: string;
-  NODE__ID: string;
-  NODE__HOLDER_ID: string;
-  NODE__PATH: string;
-  NODE__ORDER: string;
-  NODE__HYPERLINK: string;
-  NODE__OPENED: string;
-  NODE__CSS_CLASS_NAME: string;
-  NODE__ART: string;
+  NODE_ICON__SRC: any;
+  NODE_LABEL__TEXT: any;
+  SUBTREE: any;
+  NODE__ID: any;
+  NODE__HOLDER_ID: any;
+  NODE__PATH: any;
+  NODE__ORDER: any;
+  NODE__HYPERLINK: any;
+  NODE__OPENED: any;
+  NODE__CSS_CLASS_NAME: any;
+  NODE__ART: any;
 
   constructor() {
     this.NODE_ICON__SRC = "icon";

@@ -10,23 +10,30 @@ class Constants {
     static EVENT_TARGET_MID = 3;
     static EVENT_TARGET_END = 5;
   };
-  static CssPaddingUnits = class {
-    static NONE = 0;
-    static PX = 1;
-    static PERCENTAGE = 2;
-    static REM = 3;
+  static CssSizeDim = class {
+    static NONE = "";
+    static PX = "px";
+    static REM = "rem";
+  };
+  static CssClassNames = class {
+    static TOOLTIP_MAIN = "tooltip";
+    static TOOLTIP_ARROW = "tooltip-arrow";
+    static CSS_VARIABLE_NAME__ARROW_SIZE = "--tooltip_arrow__size";
   };
   static Defaults = class {
     static tooltipAlignDimensionOne = Constants.AlignDimensionOne.BROWSER_TAB_BORDER_TOP;
     static tooltipAlignDimensionTwo = Constants.AlignDimensionTwo.EVENT_TARGET_MID;
     static tooltipPaddingAlignDimensionTwo = 0;
-    static tooltipPaddingUnitAlignDimensionTwo = Constants.CssPaddingUnits.PX;
+    static tooltipPaddingSizeDimAlignDimensionTwo = Constants.CssSizeDim.PX;
     static alternativeTabBorderSides = [
       Constants.AlignDimensionOne.BROWSER_TAB_BORDER_TOP,
       Constants.AlignDimensionOne.BROWSER_TAB_BORDER_RIGHT,
       Constants.AlignDimensionOne.BROWSER_TAB_BORDER_LEFT,
       Constants.AlignDimensionOne.BROWSER_TAB_BORDER_BOTTOM,
     ];
+    static withArrow = 1;
+    static arrowSize = 0;
+    static arrowSizeDim = Constants.CssSizeDim.REM;
     static cssClasses = "tooltip";
     static template = `
   <tooltip>

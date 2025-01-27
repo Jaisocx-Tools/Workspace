@@ -7,7 +7,7 @@ export class ImprovedRenderEventEmitter extends EventEmitter {
 
   mainHolderHtmlNode: HTMLElement|null;
 
-  EventArtDOMEventOptimized: string;
+  EventArtDOMEventOptimized: any;
 
   constructor() {
     super();
@@ -49,8 +49,8 @@ export class ImprovedRenderEventEmitter extends EventEmitter {
   // and not to each html node, it is best, 
   // when the html tool is populated with a larger json data file of several tens or hundreds MBs, for example.
   addDomEventListener(
-    eventName: string,
-    selector: string,
+    eventName: any,
+    selector: any,
     eventHandler: CallableFunction
   ): ImprovedRenderEventEmitter {
     if (!this.eventsHandlersSetDom[eventName]) {
@@ -68,7 +68,7 @@ export class ImprovedRenderEventEmitter extends EventEmitter {
 
   // Don't edit here, please
   emitDomEvent(
-    eventName: string,
+    eventName: any,
     payload: any
   ): EventEmitResult[] {
     const results: EventEmitResult[] = [];
@@ -133,7 +133,7 @@ export class ImprovedRenderEventEmitter extends EventEmitter {
       return;
     }
 
-    const eventName: string = event.type;
+    const eventName: any = event.type;
     const eventHandlers: any = this.eventsHandlersSetDom[eventName];
     if (this.isObjectEmpty(eventHandlers)) {
       return;

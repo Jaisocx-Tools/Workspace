@@ -18,7 +18,7 @@ export class ExampleTooltip {
             Constants.AlignDimensionOne.BROWSER_TAB_BORDER_BOTTOM,
         ])
             .setTooltipAlignDimensionTwo(Constants.AlignDimensionTwo.EVENT_TARGET_START)
-            .setTooltipPaddingAlignDimensionTwo(10, Constants.CssPaddingUnits.PERCENTAGE)
+            .setTooltipPaddingAlignDimensionTwo(2, Constants.CssSizeDim.PX)
             .setTemplate(Constants.Defaults.template)
             .setTemplateData({
             "id": tooltip.mainHtmlNodeId,
