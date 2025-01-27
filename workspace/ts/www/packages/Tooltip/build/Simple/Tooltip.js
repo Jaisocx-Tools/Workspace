@@ -63,8 +63,8 @@ class Tooltip {
     // templateRenderer is a new class exemplar of the Templaterenderer js class.
     this.templateRenderer = new TemplateRenderer();
     this.templateRenderer
-      .setTemplate("")
-      .setData({});
+      .setTemplate(Constants.Defaults.template)
+      .setData(Constants.Defaults.templateData);
   }
   // setDebug is used to turn on the browser developers console infos. 
   setDebug(debug) {
@@ -131,26 +131,6 @@ class Tooltip {
     return this;
   }
 
-  setDefaultTemplateRendererProps() {
-    let template = this.templateRenderer.template;
-    let templateData = this.templateRenderer.data;
-
-    if ((Object.keys(templateData).length === 0) &&
-            (template.length === 0)) {
-      template = Constants.Defaults.template;
-      templateData = {
-        "id": this.mainHtmlNodeId,
-        "cssClasses": this.cssClasses,
-        "text": "Hello",
-      };
-      this.templateRenderer
-        .setTemplate(template)
-        .setData(templateData);
-    }
-
-    return this;
-  }
-
   render() {
     // @ts-ignore
     this.eventTargetHtmlNode = document.getElementById(this.eventTargetHtmlNodeId);
@@ -158,16 +138,15 @@ class Tooltip {
     if (this.mainHtmlNodeId.length === 0) {
       this.mainHtmlNodeId = "jaisocx_tooltip_" + Math.random() + (new Date()).getTime();
     }
-
-    this.setDefaultTemplateRendererProps();
     // the TemplateRenderer produces the html from the html template and json data via .render() method call.
-    const html = this.templateRenderer.render();
+    let html = this.templateRenderer.render();
+    let node = document.createElement("div");
+    node.id = this.mainHtmlNodeId;
+    node.className = (this.cssClasses);
+    node.innerHTML = html;
     // at the end of the html BODY in the current html document,
     // the html from the tooltip is being inserted, with html attributes id="" and class=""
-    document.getElementsByTagName("BODY")[0]
-      .insertAdjacentHTML(
-        "beforeend", 
-        html);
+    document.getElementsByTagName("BODY")[0].append(node);
     // @ts-ignore      
     this.mainHtmlNode = document.getElementById(this.mainHtmlNodeId);
     // TODO: rewrite, using improved DOM events hanlder

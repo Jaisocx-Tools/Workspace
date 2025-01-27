@@ -209,9 +209,9 @@ export class Tooltip implements TooltipInterface {
     // the TemplateRenderer produces the html from the html template and json data via .render() method call.
     let html: any = this.templateRenderer.render();
     let node: HTMLElement = document.createElement("div");
-      node.id = this.mainHtmlNodeId;
-      node.className = this.cssClasses;
-      node.innerHTML = html;
+    node.id = this.mainHtmlNodeId;
+    node.className = ( this.cssClasses );
+    node.innerHTML = html;
     // at the end of the html BODY in the current html document,
     // the html from the tooltip is being inserted, with html attributes id="" and class=""
     document.getElementsByTagName("BODY")[0].append(node);

@@ -28,6 +28,7 @@ export declare class Constants {
         alternativeTabBorderSides: number[];
         cssClasses: string;
         template: string;
+        templateData: object;
     };
 }
 //# sourceMappingURL=Constants.d.ts.map

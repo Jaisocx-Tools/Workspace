@@ -29,10 +29,13 @@ class Constants {
     ];
     static cssClasses = "tooltip";
     static template = `
-  <tooltip id="{{ id }}" class="{{ cssClasses }}">
+  <tooltip>
     {{ text }}
   </tooltip>    
     `;
+    static templateData = {
+      "text": "Hello!",
+    };
   };
 }
 //# sourceMappingURL=Constants.js.map

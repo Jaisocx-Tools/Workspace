@@ -47,9 +47,12 @@ Constants.Defaults = (_d = class {
     ],
     _d.cssClasses = "tooltip",
     _d.template = `
-  <tooltip id="{{ id }}" class="{{ cssClasses }}">
+  <tooltip>
     {{ text }}
   </tooltip>    
     `,
+    _d.templateData = {
+        "text": "Hello!",
+    },
     _d);
 //# sourceMappingURL=Constants.js.map

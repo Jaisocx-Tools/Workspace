@@ -28,7 +28,6 @@ export declare class Tooltip implements TooltipInterface {
     setAlternativeTabBorderSides(alternativeTabBorderSides: number[]): TooltipInterface;
     setTemplate(template: any): TooltipInterface;
     setTemplateData(data: any): TooltipInterface;
-    setDefaultTemplateRendererProps(): TooltipInterface;
     render(): TooltipInterface;
     addEventHandlers(): TooltipInterface;
     showTooltip(): TooltipInterface;
