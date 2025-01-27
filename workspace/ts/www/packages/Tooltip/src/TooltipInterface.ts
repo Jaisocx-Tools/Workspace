@@ -5,26 +5,27 @@
 export interface TooltipInterface {
 
   // initialization methods to set properies of a tooltip for a html node.
-  setDebug(debug: boolean): TooltipInterface;
-  setCssClasses( cssClasses: string ): TooltipInterface;
-  setTooltipAlignDimensionOne( tooltipAlignDimensionOne: number ): TooltipInterface;
-  setTooltipAlignDimensionTwo( tooltipAlignDimensionTwo: number ): TooltipInterface;
+  setDebug(debug: boolean): TooltipInterface; // optional
+  setCssClasses( cssClasses: string ): TooltipInterface; // optional
+  setTooltipAlignDimensionOne( tooltipAlignDimensionOne: number ): TooltipInterface; // optional
+  setTooltipAlignDimensionTwo( tooltipAlignDimensionTwo: number ): TooltipInterface; // optional
   setTooltipPaddingAlignDimensionTwo ( 
     tooltipPaddingAlignDimensionTwo: number,
     tooltipPaddingUnitAlignDimensionTwo: number
-  ): TooltipInterface;
-  setEventTargetHtmlNodeId( id: any ): TooltipInterface;
-  setEventTargetHtmlNode( eventTarget: HTMLElement ): TooltipInterface;
-  setAlternativeTabBorderSides( alternativeTabBorderSides: number[] ): TooltipInterface;
-  setTemplate( template: any ): TooltipInterface;
-  setTemplateData( data: any ): TooltipInterface;
+  ): TooltipInterface; // optional
+  setEventTargetHtmlNodeId( id: any ): TooltipInterface; // required
+  setEventTargetHtmlNode( eventTarget: HTMLElement ): TooltipInterface; // required or .setEventTargetHtmlNodeId()
+  setAlternativeTabBorderSides( alternativeTabBorderSides: number[] ): TooltipInterface; // optional
+  setTemplate( template: any ): TooltipInterface; // optional
+  setTemplateData( data: any ): TooltipInterface; // required. e.g. setTemplateData( { "text": "The Text this will be rendered in the tooltip" } )
 
   // final render method to initialize the tooltip for an html node.
-  render(): TooltipInterface;
+  render(): TooltipInterface; // required
 
 
+  // other methods, not required for tooltip instance initialization.
   // TODO: rewrite using the Jaisocx improved event handler
-  addEventHandlers(): TooltipInterface;
+  addEventHandlers(): TooltipInterface; 
 
   // to show or hide the tooltip
   showTooltip(): TooltipInterface;
