@@ -2,7 +2,7 @@
 
 .tooltip {
   --tooltip__background: #fffffa;
-  --tooltip__text_color: maroon;
+  --tooltip__text_color: black;
   --tooltip__font_family: Courier;
   --tooltip__font_size: 0.925rem;
   --tooltip__font_size__mobile: 1.3rem;
@@ -10,7 +10,7 @@
   --tooltip__border_width: 0.5px;
   --tooltip__border_style: solid;
   --tooltip__border_color: #885;
-  --tooltip__border_radius: 0.9rem;
+  --tooltip__border_radius: 0.5rem;
 
   --tooltip__padding: 0.8rem;
   --tooltip_arrow__size: 6px;
@@ -21,10 +21,9 @@
   --tooltip_arrow__border_style: var(--tooltip__border_style);
   --tooltip_arrow__border_width: var(--tooltip__border_width);
 
-
   /* testing purpose variables */
   --tooltip__width: 12rem;
-  --tooltip__height: 4rem;
+  --tooltip__height: 7rem;
 }
 
 
@@ -51,3 +50,5 @@
     --tooltip__font_size: var(--tooltip__font_size__tablet);
   }
 }
+
+

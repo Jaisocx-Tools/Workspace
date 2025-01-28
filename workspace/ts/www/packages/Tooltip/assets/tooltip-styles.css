@@ -60,7 +60,7 @@
   border-radius: var(--tooltip__border_radius);
   background: var(--tooltip__background);
 
-  z-index: 200 !important;
+  z-index: 333 !important;
 }
 
 .tooltip .tooltip-content,

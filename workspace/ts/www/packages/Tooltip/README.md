@@ -117,7 +117,6 @@ export class ExampleTooltip {
 3. Event: custom event handlers
 4. Event: on click outside the tooltip, the tooltip is hidden.
 5. Event: on window resize, to recheck the tooltip visibility.
-7. bug: position fixed
 8. idea: declare css vars for @media rules with transparent names, somewhere reusable npm package or similar.
 
 

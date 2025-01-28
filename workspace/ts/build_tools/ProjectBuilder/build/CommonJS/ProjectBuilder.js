@@ -142,8 +142,9 @@ class ProjectBuilder {
             console.log(`Package [ ${packageJson.name} ]: npm link package ${packageJson.name} for local usage with other`);
             this.runCommandLine(packagePath, `npm link`, false);
         }
+        const timeStamp = (new Date()).toISOString();
         // building simple .js files to use in example.hml via <script src="...js"
-        console.log(`Package [ ${packageJson.name} ]: building simple .js for usage in .html in script tag as src`);
+        console.log(`${timeStamp} Package [ ${packageJson.name} ]: building simple .js for usage in .html in script tag as src`);
         this.buildSimple(packageJson, packagePath);
     }
     installPackageDependencies(packageJson, packagePath) {
