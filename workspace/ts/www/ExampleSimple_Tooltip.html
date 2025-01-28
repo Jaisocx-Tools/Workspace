@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <link rel="stylesheet" href="packages/Tooltip/assets/themes/theme-darkmode/tooltip-theme-darkmode.css" />
+    <link rel="stylesheet" href="packages/Tooltip/assets/themes/theme-context/tooltip-theme-context.css" />
     <link rel="stylesheet" href="packages/Tooltip/assets/tooltip-styles-main.css" />
 
     <style>
@@ -71,8 +72,9 @@
     <h1>Tooltip Example</h1>
 
     <div class="tooltip-show-button-holder">
-      <button id="tooltip-show-button-darkmode"></button>
-      <button id="tooltip-show-button"></button>
+      <button id="tooltip-show-button-context" title="Theme Context"></button>
+      <button id="tooltip-show-button-darkmode" title="Theme Darkmode"></button>
+      <button id="tooltip-show-button" title="Theme Base"></button>
     </div>
  
 
@@ -86,6 +88,34 @@
         //   "Hello World!"
         // );
         //return;
+
+        const tooltipContext = new Tooltip();
+        tooltipContext
+          .setEventTargetHtmlNodeId( "tooltip-show-button-context" )
+          .setCssClasses( "theme-context" )
+          .setHtml ( 
+            `
+            <ul>
+              <li>Context Item 1</li>
+              <li>Context Item 2</li>
+              <li>Context Item 3</li>
+            </ul>
+            `
+           )
+          .setAlignDimensionOneValueOrder (
+            [
+              //Constants.AlignDimensionOne.BROWSER_TAB_BORDER_TOP,
+              Constants.AlignDimensionOne.BROWSER_TAB_BORDER_RIGHT,
+              Constants.AlignDimensionOne.BROWSER_TAB_BORDER_LEFT,
+              Constants.AlignDimensionOne.BROWSER_TAB_BORDER_BOTTOM,
+            ]
+          )
+          .setTooltipAlignDimensionTwo(Constants.AlignDimensionTwo.EVENT_TARGET_START)
+          .setTooltipPaddingAlignDimensionTwo (
+            -3,
+            Constants.CssSizeDim.PX
+          )
+          .render();
 
         const tooltipDarkmode = new Tooltip();
         tooltipDarkmode

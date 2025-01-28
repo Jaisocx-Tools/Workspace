@@ -1,17 +1,17 @@
 
 
-.tooltip {
-  --tooltip__background: #fffffa;
-  --tooltip__text_color: maroon;
+.tooltip.theme-context {
+  --tooltip__background: #f2f4f8;
+  --tooltip__text_color: #333;
   --tooltip__font_family: Courier;
-  --tooltip__font_size: 1rem;
+  --tooltip__font_size: 0.73rem;
   --tooltip__border_width: 0.5px;
   --tooltip__border_style: solid;
   --tooltip__border_color: #885;
-  --tooltip__border_radius: 0.9rem;
+  --tooltip__border_radius: 0;
 
   --tooltip__padding: 0.8rem;
-  --tooltip_arrow__size: 6px;
+  --tooltip_arrow__size: 0;
 
   --tooltip_arrow__background: var(--tooltip__background);
   
@@ -21,8 +21,14 @@
 
 
   /* testing purpose variables */
-  --tooltip__width: 12rem;
-  --tooltip__height: 4rem;
+  --tooltip__width: 8rem;
+  --tooltip__height: 14rem;
+}
+
+.tooltip.theme-context ul {
+  padding-left: 0.2rem;
+  font-size: 0.65rem;
+  font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 
 @media ( (max-width: 440px) and (orientation: portrait) ) {
