@@ -4,8 +4,8 @@ export declare class TooltipLib {
     constructor();
     static getInstance(): TooltipLib;
     setTooltipDimensions(tooltipHtmlNode: HTMLElement | null, tooltipHtmlNodeDimensions: Dimensions): void;
-    calculateTooltipDimensions(eventTargetHtmlNodeDimensions: Dimensions, tooltipHtmlNodeDimensions: Dimensions, browserTabBorderSide: number, tooltipAlignDimensionTwo: number, tooltipPaddingAlignDimensionTwo: number, tooltipPaddingSizeDimAlignDimensionTwo: number, arrowPixelSize: number): Dimensions;
-    calculateTooltipDimensionTwo(eventTargetHtmlNodeDimensions: Dimensions, tooltipHtmlNodeDimensions: Dimensions, browserTabBorderSide: number, tooltipAlignDimensionTwo: number, tooltipPaddingAlignDimensionTwo: number, tooltipPaddingSizeDimAlignDimensionTwo: number): Dimensions;
+    calculateTooltipDimensions(eventTargetHtmlNodeDimensions: Dimensions, tooltipHtmlNodeDimensions: Dimensions, browserTabBorderSide: number, tooltipAlignDimensionTwo: number, tooltipPaddingAlignDimensionTwo: number, arrowPixelSize: number): Dimensions;
+    calculateTooltipDimensionTwo(eventTargetHtmlNodeDimensions: Dimensions, tooltipHtmlNodeDimensions: Dimensions, browserTabBorderSide: number, tooltipAlignDimensionTwo: number, tooltipPaddingAlignDimensionTwo: number): Dimensions;
     doesTooltipSuitsTilBrowserTabBorder(browserTabDimensions: Dimensions, tooltipHtmlNodeDimensions: Dimensions, browserTabBorderSide: number, arrowPixelSize: number): number;
     setTooltipArrowDimensions(arrowHtmlNode: HTMLElement | null | undefined, arrowDimensions: Dimensions): undefined;
     calculateTooltipArrowDimensions(eventTargetDimensions: Dimensions, tooltipHtmlNodeDimensions: Dimensions, arrowPixelSize: number, alignDimensionOne: number): Dimensions;

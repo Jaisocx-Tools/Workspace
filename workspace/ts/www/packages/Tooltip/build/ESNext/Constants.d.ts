@@ -15,8 +15,9 @@ export declare class Constants {
     static CssSizeDim: {
         new (): {};
         NONE: any;
-        PX: any;
+        PIXELS: any;
         REM: any;
+        PERCENTS: any;
     };
     static CssClassNames: {
         new (): {};

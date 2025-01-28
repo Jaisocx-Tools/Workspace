@@ -31,7 +31,7 @@ export class ExampleTooltip {
       //.setTooltipAlignDimensionTwo(Constants.AlignDimensionTwo.EVENT_TARGET_START)
       // .setTooltipPaddingAlignDimensionTwo (
       //   20,
-      //   Constants.CssSizeDim.PX
+      //   Constants.CssSizeDim.PIXELS
       // )
       .render();
   }

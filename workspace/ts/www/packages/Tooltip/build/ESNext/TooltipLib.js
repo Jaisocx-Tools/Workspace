@@ -21,8 +21,8 @@ export class TooltipLib {
         //@ts-ignore
         tooltipHtmlNode.style.left = `${tooltipHtmlNodeDimensions.left}px`;
     }
-    calculateTooltipDimensions(eventTargetHtmlNodeDimensions, tooltipHtmlNodeDimensions, browserTabBorderSide, tooltipAlignDimensionTwo, tooltipPaddingAlignDimensionTwo, tooltipPaddingSizeDimAlignDimensionTwo, arrowPixelSize) {
-        const retVal = this.calculateTooltipDimensionTwo(eventTargetHtmlNodeDimensions, tooltipHtmlNodeDimensions, browserTabBorderSide, tooltipAlignDimensionTwo, tooltipPaddingAlignDimensionTwo, tooltipPaddingSizeDimAlignDimensionTwo);
+    calculateTooltipDimensions(eventTargetHtmlNodeDimensions, tooltipHtmlNodeDimensions, browserTabBorderSide, tooltipAlignDimensionTwo, tooltipPaddingAlignDimensionTwo, arrowPixelSize) {
+        const retVal = this.calculateTooltipDimensionTwo(eventTargetHtmlNodeDimensions, tooltipHtmlNodeDimensions, browserTabBorderSide, tooltipAlignDimensionTwo, tooltipPaddingAlignDimensionTwo);
         retVal.width = tooltipHtmlNodeDimensions.width;
         retVal.height = tooltipHtmlNodeDimensions.height;
         if (browserTabBorderSide === Constants.AlignDimensionOne.BROWSER_TAB_BORDER_TOP) {
@@ -52,7 +52,7 @@ export class TooltipLib {
         retVal.bottom = retVal.top + retVal.height;
         return retVal;
     }
-    calculateTooltipDimensionTwo(eventTargetHtmlNodeDimensions, tooltipHtmlNodeDimensions, browserTabBorderSide, tooltipAlignDimensionTwo, tooltipPaddingAlignDimensionTwo, tooltipPaddingSizeDimAlignDimensionTwo) {
+    calculateTooltipDimensionTwo(eventTargetHtmlNodeDimensions, tooltipHtmlNodeDimensions, browserTabBorderSide, tooltipAlignDimensionTwo, tooltipPaddingAlignDimensionTwo) {
         if ((browserTabBorderSide === Constants.AlignDimensionOne.BROWSER_TAB_BORDER_TOP) ||
             (browserTabBorderSide === Constants.AlignDimensionOne.BROWSER_TAB_BORDER_BOTTOM)) {
             if (tooltipAlignDimensionTwo === Constants.AlignDimensionTwo.EVENT_TARGET_START) {
@@ -196,7 +196,7 @@ export class TooltipLib {
         let pixelValue = 0;
         // this method throws Error if the css dimension is not supported. Supported are px, % and rem.
         this.validateCssSizeDim(sizeUnit);
-        if (sizeUnit == Constants.CssSizeDim.PX) {
+        if (sizeUnit == Constants.CssSizeDim.PIXELS) {
             pixelValue = sizeNumeric;
         }
         else if (sizeUnit == Constants.CssSizeDim.REM) {

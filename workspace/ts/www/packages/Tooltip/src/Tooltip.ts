@@ -414,6 +414,11 @@ export class Tooltip implements TooltipInterface {
     );
     let tooltipHtmlNodeDimensions: Dimensions = new Dimensions();
 
+    const tooltipPaddingPixelSize: number = this.lib.translateToPixelValue (
+      this.tooltipPaddingAlignDimensionTwo,
+      this.tooltipPaddingSizeDimAlignDimensionTwo
+    );
+
     browserTabBorderSide = 0;
     for ( browserTabBorderSide of this.alternativeTabBorderSides ) {
 
@@ -422,8 +427,7 @@ export class Tooltip implements TooltipInterface {
         mainHtmlNodeDimensions,
         browserTabBorderSide,
         this.tooltipAlignDimensionTwo,
-        this.tooltipPaddingAlignDimensionTwo,
-        this.tooltipPaddingSizeDimAlignDimensionTwo,
+        tooltipPaddingPixelSize,
         arrowPixelSize
       );
 

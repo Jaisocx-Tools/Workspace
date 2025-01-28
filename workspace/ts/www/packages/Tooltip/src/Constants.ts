@@ -16,8 +16,9 @@ export class Constants {
 
   static CssSizeDim = class {
     static NONE: any = "";
-    static PX: any = "px";
+    static PIXELS: any = "px";
     static REM: any = "rem";
+    static PERCENTS: any = "%";
   };
 
   static CssClassNames = class {
@@ -30,7 +31,7 @@ export class Constants {
     static tooltipAlignDimensionOne: number = Constants.AlignDimensionOne.BROWSER_TAB_BORDER_TOP;
     static tooltipAlignDimensionTwo: number = Constants.AlignDimensionTwo.EVENT_TARGET_MID;
     static tooltipPaddingAlignDimensionTwo: number = 0;
-    static tooltipPaddingSizeDimAlignDimensionTwo: any = Constants.CssSizeDim.PX;
+    static tooltipPaddingSizeDimAlignDimensionTwo: any = Constants.CssSizeDim.PIXELS;
   
     static alternativeTabBorderSides: number[] = [
       Constants.AlignDimensionOne.BROWSER_TAB_BORDER_TOP,

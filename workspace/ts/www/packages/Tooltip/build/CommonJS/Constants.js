@@ -28,8 +28,9 @@ Constants.CssSizeDim = (_c = class {
     },
     __setFunctionName(_c, "CssSizeDim"),
     _c.NONE = "",
-    _c.PX = "px",
+    _c.PIXELS = "px",
     _c.REM = "rem",
+    _c.PERCENTS = "%",
     _c);
 Constants.CssClassNames = (_d = class {
     },
@@ -44,7 +45,7 @@ Constants.Defaults = (_e = class {
     _e.tooltipAlignDimensionOne = Constants.AlignDimensionOne.BROWSER_TAB_BORDER_TOP,
     _e.tooltipAlignDimensionTwo = Constants.AlignDimensionTwo.EVENT_TARGET_MID,
     _e.tooltipPaddingAlignDimensionTwo = 0,
-    _e.tooltipPaddingSizeDimAlignDimensionTwo = Constants.CssSizeDim.PX,
+    _e.tooltipPaddingSizeDimAlignDimensionTwo = Constants.CssSizeDim.PIXELS,
     _e.alternativeTabBorderSides = [
         Constants.AlignDimensionOne.BROWSER_TAB_BORDER_TOP,
         Constants.AlignDimensionOne.BROWSER_TAB_BORDER_RIGHT,

@@ -283,9 +283,10 @@ export class Tooltip {
         const eventTargetDimensions = this.lib.getHtmlNodeDimensions(this.eventTargetHtmlNode);
         const mainHtmlNodeDimensions = this.lib.getHtmlNodeDimensions(this.mainHtmlNode);
         let tooltipHtmlNodeDimensions = new Dimensions();
+        const tooltipPaddingPixelSize = this.lib.translateToPixelValue(this.tooltipPaddingAlignDimensionTwo, this.tooltipPaddingSizeDimAlignDimensionTwo);
         browserTabBorderSide = 0;
         for (browserTabBorderSide of this.alternativeTabBorderSides) {
-            tooltipHtmlNodeDimensions = this.lib.calculateTooltipDimensions(eventTargetDimensions, mainHtmlNodeDimensions, browserTabBorderSide, this.tooltipAlignDimensionTwo, this.tooltipPaddingAlignDimensionTwo, this.tooltipPaddingSizeDimAlignDimensionTwo, arrowPixelSize);
+            tooltipHtmlNodeDimensions = this.lib.calculateTooltipDimensions(eventTargetDimensions, mainHtmlNodeDimensions, browserTabBorderSide, this.tooltipAlignDimensionTwo, tooltipPaddingPixelSize, arrowPixelSize);
             if (
             // if condition checks, whether the tooltip can be placed between the event target and browser tab border.
             this.lib.doesTooltipSuitsTilBrowserTabBorder(browserTabDimensions, tooltipHtmlNodeDimensions, browserTabBorderSide, arrowPixelSize)) {

@@ -289,6 +289,9 @@ class Tooltip {
     const eventTargetDimensions = this.lib.getHtmlNodeDimensions(this.eventTargetHtmlNode);
     const mainHtmlNodeDimensions = this.lib.getHtmlNodeDimensions(this.mainHtmlNode);
     let tooltipHtmlNodeDimensions = new Dimensions();
+    const tooltipPaddingPixelSize = this.lib.translateToPixelValue(
+      this.tooltipPaddingAlignDimensionTwo, 
+      this.tooltipPaddingSizeDimAlignDimensionTwo);
     browserTabBorderSide = 0;
 
     for (browserTabBorderSide of this.alternativeTabBorderSides) {
@@ -297,8 +300,7 @@ class Tooltip {
         mainHtmlNodeDimensions, 
         browserTabBorderSide, 
         this.tooltipAlignDimensionTwo, 
-        this.tooltipPaddingAlignDimensionTwo, 
-        this.tooltipPaddingSizeDimAlignDimensionTwo, 
+        tooltipPaddingPixelSize, 
         arrowPixelSize);
 
       if (

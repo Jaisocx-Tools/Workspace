@@ -40,7 +40,6 @@ export class TooltipLib {
     browserTabBorderSide: number,
     tooltipAlignDimensionTwo: number,
     tooltipPaddingAlignDimensionTwo: number,
-    tooltipPaddingSizeDimAlignDimensionTwo: number,
     arrowPixelSize: number
   ): Dimensions {
 
@@ -49,8 +48,7 @@ export class TooltipLib {
       tooltipHtmlNodeDimensions,
       browserTabBorderSide,
       tooltipAlignDimensionTwo,
-      tooltipPaddingAlignDimensionTwo,
-      tooltipPaddingSizeDimAlignDimensionTwo
+      tooltipPaddingAlignDimensionTwo
     );
 
     retVal.width = tooltipHtmlNodeDimensions.width;
@@ -96,8 +94,7 @@ export class TooltipLib {
     tooltipHtmlNodeDimensions: Dimensions,
     browserTabBorderSide: number,
     tooltipAlignDimensionTwo: number,
-    tooltipPaddingAlignDimensionTwo: number,
-    tooltipPaddingSizeDimAlignDimensionTwo: number
+    tooltipPaddingAlignDimensionTwo: number
   ): Dimensions {
 
     if (
@@ -326,7 +323,7 @@ export class TooltipLib {
     // this method throws Error if the css dimension is not supported. Supported are px, % and rem.
     this.validateCssSizeDim( sizeUnit );
 
-    if ( sizeUnit == Constants.CssSizeDim.PX ) {
+    if ( sizeUnit == Constants.CssSizeDim.PIXELS ) {
       pixelValue = sizeNumeric;
 
     } else if ( sizeUnit == Constants.CssSizeDim.REM ) {
