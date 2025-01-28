@@ -26,9 +26,10 @@
 }
 
 .tooltip.theme-context ul {
-  padding-left: 0.2rem;
+  padding-left: 0.4rem;
   font-size: 0.65rem;
   font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  list-style-type: decimal;
 }
 
 @media ( (max-width: 440px) and (orientation: portrait) ) {
