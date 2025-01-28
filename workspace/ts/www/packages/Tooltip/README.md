@@ -83,24 +83,26 @@ export class ExampleTooltip {
     tooltip
       .setDebug(true)
       .setEventTargetHtmlNodeId( eventTargetId )
-      .setCssClasses(`tooltip ${themeName}`)
-      //.setTooltipAlignDimensionOne(Constants.AlignDimensionOne.BROWSER_TAB_BORDER_TOP)
-      .setTooltipAlignDimensionOne(Constants.AlignDimensionOne.BROWSER_TAB_BORDER_RIGHT)
-      //.setTooltipAlignDimensionOne(Constants.AlignDimensionOne.BROWSER_TAB_BORDER_LEFT)
-      //.setTooltipAlignDimensionOne(Constants.AlignDimensionOne.BROWSER_TAB_BORDER_BOTTOM)
-      .setAlternativeTabBorderSides(
-        [
-          Constants.AlignDimensionOne.BROWSER_TAB_BORDER_TOP,
-          Constants.AlignDimensionOne.BROWSER_TAB_BORDER_RIGHT,
-          Constants.AlignDimensionOne.BROWSER_TAB_BORDER_LEFT,
-          Constants.AlignDimensionOne.BROWSER_TAB_BORDER_BOTTOM,
-        ]
+      .setCssClasses( themeName )
+      .setHtml( tooltipText )
+      .setAlignDimensionOneValueOrder (
+            [
+              Constants.AlignDimensionOne.BROWSER_TAB_BORDER_TOP,
+              Constants.AlignDimensionOne.BROWSER_TAB_BORDER_RIGHT,
+              Constants.AlignDimensionOne.BROWSER_TAB_BORDER_LEFT,
+              Constants.AlignDimensionOne.BROWSER_TAB_BORDER_BOTTOM,
+            ]
       )
-      .setTooltipAlignDimensionTwo(Constants.AlignDimensionTwo.EVENT_TARGET_START)
+      .setTooltipAlignDimensionTwo(Constants.AlignDimensionTwo.EVENT_TARGET_MID)
+      //.setTooltipAlignDimensionTwo(Constants.AlignDimensionTwo.EVENT_TARGET_START)
+      //.setTooltipAlignDimensionTwo(Constants.AlignDimensionTwo.EVENT_TARGET_END)
       .setTooltipPaddingAlignDimensionTwo (
-        10,
-        Constants.CssSizeDim.PERCENTAGE
+        0.7,
+        Constants.CssSizeDim.REM
       )
+      .setArrowSize(0.3)
+      .setArrowSizeDim("rem")
+      .setIsWithArrow(1)
       .render();
   }
 }
