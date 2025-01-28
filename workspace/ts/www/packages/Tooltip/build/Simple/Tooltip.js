@@ -1,10 +1,9 @@
-class Tooltip {
-  // debug is used in if statements for console.log debugging infos
-  debug;
+class Tooltip extends EventEmitter {
   // eventTargetHtmlNodeId: html node attribute id="" , this node will be added event listener, click or mouseover or similar.
   eventTargetHtmlNodeId;
   // eventTargetHtmlNode: this node will be added event listener, click or mouseover or similar.
   eventTargetHtmlNode;
+  eventName;
   // mainHtmlNodeId is the html node attr id="", this html node is the tooltip, produced dynamic
   mainHtmlNodeId;
   // mainHtmlNode: this html node is the tooltip, produced dynamic
@@ -44,11 +43,12 @@ class Tooltip {
   lib;
   // constructor method sets for the first time values for this class properies.
   constructor() {
-    this.debug = true;
+    super();
     this.isShown = 0;
     // event target, where to click to show the tooltip initial attr id="" value is the zero length text
     this.eventTargetHtmlNodeId = "";
     this.eventTargetHtmlNode = null;
+    this.eventName = Constants.EventsNames.CLICK;
     // tooltip dynamic produced html node, the initial attr id="" value is the zero length text
     this.mainHtmlNodeId = "";
     this.mainHtmlNode = null;
@@ -74,8 +74,18 @@ class Tooltip {
     // templateRenderer is a new class exemplar of the Templaterenderer js class.
     this.templateRenderer = new TemplateRenderer();
     this.templateRenderer
-      .setTemplate(Constants.Defaults.template)
-      .setData(Constants.Defaults.templateData);
+      .setTemplate(Constants.Defaults.templateTooltipContent)
+      .setData(Constants.Defaults.templateTooltipContent);
+  }
+  // getEventsNamesEmitted: the documentation method to know all events names those are emitted in this ts class
+  getEventsNamesEmitted() {
+    let eventsNamesEmitted = [];
+    eventsNamesEmitted = [
+      this.eventName,
+      ...Constants.EventsEmitted,
+    ];
+
+    return eventsNamesEmitted;
   }
   // setDebug is used to turn on the browser developers console infos. 
   setDebug(debug) {
@@ -87,7 +97,7 @@ class Tooltip {
 
   setHtml(html) {
     this.html = html;
-    this.setTemplate(Constants.Defaults.template)
+    this.setTemplate(Constants.Defaults.templateTooltipContent)
       .setTemplateData({ html, });
 
     return this;
@@ -143,6 +153,12 @@ class Tooltip {
 
     return this;
   }
+  // setEventName: method to set the event name, when on the eventTarget the tooltip is shown.
+  setEventName(eventName) {
+    this.eventName = eventName;
+
+    return this;
+  }
   // setAlignDimensionOneValueOrder: method adds alternative array of values in the order, to try to plce on the site ui the tooltip.
   setAlignDimensionOneValueOrder(alternativeTabBorderSides) {
     this.alternativeTabBorderSides = alternativeTabBorderSides;
@@ -169,23 +185,31 @@ class Tooltip {
   }
 
   render() {
+    if (this.debug) {
+      console.info(
+        "JS class Tooltip emits Events:", 
+        this.getEventsNamesEmitted());
+    }
     // @ts-ignore
     this.eventTargetHtmlNode = document.getElementById(this.eventTargetHtmlNodeId);
+    const templateData = new TooltipMainTemplateData();
 
     if (this.mainHtmlNodeId.length === 0) {
-      this.mainHtmlNodeId = "jaisocx_tooltip_" + Math.random() + (new Date()).getTime();
+      this.mainHtmlNodeId = templateData.getId();
+    }
+    else {
+      templateData.setId(this.mainHtmlNodeId);
     }
     // the TemplateRenderer produces the html from the html template and json data via .render() method call.
-    const contentHtml = this.templateRenderer.render();
+    const tooltipContentHtml = this.templateRenderer.render();
+    templateData
+      .setCssClasses(`${Constants.CssClassNames.TOOLTIP_MAIN} ${this.cssClasses}`)
+      .setTooltipContent(tooltipContentHtml);
     // the main template contains in the placeholder {{ tooltipContent }} the rendered template from the custom template and data
     const templateRedererTechniq = new TemplateRenderer();
     const html = templateRedererTechniq
       .setTemplate(Constants.tooltipMainTemplate)
-      .setData({
-        "id": this.mainHtmlNodeId,
-        "cssClasses": `${Constants.CssClassNames.TOOLTIP_MAIN} ${this.cssClasses}`,
-        "tooltipContent": contentHtml,
-      })
+      .setData(templateData)
       .render();
     // at the end of the html BODY in the current html document,
     // the html from the tooltip is being inserted, with html attributes id="" and class=""
@@ -215,19 +239,34 @@ class Tooltip {
   }
   // TODO: rewrite using the Jaisocx improved event handler
   addEventHandlers() {
-    if (this.debug) {
-      console.warn("TODO: use ImprovedEventHandler");
-    }
     // @ts-ignore
     this.eventTargetHtmlNode.addEventListener(
-      "click", 
+      this.eventName, 
       (evt) => {
         if (this.debug) {
-          console.warn("TODO: use ImprovedEventHandler");
           console.log(evt);
         }
 
+        this.emitEvent(
+          this.eventName, 
+          evt);
         this.showTooltip();
+      });
+    window.addEventListener(
+      Constants.EventsNames.RESIZE, 
+      (evt) => {
+        if (this.isShown === 0) {
+          return;
+        }
+
+        if (this.debug) {
+          console.log(evt);
+        }
+
+        this.emitEvent(
+          Constants.EventsNames.RESIZE, 
+          evt);
+        this.setTooltipAlignDimensionOneCss();
       });
 
     return this;
@@ -246,9 +285,20 @@ class Tooltip {
     this.mainHtmlNode.style.display = cssDisplay;
 
     if (this.isShown === 1) {
+      this.emitEvent(
+        Constants.TooltipEventsNames.BEFORE_TOOLTIP_SHOWN, 
+        this);
       // this method calculates the css rules top and left of the eventTarget and the tooltip, 
       // and sets top and left cass rules values in pixels to the tooltip html node.
       this.setTooltipAlignDimensionOneCss();
+      this.emitEvent(
+        Constants.TooltipEventsNames.AFTER_TOOLTIP_SHOWN, 
+        this);
+    }
+    else {
+      this.emitEvent(
+        Constants.TooltipEventsNames.AFTER_TOOLTIP_HIDDEN, 
+        this);
     }
 
     return this;

@@ -1,14 +1,33 @@
 class Constants {
+  static EventsNames = class {
+    static CLICK = "click";
+    static DOUBLE_CLICK = "dblclick";
+    static CONTEXT_MENU = "contextmenu";
+    static MOUSEOVER = "mouseover";
+    static FOCUS = "focus";
+    static RESIZE = "resize";
+  };
+  static TooltipEventsNames = class {
+    static BEFORE_TOOLTIP_SHOWN = "beforeTooltipShown";
+    static AFTER_TOOLTIP_SHOWN = "afterTooltipShown";
+    static AFTER_TOOLTIP_HIDDEN = "afterTooltipHidden";
+  };
+  static EventsEmitted = [
+    Constants.EventsNames.RESIZE,
+    Constants.TooltipEventsNames.BEFORE_TOOLTIP_SHOWN,
+    Constants.TooltipEventsNames.AFTER_TOOLTIP_SHOWN,
+    Constants.TooltipEventsNames.AFTER_TOOLTIP_HIDDEN,
+  ];
   static AlignDimensionOne = class {
-    static BROWSER_TAB_BORDER_TOP = 1;
-    static BROWSER_TAB_BORDER_RIGHT = 2;
-    static BROWSER_TAB_BORDER_LEFT = 3;
-    static BROWSER_TAB_BORDER_BOTTOM = 4;
+    static BROWSER_TAB_BORDER_TOP = "top";
+    static BROWSER_TAB_BORDER_RIGHT = "right";
+    static BROWSER_TAB_BORDER_LEFT = "left";
+    static BROWSER_TAB_BORDER_BOTTOM = "bottom";
   };
   static AlignDimensionTwo = class {
-    static EVENT_TARGET_START = 2;
-    static EVENT_TARGET_MID = 3;
-    static EVENT_TARGET_END = 5;
+    static EVENT_TARGET_START = "start";
+    static EVENT_TARGET_MID = "mid";
+    static EVENT_TARGET_END = "end";
   };
   static CssSizeDim = class {
     static NONE = "";
@@ -19,6 +38,7 @@ class Constants {
   static CssClassNames = class {
     static TOOLTIP_MAIN = "tooltip";
     static TOOLTIP_ARROW = "tooltip-arrow";
+    static TOOLTIP_CONTENT = "tooltip-content";
     static CSS_VARIABLE_NAME__ARROW_SIZE = "--tooltip_arrow__size";
   };
   static Defaults = class {
@@ -35,22 +55,30 @@ class Constants {
     static withArrow = 1;
     static arrowSize = 0;
     static arrowSizeDim = Constants.CssSizeDim.REM;
-    static cssClasses = "tooltip";
-    static template = `
-  <tooltip>
-    {{ html }}
-  </tooltip>    
+    static cssClasses = Constants.CssClassNames.TOOLTIP_MAIN;
+    static templateTooltipContent = `
+      {{ html }}
     `;
-    static templateData = {
+    static templateTooltipContentData = {
       "html": "Hello!",
     };
   };
   static tooltipMainTemplate = `
-  <tooltip-main id="{{ id }}" class="{{ cssClasses }}">
-     <tooltip-arrow class="tooltip-arrow"></tooltip-arrow>
-     <tooltip-content class="tooltip-content">{{ tooltipContent }}</tooltip-content>
+  <tooltip-main 
+    id="{{ id }}" 
+    class="{{ cssClasses }}">
+
+      <tooltip-arrow 
+          class="tooltip-arrow">
+      </tooltip-arrow>
+
+      <tooltip-content 
+          class="tooltip-content">
+            {{ tooltipContent }}
+      </tooltip-content>
+
   </tooltip-main>
   `;
-  static tooltipMainTemplateData = {};
+  static tooltipMainTemplateData = new TooltipMainTemplateData();
 }
 //# sourceMappingURL=Constants.js.map

@@ -9,7 +9,7 @@ class ExampleTooltip {
       .setEventTargetHtmlNodeId(eventTargetId)
       .setCssClasses(themeName)
       .setTemplateData({
-        "text": tooltipText,
+        "html": tooltipText,
       })
       .setAlignDimensionOneValueOrder([
         //Constants.AlignDimensionOne.BROWSER_TAB_BORDER_TOP,

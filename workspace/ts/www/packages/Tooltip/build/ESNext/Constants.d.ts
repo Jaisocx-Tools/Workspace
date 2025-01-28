@@ -1,16 +1,33 @@
+import { TooltipMainTemplateData } from "./TooltipMainTemplateData.js";
 export declare class Constants {
+    static EventsNames: {
+        new (): {};
+        CLICK: string;
+        DOUBLE_CLICK: string;
+        CONTEXT_MENU: string;
+        MOUSEOVER: string;
+        FOCUS: string;
+        RESIZE: string;
+    };
+    static TooltipEventsNames: {
+        new (): {};
+        BEFORE_TOOLTIP_SHOWN: string;
+        AFTER_TOOLTIP_SHOWN: string;
+        AFTER_TOOLTIP_HIDDEN: string;
+    };
+    static EventsEmitted: string[];
     static AlignDimensionOne: {
         new (): {};
-        BROWSER_TAB_BORDER_TOP: number;
-        BROWSER_TAB_BORDER_RIGHT: number;
-        BROWSER_TAB_BORDER_LEFT: number;
-        BROWSER_TAB_BORDER_BOTTOM: number;
+        BROWSER_TAB_BORDER_TOP: any;
+        BROWSER_TAB_BORDER_RIGHT: any;
+        BROWSER_TAB_BORDER_LEFT: any;
+        BROWSER_TAB_BORDER_BOTTOM: any;
     };
     static AlignDimensionTwo: {
         new (): {};
-        EVENT_TARGET_START: number;
-        EVENT_TARGET_MID: number;
-        EVENT_TARGET_END: number;
+        EVENT_TARGET_START: any;
+        EVENT_TARGET_MID: any;
+        EVENT_TARGET_END: any;
     };
     static CssSizeDim: {
         new (): {};
@@ -23,6 +40,7 @@ export declare class Constants {
         new (): {};
         TOOLTIP_MAIN: any;
         TOOLTIP_ARROW: any;
+        TOOLTIP_CONTENT: any;
         CSS_VARIABLE_NAME__ARROW_SIZE: any;
     };
     static Defaults: {
@@ -36,10 +54,10 @@ export declare class Constants {
         arrowSize: any;
         arrowSizeDim: any;
         cssClasses: any;
-        template: any;
-        templateData: object;
+        templateTooltipContent: any;
+        templateTooltipContentData: object;
     };
     static tooltipMainTemplate: any;
-    static tooltipMainTemplateData: object;
+    static tooltipMainTemplateData: TooltipMainTemplateData;
 }
 //# sourceMappingURL=Constants.d.ts.map

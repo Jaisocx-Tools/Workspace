@@ -5,7 +5,6 @@
 export interface TooltipInterface {
 
   // initialization methods to set properies of a tooltip for a html node.
-  setDebug(debug: boolean): TooltipInterface; // optional
   setEventTargetHtmlNodeId( id: any ): TooltipInterface; // required
   setEventTargetHtmlNode( eventTarget: HTMLElement ): TooltipInterface; // required or .setEventTargetHtmlNodeId()
   setHtml( html: any ): TooltipInterface;

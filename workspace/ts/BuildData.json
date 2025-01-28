@@ -127,21 +127,26 @@
       "build-simple-enable": true,
       "dependencies": [
         {
+          "name": "@jaisocx/event-emitter",
+          "path": "packages/EventEmitter"
+        },
+        {
           "name": "@jaisocx/template-renderer",
           "path": "packages/TemplateRenderer"
         }
       ],
       "build-files": [
-        "Tooltip.js",
         "Constants.js",
-        "Types.js",
-        "TooltipLib.js"
+        "Tooltip.js",
+        "TooltipLib.js",
+        "TooltipMainTemplateData.js",
+        "Types.js"
       ]
     },
     {
       "path": "examples/ExampleTooltip",
       "name": "example-tooltip",
-      "build": false,
+      "build": true,
       "build-simple-enable": true,
       "dependencies": [
         {

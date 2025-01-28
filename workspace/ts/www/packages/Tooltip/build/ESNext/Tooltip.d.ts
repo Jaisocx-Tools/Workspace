@@ -1,11 +1,12 @@
+import { EventEmitter } from "@jaisocx/event-emitter";
 import { TemplateRenderer } from "@jaisocx/template-renderer";
 import { TooltipLib } from "./TooltipLib.js";
 import { TooltipInterface } from "./TooltipInterface.js";
 import "@jaisocx-tooltip-assets/tooltip-styles-main-webpack.css";
-export declare class Tooltip implements TooltipInterface {
-    debug: boolean;
+export declare class Tooltip extends EventEmitter implements TooltipInterface {
     eventTargetHtmlNodeId: any;
     eventTargetHtmlNode: HTMLElement | null;
+    eventName: any;
     mainHtmlNodeId: any;
     mainHtmlNode: HTMLElement | null;
     isShown: number;
@@ -23,7 +24,8 @@ export declare class Tooltip implements TooltipInterface {
     templateRenderer: TemplateRenderer;
     lib: TooltipLib;
     constructor();
-    setDebug(debug: boolean): TooltipInterface;
+    getEventsNamesEmitted(): any;
+    setDebug(debug: boolean): Tooltip;
     setHtml(html: any): TooltipInterface;
     setTemplate(template: any): TooltipInterface;
     setTemplateData(data: any): TooltipInterface;
@@ -33,6 +35,7 @@ export declare class Tooltip implements TooltipInterface {
     setTooltipPaddingAlignDimensionTwo(tooltipPaddingAlignDimensionTwo: number, tooltipPaddingSizeDimAlignDimensionTwo: any): TooltipInterface;
     setEventTargetHtmlNodeId(id: any): TooltipInterface;
     setEventTargetHtmlNode(eventTarget: HTMLElement): TooltipInterface;
+    setEventName(eventName: any): TooltipInterface;
     setAlignDimensionOneValueOrder(alternativeTabBorderSides: number[]): TooltipInterface;
     setIsWithArrow(withArrow: number): TooltipInterface;
     setArrowSize(arrowSize: number): TooltipInterface;

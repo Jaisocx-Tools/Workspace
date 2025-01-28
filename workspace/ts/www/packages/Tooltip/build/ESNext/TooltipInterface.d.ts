@@ -1,5 +1,4 @@
 export interface TooltipInterface {
-    setDebug(debug: boolean): TooltipInterface;
     setEventTargetHtmlNodeId(id: any): TooltipInterface;
     setEventTargetHtmlNode(eventTarget: HTMLElement): TooltipInterface;
     setHtml(html: any): TooltipInterface;

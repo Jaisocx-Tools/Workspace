@@ -1,3 +1,5 @@
+import { EventEmitter } from "@jaisocx/event-emitter";
+
 // TemplateRenderer is the js class to set the json data in the html template the very easy and transparent way.
 import { TemplateRenderer } from "@jaisocx/template-renderer";
 
@@ -5,6 +7,7 @@ import { TemplateRenderer } from "@jaisocx/template-renderer";
 import { Constants } from "./Constants.js";
 
 import { Dimensions } from "./Types.js";
+import { TooltipMainTemplateData } from "./TooltipMainTemplateData.js";
 
 // TooltipLib class is the package with singleton method .getInstance() 
 // and the helping methods to calculate the css rules to place the tooltip the right way in the site ui.
@@ -19,16 +22,15 @@ import "@jaisocx-tooltip-assets/tooltip-styles-main-webpack.css";
 // the Constants.template value and the templateRederer json data can be overridden.
 // the main purpose is to render the html template, to handle the js events, 
 // and to place the tooltip the right way near the event target html node.
-export class Tooltip implements TooltipInterface {
-
-  // debug is used in if statements for console.log debugging infos
-  debug: boolean;
+export class Tooltip extends EventEmitter implements TooltipInterface {
 
   // eventTargetHtmlNodeId: html node attribute id="" , this node will be added event listener, click or mouseover or similar.
   eventTargetHtmlNodeId: any;
 
   // eventTargetHtmlNode: this node will be added event listener, click or mouseover or similar.
   eventTargetHtmlNode: HTMLElement|null;
+
+  eventName: any;
 
   // mainHtmlNodeId is the html node attr id="", this html node is the tooltip, produced dynamic
   mainHtmlNodeId: any;
@@ -83,12 +85,14 @@ export class Tooltip implements TooltipInterface {
   // constructor method sets for the first time values for this class properies.
   constructor() {
 
-    this.debug = true;
+    super();
+
     this.isShown = 0;
 
     // event target, where to click to show the tooltip initial attr id="" value is the zero length text
     this.eventTargetHtmlNodeId = "";
     this.eventTargetHtmlNode = null;
+    this.eventName = Constants.EventsNames.CLICK;
 
     // tooltip dynamic produced html node, the initial attr id="" value is the zero length text
     this.mainHtmlNodeId = "";
@@ -123,12 +127,25 @@ export class Tooltip implements TooltipInterface {
     // templateRenderer is a new class exemplar of the Templaterenderer js class.
     this.templateRenderer = new TemplateRenderer();
     this.templateRenderer
-      .setTemplate( Constants.Defaults.template )
-      .setData( Constants.Defaults.templateData );
+      .setTemplate( Constants.Defaults.templateTooltipContent )
+      .setData( Constants.Defaults.templateTooltipContent );
   }
 
+  // getEventsNamesEmitted: the documentation method to know all events names those are emitted in this ts class
+  getEventsNamesEmitted(): any {
+    let eventsNamesEmitted: any[] = [];
+
+    eventsNamesEmitted = [
+      this.eventName,
+      ...Constants.EventsEmitted,
+    ];
+
+    return eventsNamesEmitted;
+  }
+  
+
   // setDebug is used to turn on the browser developers console infos. 
-  setDebug(debug: boolean): TooltipInterface {
+  setDebug(debug: boolean): Tooltip {
     this.debug = debug;
     this.templateRenderer.setDebug(debug);
 
@@ -144,7 +161,7 @@ export class Tooltip implements TooltipInterface {
   setHtml( html: any ): TooltipInterface {
     this.html = html;
     this.setTemplate (
-      Constants.Defaults.template
+      Constants.Defaults.templateTooltipContent
     )
       .setTemplateData ( { html, } );
 
@@ -211,6 +228,13 @@ export class Tooltip implements TooltipInterface {
 
     return this;
   }
+
+  // setEventName: method to set the event name, when on the eventTarget the tooltip is shown.
+  setEventName( eventName: any ): TooltipInterface {
+    this.eventName = eventName;
+
+    return this;
+  }
   
   // setAlignDimensionOneValueOrder: method adds alternative array of values in the order, to try to plce on the site ui the tooltip.
   setAlignDimensionOneValueOrder( alternativeTabBorderSides: number[] ): TooltipInterface {
@@ -244,27 +268,36 @@ export class Tooltip implements TooltipInterface {
   // to show the tooltip, the event target html node has to be clicked.
   render(): TooltipInterface {
 
+    if ( this.debug ) {
+      console.info (
+        "JS class Tooltip emits Events:",
+        this.getEventsNamesEmitted()
+      );
+    }
+
     // @ts-ignore
     this.eventTargetHtmlNode = document.getElementById(this.eventTargetHtmlNodeId);
 
+    const templateData: TooltipMainTemplateData = new TooltipMainTemplateData();
+
     if ( this.mainHtmlNodeId.length === 0 ) {
-      this.mainHtmlNodeId = "jaisocx_tooltip_" + Math.random() + (new Date()).getTime();
+      this.mainHtmlNodeId = templateData.getId();
+    } else {
+      templateData.setId ( this.mainHtmlNodeId );
     }
 
     // the TemplateRenderer produces the html from the html template and json data via .render() method call.
-    const contentHtml: any = this.templateRenderer.render();
+    const tooltipContentHtml: any = this.templateRenderer.render();
+
+    templateData
+      .setCssClasses( `${Constants.CssClassNames.TOOLTIP_MAIN} ${this.cssClasses}` )
+      .setTooltipContent( tooltipContentHtml );
 
     // the main template contains in the placeholder {{ tooltipContent }} the rendered template from the custom template and data
     const templateRedererTechniq = new TemplateRenderer();
     const html: any = templateRedererTechniq
       .setTemplate( Constants.tooltipMainTemplate )
-      .setData(
-        {
-          "id": this.mainHtmlNodeId,
-          "cssClasses": `${Constants.CssClassNames.TOOLTIP_MAIN} ${this.cssClasses}`,
-          "tooltipContent": contentHtml,
-        }
-      )
+      .setData( templateData as any )
       .render();
     
     // at the end of the html BODY in the current html document,
@@ -306,22 +339,46 @@ export class Tooltip implements TooltipInterface {
   // TODO: rewrite using the Jaisocx improved event handler
   addEventHandlers(): TooltipInterface {
 
-    if ( this.debug ) {
-      console.warn ( "TODO: use ImprovedEventHandler" );
-    }
- 
     // @ts-ignore
     this.eventTargetHtmlNode.addEventListener ( 
-      "click",
-      ( evt ) => {
+      this.eventName,
+      ( evt: Event ) => {
         if ( this.debug ) {
-          console.warn ( "TODO: use ImprovedEventHandler" );
-
           console.log( 
-            evt );
+            evt 
+          );
         }
+
+        this.emitEvent (
+          this.eventName,
+          evt
+        );
+
         this.showTooltip();
+
       });
+
+    window.addEventListener(
+      Constants.EventsNames.RESIZE,
+      (evt: Event) => {
+        if ( this.isShown === 0 ) {
+          return;
+        }
+
+        if ( this.debug ) {
+          console.log( 
+            evt 
+          );
+        }
+
+        this.emitEvent (
+          Constants.EventsNames.RESIZE,
+          evt
+        );
+
+        this.setTooltipAlignDimensionOneCss();
+      }
+    );
 
     return this;
   }
@@ -348,9 +405,29 @@ export class Tooltip implements TooltipInterface {
     // since the tooltip is hidden.
     if ( this.isShown === 1 ) {
 
+      this.emitEvent (
+        Constants.TooltipEventsNames.BEFORE_TOOLTIP_SHOWN,
+        ( 
+        this as any )
+      );
+
       // this method calculates the css rules top and left of the eventTarget and the tooltip, 
       // and sets top and left cass rules values in pixels to the tooltip html node.
       this.setTooltipAlignDimensionOneCss();
+
+      this.emitEvent (
+        Constants.TooltipEventsNames.AFTER_TOOLTIP_SHOWN,
+        ( 
+        this as any )
+      );
+
+    } else {
+      this.emitEvent (
+        Constants.TooltipEventsNames.AFTER_TOOLTIP_HIDDEN,
+        ( 
+        this as any )
+      );
+
     }
 
     return this;

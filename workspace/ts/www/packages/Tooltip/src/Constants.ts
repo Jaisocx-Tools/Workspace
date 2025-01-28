@@ -1,17 +1,41 @@
+import { Dimensions } from "./Types.js";
+import { TooltipMainTemplateData } from "./TooltipMainTemplateData.js";
 
 export class Constants {
 
+  static EventsNames = class {
+    static CLICK = "click";
+    static DOUBLE_CLICK = "dblclick";
+    static CONTEXT_MENU = "contextmenu";
+    static MOUSEOVER = "mouseover";
+    static FOCUS = "focus";
+    static RESIZE = "resize";
+  };
+
+  static TooltipEventsNames = class {
+    static BEFORE_TOOLTIP_SHOWN = "beforeTooltipShown";
+    static AFTER_TOOLTIP_SHOWN = "afterTooltipShown";
+    static AFTER_TOOLTIP_HIDDEN = "afterTooltipHidden";
+  };
+
+  static EventsEmitted = [
+    Constants.EventsNames.RESIZE,
+    Constants.TooltipEventsNames.BEFORE_TOOLTIP_SHOWN,
+    Constants.TooltipEventsNames.AFTER_TOOLTIP_SHOWN,
+    Constants.TooltipEventsNames.AFTER_TOOLTIP_HIDDEN,
+  ];
+
   static AlignDimensionOne = class {
-    static BROWSER_TAB_BORDER_TOP: number = 1;
-    static BROWSER_TAB_BORDER_RIGHT: number = 2;
-    static BROWSER_TAB_BORDER_LEFT: number = 3;
-    static BROWSER_TAB_BORDER_BOTTOM: number = 4;
+    static BROWSER_TAB_BORDER_TOP: any = "top";
+    static BROWSER_TAB_BORDER_RIGHT: any = "right";
+    static BROWSER_TAB_BORDER_LEFT: any = "left";
+    static BROWSER_TAB_BORDER_BOTTOM: any = "bottom";
   };
 
   static AlignDimensionTwo = class {
-    static EVENT_TARGET_START: number = 2;
-    static EVENT_TARGET_MID: number = 3;
-    static EVENT_TARGET_END: number = 5;
+    static EVENT_TARGET_START: any = "start";
+    static EVENT_TARGET_MID: any = "mid";
+    static EVENT_TARGET_END: any = "end";
   };
 
   static CssSizeDim = class {
@@ -24,6 +48,7 @@ export class Constants {
   static CssClassNames = class {
     static TOOLTIP_MAIN: any = "tooltip";
     static TOOLTIP_ARROW: any = "tooltip-arrow";
+    static TOOLTIP_CONTENT: any = "tooltip-content";
     static CSS_VARIABLE_NAME__ARROW_SIZE: any = "--tooltip_arrow__size";
   };
 
@@ -44,29 +69,35 @@ export class Constants {
     static arrowSize: any = 0;
     static arrowSizeDim: any = Constants.CssSizeDim.REM;  
   
-    static cssClasses: any = "tooltip";
+    static cssClasses: any = Constants.CssClassNames.TOOLTIP_MAIN;
   
-    static template: any = `
-  <tooltip>
-    {{ html }}
-  </tooltip>    
+    static templateTooltipContent: any = `
+      {{ html }}
     `;
 
-    static templateData: object = {
+    static templateTooltipContentData: object = {
       "html": "Hello!",
     };
   };
 
   static tooltipMainTemplate: any = `
-  <tooltip-main id="{{ id }}" class="{{ cssClasses }}">
-     <tooltip-arrow class="tooltip-arrow"></tooltip-arrow>
-     <tooltip-content class="tooltip-content">{{ tooltipContent }}</tooltip-content>
+  <tooltip-main 
+    id="{{ id }}" 
+    class="{{ cssClasses }}">
+
+      <tooltip-arrow 
+          class="tooltip-arrow">
+      </tooltip-arrow>
+
+      <tooltip-content 
+          class="tooltip-content">
+            {{ tooltipContent }}
+      </tooltip-content>
+
   </tooltip-main>
   `;
 
-  static tooltipMainTemplateData: object = {
-  };
-
+  static tooltipMainTemplateData: TooltipMainTemplateData = new TooltipMainTemplateData();
 }
 
 

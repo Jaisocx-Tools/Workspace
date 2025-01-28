@@ -115,10 +115,12 @@ export class ExampleTooltip {
 ## Future improvals:
 2. Event: the event names, when emitted, the tooltip is shown: method tooltip.setEventsNames(eventsNamesArray)
 3. Event: custom event handlers
+Event: property to set the event name
 4. Event: on click outside the tooltip, the tooltip is hidden.
 5. Event: on window resize, to recheck the tooltip visibility.
+
+
 8. idea: declare css vars for @media rules with transparent names, somewhere reusable npm package or similar.
-9. bug: rem padding dimTwo 
 
 
 

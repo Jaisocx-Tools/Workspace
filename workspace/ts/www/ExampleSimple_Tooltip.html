@@ -60,18 +60,20 @@
     <script src="packages/TemplateRenderer/build/Simple/TemplateRenderer.js"></script>
 
     <script src="packages/Tooltip/build/Simple/Types.js"></script>
+    <script src="packages/Tooltip/build/Simple/TooltipMainTemplateData.js"></script>    
     <script src="packages/Tooltip/build/Simple/Constants.js"></script>
     <script src="packages/Tooltip/build/Simple/TooltipLib.js"></script>
     <script src="packages/Tooltip/build/Simple/Tooltip.js"></script>
 
     <!-- Produced by webpack bundle.js example -->
-    <!-- <script src="examples/ExampleTooltip/build/webpack/bundle.js"></script> -->
+    <script src="examples/ExampleTooltip/build/webpack/bundle.js"></script>
   </head>
   <body>
 
     <h1>Tooltip Example</h1>
 
     <div class="tooltip-show-button-holder">
+      <button id="tooltip-show-button-webpack" title="Built with Webpack"></button>      
       <button id="tooltip-show-button-context" title="Theme Context"></button>
       <button id="tooltip-show-button-darkmode" title="Theme Darkmode"></button>
       <button id="tooltip-show-button" title="Theme Base"></button>
@@ -81,13 +83,13 @@
     <script>
       document.addEventListener('DOMContentLoaded', () => {
 
-        // const example = new ExampleTooltip();
-        // example.addTooltip (
-        //   "tooltip-show-button2",
-        //   "theme-darkmode",
-        //   "Hello World!"
-        // );
-        //return;
+        const example = new ExampleTooltip();
+        example.addTooltip (
+          "tooltip-show-button-webpack",
+          "theme-darkmode",
+          "Hello World!"
+        );
+
 
         const tooltipContext = new Tooltip();
         tooltipContext
@@ -117,6 +119,7 @@
           )
           .render();
 
+          
         const tooltipDarkmode = new Tooltip();
         tooltipDarkmode
           .setEventTargetHtmlNodeId( "tooltip-show-button-darkmode" )
