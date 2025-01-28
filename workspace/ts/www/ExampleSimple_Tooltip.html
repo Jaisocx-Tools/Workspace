@@ -10,9 +10,42 @@
     <style>
     .tooltip-show-button-holder {
       position: fixed;
-      top: 150px;
-      left: 150px;
+      top: 5rem;
+      left: 3rem;
     }
+
+    button {
+      display: block;
+      margin: 5rem;
+      padding: 0 5rem;
+      line-height: 1.3rem;
+      min-height: 3rem;
+      height: fit-content;
+      border: 1px solid blue;
+      background-color: transparent;
+      font-family: Verdana, Geneva, Tahoma, sans-serif;
+      font-size: 1rem;
+      outline: none;
+      color: grey;
+      position: relative;
+    }
+
+    button::before {
+      content: '';
+      display: block;
+      line-height: 1.3rem;
+      width: 2rem;
+      height: inherit;
+      min-height: inherit;
+      position: absolute;
+      top: 0;
+      left: 1rem;
+      background-image: url(examples/ExampleTooltip/media/mini-images/icons8-info-ios-17-outlined/icons8-info-50.png);
+      background-repeat: no-repeat;
+      background-size: contain;
+      background-position: center;
+    }
+
     </style>
 
     <script src="packages/EventEmitter/build/Simple/EventEmitter.js"></script>
