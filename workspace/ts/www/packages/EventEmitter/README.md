@@ -1,6 +1,8 @@
 # JS PACKAGE jaisocx/event-emitter
 
 
+[https://github.com/Jaisocx-Tools/Workspace](https://github.com/Jaisocx-Tools/Workspace)
+
 ## How to use in ts code
 
 ## To emit an event:

@@ -2,6 +2,9 @@
 
 # JS PACKAGE jaisocx/tree
 
+[https://github.com/Jaisocx-Tools/Workspace](https://github.com/Jaisocx-Tools/Workspace)
+
+
 ## preview in action here:
 
 [https://workspace.brightday.email/ExampleSimple_TreeRenderingModeConf.html](https://workspace.brightday.email/ExampleSimple_TreeRenderingModeConf.html)
