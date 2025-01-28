@@ -2,7 +2,7 @@
 
 ## STATUS OF THE PROJECT
 
-The Project is under development now, 10 December 2024.
+The Project is under development now, 28 January 2025.
 
 ### The features ready to use:
 1. The infrastructure for **development of Typescript libraries**.
