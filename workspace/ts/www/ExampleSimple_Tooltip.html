@@ -8,20 +8,20 @@
     <link rel="stylesheet" href="packages/Tooltip/assets/tooltip-styles-main.css" />
 
     <style>
-    .tooltip-show-button-holder {
-      position: fixed;
-      top: 5rem;
-      left: 3rem;
-    }
+      .tooltip-show-button-holder {
+        position: relative;
+        margin: 5rem auto;
+      }
 
     button {
       display: block;
       margin: 5rem;
-      padding: 0 5rem;
       line-height: 1.3rem;
       min-height: 3rem;
       height: fit-content;
-      border: 1px solid blue;
+      min-width: 3rem;
+      width: fit-content;
+      border: 0px solid yellow;
       background-color: transparent;
       font-family: Verdana, Geneva, Tahoma, sans-serif;
       font-size: 1rem;
@@ -34,16 +34,21 @@
       content: '';
       display: block;
       line-height: 1.3rem;
-      width: 2rem;
       height: inherit;
       min-height: inherit;
+      width: inherit;
+      min-width: inherit;
       position: absolute;
       top: 0;
-      left: 1rem;
-      background-image: url(examples/ExampleTooltip/media/mini-images/icons8-info-ios-17-outlined/icons8-info-50.png);
+      left: 0;
+      background-image: url(examples/ExampleTooltip/media/mini-images/icons8-info-ios-17-outlined_grey/icons8-info-50.png);
       background-repeat: no-repeat;
       background-size: contain;
       background-position: center;
+    }
+
+    @media ( (max-width: 440px) and (orientation: portrait) ) {
+
     }
 
     </style>
@@ -66,8 +71,8 @@
     <h1>Tooltip Example</h1>
 
     <div class="tooltip-show-button-holder">
-      <button id="tooltip-show-button-darkmode">Tooltip Theme Darkmode</button>
-      <button id="tooltip-show-button">Tooltip Theme Base</button>
+      <button id="tooltip-show-button-darkmode"></button>
+      <button id="tooltip-show-button"></button>
     </div>
  
 
