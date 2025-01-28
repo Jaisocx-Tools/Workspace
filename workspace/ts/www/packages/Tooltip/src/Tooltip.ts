@@ -42,6 +42,9 @@ export class Tooltip implements TooltipInterface {
   // cssClasses is the html attribute class="" value, delimitered with spaces, like class="tooltip theme-beta"
   cssClasses: any;
 
+  // the innerHTML rendered in the tooltip
+  html: any;
+
   // tooltipPostition denotes, where the tooltip appears, top, right or left side of the eventTargetHtmlNode.
   tooltipAlignDimensionOne: number;
 
@@ -135,6 +138,16 @@ export class Tooltip implements TooltipInterface {
     //   .setTeplate(html)
     //   .setData(json)
     //   .render();
+    return this;
+  }
+
+  setHtml( html: any ): TooltipInterface {
+    this.html = html;
+    this.setTemplate (
+      Constants.Defaults.template
+    )
+      .setTemplateData ( { html, } );
+
     return this;
   }
 

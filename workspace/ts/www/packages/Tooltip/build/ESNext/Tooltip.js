@@ -25,6 +25,8 @@ export class Tooltip {
     isShown;
     // cssClasses is the html attribute class="" value, delimitered with spaces, like class="tooltip theme-beta"
     cssClasses;
+    // the innerHTML rendered in the tooltip
+    html;
     // tooltipPostition denotes, where the tooltip appears, top, right or left side of the eventTargetHtmlNode.
     tooltipAlignDimensionOne;
     // tooltipAlignDimensionTwo. the next 3 AlignDimensionTwo properties, are the values, these define the place of the tooltip,
@@ -97,6 +99,12 @@ export class Tooltip {
         //   .setTeplate(html)
         //   .setData(json)
         //   .render();
+        return this;
+    }
+    setHtml(html) {
+        this.html = html;
+        this.setTemplate(Constants.Defaults.template)
+            .setTemplateData({ html, });
         return this;
     }
     // setTemplate: method sets the html for the toltip to produce the dynamic way.

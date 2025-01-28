@@ -10,6 +10,7 @@ export declare class Tooltip implements TooltipInterface {
     mainHtmlNode: HTMLElement | null;
     isShown: number;
     cssClasses: any;
+    html: any;
     tooltipAlignDimensionOne: number;
     tooltipAlignDimensionTwo: number;
     tooltipPaddingAlignDimensionTwo: number;
@@ -23,6 +24,7 @@ export declare class Tooltip implements TooltipInterface {
     lib: TooltipLib;
     constructor();
     setDebug(debug: boolean): TooltipInterface;
+    setHtml(html: any): TooltipInterface;
     setTemplate(template: any): TooltipInterface;
     setTemplateData(data: any): TooltipInterface;
     setCssClasses(cssClasses: any): TooltipInterface;

@@ -2,6 +2,7 @@ export interface TooltipInterface {
     setDebug(debug: boolean): TooltipInterface;
     setEventTargetHtmlNodeId(id: any): TooltipInterface;
     setEventTargetHtmlNode(eventTarget: HTMLElement): TooltipInterface;
+    setHtml(html: any): TooltipInterface;
     setTemplate(template: any): TooltipInterface;
     setTemplateData(data: any): TooltipInterface;
     setCssClasses(cssClasses: any): TooltipInterface;

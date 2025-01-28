@@ -2,14 +2,16 @@
   <head>
     <title>Tooltip Example</title>
 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <link rel="stylesheet" href="packages/Tooltip/assets/themes/theme-darkmode/tooltip-theme-darkmode.css" />
     <link rel="stylesheet" href="packages/Tooltip/assets/tooltip-styles-main.css" />
 
     <style>
     .tooltip-show-button-holder {
       position: fixed;
-      top: 250px;
-      left: 500px;
+      top: 150px;
+      left: 250px;
     }
     </style>
   </head>
@@ -34,17 +36,17 @@
 
 
 
-    <script src="examples/ExampleTooltip/build/webpack/bundle.js"></script>
+    <!-- <script src="examples/ExampleTooltip/build/webpack/bundle.js"></script> -->
   
     <script>
       document.addEventListener('DOMContentLoaded', () => {
 
-        const example = new ExampleTooltip();
-        example.addTooltip (
-          "tooltip-show-button2",
-          "theme-darkmode",
-          "Hello World!"
-        );
+        // const example = new ExampleTooltip();
+        // example.addTooltip (
+        //   "tooltip-show-button2",
+        //   "theme-darkmode",
+        //   "Hello World!"
+        // );
         //return;
 
         const tooltip = new Tooltip();
@@ -54,9 +56,10 @@
           //.setCssClasses("theme-darkmode")
           .setTemplateData (
             {
-              "text": "Hello World!",
+              "html": "Hello World!",
             }
           )
+          //.setHtml(`<p>Hello,</p><p>Have a nice day.</p>`) // styles are not working yet when height set small, and text bigger
           .setAlignDimensionOneValueOrder (
             [
               //Constants.AlignDimensionOne.BROWSER_TAB_BORDER_TOP,
@@ -67,7 +70,7 @@
             ]
           )
           .setTooltipAlignDimensionTwo(Constants.AlignDimensionTwo.EVENT_TARGET_MID)
-          //.setTooltipAlignDimensionTwo(Constants.AlignDimensionTwo.EVENT_TARGET_START)
+          // .setTooltipAlignDimensionTwo(Constants.AlignDimensionTwo.EVENT_TARGET_START)
           // .setTooltipPaddingAlignDimensionTwo (
           //   20,
           //   Constants.CssSizeDim.PX
@@ -77,7 +80,7 @@
           .setIsWithArrow(1)
           .render();
         
-        tooltip.showTooltip();
+        //tooltip.showTooltip();
       });
     </script>
   </body>

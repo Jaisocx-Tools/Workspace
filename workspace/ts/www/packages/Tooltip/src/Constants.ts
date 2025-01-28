@@ -47,12 +47,12 @@ export class Constants {
   
     static template: any = `
   <tooltip>
-    {{ text }}
+    {{ html }}
   </tooltip>    
     `;
 
     static templateData: object = {
-      "text": "Hello!",
+      "html": "Hello!",
     };
   };
 

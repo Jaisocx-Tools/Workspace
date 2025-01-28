@@ -57,11 +57,11 @@ Constants.Defaults = (_e = class {
     _e.cssClasses = "tooltip",
     _e.template = `
   <tooltip>
-    {{ text }}
+    {{ html }}
   </tooltip>    
     `,
     _e.templateData = {
-        "text": "Hello!",
+        "html": "Hello!",
     },
     _e);
 Constants.tooltipMainTemplate = `

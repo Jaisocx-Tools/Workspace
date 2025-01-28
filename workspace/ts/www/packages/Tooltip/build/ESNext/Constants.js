@@ -37,11 +37,11 @@ export class Constants {
         static cssClasses = "tooltip";
         static template = `
   <tooltip>
-    {{ text }}
+    {{ html }}
   </tooltip>    
     `;
         static templateData = {
-            "text": "Hello!",
+            "html": "Hello!",
         };
     };
     static tooltipMainTemplate = `

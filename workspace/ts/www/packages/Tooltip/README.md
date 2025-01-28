@@ -4,6 +4,7 @@
 Under construction
 
 ## What is this
+this is the site ui tool, this is shown or hidden on a click on some another html node on the site.
 
 
 
@@ -105,6 +106,13 @@ export class ExampleTooltip {
 }
 
 ```
+
+## Future improvals:
+2. Event: the event names, when emitted, the tooltip is shown: method tooltip.setEventsNames(eventsNamesArray)
+3. Event: custom event handlers
+4. Event: on click outside the tooltip, the tooltip is hidden.
+5. Event: on window resize, to recheck the tooltip visibility.
+6. 
 
 
 

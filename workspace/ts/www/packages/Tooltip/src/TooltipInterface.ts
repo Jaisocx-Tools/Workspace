@@ -8,6 +8,7 @@ export interface TooltipInterface {
   setDebug(debug: boolean): TooltipInterface; // optional
   setEventTargetHtmlNodeId( id: any ): TooltipInterface; // required
   setEventTargetHtmlNode( eventTarget: HTMLElement ): TooltipInterface; // required or .setEventTargetHtmlNodeId()
+  setHtml( html: any ): TooltipInterface;
   setTemplate( template: any ): TooltipInterface; // optional
   setTemplateData( data: any ): TooltipInterface; // required. e.g. setTemplateData( { "text": "The Text this will be rendered in the tooltip" } )
   setCssClasses( cssClasses: any ): TooltipInterface; // optional

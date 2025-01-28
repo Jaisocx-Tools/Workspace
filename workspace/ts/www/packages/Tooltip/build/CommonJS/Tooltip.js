@@ -61,6 +61,12 @@ class Tooltip {
         //   .render();
         return this;
     }
+    setHtml(html) {
+        this.html = html;
+        this.setTemplate(Constants_js_1.Constants.Defaults.template)
+            .setTemplateData({ html, });
+        return this;
+    }
     // setTemplate: method sets the html for the toltip to produce the dynamic way.
     setTemplate(template) {
         this.templateRenderer.setTemplate(template);

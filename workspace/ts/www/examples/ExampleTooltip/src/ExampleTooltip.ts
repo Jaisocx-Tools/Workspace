@@ -15,7 +15,7 @@ export class ExampleTooltip {
       .setCssClasses(themeName)
       .setTemplateData (
         {
-          "text": tooltipText,
+          "html": tooltipText,
         }
       )
       .setAlignDimensionOneValueOrder (
