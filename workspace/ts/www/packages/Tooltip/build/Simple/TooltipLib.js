@@ -174,6 +174,7 @@ class TooltipLib {
 
   calculateTooltipArrowDimensions(
     eventTargetDimensions, 
+    tooltipHtmlNodeDimensions, 
     arrowPixelSize, 
     alignDimensionOne) {
     let arrowDimensions = new Dimensions();
@@ -182,17 +183,17 @@ class TooltipLib {
     arrowDimensions.height = arrowSquareSideSize;
 
     if ((alignDimensionOne === Constants.AlignDimensionOne.BROWSER_TAB_BORDER_TOP)) {
-      const eventTargetWidthMid = (eventTargetDimensions.width / 2) + eventTargetDimensions.left;
+      const eventTargetWidthMid = (eventTargetDimensions.width / 2) + eventTargetDimensions.left - tooltipHtmlNodeDimensions.left;
       arrowDimensions.left = eventTargetWidthMid - (arrowSquareSideSize / 2);
-      arrowDimensions.top = eventTargetDimensions.top - (arrowPixelSize * 2); //TDOD: - dimensionOnePadding
+      arrowDimensions.top = tooltipHtmlNodeDimensions.height - (arrowSquareSideSize); //TDOD: - dimensionOnePadding
     }
     else if ((alignDimensionOne === Constants.AlignDimensionOne.BROWSER_TAB_BORDER_RIGHT)) {
-      const eventTargetHeightMid = eventTargetDimensions.top + (eventTargetDimensions.height / 2);
+      const eventTargetHeightMid = (eventTargetDimensions.height / 2); // + eventTargetDimensions.top;
       arrowDimensions.top = eventTargetHeightMid - arrowPixelSize;
-      arrowDimensions.left = eventTargetDimensions.right + (arrowSquareSideSize - arrowPixelSize); //TDOD: + dimensionOnePadding
+      arrowDimensions.left = (arrowSquareSideSize - arrowPixelSize); // + eventTargetDimensions.right; //TDOD: + dimensionOnePadding
     }
     else if ((alignDimensionOne === Constants.AlignDimensionOne.BROWSER_TAB_BORDER_LEFT)) {
-      const eventTargetHeightMid = eventTargetDimensions.top + (eventTargetDimensions.height / 2);
+      const eventTargetHeightMid = (eventTargetDimensions.height / 2); // + eventTargetDimensions.top;
       arrowDimensions.top = eventTargetHeightMid - arrowPixelSize;
       arrowDimensions.left = eventTargetDimensions.left - (arrowPixelSize * 2); //TDOD: - dimensionOnePadding
     }

@@ -4,7 +4,6 @@
   --tooltip__background: #f2f4f8;
   --tooltip__text_color: #333;
   --tooltip__font_family: Courier;
-  --tooltip__font_size: 0.73rem;
   --tooltip__border_width: 0.5px;
   --tooltip__border_style: solid;
   --tooltip__border_color: #885;
@@ -21,20 +20,16 @@
 
 
   /* testing purpose variables */
-  --tooltip__width: 10rem;
+  --tooltip__width: 14rem;
   --tooltip__height: 14rem;
 }
 
 .tooltip.theme-context ul {
-  padding-left: 0.4rem;
-  font-size: 0.65rem;
+  padding-left: 1.6rem;
   font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
   list-style-type: decimal;
 }
 
 @media ( (max-width: 440px) and (orientation: portrait) ) {
-  .tooltip.theme-context ul li {
-    font-size: 1.2rem;
-  }
 }
 

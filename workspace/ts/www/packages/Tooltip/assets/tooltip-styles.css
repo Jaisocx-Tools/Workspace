@@ -14,7 +14,7 @@
   border-color: var(--tooltip__border_color);
   border-radius: var(--tooltip__border_radius);
 
-  position: fixed;
+  position: absolute;
   display: none;
 
   overflow: visible;
@@ -32,7 +32,7 @@
 
 .tooltip .tooltip-arrow {
   display: block;
-  position: fixed;
+  position: absolute;
   transform: rotate(45deg);
   border-width: var(--tooltip_arrow__border_width);
   border-style: var(--tooltip_arrow__border_style);
@@ -63,5 +63,15 @@
   z-index: 200 !important;
 }
 
-
+.tooltip .tooltip-content,
+.tooltip .tooltip-content div,
+.tooltip .tooltip-content p,
+.tooltip .tooltip-content pre,
+.tooltip .tooltip-content span,
+.tooltip .tooltip-content ul,
+.tooltip .tooltip-content li,
+.tooltip .tooltip-content a
+ {
+  font-size: var(--tooltip__font_size);
+}
 

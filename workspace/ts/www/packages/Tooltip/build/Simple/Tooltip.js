@@ -288,7 +288,7 @@ class Tooltip {
     const browserTabDimensions = this.lib.getBrowserTabDimensions();
     const eventTargetDimensions = this.lib.getHtmlNodeDimensions(this.eventTargetHtmlNode);
     const mainHtmlNodeDimensions = this.lib.getHtmlNodeDimensions(this.mainHtmlNode);
-    let tooltipHtmlNodeDimensions = null;
+    let tooltipHtmlNodeDimensions = new Dimensions();
     browserTabBorderSide = 0;
 
     for (browserTabBorderSide of this.alternativeTabBorderSides) {
@@ -323,6 +323,7 @@ class Tooltip {
     if (this.withArrow === 1) {
       const arrowDimensions = this.lib.calculateTooltipArrowDimensions(
         eventTargetDimensions, 
+        tooltipHtmlNodeDimensions, 
         arrowPixelSize, 
         browserTabBorderSide);
       this.lib.setTooltipArrowDimensions(

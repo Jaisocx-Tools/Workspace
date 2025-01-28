@@ -8,7 +8,7 @@ export declare class TooltipLib {
     calculateTooltipDimensionTwo(eventTargetHtmlNodeDimensions: Dimensions, tooltipHtmlNodeDimensions: Dimensions, browserTabBorderSide: number, tooltipAlignDimensionTwo: number, tooltipPaddingAlignDimensionTwo: number, tooltipPaddingSizeDimAlignDimensionTwo: number): Dimensions;
     doesTooltipSuitsTilBrowserTabBorder(browserTabDimensions: Dimensions, tooltipHtmlNodeDimensions: Dimensions, browserTabBorderSide: number, arrowPixelSize: number): number;
     setTooltipArrowDimensions(arrowHtmlNode: HTMLElement | null | undefined, arrowDimensions: Dimensions): undefined;
-    calculateTooltipArrowDimensions(eventTargetDimensions: Dimensions, arrowPixelSize: number, alignDimensionOne: number): Dimensions;
+    calculateTooltipArrowDimensions(eventTargetDimensions: Dimensions, tooltipHtmlNodeDimensions: Dimensions, arrowPixelSize: number, alignDimensionOne: number): Dimensions;
     getBrowserTabDimensions(): Dimensions;
     getHtmlNodeDimensions(htmlNode: HTMLElement | null): Dimensions;
     getRectSideSizeByMidTilConerLineSize(midTilCornerLineSize: number): number;

@@ -5,6 +5,7 @@ exports.Tooltip = void 0;
 const template_renderer_1 = require("@jaisocx/template-renderer");
 // Constants class is the Tooltip package class with constants.
 const Constants_js_1 = require("./Constants.js");
+const Types_js_1 = require("./Types.js");
 // TooltipLib class is the package with singleton method .getInstance() 
 // and the helping methods to calculate the css rules to place the tooltip the right way in the site ui.
 const TooltipLib_js_1 = require("./TooltipLib.js");
@@ -241,7 +242,7 @@ class Tooltip {
         const browserTabDimensions = this.lib.getBrowserTabDimensions();
         const eventTargetDimensions = this.lib.getHtmlNodeDimensions(this.eventTargetHtmlNode);
         const mainHtmlNodeDimensions = this.lib.getHtmlNodeDimensions(this.mainHtmlNode);
-        let tooltipHtmlNodeDimensions = null;
+        let tooltipHtmlNodeDimensions = new Types_js_1.Dimensions();
         browserTabBorderSide = 0;
         for (browserTabBorderSide of this.alternativeTabBorderSides) {
             tooltipHtmlNodeDimensions = this.lib.calculateTooltipDimensions(eventTargetDimensions, mainHtmlNodeDimensions, browserTabBorderSide, this.tooltipAlignDimensionTwo, this.tooltipPaddingAlignDimensionTwo, this.tooltipPaddingSizeDimAlignDimensionTwo, arrowPixelSize);
@@ -260,7 +261,7 @@ class Tooltip {
         //@ts-ignore
         tooltipHtmlNodeDimensions);
         if (this.withArrow === 1) {
-            const arrowDimensions = this.lib.calculateTooltipArrowDimensions(eventTargetDimensions, arrowPixelSize, browserTabBorderSide);
+            const arrowDimensions = this.lib.calculateTooltipArrowDimensions(eventTargetDimensions, tooltipHtmlNodeDimensions, arrowPixelSize, browserTabBorderSide);
             this.lib.setTooltipArrowDimensions(this.arrowHtmlNode, arrowDimensions);
         }
         return this;

@@ -412,7 +412,7 @@ export class Tooltip implements TooltipInterface {
     const mainHtmlNodeDimensions: Dimensions = this.lib.getHtmlNodeDimensions(
       this.mainHtmlNode
     );
-    let tooltipHtmlNodeDimensions: Dimensions|null = null;
+    let tooltipHtmlNodeDimensions: Dimensions = new Dimensions();
 
     browserTabBorderSide = 0;
     for ( browserTabBorderSide of this.alternativeTabBorderSides ) {
@@ -454,6 +454,7 @@ export class Tooltip implements TooltipInterface {
     if ( this.withArrow === 1 ) {
       const arrowDimensions: Dimensions = this.lib.calculateTooltipArrowDimensions (
         eventTargetDimensions,
+        tooltipHtmlNodeDimensions,
         arrowPixelSize,
         browserTabBorderSide
       );

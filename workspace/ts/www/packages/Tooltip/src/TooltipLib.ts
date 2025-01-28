@@ -218,6 +218,7 @@ export class TooltipLib {
 
   calculateTooltipArrowDimensions (
     eventTargetDimensions: Dimensions,
+    tooltipHtmlNodeDimensions: Dimensions,
     arrowPixelSize: number,
     alignDimensionOne: number
   ): Dimensions {
@@ -233,21 +234,21 @@ export class TooltipLib {
     if (
       ( alignDimensionOne === Constants.AlignDimensionOne.BROWSER_TAB_BORDER_TOP ) 
     ) {
-      const eventTargetWidthMid: number = ( eventTargetDimensions.width / 2 ) + eventTargetDimensions.left;
+      const eventTargetWidthMid: number = ( eventTargetDimensions.width / 2 ) + eventTargetDimensions.left - tooltipHtmlNodeDimensions.left;
       arrowDimensions.left = eventTargetWidthMid - ( arrowSquareSideSize / 2 );
-      arrowDimensions.top = eventTargetDimensions.top - ( arrowPixelSize * 2 ); //TDOD: - dimensionOnePadding
+      arrowDimensions.top = tooltipHtmlNodeDimensions.height - ( arrowSquareSideSize ); //TDOD: - dimensionOnePadding
 
     } else if (
       ( alignDimensionOne === Constants.AlignDimensionOne.BROWSER_TAB_BORDER_RIGHT ) 
     ) {
-      const eventTargetHeightMid: number = eventTargetDimensions.top + ( eventTargetDimensions.height / 2 );
+      const eventTargetHeightMid: number = ( eventTargetDimensions.height / 2 ); // + eventTargetDimensions.top;
       arrowDimensions.top = eventTargetHeightMid - arrowPixelSize;
-      arrowDimensions.left = eventTargetDimensions.right + ( arrowSquareSideSize - arrowPixelSize ); //TDOD: + dimensionOnePadding
+      arrowDimensions.left = ( arrowSquareSideSize - arrowPixelSize ); // + eventTargetDimensions.right; //TDOD: + dimensionOnePadding
 
     } else if (
       ( alignDimensionOne === Constants.AlignDimensionOne.BROWSER_TAB_BORDER_LEFT )
     ) {
-      const eventTargetHeightMid: number = eventTargetDimensions.top + ( eventTargetDimensions.height / 2 );
+      const eventTargetHeightMid: number = ( eventTargetDimensions.height / 2 ); // + eventTargetDimensions.top;
       arrowDimensions.top = eventTargetHeightMid - arrowPixelSize;
       arrowDimensions.left = eventTargetDimensions.left - ( arrowPixelSize * 2 ); //TDOD: - dimensionOnePadding
 

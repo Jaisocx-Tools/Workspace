@@ -4,7 +4,9 @@
   --tooltip__background: #fffffa;
   --tooltip__text_color: maroon;
   --tooltip__font_family: Courier;
-  --tooltip__font_size: 1rem;
+  --tooltip__font_size: 0.925rem;
+  --tooltip__font_size__mobile: 1.3rem;
+  --tooltip__font_size__tablet: 1.3rem;  
   --tooltip__border_width: 0.5px;
   --tooltip__border_style: solid;
   --tooltip__border_color: #885;
@@ -25,7 +27,27 @@
   --tooltip__height: 4rem;
 }
 
-@media ( (max-width: 440px) and (orientation: portrait) ) {
 
+@media ( (max-width: 440px) and (orientation: portrait) ) {
+  .tooltip {
+    --tooltip__font_size: var(--tooltip__font_size__mobile);
+  }
+}
+@media ( (max-width: 803px) and (orientation: landscape) ) {
+  .tooltip {
+    --tooltip__font_size: var(--tooltip__font_size__mobile);
+  }
 }
 
+
+@media ( (max-width: 803px) and (orientation: portrait) ) {
+  .tooltip {
+    --tooltip__font_size: var(--tooltip__font_size__tablet);
+  }
+}
+
+@media ( (max-width: 1025px) and (orientation: landscape) ) {
+  .tooltip {
+    --tooltip__font_size: var(--tooltip__font_size__tablet);
+  }
+}
