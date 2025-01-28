@@ -11,19 +11,10 @@
     .tooltip-show-button-holder {
       position: fixed;
       top: 150px;
-      left: 250px;
+      left: 150px;
     }
     </style>
-  </head>
-  <body>
 
-    <h1>Tooltip Example</h1>
-
-    <div class="tooltip-show-button-holder overflow-hidden">
-      <button id="tooltip-show-button">B</button>
-      <button id="tooltip-show-button2">B2</button>
-    </div>
- 
     <script src="packages/EventEmitter/build/Simple/EventEmitter.js"></script>
     <script src="packages/EventEmitter/build/Simple/ImprovedRenderEventEmitter.js"></script>
 
@@ -34,10 +25,19 @@
     <script src="packages/Tooltip/build/Simple/TooltipLib.js"></script>
     <script src="packages/Tooltip/build/Simple/Tooltip.js"></script>
 
-
-
+    <!-- Produced by webpack bundle.js example -->
     <!-- <script src="examples/ExampleTooltip/build/webpack/bundle.js"></script> -->
-  
+  </head>
+  <body>
+
+    <h1>Tooltip Example</h1>
+
+    <div class="tooltip-show-button-holder">
+      <button id="tooltip-show-button-darkmode">Tooltip Theme Darkmode</button>
+      <button id="tooltip-show-button">Tooltip Theme Base</button>
+    </div>
+ 
+
     <script>
       document.addEventListener('DOMContentLoaded', () => {
 
@@ -48,6 +48,14 @@
         //   "Hello World!"
         // );
         //return;
+
+        const tooltipDarkmode = new Tooltip();
+        tooltipDarkmode
+          .setEventTargetHtmlNodeId( "tooltip-show-button-darkmode" )
+          .setCssClasses( "theme-darkmode" )
+          .setHtml ( "Hello World!" )
+          .render();
+
 
         const tooltip = new Tooltip();
         tooltip
@@ -81,6 +89,7 @@
           .render();
         
         //tooltip.showTooltip();
+
       });
     </script>
   </body>
