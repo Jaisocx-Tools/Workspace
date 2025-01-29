@@ -10,6 +10,8 @@ export declare class Tooltip extends EventEmitter implements TooltipInterface {
     mainHtmlNodeId: any;
     mainHtmlNode: HTMLElement | null;
     isShown: number;
+    timeoutToCloseMillis: number;
+    timeoutToCloseId: null | ReturnType<typeof setTimeout>;
     cssClasses: any;
     html: any;
     tooltipAlignDimensionOne: number;
@@ -40,6 +42,7 @@ export declare class Tooltip extends EventEmitter implements TooltipInterface {
     setIsWithArrow(withArrow: number): TooltipInterface;
     setArrowSize(arrowSize: number): TooltipInterface;
     setArrowSizeDim(arrowSizeDim: number): TooltipInterface;
+    setTimeoutToCloseMillis(timeoutMillis: number): Tooltip;
     render(): TooltipInterface;
     renderTooltipArrowHtmlNode(): TooltipInterface;
     addToSessionStorageArray(key: any, value: any): Tooltip;

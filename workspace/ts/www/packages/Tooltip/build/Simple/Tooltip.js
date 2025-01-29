@@ -10,6 +10,8 @@ class Tooltip extends EventEmitter {
   mainHtmlNode;
   // isShown 1 or 0, whether to show the Tooltip
   isShown;
+  timeoutToCloseMillis;
+  timeoutToCloseId;
   // cssClasses is the html attribute class="" value, delimitered with spaces, like class="tooltip theme-beta"
   cssClasses;
   // the innerHTML rendered in the tooltip
@@ -45,6 +47,8 @@ class Tooltip extends EventEmitter {
   constructor() {
     super();
     this.isShown = 0;
+    this.timeoutToCloseMillis = 0;
+    this.timeoutToCloseId = null;
     // event target, where to click to show the tooltip initial attr id="" value is the zero length text
     this.eventTargetHtmlNodeId = "";
     this.eventTargetHtmlNode = null;
@@ -180,6 +184,12 @@ class Tooltip extends EventEmitter {
 
   setArrowSizeDim(arrowSizeDim) {
     this.arrowSizeDim = arrowSizeDim;
+
+    return this;
+  }
+
+  setTimeoutToCloseMillis(timeoutMillis) {
+    this.timeoutToCloseMillis = timeoutMillis;
 
     return this;
   }
@@ -419,11 +429,22 @@ class Tooltip extends EventEmitter {
       this.emitEvent(
         Constants.TooltipEventsNames.AFTER_TOOLTIP_SHOWN, 
         this);
+
+      if (this.timeoutToCloseMillis) {
+        this.timeoutToCloseId = setTimeout(
+          () => this.showTooltip(0), 
+          this.timeoutToCloseMillis);
+      }
     }
     else {
       this.emitEvent(
         Constants.TooltipEventsNames.AFTER_TOOLTIP_HIDDEN, 
         this);
+
+      if (this.timeoutToCloseId) {
+        window.clearTimeout(this.timeoutToCloseId);
+        this.timeoutToCloseId = null;
+      }
     }
 
     return this;
