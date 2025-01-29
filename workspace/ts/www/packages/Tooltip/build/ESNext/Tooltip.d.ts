@@ -42,8 +42,13 @@ export declare class Tooltip extends EventEmitter implements TooltipInterface {
     setArrowSizeDim(arrowSizeDim: number): TooltipInterface;
     render(): TooltipInterface;
     renderTooltipArrowHtmlNode(): TooltipInterface;
+    addToSessionStorageArray(key: any, value: any): Tooltip;
+    addCleanupEventHandler(): Tooltip;
+    addClickCurrentTooltipCloseEventHandler(): Tooltip;
+    addEvenTriggerTooltipShowEventHandler(): Tooltip;
+    addWindowResizeEventListener(): Tooltip;
     addEventHandlers(): TooltipInterface;
-    showTooltip(): TooltipInterface;
+    showTooltip(show: number): TooltipInterface;
     setTooltipAlignDimensionOneCss(): TooltipInterface;
 }
 //# sourceMappingURL=Tooltip.d.ts.map

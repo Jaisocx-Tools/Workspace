@@ -113,14 +113,10 @@ export class ExampleTooltip {
 ```
 
 ## Future improvals:
-2. Event: the event names, when emitted, the tooltip is shown: method tooltip.setEventsNames(eventsNamesArray)
-3. Event: custom event handlers
-Event: property to set the event name
-4. Event: on click outside the tooltip, the tooltip is hidden.
-5. Event: on window resize, to recheck the tooltip visibility.
-
-
 8. idea: declare css vars for @media rules with transparent names, somewhere reusable npm package or similar.
+4. Event: on click outside the tooltip, the tooltip is hidden. Register in window the Tooltip instnace, and addEventlistener window.resize
+10. Event: to be able to set the hide timeout optionally, Constant default css transition, Constant default css transition property to hide, object css rule name: css rule value, e.g. 0
+12. onclick on the tooltip copy innerHTML of the tooltipContent
 
 
 

@@ -29,7 +29,7 @@ export interface TooltipInterface {
   addEventHandlers(): TooltipInterface; 
 
   // to show or hide the tooltip
-  showTooltip(): TooltipInterface;
+  showTooltip( show: number ): TooltipInterface;
 
   // the method, used by showTooltip(),
   // this method uses TooltipLib helping methods to define the css rules top and left

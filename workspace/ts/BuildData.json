@@ -138,6 +138,7 @@
       "build-files": [
         "Constants.js",
         "Tooltip.js",
+        "TooltipInterface.js",
         "TooltipLib.js",
         "TooltipMainTemplateData.js",
         "Types.js"

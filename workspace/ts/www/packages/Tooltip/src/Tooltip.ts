@@ -336,9 +336,106 @@ export class Tooltip extends EventEmitter implements TooltipInterface {
     return this;
   }
 
-  // TODO: rewrite using the Jaisocx improved event handler
-  addEventHandlers(): TooltipInterface {
+  addToSessionStorageArray (
+    key: any,
+    value: any
+  ): Tooltip {
+    let sessionStorageTooltipsArray: any[] = [];
+    const sessionStorageTooltips: any = sessionStorage.getItem( key );
+    if ( sessionStorageTooltips ) {
+      sessionStorageTooltipsArray = JSON.parse( sessionStorageTooltips );
+    }
+    sessionStorageTooltipsArray.push( this.mainHtmlNodeId );
 
+    sessionStorage.removeItem (
+      key
+    );
+
+    sessionStorage.setItem (
+      key, 
+      JSON.stringify( sessionStorageTooltipsArray ) );
+    
+    return this;
+  }
+
+  addCleanupEventHandler(): Tooltip {
+    window.addEventListener(
+      "beforeunload", 
+      (event) => 
+      {
+        sessionStorage.removeItem (
+          "JaisocxTooltips"
+        );
+
+        sessionStorage.removeItem (
+          "JaisocxTooltipCurrent"
+        );
+
+      });
+
+    return this;
+  }
+
+  addClickCurrentTooltipCloseEventHandler(): Tooltip {
+
+    const sessionStorageTooltips: any = sessionStorage.getItem("JaisocxTooltips");
+
+    if ( sessionStorageTooltips ) {
+      return this;
+    }
+
+    document.getElementsByTagName("BODY")[0].addEventListener (
+      Constants.EventsNames.CLICK,
+      (evt: Event) => {
+        if ( this.debug ) {
+          console.log( 
+            evt 
+          );
+        }
+
+        let idCurrent: any = sessionStorage.getItem ( "JaisocxTooltipCurrent" );
+        if ( !idCurrent ) {
+          return;
+        }
+
+        //@ts-ignore
+        let holderTooltip: HTMLElement|null = evt.target.closest(`.${Constants.CssClassNames.TOOLTIP_MAIN}`);
+        //@ts-ignore
+        if ( holderTooltip ) {
+          if ( holderTooltip.id === idCurrent ) {
+            return;
+          }
+        }
+
+        if ( this.debug ) {
+          console.log (
+            `click event hides JaisocxTooltip id="${idCurrent}"`
+          );
+        }
+
+        try {
+          //@ts-ignore
+          document.getElementById( idCurrent ).style.display = "none";
+        } catch ( e ) {
+          if ( this.debug ) {
+            console.log (
+              `No such Tooltip with this id, click event tried to hide JaisocxTooltip id="${idCurrent}"`
+            );
+          }
+        }
+        sessionStorage.removeItem ( "JaisocxTooltipCurrent" );
+      }
+    );
+
+    sessionStorage.setItem (
+      "JaisocxTooltips", 
+      "true"
+    );
+
+    return this;
+  }
+
+  addEvenTriggerTooltipShowEventHandler(): Tooltip {
     // @ts-ignore
     this.eventTargetHtmlNode.addEventListener ( 
       this.eventName,
@@ -349,16 +446,55 @@ export class Tooltip extends EventEmitter implements TooltipInterface {
           );
         }
 
+        evt.preventDefault();
+        evt.stopPropagation();
+
+        let idCurrent: any = sessionStorage.getItem ( "JaisocxTooltipCurrent" );
+        if ( this.mainHtmlNodeId === idCurrent ) {
+          this.showTooltip(0);
+          sessionStorage.removeItem ( "JaisocxTooltipCurrent" );
+          return;
+
+        } else if ( idCurrent ) {
+          if ( this.debug ) {
+            console.log (
+              `click event hides JaisocxTooltip id="${idCurrent}"`
+            );
+          }
+  
+          try {
+            //@ts-ignore
+            document.getElementById( idCurrent ).style.display = "none";
+          } catch ( e ) {
+            if ( this.debug ) {
+              console.log (
+                `No such Tooltip with this id, click event tried to hide JaisocxTooltip id="${idCurrent}"`
+              );
+            }
+          }
+        }
+
+        sessionStorage.removeItem ( "JaisocxTooltipCurrent" );
+        sessionStorage.setItem (
+          "JaisocxTooltipCurrent",
+          this.mainHtmlNodeId
+        );
+
         this.emitEvent (
           this.eventName,
           evt
         );
 
-        this.showTooltip();
+        this.showTooltip(1);
 
       });
+      
+    return this;
+  }
 
-    window.addEventListener(
+  addWindowResizeEventListener(): Tooltip {
+
+    window.addEventListener (
       Constants.EventsNames.RESIZE,
       (evt: Event) => {
         if ( this.isShown === 0 ) {
@@ -379,16 +515,27 @@ export class Tooltip extends EventEmitter implements TooltipInterface {
         this.setTooltipAlignDimensionOneCss();
       }
     );
+    
+    return this;
+  }
+
+  // TODO: rewrite using the Jaisocx improved event handler
+  addEventHandlers(): TooltipInterface {
+    this
+      .addCleanupEventHandler()
+      .addClickCurrentTooltipCloseEventHandler()
+      .addEvenTriggerTooltipShowEventHandler()
+      .addWindowResizeEventListener();
 
     return this;
   }
 
   // showTooltip: method shows the tooltip or hides it.
   // the Tooltip.isShown:number property is set, accordingly, value one(1) or zero(0)
-  showTooltip(): TooltipInterface {
+  showTooltip ( show: number ): TooltipInterface {
 
     // here we just switch 1 and 0 values.
-    this.isShown = this.isShown ? 0 : 1;
+    this.isShown = show;
 
     // when isShown property is set to 1, then the tooltip will be shown, and the css rule display we have to be set to 'block'
     // when isShown property is set to 0, then the tooltip will not be shown, and the css rule display we have to be set to 'none'

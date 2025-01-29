@@ -1,6 +1,6 @@
 
-
 .tooltip {
+
   --tooltip__background: #fffffa;
   --tooltip__text_color: black;
   --tooltip__font_family: Courier;
@@ -32,6 +32,7 @@
     --tooltip__font_size: var(--tooltip__font_size__mobile);
   }
 }
+
 @media ( (max-width: 803px) and (orientation: landscape) ) {
   .tooltip {
     --tooltip__font_size: var(--tooltip__font_size__mobile);

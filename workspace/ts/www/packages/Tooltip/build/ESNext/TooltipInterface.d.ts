@@ -11,7 +11,7 @@ export interface TooltipInterface {
     setAlignDimensionOneValueOrder(alternativeTabBorderSides: number[]): TooltipInterface;
     render(): TooltipInterface;
     addEventHandlers(): TooltipInterface;
-    showTooltip(): TooltipInterface;
+    showTooltip(show: number): TooltipInterface;
     setTooltipAlignDimensionOneCss(): TooltipInterface;
 }
 //# sourceMappingURL=TooltipInterface.d.ts.map
