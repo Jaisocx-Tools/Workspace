@@ -12,6 +12,17 @@
 
     html {
       --mini-image-size: 1.6rem;
+
+      --background-image-1: url('examples/ExampleTooltip/media/images/background-6804432_1280.jpg');
+      --background-image-2: url('examples/ExampleTooltip/media/images/flowers-7935944_1920.jpg');
+    }
+
+    body {
+      background-image: var(--background-image-2);
+      background-repeat: repeat-y;
+      background-size: contain;
+      background-position: top left;
+      background-color: transparent;
     }
     
     html,
@@ -59,28 +70,23 @@
       width: var(--mini-image-size);
       min-width: var(--mini-image-size);
 
-      border: 2px solid #b80;
-      border-radius: 50%;
-      color: #b80;
-      font-family: Verdana, Geneva, Tahoma, sans-serif;
-      font-size: 95%;
-      font-weight: bold;
-      
-      /* background-image: url(examples/ExampleTooltip/media/mini-images/icons8-info-ios-17-outlined_grey/icons8-info-50.png);
+      border: 0 solid white;
+
+      background-image: url('examples/ExampleTooltip/media/mini-images/icons8-notiz-pulsar-gradient/icons8-notiz-96.png');
       background-repeat: no-repeat;
-      background-size: contain; */
+      background-size: contain;
       background-position: center;
 
       background-color: transparent;
 
     }
 
-    .lightgreen {
+    .salad {
       background-color: #f4fff8;
     }
 
-    .light-beige {
-      background-color: #fffff6;
+    .white {
+      background-color: white;
     }
 
     .whitesmoke {
@@ -108,6 +114,40 @@
       justify-content: flex-start;
     }
 
+    main {
+      display: block;
+      position: relative;
+
+      width: 100vw;
+      height: 60rem;
+    }
+
+    main > background {
+      display: block;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: white;
+      opacity: 0.8;
+      z-index: 10;
+    }
+
+    main > description
+     {
+      display: block;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      opacity: 1;
+      color: black;
+      background-color: transparent;
+      z-index: 20;
+    }
+
 
     @media ( (max-width: 440px) and (orientation: portrait) ) {
 
@@ -128,46 +168,54 @@
     <script src="packages/Tooltip/build/Simple/Tooltip.js"></script>
 
   </head>
-  <body class="static-overflow-scroll lightgreen">
+  <body class="static-overflow-scroll">
 
-    <h1>Tooltip Example</h1>
-
-    <h2>Description</h2>
-    <p>
-      The Tooltip sites ui tool is able to do this:
-      <ul>
-        <li>The tooltip is placed near the event target the right way.</li>
-        <li>Easy theming via css variables, and the css file has very few css code lines.</li>
-        <li>The tooltip, and when many tooltips on the page, too, can hide after a timeout.</li>
-        <li>The tooltip class can have other html inside.</li>
-      </ul>
-    </p>
-
-    <div class="static-overflow-scroll whitesmoke">
-      <div class="event-targets-holder static-overflow-scroll light-beige">
-
-        <p style="margin-bottom: 20rem;">
-          <label title="Theme Context">context menu</label>
-          <button id="tooltip-show-button-context" class="mini-image-event-target">i</button>
+    <main>
+      <background></background>
+      <description>
+        <h1>Tooltip Example</h1>
+  
+        <h2>Description</h2>
+        <p>
+          The Tooltip sites ui tool is able to do this:
+          <ul>
+            <li>The tooltip is placed near the event target the right way.</li>
+            <li>Easy theming via css variables, and the css file has very few css code lines.</li>
+            <li>The tooltip, and when many tooltips on the page, too, can hide after a timeout.</li>
+            <li>The tooltip class can have other html inside.</li>
+          </ul>
         </p>
 
-        <p style="margin-bottom: 12rem;">
-          <label title="Theme Darkmode" >darkmode theme</label>
-          <button id="tooltip-show-button-darkmode" class="mini-image-event-target">i</button>
-        </p>
+        <div class="static-overflow-scroll">
+          <div class="event-targets-holder static-overflow-scroll">
+    
+            <p style="margin-bottom: 16rem;">
+              <label title="Theme Context">context menu</label>
+              <button id="tooltip-show-button-context" class="mini-image-event-target">i</button>
+            </p>
+    
+            <p style="margin-bottom: 2rem;">
+              <label title="Theme Darkmode" >darkmode theme</label>
+              <button id="tooltip-show-button-darkmode" class="mini-image-event-target">i</button>
+            </p>
+    
+            <p style="margin-bottom: 2rem;">
+              <label title="Theme Base">base theme</label>
+              <button id="tooltip-show-button" class="mini-image-event-target">i</button>
+            </p>
+    
+          </div>
+        </div>
+    
+      </description>
+    </main>
 
-        <p style="margin-bottom: 2rem;">
-          <label title="Theme Base">base theme</label>
-          <button id="tooltip-show-button" class="mini-image-event-target">i</button>
-        </p>
-
-      </div>
-    </div>
+    
 
     <h2>Javascript Usage Code Example</h2>
     <h3>Basic usage</h3>
     <p>
-      <pre class="light-beige">
+      <pre class="white">
 import { Tooltip, Constants } from "@jaisocx/tooltip";
 
 const tooltipDarkmode = new Tooltip();
@@ -181,7 +229,7 @@ tooltipDarkmode
 
     <h3>With some fine tuning:</h3>
     <p>
-      <pre class="light-beige">
+      <pre class="white">
 import { Tooltip, Constants } from "@jaisocx/tooltip";
 
 const tooltipHideBehaviour = Constants.TooltipHideBehaviour.HIDE_AFTER_TIMEOUT__AND__WHEN_CLICK__ANYWHERE;
