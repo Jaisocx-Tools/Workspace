@@ -21,6 +21,9 @@
       font-size: 1rem;
     }
 
+    pre {
+      max-width: 80vw;
+    }
     
     button {
       display: block;
@@ -134,8 +137,6 @@ import { Tooltip, Constants } from "@jaisocx/tooltip";
 
 const tooltipDarkmode = new Tooltip();
 tooltipDarkmode
-  .setTooltipHideBehaviour( tooltipHideBehaviour )
-  .setTimeoutToCloseMillis( tooltipHideTimoutMilliseconds )
   .setEventTargetHtmlNodeId( "tooltip-show-button-darkmode" )
   .setCssClasses( "theme-darkmode" )
   .setHtml ( "Hello World!" )
