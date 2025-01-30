@@ -1,7 +1,7 @@
 
 
 .tooltip.theme-context {
-  --tooltip__background: #f2f4f8;
+  --tooltip__background: #e8f2ff;
   --tooltip__text_color: #333;
   --tooltip__font_family: Courier;
   --tooltip__border_width: 0.5px;
@@ -12,22 +12,20 @@
   --tooltip__padding: 0.8rem;
   --tooltip_arrow__size: 0;
 
-  --tooltip_arrow__background: var(--tooltip__background);
-  
-  --tooltip_arrow__border_color: var(--tooltip__border_color);
-  --tooltip_arrow__border_style: var(--tooltip__border_style);
-  --tooltip_arrow__border_width: var(--tooltip__border_width);
-
-
   /* testing purpose variables */
-  --tooltip__width: 14rem;
-  --tooltip__height: 14rem;
+  --tooltip__width: 12rem;
+  --tooltip__height: 10rem;
 }
 
-.tooltip.theme-context ul {
-  padding-left: 1.6rem;
+.tooltip.theme-context ul.context {
+  margin: 0 0 0 0;
+  padding-left: 0.3rem;
   font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-  list-style-type: decimal;
+  list-style-type: none;
+}
+
+.tooltip.theme-context ul.context li {
+
 }
 
 @media ( (max-width: 440px) and (orientation: portrait) ) {
