@@ -10,6 +10,14 @@
 
     <style>
 
+    html, html * {
+      box-sizing: border-box;
+      padding: 0;
+      margin: 0;
+      position: relative;
+      display: block;
+    }
+
     html {
       --mini-image-size: 1.6rem;
 
@@ -22,7 +30,7 @@
 
     body {
       background-image: var(--background-image-2);
-      background-repeat: repeat-y;
+      background-repeat: repeat;
       background-size: contain;
       background-position: top left;
       background-color: transparent;
