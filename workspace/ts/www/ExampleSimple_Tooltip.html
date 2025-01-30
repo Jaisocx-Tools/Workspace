@@ -153,7 +153,7 @@ tooltipDarkmode
 import { Tooltip, Constants } from "@jaisocx/tooltip";
 
 const tooltipHideBehaviour = Constants.TooltipHideBehaviour.HIDE_AFTER_TIMEOUT__AND__WHEN_CLICK__ANYWHERE;
-const tooltipHideTimoutMilliseconds = 0;
+const tooltipHideTimoutMilliseconds = 4000;
 
 const tooltipContext = new Tooltip();
 tooltipContext
@@ -161,6 +161,11 @@ tooltipContext
   .setTimeoutToCloseMillis( tooltipHideTimoutMilliseconds )
   .setEventTargetHtmlNodeId( "tooltip-show-button-context" )
   .setCssClasses( "theme-context" )
+  .setIsWithArrow(1)
+  .setArrowSize (
+    0.73,
+    "rem"
+  )
   .setHtml ( 
     `
     &lt;ul&gt;
