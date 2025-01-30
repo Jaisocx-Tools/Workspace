@@ -247,5 +247,41 @@ export class TooltipLib {
             .getComputedStyle(htmlNode)
             .getPropertyValue(cssVariableName);
     }
+    getScrollableHolderNodes(eventTarget) {
+        const scrollableHolderNodes = [];
+        let node = eventTarget;
+        const cssPropsOverflowArray = [
+            "overflow",
+            "overflow-x",
+            "overflow-y",
+        ];
+        let cssPropOverflow = "";
+        let overflowValue = "";
+        while (node) {
+            for (cssPropOverflow of cssPropsOverflowArray) {
+                //@ts-ignore
+                overflowValue = this.getCssVariableForNode(node, cssPropOverflow);
+                if (!overflowValue) {
+                    continue;
+                }
+                if ((overflowValue === "auto")
+                    || (overflowValue === "scroll")) {
+                    //@ts-ignore
+                    scrollableHolderNodes.push({
+                        "node": node,
+                        "scrollTop": node.scrollTop,
+                        "scrollLeft": node.scrollLeft,
+                    });
+                    break;
+                }
+            }
+            //@ts-ignore
+            node = node.parentElement;
+            if (!node) {
+                break;
+            }
+        }
+        return scrollableHolderNodes;
+    }
 }
 //# sourceMappingURL=TooltipLib.js.map

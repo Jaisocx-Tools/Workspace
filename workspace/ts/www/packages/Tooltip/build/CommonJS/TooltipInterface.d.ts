@@ -9,9 +9,12 @@ export interface TooltipInterface {
     setTooltipAlignDimensionTwo(tooltipAlignDimensionTwo: number): TooltipInterface;
     setTooltipPaddingAlignDimensionTwo(tooltipPaddingAlignDimensionTwo: number, tooltipPaddingSizeDimAlignDimensionTwo: number): TooltipInterface;
     setAlignDimensionOneValueOrder(alternativeTabBorderSides: number[]): TooltipInterface;
+    setArrowSize(arrowSize: number, arrowSizeDim: any): TooltipInterface;
+    setTimeoutToCloseMillis(timeoutMillis: number): TooltipInterface;
+    setTooltipHideBehaviour(tooltipHideBehaviour: any): TooltipInterface;
     render(): TooltipInterface;
-    addEventHandlers(): TooltipInterface;
-    showTooltip(show: number): TooltipInterface;
+    addEventListeners(): TooltipInterface;
+    showTooltip(toShowCssDisplayValue: any | null, eventTarget: any): TooltipInterface;
     setTooltipAlignDimensionOneCss(): TooltipInterface;
 }
 //# sourceMappingURL=TooltipInterface.d.ts.map

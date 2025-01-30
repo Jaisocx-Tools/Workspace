@@ -10,14 +10,14 @@
                     jks-passphrase="JW5MYPKHbdqetvr4yfshiFwwjvr4fakE43qJUtgh7A2hNEW"
                     document-root="/var/www/workspace/php"
                     publish-charset="UTF-8" src-charset="UTF-8">
-                    <alias comment="workspace typescript sources"
+                    <alias comment="workspace typescript code"
                            art="folder"
                            url="/"
                            path="/var/www/workspace/ts/www/"
                            cache="update"
                            list="true" 
                            each-folder-content-file-name="index.html" />
-                    <alias comment="workspace php sources"
+                    <alias comment="workspace php code"
                            art="folder"
                            url="/php/"
                            path="/var/www/workspace/php/"

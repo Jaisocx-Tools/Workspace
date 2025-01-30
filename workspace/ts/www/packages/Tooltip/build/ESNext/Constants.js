@@ -7,6 +7,12 @@ export class Constants {
         static MOUSEOVER = "mouseover";
         static FOCUS = "focus";
         static RESIZE = "resize";
+        static SCROLL = "scroll";
+        static BEFOREUNLOAD = "beforeunload";
+    };
+    static EventTarget = class {
+        static OTHER_THAN_EVENT_TARGET = "other";
+        static EVENT_TARGET = "event_target";
     };
     static TooltipEventsNames = class {
         static BEFORE_TOOLTIP_SHOWN = "beforeTooltipShown";
@@ -19,6 +25,18 @@ export class Constants {
         Constants.TooltipEventsNames.AFTER_TOOLTIP_SHOWN,
         Constants.TooltipEventsNames.AFTER_TOOLTIP_HIDDEN,
     ];
+    static BrowserStorageKeys = class {
+        static JAISOCX_TOOLTIPS_EXIST = "JaisocxTooltipsExist";
+        static JAISOCX_TOOLTIPS_CURRENT = "JaisocxTooltipsCurrent";
+    };
+    static TooltipHideBehaviour = class {
+        static HIDE_WHEN_CLICK__ANYWHERE = "anywhere";
+        static HIDE_WHEN_CLICK__OTHER_THAN_EVENT_TARGET = "other";
+        static HIDE_WHEN_CLICK__EVENT_TARGET = "event_target";
+        static HIDE_AFTER_TIMEOUT__AND__WHEN_CLICK__ANYWHERE = "timeout_and_anywhere";
+        static HIDE_AFTER_TIMEOUT__AND__WHEN_CLICK__OTHER_THAN_EVENT_TARGET = "timeout_and_other";
+        static HIDE_AFTER_TIMEOUT__AND__WHEN_CLICK__EVENT_TARGET = "timeout_and_event_target";
+    };
     static AlignDimensionOne = class {
         static BROWSER_TAB_BORDER_TOP = "top";
         static BROWSER_TAB_BORDER_RIGHT = "right";
@@ -29,6 +47,10 @@ export class Constants {
         static EVENT_TARGET_START = "start";
         static EVENT_TARGET_MID = "mid";
         static EVENT_TARGET_END = "end";
+    };
+    static cssDisplay = class {
+        static BLOCK = "block";
+        static NONE = "none";
     };
     static CssSizeDim = class {
         static NONE = "";
@@ -42,11 +64,16 @@ export class Constants {
         static TOOLTIP_CONTENT = "tooltip-content";
         static CSS_VARIABLE_NAME__ARROW_SIZE = "--tooltip_arrow__size";
     };
+    static CssPropertiesNames = class {
+        static DISPLAY = "display";
+    };
     static Defaults = class {
         static tooltipAlignDimensionOne = Constants.AlignDimensionOne.BROWSER_TAB_BORDER_TOP;
         static tooltipAlignDimensionTwo = Constants.AlignDimensionTwo.EVENT_TARGET_MID;
         static tooltipPaddingAlignDimensionTwo = 0;
         static tooltipPaddingSizeDimAlignDimensionTwo = Constants.CssSizeDim.PIXELS;
+        static tooltipHideBehaviour = Constants.TooltipHideBehaviour.HIDE_AFTER_TIMEOUT__AND__WHEN_CLICK__EVENT_TARGET;
+        static tooltipHideTimoutMilliseconds = 5000;
         static alternativeTabBorderSides = [
             Constants.AlignDimensionOne.BROWSER_TAB_BORDER_TOP,
             Constants.AlignDimensionOne.BROWSER_TAB_BORDER_RIGHT,
@@ -57,6 +84,7 @@ export class Constants {
         static arrowSize = 0;
         static arrowSizeDim = Constants.CssSizeDim.REM;
         static cssClasses = Constants.CssClassNames.TOOLTIP_MAIN;
+        static cssDisplay = Constants.cssDisplay.NONE;
         static templateTooltipContent = `
       {{ html }}
     `;

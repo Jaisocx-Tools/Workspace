@@ -140,6 +140,7 @@
         "Tooltip.js",
         "TooltipLib.js",
         "TooltipMainTemplateData.js",
+        "TooltipShownSettings.js",
         "Types.js"
       ]
     },

@@ -18,6 +18,12 @@ export interface TooltipInterface {
     tooltipPaddingSizeDimAlignDimensionTwo: number
   ): TooltipInterface; // optional
   setAlignDimensionOneValueOrder( alternativeTabBorderSides: number[] ): TooltipInterface; // optional
+  setArrowSize (
+    arrowSize: number,
+    arrowSizeDim: any
+  ): TooltipInterface;
+  setTimeoutToCloseMillis ( timeoutMillis: number ): TooltipInterface;
+  setTooltipHideBehaviour ( tooltipHideBehaviour: any ): TooltipInterface;
   
 
   // final render method to initialize the tooltip for an html node.
@@ -26,10 +32,13 @@ export interface TooltipInterface {
 
   // other methods, not required for tooltip instance initialization.
   // TODO: rewrite using the Jaisocx improved event handler
-  addEventHandlers(): TooltipInterface; 
+  addEventListeners(): TooltipInterface; 
 
   // to show or hide the tooltip
-  showTooltip( show: number ): TooltipInterface;
+  showTooltip(
+    toShowCssDisplayValue: any|null,
+    eventTarget: any
+  ): TooltipInterface;
 
   // the method, used by showTooltip(),
   // this method uses TooltipLib helping methods to define the css rules top and left

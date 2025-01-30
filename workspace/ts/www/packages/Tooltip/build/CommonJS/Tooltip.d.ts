@@ -1,17 +1,21 @@
 import { EventEmitter } from "@jaisocx/event-emitter";
 import { TemplateRenderer } from "@jaisocx/template-renderer";
+import { Dimensions } from "./Types.js";
 import { TooltipLib } from "./TooltipLib.js";
 import { TooltipInterface } from "./TooltipInterface.js";
+import { TooltipShownSettings } from "./TooltipShownSettings.js";
 import "@jaisocx-tooltip-assets/tooltip-styles-main-webpack.css";
 export declare class Tooltip extends EventEmitter implements TooltipInterface {
     eventTargetHtmlNodeId: any;
     eventTargetHtmlNode: HTMLElement | null;
+    eventTargetDimensions: Dimensions;
     eventName: any;
     mainHtmlNodeId: any;
     mainHtmlNode: HTMLElement | null;
-    isShown: number;
+    tooltipHtmlNodeDimensions: Dimensions;
     timeoutToCloseMillis: number;
     timeoutToCloseId: null | ReturnType<typeof setTimeout>;
+    tooltipHideBehaviour: any;
     cssClasses: any;
     html: any;
     tooltipAlignDimensionOne: number;
@@ -40,18 +44,23 @@ export declare class Tooltip extends EventEmitter implements TooltipInterface {
     setEventName(eventName: any): TooltipInterface;
     setAlignDimensionOneValueOrder(alternativeTabBorderSides: number[]): TooltipInterface;
     setIsWithArrow(withArrow: number): TooltipInterface;
-    setArrowSize(arrowSize: number): TooltipInterface;
-    setArrowSizeDim(arrowSizeDim: number): TooltipInterface;
-    setTimeoutToCloseMillis(timeoutMillis: number): Tooltip;
+    setArrowSize(arrowSize: number, arrowSizeDim: any): TooltipInterface;
+    setTimeoutToCloseMillis(timeoutMillis: number): TooltipInterface;
+    setTooltipHideBehaviour(tooltipHideBehaviour: any): TooltipInterface;
     render(): TooltipInterface;
     renderTooltipArrowHtmlNode(): TooltipInterface;
-    addToSessionStorageArray(key: any, value: any): Tooltip;
+    getLocalStorageArray(): TooltipShownSettings | null | undefined;
+    addToLocalStorageArray(key: any, value: any): Tooltip;
+    removeFromLocalStorageArray(key: any, jPath: any[], jPathMatchingValue: any): Tooltip;
     addCleanupEventHandler(): Tooltip;
     addClickCurrentTooltipCloseEventHandler(): Tooltip;
-    addEvenTriggerTooltipShowEventHandler(): Tooltip;
+    addEventTriggerTooltipShowEventHandler(): Tooltip;
     addWindowResizeEventListener(): Tooltip;
-    addEventHandlers(): TooltipInterface;
-    showTooltip(show: number): TooltipInterface;
+    addScrollEventListeners(): Tooltip;
+    addEventListeners(): TooltipInterface;
+    showTooltip(toShowCssDisplayValue: any | null, eventTarget: any): TooltipInterface;
+    hideAllTooltips(): undefined;
+    hideTooltipsByBehaviours(hideBehaviourArray: any[], tooltipId: any | null): undefined;
     setTooltipAlignDimensionOneCss(): TooltipInterface;
 }
 //# sourceMappingURL=Tooltip.d.ts.map

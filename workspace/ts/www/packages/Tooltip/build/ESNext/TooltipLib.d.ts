@@ -17,5 +17,6 @@ export declare class TooltipLib {
     getRemRelativePixelValue(): number;
     validateCssSizeDim(cssSizeDimInputArg: any): number;
     getCssVariableForNode(htmlNode: HTMLElement | Element | null | undefined, cssVariableName: any): any;
+    getScrollableHolderNodes(eventTarget: HTMLElement): any[];
 }
 //# sourceMappingURL=TooltipLib.d.ts.map

@@ -4,18 +4,25 @@ import { TooltipMainTemplateData } from "./TooltipMainTemplateData.js";
 export class Constants {
 
   static EventsNames = class {
-    static CLICK = "click";
-    static DOUBLE_CLICK = "dblclick";
-    static CONTEXT_MENU = "contextmenu";
-    static MOUSEOVER = "mouseover";
-    static FOCUS = "focus";
-    static RESIZE = "resize";
+    static CLICK: any = "click";
+    static DOUBLE_CLICK: any = "dblclick";
+    static CONTEXT_MENU: any = "contextmenu";
+    static MOUSEOVER: any = "mouseover";
+    static FOCUS: any = "focus";
+    static RESIZE: any = "resize";
+    static SCROLL: any = "scroll";
+    static BEFOREUNLOAD: any = "beforeunload";
+  };
+
+  static EventTarget = class {
+    static OTHER_THAN_EVENT_TARGET: any = "other";
+    static EVENT_TARGET: any = "event_target";
   };
 
   static TooltipEventsNames = class {
-    static BEFORE_TOOLTIP_SHOWN = "beforeTooltipShown";
-    static AFTER_TOOLTIP_SHOWN = "afterTooltipShown";
-    static AFTER_TOOLTIP_HIDDEN = "afterTooltipHidden";
+    static BEFORE_TOOLTIP_SHOWN: any = "beforeTooltipShown";
+    static AFTER_TOOLTIP_SHOWN: any = "afterTooltipShown";
+    static AFTER_TOOLTIP_HIDDEN: any = "afterTooltipHidden";
   };
 
   static EventsEmitted = [
@@ -24,6 +31,20 @@ export class Constants {
     Constants.TooltipEventsNames.AFTER_TOOLTIP_SHOWN,
     Constants.TooltipEventsNames.AFTER_TOOLTIP_HIDDEN,
   ];
+
+  static BrowserStorageKeys = class {
+    static JAISOCX_TOOLTIPS_EXIST: any = "JaisocxTooltipsExist";
+    static JAISOCX_TOOLTIPS_CURRENT: any = "JaisocxTooltipsCurrent";
+  };
+
+  static TooltipHideBehaviour = class {
+    static HIDE_WHEN_CLICK__ANYWHERE: any = "anywhere";
+    static HIDE_WHEN_CLICK__OTHER_THAN_EVENT_TARGET: any = "other";
+    static HIDE_WHEN_CLICK__EVENT_TARGET: any = "event_target";
+    static HIDE_AFTER_TIMEOUT__AND__WHEN_CLICK__ANYWHERE: any = "timeout_and_anywhere";
+    static HIDE_AFTER_TIMEOUT__AND__WHEN_CLICK__OTHER_THAN_EVENT_TARGET: any = "timeout_and_other";
+    static HIDE_AFTER_TIMEOUT__AND__WHEN_CLICK__EVENT_TARGET: any = "timeout_and_event_target";
+  };
 
   static AlignDimensionOne = class {
     static BROWSER_TAB_BORDER_TOP: any = "top";
@@ -36,6 +57,11 @@ export class Constants {
     static EVENT_TARGET_START: any = "start";
     static EVENT_TARGET_MID: any = "mid";
     static EVENT_TARGET_END: any = "end";
+  };
+
+  static cssDisplay = class {
+    static BLOCK: any = "block";
+    static NONE: any = "none";
   };
 
   static CssSizeDim = class {
@@ -52,11 +78,18 @@ export class Constants {
     static CSS_VARIABLE_NAME__ARROW_SIZE: any = "--tooltip_arrow__size";
   };
 
+  static CssPropertiesNames = class {
+    static DISPLAY: any = "display";
+  };
+
   static Defaults = class {
     static tooltipAlignDimensionOne: number = Constants.AlignDimensionOne.BROWSER_TAB_BORDER_TOP;
     static tooltipAlignDimensionTwo: number = Constants.AlignDimensionTwo.EVENT_TARGET_MID;
     static tooltipPaddingAlignDimensionTwo: number = 0;
     static tooltipPaddingSizeDimAlignDimensionTwo: any = Constants.CssSizeDim.PIXELS;
+
+    static tooltipHideBehaviour: any = Constants.TooltipHideBehaviour.HIDE_AFTER_TIMEOUT__AND__WHEN_CLICK__EVENT_TARGET;
+    static tooltipHideTimoutMilliseconds: number = 5000;
   
     static alternativeTabBorderSides: number[] = [
       Constants.AlignDimensionOne.BROWSER_TAB_BORDER_TOP,
@@ -70,6 +103,7 @@ export class Constants {
     static arrowSizeDim: any = Constants.CssSizeDim.REM;  
   
     static cssClasses: any = Constants.CssClassNames.TOOLTIP_MAIN;
+    static cssDisplay: any = Constants.cssDisplay.NONE;
   
     static templateTooltipContent: any = `
       {{ html }}

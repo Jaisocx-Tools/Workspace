@@ -9,11 +9,19 @@
     <link rel="stylesheet" href="packages/Tooltip/assets/tooltip-styles-main.css" />
 
     <style>
-      .tooltip-show-button-holder {
-        position: relative;
-        margin: 10rem 0 30rem 5rem;
-      }
+    
+    html,
+    body,
+    p,
+    ul,
+    li,
+    span,
+    pre {
+      font-family: Verdana, Geneva, Tahoma, sans-serif;
+      font-size: 1rem;
+    }
 
+    
     button {
       display: block;
       margin: 5rem 0;
@@ -46,7 +54,40 @@
       background-repeat: no-repeat;
       background-size: contain;
       background-position: center;
+
     }
+
+    .lightgreen {
+      background-color: #df8;
+    }
+
+    .cornsilk {
+      background-color: cornsilk;
+    }
+
+    .whitesmoke {
+      background-color: whitesmoke;
+    }
+
+    body.static-overflow-scroll {
+      margin: 1rem 1rem 1rem 1rem;
+    }
+    .static-overflow-scroll {
+      display: block;
+      position: static;
+
+      margin: 30vh 0 0 30vw;
+
+      overflow: scroll;
+      overflow-y: scroll;
+      overflow-x: scroll;
+    }
+
+    .event-targets-holder {
+      height: 30rem;
+      width: 20rem;
+    }
+
 
     @media ( (max-width: 440px) and (orientation: portrait) ) {
 
@@ -63,25 +104,119 @@
     <script src="packages/Tooltip/build/Simple/TooltipMainTemplateData.js"></script>    
     <script src="packages/Tooltip/build/Simple/Constants.js"></script>
     <script src="packages/Tooltip/build/Simple/TooltipLib.js"></script>
+    <script src="packages/Tooltip/build/Simple/TooltipShownSettings.js"></script>
     <script src="packages/Tooltip/build/Simple/Tooltip.js"></script>
 
     <!-- Produced by webpack bundle.js example -->
     <script src="examples/ExampleTooltip/build/webpack/bundle.js"></script>
   </head>
-  <body>
+  <body class="static-overflow-scroll lightgreen">
 
     <h1>Tooltip Example</h1>
 
-    <div class="tooltip-show-button-holder">
-      <button id="tooltip-show-button-webpack" title="Built with Webpack"></button>      
-      <button id="tooltip-show-button-context" title="Theme Context"></button>
-      <button id="tooltip-show-button-darkmode" title="Theme Darkmode"></button>
-      <button id="tooltip-show-button" title="Theme Base"></button>
+    <h2>Description</h2>
+    <p>
+      The Tooltip sites ui tool is able to do this:
+      <ul>
+        <li>The tooltip is placed near the event target the right way.</li>
+        <li>Easy theming via css variables, and the css file has very few css code lines.</li>
+        <li>The tooltip, and when many tooltips on the page, too, can hide after a timeout.</li>
+        <li>The tooltip class can have other html inside.</li>
+        <li></li>
+      </ul>
+    </p>
+
+    <h2>Example</h2>
+    <h3>Basic usage</h3>
+    <p>
+      <pre class="whitesmoke">
+import { Tooltip, Constants } from "@jaisocx/tooltip";
+
+const tooltipDarkmode = new Tooltip();
+tooltipDarkmode
+  .setTooltipHideBehaviour( tooltipHideBehaviour )
+  .setTimeoutToCloseMillis( tooltipHideTimoutMilliseconds )
+  .setEventTargetHtmlNodeId( "tooltip-show-button-darkmode" )
+  .setCssClasses( "theme-darkmode" )
+  .setHtml ( "Hello World!" )
+  .render();
+      </pre>
+    </p>
+
+    <h3>With some fine tuning:</h3>
+    <p>
+      <pre class="whitesmoke">
+import { Tooltip, Constants } from "@jaisocx/tooltip";
+
+const tooltipHideBehaviour = Constants.TooltipHideBehaviour.HIDE_AFTER_TIMEOUT__AND__WHEN_CLICK__ANYWHERE;
+const tooltipHideTimoutMilliseconds = 0;
+
+const tooltipContext = new Tooltip();
+tooltipContext
+  .setTooltipHideBehaviour( tooltipHideBehaviour )
+  .setTimeoutToCloseMillis( tooltipHideTimoutMilliseconds )
+  .setEventTargetHtmlNodeId( "tooltip-show-button-context" )
+  .setCssClasses( "theme-context" )
+  .setHtml ( 
+    `
+    &lt;ul&gt;
+      &lt;li&gt;Context Item 1&lt;/li&gt;
+      &lt;li&gt;Context Item 2&lt;/li&gt;
+      &lt;li&gt;Context Item 3&lt;/li&gt;
+    &lt;/ul&gt;
+    `
+  )
+  .setAlignDimensionOneValueOrder (
+    [
+      //Constants.AlignDimensionOne.BROWSER_TAB_BORDER_TOP,
+      Constants.AlignDimensionOne.BROWSER_TAB_BORDER_RIGHT,
+      Constants.AlignDimensionOne.BROWSER_TAB_BORDER_LEFT,
+      Constants.AlignDimensionOne.BROWSER_TAB_BORDER_BOTTOM,
+    ]
+  )
+  .setTooltipAlignDimensionTwo(Constants.AlignDimensionTwo.EVENT_TARGET_START)
+  .setTooltipPaddingAlignDimensionTwo (
+    1,
+    Constants.CssSizeDim.REM
+  )
+  .render();
+      </pre>
+    </p>
+
+    <div class="static-overflow-scroll cornsilk">
+      <div class="event-targets-holder static-overflow-scroll whitesmoke">
+        <button id="tooltip-show-button-webpack" title="Built with Webpack"></button>      
+        <button id="tooltip-show-button-context" title="Theme Context"></button>
+        <button id="tooltip-show-button-darkmode" title="Theme Darkmode"></button>
+        <button id="tooltip-show-button" title="Theme Base"></button>
+      </div>
     </div>
- 
+
 
     <script>
       document.addEventListener('DOMContentLoaded', () => {
+
+        // 1. one tooltip shown.
+        //const tooltipHideBehaviour = Constants.TooltipHideBehaviour.HIDE_WHEN_CLICK__ANYWHERE; 
+
+        // 2. able to show all tooltips by clicking every,
+        //    and able to hide all tooltips one click on somewhere else in this site inside the open browser's tab.
+        //const tooltipHideBehaviour = Constants.TooltipHideBehaviour.HIDE_WHEN_CLICK__OTHER_THAN_EVENT_TARGET; 
+
+        // 3. all tooltips are shown, and in order to hide the event target has to be clicked.
+        //const tooltipHideBehaviour = Constants.TooltipHideBehaviour.HIDE_WHEN_CLICK__EVENT_TARGET;
+
+        // 1. one tooltip shown, and hides on timeout, too.  
+        const tooltipHideBehaviour = Constants.TooltipHideBehaviour.HIDE_AFTER_TIMEOUT__AND__WHEN_CLICK__ANYWHERE;
+        
+        // 2. lke the 2. and with timeout feature
+        //const tooltipHideBehaviour = Constants.TooltipHideBehaviour.HIDE_AFTER_TIMEOUT__AND__WHEN_CLICK__OTHER_THAN_EVENT_TARGET;
+        
+        // 3. like the 3. and with the timeout feature
+        //const tooltipHideBehaviour = Constants.TooltipHideBehaviour.HIDE_AFTER_TIMEOUT__AND__WHEN_CLICK__EVENT_TARGET;
+
+        const tooltipHideTimoutMilliseconds = 0;
+
 
         const example = new ExampleTooltip();
         example.addTooltip (
@@ -90,9 +225,10 @@
           "Hello World!"
         );
 
-
         const tooltipContext = new Tooltip();
         tooltipContext
+          .setTooltipHideBehaviour( tooltipHideBehaviour )
+          .setTimeoutToCloseMillis( tooltipHideTimoutMilliseconds )
           .setEventTargetHtmlNodeId( "tooltip-show-button-context" )
           .setCssClasses( "theme-context" )
           .setHtml ( 
@@ -122,15 +258,18 @@
           
         const tooltipDarkmode = new Tooltip();
         tooltipDarkmode
+          .setTooltipHideBehaviour( tooltipHideBehaviour )
+          .setTimeoutToCloseMillis( tooltipHideTimoutMilliseconds )
           .setEventTargetHtmlNodeId( "tooltip-show-button-darkmode" )
           .setCssClasses( "theme-darkmode" )
           .setHtml ( "Hello World!" )
-          .setTimeoutToCloseMillis( 2000 )
           .render();
 
 
         const tooltip = new Tooltip();
         tooltip
+          .setTooltipHideBehaviour( tooltipHideBehaviour )
+          .setTimeoutToCloseMillis( tooltipHideTimoutMilliseconds )
           .setDebug(true)
           .setEventTargetHtmlNodeId("tooltip-show-button")
           //.setCssClasses("theme-darkmode")
@@ -153,9 +292,11 @@
           //   20,
           //   Constants.CssSizeDim.PIXELS
           // )
-          .setArrowSize(0)
-          .setArrowSizeDim("rem")
           .setIsWithArrow(1)
+          .setArrowSize (
+            0,
+            "rem"
+          )
           .render();
         
         //tooltip.showTooltip();

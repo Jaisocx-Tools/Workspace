@@ -3,7 +3,7 @@ var __setFunctionName = (this && this.__setFunctionName) || function (f, name, p
     if (typeof name === "symbol") name = name.description ? "[".concat(name.description, "]") : "";
     return Object.defineProperty(f, "name", { configurable: true, value: prefix ? "".concat(prefix, " ", name) : name });
 };
-var _a, _b, _c, _d, _e, _f, _g;
+var _a, _b, _c, _d, _e, _f, _g, _h, _j, _k, _l, _m;
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Constants = void 0;
 const TooltipMainTemplateData_js_1 = require("./TooltipMainTemplateData.js");
@@ -19,75 +19,113 @@ Constants.EventsNames = (_a = class {
     _a.MOUSEOVER = "mouseover",
     _a.FOCUS = "focus",
     _a.RESIZE = "resize",
+    _a.SCROLL = "scroll",
+    _a.BEFOREUNLOAD = "beforeunload",
     _a);
-Constants.TooltipEventsNames = (_b = class {
+Constants.EventTarget = (_b = class {
     },
-    __setFunctionName(_b, "TooltipEventsNames"),
-    _b.BEFORE_TOOLTIP_SHOWN = "beforeTooltipShown",
-    _b.AFTER_TOOLTIP_SHOWN = "afterTooltipShown",
-    _b.AFTER_TOOLTIP_HIDDEN = "afterTooltipHidden",
+    __setFunctionName(_b, "EventTarget"),
+    _b.OTHER_THAN_EVENT_TARGET = "other",
+    _b.EVENT_TARGET = "event_target",
     _b);
+Constants.TooltipEventsNames = (_c = class {
+    },
+    __setFunctionName(_c, "TooltipEventsNames"),
+    _c.BEFORE_TOOLTIP_SHOWN = "beforeTooltipShown",
+    _c.AFTER_TOOLTIP_SHOWN = "afterTooltipShown",
+    _c.AFTER_TOOLTIP_HIDDEN = "afterTooltipHidden",
+    _c);
 Constants.EventsEmitted = [
     Constants.EventsNames.RESIZE,
     Constants.TooltipEventsNames.BEFORE_TOOLTIP_SHOWN,
     Constants.TooltipEventsNames.AFTER_TOOLTIP_SHOWN,
     Constants.TooltipEventsNames.AFTER_TOOLTIP_HIDDEN,
 ];
-Constants.AlignDimensionOne = (_c = class {
+Constants.BrowserStorageKeys = (_d = class {
     },
-    __setFunctionName(_c, "AlignDimensionOne"),
-    _c.BROWSER_TAB_BORDER_TOP = "top",
-    _c.BROWSER_TAB_BORDER_RIGHT = "right",
-    _c.BROWSER_TAB_BORDER_LEFT = "left",
-    _c.BROWSER_TAB_BORDER_BOTTOM = "bottom",
-    _c);
-Constants.AlignDimensionTwo = (_d = class {
-    },
-    __setFunctionName(_d, "AlignDimensionTwo"),
-    _d.EVENT_TARGET_START = "start",
-    _d.EVENT_TARGET_MID = "mid",
-    _d.EVENT_TARGET_END = "end",
+    __setFunctionName(_d, "BrowserStorageKeys"),
+    _d.JAISOCX_TOOLTIPS_EXIST = "JaisocxTooltipsExist",
+    _d.JAISOCX_TOOLTIPS_CURRENT = "JaisocxTooltipsCurrent",
     _d);
-Constants.CssSizeDim = (_e = class {
+Constants.TooltipHideBehaviour = (_e = class {
     },
-    __setFunctionName(_e, "CssSizeDim"),
-    _e.NONE = "",
-    _e.PIXELS = "px",
-    _e.REM = "rem",
-    _e.PERCENTS = "%",
+    __setFunctionName(_e, "TooltipHideBehaviour"),
+    _e.HIDE_WHEN_CLICK__ANYWHERE = "anywhere",
+    _e.HIDE_WHEN_CLICK__OTHER_THAN_EVENT_TARGET = "other",
+    _e.HIDE_WHEN_CLICK__EVENT_TARGET = "event_target",
+    _e.HIDE_AFTER_TIMEOUT__AND__WHEN_CLICK__ANYWHERE = "timeout_and_anywhere",
+    _e.HIDE_AFTER_TIMEOUT__AND__WHEN_CLICK__OTHER_THAN_EVENT_TARGET = "timeout_and_other",
+    _e.HIDE_AFTER_TIMEOUT__AND__WHEN_CLICK__EVENT_TARGET = "timeout_and_event_target",
     _e);
-Constants.CssClassNames = (_f = class {
+Constants.AlignDimensionOne = (_f = class {
     },
-    __setFunctionName(_f, "CssClassNames"),
-    _f.TOOLTIP_MAIN = "tooltip",
-    _f.TOOLTIP_ARROW = "tooltip-arrow",
-    _f.TOOLTIP_CONTENT = "tooltip-content",
-    _f.CSS_VARIABLE_NAME__ARROW_SIZE = "--tooltip_arrow__size",
+    __setFunctionName(_f, "AlignDimensionOne"),
+    _f.BROWSER_TAB_BORDER_TOP = "top",
+    _f.BROWSER_TAB_BORDER_RIGHT = "right",
+    _f.BROWSER_TAB_BORDER_LEFT = "left",
+    _f.BROWSER_TAB_BORDER_BOTTOM = "bottom",
     _f);
-Constants.Defaults = (_g = class {
+Constants.AlignDimensionTwo = (_g = class {
     },
-    __setFunctionName(_g, "Defaults"),
-    _g.tooltipAlignDimensionOne = Constants.AlignDimensionOne.BROWSER_TAB_BORDER_TOP,
-    _g.tooltipAlignDimensionTwo = Constants.AlignDimensionTwo.EVENT_TARGET_MID,
-    _g.tooltipPaddingAlignDimensionTwo = 0,
-    _g.tooltipPaddingSizeDimAlignDimensionTwo = Constants.CssSizeDim.PIXELS,
-    _g.alternativeTabBorderSides = [
+    __setFunctionName(_g, "AlignDimensionTwo"),
+    _g.EVENT_TARGET_START = "start",
+    _g.EVENT_TARGET_MID = "mid",
+    _g.EVENT_TARGET_END = "end",
+    _g);
+Constants.cssDisplay = (_h = class {
+    },
+    __setFunctionName(_h, "cssDisplay"),
+    _h.BLOCK = "block",
+    _h.NONE = "none",
+    _h);
+Constants.CssSizeDim = (_j = class {
+    },
+    __setFunctionName(_j, "CssSizeDim"),
+    _j.NONE = "",
+    _j.PIXELS = "px",
+    _j.REM = "rem",
+    _j.PERCENTS = "%",
+    _j);
+Constants.CssClassNames = (_k = class {
+    },
+    __setFunctionName(_k, "CssClassNames"),
+    _k.TOOLTIP_MAIN = "tooltip",
+    _k.TOOLTIP_ARROW = "tooltip-arrow",
+    _k.TOOLTIP_CONTENT = "tooltip-content",
+    _k.CSS_VARIABLE_NAME__ARROW_SIZE = "--tooltip_arrow__size",
+    _k);
+Constants.CssPropertiesNames = (_l = class {
+    },
+    __setFunctionName(_l, "CssPropertiesNames"),
+    _l.DISPLAY = "display",
+    _l);
+Constants.Defaults = (_m = class {
+    },
+    __setFunctionName(_m, "Defaults"),
+    _m.tooltipAlignDimensionOne = Constants.AlignDimensionOne.BROWSER_TAB_BORDER_TOP,
+    _m.tooltipAlignDimensionTwo = Constants.AlignDimensionTwo.EVENT_TARGET_MID,
+    _m.tooltipPaddingAlignDimensionTwo = 0,
+    _m.tooltipPaddingSizeDimAlignDimensionTwo = Constants.CssSizeDim.PIXELS,
+    _m.tooltipHideBehaviour = Constants.TooltipHideBehaviour.HIDE_AFTER_TIMEOUT__AND__WHEN_CLICK__EVENT_TARGET,
+    _m.tooltipHideTimoutMilliseconds = 5000,
+    _m.alternativeTabBorderSides = [
         Constants.AlignDimensionOne.BROWSER_TAB_BORDER_TOP,
         Constants.AlignDimensionOne.BROWSER_TAB_BORDER_RIGHT,
         Constants.AlignDimensionOne.BROWSER_TAB_BORDER_LEFT,
         Constants.AlignDimensionOne.BROWSER_TAB_BORDER_BOTTOM,
     ],
-    _g.withArrow = 1,
-    _g.arrowSize = 0,
-    _g.arrowSizeDim = Constants.CssSizeDim.REM,
-    _g.cssClasses = Constants.CssClassNames.TOOLTIP_MAIN,
-    _g.templateTooltipContent = `
+    _m.withArrow = 1,
+    _m.arrowSize = 0,
+    _m.arrowSizeDim = Constants.CssSizeDim.REM,
+    _m.cssClasses = Constants.CssClassNames.TOOLTIP_MAIN,
+    _m.cssDisplay = Constants.cssDisplay.NONE,
+    _m.templateTooltipContent = `
       {{ html }}
     `,
-    _g.templateTooltipContentData = {
+    _m.templateTooltipContentData = {
         "html": "Hello!",
     },
-    _g);
+    _m);
 Constants.tooltipMainTemplate = `
   <tooltip-main 
     id="{{ id }}" 
