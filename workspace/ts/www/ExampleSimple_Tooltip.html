@@ -22,9 +22,12 @@
     }
 
     pre {
-      max-width: 80vw;
+      text-wrap: wrap;
+      word-wrap: anywhere;
+      line-height: 1.6rem;
+      font-size: inherit;
     }
-    
+
     button {
       display: block;
       margin: 5rem 0;
@@ -93,6 +96,13 @@
 
 
     @media ( (max-width: 440px) and (orientation: portrait) ) {
+
+      pre {
+        text-wrap: wrap;
+        word-wrap: anywhere;
+        line-height: 1.6rem;
+        font-size: 0.9rem;
+      }
 
     }
 
