@@ -28,6 +28,9 @@ export class Tooltip extends EventEmitter implements TooltipInterface {
   // eventTargetHtmlNodeId: html node attribute id="" , this node will be added event listener, click or mouseover or similar.
   eventTargetHtmlNodeId: any;
 
+  // css selector, like e.g. "tagName.cssClassName .nestedNodeCssClassName" or "#id"
+  eventTargetSelector: any;
+
   // eventTargetHtmlNode: this node will be added event listener, click or mouseover or similar.
   eventTargetHtmlNode: HTMLElement|null;
 
@@ -102,6 +105,10 @@ export class Tooltip extends EventEmitter implements TooltipInterface {
 
     // event target, where to click to show the tooltip initial attr id="" value is the zero length text
     this.eventTargetHtmlNodeId = "";
+
+    // css selector, like e.g. "tagName.cssClassName .nestedNodeCssClassName" or "#id"
+    this.eventTargetSelector = "";
+    
     this.eventTargetHtmlNode = null;
     this.eventTargetDimensions = new Dimensions();
     this.eventName = Constants.EventsNames.CLICK;
@@ -148,6 +155,20 @@ export class Tooltip extends EventEmitter implements TooltipInterface {
       .setTemplate( Constants.Defaults.templateTooltipContent )
       .setData( Constants.Defaults.templateTooltipContent );
   }
+
+
+  // override this method to use for advanced visual effects.
+  _hide( node: HTMLElement|null ): undefined {
+    //@ts-ignore
+    node.style.display = Constants.cssDisplay.NONE;
+  }
+
+  // override this method to use for advanced visual effects.
+  _show( node: HTMLElement|null ): undefined {
+    //@ts-ignore
+    node.style.display = Constants.cssDisplay.BLOCK;
+  }
+
 
   // getEventsNamesEmitted: the documentation method to know all events names those are emitted in this ts class
   getEventsNamesEmitted(): any {
@@ -251,6 +272,12 @@ export class Tooltip extends EventEmitter implements TooltipInterface {
     return this;
   }
 
+  setEventTargetSelector ( cssSelector: any ) : TooltipInterface {
+    this.eventTargetSelector = cssSelector;
+
+    return this;
+  }
+
   // setEventTargetHtmlNode: method sets the html node, this when clicked, the tooltip will appear.
   setEventTargetHtmlNode( eventTarget: HTMLElement ): TooltipInterface {
     this.eventTargetHtmlNode = eventTarget;
@@ -316,8 +343,38 @@ export class Tooltip extends EventEmitter implements TooltipInterface {
       );
     }
 
-    // @ts-ignore
-    this.eventTargetHtmlNode = document.getElementById(this.eventTargetHtmlNodeId);
+    if ( !this.eventTargetHtmlNode ) {
+
+      if ( this.eventTargetHtmlNodeId ) {
+        this.eventTargetHtmlNode = document.getElementById( this.eventTargetHtmlNodeId );
+
+      } else if ( this.eventTargetSelector ) {
+        this.eventTargetHtmlNode = document.querySelector( this.eventTargetSelector );
+
+      } 
+      // TODO: a tooltip shown near the mouse pointer on click event, for example
+      else {
+        throw new Error (
+          `no id, no css selector, no event target node was set. 
+          use set methods like these: 
+          .setEventTargetHtmlNode(htmlNode) 
+          or .setEventTargetHtmlNodeId('id') 
+          or .setEventTargetSelector('#id')`
+        );
+      }
+
+    }
+
+    if ( !this.eventTargetHtmlNode ) {
+      throw new Error (
+        `The eventTargetHtmlNode is null, 
+        the id, css selector, or event target node were set wrong. 
+        You need to use other input args for set methods like these: 
+        .setEventTargetHtmlNode(htmlNode) 
+        or .setEventTargetHtmlNodeId('id') 
+        or .setEventTargetSelector('#id')`
+      );
+    }
 
     const templateData: TooltipMainTemplateData = new TooltipMainTemplateData();
 
@@ -701,16 +758,13 @@ export class Tooltip extends EventEmitter implements TooltipInterface {
     }
 
 
-    // we have to render first and show the tooltip,
-    // that we can positionize this, 
-    // since only when rendered, we can get the width and height of the tooltip html node
-    // @ts-ignore
-    this.mainHtmlNode.style.display = cssDisplay;
-
     // if .isShown has value 1, then the tooltip gets its css rule top and left values,
     // otherwise, if isShown is 0, then no need to recalculate the css rules for this,
     // since the tooltip is hidden.
     if ( cssDisplay === Constants.cssDisplay.BLOCK ) {
+
+      // override this method to use for advanced visual effects.
+      this._show( this.mainHtmlNode );
 
       this.emitEvent (
         Constants.TooltipEventsNames.BEFORE_TOOLTIP_SHOWN,
@@ -762,6 +816,9 @@ export class Tooltip extends EventEmitter implements TooltipInterface {
 
     // the tooltip hides now
     } else if ( cssDisplay === Constants.cssDisplay.NONE ) {
+
+      // override this method to use for advanced visual effects.
+      this._hide( this.mainHtmlNode );
 
       this.emitEvent (
         Constants.TooltipEventsNames.AFTER_TOOLTIP_HIDDEN,
@@ -884,7 +941,10 @@ export class Tooltip extends EventEmitter implements TooltipInterface {
       // hiding the html node tooltip
       try {
         //@ts-ignore
-        document.getElementById( tooltipShownSettings.tooltipHtmlNodeId ).style.display = Constants.cssDisplay.NONE;
+        this._hide(
+          document.getElementById( tooltipShownSettings.tooltipHtmlNodeId )
+        );
+
       } catch ( e ) {
         if ( this.debug ) {
           console.log (
@@ -1036,7 +1096,7 @@ export class Tooltip extends EventEmitter implements TooltipInterface {
     // and this value still remains accessibale like this Tooltip class instance prop.
     return this.tooltipHtmlNodeDimensions;
   }
-  
+
 }
 
 

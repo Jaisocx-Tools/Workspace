@@ -75,16 +75,13 @@ export class ExampleTooltip {
 
 ```
 
-## bugsfixing:
-. dynamic width
-
-
 
 ## Future improvals:
 10. Showing/Hiding feature: Constant default css transition, Constant default css transition property to hide, object css rule name: css rule value, e.g. 0
-17. setEventTargetSelector ( cssSelector: any ) 
-18. the basic show()/hide() oneliner methods to define from the the .hide__  and .showTooltip() methods
 props:
+19. shadow basic theme example
+
+
 
 css theme variable for the transition.
 css prop name used to show/hide 

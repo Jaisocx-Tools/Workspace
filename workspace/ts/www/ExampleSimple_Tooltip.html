@@ -387,13 +387,12 @@ tooltipContext
         tooltip
           .setTooltipHideBehaviour( tooltipHideBehaviour )
           .setTimeoutToCloseMillis( tooltipHideTimoutMilliseconds )
-          .setEventTargetHtmlNodeId("tooltip-show-button")
-          // .setTemplateData (
-          //   {
-          //     "html": "Hello World!",
-          //   }
-          // )
-          .setHtml(`<h4>Greetings</h4><p>Hello,</p><p>Have a nice day.</p>`) // styles are not working yet when height set small, and text bigger
+          .setEventTargetSelector("#tooltip-show-button")
+          .setTemplateData (
+            {
+              "html": `<h4>Greetings</h4><p>Hello,</p><p>Have a nice day.</p>`,
+            }
+          )
           .setIsWithArrow(1)
           .setArrowSize (
             0.935,

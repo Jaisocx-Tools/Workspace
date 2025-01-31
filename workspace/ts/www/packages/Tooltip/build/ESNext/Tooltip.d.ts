@@ -7,6 +7,7 @@ import { TooltipShownSettings } from "./TooltipShownSettings.js";
 import "@jaisocx-tooltip-assets/tooltip-styles-main-webpack.css";
 export declare class Tooltip extends EventEmitter implements TooltipInterface {
     eventTargetHtmlNodeId: any;
+    eventTargetSelector: any;
     eventTargetHtmlNode: HTMLElement | null;
     eventTargetDimensions: Dimensions;
     eventName: any;
@@ -32,6 +33,8 @@ export declare class Tooltip extends EventEmitter implements TooltipInterface {
     templateRenderer: TemplateRenderer;
     lib: TooltipLib;
     constructor();
+    _hide(node: HTMLElement | null): undefined;
+    _show(node: HTMLElement | null): undefined;
     getEventsNamesEmitted(): any;
     setDebug(debug: boolean): Tooltip;
     setHtml(html: any): TooltipInterface;
@@ -43,6 +46,7 @@ export declare class Tooltip extends EventEmitter implements TooltipInterface {
     setTooltipAlignDimensionTwo(tooltipAlignDimensionTwo: number): TooltipInterface;
     setTooltipPaddingAlignDimensionTwo(tooltipPaddingAlignDimensionTwo: number, tooltipPaddingSizeDimAlignDimensionTwo: any): TooltipInterface;
     setEventTargetHtmlNodeId(id: any): TooltipInterface;
+    setEventTargetSelector(cssSelector: any): TooltipInterface;
     setEventTargetHtmlNode(eventTarget: HTMLElement): TooltipInterface;
     setEventName(eventName: any): TooltipInterface;
     setAlignDimensionOneValueOrder(alternativeTabBorderSides: number[]): TooltipInterface;

@@ -1,6 +1,9 @@
 import { Dimensions } from "./Types";
 export interface TooltipInterface {
+    _hide(node: HTMLElement | null): undefined;
+    _show(node: HTMLElement | null): undefined;
     setEventTargetHtmlNodeId(id: any): TooltipInterface;
+    setEventTargetSelector(cssSelector: any): TooltipInterface;
     setEventTargetHtmlNode(eventTarget: HTMLElement): TooltipInterface;
     setHtml(html: any): TooltipInterface;
     setTemplate(template: any): TooltipInterface;
