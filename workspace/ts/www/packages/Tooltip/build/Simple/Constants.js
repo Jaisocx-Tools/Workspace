@@ -61,8 +61,12 @@ class Constants {
     static TOOLTIP_MAIN = "tooltip";
     static TOOLTIP_ARROW = "tooltip-arrow";
     static TOOLTIP_CONTENT = "tooltip-content";
+  };
+  static CssVariablesNames = class {
     static CSS_VARIABLE_NAME__ARROW_SIZE = "--tooltip_arrow__size";
     static CSS_VARIABLE_NAME__EVENT_TARGET_PADDING = "--tooltip_event_target_padding";
+    static CSS_VARIABLE_NAME__TOOLTIP_HEIGHT = "--tooltip__height";
+    static CSS_VARIABLE_NAME__OVERFLOW_Y = "--tooltip__overflow_y";
   };
   static CssPropertiesNames = class {
     static DISPLAY = "display";

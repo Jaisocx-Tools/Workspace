@@ -67,8 +67,13 @@ export declare class Constants {
         TOOLTIP_MAIN: any;
         TOOLTIP_ARROW: any;
         TOOLTIP_CONTENT: any;
+    };
+    static CssVariablesNames: {
+        new (): {};
         CSS_VARIABLE_NAME__ARROW_SIZE: any;
         CSS_VARIABLE_NAME__EVENT_TARGET_PADDING: any;
+        CSS_VARIABLE_NAME__TOOLTIP_HEIGHT: any;
+        CSS_VARIABLE_NAME__OVERFLOW_Y: any;
     };
     static CssPropertiesNames: {
         new (): {};
@@ -82,7 +87,7 @@ export declare class Constants {
         tooltipPaddingSizeDimAlignDimensionTwo: any;
         tooltipHideBehaviour: any;
         tooltipHideTimoutMilliseconds: number;
-        alternativeTabBorderSides: number[];
+        alternativeTabBorderSides: any[];
         withArrow: number;
         arrowSize: any;
         arrowSizeDim: any;

@@ -1,6 +1,9 @@
 // the class Tooltip is to produce dynamic a tooltip.
 // the Constants.template value and the templateRederer json data can be overridden.
 // the main purpose is to render the html template, to handle the js events, 
+
+import { Dimensions } from "./Types";
+
 // and to place the tooltip the right way near the event target html node.
 export interface TooltipInterface {
 
@@ -47,7 +50,7 @@ export interface TooltipInterface {
   // the method, used by showTooltip(),
   // this method uses TooltipLib helping methods to define the css rules top and left
   // for the dynamic produced tooltip html node
-  setTooltipAlignDimensionOneCss(): TooltipInterface;
+  calculateTooltipHtmlNodeDimensions(): Dimensions;
 }
 
 

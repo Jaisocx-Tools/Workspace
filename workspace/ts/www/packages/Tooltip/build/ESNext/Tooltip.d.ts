@@ -20,7 +20,7 @@ export declare class Tooltip extends EventEmitter implements TooltipInterface {
     html: any;
     paddingEventTarget: number;
     paddingDimEventTarget: any;
-    tooltipAlignDimensionOne: number;
+    tooltipAlignDimensionOne: any;
     tooltipAlignDimensionTwo: number;
     tooltipPaddingAlignDimensionTwo: number;
     tooltipPaddingSizeDimAlignDimensionTwo: any;
@@ -64,6 +64,6 @@ export declare class Tooltip extends EventEmitter implements TooltipInterface {
     showTooltip(toShowCssDisplayValue: any | null, eventTarget: any): TooltipInterface;
     hideAllTooltips(): undefined;
     hideTooltipsByBehaviours(hideBehaviourArray: any[], tooltipId: any | null): undefined;
-    setTooltipAlignDimensionOneCss(): TooltipInterface;
+    calculateTooltipHtmlNodeDimensions(): Dimensions;
 }
 //# sourceMappingURL=Tooltip.d.ts.map

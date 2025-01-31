@@ -75,6 +75,11 @@ export class ExampleTooltip {
 
 ```
 
+## bugsfixing:
+. dynamic width
+
+
+
 ## Future improvals:
 10. Showing/Hiding feature: Constant default css transition, Constant default css transition property to hide, object css rule name: css rule value, e.g. 0
 17. setEventTargetSelector ( cssSelector: any ) 

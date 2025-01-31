@@ -13,12 +13,10 @@
   --tooltip__font_size__mobile: 1.2rem;
   --tooltip__font_size__tablet: 1.3rem;  
 
-  --tooltip__padding: 0.8rem;
+  --tooltip__content_padding: 0.8rem;
   --tooltip_arrow__size: 0;
 
-  /* testing purpose variables */
   --tooltip__width: 12rem;
-  --tooltip__height: 14rem;
 }
 
 .tooltip.theme-context .tooltip-content ul.context {

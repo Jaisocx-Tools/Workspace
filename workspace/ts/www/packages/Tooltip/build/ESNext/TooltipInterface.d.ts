@@ -1,3 +1,4 @@
+import { Dimensions } from "./Types";
 export interface TooltipInterface {
     setEventTargetHtmlNodeId(id: any): TooltipInterface;
     setEventTargetHtmlNode(eventTarget: HTMLElement): TooltipInterface;
@@ -16,6 +17,6 @@ export interface TooltipInterface {
     render(): TooltipInterface;
     addEventListeners(): TooltipInterface;
     showTooltip(toShowCssDisplayValue: any | null, eventTarget: any): TooltipInterface;
-    setTooltipAlignDimensionOneCss(): TooltipInterface;
+    calculateTooltipHtmlNodeDimensions(): Dimensions;
 }
 //# sourceMappingURL=TooltipInterface.d.ts.map

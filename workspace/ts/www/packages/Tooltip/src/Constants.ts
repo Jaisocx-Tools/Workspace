@@ -75,8 +75,13 @@ export class Constants {
     static TOOLTIP_MAIN: any = "tooltip";
     static TOOLTIP_ARROW: any = "tooltip-arrow";
     static TOOLTIP_CONTENT: any = "tooltip-content";
+  };
+  
+  static CssVariablesNames = class {
     static CSS_VARIABLE_NAME__ARROW_SIZE: any = "--tooltip_arrow__size";
     static CSS_VARIABLE_NAME__EVENT_TARGET_PADDING: any = "--tooltip_event_target_padding";
+    static CSS_VARIABLE_NAME__TOOLTIP_HEIGHT: any = "--tooltip__height";
+    static CSS_VARIABLE_NAME__OVERFLOW_Y: any = "--tooltip__overflow_y";
   };
 
   static CssPropertiesNames = class {
@@ -92,7 +97,7 @@ export class Constants {
     static tooltipHideBehaviour: any = Constants.TooltipHideBehaviour.HIDE_AFTER_TIMEOUT__AND__WHEN_CLICK__EVENT_TARGET;
     static tooltipHideTimoutMilliseconds: number = 5000;
   
-    static alternativeTabBorderSides: number[] = [
+    static alternativeTabBorderSides: any[] = [
       Constants.AlignDimensionOne.BROWSER_TAB_BORDER_TOP,
       Constants.AlignDimensionOne.BROWSER_TAB_BORDER_RIGHT,
       Constants.AlignDimensionOne.BROWSER_TAB_BORDER_LEFT,

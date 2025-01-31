@@ -320,6 +320,137 @@ export class TooltipLib {
     return retVal;
   }
 
+  adjustHeight (
+    htmlNode: HTMLElement|null|undefined,
+    htmlNodeDimensions: Dimensions|null|undefined,
+    cssVaraibleNameHeight: any,
+    cssVaraibleNameOverflowY: any
+  ): Dimensions {
+    if ( !htmlNode ) {
+      throw new Error("Html node has no value");
+    }
+
+    let resultingHtmlNodeDimensions: Dimensions = new Dimensions();
+
+    if ( !htmlNodeDimensions ) {
+      htmlNodeDimensions = this.getHtmlNodeDimensions( htmlNode );
+    }
+
+    const cssOverflowYValue: any = this.getCssVariableForNode (
+      htmlNode,
+      cssVaraibleNameOverflowY
+    );
+
+    if ( cssOverflowYValue !== "visible" ) {
+      resultingHtmlNodeDimensions = {...( htmlNodeDimensions as any ),} as Dimensions;
+
+      return resultingHtmlNodeDimensions;
+    } 
+
+    htmlNode.style.height = `${htmlNodeDimensions.height}px`;
+    resultingHtmlNodeDimensions = {...( htmlNodeDimensions as any ),} as Dimensions;
+
+    return resultingHtmlNodeDimensions;
+  }
+
+
+  // getJsOrCssSizeValue method
+  // # Why this method needed:
+  // all js tools need exact sizes values for precise rendering.
+  // when a js tool is built,
+  // a js dev still can set another size value via a css variable in a .css theme file,
+  // no rebuild is needed.
+  // however, when importing a .css theme file in a .ts file via import "theme.css", 
+  // containing, too, webpack compatible url('@alias/ for webpack bundle.js,
+  // the theme files can not be changed, since harcoded into bundle.js by webpack rules.
+  // along with the built bundle.js file in a .html doc via <script src="bundle.js">, 
+  // in order to change a size via css, another theme .css file has to be used in a .html doc via <link rel="stylesheet" href="theme-css-variables-file.css"> 
+  //
+  // # This methods rules:
+  // if a css variable in the theme .css file has value undefined, 
+  // like this: --tooltip_arrow__size: undefined;
+  // then the size, set via a js method will be used. 
+  // some css values are already set in Constants.Defaults.
+  // these values will apply, too, when css variable value =undefined;
+  // when a css variable value is set zero, 
+  // like this: --tooltip_arrow__size: 0;
+  // then the zero size will apply to a js tool size.
+  getJsOrCssSizeValue (
+    htmlNode: HTMLElement|null|undefined,
+    cssVariableName: any,
+    jsObject: any,
+    jsPropNameSize: any,
+    jsPropNameDim: any
+  ): number {
+    if ( !htmlNode ) {
+      throw new Error("the first input arg htmlNode has no HTMLElement value");
+    }
+
+    const CSS_VARIABLE_VALUE_OVERRIDABLE: any = "undefined";
+
+    let jsPropSize: number = jsObject[jsPropNameSize]; // numeric value, if set, and the default value can be set in constructor() 
+    let jsPropSizeUnit: any = jsObject[jsPropNameDim]; // px, % or rem 
+    let cssVariableSizeValue: any = "";
+    let pixelSize: number = 0;
+
+    // the css value, obtined by browser' css processing rules, 
+    // applied to the html node and the theme .css file and theme css className.
+    cssVariableSizeValue = this.getCssVariableForNode (
+      htmlNode,
+      cssVariableName
+    );
+
+    // this if statement block is to use the js object size values,
+    // since the css variable ws set reserved value "undefined".
+    // then we can override the css variable value, 
+    // and use the size value, stored in jsObject props.
+    if ( cssVariableSizeValue === CSS_VARIABLE_VALUE_OVERRIDABLE ) {
+
+      // no need to process units names, like px, rem or %.
+      // the return value will be the same, zero(0)
+      if ( jsPropSize === 0 ) {
+        pixelSize = 0;
+
+      } else {
+        // processing size by units names, like px, rem or %.
+        // and converting to pixel value of datatype int 32 bits.
+        pixelSize = this.translateToPixelValue (
+          jsPropSize,
+          jsPropSizeUnit
+        );
+  
+      }
+
+    } 
+    // in this if statement block, the css textual value for a size will be used,
+    // like this: "0.6rem"
+    else {
+      
+      // no need to process units names, like px, rem or %.
+      // the return value will be the same, zero(0)
+      if ( +cssVariableSizeValue === 0 ) {
+        pixelSize = 0;
+
+      } else {
+
+        // processing size by units names, like px, rem or %.
+        // and converting to pixel value of datatype int 32 bits.
+        // this method is a little heavier, than .translateToPixelValue(), 
+        // called above, since parses css size value {Number}{Unit}, 
+        // like this: "0.6rem",
+        // however the result is the same.
+        pixelSize = this.translateCssDimToPixelValue (
+          cssVariableSizeValue
+        );
+  
+      }
+
+    }
+
+    return pixelSize;
+  }
+
+  
   translateToPixelValue (
     sizeNumeric: number,
     sizeUnit: any

@@ -12,6 +12,8 @@ export declare class TooltipLib {
     getBrowserTabDimensions(): Dimensions;
     getHtmlNodeDimensions(htmlNode: HTMLElement | null): Dimensions;
     getRectSideSizeByMidTilConerLineSize(midTilCornerLineSize: number): number;
+    adjustHeight(htmlNode: HTMLElement | null | undefined, htmlNodeDimensions: Dimensions | null | undefined, cssVaraibleNameHeight: any, cssVaraibleNameOverflowY: any): Dimensions;
+    getJsOrCssSizeValue(htmlNode: HTMLElement | null | undefined, cssVariableName: any, jsObject: any, jsPropNameSize: any, jsPropNameDim: any): number;
     translateToPixelValue(sizeNumeric: number, sizeUnit: any): number;
     translateCssDimToPixelValue(sizeCssValue: any): number;
     getRemRelativePixelValue(): number;

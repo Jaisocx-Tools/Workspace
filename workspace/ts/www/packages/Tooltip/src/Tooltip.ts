@@ -57,7 +57,7 @@ export class Tooltip extends EventEmitter implements TooltipInterface {
   paddingDimEventTarget: any;
 
   // tooltipPostition denotes, where the tooltip appears, top, right or left side of the eventTargetHtmlNode.
-  tooltipAlignDimensionOne: number;
+  tooltipAlignDimensionOne: any;
 
   // tooltipAlignDimensionTwo. the next 3 AlignDimensionTwo properties, are the values, these define the place of the tooltip,
   // when, e.e the dimensionOne tells above the event target, AlignDimensionOne.BROWSER_TAB_BORDER_TOP: number = 1,
@@ -585,7 +585,7 @@ export class Tooltip extends EventEmitter implements TooltipInterface {
           evt
         );
 
-        this.setTooltipAlignDimensionOneCss();
+        this.calculateTooltipHtmlNodeDimensions();
       }
     );
     
@@ -625,7 +625,7 @@ export class Tooltip extends EventEmitter implements TooltipInterface {
             evt
           );
 
-          this.setTooltipAlignDimensionOneCss();
+          this.calculateTooltipHtmlNodeDimensions();
 
         }
       );
@@ -646,7 +646,7 @@ export class Tooltip extends EventEmitter implements TooltipInterface {
           evt
         );
 
-        this.setTooltipAlignDimensionOneCss();
+        this.calculateTooltipHtmlNodeDimensions();
       }
     );
     
@@ -720,7 +720,7 @@ export class Tooltip extends EventEmitter implements TooltipInterface {
 
       // this method calculates the css rules top and left of the eventTarget and the tooltip, 
       // and sets top and left cass rules values in pixels to the tooltip html node.
-      this.setTooltipAlignDimensionOneCss();
+      this.calculateTooltipHtmlNodeDimensions();
 
       this.emitEvent (
         Constants.TooltipEventsNames.AFTER_TOOLTIP_SHOWN,
@@ -900,46 +900,24 @@ export class Tooltip extends EventEmitter implements TooltipInterface {
   }
 
 
-  // setTooltipAlignDimensionOneCss: method applies the css rules values, 
+  // calculateTooltipHtmlNodeDimensions: method applies the css rules values, 
   // to place the shown tooltip the right way near the event target
-  setTooltipAlignDimensionOneCss(): TooltipInterface {
+  calculateTooltipHtmlNodeDimensions(): Dimensions {
 
-    let arrowSize: number = this.arrowSize; // numeric value, if set, default is 0, set in constructor()
-    let arrowSizeDim: any = this.arrowSizeDim; // px, % or rem
-    let arrowSizeCssValue: any = "";
+    let browserTabBorderSide: any = this.tooltipAlignDimensionOne;
     let arrowPixelSize: number = 0;
     let arrowRectSideSize: number = 0;
-    let browserTabBorderSide: number = this.tooltipAlignDimensionOne;
-
-    let eventTargetPaddingSizeCssValue: any = "";
     let eventTargetPaddingPixelSize: number = 0;
 
     // we check whether the tooltip is set to be rendered with an arrow
     if ( this.withArrow === 1 ) {
-      // we suggest, when set 0, then the theme css file styles apply
-      // in this if condition the css theme variable value will be set.
-      if ( arrowSize === 0 ) {
-        //@ts-ignore
-        arrowSizeCssValue = this.lib.getCssVariableForNode (
-          this.arrowHtmlNode,
-          Constants.CssClassNames.CSS_VARIABLE_NAME__ARROW_SIZE
-        ); 
-        
-        if (
-          ( arrowSizeCssValue ) && 
-          ( arrowSizeCssValue !== "0" )
-        ) {
-          arrowPixelSize = this.lib.translateCssDimToPixelValue (
-            arrowSizeCssValue
-          );
-
-        }
-      } else {
-        arrowPixelSize = this.lib.translateToPixelValue(
-          arrowSize,
-          arrowSizeDim
-        );
-      }
+      arrowPixelSize = this.lib.getJsOrCssSizeValue (
+        this.arrowHtmlNode,
+        Constants.CssVariablesNames.CSS_VARIABLE_NAME__ARROW_SIZE,
+        this,
+        "arrowSize",
+        "arrowSizeDim"
+      );
 
       arrowRectSideSize = this.lib.getRectSideSizeByMidTilConerLineSize (
         arrowPixelSize
@@ -958,43 +936,48 @@ export class Tooltip extends EventEmitter implements TooltipInterface {
       this.eventTargetHtmlNode
     );
     
+    // the mainHtml node is the tooltip html node,
+    // rendered til this time pint by TemplateRenderer,
+    // and is show on site, however not placed the right way.
+    // we need 2 different variables for the Tooltip sizes:
+    // this here is for html node as is now,
+    // and the tooltipHtmlNodeDimensions will have the calculated here values,
+    // like sizes and top and left values for css style props.
     const mainHtmlNodeDimensions: Dimensions = this.lib.getHtmlNodeDimensions (
       this.mainHtmlNode
     );
 
-    this.tooltipHtmlNodeDimensions = new Dimensions();
+    // this.tooltipHtmlNodeDimensions = new Dimensions();
 
+    //    // ///////////
+    // this.tooltipHtmlNodeDimensions = this.lib.adjustHeight (
+    //   this.mainHtmlNode,
+    //   mainHtmlNodeDimensions,
+    //   Constants.CssVariablesNames.CSS_VARIABLE_NAME__TOOLTIP_HEIGHT,
+    //   Constants.CssVariablesNames.CSS_VARIABLE_NAME__OVERFLOW_Y
+    // );
+
+    // this is the added number pixel value,
+    // along with settings _START, _MID and _END,
+    // to place the desired way the tooltip
+    // relative to the eventTarget
     const tooltipPaddingPixelSize: number = this.lib.translateToPixelValue (
       this.tooltipPaddingAlignDimensionTwo,
       this.tooltipPaddingSizeDimAlignDimensionTwo
     );
 
-    const eventTargetPaddingSize: number = this.paddingEventTarget;
-    if ( eventTargetPaddingSize === 0 ) {
-      //@ts-ignore
-      eventTargetPaddingSizeCssValue = this.lib.getCssVariableForNode (
-        this.eventTargetHtmlNode,
-        Constants.CssClassNames.CSS_VARIABLE_NAME__EVENT_TARGET_PADDING
-      ); 
-      
-      if (
-        ( eventTargetPaddingSizeCssValue ) && 
-        ( eventTargetPaddingSizeCssValue !== "0" )
-      ) {
-        eventTargetPaddingPixelSize = this.lib.translateCssDimToPixelValue (
-          eventTargetPaddingSizeCssValue
-        );
-
-      }
-    } else {
-      eventTargetPaddingPixelSize = this.lib.translateToPixelValue(
-        this.paddingEventTarget,
-        this.paddingDimEventTarget
-      );
-    }
-
-
-    browserTabBorderSide = 0;
+    // this is the added number pixel value 
+    // to have the distance between the event target and the tooltip.
+    const eventTargetPaddingSize: number = this.lib.getJsOrCssSizeValue (
+      this.eventTargetHtmlNode,
+      Constants.CssVariablesNames.CSS_VARIABLE_NAME__EVENT_TARGET_PADDING,
+      this,
+      "paddingEventTarget",
+      "paddingDimEventTarget"
+    );
+    
+    // top, right, left or bottom
+    browserTabBorderSide = "";
     for ( browserTabBorderSide of this.alternativeTabBorderSides ) {
 
       this.tooltipHtmlNodeDimensions = this.lib.calculateTooltipDimensions (
@@ -1046,7 +1029,12 @@ export class Tooltip extends EventEmitter implements TooltipInterface {
       );
     }
 
-    return this;
+    // the css styles are already applied to the tooltip,
+    // and the tooltip has been placed the right way on the site.
+    // however, maybe later someone needs to know the resulting Dimensions of the placed Tooltip))
+    // I just return the Dimensions here,
+    // and this value still remains accessibale like this Tooltip class instance prop.
+    return this.tooltipHtmlNodeDimensions;
   }
   
 }

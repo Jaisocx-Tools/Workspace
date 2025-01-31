@@ -33,7 +33,7 @@
 
   /* temporary code block */
   min-width: var(--tooltip__width);
-  min-height: var(--tooltip__height);
+  min-height: var(--tooltip__min_height);
 
   width: var(--tooltip__width);
   height: var(--tooltip__height);
@@ -52,16 +52,16 @@
 
 .tooltip .tooltip-content {
   display: block;
-  position: absolute;
+  position: relative;
 
   box-sizing: border-box;
   margin: 0;
-  padding: var(--tooltip__padding);
+  padding: var(--tooltip__content_padding);
 
   height: 100%;
   width: 100%;
   
-  min-height: 100%;
+  min-height: var(--tooltip__min_height);
   min-width: 100%;
 
   max-height: 100vh;
