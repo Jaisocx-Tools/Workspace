@@ -18,6 +18,8 @@ export declare class Tooltip extends EventEmitter implements TooltipInterface {
     tooltipHideBehaviour: any;
     cssClasses: any;
     html: any;
+    paddingEventTarget: number;
+    paddingDimEventTarget: any;
     tooltipAlignDimensionOne: number;
     tooltipAlignDimensionTwo: number;
     tooltipPaddingAlignDimensionTwo: number;
@@ -36,6 +38,7 @@ export declare class Tooltip extends EventEmitter implements TooltipInterface {
     setTemplate(template: any): TooltipInterface;
     setTemplateData(data: any): TooltipInterface;
     setCssClasses(cssClasses: any): TooltipInterface;
+    setPaddingEventTarget(padding: number, paddingDim: any): TooltipInterface;
     setTooltipAlignDimensionOne(tooltipAlignDimensionOne: number): TooltipInterface;
     setTooltipAlignDimensionTwo(tooltipAlignDimensionTwo: number): TooltipInterface;
     setTooltipPaddingAlignDimensionTwo(tooltipPaddingAlignDimensionTwo: number, tooltipPaddingSizeDimAlignDimensionTwo: any): TooltipInterface;

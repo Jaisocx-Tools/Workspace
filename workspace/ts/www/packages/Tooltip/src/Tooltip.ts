@@ -53,6 +53,9 @@ export class Tooltip extends EventEmitter implements TooltipInterface {
   // the innerHTML rendered in the tooltip
   html: any;
 
+  paddingEventTarget: number;
+  paddingDimEventTarget: any;
+
   // tooltipPostition denotes, where the tooltip appears, top, right or left side of the eventTargetHtmlNode.
   tooltipAlignDimensionOne: number;
 
@@ -111,6 +114,11 @@ export class Tooltip extends EventEmitter implements TooltipInterface {
     // Constants.cssClasses sets cssClass value class="tooltip", 
     // however there is the setCssClasses public method to override the default css class names for the tooltip html node.
     this.cssClasses = Constants.Defaults.cssClasses;
+
+    // the distance between the eventtarget and the tooltip or the arrow of a tooltip, if arrow has size.
+    this.paddingEventTarget = Constants.Defaults.paddingEventTarget;
+    this.paddingDimEventTarget = Constants.Defaults.paddingDimEventTarget;
+  
 
     // Constants.tooltipAlignDimensionOne sets tooltipAlignDimensionOne value BROWSER_TAB_BORDER_TOP = 1, 
     // however there is the setTooltipAlignDimensionOne public method to override the default css class names for the tooltip html node.
@@ -195,6 +203,17 @@ export class Tooltip extends EventEmitter implements TooltipInterface {
   // setCssClasses is used to set the tooltip html node attr class="" values, like this class="tooltip theme-beta"
   setCssClasses( cssClasses: any ): TooltipInterface {
     this.cssClasses = cssClasses;
+
+    return this;
+  }
+
+  // setPaddingEventTarget: the method sets the margin between the eventTarget and the tooltip or the arrow of a tooltip, if arrow has size.
+  setPaddingEventTarget ( 
+    padding: number,
+    paddingDim: any
+  ): TooltipInterface {
+    this.paddingEventTarget = padding;
+    this.paddingDimEventTarget = paddingDim;
 
     return this;
   }
@@ -892,6 +911,9 @@ export class Tooltip extends EventEmitter implements TooltipInterface {
     let arrowRectSideSize: number = 0;
     let browserTabBorderSide: number = this.tooltipAlignDimensionOne;
 
+    let eventTargetPaddingSizeCssValue: any = "";
+    let eventTargetPaddingPixelSize: number = 0;
+
     // we check whether the tooltip is set to be rendered with an arrow
     if ( this.withArrow === 1 ) {
       // we suggest, when set 0, then the theme css file styles apply
@@ -947,6 +969,31 @@ export class Tooltip extends EventEmitter implements TooltipInterface {
       this.tooltipPaddingSizeDimAlignDimensionTwo
     );
 
+    const eventTargetPaddingSize: number = this.paddingEventTarget;
+    if ( eventTargetPaddingSize === 0 ) {
+      //@ts-ignore
+      eventTargetPaddingSizeCssValue = this.lib.getCssVariableForNode (
+        this.eventTargetHtmlNode,
+        Constants.CssClassNames.CSS_VARIABLE_NAME__EVENT_TARGET_PADDING
+      ); 
+      
+      if (
+        ( eventTargetPaddingSizeCssValue ) && 
+        ( eventTargetPaddingSizeCssValue !== "0" )
+      ) {
+        eventTargetPaddingPixelSize = this.lib.translateCssDimToPixelValue (
+          eventTargetPaddingSizeCssValue
+        );
+
+      }
+    } else {
+      eventTargetPaddingPixelSize = this.lib.translateToPixelValue(
+        this.paddingEventTarget,
+        this.paddingDimEventTarget
+      );
+    }
+
+
     browserTabBorderSide = 0;
     for ( browserTabBorderSide of this.alternativeTabBorderSides ) {
 
@@ -956,7 +1003,8 @@ export class Tooltip extends EventEmitter implements TooltipInterface {
         browserTabBorderSide,
         this.tooltipAlignDimensionTwo,
         tooltipPaddingPixelSize,
-        arrowPixelSize
+        arrowPixelSize,
+        eventTargetPaddingPixelSize
       );
 
       if ( 
@@ -965,7 +1013,8 @@ export class Tooltip extends EventEmitter implements TooltipInterface {
           browserTabDimensions,
           this.tooltipHtmlNodeDimensions,
           browserTabBorderSide,
-          arrowPixelSize
+          arrowPixelSize,
+          eventTargetPaddingPixelSize
         ) 
       ) {
         // we stop iterating the loop,

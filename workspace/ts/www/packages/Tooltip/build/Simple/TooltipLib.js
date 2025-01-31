@@ -31,7 +31,8 @@ class TooltipLib {
     browserTabBorderSide, 
     tooltipAlignDimensionTwo, 
     tooltipPaddingAlignDimensionTwo, 
-    arrowPixelSize) {
+    arrowPixelSize, 
+    eventTargetPaddingPixelSize) {
     const retVal = this.calculateTooltipDimensionTwo(
       eventTargetHtmlNodeDimensions, 
       tooltipHtmlNodeDimensions, 
@@ -44,24 +45,28 @@ class TooltipLib {
     if (browserTabBorderSide === Constants.AlignDimensionOne.BROWSER_TAB_BORDER_TOP) {
       retVal.top = eventTargetHtmlNodeDimensions.top
                 - tooltipHtmlNodeDimensions.height
-                - arrowPixelSize; // TODO - padding DimensionOne
+                - arrowPixelSize
+                - eventTargetPaddingPixelSize;
       retVal.left = tooltipHtmlNodeDimensions.left;
     }
     else if (browserTabBorderSide === Constants.AlignDimensionOne.BROWSER_TAB_BORDER_RIGHT) {
       retVal.top = tooltipHtmlNodeDimensions.top;
       retVal.left = eventTargetHtmlNodeDimensions.left
                 + eventTargetHtmlNodeDimensions.width
-                + arrowPixelSize; // TODO + padding DimensionOne
+                + arrowPixelSize
+                + eventTargetPaddingPixelSize;
     }
     else if (browserTabBorderSide === Constants.AlignDimensionOne.BROWSER_TAB_BORDER_LEFT) {
       retVal.top = tooltipHtmlNodeDimensions.top;
       retVal.left = eventTargetHtmlNodeDimensions.left
                 - arrowPixelSize
-                - tooltipHtmlNodeDimensions.width; // TODO - padding DimensionOne
+                - tooltipHtmlNodeDimensions.width
+                - eventTargetPaddingPixelSize;
     }
     else if (browserTabBorderSide === Constants.AlignDimensionOne.BROWSER_TAB_BORDER_BOTTOM) {
       retVal.top = eventTargetHtmlNodeDimensions.bottom
-                + arrowPixelSize; // TODO + padding DimensionOne
+                + arrowPixelSize
+                + eventTargetPaddingPixelSize;
       retVal.left = tooltipHtmlNodeDimensions.left;
     }
 
@@ -125,7 +130,8 @@ class TooltipLib {
     browserTabDimensions, 
     tooltipHtmlNodeDimensions, 
     browserTabBorderSide, 
-    arrowPixelSize) {
+    arrowPixelSize, 
+    eventTargetPaddingPixelSize) {
     let retVal = 0;
 
     if (browserTabBorderSide === Constants.AlignDimensionOne.BROWSER_TAB_BORDER_TOP) {

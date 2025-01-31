@@ -17,6 +17,8 @@ class Tooltip extends EventEmitter {
   cssClasses;
   // the innerHTML rendered in the tooltip
   html;
+  paddingEventTarget;
+  paddingDimEventTarget;
   // tooltipPostition denotes, where the tooltip appears, top, right or left side of the eventTargetHtmlNode.
   tooltipAlignDimensionOne;
   // tooltipAlignDimensionTwo. the next 3 AlignDimensionTwo properties, are the values, these define the place of the tooltip,
@@ -62,6 +64,9 @@ class Tooltip extends EventEmitter {
     // Constants.cssClasses sets cssClass value class="tooltip", 
     // however there is the setCssClasses public method to override the default css class names for the tooltip html node.
     this.cssClasses = Constants.Defaults.cssClasses;
+    // the distance between the eventtarget and the tooltip or the arrow of a tooltip, if arrow has size.
+    this.paddingEventTarget = Constants.Defaults.paddingEventTarget;
+    this.paddingDimEventTarget = Constants.Defaults.paddingDimEventTarget;
     // Constants.tooltipAlignDimensionOne sets tooltipAlignDimensionOne value BROWSER_TAB_BORDER_TOP = 1, 
     // however there is the setTooltipAlignDimensionOne public method to override the default css class names for the tooltip html node.
     this.tooltipAlignDimensionOne = Constants.Defaults.tooltipAlignDimensionOne;
@@ -124,6 +129,15 @@ class Tooltip extends EventEmitter {
   // setCssClasses is used to set the tooltip html node attr class="" values, like this class="tooltip theme-beta"
   setCssClasses(cssClasses) {
     this.cssClasses = cssClasses;
+
+    return this;
+  }
+  // setPaddingEventTarget: the method sets the margin between the eventTarget and the tooltip or the arrow of a tooltip, if arrow has size.
+  setPaddingEventTarget(
+    padding, 
+    paddingDim) {
+    this.paddingEventTarget = padding;
+    this.paddingDimEventTarget = paddingDim;
 
     return this;
   }
@@ -439,22 +453,6 @@ class Tooltip extends EventEmitter {
           this.emitEvent(
             Constants.EventsNames.SCROLL, 
             evt);
-          // //@ts-ignore
-          // const deltaY = scrollableHolderNode.scrollTop - evt.target.scrollTop;
-          // //@ts-ignore
-          // const deltaX = scrollableHolderNode.scrollLeft - evt.target.scrollLeft;
-          // //@ts-ignore
-          // scrollableHolderNode.scrollTop = evt.target.scrollTop;
-          // //@ts-ignore
-          // scrollableHolderNode.scrollLeft = evt.target.scrollLeft;
-          // this.eventTargetDimensions.top += deltaY;
-          // this.eventTargetDimensions.left += deltaX;
-          // this.tooltipHtmlNodeDimensions.top += deltaY;
-          // this.tooltipHtmlNodeDimensions.left += deltaX;
-          // //@ts-ignore
-          // this.mainHtmlNode.style.top = `${this.tooltipHtmlNodeDimensions.top}px`;
-          // //@ts-ignore
-          // this.mainHtmlNode.style.left = `${this.tooltipHtmlNodeDimensions.left}px`;
           this.setTooltipAlignDimensionOneCss();
         });
     }
@@ -661,6 +659,8 @@ class Tooltip extends EventEmitter {
     let arrowPixelSize = 0;
     let arrowRectSideSize = 0;
     let browserTabBorderSide = this.tooltipAlignDimensionOne;
+    let eventTargetPaddingSizeCssValue = "";
+    let eventTargetPaddingPixelSize = 0;
     // we check whether the tooltip is set to be rendered with an arrow
     if (this.withArrow === 1) {
       // we suggest, when set 0, then the theme css file styles apply
@@ -692,6 +692,25 @@ class Tooltip extends EventEmitter {
     const tooltipPaddingPixelSize = this.lib.translateToPixelValue(
       this.tooltipPaddingAlignDimensionTwo, 
       this.tooltipPaddingSizeDimAlignDimensionTwo);
+    const eventTargetPaddingSize = this.paddingEventTarget;
+
+    if (eventTargetPaddingSize === 0) {
+      //@ts-ignore
+      eventTargetPaddingSizeCssValue = this.lib.getCssVariableForNode(
+        this.eventTargetHtmlNode, 
+        Constants.CssClassNames.CSS_VARIABLE_NAME__EVENT_TARGET_PADDING);
+
+      if ((eventTargetPaddingSizeCssValue) &&
+                (eventTargetPaddingSizeCssValue !== "0")) {
+        eventTargetPaddingPixelSize = this.lib.translateCssDimToPixelValue(eventTargetPaddingSizeCssValue);
+      }
+    }
+    else {
+      eventTargetPaddingPixelSize = this.lib.translateToPixelValue(
+        this.paddingEventTarget, 
+        this.paddingDimEventTarget);
+    }
+
     browserTabBorderSide = 0;
 
     for (browserTabBorderSide of this.alternativeTabBorderSides) {
@@ -701,7 +720,8 @@ class Tooltip extends EventEmitter {
         browserTabBorderSide, 
         this.tooltipAlignDimensionTwo, 
         tooltipPaddingPixelSize, 
-        arrowPixelSize);
+        arrowPixelSize, 
+        eventTargetPaddingPixelSize);
 
       if (
       // if condition checks, whether the tooltip can be placed between the event target and browser tab border.
@@ -709,7 +729,8 @@ class Tooltip extends EventEmitter {
           browserTabDimensions, 
           this.tooltipHtmlNodeDimensions, 
           browserTabBorderSide, 
-          arrowPixelSize)) {
+          arrowPixelSize, 
+          eventTargetPaddingPixelSize)) {
         // we stop iterating the loop,
         // since the if statement above tells here inside,
         // that the tooltip can be viewed between the eventTarget and the browser's tab border on the side this is chosen in this loop ( top, right or left ).

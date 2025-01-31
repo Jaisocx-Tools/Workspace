@@ -21,31 +21,35 @@ export class TooltipLib {
         //@ts-ignore
         tooltipHtmlNode.style.left = `${tooltipHtmlNodeDimensions.left}px`;
     }
-    calculateTooltipDimensions(eventTargetHtmlNodeDimensions, tooltipHtmlNodeDimensions, browserTabBorderSide, tooltipAlignDimensionTwo, tooltipPaddingAlignDimensionTwo, arrowPixelSize) {
+    calculateTooltipDimensions(eventTargetHtmlNodeDimensions, tooltipHtmlNodeDimensions, browserTabBorderSide, tooltipAlignDimensionTwo, tooltipPaddingAlignDimensionTwo, arrowPixelSize, eventTargetPaddingPixelSize) {
         const retVal = this.calculateTooltipDimensionTwo(eventTargetHtmlNodeDimensions, tooltipHtmlNodeDimensions, browserTabBorderSide, tooltipAlignDimensionTwo, tooltipPaddingAlignDimensionTwo);
         retVal.width = tooltipHtmlNodeDimensions.width;
         retVal.height = tooltipHtmlNodeDimensions.height;
         if (browserTabBorderSide === Constants.AlignDimensionOne.BROWSER_TAB_BORDER_TOP) {
             retVal.top = eventTargetHtmlNodeDimensions.top
                 - tooltipHtmlNodeDimensions.height
-                - arrowPixelSize; // TODO - padding DimensionOne
+                - arrowPixelSize
+                - eventTargetPaddingPixelSize;
             retVal.left = tooltipHtmlNodeDimensions.left;
         }
         else if (browserTabBorderSide === Constants.AlignDimensionOne.BROWSER_TAB_BORDER_RIGHT) {
             retVal.top = tooltipHtmlNodeDimensions.top;
             retVal.left = eventTargetHtmlNodeDimensions.left
                 + eventTargetHtmlNodeDimensions.width
-                + arrowPixelSize; // TODO + padding DimensionOne
+                + arrowPixelSize
+                + eventTargetPaddingPixelSize;
         }
         else if (browserTabBorderSide === Constants.AlignDimensionOne.BROWSER_TAB_BORDER_LEFT) {
             retVal.top = tooltipHtmlNodeDimensions.top;
             retVal.left = eventTargetHtmlNodeDimensions.left
                 - arrowPixelSize
-                - tooltipHtmlNodeDimensions.width; // TODO - padding DimensionOne
+                - tooltipHtmlNodeDimensions.width
+                - eventTargetPaddingPixelSize;
         }
         else if (browserTabBorderSide === Constants.AlignDimensionOne.BROWSER_TAB_BORDER_BOTTOM) {
             retVal.top = eventTargetHtmlNodeDimensions.bottom
-                + arrowPixelSize; // TODO + padding DimensionOne
+                + arrowPixelSize
+                + eventTargetPaddingPixelSize;
             retVal.left = tooltipHtmlNodeDimensions.left;
         }
         retVal.right = retVal.left + retVal.width;
@@ -95,7 +99,7 @@ export class TooltipLib {
         }
         return tooltipHtmlNodeDimensions;
     }
-    doesTooltipSuitsTilBrowserTabBorder(browserTabDimensions, tooltipHtmlNodeDimensions, browserTabBorderSide, arrowPixelSize) {
+    doesTooltipSuitsTilBrowserTabBorder(browserTabDimensions, tooltipHtmlNodeDimensions, browserTabBorderSide, arrowPixelSize, eventTargetPaddingPixelSize) {
         let retVal = 0;
         if (browserTabBorderSide === Constants.AlignDimensionOne.BROWSER_TAB_BORDER_TOP) {
             if ((browserTabDimensions.top < tooltipHtmlNodeDimensions.top) &&

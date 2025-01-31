@@ -13,6 +13,7 @@
   --tooltip__border_radius: 0.5rem;
 
   --tooltip__padding: 0.8rem;
+  --tooltip_event_target_padding: 0.3rem;
   --tooltip_arrow__size: 0.935rem;
 
   --tooltip_arrow__background: var(--tooltip__background);

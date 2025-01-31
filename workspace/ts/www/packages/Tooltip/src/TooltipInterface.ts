@@ -11,6 +11,10 @@ export interface TooltipInterface {
   setTemplate( template: any ): TooltipInterface; // optional
   setTemplateData( data: any ): TooltipInterface; // required. e.g. setTemplateData( { "text": "The Text this will be rendered in the tooltip" } )
   setCssClasses( cssClasses: any ): TooltipInterface; // optional
+  setPaddingEventTarget ( 
+    padding: number,
+    paddingDim: any
+  ): TooltipInterface; // optional
   setTooltipAlignDimensionOne( tooltipAlignDimensionOne: number ): TooltipInterface; // optional
   setTooltipAlignDimensionTwo( tooltipAlignDimensionTwo: number ): TooltipInterface; // optional
   setTooltipPaddingAlignDimensionTwo ( 

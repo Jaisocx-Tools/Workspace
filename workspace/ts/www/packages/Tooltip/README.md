@@ -77,7 +77,6 @@ export class ExampleTooltip {
 
 ## Future improvals:
 10. Showing/Hiding feature: Constant default css transition, Constant default css transition property to hide, object css rule name: css rule value, e.g. 0
-16. setMarginEventTarget: between the eventtarget and the arrow ( or the tooltip with no arrow )
 17. setEventTargetSelector ( cssSelector: any ) 
 18. the basic show()/hide() oneliner methods to define from the the .hide__  and .showTooltip() methods
 props:

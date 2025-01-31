@@ -76,6 +76,7 @@ export class Constants {
     static TOOLTIP_ARROW: any = "tooltip-arrow";
     static TOOLTIP_CONTENT: any = "tooltip-content";
     static CSS_VARIABLE_NAME__ARROW_SIZE: any = "--tooltip_arrow__size";
+    static CSS_VARIABLE_NAME__EVENT_TARGET_PADDING: any = "--tooltip_event_target_padding";
   };
 
   static CssPropertiesNames = class {
@@ -100,7 +101,10 @@ export class Constants {
 
     static withArrow: number = 1;
     static arrowSize: any = 0;
-    static arrowSizeDim: any = Constants.CssSizeDim.REM;  
+    static arrowSizeDim: any = Constants.CssSizeDim.REM;
+
+    static paddingEventTarget: number = 0;
+    static paddingDimEventTarget: any = Constants.CssSizeDim.REM;
   
     static cssClasses: any = Constants.CssClassNames.TOOLTIP_MAIN;
     static cssDisplay: any = Constants.cssDisplay.NONE;

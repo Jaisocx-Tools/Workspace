@@ -68,6 +68,7 @@ export declare class Constants {
         TOOLTIP_ARROW: any;
         TOOLTIP_CONTENT: any;
         CSS_VARIABLE_NAME__ARROW_SIZE: any;
+        CSS_VARIABLE_NAME__EVENT_TARGET_PADDING: any;
     };
     static CssPropertiesNames: {
         new (): {};
@@ -85,6 +86,8 @@ export declare class Constants {
         withArrow: number;
         arrowSize: any;
         arrowSizeDim: any;
+        paddingEventTarget: number;
+        paddingDimEventTarget: any;
         cssClasses: any;
         cssDisplay: any;
         templateTooltipContent: any;

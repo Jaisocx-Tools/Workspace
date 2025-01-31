@@ -93,6 +93,7 @@ Constants.CssClassNames = (_k = class {
     _k.TOOLTIP_ARROW = "tooltip-arrow",
     _k.TOOLTIP_CONTENT = "tooltip-content",
     _k.CSS_VARIABLE_NAME__ARROW_SIZE = "--tooltip_arrow__size",
+    _k.CSS_VARIABLE_NAME__EVENT_TARGET_PADDING = "--tooltip_event_target_padding",
     _k);
 Constants.CssPropertiesNames = (_l = class {
     },
@@ -117,6 +118,8 @@ Constants.Defaults = (_m = class {
     _m.withArrow = 1,
     _m.arrowSize = 0,
     _m.arrowSizeDim = Constants.CssSizeDim.REM,
+    _m.paddingEventTarget = 0,
+    _m.paddingDimEventTarget = Constants.CssSizeDim.REM,
     _m.cssClasses = Constants.CssClassNames.TOOLTIP_MAIN,
     _m.cssDisplay = Constants.cssDisplay.NONE,
     _m.templateTooltipContent = `

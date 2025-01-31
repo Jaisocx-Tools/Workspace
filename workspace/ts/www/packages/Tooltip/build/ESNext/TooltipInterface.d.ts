@@ -5,6 +5,7 @@ export interface TooltipInterface {
     setTemplate(template: any): TooltipInterface;
     setTemplateData(data: any): TooltipInterface;
     setCssClasses(cssClasses: any): TooltipInterface;
+    setPaddingEventTarget(padding: number, paddingDim: any): TooltipInterface;
     setTooltipAlignDimensionOne(tooltipAlignDimensionOne: number): TooltipInterface;
     setTooltipAlignDimensionTwo(tooltipAlignDimensionTwo: number): TooltipInterface;
     setTooltipPaddingAlignDimensionTwo(tooltipPaddingAlignDimensionTwo: number, tooltipPaddingSizeDimAlignDimensionTwo: number): TooltipInterface;
