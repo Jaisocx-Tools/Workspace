@@ -2,6 +2,6 @@
   --tooltip__background: #224;
   --tooltip__text_color:  #38f;
   --tooltip__border_width: 2px;
-  --tooltip__border_style: dotted;
+  --tooltip__border_style: solid;
   --tooltip__border_color: #5bf;
 }

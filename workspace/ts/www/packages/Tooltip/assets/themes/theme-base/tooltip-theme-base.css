@@ -7,7 +7,7 @@
   --tooltip__font_size: 0.925rem;
   --tooltip__font_size__mobile: 1.3rem;
   --tooltip__font_size__tablet: 1.3rem;  
-  --tooltip__border_width: 0.5px;
+  --tooltip__border_width: 2px;
   --tooltip__border_style: solid;
   --tooltip__border_color: #885;
   --tooltip__border_radius: 0.5rem;

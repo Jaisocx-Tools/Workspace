@@ -94,6 +94,8 @@
       color: black;
       opacity: 0.6;
       position: relative;
+
+      z-index: 30;
     }
 
     button.mini-image-event-target {
@@ -103,8 +105,8 @@
       justify-content: center;
 
       position: relative;
-      top: -0.4rem;
-      left: 0.3rem;
+      top: -0.6rem;
+      left: -0.8rem;
 
       height: var(--mini-image-size);
       min-height: var(--mini-image-size);
@@ -119,6 +121,8 @@
       background-position: center;
 
       background-color: transparent;
+
+      z-index: 40;
 
     }
 
@@ -319,10 +323,10 @@ tooltipContext
 
         // 2. able to show all tooltips by clicking every,
         //    and able to hide all tooltips one click on somewhere else in this site inside the open browser's tab.
-        //const tooltipHideBehaviour = Constants.TooltipHideBehaviour.HIDE_WHEN_CLICK__OTHER_THAN_EVENT_TARGET; 
+        const tooltipHideBehaviour = Constants.TooltipHideBehaviour.HIDE_WHEN_CLICK__OTHER_THAN_EVENT_TARGET; 
 
         // 3. all tooltips are shown, and in order to hide the event target has to be clicked.
-        const tooltipHideBehaviour = Constants.TooltipHideBehaviour.HIDE_WHEN_CLICK__EVENT_TARGET;
+        //const tooltipHideBehaviour = Constants.TooltipHideBehaviour.HIDE_WHEN_CLICK__EVENT_TARGET;
 
         // 1. one tooltip shown, and hides on timeout, too.  
         //const tooltipHideBehaviour = Constants.TooltipHideBehaviour.HIDE_AFTER_TIMEOUT__AND__WHEN_CLICK__ANYWHERE;
