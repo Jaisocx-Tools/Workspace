@@ -77,6 +77,15 @@ export class ExampleTooltip {
 
 
 ## Future improvals:
+TODO:
+. git push.
+docs
+npm publish.
+
+
+
+
+
 . shadow basic theme example
 
 

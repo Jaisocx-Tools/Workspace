@@ -93,7 +93,6 @@ class Constants {
     static paddingEventTarget = 0;
     static paddingDimEventTarget = Constants.CssSizeDim.REM;
     static cssClasses = Constants.CssClassNames.TOOLTIP_MAIN;
-    //static cssDisplay: any = Constants.cssDisplay.NONE;
     static templateTooltipContent = `
       {{ html }}
     `;

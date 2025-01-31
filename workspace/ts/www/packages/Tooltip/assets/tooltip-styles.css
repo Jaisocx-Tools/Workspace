@@ -37,7 +37,7 @@
   width: var(--tooltip__width);
   height: var(--tooltip__height);
 
-  transition: var(--transition-property) var(--transition-lingers) var(--transition-timing-function) var(--transition-delay);
+  transition: var(--transition);
 
   z-index: 300;
 }
@@ -85,59 +85,6 @@
 .tooltip .tooltip-content a
  {
   font-size: var(--tooltip__font_size);
-}
-
-
-
-.tooltip.fade {
-  --transition-property: opacity;
-}
-
-.tooltip.move {
-  --transition-property: transform;
-}
-
-.tooltip.shrink {
-  --transition-property: width, height, transform;
-}
-
-
-.shown.fade {
-  opacity: 1;
-  height: var(--tooltip__height);
-  width: var(--tooltip__width);
-}
-
-.hidden.fade {
-  opacity: 0;
-  width: 0;
-  height: 0;
-  max-width: 0;
-  max-height: 0;
-  overflow: hidden;
-}
-
-.shown.move {
-  transform: scale(1);
-}
-
-.hidden.move {
-  transform: scale(0.001) translate(-100%, -100%);
-}
-
-.shown.shrink {
-  width: var(--tooltip__width);
-  height: var(--tooltip__height);
-  transform: scale(1);
-  opacity: 1;
-}
-
-.hidden.shrink {
-  width: 0;
-  height: 0;
-  overflow: hidden;
-  transform: scale(0);
-  opacity: 0;
 }
 
 

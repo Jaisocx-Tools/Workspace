@@ -130,7 +130,6 @@ Constants.Defaults = (_o = class {
     _o.paddingEventTarget = 0,
     _o.paddingDimEventTarget = Constants.CssSizeDim.REM,
     _o.cssClasses = Constants.CssClassNames.TOOLTIP_MAIN,
-    //static cssDisplay: any = Constants.cssDisplay.NONE;
     _o.templateTooltipContent = `
       {{ html }}
     `,

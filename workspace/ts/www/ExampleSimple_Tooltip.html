@@ -4,10 +4,10 @@
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link rel="stylesheet" href="packages/Tooltip/assets/themes/theme-darkmode/tooltip-theme-darkmode.css" />
-    <link rel="stylesheet" href="packages/Tooltip/assets/themes/theme-context/tooltip-theme-context.css" />
-    <link rel="stylesheet" href="packages/Tooltip/assets/themes/theme-visual-effects/tooltip-theme-visual-effects.css" />
     <link rel="stylesheet" href="packages/Tooltip/assets/tooltip-styles-main.css" />
+
+    <!-- a temporary theme to test a dynamic size context menu -->
+    <link rel="stylesheet" href="packages/Tooltip/assets/themes/theme-context/tooltip-theme-context.css" />
 
     <style>
 
@@ -157,7 +157,7 @@
 
       min-width: 100%;
       width: 100%;
-      height: 83rem;
+      height: 58rem;
 
       padding-bottom: 2rem;
       margin-bottom: 3rem;
@@ -231,17 +231,12 @@
         <div class="static-overflow-scroll">
           <div class="event-targets-holder static-overflow-scroll">
     
-            <p style="margin-bottom: 6rem;">
-              <label title="Theme Visual Effects">effects</label>
-              <button id="tooltip-show-button-visual-effects" class="mini-image-event-target">i</button>
-            </p>
-    
-            <p style="margin-bottom: 20rem;">
+            <p style="margin-bottom: 14rem;">
               <label title="Theme Context">context</label>
               <button id="tooltip-show-button-context" class="mini-image-event-target">i</button>
             </p>
 
-            <p style="margin-bottom: 8rem;">
+            <p style="margin-bottom: 1rem;">
               <label title="Theme Darkmode" >darkmode theme</label>
               <button id="tooltip-show-button-darkmode" class="mini-image-event-target">i</button>
             </p>
@@ -251,6 +246,7 @@
               <button id="tooltip-show-button" class="mini-image-event-target">i</button>
             </p>
     
+
           </div>
         </div>
     
@@ -266,7 +262,7 @@ import { Tooltip, Constants } from "@jaisocx/tooltip";
 const tooltipDarkmode = new Tooltip();
 tooltipDarkmode
   .setEventTargetHtmlNodeId( "tooltip-show-button-darkmode" )
-  .setCssClasses( "theme-darkmode" )
+  .setCssClasses( "theme-darkmode show_effect_2" )
   .setHtml ( "Hello World!" )
   .render();
       </pre>
@@ -285,7 +281,7 @@ tooltipContext
   .setTooltipHideBehaviour( tooltipHideBehaviour )
   .setTimeoutToCloseMillis( tooltipHideTimoutMilliseconds )
   .setEventTargetHtmlNodeId( "tooltip-show-button-context" )
-  .setCssClasses( "theme-context" )
+  .setCssClasses( "theme-context show_effect_3" )
   .setIsWithArrow(1)
   .setArrowSize (
     0.73,
@@ -302,7 +298,7 @@ tooltipContext
   )
   .setAlignDimensionOneValueOrder (
     [
-      //Constants.AlignDimensionOne.BROWSER_TAB_BORDER_TOP,
+      Constants.AlignDimensionOne.BROWSER_TAB_BORDER_TOP,
       Constants.AlignDimensionOne.BROWSER_TAB_BORDER_RIGHT,
       Constants.AlignDimensionOne.BROWSER_TAB_BORDER_LEFT,
       Constants.AlignDimensionOne.BROWSER_TAB_BORDER_BOTTOM,
@@ -346,86 +342,13 @@ tooltipContext
 
         const tooltipHideTimoutMilliseconds = 3000;
 
-        const tooltipVisualEffects = new Tooltip();
-        tooltipVisualEffects
-          .setTooltipHideBehaviour( tooltipHideBehaviour )
-          .setTimeoutToCloseMillis( tooltipHideTimoutMilliseconds )
-          .setEventTargetSelector( "#tooltip-show-button-visual-effects" )
-          .setCssClasses( "theme-visual-effects shrink" )
-          .setHtml ( 
-            `<h2>Hello</h2>
-            <description>Showing and hiding with extended css features.</description>
-            <pre>
-tooltip
-  .setCssClasses( 
-    \"theme-visual-effects\" 
-  )
-            </pre>`
-          )
-          .setAlignDimensionOneValueOrder (
-            [
-              Constants.AlignDimensionOne.BROWSER_TAB_BORDER_BOTTOM,
-              Constants.AlignDimensionOne.BROWSER_TAB_BORDER_RIGHT,
-              Constants.AlignDimensionOne.BROWSER_TAB_BORDER_BOTTOM,
-              Constants.AlignDimensionOne.BROWSER_TAB_BORDER_LEFT,
-            ]
-          )
-          .setTooltipAlignDimensionTwo(Constants.AlignDimensionTwo.EVENT_TARGET_START)
-          .setTooltipPaddingAlignDimensionTwo (
-            5,
-            Constants.CssSizeDim.REM
-          )
-          .render();
-
-
-        const tooltipContext = new Tooltip();
-        tooltipContext
-          .setTooltipHideBehaviour( tooltipHideBehaviour )
-          .setTimeoutToCloseMillis( tooltipHideTimoutMilliseconds )
-          .setEventTargetHtmlNodeId( "tooltip-show-button-context" )
-          .setCssClasses( "theme-context move" )
-          .setHtml ( 
-            `
-            <ul class="context">
-              <li>Context Item 1</li>
-              <li>Context Item 2</li>
-              <li>Context Item 3</li>
-              <li>Context Item 4</li>
-              <li>Context Item 5</li>
-            </ul>
-            `
-           )
-          .setAlignDimensionOneValueOrder (
-            [
-              Constants.AlignDimensionOne.BROWSER_TAB_BORDER_RIGHT,
-              Constants.AlignDimensionOne.BROWSER_TAB_BORDER_BOTTOM,
-              Constants.AlignDimensionOne.BROWSER_TAB_BORDER_LEFT,
-              Constants.AlignDimensionOne.BROWSER_TAB_BORDER_BOTTOM,
-            ]
-          )
-          .setTooltipAlignDimensionTwo(Constants.AlignDimensionTwo.EVENT_TARGET_START)
-          .setTooltipPaddingAlignDimensionTwo (
-            0.6,
-            Constants.CssSizeDim.REM
-          )
-          .render();
-
           
-        const tooltipDarkmode = new Tooltip();
-        tooltipDarkmode
-          .setTooltipHideBehaviour( tooltipHideBehaviour )
-          .setTimeoutToCloseMillis( tooltipHideTimoutMilliseconds )
-          .setEventTargetHtmlNodeId( "tooltip-show-button-darkmode" )
-          .setCssClasses( "theme-darkmode fade" )
-          .setHtml ( "Hello World!" )
-          .render();
-
 
         const tooltip = new Tooltip();
         tooltip
           .setTooltipHideBehaviour( tooltipHideBehaviour )
           .setTimeoutToCloseMillis( tooltipHideTimoutMilliseconds )
-          .setCssClasses( "fade" )
+          .setCssClasses( "show_effect_3" )
           .setEventTargetSelector("#tooltip-show-button")
           .setTemplateData (
             {
@@ -452,6 +375,50 @@ tooltip
           .render();
         
         //tooltip.showTooltip();
+
+
+        const tooltipDarkmode = new Tooltip();
+        tooltipDarkmode
+          .setTooltipHideBehaviour( tooltipHideBehaviour )
+          .setTimeoutToCloseMillis( tooltipHideTimoutMilliseconds )
+          .setEventTargetHtmlNodeId( "tooltip-show-button-darkmode" )
+          .setCssClasses( "theme-darkmode show_effect_1" )
+          .setHtml ( "Hello World!" )
+          .render();
+
+
+
+        const tooltipContext = new Tooltip();
+        tooltipContext
+          .setTooltipHideBehaviour( tooltipHideBehaviour )
+          .setTimeoutToCloseMillis( tooltipHideTimoutMilliseconds )
+          .setEventTargetHtmlNodeId( "tooltip-show-button-context" )
+          .setCssClasses( "theme-context show_effect_2" )
+          .setHtml ( 
+            `
+            <ul class="context">
+              <li>Context Item 1</li>
+              <li>Context Item 2</li>
+              <li>Context Item 3</li>
+              <li>Context Item 4</li>
+              <li>Context Item 5</li>
+            </ul>
+            `
+           )
+          .setAlignDimensionOneValueOrder (
+            [
+              Constants.AlignDimensionOne.BROWSER_TAB_BORDER_RIGHT,
+              Constants.AlignDimensionOne.BROWSER_TAB_BORDER_BOTTOM,
+              Constants.AlignDimensionOne.BROWSER_TAB_BORDER_LEFT,
+              Constants.AlignDimensionOne.BROWSER_TAB_BORDER_BOTTOM,
+            ]
+          )
+          .setTooltipAlignDimensionTwo(Constants.AlignDimensionTwo.EVENT_TARGET_START)
+          .setTooltipPaddingAlignDimensionTwo (
+            0.6,
+            Constants.CssSizeDim.REM
+          )
+          .render();
 
       });
     </script>
