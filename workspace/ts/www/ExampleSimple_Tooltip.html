@@ -14,7 +14,6 @@
       box-sizing: border-box;
       padding: 0;
       margin: 0;
-      position: relative;
       display: block;
     }
 
@@ -27,6 +26,9 @@
 
       --background-image-1: url('examples/ExampleTooltip/media/images/background-6804432_1280.jpg');
       --background-image-2: url('examples/ExampleTooltip/media/images/flowers-7935944_1920.jpg');
+      --background-image-3: url('examples/ExampleTooltip/media/images/flowers-4818861_1920.jpg');
+
+      box-sizing: border-box;
 
       margin: 0;
       padding: 0;
@@ -38,17 +40,18 @@
     }
 
     body {
-      background-image: var(--background-image-2);
+      background-image: var(--background-image-3);
       background-repeat: repeat;
       background-size: contain;
       background-position: top left;
       background-color: transparent;
 
       margin: 0;
-      padding: 5vw;
+      padding: 1rem 5vw;
 
-      width: 90vw;
-      max-width: 90vw;
+      width: 100%;
+      min-width: 100%;
+      max-width: 100%;
       overflow-x: hidden;
       overflow-y: auto;
     }
@@ -63,6 +66,10 @@
       font-family: Verdana, Geneva, Tahoma, sans-serif;
       font-size: 1rem;
       line-height: 1.4rem;
+    }
+
+    h1, h2, p {
+      margin: 0.8rem 0;
     }
 
     pre {
@@ -140,9 +147,11 @@
       display: block;
       position: relative;
       overflow-y: hidden;
+      overflow-x: hidden;
 
+      min-width: 100%;
       width: 100%;
-      height: 54rem;
+      height: 72rem;
 
       padding-bottom: 2rem;
       margin-bottom: 3rem;
@@ -163,8 +172,8 @@
     main > description
      {
       display: block;
-      position: absolute;
-      top: 0;
+      position: relative;
+      top: -100%;
       left: 0;
       width: 100%;
       height: 100%;
@@ -195,7 +204,7 @@
     <script src="packages/Tooltip/build/Simple/Tooltip.js"></script>
 
   </head>
-  <body class="static-overflow-scroll">
+  <body>
 
     <main>
       <background></background>
@@ -216,12 +225,12 @@
         <div class="static-overflow-scroll">
           <div class="event-targets-holder static-overflow-scroll">
     
-            <p style="margin-bottom: 16rem;">
-              <label title="Theme Context">context menu</label>
+            <p style="margin-bottom: 20rem;">
+              <label title="Theme Context">context</label>
               <button id="tooltip-show-button-context" class="mini-image-event-target">i</button>
             </p>
     
-            <p style="margin-bottom: 2rem;">
+            <p style="margin-bottom: 8rem;">
               <label title="Theme Darkmode" >darkmode theme</label>
               <button id="tooltip-show-button-darkmode" class="mini-image-event-target">i</button>
             </p>
@@ -313,13 +322,13 @@ tooltipContext
         //const tooltipHideBehaviour = Constants.TooltipHideBehaviour.HIDE_WHEN_CLICK__OTHER_THAN_EVENT_TARGET; 
 
         // 3. all tooltips are shown, and in order to hide the event target has to be clicked.
-        //const tooltipHideBehaviour = Constants.TooltipHideBehaviour.HIDE_WHEN_CLICK__EVENT_TARGET;
+        const tooltipHideBehaviour = Constants.TooltipHideBehaviour.HIDE_WHEN_CLICK__EVENT_TARGET;
 
         // 1. one tooltip shown, and hides on timeout, too.  
         //const tooltipHideBehaviour = Constants.TooltipHideBehaviour.HIDE_AFTER_TIMEOUT__AND__WHEN_CLICK__ANYWHERE;
         
         // 2. lke the 2. and with timeout feature
-        const tooltipHideBehaviour = Constants.TooltipHideBehaviour.HIDE_AFTER_TIMEOUT__AND__WHEN_CLICK__OTHER_THAN_EVENT_TARGET;
+        //const tooltipHideBehaviour = Constants.TooltipHideBehaviour.HIDE_AFTER_TIMEOUT__AND__WHEN_CLICK__OTHER_THAN_EVENT_TARGET;
         
         // 3. like the 3. and with the timeout feature
         //const tooltipHideBehaviour = Constants.TooltipHideBehaviour.HIDE_AFTER_TIMEOUT__AND__WHEN_CLICK__EVENT_TARGET;
@@ -345,15 +354,15 @@ tooltipContext
            )
           .setAlignDimensionOneValueOrder (
             [
-              //Constants.AlignDimensionOne.BROWSER_TAB_BORDER_TOP,
               Constants.AlignDimensionOne.BROWSER_TAB_BORDER_RIGHT,
+              Constants.AlignDimensionOne.BROWSER_TAB_BORDER_BOTTOM,
               Constants.AlignDimensionOne.BROWSER_TAB_BORDER_LEFT,
               Constants.AlignDimensionOne.BROWSER_TAB_BORDER_BOTTOM,
             ]
           )
           .setTooltipAlignDimensionTwo(Constants.AlignDimensionTwo.EVENT_TARGET_START)
           .setTooltipPaddingAlignDimensionTwo (
-            1,
+            0.6,
             Constants.CssSizeDim.REM
           )
           .render();
@@ -382,7 +391,7 @@ tooltipContext
           //.setHtml(`<p>Hello,</p><p>Have a nice day.</p>`) // styles are not working yet when height set small, and text bigger
           .setIsWithArrow(1)
           .setArrowSize (
-            0.735,
+            0.935,
             "rem"
           )
           .setAlignDimensionOneValueOrder (
