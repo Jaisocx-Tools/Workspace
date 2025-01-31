@@ -160,13 +160,27 @@ export class Tooltip extends EventEmitter implements TooltipInterface {
   // override this method to use for advanced visual effects.
   _hide( node: HTMLElement|null ): undefined {
     //@ts-ignore
-    node.style.display = Constants.cssDisplay.NONE;
+    node.classList.remove (
+      Constants.CssClassNames.TOOLTIP_SHOWN
+    );
+
+    //@ts-ignore
+    node.classList.add (
+      Constants.CssClassNames.TOOLTIP_HIDDEN
+    );
   }
 
   // override this method to use for advanced visual effects.
   _show( node: HTMLElement|null ): undefined {
     //@ts-ignore
-    node.style.display = Constants.cssDisplay.BLOCK;
+    node.classList.remove (
+      Constants.CssClassNames.TOOLTIP_HIDDEN
+    );
+
+    //@ts-ignore
+    node.classList.add (
+      Constants.CssClassNames.TOOLTIP_SHOWN
+    );
   }
 
 
@@ -388,7 +402,7 @@ export class Tooltip extends EventEmitter implements TooltipInterface {
     const tooltipContentHtml: any = this.templateRenderer.render();
 
     templateData
-      .setCssClasses( `${Constants.CssClassNames.TOOLTIP_MAIN} ${this.cssClasses}` )
+      .setCssClasses( `${Constants.CssClassNames.TOOLTIP_MAIN} ${this.cssClasses} ${Constants.CssClassNames.TOOLTIP_HIDDEN}` )
       .setTooltipContent( tooltipContentHtml );
 
     // the main template contains in the placeholder {{ tooltipContent }} the rendered template from the custom template and data
@@ -612,7 +626,7 @@ export class Tooltip extends EventEmitter implements TooltipInterface {
         evt.stopPropagation();
 
         this.showTooltip (
-          null,
+          Constants.ShowModes.TURN,
           Constants.EventTarget.EVENT_TARGET
         );
 
@@ -723,19 +737,22 @@ export class Tooltip extends EventEmitter implements TooltipInterface {
   }
 
   showTooltip ( 
-    toShowCssDisplayValue: any|null,
+    toShowCssDisplayValue: any, // Constants.ShowModes: hide, show, turn
     eventTarget: any
   ): TooltipInterface {
 
-    let cssDisplay: any = "";
+    let toShow: any = toShowCssDisplayValue;
+    if ( toShow === Constants.ShowModes.TURN ) {
 
-    if ( toShowCssDisplayValue === null ) {
-      const cssDisplayCurrent: any = this.lib.getCssVariableForNode ( 
-        this.mainHtmlNode,
-        Constants.CssPropertiesNames.DISPLAY
-      );
-      cssDisplay = ( cssDisplayCurrent === Constants.cssDisplay.NONE ) ? Constants.cssDisplay.BLOCK : Constants.cssDisplay.NONE;
-    }
+      //@ts-ignore
+      if ( this.mainHtmlNode.classList.contains ( Constants.CssClassNames.TOOLTIP_HIDDEN ) ) {
+        toShow = Constants.ShowModes.SHOW;  
+
+      } else {
+        toShow = Constants.ShowModes.HIDE;  
+
+      }
+    } 
 
     if ( eventTarget === Constants.EventTarget.EVENT_TARGET ) {
       this.hideTooltipsByBehaviours (
@@ -761,7 +778,7 @@ export class Tooltip extends EventEmitter implements TooltipInterface {
     // if .isShown has value 1, then the tooltip gets its css rule top and left values,
     // otherwise, if isShown is 0, then no need to recalculate the css rules for this,
     // since the tooltip is hidden.
-    if ( cssDisplay === Constants.cssDisplay.BLOCK ) {
+    if ( toShow === Constants.ShowModes.SHOW ) {
 
       // override this method to use for advanced visual effects.
       this._show( this.mainHtmlNode );
@@ -793,7 +810,7 @@ export class Tooltip extends EventEmitter implements TooltipInterface {
       ) {
         timeoutHideId = setTimeout (
           () => this.showTooltip ( 
-            Constants.cssDisplay.NONE,
+            Constants.ShowModes.HIDE,
             eventTarget
           ),
           this.timeoutToCloseMillis
@@ -815,7 +832,7 @@ export class Tooltip extends EventEmitter implements TooltipInterface {
       );
 
     // the tooltip hides now
-    } else if ( cssDisplay === Constants.cssDisplay.NONE ) {
+    } else if ( toShow === Constants.ShowModes.HIDE ) {
 
       // override this method to use for advanced visual effects.
       this._hide( this.mainHtmlNode );

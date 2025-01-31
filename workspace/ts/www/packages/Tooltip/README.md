@@ -77,52 +77,10 @@ export class ExampleTooltip {
 
 
 ## Future improvals:
-10. Showing/Hiding feature: Constant default css transition, Constant default css transition property to hide, object css rule name: css rule value, e.g. 0
-props:
-19. shadow basic theme example
-
-
-
-css theme variable for the transition.
-css prop name used to show/hide 
-css prop values for show/hide
-the set of these css props, used the right way, e.g. top and left and the transition variable name
-
-The .ts class to typehint:
-
-{
-  "movingFromTheBrowserTab": {
-    "show": {
-      "top": "Tooltip Class prop name placeholder",
-      "left": "",
-      "cssVariable": "--tooltip_transition_show"
-    },
-    "hide": {
-      "top": -1200,
-      "left": 10_000,
-      "cssVariable": "--tooltip_transition_hide"
-    }
-  },
-  "fading": {
-    "show": {
-      "opacity": 1,
-      "display": "block",
-      "cssVariable": "--tooltip_transition_show"
-    },
-    "hide": {
-      "opacity": 0,
-      "display": "none",
-      "cssVariable": "--tooltip_transition_hide"
-    }
-  }
-}
+. shadow basic theme example
 
 
 ## Hiding a tooltip and other tooltips, when available on the site:
-
-
-
-
 
 
 

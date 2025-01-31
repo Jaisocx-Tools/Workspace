@@ -59,9 +59,10 @@ export class Constants {
     static EVENT_TARGET_END: any = "end";
   };
 
-  static cssDisplay = class {
-    static BLOCK: any = "block";
-    static NONE: any = "none";
+  static ShowModes = class {
+    static HIDE: any = "hide";
+    static SHOW: any = "show";
+    static TURN: any = "turn";
   };
 
   static CssSizeDim = class {
@@ -75,6 +76,8 @@ export class Constants {
     static TOOLTIP_MAIN: any = "tooltip";
     static TOOLTIP_ARROW: any = "tooltip-arrow";
     static TOOLTIP_CONTENT: any = "tooltip-content";
+    static TOOLTIP_HIDDEN: any = "hidden";
+    static TOOLTIP_SHOWN: any = "shown";
   };
   
   static CssVariablesNames = class {
@@ -112,7 +115,6 @@ export class Constants {
     static paddingDimEventTarget: any = Constants.CssSizeDim.REM;
   
     static cssClasses: any = Constants.CssClassNames.TOOLTIP_MAIN;
-    static cssDisplay: any = Constants.cssDisplay.NONE;
   
     static templateTooltipContent: any = `
       {{ html }}

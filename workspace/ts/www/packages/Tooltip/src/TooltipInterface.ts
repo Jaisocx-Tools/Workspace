@@ -52,8 +52,8 @@ export interface TooltipInterface {
 
   // to show or hide the tooltip
   showTooltip(
-    toShowCssDisplayValue: any|null,
-    eventTarget: any
+    toShowCssDisplayValue: any, // Constants.ShowModes: hide, show, turn
+    eventTarget: any // Constants.EventTarget.
   ): TooltipInterface;
 
   // the method, used by showTooltip(),

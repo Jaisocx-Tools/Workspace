@@ -72,11 +72,12 @@ Constants.AlignDimensionTwo = (_g = class {
     _g.EVENT_TARGET_MID = "mid",
     _g.EVENT_TARGET_END = "end",
     _g);
-Constants.cssDisplay = (_h = class {
+Constants.ShowModes = (_h = class {
     },
-    __setFunctionName(_h, "cssDisplay"),
-    _h.BLOCK = "block",
-    _h.NONE = "none",
+    __setFunctionName(_h, "ShowModes"),
+    _h.HIDE = "hide",
+    _h.SHOW = "show",
+    _h.TURN = "turn",
     _h);
 Constants.CssSizeDim = (_j = class {
     },
@@ -92,6 +93,8 @@ Constants.CssClassNames = (_k = class {
     _k.TOOLTIP_MAIN = "tooltip",
     _k.TOOLTIP_ARROW = "tooltip-arrow",
     _k.TOOLTIP_CONTENT = "tooltip-content",
+    _k.TOOLTIP_HIDDEN = "hidden",
+    _k.TOOLTIP_SHOWN = "shown",
     _k);
 Constants.CssVariablesNames = (_l = class {
     },
@@ -127,7 +130,7 @@ Constants.Defaults = (_o = class {
     _o.paddingEventTarget = 0,
     _o.paddingDimEventTarget = Constants.CssSizeDim.REM,
     _o.cssClasses = Constants.CssClassNames.TOOLTIP_MAIN,
-    _o.cssDisplay = Constants.cssDisplay.NONE,
+    //static cssDisplay: any = Constants.cssDisplay.NONE;
     _o.templateTooltipContent = `
       {{ html }}
     `,

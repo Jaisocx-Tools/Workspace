@@ -50,10 +50,11 @@ export declare class Constants {
         EVENT_TARGET_MID: any;
         EVENT_TARGET_END: any;
     };
-    static cssDisplay: {
+    static ShowModes: {
         new (): {};
-        BLOCK: any;
-        NONE: any;
+        HIDE: any;
+        SHOW: any;
+        TURN: any;
     };
     static CssSizeDim: {
         new (): {};
@@ -67,6 +68,8 @@ export declare class Constants {
         TOOLTIP_MAIN: any;
         TOOLTIP_ARROW: any;
         TOOLTIP_CONTENT: any;
+        TOOLTIP_HIDDEN: any;
+        TOOLTIP_SHOWN: any;
     };
     static CssVariablesNames: {
         new (): {};
@@ -94,7 +97,6 @@ export declare class Constants {
         paddingEventTarget: number;
         paddingDimEventTarget: any;
         cssClasses: any;
-        cssDisplay: any;
         templateTooltipContent: any;
         templateTooltipContentData: object;
     };

@@ -1,0 +1,9 @@
+
+.tooltip.theme-visual-effects {
+  --tooltip__background: #f4fffa;
+
+  --tooltip__width: 20rem;
+  --tooltip__font_size__mobile: 1.08rem !important;
+}
+
+

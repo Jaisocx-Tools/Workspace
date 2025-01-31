@@ -48,9 +48,10 @@ export class Constants {
         static EVENT_TARGET_MID = "mid";
         static EVENT_TARGET_END = "end";
     };
-    static cssDisplay = class {
-        static BLOCK = "block";
-        static NONE = "none";
+    static ShowModes = class {
+        static HIDE = "hide";
+        static SHOW = "show";
+        static TURN = "turn";
     };
     static CssSizeDim = class {
         static NONE = "";
@@ -62,6 +63,8 @@ export class Constants {
         static TOOLTIP_MAIN = "tooltip";
         static TOOLTIP_ARROW = "tooltip-arrow";
         static TOOLTIP_CONTENT = "tooltip-content";
+        static TOOLTIP_HIDDEN = "hidden";
+        static TOOLTIP_SHOWN = "shown";
     };
     static CssVariablesNames = class {
         static CSS_VARIABLE_NAME__ARROW_SIZE = "--tooltip_arrow__size";
@@ -91,7 +94,7 @@ export class Constants {
         static paddingEventTarget = 0;
         static paddingDimEventTarget = Constants.CssSizeDim.REM;
         static cssClasses = Constants.CssClassNames.TOOLTIP_MAIN;
-        static cssDisplay = Constants.cssDisplay.NONE;
+        //static cssDisplay: any = Constants.cssDisplay.NONE;
         static templateTooltipContent = `
       {{ html }}
     `;

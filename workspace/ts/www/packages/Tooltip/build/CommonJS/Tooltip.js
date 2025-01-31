@@ -66,12 +66,16 @@ class Tooltip extends event_emitter_1.EventEmitter {
     // override this method to use for advanced visual effects.
     _hide(node) {
         //@ts-ignore
-        node.style.display = Constants_js_1.Constants.cssDisplay.NONE;
+        node.classList.remove(Constants_js_1.Constants.CssClassNames.TOOLTIP_SHOWN);
+        //@ts-ignore
+        node.classList.add(Constants_js_1.Constants.CssClassNames.TOOLTIP_HIDDEN);
     }
     // override this method to use for advanced visual effects.
     _show(node) {
         //@ts-ignore
-        node.style.display = Constants_js_1.Constants.cssDisplay.BLOCK;
+        node.classList.remove(Constants_js_1.Constants.CssClassNames.TOOLTIP_HIDDEN);
+        //@ts-ignore
+        node.classList.add(Constants_js_1.Constants.CssClassNames.TOOLTIP_SHOWN);
     }
     // getEventsNamesEmitted: the documentation method to know all events names those are emitted in this ts class
     getEventsNamesEmitted() {
@@ -222,7 +226,7 @@ class Tooltip extends event_emitter_1.EventEmitter {
         // the TemplateRenderer produces the html from the html template and json data via .render() method call.
         const tooltipContentHtml = this.templateRenderer.render();
         templateData
-            .setCssClasses(`${Constants_js_1.Constants.CssClassNames.TOOLTIP_MAIN} ${this.cssClasses}`)
+            .setCssClasses(`${Constants_js_1.Constants.CssClassNames.TOOLTIP_MAIN} ${this.cssClasses} ${Constants_js_1.Constants.CssClassNames.TOOLTIP_HIDDEN}`)
             .setTooltipContent(tooltipContentHtml);
         // the main template contains in the placeholder {{ tooltipContent }} the rendered template from the custom template and data
         const templateRedererTechniq = new template_renderer_1.TemplateRenderer();
@@ -349,7 +353,7 @@ class Tooltip extends event_emitter_1.EventEmitter {
             }
             evt.preventDefault();
             evt.stopPropagation();
-            this.showTooltip(null, Constants_js_1.Constants.EventTarget.EVENT_TARGET);
+            this.showTooltip(Constants_js_1.Constants.ShowModes.TURN, Constants_js_1.Constants.EventTarget.EVENT_TARGET);
             this.emitEvent(this.eventName, evt);
         });
         return this;
@@ -401,11 +405,17 @@ class Tooltip extends event_emitter_1.EventEmitter {
             .addWindowResizeEventListener();
         return this;
     }
-    showTooltip(toShowCssDisplayValue, eventTarget) {
-        let cssDisplay = "";
-        if (toShowCssDisplayValue === null) {
-            const cssDisplayCurrent = this.lib.getCssVariableForNode(this.mainHtmlNode, Constants_js_1.Constants.CssPropertiesNames.DISPLAY);
-            cssDisplay = (cssDisplayCurrent === Constants_js_1.Constants.cssDisplay.NONE) ? Constants_js_1.Constants.cssDisplay.BLOCK : Constants_js_1.Constants.cssDisplay.NONE;
+    showTooltip(toShowCssDisplayValue, // Constants.ShowModes: hide, show, turn
+    eventTarget) {
+        let toShow = toShowCssDisplayValue;
+        if (toShow === Constants_js_1.Constants.ShowModes.TURN) {
+            //@ts-ignore
+            if (this.mainHtmlNode.classList.contains(Constants_js_1.Constants.CssClassNames.TOOLTIP_HIDDEN)) {
+                toShow = Constants_js_1.Constants.ShowModes.SHOW;
+            }
+            else {
+                toShow = Constants_js_1.Constants.ShowModes.HIDE;
+            }
         }
         if (eventTarget === Constants_js_1.Constants.EventTarget.EVENT_TARGET) {
             this.hideTooltipsByBehaviours([
@@ -424,7 +434,7 @@ class Tooltip extends event_emitter_1.EventEmitter {
         // if .isShown has value 1, then the tooltip gets its css rule top and left values,
         // otherwise, if isShown is 0, then no need to recalculate the css rules for this,
         // since the tooltip is hidden.
-        if (cssDisplay === Constants_js_1.Constants.cssDisplay.BLOCK) {
+        if (toShow === Constants_js_1.Constants.ShowModes.SHOW) {
             // override this method to use for advanced visual effects.
             this._show(this.mainHtmlNode);
             this.emitEvent(Constants_js_1.Constants.TooltipEventsNames.BEFORE_TOOLTIP_SHOWN, this);
@@ -437,7 +447,7 @@ class Tooltip extends event_emitter_1.EventEmitter {
                 (this.tooltipHideBehaviour === Constants_js_1.Constants.TooltipHideBehaviour.HIDE_AFTER_TIMEOUT__AND__WHEN_CLICK__EVENT_TARGET) ||
                 (this.tooltipHideBehaviour === Constants_js_1.Constants.TooltipHideBehaviour.HIDE_AFTER_TIMEOUT__AND__WHEN_CLICK__OTHER_THAN_EVENT_TARGET)) &&
                 (this.timeoutToCloseMillis > 0)) {
-                timeoutHideId = setTimeout(() => this.showTooltip(Constants_js_1.Constants.cssDisplay.NONE, eventTarget), this.timeoutToCloseMillis);
+                timeoutHideId = setTimeout(() => this.showTooltip(Constants_js_1.Constants.ShowModes.HIDE, eventTarget), this.timeoutToCloseMillis);
                 this.timeoutToCloseId = timeoutHideId;
             }
             const theTooltipToRegister = new TooltipShownSettings_js_1.TooltipShownSettings(this.mainHtmlNodeId, this.tooltipHideBehaviour, timeoutHideId);
@@ -445,7 +455,7 @@ class Tooltip extends event_emitter_1.EventEmitter {
             this.addToLocalStorageArray(Constants_js_1.Constants.BrowserStorageKeys.JAISOCX_TOOLTIPS_CURRENT, theTooltipToRegister);
             // the tooltip hides now
         }
-        else if (cssDisplay === Constants_js_1.Constants.cssDisplay.NONE) {
+        else if (toShow === Constants_js_1.Constants.ShowModes.HIDE) {
             // override this method to use for advanced visual effects.
             this._hide(this.mainHtmlNode);
             this.emitEvent(Constants_js_1.Constants.TooltipEventsNames.AFTER_TOOLTIP_HIDDEN, this);
