@@ -64,6 +64,9 @@ class Constants {
     static TOOLTIP_CONTENT = "tooltip-content";
     static TOOLTIP_HIDDEN = "hidden";
     static TOOLTIP_SHOWN = "shown";
+    static TOOLTIP_SHOWN_SIMPLE = "shown_simple";
+    static TOOLTIP_CLASSES_HIDDEN_SHOWN_PREFIX = "shown_";
+    static TOOLTIP_CLASSES_HIDDEN_SHOWN_WITH_TRANSITION = "with-transition";
   };
   static CssVariablesNames = class {
     static CSS_VARIABLE_NAME__ARROW_SIZE = "--tooltip_arrow__size";

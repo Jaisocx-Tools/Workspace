@@ -780,8 +780,9 @@ export class Tooltip extends EventEmitter implements TooltipInterface {
     // since the tooltip is hidden.
     if ( toShow === Constants.ShowModes.SHOW ) {
 
-      // override this method to use for advanced visual effects.
-      this._show( this.mainHtmlNode );
+      // this method calculates the css rules top and left of the eventTarget and the tooltip, 
+      // and sets top and left cass rules values in pixels to the tooltip html node.
+      this.calculateTooltipHtmlNodeDimensions();
 
       this.emitEvent (
         Constants.TooltipEventsNames.BEFORE_TOOLTIP_SHOWN,
@@ -789,15 +790,20 @@ export class Tooltip extends EventEmitter implements TooltipInterface {
         this as any )
       );
 
-      // this method calculates the css rules top and left of the eventTarget and the tooltip, 
-      // and sets top and left cass rules values in pixels to the tooltip html node.
-      this.calculateTooltipHtmlNodeDimensions();
+      // override this method to use for advanced visual effects.
+      setTimeout(
+        () => {
+          this._show( this.mainHtmlNode );
 
-      this.emitEvent (
-        Constants.TooltipEventsNames.AFTER_TOOLTIP_SHOWN,
-        ( 
-        this as any )
+          this.emitEvent (
+            Constants.TooltipEventsNames.AFTER_TOOLTIP_SHOWN,
+            ( 
+                this as any )
+          );
+        },
+        5
       );
+
 
       let timeoutHideId: any = null;
       if (
@@ -1012,6 +1018,8 @@ export class Tooltip extends EventEmitter implements TooltipInterface {
     this.eventTargetDimensions = this.lib.getHtmlNodeDimensions (
       this.eventTargetHtmlNode
     );
+
+    
     
     // the mainHtml node is the tooltip html node,
     // rendered til this time pint by TemplateRenderer,
@@ -1020,9 +1028,16 @@ export class Tooltip extends EventEmitter implements TooltipInterface {
     // this here is for html node as is now,
     // and the tooltipHtmlNodeDimensions will have the calculated here values,
     // like sizes and top and left values for css style props.
-    const mainHtmlNodeDimensions: Dimensions = this.lib.getHtmlNodeDimensions (
+
+    // const mainHtmlNodeDimensions: Dimensions = this.lib.getHtmlNodeDimensions (
+    //   this.mainHtmlNode
+    // );
+
+    const mainHtmlNodeDimensions: Dimensions = this.setStandardCssClassAndGetDimensions (
       this.mainHtmlNode
     );
+
+
 
     // this.tooltipHtmlNodeDimensions = new Dimensions();
 
@@ -1112,6 +1127,87 @@ export class Tooltip extends EventEmitter implements TooltipInterface {
     // I just return the Dimensions here,
     // and this value still remains accessibale like this Tooltip class instance prop.
     return this.tooltipHtmlNodeDimensions;
+  }
+
+
+  setStandardCssClassAndGetDimensions (
+    htmlNode: HTMLElement|null
+  ): Dimensions {
+    //const dim: Dimensions = new Dimensions();
+
+    const cssClassnameHiddenShownPrefix: any = Constants.CssClassNames.TOOLTIP_CLASSES_HIDDEN_SHOWN_PREFIX;
+    //@ts-ignore
+    const classList: DOMTokenList =  htmlNode.classList;
+    //const classListEntries: ArrayIterator<any> = classList.entries();
+    const cssClassWithTransitionSet: any = classList.contains (
+      Constants.CssClassNames.TOOLTIP_CLASSES_HIDDEN_SHOWN_WITH_TRANSITION
+    );
+
+    classList.remove (
+      Constants.CssClassNames.TOOLTIP_CLASSES_HIDDEN_SHOWN_WITH_TRANSITION
+    );
+
+    // search for a hidden_shown css class impl, and remove it.
+    let classNameHidden: any = "";
+    for ( let i = 0; i < classList.length; i++ ) {
+      const className: any = classList.item( i );
+
+      if ( className.startsWith( cssClassnameHiddenShownPrefix ) ) {
+        classList.remove( className );
+        classNameHidden = className;
+        break;
+      }
+
+    }
+
+    const cssPositionValue: any = this.lib.getCssVariableForNode(
+      htmlNode,
+      "position"
+    );
+
+    //@ts-ignore
+    htmlNode.style.position = "absolute";
+    //@ts-ignore
+    htmlNode.style.left = "110vw";
+
+    classList.add ( 
+      Constants.CssClassNames.TOOLTIP_SHOWN_SIMPLE
+    );
+
+    this._show( htmlNode );
+
+    const htmlNodeDimensions: Dimensions = this.lib.getHtmlNodeDimensions( htmlNode );
+
+    this._hide( htmlNode );
+
+    // restoring css class shown_effect and styles applied normally.
+    //@ts-ignore
+    htmlNode.style.position = cssPositionValue;
+    //@ts-ignore
+    htmlNode.style.left = "0";
+
+    classList.add (
+      classNameHidden
+    );
+
+    classList.remove ( 
+      Constants.CssClassNames.TOOLTIP_SHOWN_SIMPLE
+    );
+
+    
+    if ( cssClassWithTransitionSet ) {
+      setTimeout(
+        () => {
+          classList.add (
+            Constants.CssClassNames.TOOLTIP_CLASSES_HIDDEN_SHOWN_WITH_TRANSITION
+          );
+        },
+        4
+      );
+    }
+
+
+    return htmlNodeDimensions;
   }
 
 }

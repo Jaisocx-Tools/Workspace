@@ -95,6 +95,9 @@ Constants.CssClassNames = (_k = class {
     _k.TOOLTIP_CONTENT = "tooltip-content",
     _k.TOOLTIP_HIDDEN = "hidden",
     _k.TOOLTIP_SHOWN = "shown",
+    _k.TOOLTIP_SHOWN_SIMPLE = "shown_simple",
+    _k.TOOLTIP_CLASSES_HIDDEN_SHOWN_PREFIX = "shown_",
+    _k.TOOLTIP_CLASSES_HIDDEN_SHOWN_WITH_TRANSITION = "with-transition",
     _k);
 Constants.CssVariablesNames = (_l = class {
     },

@@ -78,6 +78,9 @@ export class Constants {
     static TOOLTIP_CONTENT: any = "tooltip-content";
     static TOOLTIP_HIDDEN: any = "hidden";
     static TOOLTIP_SHOWN: any = "shown";
+    static TOOLTIP_SHOWN_SIMPLE: any = "shown_simple";
+    static TOOLTIP_CLASSES_HIDDEN_SHOWN_PREFIX: any = "shown_";
+    static TOOLTIP_CLASSES_HIDDEN_SHOWN_WITH_TRANSITION: any = "with-transition";
   };
   
   static CssVariablesNames = class {

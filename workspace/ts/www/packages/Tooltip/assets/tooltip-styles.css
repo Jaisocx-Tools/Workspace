@@ -37,8 +37,6 @@
   width: var(--tooltip__width);
   height: var(--tooltip__height);
 
-  transition: var(--transition);
-
   z-index: 300;
 }
 

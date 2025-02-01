@@ -70,6 +70,9 @@ export declare class Constants {
         TOOLTIP_CONTENT: any;
         TOOLTIP_HIDDEN: any;
         TOOLTIP_SHOWN: any;
+        TOOLTIP_SHOWN_SIMPLE: any;
+        TOOLTIP_CLASSES_HIDDEN_SHOWN_PREFIX: any;
+        TOOLTIP_CLASSES_HIDDEN_SHOWN_WITH_TRANSITION: any;
     };
     static CssVariablesNames: {
         new (): {};

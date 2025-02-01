@@ -70,5 +70,6 @@ export declare class Tooltip extends EventEmitter implements TooltipInterface {
     hideAllTooltips(): undefined;
     hideTooltipsByBehaviours(hideBehaviourArray: any[], tooltipId: any | null): undefined;
     calculateTooltipHtmlNodeDimensions(): Dimensions;
+    setStandardCssClassAndGetDimensions(htmlNode: HTMLElement | null): Dimensions;
 }
 //# sourceMappingURL=Tooltip.d.ts.map
