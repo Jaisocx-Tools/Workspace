@@ -59,6 +59,8 @@
 }
 
 
+
+
 .shown_effect_minimize_and_fadeIn {
   opacity: 0;
   border-color: white;
@@ -73,7 +75,6 @@
 }
 .shown_effect_minimize_and_fadeIn.shown {
   opacity: 1;
-  border-color: black;
   transform: scale(1);
   height: var(--tooltip__height);
   width: var(--tooltip__width);
@@ -81,16 +82,13 @@
 .shown_effect_minimize_and_fadeIn.with-transition {
   --transition-lingers: 0.4s;
   --transition-lingers-opacity: 1.8s;
+  --transition-lingers-border-color: 2.6s;
   transition: opacity var(--transition-lingers-opacity) var(--transition-timing-function) var(--transition-delay),
-                border-color var(--transition-lingers-opacity) var(--transition-timing-function) var(--transition-delay),
+                border-color var(--transition-lingers-border-color) var(--transition-timing-function) var(--transition-delay),
                 transform var(--transition-lingers) var(--transition-timing-function) var(--transition-delay),
                 height var(--transition-lingers) var(--transition-timing-function) var(--transition-delay),
                 width var(--transition-lingers) var(--transition-timing-function) var(--transition-delay);
 }
-
-
-
-
 
 
 
