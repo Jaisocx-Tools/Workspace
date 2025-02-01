@@ -4,7 +4,9 @@
 [https://github.com/Jaisocx-Tools/Workspace](https://github.com/Jaisocx-Tools/Workspace)
 
 ## Status:
-Under construction
+All basic features are ready.
+1st of February 2025
+
 
 ## What is this
 this is the site ui tool, this is shown or hidden on a click on some another html node on the site.
@@ -60,9 +62,9 @@ export class ExampleTooltip {
     const tooltip = new Tooltip();
 
     tooltip
-      .setDebug ( true )
       .setEventTargetHtmlNodeId ( eventTargetId )
-      .setCssClasses ( `tooltip ${themeName}` )
+      .setCssClasses ( themeName )
+      .setHtml( tooltipText )
       .render ();
   }
 }
@@ -77,20 +79,8 @@ export class ExampleTooltip {
 
 
 ## Future improvals:
-TODO:
-default hide show class names set.
-with unique one-time postfix
-
-2 set methods required: html and is or selector of the eventTarget
-
-docs
-npm publish.
-
-
-
-
-
 . shadow basic theme example
+. refining behaviour onscroll and on window resize, when a tooltip is drawn beyond the window border.  
 
 
 ## Hiding a tooltip and other tooltips, when available on the site:
