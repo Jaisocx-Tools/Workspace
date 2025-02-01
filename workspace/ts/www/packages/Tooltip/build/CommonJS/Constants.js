@@ -119,8 +119,8 @@ Constants.Defaults = (_o = class {
     _o.tooltipAlignDimensionTwo = Constants.AlignDimensionTwo.EVENT_TARGET_MID,
     _o.tooltipPaddingAlignDimensionTwo = 0,
     _o.tooltipPaddingSizeDimAlignDimensionTwo = Constants.CssSizeDim.PIXELS,
-    _o.tooltipHideBehaviour = Constants.TooltipHideBehaviour.HIDE_AFTER_TIMEOUT__AND__WHEN_CLICK__EVENT_TARGET,
-    _o.tooltipHideTimoutMilliseconds = 5000,
+    _o.tooltipHideBehaviour = Constants.TooltipHideBehaviour.HIDE_AFTER_TIMEOUT__AND__WHEN_CLICK__ANYWHERE,
+    _o.tooltipHideTimoutMilliseconds = 6000,
     _o.alternativeTabBorderSides = [
         Constants.AlignDimensionOne.BROWSER_TAB_BORDER_TOP,
         Constants.AlignDimensionOne.BROWSER_TAB_BORDER_RIGHT,

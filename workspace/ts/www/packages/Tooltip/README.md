@@ -78,7 +78,11 @@ export class ExampleTooltip {
 
 ## Future improvals:
 TODO:
-. git push.
+default hide show class names set.
+with unique one-time postfix
+
+2 set methods required: html and is or selector of the eventTarget
+
 docs
 npm publish.
 

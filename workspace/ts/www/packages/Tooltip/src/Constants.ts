@@ -100,8 +100,8 @@ export class Constants {
     static tooltipPaddingAlignDimensionTwo: number = 0;
     static tooltipPaddingSizeDimAlignDimensionTwo: any = Constants.CssSizeDim.PIXELS;
 
-    static tooltipHideBehaviour: any = Constants.TooltipHideBehaviour.HIDE_AFTER_TIMEOUT__AND__WHEN_CLICK__EVENT_TARGET;
-    static tooltipHideTimoutMilliseconds: number = 5000;
+    static tooltipHideBehaviour: any = Constants.TooltipHideBehaviour.HIDE_AFTER_TIMEOUT__AND__WHEN_CLICK__ANYWHERE;
+    static tooltipHideTimoutMilliseconds: number = 6000;
   
     static alternativeTabBorderSides: any[] = [
       Constants.AlignDimensionOne.BROWSER_TAB_BORDER_TOP,

@@ -236,6 +236,11 @@
               <button id="tooltip-show-button-context" class="mini-image-event-target">i</button>
             </p>
 
+            <p style="margin-bottom: 2rem;">
+              <label title="Theme Base">base theme</label>
+              <button id="tooltip-show-button-base" class="mini-image-event-target">i</button>
+            </p>
+
             <p style="margin-bottom: 1rem;">
               <label title="Theme Darkmode" >darkmode theme</label>
               <button id="tooltip-show-button-darkmode" class="mini-image-event-target">i</button>
@@ -343,6 +348,14 @@ tooltipContext
         const tooltipHideTimoutMilliseconds = 3000;
 
           
+        const tooltipBase = new Tooltip();
+        tooltipBase
+          .setEventTargetSelector( "#tooltip-show-button-base" )
+          .setHtml ( 
+            `<h2>Hello World!</h2>
+            <p>Tooltip with minimal required properties set. All default values applied.</p>
+            ` )
+          .render();
 
 
 

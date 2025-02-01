@@ -225,6 +225,19 @@ class Tooltip extends event_emitter_1.EventEmitter {
         }
         // the TemplateRenderer produces the html from the html template and json data via .render() method call.
         const tooltipContentHtml = this.templateRenderer.render();
+        const cssClassesArray = this.cssClasses.split(" ");
+        let hiddenShownClassnameMatched = 0;
+        for (let i = 0; i < cssClassesArray.length; i++) {
+            let className = cssClassesArray[i];
+            if (className.startsWith(Constants_js_1.Constants.CssClassNames.TOOLTIP_CLASSES_HIDDEN_SHOWN_PREFIX)) {
+                hiddenShownClassnameMatched = 1;
+                break;
+            }
+        }
+        if (hiddenShownClassnameMatched === 0) {
+            cssClassesArray.push(Constants_js_1.Constants.CssClassNames.TOOLTIP_SHOWN_SIMPLE);
+            this.cssClasses = cssClassesArray.join(" ");
+        }
         templateData
             .setCssClasses(`${Constants_js_1.Constants.CssClassNames.TOOLTIP_MAIN} ${this.cssClasses} ${Constants_js_1.Constants.CssClassNames.TOOLTIP_HIDDEN}`)
             .setTooltipContent(tooltipContentHtml);
@@ -631,18 +644,29 @@ class Tooltip extends event_emitter_1.EventEmitter {
         //@ts-ignore
         const classList = htmlNode.classList;
         //const classListEntries: ArrayIterator<any> = classList.entries();
-        const cssClassWithTransitionSet = classList.contains(Constants_js_1.Constants.CssClassNames.TOOLTIP_CLASSES_HIDDEN_SHOWN_WITH_TRANSITION);
-        classList.remove(Constants_js_1.Constants.CssClassNames.TOOLTIP_CLASSES_HIDDEN_SHOWN_WITH_TRANSITION);
         // search for a hidden_shown css class impl, and remove it.
         let classNameHidden = "";
         for (let i = 0; i < classList.length; i++) {
             const className = classList.item(i);
             if (className.startsWith(cssClassnameHiddenShownPrefix)) {
-                classList.remove(className);
                 classNameHidden = className;
                 break;
             }
         }
+        if (classNameHidden.length === 0) {
+            throw new Error("something is wrong with hidden shown css class name!!!");
+        }
+        else if (classNameHidden === Constants_js_1.Constants.CssClassNames.TOOLTIP_SHOWN_SIMPLE) {
+            this._show(htmlNode);
+            const htmlNodeDimensions = this.lib.getHtmlNodeDimensions(htmlNode);
+            this._hide(htmlNode);
+            return htmlNodeDimensions;
+        }
+        else {
+            classList.remove(classNameHidden);
+        }
+        const cssClassWithTransitionSet = classList.contains(Constants_js_1.Constants.CssClassNames.TOOLTIP_CLASSES_HIDDEN_SHOWN_WITH_TRANSITION);
+        classList.remove(Constants_js_1.Constants.CssClassNames.TOOLTIP_CLASSES_HIDDEN_SHOWN_WITH_TRANSITION);
         const cssPositionValue = this.lib.getCssVariableForNode(htmlNode, "position");
         //@ts-ignore
         htmlNode.style.position = "absolute";
