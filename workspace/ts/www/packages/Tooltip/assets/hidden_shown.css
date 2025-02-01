@@ -6,7 +6,7 @@
   --transition-timing-function-ease-in: ease-in;
   --transition-timing-function-ease-in-out: ease-in-out;
   --transition-timing-function-ease-out: ease-out;
-  --transition-timing-function-steps: steps(12, end);
+  --transition-timing-function-steps: steps(4, end);
 
   --transition-lingers: 1.0s;
   --transition-delay: 0s;
@@ -21,27 +21,21 @@
   display: block;
 }
 
-
-
-
-.shown_effect_fadeIn
-{
-  opacity: 0;
-  height: 0;
+.hidden {
+  pointer-events: none;
 }
-.shown_effect_fadeIn.hidden {
-  overflow: hidden;
-  overflow-x: hidden;
-  overflow-y: hidden;
+
+
+
+.shown_effect_fadeIn {
+  opacity: 0;
 }
 .shown_effect_fadeIn.shown {
   opacity: 1;
-  height: var(--tooltip__height);
 }
 .shown_effect_fadeIn.with-transition {
-  --transition-lingers: 0.6s;
-  transition: opacity var(--transition-lingers) var(--transition-timing-function) var(--transition-delay),
-                height var(--transition-lingers) var(--transition-timing-function) var(--transition-delay);
+  --transition-lingers: 2.6s;
+  transition: opacity var(--transition-lingers) var(--transition-timing-function) var(--transition-delay);
 }
 
 
@@ -63,31 +57,20 @@
 
 .shown_effect_minimize_and_fadeIn {
   opacity: 0;
-  border-color: white;
   transform: scale(0);
-  height: 0;
-  width: 0;
-}
-.shown_effect_minimize_and_fadeIn.hidden {
-  overflow: hidden;
-  overflow-x: hidden;
-  overflow-y: hidden;
+  border-color: white;
 }
 .shown_effect_minimize_and_fadeIn.shown {
   opacity: 1;
   transform: scale(1);
-  height: var(--tooltip__height);
-  width: var(--tooltip__width);
 }
 .shown_effect_minimize_and_fadeIn.with-transition {
   --transition-lingers: 0.4s;
   --transition-lingers-opacity: 1.8s;
   --transition-lingers-border-color: 2.6s;
   transition: opacity var(--transition-lingers-opacity) var(--transition-timing-function) var(--transition-delay),
-                border-color var(--transition-lingers-border-color) var(--transition-timing-function) var(--transition-delay),
-                transform var(--transition-lingers) var(--transition-timing-function) var(--transition-delay),
-                height var(--transition-lingers) var(--transition-timing-function) var(--transition-delay),
-                width var(--transition-lingers) var(--transition-timing-function) var(--transition-delay);
+              transform var(--transition-lingers) var(--transition-timing-function) var(--transition-delay),
+              border-color var(--transition-lingers-border-color) var(--transition-timing-function) var(--transition-delay);
 }
 
 
