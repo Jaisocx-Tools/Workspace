@@ -1,5 +1,21 @@
 # JAISOCX TYPESCRIPT TOOLS BUILDER
 
+
+## Some ts packages examples in action:
+
+#### Tooltip
+
+[https://workspace.brightday.email/ExampleSimple_Tooltip.html](https://workspace.brightday.email/ExampleSimple_Tooltip.html)
+
+
+#### Tree
+
+[https://workspace.brightday.email/ExampleSimple_TreeRenderingModeConf.html](https://workspace.brightday.email/ExampleSimple_TreeRenderingModeConf.html)
+
+[https://workspace.brightday.email/ExampleSimple_TreeRenderingModeEase.html](https://workspace.brightday.email/ExampleSimple_TreeRenderingModeEase.html)
+
+
+
 ## STATUS OF THE PROJECT
 
 The Project is under development now, 28 January 2025.
