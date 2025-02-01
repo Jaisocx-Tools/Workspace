@@ -38,7 +38,8 @@ class TooltipLib {
       tooltipHtmlNodeDimensions, 
       browserTabBorderSide, 
       tooltipAlignDimensionTwo, 
-      tooltipPaddingAlignDimensionTwo);
+      tooltipPaddingAlignDimensionTwo, 
+      arrowPixelSize);
     retVal.width = tooltipHtmlNodeDimensions.width;
     retVal.height = tooltipHtmlNodeDimensions.height;
 
@@ -81,7 +82,8 @@ class TooltipLib {
     tooltipHtmlNodeDimensions, 
     browserTabBorderSide, 
     tooltipAlignDimensionTwo, 
-    tooltipPaddingAlignDimensionTwo) {
+    tooltipPaddingAlignDimensionTwo, 
+    arrowPixelSize) {
     if ((browserTabBorderSide === Constants.AlignDimensionOne.BROWSER_TAB_BORDER_TOP) ||
             (browserTabBorderSide === Constants.AlignDimensionOne.BROWSER_TAB_BORDER_BOTTOM)) {
       if (tooltipAlignDimensionTwo === Constants.AlignDimensionTwo.EVENT_TARGET_START) {
@@ -109,8 +111,8 @@ class TooltipLib {
                     - tooltipPaddingAlignDimensionTwo;
       }
       else if (tooltipAlignDimensionTwo === Constants.AlignDimensionTwo.EVENT_TARGET_MID) {
-        const midHeightEventTarget = Math.floor(eventTargetHtmlNodeDimensions.height / 2);
-        const midHeightTooltip = Math.floor(tooltipHtmlNodeDimensions.height / 2);
+        const midHeightEventTarget = (eventTargetHtmlNodeDimensions.height >> 1);
+        const midHeightTooltip = (tooltipHtmlNodeDimensions.height >> 1);
         tooltipHtmlNodeDimensions.top = eventTargetHtmlNodeDimensions.top
                     + midHeightEventTarget
                     - midHeightTooltip
@@ -186,24 +188,24 @@ class TooltipLib {
     arrowDimensions.width = arrowSquareSideSize;
 
     if ((alignDimensionOne === Constants.AlignDimensionOne.BROWSER_TAB_BORDER_TOP)) {
-      arrowDimensions.top = tooltipHtmlNodeDimensions.height - (arrowSquareSideSize); //TDOD: - dimensionOnePadding
-      const eventTargetWidthMid = (eventTargetDimensions.width / 2) + eventTargetDimensions.left - tooltipHtmlNodeDimensions.left;
-      arrowDimensions.left = eventTargetWidthMid - arrowPixelSize;
+      arrowDimensions.top = tooltipHtmlNodeDimensions.height - (arrowPixelSize); //TDOD: - dimensionOnePadding
+      const eventTargetWidthMid = (eventTargetDimensions.width >> 1) + eventTargetDimensions.left - tooltipHtmlNodeDimensions.left;
+      arrowDimensions.left = eventTargetWidthMid - (arrowSquareSideSize >> 1);
     }
     else if ((alignDimensionOne === Constants.AlignDimensionOne.BROWSER_TAB_BORDER_RIGHT)) {
-      const eventTargetHeightMid = eventTargetDimensions.top + (eventTargetDimensions.height / 2) - tooltipHtmlNodeDimensions.top;
-      arrowDimensions.top = eventTargetHeightMid - arrowPixelSize;
+      const eventTargetHeightMid = eventTargetDimensions.top + (eventTargetDimensions.height >> 1) - tooltipHtmlNodeDimensions.top;
+      arrowDimensions.top = eventTargetHeightMid - (arrowSquareSideSize >> 1);
       arrowDimensions.left = (arrowSquareSideSize - (arrowPixelSize * 2)); //TDOD: + dimensionOnePadding
     }
     else if ((alignDimensionOne === Constants.AlignDimensionOne.BROWSER_TAB_BORDER_LEFT)) {
-      const eventTargetHeightMid = (eventTargetDimensions.height / 2) + eventTargetDimensions.top - tooltipHtmlNodeDimensions.top;
-      arrowDimensions.top = eventTargetHeightMid - arrowPixelSize;
+      const eventTargetHeightMid = eventTargetDimensions.top + (eventTargetDimensions.height >> 1) - tooltipHtmlNodeDimensions.top;
+      arrowDimensions.top = eventTargetHeightMid - (arrowSquareSideSize >> 1);
       arrowDimensions.left = eventTargetDimensions.left - (arrowPixelSize * 2) - tooltipHtmlNodeDimensions.left; //TDOD: - dimensionOnePadding
     }
     else if ((alignDimensionOne === Constants.AlignDimensionOne.BROWSER_TAB_BORDER_BOTTOM)) {
       arrowDimensions.top = (arrowSquareSideSize - (arrowPixelSize * 2)); //TDOD: + dimensionOnePadding
-      const eventTargetWidthMid = (eventTargetDimensions.width / 2) + eventTargetDimensions.left - tooltipHtmlNodeDimensions.left;
-      arrowDimensions.left = eventTargetWidthMid - arrowPixelSize;
+      const eventTargetWidthMid = (eventTargetDimensions.width >> 1) + eventTargetDimensions.left - tooltipHtmlNodeDimensions.left;
+      arrowDimensions.left = eventTargetWidthMid - (arrowSquareSideSize >> 1);
     }
 
     return arrowDimensions;

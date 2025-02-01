@@ -1,0 +1,55 @@
+<html>
+  <head>
+    <title>Tooltip Example</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <style>
+
+      body, main, h1, label {
+        display: block;
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        height: 100vh; 
+        width: 100vw; 
+      }
+
+      main {
+        height: 100%; 
+        width: 820px; 
+        margin: 0 auto; 
+        padding: 3rem;
+        background-color: #f2f8ff;
+      }
+
+    </style>
+
+    <script src="examples/ExampleTooltip/build/webpack/bundle.js"></script>
+  </head>
+  <body>
+
+    <main>
+      
+      <h1>Tooltip Example</h1>
+
+      <button id="tooltip-event-trigger">Click me!</button>
+
+    </main>
+
+    <script>
+      const tooltipDarkmode = new Tooltip();
+      tooltipDarkmode
+        .setEventTargetSelector( "#tooltip-event-trigger" )
+        .setCssClasses( "shown_effect_minimize_and_fadeIn with-transition" )
+        .setHtml ( "Hello World!" )
+        .render();
+
+    </script>
+  </body>
+</html> 
+
+

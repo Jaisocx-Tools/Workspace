@@ -23,6 +23,7 @@
     "@jaisocx/template-renderer": "^1.4.x"
   },
   "keywords": [
+    "tooltip"
   ],
   "publishConfig": {
     "access": "public"
