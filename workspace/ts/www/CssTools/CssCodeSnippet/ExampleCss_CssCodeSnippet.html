@@ -1,0 +1,157 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>css-code-snippet</title>
+  <base href="/">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <link rel="stylesheet" href="/CssTools/CssCodeSnippet/assets/themes/rosa.css">
+  <link rel="stylesheet" href="/CssTools/CssCodeSnippet/assets/themes/sky-blue.css">
+  <link rel="stylesheet" href="/CssTools/CssCodeSnippet/assets/themes/salad.css">
+
+  <link rel="stylesheet" href="/CssTools/CssCodeSnippet/assets/css-code-snippet-styles-main.css">
+  <link rel="stylesheet" href="/CssTools/CssCodeSnippet/assets/lines-numbers-variables/code-snippet-lines-numbers-99.css">
+
+  <style>
+.CodeSnippetHolder#code-snippet-example {
+  --lines-number: 29;
+  --code-snippet-tool--width: max-content;
+  --code-snippet-tool--height: auto;
+  --overflow-y: visible;
+}
+
+.CodeSnippetHolder#code-snippet-example-thin {
+  --lines-number: 33;
+  --code-snippet-tool--width: 28rem;
+  --code-snippet-tool--height: 22rem;
+  --overflow-y: auto;
+  --font-family: Arial;
+
+  --code-snippet--line-height: 1.2rem;
+  --code-snippet--font-size: 0.775rem;
+}
+  </style>
+  <style>
+    html {
+      font-size: 16px;
+    }
+
+    body {
+      width: 100vw;
+    }
+    main {
+      width: 60rem;
+      margin: 0 auto;
+      display: flex !important;
+      flex-direction: column !important;
+      align-items: center;
+      justify-content: flex-start;
+    }
+
+    nav ul {
+      display: flex !important;
+    }
+    nav ul li {
+      list-style-type:upper-roman;
+      color: #246;
+      margin: 0 0.9rem;
+    }
+    nav ul li a {
+      text-decoration: none;
+      color: grey;
+    }
+    nav ul li a:hover {
+      color: #09f;
+      text-decoration: underline;
+    }
+  </style>
+  <script>
+    function applyIdAndTheme(themeName, codeSnippetId) {
+      const h3 = document.querySelector('h3');
+      h3.innerHTML = `Theme name: ${themeName}, &lt;CodeSnippetHolder id="${codeSnippetId}"`;
+
+      const codeSnippet = document.querySelector('CodeSnippetHolder');
+      codeSnippet.className = 'CodeSnippetHolder';
+      codeSnippet.classList.add(themeName);
+      codeSnippet.id = codeSnippetId;
+    }
+
+
+    function applyH3innerHTML(themeName, codeSnippetId) {
+      const h3 = document.querySelector('h3');
+      h3.innerHTML = `Theme name: ${themeName}, &lt;CodeSnippetHolder id="${codeSnippetId}"`;
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      const CodeSnippetHolder = document.querySelector('CodeSnippetHolder');
+      applyH3innerHTML(CodeSnippetHolder.classList.item(1), CodeSnippetHolder.id);
+    });
+  </script>
+</head>
+<body>
+  <main>
+    <h1>Code snippet css tool</h1>
+    <h3>Theme name: salad, CodeSnippetHolder id="code-snippet-example"</h3>
+
+    <nav>
+      <ul>
+        <li>
+          <a href="javascript: applyIdAndTheme('rosa', 'code-snippet-example')" title="rosa id=code-snippet-example">Rosa fit size</a>
+        </li>
+        <li>
+          <a href="javascript: applyIdAndTheme('rosa', 'code-snippet-example-thin')" title="rosa id=code-snippet-example02">Rosa thin</a>
+        </li>
+        <li>
+          <a href="javascript: applyIdAndTheme('salad', 'code-snippet-example')" title="salad id=code-snippet-example">Salad fit size</a>
+        </li>
+        <li>
+          <a href="javascript: applyIdAndTheme('salad', 'code-snippet-example-thin')" title="salad id=code-snippet-example02">Salad thin</a>
+        </li>
+        <li>
+          <a href="javascript: applyIdAndTheme('sky-blue', 'code-snippet-example')" title="theme-example id=code-snippet-example">Sky Blue fit size</a>
+        </li>
+        <li>
+          <a href="javascript: applyIdAndTheme('sky-blue', 'code-snippet-example-thin')" title="theme-example id=code-snippet-example02">Sky Blue thin</a>
+        </li>
+      </ul>
+    </nav>
+
+      <CodeSnippetHolder id="code-snippet-example-thin" class="CodeSnippetHolder salad">
+          <pre class="CodeSnippetArea">
+import { TestBed } from '@angular/core/testing';
+import { AppComponent } from './app.component';
+
+describe('AppComponent', () => {
+  beforeEach(async () => {
+    await TestBed.configureTestingModule({
+      imports: [AppComponent],
+    }).compileComponents();
+  });
+
+  it('should create the app', () => {
+    const fixture = TestBed.createComponent(AppComponent);
+    const app = fixture.componentInstance;
+    expect(app).toBeTruthy();
+  });
+
+  it(`should have the 'angular' title`, () => {
+    const fixture = TestBed.createComponent(AppComponent);
+    const app = fixture.componentInstance;
+    expect(app.title).toEqual('angular');
+  });
+
+  it('should render title', () => {
+    const fixture = TestBed.createComponent(AppComponent);
+    fixture.detectChanges();
+    const compiled = fixture.nativeElement as HTMLElement;
+    expect(compiled.querySelector('h1')?.textContent).toContain('Hello, angular');
+  });
+});
+          </pre>
+        </CodeSnippetHolder>
+      
+    </main>
+</html>
+
+

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>JS Table</title>
+
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <link id="jstableStylesheet" rel="stylesheet" href="/packages/JsTable/www/css/jstable.css">
+    <link id="jstableStylesheetLittle" rel="stylesheet" href="/packages/JsTable/www/css/jstable-little.css">
+    <link rel="stylesheet" href="/packages/JsTable/www/css/fonts.css">
+  </head>
+  <body>
+    <main>
+      <div class="jstable" id="jstable-01"></div>
+    </main>
+    <script src="/packages/JsTable/www/js/JSTable.js"></script>
+    <script>
+      let jsTable = null;
+
+      document.addEventListener('DOMContentLoaded', () => {
+        jstable = new JSTable();
+        jstable
+          .setElementId("jstable-01")
+          .setMetadataUrl("/packages/JsTable/www/data/table-metadata.json")
+          .setDataUrl("/packages/JsTable/www/data/table-records.json")
+          .setMobileLookAndFeelMaxWidth(830)
+          .load();
+      });
+    </script>
+  </body>
+</html>
+
+

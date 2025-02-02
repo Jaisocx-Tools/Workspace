@@ -1,0 +1,37 @@
+/* tool variables */
+.CodeSnippetHolder.sky-blue {
+  --font-family: monospace;
+
+  /* code snippet tool borders */
+  /* by color */
+  --code-snippet-tool--border-color: cornsilk;
+
+  /* code snippet tool borders */
+  --code-snippet-tool--border-radius: 0;
+  --code-snippet-tool--border-width: 2px;
+  --code-snippet-tool--border-style: solid;
+
+
+  /* theme variables */
+  /* code snippet theme sizes variables */
+  --code-snippet--line-height: 1.2rem;
+  --code-snippet--font-size: 0.775rem;
+  --code-snippet--padding-top: 1.4rem;
+  --code-snippet--padding-bottom: 1.4rem;
+  --code-snippet--padding-left: 0.4rem;
+  --code-snippet--padding-right: 1.4rem;
+
+
+  /* code snippet theme Colors variables */
+  --code-snippet--text-color: darkblue;
+  --code-snippet--background-color: #fffffa;
+
+
+  /* column theme sizes variables */
+  --column-numbers--width: 3rem;
+  --column-numbers--padding-right: 0.9rem;
+  
+  /* column theme Colors variables */
+  --column-numbers--text-color: #09f;
+  --column-numbers--background-color: #cef;
+}
