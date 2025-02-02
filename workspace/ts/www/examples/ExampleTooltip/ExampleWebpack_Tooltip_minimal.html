@@ -4,6 +4,9 @@
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+
+    <script src="build/webpack/example-tooltip-bundle.js"></script>
+
     <style>
 
       body, main, h1, label {
@@ -28,7 +31,6 @@
 
     </style>
 
-    <script src="examples/ExampleTooltip/build/webpack/bundle.js"></script>
   </head>
   <body>
 
@@ -36,15 +38,15 @@
       
       <h1>Tooltip Example</h1>
 
-      <button id="tooltip-event-trigger">Click me!</button>
+      <button id="tooltip-button">Click me!</button>
 
     </main>
 
     <script>
       const tooltipDarkmode = new Tooltip();
       tooltipDarkmode
-        .setEventTargetSelector( "#tooltip-event-trigger" )
-        .setCssClasses( "shown_effect_minimize_and_fadeIn with-transition" )
+        .setEventTargetSelector( "#tooltip-button" )
+        .setCssClasses( "theme-darkmode shown_effect_minimize_and_fadeIn with-transition" )
         .setHtml ( "Hello World!" )
         .render();
 

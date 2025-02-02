@@ -20,7 +20,7 @@ console.log(jaisocxTreeAliasConfig);
 export default {
   entry: './build/ESNext/index.js', // Entry point for your TypeScript code
   output: {
-    filename: 'bundle.js', // Output bundle name
+    filename: 'example-tree-bundle.js', // Output bundle name
     path: path.resolve(__dirname, 'build/webpack'), // Output directory
   },
   resolve: {
