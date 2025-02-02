@@ -1,0 +1,11 @@
+
+@media all and (max-width: 820px) and (orientation: portrait) {
+  @import url('@table-assets/css/table-styles-thin.css');
+}
+
+@import url('@table-assets/css/table-styles.css');
+@import url('@table-assets/css/table-styles-responsive.css');
+@import url('@table-assets/css/fonts/fonts-webpack.css');
+
+@import url('@table-assets/themes/theme-base/table-theme-base.css');
+

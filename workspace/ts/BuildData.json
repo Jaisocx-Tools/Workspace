@@ -158,6 +158,32 @@
       "build-files": [
         "ExampleTooltip.js"
       ]
+    },
+    {
+      "path": "packages/Table",
+      "name": "table",
+      "build": true,
+      "build-simple-enable": true,
+      "dependencies": [
+      ],
+      "build-files": [
+        "Table.js"
+      ]
+    },
+    {
+      "path": "examples/ExampleTable",
+      "name": "example-table",
+      "build": false,
+      "build-simple-enable": true,
+      "dependencies": [
+        {
+          "name": "@jaisocx/table",
+          "path": "packages/Table"
+        }
+      ],
+      "build-files": [
+        "ExampleTable.js"
+      ]
     }
   ]
 }

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+  <head>
+
+    <title>Table</title>
+
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+    <script src="Table.js"></script>
+
+    
+
+
+  </head>
+  <body>
+    <h1>Table</h1>
+    <p>In development</p>
+
+    <main>
+      <div class="table" id="table-01"></div>
+    </main>
+
+    <script>
+      let table = null;
+
+      document.addEventListener('DOMContentLoaded', () => {
+        table = new Table();
+        table
+          .setElementId("table-01")
+          .setMetadataUrl("/packages/JsTable/assets/json/table-conf.json")
+          .setDataUrl("/packages/JsTable/assets/json/table-records.json")
+          .setMobileLookAndFeelMaxWidth(830)
+          .load();
+      });
+
+    </script>
+  </body>
+</html>
+
+

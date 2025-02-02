@@ -1,0 +1,21 @@
+.table {
+  --table-height: 500px;
+  --table-width: 960px;
+
+  --font-size: 16px;
+  --font-family: Lato;
+
+  --border-color: #cde;
+
+  --background-color-header: white;
+  --background-color-row-even: ivory;
+  --background-color-row-odd: #efe;
+
+  --text-color-header: #555;
+  --text-color-row: #222;
+
+  --image-height: 220px;
+  --image-width: 220px;
+  --image-cell-width: 240px;
+}
+
