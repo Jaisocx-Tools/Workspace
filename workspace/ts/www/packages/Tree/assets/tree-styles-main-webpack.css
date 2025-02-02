@@ -1,4 +1,5 @@
-@import url('themes/theme-base/theme-base.css');
-@import url('themes/theme-base/theme-base-assets-webpack.css');
-@import url('css/tree.css');
+@import url('@jaisocx-tree-assets/themes/theme-base/theme-base.css');
+@import url('@jaisocx-tree-assets/themes/theme-base/theme-base-assets-webpack.css');
+@import url('@jaisocx-tree-assets/themes/theme-funny/theme-funny-webpack.css');
+@import url('@jaisocx-tree-assets/css/tree.css');
 

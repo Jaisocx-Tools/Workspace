@@ -18,6 +18,9 @@ sends http request paths normally resolved. the browser doesn't ask a server to 
 
 */
 
+
+@import url('fonts.css');
+
 .tree > ul > li > pre > pre.jstree-html-node-holder-icon.icon-show
 {
   --datatype-array--image-url: url('./../themes/theme-base/mini-images/data-types/icons8-json-96.png');
