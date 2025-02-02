@@ -5,7 +5,7 @@ export interface IJsonDataType {
     NUMBER: number;
     BOOLEAN: number;
     NO_SUBTREE: number;
-    [key: any]: number;
+    [key: string]: number;
 }
 export declare class ArrayOrObjectPackage {
     static readonly JsonDataType: IJsonDataType;

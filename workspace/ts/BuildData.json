@@ -45,7 +45,7 @@
     {
       "path": "packages/Tree",
       "name": "tree",
-      "build": false,
+      "build": true,
       "build-simple-enable": true,
       "dependencies": [
         {
@@ -90,7 +90,7 @@
     {
       "path": "examples/ExampleTree",
       "name": "example-tree",
-      "build": false,
+      "build": true,
       "build-simple-enable": true,
       "dependencies": [
         {
@@ -123,7 +123,7 @@
     {
       "path": "packages/Tooltip",
       "name": "tooltip",
-      "build": true,
+      "build": false,
       "build-simple-enable": true,
       "dependencies": [
         {
@@ -147,7 +147,7 @@
     {
       "path": "examples/ExampleTooltip",
       "name": "example-tooltip",
-      "build": true,
+      "build": false,
       "build-simple-enable": true,
       "dependencies": [
         {

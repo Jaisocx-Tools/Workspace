@@ -6,7 +6,7 @@ export interface IJsonDataType {
   BOOLEAN: number;
   NO_SUBTREE: number;
 
-  [key: any]: number;
+  [key: string]: number;
 }
 
 export class ArrayOrObjectPackage {
