@@ -1,0 +1,126 @@
+html {
+  font-size: var(--font-size);
+}
+html, main, section, div, span, img {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+.jstable {
+  display: grid;
+  border: 1px solid var(--border-color);
+  height: auto;
+  width: var(--table-width);
+  overflow-y: visible;
+}
+
+.jstable-body {
+  width: auto;
+  margin: 0;
+  padding: 0;
+
+  display: grid;
+  background-color: #fff; /* Background color for rows */
+}
+
+.jstable-row {
+  background-color: #fff; /* Background color for rows */
+  height: auto;
+
+  display: grid;
+  /*grid-template-columns: 50px 50px 200px 1fr var(--image-cell-width) 100px 150px; /* Adjust column widths */
+}
+
+.jstable-row-field {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: flex-start;
+
+  border-right: 1px solid var(--border-color);
+  border-bottom: 1px solid var(--border-color);
+}
+
+.jstable-row:last-of-type > .jstable-row-field {
+  border-bottom-width: 0;
+}
+
+.jstable-row-field:last-of-type {
+  border-right-width: 0;
+}
+
+
+.jstable-row-field.counter {
+  background-color: steelblue !important; /* Light background for counters */
+  font-size: 0.7rem;
+}
+
+.jstable-row.header .jstable-row-field {
+  background-color: var(--background-color-header) !important;
+}
+
+.jstable-row:nth-child(even) .jstable-row-field {
+  background-color: var(--background-color-row-even);
+}
+
+.jstable-row:nth-child(odd) .jstable-row-field {
+  background-color:var(--background-color-row-odd);
+}
+
+.jstable-row-field span.label {
+  display: none;
+}
+
+.jstable-row-field span {
+  height: 100%;
+  font-size: 0.8rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  word-wrap: normal;
+  font-family: var(--font-family);
+  width: 100%;
+
+  padding: 0.5rem 0.6rem;
+  color: var(--text-color-row);
+  box-sizing: border-box;
+}
+
+.jstable-row.header > .jstable-row-field span {
+  color: var(--text-color-header) !important;
+  font-size: 0.83rem;
+  font-weight: 600;
+}
+
+.jstable-row-field.counter span.text {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: lightgrey;
+}
+
+.jstable-row-field.left span.text {
+  justify-content: flex-start;
+}
+.jstable-row-field.center span.text {
+  justify-content: center;
+}
+.jstable-row-field.right span.text {
+  justify-content: flex-end;
+}
+
+.jstable-row-field.image span.text {
+  justify-content: center;
+  background-color: white !important;
+  padding: 1rem;
+}
+.jstable-row-field span.text img {
+  height: auto;
+  width: auto;
+
+  max-height: var(--image-height);
+  max-width: var(--image-width);
+}
+

@@ -12,7 +12,7 @@
     <main>
       <div class="jstable" id="jstable-01"></div>
     </main>
-    <script src="/packages/JsTable/www/js/JSTable.js"></script>
+    <script src="/packages/JsTable/js/JSTable.js"></script>
     <script>
       let jsTable = null;
 
@@ -20,8 +20,8 @@
         jstable = new JSTable();
         jstable
           .setElementId("jstable-01")
-          .setMetadataUrl("/packages/JsTable/www/data/table-metadata.json")
-          .setDataUrl("/packages/JsTable/www/data/table-records.json")
+          .setMetadataUrl("/packages/JsTable/assets/json/table-conf.json")
+          .setDataUrl("/packages/JsTable/assets/json/table-records.json")
           .setMobileLookAndFeelMaxWidth(830)
           .load();
       });

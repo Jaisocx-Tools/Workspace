@@ -1,0 +1,27 @@
+
+@media all and (min-width: 821px) {
+  .jstable {
+    width: var(--table-width);
+    max-width: 100%;
+  }
+
+  .jstable-body {
+    overflow-y: scroll;
+    overflow-x: scroll;
+
+    height: var(--table-height);
+    min-height: var(--table-height);
+    max-height: var(--table-height);
+
+    width: 100%;
+  }
+}
+
+@media all and (max-width: 440px) and (orientation: portrait) {
+  .jstable-row-field {
+    grid-template-columns: 33% 67% !important;
+  }
+}
+
+
+

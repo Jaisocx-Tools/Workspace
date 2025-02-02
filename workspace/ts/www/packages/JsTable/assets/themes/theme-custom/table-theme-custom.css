@@ -1,0 +1,21 @@
+.jstable.theme-cusom {
+  --table-height: 500px;
+  --table-width: 960px;
+
+  --font-size: 16px;
+  --font-family: Lato;
+
+  --border-color: #cde;
+
+  --background-color-header: ivory;
+  --background-color-row-even: white;
+  --background-color-row-odd: #dff;
+
+  --text-color-header: #468;
+  --text-color-row: #222;
+
+  --image-height: 220px;
+  --image-width: 220px;
+  --image-cell-width: 240px;
+}
+

@@ -1,0 +1,15 @@
+
+@media all and (max-width: 820px) and (orientation: portrait) {
+  @import url('/packages/JsTable/assets/css/table-thin.css');
+}
+
+@import url('/packages/JsTable/assets/css/fonts/fonts.css');
+@import url('/packages/JsTable/assets/css/table-styles.css');
+@import url('/packages/JsTable/assets/css/table-styles-responsive.css');
+
+@import url('/packages/JsTable/assets/themes/theme-base/table-theme-base.css');
+
+
+
+
+
