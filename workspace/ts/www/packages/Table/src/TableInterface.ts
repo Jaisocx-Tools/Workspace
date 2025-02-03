@@ -1,5 +1,4 @@
 
-
 export interface TableInterface {
 
   setHtmlHolderNodeId( id: string ): TableInterface;
@@ -11,7 +10,7 @@ export interface TableInterface {
   load(): TableInterface;
   renderTableAndAdjustSizes(): undefined;
   renderTable(): undefined;
-  addEventListenersOrderBy();
+  addEventListenersOrderBy(): undefined;
   renderHeader(): string;
   renderRecord ( 
     record: any, 

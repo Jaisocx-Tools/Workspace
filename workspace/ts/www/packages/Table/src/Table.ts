@@ -1,4 +1,7 @@
+import { TableInterface } from "./TableInterface.js";
+
 import "@table-assets/table-styles-main-webpack.css";
+
 
 export class Table {
 
@@ -7,6 +10,8 @@ export class Table {
   htmlHolderNodeId: string;
   htmlHolderNodeSelector: string;
   htmlHolderNode: HTMLElement|null;
+
+  cssClasses: string;
 
   confUrl: string;
   dataUrl: string;
@@ -29,6 +34,8 @@ export class Table {
     this.htmlHolderNodeSelector = "";
     this.htmlHolderNode = null;
 
+    this.cssClasses = "";
+
     this.confUrl = "";
     this.dataUrl = "";
 
@@ -42,8 +49,8 @@ export class Table {
 
   setHtmlHolderNodeId( id: string ): Table {
     this.htmlHolderNodeId = id;
-    this.htmlHolderNode = document.getElementById(this.htmlHolderNodeId);
-    this.assignEventsHandlers();
+
+    this.setHtmlHolderNodeSelector ( "#" + id );
 
     return this;
   }
@@ -51,6 +58,11 @@ export class Table {
   setHtmlHolderNodeSelector( selector: string ): Table {
     this.htmlHolderNodeSelector = selector;
 
+    return this;
+  }
+
+  setCssClasses( cssClasses: string ): Table {
+    this.cssClasses = cssClasses;
     return this;
   }
 
@@ -97,6 +109,8 @@ export class Table {
         this.orderByToggle(eventTarget.dataset.fieldname);
       });
 
+    this.addEventListenersOrderBy();
+
     return this;
   }
 
@@ -127,6 +141,29 @@ export class Table {
 
   renderTable(): undefined {
 
+    this.htmlHolderNode = document.querySelector ( this.htmlHolderNodeSelector );
+
+    //@ts-ignore
+    if ( !this.htmlHolderNode.classList.contains ( "table" ) ) {
+      //@ts-ignore
+      this.htmlHolderNode.classList.add ( "table" );
+
+    }
+
+    const classes: string[] = this.cssClasses.split(" ");
+    for ( let className of classes ) {
+      if ( className.length === 0 ) {
+        continue;
+      }
+      
+      //@ts-ignore
+      if ( !this.htmlHolderNode.classList.contains ( className ) ) {
+        //@ts-ignore
+        this.htmlHolderNode.classList.add ( className );
+
+      }
+    }
+
     //@ts-ignore
     this.htmlHolderNode.innerHTML = "";
 
@@ -145,12 +182,12 @@ export class Table {
     //@ts-ignore
     this.htmlHolderNode.innerHTML = headerHtml + tableRowsHtml;
 
-    this.addEventListenersOrderBy();
+    this.assignEventsHandlers();
 
   }
 
-  addEventListenersOrderBy() {
-    const tableHeaderCells: NodeListOf<Element> = document.querySelectorAll(`#${this.htmlHolderNodeId} .table-row.header .table-row-field`);
+  addEventListenersOrderBy(): undefined {
+    const tableHeaderCells: NodeListOf<Element> = document.querySelectorAll(`${this.htmlHolderNodeSelector} .table-row.header .table-row-field`);
     tableHeaderCells
       .forEach(
         ( cell: Element ) => {
@@ -234,22 +271,16 @@ export class Table {
       document.body.clientWidth, 
       width);
 
-    const mediaStylesheetLittle: HTMLElement|null = document.getElementById("tableStylesheetLittle");
-
+    // TODO: bugsfixes on table sizes in tablet and mobile, too
     if (width > this.MAX_WIDTH_MOBILE_LOOK_AND_FEEL) {
       gridTemplateColumnsValue = this.generateGridTemplateColumnsStyle();
-      //@ts-ignore
-      mediaStylesheetLittle.disabled = true;
-    } else {
-      //@ts-ignore
-      mediaStylesheetLittle.disabled = false;
     }
 
-    const tableHeadHtmlElement: HTMLElement|null = document.querySelector(`#${this.htmlHolderNodeId} .table-row.header`);
+    const tableHeadHtmlElement: HTMLElement|null = document.querySelector(`${this.htmlHolderNodeSelector} .table-row.header`);
     //@ts-ignore
     tableHeadHtmlElement.style.gridTemplateColumns = gridTemplateColumnsValue;
 
-    const tableRowsHtmlElementsCollection = document.querySelectorAll(`#${this.htmlHolderNodeId} .table-body .table-row`);
+    const tableRowsHtmlElementsCollection = document.querySelectorAll(`${this.htmlHolderNodeSelector} .table-body .table-row`);
     let rowHtmlElement: HTMLElement|null = null;
     for (let i=0; i < tableRowsHtmlElementsCollection.length; i++) {
       rowHtmlElement = tableRowsHtmlElementsCollection.item(i) as HTMLElement;
@@ -269,9 +300,9 @@ export class Table {
   }
 
   adjustHeaderPaddingRight(): undefined {
-    const tableBody: HTMLElement|null = document.querySelector("#" + this.htmlHolderNodeId + " .table-body");
+    const tableBody: HTMLElement|null = document.querySelector(this.htmlHolderNodeSelector + " .table-body");
     const scrollbarWidth: number = this.getScrollbarWidth(tableBody);
-    const rowHeader: HTMLElement|null = document.querySelector("#" + this.htmlHolderNodeId + " .table-row.header");
+    const rowHeader: HTMLElement|null = document.querySelector(this.htmlHolderNodeSelector + " .table-row.header");
     //@ts-ignore
     rowHeader.style.paddingRight = scrollbarWidth + "px";
   }

@@ -1,5 +1,6 @@
 import { Table } from "@jaisocx/table";
 
+// in develpment, not ready
 export class ExampleTable {
   holderId: any;
 
@@ -23,9 +24,5 @@ export class ExampleTable {
     url: any
   ): void {
     const table = new Table();
-
-
-
-    
   }
 }

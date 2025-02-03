@@ -6,9 +6,9 @@
 
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-    <script src="Table.js"></script>
+    <link rel="stylesheet" href="packages/Table/assets/table-styles-main.css">
 
-    
+    <script src="packages/Table/build/Simple/Table.js"></script>
 
 
   </head>
@@ -16,8 +16,13 @@
     <h1>Table</h1>
     <p>In development</p>
 
+    <div>
+      <button id="button-theme-base">Theme Base</button>
+      <button id="button-theme-custom">Theme Custom</button>
+    </div>
+
     <main>
-      <div class="table" id="table-01"></div>
+      <div class="table" id="table_1"></div>
     </main>
 
     <script>
@@ -26,11 +31,28 @@
       document.addEventListener('DOMContentLoaded', () => {
         table = new Table();
         table
-          .setElementId("table-01")
-          .setMetadataUrl("/packages/JsTable/assets/json/table-conf.json")
-          .setDataUrl("/packages/JsTable/assets/json/table-records.json")
-          .setMobileLookAndFeelMaxWidth(830)
+          .setHtmlHolderNodeSelector ( "#table_1" )
+          .setCssClasses ( "theme-custom" )
+          .setConfUrl ( "/packages/Table/assets/json/table-conf_records_3000.json" )
+          .setDataUrl ( "/packages/Table/assets/json/table-records_50.json" )
+          .setMobileLookAndFeelMaxWidth ( 830 )
           .load();
+
+        
+        document.getElementById("button-theme-base").addEventListener(
+          "click",
+          ( evt ) => {
+            table.htmlHolderNode.className = "table";
+          }
+        );
+
+        document.getElementById("button-theme-custom").addEventListener(
+          "click",
+          ( evt ) => {
+            table.htmlHolderNode.className = "table theme-custom";
+          }
+        );
+
       });
 
     </script>

@@ -173,7 +173,7 @@
     {
       "path": "examples/ExampleTable",
       "name": "example-table",
-      "build": false,
+      "build": true,
       "build-simple-enable": true,
       "dependencies": [
         {

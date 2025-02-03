@@ -4,6 +4,7 @@ export class Table {
     htmlHolderNodeId;
     htmlHolderNodeSelector;
     htmlHolderNode;
+    cssClasses;
     confUrl;
     dataUrl;
     tableConf;
@@ -18,6 +19,7 @@ export class Table {
         this.htmlHolderNodeId = "";
         this.htmlHolderNodeSelector = "";
         this.htmlHolderNode = null;
+        this.cssClasses = "";
         this.confUrl = "";
         this.dataUrl = "";
         this.tableConf = null;
@@ -28,12 +30,15 @@ export class Table {
     }
     setHtmlHolderNodeId(id) {
         this.htmlHolderNodeId = id;
-        this.htmlHolderNode = document.getElementById(this.htmlHolderNodeId);
-        this.assignEventsHandlers();
+        this.setHtmlHolderNodeSelector("#" + id);
         return this;
     }
     setHtmlHolderNodeSelector(selector) {
         this.htmlHolderNodeSelector = selector;
+        return this;
+    }
+    setCssClasses(cssClasses) {
+        this.cssClasses = cssClasses;
         return this;
     }
     setConfUrl(url) {
@@ -63,6 +68,7 @@ export class Table {
             event.preventDefault();
             this.orderByToggle(eventTarget.dataset.fieldname);
         });
+        this.addEventListenersOrderBy();
         return this;
     }
     load() {
@@ -86,6 +92,23 @@ export class Table {
         this.adjustHeaderPaddingRight();
     }
     renderTable() {
+        this.htmlHolderNode = document.querySelector(this.htmlHolderNodeSelector);
+        //@ts-ignore
+        if (!this.htmlHolderNode.classList.contains("table")) {
+            //@ts-ignore
+            this.htmlHolderNode.classList.add("table");
+        }
+        const classes = this.cssClasses.split(" ");
+        for (let className of classes) {
+            if (className.length === 0) {
+                continue;
+            }
+            //@ts-ignore
+            if (!this.htmlHolderNode.classList.contains(className)) {
+                //@ts-ignore
+                this.htmlHolderNode.classList.add(className);
+            }
+        }
         //@ts-ignore
         this.htmlHolderNode.innerHTML = "";
         let headerHtml = this.renderHeader();
@@ -98,10 +121,10 @@ export class Table {
         tableRowsHtml += "</div>";
         //@ts-ignore
         this.htmlHolderNode.innerHTML = headerHtml + tableRowsHtml;
-        this.addEventListenersOrderBy();
+        this.assignEventsHandlers();
     }
     addEventListenersOrderBy() {
-        const tableHeaderCells = document.querySelectorAll(`#${this.htmlHolderNodeId} .table-row.header .table-row-field`);
+        const tableHeaderCells = document.querySelectorAll(`${this.htmlHolderNodeSelector} .table-row.header .table-row-field`);
         tableHeaderCells
             .forEach((cell) => {
             cell.addEventListener("click", (evt) => {
@@ -155,20 +178,14 @@ export class Table {
         //@ts-ignore
         let width = this.htmlHolderNode.clientWidth;
         width = Math.min(document.body.clientWidth, width);
-        const mediaStylesheetLittle = document.getElementById("tableStylesheetLittle");
+        // TODO: bugsfixes on table sizes in tablet and mobile, too
         if (width > this.MAX_WIDTH_MOBILE_LOOK_AND_FEEL) {
             gridTemplateColumnsValue = this.generateGridTemplateColumnsStyle();
-            //@ts-ignore
-            mediaStylesheetLittle.disabled = true;
         }
-        else {
-            //@ts-ignore
-            mediaStylesheetLittle.disabled = false;
-        }
-        const tableHeadHtmlElement = document.querySelector(`#${this.htmlHolderNodeId} .table-row.header`);
+        const tableHeadHtmlElement = document.querySelector(`${this.htmlHolderNodeSelector} .table-row.header`);
         //@ts-ignore
         tableHeadHtmlElement.style.gridTemplateColumns = gridTemplateColumnsValue;
-        const tableRowsHtmlElementsCollection = document.querySelectorAll(`#${this.htmlHolderNodeId} .table-body .table-row`);
+        const tableRowsHtmlElementsCollection = document.querySelectorAll(`${this.htmlHolderNodeSelector} .table-body .table-row`);
         let rowHtmlElement = null;
         for (let i = 0; i < tableRowsHtmlElementsCollection.length; i++) {
             rowHtmlElement = tableRowsHtmlElementsCollection.item(i);
@@ -184,9 +201,9 @@ export class Table {
         return gridTemplateColumns;
     }
     adjustHeaderPaddingRight() {
-        const tableBody = document.querySelector("#" + this.htmlHolderNodeId + " .table-body");
+        const tableBody = document.querySelector(this.htmlHolderNodeSelector + " .table-body");
         const scrollbarWidth = this.getScrollbarWidth(tableBody);
-        const rowHeader = document.querySelector("#" + this.htmlHolderNodeId + " .table-row.header");
+        const rowHeader = document.querySelector(this.htmlHolderNodeSelector + " .table-row.header");
         //@ts-ignore
         rowHeader.style.paddingRight = scrollbarWidth + "px";
     }

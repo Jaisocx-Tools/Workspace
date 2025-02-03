@@ -1,15 +1,15 @@
-.table.theme-cusom {
+.table.theme-custom {
   --table-height: 500px;
   --table-width: 960px;
 
-  --font-size: 16px;
-  --font-family: Lato;
+  --font-size: 0.8rem;
+  --font-family: Verdana;
 
   --border-color: #cde;
 
   --background-color-header: ivory;
   --background-color-row-even: white;
-  --background-color-row-odd: #dff;
+  --background-color-row-odd: #eef;
 
   --text-color-header: #468;
   --text-color-row: #222;

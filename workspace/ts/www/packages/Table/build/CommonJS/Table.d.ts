@@ -4,6 +4,7 @@ export declare class Table {
     htmlHolderNodeId: string;
     htmlHolderNodeSelector: string;
     htmlHolderNode: HTMLElement | null;
+    cssClasses: string;
     confUrl: string;
     dataUrl: string;
     tableConf: any;
@@ -15,6 +16,7 @@ export declare class Table {
     constructor();
     setHtmlHolderNodeId(id: string): Table;
     setHtmlHolderNodeSelector(selector: string): Table;
+    setCssClasses(cssClasses: string): Table;
     setConfUrl(url: string): Table;
     setDataUrl(url: string): Table;
     setMobileLookAndFeelMaxWidth(width: number): Table;
@@ -22,7 +24,7 @@ export declare class Table {
     load(): Table;
     renderTableAndAdjustSizes(): undefined;
     renderTable(): undefined;
-    addEventListenersOrderBy(): void;
+    addEventListenersOrderBy(): undefined;
     renderHeader(): string;
     renderRecord(record: any, rowCounter: number): string;
     applyColumnsWidths(): undefined;
