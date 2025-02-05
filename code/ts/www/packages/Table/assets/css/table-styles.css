@@ -1,0 +1,156 @@
+html {
+  font-size: var(--font-size);
+}
+
+html, main, section, div, span, img {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+
+  border: 1px solid green;
+}
+
+.table {
+  display: block;
+  border: 1px solid var(--border-color);
+  
+  max-height: var(--table-max-height);
+  min-height: var(--table-min-height);
+  height: var(--table-height);
+
+
+  width: var(--table-width);
+
+  overflow: var(--table-overflow-y) var(--table-overflow-x);
+}
+
+.table .table-body {
+  width: auto;
+  margin: 0;
+  padding: 0;
+
+  display: grid;
+  grid-auto-rows: minmax( var(--table-record-min-height), var(--table-record-max-height) );
+
+  overflow: var(--table-body-overflow-y) var(--table-body-overflow-x);
+
+  background-color: #fff; /* Background color for records */
+}
+
+.table .table-record {
+  display: grid;
+
+ 
+
+  /*grid-template-columns: 50px 50px 200px 1fr var(--image-cell-width) 100px 150px; /* Adjust column widths */
+}
+
+.table .table-columns-labels .table-record {
+  background: var(--table-record-columns-labels--backround);
+  overflow: var(--table-record-columns-labels--overflow-y) var(--table-record-overflow-x);
+}
+
+.table .table-body .table-record {
+  overflow: var(--table-record-columns-labels--overflow-y) var(--table-record-overflow-x);
+}
+
+
+
+
+.table .table-record-field {
+  display: flex;
+  flex-direction: record;
+  justify-content: flex-start;
+  align-items: flex-start;
+
+  border-right: 1px solid var(--border-color);
+  border-bottom: 1px solid var(--border-color);
+}
+
+.table .table-record:last-of-type > .table-record-field {
+  border-bottom-width: 0;
+}
+
+.table .table-record-field:last-of-type {
+  border-right-width: 0;
+}
+
+
+.table .table-record-field.counter {
+  background-color: steelblue !important; /* Light background for counters */
+  font-size: 0.7rem;
+}
+
+.table .table-record.header .table-record-field {
+  background-color: var(--background-color-header) !important;
+}
+
+.table .table-record:nth-child(even) .table-record-field {
+  background-color: var(--background-color-record-even);
+}
+
+.table .table-record:nth-child(odd) .table-record-field {
+  background-color:var(--background-color-record-odd);
+}
+
+.table .table-record-field span.label {
+  display: none;
+}
+
+.table .table-record-field span {
+  height: 100%;
+  font-size: 0.8rem;
+  display: flex;
+  flex-direction: record;
+  justify-content: flex-start;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  word-wrap: normal;
+  font-family: var(--font-family);
+  width: 100%;
+
+  padding: 0.5rem 0.6rem;
+  color: var(--text-color-record);
+  box-sizing: border-box;
+}
+
+.table .table-record.header > .table-record-field span {
+  color: var(--text-color-header) !important;
+  font-size: 0.83rem;
+  font-weight: 600;
+}
+
+.table .table-record-field.counter span.text {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: lightgrey;
+}
+
+.table .table-record-field.left span.text {
+  justify-content: flex-start;
+}
+.table .table-record-field.center span.text {
+  justify-content: center;
+}
+.table .table-record-field.right span.text {
+  justify-content: flex-end;
+}
+
+.table .table-record-field.image span.text {
+  justify-content: center;
+  background-color: white !important;
+  padding: 1rem;
+}
+
+.table .table-record-field.image span.text img {
+  height: auto;
+  width: auto;
+
+  margin: 0;
+
+  max-height: 100%;
+  max-width: 100%;
+
+  overflow: hidden hidden;
+}
+

@@ -1,22 +1,23 @@
 # in the .env file in the root of this project are Your project's settings,
 # and therefore it is advised not to keep in open source repositories. 
 # the .env file in .gitignore isn't published then in Your git repo.
+
 /.env
 
 /**/node_modules
-
 /**/.DS_Store
 
 
-/docker/php/logs
-/docker/jaisocx-http/logs
-/docker/mysql/volumes
+/.docker/database/volumes/
+/.docker/https/logs
+/.docker/php/logs
 
-/workspace/ts/www/ExampleWebpack_TreeHeavyJson.html
-/workspace/ts/www/ExampleSimple_TooltipTesting.html
-/workspace/ts/www/ExampleSimple_TooltipTesting2.html
 
-/docs/readme-development-rules.md
+
+
+/.readme/temporary/
 
 /someBashExamples.sh
+/code/ts/build_tools/ReadmeToHtml/
+
 

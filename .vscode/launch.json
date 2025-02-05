@@ -6,23 +6,15 @@
   "version": "0.2.0",
   "configurations": [
     {
-      "name": "XDebug Symfony app under docker",
+      "name": "XDebug php site with docker",
       "type": "php",
       "request": "launch",
       "port": 9007,
       "pathMappings": {
-          "/var/www/symfony": "${workspaceFolder}/symfony"
+          "/var/www/code/php": "${workspaceFolder}/code/php"
       },
       "log": true
-    },
-    {
-      "name": "Debug current script in console",
-      "type": "php",
-      "request": "launch",
-      "program": "${file}",
-      "cwd": "${fileDirname}",
-      "externalConsole": false,
-      "port": 9007
     }
   ]
 }
+

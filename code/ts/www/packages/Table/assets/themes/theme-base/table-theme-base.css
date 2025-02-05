@@ -1,0 +1,46 @@
+.table {
+  --table-max-height: 32rem;
+  --table-min-height: 0;
+  --table-height: var(--table-max-height);
+
+
+
+  --table-body-max-height: 20rem;
+  --table-body-min-height: 10rem;
+
+  --table-body-overflow-x: visible;
+  --table-body-overflow-y: visible;
+
+
+  --table-record-columns-labels--backround: white;
+
+  --table-width: auto;
+
+  --background-table: grey;
+
+  --font-size: 1.2rem;
+  --font-family: Lato;
+
+  --border-color: #cde;
+
+  --background-color-header: white;
+  --background-color-record-even: ivory;
+  --background-color-record-odd: #efe;
+
+  --text-color-header: #555;
+  --text-color-record: #222;
+
+  --image-height: 19rem;
+  --image-width: 19rem;
+  --image-cell-width: 20rem;
+
+
+  --image-cell-padding: 1rem 2rem;
+
+  --table-record-max-height: 12rem;
+  --table-record-min-height: 1rem;
+
+  --table-record-overflow-x: visible;
+  --table-record-overflow-y: hidden;
+}
+
