@@ -30,7 +30,7 @@
     {
       "path": "packages/TemplateRenderer",
       "name": "template-renderer",
-      "build": false,
+      "build": true,
       "build-simple-enable": true,
       "dependencies": [
         {
@@ -162,7 +162,7 @@
     {
       "path": "packages/Table",
       "name": "table",
-      "build": true,
+      "build": false,
       "build-simple-enable": true,
       "dependencies": [
         {
