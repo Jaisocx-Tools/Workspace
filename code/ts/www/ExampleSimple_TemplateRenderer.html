@@ -10,49 +10,9 @@
     <script src="examples/ExampleTemplateRenderer/build/Simple/ExampleTemplateRenderer.js"></script>
     <script>
 
-      function testTemplateRendererArrayTemplateArt() {
-
-        const holderHtmlNodeSelector = "body";
-        let holderHtmlNode = document.querySelector(holderHtmlNodeSelector);
-    
-        const templateArray = [
-          `<div class="table {{ data[0].cssClasses }}">`,
-          `
-          <div class="table-columns-labels">
-            <div class="table-record">
-              {{ data[1].tableColumnsLabelsHtml }}
-            </div>
-          </div>
-          `,
-          `<div class="table-records-holder">`,
-          tableRecords,
-          `
-          </div>
-          </div>
-          `,
-        ];
-
-        const templateRenderer = new TemplateRenderer();
-        templateRenderer
-            .setTemplate( template )
-            .setData( data );
-
-        const html = templateRenderer.render();
-
-        holderHtmlNode.insertAdjacentHTML (
-          "afterbegin",
-          html
-        );
-      }
-
-
       document.addEventListener('DOMContentLoaded', () => {
-
-        testTemplateRendererArrayTemplateArt();
-
-        // const example = new ExampleTemplateRenderer();
-        // example.run();
-        
+        const example = new ExampleTemplateRenderer();
+        example.run();
       });
 
     </script>

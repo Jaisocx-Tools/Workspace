@@ -1,0 +1,281 @@
+<html>
+  <head>
+    <title>TemplateRenderer Example</title>
+
+    <script src="packages/EventEmitter/build/Simple/EventEmitter.js"></script>
+    <script src="packages/TemplateRenderer/build/Simple/TemplateRenderer.js"></script>
+    <script src="packages/ImprovedTemplateRenderer/build/Simple/ImprovedTemplateRenderer.js"></script>
+
+  </head>
+  <body>
+
+    <h1>Example ImprovedTemplateRenderer</h1>
+    <h2>Not ready</h2>
+    <p>The &lt;script&gt tag below is with code, this is not working. Just the code snippets to build later the methods in the ImprovedTemplateRenderer class.</p>
+    <p>This Tool will be not very transparently written, 
+      and will have a heavier to read ts code.</p>
+    <p>The ImprovedTemplateRenderer is of great use to render json data of bigger size in the browser with some workaround 
+      to acheive the better site performance 
+      like fast rendering and after rendering keeping browser's tab and the entre browser healthy.</p>
+    <p>The aim of this tool is, with the feature copy by reference, to save up rendering costs and time, 
+      placing the rendered templates html in the array and nested arrays, 
+      since then the possible reallocation of arrays will be few html byte buffers pointers RAM addresses rewrites,
+      than with texts concatenation rewriting each byte in all byte buffers.</p>
+    <p>For sure, the resulting html will be the byte buffer, 
+      but I shall try in the rendering process to place each byte into byte buffers with rendered templates, maybe reallocated, very few times.</p>
+    <p>And the textual html templates array items, 
+      I'd like to preprocess once, using low level chars comparisons, 
+      in order to acheive the fast and costs saving up rendering of every templateHtml in the templates array, too.</p>
+  
+    <script>
+
+      function testTemplateRendererArrayTemplateArt() {
+
+        const holderHtmlNodeSelector = "body";
+        let holderHtmlNode = document.querySelector( holderHtmlNodeSelector );
+    
+        const templatesArray = [
+          `<div class="table {{ tableCssClasses }}">`,
+            `<div class="table-columns-labels-holder">`,
+              `<div class="table-column-label">`,
+                `{{ columnLabelRendered }}`,
+              `</div>`,
+            `</div>`,
+            `<div class="table-records-holder">`,
+              `<div class="table-record">`,
+                `<div class="table-field">`,
+                  `{{ fieldRendered }}`,
+                `</div>`,
+              `</div>`,
+            `</div>`,
+          `</div>`,
+        ];
+
+        // NOTICE: the above string[] array looks transparently describing the rendered html,
+        // but the conf js object cannot be designed easily, since the templates array does not have the unique keys for each template.
+        // whe the keys are set, then the transparency level of the produced html is lost.
+
+        // here, once designed to render a Table .ts class for the entire site,
+        // the working time cost is minimal,
+        // however the transparency level of the template is high,
+        // and the texts replace() and concatenation and bytes bufs reallocation cost is minimized, too.
+        // the mapping props conf js object values constants I shall declare numeric, since very cost efficient to compare in if() blocks.
+        // the TemplateRenderer methods to tell a single rendered template to add to resulating array of rendered templates html, or multiple,
+        // seems to be very very easy. Or the method to override in the extending class can be easy to write, too.
+
+        const templatesObject = {
+          "tableOpen":                `<div class="table {{ tableCssClasses }}">`,
+          "colsLabelsHolderOpen":       `<div class="table-columns-labels-holder">`,
+          "colLabelOpen":                 `<div class="table-column-label">`,
+          "colLabelRendered":               `{{ colLabels.columnLabelRendered }}`,
+          "colLabelClose":                `</div>`,
+          "colsLabelsHolderClose":      `</div>`,
+          "recordsHolderOpen":          `<div class="table-records-holder">`,
+          "recordOpen":                   `<div class="table-record">`,
+          "fieldOpen":                      `<div class="table-field">`,
+          "fieldRendered":                    `{{ recordField.fieldRendered }}`,
+          "fieldClose":                     `</div>`,
+          "recordClose":                  `</div>`,
+          "recordsHolderClose":         `</div>`,
+          "tableClose":               `</div>`
+        };
+
+
+        // prop: is the propertyName, used in the templateData, to get values from.
+        // e.g. fieldRendered: { prop: recordField }
+        // in the templatedata we set to object key recordField: the value in the callback to set.
+        // in the templatesObject, in the placeholder {{ recordField.fieldRendered }} then this object will be named recordField, and it's value will be used.
+        const templatesConf = { 
+          "tableOpen":                { prop: "tableCssClasses" }, 
+          "colsLabelsHolderOpen":       null, 
+          "colLabelOpen":                 { multiple: true, prop: "colLabels" }, 
+          "colLabelRendered":               { multiple: true, prop: "colLabels" }, 
+          "colLabelClose":                { multiple: true, prop: "colLabels" }, 
+          "colsLabelsHolderClose":      null, 
+          "recordsHolderOpen":          null, 
+          "recordOpen":                   { multiple: true, prop: "recordSet", nestedProp: "recordField" }, 
+          "fieldOpen":                      { multiple: true, prop: "recordField" }, 
+          "fieldRendered":                    { multiple: true, prop: "recordField" }, 
+          "fieldClose":                     { multiple: true, prop: "recordField" }, 
+          "recordClose":                  { multiple: true, prop: "recordSet", nestedProp: "recordField" }, 
+          "recordsHolderClose":         null,
+          "tableClose":               null
+        };
+
+        
+        const templateData_MainRenderMethod = [
+          { templatesObjectPropertyName: "tableOpen", tableCssClasses: "theme-custom" },
+          { templatesObjectPropertyName: "colsLabelsHolderOpen" },
+          { templatesObjectPropertyName: "colLabelOpen", colLabels: Object.keys(this.recordSet[0]) },
+          { templatesObjectPropertyName: "colLabelRendered", colLabels: Object.keys(this.recordSet[0]) },
+          { templatesObjectPropertyName: "colLabelClose", colLabels: Object.keys(this.recordSet[0]) },
+          { templatesObjectPropertyName: "colsLabelsHolderClose" },
+          { templatesObjectPropertyName: "recordsHolderOpen" },
+          { templatesObjectPropertyName: "recordOpen", recordSet: this.recordSet },
+          { templatesObjectPropertyName: "fieldOpen" },
+          { templatesObjectPropertyName: "fieldRendered" },
+          { templatesObjectPropertyName: "fieldClose" },
+          { templatesObjectPropertyName: "recordClose", recordSet: this.recordSet },
+          { templatesObjectPropertyName: "recordsHolderClose" },
+          { templatesObjectPropertyName: "tableClose" }
+        ];
+
+
+        function recordRenderSubcall ( 
+          propName, 
+          propValue, 
+          templatesObject, 
+          templateData
+        ) {
+
+          const amountOfIterations = templateData_RecordRender_Subcall.length;
+          const renderedTemplates = new Array ( amountOfIterations );
+          
+          for ( let i = 0; i < amountOfIterations; i++ ) {
+            const templatesObjectKey = templateData["templatesObjectPropertyName"];
+            const templateHtml = templatesObject[templatesObjectKey];
+
+            renderedTemplates[i] = templateRenderer
+                  .setTemplate ( templatesObject[ data.templatesObjectPropertyName ] )
+                  .setData ( rpropValue )
+                  .render();
+
+          }
+
+
+          const templateData_RecordRender_Subcall = [
+            { templatesObjectPropertyName: "fieldOpen", recordField: recordField },
+            { templatesObjectPropertyName: "fieldRendered", recordField: recordField },
+            { templatesObjectPropertyName: "fieldClose", recordField: recordField },
+          ];
+
+
+          return renderedTemplates;
+        }
+
+
+        function charBufferWorkaround_Example () {
+
+          const charBuffer = new Array(20); 
+
+          // Assign characters at specific positions
+          charBuffer[0] = "H";
+          charBuffer[1] = "e";
+          charBuffer[2] = "l";
+          charBuffer[3] = "l";
+          charBuffer[4] = "o";
+
+          // Convert the array back to a string
+          const finalString = charBuffer.join("");
+
+          console.log(finalString); // Output: "Hello"
+
+          const charCodes = new Uint16Array(20); // Fixed size array (stores UTF-16 character codes)
+
+          // Store character codes
+          charCodes[0] = "H".charCodeAt(0);
+          charCodes[1] = "e".charCodeAt(0);
+          charCodes[2] = "l".charCodeAt(0);
+          charCodes[3] = "l".charCodeAt(0);
+          charCodes[4] = "o".charCodeAt(0);
+
+          // Convert to string
+          const finalString = String.fromCharCode(...charCodes);
+
+          console.log(finalString.trim()); // Output: "Hello"
+
+        }
+
+        const COMMON_HIGHEST_CHAR_VALUE = 2047;
+        
+        const charsTable = new Uint16Array( COMMON_HIGHEST_CHAR_VALUE );
+
+        const charsCodeRanges = {
+            "LatinBasic": [32, 127],
+            "Latin1": [160, 255],
+            "LatinExtendedA": [256, 383],
+            "LatinExtendedB": [384, 591],
+            "Cyrillic": [1024, 1279],
+            "CyrillicExtraRare":	[1280, 1327],
+            "Other": [1328, 2047]
+        };
+
+        function getTheCharsTable() {
+
+          // filling at once the basic always used textual chars.
+          let charsCodeRange = charsCodeRanges["LatinBasic"];
+          const charCodeHigh = charsCodeRange[1];
+          const charCodeLow = charsCodeRange[0];
+          const loopCounterLowerThan = charCodeHigh + 1;
+          const loopCount = charCodeHigh - charCodeLow;
+          let charCode = charCodeLow;
+
+          for ( charCode = charCodeLow; charCode < loopCounterLowerThan; charCode++ ) {
+            charsTable[charCode] = String.fromCharCode( charCode );
+          }
+
+        }
+
+        function whenNoCharThenFillCharsCodeRange( inputArgCharCode ) {
+
+          let charsCodeRangesKeys = Object.keys( charsCodeRanges );
+          let charsCodeRangesKey = "";
+          let charsCodeRange = [];
+          let charCodeHigh = 0;
+          let charCodeLow = 0;
+          let charCode = 0;
+
+          for ( charsCodeRangesKey of charsCodeRangesKeys ) {
+
+            charsCodeRange = charsCodeRangesKeys[charsCodeRangesKey];
+            charCodeHighToCompare = charsCodeRange[1] + 1;
+            charCodeLowToCompare = charsCodeRange[0] - 1;
+
+            if (
+              ( charCodeLowToCompare < inputArgCharCode ) && 
+              ( inputArgCharCode < charCodeHigh )
+            ) {
+              break;
+            }
+          }
+
+          if ( charsCodeRangesKey.length === 0 ) {
+            return;
+          }
+
+          let charCodeHighLoopStop = charCodeHighToCompare;
+          for ( charCode = charCodeLow; charCode < charCodeHighLoopStop; charCode++ ) {
+            charsTable[charCode] = String.fromCharCode( charCode );
+          }
+
+          return;
+        }
+
+
+        const templateRenderer = new TemplateRenderer();
+        templateRenderer
+            .setTemplate( template )
+            .setData( data );
+
+        const html = templateRenderer.render();
+
+        holderHtmlNode.insertAdjacentHTML (
+          "afterbegin",
+          html
+        );
+      }
+
+
+      // document.addEventListener('DOMContentLoaded', () => {
+
+      //   testTemplateRendererArrayTemplateArt();
+
+      //   // const example = new ExampleTemplateRenderer();
+      //   // example.run();
+        
+      // });
+
+    </script>
+  </body>
+</html>
+
