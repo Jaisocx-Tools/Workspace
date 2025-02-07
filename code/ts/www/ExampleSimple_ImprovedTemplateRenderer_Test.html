@@ -81,23 +81,137 @@
         };
 
 
+        //TODO: loops feature props rewrite.
+
         // prop: is the propertyName, used in the templateData, to get values from.
         // e.g. fieldRendered: { prop: recordField }
         // in the templatedata we set to object key recordField: the value in the callback to set.
         // in the templatesObject, in the placeholder {{ recordField.fieldRendered }} then this object will be named recordField, and it's value will be used.
         const templatesConf = { 
           "tableOpen":                { prop: "tableCssClasses" }, 
-          "colsLabelsHolderOpen":       null, 
-          "colLabelOpen":                 { multiple: true, prop: "colLabels" }, 
-          "colLabelRendered":               { multiple: true, prop: "colLabels" }, 
-          "colLabelClose":                { multiple: true, prop: "colLabels" }, 
+
+          //@comment: 
+          // . this template is rendered once.
+          // . this template does not have a placeholder, so it's pointer can be set at once to the array of renderedTemplatesToHTML at array's index.
+          // . this template rendered html tag has nested nodes.
+          // . this template's nested nodes have their amount = 3 (set after preprocessing)
+          // . the nested nodes can have the placeholder or not.
+          // . the nested nodes have to be rendered in a subcall groupped by hashtag value
+          // . the subcall here has the returning value name and type whether iterable and whether an object with textual keys.
+          // . if this template has placeholder(s), the placeholders data property of datatype object has to be set.
+          //        then the method can be to setTemplatesObjectItemData( data: any|array|object ), 
+          //        and the placeholders in the template can be first the placeholder data variable name constant and any JPath value like this:
+          //        the reserved $data keyword at the start of the placeholder's JPath expression
+          //        {{ $data[2].somePropName[0][SOME_CONSTANT] }}
+          //        or for the best transparency, the explaining variable name first, the variable of any datatype, 
+          //          with or without the JPath expression.
+          // . 
+
+          TemplatesConfValueInterface: class {
+            isRenderedMultiple = false; // when true, and the .data is iterable array or object, we iterate over .data and append multiple these renderedTemplates here.
+            hasPlaceholders = true;
+            placeholdersAmount = 2;
+
+            //@thoughts: maybe the data value is set in the setTemplateData() method, and not in this config object?
+            data = { id: 1, name: "ELIAS", family_name: "POLIANSKYI", }; //  other fields in the database table record };
+            dataType = { id: number, name: any, family_name: any };
+
+
+            //@rename
+            dataVariableNameInPlaceholders = "tableRecord"; // then the placeholder "TableRecord" in the template like this: <any-html>{{ tableRecord.name }} {{ tableRecord.family_name }}</any-html>
+
+            
+            //@whenIsHolder
+            //@forWhat the props: the nested multiple rendered nodes can have the placeholder data object, 
+            //        obtained as the return value from the callback called,
+            //        when processing this template in plain little loop of the templatesObject set of templateHTML texts.
+            //@purpose whether this template when rendered has the nested html nodes, these are multiple times rendered in a loop
+            isHavingNestedNodesRenderedMultiple = true;
+
+            
+
+            //@whenIsHolder
+            confForNested = class {
+
+              //@whenIsHolder
+              //@calculated
+              nestedNodesAmount = 0;
+
+              //@required
+              //@whenIsHolder
+              //@purpose to group nested nodes by this tagName value
+              nestedNodesTag = "columnsLabels"; 
+
+              //@optional 
+              //@whenIsHolder
+              //@purpose: documentation
+              //@explained  just to note for documentation purposes, not used in the rendering multile nestedNodes
+              //        the variable name used in the placehlders in the nested templates. 
+              //        Here in this template html the variableName used in the placeholder is the "tableRecord", 
+              //        and in the nested templates, the variableName of the object, 
+              //        used in the placeholders, will be the "columnConf",
+              //        and the TemplateRenderer method, processing inner loops, 
+              //        has to set the value of the datatype suitable to columnConf (this is a specific example)
+              //        and has to call in the inner loop on nestedTemplates a specific callback, the prop will be here, too.))
+              nestedNodesPlaceholderName = "columnConf";
+
+
+              //@optional 
+              //@purpose: type hinting
+              //@whenIsHolder 
+              //@explained to know whether when this template is the holder, 
+              //        and invokes the callback for the nestedNodes, 
+              //        the callback return value matches the right datatype.
+              //        the datatype of the data, set in the nested nodes templates placehlders, here nestedNodesPlaceholderName = "columnConf";
+              nestedNodesPlaceholderDatatype = { "label": "Column Label", "datatype": "text", "align": "right", "width": "12rem" }; // example of the conf.json for a @jasocx/table descripton of a json records for the table how to render they.
+
+              //@optional 
+              //@whyOptional since of great use when the holder temlate data for the placehlder is set dynamic possibly in a loop.
+              //@purpose 
+              //        example: when the holder's template placeholder's data is a table record:
+              //                    each record is delivering dynamic in the loop,
+              //                    and the next level loop templates data for the placeholders
+              //                    is then the field value in this dynamic obtained in the loop record of the holderTemplate.
+              //
+              //        when there are the nested templates, 
+              //        however there are no placeholders in the templates, 
+              //        or in the nestedTemplates the placeholders data can be set not by the callback, 
+              //        but just with .setTemplateData() method.
+              //        the callback is for returning the value for the nestedTemplates their placehlders .data prop one same object, 
+              //
+              //        to set the function, that processes in loop this template prop value .data, 
+              //        or even, an array elem of thisTemplate.data, 
+              //        the callback to invoke in the standard impl of the method, 
+              //        iterating for multiple nestedNodes.
+              //@whenIsHolder
+              nestedNodesDeliveringPlaceholderDataCallback = someFuncProcessingADataArrayOneElem.bind(this); // this .bind and other, I have to research.
+
+            };
+
+            //@whenIsNestedMultiple holderNode template conf's props
+            confForHolder = class {
+
+              //@whenIsNestedMultiple
+              //@purpose the same tagName, but when we note this template to be rendered multiple by the parent template, 
+              //        this means, when this template is considered to be the nestedTemplate
+              processingHolderTagName = "";
+
+
+            };
+
+          },
+          
+          "colsLabelsHolderOpen":       { multiple: false, }, 
+          // "colLabelOpen":                 { multiple: true, prop: "colLabels" }, 
+          // "colLabelRendered":               { multiple: true, prop: "colLabels" }, 
+          // "colLabelClose":                { multiple: true, prop: "colLabels" }, 
           "colsLabelsHolderClose":      null, 
           "recordsHolderOpen":          null, 
-          "recordOpen":                   { multiple: true, prop: "recordSet", nestedProp: "recordField" }, 
-          "fieldOpen":                      { multiple: true, prop: "recordField" }, 
-          "fieldRendered":                    { multiple: true, prop: "recordField" }, 
-          "fieldClose":                     { multiple: true, prop: "recordField" }, 
-          "recordClose":                  { multiple: true, prop: "recordSet", nestedProp: "recordField" }, 
+          // "recordOpen":                   { multiple: true, prop: "recordSet", nestedProp: "recordField" }, 
+          // "fieldOpen":                      { multiple: true, prop: "recordField" }, 
+          // "fieldRendered":                    { multiple: true, prop: "recordField" }, 
+          // "fieldClose":                     { multiple: true, prop: "recordField" }, 
+          // "recordClose":                  { multiple: true, prop: "recordSet", nestedProp: "recordField" }, 
           "recordsHolderClose":         null,
           "tableClose":               null
         };
