@@ -194,6 +194,17 @@
       ]
     },
     {
+      "path": "packages/CharcodeConverter",
+      "name": "charcode-converter",
+      "build": true,
+      "build-simple-enable": true,
+      "dependencies": [],
+      "build-files": [
+        "CharcodeConverter.js",
+        "Charcodes.js"
+      ]
+    },
+    {
       "path": "packages/ImprovedTemplateRenderer",
       "name": "improved-template-renderer",
       "build": true,
@@ -202,10 +213,19 @@
         {
           "name": "@jaisocx/event-emitter",
           "path": "packages/EventEmitter"
+        },
+        {
+          "name": "@jaisocx/charcode-converter",
+          "path": "packages/CharcodeConverter"
         }
       ],
       "build-files": [
-        "ImprovedTemplateRenderer.js"
+        "ImprovedTemplateRenderer.js",
+        "ImprovedTemplateRendererConstants.js",
+        "NestedMultipleCallback.js",
+        "NestedMultipleCallbackValue.js",
+        "TemplatesConf.js",
+        "TemplatesConfNested.js"
       ]
     }
   ]

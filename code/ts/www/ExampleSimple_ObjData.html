@@ -113,7 +113,7 @@
     }
   ];
 
-  function getNanosecondsTimestamp() {
+  function getNsTimestamp() {
     const now = performance.timeOrigin + performance.now(); // Combine the origin and high-res time
     return BigInt(Math.floor(now * 1_000_000)); // Convert milliseconds to nanoseconds
   }
@@ -123,9 +123,9 @@
         const response = await fetch('/examples/ExampleTree/json/large_test_file_refined.json');
         const jsonText = await response.text();
 
-        const timestamp1 = getNanosecondsTimestamp();
+        const timestamp1 = getNsTimestamp();
         const jsObjectOriginal = JSON.parse( jsonText );
-        const timestamp2 = getNanosecondsTimestamp();
+        const timestamp2 = getNsTimestamp();
 
 
 
@@ -134,13 +134,13 @@
         const serializedObjDataByteBuf = ObjData.serialize( jsObjectOriginal );
         const textual = (new TextDecoder()).decode( serializedObjDataByteBuf );
 
-        const timestamp3 = getNanosecondsTimestamp();
+        const timestamp3 = getNsTimestamp();
         const jsObjectByObjDataParser = ObjData.parse( serializedObjDataByteBuf );
-        const timestamp4 = getNanosecondsTimestamp();
+        const timestamp4 = getNsTimestamp();
 
-        const timestamp5 = getNanosecondsTimestamp();
+        const timestamp5 = getNsTimestamp();
         const jsObjectByJSONNative = JSON.parse( jsonTextOriginal );
-        const timestamp6 = getNanosecondsTimestamp();
+        const timestamp6 = getNsTimestamp();
 
 
         const jsonTextByObjData = JSON.stringify( jsObjectByObjDataParser );
@@ -153,17 +153,17 @@
         console.log( jsObjectOriginal, jsObjectByObjDataParser );
 
         console.log(
-          "parsing time Nanoseconds JSON", 
+          "parsing time ns JSON", 
           ( timestamp2 - timestamp1 )
         );
 
         console.log(
-          "parsing time Nanoseconds ObjData by buteBuf ObjData format", 
+          "parsing time ns ObjData by buteBuf ObjData format", 
           ( timestamp4 - timestamp3 )
         );
 
         console.log(
-          "parsing time Nanoseconds JSON", 
+          "parsing time ns JSON", 
           ( timestamp6 - timestamp5 )
         );
         

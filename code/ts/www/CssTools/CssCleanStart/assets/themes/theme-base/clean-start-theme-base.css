@@ -1,0 +1,61 @@
+
+.workspace {
+  --clean-start__rem: 16px;
+
+
+  --clean-start__font-size__mobile_portrait: 1.4rem;
+  --clean-start__font-size__mobile_landscape: 1.4rem;
+  --clean-start__font-size__mobile: var(--clean-start__font-size__mobile_portrait);
+
+
+  --clean-start__font-size__laptop: 1rem;
+
+
+  --clean-start__font-size: var(--clean-start__font-size__laptop);
+
+
+
+  --clean-start__line-height__laptop: 1.4rem;
+  --clean-start__line-height: var(--clean-start__line-height__laptop);
+
+
+
+  --clean-start__display: block;
+  --clean-start__position: relative;
+  --clean-start__box-sizing: border-box;
+  --clean-start__margin: 0 0 0 0;
+  --clean-start__padding: 0 0 0 0;
+
+  --clean-start__custom-tags-display: var(--clean-start__display);
+  --clean-start__inline-tags__display: inline-block;
+
+
+
+  --clean-start__border-width: 0;
+  --clean-start__border-style: solid;
+  --clean-start__border-color: none;
+
+  --clean-start__font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+
+
+  --clean-start__p__margin: 0.2rem 0 0.2rem 0;
+
+
+  --clean-start__font-size_h1: 2.6rem;
+  --clean-start__font-size_h2: 2.1rem;
+  --clean-start__font-size_h3: 1.8rem;
+  --clean-start__font-size_h4: 1.6rem;
+  --clean-start__font-size_h5: 1.33rem;
+  --clean-start__font-size_h6: 1rem;
+
+
+  --clean-start__line-height_h1: 3rem;
+  --clean-start__line-height_h2: 2.5rem;
+  --clean-start__line-height_h3: 2.2rem;
+  --clean-start__line-height_h4: 2.0rem;
+  --clean-start__line-height_h5: 1.67rem;
+  --clean-start__line-height_h6: 1.6rem;
+
+
+}
+

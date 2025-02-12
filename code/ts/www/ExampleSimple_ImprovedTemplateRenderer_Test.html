@@ -2,15 +2,24 @@
   <head>
     <title>TemplateRenderer Example</title>
 
+
     <script src="packages/EventEmitter/build/Simple/EventEmitter.js"></script>
     <script src="packages/TemplateRenderer/build/Simple/TemplateRenderer.js"></script>
+
+
+    <script src="packages/ImprovedTemplateRenderer/build/Simple/NestedMultipleCallbackValue.js"></script>
+    <script src="packages/ImprovedTemplateRenderer/build/Simple/NestedMultipleCallback.js"></script>
+    <script src="packages/ImprovedTemplateRenderer/build/Simple/TemplatesConfNested.js"></script>
+    <script src="packages/ImprovedTemplateRenderer/build/Simple/TemplatesConf.js"></script>
+    <script src="packages/ImprovedTemplateRenderer/build/Simple/ImprovedTemplateRendererConstants.js"></script>
     <script src="packages/ImprovedTemplateRenderer/build/Simple/ImprovedTemplateRenderer.js"></script>
+
 
   </head>
   <body>
 
     <h1>Example ImprovedTemplateRenderer</h1>
-    <h2>Not ready</h2>
+    <h2>In development</h2>
     <p>The &lt;script&gt tag below is with code, this is not working. Just the code snippets to build later the methods in the ImprovedTemplateRenderer class.</p>
     <p>This Tool will be not very transparently written, 
       and will have a heavier to read ts code.</p>
@@ -26,14 +35,277 @@
     <p>And the textual html templates array items, 
       I'd like to preprocess once, using low level chars comparisons, 
       in order to acheive the fast and costs saving up rendering of every templateHtml in the templates array, too.</p>
-  
+
+
+
+    <example id="ImprovedTemplateRenderer_Example_1"></example>
+
     <script>
 
-      function testTemplateRendererArrayTemplateArt() {
+      //@applied in this .html file at the line 283.
+      let holderHtmlNodeSelector = 'example#ImprovedTemplateRenderer_Example_1';
 
-        const holderHtmlNodeSelector = "body";
-        let holderHtmlNode = document.querySelector( holderHtmlNodeSelector );
-    
+
+
+      function renderExampleTableJson() {
+
+        let retVal = null;
+        let tableDataFromRestApi = []; // array of objects with equal props amount, names and datatypes.
+
+
+        // NOTICE: the above string[] array looks transparently describing the rendered html,
+        // but the conf js object cannot be designed easily, since the templates array does not have the unique keys for each template.
+        // whe the keys are set, then the transparency level of the produced html is lost.
+
+        // here, once designed to render a Table .ts class for the entire site,
+        // the working time cost is minimal,
+        // however the transparency level of the template is high,
+        // and the texts replace() and concatenation and bytes bufs reallocation cost is minimized, too.
+        // the mapping props conf js object values constants I shall declare numeric, since very cost efficient to compare in if() blocks.
+        // the TemplateRenderer methods to tell a single rendered template to add to resulating array of rendered templates html, or multiple,
+        // seems to be very very easy. Or the method to override in the extending class can be easy to write, too.
+
+        let templatesObject = {
+          "tableOpen":                `<div class="table {{ tableCssClasses }}">`,
+          "colsLabelsHolderOpen":       `<div class="table-columns-labels-holder">`,
+          "colLabelOpen":                 `<div class="table-column-label">`,
+          "colLabelRendered":               `{{ columnLabelInfo.label }}`,
+          "colLabelClose":                `</div>`,
+          "colsLabelsHolderClose":      `</div>`,
+          "recordsHolderOpen":          `<div class="table-records-holder">`,
+          "recordOpen":                   `<div class="table-record">`,
+          "fieldOpen":                      `<div class="table-field">`,
+          "fieldRendered":                    `{{ value }}`,
+          "fieldClose":                     `</div>`,
+          "recordClose":                  `</div>`,
+          "recordsHolderClose":         `</div>`,
+          "tableClose":               `</div>`
+        };
+
+
+
+        let templatesConf = {
+
+          "tableOpen":                {
+                                        "isWithPlaceholders": 0,
+                                        "multiple": 0,
+                                        "isWithNestedMultiple": 0,
+                                        "placeholder": "tableCssClasses",
+                                        "dataType": "text"
+          },
+          "colsLabelsHolderOpen":       {
+                                          "isWithPlaceholders": 0,
+                                          "multiple": 0,
+                                          "isWithNestedMultiple": 1,
+                                          "nestedTag": "columnLabels",
+                                          "dataType": "any[]"
+          },
+          "colLabelOpen":                 {
+                                            "tag": "columnLabels",
+                                            "multiple": 1,
+                                            "isWithPlaceholders": 0
+          },
+          "colLabelRendered":               {
+                                              "tag": "columnLabels",
+                                              "multiple": 1,
+                                              "isWithPlaceholders": 1,
+                                              "placeholder": "columnLabelInfo",
+                                              "dataType": "any"
+          },
+          "colLabelClose":                {
+                                            "tag": "columnLabels",
+                                            "multiple": 1,
+                                            "isWithPlaceholders": 0
+          },
+          "colsLabelsHolderClose":      { "isWithPlaceholders": 0 },
+          "recordsHolderOpen":          {
+                                          "isWithPlaceholders": 0,
+                                          "multiple": 0,
+                                          "isWithNestedMultiple": 1,
+                                          "nestedTag": "record",
+                                          "dataType": "any[]"
+          },
+          "recordOpen":                   {
+                                            "tag": "record",
+                                            "isWithPlaceholders": 0,
+                                            "multiple": 1,
+                                            "isWithNestedMultiple": 1,
+                                            "nestedTag": "fieldValue",
+                                            "dataType": "any[]"
+          },
+          "fieldOpen":                      {
+                                              "tag": [ "record", "fieldValue" ],
+                                              "multiple": 1,
+                                              "isWithPlaceholders": 0
+          },
+          "fieldRendered":                    {
+                                                "tag": [ "record", "fieldValue" ],
+                                                "multiple": 1,
+                                                "isWithPlaceholders": 1,
+                                                "placeholder": "value",
+                                                "dataType": "any"
+          },
+          "fieldClose":                     {
+                                              "tag": [ "record", "fieldValue" ],
+                                              "multiple": 1,
+                                              "isWithPlaceholders": 0
+          },
+          "recordClose":                  {
+                                            "tag": "record",
+                                            "multiple": 1,
+                                            "isWithPlaceholders": 0
+          },
+          "recordsHolderClose":         { "isWithPlaceholders": 0 },
+          "tableClose":               { "isWithPlaceholders": 0 }
+        };
+
+
+
+        //@custom
+        //@method produceDataConf
+        //@overrides the abstract method to get the dataConf, 
+        //            or overrides the default method getDataConf() if there))
+        //@purpose: to define the dataConf, 
+        //            the dataConf is the array of the data used to set instead of the placeholders, 
+        //            the templates names are = dataConf.templateName; 
+        //            template name is the templatesConf object's keys.
+        //            This array items, templates, will be appended to the result html 
+        //            in the exact order they are applied here.
+        let produceDataConf = ( 
+          cssClasses, 
+          tableColumnsConf, 
+          tableRecordsData 
+        ) => {
+
+          // why the array and the ambiguous props without no data prop set in the data method:
+          // the arrays in js have always the right items order,
+          // when iterating an array in the cycle.
+          // here we just list the templates names in the order,
+          // the js will process them.
+          // and this is in the same order, like in the templatesObject 
+          // and in the templates rendering rules config templatesConf.
+
+          const dataConf = [
+            { templateName: "tableOpen", data: cssClasses },
+            { templateName: "colsLabelsHolderOpen", data: tableColumnsConf },
+            { templateName: "colLabelOpen" },
+            { templateName: "colLabelRendered" },
+            { templateName: "colLabelClose" },
+            { templateName: "colsLabelsHolderClose" },
+            { templateName: "recordsHolderOpen", data: tableRecordsData },
+            { templateName: "recordOpen" },
+            { templateName: "fieldOpen" },
+            { templateName: "fieldRendered" },
+            { templateName: "fieldClose" },
+            { templateName: "recordClose" },
+            { templateName: "recordsHolderClose" },
+            { templateName: "tableClose" }
+          ];
+
+          return dataConf;
+        };
+
+
+
+        // this is the example of rules to render and apply css styles to table's columns labels,
+        // and can be for columns in the table records, too,
+        // like align, column datatype and similar.
+        //
+        // the table has 2 columns: id and text.
+        // label prop tells the innerHTML for the columns labels of the table.
+        let tableColumnsConfObject = { 
+          id: { 
+            label: "ID" 
+          }, 
+          text: { 
+            label: "Text" 
+          } 
+        };
+
+
+
+        // the simpliest json,
+        // having data of a database table
+        // with 5 records,
+        // and each table record has 2 columns: id and text.
+        let tableRecordset = [
+          {
+            "id": 1,
+            "text": "Hallo!"
+          },
+          {
+            "id": 1,
+            "text": "Hallo!"
+          },
+          {
+            "id": 1,
+            "text": "Hallo!"
+          },
+          {
+            "id": 1,
+            "text": "Hallo!"
+          },
+          {
+            "id": 1,
+            "text": "Hallo!"
+          },
+        ];
+
+
+
+        // when the data is fetched from the https url,
+        // for every custom templates list,
+        // a custom function sets the right data 
+        // for every template when needed,
+        // for a placeholder,
+        // or for repeating templates,
+        // and then the inner repeating templates
+        // will have the data elem to set in the template's html in place where the placeholder resides.
+        let dataConf = produceDataConf (
+          "theme-custom",
+          tableColumnsConfObject,
+          tableRecordset
+        );
+
+
+
+        let renderedTableHtml = improvedTemplateRenderer
+          .setDebug( true )
+          .setTemplatesObject ( templatesObject )
+          .setTemplatesConf ( templatesConf )
+          .setDataConf( dataConf )
+          .render();
+
+        
+
+
+        const holderHtmlNode = document.querySelector( holderHtmlNodeSelector );
+
+        //@ DocumentFragment is efficient, then how to?
+        holderHtmlNode.insertAdjacentHTML (
+          "afterbegin",
+          renderedTableHtml
+        );
+
+        console.log( "this .html file, \nfunction renderExampleTableJson(). \nThis test func finished at it's last js code line." );
+        
+      }
+
+
+
+      function codeSnippets_developedTilHadThought_thisFuncNeverWorks () {
+
+        // another art of the templates set:
+        // the array with array's elems keys of datatype number.
+        // this templates array is easier to prettify manually 
+        // to see clearly the html structure of the site ui tool.
+        // however, when applying rules for the templates lines,
+        // there will be certanly more mistakes,
+        // since optique this is not clear,
+        // whether the 5th and 12th line of the rules array
+        // matches the 5th and 12th line in the templates array accordingly.
+        // when the json comes via https request, and is not prettified,
+        // this becomes very hard to know the rules elem matches the templates elem.
         const templatesArray = [
           `<div class="table {{ tableCssClasses }}">`,
             `<div class="table-columns-labels-holder">`,
@@ -51,345 +323,30 @@
           `</div>`,
         ];
 
-        // NOTICE: the above string[] array looks transparently describing the rendered html,
-        // but the conf js object cannot be designed easily, since the templates array does not have the unique keys for each template.
-        // whe the keys are set, then the transparency level of the produced html is lost.
 
-        // here, once designed to render a Table .ts class for the entire site,
-        // the working time cost is minimal,
-        // however the transparency level of the template is high,
-        // and the texts replace() and concatenation and bytes bufs reallocation cost is minimized, too.
-        // the mapping props conf js object values constants I shall declare numeric, since very cost efficient to compare in if() blocks.
-        // the TemplateRenderer methods to tell a single rendered template to add to resulating array of rendered templates html, or multiple,
-        // seems to be very very easy. Or the method to override in the extending class can be easy to write, too.
-
-        const templatesObject = {
-          "tableOpen":                `<div class="table {{ tableCssClasses }}">`,
-          "colsLabelsHolderOpen":       `<div class="table-columns-labels-holder">`,
-          "colLabelOpen":                 `<div class="table-column-label">`,
-          "colLabelRendered":               `{{ colLabels.columnLabelRendered }}`,
-          "colLabelClose":                `</div>`,
-          "colsLabelsHolderClose":      `</div>`,
-          "recordsHolderOpen":          `<div class="table-records-holder">`,
-          "recordOpen":                   `<div class="table-record">`,
-          "fieldOpen":                      `<div class="table-field">`,
-          "fieldRendered":                    `{{ recordField.fieldRendered }}`,
-          "fieldClose":                     `</div>`,
-          "recordClose":                  `</div>`,
-          "recordsHolderClose":         `</div>`,
-          "tableClose":               `</div>`
-        };
-
-
-        //TODO: loops feature props rewrite.
-
-        // prop: is the propertyName, used in the templateData, to get values from.
-        // e.g. fieldRendered: { prop: recordField }
-        // in the templatedata we set to object key recordField: the value in the callback to set.
-        // in the templatesObject, in the placeholder {{ recordField.fieldRendered }} then this object will be named recordField, and it's value will be used.
-        const templatesConf = { 
-          "tableOpen":                { prop: "tableCssClasses" }, 
-
-          //@comment: 
-          // . this template is rendered once.
-          // . this template does not have a placeholder, so it's pointer can be set at once to the array of renderedTemplatesToHTML at array's index.
-          // . this template rendered html tag has nested nodes.
-          // . this template's nested nodes have their amount = 3 (set after preprocessing)
-          // . the nested nodes can have the placeholder or not.
-          // . the nested nodes have to be rendered in a subcall groupped by hashtag value
-          // . the subcall here has the returning value name and type whether iterable and whether an object with textual keys.
-          // . if this template has placeholder(s), the placeholders data property of datatype object has to be set.
-          //        then the method can be to setTemplatesObjectItemData( data: any|array|object ), 
-          //        and the placeholders in the template can be first the placeholder data variable name constant and any JPath value like this:
-          //        the reserved $data keyword at the start of the placeholder's JPath expression
-          //        {{ $data[2].somePropName[0][SOME_CONSTANT] }}
-          //        or for the best transparency, the explaining variable name first, the variable of any datatype, 
-          //          with or without the JPath expression.
-          // . 
-
-          TemplatesConfValueInterface: class {
-            isRenderedMultiple = false; // when true, and the .data is iterable array or object, we iterate over .data and append multiple these renderedTemplates here.
-            hasPlaceholders = true;
-            placeholdersAmount = 2;
-
-            //@thoughts: maybe the data value is set in the setTemplateData() method, and not in this config object?
-            data = { id: 1, name: "ELIAS", family_name: "POLIANSKYI", }; //  other fields in the database table record };
-            dataType = { id: number, name: any, family_name: any };
-
-
-            //@rename
-            dataVariableNameInPlaceholders = "tableRecord"; // then the placeholder "TableRecord" in the template like this: <any-html>{{ tableRecord.name }} {{ tableRecord.family_name }}</any-html>
-
-            
-            //@whenIsHolder
-            //@forWhat the props: the nested multiple rendered nodes can have the placeholder data object, 
-            //        obtained as the return value from the callback called,
-            //        when processing this template in plain little loop of the templatesObject set of templateHTML texts.
-            //@purpose whether this template when rendered has the nested html nodes, these are multiple times rendered in a loop
-            isHavingNestedNodesRenderedMultiple = true;
-
-            
-
-            //@whenIsHolder
-            confForNested = class {
-
-              //@whenIsHolder
-              //@calculated
-              nestedNodesAmount = 0;
-
-              //@required
-              //@whenIsHolder
-              //@purpose to group nested nodes by this tagName value
-              nestedNodesTag = "columnsLabels"; 
-
-              //@optional 
-              //@whenIsHolder
-              //@purpose: documentation
-              //@explained  just to note for documentation purposes, not used in the rendering multile nestedNodes
-              //        the variable name used in the placehlders in the nested templates. 
-              //        Here in this template html the variableName used in the placeholder is the "tableRecord", 
-              //        and in the nested templates, the variableName of the object, 
-              //        used in the placeholders, will be the "columnConf",
-              //        and the TemplateRenderer method, processing inner loops, 
-              //        has to set the value of the datatype suitable to columnConf (this is a specific example)
-              //        and has to call in the inner loop on nestedTemplates a specific callback, the prop will be here, too.))
-              nestedNodesPlaceholderName = "columnConf";
-
-
-              //@optional 
-              //@purpose: type hinting
-              //@whenIsHolder 
-              //@explained to know whether when this template is the holder, 
-              //        and invokes the callback for the nestedNodes, 
-              //        the callback return value matches the right datatype.
-              //        the datatype of the data, set in the nested nodes templates placehlders, here nestedNodesPlaceholderName = "columnConf";
-              nestedNodesPlaceholderDatatype = { "label": "Column Label", "datatype": "text", "align": "right", "width": "12rem" }; // example of the conf.json for a @jasocx/table descripton of a json records for the table how to render they.
-
-              //@optional 
-              //@whyOptional since of great use when the holder temlate data for the placehlder is set dynamic possibly in a loop.
-              //@purpose 
-              //        example: when the holder's template placeholder's data is a table record:
-              //                    each record is delivering dynamic in the loop,
-              //                    and the next level loop templates data for the placeholders
-              //                    is then the field value in this dynamic obtained in the loop record of the holderTemplate.
-              //
-              //        when there are the nested templates, 
-              //        however there are no placeholders in the templates, 
-              //        or in the nestedTemplates the placeholders data can be set not by the callback, 
-              //        but just with .setTemplateData() method.
-              //        the callback is for returning the value for the nestedTemplates their placehlders .data prop one same object, 
-              //
-              //        to set the function, that processes in loop this template prop value .data, 
-              //        or even, an array elem of thisTemplate.data, 
-              //        the callback to invoke in the standard impl of the method, 
-              //        iterating for multiple nestedNodes.
-              //@whenIsHolder
-              nestedNodesDeliveringPlaceholderDataCallback = someFuncProcessingADataArrayOneElem.bind(this); // this .bind and other, I have to research.
-
-            };
-
-            //@whenIsNestedMultiple holderNode template conf's props
-            confForHolder = class {
-
-              //@whenIsNestedMultiple
-              //@purpose the same tagName, but when we note this template to be rendered multiple by the parent template, 
-              //        this means, when this template is considered to be the nestedTemplate
-              processingHolderTagName = "";
-
-
-            };
-
-          },
-          
-          "colsLabelsHolderOpen":       { multiple: false, }, 
-          // "colLabelOpen":                 { multiple: true, prop: "colLabels" }, 
-          // "colLabelRendered":               { multiple: true, prop: "colLabels" }, 
-          // "colLabelClose":                { multiple: true, prop: "colLabels" }, 
-          "colsLabelsHolderClose":      null, 
-          "recordsHolderOpen":          null, 
-          // "recordOpen":                   { multiple: true, prop: "recordSet", nestedProp: "recordField" }, 
-          // "fieldOpen":                      { multiple: true, prop: "recordField" }, 
-          // "fieldRendered":                    { multiple: true, prop: "recordField" }, 
-          // "fieldClose":                     { multiple: true, prop: "recordField" }, 
-          // "recordClose":                  { multiple: true, prop: "recordSet", nestedProp: "recordField" }, 
-          "recordsHolderClose":         null,
-          "tableClose":               null
-        };
-
-        
-        const templateData_MainRenderMethod = [
-          { templatesObjectPropertyName: "tableOpen", tableCssClasses: "theme-custom" },
-          { templatesObjectPropertyName: "colsLabelsHolderOpen" },
-          { templatesObjectPropertyName: "colLabelOpen", colLabels: Object.keys(this.recordSet[0]) },
-          { templatesObjectPropertyName: "colLabelRendered", colLabels: Object.keys(this.recordSet[0]) },
-          { templatesObjectPropertyName: "colLabelClose", colLabels: Object.keys(this.recordSet[0]) },
-          { templatesObjectPropertyName: "colsLabelsHolderClose" },
-          { templatesObjectPropertyName: "recordsHolderOpen" },
-          { templatesObjectPropertyName: "recordOpen", recordSet: this.recordSet },
-          { templatesObjectPropertyName: "fieldOpen" },
-          { templatesObjectPropertyName: "fieldRendered" },
-          { templatesObjectPropertyName: "fieldClose" },
-          { templatesObjectPropertyName: "recordClose", recordSet: this.recordSet },
-          { templatesObjectPropertyName: "recordsHolderClose" },
-          { templatesObjectPropertyName: "tableClose" }
-        ];
-
-
-        function recordRenderSubcall ( 
-          propName, 
-          propValue, 
-          templatesObject, 
-          templateData
-        ) {
-
-          const amountOfIterations = templateData_RecordRender_Subcall.length;
-          const renderedTemplates = new Array ( amountOfIterations );
-          
-          for ( let i = 0; i < amountOfIterations; i++ ) {
-            const templatesObjectKey = templateData["templatesObjectPropertyName"];
-            const templateHtml = templatesObject[templatesObjectKey];
-
-            renderedTemplates[i] = templateRenderer
-                  .setTemplate ( templatesObject[ data.templatesObjectPropertyName ] )
-                  .setData ( rpropValue )
-                  .render();
-
-          }
-
-
-          const templateData_RecordRender_Subcall = [
-            { templatesObjectPropertyName: "fieldOpen", recordField: recordField },
-            { templatesObjectPropertyName: "fieldRendered", recordField: recordField },
-            { templatesObjectPropertyName: "fieldClose", recordField: recordField },
-          ];
-
-
-          return renderedTemplates;
-        }
-
-
-        function charBufferWorkaround_Example () {
-
-          const charBuffer = new Array(20); 
-
-          // Assign characters at specific positions
-          charBuffer[0] = "H";
-          charBuffer[1] = "e";
-          charBuffer[2] = "l";
-          charBuffer[3] = "l";
-          charBuffer[4] = "o";
-
-          // Convert the array back to a string
-          const finalString = charBuffer.join("");
-
-          console.log(finalString); // Output: "Hello"
-
-          const charCodes = new Uint16Array(20); // Fixed size array (stores UTF-16 character codes)
-
-          // Store character codes
-          charCodes[0] = "H".charCodeAt(0);
-          charCodes[1] = "e".charCodeAt(0);
-          charCodes[2] = "l".charCodeAt(0);
-          charCodes[3] = "l".charCodeAt(0);
-          charCodes[4] = "o".charCodeAt(0);
-
-          // Convert to string
-          const finalString = String.fromCharCode(...charCodes);
-
-          console.log(finalString.trim()); // Output: "Hello"
-
-        }
-
-        const COMMON_HIGHEST_CHAR_VALUE = 2047;
-        
-        const charsTable = new Uint16Array( COMMON_HIGHEST_CHAR_VALUE );
-
-        const charsCodeRanges = {
-            "LatinBasic": [32, 127],
-            "Latin1": [160, 255],
-            "LatinExtendedA": [256, 383],
-            "LatinExtendedB": [384, 591],
-            "Cyrillic": [1024, 1279],
-            "CyrillicExtraRare":	[1280, 1327],
-            "Other": [1328, 2047]
-        };
-
-        function getTheCharsTable() {
-
-          // filling at once the basic always used textual chars.
-          let charsCodeRange = charsCodeRanges["LatinBasic"];
-          const charCodeHigh = charsCodeRange[1];
-          const charCodeLow = charsCodeRange[0];
-          const loopCounterLowerThan = charCodeHigh + 1;
-          const loopCount = charCodeHigh - charCodeLow;
-          let charCode = charCodeLow;
-
-          for ( charCode = charCodeLow; charCode < loopCounterLowerThan; charCode++ ) {
-            charsTable[charCode] = String.fromCharCode( charCode );
-          }
-
-        }
-
-        function whenNoCharThenFillCharsCodeRange( inputArgCharCode ) {
-
-          let charsCodeRangesKeys = Object.keys( charsCodeRanges );
-          let charsCodeRangesKey = "";
-          let charsCodeRange = [];
-          let charCodeHigh = 0;
-          let charCodeLow = 0;
-          let charCode = 0;
-
-          for ( charsCodeRangesKey of charsCodeRangesKeys ) {
-
-            charsCodeRange = charsCodeRangesKeys[charsCodeRangesKey];
-            charCodeHighToCompare = charsCodeRange[1] + 1;
-            charCodeLowToCompare = charsCodeRange[0] - 1;
-
-            if (
-              ( charCodeLowToCompare < inputArgCharCode ) && 
-              ( inputArgCharCode < charCodeHigh )
-            ) {
-              break;
-            }
-          }
-
-          if ( charsCodeRangesKey.length === 0 ) {
-            return;
-          }
-
-          let charCodeHighLoopStop = charCodeHighToCompare;
-          for ( charCode = charCodeLow; charCode < charCodeHighLoopStop; charCode++ ) {
-            charsTable[charCode] = String.fromCharCode( charCode );
-          }
-
-          return;
-        }
-
-
-        const templateRenderer = new TemplateRenderer();
-        templateRenderer
-            .setTemplate( template )
-            .setData( data );
-
-        const html = templateRenderer.render();
-
-        holderHtmlNode.insertAdjacentHTML (
-          "afterbegin",
-          html
-        );
       }
 
 
-      // document.addEventListener('DOMContentLoaded', () => {
 
-      //   testTemplateRendererArrayTemplateArt();
+      document.addEventListener ( 
+        'DOMContentLoaded', 
+        () => {
 
-      //   // const example = new ExampleTemplateRenderer();
-      //   // example.run();
-        
-      // });
+          renderExampleTableJson();
+
+          // const example = new ExampleTemplateRenderer();
+          // example.run();
+          
+        }
+      );
+
+
 
     </script>
   </body>
 </html>
+
+
+
+
 
