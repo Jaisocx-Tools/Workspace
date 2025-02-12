@@ -4,14 +4,16 @@ export declare class ImprovedTemplateRenderer extends EventEmitter {
     templatesObject: any;
     templatesConf: any;
     dataConf: any[];
-    data: any;
     isStandardCallback: number;
     constructor();
     setDebug(debug: boolean): ImprovedTemplateRenderer;
     setTemplatesObject(templates: any): ImprovedTemplateRenderer;
-    setTemplatesConf(data: object): ImprovedTemplateRenderer;
-    setDataConf(data: object): ImprovedTemplateRenderer;
-    setData(data: object): ImprovedTemplateRenderer;
-    render(): any;
+    setTemplatesConf(templatesConf: any): ImprovedTemplateRenderer;
+    setDataConf(dataConf: any[]): ImprovedTemplateRenderer;
+    render(inoutobj: any): number;
+    workaroundJoin(inoutObj: any): number;
+    renderTemplates(): any;
+    prepareTemplates(): undefined;
+    prepareTaggedGroupsInfos(): any[];
 }
 //# sourceMappingURL=ImprovedTemplateRenderer.d.ts.map

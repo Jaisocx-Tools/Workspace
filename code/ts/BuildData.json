@@ -222,7 +222,6 @@
       "build-files": [
         "ImprovedTemplateRenderer.js",
         "ImprovedTemplateRendererConstants.js",
-        "NestedMultipleCallback.js",
         "NestedMultipleCallbackValue.js",
         "TemplatesConf.js",
         "TemplatesConfNested.js"

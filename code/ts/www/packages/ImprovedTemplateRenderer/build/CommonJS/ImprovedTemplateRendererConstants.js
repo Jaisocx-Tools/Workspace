@@ -2,6 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.ImprovedTemplateRendererConstants = void 0;
 const TemplatesConf_js_1 = require("./TemplatesConf.js");
+const NestedMultipleCallbackValue_js_1 = require("./NestedMultipleCallbackValue.js");
 class ImprovedTemplateRendererConstants {
     constructor() {
         this.Defaults = class {
@@ -12,4 +13,7 @@ class ImprovedTemplateRendererConstants {
     }
 }
 exports.ImprovedTemplateRendererConstants = ImprovedTemplateRendererConstants;
+ImprovedTemplateRendererConstants.NestedMultipleCallback = (templateDataElemKey, templateDataElemValue) => {
+    return new NestedMultipleCallbackValue_js_1.NestedMultipleCallbackValue(templateDataElemKey, templateDataElemValue);
+};
 //# sourceMappingURL=ImprovedTemplateRendererConstants.js.map

@@ -141,6 +141,18 @@ export class TemplatesConf {
   placeholder: string|undefined|null;
 
 
+  //@preparedResult
+  info: any;
+
+
+  //@calculated
+  //@preprocessing
+  //@info mark whether a placeholder's jpath expression was parsed,
+  //          and the template is now array of datatype any[], 
+  //          string html and JPath class instance where was placeholder.
+  placeholdersPrepared: number;
+
+
   //@calculated
   //@preprocessing
   //@purpose
@@ -171,8 +183,12 @@ export class TemplatesConf {
     //props block @purpose documentation
     this.dataType = null;
     this.placeholder = null;
+
+    //@preparedResult
+    this.info = null;
     
     //props block @calculated
+    this.placeholdersPrepared = 0;
     this.placeholdersNumber = 0;
     this.nestedNodesNumber = 0;
   }

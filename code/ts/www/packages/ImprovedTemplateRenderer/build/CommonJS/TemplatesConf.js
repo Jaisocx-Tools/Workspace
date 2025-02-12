@@ -2,64 +2,81 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.TemplatesConf = void 0;
 // //@example: improvedTemplateRenderer
-//   .setTemplates (
-//      [
-//        "recordsetTagStart": "<recordset>",
-//        "aRecordTagStart": "<record>",
-//        "fieldTagStart": "<cell>",
-//        "fieldTagTextContent": "{{ value }}",
-//        "fieldTagFinish": "</cell>",
-//        "aRecordTagFinish": "</record>",
-//        "recordsetTagFinish": "</recordset>",
-//      ]
-//   )
-//   .setTemplatesConf (
-//   {
-//     "recordsetTagStart": {
-//       "data": this.data,
-//       "isWithPlaceholders": 0,
-//       "multiple": 0,
-//       "isWithNestedMultiple": 1,
-//       "nestedNodesConf": { "nestedNodes_Tag": "aRecord", },
-//       "dataType": "TableExampleDataInterface[]",
-//       "placeholder": "",
-//     },
-//     "aRecordTagStart": {
-//       "tag: "aRecord",
-//       "multiple": 1,
-//       "isWithPlaceholders": 0,
-//       "isWithNestedMultiple": 1,
-//       "nestedNodesConf": { "nestedNodes_Tag": "fieldValue", },
-//       "dataType": "TableExampleDataInterface",
-//     },
-//     "fieldTagStart": {
-//       "tag": "fieldValue",
-//       "multiple": 1,
-//       "isWithPlaceholders": 0,
-//     },
-//     "fieldTagTextContent": {
-//       "tag": "fieldValue",
-//       "multiple": 1,
-//       "isWithPlaceholders": 1,
-//       "placeholder": "value",
-//       "dataType": "any",
-//     },
-//     "fieldTagFinish": {
-//       "isWithPlaceholders": 0,
-//       "multiple": 1,
-//       "tag": "fieldValue",
-//     },
-//     "aRecordTagFinish": {
-//       "tag: "aRecord",
-//       "multiple": 1,
-//       "isWithPlaceholders": 0,
-//     },
-//     "recordsetTagFinish": {
-//       "isWithPlaceholders": 0,
-//       "multiple": 0,
-//     },
-//   }
-// )
+//   .setTemplates         let templatesConf = {
+/*
+          "tableOpen":                {
+            "isWithPlaceholders": 0,
+            "multiple": 0,
+            "isWithNestedMultiple": 0,
+            "placeholder": "tableCssClasses",
+            "dataType": "text"
+},
+"colsLabelsHolderOpen":       {
+              "isWithPlaceholders": 0,
+              "multiple": 0,
+              "isWithNestedMultiple": 1,
+              "nestedTag": "columnLabels",
+              "dataType": "any[]"
+},
+"colLabelOpen":                 {
+                "tag": "columnLabels",
+                "multiple": 1,
+                "isWithPlaceholders": 0
+},
+"colLabelRendered":               {
+                  "tag": "columnLabels",
+                  "multiple": 1,
+                  "isWithPlaceholders": 1,
+                  "placeholder": "columnLabelInfo",
+                  "dataType": "any"
+},
+"colLabelClose":                {
+                "tag": "columnLabels",
+                "multiple": 1,
+                "isWithPlaceholders": 0
+},
+"colsLabelsHolderClose":      { "isWithPlaceholders": 0 },
+"recordsHolderOpen":          {
+              "isWithPlaceholders": 0,
+              "multiple": 0,
+              "isWithNestedMultiple": 1,
+              "nestedTag": "record",
+              "dataType": "any[]"
+},
+"recordOpen":                   {
+                "tag": "record",
+                "isWithPlaceholders": 0,
+                "multiple": 1,
+                "isWithNestedMultiple": 1,
+                "nestedTag": "fieldValue",
+                "dataType": "any[]"
+},
+"fieldOpen":                      {
+                  "tag": [ "record", "fieldValue" ],
+                  "multiple": 1,
+                  "isWithPlaceholders": 0
+},
+"fieldRendered":                    {
+                    "tag": [ "record", "fieldValue" ],
+                    "multiple": 1,
+                    "isWithPlaceholders": 1,
+                    "placeholder": "value",
+                    "dataType": "any"
+},
+"fieldClose":                     {
+                  "tag": [ "record", "fieldValue" ],
+                  "multiple": 1,
+                  "isWithPlaceholders": 0
+},
+"recordClose":                  {
+                "tag": "record",
+                "multiple": 1,
+                "isWithPlaceholders": 0
+},
+"recordsHolderClose":         { "isWithPlaceholders": 0 },
+"tableClose":               { "isWithPlaceholders": 0 }
+};
+*/
 //
 // "dataType": "WellKnownCompany_RestApi_ResponseJsonDataInterface",
 //
@@ -76,7 +93,10 @@ class TemplatesConf {
         //props block @purpose documentation
         this.dataType = null;
         this.placeholder = null;
+        //@preparedResult
+        this.info = null;
         //props block @calculated
+        this.placeholdersPrepared = 0;
         this.placeholdersNumber = 0;
         this.nestedNodesNumber = 0;
     }
