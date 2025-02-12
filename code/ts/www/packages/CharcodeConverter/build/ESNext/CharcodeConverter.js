@@ -1,26 +1,33 @@
 import { Charcodes } from "./Charcodes.js";
 // a Singleton with tables for faster charcodes lookup.
 export class CharcodeConverter {
-    _charToNum_AlignedSymbolsCodes;
-    _charToNum_AlignedSymbols;
-    _numToChar;
-    _charcodes;
-    _loadedRanges;
+    // static constants
     static LOOKUP_ITERATIONS_MAX = 126;
     static CHAR_NOT_FOUND = (-1);
     static LETTER_PROP_POINTER = 0;
     static CHARCODE_PROP_POINTER = 1;
     static CHARSET_LATIN = "Latin";
-    static _instance;
+    // lookup tables
+    _charToNum_AlignedSymbolsCodes;
+    _charToNum_AlignedSymbols;
+    _numToChar;
+    // some data about charsets standards
+    _charcodes;
+    _loadedRanges;
+    // some technique settings
+    _lookupIterationsMax;
     _debug;
+    // Singleton feature
+    // the static instance of this class.
+    static _instance = null;
     constructor() {
-        // props start values.
-        this._debug = true;
-        this._charcodes = Charcodes.CHARCODES;
-        this._loadedRanges = new Set();
         this._charToNum_AlignedSymbolsCodes = [];
         this._charToNum_AlignedSymbols = [];
         this._numToChar = [];
+        this._charcodes = Charcodes.CHARCODES;
+        this._loadedRanges = new Set();
+        this._lookupIterationsMax = CharcodeConverter.LOOKUP_ITERATIONS_MAX;
+        this._debug = true;
         // loading charsets,
         // first detecting charset by html doc loaded tags and browser's js impl props.
         this._init();
@@ -36,6 +43,13 @@ export class CharcodeConverter {
     }
     setDebug(toDebug) {
         this._debug = toDebug;
+        return this;
+    }
+    //@onDemand
+    //@default CharcodeConverter.LOOKUP_ITERATIONS_MAX
+    //@property this._lookupIterationsMax
+    setLookupIterationsMax(iterationsMax) {
+        this._lookupIterationsMax = iterationsMax;
         return this;
     }
     log(key, data) {
@@ -146,7 +160,7 @@ export class CharcodeConverter {
         if (rangeHigherBoundChar < target) {
             return CharcodeConverter.CHAR_NOT_FOUND;
         }
-        let iterationsNumber = CharcodeConverter.LOOKUP_ITERATIONS_MAX;
+        let iterationsNumber = this._lookupIterationsMax;
         //opsNumber += 1;
         let lookupStep = 0;
         //opsNumber += 1;

@@ -5,13 +5,13 @@ const Charcodes_js_1 = require("./Charcodes.js");
 // a Singleton with tables for faster charcodes lookup.
 class CharcodeConverter {
     constructor() {
-        // props start values.
-        this._debug = true;
-        this._charcodes = Charcodes_js_1.Charcodes.CHARCODES;
-        this._loadedRanges = new Set();
         this._charToNum_AlignedSymbolsCodes = [];
         this._charToNum_AlignedSymbols = [];
         this._numToChar = [];
+        this._charcodes = Charcodes_js_1.Charcodes.CHARCODES;
+        this._loadedRanges = new Set();
+        this._lookupIterationsMax = CharcodeConverter.LOOKUP_ITERATIONS_MAX;
+        this._debug = true;
         // loading charsets,
         // first detecting charset by html doc loaded tags and browser's js impl props.
         this._init();
@@ -27,6 +27,13 @@ class CharcodeConverter {
     }
     setDebug(toDebug) {
         this._debug = toDebug;
+        return this;
+    }
+    //@onDemand
+    //@default CharcodeConverter.LOOKUP_ITERATIONS_MAX
+    //@property this._lookupIterationsMax
+    setLookupIterationsMax(iterationsMax) {
+        this._lookupIterationsMax = iterationsMax;
         return this;
     }
     log(key, data) {
@@ -137,7 +144,7 @@ class CharcodeConverter {
         if (rangeHigherBoundChar < target) {
             return CharcodeConverter.CHAR_NOT_FOUND;
         }
-        let iterationsNumber = CharcodeConverter.LOOKUP_ITERATIONS_MAX;
+        let iterationsNumber = this._lookupIterationsMax;
         //opsNumber += 1;
         let lookupStep = 0;
         //opsNumber += 1;
@@ -357,9 +364,13 @@ class CharcodeConverter {
     }
 }
 exports.CharcodeConverter = CharcodeConverter;
+// static constants
 CharcodeConverter.LOOKUP_ITERATIONS_MAX = 126;
 CharcodeConverter.CHAR_NOT_FOUND = (-1);
 CharcodeConverter.LETTER_PROP_POINTER = 0;
 CharcodeConverter.CHARCODE_PROP_POINTER = 1;
 CharcodeConverter.CHARSET_LATIN = "Latin";
+// Singleton feature
+// the static instance of this class.
+CharcodeConverter._instance = null;
 //# sourceMappingURL=CharcodeConverter.js.map

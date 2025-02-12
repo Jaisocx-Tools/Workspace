@@ -196,7 +196,7 @@
     {
       "path": "packages/CharcodeConverter",
       "name": "charcode-converter",
-      "build": true,
+      "build": false,
       "build-simple-enable": true,
       "dependencies": [],
       "build-files": [

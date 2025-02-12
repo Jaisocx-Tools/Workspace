@@ -92,713 +92,183 @@ export class ImprovedTemplateRenderer extends EventEmitter {
 
   }
 
-  prepareTaggedGroupsInfos() {
 
-    // if the prop isWithNestedMultiple  = 1
-    // lt's just filter they out.
-    // we need start and end array index,
-    // tag name,
-    // amount is calculatable
-    
-    // for fast iteration array.
-    // however we can note the arrays or infos with object's keys
+  // r.1 render() method first task 
+  // to gather infos and statistics on nested templates, 
+  // to plan the render tasks flow 
+  // and to know the target arrays sizes.
+  prepareTaggedGroupsInfos(): any[] {
 
-    //@purpose documentation,
-    //    since this datatype elems array
-    //    is the resulting value of the subcall here in the flat for loop iterating each dataConf array elem.
-    let helpingObjectNestedTagged = {
-      holderTemplateName: "",
-      tag: "",
-      holderIndex: 0,
-      nestedLevel: 0,
-      nestedMultipleTaggedIndexes: {
-        startIndex: 0,
-        endIndex: 0,
-      },
-      nestedMultipleTaggedNames: ["templateLine1_Name, templateLine2_Name"],
-      calculatedNumberOfNestedTemplatesIterations: 0,
-      calculatedNumberOfNestedTemplates: 0
-    };
+    // int incs on first match attr "tag" with the LATEST_NESTED_TAGNAME attr for level1 since the step before.
+    // decs on first time, there was no the tag in the attr "tag" or did not match the  LATEST_NESTED_TAGNAME
+    let methodStatus_CurrentNestedLevel: number = 0; 
+    let methodStatus_CurrentInfosIndex: number = 0; 
 
+    // attr.nestedTag is set at once, when the node attr "nestedTag" exists. 
+    let methodStatus_CurrentTagName: string = "";
+    let methodStatus_CurrentTagNameOnceMatched: number = 0;
 
-    // every next array elem is in the same order,
-    // these templates are in the dataConf.
-    // the data conf index pointers of this repeatedly to render html group, and other descriptive props
-    // are in these array elems props.
-    let taggedInfosArray = [];
+    let methodStatus_CurrentTagNamesArray: string[] = [];
 
 
-    firstLoopNextIterationStart: for ( let i=0; i < this.dataConf.length; i++ ) {
+    //@target 
+    // OR OBJ just cumulating. no deletions or replaces. 
+    let methodStatus_TargetResult_InfosArray: any[] = [];
 
-      let templateName = this.dataConf[i].templateName;
-      let templateConfElem = this.templatesConf[templateName];
-      
-      if ( templateConfElem.isWithNestedMultiple === 0 ) {
-        // skip to the next dataConf elem
-        continue firstLoopNextIterationStart;
-      }
 
-      // here isWith nested multiple.
-      // and we start the nested loop at the next index same dataConf or best a subcall
+    // dataConf loop, the order the templates will be appended to result html.
+    let loop_1_dataConf_Step: number = 0;
+    const loop_1_dataConf_length: number = this.dataConf.length;
 
-      let nextIterationIndex = i + 1;
-      let nestedTag = templateConfElem.nestedTag;
+    // same key in objects: templatesObject and templateConf
+    let templateName: string = "";
 
-      let infos: never[]|null = this.prepareTaggedNestedSubcallGetInfosOneGroup (
-        i,
-        nestedTag
-      );
+    // html with placeholder(s)
+    let template: string = "";
 
-      if ( infos === null ) {
-        // skip to the next dataConf elem
-        continue firstLoopNextIterationStart;
-      }
+    // conf
+    let templateConfItem: TemplatesConf;
 
-      taggedInfosArray.push ( ...infos );
+    // data for template, to replace placeholder by value 
+    let dataConfItem: any = {};
 
-      //@loopCounter var i:  set i = infos .last data conf array elem pointer offset.
-      // then next iteration step.
-      // i = infos[0].nestedMultipleTaggedIndexes.endIndex;
-      //@ts-ignore
-      i = infos[0].nestedMultipleTaggedIndexes.endIndex;
-      
+    // maybe to create the first INFOS Item for the entire html doc.
 
-
-      // the flat for loop finishes.
-    }
-
-    return taggedInfosArray;
-  }
-
-  matchedTagName ( 
-    tagToMatch: string, 
-    templateConfTags: any 
-  ): number {
-    let taggedMatched: number = 1;
-
-    if ( !templateConfTags || templateConfTags.length === 0 ) {
-      taggedMatched = 0;
-
-    } else if ( ( typeof ( templateConfTags ) ) === "string" ) {
-      if ( templateConfTags !== tagToMatch ) {
-        taggedMatched = 0;
-
-      }
-
-    } else {
-      let foundMatchedTag: string|undefined|null = templateConfTags
-        .find ( (tag: string) => ( tag === tagToMatch ) );
-      
-      if ( !foundMatchedTag ) {
-        taggedMatched = 0;
-
-      }
-    }
-
-    return taggedMatched;
-  }
-
-
-  prepareTaggedNestedSubcallGetInfosOneGroup (
-    holderTemplateIndex: number,
-    tagName: string
-  ): any[] { // or empty, length = 0
-
-    let loopIndexToStart: number = holderTemplateIndex + 1;
-
-    let helpingObjectNestedTagged: any = {
-      holderTemplateName: "",
-      tag: tagName,
-      holderIndex: holderTemplateIndex,
-      nestedLevel: 0, //@I have to write here 
-      nestedMultipleTaggedIndexes: {
-        startIndex: 0,
-        endIndex: 0,
-      },
-      nestedMultipleTaggedNames: ["templateLine1_Name, templateLine2_Name"],
-      calculatedNumberOfNestedTemplatesIterations: 0,
-      calculatedNumberOfNestedTemplates: 0
-    };
-
-    let taggedMatched: number = 0;
-    let taggedMatchedNumber: number = 0;
-    let taggedMatchedLastIndex: number = 0;
-
-    let innerTaggedGroupMatchedNumber: number = 0;
-    let innerTemplateNestedTagname: string = tagName;
-    let innerTemplatesMaxLevel = 0; // this points, the inner level is the first.
-    let innerLevelsInfoArray: any[] = []; // the first inner level tag name applied.
-
-    loopLevelOne: for ( let i = loopIndexToStart; i < this.dataConf.length; i++ ) {
-
-      let templateName = this.dataConf[i].templateName;
-      let templateConfElem = this.templatesConf[templateName];
-      let tagOrArrayOfTags: string|any[] = templateConfElem.tag;
-
-      // check here all 3 times if statements before break; 
-      // and same call set last index in the tagged group.
-
-      
-      if ( this.matchedTagName( tagName, tagOrArrayOfTags ) === 0 ) {
-        taggedMatched = 0;
-
-        break;
-      }
-
-
-      // not empty result. some templatConf rules matched the tag.
-      taggedMatchedNumber++;
-      taggedMatchedLastIndex = i;
-
-
-      // on the first match then the new infos object.
-      if ( taggedMatchedNumber === 1 ) {
-        helpingObjectNestedTagged = {
-          holderTemplateName: "",
-          tag: innerTemplateNestedTagname,
-          holderIndex: holderTemplateIndex,
-          nestedLevel: 0, //@I have to write here 
-          nestedMultipleTaggedIndexes: {
-            startIndex: i,
-            endIndex: 0,
-          },
-          calculatedNumberOfNestedTemplatesIterations: 0,
-          calculatedNumberOfNestedTemplates: 0
-        };
-
-        //  first elem first level infos obj in this method
-        innerLevelsInfoArray.push ( helpingObjectNestedTagged );
-
-      }
-
-
-      // here trying to prepare the multilevel nested templates.
-      // when multilevel data applying to same level html,
-      // e.g. when all fields of all records in the same level html,
-      // this is the data handling, and can be done in the callback.
-      // however in this TmplateRenderer html is multilevel,
-      // and one holder html tmplate has one level nested html group.
-
-
-      // 1. the next inner level holder html template starts.
-      // 2. each next level increments the levelNumber,
-      // 3. and when the current tagnam max level number not matched,
-      // 4. the levelnumber subtracts 1.
-      // 5. there can be the level number var declared outside the loop,
-      // 6. and the array to save the tag at the array index equal level.
-      if ( templateConfElem.isWithNestedMultiple === 1 ) {
-
-        // 2. each next level increments the levelNumber,
-        innerTemplatesMaxLevel++;
-
-        innerTemplateNestedTagname = templateConfElem.nestedTag;
-
-        continue loopLevelOne;
-
-
-        if ( this.matchedTagName( innerTemplateNestedTagname, tagOrArrayOfTags ) === 0 ) {
-          taggedMatched = 0;
-  
-          break;
-        }
-
-
-        // 6. and the array to save the tag at the array index equal level.
-        innerLevelsInfoArray.push(  );
-
-        // where to register the helpingObjectNestedTagged for every nested tagged group.
-        // how do I need this data then.
-        
-
-      }
-
-      if (this.matchedTagName ( innerTemplateNestedTagname, tagOrArrayOfTags ) === 1 ) {
-        innerTaggedGroupMatchedNumber++;
-  
-      }
-  
-
-
-
-
-
-      // one level for loop finish.
-    }
-
-
-    // filling cumulated data before exiting this method.
-    if (
-      // normally finished the loop with the tagged group data,
-      // since the number of elems with tagname matched is over zero.
-      ( taggedMatchedNumber > 0 ) 
-      // ( taggedMatched === 0 ) when reached templates last elem, can be tagged too. then this condition is not relevant.
-    ) {
-      innerLevelsInfoArray[0].nestedMultipleTaggedIndexes.endIndex = taggedMatchedLastIndex;
-
-    } else if (
-      // here deletes the infos object,
-      // since no elem has matched the tagName.
-      ( taggedMatchedNumber === 0 ) 
-    ) {
-      innerLevelsInfoArray = [];
-
-    }
-
-
-    return innerLevelsInfoArray;
-  }
-
-
-  calculateResultArrayRecursiveNumber(): number {
-
-    let resultArrayRecursiveElemsNumber: number = 0;
-
-    let templatesConfKeys: any[] = Object.keys( this.templatesConf );
-
-    let objectToIterateOver: any[] = this.dataConf;
-
-    let templatesAmount: number = objectToIterateOver.length;
-    let templatesIndex: number = 0;
-    let templateName: any = "";
-    let tagName: any = "";
-    let templateRule: TemplatesConf|null = null;
-    //@improve write type hinting class
-    let dataRule: any = {};
-
-    let templateRuleMultiple: number = 0;
-    let templateRuleMultipleNested: number = 0;
-
-    let helpingObjectNestedTagged = {
-      holderTemplateName: "",
-      tag: "",
-      holderIndex: 0,
-      nestedMultipleTaggedIndexes: {
-        startIndex: 0,
-        endIndex: 0,
-      },
-      nestedMultipleTaggedNames: ["templateLine1_Name, templateLine2_Name"],
-    };
-
-    // iterating over array dataConf,
-    // the dataConf are the rules how to apply data for a template elem.
-    // the order in the dataConf is the order how the rendered html texts have to be added one after other.
-    for (
-      templatesIndex = 0;
-      templatesIndex < templatesAmount;
-      templatesIndex++
+    for_1: for (
+      loop_1_dataConf_Step = 0;
+      loop_1_dataConf_Step < loop_1_dataConf_length;
+      loop_1_dataConf_Step++
     ) {
 
-      dataRule = objectToIterateOver[templatesIndex];
-      templateName = dataRule.templateName;
+      dataConfItem = this.dataConf[ loop_1_dataConf_Step ];
+      templateName = dataConfItem[ "templateName" ];
+      templateConfItem = this.templatesConf[ templateName ];
 
-      templateRule = this.templatesConf[templateName];
+      // procesing nested templates,
+      if ( methodStatus_CurrentNestedLevel !== 0 ) {
+        const currentTemplate_Tags: string[]|string|undefined|null = templateConfItem[ "tag" ];
 
-      templateRuleMultiple = templateRule.multiple;
-      templateRuleMultipleNested = templateRule.isWithNestedMultiple;
+        // if no tag, coul be the level 0, and finishes taggedGroup
+        if ( !currentTemplate_Tags || currentTemplate_Tags.length === 0 ) {
+          // finish tagged group!
+          // subcall out of the tagged group one level up.
 
-      // logics:
-      // 
-      // . multiple no placeholder, data length set
-      // . multiple with placeholder data set
-      // multiple have to be groupped by tag.
-      // the tag to group by applied in the templatesConf the holder html node template.
-      // the prepare method  
-      // to build arrays with tagged rules.
-      // now I write this arrays builds easy til I know how to build a reusable method.
-      if (
-        ( templateRuleMultipleNested === 1 ) 
-      )  {
-        tagName = templateRule.nestedTag;
+          methodStatus_CurrentNestedLevel = 0;
+          methodStatus_CurrentInfosIndex = 0;
+          methodStatus_CurrentTagName = "";
+          methodStatus_CurrentTagNameOnceMatched = 0;
+          methodStatus_CurrentTagNamesArray = [];
 
-        if ( ( tagName.length > 0 ) ) {
+          // the first level INFOS item updates the end numeric key in the templates object.
+          // methodStatus_TargetResult_InfosArray[0].end = loop_1_dataConf_Step;
 
-          //array of filtered templatesConf ( the most rules except data rules )
-          let arrayWithNestedaggedTemplates = [];
 
-          //@rewrite!!
-          // iterating over same array starting from the next.
-          // I guess, instead, I set flag and local variables here 
-          // and exit this iteration step with "continue" statement.
-          // the iteration oes the number indexed array
-          // this is the objectToIterateOver this.dataConf
-          //  2 props: key to other 2 conf objects templateName, and prop data
-          let j = templatesIndex + 1;
+        } else {
+          // templatesConf item.tag was not null or empty.
 
-          helpingObjectNestedTagged = {
-            holderTemplateName: templateName,
-            tag: tagName,
-            holderIndex: templatesIndex,
-            nestedMultipleTaggedIndexes: {
-              startIndex: j,
-              endIndex: 0,
-            },
-            templatesNamesNestedMultipleTagged: ["templateLine1_Name, templateLine2_Name"],
-          };
+          // matching the methodStatus_CurrentTagName
+          let tagMatches: number = 0;
 
-          // a tag can be an array.
-          for ( let j0=j; j0 <  templatesAmount; j0++ ) {
+          // dataConfItem.tag can be a string or string[] array of tags.
+          if ( typeof( currentTemplate_Tags ) === "string" ) {
+            tagMatches = ( currentTemplate_Tags === methodStatus_CurrentTagName ) ? 1 : 0;
 
-            let taggedNestedDataRule = objectToIterateOver[j0];
+          } else if ( Array.isArray( currentTemplate_Tags ) === true ) {
+            tagMatches = ( currentTemplate_Tags.find( (tag: string) => tag === methodStatus_CurrentTagName ) ) ? 1 : 0;
 
-            let tagOrTagsArray: any = taggedNestedDataRule.tag;
-            if ( !tagOrTagsArray || tagOrTagsArray.length === 0 ) {
+          }
+          
 
-              break ; // have to iterate til the end of the html doc? No, til the first tmplatesConf rule doesn't have this tag name 
+          if ( tagMatches ) {
+
+            
+            if ( methodStatus_CurrentTagNameOnceMatched === 1 ) {
+              
+
+
+              
+            } else {
+              // tag matches, but once matched is 0,
+              // means, the tag is matched by the first template in this tagedGroup the first time,
+              // 
+
+              // if the first time, INFOS set start
+              const info: any = {
+                holderTemplateName: "",
+                tag: methodStatus_CurrentTagName,
+                holderIndex: 0,
+                nestedLevel: methodStatus_CurrentNestedLevel,
+                nestedMultipleTaggedIndexes: {
+                  startIndex: loop_1_dataConf_Step,
+                  endIndex: loop_1_dataConf_Step,
+                },
+                nestedMultipleTaggedNames: [],
+                calculatedNumberOfNestedTemplatesIterations: 0,
+                calculatedNumberOfNestedTemplates: 0
+              };
+
+
+
+              // next nested level.
+              // when had INFO nested level, index = 5.
+              // out of the nested level, methodStatus_CurrentInfosIndex--; length of the ONFOS remains same.
+              // when a level inside the new nested group,
+              // not methodStatus_CurrentInfosIndex++;
+              // since the length plus one, and the prev pos was already minus one. now plus 2 or what? 
+              // just the last array elem index. length - 1;
+              // .push returns the new .length
+              methodStatus_CurrentInfosIndex = methodStatus_TargetResult_InfosArray.push( info ) - 1;
+
+              // set status 1 since this step created Infos obja and added to array.
+              methodStatus_CurrentTagNameOnceMatched = 1;
             }
 
-
-          }
-
-          arrayWithNestedaggedTemplates = 
-          this.templatesConf
-              .slice()
-              .filter(
-                //@improve dataConf rule .ts class typehinting
-                ( rule: TemplatesConf ) => {
-
-                }
-              );
-
-        }
-      }
-
-      if ( templateRuleMultiple === 1 ) {
-        // here the preprocessing is good,
-        // since here we have to get the corresponding dataConf
-      }
+            // every next time, INFOS update end. 
+            // //@rewrite later, when tested on unhandled exceptions, so that the .end never unset when a for loop broke.
 
 
-
-
-
-    }
-
-    return resultArrayRecursiveElemsNumber;
-
-  }
-
-
-
-
-//@outdated
-//@code_snippet
-    renderEarlierVer(): any {
-      let renderedHtml = this.replaceTemplateRendererWithDataForRendering (
-        this.template,
-        this.data
-      );
-
-      if (this.debug) {
-        console.log(
-          "renderedHtml before afterRender event emitted",
-          renderedHtml
-        );
-      }
-
-      const eventResult: EventEmitResult[] = this.emitEvent (
-        this.EVENT_NAME__AFTER_RENDER,
-        {
-          html: renderedHtml,
-          data: this.data,
-        }
-      );
-
-      if (eventResult.length > 0) {
-        const last: number = eventResult.length - 1;
-
-        let payloadReturned: any = null;
-        for ( let eventResultsStep = last; eventResultsStep > (-1); eventResultsStep-- ) {
-          try {
-            // @ts-ignore
-            payloadReturned = eventResult[eventResultsStep].result.payloadReturned; 
-          } catch (e) {}
-        
-          if ( !payloadReturned ) {
-            continue;
-          }
-
-          renderedHtml = payloadReturned.html;
-        }
-
-        if (this.debug) {
-          console.log(
-            "renderedHtml before afterRender event emitted",
-            eventResult,
-            renderedHtml
-          );
-        }
-      } else if (this.debug) {
-        console.log("afterRender event did not change html");
-      }
-    
-      return renderedHtml;
-    }
-
-
-
-    replaceTemplateRendererWithDataForRendering(
-      template: any,
-      dataForRendering: object
-    ): any {
-      let renderedHtml = template;
-
-      for (const placeholderName in dataForRendering) {
-        const stringToReplace = `{{ ${placeholderName} }}`;
-
-        // @ts-ignore
-        let valueToSet = dataForRendering[placeholderName];
-        if (!valueToSet) {
-          valueToSet = "";
-        }
-
-        renderedHtml = renderedHtml.replace(
-          stringToReplace,
-          valueToSet
-        );
-      }
-
-      return renderedHtml;
-    }
-
-    nestedTemplatesRender ( 
-      nestedPropName: string, 
-      key, 
-      value, 
-      recordset 
-    ): any { 
-            
-      if ( !this.nestedTemplatesDataPointersArrays[nestedPropName] ) {
-        this.nestedTemplatesDataPointersArrays[nestedPropName] = this.calculateNestedPropsTemplatesDataPointersArray( nestedPropName );
-      }
-
-      let renderedTemplates: any[] = [];
-
-      const amountNestedPropsMatched: number = this.nestedTemplatesDataPointersArrays[nestedPropName].length;
-
-      let templateDataArrayIndex: number = 0;
-
-      let nestedTemplatesIndex: number = 0;
-      let nestedTemplatesSize: number = amountNestedPropsMatched;
-      let nestedTemplateData: any = {};
-      let nestedTemplateName: string = "";
-      let nestedTemplate: string = "";
-      let renderedTemplate: any = null;
-      let nestedTemplateConf: any = {};
-      let nestedPropName2: string|undefined = "";
-
-      for ( 
-        nestedTemplatesIndex = 0; 
-        nestedTemplatesIndex < nestedTemplatesSize; 
-        nestedTemplatesIndex++ 
-      ) {
-      
-        templateDataArrayIndex = this.nestedTemplatesDataPointersArrays[nestedPropName][nestedTemplatesIndex];
-        nestedTemplateData = this.templatesDataArray[templateDataArrayIndex];
-        nestedTemplateName = nestedTemplateData.templatesObjectPropertyName;
-        nestedTemplate = this.templatesObject[nestedTemplateName];
-        nestedTemplateConf = this.templatesConf[nestedTemplateName];
-        nestedPropName2 = nestedTemplateConf["nestedProp"];
-        if ( nestedPropName2 ) {
-
-          for ( let i=0;  ) {
-
-          }
-
-          renderedTemplate = this
-            .nestedTemplatesRender (
-              nestedPropName2, 
-              nestedTemplateConf, 
-              value, 
-              recordset 
-            );
 
           } else {
-          renderedTemplate = this
-          .setTemplate( nestedTemplate )
-          .setData( value )
-          .render();
+            // this template is went out of the taggedGroup 
+            methodStatus_CurrentNestedLevel--;
+            methodStatus_CurrentInfosIndex--;
+            methodStatus_CurrentTagNamesArray.pop();
+            methodStatus_CurrentTagName = methodStatus_CurrentTagNamesArray[ ( methodStatus_CurrentTagNamesArray.length - 1 ) ];
 
-        }
-      
-        renderedTemplates[nestedTemplatesIndex] = renderedTemplate;
-      }
-
-      return renderedTemplates;
-    }
-
-
-    calculateNestedPropsTemplatesDataPointersArray( nestedPropName: string ): Uint16Array {
-
-      const nestedPropsTemplateObjectKeys = Object.keys( this.templatesObject )
-        .filter( 
-          ( templateName ) => {
-            return this.templatesConf[templateName].prop === nestedPropName;
           }
-        );
-      const propsKeysLength = nestedPropsTemplateObjectKeys.length;
-    
-      let renderedTemplates = [];
 
-      let templateDataArrayItem = {};
-      let templateDataArrayIndex = 0;
-      let templateDataArraySize = templateData_MainRenderMethod.length;
-      let templateDataMatchingPropsPointers = new Uint16Array( propsKeysLength );
-      let amountNestedPropsMatched = 0;
-      let propName = "";
-    
-      for ( templateDataArrayIndex = 0; templateDataArrayIndex < templateDataArraySize; templateDataArrayIndex++ ) {
-    
-        if ( amountNestedPropsMatched > propsKeysLength ) {
-          break;
-        }
-
-        templateDataArrayItem = templateData_MainRenderMethod[templateDataArrayIndex];
-        propName = templateDataArrayItem.templatesObjectPropertyName;
-    
-        const entryMatched = nestedPropsTemplateObjectKeys
-          .find( ( nestedPropKey ) => { return nestedPropKey === propName; } );
-
-        if ( entryMatched ) {
-          templateDataMatchingPropsPointers[amountNestedPropsMatched] = templateDataArrayIndex;
-          amountNestedPropsMatched++;
         }
 
       }
 
-      return templateDataMatchingPropsPointers;
-    }
 
 
+      // logics: when attr nestedTag,
+      // set to vars outside the loop, and continue.
+      // here we don't need setting INFOS props, 
+      // since INFOS props are set just when processing nested templates.
+      const nestedTag: string|undefined|null = templateConfItem.nestedTag;
 
-    function recordRenderSubcall ( 
-      propName, 
-      propValue, 
-      templatesObject, 
-      templateData
-    ) {
+      if ( nestedTag ) {
+        // set nested tag, 
+        methodStatus_CurrentTagName = nestedTag;
+        methodStatus_CurrentTagNamesArray.push( nestedTag );
+        methodStatus_CurrentTagNameOnceMatched = 0;
 
-      const amountOfIterations = templateData_RecordRender_Subcall.length;
-      const renderedTemplates = new Array ( amountOfIterations );
-      
-      for ( let i = 0; i < amountOfIterations; i++ ) {
-        const templatesObjectKey = templateData["templatesObjectPropertyName"];
-        const templateHtml = templatesObject[templatesObjectKey];
 
-        renderedTemplates[i] = templateRenderer
-              .setTemplate ( templatesObject[ data.templatesObjectPropertyName ] )
-              .setData ( rpropValue )
-              .render();
+        // inc neted level
+        methodStatus_CurrentNestedLevel++;
 
+        // continue
+        continue for_1;
       }
 
-
-      const templateData_RecordRender_Subcall = [
-        { templateName: "fieldOpen", recordField: recordField },
-        { templateName: "fieldRendered", recordField: recordField },
-        { templateName: "fieldClose", recordField: recordField },
-      ];
-
-
-      return renderedTemplates;
+      continue for_1;
+      // forLevel_1 loop code block finish.
     }
 
-
-    function charBufferWorkaround_Example () {
-
-      const charBuffer = new Array(20); 
-
-      // Assign characters at specific positions
-      charBuffer[0] = "H";
-      charBuffer[1] = "e";
-      charBuffer[2] = "l";
-      charBuffer[3] = "l";
-      charBuffer[4] = "o";
-
-      // Convert the array back to a string
-      const finalString = charBuffer.join("");
-
-      console.log(finalString); // Output: "Hello"
-
-      const charCodes = new Uint16Array(20); // Fixed size array (stores UTF-16 character codes)
-
-      // Store character codes
-      charCodes[0] = "H".charCodeAt(0);
-      charCodes[1] = "e".charCodeAt(0);
-      charCodes[2] = "l".charCodeAt(0);
-      charCodes[3] = "l".charCodeAt(0);
-      charCodes[4] = "o".charCodeAt(0);
-
-      // Convert to string
-      const finalString = String.fromCharCode(...charCodes);
-
-      console.log(finalString.trim()); // Output: "Hello"
-
-    }
-
-    const COMMON_HIGHEST_CHAR_VALUE = 2047;
-    
-    const charsTable = new Uint16Array( COMMON_HIGHEST_CHAR_VALUE );
-
-    const charsCodeRanges = {
-        "LatinBasic": [32, 127],
-        "Latin1": [160, 255],
-        "LatinExtendedA": [256, 383],
-        "LatinExtendedB": [384, 591],
-        "Cyrillic": [1024, 1279],
-        "CyrillicExtraRare":	[1280, 1327],
-        "Other": [1328, 2047]
-    };
-
-    function getTheCharsTable() {
-
-      // filling at once the basic always used textual chars.
-      let charsCodeRange = charsCodeRanges["LatinBasic"];
-      const charCodeHigh = charsCodeRange[1];
-      const charCodeLow = charsCodeRange[0];
-      const loopCounterLowerThan = charCodeHigh + 1;
-      const loopCount = charCodeHigh - charCodeLow;
-      let charCode = charCodeLow;
-
-      for ( charCode = charCodeLow; charCode < loopCounterLowerThan; charCode++ ) {
-        charsTable[charCode] = String.fromCharCode( charCode );
-      }
-
-    }
-
-    function whenNoCharThenFillCharsCodeRange( inputArgCharCode ) {
-
-      let charsCodeRangesKeys = Object.keys( charsCodeRanges );
-      let charsCodeRangesKey = "";
-      let charsCodeRange = [];
-      let charCodeHigh = 0;
-      let charCodeLow = 0;
-      let charCode = 0;
-
-      for ( charsCodeRangesKey of charsCodeRangesKeys ) {
-
-        charsCodeRange = charsCodeRangesKeys[charsCodeRangesKey];
-        charCodeHighToCompare = charsCodeRange[1] + 1;
-        charCodeLowToCompare = charsCodeRange[0] - 1;
-
-        if (
-          ( charCodeLowToCompare < inputArgCharCode ) && 
-          ( inputArgCharCode < charCodeHigh )
-        ) {
-          break;
-        }
-      }
-
-      if ( charsCodeRangesKey.length === 0 ) {
-        return;
-      }
-
-      let charCodeHighLoopStop = charCodeHighToCompare;
-      for ( charCode = charCodeLow; charCode < charCodeHighLoopStop; charCode++ ) {
-        charsTable[charCode] = String.fromCharCode( charCode );
-      }
-
-      return;
-    }
+    return methodStatus_TargetResult_InfosArray;
+  }
 
 
 }

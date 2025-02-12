@@ -1,0 +1,1 @@
+{"version":3,"file":"ImprovedTemplateRendererConstants.js","sourceRoot":"","sources":["../../src/ImprovedTemplateRendererConstants.ts"],"names":[],"mappings":"AACA,OAAO,EAAE,aAAa,EAAE,MAAM,oBAAoB,CAAC;AAGnD,MAAM,OAAO,iCAAiC;IAC5C,QAAQ,GAAG;QACT,aAAa,GAAkB,IAAI,aAAa,EAAE,CAAC;KACpD,CAAC;CACH"}

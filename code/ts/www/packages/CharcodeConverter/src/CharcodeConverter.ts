@@ -4,54 +4,62 @@ import { Charcodes } from "./Charcodes.js";
 // a Singleton with tables for faster charcodes lookup.
 export class CharcodeConverter {
 
-  protected _charToNum_AlignedSymbolsCodes: number[];
-  protected _charToNum_AlignedSymbols: string[];
-
-  protected _numToChar: string[];
-
-  protected _charcodes: any;
-  protected _loadedRanges: Set<string>;
-
+  // static constants
   public static LOOKUP_ITERATIONS_MAX: number = 126;
   public static CHAR_NOT_FOUND: number = (-1);
   public static LETTER_PROP_POINTER: number = 0;
   public static CHARCODE_PROP_POINTER: number = 1;
   public static CHARSET_LATIN: string = "Latin";
 
-  protected static _instance: CharcodeConverter;
 
-  protected _debug: boolean;
+  // lookup tables
+  protected _charToNum_AlignedSymbolsCodes: number[];
+  protected _charToNum_AlignedSymbols: string[];
+  protected _numToChar: string[];
+
+  // some data about charsets standards
+  protected _charcodes: any;
+  protected _loadedRanges: Set<string>;
+
+  // some technique settings
   protected _lookupIterationsMax: number;
+  protected _debug: boolean;
 
+
+  // Singleton feature
+  // the static instance of this class.
+  protected static _instance: CharcodeConverter | null = null;
+
+  
 
   constructor() {
 
-    // props start values.
-    this._debug = true;
+    this._charToNum_AlignedSymbolsCodes = [];
+    this._charToNum_AlignedSymbols = [];
+    this._numToChar = [];
 
     this._charcodes = Charcodes.CHARCODES;
     this._loadedRanges = new Set<string>();
 
-    this._charToNum_AlignedSymbolsCodes = [];
-    this._charToNum_AlignedSymbols = [];
-  
-    this._numToChar = [];
-
     this._lookupIterationsMax = CharcodeConverter.LOOKUP_ITERATIONS_MAX;
+    this._debug = true;
 
 
     // loading charsets,
     // first detecting charset by html doc loaded tags and browser's js impl props.
     this._init();
+
   }
 
 
   public static getInstance(): CharcodeConverter {
-    if ( !CharcodeConverter._instance ) {
+
+    if (!CharcodeConverter._instance) {
       CharcodeConverter._instance = new CharcodeConverter();
     }
 
     return CharcodeConverter._instance;
+
   }
 
 
