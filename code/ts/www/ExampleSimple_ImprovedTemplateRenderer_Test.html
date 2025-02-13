@@ -11,7 +11,7 @@
     <script src="packages/CharcodeConverter/build/Simple/CharcodeConverter.js"></script>
 
 
-    <script src="packages/ImprovedTemplateRenderer/build/Simple/NestedMultipleCallbackValue.js"></script>
+    <script src="packages/ImprovedTemplateRenderer/build/Simple/NestedrepeatCallbackValue.js"></script>
     <script src="packages/ImprovedTemplateRenderer/build/Simple/TemplatesConfNested.js"></script>
     <script src="packages/ImprovedTemplateRenderer/build/Simple/TemplatesConf.js"></script>
     <script src="packages/ImprovedTemplateRenderer/build/Simple/ImprovedTemplateRendererConstants.js"></script>
@@ -65,9 +65,10 @@
         // however the transparency level of the template is high,
         // and the texts replace() and concatenation and bytes bufs reallocation cost is minimized, too.
         // the mapping props conf js object values constants I shall declare numeric, since very cost efficient to compare in if() blocks.
-        // the TemplateRenderer methods to tell a single rendered template to add to resulating array of rendered templates html, or multiple,
+        // the TemplateRenderer methods to tell a single rendered template to add to resulating array of rendered templates html, or repeat,
         // seems to be very very easy. Or the method to override in the extending class can be easy to write, too.
 
+        //@conf-type html structure. tool-art based. Here for the Table.
         let templatesObject = {
           "tableOpen":                `<div class="table {{ tableCssClasses }}">`,
           "colsLabelsHolderOpen":       `<div class="table-columns-labels-holder">`,
@@ -87,79 +88,66 @@
 
 
 
+        //@conf-type helping rendering props. tool-art based.
         let templatesConf = {
 
           "tableOpen":                {
-                                        "isWithPlaceholders": 1,
-                                        "multiple": 0,
-                                        "isWithNestedMultiple": 0,
-                                        "placeholder": "tableCssClasses",
-                                        "dataType": "text"
-          },
+                                        "tag": "main",
+                                        "placeholder": "tableCssClasses"
+                                      },
           "colsLabelsHolderOpen":       {
-                                          "isWithPlaceholders": 0,
-                                          "multiple": 0,
-                                          "isWithNestedMultiple": 1,
-                                          "nestedTag": "columnLabels",
-                                          "dataType": "any[]"
-          },
+                                          "tag": "main",
+                                          "subtreeRepeatTag": "columnLabels"
+                                        },
           "colLabelOpen":                 {
                                             "tag": "columnLabels",
-                                            "multiple": 1,
-                                            "isWithPlaceholders": 0
-          },
+                                            "startRepeat": true,
+                                            "repeatTagDataApplies": true,
+                                            "useRepeatCallback": false 
+                                          },
           "colLabelRendered":               {
                                               "tag": "columnLabels",
-                                              "multiple": 1,
-                                              "isWithPlaceholders": 1,
-                                              "placeholder": "columnLabelInfo.label",
-                                              "dataType": "any"
-          },
+                                              "placeholder": "columnLabelInfo"
+                                            },
           "colLabelClose":                {
-                                            "tag": "columnLabels",
-                                            "multiple": 1,
-                                            "isWithPlaceholders": 0
-          },
-          "colsLabelsHolderClose":      { "isWithPlaceholders": 0 },
+                                            "tag": "columnLabels"
+                                          },
+          "colsLabelsHolderClose":      { 
+                                          "tag": "main" 
+                                        },
           "recordsHolderOpen":          {
-                                          "isWithPlaceholders": 0,
-                                          "multiple": 0,
-                                          "isWithNestedMultiple": 1,
-                                          "nestedTag": "record",
-                                          "dataType": "any[]"
-          },
+                                          "tag": "main",
+                                          "subtreeRepeatTag": "record"
+                                        },
           "recordOpen":                   {
                                             "tag": "record",
-                                            "isWithPlaceholders": 0,
-                                            "multiple": 1,
-                                            "isWithNestedMultiple": 1,
-                                            "nestedTag": "fieldValue",
-                                            "dataType": "any[]"
-          },
+                                            "startRepeat": true,
+                                            "repeatTagDataApplies": true,
+                                            "useRepeatCallback": false,
+                                            "subtreeRepeatTag": "fieldValue"
+                                          },
           "fieldOpen":                      {
-                                              "tag": [ "record", "fieldValue" ],
-                                              "multiple": 1,
-                                              "isWithPlaceholders": 0
-          },
+                                              "tag": "fieldValue",
+                                              "startRepeat": true,
+                                              "repeatTagDataApplies": true,
+                                              "useRepeatCallback": false
+                                            },
           "fieldRendered":                    {
-                                                "tag": [ "record", "fieldValue" ],
-                                                "multiple": 1,
-                                                "isWithPlaceholders": 1,
-                                                "placeholder": "value",
-                                                "dataType": "any"
-          },
+                                                "tag": "fieldValue",
+                                                "placeholder": "value"
+                                              },
           "fieldClose":                     {
-                                              "tag": [ "record", "fieldValue" ],
-                                              "multiple": 1,
-                                              "isWithPlaceholders": 0
-          },
+                                              "tag": "fieldValue"
+                                            },
           "recordClose":                  {
-                                            "tag": "record",
-                                            "multiple": 1,
-                                            "isWithPlaceholders": 0
-          },
-          "recordsHolderClose":         { "isWithPlaceholders": 0 },
-          "tableClose":               { "isWithPlaceholders": 0 }
+                                            "tag": "record"
+                                          },
+          "recordsHolderClose":         { 
+                                          "tag": "main"
+                                        },
+          "tableClose":               { 
+                                        "tag": "main"
+                                      }
         };
 
 
@@ -188,21 +176,24 @@
           // and this is in the same order, like in the templatesObject 
           // and in the templates rendering rules config templatesConf.
 
+          //@conf-type data assignment. 
+          // tool-art based props names set in this config. 
+          // tool-art and tool-exemplar-context, since every Table on every other site has data from other tables.
           const dataConf = [
-            { templateName: "tableOpen", data: cssClasses },
-            { templateName: "colsLabelsHolderOpen", data: tableColumnsConf },
-            { templateName: "colLabelOpen" },
-            { "temp": true, templateName: "colLabelRendered", data: tableColumnsConf },
-            { templateName: "colLabelClose" },
-            { templateName: "colsLabelsHolderClose" },
-            { templateName: "recordsHolderOpen", data: tableRecordsData },
-            { templateName: "recordOpen" },
-            { templateName: "fieldOpen" },
-            { "temp": true, templateName: "fieldRendered", data: tableRecordsData },
-            { templateName: "fieldClose" },
-            { templateName: "recordClose" },
-            { templateName: "recordsHolderClose" },
-            { templateName: "tableClose" }
+            { template: "tableOpen", "placeholder-data": cssClasses },
+            { template: "colsLabelsHolderOpen" },
+            { template: "colLabelOpen", "repeat-tag-data": tableColumnsConf, "comment": "The data for table columns labels texts and other conf data. Text applied to the placeholder in the template 'colLabelRendered'" },
+            { template: "colLabelRendered" },
+            { template: "colLabelClose" },
+            { template: "colsLabelsHolderClose" },
+            { template: "recordsHolderOpen" },
+            { template: "recordOpen", "repeat-tag-data": tableRecordsData, "comment": "The data for table records. And the repeat-tag-data for each record fieldset, and without callback, just all record's json object's fields." },
+            { template: "fieldOpen" },
+            { template: "fieldRendered" },
+            { template: "fieldClose" },
+            { template: "recordClose" },
+            { template: "recordsHolderClose" },
+            { template: "tableClose" }
           ];
 
           return dataConf;
@@ -266,8 +257,8 @@
         // will have the data elem to set in the template's html in place where the placeholder resides.
         let dataConf = produceDataConf (
           "theme-custom",
-          tableColumnsConfObject.text.label,
-          tableRecordset[0].text
+          tableColumnsConfObject,
+          tableRecordset
         );
 
 

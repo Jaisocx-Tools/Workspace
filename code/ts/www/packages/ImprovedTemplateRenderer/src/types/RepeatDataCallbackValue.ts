@@ -1,7 +1,7 @@
 
 
 
-export class NestedMultipleCallbackValue {
+export class RepeatDataCallbackValue {
 // this class is to type hint the return value of a callback function
 // of datatype NestedMultipleCallback in the file NestedMultipleCallback.js
 // this is the data for the nested nodes templates placeholder.
@@ -35,13 +35,13 @@ export class NestedMultipleCallbackValue {
     return this.value;
   }
 
-  setKey( key: any|string|number ): NestedMultipleCallbackValue {
+  setKey( key: any|string|number ): RepeatDataCallbackValue {
     this.key = key;
 
     return this;
   }
 
-  setValue( value: any ): NestedMultipleCallbackValue {
+  setValue( value: any ): RepeatDataCallbackValue {
     this.value = value;
 
     return this;

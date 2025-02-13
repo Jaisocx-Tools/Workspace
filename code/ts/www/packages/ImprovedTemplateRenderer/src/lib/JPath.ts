@@ -96,7 +96,7 @@ export class JPath {
         //  but the closing square brace not matched, 
         //  the JPath expression is wrong.
         if ( rightBracePosition === (-1) ) {
-          throw new Error("JPathExpression synthax))");
+          throw new Error("JPathExpression synthax");
           break;
         }
 
@@ -148,3 +148,6 @@ export class JPath {
   }
 
 }
+
+
+

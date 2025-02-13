@@ -1,6 +1,6 @@
 
-import { TemplatesConf } from "./TemplatesConf.js";
-import { NestedMultipleCallbackValue } from "./NestedMultipleCallbackValue.js";
+import { TemplatesConf } from "./types/TemplatesConf.js";
+import { NestedMultipleCallbackValue } from "./types/RepeatDataCallbackValue.js";
 
 
 export class ImprovedTemplateRendererConstants {

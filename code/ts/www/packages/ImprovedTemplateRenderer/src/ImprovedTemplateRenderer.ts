@@ -5,32 +5,33 @@ import { CharcodeConverter } from "@jaisocx/charcode-converter";
 
 
 import { ImprovedTemplateRendererConstants } from "./ImprovedTemplateRendererConstants.js";
-import { TemplatesConf } from "./TemplatesConf.js";
-import { TemplatesConfNested } from "./TemplatesConfNested.js";
+import { TemplatesConf } from "./types/TemplatesConf.js";
+import { TemplatesConfNested } from "./types/TemplatesConfNested.js";
 
 
 export class ImprovedTemplateRenderer extends EventEmitter {
 
   EVENT_NAME__AFTER_RENDER: any;
 
+  
 
   protected _templatesObject: any;
   protected _templatesConf: any;
   protected _dataConf: any[];
 
 
+
   // props for technique purposes.
   protected _renderedTemplatesTemporaryArray: any;
+  protected _renderedHtmlArray: string[];
+  protected _renderedHtml: string;
 
+  protected _sumTemplatesSizes: number;
 
-
-
-  isStandardCallback: number;
 
 
   constructor() {
     super();
-
 
     this.EVENT_NAME__AFTER_RENDER = "afterRender";
 
@@ -42,8 +43,11 @@ export class ImprovedTemplateRenderer extends EventEmitter {
 
     // props for technique purposes.
     this._renderedTemplatesTemporaryArray = [];
-    this.isStandardCallback = 1;
+    this._renderedHtmlArray = [];
+    this._renderedHtml = "";
 
+    this._sumTemplatesSizes = 0;
+  
   }
 
   setDebug(debug: boolean): ImprovedTemplateRenderer {
@@ -67,7 +71,7 @@ export class ImprovedTemplateRenderer extends EventEmitter {
   }
 
 
-  render( inoutobj: any ): number {
+  render( inoutobj: any ): any {
 
     // the result variable is declared.
     // the result is the rendered html,
@@ -107,78 +111,13 @@ export class ImprovedTemplateRenderer extends EventEmitter {
     // inoutobj.bufs = resultArrayFlat;
 
 
-    const renderedHtmlSize: number = this.workaroundJoin (
+    const result: any = CharcodeConverter.getInstance().join (
       inoutobj
     );
 
-    return renderedHtmlSize;
+    return result;
   }
 
-
-  //@tasks: 
-  //          1. to move to CharcodeConverter
-  //          2. inout obj class Datatype .ts file, too
-  workaroundJoin ( 
-    inoutObj: any 
-  ): number { // length bytes of the entire rendered html text in the inoutobj.retVal, .join('') once.
-
-    const converter: CharcodeConverter = CharcodeConverter.getInstance();
-    const autoload: number = 0;
-
-
-    // flat array sum of bitsbuffers items sizes: += Uint16Array.length;
-    let resultStringLength: number = 0;
-    for ( let bitsbuf of inoutObj.bufs) {
-      resultStringLength += bitsbuf.length;
-    }
-
-
-    // string[] with size of the entire html rendered doc chars amount.
-    // one elem of string[] is one char.
-    // to .join('') later to targetValue.
-    const resultStringArray: string[] = new Array<string>( resultStringLength );
-  
-
-    // gets one char by charcode form the lookup tables, very fast via bitsbuffer pointer.
-    let implGetChar: CallableFunction = autoload ? converter.getCharAndAutoload.bind(converter) : converter.getChar.bind(converter);
-  
-
-
-    let charcode: number = 0;
-    let char: string = "";
-    let resultStringIndex: number = 0;
-  
-
-    let bufSize: number = 0;
-    let resultOffset: number = 0;
-    let loopFinish: number = 0;
-
-
-    // loop Uint16Array[] of rendered templates, stored as bitsbufs of charcodes.
-    for ( let bitsbuf of inoutObj.bufs) {
-      bufSize = bitsbuf.length;
-      // loopFinish = resultOffset + bufSize;
-
-      for (
-        resultStringIndex = 0;
-        resultStringIndex < bufSize;
-        resultStringIndex++
-      ) {
-  
-        charcode = bitsbuf[resultStringIndex];
-        char = implGetChar( charcode );
-    
-        resultStringArray[resultOffset] = char;
-        resultOffset++;
-      }
-
-    }
-    
-    const EMPTY_STRING: string = (new String("")).valueOf();
-    inoutObj.retVal = resultStringArray.join(EMPTY_STRING);
-  
-    return resultStringLength;
-  }
 
 
   normalizeDataIterable( data: any ): { key: string, value: any }[] {
@@ -219,7 +158,7 @@ export class ImprovedTemplateRenderer extends EventEmitter {
     // in the dataConf, representing tmplates lines in the right order,
     //      i is the pointer, form the start pos of this repeated group til the last pos in the array of templates.
     let i = 0;
-    
+
     for ( i = dataConfIxStart; i < (dataConfIxStart + dataConfIxEnd ); i++ ) {
 
       //@moveToSubcall .renderOneTemplate

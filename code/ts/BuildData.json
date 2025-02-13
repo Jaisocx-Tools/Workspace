@@ -220,11 +220,17 @@
         }
       ],
       "build-files": [
+        "lib/JPath.js",
+        "lib/TemplateParser.js",
+        "lib/TreeWalker.js",
+        "types/DataConf.js",
+        "types/IterableInfo.js",
+        "types/JPathData.js",
+        "types/RepeatDataCallbackValue.js",
+        "types/TemplateInfo.js",
+        "types/TemplatesConf.js",
         "ImprovedTemplateRenderer.js",
-        "ImprovedTemplateRendererConstants.js",
-        "NestedMultipleCallbackValue.js",
-        "TemplatesConf.js",
-        "TemplatesConfNested.js"
+        "ImprovedTemplateRendererConstants.js"        
       ]
     }
   ]

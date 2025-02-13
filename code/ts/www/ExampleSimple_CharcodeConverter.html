@@ -58,7 +58,7 @@
         
 
         const timestamp7 = getMcTimestamp();
-        const textDecoded = charcodeConverter.arrayToString( buf, AUTOLOAD_FALSE );
+        const textDecoded = charcodeConverter.join( { bufs: buf } );
         const timestamp8 = getMcTimestamp();
 
         console.log(
