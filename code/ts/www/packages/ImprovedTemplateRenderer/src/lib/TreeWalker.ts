@@ -141,7 +141,7 @@ export class TreeWalker {
 
       nodeInfo = this.getNodeInfo ( node );
       keyNode = Object.keys( node )[0];
-      nodeValue = node[key];
+      nodeValue = node[keyNode];
 
       if ( ( nodeInfo as IterableInfo ).length === 0 ) {
         //@ts-ignore
@@ -221,7 +221,7 @@ export class TreeWalker {
     loop: for ( node of normalizedNodes ) {
 
       keyNode = Object.keys( node )[0];
-      nodeValue = node[key];
+      nodeValue = node[keyNode];
       nodeInfo = this.getNodeInfo ( nodeValue );
 
       if ( ( nodeInfo as IterableInfo ).length === 0 ) {
@@ -260,6 +260,104 @@ export class TreeWalker {
         );
 
       }
+
+    }
+
+  }
+
+
+  public walkFlat (
+    id: any,
+    key: any,
+    treeData: any,
+    holderIdProperyName: string,
+    idProperyName: string,
+    inOutPayload: any[],
+    callback: Function|undefined|null
+  ): undefined {
+
+    let info: IterableInfo = this.getNodeInfo ( treeData );
+    let normalizedRootData: any[] = this.normalizeNodes( 
+      treeData, 
+      info );
+
+    this.walkFlatSubcall (
+      id,
+      key,
+      normalizedRootData,
+      holderIdProperyName,
+      idProperyName,
+      inOutPayload,
+      callback
+    );
+
+  }
+
+  public walkFlatSubcall (
+    id: any,
+    key: any,
+    normalizedRootData: any,
+    holderIdProperyName: string,
+    idProperyName: string,
+    inOutPayload: any[],
+    callback: Function|undefined|null
+  ): undefined {
+
+    const filteredRootNodes: any[] = [
+      ...normalizedRootData
+          .filter(
+            ( node: any ) => {
+              const subtreeKey = Object.keys( node )[0];
+              const flatRecursionDataRecord: any = node[subtreeKey];
+
+              const matchesHolderId: boolean = ( flatRecursionDataRecord[holderIdProperyName] === id );
+
+              return matchesHolderId;
+            }
+          )
+    ];
+
+    if ( (!filteredRootNodes) || ( filteredRootNodes.length === 0 ) ) {
+      return;
+    }
+
+
+    let node: any  = null;
+    let subtreeKey: any = null;
+    let flatRecursionDataRecord: any = null;
+    let nodeInfo: IterableInfo|Object = {};
+    let subtreeNodeNormalizedNodes: any = null;
+    let recordId: any = null;
+
+
+    loop: for ( node of filteredRootNodes ) {
+
+      subtreeKey = Object.keys( node )[0];
+      flatRecursionDataRecord = node[subtreeKey];
+      recordId = flatRecursionDataRecord[idProperyName];
+
+      nodeInfo = this.getNodeInfo ( flatRecursionDataRecord );
+      subtreeNodeNormalizedNodes = this.normalizeNodes ( 
+        flatRecursionDataRecord, 
+        ( nodeInfo as IterableInfo )
+      );
+  
+      //@ts-ignore
+      inOutPayload.push ( callback( 
+        subtreeKey,
+        flatRecursionDataRecord,
+        nodeInfo,
+        subtreeNodeNormalizedNodes ) );
+  
+      this.walkFlatSubcall (
+        recordId,
+        subtreeKey,
+        normalizedRootData,
+        holderIdProperyName,
+        idProperyName,
+        inOutPayload,
+        callback
+      );
 
     }
 
