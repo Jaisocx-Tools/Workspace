@@ -59,21 +59,21 @@ export class TreeWalker {
     result = [
       ...nodeInfo.keys.map (
         ( key: any ) => { 
-          let keyText: string = '';
+          let keyText: string = "";
           let result: any = {};
 
           if ( nodeInfo.isArray ) {
-            keyText = '' + key;
-            result = { [keyText]: nodes[key] };
+            keyText = "" + key;
+            result = { [keyText]: nodes[key], };
 
           } else {
-            result = { [key]: nodes[key] };
+            result = { [key]: nodes[key], };
 
           }
 
           return result;
         }
-      )
+      ),
     ];
 
     return result;
@@ -90,7 +90,7 @@ export class TreeWalker {
     if ( !subtreePropertyName ) {
 
       this.walkEasy (
-        'main',
+        "main",
         treeData,
         result,
         callback
@@ -99,7 +99,7 @@ export class TreeWalker {
     } else {
 
       this.walkWhenSubtreePropName (
-        'main',
+        "main",
         treeData,
         subtreePropertyName,
         result,
@@ -119,7 +119,9 @@ export class TreeWalker {
   ): undefined {
 
     let info: IterableInfo = this.getNodeInfo ( treeData );
-    let normalizedNodes: any = this.normalizeNodes ( treeData, info );
+    let normalizedNodes: any = this.normalizeNodes ( 
+      treeData, 
+      info );
 
     //@ts-ignore
     inOutPayload.push ( callback( 
@@ -149,7 +151,7 @@ export class TreeWalker {
           nodeInfo,
           null ) );
 
-          continue loop;
+        continue loop;
       } 
 
 
@@ -157,7 +159,7 @@ export class TreeWalker {
         nodeValue,
         //@ts-ignore
         nodeInfo
-        );
+      );
 
 
       //@ts-ignore
@@ -189,7 +191,9 @@ export class TreeWalker {
   ): undefined {
 
     let info: IterableInfo = this.getNodeInfo ( treeData );
-    let normalizedNodes: any[] = this.normalizeNodes( treeData, info );
+    let normalizedNodes: any[] = this.normalizeNodes( 
+      treeData, 
+      info );
 
     //@ts-ignore
     inOutPayload.push ( callback( 
@@ -199,7 +203,8 @@ export class TreeWalker {
       normalizedNodes ) );
 
     let subtreeIndex: number = 0;
-    let keyFound = info.keys.find( (k: any, i: number) => {
+    let keyFound = info.keys.find( 
+      (k: any, i: number) => {
         let matches: boolean = ( k === subtreePropertyName );
         if ( matches === true ) subtreeIndex = i;
         return matches;
@@ -215,49 +220,48 @@ export class TreeWalker {
 
     loop: for ( node of normalizedNodes ) {
 
-      nodeInfo = this.getNodeInfo ( node );
       keyNode = Object.keys( node )[0];
       nodeValue = node[key];
-
-      if ( ( keyFound ) && ( keyNode === subtreePropertyName ) ) {
-        continue loop;
-      }
+      nodeInfo = this.getNodeInfo ( nodeValue );
 
       if ( ( nodeInfo as IterableInfo ).length === 0 ) {
+        subtreeNodeNormalizedNodes = null;
+
+      } else {
+        subtreeNodeNormalizedNodes = this.normalizeNodes ( 
+          nodeValue,
+          //@ts-ignore
+          nodeInfo
+        );
+
+      }
+
+      inOutPayload.push ( 
         //@ts-ignore
-        inOutPayload.push ( callback( 
+        callback ( 
           keyNode,
           nodeValue,
           nodeInfo,
-          null ) );
+          subtreeNodeNormalizedNodes 
+        ) 
+      );
+
+      if ( !keyFound ) {
+        continue loop;
+      }
+
+      if ( keyNode === subtreePropertyName ) {
+        this.walkWhenSubtreePropName (
+          subtreePropertyName,
+          nodeValue,
+          subtreePropertyName,
+          inOutPayload,
+          callback
+        );
 
       }
 
     }
-
-    if ( !keyFound ) {
-      return;
-    }
-
-
-    //@ts-ignore
-    nodeValue = treeData[subtreePropertyName];
-    nodeInfo = this.getNodeInfo ( treeData );
-
-    subtreeNodeNormalizedNodes = this.normalizeNodes ( 
-      nodeValue,
-      //@ts-ignore
-      nodeInfo
-    );
-
-
-    this.walkWhenSubtreePropName (
-      subtreePropertyName,
-      nodeValue,
-      subtreePropertyName,
-      inOutPayload,
-      callback
-    );
 
   }
 

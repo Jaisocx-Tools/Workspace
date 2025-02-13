@@ -6,7 +6,8 @@ import { CharcodeConverter } from "@jaisocx/charcode-converter";
 
 import { ImprovedTemplateRendererConstants } from "./ImprovedTemplateRendererConstants.js";
 import { TemplatesConf } from "./types/TemplatesConf.js";
-import { TemplatesConfNested } from "./types/TemplatesConfNested.js";
+import { DataConf } from "./types/DataConf.js";
+import { TemplateParser } from "./lib/TemplateParser.js";
 
 
 export class ImprovedTemplateRenderer extends EventEmitter {
@@ -22,11 +23,16 @@ export class ImprovedTemplateRenderer extends EventEmitter {
 
 
   // props for technique purposes.
+  protected _preparedTemplatesObject: any;
   protected _renderedTemplatesTemporaryArray: any;
   protected _renderedHtmlArray: string[];
   protected _renderedHtml: string;
 
   protected _sumTemplatesSizes: number;
+
+
+  protected templateParser: TemplateParser;
+  protected charcodeConverter: CharcodeConverter;
 
 
 
@@ -42,12 +48,16 @@ export class ImprovedTemplateRenderer extends EventEmitter {
 
 
     // props for technique purposes.
+    this._preparedTemplatesObject = {};
     this._renderedTemplatesTemporaryArray = [];
     this._renderedHtmlArray = [];
     this._renderedHtml = "";
 
     this._sumTemplatesSizes = 0;
   
+
+    this.templateParser = TemplateParser.getInstance();
+    this.charcodeConverter = CharcodeConverter.getInstance();
   }
 
   setDebug(debug: boolean): ImprovedTemplateRenderer {
@@ -73,17 +83,7 @@ export class ImprovedTemplateRenderer extends EventEmitter {
 
   render( inoutobj: any ): any {
 
-    // the result variable is declared.
-    // the result is the rendered html,
-    // all templates where placeholders replaced with the according data,
-    // and the templates, these are thought to be repeated with data of datatype array,
-    // are produced in the cycle, too.
-    let renderedTemplatesHtml: any = "";
-
-    let resultArrayFlat: any[] = [];
-
-    let resultArrayRecursive: any = [];
-
+    //@ready
     //@info   1. prepares placeolders to JPath objects 
     //        for fast handling placeholders 
     //        like {{ obj.prop1[2].someProp }}
@@ -91,31 +91,101 @@ export class ImprovedTemplateRenderer extends EventEmitter {
     this.prepareTemplates();
 
 
-    //let preparedTaggedGroupsInfos: any[] = this.prepareTaggedGroupsInfos();
-
-
-
-    let resultArrayRecursiveElemsNumber: number = 0;
-
-    //resultArrayRecursiveElemsNumber = this.calculateResultArrayRecursiveNumber();
-
-
     // writes into this._renderedTemplatesTemporaryArray
     this.renderTemplates( inoutobj );
 
 
-    //@rewrite
-    //  resultArrayFlat = resultArrayRecursive;
-
-    // const obj: any = { bufs: resultArrayFlat, retVal: {} };
-    // inoutobj.bufs = resultArrayFlat;
-
-
-    const result: any = CharcodeConverter.getInstance().join (
+    const result: any = this.charcodeConverter.join (
       inoutobj
     );
 
     return result;
+  }
+
+  
+  getDataconfByTemplateName( templateName: string ): DataConf {
+    return this._dataConf.find( ( conf: DataConf ) => conf.template === templateName );
+  }
+
+  getOrderedTemplatesNames(): string[] {
+    return [
+      ...this._dataConf.map( ( conf: DataConf ) => conf.template )
+    ];
+  }
+
+
+
+  //@info 
+  //        1. if no placeholder, templatesObject[templateName] = CharcodeConverter.toArray()
+  //        2. split templates with placeholders.
+  prepareTemplates(): undefined {
+
+    const toAutoloadCharsets: number = 1;
+
+    const orderedTemplatesNames: string[] = this.getOrderedTemplatesNames();
+
+    let templateConf: TemplatesConf;
+    let templateName: string = "";
+    let templateHtml: string = "";
+    let placeholderName: string|undefined|null = null;
+    let preparedTemplate: any = null;
+
+    for ( templateName of orderedTemplatesNames ) {
+      templateConf = this._templatesConf[templateName];
+
+      templateHtml = this._templatesObject[templateName];
+      placeholderName = templateConf.placeholder;
+
+      if ( placeholderName ) {
+        preparedTemplate = this.templateParser.parse ( 
+          templateHtml,
+          placeholderName
+        );
+      } else {
+        preparedTemplate = this.charcodeConverter.stringToArray ( 
+          templateHtml,
+          toAutoloadCharsets
+        );
+      }
+
+      this._preparedTemplatesObject[templateName] = preparedTemplate;
+    }
+  }
+
+
+
+  prepare(): any {
+
+    const renderedTemplates: any = [];
+
+    this._templatesConf;
+
+    this._dataConf;
+
+    const orderedTemplatesNames: string[] = this.getOrderedTemplatesNames();
+
+    let templateConf: TemplatesConf;
+    let templateName: string = "";
+    let templateTag: string = "";
+    let templateTagHolder: string = "";
+    let renderedTemplate: any = null;
+
+    for ( templateName of orderedTemplatesNames ) {
+      templateConf = this._templatesConf[templateName];
+
+      if ( templateConf.placeholder ) {
+
+        if () {
+
+        }
+        
+      } else {
+        renderedTemplate = this._preparedTemplatesObject[templateName];
+      }
+
+
+    }
+
   }
 
 
@@ -125,11 +195,13 @@ export class ImprovedTemplateRenderer extends EventEmitter {
 
     let dataArray: any[] = [];
     if ( Array.isArray( data ) === true ) {
-      dataArray = data.map( (value: any, index: number) => { return { key: index, value: value }; } );
+      dataArray = data.map( (value: any, index: number) => { return { key: index, 
+        value: value, }; } );
 
     } else {
       const keys: any[] = Object.keys( data );
-      dataArray = keys.map( (key: any) => { return { key: key, value: data[key] }; } );
+      dataArray = keys.map( (key: any) => { return { key: key, 
+        value: data[key], }; } );
 
     }
 
@@ -185,14 +257,18 @@ export class ImprovedTemplateRenderer extends EventEmitter {
           //@task docblock here the Infos method line number, placing the templatesConfig prop placeholders offsets in the templateSplitted (Uint16Array|JPath)[].
           // if ( @optional this condition instead: ( typeof or instanceof (template) === JPath::class ) || @faster: templateSplittedCounter === local_templateConfig.placeholdersPositions[placeholdersCounter] ) {
           if ( templateSplittedCounter === local_templateConfig.placeholdersPositions[placeholdersCounter] ) {
-              const placeholderValueField: any = template.hasJPath ? JPathHelper.getByJPath( nestedTaggedGroupPlaceholderValue, template.jpathArray ) : nestedTaggedGroupPlaceholderValue; // since no jpath, just as is.
-            const renderedPlaceholder: Uint16Array = converter.stringToArray( placeholderValueField, 0 );
+            const placeholderValueField: any = template.hasJPath ? JPathHelper.getByJPath( 
+              nestedTaggedGroupPlaceholderValue, 
+              template.jpathArray ) : nestedTaggedGroupPlaceholderValue; // since no jpath, just as is.
+            const renderedPlaceholder: Uint16Array = converter.stringToArray( 
+              placeholderValueField, 
+              0 );
             resultArray[offsetInTheResultArray] = renderedPlaceholder;
             placeholdersCounter++;
 
           } else {
-              // the splittedTemplate elem without placeholder, static Uint16Array.
-              resultArray[offsetInTheResultArray] = template; // was already converted, and was Uint16Array
+            // the splittedTemplate elem without placeholder, static Uint16Array.
+            resultArray[offsetInTheResultArray] = template; // was already converted, and was Uint16Array
 
           }
           templateSplittedCounter++;
@@ -219,43 +295,45 @@ export class ImprovedTemplateRenderer extends EventEmitter {
     dataArray: { key: string|number, value: any }[] 
   ): undefined {
 
-        //@moveBeforeForLoop
-        // whether to handle with callback.
-        // the callback is the prop of this templateConfItem.nestedNodesConf: TemplatesConfNested, .nestedNodes_Callback
-        let callback: CallableFunction;
-        let isWithCallback: number = 0;
-        let nestedTaggedGroupPlaceholderValue: any = null;
+    //@moveBeforeForLoop
+    // whether to handle with callback.
+    // the callback is the prop of this templateConfItem.nestedNodesConf: TemplatesConfNested, .nestedNodes_Callback
+    let callback: CallableFunction;
+    let isWithCallback: number = 0;
+    let nestedTaggedGroupPlaceholderValue: any = null;
 
-        if ( templateConfItem.nestedNodesConf ) {
-          callback = templateConfItem.nestedNodesConf.nestedNodes_Callback;
-          isWithCallback = ( callback ) ? 1 : 0;
-        }
+    if ( templateConfItem.nestedNodesConf ) {
+      callback = templateConfItem.nestedNodesConf.nestedNodes_Callback;
+      isWithCallback = ( callback ) ? 1 : 0;
+    }
 
 
-        //@forEach ._templatesConf[currentTemplatName].data[] normalized before, the .data[] of the templateConfItem
-        let dataItem: { key: string|number, value: any };
-        for ( dataItem of dataArray ) {
+    //@forEach ._templatesConf[currentTemplatName].data[] normalized before, the .data[] of the templateConfItem
+    let dataItem: { key: string|number, value: any };
+    for ( dataItem of dataArray ) {
 
-          // customized data item via templatesConf[templateName].nestedConf.callback
-          if ( isWithCallback === 1 ) {
-            //@ts-ignore
-            nestedTaggedGroupPlaceholderValue = callback.call( this, dataItem );
+      // customized data item via templatesConf[templateName].nestedConf.callback
+      if ( isWithCallback === 1 ) {
+        //@ts-ignore
+        nestedTaggedGroupPlaceholderValue = callback.call( 
+          this, 
+          dataItem );
 
-          } else {
-            nestedTaggedGroupPlaceholderValue = dataItem;
+      } else {
+        nestedTaggedGroupPlaceholderValue = dataItem;
 
-          }
+      }
 
-          const dataConfIxStart: number = 0;
-          const dataConfIxEnd: number = 0;
+      const dataConfIxStart: number = 0;
+      const dataConfIxEnd: number = 0;
 
-          this.repeatTaggedGroup (
-            nestedTaggedGroupPlaceholderValue,
-            dataConfIxStart,
-            dataConfIxEnd
-          );
+      this.repeatTaggedGroup (
+        nestedTaggedGroupPlaceholderValue,
+        dataConfIxStart,
+        dataConfIxEnd
+      );
 
-        }
+    }
   }
 
 
@@ -391,11 +469,13 @@ export class ImprovedTemplateRenderer extends EventEmitter {
         let iterable: any = holderTemplateConf.data;
         let dataArray: any[] = [];
         if ( Array.isArray( iterable ) === true ) {
-          dataArray = iterable.map( (value: any, index: number) => { return { key: index, value: value }; } );
+          dataArray = iterable.map( (value: any, index: number) => { return { key: index, 
+            value: value, }; } );
 
         } else {
           const keys: any[] = Object.keys( iterable );
-          dataArray = keys.map( (key: any) => { return { key: key, value: iterable[key] }; } );
+          dataArray = keys.map( (key: any) => { return { key: key, 
+            value: iterable[key], }; } );
 
         }
 
@@ -439,45 +519,6 @@ export class ImprovedTemplateRenderer extends EventEmitter {
 
 
     return 1;
-  }
-
-
-  renderSingleTemplate() {
-
-  }
-
-
-  //@info 
-  //        1. if no placeholder, templatesObject[templateName] = CharcodeConverter.toArray()
-  //        2. split templates with placeholders.
-  prepareTemplates(): undefined {
-
-    const converter: CharcodeConverter = CharcodeConverter.getInstance();
-
-
-    for ( let templateName in this._templatesObject ) {
-
-      const templateText: string = this._templatesObject[templateName];
-      const templateConfItem: TemplatesConf = this._templatesConf[templateName];
-
-      this._templatesObject[templateName] = converter.stringToArray( 
-        templateText, 
-        0 );
-      continue;
-
-      // if with placeholders, poduces JPath array for faster placeholders' data processing and applying to rendered html templates Uint16Array[]
-      if ( templateConfItem.isWithPlaceholders === 1 ) {
-        // subcall let templatesPrepared: string[] = this.splitTemplateText( templateText );
-        //        1. while(): .indexOf("{{ "); .indexOf(" }}") + 3; result.push( .substring() ); if indexOf, result.push( new JPath( .substring() ) );
-        //        2. JPath.constructor( jpathExpessionText ) { this.jpathArray = JPath.parse( jpathExpressionText ) }
-        // subcall const jPathArray: any[] = helper.parseJpath( placeholderJpathExpressionText );
-
-        // replace current templateText: this.templatesObject[templateName] = templatesPrepared; 
-        // later, this.templatesObject prop can be of type string or any[], when with placeholders. 
-        // the templatesConf item can have prop .placeholdersParsed = 1 | 0;
-      }
-
-    }
   }
 
 

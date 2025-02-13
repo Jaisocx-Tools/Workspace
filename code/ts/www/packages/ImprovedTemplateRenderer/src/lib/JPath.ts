@@ -31,7 +31,9 @@ export class JPath {
 
     let jpathPropertyKey: (string|number) = "";
     let jpathPropLevel: number = 0;
-    let jpathLevelMax: number = Math.min( jpath.length, JPath.JPATH_EXPRESSION_MAX_SIZE );
+    let jpathLevelMax: number = Math.min( 
+      jpath.length, 
+      JPath.JPATH_EXPRESSION_MAX_SIZE );
 
     for ( jpathPropLevel = 0; jpathPropLevel < jpathLevelMax; jpathPropLevel++ ) {
       if ( !targetValue ) {
@@ -76,7 +78,9 @@ export class JPath {
         // when the next step is done, 
         // .indexOf searches from the rightBracePosition,
         // matched in the previous while iteration.
-        leftBracePosition = jpathSplitted.indexOf("[", rightBracePosition);
+        leftBracePosition = jpathSplitted.indexOf(
+          "[", 
+          rightBracePosition);
 
         // if an opening brace was not matched,
         //        means, this jpath expression does not contain [] expression,
@@ -89,7 +93,9 @@ export class JPath {
           continue loopSplittedByPoints;
         }
 
-        rightBracePosition = jpathSplitted.indexOf("]", leftBracePosition);
+        rightBracePosition = jpathSplitted.indexOf(
+          "]", 
+          leftBracePosition);
 
         // here means, 
         //  when square braced key opened, 
@@ -101,7 +107,9 @@ export class JPath {
         }
 
 
-        jpathKey = jpathSplitted.slice( (leftBracePosition + 1), (rightBracePosition - 1) );
+        jpathKey = jpathSplitted.slice( (
+          leftBracePosition + 1), (
+          rightBracePosition - 1) );
         jpathKeyNumeric = +jpathKey;
 
         if ( Number.isInteger( jpathKeyNumeric ) === true ) {
@@ -144,7 +152,9 @@ export class JPath {
   ): any {
     const jpath: (string|number)[] = [];
 
-    return JPath.getByJPath( jpath, value );
+    return JPath.getByJPath( 
+      jpath, 
+      value );
   }
 
 }

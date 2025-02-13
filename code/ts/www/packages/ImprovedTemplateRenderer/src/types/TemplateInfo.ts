@@ -10,7 +10,7 @@ export class TemplateInfo {
 
 
 
-/*
+  /*
   public getJPath(): string {
     return this._jpath;
   }

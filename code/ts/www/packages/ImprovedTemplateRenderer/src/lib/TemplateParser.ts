@@ -34,7 +34,11 @@ export class TemplateParser {
     return TemplateParser.instance;
   }
 
-  public static parse( template: string, placeholderName: string ): (Uint16Array|JPathData)[] {
+  public parse ( 
+    template: string, 
+    placeholderName: string 
+  ): (Uint16Array|JPathData)[] {
+
     const parser: TemplateParser = TemplateParser.instance;
 
 
@@ -63,11 +67,13 @@ export class TemplateParser {
         bracesStart: 0, 
         bracesEnd: 0, 
         placeholderStart: 0, 
-        placeholderEnd: 0
+        placeholderEnd: 0,
       };
 
 
-      matchedPosition = template.indexOf( braceOpen, lookupOffset );
+      matchedPosition = template.indexOf( 
+        braceOpen, 
+        lookupOffset );
       if ( matchedPosition === noMatch ) {
         break;
       }
@@ -77,7 +83,9 @@ export class TemplateParser {
 
       
       lookupOffset = ( range.placeholderStart + 1 );
-      matchedPosition = template.indexOf( braceClose, lookupOffset );
+      matchedPosition = template.indexOf( 
+        braceClose, 
+        lookupOffset );
       if ( matchedPosition === noMatch ) {
         throw new Error("Placeholders");
         break;
@@ -87,7 +95,7 @@ export class TemplateParser {
       range.bracesEnd = ( matchedPosition + braceLen );
       
 
-      placeholdersPositions.push({...range});
+      placeholdersPositions.push({...range,});
       lookupOffset = ( range.bracesEnd + 1 );
 
       if ( lookupOffset > templateLastCharPos ) {
@@ -103,18 +111,24 @@ export class TemplateParser {
     let jpathData: JPathData;
     for ( range of placeholdersPositions ) {
       if ( range.bracesStart > offset ) {
-        staticTemplate = template.substring( offset, ( range.bracesStart - 1 ) );
+        staticTemplate = template.substring( 
+          offset, ( 
+            range.bracesStart - 1 ) );
 
         if ( staticTemplate && staticTemplate.length > 0 ) {
           preparedTemplates.push(
-            parser.converter.stringToArray( staticTemplate, 0 )
+            parser.converter.stringToArray( 
+              staticTemplate, 
+              0 )
           );
         }
 
         offset = range.placeholderStart;
       }
 
-      placeholder = template.substring( range.placeholderStart, range.placeholderEnd );
+      placeholder = template.substring( 
+        range.placeholderStart, 
+        range.placeholderEnd );
       if ( !placeholder || placeholder.length === 0 ) {
         offset = ( range.bracesEnd + 1 );
         continue;

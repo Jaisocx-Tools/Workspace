@@ -78,7 +78,7 @@ export class TemplatesConf {
 
 
   startRepeat: boolean;
-  repeatTagDataApplies: boolean;
+  repeatTagConfDataApplies: boolean;
   useRepeatCallback: boolean;
   repeatDataCallback: Function|undefined|null;
 
@@ -141,7 +141,7 @@ export class TemplatesConf {
     this.placeholder = null;
 
     this.startRepeat = false;
-    this.repeatTagDataApplies = false;
+    this.repeatTagConfDataApplies = false;
     this.useRepeatCallback = false;
     this.repeatDataCallback = null;
 
