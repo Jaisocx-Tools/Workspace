@@ -1,9 +1,10 @@
-import { TemplatesConf } from "./types/TemplatesConf.js";
+import { TemplateConf } from "./types/TemplateConf.js";
+import { RepeatDataCallbackValue } from "./types/RepeatDataCallbackValue.js";
 export declare class ImprovedTemplateRendererConstants {
-    static NestedMultipleCallback: (templateDataElemKey: any, templateDataElemValue: any) => any;
+    static NestedMultipleCallback: (templateDataElemKey: any, templateDataElemValue: any) => RepeatDataCallbackValue;
     Defaults: {
         new (): {
-            templatesConf: TemplatesConf;
+            templatesConf: TemplateConf;
         };
     };
 }

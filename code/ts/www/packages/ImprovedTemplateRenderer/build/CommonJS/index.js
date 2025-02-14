@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.ImprovedTemplateRendererConstants = exports.ImprovedTemplateRenderer = exports.TemplatesConf = exports.TemplateInfo = exports.RepeatDataCallbackValue = exports.JPathData = exports.IterableInfo = exports.DataConf = exports.TemplateParser = exports.JPath = void 0;
+exports.ImprovedTemplateRendererConstants = exports.ImprovedTemplateRenderer = exports.TemplateConf = exports.TemplateInfo = exports.RepeatDataCallbackValue = exports.JPathData = exports.DataConf = exports.TemplateParser = exports.JPath = void 0;
 const JPath_js_1 = require("./lib/JPath.js");
 var JPath_js_2 = require("./lib/JPath.js");
 Object.defineProperty(exports, "JPath", { enumerable: true, get: function () { return JPath_js_2.JPath; } });
@@ -10,9 +10,6 @@ Object.defineProperty(exports, "TemplateParser", { enumerable: true, get: functi
 const DataConf_js_1 = require("./types/DataConf.js");
 var DataConf_js_2 = require("./types/DataConf.js");
 Object.defineProperty(exports, "DataConf", { enumerable: true, get: function () { return DataConf_js_2.DataConf; } });
-const IterableInfo_js_1 = require("./types/IterableInfo.js");
-var IterableInfo_js_2 = require("./types/IterableInfo.js");
-Object.defineProperty(exports, "IterableInfo", { enumerable: true, get: function () { return IterableInfo_js_2.IterableInfo; } });
 const JPathData_js_1 = require("./types/JPathData.js");
 var JPathData_js_2 = require("./types/JPathData.js");
 Object.defineProperty(exports, "JPathData", { enumerable: true, get: function () { return JPathData_js_2.JPathData; } });
@@ -22,9 +19,9 @@ Object.defineProperty(exports, "RepeatDataCallbackValue", { enumerable: true, ge
 const TemplateInfo_js_1 = require("./types/TemplateInfo.js");
 var TemplateInfo_js_2 = require("./types/TemplateInfo.js");
 Object.defineProperty(exports, "TemplateInfo", { enumerable: true, get: function () { return TemplateInfo_js_2.TemplateInfo; } });
-const TemplatesConf_js_1 = require("./types/TemplatesConf.js");
-var TemplatesConf_js_2 = require("./types/TemplatesConf.js");
-Object.defineProperty(exports, "TemplatesConf", { enumerable: true, get: function () { return TemplatesConf_js_2.TemplatesConf; } });
+const TemplateConf_js_1 = require("./types/TemplateConf.js");
+var TemplateConf_js_2 = require("./types/TemplateConf.js");
+Object.defineProperty(exports, "TemplateConf", { enumerable: true, get: function () { return TemplateConf_js_2.TemplateConf; } });
 const ImprovedTemplateRenderer_js_1 = require("./ImprovedTemplateRenderer.js");
 var ImprovedTemplateRenderer_js_2 = require("./ImprovedTemplateRenderer.js");
 Object.defineProperty(exports, "ImprovedTemplateRenderer", { enumerable: true, get: function () { return ImprovedTemplateRenderer_js_2.ImprovedTemplateRenderer; } });
@@ -34,11 +31,10 @@ Object.defineProperty(exports, "ImprovedTemplateRendererConstants", { enumerable
 window.JPath = JPath_js_1.JPath;
 window.TemplateParser = TemplateParser_js_1.TemplateParser;
 window.DataConf = DataConf_js_1.DataConf;
-window.IterableInfo = IterableInfo_js_1.IterableInfo;
 window.JPathData = JPathData_js_1.JPathData;
 window.RepeatDataCallbackValue = RepeatDataCallbackValue_js_1.RepeatDataCallbackValue;
 window.TemplateInfo = TemplateInfo_js_1.TemplateInfo;
-window.TemplatesConf = TemplatesConf_js_1.TemplatesConf;
+window.TemplateConf = TemplateConf_js_1.TemplateConf;
 window.ImprovedTemplateRenderer = ImprovedTemplateRenderer_js_1.ImprovedTemplateRenderer;
 window.ImprovedTemplateRendererConstants = ImprovedTemplateRendererConstants_js_1.ImprovedTemplateRendererConstants;
 //# sourceMappingURL=index.js.map

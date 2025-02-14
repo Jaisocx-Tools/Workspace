@@ -9,9 +9,6 @@ export { TemplateParser } from "./lib/TemplateParser.js";
 import { DataConf } from "./types/DataConf.js";
 export { DataConf } from "./types/DataConf.js";
 
-import { IterableInfo } from "./types/IterableInfo.js";
-export { IterableInfo } from "./types/IterableInfo.js";
-
 import { JPathData } from "./types/JPathData.js";
 export { JPathData } from "./types/JPathData.js";
 
@@ -21,8 +18,8 @@ export { RepeatDataCallbackValue } from "./types/RepeatDataCallbackValue.js";
 import { TemplateInfo } from "./types/TemplateInfo.js";
 export { TemplateInfo } from "./types/TemplateInfo.js";
 
-import { TemplatesConf } from "./types/TemplatesConf.js";
-export { TemplatesConf } from "./types/TemplatesConf.js";
+import { TemplateConf } from "./types/TemplateConf.js";
+export { TemplateConf } from "./types/TemplateConf.js";
 
 import { ImprovedTemplateRenderer } from "./ImprovedTemplateRenderer.js";
 export { ImprovedTemplateRenderer } from "./ImprovedTemplateRenderer.js";
@@ -38,12 +35,14 @@ export { ImprovedTemplateRendererInterface } from "./ImprovedTemplateRendererInt
 (window as any).JPath = JPath;
 (window as any).TemplateParser = TemplateParser;
 (window as any).DataConf = DataConf;
-(window as any).IterableInfo = IterableInfo;
 (window as any).JPathData = JPathData;
 (window as any).RepeatDataCallbackValue = RepeatDataCallbackValue;
 (window as any).TemplateInfo = TemplateInfo;
-(window as any).TemplatesConf = TemplatesConf;
+(window as any).TemplateConf = TemplateConf;
 (window as any).ImprovedTemplateRenderer = ImprovedTemplateRenderer;
 (window as any).ImprovedTemplateRendererConstants = ImprovedTemplateRendererConstants;
+
+
+
 
 

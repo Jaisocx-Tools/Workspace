@@ -9,12 +9,7 @@ class TemplateParser {
   converter;
 
   constructor() {
-    if (TemplateParser.instance) {
-      return TemplateParser.instance;
-    }
-
     this.converter = CharcodeConverter.getInstance();
-    TemplateParser.instance = this;
   }
 
   static getInstance() {
@@ -70,7 +65,7 @@ class TemplateParser {
         break;
       }
 
-      range.placeholderEnd = (matchedPosition - braceLen);
+      range.placeholderEnd = (matchedPosition);
       range.bracesEnd = (matchedPosition + braceLen);
       placeholdersPositions.push({ ...range, });
       lookupOffset = (range.bracesEnd + 1);
@@ -90,7 +85,7 @@ class TemplateParser {
       if (range.bracesStart > offset) {
         staticTemplate = template.substring(
           offset, (
-            range.bracesStart - 1));
+            range.bracesStart));
 
         if (staticTemplate && staticTemplate.length > 0) {
           preparedTemplates.push(parser.converter.stringToArray(
@@ -105,13 +100,8 @@ class TemplateParser {
         range.placeholderStart, 
         range.placeholderEnd);
 
-      if (!placeholder || placeholder.length === 0) {
-        offset = (range.bracesEnd + 1);
-        continue;
-      }
-
       if (placeholder.startsWith(placeholderName) === true) {
-        placeholder = placeholder.substring(placeholder.length);
+        placeholder = placeholder.substring(placeholderName.length);
       }
 
       jpathData = new JPathData();
@@ -121,8 +111,20 @@ class TemplateParser {
         jpathData.setJPath(JPath.parse(placeholder));
         preparedTemplates.push(jpathData);
       }
+      else if (placeholder.length === 0) {
+        jpathData.setIsPlaceholderValue(1);
+        preparedTemplates.push(jpathData);
+      }
 
-      offset = range.placeholderStart;
+      offset = range.bracesEnd;
+    }
+
+    staticTemplate = template.substring(offset);
+
+    if (staticTemplate && staticTemplate.length > 0) {
+      preparedTemplates.push(parser.converter.stringToArray(
+        staticTemplate, 
+        0));
     }
 
     return preparedTemplates;

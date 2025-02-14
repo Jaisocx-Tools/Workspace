@@ -1,5 +1,5 @@
-import { CharcodeConverter } from "../../../CharcodeConverter/build/ESNext/CharcodeConverter";
-import { JPathData } from "../types/JPathData.js";
+import { CharcodeConverter } from "@jaisocx/charcode-converter";
+import { JPathData } from "./../types/JPathData.js";
 import { JPath } from "./JPath.js";
 
 
@@ -17,13 +17,7 @@ export class TemplateParser {
   public converter: CharcodeConverter;
 
   constructor() {
-    if ( TemplateParser.instance ) {
-      return TemplateParser.instance;
-    }
-
     this.converter = CharcodeConverter.getInstance();
-
-    TemplateParser.instance = this;
   }
 
   public static getInstance(): TemplateParser {
@@ -91,7 +85,7 @@ export class TemplateParser {
         break;
       }
 
-      range.placeholderEnd = ( matchedPosition - braceLen );
+      range.placeholderEnd = ( matchedPosition );
       range.bracesEnd = ( matchedPosition + braceLen );
       
 
@@ -113,7 +107,7 @@ export class TemplateParser {
       if ( range.bracesStart > offset ) {
         staticTemplate = template.substring( 
           offset, ( 
-            range.bracesStart - 1 ) );
+            range.bracesStart ) );
 
         if ( staticTemplate && staticTemplate.length > 0 ) {
           preparedTemplates.push(
@@ -129,14 +123,9 @@ export class TemplateParser {
       placeholder = template.substring( 
         range.placeholderStart, 
         range.placeholderEnd );
-      if ( !placeholder || placeholder.length === 0 ) {
-        offset = ( range.bracesEnd + 1 );
-        continue;
-
-      }
 
       if ( placeholder.startsWith( placeholderName ) === true ) {
-        placeholder = placeholder.substring( placeholder.length );
+        placeholder = placeholder.substring( placeholderName.length );
       }
 
       jpathData = new JPathData();
@@ -151,10 +140,26 @@ export class TemplateParser {
           jpathData
         );
 
+      } else if ( placeholder.length === 0 ) {
+        jpathData.setIsPlaceholderValue( 1 );
+        preparedTemplates.push(
+          jpathData
+        );
+
       }
 
-      offset = range.placeholderStart;
+      offset = range.bracesEnd;
 
+    }
+
+    staticTemplate = template.substring(  offset );
+
+    if ( staticTemplate && staticTemplate.length > 0 ) {
+      preparedTemplates.push (
+        parser.converter.stringToArray( 
+          staticTemplate, 
+          0 )
+      );
     }
 
     return preparedTemplates;

@@ -5,7 +5,7 @@ class JPathData {
     constructor() {
         this._jpath = [];
         this._jpathExpression = "";
-        this._isPlaceholderValue = 1;
+        this._isPlaceholderValue = 0;
     }
     isPlaceholderValue() {
         return this._isPlaceholderValue;

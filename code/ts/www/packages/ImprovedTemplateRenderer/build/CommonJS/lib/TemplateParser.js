@@ -6,16 +6,12 @@ var __setFunctionName = (this && this.__setFunctionName) || function (f, name, p
 var _a;
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.TemplateParser = void 0;
-const CharcodeConverter_1 = require("../../../CharcodeConverter/build/ESNext/CharcodeConverter");
-const JPathData_js_1 = require("../types/JPathData.js");
+const charcode_converter_1 = require("@jaisocx/charcode-converter");
+const JPathData_js_1 = require("./../types/JPathData.js");
 const JPath_js_1 = require("./JPath.js");
 class TemplateParser {
     constructor() {
-        if (TemplateParser.instance) {
-            return TemplateParser.instance;
-        }
-        this.converter = CharcodeConverter_1.CharcodeConverter.getInstance();
-        TemplateParser.instance = this;
+        this.converter = charcode_converter_1.CharcodeConverter.getInstance();
     }
     static getInstance() {
         if (!TemplateParser.instance) {
@@ -57,7 +53,7 @@ class TemplateParser {
                 throw new Error("Placeholders");
                 break;
             }
-            range.placeholderEnd = (matchedPosition - braceLen);
+            range.placeholderEnd = (matchedPosition);
             range.bracesEnd = (matchedPosition + braceLen);
             placeholdersPositions.push(Object.assign({}, range));
             lookupOffset = (range.bracesEnd + 1);
@@ -72,19 +68,15 @@ class TemplateParser {
         let jpathData;
         for (range of placeholdersPositions) {
             if (range.bracesStart > offset) {
-                staticTemplate = template.substring(offset, (range.bracesStart - 1));
+                staticTemplate = template.substring(offset, (range.bracesStart));
                 if (staticTemplate && staticTemplate.length > 0) {
                     preparedTemplates.push(parser.converter.stringToArray(staticTemplate, 0));
                 }
                 offset = range.placeholderStart;
             }
             placeholder = template.substring(range.placeholderStart, range.placeholderEnd);
-            if (!placeholder || placeholder.length === 0) {
-                offset = (range.bracesEnd + 1);
-                continue;
-            }
             if (placeholder.startsWith(placeholderName) === true) {
-                placeholder = placeholder.substring(placeholder.length);
+                placeholder = placeholder.substring(placeholderName.length);
             }
             jpathData = new JPathData_js_1.JPathData();
             if (placeholder && placeholder.length > 0) {
@@ -92,7 +84,15 @@ class TemplateParser {
                 jpathData.setJPath(JPath_js_1.JPath.parse(placeholder));
                 preparedTemplates.push(jpathData);
             }
-            offset = range.placeholderStart;
+            else if (placeholder.length === 0) {
+                jpathData.setIsPlaceholderValue(1);
+                preparedTemplates.push(jpathData);
+            }
+            offset = range.bracesEnd;
+        }
+        staticTemplate = template.substring(offset);
+        if (staticTemplate && staticTemplate.length > 0) {
+            preparedTemplates.push(parser.converter.stringToArray(staticTemplate, 0));
         }
         return preparedTemplates;
     }

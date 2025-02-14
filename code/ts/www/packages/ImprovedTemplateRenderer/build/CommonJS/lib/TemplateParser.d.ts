@@ -1,5 +1,5 @@
-import { CharcodeConverter } from "../../../CharcodeConverter/build/ESNext/CharcodeConverter";
-import { JPathData } from "../types/JPathData.js";
+import { CharcodeConverter } from "@jaisocx/charcode-converter";
+import { JPathData } from "./../types/JPathData.js";
 export declare class TemplateParser {
     static CONSTANTS: {
         new (): {};

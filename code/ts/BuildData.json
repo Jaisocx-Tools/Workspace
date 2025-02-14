@@ -205,9 +205,21 @@
       ]
     },
     {
+      "path": "packages/WorkspaceTreeWalker",
+      "name": "workspace-tree-walker",
+      "build": true,
+      "build-simple-enable": true,
+      "dependencies": [],
+      "build-files": [
+        "types/IterableInfo.js",
+        "types/WorkspaceTreeWalkerPayload.js",
+        "WorkspaceTreeWalker.js"
+      ]
+    },
+    {
       "path": "packages/ImprovedTemplateRenderer",
       "name": "improved-template-renderer",
-      "build": true,
+      "build": false,
       "build-simple-enable": true,
       "dependencies": [
         {
@@ -217,18 +229,20 @@
         {
           "name": "@jaisocx/charcode-converter",
           "path": "packages/CharcodeConverter"
+        },
+        {
+          "name": "@jaisocx/workspace-tree-walker",
+          "path": "packages/WorkspaceTreeWalker"
         }
       ],
       "build-files": [
         "lib/JPath.js",
         "lib/TemplateParser.js",
-        "lib/TreeWalker.js",
         "types/DataConf.js",
-        "types/IterableInfo.js",
         "types/JPathData.js",
         "types/RepeatDataCallbackValue.js",
         "types/TemplateInfo.js",
-        "types/TemplatesConf.js",
+        "types/TemplateConf.js",
         "ImprovedTemplateRenderer.js",
         "ImprovedTemplateRendererConstants.js"        
       ]

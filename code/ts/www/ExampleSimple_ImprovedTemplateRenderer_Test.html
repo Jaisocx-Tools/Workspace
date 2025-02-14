@@ -11,12 +11,53 @@
     <script src="packages/CharcodeConverter/build/Simple/CharcodeConverter.js"></script>
 
 
-    <script src="packages/ImprovedTemplateRenderer/build/Simple/NestedrepeatCallbackValue.js"></script>
-    <script src="packages/ImprovedTemplateRenderer/build/Simple/TemplatesConfNested.js"></script>
-    <script src="packages/ImprovedTemplateRenderer/build/Simple/TemplatesConf.js"></script>
-    <script src="packages/ImprovedTemplateRenderer/build/Simple/ImprovedTemplateRendererConstants.js"></script>
+    <script src="packages/WorkspaceTreeWalker/build/Simple/types/IterableInfo.js"></script>
+    <script src="packages/WorkspaceTreeWalker/build/Simple/WorkspaceTreeWalker.js"></script>
+
+
+    <script src="packages/ImprovedTemplateRenderer/build/Simple/lib/JaisocxTreeWalker.js"></script>
+    <script src="packages/ImprovedTemplateRenderer/build/Simple/lib/JPath.js"></script>
+    <script src="packages/ImprovedTemplateRenderer/build/Simple/lib/TemplateParser.js"></script>
+    <script src="packages/ImprovedTemplateRenderer/build/Simple/types/DataConf.js"></script>
+    <script src="packages/ImprovedTemplateRenderer/build/Simple/types/JPathData.js"></script>
+    <script src="packages/ImprovedTemplateRenderer/build/Simple/types/RepeatDataCallbackValue.js"></script>
+    <script src="packages/ImprovedTemplateRenderer/build/Simple/types/TemplateInfo.js"></script>
+    <script src="packages/ImprovedTemplateRenderer/build/Simple/types/TemplateConf.js"></script>
+    <script src="packages/ImprovedTemplateRenderer/build/Simple/ImprovedTemplateRendererConstants.js"></script>    
     <script src="packages/ImprovedTemplateRenderer/build/Simple/ImprovedTemplateRenderer.js"></script>
 
+
+    <style>
+
+.table-columns-labels-holder,
+.table-records-holder .table-record {
+  display: grid;
+  grid-auto-columns: 12rem 12rem;
+  grid-template-columns: 12rem 12rem;
+}
+
+.table-column-label.number,
+.table-field.number {
+  background-color: steelblue;
+}
+
+.table-column-label.text,
+.table-field.text {
+  background-color: #ffe;
+}
+
+.table-column-label.right,
+.table-field.right {
+  text-align: right;
+}
+
+.table-column-label.left,
+.table-field.left {
+  text-align: left;
+}
+
+
+    </style>
 
   </head>
   <body>
@@ -70,15 +111,15 @@
 
         //@conf-type html structure. tool-art based. Here for the Table.
         let templatesObject = {
-          "tableOpen":                `<div class="table {{ tableCssClasses }}">`,
+          "tableOpen":                `<div class="table {{ tableCssClasses.css }}">`,
           "colsLabelsHolderOpen":       `<div class="table-columns-labels-holder">`,
-          "colLabelOpen":                 `<div class="table-column-label">`,
+          "colLabelOpen":                 `<div class="table-column-label {{ columnLabelInfo.cssClass }}">`,
           "colLabelRendered":               `{{ columnLabelInfo.label }}`,
           "colLabelClose":                `</div>`,
           "colsLabelsHolderClose":      `</div>`,
           "recordsHolderOpen":          `<div class="table-records-holder">`,
           "recordOpen":                   `<div class="table-record">`,
-          "fieldOpen":                      `<div class="table-field">`,
+          "fieldOpen":                      `<div class="table-field {{ columnLabelInfo.cssClass }}">`,
           "fieldRendered":                    `{{ value }}`,
           "fieldClose":                     `</div>`,
           "recordClose":                  `</div>`,
@@ -97,13 +138,14 @@
                                       },
           "colsLabelsHolderOpen":       {
                                           "tag": "main",
-                                          "subtreeRepeatTag": "columnLabels"
+                                          "startRepeat": true,
+                                          "subtreeRepeatTag": "columnLabels",
+                                          "repeatTagConfDataApplies": true,
+                                          "useRepeatCallback": false 
                                         },
           "colLabelOpen":                 {
                                             "tag": "columnLabels",
-                                            "startRepeat": true,
-                                            "repeatTagConfDataApplies": true,
-                                            "useRepeatCallback": false 
+                                            "placeholder": "columnLabelInfo"
                                           },
           "colLabelRendered":               {
                                               "tag": "columnLabels",
@@ -117,19 +159,21 @@
                                         },
           "recordsHolderOpen":          {
                                           "tag": "main",
-                                          "subtreeRepeatTag": "record"
+                                          "startRepeat": true,
+                                          "subtreeRepeatTag": "record",
+                                          "repeatTagConfDataApplies": true,
+                                          "useRepeatCallback": false
                                         },
           "recordOpen":                   {
                                             "tag": "record",
                                             "startRepeat": true,
-                                            "repeatTagConfDataApplies": true,
-                                            "useRepeatCallback": false,
-                                            "subtreeRepeatTag": "fieldValue"
+                                            "subtreeRepeatTag": "fieldValue",
+                                            "repeatTagConfDataApplies": false,
+                                            "useRepeatCallback": true,
+                                            "repeatDataCallback": "getFieldValue"
                                           },
           "fieldOpen":                      {
                                               "tag": "fieldValue",
-                                              "startRepeat": true,
-                                              "repeatTagConfDataApplies": false
                                             },
           "fieldRendered":                    {
                                                 "tag": "fieldValue",
@@ -179,14 +223,14 @@
           // tool-art based props names set in this config. 
           // tool-art and tool-exemplar-context, since every Table on every other site has data from other tables.
           const dataConf = [
-            { template: "tableOpen", "placeholder-data": cssClasses },
-            { template: "colsLabelsHolderOpen" },
-            { template: "colLabelOpen", "repeat-tag-data": tableColumnsConf, "comment": "The data for table columns labels texts and other conf data. Text applied to the placeholder in the template 'colLabelRendered'" },
+            { template: "tableOpen", "placeholderData": cssClasses },
+            { template: "colsLabelsHolderOpen", "repeatTagData": tableColumnsConf, "comment": "The data for table columns labels texts and other conf data. Text applied to the placeholder in the template 'colLabelRendered'" },
+            { template: "colLabelOpen" },
             { template: "colLabelRendered" },
             { template: "colLabelClose" },
             { template: "colsLabelsHolderClose" },
-            { template: "recordsHolderOpen" },
-            { template: "recordOpen", "repeat-tag-data": tableRecordsData, "comment": "The data for table records. And the repeat-tag-data for each record fieldset, and without callback, just all record's json object's fields." },
+            { template: "recordsHolderOpen", "repeatTagData": tableRecordsData, "comment": "The data for table records. And the repeat-tag-data for each record fieldset, and without callback, just all record's json object's fields." },
+            { template: "recordOpen" },
             { template: "fieldOpen" },
             { template: "fieldRendered" },
             { template: "fieldClose" },
@@ -207,14 +251,25 @@
         // the table has 2 columns: id and text.
         // label prop tells the innerHTML for the columns labels of the table.
         let tableColumnsConfObject = { 
-          id: { 
-            label: "ID" 
+          "id": { 
+            "columnName": "id", 
+            "label": "ID",
+            "cssClass": "columnLabel number right",
           }, 
-          text: { 
-            label: "Text" 
+          "text": { 
+            "columnName": "text", 
+            "label": "Text",
+            "cssClass": "columnLabel text left",
           } 
         };
 
+        let tableColumnsOrder = [
+          "id",
+          "text"
+        ];
+
+
+        let colsDataConf = tableColumnsOrder.map( colName => tableColumnsConfObject[colName] );
 
 
         // the simpliest json,
@@ -227,19 +282,19 @@
             "text": "Hallo!"
           },
           {
-            "id": 1,
-            "text": "Hallo!"
+            "id": 2,
+            "text": "Hallo Sveta"
           },
           {
-            "id": 1,
-            "text": "Hallo!"
+            "id": 3,
+            "text": "Hallo Elias"
           },
           {
-            "id": 1,
-            "text": "Hallo!"
+            "id": 4,
+            "text": "Hallo Volodia"
           },
           {
-            "id": 1,
+            "id": 5,
             "text": "Hallo!"
           },
         ];
@@ -255,8 +310,8 @@
         // and then the inner repeating templates
         // will have the data elem to set in the template's html in place where the placeholder resides.
         let dataConf = produceDataConf (
-          "theme-custom",
-          tableColumnsConfObject,
+          { "css": "theme-custom" },
+          colsDataConf,
           tableRecordset
         );
 
@@ -267,16 +322,16 @@
         let result = improvedTemplateRenderer
           .setDebug( true )
           .setTemplatesObject ( templatesObject )
-          .setTemplatesConf ( templatesConf )
+          .setTemplateConf ( templatesConf )
           .setDataConf( dataConf )
-          .render( obj );
+          .render( obj, "main" );
 
         
-        //let renderedTableHtml = obj.retVal;
+        let renderedTableHtml = obj.retVal;
 
         const holderHtmlNode = document.querySelector( holderHtmlNodeSelector );
 
-        //@ DocumentFragment is efficient, then how to?
+        //////@ DocumentFragment is efficient, then how to?
         holderHtmlNode.insertAdjacentHTML (
           "afterbegin",
           obj.retVal
