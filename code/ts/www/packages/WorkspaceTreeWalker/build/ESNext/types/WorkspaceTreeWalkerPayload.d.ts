@@ -1,6 +1,7 @@
 export declare class WorkspaceTreeWalkerPayload {
     flatDataset: any;
     flatDatasetNormalized: any;
+    currentGroupNormalized: any;
     flatDataElem: any;
     flatDataElemNormalized: any;
     flatDataElemKey: any;

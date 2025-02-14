@@ -1,0 +1,93 @@
+<html>
+  <head>
+    <title>TemplateRenderer Example</title>
+
+    <link rel="stylesheet" href="CssTools/CssCleanStart/assets/clean-start.css">
+
+
+    <script src="packages/WorkspaceTreeWalker/build/Simple/types/WorkspaceTreeWalkerPayload.js"></script>
+    <script src="packages/WorkspaceTreeWalker/build/Simple/types/IterableInfo.js"></script>
+    <script src="packages/WorkspaceTreeWalker/build/Simple/WorkspaceTreeWalker.js"></script>
+
+
+    <style>
+
+
+    </style>
+
+  </head>
+  <body>
+
+    <h1>Example WorkspacwTreeWalker</h1>
+    <h2>In development</h2>
+
+    <example id="treewalker_1"></example>
+
+    <script>
+
+      const flatRecursionDataset = [
+      { parentId: "root", id: 1, text: "Hello" },
+      { parentId: "root", id: 2, text: "Hello" },
+      { parentId: "root", id: 3, text: "Hello" },
+      { parentId: 3, id: 4, text: "Hello" },
+      { parentId: 3, id: 5, text: "Hello" },
+      { parentId: 3, id: 6, text: "Hello" },
+      { parentId: 5, id: 7, text: "Hello" },
+      { parentId: 5, id: 8, text: "Hello" },
+      { parentId: 8, id: 9, text: "Hello" },
+      { parentId: 9, id: 10, text: "Hello" },
+      { parentId: 9, id: 11, text: "Hello" },
+      { parentId: 9, id: 12, text: "Hello" },
+      ];
+
+      function callback1 (
+        inOutPayload
+      ) {
+          console.log( inOutPayload );
+      }
+
+      function exampleUseWorkspaceTreWalkerFlatData() {
+        const holderHtmlNode = document.querySelector( "example#treewalker_1" );
+
+        const inOutPayload = new WorkspaceTreeWalkerPayload();
+        
+        inOutPayload.flatDataset = flatRecursionDataset;
+
+        inOutPayload.parentId = "main";
+        inOutPayload.id = "root";
+        inOutPayload.parentIdForNestedNodes = "root";
+        inOutPayload.parentIdProperyName = "parentId";
+        inOutPayload.idProperyName = "id";
+
+        inOutPayload.customData = {};
+
+
+        const treeWalker = new WorkspaceTreeWalker();
+        treeWalker.walkFlatRepeating (
+          inOutPayload,
+          callback1
+        );
+
+        holderHtmlNode.insertAdjacentHTML (
+          "afterbegin",
+          inOutPayload.customData.join("")
+        );
+
+        console.log( "this .html file, \nfunction exampleUseWorkspaceTreWalker(). \nThis test func finished at it's last js code line." );        
+      }
+
+      document.addEventListener ( 
+        'DOMContentLoaded', 
+        () => {
+          exampleUseWorkspaceTreWalkerFlatData();
+        }
+      );
+
+    </script>
+  </body>
+</html>
+
+
+
+
+

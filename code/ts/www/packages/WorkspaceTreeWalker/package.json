@@ -18,8 +18,6 @@
     "README.md",
     "LICENSE"
   ],
-  "optionalDependencies": {
-  },
   "publishConfig": {
     "access": "public"
   },

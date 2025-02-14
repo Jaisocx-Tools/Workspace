@@ -219,7 +219,7 @@
     {
       "path": "packages/ImprovedTemplateRenderer",
       "name": "improved-template-renderer",
-      "build": false,
+      "build": true,
       "build-simple-enable": true,
       "dependencies": [
         {

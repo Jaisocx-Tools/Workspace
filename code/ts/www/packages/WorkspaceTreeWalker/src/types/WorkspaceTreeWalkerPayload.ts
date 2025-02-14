@@ -3,6 +3,7 @@ export class WorkspaceTreeWalkerPayload {
   // the data for the tree walker to walk
   public flatDataset: any;
   public flatDatasetNormalized: any;
+  public currentGroupNormalized: any;
   public flatDataElem: any;
   public flatDataElemNormalized: any;
   public flatDataElemKey: any;
@@ -26,6 +27,7 @@ export class WorkspaceTreeWalkerPayload {
 
     this.flatDataset = null;
     this.flatDatasetNormalized = null;
+    this.currentGroupNormalized = null;
     this.flatDataElem = null;
     this.flatDataElemNormalized = null;
     this.flatDataElemKey = null;

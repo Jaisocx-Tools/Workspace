@@ -407,11 +407,11 @@ export class WorkspaceTreeWalker {
             const flatRecursionDataRecord: any = node[subtreeKey];
 
             //@ts-ignore
-            const matchesHolderId: boolean = ( flatRecursionDataRecord[this.idProperyName] === this.parentId );
+            const matchesHolderId: boolean = ( flatRecursionDataRecord[inOutPayload.parentIdProperyName] === inOutPayload.id );
 
             return matchesHolderId;
           }
-        ).bind(inOutPayload),
+        ),
     ];
 
     if ( (!filteredRootNodes) || ( filteredRootNodes.length === 0 ) ) {
@@ -422,24 +422,32 @@ export class WorkspaceTreeWalker {
     let node: any  = null;
     let nodeInfo: IterableInfo|Object = {};
     
+    inOutPayload.currentGroupNormalized = filteredRootNodes;
 
     loop: for ( node of filteredRootNodes ) {
 
-      inOutPayload.flatDataElemKey        = Object.keys( node )[0];
-      inOutPayload.flatDataElem           = node[inOutPayload.flatDataElemKey];
-      inOutPayload.id                     = inOutPayload.flatDataElem[inOutPayload.idProperyName];
-      inOutPayload.parentIdForNestedNodes = inOutPayload.flatDataElem[inOutPayload.parentIdProperyName];
+      const payloadLocal: WorkspaceTreeWalkerPayload = new WorkspaceTreeWalkerPayload();
+      for ( let propName in inOutPayload ) {
+        //@ts-ignore
+        payloadLocal[propName] = inOutPayload[propName];
+      }
 
-      nodeInfo = WorkspaceTreeWalker.getNodeInfo ( inOutPayload.flatDataElem );
+      payloadLocal.flatDataElemKey        = Object.keys( node )[0];
+      payloadLocal.flatDataElem           = node[payloadLocal.flatDataElemKey];
+      payloadLocal.id                     = payloadLocal.flatDataElem[payloadLocal.idProperyName];
+      payloadLocal.parentId               = payloadLocal.flatDataElem[payloadLocal.parentIdProperyName];
+      payloadLocal.parentIdForNestedNodes = payloadLocal.flatDataElem[payloadLocal.parentIdProperyName];
 
-      inOutPayload.flatDataElemNormalized = WorkspaceTreeWalker.normalizeNodes ( 
-        inOutPayload.flatDataElem, 
+      nodeInfo = WorkspaceTreeWalker.getNodeInfo ( payloadLocal.flatDataElem );
+
+      payloadLocal.flatDataElemNormalized = WorkspaceTreeWalker.normalizeNodes ( 
+        payloadLocal.flatDataElem, 
         ( 
                                               nodeInfo as IterableInfo )
       );
 
       callback (
-        inOutPayload
+        payloadLocal
       );
 
       let repeatTimes: number = 1;
@@ -448,11 +456,11 @@ export class WorkspaceTreeWalker {
       let repeatedDataInfo: IterableInfo = {};
 
       if ( 
-        ( inOutPayload.repeatTimes ) && 
-        ( inOutPayload.payloadRepeatData )
+        ( payloadLocal.repeatTimes ) && 
+        ( payloadLocal.payloadRepeatData )
       ) {
-        repeatTimes = inOutPayload.repeatTimes;
-        isRepeatDataApplied = ( ( inOutPayload.repeatTimes !== 0 ) && ( inOutPayload.payloadRepeatData.length !== 0 ) ) as boolean;
+        repeatTimes = payloadLocal.repeatTimes;
+        isRepeatDataApplied = ( ( payloadLocal.repeatTimes !== 0 ) && ( payloadLocal.payloadRepeatData.length !== 0 ) ) as boolean;
       }
 
       let step: number = 0;
@@ -465,12 +473,16 @@ export class WorkspaceTreeWalker {
         // inOutPayload.step = step;
 
         let subtreeInoutPayload: WorkspaceTreeWalkerPayload = new WorkspaceTreeWalkerPayload();
+        for ( let propName in payloadLocal ) {
+          //@ts-ignore
+          subtreeInoutPayload[propName] = payloadLocal[propName];
+        }
         subtreeInoutPayload.step = step;
 
 
         if ( isRepeatDataApplied === true ) {
           //@ts-ignore
-          subtreeInoutPayload.payloadDataElem = inOutPayload.payloadRepeatData[step];
+          subtreeInoutPayload.payloadDataElem = payloadLocal.payloadRepeatData[step];
           repeatedDataInfo = WorkspaceTreeWalker.getNodeInfo( subtreeInoutPayload.payloadDataElem );
 
           if ( !repeatedDataInfo.isArray && ( repeatedDataInfo.datatype === IterableInfo.DATATYPE_OBJECT ) ) {
@@ -484,7 +496,7 @@ export class WorkspaceTreeWalker {
           }
           
         } else {
-          subtreeInoutPayload = inOutPayload;
+          subtreeInoutPayload = payloadLocal;
         }
 
         this.walkFlatRepeatingSubcall (

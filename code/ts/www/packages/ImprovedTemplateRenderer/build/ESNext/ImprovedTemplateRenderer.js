@@ -1,6 +1,6 @@
 import { EventEmitter } from "@jaisocx/event-emitter";
 import { CharcodeConverter } from "@jaisocx/charcode-converter";
-import { WorkspaceTreeWalker } from "@jaisocx/workspace-tree-walker";
+import { WorkspaceTreeWalker, WorkspaceTreeWalkerPayload } from "@jaisocx/workspace-tree-walker";
 import { TemplateParser } from "./lib/TemplateParser.js";
 import { JPathData } from "./types/JPathData.js";
 import { JPath } from "./lib/JPath.js";
@@ -113,20 +113,8 @@ export class ImprovedTemplateRenderer extends EventEmitter {
                 };
             }),
         ];
-        const treeWalker = new WorkspaceTreeWalker();
-        let inoutPayload = {
-            repeatData: null,
-            repeatTimes: 1,
-            repeatDataElem: null,
-            step: 0,
-        };
-        const callbackWalkRepeated = (holderId, nodeInfo, templateConf, inOutPayload) => {
-            console.log({
-                holderId,
-                nodeInfo,
-                templateConf,
-                inOutPayload,
-            });
+        const callbackWalkRepeated = (inOutPayload) => {
+            console.log(inOutPayload);
             // const templateConf: TemplateConf = ( treeData as TemplateConf );
             // if ( templateConf.placeholder ) {
             //   const dataConf: DataConf = this._dataConf.find( ( conf: DataConf ) => ( conf.template === templateConf.templateName ) );
@@ -153,46 +141,43 @@ export class ImprovedTemplateRenderer extends EventEmitter {
             //   const dataConf: DataConf = this._dataConf.find( ( conf: DataConf ) => ( conf.template === templateConf.templateName ) );
             //   const placeholderData: any = dataConf.placeholderData;
             // }
+            let templateConf = inOutPayload.flatDataElem;
             let templateName = templateConf.templateName;
             //let templateConf: TemplateConf = this._templatesConf[templateName];
             if (!templateName) {
-                return {};
+                return;
             }
             //@temp test block
-            let repeatData = null;
-            let dataConf = {};
-            dataConf = this._dataConf.find((conf) => {
-                console.log(conf);
-                console.log(conf.template);
-                console.log(templateConf);
-                console.log(templateConf.templateName);
+            let dataConf = this._dataConf.find((conf) => {
                 const matches = (conf.template === templateConf.templateName);
                 return matches;
             });
-            if ((templateConf.startRepeat === true) && (templateConf.repeatTagConfDataApplies === true)) {
-                repeatData = dataConf.repeatTagData;
-                const repeatDataInfo = WorkspaceTreeWalker.getNodeInfo(repeatData);
-                if (repeatDataInfo.isArray === false) {
-                    const normalizedNodes = WorkspaceTreeWalker.normalizeNodes(repeatData, repeatDataInfo);
-                    repeatData = [...normalizedNodes,];
+            let repeatData = null;
+            let repeatDataNormalized = [];
+            //@ts-ignore
+            let repeatDataInfo = {};
+            if (templateConf.startRepeat === true) {
+                if (templateConf.repeatTagConfDataApplies === true) {
+                    repeatData = dataConf.repeatTagData;
                 }
-                inOutPayload.repeatData = repeatData;
-                inOutPayload.repeatTimes = repeatData.length;
-                inOutPayload.step = 0;
-            }
-            else if ((templateConf.startRepeat === true) && (templateConf.repeatTagConfDataApplies === false)) {
-                inOutPayload.repeatData = inOutPayload.repeatDataElem;
-                const repeatDataInfo = WorkspaceTreeWalker.getNodeInfo(inOutPayload.repeatData);
-                if (repeatDataInfo.isArray === false) {
-                    const normalizedNodes = WorkspaceTreeWalker.normalizeNodes(inOutPayload.repeatData, repeatDataInfo);
-                    inOutPayload.repeatData = [...normalizedNodes,];
+                else {
+                    repeatData = inOutPayload.payloadDataElem;
                 }
-                inOutPayload.repeatTimes = inOutPayload.repeatData.length;
+                // repeatDataInfo = WorkspaceTreeWalker.getNodeInfo ( repeatData );
+                // if ( repeatDataInfo.isArray === true ) {
+                //   inOutPayload.payloadRepeatData = repeatData;
+                // } else {
+                //   repeatDataNormalized = WorkspaceTreeWalker.normalizeNodes ( 
+                //     repeatData, 
+                //     repeatDataInfo );
+                //   inOutPayload.payloadRepeatData = repeatDataNormalized;
+                // }
+                inOutPayload.repeatTimes = inOutPayload.payloadRepeatData.length;
                 inOutPayload.step = 0;
             }
             let placeholderData = dataConf.placeholderData;
-            if (!placeholderData && (templateConf.placeholder) && inOutPayload.repeatDataElem) {
-                placeholderData = inOutPayload.repeatDataElem;
+            if (!placeholderData && (templateConf.placeholder) && inOutPayload.payloadDataElem) {
+                placeholderData = inOutPayload.payloadDataElem;
             }
             const placeholderName = templateConf.placeholder;
             const preparedTemplate = this._preparedTemplatesObject[templateConf.templateName];
@@ -225,16 +210,18 @@ export class ImprovedTemplateRenderer extends EventEmitter {
                     }
                 }
             }
-            return {
-                repeatTimes: inOutPayload.repeatTimes,
-                step: inOutPayload.step,
-                repeatData: inOutPayload.repeatData,
-                templateConf: templateConf,
-            };
         };
-        treeWalker.walkFlat(mainTemplateConfigTag, templatesConf, "subtreeRepeatTag", "tag", inoutPayload, callbackWalkRepeated);
+        const treeWalker = new WorkspaceTreeWalker();
+        let inOutPayload = new WorkspaceTreeWalkerPayload();
+        inOutPayload.flatDataset = templatesConf;
+        inOutPayload.parentId = mainTemplateConfigTag;
+        inOutPayload.id = "main";
+        inOutPayload.parentIdForNestedNodes = "subtreeRepeatTag";
+        inOutPayload.parentIdProperyName = "tag";
+        inOutPayload.idProperyName = "subtreeRepeatTag";
+        treeWalker.walkFlatRepeating(inOutPayload, callbackWalkRepeated);
         console.log("TREE WALKER RESULT");
-        console.log(inoutPayload);
+        console.log(inOutPayload);
     }
     getFieldValue(dataElem) {
         const info = WorkspaceTreeWalker.getNodeInfo(dataElem);

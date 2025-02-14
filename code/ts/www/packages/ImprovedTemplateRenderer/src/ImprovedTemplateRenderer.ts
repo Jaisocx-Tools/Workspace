@@ -2,7 +2,7 @@
 
 import { EventEmitter, EventEmitResult, EventHandlerReturnValue } from "@jaisocx/event-emitter";
 import { CharcodeConverter } from "@jaisocx/charcode-converter";
-import { WorkspaceTreeWalker, IterableInfo } from "@jaisocx/workspace-tree-walker";
+import { WorkspaceTreeWalker, IterableInfo, WorkspaceTreeWalkerPayload } from "@jaisocx/workspace-tree-walker";
 
 
 import { ImprovedTemplateRendererConstants } from "./ImprovedTemplateRendererConstants.js";
@@ -185,29 +185,10 @@ export class ImprovedTemplateRenderer extends EventEmitter {
         ),
     ];
 
-    const treeWalker: WorkspaceTreeWalker = new WorkspaceTreeWalker();
-
-    let inoutPayload: { repeatData: any, repeatTimes: number, repeatDataElem: any, step: number } = {
-      repeatData: null,
-      repeatTimes: 1,
-      repeatDataElem: null,
-      step: 0,
-    };
-
     const callbackWalkRepeated: Function = (
-      holderId: string,
-      nodeInfo: IterableInfo,
-      templateConf: any,
-      inOutPayload: { repeatData: any, repeatTimes: number, repeatDataElem: any, step: number }
-    ) => {
-      console.log (
-        { 
-          holderId,
-          nodeInfo,
-          templateConf,
-          inOutPayload,
-        }
-      );
+      inOutPayload: WorkspaceTreeWalkerPayload
+    ): undefined => {
+      console.log ( inOutPayload );
 
       // const templateConf: TemplateConf = ( treeData as TemplateConf );
 
@@ -245,69 +226,63 @@ export class ImprovedTemplateRenderer extends EventEmitter {
       //   const placeholderData: any = dataConf.placeholderData;
       // }
 
-
+      let templateConf: TemplateConf = inOutPayload.flatDataElem as TemplateConf;
       let templateName: string = templateConf.templateName;
       //let templateConf: TemplateConf = this._templatesConf[templateName];
 
       if ( !templateName ) {
-        return {};
+        return;
       }
 
       //@temp test block
-      let repeatData: any = null;
-      let dataConf: DataConf|Object = {};
-      dataConf = this._dataConf.find( 
+      let dataConf: DataConf|Object = this._dataConf.find ( 
         ( conf: DataConf ) => { 
-          console.log( conf );
-          console.log( conf.template );
-          console.log( templateConf );
-          console.log( templateConf.templateName );
           const matches: boolean = ( conf.template === templateConf.templateName ); 
           return matches;
         } 
       );
 
-      if ( ( templateConf.startRepeat === true ) && ( templateConf.repeatTagConfDataApplies === true ) ) {
+      let repeatData: any = null;
+      let repeatDataNormalized: any[] = [];
+      //@ts-ignore
+      let repeatDataInfo: IterableInfo = {};
 
-        repeatData = ( dataConf  as DataConf ).repeatTagData;
-        const repeatDataInfo: IterableInfo = WorkspaceTreeWalker.getNodeInfo ( repeatData );
+      if ( templateConf.startRepeat === true ) {
 
-        if ( repeatDataInfo.isArray === false ) {
-          const normalizedNodes: any = WorkspaceTreeWalker.normalizeNodes ( 
+        if ( templateConf.repeatTagConfDataApplies === true ) {
+          repeatData = ( dataConf  as DataConf ).repeatTagData;
+        } else {
+          repeatData = inOutPayload.payloadDataElem;
+        }
+
+        repeatDataInfo = WorkspaceTreeWalker.getNodeInfo ( repeatData );
+
+        if ( repeatDataInfo.isArray === true ) {
+          inOutPayload.payloadRepeatData = repeatData;
+
+        } else {
+          repeatDataNormalized = WorkspaceTreeWalker.normalizeNodes ( 
             repeatData, 
             repeatDataInfo );
-          repeatData = [...normalizedNodes,];
+
+          inOutPayload.payloadRepeatData = repeatDataNormalized;
+
         }
 
-        inOutPayload.repeatData = repeatData;
-        inOutPayload.repeatTimes = repeatData.length;
+        inOutPayload.repeatTimes = inOutPayload.payloadRepeatData.length;
         inOutPayload.step = 0;
 
-      } else if ( ( templateConf.startRepeat === true ) && ( templateConf.repeatTagConfDataApplies === false ) ) {
-        inOutPayload.repeatData = inOutPayload.repeatDataElem;
-
-        const repeatDataInfo: IterableInfo = WorkspaceTreeWalker.getNodeInfo ( inOutPayload.repeatData );
-
-        if ( repeatDataInfo.isArray === false ) {
-          const normalizedNodes: any = WorkspaceTreeWalker.normalizeNodes ( 
-            inOutPayload.repeatData, 
-            repeatDataInfo );
-          inOutPayload.repeatData = [...normalizedNodes,];
-        }
-
-        inOutPayload.repeatTimes = inOutPayload.repeatData.length;
-        inOutPayload.step = 0;
-        
       }
 
       let placeholderData: any = ( dataConf  as DataConf ).placeholderData;
-      if ( !placeholderData && ( templateConf.placeholder ) && inOutPayload.repeatDataElem ) {
-        placeholderData = inOutPayload.repeatDataElem;
+
+      if ( !placeholderData && ( templateConf.placeholder ) && inOutPayload.payloadDataElem ) {
+        placeholderData = inOutPayload.payloadDataElem;
 
       }
 
       const placeholderName: string|undefined|null = templateConf.placeholder;
-      const preparedTemplate: any|Uint16Array<ArrayBufferLike> = this._preparedTemplatesObject[templateConf.templateName];
+      const preparedTemplate: (Uint16Array|JPathData)[]|Uint16Array<ArrayBufferLike> = this._preparedTemplatesObject[templateConf.templateName];
       
       if ( preparedTemplate instanceof Uint16Array ) {
         this._renderedHtmlArray.push( this.charcodeConverter.arrayToString( 
@@ -317,10 +292,12 @@ export class ImprovedTemplateRenderer extends EventEmitter {
       } else {
 
         for ( let template of preparedTemplate ) {
+
           if ( template instanceof Uint16Array ) {
-            this._renderedHtmlArray.push( this.charcodeConverter.arrayToString( 
+            this._renderedHtmlArray.push( this.charcodeConverter.arrayToString ( 
               template, 
               0 ) );
+
           } else if ( ( templateConf.placeholder ) && ( template instanceof JPathData ) ) {
 
             const jpathData: JPathData = ( template as JPathData );
@@ -341,8 +318,6 @@ export class ImprovedTemplateRenderer extends EventEmitter {
               placeholderDataByJpath = JSON.stringify( placeholderDataByJpath );
             }
             
-            
-
             //@advanced const placeholderDataBitsbuf: Uint16Array = this.charcodeConverter.stringToArray( 
             //   placeholderDataByJpath, 
             //   0 );
@@ -353,27 +328,30 @@ export class ImprovedTemplateRenderer extends EventEmitter {
         }
 
       }
-      
-      return { 
-        repeatTimes: inOutPayload.repeatTimes, 
-        step: inOutPayload.step, 
-        repeatData: inOutPayload.repeatData, 
-        templateConf: templateConf,
-      };
 
     };
 
+
+
+    const treeWalker: WorkspaceTreeWalker = new WorkspaceTreeWalker();
+
+    let inOutPayload: WorkspaceTreeWalkerPayload = new WorkspaceTreeWalkerPayload();
+    inOutPayload.flatDataset = templatesConf;
+
+    inOutPayload.parentId = mainTemplateConfigTag;
+    inOutPayload.id = "main";
+    inOutPayload.parentIdForNestedNodes = "subtreeRepeatTag";
+    inOutPayload.parentIdProperyName = "tag";
+    inOutPayload.idProperyName = "subtreeRepeatTag";
+
+
     treeWalker.walkFlatRepeating (
-      mainTemplateConfigTag,
-      templatesConf,
-      "subtreeRepeatTag",
-      "tag",
-      inoutPayload,
+      inOutPayload,
       callbackWalkRepeated
     );
-
+  
     console.log( "TREE WALKER RESULT" );
-    console.log( inoutPayload );
+    console.log( inOutPayload );
 
   }
 

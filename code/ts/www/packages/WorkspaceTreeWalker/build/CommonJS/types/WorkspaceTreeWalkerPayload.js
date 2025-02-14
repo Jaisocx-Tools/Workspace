@@ -5,6 +5,7 @@ class WorkspaceTreeWalkerPayload {
     constructor() {
         this.flatDataset = null;
         this.flatDatasetNormalized = null;
+        this.currentGroupNormalized = null;
         this.flatDataElem = null;
         this.flatDataElemNormalized = null;
         this.flatDataElemKey = null;
