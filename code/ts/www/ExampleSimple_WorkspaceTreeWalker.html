@@ -74,6 +74,15 @@
 
     
     <h3>Flat recursion dataset example</h3>
+    <h3>Looks like this when rendered with Tree()</h3>
+    <div id="tree-holder-flat-dataset"></div>
+
+
+    <h3>And for example, this dataset was processed by WorkspaceTreeWalker, and rendered with Tree()</h3>
+    <div id="tree-holder-tree-dataset"></div>
+
+
+    <h3>And here is the json text of the same dataset:</h3>
     <CodeSnippetHolder id="code-snippet-walkFlatRepeatingDataset" class="CodeSnippetHolder salad TreeWalkerPage">
 <pre class="CodeSnippetArea">
 const flatRecursionDataset = [
@@ -159,13 +168,6 @@ function exampleUseWorkspaceTreeWalkerFlatData() {
 }
 </pre>
 </CodeSnippetHolder>
-
-
-<h3>Render easily with the Tree js class to view in the browser</h3>
-
-<div id="tree-holder-flat-dataset" class="theme-funny"></div>
-
-<div id="tree-holder-tree-dataset" class="theme-base"></div>
 
 
 <CodeSnippetHolder id="code-snippet-walkFlatRepeatingTreeRender" class="CodeSnippetHolder salad TreeWalkerPage">
@@ -292,7 +294,7 @@ document.addEventListener (
           .setMainHtmlNodeId("tree-holder-flat-dataset")
           .setDataTypesCssClassesEnabled(true)
           .setNodesWithIcons(true)
-          .setNodesOpenedMode(TreeConstants.NodesOpenedMode.ALL_HIDE)
+          .setNodesOpenedMode(TreeConstants.NodesOpenedMode.ALL_SHOWN)
           .setRenderingMode(TreeConstants.RenderingMode.Ease)
           .render( flatRecursionDataset );
       }
@@ -304,7 +306,7 @@ document.addEventListener (
           .setMainHtmlNodeId("tree-holder-tree-dataset")
           .setDataTypesCssClassesEnabled(true)
           .setNodesWithIcons(true)
-          .setNodesOpenedMode(TreeConstants.NodesOpenedMode.ALL_HIDE)
+          .setNodesOpenedMode(TreeConstants.NodesOpenedMode.ALL_SHOWN)
           .setRenderingMode(TreeConstants.RenderingMode.Ease)
           .render( treeDataset );
       }
