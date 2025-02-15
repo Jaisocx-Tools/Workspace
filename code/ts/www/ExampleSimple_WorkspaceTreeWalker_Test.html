@@ -3,6 +3,7 @@
     <title>WorkspaceTreeWalker Example</title>
 
     <link rel="stylesheet" href="CssTools/CssCleanStart/assets/clean-start.css">
+    <link rel="stylesheet" href="CssTools/CssCleanStart/assets/themes/theme-example/clean-start-theme-example.css">
 
 
     <script src="packages/WorkspaceTreeWalker/build/Simple/types/WorkspaceTreeWalkerPayload.js"></script>
@@ -13,16 +14,199 @@
 
     <script src="examples/ExampleTree/build/webpack/example-tree-bundle.js"></script>
 
+    <link rel="stylesheet" href="/CssTools/CssCodeSnippet/assets/themes/rosa.css">
+    <link rel="stylesheet" href="/CssTools/CssCodeSnippet/assets/themes/sky-blue.css">
+    <link rel="stylesheet" href="/CssTools/CssCodeSnippet/assets/themes/salad.css">
+  
+    <link rel="stylesheet" href="/CssTools/CssCodeSnippet/assets/css-code-snippet-styles-main.css">
+    <link rel="stylesheet" href="/CssTools/CssCodeSnippet/assets/lines-numbers-variables/code-snippet-lines-numbers-99.css">
+  
+    <style>
 
+  .CodeSnippetHolder.salad.TreeWalkerPage {
+
+    --code-snippet-tool--width: max-content;
+    --code-snippet-tool--height: max-content;
+    --overflow-y: visible;
+
+    --code-snippet--padding-top: 1rem;
+    --code-snippet--padding-bottom: 1rem;
+
+    --code-snippet--line-height: 1.25rem;
+    --code-snippet--font-size: 0.925rem;
+    --font-family: Courier;
+  }
+
+  #code-snippet-walkFlatRepeatingDataset {
+    --lines-number: 16;
+  }
+  #code-snippet-walkFlatRepeatingCallback {
+    --lines-number: 30;
+  }
+  #code-snippet-walkFlatRepeatingExample {
+    --lines-number: 25;
+  }
+  #code-snippet-walkFlatRepeatingTreeRender {
+    --lines-number: 23;
+  }
+  #code-snippet-walkFlatRepeatingInit {
+    --lines-number: 8;
+  }
+
+/*   
+  .CodeSnippetHolder#code-snippet-example-thin {
+    --lines-number: 33;
+    --code-snippet-tool--width: 28rem;
+    --code-snippet-tool--height: 22rem;
+    --overflow-y: auto;
+    --font-family: Arial;
+  
+    --code-snippet--line-height: 1.2rem;
+    --code-snippet--font-size: 0.775rem;
+  } */
+    </style>
   </head>
   <body>
 
     <h1>WorkspaceTreeWalker</h1>
-    <h2></h2>
+    <h2>tested method .walkFlatRepeating</h2>
+    <h3>Flat recursion dataset example</h3>
+    <CodeSnippetHolder id="code-snippet-walkFlatRepeatingDataset" class="CodeSnippetHolder salad TreeWalkerPage">
+<pre class="CodeSnippetArea">
+const flatRecursionDataset = [
+  { parentId: "main", id: 1, text: "Hello" },
+  { parentId: "main", id: 2, text: "Hello" },
+  { parentId: "main", id: 3, text: "Hello" },
+  { parentId: 3, id: 4, text: "Hello" },
+  { parentId: 3, id: 5, text: "Hello" },
+  { parentId: 3, id: 6, text: "Hello" },
+  { parentId: 5, id: 7, text: "Hello" },
+  { parentId: 5, id: 8, text: "Hello" },
+  { parentId: 8, id: 9, text: "Hello" },
+  { parentId: 9, id: 10, text: "Hello" },
+  { parentId: 9, id: 11, text: "Hello" },
+  { parentId: 9, id: 12, text: "Hello" },
+];
+</pre>
+</CodeSnippetHolder>
 
-    <div id="tree-holder-flat-dataset" class="theme-funny"></div>
+<h3>Callback example, used to customize TreeWalker actions.</h3>
+<CodeSnippetHolder id="code-snippet-walkFlatRepeatingCallback" class="CodeSnippetHolder salad TreeWalkerPage">
+      <pre class="CodeSnippetArea">
+let treeDataset = {};
 
-    <div id="tree-holder-tree-dataset" class="theme-base"></div>
+function workspaceTreeWalkerCallback (
+  inOutPayload
+) {
+
+  const jpathData = inOutPayload.jpathData.getJPath();
+
+  let elem = treeDataset;
+  let jpathDataLen = jpathData.length;
+  let jpathDataLastIx = jpathDataLen - 1;
+  let keyLevel = 0;
+
+  for ( let key of jpathData ) {
+
+    const keyText = "" + key;
+
+    if ( !elem[keyText] && ( keyLevel !== jpathDataLastIx ) ) {
+      elem[keyText] = {};
+    } else if ( !elem[keyText] && ( keyLevel === jpathDataLastIx ) ) {
+      elem[keyText] = { ...inOutPayload.flatDataElem };
+    }
+
+    elem = elem[keyText];
+    keyLevel++;
+
+  }
+
+  console.log( inOutPayload, treeDataset );
+}
+</pre>
+</CodeSnippetHolder>
+
+<h3>Workspace TreeWalker example with a Flat recursion dataset</h3>
+<CodeSnippetHolder id="code-snippet-walkFlatRepeatingExample" class="CodeSnippetHolder salad TreeWalkerPage">
+  <pre class="CodeSnippetArea">
+function exampleUseWorkspaceTreeWalkerFlatData() {
+
+  const holderHtmlNode = document.querySelector( "example#treewalker_1" );
+
+  const inOutPayload = new WorkspaceTreeWalkerPayload();
+  
+  inOutPayload.flatDataset = flatRecursionDataset;
+
+  inOutPayload.parentId = "data";
+  inOutPayload.id = "main";
+  inOutPayload.parentIdForNestedNodes = "main";
+  inOutPayload.parentIdProperyName = "parentId";
+  inOutPayload.idProperyName = "id";
+
+  inOutPayload.customData = {};
+
+  const treeWalker = new WorkspaceTreeWalker();
+
+  treeWalker.walkFlatRepeating (
+    inOutPayload,
+    workspaceTreeWalkerCallback
+  );
+
+  console.log( "this .html file, \nfunction exampleUseWorkspaceTreWalker(). \nThis test func finished at it's last js code line." );        
+}
+</pre>
+</CodeSnippetHolder>
+
+
+<h3>Render easily with the Tree js class to view in the browser</h3>
+
+<div id="tree-holder-flat-dataset" class="theme-funny"></div>
+
+<div id="tree-holder-tree-dataset" class="theme-base"></div>
+
+
+<CodeSnippetHolder id="code-snippet-walkFlatRepeatingTreeRender" class="CodeSnippetHolder salad TreeWalkerPage">
+  <pre class="CodeSnippetArea">
+function renderFlatDataset() {
+  const tree = new Tree();
+  tree
+    .setDebug(false)
+    .setMainHtmlNodeId("tree-holder-flat-dataset")
+    .setDataTypesCssClassesEnabled(true)
+    .setNodesWithIcons(true)
+    .setNodesOpenedMode(TreeConstants.NodesOpenedMode.ALL_SHOWN)
+    .setRenderingMode(TreeConstants.RenderingMode.Ease)
+    .render( flatRecursionDataset);
+}
+
+function renderTreeDataset() {
+  const tree = new Tree();
+  tree
+    .setDebug(false)
+    .setMainHtmlNodeId("tree-holder-tree-dataset")
+    .setDataTypesCssClassesEnabled(true)
+    .setNodesWithIcons(true)
+    .setNodesOpenedMode(TreeConstants.NodesOpenedMode.ALL_SHOWN)
+    .setRenderingMode(TreeConstants.RenderingMode.Ease)
+    .render( treeDataset );
+}
+</pre>
+</CodeSnippetHolder>
+
+
+<h3>Set these functions work the right way on the .html page.</h3>
+<CodeSnippetHolder id="code-snippet-walkFlatRepeatingInit" class="CodeSnippetHolder salad TreeWalkerPage">
+  <pre class="CodeSnippetArea">
+document.addEventListener ( 
+  'DOMContentLoaded', 
+  () => {
+    exampleUseWorkspaceTreeWalkerFlatData();
+    renderFlatDataset();
+    renderTreeDataset();
+  }
+);
+      </pre>
+    </CodeSnippetHolder>
 
     <script>
 
@@ -105,7 +289,7 @@
           .setMainHtmlNodeId("tree-holder-flat-dataset")
           .setDataTypesCssClassesEnabled(true)
           .setNodesWithIcons(true)
-          .setNodesOpenedMode(TreeConstants.NodesOpenedMode.ALL_SHOWN)
+          .setNodesOpenedMode(TreeConstants.NodesOpenedMode.ALL_HIDE)
           .setRenderingMode(TreeConstants.RenderingMode.Ease)
           .render( flatRecursionDataset );
       }
@@ -117,7 +301,7 @@
           .setMainHtmlNodeId("tree-holder-tree-dataset")
           .setDataTypesCssClassesEnabled(true)
           .setNodesWithIcons(true)
-          .setNodesOpenedMode(TreeConstants.NodesOpenedMode.ALL_SHOWN)
+          .setNodesOpenedMode(TreeConstants.NodesOpenedMode.ALL_HIDE)
           .setRenderingMode(TreeConstants.RenderingMode.Ease)
           .render( treeDataset );
       }
