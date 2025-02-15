@@ -1,5 +1,5 @@
 import { CharcodeConverter } from "@jaisocx/charcode-converter";
-import { JPathData } from "./../types/JPathData.js";
+import { JPathData } from "@jaisocx/workspace-tree-walker";
 export declare class TemplateParser {
     static CONSTANTS: {
         new (): {};

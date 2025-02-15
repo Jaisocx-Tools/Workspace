@@ -1,16 +1,11 @@
 
 
-import { JPath } from "./lib/JPath.js";
-export { JPath } from "./lib/JPath.js";
 
 import { TemplateParser } from "./lib/TemplateParser.js";
 export { TemplateParser } from "./lib/TemplateParser.js";
 
 import { DataConf } from "./types/DataConf.js";
 export { DataConf } from "./types/DataConf.js";
-
-import { JPathData } from "./types/JPathData.js";
-export { JPathData } from "./types/JPathData.js";
 
 import { RepeatDataCallbackValue } from "./types/RepeatDataCallbackValue.js";
 export { RepeatDataCallbackValue } from "./types/RepeatDataCallbackValue.js";
@@ -32,10 +27,8 @@ export { ImprovedTemplateRendererInterface } from "./ImprovedTemplateRendererInt
 
 
 
-(window as any).JPath = JPath;
 (window as any).TemplateParser = TemplateParser;
 (window as any).DataConf = DataConf;
-(window as any).JPathData = JPathData;
 (window as any).RepeatDataCallbackValue = RepeatDataCallbackValue;
 (window as any).TemplateInfo = TemplateInfo;
 (window as any).TemplateConf = TemplateConf;

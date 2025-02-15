@@ -1,6 +1,5 @@
 import { CharcodeConverter } from "@jaisocx/charcode-converter";
-import { JPathData } from "./../types/JPathData.js";
-import { JPath } from "./JPath.js";
+import { JPath, JPathData } from "@jaisocx/workspace-tree-walker";
 export class TemplateParser {
     static CONSTANTS = class {
         static BRACES_OPEN = "{{ ";

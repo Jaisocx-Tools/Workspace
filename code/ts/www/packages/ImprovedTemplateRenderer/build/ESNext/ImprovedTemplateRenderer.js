@@ -1,9 +1,7 @@
 import { EventEmitter } from "@jaisocx/event-emitter";
 import { CharcodeConverter } from "@jaisocx/charcode-converter";
-import { WorkspaceTreeWalker, WorkspaceTreeWalkerPayload } from "@jaisocx/workspace-tree-walker";
+import { WorkspaceTreeWalker, JPath, JPathData, WorkspaceTreeWalkerPayload } from "@jaisocx/workspace-tree-walker";
 import { TemplateParser } from "./lib/TemplateParser.js";
-import { JPathData } from "./types/JPathData.js";
-import { JPath } from "./lib/JPath.js";
 export class ImprovedTemplateRenderer extends EventEmitter {
     EVENT_NAME__AFTER_RENDER;
     _templatesObject;
@@ -163,15 +161,14 @@ export class ImprovedTemplateRenderer extends EventEmitter {
                 else {
                     repeatData = inOutPayload.payloadDataElem;
                 }
-                // repeatDataInfo = WorkspaceTreeWalker.getNodeInfo ( repeatData );
-                // if ( repeatDataInfo.isArray === true ) {
-                //   inOutPayload.payloadRepeatData = repeatData;
-                // } else {
-                //   repeatDataNormalized = WorkspaceTreeWalker.normalizeNodes ( 
-                //     repeatData, 
-                //     repeatDataInfo );
-                //   inOutPayload.payloadRepeatData = repeatDataNormalized;
-                // }
+                repeatDataInfo = WorkspaceTreeWalker.getNodeInfo(repeatData);
+                if (repeatDataInfo.isArray === true) {
+                    inOutPayload.payloadRepeatData = repeatData;
+                }
+                else {
+                    repeatDataNormalized = WorkspaceTreeWalker.normalizeNodes(repeatData, repeatDataInfo);
+                    inOutPayload.payloadRepeatData = repeatDataNormalized;
+                }
                 inOutPayload.repeatTimes = inOutPayload.payloadRepeatData.length;
                 inOutPayload.step = 0;
             }

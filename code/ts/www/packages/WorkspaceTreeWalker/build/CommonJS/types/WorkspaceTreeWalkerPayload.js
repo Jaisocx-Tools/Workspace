@@ -1,6 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.WorkspaceTreeWalkerPayload = void 0;
+const JPathData_js_1 = require("./JPathData.js");
 class WorkspaceTreeWalkerPayload {
     constructor() {
         this.flatDataset = null;
@@ -18,7 +19,10 @@ class WorkspaceTreeWalkerPayload {
         this.parentIdForNestedNodes = "";
         this.parentIdProperyName = "";
         this.idProperyName = "";
+        this.jpathData = new JPathData_js_1.JPathData();
+        this.subtreePropertyName = WorkspaceTreeWalkerPayload.SUBTREE_PROP;
     }
 }
 exports.WorkspaceTreeWalkerPayload = WorkspaceTreeWalkerPayload;
+WorkspaceTreeWalkerPayload.SUBTREE_PROP = "subtree";
 //# sourceMappingURL=WorkspaceTreeWalkerPayload.js.map

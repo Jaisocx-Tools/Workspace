@@ -1,4 +1,8 @@
+import { JPathData } from "./JPathData.js";
+
 export class WorkspaceTreeWalkerPayload {
+
+  static SUBTREE_PROP: string = "subtree";
 
   // the data for the tree walker to walk
   public flatDataset: any;
@@ -22,6 +26,9 @@ export class WorkspaceTreeWalkerPayload {
   public parentIdProperyName: string;
   public idProperyName: string;
 
+  public jpathData: JPathData;
+  public subtreePropertyName: string;
+
 
   constructor() {
 
@@ -42,6 +49,9 @@ export class WorkspaceTreeWalkerPayload {
     this.parentIdForNestedNodes = "";
     this.parentIdProperyName = "";
     this.idProperyName = "";
+
+    this.jpathData = new JPathData();
+    this.subtreePropertyName = WorkspaceTreeWalkerPayload.SUBTREE_PROP;
 
   }
 }

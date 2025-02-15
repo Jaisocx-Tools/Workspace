@@ -304,6 +304,7 @@ class WorkspaceTreeWalker {
     let normalizedRootData = WorkspaceTreeWalker.normalizeNodes(
       inOutPayload.flatDataset, 
       info);
+    inOutPayload.jpathData.getJPath().push(inOutPayload.id);
     inOutPayload.flatDatasetNormalized = normalizedRootData;
     this.walkFlatRepeatingSubcall(
       inOutPayload, 
@@ -347,6 +348,40 @@ class WorkspaceTreeWalker {
       payloadLocal.id = payloadLocal.flatDataElem[payloadLocal.idProperyName];
       payloadLocal.parentId = payloadLocal.flatDataElem[payloadLocal.parentIdProperyName];
       payloadLocal.parentIdForNestedNodes = payloadLocal.flatDataElem[payloadLocal.parentIdProperyName];
+      //payloadLocal.jpathData.getJPath().push("subtree");
+      const jpathData = payloadLocal.jpathData;
+      const path = jpathData.getJPath();
+      let newJpath = path.reduce(
+        (jpathCurrent, key, ix, reducedPath) => {
+          const _jpathLen = jpathCurrent.length;
+          const _jpathLastIx = _jpathLen - 1;
+          let lastSavedJpathKey = null;
+
+          if (_jpathLastIx > (-1)) {
+            lastSavedJpathKey = jpathCurrent[_jpathLastIx];
+          }
+
+          if (key === payloadLocal.parentId) {
+            jpathCurrent.push(payloadLocal.parentId);
+            jpathCurrent.push(payloadLocal.id);
+          }
+          else if (lastSavedJpathKey === payloadLocal.id) {
+            true;
+          }
+          else if (lastSavedJpathKey === payloadLocal.parentId) {
+            jpathCurrent.push(payloadLocal.id);
+          }
+          else {
+            jpathCurrent.push(key);
+          }
+
+          return [...jpathCurrent,];
+        }, 
+        []);
+      const newJpathData = new JPathData();
+      newJpathData.setJPath(newJpath);
+      payloadLocal.jpathData = newJpathData;
+      // payloadLocal.jpathData.setIsPlaceholderValue(0);
       nodeInfo = WorkspaceTreeWalker.getNodeInfo(payloadLocal.flatDataElem);
       payloadLocal.flatDataElemNormalized = WorkspaceTreeWalker.normalizeNodes(
         payloadLocal.flatDataElem, 

@@ -2,15 +2,13 @@
 
 import { EventEmitter, EventEmitResult, EventHandlerReturnValue } from "@jaisocx/event-emitter";
 import { CharcodeConverter } from "@jaisocx/charcode-converter";
-import { WorkspaceTreeWalker, IterableInfo, WorkspaceTreeWalkerPayload } from "@jaisocx/workspace-tree-walker";
+import { WorkspaceTreeWalker, JPath, JPathData, IterableInfo, WorkspaceTreeWalkerPayload } from "@jaisocx/workspace-tree-walker";
 
 
 import { ImprovedTemplateRendererConstants } from "./ImprovedTemplateRendererConstants.js";
 import { TemplateConf } from "./types/TemplateConf.js";
 import { DataConf } from "./types/DataConf.js";
 import { TemplateParser } from "./lib/TemplateParser.js";
-import { JPathData } from "./types/JPathData.js";
-import { JPath } from "./lib/JPath.js";
 
 
 export class ImprovedTemplateRenderer extends EventEmitter {

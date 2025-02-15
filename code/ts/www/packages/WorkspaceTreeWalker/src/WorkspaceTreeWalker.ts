@@ -1,5 +1,7 @@
 import { WorkspaceTreeWalkerPayload } from "./types/WorkspaceTreeWalkerPayload.js";
 import { IterableInfo } from "./types/IterableInfo.js";
+import { JPathData } from "./types/JPathData.js";
+import { JPath } from "./lib/JPath.js";
 
 
 export class WorkspaceTreeWalker {
@@ -384,6 +386,8 @@ export class WorkspaceTreeWalker {
       info 
     );
 
+    inOutPayload.jpathData.getJPath().push( inOutPayload.id );
+
     inOutPayload.flatDatasetNormalized = normalizedRootData;
 
     this.walkFlatRepeatingSubcall (
@@ -437,6 +441,46 @@ export class WorkspaceTreeWalker {
       payloadLocal.id                     = payloadLocal.flatDataElem[payloadLocal.idProperyName];
       payloadLocal.parentId               = payloadLocal.flatDataElem[payloadLocal.parentIdProperyName];
       payloadLocal.parentIdForNestedNodes = payloadLocal.flatDataElem[payloadLocal.parentIdProperyName];
+
+      //payloadLocal.jpathData.getJPath().push("subtree");
+      const jpathData: JPathData = payloadLocal.jpathData;
+      const path: any[] = jpathData.getJPath();
+
+      let newJpath = path.reduce ( 
+        ( jpathCurrent: any, key: any, ix: number, reducedPath: any[] ): any => {
+          const _jpathLen: number = jpathCurrent.length;
+          const _jpathLastIx: number = _jpathLen - 1;
+          let lastSavedJpathKey: any = null;
+
+          if ( _jpathLastIx > (-1) ) {
+            lastSavedJpathKey = jpathCurrent[_jpathLastIx];
+          }
+
+          if ( key === payloadLocal.parentId ) {
+            jpathCurrent.push ( payloadLocal.parentId );
+            jpathCurrent.push ( payloadLocal.id );
+
+          } else if ( lastSavedJpathKey === payloadLocal.id ) {
+            true;
+
+          } else if ( lastSavedJpathKey === payloadLocal.parentId ) {
+            jpathCurrent.push ( payloadLocal.id );
+
+          } else {
+            jpathCurrent.push ( key );
+
+          }
+
+          return [...jpathCurrent,];
+        }, 
+        []
+      );
+
+      const newJpathData: JPathData = new JPathData();
+      newJpathData.setJPath( newJpath );
+
+      payloadLocal.jpathData = newJpathData;
+      // payloadLocal.jpathData.setIsPlaceholderValue(0);
 
       nodeInfo = WorkspaceTreeWalker.getNodeInfo ( payloadLocal.flatDataElem );
 

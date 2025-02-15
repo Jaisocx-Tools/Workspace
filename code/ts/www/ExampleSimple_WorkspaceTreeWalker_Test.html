@@ -1,61 +1,88 @@
 <html>
   <head>
-    <title>TemplateRenderer Example</title>
+    <title>WorkspaceTreeWalker Example</title>
 
     <link rel="stylesheet" href="CssTools/CssCleanStart/assets/clean-start.css">
 
 
     <script src="packages/WorkspaceTreeWalker/build/Simple/types/WorkspaceTreeWalkerPayload.js"></script>
+    <script src="packages/WorkspaceTreeWalker/build/Simple/types/JPathData.js"></script>
     <script src="packages/WorkspaceTreeWalker/build/Simple/types/IterableInfo.js"></script>
+    <script src="packages/WorkspaceTreeWalker/build/Simple/lib/JPath.js"></script>
     <script src="packages/WorkspaceTreeWalker/build/Simple/WorkspaceTreeWalker.js"></script>
 
+    <script src="examples/ExampleTree/build/webpack/example-tree-bundle.js"></script>
 
-    <style>
-
-
-    </style>
 
   </head>
   <body>
 
-    <h1>Example WorkspacwTreeWalker</h1>
-    <h2>In development</h2>
+    <h1>WorkspaceTreeWalker</h1>
+    <h2></h2>
 
-    <example id="treewalker_1"></example>
+    <div id="tree-holder-flat-dataset" class="theme-funny"></div>
+
+    <div id="tree-holder-tree-dataset" class="theme-base"></div>
 
     <script>
 
       const flatRecursionDataset = [
-      { parentId: "root", id: 1, text: "Hello" },
-      { parentId: "root", id: 2, text: "Hello" },
-      { parentId: "root", id: 3, text: "Hello" },
-      { parentId: 3, id: 4, text: "Hello" },
-      { parentId: 3, id: 5, text: "Hello" },
-      { parentId: 3, id: 6, text: "Hello" },
-      { parentId: 5, id: 7, text: "Hello" },
-      { parentId: 5, id: 8, text: "Hello" },
-      { parentId: 8, id: 9, text: "Hello" },
-      { parentId: 9, id: 10, text: "Hello" },
-      { parentId: 9, id: 11, text: "Hello" },
-      { parentId: 9, id: 12, text: "Hello" },
+        { parentId: "main", id: 1, text: "Hello" },
+        { parentId: "main", id: 2, text: "Hello" },
+        { parentId: "main", id: 3, text: "Hello" },
+        { parentId: 3, id: 4, text: "Hello" },
+        { parentId: 3, id: 5, text: "Hello" },
+        { parentId: 3, id: 6, text: "Hello" },
+        { parentId: 5, id: 7, text: "Hello" },
+        { parentId: 5, id: 8, text: "Hello" },
+        { parentId: 8, id: 9, text: "Hello" },
+        { parentId: 9, id: 10, text: "Hello" },
+        { parentId: 9, id: 11, text: "Hello" },
+        { parentId: 9, id: 12, text: "Hello" },
       ];
 
-      function callback1 (
+      let treeDataset = {};
+
+      function workspaceTreeWalkerCallback (
         inOutPayload
       ) {
-          console.log( inOutPayload );
+
+        const jpathData = inOutPayload.jpathData.getJPath();
+
+        let elem = treeDataset;
+        let jpathDataLen = jpathData.length;
+        let jpathDataLastIx = jpathDataLen - 1;
+        let keyLevel = 0;
+
+        for ( let key of jpathData ) {
+
+          const keyText = "" + key;
+
+          if ( !elem[keyText] && ( keyLevel !== jpathDataLastIx ) ) {
+            elem[keyText] = {};
+          } else if ( !elem[keyText] && ( keyLevel === jpathDataLastIx ) ) {
+            elem[keyText] = { ...inOutPayload.flatDataElem };
+          }
+
+          elem = elem[keyText];
+          keyLevel++;
+
+        }
+
+        console.log( inOutPayload, treeDataset );
+
       }
 
-      function exampleUseWorkspaceTreWalkerFlatData() {
+      function exampleUseWorkspaceTreeWalkerFlatData() {
         const holderHtmlNode = document.querySelector( "example#treewalker_1" );
 
         const inOutPayload = new WorkspaceTreeWalkerPayload();
         
         inOutPayload.flatDataset = flatRecursionDataset;
 
-        inOutPayload.parentId = "main";
-        inOutPayload.id = "root";
-        inOutPayload.parentIdForNestedNodes = "root";
+        inOutPayload.parentId = "data";
+        inOutPayload.id = "main";
+        inOutPayload.parentIdForNestedNodes = "main";
         inOutPayload.parentIdProperyName = "parentId";
         inOutPayload.idProperyName = "id";
 
@@ -65,21 +92,44 @@
         const treeWalker = new WorkspaceTreeWalker();
         treeWalker.walkFlatRepeating (
           inOutPayload,
-          callback1
-        );
-
-        holderHtmlNode.insertAdjacentHTML (
-          "afterbegin",
-          inOutPayload.customData.join("")
+          workspaceTreeWalkerCallback
         );
 
         console.log( "this .html file, \nfunction exampleUseWorkspaceTreWalker(). \nThis test func finished at it's last js code line." );        
+      }
+
+      function renderFlatDataset() {
+        const tree = new Tree();
+        tree
+          .setDebug(false)
+          .setMainHtmlNodeId("tree-holder-flat-dataset")
+          .setDataTypesCssClassesEnabled(true)
+          .setNodesWithIcons(true)
+          .setNodesOpenedMode(TreeConstants.NodesOpenedMode.ALL_SHOWN)
+          .setRenderingMode(TreeConstants.RenderingMode.Ease)
+          .render( flatRecursionDataset );
+      }
+
+      function renderTreeDataset() {
+        const tree = new Tree();
+        tree
+          .setDebug(false)
+          .setMainHtmlNodeId("tree-holder-tree-dataset")
+          .setDataTypesCssClassesEnabled(true)
+          .setNodesWithIcons(true)
+          .setNodesOpenedMode(TreeConstants.NodesOpenedMode.ALL_SHOWN)
+          .setRenderingMode(TreeConstants.RenderingMode.Ease)
+          .render( treeDataset );
       }
 
       document.addEventListener ( 
         'DOMContentLoaded', 
         () => {
           exampleUseWorkspaceTreWalkerFlatData();
+
+          renderFlatDataset();
+
+          renderTreeDataset();
         }
       );
 

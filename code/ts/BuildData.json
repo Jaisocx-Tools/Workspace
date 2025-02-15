@@ -211,6 +211,8 @@
       "build-simple-enable": true,
       "dependencies": [],
       "build-files": [
+        "lib/JPath.js",
+        "types/JPathData.js",
         "types/IterableInfo.js",
         "types/WorkspaceTreeWalkerPayload.js",
         "WorkspaceTreeWalker.js"
@@ -219,7 +221,7 @@
     {
       "path": "packages/ImprovedTemplateRenderer",
       "name": "improved-template-renderer",
-      "build": true,
+      "build": false,
       "build-simple-enable": true,
       "dependencies": [
         {
@@ -236,10 +238,8 @@
         }
       ],
       "build-files": [
-        "lib/JPath.js",
         "lib/TemplateParser.js",
         "types/DataConf.js",
-        "types/JPathData.js",
         "types/RepeatDataCallbackValue.js",
         "types/TemplateInfo.js",
         "types/TemplateConf.js",

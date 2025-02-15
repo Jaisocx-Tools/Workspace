@@ -180,6 +180,18 @@ class ImprovedTemplateRenderer extends EventEmitter {
           repeatData = inOutPayload.payloadDataElem;
         }
 
+        repeatDataInfo = WorkspaceTreeWalker.getNodeInfo(repeatData);
+
+        if (repeatDataInfo.isArray === true) {
+          inOutPayload.payloadRepeatData = repeatData;
+        }
+        else {
+          repeatDataNormalized = WorkspaceTreeWalker.normalizeNodes(
+            repeatData, 
+            repeatDataInfo);
+          inOutPayload.payloadRepeatData = repeatDataNormalized;
+        }
+
         inOutPayload.repeatTimes = inOutPayload.payloadRepeatData.length;
         inOutPayload.step = 0;
       }

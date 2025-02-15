@@ -5,8 +5,6 @@ const event_emitter_1 = require("@jaisocx/event-emitter");
 const charcode_converter_1 = require("@jaisocx/charcode-converter");
 const workspace_tree_walker_1 = require("@jaisocx/workspace-tree-walker");
 const TemplateParser_js_1 = require("./lib/TemplateParser.js");
-const JPathData_js_1 = require("./types/JPathData.js");
-const JPath_js_1 = require("./lib/JPath.js");
 class ImprovedTemplateRenderer extends event_emitter_1.EventEmitter {
     constructor() {
         super();
@@ -151,15 +149,14 @@ class ImprovedTemplateRenderer extends event_emitter_1.EventEmitter {
                 else {
                     repeatData = inOutPayload.payloadDataElem;
                 }
-                // repeatDataInfo = WorkspaceTreeWalker.getNodeInfo ( repeatData );
-                // if ( repeatDataInfo.isArray === true ) {
-                //   inOutPayload.payloadRepeatData = repeatData;
-                // } else {
-                //   repeatDataNormalized = WorkspaceTreeWalker.normalizeNodes ( 
-                //     repeatData, 
-                //     repeatDataInfo );
-                //   inOutPayload.payloadRepeatData = repeatDataNormalized;
-                // }
+                repeatDataInfo = workspace_tree_walker_1.WorkspaceTreeWalker.getNodeInfo(repeatData);
+                if (repeatDataInfo.isArray === true) {
+                    inOutPayload.payloadRepeatData = repeatData;
+                }
+                else {
+                    repeatDataNormalized = workspace_tree_walker_1.WorkspaceTreeWalker.normalizeNodes(repeatData, repeatDataInfo);
+                    inOutPayload.payloadRepeatData = repeatDataNormalized;
+                }
                 inOutPayload.repeatTimes = inOutPayload.payloadRepeatData.length;
                 inOutPayload.step = 0;
             }
@@ -177,14 +174,14 @@ class ImprovedTemplateRenderer extends event_emitter_1.EventEmitter {
                     if (template instanceof Uint16Array) {
                         this._renderedHtmlArray.push(this.charcodeConverter.arrayToString(template, 0));
                     }
-                    else if ((templateConf.placeholder) && (template instanceof JPathData_js_1.JPathData)) {
+                    else if ((templateConf.placeholder) && (template instanceof workspace_tree_walker_1.JPathData)) {
                         const jpathData = template;
                         let placeholderDataByJpath = [];
                         if (jpathData.isPlaceholderValue()) {
                             placeholderDataByJpath = placeholderData;
                         }
                         else {
-                            placeholderDataByJpath = JPath_js_1.JPath.getByJPath(jpathData.getJPath(), placeholderData);
+                            placeholderDataByJpath = workspace_tree_walker_1.JPath.getByJPath(jpathData.getJPath(), placeholderData);
                         }
                         const placeholderInfo = workspace_tree_walker_1.WorkspaceTreeWalker.getNodeInfo(placeholderDataByJpath);
                         if (placeholderInfo.datatype === workspace_tree_walker_1.WorkspaceTreeWalker.DATATYPE_OBJECT) {

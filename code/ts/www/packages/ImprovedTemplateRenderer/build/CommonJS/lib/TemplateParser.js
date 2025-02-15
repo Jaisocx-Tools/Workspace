@@ -7,8 +7,7 @@ var _a;
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.TemplateParser = void 0;
 const charcode_converter_1 = require("@jaisocx/charcode-converter");
-const JPathData_js_1 = require("./../types/JPathData.js");
-const JPath_js_1 = require("./JPath.js");
+const workspace_tree_walker_1 = require("@jaisocx/workspace-tree-walker");
 class TemplateParser {
     constructor() {
         this.converter = charcode_converter_1.CharcodeConverter.getInstance();
@@ -78,10 +77,10 @@ class TemplateParser {
             if (placeholder.startsWith(placeholderName) === true) {
                 placeholder = placeholder.substring(placeholderName.length);
             }
-            jpathData = new JPathData_js_1.JPathData();
+            jpathData = new workspace_tree_walker_1.JPathData();
             if (placeholder && placeholder.length > 0) {
                 jpathData.setJPathExpression(placeholder);
-                jpathData.setJPath(JPath_js_1.JPath.parse(placeholder));
+                jpathData.setJPath(workspace_tree_walker_1.JPath.parse(placeholder));
                 preparedTemplates.push(jpathData);
             }
             else if (placeholder.length === 0) {
