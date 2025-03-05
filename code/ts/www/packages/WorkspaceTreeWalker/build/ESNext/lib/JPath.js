@@ -36,7 +36,9 @@ export class JPath {
         let holderId = jpath[0];
         let foundNode = null;
         let newItem = null;
-        for (jpathIx = 0; jpathIx < jpathLen; jpathIx++) {
+        id = jpath[0];
+        obj[nameId] = id;
+        for (jpathIx = 1; jpathIx < jpathLen; jpathIx++) {
             id = jpath[jpathIx];
             foundNode = false;
             let toGetById = [];

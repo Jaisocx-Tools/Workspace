@@ -15,6 +15,6 @@ export declare class WorkspaceTreeWalker {
     walkWhenSubtreePropName(inOutPayload: WorkspaceTreeWalkerPayload, callback: CallableFunction): undefined;
     walkFlat(inOutPayload: WorkspaceTreeWalkerPayload, callback: CallableFunction): undefined;
     walkFlatSubcall(inOutPayload: WorkspaceTreeWalkerPayload, callback: CallableFunction): undefined;
-    protected jpathRebuildWalkFlat(jpath: (number | string)[], branchNodeName: string): void;
+    static callbackWalkFlatTransformToMultilevel(inOutPayload: WorkspaceTreeWalkerPayload): void;
 }
 //# sourceMappingURL=WorkspaceTreeWalker.d.ts.map

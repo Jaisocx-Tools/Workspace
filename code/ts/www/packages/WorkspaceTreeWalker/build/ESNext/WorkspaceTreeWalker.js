@@ -1,6 +1,7 @@
 import { WorkspaceTreeWalkerPayload } from "./types/WorkspaceTreeWalkerPayload.js";
 import { IterableInfo } from "./types/IterableInfo.js";
 import { JPathData } from "./types/JPathData.js";
+import { JPath } from "./lib/JPath.js";
 export class WorkspaceTreeWalker {
     static DATATYPE_OBJECT = "object";
     static WALK_MODE = class {
@@ -238,12 +239,8 @@ export class WorkspaceTreeWalker {
             }
         }
     }
-    jpathRebuildWalkFlat(jpath, branchNodeName) {
-        let rebuiltJpath = [];
-        let key = "";
-        for (key of jpath) {
-            rebuiltJpath.push(0);
-        }
+    static callbackWalkFlatTransformToMultilevel(inOutPayload) {
+        JPath.setByJPathWalkFlatRebuild(inOutPayload.transformedDataset, inOutPayload.jpathData.getJPath(), inOutPayload.data, inOutPayload.nameHolderId, inOutPayload.nameId, inOutPayload.branchNodesName);
     }
 }
 //# sourceMappingURL=WorkspaceTreeWalker.js.map

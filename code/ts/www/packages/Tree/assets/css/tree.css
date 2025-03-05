@@ -169,7 +169,7 @@
     transform: rotate(90deg);
 }
 .tree .open-button > .without-branch {
-    background-image: var(--open-button-without-branch--image-url);
+    background-image: var(--open-button-without-subtree--image-url);
     color: crimson !important;
 }
 

@@ -7,6 +7,7 @@ export declare class WorkspaceTreeWalkerPayload {
     data: any;
     dataNormalized: any;
     dataName: any;
+    transformedDataset: any;
     iterationsDataset: any;
     iterationsDatasetNormalized: any[];
     iterationsCurrentDatasetNormalized: any[];

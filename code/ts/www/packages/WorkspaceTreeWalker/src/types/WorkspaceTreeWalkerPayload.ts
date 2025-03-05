@@ -15,6 +15,9 @@ export class WorkspaceTreeWalkerPayload {
   public dataName: any;
 
 
+  public transformedDataset: any;
+
+
   // the data, used for more iterations, while walk one dataElem
   public iterationsDataset: any;
   public iterationsDatasetNormalized: any[];
@@ -44,6 +47,9 @@ export class WorkspaceTreeWalkerPayload {
     this.data = null;
     this.dataNormalized = null;
     this.dataName = null;
+
+
+    this.transformedDataset = null;
 
 
     this.iterationsDataset = null;

@@ -9,6 +9,7 @@ exports.WorkspaceTreeWalker = void 0;
 const WorkspaceTreeWalkerPayload_js_1 = require("./types/WorkspaceTreeWalkerPayload.js");
 const IterableInfo_js_1 = require("./types/IterableInfo.js");
 const JPathData_js_1 = require("./types/JPathData.js");
+const JPath_js_1 = require("./lib/JPath.js");
 class WorkspaceTreeWalker {
     walk(walkMode, inOutPayload, callback) {
         if (walkMode === WorkspaceTreeWalker.WALK_MODE.WALK_MODE_EASE) {
@@ -242,12 +243,8 @@ class WorkspaceTreeWalker {
             }
         }
     }
-    jpathRebuildWalkFlat(jpath, branchNodeName) {
-        let rebuiltJpath = [];
-        let key = "";
-        for (key of jpath) {
-            rebuiltJpath.push(0);
-        }
+    static callbackWalkFlatTransformToMultilevel(inOutPayload) {
+        JPath_js_1.JPath.setByJPathWalkFlatRebuild(inOutPayload.transformedDataset, inOutPayload.jpathData.getJPath(), inOutPayload.data, inOutPayload.nameHolderId, inOutPayload.nameId, inOutPayload.branchNodesName);
     }
 }
 exports.WorkspaceTreeWalker = WorkspaceTreeWalker;

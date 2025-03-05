@@ -107,7 +107,7 @@
     transform: rotate(90deg);
 }
 .tree .open-button > span.without-branch {
-    background-image: var(--open-button-without-branch--image-url);
+    background-image: var(--open-button-without-subtree--image-url);
     color: crimson !important;
 }
 .tree .open-button > span.animated {

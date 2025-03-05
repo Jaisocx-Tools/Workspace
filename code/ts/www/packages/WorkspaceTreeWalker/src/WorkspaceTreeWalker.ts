@@ -410,17 +410,20 @@ export class WorkspaceTreeWalker {
 
   }
 
-  protected jpathRebuildWalkFlat ( 
-    jpath: (number|string)[],
-    branchNodeName: string
+
+  public static callbackWalkFlatTransformToMultilevel (
+    inOutPayload: WorkspaceTreeWalkerPayload
   ) {
 
-    let rebuiltJpath: (number|string)[] = [];
-    let key: any = "";
+    JPath.setByJPathWalkFlatRebuild (
+      inOutPayload.transformedDataset,
+      inOutPayload.jpathData.getJPath(),
+      inOutPayload.data,
+      inOutPayload.nameHolderId,
+      inOutPayload.nameId,
+      inOutPayload.branchNodesName
+    );
 
-    for ( key of jpath ) {
-      rebuiltJpath.push(0);
-    }
   }
 
 }

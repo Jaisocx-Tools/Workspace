@@ -73,31 +73,35 @@
     <p>However the .walkFlatRepeating() method is developed for repeating some data nodes by amount and rules of other datasets while the flat dataset recursive callback invokes.</p>
 
 
-    <h2>Flat recursion dataset example</h2>
+    <h2>Flat recursive dataset example</h2>
     <h3>Looks like this when rendered with Tree()</h3>
     <div id="tree-holder-flat-dataset"></div>
 
 
-    <h3>And for example, this dataset was processed by WorkspaceTreeWalker, and rendered with Tree()</h3>
+    <!-- <h3>This flat dataset was processed by WorkspaceTreeWalker callback with iterationsData, and rendered with Tree()</h3>
+    <div id="tree-holder-tree-dataset-with-iterations"></div> -->
+
+
+    <h3>The same flat dataset was processed by WorkspaceTreeWalker callback `WorkspaceTreeWalker.callbackWalkFlatTransformToMultilevel`, and rendered with Tree()</h3>
     <div id="tree-holder-tree-dataset"></div>
 
 
     <h3>And here is the json text of the same dataset:</h3>
     <CodeSnippetHolder id="code-snippet-walkFlatRepeatingDataset" class="CodeSnippetHolder salad TreeWalkerPage">
 <pre class="CodeSnippetArea">
-const flatRecursionDataset = [
-  { parentId: "main", id: 1, text: "Hello" },
-  { parentId: "main", id: 2, text: "Hello" },
-  { parentId: "main", id: 3, text: "Hello" },
-  { parentId: 3, id: 4, text: "Hello" },
-  { parentId: 3, id: 5, text: "Hello" },
-  { parentId: 3, id: 6, text: "Hello" },
-  { parentId: 5, id: 7, text: "Hello" },
-  { parentId: 5, id: 8, text: "Hello" },
-  { parentId: 8, id: 9, text: "Hello" },
-  { parentId: 9, id: 10, text: "Hello" },
-  { parentId: 9, id: 11, text: "Hello" },
-  { parentId: 9, id: 12, text: "Hello" },
+  const flatRecursionDataset = [
+  { parentId: "main", id: 1, text: "Hello 1" },
+  { parentId: "main", id: 2, text: "Hello 2" },
+  { parentId: "main", id: 3, text: "Hello 3" },
+  { parentId: 3, id: 4, text: "Hello 4" },
+  { parentId: 3, id: 5, text: "Hello 5" },
+  { parentId: 3, id: 6, text: "Hello 6" },
+  { parentId: 5, id: 7, text: "Hello 7" },
+  { parentId: 5, id: 8, text: "Hello 8" },
+  { parentId: 8, id: 9, text: "Hello 9" },
+  { parentId: 9, id: 10, text: "Hello 10" },
+  { parentId: 9, id: 11, text: "Hello 11" },
+  { parentId: 9, id: 12, text: "Hello 12" },
 ];
 </pre>
 </CodeSnippetHolder>
@@ -139,33 +143,32 @@ function workspaceTreeWalkerCallback (
 </pre>
 </CodeSnippetHolder>
 
-<h2>Workspace TreeWalker example with a Flat recursion dataset</h2>
+<h2>Workspace TreeWalker example with a Flat recursive dataset</h2>
 <CodeSnippetHolder id="code-snippet-walkFlatRepeatingExample" class="CodeSnippetHolder salad TreeWalkerPage">
   <pre class="CodeSnippetArea">
 function exampleUseWorkspaceTreeWalkerFlatData() {
 
-  const holderHtmlNode = document.querySelector( "example#treewalker_1" );
-
   const inOutPayload = new WorkspaceTreeWalkerPayload();
   
   inOutPayload.dataset = flatRecursionDataset;
+  inOutPayload.transformedDataset = treeDataset;
 
-  inOutPayload.parentId = "data";
+  inOutPayload.holderId = "data";
   inOutPayload.id = "main";
-  inOutPayload.parentIdForNestedNodes = "main";
-  inOutPayload.parentIdProperyName = "parentId";
-  inOutPayload.idProperyName = "id";
-
-  inOutPayload.customData = {};
-
+  inOutPayload.nameHolderId = "parentId";
+  inOutPayload.nameId = "id";
+  inOutPayload.branchNodesName = "branchNodes";
+  
   const treeWalker = new WorkspaceTreeWalker();
-
-  treeWalker.walkFlatRepeating (
+  treeWalker.walk (
+    // WorkspaceTreeWalker.WALK_MODE.WALK_MODE_FLAT_REPEATING,
+    WorkspaceTreeWalker.WALK_MODE.WALK_MODE_FLAT,
     inOutPayload,
-    workspaceTreeWalkerCallback
+    WorkspaceTreeWalker.callbackWalkFlatTransformToMultilevel
   );
 
-  console.log( "this .html file, \nfunction exampleUseWorkspaceTreWalker(). \nThis test func finished at it's last js code line." );        
+  console.log( "this .html file, \nfunction exampleUseWorkspaceTreWalker(). \nThis test func finished at it's last js code line." );
+
 }
 </pre>
 </CodeSnippetHolder>
@@ -218,29 +221,30 @@ document.addEventListener (
     <script>
 
       const flatRecursionDataset = [
-        { parentId: "main", id: 1, text: "Hello" },
-        { parentId: "main", id: 2, text: "Hello" },
-        { parentId: "main", id: 3, text: "Hello" },
-        { parentId: 3, id: 4, text: "Hello" },
-        { parentId: 3, id: 5, text: "Hello" },
-        { parentId: 3, id: 6, text: "Hello" },
-        { parentId: 5, id: 7, text: "Hello" },
-        { parentId: 5, id: 8, text: "Hello" },
-        { parentId: 8, id: 9, text: "Hello" },
-        { parentId: 9, id: 10, text: "Hello" },
-        { parentId: 9, id: 11, text: "Hello" },
-        { parentId: 9, id: 12, text: "Hello" },
+        { parentId: "main", id: 1, text: "Hello 1" },
+        { parentId: "main", id: 2, text: "Hello 2" },
+        { parentId: "main", id: 3, text: "Hello 3" },
+        { parentId: 3, id: 4, text: "Hello 4" },
+        { parentId: 3, id: 5, text: "Hello 5" },
+        { parentId: 3, id: 6, text: "Hello 6" },
+        { parentId: 5, id: 7, text: "Hello 7" },
+        { parentId: 5, id: 8, text: "Hello 8" },
+        { parentId: 8, id: 9, text: "Hello 9" },
+        { parentId: 9, id: 10, text: "Hello 10" },
+        { parentId: 9, id: 11, text: "Hello 11" },
+        { parentId: 9, id: 12, text: "Hello 12" },
       ];
 
       let treeDataset = {};
 
+      let transformedDatasetWithIterations = {}; // used with the under construction method
 
-      function workspaceTreeWalkerCallback (
+      function workspaceTreeWalkerCallback ( // under construction
         inOutPayload
       ) {
 
         JPath.setByJPathWalkFlatRebuild (
-          treeDataset,
+          inOutPayload.transformedDatasetWithIterations,
           inOutPayload.jpathData.getJPath(),
           inOutPayload.data,
           inOutPayload.nameHolderId,
@@ -289,13 +293,38 @@ document.addEventListener (
 
       }
 
-      function exampleUseWorkspaceTreeWalkerFlatData() {
+      function exampleFlatDataWithIterationsData() {
 
-        const holderHtmlNode = document.querySelector( "example#treewalker_1" );
+        const inOutPayload = new WorkspaceTreeWalkerPayload();
+
+        inOutPayload.dataset = flatRecursionDataset;
+        inOutPayload.transformedDataset = workspaceTreeWalkerCallback;
+
+        inOutPayload.holderId = "data";
+        inOutPayload.id = "main";
+        inOutPayload.nameHolderId = "parentId";
+        inOutPayload.nameId = "id";
+        inOutPayload.branchNodesName = "branchNodes";
+
+        const treeWalker = new WorkspaceTreeWalker();
+        treeWalker.walk (
+          // WorkspaceTreeWalker.WALK_MODE.WALK_MODE_FLAT_REPEATING,
+          WorkspaceTreeWalker.WALK_MODE.WALK_MODE_FLAT,
+          inOutPayload,
+          WorkspaceTreeWalker.callbackWalkFlatTransformToMultilevel
+        );
+
+        console.log( "this .html file, \nfunction exampleUseWorkspaceTreWalker(). \nThis test func finished at it's last js code line." );
+
+      }
+
+
+      function exampleUseWorkspaceTreeWalkerFlatData() {
 
         const inOutPayload = new WorkspaceTreeWalkerPayload();
         
         inOutPayload.dataset = flatRecursionDataset;
+        inOutPayload.transformedDataset = treeDataset;
 
         inOutPayload.holderId = "data";
         inOutPayload.id = "main";
@@ -308,7 +337,7 @@ document.addEventListener (
           // WorkspaceTreeWalker.WALK_MODE.WALK_MODE_FLAT_REPEATING,
           WorkspaceTreeWalker.WALK_MODE.WALK_MODE_FLAT,
           inOutPayload,
-          workspaceTreeWalkerCallback
+          WorkspaceTreeWalker.callbackWalkFlatTransformToMultilevel
         );
 
         console.log( "this .html file, \nfunction exampleUseWorkspaceTreWalker(). \nThis test func finished at it's last js code line." );
@@ -327,6 +356,18 @@ document.addEventListener (
           .render( flatRecursionDataset );
       }
 
+      function renderTreeDatasetWithIterationsData() { // under construction
+        const tree = new Tree();
+        tree
+          .setDebug(false)
+          .setMainHtmlNodeId("tree-holder-tree-dataset-with-iterations")
+          .setDataTypesCssClassesEnabled(true)
+          .setNodesWithIcons(true)
+          .setNodesOpenedMode(TreeConstants.NodesOpenedMode.ALL_SHOWN)
+          .setRenderingMode(TreeConstants.RenderingMode.Ease)
+          .render( treeDataset );
+      }
+
       function renderTreeDataset() {
         const tree = new Tree();
         tree
@@ -342,6 +383,9 @@ document.addEventListener (
       document.addEventListener ( 
         'DOMContentLoaded', 
         () => {
+
+          // exampleFlatDataWithIterationsData();
+
           exampleUseWorkspaceTreeWalkerFlatData();
 
           renderFlatDataset();

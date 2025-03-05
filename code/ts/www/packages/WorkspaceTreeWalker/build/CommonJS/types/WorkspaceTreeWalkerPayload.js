@@ -10,6 +10,7 @@ class WorkspaceTreeWalkerPayload {
         this.data = null;
         this.dataNormalized = null;
         this.dataName = null;
+        this.transformedDataset = null;
         this.iterationsDataset = null;
         this.iterationsDatasetNormalized = [];
         this.iterationsCurrentDatasetNormalized = [];

@@ -321,15 +321,14 @@ class WorkspaceTreeWalker {
     }
   }
 
-  jpathRebuildWalkFlat(
-    jpath, 
-    branchNodeName) {
-    let rebuiltJpath = [];
-    let key = "";
-
-    for (key of jpath) {
-      rebuiltJpath.push(0);
-    }
+  static callbackWalkFlatTransformToMultilevel(inOutPayload) {
+    JPath.setByJPathWalkFlatRebuild(
+      inOutPayload.transformedDataset, 
+      inOutPayload.jpathData.getJPath(), 
+      inOutPayload.data, 
+      inOutPayload.nameHolderId, 
+      inOutPayload.nameId, 
+      inOutPayload.branchNodesName);
   }
 }
 //# sourceMappingURL=WorkspaceTreeWalker.js.map
