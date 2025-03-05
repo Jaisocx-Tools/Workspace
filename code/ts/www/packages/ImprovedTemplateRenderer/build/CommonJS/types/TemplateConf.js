@@ -8,7 +8,7 @@
           },
 "colsLabelsHolderOpen":       {
               "tag": "main",
-              "subtree-repeat-tag": "columnLabels"
+              "branch-repeat-tag": "columnLabels"
             },
 "colLabelOpen":                 {
                 "tag": "columnLabels",
@@ -67,7 +67,7 @@ class TemplateConf {
         this.repeatTagConfDataApplies = false;
         this.useRepeatCallback = false;
         this.repeatDataCallback = null;
-        this.subtreeRepeatTag = null;
+        this.branchRepeatTag = null;
         this.hasPlaceholders = false;
         this.data = null;
         this.info = null;

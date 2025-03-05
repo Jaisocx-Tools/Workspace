@@ -1,10 +1,26 @@
 "use strict";
+var __setFunctionName = (this && this.__setFunctionName) || function (f, name, prefix) {
+    if (typeof name === "symbol") name = name.description ? "[".concat(name.description, "]") : "";
+    return Object.defineProperty(f, "name", { configurable: true, value: prefix ? "".concat(prefix, " ", name) : name });
+};
+var _a;
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.WorkspaceTreeWalker = void 0;
 const WorkspaceTreeWalkerPayload_js_1 = require("./types/WorkspaceTreeWalkerPayload.js");
 const IterableInfo_js_1 = require("./types/IterableInfo.js");
 const JPathData_js_1 = require("./types/JPathData.js");
 class WorkspaceTreeWalker {
+    walk(walkMode, inOutPayload, callback) {
+        if (walkMode === WorkspaceTreeWalker.WALK_MODE.WALK_MODE_EASE) {
+            this.walkEasy(inOutPayload, callback);
+        }
+        else if (walkMode === WorkspaceTreeWalker.WALK_MODE.WALK_MODE_WHEN_SUBTREE_PROPNAME) {
+            this.walkWhenSubtreePropName(inOutPayload, callback);
+        }
+        else if (walkMode === WorkspaceTreeWalker.WALK_MODE.WALK_MODE_FLAT) {
+            this.walkFlat(inOutPayload, callback);
+        }
+    }
     static getNodeInfo(elem) {
         let elemsNumber = 0;
         let keys = [];
@@ -67,133 +83,81 @@ class WorkspaceTreeWalker {
         ];
         return result;
     }
-    walk(treeData, subtreePropertyName, callback) {
-        let result = {};
-        if (!subtreePropertyName) {
-            this.walkEasy("main", treeData, result, callback);
-        }
-        else {
-            this.walkWhenSubtreePropName("main", treeData, subtreePropertyName, result, callback);
-        }
-        return result;
-    }
-    walkEasy(key, treeData, inOutPayload, callback) {
-        let info = WorkspaceTreeWalker.getNodeInfo(treeData);
-        let normalizedNodes = WorkspaceTreeWalker.normalizeNodes(treeData, info);
-        //@ts-ignore
-        inOutPayload.push(callback(key, treeData, info, normalizedNodes));
+    walkEasy(inOutPayload, callback) {
+        let info = WorkspaceTreeWalker.getNodeInfo(inOutPayload.dataset);
+        let normalizedNodes = WorkspaceTreeWalker.normalizeNodes(inOutPayload.dataset, info);
+        callback(inOutPayload);
         let node = null;
         let keyNode = null;
         let nodeValue = null;
         let nodeInfo = {};
-        let subtreeNodeNormalizedNodes = null;
+        let branchNodeNormalizedNodes = null;
         loop: for (node of normalizedNodes) {
             nodeInfo = WorkspaceTreeWalker.getNodeInfo(node);
             keyNode = Object.keys(node)[0];
             nodeValue = node[keyNode];
             if (nodeInfo.length === 0) {
-                //@ts-ignore
-                inOutPayload.push(callback(keyNode, nodeValue, nodeInfo, null));
+                callback(inOutPayload);
                 continue loop;
             }
-            subtreeNodeNormalizedNodes = WorkspaceTreeWalker.normalizeNodes(nodeValue, 
+            branchNodeNormalizedNodes = WorkspaceTreeWalker.normalizeNodes(nodeValue, 
             //@ts-ignore
             nodeInfo);
-            //@ts-ignore
-            inOutPayload.push(callback(keyNode, nodeValue, nodeInfo, subtreeNodeNormalizedNodes));
-            this.walkEasy(keyNode, nodeValue, inOutPayload, callback);
+            this.walkEasy(inOutPayload, callback);
         }
     }
-    walkWhenSubtreePropName(key, treeData, subtreePropertyName, inOutPayload, callback) {
-        let info = WorkspaceTreeWalker.getNodeInfo(treeData);
-        let normalizedNodes = WorkspaceTreeWalker.normalizeNodes(treeData, info);
-        //@ts-ignore
-        inOutPayload.push(callback(key, treeData, info, normalizedNodes));
-        let subtreeIndex = 0;
+    walkWhenSubtreePropName(inOutPayload, callback) {
+        let info = WorkspaceTreeWalker.getNodeInfo(inOutPayload.dataset);
+        let normalizedNodes = WorkspaceTreeWalker.normalizeNodes(inOutPayload.dataset, info);
+        callback(inOutPayload);
+        let branchIndex = 0;
         let keyFound = info.keys.find((k, i) => {
-            let matches = (k === subtreePropertyName);
+            let matches = (k === inOutPayload.branchNodesName);
             if (matches === true)
-                subtreeIndex = i;
+                branchIndex = i;
             return matches;
         });
         let node = null;
         let keyNode = null;
         let nodeValue = null;
         let nodeInfo = {};
-        let subtreeNodeNormalizedNodes = null;
+        let branchNodeNormalizedNodes = null;
         loop: for (node of normalizedNodes) {
             keyNode = Object.keys(node)[0];
             nodeValue = node[keyNode];
             nodeInfo = WorkspaceTreeWalker.getNodeInfo(nodeValue);
             if (nodeInfo.length === 0) {
-                subtreeNodeNormalizedNodes = null;
+                branchNodeNormalizedNodes = null;
             }
             else {
-                subtreeNodeNormalizedNodes = WorkspaceTreeWalker.normalizeNodes(nodeValue, 
+                branchNodeNormalizedNodes = WorkspaceTreeWalker.normalizeNodes(nodeValue, 
                 //@ts-ignore
                 nodeInfo);
             }
-            inOutPayload.push(
-            //@ts-ignore
-            callback(keyNode, nodeValue, nodeInfo, subtreeNodeNormalizedNodes));
+            callback(inOutPayload);
             if (!keyFound) {
                 continue loop;
             }
-            if (keyNode === subtreePropertyName) {
-                this.walkWhenSubtreePropName(subtreePropertyName, nodeValue, subtreePropertyName, inOutPayload, callback);
+            if (keyNode === inOutPayload.branchNodesName) {
+                this.walkWhenSubtreePropName(inOutPayload, callback);
             }
         }
     }
-    walkFlat(holderId, treeData, holderIdProperyName, idProperyName, inOutPayload, callbackWalkRepeated) {
-        let info = WorkspaceTreeWalker.getNodeInfo(treeData);
-        let normalizedRootData = WorkspaceTreeWalker.normalizeNodes(treeData, info);
-        this.walkFlatSubcall(holderId, normalizedRootData, holderIdProperyName, idProperyName, inOutPayload, callbackWalkRepeated);
-    }
-    walkFlatSubcall(holderId, normalizedRootData, holderIdProperyName, idProperyName, inOutPayload, callback) {
-        const filteredRootNodes = [
-            ...normalizedRootData
-                .filter((node) => {
-                const subtreeKey = Object.keys(node)[0];
-                const flatRecursionDataRecord = node[subtreeKey];
-                const matchesHolderId = (flatRecursionDataRecord[idProperyName] === holderId);
-                return matchesHolderId;
-            }),
-        ];
-        if ((!filteredRootNodes) || (filteredRootNodes.length === 0)) {
-            return;
-        }
-        let node = null;
-        let subtreeKey = null;
-        let flatRecursionDataRecord = null;
-        let nodeInfo = {};
-        let subtreeNodeNormalizedNodes = null;
-        let recordId = null;
-        loop: for (node of filteredRootNodes) {
-            subtreeKey = Object.keys(node)[0];
-            flatRecursionDataRecord = node[subtreeKey];
-            recordId = flatRecursionDataRecord[holderIdProperyName];
-            nodeInfo = WorkspaceTreeWalker.getNodeInfo(flatRecursionDataRecord);
-            subtreeNodeNormalizedNodes = WorkspaceTreeWalker.normalizeNodes(flatRecursionDataRecord, nodeInfo);
-            //@ts-ignore
-            inOutPayload.push(callback(subtreeKey, flatRecursionDataRecord, nodeInfo, subtreeNodeNormalizedNodes, filteredRootNodes));
-            this.walkFlatSubcall(recordId, normalizedRootData, holderIdProperyName, idProperyName, inOutPayload, callback);
-        }
-    }
-    walkFlatRepeating(inOutPayload, callback) {
-        let info = WorkspaceTreeWalker.getNodeInfo(inOutPayload.flatDataset);
-        let normalizedRootData = WorkspaceTreeWalker.normalizeNodes(inOutPayload.flatDataset, info);
+    walkFlat(inOutPayload, callback) {
+        let info = WorkspaceTreeWalker.getNodeInfo(inOutPayload.dataset);
+        let normalizedRootData = WorkspaceTreeWalker.normalizeNodes(inOutPayload.dataset, info);
         inOutPayload.jpathData.getJPath().push(inOutPayload.id);
-        inOutPayload.flatDatasetNormalized = normalizedRootData;
-        this.walkFlatRepeatingSubcall(inOutPayload, callback);
+        inOutPayload.datasetNormalized = normalizedRootData;
+        this.walkFlatSubcall(inOutPayload, callback);
     }
-    walkFlatRepeatingSubcall(inOutPayload, callback) {
+    walkFlatSubcall(inOutPayload, callback) {
         const filteredRootNodes = [
-            ...inOutPayload.flatDatasetNormalized
+            ...inOutPayload.datasetNormalized
                 .filter(function (node) {
-                const subtreeKey = Object.keys(node)[0];
-                const flatRecursionDataRecord = node[subtreeKey];
+                const branchKey = Object.keys(node)[0];
+                const flatRecursionDataRecord = node[branchKey];
                 //@ts-ignore
-                const matchesHolderId = (flatRecursionDataRecord[inOutPayload.parentIdProperyName] === inOutPayload.id);
+                const matchesHolderId = (flatRecursionDataRecord[inOutPayload.nameHolderId] === inOutPayload.id);
                 return matchesHolderId;
             }),
         ];
@@ -202,19 +166,18 @@ class WorkspaceTreeWalker {
         }
         let node = null;
         let nodeInfo = {};
-        inOutPayload.currentGroupNormalized = filteredRootNodes;
-        loop: for (node of filteredRootNodes) {
+        inOutPayload.currentDatasetNormalized = filteredRootNodes;
+        for (node of filteredRootNodes) {
             const payloadLocal = new WorkspaceTreeWalkerPayload_js_1.WorkspaceTreeWalkerPayload();
             for (let propName in inOutPayload) {
                 //@ts-ignore
                 payloadLocal[propName] = inOutPayload[propName];
             }
-            payloadLocal.flatDataElemKey = Object.keys(node)[0];
-            payloadLocal.flatDataElem = node[payloadLocal.flatDataElemKey];
-            payloadLocal.id = payloadLocal.flatDataElem[payloadLocal.idProperyName];
-            payloadLocal.parentId = payloadLocal.flatDataElem[payloadLocal.parentIdProperyName];
-            payloadLocal.parentIdForNestedNodes = payloadLocal.flatDataElem[payloadLocal.parentIdProperyName];
-            //payloadLocal.jpathData.getJPath().push("subtree");
+            payloadLocal.dataName = Object.keys(node)[0];
+            payloadLocal.data = node[payloadLocal.dataName];
+            payloadLocal.id = payloadLocal.data[payloadLocal.nameId];
+            payloadLocal.holderId = payloadLocal.data[payloadLocal.nameHolderId];
+            //payloadLocal.jpathData.getJPath().push("branch");
             const jpathData = payloadLocal.jpathData;
             const path = jpathData.getJPath();
             let newJpath = path.reduce((jpathCurrent, key, ix, reducedPath) => {
@@ -224,14 +187,14 @@ class WorkspaceTreeWalker {
                 if (_jpathLastIx > (-1)) {
                     lastSavedJpathKey = jpathCurrent[_jpathLastIx];
                 }
-                if (key === payloadLocal.parentId) {
-                    jpathCurrent.push(payloadLocal.parentId);
+                if (key === payloadLocal.holderId) {
+                    jpathCurrent.push(payloadLocal.holderId);
                     jpathCurrent.push(payloadLocal.id);
                 }
                 else if (lastSavedJpathKey === payloadLocal.id) {
                     true;
                 }
-                else if (lastSavedJpathKey === payloadLocal.parentId) {
+                else if (lastSavedJpathKey === payloadLocal.holderId) {
                     jpathCurrent.push(payloadLocal.id);
                 }
                 else {
@@ -243,45 +206,57 @@ class WorkspaceTreeWalker {
             newJpathData.setJPath(newJpath);
             payloadLocal.jpathData = newJpathData;
             // payloadLocal.jpathData.setIsPlaceholderValue(0);
-            nodeInfo = WorkspaceTreeWalker.getNodeInfo(payloadLocal.flatDataElem);
-            payloadLocal.flatDataElemNormalized = WorkspaceTreeWalker.normalizeNodes(payloadLocal.flatDataElem, nodeInfo);
+            nodeInfo = WorkspaceTreeWalker.getNodeInfo(payloadLocal.data);
+            payloadLocal.dataNormalized = WorkspaceTreeWalker.normalizeNodes(payloadLocal.data, nodeInfo);
             callback(payloadLocal);
-            let repeatTimes = 1;
-            let isRepeatDataApplied = false;
+            let iterationNumber = 1;
+            let iteration = 0;
+            let isMultipleDataApplied = false;
             //@ts-ignore
-            let repeatedDataInfo = {};
-            if ((payloadLocal.repeatTimes) &&
-                (payloadLocal.payloadRepeatData)) {
-                repeatTimes = payloadLocal.repeatTimes;
-                isRepeatDataApplied = ((payloadLocal.repeatTimes !== 0) && (payloadLocal.payloadRepeatData.length !== 0));
+            let multipleDataInfo = {};
+            if ((payloadLocal.iterationsNumber) &&
+                (payloadLocal.iterationsDataset)) {
+                iterationNumber = payloadLocal.iterationsNumber;
+                isMultipleDataApplied = ((payloadLocal.iterationsNumber !== 0) && (payloadLocal.iterationsDataset.length !== 0));
             }
-            let step = 0;
-            for (step = 0; step < repeatTimes; step++) {
-                // inOutPayload.step = step;
-                let subtreeInoutPayload = new WorkspaceTreeWalkerPayload_js_1.WorkspaceTreeWalkerPayload();
-                for (let propName in payloadLocal) {
+            for (iteration = 0; iteration < iterationNumber; iteration++) {
+                let branchInoutPayload = new WorkspaceTreeWalkerPayload_js_1.WorkspaceTreeWalkerPayload();
+                if (isMultipleDataApplied === true) {
+                    for (let propName in payloadLocal) {
+                        //@ts-ignore
+                        branchInoutPayload[propName] = payloadLocal[propName];
+                    }
                     //@ts-ignore
-                    subtreeInoutPayload[propName] = payloadLocal[propName];
-                }
-                subtreeInoutPayload.step = step;
-                if (isRepeatDataApplied === true) {
-                    //@ts-ignore
-                    subtreeInoutPayload.payloadDataElem = payloadLocal.payloadRepeatData[step];
-                    repeatedDataInfo = WorkspaceTreeWalker.getNodeInfo(subtreeInoutPayload.payloadDataElem);
-                    if (!repeatedDataInfo.isArray && (repeatedDataInfo.datatype === IterableInfo_js_1.IterableInfo.DATATYPE_OBJECT)) {
-                        subtreeInoutPayload.payloadDataElem = WorkspaceTreeWalker.normalizeNodes(subtreeInoutPayload.payloadDataElem, repeatedDataInfo);
-                        subtreeInoutPayload.repeatTimes = subtreeInoutPayload.payloadDataElem.length;
-                        subtreeInoutPayload.step = 0;
+                    branchInoutPayload.iterationsDataset = payloadLocal.iterationsDataset[iteration];
+                    multipleDataInfo = WorkspaceTreeWalker.getNodeInfo(branchInoutPayload.iterationsDataset);
+                    if (!multipleDataInfo.isArray && (multipleDataInfo.datatype === IterableInfo_js_1.IterableInfo.DATATYPE_OBJECT)) {
+                        branchInoutPayload.iterationsDataset = WorkspaceTreeWalker.normalizeNodes(branchInoutPayload.iterationsDataset, multipleDataInfo);
+                        branchInoutPayload.iterationsNumber = branchInoutPayload.iterationsDataset.length;
+                        //...
                     }
                 }
                 else {
-                    subtreeInoutPayload = payloadLocal;
+                    branchInoutPayload = payloadLocal;
                 }
-                this.walkFlatRepeatingSubcall(subtreeInoutPayload, callback);
+                this.walkFlatSubcall(branchInoutPayload, callback);
             }
+        }
+    }
+    jpathRebuildWalkFlat(jpath, branchNodeName) {
+        let rebuiltJpath = [];
+        let key = "";
+        for (key of jpath) {
+            rebuiltJpath.push(0);
         }
     }
 }
 exports.WorkspaceTreeWalker = WorkspaceTreeWalker;
 WorkspaceTreeWalker.DATATYPE_OBJECT = "object";
+WorkspaceTreeWalker.WALK_MODE = (_a = class {
+    },
+    __setFunctionName(_a, "WALK_MODE"),
+    _a.WALK_MODE_EASE = "ease",
+    _a.WALK_MODE_WHEN_SUBTREE_PROPNAME = "branch_propname",
+    _a.WALK_MODE_FLAT = "flat",
+    _a);
 //# sourceMappingURL=WorkspaceTreeWalker.js.map

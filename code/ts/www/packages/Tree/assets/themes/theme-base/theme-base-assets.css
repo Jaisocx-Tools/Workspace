@@ -31,7 +31,7 @@ sends http request paths normally resolved. the browser doesn't ask a server to 
 
   --open-button-animated--image-url: url('./../themes/theme-base/mini-images/button-open/button-animated.gif');
   --open-button-opened--image-url: url('./../themes/theme-base/mini-images/button-open/button-opened.png');
-  --open-button-without-subtree--image-url: url('./../themes/theme-base/mini-images/button-open/button-without-subtree.svg');
+  --open-button-without-branch--image-url: url('./../themes/theme-base/mini-images/button-open/button-without-branch.svg');
 
   --datatype-array--image-url: url('./../themes/theme-base/mini-images/data-types/icons8-view-array-96.png');
   --datatype-object--image-url: url('./../themes/theme-base/mini-images/data-types/icons8-static-view-level2-80.png');

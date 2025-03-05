@@ -39,10 +39,10 @@ The js site ui tool to render a multilevel nested objects json.
 ```
     <h1>Tree examples</h1>
 
-    <h2>json subtree type array</h2>
+    <h2>json branch type array</h2>
     <div id="example-tree-holder_SubtreeArrayOfObjects"></div>
 
-    <h2>json subtree type object</h2>
+    <h2>json branch type object</h2>
     <div id="example-tree-holder_SubtreeLikeObjects" class="theme-funny"></div>
 
     <h2>load by url (should work only when published at an http server)</h2>
@@ -56,7 +56,7 @@ The js site ui tool to render a multilevel nested objects json.
       "label": "Main",
       "opened": false,
       "text": "<h3>Main tree elem</h3>",
-      "subtree": [
+      "branch": [
         {
           "icon": "examples/ExampleTree/custom-theme-icons/google.png",
           "label": "A Link to Google", 
@@ -73,7 +73,7 @@ The js site ui tool to render a multilevel nested objects json.
           "icon": "examples/ExampleTree/custom-theme-icons/catalog.png",
           "label": "echo html",
           "opened": false,
-          "subtree": [
+          "branch": [
             {
               "icon": "examples/ExampleTree/custom-theme-icons/html.png",
               "label": "html 1", 
@@ -162,8 +162,8 @@ export class TreeConstants {
 
     CLASS_NAME_WITH_ICONS: "with-icons",
 
-    CLASS_OPENED: "toggle-with-subtree-opened",
-    CLASS_WITHOUT_SUBTREE: "toggle-without-subtree",
+    CLASS_OPENED: "toggle-with-branch-opened",
+    CLASS_WITHOUT_SUBTREE: "toggle-without-branch",
     CLASS_ICON_SHOW: "icon-show",
     CLASS_ICON_HIDE: "icon-hide",
 
@@ -194,7 +194,7 @@ export class TreeConstants {
         <pre class="open-button  {{ openButtonStateClassName }}">
             <pre class="opened"></pre>
             <pre class="closed"></pre>
-            <pre class="without-subtree"></pre>
+            <pre class="without-branch"></pre>
             <pre class="animated"></pre>
         </pre>
 
@@ -240,8 +240,8 @@ export interface ITreeRenderRetValue {
 
 export interface IRenderSubtreeResult {
   currentNodeSubtreeLength: number;
-  subtreeJsonNodesLength: number;
-  // subtreeNodes: any;
+  branchJsonNodesLength: number;
+  // branchNodes: any;
 }
 
 export interface IRenderingMode {
@@ -342,7 +342,7 @@ export class TreeConf {
   constructor() {
     this.NODE_ICON__SRC = "icon";
     this.NODE_LABEL__TEXT = "label";
-    this.SUBTREE = "subtree";
+    this.SUBTREE = "branch";
 
     this.NODE__ID = "id";
     this.NODE__HOLDER_ID = "holderId";

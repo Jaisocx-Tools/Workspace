@@ -224,7 +224,7 @@ export class ImprovedTemplateRenderer extends EventEmitter {
       //   const placeholderData: any = dataConf.placeholderData;
       // }
 
-      let templateConf: TemplateConf = inOutPayload.flatDataElem as TemplateConf;
+      let templateConf: TemplateConf = inOutPayload.dataElem as TemplateConf;
       let templateName: string = templateConf.templateName;
       //let templateConf: TemplateConf = this._templatesConf[templateName];
 
@@ -250,32 +250,31 @@ export class ImprovedTemplateRenderer extends EventEmitter {
         if ( templateConf.repeatTagConfDataApplies === true ) {
           repeatData = ( dataConf  as DataConf ).repeatTagData;
         } else {
-          repeatData = inOutPayload.payloadDataElem;
+          repeatData = inOutPayload.repeatDataElem;
         }
 
         repeatDataInfo = WorkspaceTreeWalker.getNodeInfo ( repeatData );
 
         if ( repeatDataInfo.isArray === true ) {
-          inOutPayload.payloadRepeatData = repeatData;
+          inOutPayload.repeatData = repeatData;
 
         } else {
           repeatDataNormalized = WorkspaceTreeWalker.normalizeNodes ( 
             repeatData, 
             repeatDataInfo );
 
-          inOutPayload.payloadRepeatData = repeatDataNormalized;
+          inOutPayload.repeatData = repeatDataNormalized;
 
         }
 
-        inOutPayload.repeatTimes = inOutPayload.payloadRepeatData.length;
-        inOutPayload.step = 0;
+        inOutPayload.repeatTimes = inOutPayload.repeatData.length;
 
       }
 
       let placeholderData: any = ( dataConf  as DataConf ).placeholderData;
 
-      if ( !placeholderData && ( templateConf.placeholder ) && inOutPayload.payloadDataElem ) {
-        placeholderData = inOutPayload.payloadDataElem;
+      if ( !placeholderData && ( templateConf.placeholder ) && inOutPayload.repeatDataElem ) {
+        placeholderData = inOutPayload.repeatDataElem;
 
       }
 
@@ -334,13 +333,13 @@ export class ImprovedTemplateRenderer extends EventEmitter {
     const treeWalker: WorkspaceTreeWalker = new WorkspaceTreeWalker();
 
     let inOutPayload: WorkspaceTreeWalkerPayload = new WorkspaceTreeWalkerPayload();
-    inOutPayload.flatDataset = templatesConf;
+    inOutPayload.dataset = templatesConf;
 
     inOutPayload.parentId = mainTemplateConfigTag;
     inOutPayload.id = "main";
-    inOutPayload.parentIdForNestedNodes = "subtreeRepeatTag";
+    inOutPayload.parentIdForNestedNodes = "branchRepeatTag";
     inOutPayload.parentIdProperyName = "tag";
-    inOutPayload.idProperyName = "subtreeRepeatTag";
+    inOutPayload.idProperyName = "branchRepeatTag";
 
 
     treeWalker.walkFlatRepeating (

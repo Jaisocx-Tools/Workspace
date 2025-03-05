@@ -7,7 +7,7 @@
           },
 "colsLabelsHolderOpen":       {
               "tag": "main",
-              "subtree-repeat-tag": "columnLabels"
+              "branch-repeat-tag": "columnLabels"
             },
 "colLabelOpen":                 {
                 "tag": "columnLabels",
@@ -71,7 +71,7 @@ export class TemplateConf {
     repeatTagConfDataApplies;
     useRepeatCallback;
     repeatDataCallback;
-    subtreeRepeatTag;
+    branchRepeatTag;
     //@purpose
     // to minimize replace() invoke times,
     // when this prop set zero,
@@ -105,7 +105,7 @@ export class TemplateConf {
         this.repeatTagConfDataApplies = false;
         this.useRepeatCallback = false;
         this.repeatDataCallback = null;
-        this.subtreeRepeatTag = null;
+        this.branchRepeatTag = null;
         this.hasPlaceholders = false;
         this.data = null;
         this.info = null;

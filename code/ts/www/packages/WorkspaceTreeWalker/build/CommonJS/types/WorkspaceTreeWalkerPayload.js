@@ -4,25 +4,29 @@ exports.WorkspaceTreeWalkerPayload = void 0;
 const JPathData_js_1 = require("./JPathData.js");
 class WorkspaceTreeWalkerPayload {
     constructor() {
-        this.flatDataset = null;
-        this.flatDatasetNormalized = null;
-        this.currentGroupNormalized = null;
-        this.flatDataElem = null;
-        this.flatDataElemNormalized = null;
-        this.flatDataElemKey = null;
-        this.payloadRepeatData = null;
-        this.payloadDataElem = null;
-        this.repeatTimes = 0;
-        this.step = 0;
-        this.parentId = "";
+        this.dataset = null;
+        this.datasetNormalized = [];
+        this.currentDatasetNormalized = [];
+        this.data = null;
+        this.dataNormalized = null;
+        this.dataName = null;
+        this.iterationsDataset = null;
+        this.iterationsDatasetNormalized = [];
+        this.iterationsCurrentDatasetNormalized = [];
+        this.iterationsNumber = 0;
+        this.iterationsData = {};
+        this.iterationsDataNormalized = {};
+        this.iterationsDataName = "";
+        this.holderId = "";
         this.id = "";
-        this.parentIdForNestedNodes = "";
-        this.parentIdProperyName = "";
-        this.idProperyName = "";
+        this.holderIdForNodes = "";
+        this.nameHolderId = "";
+        this.nameId = "";
+        this.branchNodesName = "";
         this.jpathData = new JPathData_js_1.JPathData();
-        this.subtreePropertyName = WorkspaceTreeWalkerPayload.SUBTREE_PROP;
+        this.branchNodesName = WorkspaceTreeWalkerPayload.BRANCH_NODES_NAME;
     }
 }
 exports.WorkspaceTreeWalkerPayload = WorkspaceTreeWalkerPayload;
-WorkspaceTreeWalkerPayload.SUBTREE_PROP = "subtree";
+WorkspaceTreeWalkerPayload.BRANCH_NODES_NAME = "branchNodes";
 //# sourceMappingURL=WorkspaceTreeWalkerPayload.js.map

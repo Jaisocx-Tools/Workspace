@@ -1,3 +1,4 @@
+import { WorkspaceTreeWalker } from "../WorkspaceTreeWalker";
 
 
 export class JPath {
@@ -13,6 +14,114 @@ export class JPath {
     this._jpathExpression = "";
     this._jpathExpressionMaxSize = JPath.JPATH_EXPRESSION_MAX_SIZE;
   }
+
+
+  public static setByJPath (
+    obj: any,
+    jpath: (string|number)[],
+    value: any
+  ) {
+    const jpathLen: number = jpath.length;
+    let jpathLastIx: number = jpathLen - 1;
+    let datatypeNode: string = "";
+    let key: any = null;
+
+    for ( key of jpath ) {
+
+      datatypeNode = typeof key;
+
+      if ( !obj[key] ) {
+        if ( datatypeNode === "number" ) {
+          obj[key] = new Array();
+        } else {
+          obj[key] = new Object();
+        }
+      }
+
+      obj = obj[key];
+
+    }
+
+    //@ts-ignore
+    obj[jpathLastIx] = value;
+
+  }
+
+
+  public static setByJPathWalkFlatRebuild (
+    obj: any,
+    jpath: (string|number)[],
+    value: any,
+    nameHolderId: string,
+    nameId: string,
+    branchNodesName: string
+  ) {
+
+    const jpathLen: number = jpath.length;
+    let jpathIx: number;
+    let jpathLastIx: number = jpathLen - 1;
+    let id: any = null;
+    let holderId: any = jpath[0];
+    let foundNode: any = null;
+    let newItem: any = null;
+
+    for ( jpathIx = 0; jpathIx < jpathLen; jpathIx++ ) {
+
+      id = jpath[jpathIx];
+
+      foundNode = false;
+        
+      let toGetById: any[] = [];
+
+      if ( Array.isArray( obj ) ) {
+        toGetById = obj;
+
+      } else if ( obj[branchNodesName] ) {
+        toGetById = obj[branchNodesName];
+
+      } else if ( !obj[branchNodesName] ) {
+        obj[branchNodesName] = new Array();
+        toGetById = obj[branchNodesName];
+
+      }
+
+      foundNode = toGetById.find (
+        ( node: any ) => {
+          const matches: boolean = ( node[nameId] === id );
+          return matches;
+        }
+      );
+
+      if ( !foundNode ) {
+
+        if ( jpathIx === jpathLastIx ) {
+          newItem = {
+            ...value,
+            [nameId]: id,
+            [nameHolderId]: holderId,
+          };
+        } else {
+          newItem = {
+            [nameId]: id,
+            [nameHolderId]: holderId,
+          };
+        }
+    
+        toGetById.push( newItem );
+        obj[nameId] = holderId;
+
+        const lastIx: number = ( toGetById.length - 1 );
+        foundNode = toGetById[lastIx];
+
+      }
+
+      obj = foundNode;
+      holderId = id;
+
+    }
+
+  }
+
 
   public static getByJPath( 
     jpath: (string|number)[],

@@ -5,8 +5,8 @@ const TreeAdapter_js_1 = require("./TreeAdapter.js");
 const TreeConstants_js_1 = require("./TreeConstants.js");
 class TreeAdapterModeEase extends TreeAdapter_js_1.TreeAdapter {
     getSubtreeNodeToRender(loopPropertyValue, loopPropertyKey) {
-        const subtreeJsonNode = { [loopPropertyKey]: loopPropertyValue, };
-        return subtreeJsonNode;
+        const branchJsonNode = { [loopPropertyKey]: loopPropertyValue, };
+        return branchJsonNode;
     }
     getDataForRendering(node, flatNodeClone, dataTypeString, nodeHasSubtree) {
         var _a;

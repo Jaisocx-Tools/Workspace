@@ -87,8 +87,8 @@ export class ArrayOrObjectPackage {
     let loopCounter: number = 0;
     let arrayElement: any = {};
 
-    let subtreeNodesKeys: any[] = [];
-    let subtreeNodesValues: any[] = [];
+    let branchNodesKeys: any[] = [];
+    let branchNodesValues: any[] = [];
     let loopPropertyName: any = "";
     let loopPropertyValue: any = {};
 
@@ -97,7 +97,7 @@ export class ArrayOrObjectPackage {
     let callbackResult: any = null;
 
     if (isArray === 1) {
-      // subtree type is array
+      // branch type is array
 
       loopPropertyName = "";
       arrayOrObjectItemsAmount = arrayOrObject.length;
@@ -115,15 +115,15 @@ export class ArrayOrObjectPackage {
         );
       }
     } else {
-      // subtree type is object
+      // branch type is object
 
-      subtreeNodesKeys = (objectKeys !== null) ? objectKeys : Object.keys(arrayOrObject);
-      subtreeNodesValues = Object.values(arrayOrObject);
+      branchNodesKeys = (objectKeys !== null) ? objectKeys : Object.keys(arrayOrObject);
+      branchNodesValues = Object.values(arrayOrObject);
 
-      arrayOrObjectItemsAmount = subtreeNodesKeys.length;
+      arrayOrObjectItemsAmount = branchNodesKeys.length;
       for (loopCounter = 0; loopCounter < arrayOrObjectItemsAmount; loopCounter++) {
-        loopPropertyName = subtreeNodesKeys[loopCounter];
-        loopPropertyValue = subtreeNodesValues[loopCounter];
+        loopPropertyName = branchNodesKeys[loopCounter];
+        loopPropertyValue = branchNodesValues[loopCounter];
 
         callbackResult = callback(
           isArray,

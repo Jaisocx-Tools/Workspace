@@ -17,10 +17,10 @@
     <link rel="stylesheet" href="/CssTools/CssCodeSnippet/assets/themes/rosa.css">
     <link rel="stylesheet" href="/CssTools/CssCodeSnippet/assets/themes/sky-blue.css">
     <link rel="stylesheet" href="/CssTools/CssCodeSnippet/assets/themes/salad.css">
-  
+
     <link rel="stylesheet" href="/CssTools/CssCodeSnippet/assets/css-code-snippet-styles-main.css">
     <link rel="stylesheet" href="/CssTools/CssCodeSnippet/assets/lines-numbers-variables/code-snippet-lines-numbers-99.css">
-  
+
     <style>
 
   .CodeSnippetHolder.salad.TreeWalkerPage {
@@ -72,7 +72,7 @@
     <h2>tested method .walkFlatRepeating</h2>
     <p>However the .walkFlatRepeating() method is developed for repeating some data nodes by amount and rules of other datasets while the flat dataset recursive callback invokes.</p>
 
-    
+
     <h2>Flat recursion dataset example</h2>
     <h3>Looks like this when rendered with Tree()</h3>
     <div id="tree-holder-flat-dataset"></div>
@@ -105,6 +105,7 @@ const flatRecursionDataset = [
 <h2>Callback example, used to customize TreeWalker actions.</h2>
 <CodeSnippetHolder id="code-snippet-walkFlatRepeatingCallback" class="CodeSnippetHolder salad TreeWalkerPage">
       <pre class="CodeSnippetArea">
+
 let treeDataset = {};
 
 function workspaceTreeWalkerCallback (
@@ -125,7 +126,7 @@ function workspaceTreeWalkerCallback (
     if ( !elem[keyText] && ( keyLevel !== jpathDataLastIx ) ) {
       elem[keyText] = {};
     } else if ( !elem[keyText] && ( keyLevel === jpathDataLastIx ) ) {
-      elem[keyText] = { ...inOutPayload.flatDataElem };
+      elem[keyText] = { ...inOutPayload.dataElem };
     }
 
     elem = elem[keyText];
@@ -147,7 +148,7 @@ function exampleUseWorkspaceTreeWalkerFlatData() {
 
   const inOutPayload = new WorkspaceTreeWalkerPayload();
   
-  inOutPayload.flatDataset = flatRecursionDataset;
+  inOutPayload.dataset = flatRecursionDataset;
 
   inOutPayload.parentId = "data";
   inOutPayload.id = "main";
@@ -233,59 +234,85 @@ document.addEventListener (
 
       let treeDataset = {};
 
+
       function workspaceTreeWalkerCallback (
         inOutPayload
       ) {
 
-        const jpathData = inOutPayload.jpathData.getJPath();
+        JPath.setByJPathWalkFlatRebuild (
+          treeDataset,
+          inOutPayload.jpathData.getJPath(),
+          inOutPayload.data,
+          inOutPayload.nameHolderId,
+          inOutPayload.nameId,
+          inOutPayload.branchNodesName
+        );
 
-        let elem = treeDataset;
-        let jpathDataLen = jpathData.length;
-        let jpathDataLastIx = jpathDataLen - 1;
-        let keyLevel = 0;
 
-        for ( let key of jpathData ) {
+        // if ( inOutPayload.iterationsDataset && ( inOutPayload.iterationsNumber > 0 ) ) {
+          
+        //   let key = inOutPayload.branchNodesName;
 
-          const keyText = "" + key;
+        //   data[key] = [...inOutPayload.data];
 
-          if ( !elem[keyText] && ( keyLevel !== jpathDataLastIx ) ) {
-            elem[keyText] = {};
-          } else if ( !elem[keyText] && ( keyLevel === jpathDataLastIx ) ) {
-            elem[keyText] = { ...inOutPayload.flatDataElem };
-          }
+        //   for ( let i = 0; i < inOutPayload.iterationsNumber; i++ ) {
 
-          elem = elem[keyText];
-          keyLevel++;
+        //     inOutPayload.iterationsData = inOutPayload.iterationsDataset[i];
 
-        }
+        //   }
+
+        // }
+
+        // if ( inOutPayload.id == 3 ) {
+        //   inOutPayload.iterationsDataset = [
+        //     { "text": "Hallo 1", },
+        //     { "text": "Hallo 2", },
+        //     { "text": "Hallo 3", }
+        //   ];
+
+        //   iterationsDatasetInfo = WorkspaceTreeWalker.getNodeInfo (inOutPayload.iterationsDataset );
+
+        //   if ( iterationsDatasetInfo.isArray === false ) {
+
+        //     iterationsDatasetNormalized = WorkspaceTreeWalker.normalizeNodes ( 
+        //       iterationsDataset, 
+        //       iterationsDatasetInfo );
+
+        //     inOutPayload.iterationsDataset = iterationsDatasetNormalized;
+
+        //   }
+
+        //   inOutPayload.iterationsNumber = inOutPayload.iterationsDataset.length;
+        // }
 
         console.log( inOutPayload, treeDataset );
 
       }
 
       function exampleUseWorkspaceTreeWalkerFlatData() {
+
         const holderHtmlNode = document.querySelector( "example#treewalker_1" );
 
         const inOutPayload = new WorkspaceTreeWalkerPayload();
         
-        inOutPayload.flatDataset = flatRecursionDataset;
+        inOutPayload.dataset = flatRecursionDataset;
 
-        inOutPayload.parentId = "data";
+        inOutPayload.holderId = "data";
         inOutPayload.id = "main";
-        inOutPayload.parentIdForNestedNodes = "main";
-        inOutPayload.parentIdProperyName = "parentId";
-        inOutPayload.idProperyName = "id";
-
-        inOutPayload.customData = {};
-
-
+        inOutPayload.nameHolderId = "parentId";
+        inOutPayload.nameId = "id";
+        inOutPayload.branchNodesName = "branchNodes";
+        
         const treeWalker = new WorkspaceTreeWalker();
-        treeWalker.walkFlatRepeating (
+        treeWalker.walk (
+          // WorkspaceTreeWalker.WALK_MODE.WALK_MODE_FLAT_REPEATING,
+          WorkspaceTreeWalker.WALK_MODE.WALK_MODE_FLAT,
           inOutPayload,
           workspaceTreeWalkerCallback
         );
 
-        console.log( "this .html file, \nfunction exampleUseWorkspaceTreWalker(). \nThis test func finished at it's last js code line." );        
+        console.log( "this .html file, \nfunction exampleUseWorkspaceTreWalker(). \nThis test func finished at it's last js code line." );
+
       }
 
       function renderFlatDataset() {

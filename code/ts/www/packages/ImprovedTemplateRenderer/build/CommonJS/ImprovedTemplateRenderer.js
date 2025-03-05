@@ -127,7 +127,7 @@ class ImprovedTemplateRenderer extends event_emitter_1.EventEmitter {
             //   const dataConf: DataConf = this._dataConf.find( ( conf: DataConf ) => ( conf.template === templateConf.templateName ) );
             //   const placeholderData: any = dataConf.placeholderData;
             // }
-            let templateConf = inOutPayload.flatDataElem;
+            let templateConf = inOutPayload.dataElem;
             let templateName = templateConf.templateName;
             //let templateConf: TemplateConf = this._templatesConf[templateName];
             if (!templateName) {
@@ -147,22 +147,22 @@ class ImprovedTemplateRenderer extends event_emitter_1.EventEmitter {
                     repeatData = dataConf.repeatTagData;
                 }
                 else {
-                    repeatData = inOutPayload.payloadDataElem;
+                    repeatData = inOutPayload.repeatDataElem;
                 }
                 repeatDataInfo = workspace_tree_walker_1.WorkspaceTreeWalker.getNodeInfo(repeatData);
                 if (repeatDataInfo.isArray === true) {
-                    inOutPayload.payloadRepeatData = repeatData;
+                    inOutPayload.repeatData = repeatData;
                 }
                 else {
                     repeatDataNormalized = workspace_tree_walker_1.WorkspaceTreeWalker.normalizeNodes(repeatData, repeatDataInfo);
-                    inOutPayload.payloadRepeatData = repeatDataNormalized;
+                    inOutPayload.repeatData = repeatDataNormalized;
                 }
-                inOutPayload.repeatTimes = inOutPayload.payloadRepeatData.length;
+                inOutPayload.repeatTimes = inOutPayload.repeatData.length;
                 inOutPayload.step = 0;
             }
             let placeholderData = dataConf.placeholderData;
-            if (!placeholderData && (templateConf.placeholder) && inOutPayload.payloadDataElem) {
-                placeholderData = inOutPayload.payloadDataElem;
+            if (!placeholderData && (templateConf.placeholder) && inOutPayload.repeatDataElem) {
+                placeholderData = inOutPayload.repeatDataElem;
             }
             const placeholderName = templateConf.placeholder;
             const preparedTemplate = this._preparedTemplatesObject[templateConf.templateName];
@@ -198,12 +198,12 @@ class ImprovedTemplateRenderer extends event_emitter_1.EventEmitter {
         };
         const treeWalker = new workspace_tree_walker_1.WorkspaceTreeWalker();
         let inOutPayload = new workspace_tree_walker_1.WorkspaceTreeWalkerPayload();
-        inOutPayload.flatDataset = templatesConf;
+        inOutPayload.dataset = templatesConf;
         inOutPayload.parentId = mainTemplateConfigTag;
         inOutPayload.id = "main";
-        inOutPayload.parentIdForNestedNodes = "subtreeRepeatTag";
+        inOutPayload.parentIdForNestedNodes = "branchRepeatTag";
         inOutPayload.parentIdProperyName = "tag";
-        inOutPayload.idProperyName = "subtreeRepeatTag";
+        inOutPayload.idProperyName = "branchRepeatTag";
         treeWalker.walkFlatRepeating(inOutPayload, callbackWalkRepeated);
         console.log("TREE WALKER RESULT");
         console.log(inOutPayload);

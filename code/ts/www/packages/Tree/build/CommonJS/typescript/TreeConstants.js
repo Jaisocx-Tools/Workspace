@@ -16,8 +16,8 @@ TreeConstants.NodesOpenedMode = {
 TreeConstants.TreeCssClassNames = {
     MAIN_CLASS_NAME: "tree",
     CLASS_NAME_WITH_ICONS: "with-icons",
-    CLASS_OPENED: "toggle-with-subtree-opened",
-    CLASS_WITHOUT_SUBTREE: "toggle-without-subtree",
+    CLASS_OPENED: "toggle-with-branch-opened",
+    CLASS_WITHOUT_SUBTREE: "toggle-without-branch",
     CLASS_ICON_SHOW: "icon-show",
     CLASS_ICON_HIDE: "icon-hide",
     CLASS_AND_ID__CONTEXT_MENU: "context-menu-container",
@@ -44,7 +44,7 @@ TreeConstants.TEMPLATE__TREE_HTML_NODE = `
         <pre class="open-button  {{ openButtonStateClassName }}">
             <pre class="opened"></pre>
             <pre class="closed"></pre>
-            <pre class="without-subtree"></pre>
+            <pre class="without-branch"></pre>
             <pre class="animated"></pre>
         </pre>
 

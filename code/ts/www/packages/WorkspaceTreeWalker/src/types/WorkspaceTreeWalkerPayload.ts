@@ -1,57 +1,70 @@
 import { JPathData } from "./JPathData.js";
 
+
 export class WorkspaceTreeWalkerPayload {
 
-  static SUBTREE_PROP: string = "subtree";
-
-  // the data for the tree walker to walk
-  public flatDataset: any;
-  public flatDatasetNormalized: any;
-  public currentGroupNormalized: any;
-  public flatDataElem: any;
-  public flatDataElemNormalized: any;
-  public flatDataElemKey: any;
+  static BRANCH_NODES_NAME: string = "branchNodes";
 
 
-  // the data, used to repeat iterations, while waliking one treeDataElem
-  public payloadRepeatData: any;
-  public payloadDataElem: any;
-  public repeatTimes: number;
-  public step: number;
+  // the data for the tree walker to walk. can be an array and an object.
+  public dataset: any;
+  public datasetNormalized: any[];
+  public currentDatasetNormalized: any[];
+  public data: any;
+  public dataNormalized: any;
+  public dataName: any;
 
+
+  // the data, used for more iterations, while walk one dataElem
+  public iterationsDataset: any;
+  public iterationsDatasetNormalized: any[];
+  public iterationsCurrentDatasetNormalized: any[];
+  public iterationsNumber: number;
+  public iterationsData: any;
+  public iterationsDataNormalized: any;
+  public iterationsDataName: string;
   
-  public parentId: any;
-  public id: any;
-  public parentIdForNestedNodes: string;
-  public parentIdProperyName: string;
-  public idProperyName: string;
+
+  public holderId: string;
+  public id: string;
+  public holderIdForNodes: string;
+  public nameHolderId: string;
+  public nameId: string;
+  public branchNodesName: string;
+
 
   public jpathData: JPathData;
-  public subtreePropertyName: string;
 
 
   constructor() {
 
-    this.flatDataset = null;
-    this.flatDatasetNormalized = null;
-    this.currentGroupNormalized = null;
-    this.flatDataElem = null;
-    this.flatDataElemNormalized = null;
-    this.flatDataElemKey = null;
+    this.dataset = null;
+    this.datasetNormalized = [];
+    this.currentDatasetNormalized = [];
+    this.data = null;
+    this.dataNormalized = null;
+    this.dataName = null;
 
-    this.payloadRepeatData = null;
-    this.payloadDataElem = null;
-    this.repeatTimes = 0;
-    this.step = 0;
 
-    this.parentId = "";
+    this.iterationsDataset = null;
+    this.iterationsDatasetNormalized = [];
+    this.iterationsCurrentDatasetNormalized = [];
+    this.iterationsNumber = 0;
+    this.iterationsData = {};
+    this.iterationsDataNormalized = {};
+    this.iterationsDataName = "";
+
+
+    this.holderId = "";
     this.id = "";
-    this.parentIdForNestedNodes = "";
-    this.parentIdProperyName = "";
-    this.idProperyName = "";
+    this.holderIdForNodes = "";
+    this.nameHolderId = "";
+    this.nameId = "";
+    this.branchNodesName = "";
+
 
     this.jpathData = new JPathData();
-    this.subtreePropertyName = WorkspaceTreeWalkerPayload.SUBTREE_PROP;
+    this.branchNodesName = WorkspaceTreeWalkerPayload.BRANCH_NODES_NAME;
 
   }
 }

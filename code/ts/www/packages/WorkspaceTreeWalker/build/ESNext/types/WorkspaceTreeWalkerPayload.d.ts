@@ -1,23 +1,26 @@
 import { JPathData } from "./JPathData.js";
 export declare class WorkspaceTreeWalkerPayload {
-    static SUBTREE_PROP: string;
-    flatDataset: any;
-    flatDatasetNormalized: any;
-    currentGroupNormalized: any;
-    flatDataElem: any;
-    flatDataElemNormalized: any;
-    flatDataElemKey: any;
-    payloadRepeatData: any;
-    payloadDataElem: any;
-    repeatTimes: number;
-    step: number;
-    parentId: any;
-    id: any;
-    parentIdForNestedNodes: string;
-    parentIdProperyName: string;
-    idProperyName: string;
+    static BRANCH_NODES_NAME: string;
+    dataset: any;
+    datasetNormalized: any[];
+    currentDatasetNormalized: any[];
+    data: any;
+    dataNormalized: any;
+    dataName: any;
+    iterationsDataset: any;
+    iterationsDatasetNormalized: any[];
+    iterationsCurrentDatasetNormalized: any[];
+    iterationsNumber: number;
+    iterationsData: any;
+    iterationsDataNormalized: any;
+    iterationsDataName: string;
+    holderId: string;
+    id: string;
+    holderIdForNodes: string;
+    nameHolderId: string;
+    nameId: string;
+    branchNodesName: string;
     jpathData: JPathData;
-    subtreePropertyName: string;
     constructor();
 }
 //# sourceMappingURL=WorkspaceTreeWalkerPayload.d.ts.map

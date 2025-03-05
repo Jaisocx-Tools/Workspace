@@ -6,7 +6,7 @@ export declare class TemplateConf {
     repeatTagConfDataApplies: boolean;
     useRepeatCallback: boolean;
     repeatDataCallback: Function | undefined | null;
-    subtreeRepeatTag: string | undefined | null;
+    branchRepeatTag: string | undefined | null;
     hasPlaceholders: boolean;
     data: any | object | undefined | null;
     info: any;

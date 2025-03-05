@@ -4,7 +4,7 @@
     "label": "Main",
     "opened": true,
     "text": "<h3>Main tree elem</h3>",
-    "subtree": [
+    "branch": [
       {
         "icon": "/examples/ExampleTree/custom-theme-icons/google.png",
         "label": "A Link to Google",
@@ -21,7 +21,7 @@
         "icon": "/examples/ExampleTree/custom-theme-icons/catalog.png",
         "label": "echo html",
         "opened": true,
-        "subtree": [
+        "branch": [
           {
             "icon": "/examples/ExampleTree/custom-theme-icons/html.png",
             "label": "html 1",

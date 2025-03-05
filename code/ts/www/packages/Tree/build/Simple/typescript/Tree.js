@@ -5,8 +5,8 @@ class Tree extends ImprovedRenderEventEmitter {
   url;
   data;
   conf;
-  subtreeLength;
-  subtreeLengthDeep;
+  branchLength;
+  branchLengthDeep;
   templateRenderer;
   contextMenuJSClass;
   renderingMode;
@@ -24,8 +24,8 @@ class Tree extends ImprovedRenderEventEmitter {
     this.url = "";
     this.data = null;
     this.conf = new TreeConf();
-    this.subtreeLength = 0;
-    this.subtreeLengthDeep = 0;
+    this.branchLength = 0;
+    this.branchLengthDeep = 0;
     this.templateRenderer = new TemplateRenderer();
     /* this.templateRenderer
                 .addThisClassEventListener (
@@ -201,7 +201,7 @@ class Tree extends ImprovedRenderEventEmitter {
     else {
       this.mainHolderHtmlNode.classList.remove(TreeConstants.TreeCssClassNames.CLASS_NAME_WITH_ICONS);
     }
-    // add an html holder node for subtree html nodes
+    // add an html holder node for branch html nodes
     const ul = document.createElement("UL");
     this.mainHolderHtmlNode.append(ul);
     // get datatype of the main json data node
@@ -214,31 +214,31 @@ class Tree extends ImprovedRenderEventEmitter {
     else if (dataType !== ArrayOrObjectPackage.JsonDataType.OBJECT) {
       throw new Error("Arrays or Objects supported. This JSON Data is not iterable.");
     }
-    // get info on subtree nodes amount
+    // get info on branch nodes amount
     const { itemsAmount, objectKeys, } = ArrayOrObjectPackage.getArrayOrObjectItemsAmount(
       isArray, 
       this.data);
-    const subtreeNodesCount = itemsAmount;
+    const branchNodesCount = itemsAmount;
     // exit throwing exception, if the tree json data is empty
-    if (subtreeNodesCount === 0) {
+    if (branchNodesCount === 0) {
       throw new Error("Tree json data is empty.");
     }
 
     const flatNodeHolderClone = { _pathArray: ["this.data",], };
-    let subtreeRenderResult;
+    let branchRenderResult;
 
     if (this.renderingMode === TreeConstants.RenderingMode.Conf) {
       if (isArray === 1) {
-        subtreeRenderResult = this.renderSubtree(
+        branchRenderResult = this.renderSubtree(
           isArray, 
           this.data, 
           flatNodeHolderClone, 
           objectKeys, 
           ul);
         // @ts-ignore
-        this.subtreeLength = subtreeNodesCount;
+        this.branchLength = branchNodesCount;
         // @ts-ignore
-        this.subtreeLengthDeep = subtreeRenderResult;
+        this.branchLengthDeep = branchRenderResult;
       }
       else if (isArray === 0) {
         const isTreeItem = this.getInModeConfDataNodeIsTreeItem(this.data);
@@ -253,22 +253,22 @@ class Tree extends ImprovedRenderEventEmitter {
           const { currentNodeSubtreeLength, } = renderResult;
           this.data = renderResult.node;
           // @ts-ignore
-          this.subtreeLength = subtreeNodesCount;
+          this.branchLength = branchNodesCount;
           // @ts-ignore
-          this.subtreeLengthDeep = currentNodeSubtreeLength;
+          this.branchLengthDeep = currentNodeSubtreeLength;
         }
         else {
           // the root json data node is the associative array of tree item data nodes, suggested, if not so, then will not be rendered.
-          subtreeRenderResult = this.renderSubtree(
+          branchRenderResult = this.renderSubtree(
             isArray, 
             this.data, 
             flatNodeHolderClone, 
             objectKeys, 
             ul);
           // @ts-ignore
-          this.subtreeLength = subtreeNodesCount;
+          this.branchLength = branchNodesCount;
           // @ts-ignore
-          this.subtreeLengthDeep = subtreeRenderResult;
+          this.branchLengthDeep = branchRenderResult;
         }
       }
     }
@@ -282,9 +282,9 @@ class Tree extends ImprovedRenderEventEmitter {
       const { currentNodeSubtreeLength, } = renderResult;
       // this.data = renderResult.node[0];
       // @ts-ignore
-      this.subtreeLength = subtreeNodesCount;
+      this.branchLength = branchNodesCount;
       // @ts-ignore
-      this.subtreeLengthDeep = currentNodeSubtreeLength;
+      this.branchLengthDeep = currentNodeSubtreeLength;
     }
 
     if (this.debug) {
@@ -300,59 +300,59 @@ class Tree extends ImprovedRenderEventEmitter {
 
   checkDataNodeSubtree(node) {
     let hasSubtree = false;
-    let subtreeJsonNodes = null;
+    let branchJsonNodes = null;
 
     if (this.renderingMode === TreeConstants.RenderingMode.Conf) {
-      subtreeJsonNodes = node[this.conf.SUBTREE];
+      branchJsonNodes = node[this.conf.SUBTREE];
     }
     else if (this.renderingMode === TreeConstants.RenderingMode.Ease) {
-      subtreeJsonNodes = Object.values(node)[0];
+      branchJsonNodes = Object.values(node)[0];
     }
 
-    const { dataTypeString, dataType, } = ArrayOrObjectPackage.getDataTypeStringAndConst(subtreeJsonNodes);
+    const { dataTypeString, dataType, } = ArrayOrObjectPackage.getDataTypeStringAndConst(branchJsonNodes);
     const isArray = ((dataType === ArrayOrObjectPackage.JsonDataType.ARRAY) ? 1 : 0);
 
-    if ((!subtreeJsonNodes)
-            || (subtreeJsonNodes.length === 0)
+    if ((!branchJsonNodes)
+            || (branchJsonNodes.length === 0)
             || ((dataType !== ArrayOrObjectPackage.JsonDataType.ARRAY)
                 && (dataType !== ArrayOrObjectPackage.JsonDataType.OBJECT))) {
       return {
         isArray,
-        subtreeNodeDataType: dataType,
-        subtreeNodeDataTypeString: dataTypeString,
+        branchNodeDataType: dataType,
+        branchNodeDataTypeString: dataTypeString,
         hasSubtree,
-        subtreeJsonNodes,
+        branchJsonNodes,
         objectKeys: null,
       };
     }
 
     const { itemsAmount, objectKeys, } = ArrayOrObjectPackage.getArrayOrObjectItemsAmount(
       isArray, 
-      subtreeJsonNodes);
+      branchJsonNodes);
     hasSubtree = (itemsAmount !== 0);
 
     return {
       isArray,
-      subtreeNodeDataType: dataType,
-      subtreeNodeDataTypeString: dataTypeString,
+      branchNodeDataType: dataType,
+      branchNodeDataTypeString: dataTypeString,
       hasSubtree,
-      subtreeJsonNodes,
+      branchJsonNodes,
       objectKeys,
     };
   }
 
   renderSubtree(
     isArray, 
-    subtreeNodes, 
+    branchNodes, 
     flatNodeHolderClone, 
     objectKeys, 
-    subtreeHtmlHolder) {
+    branchHtmlHolder) {
     const renderSubtreeResult = ArrayOrObjectPackage.iterateOverArrayOrObjectDefined(
       isArray, 
-      subtreeNodes, 
+      branchNodes, 
       this.renderSubtreeCallback.bind(this), 
       {
-        subtreeHtmlHolder,
+        branchHtmlHolder,
         flatNodeHolderClone,
       }, 
       objectKeys);
@@ -369,17 +369,17 @@ class Tree extends ImprovedRenderEventEmitter {
     previousCallbackResult, 
     callbackPayload) {
     let currentNodeSubtreeLength = (previousCallbackResult) || 0;
-    const { subtreeHtmlHolder, flatNodeHolderClone, } = callbackPayload;
-    const subtreeJsonNode = this.getSubtreeNodeToRender(
+    const { branchHtmlHolder, flatNodeHolderClone, } = callbackPayload;
+    const branchJsonNode = this.getSubtreeNodeToRender(
       loopPropertyValue, 
       loopPropertyKey);
     // RENDERING ONE TREE NODE
     const renderResult = this.renderOneTreeNode(
-      subtreeJsonNode, 
+      branchJsonNode, 
       loopCounter, 
       loopPropertyKey, 
       flatNodeHolderClone, 
-      subtreeHtmlHolder);
+      branchHtmlHolder);
     currentNodeSubtreeLength += renderResult.currentNodeSubtreeLength;
 
     return currentNodeSubtreeLength;
@@ -401,12 +401,12 @@ class Tree extends ImprovedRenderEventEmitter {
       nodeKey, 
       flatNodeHolderClone, 
       holder);
-    const { isArray, subtreeNodeDataType, subtreeNodeDataTypeString, hasSubtree, subtreeJsonNodes, objectKeys, } = this.checkDataNodeSubtree(node);
+    const { isArray, branchNodeDataType, branchNodeDataTypeString, hasSubtree, branchJsonNodes, objectKeys, } = this.checkDataNodeSubtree(node);
     // TODO: EXTENSIBILITY FEATURE
     const dataForRendering = this.getDataForRendering(
       node, 
       nodeClone, 
-      subtreeNodeDataTypeString, 
+      branchNodeDataTypeString, 
       hasSubtree);
     const nodeHtml = this.templateRenderer
       .setTemplate(TreeConstants.TEMPLATE__TREE_HTML_NODE)
@@ -458,9 +458,9 @@ class Tree extends ImprovedRenderEventEmitter {
       ul.style.display = "block";
     }
 
-    const subtreeRenderResult = this.renderSubtree(
+    const branchRenderResult = this.renderSubtree(
       isArray, 
-      subtreeJsonNodes, 
+      branchJsonNodes, 
       nodeClone, 
       objectKeys, 
       ul);
@@ -469,7 +469,7 @@ class Tree extends ImprovedRenderEventEmitter {
       eventAfterRenderOneNodePayload);
 
     return {
-      currentNodeSubtreeLength: subtreeRenderResult.currentNodeSubtreeLength,
+      currentNodeSubtreeLength: branchRenderResult.currentNodeSubtreeLength,
       node: null, // CHECK OUT WHETHER BOKEN WHEN NOW NULL
     };
   }
@@ -490,10 +490,10 @@ class Tree extends ImprovedRenderEventEmitter {
     ];
 
     if ((pathInJsonOfNodeHolder.length > 1) && this.renderingMode === TreeConstants.RenderingMode.Conf) {
-      const subtreePropName = JSON.stringify(this.conf.SUBTREE);
+      const branchPropName = JSON.stringify(this.conf.SUBTREE);
       pathInJsonArray.push(this.conf.SUBTREE);
       pathInJsonArray.push(nodeKey);
-      //pathKeyInNodeHolder = `[${subtreePropName}][${pathKeyInNodeHolder}]`;
+      //pathKeyInNodeHolder = `[${branchPropName}][${pathKeyInNodeHolder}]`;
     }
     else if (this.renderingMode === TreeConstants.RenderingMode.Ease) {
       //pathKeyInNodeHolder = `[${pathKeyInNodeHolder}]`;
@@ -672,16 +672,16 @@ class Tree extends ImprovedRenderEventEmitter {
       return;
     }
 
-    const subtreeContainer = toggleButton.closest("li").getElementsByTagName("ul")[0];
+    const branchContainer = toggleButton.closest("li").getElementsByTagName("ul")[0];
     const isOpened = toggleButton.classList.contains(TreeConstants.TreeCssClassNames.CLASS_OPENED);
 
     if (isOpened) {
       toggleButton.classList.remove(TreeConstants.TreeCssClassNames.CLASS_OPENED);
-      subtreeContainer.style.display = "none";
+      branchContainer.style.display = "none";
     }
     else {
       toggleButton.classList.add(TreeConstants.TreeCssClassNames.CLASS_OPENED);
-      subtreeContainer.style.display = "block";
+      branchContainer.style.display = "block";
     }
   }
   // the predefined events handlers

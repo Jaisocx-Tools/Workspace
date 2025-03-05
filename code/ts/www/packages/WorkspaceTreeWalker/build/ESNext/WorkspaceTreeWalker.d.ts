@@ -2,14 +2,19 @@ import { WorkspaceTreeWalkerPayload } from "./types/WorkspaceTreeWalkerPayload.j
 import { IterableInfo } from "./types/IterableInfo.js";
 export declare class WorkspaceTreeWalker {
     static DATATYPE_OBJECT: string;
+    static WALK_MODE: {
+        new (): {};
+        WALK_MODE_EASE: string;
+        WALK_MODE_WHEN_SUBTREE_PROPNAME: string;
+        WALK_MODE_FLAT: string;
+    };
+    walk(walkMode: string, inOutPayload: WorkspaceTreeWalkerPayload, callback: CallableFunction): any;
     static getNodeInfo(elem: any): IterableInfo;
     static normalizeNodes(nodes: any, nodeInfo: IterableInfo): any;
-    walk(treeData: any, subtreePropertyName: string | undefined | null, callback: Function | undefined | null): any;
-    walkEasy(key: any, treeData: any, inOutPayload: any[], callback: Function | undefined | null): undefined;
-    walkWhenSubtreePropName(key: any, treeData: any, subtreePropertyName: string | undefined | null, inOutPayload: any[], callback: Function | undefined | null): undefined;
-    walkFlat(holderId: any, treeData: any, holderIdProperyName: string, idProperyName: string, inOutPayload: any, callbackWalkRepeated: Function | undefined | null): undefined;
-    walkFlatSubcall(holderId: any, normalizedRootData: any, holderIdProperyName: string, idProperyName: string, inOutPayload: any[], callback: Function | undefined | null): undefined;
-    walkFlatRepeating(inOutPayload: WorkspaceTreeWalkerPayload, callback: CallableFunction): undefined;
-    walkFlatRepeatingSubcall(inOutPayload: WorkspaceTreeWalkerPayload, callback: CallableFunction): undefined;
+    walkEasy(inOutPayload: WorkspaceTreeWalkerPayload, callback: CallableFunction): undefined;
+    walkWhenSubtreePropName(inOutPayload: WorkspaceTreeWalkerPayload, callback: CallableFunction): undefined;
+    walkFlat(inOutPayload: WorkspaceTreeWalkerPayload, callback: CallableFunction): undefined;
+    walkFlatSubcall(inOutPayload: WorkspaceTreeWalkerPayload, callback: CallableFunction): undefined;
+    protected jpathRebuildWalkFlat(jpath: (number | string)[], branchNodeName: string): void;
 }
 //# sourceMappingURL=WorkspaceTreeWalker.d.ts.map
