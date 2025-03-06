@@ -23,11 +23,11 @@ class WorkspaceTreeWalkerPayload {
         this.holderIdForNodes = "";
         this.nameHolderId = "";
         this.nameId = "";
-        this.branchNodesName = "";
+        this.branchName = "";
         this.jpathData = new JPathData_js_1.JPathData();
-        this.branchNodesName = WorkspaceTreeWalkerPayload.BRANCH_NODES_NAME;
+        this.branchName = WorkspaceTreeWalkerPayload.BRANCH_NAME;
     }
 }
 exports.WorkspaceTreeWalkerPayload = WorkspaceTreeWalkerPayload;
-WorkspaceTreeWalkerPayload.BRANCH_NODES_NAME = "branchNodes";
+WorkspaceTreeWalkerPayload.BRANCH_NAME = "branch";
 //# sourceMappingURL=WorkspaceTreeWalkerPayload.js.map

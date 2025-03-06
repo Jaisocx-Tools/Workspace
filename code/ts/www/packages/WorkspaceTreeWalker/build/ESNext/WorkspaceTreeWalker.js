@@ -109,7 +109,7 @@ export class WorkspaceTreeWalker {
         callback(inOutPayload);
         let branchIndex = 0;
         let keyFound = info.keys.find((k, i) => {
-            let matches = (k === inOutPayload.branchNodesName);
+            let matches = (k === inOutPayload.branchName);
             if (matches === true)
                 branchIndex = i;
             return matches;
@@ -135,7 +135,7 @@ export class WorkspaceTreeWalker {
             if (!keyFound) {
                 continue loop;
             }
-            if (keyNode === inOutPayload.branchNodesName) {
+            if (keyNode === inOutPayload.branchName) {
                 this.walkWhenSubtreePropName(inOutPayload, callback);
             }
         }
@@ -240,7 +240,7 @@ export class WorkspaceTreeWalker {
         }
     }
     static callbackWalkFlatTransformToMultilevel(inOutPayload) {
-        JPath.setByJPathWalkFlatRebuild(inOutPayload.transformedDataset, inOutPayload.jpathData.getJPath(), inOutPayload.data, inOutPayload.nameHolderId, inOutPayload.nameId, inOutPayload.branchNodesName);
+        JPath.setByJPathWalkFlatRebuild(inOutPayload.transformedDataset, inOutPayload.jpathData.getJPath(), inOutPayload.data, inOutPayload.nameHolderId, inOutPayload.nameId, inOutPayload.branchName);
     }
 }
 //# sourceMappingURL=WorkspaceTreeWalker.js.map

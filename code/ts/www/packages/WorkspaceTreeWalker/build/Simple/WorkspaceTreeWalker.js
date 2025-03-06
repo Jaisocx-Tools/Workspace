@@ -147,7 +147,7 @@ class WorkspaceTreeWalker {
     callback(inOutPayload);
     let branchIndex = 0;
     let keyFound = info.keys.find((k, i) => {
-      let matches = (k === inOutPayload.branchNodesName);
+      let matches = (k === inOutPayload.branchName);
 
       if (matches === true)
         branchIndex = i;
@@ -180,7 +180,7 @@ class WorkspaceTreeWalker {
         continue loop;
       }
 
-      if (keyNode === inOutPayload.branchNodesName) {
+      if (keyNode === inOutPayload.branchName) {
         this.walkWhenSubtreePropName(
           inOutPayload, 
           callback);
@@ -328,7 +328,7 @@ class WorkspaceTreeWalker {
       inOutPayload.data, 
       inOutPayload.nameHolderId, 
       inOutPayload.nameId, 
-      inOutPayload.branchNodesName);
+      inOutPayload.branchName);
   }
 }
 //# sourceMappingURL=WorkspaceTreeWalker.js.map

@@ -188,7 +188,7 @@ export class WorkspaceTreeWalker {
     let branchIndex: number = 0;
     let keyFound = info.keys.find( 
       (k: any, i: number) => {
-        let matches: boolean = ( k === inOutPayload.branchNodesName );
+        let matches: boolean = ( k === inOutPayload.branchName );
         if ( matches === true ) branchIndex = i;
         return matches;
       } 
@@ -225,7 +225,7 @@ export class WorkspaceTreeWalker {
         continue loop;
       }
 
-      if ( keyNode === inOutPayload.branchNodesName ) {
+      if ( keyNode === inOutPayload.branchName ) {
         this.walkWhenSubtreePropName (
           inOutPayload,
           callback
@@ -421,7 +421,7 @@ export class WorkspaceTreeWalker {
       inOutPayload.data,
       inOutPayload.nameHolderId,
       inOutPayload.nameId,
-      inOutPayload.branchNodesName
+      inOutPayload.branchName
     );
 
   }

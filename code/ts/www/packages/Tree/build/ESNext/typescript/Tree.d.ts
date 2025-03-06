@@ -42,7 +42,7 @@ export declare class Tree extends ImprovedRenderEventEmitter {
         branchJsonNodes: any;
         objectKeys: any[] | null;
     };
-    renderSubtree(isArray: number, branchNodes: any, flatNodeHolderClone: any, objectKeys: any[] | null, branchHtmlHolder: HTMLElement): number;
+    renderSubtree(isArray: number, branch: any, flatNodeHolderClone: any, objectKeys: any[] | null, branchHtmlHolder: HTMLElement): number;
     renderSubtreeCallback(isArray: number, loopCounter: number, loopPropertyValue: any, loopPropertyKey: any, arrayOrObject: any, previousCallbackResult: number | null, callbackPayload: any): number;
     renderOneTreeNode(node: any, nodePosition: number, nodeKey: any, flatNodeHolderClone: any, holder: HTMLElement): ITreeRenderRetValue;
     updateDataNodeIdAndPath(node: any, nodePosition: number, nodeKey: any, flatNodeHolderClone: any, holder: HTMLElement): any;

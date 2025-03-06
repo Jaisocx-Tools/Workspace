@@ -3,7 +3,7 @@ import { JPathData } from "./JPathData.js";
 
 export class WorkspaceTreeWalkerPayload {
 
-  static BRANCH_NODES_NAME: string = "branchNodes";
+  static BRANCH_NAME: string = "branch";
 
 
   // the data for the tree walker to walk. can be an array and an object.
@@ -33,7 +33,7 @@ export class WorkspaceTreeWalkerPayload {
   public holderIdForNodes: string;
   public nameHolderId: string;
   public nameId: string;
-  public branchNodesName: string;
+  public branchName: string;
 
 
   public jpathData: JPathData;
@@ -66,11 +66,11 @@ export class WorkspaceTreeWalkerPayload {
     this.holderIdForNodes = "";
     this.nameHolderId = "";
     this.nameId = "";
-    this.branchNodesName = "";
+    this.branchName = "";
 
 
     this.jpathData = new JPathData();
-    this.branchNodesName = WorkspaceTreeWalkerPayload.BRANCH_NODES_NAME;
+    this.branchName = WorkspaceTreeWalkerPayload.BRANCH_NAME;
 
   }
 }

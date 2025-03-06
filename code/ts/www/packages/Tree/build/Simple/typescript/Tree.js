@@ -218,9 +218,9 @@ class Tree extends ImprovedRenderEventEmitter {
     const { itemsAmount, objectKeys, } = ArrayOrObjectPackage.getArrayOrObjectItemsAmount(
       isArray, 
       this.data);
-    const branchNodesCount = itemsAmount;
+    const branchCount = itemsAmount;
     // exit throwing exception, if the tree json data is empty
-    if (branchNodesCount === 0) {
+    if (branchCount === 0) {
       throw new Error("Tree json data is empty.");
     }
 
@@ -236,7 +236,7 @@ class Tree extends ImprovedRenderEventEmitter {
           objectKeys, 
           ul);
         // @ts-ignore
-        this.branchLength = branchNodesCount;
+        this.branchLength = branchCount;
         // @ts-ignore
         this.branchLengthDeep = branchRenderResult;
       }
@@ -253,7 +253,7 @@ class Tree extends ImprovedRenderEventEmitter {
           const { currentNodeSubtreeLength, } = renderResult;
           this.data = renderResult.node;
           // @ts-ignore
-          this.branchLength = branchNodesCount;
+          this.branchLength = branchCount;
           // @ts-ignore
           this.branchLengthDeep = currentNodeSubtreeLength;
         }
@@ -266,7 +266,7 @@ class Tree extends ImprovedRenderEventEmitter {
             objectKeys, 
             ul);
           // @ts-ignore
-          this.branchLength = branchNodesCount;
+          this.branchLength = branchCount;
           // @ts-ignore
           this.branchLengthDeep = branchRenderResult;
         }
@@ -282,7 +282,7 @@ class Tree extends ImprovedRenderEventEmitter {
       const { currentNodeSubtreeLength, } = renderResult;
       // this.data = renderResult.node[0];
       // @ts-ignore
-      this.branchLength = branchNodesCount;
+      this.branchLength = branchCount;
       // @ts-ignore
       this.branchLengthDeep = currentNodeSubtreeLength;
     }
@@ -343,13 +343,13 @@ class Tree extends ImprovedRenderEventEmitter {
 
   renderSubtree(
     isArray, 
-    branchNodes, 
+    branch, 
     flatNodeHolderClone, 
     objectKeys, 
     branchHtmlHolder) {
     const renderSubtreeResult = ArrayOrObjectPackage.iterateOverArrayOrObjectDefined(
       isArray, 
-      branchNodes, 
+      branch, 
       this.renderSubtreeCallback.bind(this), 
       {
         branchHtmlHolder,

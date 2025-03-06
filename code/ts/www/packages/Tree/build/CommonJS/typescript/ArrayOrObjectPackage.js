@@ -39,8 +39,8 @@ class ArrayOrObjectPackage {
         // expects isArray = 1 true
         let loopCounter = 0;
         let arrayElement = {};
-        let branchNodesKeys = [];
-        let branchNodesValues = [];
+        let branchKeys = [];
+        let branchValues = [];
         let loopPropertyName = "";
         let loopPropertyValue = {};
         let arrayOrObjectItemsAmount = 1;
@@ -56,12 +56,12 @@ class ArrayOrObjectPackage {
         }
         else {
             // branch type is object
-            branchNodesKeys = (objectKeys !== null) ? objectKeys : Object.keys(arrayOrObject);
-            branchNodesValues = Object.values(arrayOrObject);
-            arrayOrObjectItemsAmount = branchNodesKeys.length;
+            branchKeys = (objectKeys !== null) ? objectKeys : Object.keys(arrayOrObject);
+            branchValues = Object.values(arrayOrObject);
+            arrayOrObjectItemsAmount = branchKeys.length;
             for (loopCounter = 0; loopCounter < arrayOrObjectItemsAmount; loopCounter++) {
-                loopPropertyName = branchNodesKeys[loopCounter];
-                loopPropertyValue = branchNodesValues[loopCounter];
+                loopPropertyName = branchKeys[loopCounter];
+                loopPropertyValue = branchValues[loopCounter];
                 callbackResult = callback(isArray, loopCounter, loopPropertyValue, loopPropertyName, arrayOrObject, callbackResult, callbackPayload);
             }
         }

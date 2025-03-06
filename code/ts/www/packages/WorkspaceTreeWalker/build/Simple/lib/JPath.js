@@ -43,7 +43,7 @@ class JPath {
     value, 
     nameHolderId, 
     nameId, 
-    branchNodesName) {
+    branchName) {
     const jpathLen = jpath.length;
     let jpathIx;
     let jpathLastIx = jpathLen - 1;
@@ -62,12 +62,12 @@ class JPath {
       if (Array.isArray(obj)) {
         toGetById = obj;
       }
-      else if (obj[branchNodesName]) {
-        toGetById = obj[branchNodesName];
+      else if (obj[branchName]) {
+        toGetById = obj[branchName];
       }
-      else if (!obj[branchNodesName]) {
-        obj[branchNodesName] = new Array();
-        toGetById = obj[branchNodesName];
+      else if (!obj[branchName]) {
+        obj[branchName] = new Array();
+        toGetById = obj[branchName];
       }
 
       foundNode = toGetById.find((node) => {

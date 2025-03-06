@@ -54,7 +54,7 @@ export class JPath {
     value: any,
     nameHolderId: string,
     nameId: string,
-    branchNodesName: string
+    branchName: string
   ) {
 
     const jpathLen: number = jpath.length;
@@ -79,12 +79,12 @@ export class JPath {
       if ( Array.isArray( obj ) ) {
         toGetById = obj;
 
-      } else if ( obj[branchNodesName] ) {
-        toGetById = obj[branchNodesName];
+      } else if ( obj[branchName] ) {
+        toGetById = obj[branchName];
 
-      } else if ( !obj[branchNodesName] ) {
-        obj[branchNodesName] = new Array();
-        toGetById = obj[branchNodesName];
+      } else if ( !obj[branchName] ) {
+        obj[branchName] = new Array();
+        toGetById = obj[branchName];
 
       }
 

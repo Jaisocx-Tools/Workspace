@@ -1,5 +1,5 @@
 class WorkspaceTreeWalkerPayload {
-  static BRANCH_NODES_NAME = "branchNodes";
+  static BRANCH_NAME = "branch";
   // the data for the tree walker to walk. can be an array and an object.
   dataset;
   datasetNormalized;
@@ -21,7 +21,7 @@ class WorkspaceTreeWalkerPayload {
   holderIdForNodes;
   nameHolderId;
   nameId;
-  branchNodesName;
+  branchName;
   jpathData;
 
   constructor() {
@@ -44,9 +44,9 @@ class WorkspaceTreeWalkerPayload {
     this.holderIdForNodes = "";
     this.nameHolderId = "";
     this.nameId = "";
-    this.branchNodesName = "";
+    this.branchName = "";
     this.jpathData = new JPathData();
-    this.branchNodesName = WorkspaceTreeWalkerPayload.BRANCH_NODES_NAME;
+    this.branchName = WorkspaceTreeWalkerPayload.BRANCH_NAME;
   }
 }
 //# sourceMappingURL=WorkspaceTreeWalkerPayload.js.map

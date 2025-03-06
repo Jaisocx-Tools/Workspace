@@ -87,8 +87,8 @@ export class ArrayOrObjectPackage {
     let loopCounter: number = 0;
     let arrayElement: any = {};
 
-    let branchNodesKeys: any[] = [];
-    let branchNodesValues: any[] = [];
+    let branchKeys: any[] = [];
+    let branchValues: any[] = [];
     let loopPropertyName: any = "";
     let loopPropertyValue: any = {};
 
@@ -117,13 +117,13 @@ export class ArrayOrObjectPackage {
     } else {
       // branch type is object
 
-      branchNodesKeys = (objectKeys !== null) ? objectKeys : Object.keys(arrayOrObject);
-      branchNodesValues = Object.values(arrayOrObject);
+      branchKeys = (objectKeys !== null) ? objectKeys : Object.keys(arrayOrObject);
+      branchValues = Object.values(arrayOrObject);
 
-      arrayOrObjectItemsAmount = branchNodesKeys.length;
+      arrayOrObjectItemsAmount = branchKeys.length;
       for (loopCounter = 0; loopCounter < arrayOrObjectItemsAmount; loopCounter++) {
-        loopPropertyName = branchNodesKeys[loopCounter];
-        loopPropertyValue = branchNodesValues[loopCounter];
+        loopPropertyName = branchKeys[loopCounter];
+        loopPropertyValue = branchValues[loopCounter];
 
         callbackResult = callback(
           isArray,

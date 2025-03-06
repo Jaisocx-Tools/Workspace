@@ -5,7 +5,7 @@ export declare class JPath {
     protected _jpathExpressionMaxSize: number;
     constructor();
     static setByJPath(obj: any, jpath: (string | number)[], value: any): void;
-    static setByJPathWalkFlatRebuild(obj: any, jpath: (string | number)[], value: any, nameHolderId: string, nameId: string, branchNodesName: string): void;
+    static setByJPathWalkFlatRebuild(obj: any, jpath: (string | number)[], value: any, nameHolderId: string, nameId: string, branchName: string): void;
     static getByJPath(jpath: (string | number)[], value: any): any;
     static parse(jpathExpression: string): (string | number)[];
     setJPathExpression(jpathExpression: string): JPath;
