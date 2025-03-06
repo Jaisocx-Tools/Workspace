@@ -1,6 +1,6 @@
 {
   "name": "@jaisocx/example-tree",
-  "version": "1.4.2",
+  "version": "1.5.1",
   "private": false,
   "description": "",
   "type": "module",
@@ -23,7 +23,7 @@
     "webpack": "webpack"
   },
   "optionalDependencies": {
-    "@jaisocx/tree": "^1.4.x"
+    "@jaisocx/tree": "^1.5.x"
   },
   "devDependencies": {
     "css-loader": "^7.1.2",
