@@ -36,7 +36,7 @@
     let objectFromPhpEndpoint = await api
       .setDebug(true)
       .fetchObjData(
-        "/php/objdata_example/objdata.php", 
+        ( window.location.origin + "/php/objdata_example/objdata.php" ), 
         "GET", 
         []
       );
