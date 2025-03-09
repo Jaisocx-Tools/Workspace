@@ -1,5 +1,4 @@
 import { WorkspaceTreeWalkerPayload } from "./types/WorkspaceTreeWalkerPayload.js";
-import { IterableInfo } from "./types/IterableInfo.js";
 import { JPathData } from "./types/JPathData.js";
 import { JPath } from "./lib/JPath.js";
 export class WorkspaceTreeWalker {
@@ -148,7 +147,7 @@ export class WorkspaceTreeWalker {
         this.walkFlatSubcall(inOutPayload, callback);
     }
     walkFlatSubcall(inOutPayload, callback) {
-        const filteredRootNodes = [
+        inOutPayload.currentDatasetNormalized = [
             ...inOutPayload.datasetNormalized
                 .filter(function (node) {
                 const branchKey = Object.keys(node)[0];
@@ -158,23 +157,22 @@ export class WorkspaceTreeWalker {
                 return matchesHolderId;
             }),
         ];
+        let filteredRootNodes = inOutPayload.currentDatasetNormalized;
         if ((!filteredRootNodes) || (filteredRootNodes.length === 0)) {
             return;
         }
-        let node = null;
-        let nodeInfo = {};
-        inOutPayload.currentDatasetNormalized = filteredRootNodes;
-        for (node of filteredRootNodes) {
-            const payloadLocal = new WorkspaceTreeWalkerPayload();
+        let data = null;
+        let dataInfo = {};
+        for (data of filteredRootNodes) {
+            let payloadLocal = new WorkspaceTreeWalkerPayload();
             for (let propName in inOutPayload) {
                 //@ts-ignore
                 payloadLocal[propName] = inOutPayload[propName];
             }
-            payloadLocal.dataName = Object.keys(node)[0];
-            payloadLocal.data = node[payloadLocal.dataName];
+            payloadLocal.dataName = Object.keys(data)[0];
+            payloadLocal.data = data[payloadLocal.dataName];
             payloadLocal.id = payloadLocal.data[payloadLocal.nameId];
             payloadLocal.holderId = payloadLocal.data[payloadLocal.nameHolderId];
-            //payloadLocal.jpathData.getJPath().push("branch");
             const jpathData = payloadLocal.jpathData;
             const path = jpathData.getJPath();
             let newJpath = path.reduce((jpathCurrent, key, ix, reducedPath) => {
@@ -202,38 +200,57 @@ export class WorkspaceTreeWalker {
             const newJpathData = new JPathData();
             newJpathData.setJPath(newJpath);
             payloadLocal.jpathData = newJpathData;
-            // payloadLocal.jpathData.setIsPlaceholderValue(0);
-            nodeInfo = WorkspaceTreeWalker.getNodeInfo(payloadLocal.data);
-            payloadLocal.dataNormalized = WorkspaceTreeWalker.normalizeNodes(payloadLocal.data, nodeInfo);
-            callback(payloadLocal);
-            let iterationNumber = 1;
+            let iterationsNumber = 1;
             let iteration = 0;
             let isMultipleDataApplied = false;
             //@ts-ignore
             let multipleDataInfo = {};
-            if ((payloadLocal.iterationsNumber) &&
-                (payloadLocal.iterationsDataset)) {
-                iterationNumber = payloadLocal.iterationsNumber;
-                isMultipleDataApplied = ((payloadLocal.iterationsNumber !== 0) && (payloadLocal.iterationsDataset.length !== 0));
+            // when a iterationsDataset variable can be an object.
+            if (payloadLocal.iterationsDataset) {
+                multipleDataInfo = WorkspaceTreeWalker.getNodeInfo(payloadLocal.iterationsDataset);
+                payloadLocal.iterationsDatasetNormalized = WorkspaceTreeWalker.normalizeNodes(payloadLocal.iterationsDataset, multipleDataInfo);
+                payloadLocal.iterationsNumber = payloadLocal.iterationsDatasetNormalized.length;
+                isMultipleDataApplied = (payloadLocal.iterationsNumber !== 0);
+                if (isMultipleDataApplied) {
+                    // reassignment, default 1.
+                    iterationsNumber = payloadLocal.iterationsNumber;
+                }
             }
-            for (iteration = 0; iteration < iterationNumber; iteration++) {
+            // if ( payloadLocal.iterationsDataset ) {
+            //   payloadLocal.iterationsNumber = payloadLocal.iterationsDataset.length;
+            //   isMultipleDataApplied = ( payloadLocal.iterationsNumber !== 0 );
+            //   if ( isMultipleDataApplied ) {
+            //     // reassignment, default 1.
+            //     iterationsNumber = payloadLocal.iterationsNumber;
+            //   }
+            //   payloadLocal.iterationsDatasetNormalized = payloadLocal.iterationsDataset;
+            // }
+            for (iteration = 0; iteration < iterationsNumber; iteration++) {
                 let branchInoutPayload = new WorkspaceTreeWalkerPayload();
                 if (isMultipleDataApplied === true) {
-                    for (let propName in payloadLocal) {
+                    for (let key in payloadLocal) {
                         //@ts-ignore
-                        branchInoutPayload[propName] = payloadLocal[propName];
+                        branchInoutPayload[key] = payloadLocal[key];
                     }
                     //@ts-ignore
-                    branchInoutPayload.iterationsDataset = payloadLocal.iterationsDataset[iteration];
-                    multipleDataInfo = WorkspaceTreeWalker.getNodeInfo(branchInoutPayload.iterationsDataset);
-                    if (!multipleDataInfo.isArray && (multipleDataInfo.datatype === IterableInfo.DATATYPE_OBJECT)) {
-                        branchInoutPayload.iterationsDataset = WorkspaceTreeWalker.normalizeNodes(branchInoutPayload.iterationsDataset, multipleDataInfo);
-                        branchInoutPayload.iterationsNumber = branchInoutPayload.iterationsDataset.length;
-                        //...
-                    }
+                    branchInoutPayload.iterationsData = payloadLocal.iterationsDatasetNormalized[iteration];
                 }
                 else {
                     branchInoutPayload = payloadLocal;
+                }
+                callback(branchInoutPayload);
+                if (isMultipleDataApplied === true) {
+                    multipleDataInfo = WorkspaceTreeWalker.getNodeInfo(branchInoutPayload.iterationsData);
+                    if (!multipleDataInfo.isArray && (multipleDataInfo.datatype === WorkspaceTreeWalker.DATATYPE_OBJECT)) {
+                        branchInoutPayload.iterationsDataset = { ...branchInoutPayload.iterationsData, };
+                    }
+                    else if (multipleDataInfo.isArray) {
+                        branchInoutPayload.iterationsDataset = [...branchInoutPayload.iterationsData,];
+                    }
+                    else {
+                        branchInoutPayload.iterationsDataset = null;
+                    }
+                    branchInoutPayload.iterationsData = null;
                 }
                 this.walkFlatSubcall(branchInoutPayload, callback);
             }

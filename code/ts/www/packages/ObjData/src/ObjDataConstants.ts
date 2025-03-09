@@ -1,10 +1,10 @@
+import { writeFileSync } from "fs";
+
 export class ObjDataConstants {
-  // this is the constant numeric value, the fixed number 16, where always property name's first char/byte is set.
-  static PROPERTY_NAME_START = 20;
-  static HEADERS_LENGTH = 20;
 
   // here are pointers, relative to ObjData serialized byte buffer start, where numeric variable values reside.
   static FIELDS_POINTERS: any = {
+    HEADERS_LENGTH: 20, // the constant value of every Object field header number of bytes. These header fields are described here in this FIELDS_POINTERS object.
     LENGTH_ALL: 0, // the packet starts on the first position with the 32 bit long numeric value
     LENGTH_ALL_FIELD_LEN: 4, 
     DATATYPE: 4, // on the 5th byte resides datatype numeric constant with the 32 bit long numeric value
@@ -15,6 +15,7 @@ export class ObjDataConstants {
     PROPS_AMOUNT_FIELD_LEN: 4,
     PROPERTY_NAME_LENGTH: 16, // on the 17th byte resides the 32 bit long numeric value
     PROPERTY_NAME_LENGTH_FIELD_LEN: 4,
+    PROPERTY_NAME_START: 20,
   };
 
   static UNITS: any = {
@@ -140,5 +141,33 @@ export class ObjDataConstants {
     CSS_VARIABLE_NAME: 67,
     CSS_IMPORT_EXPRESSION: 68,
   };
+
+  public static exportConstants() {
+    
+    let objDataConstants: object = {
+      FIELDS_POINTERS: ObjDataConstants.FIELDS_POINTERS,
+      UNITS: ObjDataConstants.UNITS,
+      DATA_TYPES: ObjDataConstants.DATA_TYPES,
+    };
+    
+    writeFileSync (
+      "ObjDataConstants.json", 
+      JSON.stringify(
+        objDataConstants, 
+        null, 
+        2)
+    );
+
+  }
 }
+
+
+
+
+
+
+
+
+
+
 

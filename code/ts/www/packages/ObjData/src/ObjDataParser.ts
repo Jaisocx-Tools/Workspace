@@ -83,8 +83,15 @@ export class ObjDataParser {
     } else {
       retValue = "Hu hu";
       
+      retValue = ObjDataPackage.parseByteBufToText(
+        objDataByteBuf, (
+          offset + dataHelper.propertyValueStart), 
+        dataHelper.propertyValueLength, 
+        "utf8");
+
     }
 
+    
     if ( parentObject !== null ) {
       let propName: any = null;
       if ( Array.isArray( parentObject ) ) {

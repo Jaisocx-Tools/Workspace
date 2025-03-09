@@ -1,6 +1,6 @@
 {
   "name": "@jaisocx/objdata",
-  "version": "1.2.1",
+  "version": "2.1.1",
   "private": false,
   "description": "ObjData represents the Objects and array and arrays of objects, where no parsing by bytewise chars comparisons are not used (XML and Json are in all text IDEs readable/writable, and use comaparisons of chars), and the instantiating a JavaScript Object instance is done without parsing by chars markup.",
   "type": "module",
@@ -11,14 +11,15 @@
     "require": "./build/ComonJS/index.js",
     "import": "./build/ESNext/index.js"
   },
+  "scripts": {
+    "ExportConstants": "node ./build/ESNext/ExportConstants.js"
+  },
   "files": [
     "build/CommonJS",
     "build/ESNext",
-    "README.md",
-    "LICENSE"
+    "ObjDataConstants.json",
+    "README.md"
   ],
-  "optionalDependencies": {
-  },
   "keywords": [
     "JSON",
     "Binary",

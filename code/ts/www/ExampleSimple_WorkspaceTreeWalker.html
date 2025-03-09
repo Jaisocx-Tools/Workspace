@@ -78,7 +78,7 @@
     <div id="tree-holder-flat-dataset"></div>
 
 
-    <!-- <h3>This flat dataset was processed by WorkspaceTreeWalker callback with iterationsData, and rendered with Tree()</h3> -->
+    <h3>This flat dataset was processed by WorkspaceTreeWalker callback with iterationsData, and rendered with Tree()</h3>
     <div id="tree-holder-tree-dataset-with-iterations"></div>
 
 
@@ -237,7 +237,7 @@ document.addEventListener (
 
       let treeDataset = {};
 
-      let transformedDatasetWithIterations = {}; // used with the under construction method
+      let transformedDatasetWithIterations = {id: "main"}; // used with the under construction method
 
 
 
@@ -245,7 +245,7 @@ document.addEventListener (
         inOutPayload
       ) {
 
-        let obj = inOutPayload.transformedDataset;
+        let transformedDatasetNode = inOutPayload.transformedDataset;
         const value = inOutPayload.data;
         const nameHolderId = inOutPayload.nameHolderId;
         const nameId = inOutPayload.nameId;
@@ -260,9 +260,10 @@ document.addEventListener (
         let newItem = null;
 
         id = jpath[0];
-        obj[nameId] = id;
 
-        if ( jpath[jpathLastIx] === 3 ) {
+        console.log( "start", inOutPayload );
+
+        if ( ( jpathLen > 1 ) && ( jpath[jpathLastIx] === 3 ) ) {
 
           inOutPayload.iterationsDataset = [
             { "text2": "Hallo 3.1", },
@@ -274,29 +275,29 @@ document.addEventListener (
 
         }
 
+
+        // the jpath can be like this: [main, 3, 5, 8, 12]
+        // these are the keys in the object, where the TreeWalker walks.
+        // we append to the TransformedDataset the node, 
+        // if does not exist, and in the most cases,
+        // in the last iteration, where jpathIx === jpathLastIx.
         for ( jpathIx = 1; jpathIx < jpathLen; jpathIx++ ) {
 
           id = jpath[jpathIx];
-
-          if ( holderId !== 3 ) {
-            inOutPayload.iterationsDataset = null;
-            inOutPayload.iterationsData = null;
-            inOutPayload.iterationsNumber = 1;
-          }
 
           foundNode = false;
             
           let toGetById = [];
 
-          if ( Array.isArray( obj ) ) {
-            toGetById = obj;
+          if ( Array.isArray( transformedDatasetNode ) ) {
+            toGetById = transformedDatasetNode;
 
-          } else if ( obj[branchName] ) {
-            toGetById = obj[branchName];
+          } else if ( transformedDatasetNode[branchName] ) {
+            toGetById = transformedDatasetNode[branchName];
 
-          } else if ( !obj[branchName] ) {
-            obj[branchName] = new Array();
-            toGetById = obj[branchName];
+          } else if ( !transformedDatasetNode[branchName] ) {
+            transformedDatasetNode[branchName] = new Array();
+            toGetById = transformedDatasetNode[branchName];
 
           }
 
@@ -307,43 +308,52 @@ document.addEventListener (
             }
           );
 
-          if ( !foundNode ) {
+          newItem = null;
+          if (
+            (
+              ( !foundNode ) ||
+              ( inOutPayload.iterationsData )
+            ) &&
+            ( jpathIx === jpathLastIx ) 
+          ) {
 
-            if ( jpathIx === jpathLastIx ) {
+            newItem = {
+              ...value,
+              ...inOutPayload.iterationsData,
+              [nameId]: id,
+              [nameHolderId]: holderId,
+            };
 
-              newItem = {
-                ...value,
-                ...inOutPayload.iterationsData,
-                [nameId]: id,
-                [nameHolderId]: holderId,
-              };
+          } else if (
+            ( !foundNode ) &&
+            ( jpathIx < jpathLastIx ) 
+          ) {
 
-            } else {
+            newItem = {
+              [nameId]: id,
+              [nameHolderId]: holderId,
+            };
 
-              newItem = {
-                [nameId]: id,
-                [nameHolderId]: holderId,
-              };
+          }
 
-            }
-        
+          if ( newItem !== null ) {
+
             toGetById.push( newItem );
-            obj[nameId] = holderId;
+            transformedDatasetNode[nameId] = holderId;
 
             const lastIx = ( toGetById.length - 1 );
             foundNode = toGetById[lastIx];
 
-            obj = foundNode;
-            holderId = id;
-
           }
+
+          transformedDatasetNode = foundNode;
+          holderId = id;
 
         }
 
-        console.log( inOutPayload, treeDataset );
+        console.log( "finish", inOutPayload, transformedDatasetWithIterations );
 
       }
-
 
 
       function exampleFlatDataWithIterationsData() {
@@ -438,13 +448,15 @@ document.addEventListener (
         'DOMContentLoaded', 
         () => {
 
-          // exampleFlatDataWithIterationsData();
+          exampleFlatDataWithIterationsData();
 
-          exampleUseWorkspaceTreeWalkerFlatData();
+          // exampleUseWorkspaceTreeWalkerFlatData();
 
-          renderFlatDataset();
+          // renderFlatDataset();
 
-          renderTreeDataset();
+          // renderTreeDataset();
+
+          renderTreeDatasetWithIterationsData();
         }
       );
 

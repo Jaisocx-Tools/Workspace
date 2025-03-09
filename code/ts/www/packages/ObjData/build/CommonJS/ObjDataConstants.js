@@ -1,14 +1,21 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.ObjDataConstants = void 0;
+const fs_1 = require("fs");
 class ObjDataConstants {
+    static exportConstants() {
+        let objDataConstants = {
+            FIELDS_POINTERS: ObjDataConstants.FIELDS_POINTERS,
+            UNITS: ObjDataConstants.UNITS,
+            DATA_TYPES: ObjDataConstants.DATA_TYPES,
+        };
+        (0, fs_1.writeFileSync)("ObjDataConstants.json", JSON.stringify(objDataConstants, null, 2));
+    }
 }
 exports.ObjDataConstants = ObjDataConstants;
-// this is the constant numeric value, the fixed number 16, where always property name's first char/byte is set.
-ObjDataConstants.PROPERTY_NAME_START = 20;
-ObjDataConstants.HEADERS_LENGTH = 20;
 // here are pointers, relative to ObjData serialized byte buffer start, where numeric variable values reside.
 ObjDataConstants.FIELDS_POINTERS = {
+    HEADERS_LENGTH: 20, // the constant value of every Object field header number of bytes. These header fields are described here in this FIELDS_POINTERS object.
     LENGTH_ALL: 0, // the packet starts on the first position with the 32 bit long numeric value
     LENGTH_ALL_FIELD_LEN: 4,
     DATATYPE: 4, // on the 5th byte resides datatype numeric constant with the 32 bit long numeric value
@@ -19,6 +26,7 @@ ObjDataConstants.FIELDS_POINTERS = {
     PROPS_AMOUNT_FIELD_LEN: 4,
     PROPERTY_NAME_LENGTH: 16, // on the 17th byte resides the 32 bit long numeric value
     PROPERTY_NAME_LENGTH_FIELD_LEN: 4,
+    PROPERTY_NAME_START: 20,
 };
 ObjDataConstants.UNITS = {
     UNIT_NOT_SET: 0,

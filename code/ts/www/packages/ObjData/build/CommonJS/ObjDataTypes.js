@@ -9,7 +9,7 @@ class ObjDataHelpingProps {
         this.numberValueUnit = 0;
         this.propsAmount = 0;
         this.propertyNameLength = 0;
-        this.propertyNameStart = ObjDataConstants_1.ObjDataConstants.PROPERTY_NAME_START;
+        this.propertyNameStart = ObjDataConstants_1.ObjDataConstants.FIELDS_POINTERS.PROPERTY_NAME_START;
         this.propertyValueLength = 0;
         this.propertyValueStart = 0;
     }

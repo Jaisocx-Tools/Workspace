@@ -50,11 +50,6 @@ RUN docker-php-ext-enable amqp
 # Clean up to reduce image size
 RUN apt-get clean && rm -rf /var/lib/apt/lists/*
 
-# Set timezone
-RUN ln -snf /usr/share/zoneinfo/${TIMEZONE} /etc/localtime && echo ${TIMEZONE} > /etc/timezone \
-    && printf '[PHP]\ndate.timezone = "%s"\n', ${TIMEZONE} > /usr/local/etc/php/conf.d/tzone.ini \
-    && "date"
-
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 
 # Install Xdebug
@@ -66,9 +61,17 @@ COPY ./conf/php/php.ini /usr/local/etc/php/php.ini
 COPY ./conf/php/conf.d/docker-php-ext-xdebug.ini /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini 
 COPY ./conf/php-fpm.d/www.conf /usr/local/etc/php-fpm.d/www.conf
 
+RUN mkdir -p /var/log/xdebug && chmod a+rwx /var/log/xdebug
+
+
 WORKDIR /var/www/code/php
 
 EXPOSE 9000
+
+RUN mkdir /entrypoint
+COPY ./entrypoint.sh /entrypoint/entrypoint.sh
+ENTRYPOINT [ "/entrypoint/entrypoint.sh" ]
+
 
 # Set the default command
 CMD ["php-fpm"]

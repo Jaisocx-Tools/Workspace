@@ -100,7 +100,7 @@ export class ObjDataSerializer {
     dataHelper.propertyValueLength = propertyValueSerialized.length;
 
     dataHelper.lengthAll = (
-      (ObjDataConstants.HEADERS_LENGTH) 
+      (ObjDataConstants.FIELDS_POINTERS.HEADERS_LENGTH) 
       + (dataHelper.propertyNameLength)
       + (dataHelper.propertyValueLength)
     );
@@ -121,7 +121,7 @@ export class ObjDataSerializer {
   static serializePropHeaders (
     dataHelper: ObjDataHelpingProps
   ): Uint8Array {
-    const headersBuf: Uint8Array = new Uint8Array(ObjDataConstants.HEADERS_LENGTH);
+    const headersBuf: Uint8Array = new Uint8Array(ObjDataConstants.FIELDS_POINTERS.HEADERS_LENGTH);
 
     ObjDataPackage.serializeNumberToByteBuf ( 
       dataHelper.lengthAll, 

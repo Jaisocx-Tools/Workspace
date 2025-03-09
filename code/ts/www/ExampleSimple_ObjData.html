@@ -1,12 +1,8 @@
+<!DOCTYPE html>
 <html>
   <head>
     <title>ObjData Example</title>
-  </head>
-  <body>
 
-    <h1>ObjData Example</h1>
-
-    <p>This example is to research in the browser's dev console. Here is no output in the browser's window.</p>
 
     <script src="packages/ObjData/build/Simple/ObjDataConstants.js"></script>
     <script src="packages/ObjData/build/Simple/ObjDataTypes.js"></script>
@@ -14,6 +10,16 @@
     <script src="packages/ObjData/build/Simple/ObjDataParser.js"></script>
     <script src="packages/ObjData/build/Simple/ObjDataSerializer.js"></script>
     <script src="packages/ObjData/build/Simple/ObjData.js"></script>
+
+    <script src="packages/Api/build/Simple/Api.js"></script>
+    <script src="examples/ExampleTree/build/webpack/example-tree-bundle.js"></script>
+
+  </head>
+  <body>
+
+    <h1>ObjData Example</h1>
+
+    <p>This example is to research in the browser's dev console. Here is no output in the browser's window.</p>
 
     <script>
     const jsObjectOriginal = [
@@ -118,57 +124,57 @@
     return BigInt(Math.floor(now * 1_000_000)); // Convert milliseconds to nanoseconds
   }
 
-      document.addEventListener('DOMContentLoaded', async () => {
+  document.addEventListener('DOMContentLoaded', async () => {
+ 
+    const response = await fetch('/examples/ExampleTree/json/big_test_data.json');
+    const jsonText = await response.text();
 
-        const response = await fetch('/examples/ExampleTree/json/large_test_file_refined.json');
-        const jsonText = await response.text();
-
-        const timestamp1 = getNsTimestamp();
-        const jsObjectOriginal = JSON.parse( jsonText );
-        const timestamp2 = getNsTimestamp();
-
-
-
-        const jsonTextOriginal = JSON.stringify( jsObjectOriginal );
-
-        const serializedObjDataByteBuf = ObjData.serialize( jsObjectOriginal );
-        const textual = (new TextDecoder()).decode( serializedObjDataByteBuf );
-
-        const timestamp3 = getNsTimestamp();
-        const jsObjectByObjDataParser = ObjData.parse( serializedObjDataByteBuf );
-        const timestamp4 = getNsTimestamp();
-
-        const timestamp5 = getNsTimestamp();
-        const jsObjectByJSONNative = JSON.parse( jsonTextOriginal );
-        const timestamp6 = getNsTimestamp();
+    const timestamp1 = getNsTimestamp();
+    const jsObjectOriginal = JSON.parse( jsonText );
+    const timestamp2 = getNsTimestamp();
 
 
-        const jsonTextByObjData = JSON.stringify( jsObjectByObjDataParser );
 
-        console.log( 'Equal', ( jsonTextOriginal === jsonTextByObjData ) );
+    const jsonTextOriginal = JSON.stringify( jsObjectOriginal );
 
-        console.log( serializedObjDataByteBuf );
-        console.log( textual );
+    const serializedObjDataByteBuf = ObjData.serialize( jsObjectOriginal );
+    const textual = (new TextDecoder()).decode( serializedObjDataByteBuf );
 
-        console.log( jsObjectOriginal, jsObjectByObjDataParser );
+    const timestamp3 = getNsTimestamp();
+    const jsObjectByObjDataParser = ObjData.parse( serializedObjDataByteBuf );
+    const timestamp4 = getNsTimestamp();
 
-        console.log(
-          "parsing time ns JSON", 
-          ( timestamp2 - timestamp1 )
-        );
+    const timestamp5 = getNsTimestamp();
+    const jsObjectByJSONNative = JSON.parse( jsonTextOriginal );
+    const timestamp6 = getNsTimestamp();
 
-        console.log(
-          "parsing time ns ObjData by buteBuf ObjData format", 
-          ( timestamp4 - timestamp3 )
-        );
 
-        console.log(
-          "parsing time ns JSON", 
-          ( timestamp6 - timestamp5 )
-        );
-        
+    const jsonTextByObjData = JSON.stringify( jsObjectByObjDataParser );
 
-      });
+    console.log( 'Equal', ( jsonTextOriginal === jsonTextByObjData ) );
+
+    console.log( serializedObjDataByteBuf );
+    console.log( textual );
+
+    console.log( jsObjectOriginal, jsObjectByObjDataParser );
+
+    console.log(
+      "parsing time ns JSON", 
+      ( timestamp2 - timestamp1 )
+    );
+
+    console.log(
+      "parsing time ns ObjData by buteBuf ObjData format", 
+      ( timestamp4 - timestamp3 )
+    );
+
+    console.log(
+      "parsing time ns JSON", 
+      ( timestamp6 - timestamp5 )
+    );
+    
+
+  });
     </script>
   </body>
 </html>

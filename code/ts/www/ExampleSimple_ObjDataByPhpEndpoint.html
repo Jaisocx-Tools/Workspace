@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>ObjData Example</title>
+
+
+    <script src="packages/ObjData/build/Simple/ObjDataConstants.js"></script>
+    <script src="packages/ObjData/build/Simple/ObjDataTypes.js"></script>
+    <script src="packages/ObjData/build/Simple/ObjDataPackage.js"></script>
+    <script src="packages/ObjData/build/Simple/ObjDataParser.js"></script>
+    <script src="packages/ObjData/build/Simple/ObjDataSerializer.js"></script>
+    <script src="packages/ObjData/build/Simple/ObjData.js"></script>
+
+    <script src="packages/Api/build/Simple/Api.js"></script>
+    <script src="examples/ExampleTree/build/webpack/example-tree-bundle.js"></script>
+
+  </head>
+  <body>
+
+    <h1>ObjData Example</h1>
+    <h2>The ObjData bitsbuffer obtained from an Https endpoint, serialized by PHP v8.4.4 composer lib jaisocx/objdata</h2>
+
+    <tree id="tree-holder"></tree>
+
+
+    <script>
+
+  function getNsTimestamp() {
+    const now = performance.timeOrigin + performance.now(); // Combine the origin and high-res time
+    return BigInt(Math.floor(now * 1_000_000)); // Convert milliseconds to nanoseconds
+  }
+
+  async function testObjDataFromPhpEndpoint() {
+
+    let api = new Api();
+    let objectFromPhpEndpoint = await api
+      .setDebug(true)
+      .fetchObjData(
+        "https://workspace.brightday.email/php/objdata_usage/index.php", 
+        "GET", 
+        []
+      );
+
+    console.log( "From PHP ObjData", objectFromPhpEndpoint );
+
+    const tree = new Tree();
+    tree
+      .setDebug(false)
+      .setMainHtmlNodeId("tree-holder")
+      .render( objectFromPhpEndpoint );
+    
+  }
+
+  document.addEventListener('DOMContentLoaded', async () => {
+
+    const timestamp1 = getNsTimestamp();
+    await testObjDataFromPhpEndpoint();
+    const timestamp2 = getNsTimestamp();
+
+    console.log(
+      "ObjData obtained, parsed and rendered with Tree() time in ns", 
+      ( timestamp2 - timestamp1 )
+    );
+
+  });
+    </script>
+  </body>
+</html>
+
+
+
+
+

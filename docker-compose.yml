@@ -29,7 +29,7 @@ services:
       - ./.docker/php/logs/:/php-logs/
       - ./code/php/:/var/www/code/php/:cached
     environment:
-      TIMEZONE: "Europe/Zurich"
+      TIMEZONE: "${TIMEZONE}"
     networks:
       - workspace_network
     extra_hosts:

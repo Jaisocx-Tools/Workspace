@@ -65,7 +65,7 @@ export class ObjDataSerializer {
         dataHelper.propertyNameLength = propertyNameSerialized.length;
         dataHelper.propertyValueStart = dataHelper.propertyNameStart + dataHelper.propertyNameLength;
         dataHelper.propertyValueLength = propertyValueSerialized.length;
-        dataHelper.lengthAll = ((ObjDataConstants.HEADERS_LENGTH)
+        dataHelper.lengthAll = ((ObjDataConstants.FIELDS_POINTERS.HEADERS_LENGTH)
             + (dataHelper.propertyNameLength)
             + (dataHelper.propertyValueLength));
         const headers = ObjDataSerializer.serializePropHeaders(dataHelper);
@@ -76,7 +76,7 @@ export class ObjDataSerializer {
         ]);
     }
     static serializePropHeaders(dataHelper) {
-        const headersBuf = new Uint8Array(ObjDataConstants.HEADERS_LENGTH);
+        const headersBuf = new Uint8Array(ObjDataConstants.FIELDS_POINTERS.HEADERS_LENGTH);
         ObjDataPackage.serializeNumberToByteBuf(dataHelper.lengthAll, ObjDataConstants.FIELDS_POINTERS.LENGTH_ALL_FIELD_LEN, ObjDataConstants.FIELDS_POINTERS.LENGTH_ALL, headersBuf);
         ObjDataPackage.serializeNumberToByteBuf(dataHelper.datatype, ObjDataConstants.FIELDS_POINTERS.DATATYPE_FIELD_LEN, ObjDataConstants.FIELDS_POINTERS.DATATYPE, headersBuf);
         ObjDataPackage.serializeNumberToByteBuf(dataHelper.numberValueUnit, ObjDataConstants.FIELDS_POINTERS.NUMBER_VALUE_UNIT_FIELD_LEN, ObjDataConstants.FIELDS_POINTERS.NUMBER_VALUE_UNIT, headersBuf);

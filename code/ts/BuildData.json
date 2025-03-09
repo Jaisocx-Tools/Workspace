@@ -4,7 +4,7 @@
     {
       "path": "packages/ObjData",
       "name": "objdata",
-      "build": false,
+      "build": true,
       "build-simple-enable": true,
       "dependencies": [
       ],
@@ -207,7 +207,7 @@
     {
       "path": "packages/WorkspaceTreeWalker",
       "name": "workspace-tree-walker",
-      "build": true,
+      "build": false,
       "build-simple-enable": true,
       "dependencies": [],
       "build-files": [
@@ -245,6 +245,21 @@
         "types/TemplateConf.js",
         "ImprovedTemplateRenderer.js",
         "ImprovedTemplateRendererConstants.js"        
+      ]
+    },
+    {
+      "path": "packages/Api",
+      "name": "api",
+      "build": true,
+      "build-simple-enable": true,
+      "dependencies": [
+        {
+          "name": "@jaisocx/objdata",
+          "path": "packages/ObjData"
+        }
+      ],
+      "build-files": [
+        "Api.js"
       ]
     }
   ]
