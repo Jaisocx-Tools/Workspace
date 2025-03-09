@@ -5,8 +5,9 @@
 /.env
 
 /**/node_modules
+/**/vendor
 /**/.DS_Store
-
+/code/php/objdata_usage/vendor/
 
 /.docker/database/volumes/
 /.docker/https/logs
