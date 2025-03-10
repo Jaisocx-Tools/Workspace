@@ -1,6 +1,6 @@
 {
   "name": "@jaisocx/api",
-  "version": "1.1.0",
+  "version": "1.2.1",
   "private": false,
   "description": "",
   "type": "module",
@@ -21,6 +21,8 @@
     "README.md"
   ],
   "keywords": [
+    "Api",
+    "objdata"
   ],
   "publishConfig": {
     "access": "public"
