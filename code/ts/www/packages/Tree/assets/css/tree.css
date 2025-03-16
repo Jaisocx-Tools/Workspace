@@ -51,7 +51,7 @@
 
 .tree ul li > ul {
     margin-left: 22px;
-    border: var(--border--branch-parent);
+    border: var(--border--subtree-parent);
 }
 
 .tree .jstree-html-node-holder-icon {
@@ -168,7 +168,7 @@
     background-image: var(--open-button-opened--image-url);
     transform: rotate(90deg);
 }
-.tree .open-button > .without-branch {
+.tree .open-button > .without-subtree {
     background-image: var(--open-button-without-subtree--image-url);
     color: crimson !important;
 }
@@ -185,24 +185,24 @@
     display: block;
 }
 
-.tree .open-button > .without-branch {
+.tree .open-button > .without-subtree {
     display: none;
 }
 
-.tree .toggle-with-branch-opened > .opened {
+.tree .toggle-with-subtree-opened > .opened {
     display: block;
 }
 
-.tree .toggle-with-branch-opened > pre {
+.tree .toggle-with-subtree-opened > pre {
     display: none;
 }
 
 
-.tree .toggle-without-branch > pre {
+.tree .toggle-without-subtree > pre {
     display: none;
 }
 
-.tree .toggle-without-branch > .without-branch {
+.tree .toggle-without-subtree > .without-subtree {
     display: block;
 }
 

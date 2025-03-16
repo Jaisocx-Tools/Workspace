@@ -7,9 +7,9 @@ export class TreeAdapterModeEase extends TreeAdapter implements ITreeAdapter {
     loopPropertyValue: any,
     loopPropertyKey: any
   ): any {
-    const branchJsonNode: object = { [loopPropertyKey]: loopPropertyValue, };
+    const subtreeJsonNode: object = { [loopPropertyKey]: loopPropertyValue, };
 
-    return branchJsonNode;
+    return subtreeJsonNode;
   }
 
   getDataForRendering(

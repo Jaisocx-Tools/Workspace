@@ -16,12 +16,12 @@ RUN apt-get install -y    curl
 RUN apt-get install -y    default-mysql-client
 RUN apt-get install -y    git
 RUN apt-get install -y    libcurl4-openssl-dev
-RUN apt-get install -y    libfreetype6-dev
-RUN apt-get install -y    libjpeg62-turbo-dev
+# RUN apt-get install -y    libfreetype6-dev
+# RUN apt-get install -y    libjpeg62-turbo-dev
 RUN apt-get install -y    libonig-dev
-RUN apt-get install -y    libpng-dev
+# RUN apt-get install -y    libpng-dev
 RUN apt-get install -y    libpq-dev
-RUN apt-get install -y    librabbitmq-dev
+# RUN apt-get install -y    librabbitmq-dev
 RUN apt-get install -y    libssl-dev
 RUN apt-get install -y    libxml2-dev
 RUN apt-get install -y    libzip-dev
@@ -32,8 +32,8 @@ RUN apt-get install -y    zip
 
 
 # Install PHP extensions
-RUN docker-php-ext-configure gd --with-freetype --with-jpeg
-RUN docker-php-ext-install -j$(nproc) gd
+# RUN docker-php-ext-configure gd --with-freetype --with-jpeg
+# RUN docker-php-ext-install -j$(nproc) gd
 RUN docker-php-ext-install -j$(nproc) bcmath
 RUN docker-php-ext-install -j$(nproc) exif
 RUN docker-php-ext-install -j$(nproc) mbstring
@@ -44,8 +44,8 @@ RUN docker-php-ext-install -j$(nproc) pdo_mysql
 RUN docker-php-ext-install -j$(nproc) pdo_pgsql
 RUN docker-php-ext-install -j$(nproc) zip
 
-RUN pecl install amqp
-RUN docker-php-ext-enable amqp
+# RUN pecl install amqp
+# RUN docker-php-ext-enable amqp
 
 # Clean up to reduce image size
 RUN apt-get clean && rm -rf /var/lib/apt/lists/*

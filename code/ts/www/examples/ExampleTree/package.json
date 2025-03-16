@@ -1,6 +1,6 @@
 {
   "name": "@jaisocx/example-tree",
-  "version": "1.5.1",
+  "version": "1.5.3",
   "private": false,
   "description": "",
   "type": "module",
@@ -8,14 +8,14 @@
   "types": "./build/ESNext/index.d.ts",
   "module": "./build/ESNext/index.js",
   "exports": {
-    "require": "./build/ComonJS/index.js",
+    "require": "./build/CommonJS/index.js",
     "import": "./build/ESNext/index.js"
   },
   "files": [
     "build/CommonJS",
     "build/ESNext",
     "assets/",
-    "README.md",
+    "README_WEBPACK.md",
     "LICENSE"
   ],
   "scripts": {
@@ -28,6 +28,7 @@
   "devDependencies": {
     "css-loader": "^7.1.2",
     "file-loader": "^6.2.0",
+    "path-browserify": "^1.0.1",
     "postcss-loader": "^8.1.1",
     "postcss-url": "^10.1.3",
     "style-loader": "^4.0.0",
@@ -40,4 +41,3 @@
   "author": "Jaisocx",
   "license": "ISC"
 }
-

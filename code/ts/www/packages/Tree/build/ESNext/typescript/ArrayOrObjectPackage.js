@@ -44,8 +44,8 @@ export class ArrayOrObjectPackage {
         // expects isArray = 1 true
         let loopCounter = 0;
         let arrayElement = {};
-        let subtreeNodesKeys = [];
-        let subtreeNodesValues = [];
+        let subtreeKeys = [];
+        let subtreeValues = [];
         let loopPropertyName = "";
         let loopPropertyValue = {};
         let arrayOrObjectItemsAmount = 1;
@@ -61,12 +61,12 @@ export class ArrayOrObjectPackage {
         }
         else {
             // subtree type is object
-            subtreeNodesKeys = (objectKeys !== null) ? objectKeys : Object.keys(arrayOrObject);
-            subtreeNodesValues = Object.values(arrayOrObject);
-            arrayOrObjectItemsAmount = subtreeNodesKeys.length;
+            subtreeKeys = (objectKeys !== null) ? objectKeys : Object.keys(arrayOrObject);
+            subtreeValues = Object.values(arrayOrObject);
+            arrayOrObjectItemsAmount = subtreeKeys.length;
             for (loopCounter = 0; loopCounter < arrayOrObjectItemsAmount; loopCounter++) {
-                loopPropertyName = subtreeNodesKeys[loopCounter];
-                loopPropertyValue = subtreeNodesValues[loopCounter];
+                loopPropertyName = subtreeKeys[loopCounter];
+                loopPropertyValue = subtreeValues[loopCounter];
                 callbackResult = callback(isArray, loopCounter, loopPropertyValue, loopPropertyName, arrayOrObject, callbackResult, callbackPayload);
             }
         }

@@ -12,7 +12,7 @@ export interface ITreeRenderRetValue {
 }
 export interface IRenderSubtreeResult {
     currentNodeSubtreeLength: number;
-    branchJsonNodesLength: number;
+    subtreeJsonNodesLength: number;
 }
 export interface IRenderingMode {
     Ease: number;

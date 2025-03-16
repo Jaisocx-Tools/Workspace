@@ -14,4 +14,6 @@ var TreeConf_js_1 = require("./typescript/TreeConf.js");
 Object.defineProperty(exports, "TreeConf", { enumerable: true, get: function () { return TreeConf_js_1.TreeConf; } });
 var Tree_js_1 = require("./typescript/Tree.js");
 Object.defineProperty(exports, "Tree", { enumerable: true, get: function () { return Tree_js_1.Tree; } });
+// export { WebpackAliases } from "./webpack_aliases";
+// export { TreeWebpackAliasesCjs } from "./webpack.aliases.cjs";
 //# sourceMappingURL=index.js.map

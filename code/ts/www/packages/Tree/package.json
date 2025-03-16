@@ -1,6 +1,6 @@
 {
   "name": "@jaisocx/tree",
-  "version": "1.5.1",
+  "version": "1.5.35",
   "private": false,
   "description": "",
   "type": "module",
@@ -8,14 +8,22 @@
   "types": "./build/ESNext/index.d.ts",
   "module": "./build/ESNext/index.js",
   "exports": {
-    "require": "./build/ComonJS/index.js",
-    "import": "./build/ESNext/index.js"
+    ".": {
+      "import": "./build/ESNext/index.js",
+      "require": "./build/CommonJS/index.js"
+    },
+    "./WebpackAliases": {
+      "import": "./build/ESNext/webpack.aliases.mjs",
+      "require": "./build/CommonJS/webpack.aliases.cjs"
+    }
   },
   "files": [
     "build/CommonJS",
     "build/ESNext",
     "assets/",
+    "webpack.aliases.json",
     "README.md",
+    "README_WEBPACK.md",
     "LICENSE"
   ],
   "optionalDependencies": {

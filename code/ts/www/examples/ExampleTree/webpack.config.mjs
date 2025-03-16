@@ -1,33 +1,32 @@
-import path from 'path';
-import { fileURLToPath } from 'url';
-import { createRequire } from 'module';
-//import jaisocxTreeAliasConfig from '@jaisocx/tree/webpack.aliases.js';
+import * as path from "node:path";
+import { fileURLToPath } from "node:url";
+// import * as pathBrowserify from "path-browserify";
+import postcssUrl from "postcss-url";
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
-const require = createRequire(import.meta.url);
+import { WebpackAliases } from '@jaisocx/tree/WebpackAliases';
 
-// Directly reference the file
-const jaisocxTreeAliasConfig = require(path.resolve(
-  __dirname,
-  'node_modules/@jaisocx/tree/webpack.aliases.js'
-)).default;
 
-console.log(jaisocxTreeAliasConfig);
+let __filename = fileURLToPath(import.meta.url);
+let __dirname = path.dirname(__filename);
 
+console.info(path.resolve(__dirname));
+console.log( WebpackAliases );
 
 
 export default {
   entry: './build/ESNext/index.js', // Entry point for your TypeScript code
   output: {
     filename: 'example-tree-bundle.js', // Output bundle name
-    path: path.resolve(__dirname, 'build/webpack'), // Output directory
+    path: path.resolve(__dirname, 'build/webpack'), 
   },
   resolve: {
     alias: {
-      ...jaisocxTreeAliasConfig.resolve.alias,
+      ...WebpackAliases.resolve.alias,
     },
-    extensions: ['.js'], // File extensions to resolve
+    extensions: [".js", ".json", ".css"],
+    fallback: {
+      "path": "path-browserify", 
+    },
   },
   module: {
     rules: [
@@ -41,7 +40,7 @@ export default {
             options: {
               postcssOptions: {
                 plugins: [
-                  require('postcss-url')({
+                  postcssUrl({
                     url: 'rebase', // Rewrite URLs relative to the final CSS file
                   }),
                 ],

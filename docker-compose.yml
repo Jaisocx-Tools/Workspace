@@ -27,7 +27,7 @@ services:
       context: ./.docker/php
     volumes:
       - ./.docker/php/logs/:/php-logs/
-      - ./code/php/:/var/www/code/php/:cached
+      - ./code/php/:/var/www/code/php/
     environment:
       TIMEZONE: "${TIMEZONE}"
     networks:
@@ -48,8 +48,8 @@ services:
       - ./.docker/https/etc/:/usr/lib/jaisocx-http/etc/
       - ./.docker/https/ssl/:/usr/lib/jaisocx-http/ssl/
       - ./.docker/https/logs/:/usr/lib/jaisocx-http/logs/
-      - ./code/ts/www/:/var/www/code/ts/www/:cached
-      - ./code/php/:/var/www/code/php/:cached
+      - ./code/ts/www/:/var/www/code/ts/www/
+      - ./code/php/:/var/www/code/php/
     ports:
       - 443:443
       - 80:80
@@ -68,9 +68,9 @@ services:
     ports:
       - "${MYSQL_PORT}:3306"
     volumes:
-      - ./.docker/database/volumes:/var/lib/mysql:delegated
-      - ./.docker/database/init:/docker-entrypoint-initdb.d:delegated
-      - ./.docker/database/init/conf/mysqld.cnf:/etc/mysql/mysql.conf.d/mysqld.cnf:delegated
+      - ./.docker/database/data/:/var/lib/mysq/
+      - ./.docker/database/docker-entrypoint-initdb.d/:/docker-entrypoint-initdb.d/
+      - ./.docker/database/conf/:/etc/mysql/mysql.conf.d/
     environment:
       MYSQL_DATABASE: "${MYSQL_DATABASE}"
       MYSQL_USER: "${MYSQL_USER}"

@@ -14,8 +14,8 @@ export interface ITreeRenderRetValue {
 
 export interface IRenderSubtreeResult {
   currentNodeSubtreeLength: number;
-  branchJsonNodesLength: number;
-  // branch: any;
+  subtreeJsonNodesLength: number;
+  // subtree: any;
 }
 
 export interface IRenderingMode {

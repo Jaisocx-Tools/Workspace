@@ -17,7 +17,7 @@
   --text-color--hover: darkgreen;
 
   --border--jstree-html-node: 0px solid #abc;
-  --border--branch-parent: 0px solid #abc;
+  --border--subtree-parent: 0px solid #abc;
   --border--jstree-html-node-open-button: 0px solid #abc;
 
   --icon-margin: 0 0.3rem 0 0;

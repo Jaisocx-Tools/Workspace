@@ -52,7 +52,7 @@
 
 .tree ul li > ul {
     margin-left: 22px;
-    border: var(--border--branch-parent);
+    border: var(--border--subtree-parent);
 }
 
 .tree .jstree-html-node-label {
@@ -106,7 +106,7 @@
     background-image: var(--open-button-closed--image-url);
     transform: rotate(90deg);
 }
-.tree .open-button > span.without-branch {
+.tree .open-button > span.without-subtree {
     background-image: var(--open-button-without-subtree--image-url);
     color: crimson !important;
 }
@@ -114,53 +114,53 @@
     background-image: var(--open-button-animated--image-url);
 }
 
-.tree .open-button.toggle-with-branch-opened:hover > span.opened,
-.tree .open-button.toggle-with-branch-opened:hover > span.closed,
-.tree .open-button.toggle-with-branch-closed:hover > span.opened,
-.tree .open-button.toggle-with-branch-closed:hover > span.closed {
+.tree .open-button.toggle-with-subtree-opened:hover > span.opened,
+.tree .open-button.toggle-with-subtree-opened:hover > span.closed,
+.tree .open-button.toggle-with-subtree-closed:hover > span.opened,
+.tree .open-button.toggle-with-subtree-closed:hover > span.closed {
     display: none;
 }
 
-.tree .open-button.toggle-with-branch-opened:hover > span.animated,
-.tree .open-button.toggle-with-branch-closed:hover > span.animated {
+.tree .open-button.toggle-with-subtree-opened:hover > span.animated,
+.tree .open-button.toggle-with-subtree-closed:hover > span.animated {
     display: block;
 }
 
-.tree .toggle-with-branch-closed span.opened {
+.tree .toggle-with-subtree-closed span.opened {
     display: none;
 }
 
-.tree .toggle-with-branch-closed span.closed {
+.tree .toggle-with-subtree-closed span.closed {
     display: block;
 }
 
-.tree .toggle-with-branch-closed span.without-branch {
+.tree .toggle-with-subtree-closed span.without-subtree {
     display: none;
 }
 
 
-.tree .toggle-with-branch-opened span.opened {
+.tree .toggle-with-subtree-opened span.opened {
     display: block;
 }
 
-.tree .toggle-with-branch-opened span.closed {
+.tree .toggle-with-subtree-opened span.closed {
     display: none;
 }
 
-.tree .toggle-with-branch-opened span.without-branch {
+.tree .toggle-with-subtree-opened span.without-subtree {
     display: none;
 }
 
 
-.tree .toggle-without-branch  span.opened {
+.tree .toggle-without-subtree  span.opened {
     display: none;
 }
 
-.tree .toggle-without-branch span.closed {
+.tree .toggle-without-subtree span.closed {
     display: none;
 }
 
-.tree .toggle-without-branch span.without-branch {
+.tree .toggle-without-subtree span.without-subtree {
     display: block;
 }
 

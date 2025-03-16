@@ -10,8 +10,8 @@ export declare class Tree extends ImprovedRenderEventEmitter {
     url: any | null;
     data: any | null;
     conf: TreeConf;
-    branchLength: number;
-    branchLengthDeep: number;
+    subtreeLength: number;
+    subtreeLengthDeep: number;
     templateRenderer: TemplateRenderer;
     contextMenuJSClass: any;
     renderingMode: number;
@@ -36,13 +36,13 @@ export declare class Tree extends ImprovedRenderEventEmitter {
     render(nodes: any): Tree;
     checkDataNodeSubtree(node: any): {
         isArray: number;
-        branchNodeDataType: number;
-        branchNodeDataTypeString: any;
+        subtreeNodeDataType: number;
+        subtreeNodeDataTypeString: any;
         hasSubtree: boolean;
-        branchJsonNodes: any;
+        subtreeJsonNodes: any;
         objectKeys: any[] | null;
     };
-    renderSubtree(isArray: number, branch: any, flatNodeHolderClone: any, objectKeys: any[] | null, branchHtmlHolder: HTMLElement): number;
+    renderSubtree(isArray: number, subtreeNodes: any, flatNodeHolderClone: any, objectKeys: any[] | null, subtreeHtmlHolder: HTMLElement): number;
     renderSubtreeCallback(isArray: number, loopCounter: number, loopPropertyValue: any, loopPropertyKey: any, arrayOrObject: any, previousCallbackResult: number | null, callbackPayload: any): number;
     renderOneTreeNode(node: any, nodePosition: number, nodeKey: any, flatNodeHolderClone: any, holder: HTMLElement): ITreeRenderRetValue;
     updateDataNodeIdAndPath(node: any, nodePosition: number, nodeKey: any, flatNodeHolderClone: any, holder: HTMLElement): any;

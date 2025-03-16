@@ -51,7 +51,32 @@
     
   }
 
+  function testCustomHttpRequestMethod( url, method ) {
+    fetch (
+      url,
+      {
+        method
+      }
+    )
+      .then( response => response.text() )
+      .then( text => {
+        let node = document.createElement("main");
+        node.innerHTML = text;
+
+        document.getElementsByTagName("BODY")[0]
+          .append( node );
+
+      } 
+    );
+  }
+
   document.addEventListener('DOMContentLoaded', async () => {
+
+    testCustomHttpRequestMethod(
+      "https://workspace.brightday.email/php/info.php",
+      "HEAD"
+    );
+    return;
 
     const timestamp1 = getNsTimestamp();
     await testObjDataFromPhpEndpoint();

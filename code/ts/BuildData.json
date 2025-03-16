@@ -4,7 +4,7 @@
     {
       "path": "packages/ObjData",
       "name": "objdata",
-      "build": true,
+      "build": false,
       "build-simple-enable": true,
       "dependencies": [
       ],
@@ -45,7 +45,7 @@
     {
       "path": "packages/Tree",
       "name": "tree",
-      "build": false,
+      "build": true,
       "build-simple-enable": true,
       "dependencies": [
         {
@@ -65,7 +65,10 @@
         "typescript/TreeAdapterModeEase.js",
         "typescript/TreeConf.js",
         "typescript/TreeConstants.js",
-        "typescript/Types.js"
+        "typescript/Types.js",
+        "webpackAliases.js",
+        "webpack.aliases.mjs",
+        "webpack.aliases.cjs"
       ]
     },
     {
@@ -90,7 +93,7 @@
     {
       "path": "examples/ExampleTree",
       "name": "example-tree",
-      "build": false,
+      "build": true,
       "build-simple-enable": true,
       "dependencies": [
         {
@@ -250,7 +253,7 @@
     {
       "path": "packages/Api",
       "name": "api",
-      "build": true,
+      "build": false,
       "build-simple-enable": true,
       "dependencies": [
         {

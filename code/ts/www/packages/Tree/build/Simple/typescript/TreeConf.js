@@ -14,7 +14,7 @@ class TreeConf {
   constructor() {
     this.NODE_ICON__SRC = "icon";
     this.NODE_LABEL__TEXT = "label";
-    this.SUBTREE = "branch";
+    this.SUBTREE = "subtree";
     this.NODE__ID = "id";
     this.NODE__HOLDER_ID = "holderId";
     this.NODE__PATH = "PATH";

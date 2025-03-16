@@ -8,7 +8,7 @@
   "types": "./build/ESNext/index.d.ts",
   "module": "./build/ESNext/index.js",
   "exports": {
-    "require": "./build/ComonJS/index.js",
+    "require": "./build/CommonJS/index.js",
     "import": "./build/ESNext/index.js"
   },
   "files": [
