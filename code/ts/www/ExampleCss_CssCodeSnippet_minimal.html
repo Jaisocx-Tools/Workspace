@@ -91,26 +91,31 @@
 /* Mobile landscape */
 @media ( (max-height: 440px) and (orientation: landscape) ) {
   main {
-        width: 100vw;
-        height: auto;
-        min-height: 100vh;
-        overflow-y: visible;
-      }
+    width: 100vw;
+    height: 100vh;
+    min-height: 100vh;
+    overflow-y: hidden;
 
-      h1 {
-      font-size: 2rem;
-      line-height: 2rem;
-      margin: 1rem 0;
-      text-align: center;
-    }
+    display: flex;
+    padding: 2rem 0;
+    box-sizing: border-box;
+  }
 
-      .CodeSnippetHolder#code-snippet-example-thin {
-  --code-snippet-tool--width: 28rem;
-  --code-snippet-tool--height: 20rem;
-  --overflow-y: auto;
+  h1 {
+    font-size: 2rem;
+    line-height: 2rem;
+    margin: 1rem 0;
+    text-align: center;
+  }
+
+  .CodeSnippetHolder#code-snippet-example-thin {
+    --code-snippet-tool--width: 28rem;
+    --code-snippet-tool--height: auto;
+    --overflow-y: auto;
+
+    flex-grow: 1;
   }
 }
-
 
   </style>
 </head>
