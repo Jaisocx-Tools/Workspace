@@ -41,8 +41,8 @@
     --code-snippet--padding: var(--code-snippet--padding-top) var(--code-snippet--padding-right) 0 var(--code-snippet--padding-left);
     --code-snippet--left: var(--column-numbers-holder--width);
 
-    --column-numbers--padding: var(--code-snippet--padding-top) var(--column-numbers--padding-right) var(--code-snippet--padding-bottom) 0;
-    --column-numbers-holder--width: var(--column-numbers--width);
+    --code_snippet__column_numbers__padding: var(--code-snippet--padding-top) var(--code_snippet__column_numbers__padding-right) var(--code-snippet--padding-bottom) 0;
+    --column-numbers-holder--width: var(--code_snippet__column_numbers__width);
     --column-numbers-holder--height: calc(var(--code-snippet--line-height) * var(--lines-number) + var(--code-snippet--padding-top));
 }
 
@@ -57,7 +57,7 @@
   overflow-y: var(--overflow-y) !important;
   overflow-x: hidden;
 
-  background-color: var(--column-numbers--background-color);
+  background-color: var(--code_snippet__column_numbers__background-color);
 
   border-radius: var(--code-snippet-tool--border-radius);
   border: var(--code-snippet-tool--border-width) var(--code-snippet-tool--border-style) var(--code-snippet-tool--border-color);
@@ -86,7 +86,7 @@ to draw right margin, when the width is scrollable to right. */
 
 /* lines numbers left sidebar */
 .CodeSnippetHolder::before {
-  content: var(--lines-numbers--content--99);
+  content: var(--lines-numbers--content);
 
   top: 0 !important;
   left: 0;
@@ -96,9 +96,9 @@ to draw right margin, when the width is scrollable to right. */
   height: var(--column-numbers-holder--height);
   max-height: var(--column-numbers-holder--height);
 
-  width: var(--column-numbers--width) !important;
+  width: var(--code_snippet__column_numbers__width) !important;
 
-  padding: var(--column-numbers--padding) !important;
+  padding: var(--code_snippet__column_numbers__padding) !important;
 
   overflow-y: hidden !important;
   overflow-x: hidden !important;
@@ -109,10 +109,10 @@ to draw right margin, when the width is scrollable to right. */
   font-size: var(--code-snippet--font-size);
   line-height: var(--code-snippet--line-height);
 
-  font-family: var(--font-family);
+  font-family: var(--code_snippet__font_family);
 
-  color: var(--column-numbers--text-color);
-  background-color: var(--column-numbers--background-color);
+  color: var(--code_snippet__column_numbers__text-color);
+  background-color: var(--code_snippet__column_numbers__background-color);
 
   z-index: 9999;
 }
@@ -138,7 +138,7 @@ to draw right margin, when the width is scrollable to right. */
 
   font-size: var(--code-snippet--font-size);
   line-height: var(--code-snippet--line-height);
-  font-family: var(--font-family);
+  font-family: var(--code_snippet__font_family);
 
   color: var(--code-snippet--text-color);
   background-color: var(--code-snippet--background-color);
