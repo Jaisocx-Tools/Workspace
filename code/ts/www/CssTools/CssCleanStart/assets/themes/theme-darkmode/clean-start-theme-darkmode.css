@@ -1,5 +1,5 @@
 /* theme-darkmode */
-@import url('font_Niconne.css');
+@import url('../../font_Niconne.css');
 
 .workspace.theme-darkmode,
 .workspace .theme-darkmode {
@@ -7,6 +7,7 @@
   --clean-start__rem: 16px;
 
   --clean-start__font-family: Niconne;
+  --clean-start__font-size__laptop: 1.2rem;
 
   --clean-start__text-color: #e0ffe0;
   --clean-start__site__background: #222;
@@ -15,7 +16,8 @@
   --clean-start__text-color-h: #a0ffa0;
   --clean-start__anchor__text-color: lime;
   --clean-start__anchor__text-color-hover: yellow;
-  --clean-start__anchor__text-color-visited: #ddd;
+  --clean-start__anchor__text-color-visited: var(--clean-start__anchor__text-color);
+  --clean-start__anchor__text-color-visited-hover: var(--clean-start__anchor__text-color-hover);
 }
 
 

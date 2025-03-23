@@ -12,14 +12,20 @@ In this index.html template,
 several .css files will be loaded with size of very few KB.
 1. base normalizing css file for all html tags
 2. base theme file, where all css variabes becomes values set
-3. two example theme .css files, theme-example and theme-darkmode.
+3. two example theme .css files, theme-lightmode and theme-darkmode.
+4. example usage of fonts file in .css theme files
+
 
 ## Watch site in action
 
 [https://workspace.brightday.email/CssTools/CssCleanStart/index.template.html](https://workspace.brightday.email/CssTools/CssCleanStart/index.template.html)
 
 
+[https://workspace.brightday.email/CssTools/CssCleanStart/example-lightmode.html](https://workspace.brightday.email/CssTools/CssCleanStart/example-lightmode.html)
+
+
 [https://workspace.brightday.email/CssTools/CssCleanStart/example-darkmode.html](https://workspace.brightday.email/CssTools/CssCleanStart/example-darkmode.html)
+
 
 
 ## Github

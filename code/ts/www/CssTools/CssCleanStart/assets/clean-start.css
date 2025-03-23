@@ -21,23 +21,23 @@ html.workspace script {
 .workspace, 
 .workspace * {
 
+  position: var(--clean-start__position);
+  display: var(--clean-start__display);
+  box-sizing: var(--clean-start__box-sizing);
+
   color: var(--clean-start__text-color);
+
+  border-width: var(--clean-start__border-width);
+  border-style: var(--clean-start__border-style);
+  border-color: var(--clean-start__border-color);
 
 }
 
 .workspace, 
 .workspace *:not(ul):not(ol):not(li) {
 
-  position: var(--clean-start__position);
-  display: var(--clean-start__display);
-  box-sizing: var(--clean-start__box-sizing);
-
   margin: var(--clean-start__margin);
   padding: var(--clean-start__padding);
-
-  border-width: var(--clean-start__border-width);
-  border-style: var(--clean-start__border-style);
-  border-color: var(--clean-start__border-color);
 
 }
 
@@ -117,6 +117,11 @@ html.workspace script {
   color: var(--clean-start__anchor__text-color-visited);
   text-decoration: none;
 }
+.workspace a:visited:hover {
+  color: var(--clean-start__anchor__text-color-visited-hover);
+  text-decoration: underline;
+}
+
 
 
 .workspace.ul-reset ul, 

@@ -37,8 +37,8 @@
 
   --clean-start__font-family: 'Franklin Gothic Medium', Verdana, sans-serif;
   --clean-start__font-family-pre: 'Courier New', Courier, monospace;
-  --clean-start__text-color: #222a2e;
-  --clean-start__text-color-h: #60646a;
+  --clean-start__text-color: unset;
+  --clean-start__text-color-h: unset;
 
 
   --clean-start__p__margin: 0.2rem 0 0.2rem 0;
@@ -71,7 +71,7 @@
   --clean-start__site__height__mobile_portrait: 100vh;
   --clean-start__site__height: var(--clean-start__site__height__mobile_portrait);
 
-  --clean-start__site__width: 40rem;
+  --clean-start__site__width: 70rem;
 
   --clean-start__site__overflow_y: auto;
   --clean-start__site__overflow_x: auto;
@@ -79,7 +79,7 @@
   --clean-start__site__align: center;
 
 
-  --clean-start__tag_body__background: steelblue;
+  --clean-start__tag_body__background: #f2f4f6;
 
   --clean-start__tag_body__height: 100vh;
 
@@ -94,6 +94,6 @@
   --clean-start__site__padding-bottom: 1rem;
 
   --clean-start__site__padding: var(--clean-start__site__padding-top) var(--clean-start__site__padding-right) var(--clean-start__site__padding-bottom) var(--clean-start__site__padding-left);
-  --clean-start__site__background: #fcfcfc;
+  --clean-start__site__background: white;
 }
 

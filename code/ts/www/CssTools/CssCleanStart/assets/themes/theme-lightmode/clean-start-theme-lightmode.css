@@ -1,0 +1,25 @@
+/* theme-darkmode */
+@import url('../../font_Baloo_Paji_2.css');
+
+.workspace.theme-lightmode,
+.workspace .theme-lightmode {
+
+  --clean-start__rem: 16px;
+
+  --clean-start__font-family: 'Baloo Paaji 2';
+
+  --clean-start__text-color: #222a2e;
+  --clean-start__text-color-h: #60646a;
+
+  --clean-start__tag_body__background: steelblue;
+  --clean-start__site__background: #fcfcfc;
+
+  --clean-start__anchor__text-color: slateblue;
+  --clean-start__anchor__text-color-hover: blue;
+  --clean-start__anchor__text-color-visited: var(--clean-start__anchor__text-color);
+  --clean-start__anchor__text-color-visited-hover: var(--clean-start__anchor__text-color-hover);
+
+}
+
+
+
