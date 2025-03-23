@@ -1,4 +1,4 @@
-
+/* all variables are set in the theme-base .css file */
 .workspace {
   --clean-start__rem: 16px;
 
@@ -8,7 +8,7 @@
   --clean-start__font-size__mobile: var(--clean-start__font-size__mobile_portrait);
 
 
-  --clean-start__font-size__laptop: 1rem;
+  --clean-start__font-size__laptop: 0.83rem;
 
 
   --clean-start__font-size: var(--clean-start__font-size__laptop);
@@ -33,13 +33,24 @@
 
   --clean-start__border-width: 0;
   --clean-start__border-style: solid;
-  --clean-start__border-color: none;
+  --clean-start__border-color: lime;
 
-  --clean-start__font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  --clean-start__font-family: 'Franklin Gothic Medium', Verdana, sans-serif;
+  --clean-start__font-family-pre: 'Courier New', Courier, monospace;
+  --clean-start__text-color: #222a2e;
+  --clean-start__text-color-h: #60646a;
 
 
   --clean-start__p__margin: 0.2rem 0 0.2rem 0;
 
+  --clean-start__anchor__text-color: slateblue;
+  --clean-start__anchor__text-color-hover: blue;
+  --clean-start__anchor__text-color-visited: darkgrey;
+
+  
+
+
+  --clean-start__font-h: 600;
 
   --clean-start__font-size_h1: 2.6rem;
   --clean-start__font-size_h2: 2.1rem;
@@ -56,6 +67,33 @@
   --clean-start__line-height_h5: 1.67rem;
   --clean-start__line-height_h6: 1.6rem;
 
+  /* NOT READY: RESPONSIVE FEATURE!!! */
+  --clean-start__site__height__mobile_portrait: 100vh;
+  --clean-start__site__height: var(--clean-start__site__height__mobile_portrait);
 
+  --clean-start__site__width: 40rem;
+
+  --clean-start__site__overflow_y: auto;
+  --clean-start__site__overflow_x: auto;
+
+  --clean-start__site__align: center;
+
+
+  --clean-start__tag_body__background: steelblue;
+
+  --clean-start__tag_body__height: 100vh;
+
+  --clean-start__tag_body__width: 100vw;
+  --clean-start__tag_body__min-width: 100vw;
+
+  --clean-start__site__margin: 0 auto;
+
+  --clean-start__site__padding-top: 1rem;
+  --clean-start__site__padding-right: 1rem;
+  --clean-start__site__padding-left: 1rem;
+  --clean-start__site__padding-bottom: 1rem;
+
+  --clean-start__site__padding: var(--clean-start__site__padding-top) var(--clean-start__site__padding-right) var(--clean-start__site__padding-bottom) var(--clean-start__site__padding-left);
+  --clean-start__site__background: #fcfcfc;
 }
 

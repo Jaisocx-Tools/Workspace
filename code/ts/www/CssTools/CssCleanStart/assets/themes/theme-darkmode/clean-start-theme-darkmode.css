@@ -1,0 +1,19 @@
+/* theme-darkmode */
+
+.workspace.theme-darkmode,
+.workspace .theme-darkmode {
+
+  --clean-start__rem: 16px;
+
+  --clean-start__text-color: #e0ffe0;
+  --clean-start__site__background: #222;
+  --clean-start__tag_body__background: #42414d;
+
+  --clean-start__text-color-h: #a0ffa0;
+  --clean-start__anchor__text-color: lime;
+  --clean-start__anchor__text-color-hover: yellow;
+  --clean-start__anchor__text-color-visited: #ddd;
+}
+
+
+

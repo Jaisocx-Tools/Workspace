@@ -3,6 +3,7 @@
 
 html.workspace {
   font-size: var(--clean-start__rem);
+  top: 0;
 }
 
 
@@ -10,9 +11,19 @@ html.workspace head,
 html.workspace head *,
 html.workspace script {
   visibility: hidden;
+  max-height: 0;
+  max-width: 0;
+  overflow-y: hidden;
+  overflow-x: hidden;
 }
 
 
+.workspace, 
+.workspace * {
+
+  color: var(--clean-start__text-color);
+
+}
 
 .workspace, 
 .workspace *:not(ul):not(ol):not(li) {
@@ -37,11 +48,9 @@ html.workspace script {
   font-family: var(--clean-start__font-family);
 }
 
-/* .workspace pre {
-  font-family: 'Courier New', Courier, monospace;
-} */
-
-
+.workspace pre {
+  font-family: var(--clean-start__font-family-pre, 'Courier New', Courier, monospace);
+}
 
 
 .workspace, 
@@ -54,6 +63,15 @@ html.workspace script {
 
 
 
+.workspace h1,
+.workspace h2,
+.workspace h3,
+.workspace h4,
+.workspace h5,
+.workspace h6 {
+  font-weight: var(--clean-start__font-h);
+  color: var(--clean-start__text-color-h);
+}
 
 .workspace h1 {
   font-size: var(--clean-start__font-size_h1);
@@ -87,7 +105,18 @@ html.workspace script {
   margin: var(--clean-start__p__margin);
 }
 
-
+.workspace a {
+  color: var(--clean-start__anchor__text-color);
+  text-decoration: none;
+}
+.workspace a:hover {
+  color: var(--clean-start__anchor__text-color-hover);
+  text-decoration: underline;
+}
+.workspace a:visited {
+  color: var(--clean-start__anchor__text-color-visited);
+  text-decoration: none;
+}
 
 
 .workspace.ul-reset ul, 
@@ -145,5 +174,35 @@ html.workspace script {
 .workspace u,
 .workspace var {
     display: var(--clean-start__inline-tags__display, inline-block);
+}
+
+.workspace body {
+  background: var(--clean-start__tag_body__background);
+
+  /* NOT READY: RESPONSIVE FEATURE!!! */
+  height: var(--clean-start__tag_body__height);
+  max-height: var(--clean-start__tag_body__height);
+  min-height: var(--clean-start__tag_body__height);
+
+  width: var(--clean-start__tag_body__width);
+  max-width: var(--clean-start__tag_body__width);
+  min-width: var(--clean-start__tag_body__min-width);
+
+  overflow: var(--clean-start__site__overflow_x) var(--clean-start__site__overflow_y);
+}
+
+.workspace main {
+    margin: var(--clean-start__site__margin) !important;
+    padding: var(--clean-start__site__padding) !important;
+    background: var(--clean-start__site__background);
+
+    /* NOT READY: RESPONSIVE FEATURE!!! */
+    height: var(--clean-start__site__height);
+    max-height: var(--clean-start__site__height);
+    min-height: var(--clean-start__site__height);
+  
+    width: var(--clean-start__site__width);
+    max-width: var(--clean-start__site__width);
+    min-width: var(--clean-start__site__width);
 }
 
