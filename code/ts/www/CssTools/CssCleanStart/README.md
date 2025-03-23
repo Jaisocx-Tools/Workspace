@@ -53,6 +53,12 @@ or in some tag, where You don't need html lists rendering with the predefined 90
 ```
 
 
+### 3. npm for webpack
+```
+npm install @jaisocx/css-clean-start
+```
+
+
 ## Tasks
 1. All dimensions: 
     1. mobile landscape and portrait
