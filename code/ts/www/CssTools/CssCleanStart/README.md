@@ -27,7 +27,7 @@ several .css files will be loaded with size of very few KB.
 
 
 ## Status
-Not ready. Not published yet to the npm registry.
+Not ready. The tasks for responsive layout are not done.
 
 
 ## Usage
