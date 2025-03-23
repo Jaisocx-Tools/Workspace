@@ -1,9 +1,12 @@
 /* theme-darkmode */
+@import url('font_Niconne.css');
 
 .workspace.theme-darkmode,
 .workspace .theme-darkmode {
 
   --clean-start__rem: 16px;
+
+  --clean-start__font-family: Niconne;
 
   --clean-start__text-color: #e0ffe0;
   --clean-start__site__background: #222;

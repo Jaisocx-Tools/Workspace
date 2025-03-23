@@ -1,4 +1,18 @@
-# CSS Code Snippet
+# CSS Clean Start
+
+## The aim of the setup
+All front end devs use some normalizing styles for their new projects from scratch.
+
+When You start fresh project from scratch, You have at once the index.html with responsive markup,
+and You are able to set the look and feel of Your site in few minutes,
+via setting very few vriables,
+like text color, background color and font family.
+
+In this index.html template,
+several .css files will be loaded with size of very few KB.
+1. base normalizing css file for all html tags
+2. base theme file, where all css variabes becomes values set
+3. two example theme .css files, theme-example and theme-darkmode.
 
 
 ## Status
@@ -36,4 +50,5 @@ or in some tag, where You don't need html lists rendering with the predefined 90
     4. desktop
     5. big screen
 2. Overflow main site's layout for all dimensions.
+3. The css example with loading custom font file with aliases for webpack.
 
