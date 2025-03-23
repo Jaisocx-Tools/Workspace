@@ -1,6 +1,6 @@
 {
   "name": "@jaisocx/css-clean-start",
-  "version": "1.2.7",
+  "version": "1.2.8",
   "private": false,
   "description": "",
   "type": "module",
@@ -15,7 +15,8 @@
     "build/CommonJS",
     "build/ESNext",
     "build/Simple",
-    "assets/",
+    "assets/themes/",
+    "assets/*.css",
     "index.template.html",
     "example-lightmode.html",
     "example-darkmode.html",
