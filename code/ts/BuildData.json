@@ -2,9 +2,19 @@
   "npm-registry-name": "@jaisocx",
   "packages": [
     {
+      "path": "CssTools/CssCleanStart",
+      "name": "css-clean-start",
+      "build": true,
+      "build-simple-enable": true,
+      "dependencies": [],
+      "build-files": [
+        "index.js"
+      ]
+    },
+    {
       "path": "CssTools/CssCodeSnippet",
       "name": "css-code-snippet",
-      "build": true,
+      "build": false,
       "build-simple-enable": true,
       "dependencies": [],
       "build-files": [
