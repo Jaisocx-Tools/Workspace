@@ -33,7 +33,9 @@ several .css files will be loaded with size of very few KB.
 
 
 ## Status
-Not ready. The tasks for responsive layout are not done.
+Not ready. 
+1. The tasks for **responsive layout** are not done. 
+2. Neither **webpack** was not tested, neither .css nor font files aliases for usage with webpack not set.
 
 
 ## Usage
