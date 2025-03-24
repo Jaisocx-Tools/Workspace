@@ -33,9 +33,14 @@ several .css files will be loaded with size of very few KB.
 
 
 ## Status
-Not ready. 
-1. The tasks for **responsive layout** are not done. 
-2. Neither **webpack** was not tested, neither .css nor font files aliases for usage with webpack not set.
+Ready to use since the 24-th of March in the Year 2025.
+
+
+### Tasks to do
+1. The css example with loading custom font file with aliases for webpack, so that the package can be usable via `npm install`, then in .ts or .js file `import ( lib ) from "@jaisocx/css-clean-start"` and then, `npm run webpack`. 
+
+2. A nice loader for .css files like for other code the `npm`, `yarn`, `composer` and `maven` would be a very fine thing to use .css themes and templates. 
+
 
 
 ## Usage
@@ -50,30 +55,26 @@ Normally set the css class `workspace` and theme css class in &lt;html&gt; tag.
 ### 2. class ul-reset
 You can set css class `ul-reset` when You don't need html lists rendering with the predefined 90-s years html look and feel.
 ```
-<html lang="en" class="workspace theme-example ul-reset">
+<html lang="en" class="workspace ul-reset">
 ```
 
 or in some tag, where You don't need html lists rendering with the predefined 90-s years html look and feel.
 ```
-<html lang="en" class="workspace theme-example">
+<html lang="en" class="workspace">
       ...
     <a-tag class="ul-reset">
 ```
 
+### 3. class long
+### 4. class small
+### 5. class browser-width
 
-### 3. npm for webpack
+
+## npm for webpack
+
 ```
 npm install @jaisocx/css-clean-start
 ```
 
 
-## Tasks
-1. All dimensions: 
-    1. mobile landscape and portrait
-    2. tablet landscape and portrait
-    3. laptop
-    4. desktop
-    5. big screen
-2. Overflow main site's layout for all dimensions.
-3. The css example with loading custom font file with aliases for webpack.
 
