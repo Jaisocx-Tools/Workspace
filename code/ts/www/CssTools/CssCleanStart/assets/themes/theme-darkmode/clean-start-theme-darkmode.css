@@ -7,7 +7,6 @@
   --clean-start__rem: 16px;
 
   --clean-start__font-family: Niconne;
-  --clean-start__font-size__laptop: 1.2rem;
 
   --clean-start__text-color: #e0ffe0;
   --clean-start__site__background: #222;
@@ -18,6 +17,82 @@
   --clean-start__anchor__text-color-hover: yellow;
   --clean-start__anchor__text-color-visited: var(--clean-start__anchor__text-color);
   --clean-start__anchor__text-color-visited-hover: var(--clean-start__anchor__text-color-hover);
+
+
+
+  /* All other tags. FONT-SIZE AND LINE-HEIGHT RESPONSIVE */
+  --clean-start__font-size__mobile_portrait: 1.0rem;
+  --clean-start__font-size__mobile_landscape: 1.0rem;
+  --clean-start__font-size__mobile: var(--clean-start__font-size__mobile_portrait);
+
+  --clean-start__line-height__mobile_portrait: 1.5rem;
+  --clean-start__line-height__mobile_landscape: 1.5rem;
+  --clean-start__line-height__mobile: var(--clean-start__line-height__mobile_portrait);
+
+
+
+  --clean-start__font-size__tablet_portrait: 1.0rem;
+  --clean-start__font-size__tablet_landscape: 1.0rem;
+  --clean-start__font-size__tablet: var(--clean-start__font-size__tablet_landscape);
+
+  --clean-start__line-height__tablet_portrait: 1.5rem;
+  --clean-start__line-height__tablet_landscape: 1.5rem;
+  --clean-start__line-height__tablet: var(--clean-start__line-height__tablet_landscape);
+
+
+
+  --clean-start__font-size__lg_laptop: 1.2rem;
+  --clean-start__line-height__lg_laptop: 1.8rem;
+
+
+  --clean-start__font-size__xl_desktop_horizontal: 1.2rem;
+  --clean-start__line-height__xl_desktop_horizontal: 1.8rem;
+
+  --clean-start__font-size__xl_desktop_vertical: 1.2rem;
+  --clean-start__line-height__xl_desktop_vertical: 1.8rem;
+
+
+  --clean-start__font-size__xxl_ultra_wide_horizontal: 1.2rem;
+  --clean-start__line-height__xxl_ultra_wide_horizontal: 1.8rem;
+
+  --clean-start__font-size__xxl_ultra_wide_vertical: 1.2rem;
+  --clean-start__line-height__xxl_ultra_wide_vertical: 1.8rem;
+
+
+  --clean-start__font-size__3xl_hd_horizontal: 1.2rem;
+  --clean-start__line-height__3xl_hd_horizontal: 1.8rem;
+
+  --clean-start__font-size__3xl_hd_vertical: 1.2rem;
+  --clean-start__line-height__3xl_hd_vertical: 1.8rem;
+
+
+  --clean-start__font-size__4xl_qhd_horizontal: 1.2rem;
+  --clean-start__line-height__4xl_qhd_horizontal: 1.8rem;
+
+  --clean-start__font-size__4xl_qhd_vertical: 1.2rem;
+  --clean-start__line-height__4xl_qhd_vertical: 1.8rem;
+
+
+  --clean-start__font-size__5xl_4k_ultra_hd_horizontal: 1.2rem;
+  --clean-start__line-height__5xl_4k_ultra_hd_horizontal: 1.8rem;
+
+  --clean-start__font-size__5xl_4k_ultra_hd_vertical: 1.2rem;
+  --clean-start__line-height__5xl_4k_ultra_hd_vertical: 1.8rem;
+
+
+  --clean-start__font-size__6xl_8k_horizontal: 1.2rem;
+  --clean-start__line-height__6xl_8k_horizontal: 1.8rem;
+
+  --clean-start__font-size__6xl_8k_vertical: 1.2rem;
+  --clean-start__line-height__6xl_8k_vertical: 1.8rem;
+
+
+  --clean-start__font-size__7xl_16k_horizontal: 1.2rem;
+  --clean-start__line-height__7xl_16k_horizontal: 1.8rem;
+
+  --clean-start__font-size__7xl_16k_vertical: 1.2rem;
+  --clean-start__line-height__7xl_16k_vertical: 1.8rem;
+
 }
 
 

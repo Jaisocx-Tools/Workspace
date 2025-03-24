@@ -1,56 +1,82 @@
 /* all variables are set in the theme-base .css file */
 .workspace {
+
+  /* 
+  This values is used to set font-size on <html> tag, to calculate the rem sizes for the entire html page. 
+  16px is the default value. 
+  Up to date sites development technology recommends to use rem sizes for other html tags.
+  */
   --clean-start__rem: 16px;
 
 
-  --clean-start__font-size__mobile_portrait: 1.4rem;
-  --clean-start__font-size__mobile_landscape: 1.4rem;
-  --clean-start__font-size__mobile: var(--clean-start__font-size__mobile_portrait);
+
+  /* COLOUR SCHEMES VARIBLES */
+  /* 
+  this is the <body> background css. not just background-color. 
+  the <main> html tag in the <body> tag, holds all site's tags, and is centered, and not the entire width.
+  */
+  --clean-start__tag_body__background: #f2f4f6;
+
+  /* main area on the html page in the middle */
+  --clean-start__site__background: white;
 
 
-  --clean-start__font-size__laptop: 0.83rem;
+  /* hyperlink text colors. */
+  --clean-start__anchor__text-color: slateblue;
+  /* hover when mouse over the hyperlink. */
+  --clean-start__anchor__text-color-hover: blue;
+  /* visited, when once on this site this hyperlink was clicked. */
+  --clean-start__anchor__text-color-visited: darkgrey;
+  /* end   hyperlink text colors. */
+
+  /* END    COLOUR SCHEMES VARIBLES */
 
 
-  --clean-start__font-size: var(--clean-start__font-size__laptop);
 
-
-
-  --clean-start__line-height__laptop: 1.4rem;
-  --clean-start__line-height: var(--clean-start__line-height__laptop);
-
-
-
-  --clean-start__display: block;
+  /* LAYOUT PROPS RESET: position, display, box-sizing, margin, padding,  */
   --clean-start__position: relative;
   --clean-start__box-sizing: border-box;
   --clean-start__margin: 0 0 0 0;
   --clean-start__padding: 0 0 0 0;
 
-  --clean-start__custom-tags-display: var(--clean-start__display);
+  --clean-start__block-tags__display: block;
   --clean-start__inline-tags__display: inline-block;
+  --clean-start__custom-tags__display: var(--clean-start__block-tags__display);
 
 
-
+  /* borders of all elements */
   --clean-start__border-width: 0;
   --clean-start__border-style: solid;
   --clean-start__border-color: lime;
 
+
+  /* text */
   --clean-start__font-family: 'Franklin Gothic Medium', Verdana, sans-serif;
   --clean-start__font-family-pre: 'Courier New', Courier, monospace;
   --clean-start__text-color: unset;
   --clean-start__text-color-h: unset;
 
-
+  /* 
+    since all margins are set to 0,
+    this is no good for the Paragraph tag <p>.
+    The Paragrapth tag <p> is multiline,
+    and every paragraph always has distance from next html tags,
+    and next Paragraph, too.
+   */
   --clean-start__p__margin: 0.2rem 0 0.2rem 0;
 
-  --clean-start__anchor__text-color: slateblue;
-  --clean-start__anchor__text-color-hover: blue;
-  --clean-start__anchor__text-color-visited: darkgrey;
 
+
+
+  /* 
+    h1-h6 tags. FONT-SIZE AND LINE-HEIGHT RESPONSIVE
+    This css variables block can be made responsive, too.
+    For now h1-h6 font size and line height is not adjusted for every gadget dimension.
+  */
   
+  /* font-weight for all, h1-h6 */
+  --clean-start__font-weight_h: 600;
 
-
-  --clean-start__font-h: 600;
 
   --clean-start__font-size_h1: 2.6rem;
   --clean-start__font-size_h2: 2.1rem;
@@ -67,33 +93,309 @@
   --clean-start__line-height_h5: 1.67rem;
   --clean-start__line-height_h6: 1.6rem;
 
-  /* NOT READY: RESPONSIVE FEATURE!!! */
-  --clean-start__site__height__mobile_portrait: 100vh;
-  --clean-start__site__height: var(--clean-start__site__height__mobile_portrait);
 
-  --clean-start__site__width: 70rem;
 
+
+  /* All other tags. FONT-SIZE AND LINE-HEIGHT RESPONSIVE */
+  --clean-start__font-size__mobile_portrait: 1.0rem;
+  --clean-start__font-size__mobile_landscape: 1.0rem;
+  --clean-start__font-size__mobile: var(--clean-start__font-size__mobile_portrait);
+
+  --clean-start__line-height__mobile_portrait: 1.5rem;
+  --clean-start__line-height__mobile_landscape: 1.5rem;
+  --clean-start__line-height__mobile: var(--clean-start__line-height__mobile_portrait);
+
+
+
+  --clean-start__font-size__tablet_portrait: 1.0rem;
+  --clean-start__font-size__tablet_landscape: 1.0rem;
+  --clean-start__font-size__tablet: var(--clean-start__font-size__tablet_landscape);
+
+  --clean-start__line-height__tablet_portrait: 1.5rem;
+  --clean-start__line-height__tablet_landscape: 1.5rem;
+  --clean-start__line-height__tablet: var(--clean-start__line-height__tablet_landscape);
+
+
+
+  --clean-start__font-size__lg_laptop: 0.92rem;
+  --clean-start__line-height__lg_laptop: 1.5rem;
+
+
+  --clean-start__font-size__xl_desktop_horizontal: 0.92rem;
+  --clean-start__line-height__xl_desktop_horizontal: 1.5rem;
+
+  --clean-start__font-size__xl_desktop_vertical: 0.92rem;
+  --clean-start__line-height__xl_desktop_vertical: 1.5rem;
+
+
+  --clean-start__font-size__xxl_ultra_wide_horizontal: 0.92rem;
+  --clean-start__line-height__xxl_ultra_wide_horizontal: 1.5rem;
+
+  --clean-start__font-size__xxl_ultra_wide_vertical: 0.92rem;
+  --clean-start__line-height__xxl_ultra_wide_vertical: 1.5rem;
+
+
+  --clean-start__font-size__3xl_hd_horizontal: 0.92rem;
+  --clean-start__line-height__3xl_hd_horizontal: 1.5rem;
+
+  --clean-start__font-size__3xl_hd_vertical: 0.92rem;
+  --clean-start__line-height__3xl_hd_vertical: 1.5rem;
+
+
+  --clean-start__font-size__4xl_qhd_horizontal: 0.92rem;
+  --clean-start__line-height__4xl_qhd_horizontal: 1.5rem;
+
+  --clean-start__font-size__4xl_qhd_vertical: 0.92rem;
+  --clean-start__line-height__4xl_qhd_vertical: 1.5rem;
+
+
+  --clean-start__font-size__5xl_4k_ultra_hd_horizontal: 0.92rem;
+  --clean-start__line-height__5xl_4k_ultra_hd_horizontal: 1.5rem;
+
+  --clean-start__font-size__5xl_4k_ultra_hd_vertical: 0.92rem;
+  --clean-start__line-height__5xl_4k_ultra_hd_vertical: 1.5rem;
+
+
+  --clean-start__font-size__6xl_8k_horizontal: 0.92rem;
+  --clean-start__line-height__6xl_8k_horizontal: 1.5rem;
+
+  --clean-start__font-size__6xl_8k_vertical: 0.92rem;
+  --clean-start__line-height__6xl_8k_vertical: 1.5rem;
+
+
+  --clean-start__font-size__7xl_16k_horizontal: 0.92rem;
+  --clean-start__line-height__7xl_16k_horizontal: 1.5rem;
+
+  --clean-start__font-size__7xl_16k_vertical: 0.92rem;
+  --clean-start__line-height__7xl_16k_vertical: 1.5rem;
+
+
+  /* 
+    These variables are used in the main styles .css file: assets/clean-start-main.css 
+    The font-size and line-height are set for every html tag on the html site.
+    
+    The responsive feature, in folder assets/responsive,
+    via @media rule sets automaticlly the responsive font-size and line-height to these variables.
+    For example like in the file assets/responsive/clean-start-s-mobile-portrait.css : 
+    --clean-start__font-size__mobile: var(--clean-start__font-size__mobile_portrait);
+    --clean-start__font-size: var(--clean-start__font-size__mobile);
+  */
+  --clean-start__font-size: var(--clean-start__font-size__mobile);
+  --clean-start__line-height: var(--clean-start__line-height__mobile);
+
+  /* END   FONT-SIZE AND LINE-HEIGHT RESPONSIVE */
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  /* SITE WIDTH RESPONSIVE */
+  --clean-start__site__width: 50rem;
+
+  /* this value can be set as constant here below */
+  --clean-start__site__width__predefined: 50rem;
+
+
+  
+  --clean-start__site__width__7xl_16k_horizontal: 220rem;
+  --clean-start__site__width__7xl_16k_vertical: 180rem;
+
+  --clean-start__site__width__6xl_8k_horizontal: 200rem;
+  --clean-start__site__width__6xl_8k_vertical: 160rem;
+
+  --clean-start__site__width__5xl_4k_ultra_hd_horizontal: 180rem;
+  --clean-start__site__width__5xl_4k_ultra_hd_vertical: 140rem;
+
+  --clean-start__site__width__4xl_qhd_horizontal: 160rem;
+  --clean-start__site__width__4xl_qhd_vertical: 120rem;
+
+  --clean-start__site__width__3xl_hd_horizontal: 120rem;
+  --clean-start__site__width__3xl_hd_vertical: 100rem;
+
+  --clean-start__site__width__xxl_ultra_wide_horizontal: 90rem;
+  --clean-start__site__width__xxl_ultra_wide_vertical: 80rem;
+
+  --clean-start__site__width__xl_desktop_horizontal: 80rem;
+  --clean-start__site__width__xl_desktop_vertical: 60rem;
+
+  --clean-start__site__width__lg_laptop_horizontal: 60rem;
+  --clean-start__site__width__lg_laptop_vertical: 46rem;
+
+  --clean-start__site__width__md_tablet_landscape: 50rem;
+  --clean-start__site__width__md_tablet_portrait: 100%;
+
+  --clean-start__site__width__sm_mobile_landscape: 40rem;
+  --clean-start__site__width__sm_mobile_portrait: 100%;
+
+  --clean-start__site__width__s_mobile_landscape: 100%;
+  --clean-start__site__width__s_mobile_portrait: 100%;
+
+  --clean-start__site__width__xs_mobile_landscape: 100%;
+  --clean-start__site__width__xs_mobile_portrait: 100%;
+
+  /* END    SITE WIDTH RESPONSIVE */
+
+
+
+  /* SITE OVERFLOW RESPONSIVE */
   --clean-start__site__overflow_y: auto;
-  --clean-start__site__overflow_x: auto;
-
-  --clean-start__site__align: center;
 
 
-  --clean-start__tag_body__background: #f2f4f6;
+  --clean-start__site__overflow_x__s_mobile: auto;
+  --clean-start__site__overflow_x__md_tablet: auto;
+  --clean-start__site__overflow_x__lg_laptop: hidden;
+  --clean-start__site__overflow_x__xl_desktop: hidden;
+  --clean-start__site__overflow_x__xxl_ultra: hidden;
+  --clean-start__site__overflow_x__3xl_hd: hidden;
+  --clean-start__site__overflow_x__4xl_qhd: hidden;
+  --clean-start__site__overflow_x__5xl_4k_ultra_hd: hidden;
+  --clean-start__site__overflow_x__6xl_8k: hidden;
+  --clean-start__site__overflow_x__7xl_16k: hidden;
+  
+  --clean-start__site__overflow_x: var(--clean-start__site__overflow_x__s_mobile);
 
-  --clean-start__tag_body__height: 100vh;
+  /* END    SITE OVERFLOW RESPONSIVE */
+  
 
-  --clean-start__tag_body__width: 100vw;
-  --clean-start__tag_body__min-width: 100vw;
 
+
+  /* SITES'S WIDTH AND HIGHT */
+
+  /* 
+    <body><main> html tag css rule "margin" 
+    all other margin were set 0 by the CssCleanStart.
+    "margin: 0 auto" centers the <main> tag on the html site.
+
+    .workspace main { margin: var(--clean-start__site__margin); }
+  */
   --clean-start__site__margin: 0 auto;
 
+
+  /* 
+    <body><main> html tag css rule "padding" 
+    all other padding were set 0 by the CssCleanStart.
+
+    .workspace main { padding: var(--clean-start__site__padding); }
+  */
   --clean-start__site__padding-top: 1rem;
   --clean-start__site__padding-right: 1rem;
   --clean-start__site__padding-left: 1rem;
   --clean-start__site__padding-bottom: 1rem;
 
   --clean-start__site__padding: var(--clean-start__site__padding-top) var(--clean-start__site__padding-right) var(--clean-start__site__padding-bottom) var(--clean-start__site__padding-left);
-  --clean-start__site__background: white;
+
+
+
+  /* the predefined styles to keep the html site from the start nice seeing */
+  --clean-start__tag_body__height: auto;
+  --clean-start__tag_body__height_max: unset;
+  --clean-start__tag_body__height_min: 100vh;
+
+  --clean-start__tag_body__width: 100%;
+  --clean-start__tag_body__overflow-x: hidden;
+
+
+
+  --clean-start__site__height: 100%;
+  --clean-start__site__height_max: 100%;
+  --clean-start__site__height_min: 100vh;
+  
+  /* END    SITES'S WIDTH AND HIGHT */
+  
 }
+
+
+
+
+/* CSS CLASSES */
+
+/* 
+  html tag css class "browser-width" 
+
+  with this css class, the <main> tag is the entire width of the browser's tab.
+*/
+.workspace.browser-width body {
+  --clean-start__tag_body__width: 100%;
+  --clean-start__site__overflow_x: hidden;
+}
+
+.workspace.browser-width main {
+  --clean-start__site__width: 100%;
+  --clean-start__site__overflow_x: hidden;
+}
+
+
+
+
+/* 
+  html tag css class "long" 
+
+  with this css class, the <main> tag is the entire height of the browser's tab.
+  if the html site hs a lot of text,
+  then the site is scrollable.
+
+  Tese rules are applied at once.
+  And here I recommend to keep these classes in order to rebuild Your styles theme later, 
+  if the default variables You have erased, 
+  when edited the variables here, and not in the theme .css file.
+*/
+.workspace.long body {
+  --clean-start__tag_body__height: auto;
+  --clean-start__tag_body__height_max: unset;
+  --clean-start__tag_body__height_min: 100vh;
+
+  overflow-y: visible;
+}
+
+.workspace.long main {
+  --clean-start__site__height: 100%;
+  --clean-start__site__height_max: 100%;
+  --clean-start__site__height_min: 100vh;
+
+  overflow-y: visible;
+}
+
+
+
+/* 
+  html tag css class "small" 
+
+  with this css class, the <main> tag is NOT the entire height of the browser's tab.
+  if the html site has a lot of text,
+  then the site is scrollable.
+  If not a lot of text, then You see background, applied to <body> styles,
+  and the <main> tag is small, and has anther background.
+
+  I recommend to keep these classes in order to rebuild Your styles theme later, 
+  if the default variables You have erased, 
+  when edited the variables here, and not in the theme .css file.
+*/
+.workspace.small body {
+  --clean-start__tag_body__height: 100vh;
+  --clean-start__tag_body__height_max: unset;
+  --clean-start__tag_body__height_min: 100vh;
+
+  overflow-y: visible;
+
+  padding: 4rem 0 0 0;
+}
+
+.workspace.small main {
+  --clean-start__site__height: max-content;
+  --clean-start__site__height_max: 100%;
+  --clean-start__site__height_min: max-content;
+
+  overflow-y: visible;
+}
+
+/* END    CSS-RESET-PACK "CssCleanStart" main .css file */
+
 
