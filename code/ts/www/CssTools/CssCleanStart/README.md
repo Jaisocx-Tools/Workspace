@@ -16,6 +16,18 @@ several .css files will be loaded with size of very few KB.
 4. example usage of fonts file in .css theme files
 
 
+
+
+## The latest .tgz archive (v.1.2.14 24th of March 2025)
+
+[https://workspace.brightday.email/CssTools/CssCleanStart/jaisocx-css-clean-start-1.2.14-with-fonts.tgz](https://workspace.brightday.email/CssTools/CssCleanStart/jaisocx-css-clean-start-1.2.14-with-fonts.tgz)
+
+
+[https://workspace.brightday.email/CssTools/CssCleanStart/jaisocx-css-clean-start-1.2.14.tgz](https://workspace.brightday.email/CssTools/CssCleanStart/jaisocx-css-clean-start-1.2.14.tgz)
+
+
+
+
 ## Watch site in action
 
 [https://workspace.brightday.email/CssTools/CssCleanStart/index.template.html](https://workspace.brightday.email/CssTools/CssCleanStart/index.template.html)
@@ -28,12 +40,18 @@ several .css files will be loaded with size of very few KB.
 
 
 
+
+
 ## Github
 [https://github.com/Jaisocx-Tools/Workspace/tree/main/code/ts/www/CssTools/CssCleanStart](https://github.com/Jaisocx-Tools/Workspace/tree/main/code/ts/www/CssTools/CssCleanStart)
 
 
+
+
 ## Status
 Ready to use since the 24-th of March in the Year 2025.
+
+
 
 
 ### Tasks to do
