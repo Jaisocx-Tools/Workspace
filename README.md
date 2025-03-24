@@ -17,6 +17,25 @@
 [https://workspace.brightday.email/ExampleSimple_TreeRenderingModeEase.html](https://workspace.brightday.email/ExampleSimple_TreeRenderingModeEase.html)
 
 
+
+#### Css Clean Start
+the html template to use when building projects from scratch.
+
+[https://workspace.brightday.email/CssTools/CssCleanStart/index.template.html](https://workspace.brightday.email/CssTools/CssCleanStart/index.template.html)
+
+
+
+#### The CssCleanStart latest .tgz archive (v.1.2.14 24th of March 2025)
+
+[https://workspace.brightday.email/CssTools/CssCleanStart/jaisocx-css-clean-start-1.2.14-with-fonts.tgz](https://workspace.brightday.email/CssTools/CssCleanStart/jaisocx-css-clean-start-1.2.14-with-fonts.tgz)
+
+
+[https://workspace.brightday.email/CssTools/CssCleanStart/jaisocx-css-clean-start-1.2.14.tgz](https://workspace.brightday.email/CssTools/CssCleanStart/jaisocx-css-clean-start-1.2.14.tgz)
+
+
+
+
+
 ## STATUS OF THE PROJECT
 
 The Project is under development now, 28 January 2025.
