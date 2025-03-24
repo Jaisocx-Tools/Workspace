@@ -19,6 +19,13 @@
   --clean-start__anchor__text-color-visited: var(--clean-start__anchor__text-color);
   --clean-start__anchor__text-color-visited-hover: var(--clean-start__anchor__text-color-hover);
 
+
+  --clean-start__font-size__mobile__predefined: 1.4rem;
+  --clean-start__line-height__mobile__predefined: 1.9rem;
+
+  --clean-start__font-size__predefined: 1.25rem;
+  --clean-start__line-height__predefined: 1.8rem;
+
 }
 
 
