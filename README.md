@@ -60,7 +60,7 @@ The Project is under development now, 28 January 2025.
 
 ## AIM OF THE PROJECT
 
-### typescript modules development, local and synched to npm registry
+### typescript modules development, local and published to npm registry
 The project was started to provide the modular typescript development,
 with the ability to keep source code well structured in npm registry,
 however being able to develop a new typescript tool,

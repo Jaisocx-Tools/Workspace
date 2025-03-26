@@ -1006,6 +1006,7 @@ export class Tooltip extends EventEmitter implements TooltipInterface {
     let arrowPixelSize: number = 0;
     let arrowRectSideSize: number = 0;
     let eventTargetPaddingPixelSize: number = 0;
+    let tooltipPaddingDimensionTwoPixelSize: number = 0;
 
     // we check whether the tooltip is set to be rendered with an arrow
     if ( this.withArrow === 1 ) {
@@ -1064,23 +1065,20 @@ export class Tooltip extends EventEmitter implements TooltipInterface {
     //   Constants.CssVariablesNames.CSS_VARIABLE_NAME__OVERFLOW_Y
     // );
 
+    // this is the added number pixel value 
+    // to have the distance between the event target and the tooltip.
+    eventTargetPaddingPixelSize = this.lib.translateToPixelValue (
+      this.paddingEventTarget,
+      this.paddingDimEventTarget
+    );
+
     // this is the added number pixel value,
     // along with settings _START, _MID and _END,
     // to place the desired way the tooltip
     // relative to the eventTarget
-    const tooltipPaddingPixelSize: number = this.lib.translateToPixelValue (
+    tooltipPaddingDimensionTwoPixelSize = this.lib.translateToPixelValue (
       this.tooltipPaddingAlignDimensionTwo,
       this.tooltipPaddingSizeDimAlignDimensionTwo
-    );
-
-    // this is the added number pixel value 
-    // to have the distance between the event target and the tooltip.
-    const eventTargetPaddingSize: number = this.lib.getJsOrCssSizeValue (
-      this.eventTargetHtmlNode,
-      Constants.CssVariablesNames.CSS_VARIABLE_NAME__EVENT_TARGET_PADDING,
-      this,
-      "paddingEventTarget",
-      "paddingDimEventTarget"
     );
     
     // top, right, left or bottom
@@ -1092,7 +1090,7 @@ export class Tooltip extends EventEmitter implements TooltipInterface {
         mainHtmlNodeDimensions,
         browserTabBorderSide,
         this.tooltipAlignDimensionTwo,
-        tooltipPaddingPixelSize,
+        tooltipPaddingDimensionTwoPixelSize,
         arrowPixelSize,
         eventTargetPaddingPixelSize
       );

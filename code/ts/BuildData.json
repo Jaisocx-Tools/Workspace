@@ -4,7 +4,7 @@
     {
       "path": "CssTools/CssCleanStart",
       "name": "css-clean-start",
-      "build": true,
+      "build": false,
       "build-simple-enable": true,
       "dependencies": [],
       "build-files": [
@@ -146,7 +146,7 @@
     {
       "path": "packages/Tooltip",
       "name": "tooltip",
-      "build": false,
+      "build": true,
       "build-simple-enable": true,
       "dependencies": [
         {
@@ -170,7 +170,7 @@
     {
       "path": "examples/ExampleTooltip",
       "name": "example-tooltip",
-      "build": false,
+      "build": true,
       "build-simple-enable": true,
       "dependencies": [
         {

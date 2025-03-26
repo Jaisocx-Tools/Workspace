@@ -616,6 +616,7 @@ export class Tooltip extends EventEmitter {
         let arrowPixelSize = 0;
         let arrowRectSideSize = 0;
         let eventTargetPaddingPixelSize = 0;
+        let tooltipPaddingDimensionTwoPixelSize = 0;
         // we check whether the tooltip is set to be rendered with an arrow
         if (this.withArrow === 1) {
             arrowPixelSize = this.lib.getJsOrCssSizeValue(this.arrowHtmlNode, Constants.CssVariablesNames.CSS_VARIABLE_NAME__ARROW_SIZE, this, "arrowSize", "arrowSizeDim");
@@ -647,18 +648,18 @@ export class Tooltip extends EventEmitter {
         //   Constants.CssVariablesNames.CSS_VARIABLE_NAME__TOOLTIP_HEIGHT,
         //   Constants.CssVariablesNames.CSS_VARIABLE_NAME__OVERFLOW_Y
         // );
+        // this is the added number pixel value 
+        // to have the distance between the event target and the tooltip.
+        eventTargetPaddingPixelSize = this.lib.translateToPixelValue(this.paddingEventTarget, this.paddingDimEventTarget);
         // this is the added number pixel value,
         // along with settings _START, _MID and _END,
         // to place the desired way the tooltip
         // relative to the eventTarget
-        const tooltipPaddingPixelSize = this.lib.translateToPixelValue(this.tooltipPaddingAlignDimensionTwo, this.tooltipPaddingSizeDimAlignDimensionTwo);
-        // this is the added number pixel value 
-        // to have the distance between the event target and the tooltip.
-        const eventTargetPaddingSize = this.lib.getJsOrCssSizeValue(this.eventTargetHtmlNode, Constants.CssVariablesNames.CSS_VARIABLE_NAME__EVENT_TARGET_PADDING, this, "paddingEventTarget", "paddingDimEventTarget");
+        tooltipPaddingDimensionTwoPixelSize = this.lib.translateToPixelValue(this.tooltipPaddingAlignDimensionTwo, this.tooltipPaddingSizeDimAlignDimensionTwo);
         // top, right, left or bottom
         browserTabBorderSide = "";
         for (browserTabBorderSide of this.alternativeTabBorderSides) {
-            this.tooltipHtmlNodeDimensions = this.lib.calculateTooltipDimensions(this.eventTargetDimensions, mainHtmlNodeDimensions, browserTabBorderSide, this.tooltipAlignDimensionTwo, tooltipPaddingPixelSize, arrowPixelSize, eventTargetPaddingPixelSize);
+            this.tooltipHtmlNodeDimensions = this.lib.calculateTooltipDimensions(this.eventTargetDimensions, mainHtmlNodeDimensions, browserTabBorderSide, this.tooltipAlignDimensionTwo, tooltipPaddingDimensionTwoPixelSize, arrowPixelSize, eventTargetPaddingPixelSize);
             if (
             // if condition checks, whether the tooltip can be placed between the event target and browser tab border.
             this.lib.doesTooltipSuitsTilBrowserTabBorder(browserTabDimensions, this.tooltipHtmlNodeDimensions, browserTabBorderSide, arrowPixelSize, eventTargetPaddingPixelSize)) {

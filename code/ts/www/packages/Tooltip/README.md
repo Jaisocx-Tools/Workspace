@@ -7,7 +7,7 @@
 
 ## Status:
 All basic features are ready.
-1st of February 2025
+26th of March 2025: bugfix paddingEventTarget set
 
 
 ## What is this

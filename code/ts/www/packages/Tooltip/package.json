@@ -1,6 +1,6 @@
 {
   "name": "@jaisocx/tooltip",
-  "version": "1.2.2",
+  "version": "1.2.3",
   "private": false,
   "description": "The js tool, showing on some event, sets the right apparance, and calculates the appearance relative to the targetEvent html node, when the js tool is not in the browser visible area",
   "type": "module",
