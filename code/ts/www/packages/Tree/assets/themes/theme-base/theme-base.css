@@ -1,19 +1,20 @@
-
-
 .tree {
   --node-margin: 0 0 0.4rem 0;
-
-  --node-label--font-family: 'Baloo Paaji 2';
 
   --node-margin: 0 0 0.18rem 0;
 
   --open-button-size: 68%;
   
-  --background-color--tree: #ffffff;
-
-  --size--jstree-html-node: 1.0rem;
+  --background-color--tree: unset;
 
   --text-color--dark: #000000;
+
+  --size--jstree-html-node: 1.2rem;
+  --node-label--font-family: 'Baloo Paaji 2';
+  --node-label--font-size: 0.9rem;
+  --node-label--line-height: var(--size--jstree-html-node);
+  --node-label--text-color: unset;
+
   --text-color--hover: darkgreen;
 
   --border--jstree-html-node: 0px solid #abc;

@@ -37,8 +37,6 @@
     min-height: var(--size--jstree-html-node);
     width: auto;
 
-    font-size: var(--size--jstree-html-node);
-    line-height: var(--size--jstree-html-node);
     overflow: visible;
 
     display: flex;
@@ -121,15 +119,17 @@
     border: var(--border--jstree-html-node);
     background-color: inherit;
     font-family: var(--node-label--font-family);
-    font-size: 80%;
+    font-size: var(--node-label--font-size);
+    line-height: var(--node-label--line-height);
     min-height: 100%;
     height: 100%;
     overflow-y: hidden;
     padding-left: 2px;
     padding-right: 20px;
     text-decoration: none;
-    color: var(--text-color--dark);
+    color: var(--node-label--text-color);
 }
+
 .tree .jstree-html-node-label:hover {
     color: var(--text-color--hover);
 }

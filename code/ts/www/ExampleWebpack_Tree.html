@@ -1,8 +1,14 @@
-<html>
+<html class="workspace long theme-darkmode">
   <head>
     <title>Tree Example</title>
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+    <link rel="stylesheet" href="/CssTools/CssCleanStart/assets/themes/theme-darkmode/clean-start-theme-darkmode.css">
+
+    <!-- CSS CLEAN START THE MAIN .CSS FILE -->
+    <link rel="stylesheet" href="/CssTools/CssCleanStart/assets/clean-start-main.css">
 
     <!-- Task: to check out the css rules applied -->
     <script src="examples/ExampleTree/build/webpack/example-tree-bundle.js"></script>
@@ -10,12 +16,18 @@
   </head>
   <body>
 
-    <h1>Tree example</h1>
+    <main>
 
-    <h2>load by url (should work only when published at an http server)</h2>
-    <div id="tree-holder" class="theme-funny"></div>
+      <h1>Tree example</h1>
 
-    <div id="tree-holder-configured" class="theme-base"></div>
+      <h2>load by url (should work only when published at an http server)</h2>
+      <div id="tree-holder" class="theme-funny"></div>
+  
+      <div id="tree-holder-configured" class="theme-base"></div>
+
+    </main>
+
+
 
     <script>
       document.addEventListener('DOMContentLoaded', () => {
@@ -28,7 +40,7 @@
           .setMainHtmlNodeId("tree-holder-configured")
           .setDataTypesCssClassesEnabled(true)
           .setNodesWithIcons(true)
-          .setNodesOpenedMode(TreeConstants.NodesOpenedMode.ALL_SHOWN)
+          .setNodesOpenedMode(TreeConstants.NodesOpenedMode.ALL_HIDE)
           .setRenderingMode(TreeConstants.RenderingMode.Ease)
           .setModifiable(false)
           .addJSTreeEventListener(

@@ -249,7 +249,7 @@
 
 
   /* SITE OVERFLOW RESPONSIVE */
-  --clean-start__site__overflow_y: auto;
+  --clean-start__site__overflow_y: hidden;
 
 
   --clean-start__site__overflow_x__s_mobile: auto;
@@ -307,10 +307,10 @@
 
 
 
-  --clean-start__site__height: 100%;
-  --clean-start__site__height_max: 100%;
+  --clean-start__site__height: fit-content;
+  --clean-start__site__height_max: fit-content;
   --clean-start__site__height_min: 100vh;
-  
+
   /* END    SITES'S WIDTH AND HIGHT */
   
 }
@@ -359,11 +359,11 @@
 }
 
 .workspace.long main {
-  --clean-start__site__height: 100%;
-  --clean-start__site__height_max: 100%;
+  --clean-start__site__height: fit-content;
+  --clean-start__site__height_max: fit-content;
   --clean-start__site__height_min: 100vh;
 
-  overflow-y: visible;
+  --clean-start__site__overflow_y: hidden;
 }
 
 
@@ -396,7 +396,7 @@
   --clean-start__site__height_max: 100%;
   --clean-start__site__height_min: max-content;
 
-  overflow-y: visible;
+  --clean-start__site__overflow_y: hidden;
 }
 
 /* END    CSS-RESET-PACK "CssCleanStart" main .css file */

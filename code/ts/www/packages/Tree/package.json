@@ -1,6 +1,6 @@
 {
   "name": "@jaisocx/tree",
-  "version": "1.5.35",
+  "version": "1.5.36",
   "private": false,
   "description": "",
   "type": "module",
@@ -20,6 +20,7 @@
   "files": [
     "build/CommonJS",
     "build/ESNext",
+    "build/Simple",
     "assets/",
     "webpack.aliases.json",
     "README.md",
