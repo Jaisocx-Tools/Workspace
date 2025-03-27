@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html class="workspace long theme-darkmode">
+<html class="workspace">
   <head>
     <title>ObjData Example</title>
 
@@ -187,6 +187,7 @@ function addThemeButtonsEventHandlers() {
     tree
       .setDebug(false)
       .setMainHtmlNodeId("tree-holder")
+      .setNodesOpenedMode( TreeConstants.NodesOpenedMode.ALL_SHOWN )
       .render( objectFromPhpEndpoint );
     
   }
