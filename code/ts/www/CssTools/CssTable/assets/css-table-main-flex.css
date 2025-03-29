@@ -1,0 +1,253 @@
+/* css variables */
+@import url("themes/theme-base/css-table-theme-base.css");
+
+/* responsive */
+/* @import url("responsive/clean-start--responsive-imports-main.css"); */
+
+
+.workspace-table-responsive-holder {
+
+  --workspace-table--column-label--background: #E1E9F4;
+
+
+  --workspace-table--border-width: 1px;
+  --workspace-table--border-style: solid;
+  --workspace-table--border-color: #D2DCE4;
+
+
+
+  --workspace-table--main--border-color: var(--workspace-table--border-color);
+  --workspace-table--main--border: var(--workspace-table--border-width) var(--workspace-table--border-style) var(--workspace-table--main--border-color);
+  --workspace-table--main--border-radius: 1rem;
+
+  --workspace-table--main--width: 100%;
+  --workspace-table--main--width-max: 100%;
+  --workspace-table--main--width-min: 100%;
+
+  --workspace-table--main--overflow-y: visible;
+  --workspace-table--main--overflow-x: visible;
+
+
+
+
+  --workspace-table--record--border: var(--workspace-table--border-width) var(--workspace-table--border-style) var(--workspace-table--border-color);
+  --workspace-table--cell--border: var(--workspace-table--border-width) var(--workspace-table--border-style) var(--workspace-table--border-color);
+  
+  --workspace-table--cell-value--font-weight: 400;
+
+
+  --workspace-table-thin--record--padding-top: 1.4rem;
+  --workspace-table-thin--record--padding-bottom: 1.4rem;
+
+
+  --workspace-table-thin--cell--padding: 5px 12px 5px 12px;
+
+
+  --workspace-table-thin--cell--column-label--width: 12rem;
+  --workspace-table-thin--cell--column-label--background: var(--workspace-table--column-label--background);
+
+  --workspace-table-thin--cell--column-label--font-weight: 600;
+  --workspace-table-thin--cell--column-label--font-size: 1.2rem;
+  --workspace-table-thin--cell--column-label--line-height: 1.8rem;
+  --workspace-table-thin--cell--column-label--letter-spacing: 0.3rem;
+
+
+  --workspace-table--cell-value--background: white;
+  
+
+  --workspace-table-thin--cell-value--font-weight: var(--workspace-table--cell-value--font-weight);
+  --workspace-table-thin--cell-value--font-size: 1.2rem;
+  --workspace-table-thin--cell-value--line-height: 1.5rem;
+  --workspace-table-thin--cell-value--letter-spacing: 0.12rem;
+
+
+  --workspace-table-bright--cell--padding: 16px 12px 16px 12px;
+  --workspace-table-bright--cell--column-label--background: var(--workspace-table--column-label--background);
+
+  --workspace-table-bright--cell--column-label--font-weight: 800;
+  --workspace-table-bright--cell--column-label--font-size: 1.2rem;
+  --workspace-table-bright--cell--column-label--line-height: 1.5rem;
+  --workspace-table-bright--cell--column-label--letter-spacing: 0.2rem;
+
+  --workspace-table-bright--cell-value--font-weight: var(--workspace-table--cell-value--font-weight);
+  --workspace-table-bright--cell-value--font-size: 1.0rem;
+  --workspace-table-bright--cell-value--line-height: 1.28rem;
+  --workspace-table-bright--cell-value--letter-spacing: unset;
+
+}
+
+
+
+
+
+
+.workspace-table-responsive-holder {
+  width: var(--workspace-table--main--width);
+  max-width: var(--workspace-table--main--width-max);
+  min-width: var(--workspace-table--main--width-min);
+
+  overflow-y: var(--workspace-table--main--overflow-y);
+  overflow-x: var(--workspace-table--main--overflow-x);
+
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+
+  border-radius: var(--workspace-table--main--border-radius);
+  border: var(--workspace-table--main--border);
+}
+
+.workspace-table-responsive-holder .workspace-table-responsive-record {
+  width: 100%;
+  display: flex;
+  border-bottom: var(--workspace-table--record--border);
+}
+
+.workspace-table-responsive-holder .workspace-table-responsive-record .workspace-table-responsive-cell {
+  overflow-x: hidden;
+  overflow-y: visible;
+  height: auto;
+  align-items: stretch;
+  border-left:  var(--workspace-table--cell--border);
+  background: var(--workspace-table--cell-value--background);
+}
+
+
+/* CELL VALUE LOOK AND FEEL PRETTIFYING */
+.workspace-table-responsive-holder .workspace-table-responsive-record .workspace-table-responsive-cell span {
+  display: inline-block;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+.workspace-table-responsive-holder .workspace-table-responsive-record .workspace-table-responsive-cell .workspace-table-responsive-cell-value {
+  background: var(--workspace-table--cell-value--background);
+  word-break: break-word;
+  line-break: normal;
+}
+
+
+
+/* MEDIA RULE FOR SMALL DEVICESS, IN THIS TABLE LAYOUT FIELDS IN A RECORD ARE PLACED VERTICALLY, NOT IN ONE LINE. */
+@media only screen and (max-width: 768px) {
+
+  .workspace-table-responsive-holder .workspace-table-responsive-record {
+    flex-direction: column;
+
+    justify-content: flex-start;
+    align-items: flex-start;
+
+    border-bottom: var(--workspace-table--record--border);
+  }
+
+  /* TABLE'S COLUMNS LABELS IN THE DESKTOP VIEW, ABOVE THE TABLE, HIDES IN MOBILE HERE */
+  .workspace-table-responsive-holder .workspace-table-responsive-record.workspace-table-responsive-columns-labels-holder {
+    display: none;
+  }
+  
+ 
+  /* STYLES FOR ALL SPAN TAGS IN THE TABLE CELL, FIELD LABEL AND THE SPAN WITH THE VALUE */
+  .workspace-table-responsive-holder .workspace-table-responsive-record .workspace-table-responsive-cell span {
+    padding: var(--workspace-table-thin--cell--padding);
+  }
+
+
+  /* THE COLUMN LABEL, SHOWN IN MOBILE VIEW ON THE LEFT SIDE */
+  .workspace-table-responsive-holder .workspace-table-responsive-record .workspace-table-responsive-cell .workspace-table-responsive-column-label {
+    width: var(--workspace-table-thin--cell--column-label--width);
+    max-width: var(--workspace-table-thin--cell--column-label--width);
+    min-width: var(--workspace-table-thin--cell--column-label--width);
+
+    background: var(--workspace-table-thin--cell--column-label--background);
+
+    font-weight: var(--workspace-table-thin--cell--column-label--font-weight);
+    font-size: var(--workspace-table-thin--cell--column-label--font-size);
+    line-height: var(--workspace-table-thin--cell--column-label--line-height);
+    letter-spacing: var(--workspace-table-thin--cell--column-label--letter-spacing);
+  }
+
+  .workspace-table-responsive-holder .workspace-table-responsive-record .workspace-table-responsive-cell .workspace-table-responsive-cell-value {
+    flex-grow: 1;
+
+    font-weight: var(--workspace-table-thin--cell-value--font-weight);
+    font-size: var(--workspace-table-thin--cell-value--font-size);
+    line-height: var(--workspace-table-thin--cell-value--line-height);
+    letter-spacing: var(--workspace-table-thin--cell-value--letter-spacing);
+    
+  }
+  
+
+  /* when mobile, every record, displayed as column, obtains on te top and at the bottom the padding for finer look and feel */
+  .workspace-table-responsive-holder .workspace-table-responsive-record .workspace-table-responsive-cell:first-of-type span {
+    padding-top: var(--workspace-table-thin--record--padding-top);
+  }
+  .workspace-table-responsive-holder .workspace-table-responsive-record .workspace-table-responsive-cell:last-of-type span {
+    padding-bottom: var(--workspace-table-thin--record--padding-bottom);
+  }
+
+}
+
+
+
+/* MEDIA RULE FOR LAPTOP, DESKTOP AND BIG SCREENS, IN THIS TABLE LAYOUT FIELDS IN A RECORD ARE PLACED IN ONE LINE. */
+@media only screen and (min-width: 769px) {
+  .workspace-table-responsive-holder .workspace-table-responsive-record {
+    flex-direction: row;
+    justify-content: stretch;
+    align-items: stretch;
+  }
+
+  .workspace-table-responsive-holder .workspace-table-responsive-record.workspace-table-responsive-columns-labels-holder {
+    display: flex;
+    background: var(--workspace-table-bright--cell--column-label--background);
+  }
+
+  .workspace-table-responsive-holder .workspace-table-responsive-record.workspace-table-responsive-columns-labels-holder .workspace-table-responsive-cell .workspace-table-responsive-column-label {
+    width: 100%;
+    max-width: unset;
+    min-width: unset;
+    display: flex;
+
+    font-weight: var(--workspace-table-bright--cell--column-label--font-weight);
+    font-size: var(--workspace-table-bright--cell--column-label--font-size);
+    line-height: var(--workspace-table-bright--cell--column-label--line-height);
+    letter-spacing: var(--workspace-table-bright--cell--column-label--letter-spacing);
+  }
+
+  .workspace-table-responsive-holder .workspace-table-responsive-record .workspace-table-responsive-cell:first-of-type {
+    max-width: 17%;
+    min-width: 17%;
+    width: 17%;
+    border-left-width: 0;
+  }
+  .workspace-table-responsive-holder .workspace-table-responsive-record .workspace-table-responsive-cell:last-of-type {
+    width: unset;
+    max-width: unset;
+    flex-grow: 1;
+  }
+
+  /* STYLES FOR ALL SPAN TAGS IN THE TABLE CELL. IN THE DESKTOP VIEW THERE IS JUST ONE SPAN WITH THE VALUE. COLUMN LABEL HIDES. */
+  .workspace-table-responsive-holder .workspace-table-responsive-record .workspace-table-responsive-cell span {
+    padding: var(--workspace-table-bright--cell--padding);
+  }
+
+  
+  /* THE COLUMN LABEL, SHOWN IN MOBILE VIEW ON THE LEFT SIDE, here hides in the desktop view */
+  .workspace-table-responsive-holder .workspace-table-responsive-record .workspace-table-responsive-cell .workspace-table-responsive-column-label {
+    display: none;
+  }
+
+  .workspace-table-responsive-holder .workspace-table-responsive-record .workspace-table-responsive-cell .workspace-table-responsive-cell-value {
+    width: 100%;
+    max-width: unset;
+    min-width: unset;
+
+    font-weight: var(--workspace-table-bright--cell-value--font-weight);
+    font-size: var(--workspace-table-bright--cell-value--font-size);
+    line-height: var(--workspace-table-bright--cell-value--line-height);
+    letter-spacing: var(--workspace-table-bright--cell-value--letter-spacing);
+
+  }
+
+}

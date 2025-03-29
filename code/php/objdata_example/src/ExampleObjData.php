@@ -21,6 +21,8 @@ class ExampleObjData {
 
     $objdata = ObjData::serialize( $phpArray );
 
+    // file_put_contents("objdata-example.od", $objdata);
+
 //    header("Content-Type: text/plain; charset=UTF-8", true);
     header("Content-Type: application/objdata", true);
     header("Content-Disposition: inline", true);

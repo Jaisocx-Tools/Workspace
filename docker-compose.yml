@@ -10,6 +10,7 @@ services:
       context: ./.docker/ts
     volumes:
       - "${relativeProjectPathWithTsCode}/:${tsServicePathInDockerVolume}/"
+      - "./cdn/:${tsServicePathCdn}/"
     ports:
       - 8083:8083
       - 3000:3000
@@ -50,6 +51,7 @@ services:
       - ./.docker/https/logs/:/usr/lib/jaisocx-http/logs/
       - ./code/ts/www/:/var/www/code/ts/www/
       - ./code/php/:/var/www/code/php/
+      - "./cdn/:${tsServicePathCdn}/"
     ports:
       - 443:443
       - 80:80

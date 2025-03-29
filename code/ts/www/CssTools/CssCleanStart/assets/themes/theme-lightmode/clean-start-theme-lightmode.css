@@ -1,12 +1,12 @@
 /* theme-darkmode */
-@import url('../../font_Baloo_Paji_2.css');
+@import url("../../fonts/font_Baloo_Paji_2.css");
 
 .workspace.theme-lightmode,
 .workspace .theme-lightmode {
 
   --clean-start__rem: 16px;
 
-  --clean-start__font-family: 'Baloo Paaji 2';
+  --clean-start__font-family: "Baloo Paaji 2";
 
   --clean-start__text-color: #222a2e;
   --clean-start__text-color-h: #60646a;

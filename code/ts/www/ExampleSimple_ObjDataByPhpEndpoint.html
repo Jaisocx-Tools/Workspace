@@ -172,11 +172,15 @@ function addThemeButtonsEventHandlers() {
 
   async function testObjDataFromPhpEndpoint() {
 
+    let url = "";
+    // url = "/cdn/www/data_public/objdata/objdata-example.od";
+    url = "/php/objdata_example/objdata.php";
+
     let api = new Api();
     let objectFromPhpEndpoint = await api
       .setDebug(true)
       .fetchObjData(
-        ( window.location.origin + "/php/objdata_example/objdata.php" ), 
+        ( window.location.origin + url ), 
         "GET", 
         []
       );

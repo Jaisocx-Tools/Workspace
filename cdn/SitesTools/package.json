@@ -1,0 +1,8 @@
+{
+  "dependencies": {
+    "@jaisocx/css-clean-start": "^1.2.14",
+    "@jaisocx/css-code-snippet": "^1.2.4",
+    "@jaisocx/tooltip": "^1.2.3",
+    "@jaisocx/tree": "^1.5.36"
+  }
+}

@@ -2,7 +2,7 @@
 @import url("themes/theme-base/clean-start-theme-base.css");
 
 /* responsive */
-@import url('responsive/clean-start--responsive-imports-main.css');
+@import url("responsive/clean-start--responsive-imports-main.css");
 
 
 
@@ -60,7 +60,7 @@ html.workspace script {
 }
 
 .workspace pre {
-  font-family: var(--clean-start__font-family-pre, 'Courier New', Courier, monospace);
+  font-family: var(--clean-start__font-family-pre, "Courier New", Courier, monospace);
 }
 
 

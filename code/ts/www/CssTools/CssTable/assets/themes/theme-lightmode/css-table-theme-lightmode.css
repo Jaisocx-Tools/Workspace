@@ -1,0 +1,15 @@
+/* theme-darkmode */
+@import url("../../fonts/font_Baloo_Paji_2.css");
+
+.theme-lightmode .workspace-table-responsive-holder,
+.theme-lightmode.workspace-table-responsive-holder  {
+
+  --workspace-table--cell-value--background: #f2f5f7;
+
+  --workspace-table-thin--record--border-width: 1.2rem;
+  --workspace-table--border-color: white;
+  --workspace-table--record--border: var(--workspace-table-thin--record--border-width) var(--workspace-table--border-style) var(--workspace-table--border-color);
+}
+
+
+

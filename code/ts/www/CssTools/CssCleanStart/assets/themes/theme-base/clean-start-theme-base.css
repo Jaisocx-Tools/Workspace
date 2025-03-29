@@ -51,8 +51,8 @@
 
 
   /* text */
-  --clean-start__font-family: 'Franklin Gothic Medium', Verdana, sans-serif;
-  --clean-start__font-family-pre: 'Courier New', Courier, monospace;
+  --clean-start__font-family: "Franklin Gothic Medium", Verdana, sans-serif;
+  --clean-start__font-family-pre: "Courier New", Courier, monospace;
   --clean-start__text-color: unset;
   --clean-start__text-color-h: unset;
 
