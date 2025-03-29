@@ -1,32 +1,32 @@
-import path from 'path';
-import { fileURLToPath } from 'url';
-import { createRequire } from 'module';
+import * as path from "node:path";
+import { fileURLToPath } from "node:url";
+// import * as pathBrowserify from "path-browserify";
+import postcssUrl from "postcss-url";
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
-const require = createRequire(import.meta.url);
+import { WebpackAliases } from 'webpack.aliases.json';
 
 
-// Directly reference the file
-const aliasConfig = require(path.resolve(
-  __dirname,
-  'webpack.aliases.js'
-)).default;
+let __filename = fileURLToPath(import.meta.url);
+let __dirname = path.dirname(__filename);
 
-console.log(aliasConfig);
+console.info(path.resolve(__dirname));
+console.log( WebpackAliases );
 
 
 export default {
   entry: './build/ESNext/index.js', // Entry point for your TypeScript code
   output: {
-    filename: 'css-clean-start-bundle.js', // Output bundle name
-    path: path.resolve(__dirname, 'build/webpack'), // Output directory
+    filename: 'example-tree-bundle.js', // Output bundle name
+    path: path.resolve(__dirname, 'build/webpack'), 
   },
   resolve: {
     alias: {
-      ...aliasConfig.resolve.alias,
+      ...WebpackAliases.resolve.alias,
     },
-    extensions: ['.js'], // File extensions to resolve
+    extensions: [".js", ".json", ".css"],
+    fallback: {
+      "path": "path-browserify", 
+    },
   },
   module: {
     rules: [
@@ -40,7 +40,7 @@ export default {
             options: {
               postcssOptions: {
                 plugins: [
-                  require('postcss-url')({
+                  postcssUrl({
                     url: 'rebase', // Rewrite URLs relative to the final CSS file
                   }),
                 ],

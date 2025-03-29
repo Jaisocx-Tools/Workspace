@@ -1,11 +1,3 @@
-/* css variables */
-@import url("themes/theme-base/clean-start-theme-base.css");
-
-/* responsive */
-@import url("responsive/clean-start--responsive-imports-main.css");
-
-
-
 html.workspace {
   font-size: var(--clean-start__rem);
   top: 0;

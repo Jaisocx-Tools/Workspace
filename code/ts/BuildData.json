@@ -12,6 +12,21 @@
       ]
     },
     {
+      "path": "examples/ExampleCssCleanStartWebpack",
+      "name": "example-css-clean-start",
+      "build": true,
+      "build-simple-enable": true,
+      "dependencies": [
+        {
+          "name": "@jaisocx/css-clean-start",
+          "path": "CssTools/CssCleanStart"
+        }
+      ],
+      "build-files": [
+        "index.js"
+      ]
+    },
+    {
       "path": "CssTools/CssCodeSnippet",
       "name": "css-code-snippet",
       "build": false,
