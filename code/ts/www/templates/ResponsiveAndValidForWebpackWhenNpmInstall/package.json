@@ -1,5 +1,5 @@
 {
-  "name": "@jaisocx/css-clean-start",
+  "name": "@jaisocx/template-css-clean-start",
   "version": "1.3.5",
   "private": false,
   "description": "",
@@ -17,24 +17,16 @@
       "require": "./build/CommonJS/webpack.aliases.cjs"
     }
   },
-  "scripts": {
-    "webpack": "webpack"
-  },
   "files": [
     "build/CommonJS",
     "build/ESNext",
     "build/Simple",
-    "build/webpack",
     "assets/themes/",
     "assets/responsive/",
     "assets/fonts/*.css",
     "assets/*.css",
     "webpack.aliases.json",
-    "webpack.config.cjs",
-    "webpack.config.mjs",
     "index.template.html",
-    "example-lightmode.html",
-    "example-darkmode.html",
     "README.md",
     "README_WEBPACK.md",
     "LICENSE"
@@ -47,17 +39,6 @@
   ],
   "publishConfig": {
     "access": "public"
-  },
-  "devDependencies": {
-    "css-loader": "^7.1.2",
-    "file-loader": "^6.2.0",
-    "postcss-loader": "^8.1.1",
-    "postcss-url": "^10.1.3",
-    "style-loader": "^4.0.0",
-    "ts-loader": "^9.5.1",
-    "typescript": "^5.7.x",
-    "webpack": "^5.96.1",
-    "webpack-cli": "^5.1.4"
   },
   "author": "Jaisocx",
   "license": "ISC"

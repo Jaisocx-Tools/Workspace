@@ -1,0 +1,9 @@
+/* css variables */
+@import url("@jaisocx-csscleanstart-assets/themes/theme-base/clean-start-theme-base.css");
+
+/* responsive */
+@import url("@jaisocx-csscleanstart-assets/responsive/clean-start--responsive-imports-main-webpack.css");
+
+
+@import url("@jaisocx-csscleanstart-assets/clean-start-main-webpack.css");
+
