@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>css-code-snippet</title>
+
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+
+  <!-- CSS CLEAN START THEMES .CSS FILES -->
+  <link rel="stylesheet" href="https://workspace.brightday.email/cdn/jaisocx-tools/css-clean-start/assets/themes/theme-lightmode/clean-start-theme-lightmode.css">
+  <link rel="stylesheet" href="https://workspace.brightday.email/cdn/jaisocx-tools/css-clean-start/assets/themes/theme-darkmode/clean-start-theme-darkmode.css">
+
+  <!-- CSS CLEAN START THE MAIN .CSS FILE -->
+  <link rel="stylesheet" href="https://workspace.brightday.email/cdn/jaisocx-tools/css-clean-start/assets/clean-start-main.css">
+
+
+
+
+  <!-- code snippet styles via cdn. the next code snippet ver will be improved for usage with fewer <link tags. -->
+  <link rel="stylesheet" href="https://workspace.brightday.email/cdn/jaisocx-tools/css-code-snippet/assets/themes/csstool-codesnippet-theme-colour-salad.css">
+  <link rel="stylesheet" href="https://workspace.brightday.email/cdn/jaisocx-tools/css-code-snippet/assets/themes/csstool-codesnippet-theme-size-little.css">
+  <link rel="stylesheet" href="https://workspace.brightday.email/cdn/jaisocx-tools/css-code-snippet/assets/themes/csstool-codesnippet-theme-base.css">
+  <link rel="stylesheet" href="https://workspace.brightday.email/cdn/jaisocx-tools/css-code-snippet/assets/csstool-codesnippet-theme-styles-main.css">
+  <link rel="stylesheet" href="https://workspace.brightday.email/cdn/jaisocx-tools/css-code-snippet/assets/lines-numbers-variables/code-snippet-lines-numbers-99.css">
+
+  <style>
+
+    .CodeSnippetHolder#code-snippet-example-thin {
+      --lines-number: 29;
+
+      --code-snippet-tool--width: 28rem;
+      --code-snippet-tool--height: 22rem;
+      --overflow-y: auto;
+    }
+
+  </style>
+
+  <style>
+
+
+    /* Mobile landscape */
+    @media ( (max-height: 440px) and (orientation: landscape) ) {
+
+      .CodeSnippetHolder#code-snippet-example-thin {
+        --code-snippet-tool--width: 28rem;
+        --code-snippet-tool--height: auto;
+        --overflow-y: auto;
+
+        flex-grow: 1;
+      }
+    }
+
+  </style>
+
+</head>
+<body>
+  <main>
+    <h1>A css tool "CodeSnippet"</h1>
+
+      <CodeSnippetHolder id="code-snippet-example-thin" class="CodeSnippetHolder blue little">
+          <pre class="CodeSnippetArea">
+import { TestBed } from '@angular/core/testing';
+import { AppComponent } from './app.component';
+
+describe('AppComponent', () => {
+  beforeEach(async () => {
+    await TestBed.configureTestingModule({
+      imports: [AppComponent],
+    }).compileComponents();
+  });
+
+  it('should create the app', () => {
+    const fixture = TestBed.createComponent(AppComponent);
+    const app = fixture.componentInstance;
+    expect(app).toBeTruthy();
+  });
+
+  it(`should have the 'angular' title`, () => {
+    const fixture = TestBed.createComponent(AppComponent);
+    const app = fixture.componentInstance;
+    expect(app.title).toEqual('angular');
+  });
+
+  it('should render title', () => {
+    const fixture = TestBed.createComponent(AppComponent);
+    fixture.detectChanges();
+    const compiled = fixture.nativeElement as HTMLElement;
+    expect(compiled.querySelector('h1')?.textContent).toContain('Hello, angular');
+  });
+});
+          </pre>
+        </CodeSnippetHolder>
+      
+    </main>
+</html>
+
+
