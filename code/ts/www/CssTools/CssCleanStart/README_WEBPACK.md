@@ -1,34 +1,129 @@
-# example
+# how to develop with webpack:
 
 
+## 1. build a project valid for webpack when `npm install` this package later in another project
+
+To use the rich webpack feature aliases, set this folders structure and these predefined files for Your new package, like in this package.
 
 
-## how to develop with ts or js and build with webpack
-
+### 1.1. ${PackageRoot}/webpack.aliases.json 
 ```
-npm install @jaisocx/css-clean-start
-```
-
-
-### a .js or .ts file
-```
-import from "@jaisocx/tree";
-export { Tree, TreeConstants } from "@jaisocx/tree";
-
-// These lines make Tree class accessible in browser javascript, 
-//    when loaded in html with <script src"">
-(window as any).Tree = Tree;
-(window as any).TreeConstants = TreeConstants;
+{
+  "@jaisocx-css-clean-start-assets": "${packageRoot}/assets/"
+}
 ```
 
 
-### The .json file with paths alias, used for webpack builds:
+### 1.2. ${PackageRoot}/src/* files like in this package every:
+1. index.ts
+2. webpack.aliases.cjs
+3. webpack.aliases.mjs
+4. webpackAliases.ts
+
+
+
+### 1.3. workspace project `BuildData.json` minimal config:
 ```
-node_modules/@jaisocx/tree/webpack.aliases.json
+{
+  "npm-registry-name": "@jaisocx",
+  "packages": [
+    {
+      "path": "templates/ResponsiveAndValidForWebpackWhenNpmInstall",
+      "name": "template-css-clean-start",
+      "build": true,
+      "build-simple-enable": true,
+      "dependencies": [],
+      "build-files": [
+        "index.js",
+        "webpackAliases.js",
+        "webpack.aliases.mjs",
+        "webpack.aliases.cjs"
+      ]
+    },
 ```
 
 
-### the single .css file, imported in the Tree.ts with the webpack alias
+### 1.4. this package `${PackageRoot}/package.json` minimal props:
+```
+{
+  "name": "@jaisocx/template-css-clean-start",
+  "version": "1.3.5",
+  "private": false,
+  "description": "",
+  "type": "module",
+  "main": "./build/CommonJS/index.js",
+  "types": "./build/ESNext/index.d.ts",
+  "module": "./build/ESNext/index.js",
+  "exports": {
+    ".": {
+      "import": "./build/ESNext/index.js",
+      "require": "./build/CommonJS/index.js"
+    },
+    "./WebpackAliases": {
+      "import": "./build/ESNext/webpack.aliases.mjs",
+      "require": "./build/CommonJS/webpack.aliases.cjs"
+    }
+  },
+  "files": [
+    "build/CommonJS",
+    "build/ESNext",
+    "build/Simple",
+    "assets/",
+    "webpack.aliases.json",
+    "README.md"
+  ],
+  "keywords": [
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "author": "Author",
+  "license": "ISC"
+}
+```
+
+
+
+## 2. use a js package when building Your package with webpack
+
+### 2.1 install from npm registry to node_modules
+
+```
+npm install "@jaisocx/template-css-clean-start"
+```
+
+
+### 2.2. import styles in a .js or .ts file
+```
+import from "@jaisocx/template-css-clean-start";
+```
+
+### 2.3. import js classes in a .ts file
+
+```
+import { AnyClass } "@jaisocx/template-css-clean-start";
+(window as any).AnyClass = AnyClass;
+```
+
+
+### 2.4. or, import js classes in a .js file
+
+```
+import { AnyClass } "@jaisocx/template-css-clean-start";
+window.AnyClass = AnyClass;
+```
+
+
+### 2.5. The .json file with paths alias, used for webpack builds:
+
+
+```
+node_modules/@jaisocx/template-css-clean-start/webpack.aliases.json
+```
+
+
+### a .css file, imported in a .ts with the webpack alias
+
 ```
 node_modules/@jaisocx/tree/assets/tree-styles-main-webpack.css
 ```
