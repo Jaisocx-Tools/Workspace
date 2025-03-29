@@ -1,6 +1,6 @@
 {
   "name": "@jaisocx/css-clean-start",
-  "version": "1.3.1",
+  "version": "1.3.4",
   "private": false,
   "description": "",
   "type": "module",
@@ -13,8 +13,8 @@
       "require": "./build/CommonJS/index.js"
     },
     "./WebpackAliases": {
-      "import": "./build/ESNext/webpack.aliases.js",
-      "require": "./build/CommonJS/webpack.aliases.js"
+      "import": "./build/ESNext/webpack.aliases.mjs",
+      "require": "./build/CommonJS/webpack.aliases.cjs"
     }
   },
   "scripts": {
