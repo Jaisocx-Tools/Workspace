@@ -52,7 +52,7 @@
       font-family: fantasy;
     }
 
-    .workspace-table-responsive-holder.overflow {
+    .workspace-css-table.overflow {
       /* max-width: unset;
       width: max-content;
       min-width: unset; */
@@ -61,7 +61,7 @@
     }
 
 
-    .workspace-table-responsive-holder.overflow .workspace-table-responsive-record.no-line-break .workspace-table-responsive-cell .workspace-table-responsive-cell-value {
+    .workspace-css-table.overflow .row.no-line-break .cell .cell-value {
       /* white-space-collapse: preserve; */
     }
 
@@ -84,37 +84,37 @@
 
 
 
-    <table class="workspace-table-responsive-holder">
+    <table class="workspace-css-table">
       <tbody>
-      <tr class="workspace-table-responsive-columns-labels-holder">
-        <td><span class="workspace-table-responsive-column-label">attribute</span></td>
-        <td><span class="workspace-table-responsive-column-label">type</span></td>
-        <td><span class="workspace-table-responsive-column-label">values</span></td>
-        <td><span class="workspace-table-responsive-column-label">description</span></td>
+      <tr class="desktop-columns-labels-holder">
+        <td><span class="column-label">attribute</span></td>
+        <td><span class="column-label">type</span></td>
+        <td><span class="column-label">values</span></td>
+        <td><span class="column-label">description</span></td>
       </tr>
       <tr>
-        <td><span class="workspace-table-responsive-column-label">attribute</span><span class="workspace-table-responsive-cell-value">
+        <td><span class="column-label">attribute</span><span class="cell-value">
             port</span></td>
-        <td><span class="workspace-table-responsive-column-label">type</span><span class="workspace-table-responsive-cell-value">number</span></td>
-        <td><span class="workspace-table-responsive-column-label">values</span><span class="workspace-table-responsive-cell-value">e.g. 443</span></td>
-        <td><span class="workspace-table-responsive-column-label">description</span><span class="workspace-table-responsive-cell-value">the port number for the server to accept
+        <td><span class="column-label">type</span><span class="cell-value">number</span></td>
+        <td><span class="column-label">values</span><span class="cell-value">e.g. 443</span></td>
+        <td><span class="column-label">description</span><span class="cell-value">the port number for the server to accept
             browsers' connections</span>
         </td>
       </tr>
       <tr>
-        <td><span class="workspace-table-responsive-column-label">attribute</span><span class="workspace-table-responsive-cell-value">
+        <td><span class="column-label">attribute</span><span class="cell-value">
             alternative-port</span></td>
-        <td><span class="workspace-table-responsive-column-label">type</span><span class="workspace-table-responsive-cell-value">number</span></td>
-        <td><span class="workspace-table-responsive-column-label">values</span><span class="workspace-table-responsive-cell-value">e.g. 8443</span></td>
-        <td><span class="workspace-table-responsive-column-label">description</span><span class="workspace-table-responsive-cell-value">for development and testing purposes
+        <td><span class="column-label">type</span><span class="cell-value">number</span></td>
+        <td><span class="column-label">values</span><span class="cell-value">e.g. 8443</span></td>
+        <td><span class="column-label">description</span><span class="cell-value">for development and testing purposes
             only. if default port is busy,
             then the server starts listening on the alternative port.</span></td>
       </tr>
       <tr>
-        <td><span class="workspace-table-responsive-column-label">attribute</span><span class="workspace-table-responsive-cell-value">secure</span></td>
-        <td><span class="workspace-table-responsive-column-label">type</span><span class="workspace-table-responsive-cell-value">boolean</span></td>
-        <td><span class="workspace-table-responsive-column-label">values</span><span class="workspace-table-responsive-cell-value">true | false</span></td>
-        <td><span class="workspace-table-responsive-column-label">description</span><span class="workspace-table-responsive-cell-value">please specify, where to use HTTPS
+        <td><span class="column-label">attribute</span><span class="cell-value">secure</span></td>
+        <td><span class="column-label">type</span><span class="cell-value">boolean</span></td>
+        <td><span class="column-label">values</span><span class="cell-value">true | false</span></td>
+        <td><span class="column-label">description</span><span class="cell-value">please specify, where to use HTTPS
             secured connection with TLS or not.</span>
         </td>
       </tr>
@@ -125,73 +125,73 @@
 
 
 
-    <table class="workspace-table-responsive-holder">
+    <table class="workspace-css-table">
       <tbody>
-      <tr class="workspace-table-responsive-columns-labels-holder">
-        <td><span class="workspace-table-responsive-column-label">attribute</span></td>
-        <td><span class="workspace-table-responsive-column-label">type</span></td>
-        <td><span class="workspace-table-responsive-column-label">long text 1</span></td>
-        <td><span class="workspace-table-responsive-column-label">long text 2</span></td>
-        <td><span class="workspace-table-responsive-column-label">long text 3</span></td>
-        <td><span class="workspace-table-responsive-column-label">values</span></td>
-        <td><span class="workspace-table-responsive-column-label">description</span></td>
-        <td><span class="workspace-table-responsive-column-label">attribute</span></td>
-        <td><span class="workspace-table-responsive-column-label">type</span></td>
-        <td><span class="workspace-table-responsive-column-label">values</span></td>
-        <td><span class="workspace-table-responsive-column-label">description</span></td>
+      <tr class="desktop-columns-labels-holder">
+        <td><span class="column-label">attribute</span></td>
+        <td><span class="column-label">type</span></td>
+        <td><span class="column-label">long text 1</span></td>
+        <td><span class="column-label">long text 2</span></td>
+        <td><span class="column-label">long text 3</span></td>
+        <td><span class="column-label">values</span></td>
+        <td><span class="column-label">description</span></td>
+        <td><span class="column-label">attribute</span></td>
+        <td><span class="column-label">type</span></td>
+        <td><span class="column-label">values</span></td>
+        <td><span class="column-label">description</span></td>
       </tr>
       <tr>
-        <td><span class="workspace-table-responsive-column-label">attribute</span><span class="workspace-table-responsive-cell-value">
+        <td><span class="column-label">attribute</span><span class="cell-value">
             port</span></td>
-        <td><span class="workspace-table-responsive-column-label">type</span><span class="workspace-table-responsive-cell-value">number</span></td>
-        <td><span class="workspace-table-responsive-column-label">long text 1</span><span class="workspace-table-responsive-cell-value">https://workspace.brightday.email/CssTools/CssCleanStart/assets/themes/theme-lightmode/clean-start-theme-lightmode-webpack.css</span></td>
-        <td><span class="workspace-table-responsive-column-label">long text 2</span><span class="workspace-table-responsive-cell-value">https://workspace.brightday.email/CssTools/CssCleanStart/assets/themes/theme-lightmode/clean-start-theme-lightmode-webpack.css</span></td>
-        <td><span class="workspace-table-responsive-column-label">long text 3</span><span class="workspace-table-responsive-cell-value">https://workspace.brightday.email/CssTools/CssCleanStart/assets/themes/theme-lightmode/clean-start-theme-lightmode-webpack.css</span></td>
-        <td><span class="workspace-table-responsive-column-label">values</span><span class="workspace-table-responsive-cell-value">e.g. 443</span></td>
-        <td><span class="workspace-table-responsive-column-label">description</span><span class="workspace-table-responsive-cell-value">the port number for the server to accept
+        <td><span class="column-label">type</span><span class="cell-value">number</span></td>
+        <td><span class="column-label">long text 1</span><span class="cell-value">https://workspace.brightday.email/CssTools/CssCleanStart/assets/themes/theme-lightmode/clean-start-theme-lightmode-webpack.css</span></td>
+        <td><span class="column-label">long text 2</span><span class="cell-value">https://workspace.brightday.email/CssTools/CssCleanStart/assets/themes/theme-lightmode/clean-start-theme-lightmode-webpack.css</span></td>
+        <td><span class="column-label">long text 3</span><span class="cell-value">https://workspace.brightday.email/CssTools/CssCleanStart/assets/themes/theme-lightmode/clean-start-theme-lightmode-webpack.css</span></td>
+        <td><span class="column-label">values</span><span class="cell-value">e.g. 443</span></td>
+        <td><span class="column-label">description</span><span class="cell-value">the port number for the server to accept
             browsers' connections</span>
         </td>
-        <td><span class="workspace-table-responsive-column-label">attribute</span><span class="workspace-table-responsive-cell-value">
+        <td><span class="column-label">attribute</span><span class="cell-value">
           port</span></td>
-        <td><span class="workspace-table-responsive-column-label">type</span><span class="workspace-table-responsive-cell-value">number</span></td>
-        <td><span class="workspace-table-responsive-column-label">values</span><span class="workspace-table-responsive-cell-value">e.g. 443</span></td>
-        <td><span class="workspace-table-responsive-column-label">description</span><span class="workspace-table-responsive-cell-value">the port number for the server to accept
+        <td><span class="column-label">type</span><span class="cell-value">number</span></td>
+        <td><span class="column-label">values</span><span class="cell-value">e.g. 443</span></td>
+        <td><span class="column-label">description</span><span class="cell-value">the port number for the server to accept
             browsers' connections</span>
         </td>
       </tr>
       <tr>
-        <td><span class="workspace-table-responsive-column-label">attribute</span><span class="workspace-table-responsive-cell-value">
+        <td><span class="column-label">attribute</span><span class="cell-value">
             alternative-port</span></td>
-        <td><span class="workspace-table-responsive-column-label">type</span><span class="workspace-table-responsive-cell-value">number</span></td>
-        <td><span class="workspace-table-responsive-column-label">long text 1</span><span class="workspace-table-responsive-cell-value">https://workspace.brightday.email/CssTools/CssCleanStart/assets/themes/theme-lightmode/clean-start-theme-lightmode-webpack.css</span></td>
-        <td><span class="workspace-table-responsive-column-label">long text 2</span><span class="workspace-table-responsive-cell-value">https://workspace.brightday.email/CssTools/CssCleanStart/assets/themes/theme-lightmode/clean-start-theme-lightmode-webpack.css</span></td>
-        <td><span class="workspace-table-responsive-column-label">long text 3</span><span class="workspace-table-responsive-cell-value">https://workspace.brightday.email/CssTools/CssCleanStart/assets/themes/theme-lightmode/clean-start-theme-lightmode-webpack.css</span></td>
-        <td><span class="workspace-table-responsive-column-label">values</span><span class="workspace-table-responsive-cell-value">e.g. 8443</span></td>
-        <td><span class="workspace-table-responsive-column-label">description</span><span class="workspace-table-responsive-cell-value">for development and testing purposes
+        <td><span class="column-label">type</span><span class="cell-value">number</span></td>
+        <td><span class="column-label">long text 1</span><span class="cell-value">https://workspace.brightday.email/CssTools/CssCleanStart/assets/themes/theme-lightmode/clean-start-theme-lightmode-webpack.css</span></td>
+        <td><span class="column-label">long text 2</span><span class="cell-value">https://workspace.brightday.email/CssTools/CssCleanStart/assets/themes/theme-lightmode/clean-start-theme-lightmode-webpack.css</span></td>
+        <td><span class="column-label">long text 3</span><span class="cell-value">https://workspace.brightday.email/CssTools/CssCleanStart/assets/themes/theme-lightmode/clean-start-theme-lightmode-webpack.css</span></td>
+        <td><span class="column-label">values</span><span class="cell-value">e.g. 8443</span></td>
+        <td><span class="column-label">description</span><span class="cell-value">for development and testing purposes
             only. if default port is busy,
             then the server starts listening on the alternative port.</span></td>
-        <td><span class="workspace-table-responsive-column-label">attribute</span><span class="workspace-table-responsive-cell-value">
+        <td><span class="column-label">attribute</span><span class="cell-value">
           alternative-port</span></td>
-        <td><span class="workspace-table-responsive-column-label">type</span><span class="workspace-table-responsive-cell-value">number</span></td>
-        <td><span class="workspace-table-responsive-column-label">values</span><span class="workspace-table-responsive-cell-value">e.g. 8443</span></td>
-        <td><span class="workspace-table-responsive-column-label">description</span><span class="workspace-table-responsive-cell-value">for development and testing purposes
+        <td><span class="column-label">type</span><span class="cell-value">number</span></td>
+        <td><span class="column-label">values</span><span class="cell-value">e.g. 8443</span></td>
+        <td><span class="column-label">description</span><span class="cell-value">for development and testing purposes
             only. if default port is busy,
             then the server starts listening on the alternative port.</span></td>
         </tr>
       <tr>
-        <td><span class="workspace-table-responsive-column-label">attribute</span><span class="workspace-table-responsive-cell-value">secure</span></td>
-        <td><span class="workspace-table-responsive-column-label">type</span><span class="workspace-table-responsive-cell-value">boolean</span></td>
-        <td><span class="workspace-table-responsive-column-label">long text 1</span><span class="workspace-table-responsive-cell-value">https://workspace.brightday.email/CssTools/CssCleanStart/assets/themes/theme-lightmode/clean-start-theme-lightmode-webpack.css</span></td>
-        <td><span class="workspace-table-responsive-column-label">long text 2</span><span class="workspace-table-responsive-cell-value">https://workspace.brightday.email/CssTools/CssCleanStart/assets/themes/theme-lightmode/clean-start-theme-lightmode-webpack.css</span></td>
-        <td><span class="workspace-table-responsive-column-label">long text 3</span><span class="workspace-table-responsive-cell-value">https://workspace.brightday.email/CssTools/CssCleanStart/assets/themes/theme-lightmode/clean-start-theme-lightmode-webpack.css</span></td>
-        <td><span class="workspace-table-responsive-column-label">values</span><span class="workspace-table-responsive-cell-value">true | false</span></td>
-        <td><span class="workspace-table-responsive-column-label">description</span><span class="workspace-table-responsive-cell-value">please specify, where to use HTTPS
+        <td><span class="column-label">attribute</span><span class="cell-value">secure</span></td>
+        <td><span class="column-label">type</span><span class="cell-value">boolean</span></td>
+        <td><span class="column-label">long text 1</span><span class="cell-value">https://workspace.brightday.email/CssTools/CssCleanStart/assets/themes/theme-lightmode/clean-start-theme-lightmode-webpack.css</span></td>
+        <td><span class="column-label">long text 2</span><span class="cell-value">https://workspace.brightday.email/CssTools/CssCleanStart/assets/themes/theme-lightmode/clean-start-theme-lightmode-webpack.css</span></td>
+        <td><span class="column-label">long text 3</span><span class="cell-value">https://workspace.brightday.email/CssTools/CssCleanStart/assets/themes/theme-lightmode/clean-start-theme-lightmode-webpack.css</span></td>
+        <td><span class="column-label">values</span><span class="cell-value">true | false</span></td>
+        <td><span class="column-label">description</span><span class="cell-value">please specify, where to use HTTPS
             secured connection with TLS or not.</span>
         </td>
-        <td><span class="workspace-table-responsive-column-label">attribute</span><span class="workspace-table-responsive-cell-value">secure</span></td>
-        <td><span class="workspace-table-responsive-column-label">type</span><span class="workspace-table-responsive-cell-value">boolean</span></td>
-        <td><span class="workspace-table-responsive-column-label">values</span><span class="workspace-table-responsive-cell-value">true | false</span></td>
-        <td><span class="workspace-table-responsive-column-label">description</span><span class="workspace-table-responsive-cell-value">please specify, where to use HTTPS
+        <td><span class="column-label">attribute</span><span class="cell-value">secure</span></td>
+        <td><span class="column-label">type</span><span class="cell-value">boolean</span></td>
+        <td><span class="column-label">values</span><span class="cell-value">true | false</span></td>
+        <td><span class="column-label">description</span><span class="cell-value">please specify, where to use HTTPS
             secured connection with TLS or not.</span>
         </td>
       </tr>

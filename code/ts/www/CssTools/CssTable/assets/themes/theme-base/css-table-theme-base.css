@@ -1,4 +1,84 @@
 /* all variables are set in the theme-base .css file */
-.css-table {
+.workspace-css-table {
+
+  --workspace-table--font-family: "Arial";
+  --workspace-table--column-label--font-family: var(--workspace-table--font-family);
+  --workspace-table--cell-value--font-family: var(--workspace-table--font-family);
+
+  --workspace-table--cell--text-color: #333;
+  --workspace-table--column-label--background: #E1E9F4;
+
+
+  --workspace-table--border-width: 1px;
+  --workspace-table--border-style: solid;
+  --workspace-table--border-color: #D2DCE4;
+
+
+
+  --workspace-table--main--border-color: var(--workspace-table--border-color);
+  --workspace-table--main--border: var(--workspace-table--border-width) var(--workspace-table--border-style) var(--workspace-table--main--border-color);
+  --workspace-table--main--border-radius: 1rem;
+
+  --workspace-table-holder--width: 100%;
+  --workspace-table-holder--width-max: 100%;
+  --workspace-table-holder--width-min: 100%;
+
+  --workspace-table-holder--overflow-y: hidden;
+  --workspace-table-holder--overflow-x: hidden;
+
+
+  --workspace-table--main--width: 100%;
+  --workspace-table--main--width-max: 100%;
+  --workspace-table--main--width-min: 100%;
+
+  --workspace-table--main--overflow-y: scroll;
+  --workspace-table--main--overflow-x: scroll;
+
+
+
+
+  --workspace-table--record--border: var(--workspace-table--border-width) var(--workspace-table--border-style) var(--workspace-table--border-color);
+  --workspace-table--cell--border: var(--workspace-table--border-width) var(--workspace-table--border-style) var(--workspace-table--border-color);
   
+  --workspace-table--cell-value--font-weight: 400;
+
+
+  --workspace-table-thin--record--padding-top: 1.4rem;
+  --workspace-table-thin--record--padding-bottom: 1.4rem;
+
+
+  --workspace-table-thin--cell--padding: 5px 12px 5px 12px;
+
+
+  --workspace-table-thin--cell--column-label--width: 12rem;
+  --workspace-table-thin--cell--column-label--background: var(--workspace-table--column-label--background);
+
+  --workspace-table-thin--cell--column-label--font-weight: 600;
+  --workspace-table-thin--cell--column-label--font-size: 1.2rem;
+  --workspace-table-thin--cell--column-label--line-height: 1.8rem;
+  --workspace-table-thin--cell--column-label--letter-spacing: 0.3rem;
+
+
+  --workspace-table--cell-value--background: white;
+  
+
+  --workspace-table-thin--cell-value--font-weight: var(--workspace-table--cell-value--font-weight);
+  --workspace-table-thin--cell-value--font-size: 1.2rem;
+  --workspace-table-thin--cell-value--line-height: 1.5rem;
+  --workspace-table-thin--cell-value--letter-spacing: 0.12rem;
+
+
+  --workspace-table-bright--cell--padding: 16px 12px 16px 12px;
+  --workspace-table-bright--cell--column-label--background: var(--workspace-table--column-label--background);
+
+  --workspace-table-bright--cell--column-label--font-weight: 800;
+  --workspace-table-bright--cell--column-label--font-size: 1.2rem;
+  --workspace-table-bright--cell--column-label--line-height: 1.5rem;
+  --workspace-table-bright--cell--column-label--letter-spacing: 0.2rem;
+
+  --workspace-table-bright--cell-value--font-weight: var(--workspace-table--cell-value--font-weight);
+  --workspace-table-bright--cell-value--font-size: 1.0rem;
+  --workspace-table-bright--cell-value--line-height: 1.28rem;
+  --workspace-table-bright--cell-value--letter-spacing: unset;
+
 }

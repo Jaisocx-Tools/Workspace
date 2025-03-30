@@ -33,7 +33,7 @@ In development since the 28-th of March 2025.
 ## npm for webpack
 
 ```
-npm install @jaisocx/css-tree
+npm install @jaisocx/css-table
 ```
 
 

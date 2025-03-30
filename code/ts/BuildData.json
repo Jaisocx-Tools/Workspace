@@ -53,6 +53,19 @@
       ]
     },
     {
+      "path": "CssTools/CssTable",
+      "name": "css-table",
+      "build": true,
+      "build-simple-enable": true,
+      "dependencies": [],
+      "build-files": [
+        "index.js",
+        "webpackAliases.js",
+        "webpack.aliases.mjs",
+        "webpack.aliases.cjs"
+      ]
+    },
+    {
       "path": "packages/ObjData",
       "name": "objdata",
       "build": false,

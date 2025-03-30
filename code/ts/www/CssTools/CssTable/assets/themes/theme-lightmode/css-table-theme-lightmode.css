@@ -1,14 +1,20 @@
-/* theme-darkmode */
-@import url("../../fonts/font_Baloo_Paaji_2.css");
+/* theme-lightmode */
+.theme-lightmode .workspace-css-table-holder *,
+.theme-lightmode.workspace-css-table-holder * {
 
-.theme-lightmode .workspace-table-responsive-holder,
-.theme-lightmode.workspace-table-responsive-holder  {
+  --workspace-table--font-family: "Arial";
+  --workspace-table--column-label--font-family: var(--workspace-table--font-family);
+  --workspace-table--cell-value--font-family: var(--workspace-table--font-family);
 
-  --workspace-table--cell-value--background: #f2f5f7;
+  --workspace-table--cell--text-color: #42414d;
 
-  --workspace-table-thin--record--border-width: 1.2rem;
-  --workspace-table--border-color: white;
+  --workspace-table--column-label--background: whitesmoke;
+  --workspace-table--cell-value--background: white;
+
+  --workspace-table-thin--record--border-width: 1rem;
+  --workspace-table--border-color: grey;
   --workspace-table--record--border: var(--workspace-table-thin--record--border-width) var(--workspace-table--border-style) var(--workspace-table--border-color);
+
 }
 
 

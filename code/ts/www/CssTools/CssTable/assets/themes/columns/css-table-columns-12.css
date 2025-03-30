@@ -1,0 +1,88 @@
+
+
+.workspace-css-table-holder.cols-12 .workspace-css-table .cell:nth-of-type(1) {
+  --css-table--col-width-1: 15rem;
+  width: var(--css-table--col-width-1);
+  max-width: var(--css-table--col-width-1);
+  min-width: var(--css-table--col-width-1);
+}
+
+.workspace-css-table-holder.cols-12 .workspace-css-table .cell:nth-of-type(2) {
+  --css-table--col-width-2: 12rem;
+  width: var(--css-table--col-width-2);
+  max-width: var(--css-table--col-width-2);
+  min-width: var(--css-table--col-width-2);
+}
+
+.workspace-css-table-holder.cols-12 .workspace-css-table .cell:nth-of-type(3) {
+  --css-table--col-width-3: 21rem;
+  width: var(--css-table--col-width-3);
+  max-width: var(--css-table--col-width-3);
+  min-width: var(--css-table--col-width-3);
+}
+
+.workspace-css-table-holder.cols-12 .workspace-css-table .cell:nth-of-type(4) {
+  --css-table--col-width-4: 12rem;
+  width: var(--css-table--col-width-4);
+  max-width: var(--css-table--col-width-4);
+  min-width: var(--css-table--col-width-4);
+}
+
+.workspace-css-table-holder.cols-12 .workspace-css-table .cell:nth-of-type(5) {
+  --css-table--col-width-5: 21rem;
+  width: var(--css-table--col-width-5);
+  max-width: var(--css-table--col-width-5);
+  min-width: var(--css-table--col-width-5);
+}
+
+.workspace-css-table-holder.cols-12 .workspace-css-table .cell:nth-of-type(6) {
+  --css-table--col-width-6: 12rem;
+  width: var(--css-table--col-width-6);
+  max-width: var(--css-table--col-width-6);
+  min-width: var(--css-table--col-width-6);
+}
+
+.workspace-css-table-holder.cols-12 .workspace-css-table .cell:nth-of-type(7) {
+  --css-table--col-width-7: 21rem;
+  width: var(--css-table--col-width-7);
+  max-width: var(--css-table--col-width-7);
+  min-width: var(--css-table--col-width-7);
+}
+
+.workspace-css-table-holder.cols-12 .workspace-css-table .cell:nth-of-type(8) {
+  --css-table--col-width-8: 10rem;
+  width: var(--css-table--col-width-8);
+  max-width: var(--css-table--col-width-8);
+  min-width: var(--css-table--col-width-8);
+}
+
+.workspace-css-table-holder.cols-12 .workspace-css-table .cell:nth-of-type(9) {
+  --css-table--col-width-9: 20rem;
+  width: var(--css-table--col-width-9);
+  max-width: var(--css-table--col-width-9);
+  min-width: var(--css-table--col-width-9);
+}
+
+.workspace-css-table-holder.cols-12 .workspace-css-table .cell:nth-of-type(10) {
+  --css-table--col-width-10: 10rem;
+  width: var(--css-table--col-width-10);
+  max-width: var(--css-table--col-width-10);
+  min-width: var(--css-table--col-width-10);
+}
+
+.workspace-css-table-holder.cols-12 .workspace-css-table .cell:nth-of-type(11) {
+  --css-table--col-width-11: 10rem;
+  width: var(--css-table--col-width-11);
+  max-width: var(--css-table--col-width-11);
+  min-width: var(--css-table--col-width-11);
+}
+
+.workspace-css-table-holder.cols-12 .workspace-css-table .cell:nth-of-type(12) {
+  --css-table--col-width-12: 30rem;
+  width: var(--css-table--col-width-12);
+  max-width: var(--css-table--col-width-12);
+  min-width: var(--css-table--col-width-12);
+}
+
+
+

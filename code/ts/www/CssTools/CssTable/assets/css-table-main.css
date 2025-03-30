@@ -5,7 +5,7 @@
 /* @import url("responsive/clean-start--responsive-imports-main.css"); */
 
 
-.workspace-table-responsive-holder {
+.workspace-css-table {
 
   --workspace-table--column-label--background: #E1E9F4;
 
@@ -81,7 +81,7 @@
 
 
 
-.workspace-table-responsive-holder {
+.workspace-css-table {
   width: var(--workspace-table--main--width);
   max-width: var(--workspace-table--main--width-max);
   min-width: var(--workspace-table--main--width-min);
@@ -93,12 +93,12 @@
   border: var(--workspace-table--main--border);
 }
 
-.workspace-table-responsive-holder > tr {
+.workspace-css-table > tr {
   width: 100%;
   border-bottom: var(--workspace-table--record--border);
 }
 
-.workspace-table-responsive-holder > tr > td {
+.workspace-css-table > tr > td {
   overflow-x: hidden;
   overflow-y: visible;
   height: auto;
@@ -109,13 +109,13 @@
 
 
 /* CELL VALUE LOOK AND FEEL PRETTIFYING */
-.workspace-table-responsive-holder > tr > td span {
+.workspace-css-table > tr > td span {
   display: inline-block;
   overflow: hidden;
   box-sizing: border-box;
 }
 
-.workspace-table-responsive-holder > tr > td > .workspace-table-responsive-cell-value {
+.workspace-css-table > tr > td > .cell-value {
   background: var(--workspace-table--cell-value--background);
   word-break: break-word;
   line-break: normal;
@@ -126,21 +126,21 @@
 /* MEDIA RULE FOR SMALL DEVICESS, IN THIS TABLE LAYOUT FIELDS IN A RECORD ARE PLACED VERTICALLY, NOT IN ONE LINE. */
 @media only screen and (max-width: 768px) {
 
-  .workspace-table-responsive-holder {
+  .workspace-css-table {
     display: flex !important;
     flex-direction: column;
     justify-content: flex-start;
     align-items: flex-start;
   }
 
-  .workspace-table-responsive-holder > tbody {
+  .workspace-css-table > tbody {
     display: flex !important;
     flex-direction: column;
     justify-content: flex-start;
     align-items: flex-start;
   }
 
-  .workspace-table-responsive-holder > tbody > tr {
+  .workspace-css-table > tbody > tr {
     display: flex !important;
     flex-direction: column;
     justify-content: flex-start;
@@ -149,24 +149,24 @@
     border-bottom: var(--workspace-table--record--border);
   }
 
-  .workspace-table-responsive-holder > tbody > tr > td {
+  .workspace-css-table > tbody > tr > td {
     display: flex !important;
   }
 
   /* TABLE'S COLUMNS LABELS IN THE DESKTOP VIEW, ABOVE THE TABLE, HIDES IN MOBILE HERE */
-  .workspace-table-responsive-holder > tbody > tr.workspace-table-responsive-columns-labels-holder {
+  .workspace-css-table > tbody > tr.desktop-columns-labels-holder {
     display: none;
   }
   
  
   /* STYLES FOR ALL SPAN TAGS IN THE TABLE CELL, FIELD LABEL AND THE SPAN WITH THE VALUE */
-  .workspace-table-responsive-holder > tbody > tr > td span {
+  .workspace-css-table > tbody > tr > td span {
     padding: var(--workspace-table-thin--cell--padding);
   }
 
 
   /* THE COLUMN LABEL, SHOWN IN MOBILE VIEW ON THE LEFT SIDE */
-  .workspace-table-responsive-holder > tbody > tr > td > .workspace-table-responsive-column-label {
+  .workspace-css-table > tbody > tr > td > .column-label {
     width: var(--workspace-table-thin--cell--column-label--width);
     max-width: var(--workspace-table-thin--cell--column-label--width);
     min-width: var(--workspace-table-thin--cell--column-label--width);
@@ -179,7 +179,7 @@
     letter-spacing: var(--workspace-table-thin--cell--column-label--letter-spacing);
   }
 
-  .workspace-table-responsive-holder > tbody > tr > td > .workspace-table-responsive-cell-value {
+  .workspace-css-table > tbody > tr > td > .cell-value {
     flex-grow: 1;
 
     font-weight: var(--workspace-table-thin--cell-value--font-weight);
@@ -191,10 +191,10 @@
   
 
   /* when mobile, every record, displayed as column, obtains on te top and at the bottom the padding for finer look and feel */
-  .workspace-table-responsive-holder > tbody > tr > td:first-of-type span {
+  .workspace-css-table > tbody > tr > td:first-of-type span {
     padding-top: var(--workspace-table-thin--record--padding-top);
   }
-  .workspace-table-responsive-holder > tbody > tr > td:last-of-type span {
+  .workspace-css-table > tbody > tr > td:last-of-type span {
     padding-bottom: var(--workspace-table-thin--record--padding-bottom);
   }
 
@@ -205,27 +205,27 @@
 /* MEDIA RULE FOR LAPTOP, DESKTOP AND BIG SCREENS, IN THIS TABLE LAYOUT FIELDS IN A RECORD ARE PLACED IN ONE LINE. */
 @media only screen and (min-width: 769px) {
 
-  .workspace-table-responsive-holder {
+  .workspace-css-table {
     display: table;
   }
 
-  .workspace-table-responsive-holder > tbody {
+  .workspace-css-table > tbody {
     display: table-row-group;
   }
 
-  .workspace-table-responsive-holder > tbody > tr {
+  .workspace-css-table > tbody > tr {
     display: table-row;
   }
 
-  .workspace-table-responsive-holder > tbody tr > td {
+  .workspace-css-table > tbody tr > td {
     display: table-cell;
   }
 
-  .workspace-table-responsive-holder > tbody > tr.workspace-table-responsive-columns-labels-holder {
+  .workspace-css-table > tbody > tr.desktop-columns-labels-holder {
     background: var(--workspace-table-bright--cell--column-label--background);
   }
 
-  .workspace-table-responsive-holder > tbody > tr.workspace-table-responsive-columns-labels-holder > td > .workspace-table-responsive-column-label {
+  .workspace-css-table > tbody > tr.desktop-columns-labels-holder > td > .column-label {
     width: 100%;
     max-width: unset;
     min-width: unset;
@@ -237,30 +237,30 @@
     letter-spacing: var(--workspace-table-bright--cell--column-label--letter-spacing);
   }
 
-  .workspace-table-responsive-holder > tbody > tr > td:first-of-type {
+  .workspace-css-table > tbody > tr > td:first-of-type {
     max-width: 17%;
     min-width: 17%;
     width: 17%;
     border-left-width: 0;
   }
-  .workspace-table-responsive-holder > tbody > tr > td:last-of-type {
+  .workspace-css-table > tbody > tr > td:last-of-type {
     width: unset;
     max-width: unset;
     flex-grow: 1;
   }
 
   /* STYLES FOR ALL SPAN TAGS IN THE TABLE CELL. IN THE DESKTOP VIEW THERE IS JUST ONE SPAN WITH THE VALUE. COLUMN LABEL HIDES. */
-  .workspace-table-responsive-holder > tbody > tr > td span {
+  .workspace-css-table > tbody > tr > td span {
     padding: var(--workspace-table-bright--cell--padding);
   }
 
   
   /* THE COLUMN LABEL, SHOWN IN MOBILE VIEW ON THE LEFT SIDE, here hides in the desktop view */
-  .workspace-table-responsive-holder > tbody > tr > td > .workspace-table-responsive-column-label {
+  .workspace-css-table > tbody > tr > td > .column-label {
     display: none;
   }
 
-  .workspace-table-responsive-holder > tbody > tr > td > .workspace-table-responsive-cell-value {
+  .workspace-css-table > tbody > tr > td > .cell-value {
     width: 100%;
     max-width: unset;
     min-width: unset;
