@@ -17,7 +17,7 @@
     {
       "path": "CssTools/CssCleanStart",
       "name": "css-clean-start",
-      "build": true,
+      "build": false,
       "build-simple-enable": true,
       "dependencies": [],
       "build-files": [

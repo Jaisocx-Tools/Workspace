@@ -12,8 +12,8 @@
 /.docker/database/volumes/
 /.docker/https/logs
 /.docker/php/logs
-docker-compose.yml.2
-hc.tmp
+/docker-compose.yml.2
+/hc.tmp
 
 
 /.readme/temporary/

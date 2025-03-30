@@ -18,12 +18,10 @@ several .css files will be loaded with size of very few KB.
 
 
 
-## The latest .tgz archive (v.1.2.14 24th of March 2025)
+## The latest .tgz archive (v.1.3.21 30th of March 2025)
 
-[https://workspace.brightday.email/CssTools/CssCleanStart/jaisocx-css-clean-start-1.2.14-with-fonts.tgz](https://workspace.brightday.email/CssTools/CssCleanStart/jaisocx-css-clean-start-1.2.14-with-fonts.tgz)
+[https://workspace.brightday.email/CssTools/CssCleanStart/jaisocx-css-clean-start-1.3.21.tgz](https://workspace.brightday.email/CssTools/CssCleanStart/jaisocx-css-clean-start-1.3.21.tgz)
 
-
-[https://workspace.brightday.email/CssTools/CssCleanStart/jaisocx-css-clean-start-1.2.14.tgz](https://workspace.brightday.email/CssTools/CssCleanStart/jaisocx-css-clean-start-1.2.14.tgz)
 
 
 
