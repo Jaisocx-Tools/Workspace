@@ -13,7 +13,7 @@
 /.docker/https/logs
 /.docker/php/logs
 docker-compose.yml.2
-
+hc.tmp
 
 
 /.readme/temporary/
