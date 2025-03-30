@@ -1,0 +1,30 @@
+/* theme-custom */
+.workspace.theme-custom,
+.workspace .theme-custom {
+
+  --clean-start__rem: 16px;
+
+  --clean-start__font-family: "Arial";
+
+  --clean-start__text-color: #222a2e;
+  --clean-start__text-color-h: #60646a;
+
+  --clean-start__tag_body__background: pink;
+  --clean-start__site__background: #fafafa;
+
+  --clean-start__anchor__text-color: rgb(187, 16, 45);
+  --clean-start__anchor__text-color-hover: rgba(206, 16, 47, 0.902);
+  --clean-start__anchor__text-color-visited: var(--clean-start__anchor__text-color);
+  --clean-start__anchor__text-color-visited-hover: var(--clean-start__anchor__text-color-hover);
+
+
+  --clean-start__font-size__mobile__predefined: 1.8rem;
+  --clean-start__line-height__mobile__predefined: 2.3rem;
+
+  --clean-start__font-size__predefined: 1.45rem;
+  --clean-start__line-height__predefined: 1.9rem;
+
+}
+
+
+

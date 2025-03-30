@@ -19,6 +19,7 @@
     "build/ESNext",
     "build/Simple",
     "build/webpack",
+    "assets",
     "index.template.html",
     "example-lightmode.html",
     "example-darkmode.html",
