@@ -90,9 +90,23 @@ or in some tag, where You don't need html lists rendering with the predefined 90
 
 ## npm for webpack
 
+## npm for webpack
+
+I use in the package.json th line to push to npm registry the assets/fonts folder.
+
+this is not the good practice, and I shall use cdn urls for fonts and media in other packages, 
+and in this package I wanted to test the build with webpack with 3rd party dependencies loaded from npm registry,
+that we have the package.json config, webpack configs and webpack aliases 
+to build the normal bundle.js for a Css Sites UI tool.
+
+there could be mini images and fonts for sure.
+
+
 ```
 npm install @jaisocx/css-clean-start
 ```
+
+
 
 
 

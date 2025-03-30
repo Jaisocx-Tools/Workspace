@@ -1,10 +1,18 @@
+// this webpack config is to build this package with webpack.
+// that is why the webpack.aliases.cjs is referenced locally.
+
+// when using aliases from other jaisocx tool,
+// I use like in code/ts/www/examples/ExampleCssCleanStartWebpack:
+// const WebpackAliases = require("@jaisocx/css-clean-start/WebpackAliases"); // ✅ Import alias file using CommonJS
+
+
 const path = require("path");
-const WebpackAliases = require("webpack.aliases.json"); // ✅ Import alias file using CommonJS
+const WebpackAliases = require("build/CommonJS/webpack.aliases.cjs"); // ✅ Import alias file using CommonJS
 
 module.exports = {
   resolve: {
     alias: {
-      ...TreeWebpackAliases.resolve.alias, // ✅ Use the alias dynamically
+      ...WebpackAliases.resolve.alias, // ✅ Use the alias dynamically
     },
     extensions: [".ts", ".tsx", ".js", ".json", ".css"],
     fallback: {

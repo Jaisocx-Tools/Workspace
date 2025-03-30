@@ -1,9 +1,16 @@
+// this webpack config is to build this package with webpack.
+// that is why the webpack.aliases.mjs is referenced locally.
+
+// when using aliases from other jaisocx tool,
+// I use like in code/ts/www/examples/ExampleCssCleanStartWebpack:
+// import { WebpackAliases } from '@jaisocx/css-clean-start/WebpackAliases';
+
 import * as path from "node:path";
 import { fileURLToPath } from "node:url";
 // import * as pathBrowserify from "path-browserify";
 import postcssUrl from "postcss-url";
 
-import { WebpackAliases } from 'webpack.aliases.json';
+import { WebpackAliases } from "build/ESNext/webpack.aliases.mjs";
 
 
 let __filename = fileURLToPath(import.meta.url);

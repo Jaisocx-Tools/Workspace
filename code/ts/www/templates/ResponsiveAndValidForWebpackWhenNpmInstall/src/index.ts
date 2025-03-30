@@ -2,7 +2,7 @@
 // when built with webpack and using the webpackAliases of this package.
 
 import "@jaisocx-css-clean-start-assets/clean-start-main-webpack.css";
+export default "@jaisocx-css-clean-start-assets/clean-start-main-webpack.css";
 
-import "@jaisocx-css-clean-start-assets/themes/theme-lightmode/clean-start-theme-lightmode-webpack.css";
-import "@jaisocx-css-clean-start-assets/themes/theme-darkmode/clean-start-theme-darkmode-webpack.css";
+
 
