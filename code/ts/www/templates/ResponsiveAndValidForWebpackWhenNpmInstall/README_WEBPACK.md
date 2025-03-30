@@ -21,8 +21,21 @@ To use the rich webpack feature aliases, set this folders structure and these pr
 4. webpackAliases.ts
 
 
+### 1.3 import styles in a .ts or .js file like this:
 
-### 1.3. workspace project `BuildData.json` minimal config:
+**TypeScript** entry file: `${packageRoot}/src/index.ts`
+
+**Styles** entry file: `${packageRoot}/assets/clean-start-main-webpack.css`
+
+```
+// in .ts entry file index.ts
+
+import "@jaisocx-css-clean-start-assets/clean-start-main-webpack.css"
+```
+
+
+
+### 1.4. workspace project `BuildData.json` minimal conf:
 ```
 {
   "npm-registry-name": "@jaisocx",
@@ -43,13 +56,21 @@ To use the rich webpack feature aliases, set this folders structure and these pr
 ```
 
 
-### 1.4. this package `${PackageRoot}/package.json` minimal props:
+### 1.5. this package `${PackageRoot}/package.json` minimal conf:
 ```
 {
+  "author": "Author",
   "name": "@jaisocx/template-css-clean-start",
   "version": "1.3.5",
+  "keywords": [
+    "css tool",
+    "clean start"
+  ],
+  "publishConfig": {
+    "access": "public"
+  }
   "private": false,
-  "description": "",
+  "description": "The template to start a tool for sites, applied responsive view in browsers on all devices",
   "type": "module",
   "main": "./build/CommonJS/index.js",
   "types": "./build/ESNext/index.d.ts",
@@ -65,99 +86,194 @@ To use the rich webpack feature aliases, set this folders structure and these pr
     }
   },
   "files": [
+    "README.md",
+    "webpack.aliases.json", // the file sets the webpack aliases to resolve urls of styles and bound resources like media and fonts
+    "assets/",
     "build/CommonJS",
     "build/ESNext",
-    "build/Simple",
-    "assets/",
-    "webpack.aliases.json",
-    "README.md"
-  ],
-  "keywords": [
-  ],
-  "publishConfig": {
-    "access": "public"
-  },
-  "author": "Author",
-  "license": "ISC"
+    "build/Simple"
+  ]
 }
 ```
 
 
+### 1.6 Build Your package first before use and publishing to npm registry 
 
-## 2. use a js package when building Your package with webpack
+In the workspace project `BuildData.json` active this package for build: `"build": `**true**
 
-### 2.1 install from npm registry to node_modules
+```
+    {
+      "path": "templates/ResponsiveAndValidForWebpackWhenNpmInstall",
+      "name": "template-css-clean-start",
+      "build": true,
+      ...
+```
+
+
+When **Docker Compose** is on, 
+In Terminal, cd to Workspace root, paste and Enter:
+
+`./buildPackages.sh`
+
+
+
+Bugfix until the build works without exceptions, and rerun buildPackages.sh
+
+Then can use and publish to npm registry too.
+
+The use of the built package is in the doc point 2. below.
+
+ 
+
+
+
+
+## 2. Use the installed by Yarn or Npm js package in Your Typescript or Javascript package
+
+
+### 2.a. You may use this template package to start a new package from scratch. 
+
+Just save a copy in the `${Workspace}/code/ts/www/packages` folder.
+
+
+
+### 2.b. install a package from npm registry to node_modules
+
+For example, when You published before with rules in this doc point 1. a package named `@jaisocx/template-css-clean-start`
 
 ```
 npm install "@jaisocx/template-css-clean-start"
 ```
 
 
-### 2.2. import styles in a .js or .ts file
+### 2.c. import styles in a .ts or .js file like this:
+
+**TypeScript** entry file: `${packageRoot}/src/index.ts`
+
+In the installed package, the code is here: `${packageRoot}/node_modules/@jaisocx/template-css-clean-start`
+
 ```
-import from "@jaisocx/template-css-clean-start";
+// in .ts entry file index.ts
+
+import "@jaisocx/template-css-clean-start";
 ```
 
-### 2.3. import js classes in a .ts file
+
+
+### 2.d. import js classes in a .ts file
+
+**TypeScript** entry file: `${packageRoot}/src/index.ts`
 
 ```
 import { AnyClass } "@jaisocx/template-css-clean-start";
+
+// when in .ts entry file index.ts
 (window as any).AnyClass = AnyClass;
 ```
 
 
-### 2.4. or, import js classes in a .js file
+
+### 2.e. or, import js classes in a .js file
 
 ```
 import { AnyClass } "@jaisocx/template-css-clean-start";
+
+// when in .js entry file index.js file:
 window.AnyClass = AnyClass;
 ```
 
 
-### 2.5. The .json file with paths alias, used for webpack builds:
 
+### 2.f. The .json file with paths alias, used for webpack builds:
 
 ```
 node_modules/@jaisocx/template-css-clean-start/webpack.aliases.json
 ```
 
 
-### a .css file, imported in a .ts with the webpack alias
+### 2.g. the entry styles .css file, imported in `${packageRoot}/src/index.ts` with the webpack alias
+
 
 ```
-node_modules/@jaisocx/tree/assets/tree-styles-main-webpack.css
-```
-
-this import statement here:
-```
-import "@jaisocx-tree-assets/tree-styles-main-webpack.css";
+node_modules/@jaisocx/template-css-clean-start/assets/clean-start-main-webpack.css
 ```
 
 
 
-### build with webpack
+### 2.h. this import statement in the installed package is here:
+```
+// in file: ${packageRoot}/node_modules/@jaisocx/template-css-clean-start/build/ESNext/index.js
 
-when under docker:
+import "@jaisocx-css-clean-start-assets/clean-start-main-webpack.css"
+```
+
+
+### 2.i. transpile new package like in the point 1.6 above
+
+`./buildPackages.sh`
+
+
+
+### 2.j. append development npm packages in the `${PackageRoot}/package.json` and npm script name to build with the Webpack
+
+```
+ "scripts": {
+    "webpack": "webpack"
+  },
+  "optionalDependencies": {
+    "@jaisocx/template-css-clean-start": "^1.5.x" // the version number is here just an example
+  },
+  "devDependencies": {
+    "css-loader": "^7.1.2",
+    "file-loader": "^6.2.0",
+    "postcss-loader": "^8.1.1",
+    "postcss-url": "^10.1.3",
+    "style-loader": "^4.0.0",
+    "ts-loader": "^9.5.1",
+    "typescript": "^5.7.x",
+    "webpack": "^5.96.1",
+    "webpack-cli": "^5.1.4"
+  },
+```
+
+
+### 2.k. install development npm packages
+
+When **Docker Compose** is on, 
+to run a script in the node docker service, first enter the node docker service like this: in Terminal, cd to Workspace root, paste and Enter:
 ```
 docker compose exec ts bash
-cd www/examples/ExampleTree
 ```
 
-when the console is on the ExampleTree package root path:
+Then You may build Your new package with Webpack
+
 ```
-npm run webpack --config=webpack.config.mjs
+# 1. navigate to Your new package folder in the node service volume:
+cd /var/www/code/ts/www/packages/<YourNewPackage>
+
+# 2. install development npm packages
+npm install
 ```
 
 
-### webpack.config.mjs example
+
+
+### 2.l. make new file on path `${PackageRoot}/webpack.config.mjs`
 
 ```
+// this webpack config is to build this package with webpack.
+
 import * as path from "node:path";
 import { fileURLToPath } from "node:url";
 // import * as pathBrowserify from "path-browserify";
 import postcssUrl from "postcss-url";
 
-import { WebpackAliases } from '@jaisocx/tree/WebpackAliases';
+// when using aliases from other jaisocx tool,
+// Use like in code/ts/www/examples/ExampleCssCleanStartWebpack:
+import { WebpackAliases } from '@jaisocx/template-css-clean-start/WebpackAliases';
+
+// when building with the Webpack and using the aliases of this package, then:
+// import { WebpackAliases } from "build/ESNext/webpack.aliases.mjs";
 
 
 let __filename = fileURLToPath(import.meta.url);
@@ -168,9 +284,9 @@ console.log( WebpackAliases );
 
 
 export default {
-  entry: './build/ESNext/index.js', // Entry point for your TypeScript code
+  entry: './build/ESNext/index.js', // Entry point for your transpiled code
   output: {
-    filename: 'example-tree-bundle.js', // Output bundle name
+    filename: 'Your-package-bundle.js', // Output bundle name
     path: path.resolve(__dirname, 'build/webpack'), 
   },
   resolve: {
@@ -229,65 +345,103 @@ export default {
 ```
 
 
-### package.json example to use with Tree and build with Webpack
+### 2.m. build with the Webpack
+
+When **Docker Compose** is on, 
+to run a script in the node docker service, first enter the node docker service like this: in Terminal, cd to Workspace root, paste and Enter:
+```
+docker compose exec ts bash
+```
+
+Then You may build Your new package with Webpack
 
 ```
-{
-  "name": "@jaisocx/example-tree",
-  "version": "1.5.2",
-  "private": false,
-  "description": "",
-  "type": "module",
-  "main": "./build/CommonJS/index.js",
-  "types": "./build/ESNext/index.d.ts",
-  "module": "./build/ESNext/index.js",
-  "exports": {
-    "require": "./build/CommonJS/index.js",
-    "import": "./build/ESNext/index.js"
+# 1. navigate to Your new package folder in the node service volume:
+cd /var/www/code/ts/www/packages/<YourNewPackage>
+
+# 2. start building with Webpack:
+npm run webpack --config=webpack.config.mjs
+```
+
+
+
+### 2.n. Where the bundle.js resides
+
+in the point **2.l** above You have the lines `filename:...` and `path: ...`.
+
+the path will be `${PackageRoot}/${path}/${filename}`
+```
+export default {
+  entry: './build/ESNext/index.js', // Entry point for your transpiled code
+  output: {
+    filename: 'Your-package-bundle.js', // Output bundle name
+    path: path.resolve(__dirname, 'build/webpack'), // path of the bundle.js
   },
-  "files": [
-    "build/CommonJS",
-    "build/ESNext",
-    "assets/",
-    "README.md",
-    "LICENSE"
-  ],
-  "scripts": {
-    "build": "tsc -p ./tsconfig.json",
-    "webpack": "webpack"
-  },
-  "optionalDependencies": {
-    "@jaisocx/tree": "^1.5.x"
-  },
-  "devDependencies": {
-    "css-loader": "^7.1.2",
-    "file-loader": "^6.2.0",
-    "path-browserify": "^1.0.1",
-    "postcss-loader": "^8.1.1",
-    "postcss-url": "^10.1.3",
-    "style-loader": "^4.0.0",
-    "ts-loader": "^9.5.1",
-    "typescript": "^5.7.x",
-    "webpack": "^5.96.1",
-    "webpack-cli": "^5.1.4"
-  },
-  "keywords": [],
-  "author": "Jaisocx",
-  "license": "ISC"
-}
 
 ```
 
 
-### How to use the bundle.js by the Webpack in html
+the **bundle.js** file resides here:
+```
+${PackageRoot}/build/webpack/Your-package-bundle.js
+```
+
+
+
+
+## 3. How to use the bundle.js by the Webpack in html
+
+**A.** If You built with webpack the installed CSS tool,
+the styles will apply when You set the css classes, 
+defined in the imported package, to according html nodes in your .html
+
+For example, when using CssCleanStart, 
+on the &lt;html&gt; tag there css class `workspace` is to apply like this:
+
+```
+<html class="workspace long theme-lightmode">
+```
+
+
+If example.html is on path `${PackageRoot}/example.html`,
+the **url of the bundle.js** will be:
+
+```
+build/webpack/Your-package-bundle.js
+```
+
+
+
+**B.** I You imported a JS tool, You have in the example above in the index.ts file set the imported classes available:
+
+```
+import { AnyClass } from "@jaisocx/the-installed-package";
+
+(window as any).AnyClass = AnyClass;
+```
+
+
+In Your .html You can now access this imported js class like this:
+
+```
+<script>
+let anyClass = new AnyClass();
+anyClass.someProp = "some value";
+anyClass.someMethod("some arg");
+</script>
+```
+
+
+
+**C.** example of usage of the `@jaisocx/tree` package here:
 ```
 <html>
   <head>
     <title>Tree Example</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <!-- th path to webpack built bundle.js here: -->
-    <script src="build/webpack/example-tree-bundle.js"></script>
+    <!-- the path to webpack built bundle.js here: -->
+    <script src="examples/ExampleTree/build/webpack/example-tree-bundle.js"></script>
   </head>
   <body>
 
@@ -323,7 +477,7 @@ export default {
 
 
 
-### THEMES: Assets like miniimages and fonts resolval in bundle.js
+## 4. Assets like miniimages and fonts resolval in bundle.js
 1. for assets in themes files, use webpack.aliases.js like in packages/Tree project.
 2. in the Tree.ts, import main css entrypoint file "@jaisocx-tree-assets/tree-styles-main-webpack.css";
 3. in tree-styles-main-webpack.css import theme main css file like this: @import url('themes/theme-base/theme-base-webpack.css');
@@ -344,16 +498,4 @@ export default {
 7. when copying to the webpack build theme css files, urls have to be rewritten absolute, starting with / , and not relative like when working in browser with build/Simple
 8. have to try with other data, like .json and other.
 9. in json the urls have to be absolute, or base64 contents.
-
-
-### index.ts
-
-the classes, required in script tags and other custom js, using this js ui tool, have to be avaliable like this:
-```
-import { Tree, TreeConstants } from "@jaisocx/tree";
-export { Tree, TreeConstants } from "@jaisocx/tree";
-
-(window as any).Tree = Tree;
-(window as any).TreeConstants = TreeConstants;
-```
 
