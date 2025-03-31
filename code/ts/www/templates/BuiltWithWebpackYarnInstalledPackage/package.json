@@ -1,6 +1,6 @@
 {
   "name": "@jaisocx/example-built-with-webpack",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "author": "Jaisocx",
   "private": false,
   "type": "module",
@@ -19,8 +19,8 @@
     "webpack": "webpack"
   },
   "dependencies": {
-    "@jaisocx/css-clean-start": "^1.3.21",
-    "@jaisocx/tooltip": "^1.2.4"
+    "@jaisocx/css-clean-start": "^1.3.x",
+    "@jaisocx/tooltip": "^1.2.x"
   },
   "devDependencies": {
     "css-loader": "^7.1.2",
@@ -35,6 +35,3 @@
     "webpack-cli": "^5.1.4"
   }
 }
-
-
-
