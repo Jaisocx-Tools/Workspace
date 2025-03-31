@@ -1,6 +1,106 @@
 # how to develop with webpack:
 
 
+## For what the Webpack
+
+The Webpack tool is for making Javascript and Styles .css files of Your project to one bundle.js JavaScript file, this can be referenced on a site in a .html doc like this:
+
+```
+<script src="bundle.js"></script>
+```
+
+When installing a sites tool via `npm install <PackageName>`, You are not sure, how the styles .css files and JavaScript files were referenced in the .html doc, when the developer tested her/his sites tool.
+
+1. when with the cdn-like url with the domain name like this : `<link rel="stylesheet" href="https://workspace.brightday.email/a-sites-tool/styles/style.css">`, this will work good,
+however when You publish on Your domain, then You will need replace all these urls, if You don't want to rely on the cdn in Your project.
+
+2. when with the url starts with the Slash symbol like this: `<link rel="stylesheet" href="/a-sites-tool/styles/style.css">`, this works well, too, however urls with the Slash symbol on start mean this is the same url on Your server, too, after domain name. And when the styles file is published on Your sites endpoint on another url, the sites tool will not work, since the styles file will not be loaded in the browser.
+
+3. the relative urls work too, however when the .html doc on Your site is on another url, than the styles file in the package, this relative urls will not work, neither.
+
+For example, a sites tool .html was: 
+
+`https://workspace.brightday.email/a-sites-tool-example/`
+
+and the styles file:
+
+`https://workspace.brightday.email/a-sites-tool-example/styles/style.css`
+
+and on .html was referenced with the relative url:
+
+`styles/style.css`
+
+this was all fine,
+
+and when installed from npm the tool, and Your .html doc is on the same url:
+
+`https://workspace.brightday.email/a-sites-tool-example/`
+
+however the new sites tool You publish on another url:
+
+`https://workspace.brightday.email/my-installed-packages/a-new-sites-tool/styles/style.css`
+
+then the relative url will not work.
+
+
+
+### How the Webpack solves this urls problem
+
+The Webpack tool tells to define the aliases in Your project.
+
+In Workspace, the aliases for the webpack are set in the file `${PackageRoot}/webpack.aliases.json` like this:
+
+```
+{
+  "@jaisocx-css-clean-start-assets": "${packageRoot}/assets/"
+}
+```
+
+With the aliases `@a-sites-tool-styles` or `@a-sites-tool-mini-images`, You can prefix all urls in Your html, css and js code.
+
+for example in .css:
+```
+@import url("@a-sites-tool-styles/theme-night-mode.css");
+```
+
+Then, when the Webpack builds a js project, it can resolve the urls all the best way, finds the files and builds one bundle.js file with all them. And then You can include the bundle.js file in the .html doc and all resources will be available in the browser, when the site has loaded.
+
+Also, when You install the package via `yarn install "PackageName"` or `npm install "PackageName"`, You use their package aliases names and can load their styles, too, and the Webpack will add all styles of all imported tools to Your bundle.js
+
+
+### conf for the Webpack 
+
+path: `${PackagRoot}/webpack.config.mjs`
+
+FFor example, in Workspace when importing `@jaisocx/tree` in `ExampleTree` package: `code/ts/www/examples/ExampleTree/webpack.config.mjs`
+
+the webpack aliases You can import for the webpack here:
+
+```
+...
+import { WebpackAliases } from '@jaisocx/tree/WebpackAliases'; // this is the art to import webpack aliases in the Workspace @jaisocx/ js and css tools.
+```
+
+
+when have imported aliases, You need to add to all aliases, used in Webpack build.
+The lines in this webpack.config.mjs:
+`alias: {`
+```
+  // line 23
+  resolve: {
+    alias: {
+      ...WebpackAliases.resolve.alias,
+    },
+    extensions: [".js", ".json", ".css"],
+    fallback: {
+      "path": "path-browserify", 
+    },
+  },
+
+```
+
+
+
 ## 1. build a project valid for webpack when `npm install` this package later in another project
 
 To use the rich webpack feature aliases, set this folders structure and these predefined files for Your new package, like in this package.
@@ -476,26 +576,4 @@ anyClass.someMethod("some arg");
 ```
 
 
-
-## 4. Assets like miniimages and fonts resolval in bundle.js
-1. for assets in themes files, use webpack.aliases.js like in packages/Tree project.
-2. in the Tree.ts, import main css entrypoint file "@jaisocx-tree-assets/tree-styles-main-webpack.css";
-3. in tree-styles-main-webpack.css import theme main css file like this: @import url('themes/theme-base/theme-base-webpack.css');
-4. use webpack.aliasese.js alias like this:
-
-```
-
-.tree > ul > li > pre > pre.jstree-html-node-holder-icon.icon-show
-{
-  --datatype-array--image-url: url('@jaisocx-tree-assets/themes/theme-base/mini-images/data-types/icons8-json-96.png');
-  --datatype-object--image-url: url('@jaisocx-tree-assets/themes/theme-base/mini-images/data-types/icons8-json-96.png');
-}
-
-```
-
-5. without the webpack build, use another relative urls in the .css files, loaded in <link rel="stylesheet" href="">.
-6. with webpack produced bundle.js, several themes can be imported, and then used in html holder node <div id="tree-1" class="theme-extended-1">
-7. when copying to the webpack build theme css files, urls have to be rewritten absolute, starting with / , and not relative like when working in browser with build/Simple
-8. have to try with other data, like .json and other.
-9. in json the urls have to be absolute, or base64 contents.
 
