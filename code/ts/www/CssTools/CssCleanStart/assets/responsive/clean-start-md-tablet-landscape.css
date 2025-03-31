@@ -4,8 +4,17 @@
   .workspace main {
     /* --clean-start__site__background: aliceblue; */
 
+    --clean-start__tag_body__width: var(--clean-start__tag_body__width__md_tablet_landscape);
+    --clean-start__tag_body__max_width: var(--clean-start__tag_body__max_width__md_tablet_landscape);
+    --clean-start__tag_body__min_width: var(--clean-start__tag_body__min_width__md_tablet_landscape);
+
     --clean-start__site__width: var(--clean-start__site__width__md_tablet_landscape);
-    --clean-start__site__overflow_x: var(--clean-start__site__overflow_x__md_tablet);
+    --clean-start__site__max_width: var(--clean-start__site__max_width__md_tablet_landscape);
+    --clean-start__site__min_width: var(--clean-start__site__min_width__md_tablet_landscape);
+
+    --clean-start__site__overflow_x: var(--clean-start__site__overflow_x__md_tablet_landscape);
+
+
 
     --clean-start__font-size__tablet: var(--clean-start__font-size__tablet_landscape);
     --clean-start__font-size: var(--clean-start__font-size__tablet);
