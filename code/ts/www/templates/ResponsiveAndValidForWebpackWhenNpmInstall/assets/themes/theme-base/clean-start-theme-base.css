@@ -99,10 +99,10 @@
   /* All other tags. FONT-SIZE AND LINE-HEIGHT RESPONSIVE */
   
   --clean-start__font-size__mobile__predefined: 1.2rem;
-  --clean-start__line-height__mobile__predefined: 1.9rem;
+  --clean-start__line-height__mobile__predefined: 2.0rem;
 
-  --clean-start__font-size__predefined: 1.0rem;
-  --clean-start__line-height__predefined: 1.5rem;
+  --clean-start__font-size__predefined: 1.03rem;
+  --clean-start__line-height__predefined: 1.68rem;
 
 
 
@@ -197,52 +197,254 @@
   
 
 
+  /* TAG BODY RESPONSIVE */
 
+  /* the predefined styles to keep the html site from the start nice seeing */
+  --clean-start__tag_body__height: auto;
+  --clean-start__tag_body__height_max: unset;
+  --clean-start__tag_body__height_min: 100vh;
 
+  --clean-start__tag_body__width: 100%;
+  --clean-start__tag_body__overflow-x: hidden;
 
-  /* SITE WIDTH RESPONSIVE */
-  --clean-start__site__width: 50rem;
+  
+
 
   /* this value can be set as constant here below */
-  --clean-start__site__width__predefined: 50rem;
+  --clean-start__tag_body__width__predefined: 100%;
+  --clean-start__tag_body__max_width__predefined: 100%;
+  --clean-start__tag_body__min_width__predefined: 100%;
+
+   
+  /* THIS VALUE IS SET IN THE STYLES RULES. 
+    IN THE @MEDIA QUERIES TO THIS VARIABLE IS SET THE VALUE OF THE ACCORDING RESPONSIVE WIDTH VARIABLE. 
+  */
+
+  --clean-start__tag_body__width: 100%;
+  --clean-start__tag_body__max_width: 100%;
+  --clean-start__tag_body__min_width: 100%;
 
 
   
-  --clean-start__site__width__7xl_16k_horizontal: 220rem;
-  --clean-start__site__width__7xl_16k_vertical: 180rem;
 
-  --clean-start__site__width__6xl_8k_horizontal: 200rem;
-  --clean-start__site__width__6xl_8k_vertical: 160rem;
+  --clean-start__tag_body__width__7xl_16k_horizontal: 100%;
+  --clean-start__tag_body__max_width__7xl_16k_horizontal: 100%;
+  --clean-start__tag_body__min_width__7xl_16k_horizontal: 100%;
 
-  --clean-start__site__width__5xl_4k_ultra_hd_horizontal: 180rem;
-  --clean-start__site__width__5xl_4k_ultra_hd_vertical: 140rem;
+  --clean-start__tag_body__width__7xl_16k_vertical: 100%;
+  --clean-start__tag_body__max_width__7xl_16k_vertical: 100%;
+  --clean-start__tag_body__min_width__7xl_16k_vertical: 100%;
 
-  --clean-start__site__width__4xl_qhd_horizontal: 160rem;
-  --clean-start__site__width__4xl_qhd_vertical: 120rem;
+  --clean-start__tag_body__width__6xl_8k_horizontal: 100%;
+  --clean-start__tag_body__max_width__6xl_8k_horizontal: 100%;
+  --clean-start__tag_body__min_width__6xl_8k_horizontal: 100%;
 
-  --clean-start__site__width__3xl_hd_horizontal: 120rem;
-  --clean-start__site__width__3xl_hd_vertical: 100rem;
+  --clean-start__tag_body__width__6xl_8k_vertical: 100%;
+  --clean-start__tag_body__max_width__6xl_8k_vertical: 100%;
+  --clean-start__tag_body__min_width__6xl_8k_vertical: 100%;
 
-  --clean-start__site__width__xxl_ultra_wide_horizontal: 90rem;
-  --clean-start__site__width__xxl_ultra_wide_vertical: 80rem;
+  --clean-start__tag_body__width__5xl_4k_ultra_hd_horizontal: 100%;
+  --clean-start__tag_body__max_width__5xl_4k_ultra_hd_horizontal: 100%;
+  --clean-start__tag_body__min_width__5xl_4k_ultra_hd_horizontal: 100%;
 
-  --clean-start__site__width__xl_desktop_horizontal: 80rem;
-  --clean-start__site__width__xl_desktop_vertical: 60rem;
+  --clean-start__tag_body__width__5xl_4k_ultra_hd_vertical: 100%;
+  --clean-start__tag_body__max_width__5xl_4k_ultra_hd_vertical: 100%;
+  --clean-start__tag_body__min_width__5xl_4k_ultra_hd_vertical: 100%;
 
-  --clean-start__site__width__lg_laptop_horizontal: 60rem;
-  --clean-start__site__width__lg_laptop_vertical: 46rem;
+  --clean-start__tag_body__width__4xl_qhd_horizontal: 100%;
+  --clean-start__tag_body__max_width__4xl_qhd_horizontal: 100%;
+  --clean-start__tag_body__min_width__4xl_qhd_horizontal: 100%;
 
-  --clean-start__site__width__md_tablet_landscape: 50rem;
-  --clean-start__site__width__md_tablet_portrait: 100%;
+  --clean-start__tag_body__width__4xl_qhd_vertical: 100%;
+  --clean-start__tag_body__max_width__4xl_qhd_vertical: 100%;
+  --clean-start__tag_body__min_width__4xl_qhd_vertical: 100%;
 
-  --clean-start__site__width__sm_mobile_landscape: 40rem;
-  --clean-start__site__width__sm_mobile_portrait: 100%;
+  --clean-start__tag_body__width__3xl_hd_horizontal: 100%;
+  --clean-start__tag_body__max_width__3xl_hd_horizontal: 100%;
+  --clean-start__tag_body__min_width__3xl_hd_horizontal: 100%;
 
-  --clean-start__site__width__s_mobile_landscape: 100%;
-  --clean-start__site__width__s_mobile_portrait: 100%;
+  --clean-start__tag_body__width__3xl_hd_vertical: 100%;
+  --clean-start__tag_body__max_width__3xl_hd_vertical: 100%;
+  --clean-start__tag_body__min_width__3xl_hd_vertical: 100%;
 
-  --clean-start__site__width__xs_mobile_landscape: 100%;
-  --clean-start__site__width__xs_mobile_portrait: 100%;
+  --clean-start__tag_body__width__xxl_ultra_wide_horizontal: 100%;
+  --clean-start__tag_body__max_width__xxl_ultra_wide_horizontal: 100%;
+  --clean-start__tag_body__min_width__xxl_ultra_wide_horizontal: 100%;
+
+  --clean-start__tag_body__width__xxl_ultra_wide_vertical: 100%;
+  --clean-start__tag_body__max_width__xxl_ultra_wide_vertical: 100%;
+  --clean-start__tag_body__min_width__xxl_ultra_wide_vertical: 100%;
+
+  --clean-start__tag_body__width__xl_desktop_horizontal: 100%;
+  --clean-start__tag_body__max_width__xl_desktop_horizontal: 100%;
+  --clean-start__tag_body__min_width__xl_desktop_horizontal: 100%;
+
+  --clean-start__tag_body__width__xl_desktop_vertical: 100%;
+  --clean-start__tag_body__max_width__xl_desktop_vertical: 100%;
+  --clean-start__tag_body__min_width__xl_desktop_vertical: 100%;
+
+  --clean-start__tag_body__width__lg_laptop_horizontal: 100%;
+  --clean-start__tag_body__max_width__lg_laptop_horizontal: 100%;
+  --clean-start__tag_body__min_width__lg_laptop_horizontal: 100%;
+
+  --clean-start__tag_body__width__lg_laptop_vertical: 100%;
+  --clean-start__tag_body__max_width__lg_laptop_vertical: 100%;
+  --clean-start__tag_body__min_width__lg_laptop_vertical: 100%;
+
+  --clean-start__tag_body__width__md_tablet_landscape: 100%;
+  --clean-start__tag_body__max_width__md_tablet_landscape: 100%;
+  --clean-start__tag_body__min_width__md_tablet_landscape: 100%;
+
+  --clean-start__tag_body__width__md_tablet_portrait: 100%;
+  --clean-start__tag_body__max_width__md_tablet_portrait: 100%;
+  --clean-start__tag_body__min_width__md_tablet_portrait: 100%;
+
+  --clean-start__tag_body__width__sm_mobile_landscape: 100%;
+  --clean-start__tag_body__max_width__sm_mobile_landscape: 100%;
+  --clean-start__tag_body__min_width__sm_mobile_landscape: 100%;
+
+  --clean-start__tag_body__width__sm_mobile_portrait: 100%;
+  --clean-start__tag_body__max_width__sm_mobile_portrait: 100%;
+  --clean-start__tag_body__min_width__sm_mobile_portrait: 100%;
+
+  --clean-start__tag_body__width__s_mobile_landscape: 100%;
+  --clean-start__tag_body__max_width__s_mobile_landscape: 100%;
+  --clean-start__tag_body__min_width__s_mobile_landscape: 100%;
+
+  --clean-start__tag_body__width__s_mobile_portrait: 100%;
+  --clean-start__tag_body__max_width__s_mobile_portrait: 100%;
+  --clean-start__tag_body__min_width__s_mobile_portrait: 100%;
+
+  --clean-start__tag_body__width__xs_mobile_landscape: 100%;
+  --clean-start__tag_body__max_width__xs_mobile_landscape: 100%;
+  --clean-start__tag_body__min_width__xs_mobile_landscape: 100%;
+
+  --clean-start__tag_body__width__xs_mobile_portrait: 100%;
+  --clean-start__tag_body__max_width__xs_mobile_portrait: 100%;
+  --clean-start__tag_body__min_width__xs_mobile_portrait: 100%;
+
+
+
+
+
+  /* SITE RESPONSIVE ( tag main: html > body > main ) */
+
+  --clean-start__site__height: fit-content;
+  --clean-start__site__height_max: fit-content;
+  --clean-start__site__height_min: 100vh;
+
+
+  /* this value can be set as constant here below */
+  --clean-start__site__width__predefined: 90%;
+  --clean-start__site__max_width__predefined: 90%;
+  --clean-start__site__min_width__predefined: 90%;
+
+
+  /* THIS VALUE IS SET IN THE STYLES RULES. 
+      IN THE @MEDIA QUERIES TO THIS VARIABLE IS SET THE VALUE OF THE ACCORDING RESPONSIVE WIDTH VARIABLE. 
+  */
+  --clean-start__site__width: var(--clean-start__site__width__predefined);
+  --clean-start__site__max_width: var(--clean-start__site__max_width__predefined);
+  --clean-start__site__min_width: var(--clean-start__site__min_width__predefined);
+
+
+
+  
+  --clean-start__site__width__7xl_16k_horizontal: var(--clean-start__site__width__predefined);
+  --clean-start__site__max_width__7xl_16k_horizontal: var(--clean-start__site__max_width__predefined);
+  --clean-start__site__min_width__7xl_16k_horizontal: var(--clean-start__site__min_width__predefined);
+
+  --clean-start__site__width__7xl_16k_vertical: var(--clean-start__site__width__predefined);
+  --clean-start__site__max_width__7xl_16k_vertical: var(--clean-start__site__max_width__predefined);
+  --clean-start__site__min_width__7xl_16k_vertical: var(--clean-start__site__min_width__predefined);
+
+  --clean-start__site__width__6xl_8k_horizontal: var(--clean-start__site__width__predefined);
+  --clean-start__site__max_width__6xl_8k_horizontal: var(--clean-start__site__max_width__predefined);
+  --clean-start__site__min_width__6xl_8k_horizontal: var(--clean-start__site__min_width__predefined);
+
+  --clean-start__site__width__6xl_8k_vertical: var(--clean-start__site__width__predefined);
+  --clean-start__site__max_width__6xl_8k_vertical: var(--clean-start__site__max_width__predefined);
+  --clean-start__site__min_width__6xl_8k_vertical: var(--clean-start__site__min_width__predefined);
+
+  --clean-start__site__width__5xl_4k_ultra_hd_horizontal: var(--clean-start__site__width__predefined);
+  --clean-start__site__max_width__5xl_4k_ultra_hd_horizontal: var(--clean-start__site__max_width__predefined);
+  --clean-start__site__min_width__5xl_4k_ultra_hd_horizontal: var(--clean-start__site__min_width__predefined);
+
+  --clean-start__site__width__5xl_4k_ultra_hd_vertical: var(--clean-start__site__width__predefined);
+  --clean-start__site__max_width__5xl_4k_ultra_hd_vertical: var(--clean-start__site__max_width__predefined);
+  --clean-start__site__min_width__5xl_4k_ultra_hd_vertical: var(--clean-start__site__min_width__predefined);
+
+  --clean-start__site__width__4xl_qhd_horizontal: var(--clean-start__site__width__predefined);
+  --clean-start__site__max_width__4xl_qhd_horizontal: var(--clean-start__site__max_width__predefined);
+  --clean-start__site__min_width__4xl_qhd_horizontal: var(--clean-start__site__min_width__predefined);
+
+  --clean-start__site__width__4xl_qhd_vertical: var(--clean-start__site__width__predefined);
+  --clean-start__site__max_width__4xl_qhd_vertical: var(--clean-start__site__max_width__predefined);
+  --clean-start__site__min_width__4xl_qhd_vertical: var(--clean-start__site__min_width__predefined);
+
+  --clean-start__site__width__3xl_hd_horizontal: var(--clean-start__site__width__predefined);
+  --clean-start__site__max_width__3xl_hd_horizontal: var(--clean-start__site__max_width__predefined);
+  --clean-start__site__min_width__3xl_hd_horizontal: var(--clean-start__site__min_width__predefined);
+
+  --clean-start__site__width__3xl_hd_vertical: var(--clean-start__site__width__predefined);
+  --clean-start__site__max_width__3xl_hd_vertical: var(--clean-start__site__max_width__predefined);
+  --clean-start__site__min_width__3xl_hd_vertical: var(--clean-start__site__min_width__predefined);
+
+  --clean-start__site__width__xxl_ultra_wide_horizontal: var(--clean-start__site__width__predefined);
+  --clean-start__site__max_width__xxl_ultra_wide_horizontal: var(--clean-start__site__max_width__predefined);
+  --clean-start__site__min_width__xxl_ultra_wide_horizontal: var(--clean-start__site__min_width__predefined);
+
+  --clean-start__site__width__xxl_ultra_wide_vertical: var(--clean-start__site__width__predefined);
+  --clean-start__site__max_width__xxl_ultra_wide_vertical: var(--clean-start__site__max_width__predefined);
+  --clean-start__site__min_width__xxl_ultra_wide_vertical: var(--clean-start__site__min_width__predefined);
+
+  --clean-start__site__width__xl_desktop_horizontal: var(--clean-start__site__width__predefined);
+  --clean-start__site__max_width__xl_desktop_horizontal: var(--clean-start__site__max_width__predefined);
+  --clean-start__site__min_width__xl_desktop_horizontal: var(--clean-start__site__min_width__predefined);
+
+  --clean-start__site__width__xl_desktop_vertical: var(--clean-start__site__width__predefined);
+  --clean-start__site__max_width__xl_desktop_vertical: var(--clean-start__site__max_width__predefined);
+  --clean-start__site__min_width__xl_desktop_vertical: var(--clean-start__site__min_width__predefined);
+
+  --clean-start__site__width__lg_laptop_horizontal: var(--clean-start__site__width__predefined);
+  --clean-start__site__max_width__lg_laptop_horizontal: var(--clean-start__site__max_width__predefined);
+  --clean-start__site__min_width__lg_laptop_horizontal: var(--clean-start__site__min_width__predefined);
+
+  --clean-start__site__width__lg_laptop_vertical: var(--clean-start__site__width__predefined);
+  --clean-start__site__max_width__lg_laptop_vertical: var(--clean-start__site__max_width__predefined);
+  --clean-start__site__min_width__lg_laptop_vertical: var(--clean-start__site__min_width__predefined);
+
+  --clean-start__site__width__md_tablet_landscape: var(--clean-start__site__width__predefined);
+  --clean-start__site__max_width__md_tablet_landscape: var(--clean-start__site__max_width__predefined);
+  --clean-start__site__min_width__md_tablet_landscape: var(--clean-start__site__min_width__predefined);
+
+  --clean-start__site__width__md_tablet_portrait: var(--clean-start__site__width__predefined);
+  --clean-start__site__max_width__md_tablet_portrait: var(--clean-start__site__max_width__predefined);
+  --clean-start__site__min_width__md_tablet_portrait: var(--clean-start__site__min_width__predefined);
+
+  --clean-start__site__width__sm_mobile_landscape: var(--clean-start__site__width__predefined);
+  --clean-start__site__max_width__sm_mobile_landscape: var(--clean-start__site__max_width__predefined);
+  --clean-start__site__min_width__sm_mobile_landscape: var(--clean-start__site__min_width__predefined);
+
+  --clean-start__site__width__sm_mobile_portrait: var(--clean-start__site__width__predefined);
+  --clean-start__site__max_width__sm_mobile_portrait: var(--clean-start__site__max_width__predefined);
+  --clean-start__site__min_width__sm_mobile_portrait: var(--clean-start__site__min_width__predefined);
+
+  --clean-start__site__width__s_mobile_landscape: var(--clean-start__site__width__predefined);
+  --clean-start__site__max_width__s_mobile_landscape: var(--clean-start__site__max_width__predefined);
+  --clean-start__site__min_width__s_mobile_landscape: var(--clean-start__site__min_width__predefined);
+
+  --clean-start__site__width__s_mobile_portrait: var(--clean-start__site__width__predefined);
+  --clean-start__site__max_width__s_mobile_portrait: var(--clean-start__site__max_width__predefined);
+  --clean-start__site__min_width__s_mobile_portrait: var(--clean-start__site__min_width__predefined);
+
+  --clean-start__site__width__xs_mobile_landscape: var(--clean-start__site__width__predefined);
+  --clean-start__site__max_width__xs_mobile_landscape: var(--clean-start__site__max_width__predefined);
+  --clean-start__site__min_width__xs_mobile_landscape: var(--clean-start__site__min_width__predefined);
+
+  --clean-start__site__width__xs_mobile_portrait: var(--clean-start__site__width__predefined);
+  --clean-start__site__max_width__xs_mobile_portrait: var(--clean-start__site__max_width__predefined);
+  --clean-start__site__min_width__xs_mobile_portrait: var(--clean-start__site__min_width__predefined);
 
   /* END    SITE WIDTH RESPONSIVE */
 
@@ -252,25 +454,50 @@
   --clean-start__site__overflow_y: hidden;
 
 
-  --clean-start__site__overflow_x__s_mobile: auto;
-  --clean-start__site__overflow_x__md_tablet: auto;
-  --clean-start__site__overflow_x__lg_laptop: hidden;
-  --clean-start__site__overflow_x__xl_desktop: hidden;
-  --clean-start__site__overflow_x__xxl_ultra: hidden;
-  --clean-start__site__overflow_x__3xl_hd: hidden;
-  --clean-start__site__overflow_x__4xl_qhd: hidden;
-  --clean-start__site__overflow_x__5xl_4k_ultra_hd: hidden;
-  --clean-start__site__overflow_x__6xl_8k: hidden;
-  --clean-start__site__overflow_x__7xl_16k: hidden;
+  --clean-start__site__overflow_x__xs_mobile_portrait: auto;
+  --clean-start__site__overflow_x__xs_mobile_landscape: auto;
+
+  --clean-start__site__overflow_x__s_mobile_portrait: auto;
+  --clean-start__site__overflow_x__s_mobile_landscape: auto;
+
+  --clean-start__site__overflow_x__sm_mobile_portrait: auto;
+  --clean-start__site__overflow_x__sm_mobile_landscape: auto;
+
+  --clean-start__site__overflow_x__md_tablet_portrait: auto;
+  --clean-start__site__overflow_x__md_tablet_landscape: auto;
+
+  --clean-start__site__overflow_x__lg_laptop_vertical: hidden;
+  --clean-start__site__overflow_x__lg_laptop_horizontal: hidden;
+
+  --clean-start__site__overflow_x__xl_desktop_vertical: hidden;
+  --clean-start__site__overflow_x__xl_desktop_horizontal: hidden;
+
+  --clean-start__site__overflow_x__xxl_ultra_vertical: hidden;
+  --clean-start__site__overflow_x__xxl_ultra_horizontal: hidden;
+
+  --clean-start__site__overflow_x__3xl_hd_vertical: hidden;
+  --clean-start__site__overflow_x__3xl_hd_horizontal: hidden;
+
+  --clean-start__site__overflow_x__4xl_qhd_vertical: hidden;
+  --clean-start__site__overflow_x__4xl_qhd_horizontal: hidden;
+
+  --clean-start__site__overflow_x__5xl_4k_ultra_hd_vertical: hidden;
+  --clean-start__site__overflow_x__5xl_4k_ultra_hd_horizontal: hidden;
+
+  --clean-start__site__overflow_x__6xl_8k_vertical: hidden;
+  --clean-start__site__overflow_x__6xl_8k_horizontal: hidden;
+
+  --clean-start__site__overflow_x__7xl_16k_vertical: hidden;
+  --clean-start__site__overflow_x__7xl_16k_horizontal: hidden;
   
-  --clean-start__site__overflow_x: var(--clean-start__site__overflow_x__s_mobile);
+  --clean-start__site__overflow_x: var(--clean-start__site__overflow_x__s_mobile_portrait);
 
   /* END    SITE OVERFLOW RESPONSIVE */
   
 
 
 
-  /* SITES'S WIDTH AND HIGHT */
+  /* SITES'S PADDING */
 
   /* 
     <body><main> html tag css rule "margin" 
@@ -295,23 +522,7 @@
 
   --clean-start__site__padding: var(--clean-start__site__padding-top) var(--clean-start__site__padding-right) var(--clean-start__site__padding-bottom) var(--clean-start__site__padding-left);
 
-
-
-  /* the predefined styles to keep the html site from the start nice seeing */
-  --clean-start__tag_body__height: auto;
-  --clean-start__tag_body__height_max: unset;
-  --clean-start__tag_body__height_min: 100vh;
-
-  --clean-start__tag_body__width: 100%;
-  --clean-start__tag_body__overflow-x: hidden;
-
-
-
-  --clean-start__site__height: fit-content;
-  --clean-start__site__height_max: fit-content;
-  --clean-start__site__height_min: 100vh;
-
-  /* END    SITES'S WIDTH AND HIGHT */
+  /* END    SITES'S PADDING */
   
 }
 
@@ -327,11 +538,17 @@
 */
 .workspace.browser-width body {
   --clean-start__tag_body__width: 100%;
-  --clean-start__site__overflow_x: hidden;
+  --clean-start__tag_body__max_width: 100%;
+  --clean-start__tag_body__min_width: 100%;
+
+  --clean-start__tag_body__overflow-x: hidden;
 }
 
 .workspace.browser-width main {
   --clean-start__site__width: 100%;
+  --clean-start__site__max_width: 100%;
+  --clean-start__site__min_width: 100%;
+
   --clean-start__site__overflow_x: hidden;
 }
 
@@ -388,13 +605,13 @@
 
   overflow-y: visible;
 
-  padding: 4rem 0 0 0;
+  padding: 2rem 0;
 }
 
 .workspace.small main {
-  --clean-start__site__height: max-content;
-  --clean-start__site__height_max: 100%;
-  --clean-start__site__height_min: max-content;
+  --clean-start__site__height: min-content;
+  --clean-start__site__height_max: min-content;
+  --clean-start__site__height_min: min-content;
 
   --clean-start__site__overflow_y: hidden;
 }

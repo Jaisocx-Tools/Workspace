@@ -40,6 +40,12 @@ The relevant Readme file in the example package for this theme
 [code/ts/www/templates/ResponsiveAndValidForWebpackWhenNpmInstall/README_WEBPACK.md](code/ts/www/templates/ResponsiveAndValidForWebpackWhenNpmInstall/README_WEBPACK.md)
 
 
+## To Build with Webpack a bundle.js with installed packages.
+
+The relevant Readme file in the example package for this theme
+
+[https://github.com/Jaisocx-Tools/Workspace/blob/main/code/ts/www/templates/BuiltWithWebpackYarnInstalledPackage/README.md](https://github.com/Jaisocx-Tools/Workspace/blob/main/code/ts/www/templates/BuiltWithWebpackYarnInstalledPackage/README.md)
+
 
 
 

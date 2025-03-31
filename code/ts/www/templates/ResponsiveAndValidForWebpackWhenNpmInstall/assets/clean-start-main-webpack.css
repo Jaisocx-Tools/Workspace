@@ -1,10 +1,6 @@
 /* css variables */
 @import url("@jaisocx-css-clean-start-assets/themes/theme-base/clean-start-theme-base.css");
 
-/* two example themes  */
-@import "@jaisocx-css-clean-start-assets/themes/theme-lightmode/clean-start-theme-lightmode-webpack.css";
-@import "@jaisocx-css-clean-start-assets/themes/theme-darkmode/clean-start-theme-darkmode-webpack.css";
-
 /* responsive */
 @import url("@jaisocx-css-clean-start-assets/responsive/clean-start--responsive-imports-main-webpack.css");
 

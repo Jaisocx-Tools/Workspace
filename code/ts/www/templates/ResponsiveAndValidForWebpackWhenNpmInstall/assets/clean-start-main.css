@@ -1,6 +1,5 @@
 html.workspace {
   font-size: var(--clean-start__rem);
-  top: 0;
 }
 
 
@@ -107,6 +106,16 @@ html.workspace script {
 }
 
 
+html.workspace {
+  top: 0;
+
+  width: var(--clean-start__tag_body__width);
+  max-width: var(--clean-start__tag_body__max_width);
+  min-width: var(--clean-start__tag_body__min_width);
+
+  overflow-x: hidden;
+}
+
 .workspace body {
   background: var(--clean-start__tag_body__background);
 
@@ -116,8 +125,8 @@ html.workspace script {
   min-height: var(--clean-start__tag_body__height_min);
 
   width:     var(--clean-start__tag_body__width);
-  max-width: var(--clean-start__tag_body__width);
-  min-width: var(--clean-start__tag_body__width);
+  max-width: var(--clean-start__tag_body__max_width);
+  min-width: var(--clean-start__tag_body__min_width);
 
   overflow-y: visible;
   overflow-x: var(--clean-start__tag_body__overflow-x);
@@ -134,8 +143,8 @@ html.workspace script {
   min-height: var(--clean-start__site__height_min);
 
   width:     var(--clean-start__site__width);
-  max-width: var(--clean-start__site__width);
-  min-width: var(--clean-start__site__width);
+  max-width: var(--clean-start__site__max_width);
+  min-width: var(--clean-start__site__min_width);
 
   overflow: var(--clean-start__site__overflow_x) var(--clean-start__site__overflow_y);
 }
@@ -193,16 +202,16 @@ html.workspace script {
 .workspace h6,
 .workspace header,
 .workspace hr,
-.workspace li,
+/* .workspace li, */
 .workspace main,
 .workspace nav,
 .workspace noscript,
-.workspace ol,
+/* .workspace ol, */
 .workspace output,
 .workspace p,
 .workspace pre,
 .workspace section,
-.workspace ul,
+/* .workspace ul, */
 .workspace video {
   display: var(--clean-start__block-tags__display, block);
 }
@@ -279,8 +288,6 @@ html.workspace script {
 
 
 
-
-
 /* UL and OL tags reset */
 .workspace.ul-reset ul, 
 .workspace.ul-reset ol, 
@@ -294,7 +301,6 @@ html.workspace script {
 .workspace ol.ul-reset li {
 
   list-style-type: none;
-  list-style-position: inside;
 
   position: var(--clean-start__position);
   display: var(--clean-start__inline-tags__display, inline-block);
