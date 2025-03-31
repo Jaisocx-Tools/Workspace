@@ -2,6 +2,7 @@
   "dependencies": {
     "@jaisocx/css-clean-start": "^1.3.x",
     "@jaisocx/css-code-snippet": "^1.2.4",
+    "@jaisocx/example-built-with-webpack": "^1.0.0",
     "@jaisocx/tooltip": "^1.2.3",
     "@jaisocx/tree": "^1.5.36"
   }

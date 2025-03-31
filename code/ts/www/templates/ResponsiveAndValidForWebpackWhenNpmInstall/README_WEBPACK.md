@@ -72,7 +72,7 @@ Also, when You install the package via `yarn install "PackageName"` or `npm inst
 
 path: `${PackagRoot}/webpack.config.mjs`
 
-FFor example, in Workspace when importing `@jaisocx/tree` in `ExampleTree` package: `code/ts/www/examples/ExampleTree/webpack.config.mjs`
+For example, in Workspace when importing `@jaisocx/tree` in `ExampleTree` package: `code/ts/www/examples/ExampleTree/webpack.config.mjs`
 
 the webpack aliases You can import for the webpack here:
 

@@ -43,6 +43,25 @@
       ]
     },
     {
+      "path": "templates/BuiltWithWebpackYarnInstalledPackage",
+      "name": "example-built-with-webpack",
+      "build": false,
+      "build-simple-enable": true,
+      "dependencies": [
+        {
+          "name": "@jaisocx/css-clean-start",
+          "path": "CssTools/CssCleanStart"
+        },
+        {
+          "name": "@jaisocx/tooltip",
+          "path": "packages/Tooltip"
+        }
+      ],
+      "build-files": [
+        "index.js"
+      ]
+    },
+    {
       "path": "CssTools/CssCodeSnippet",
       "name": "css-code-snippet",
       "build": false,
@@ -55,7 +74,7 @@
     {
       "path": "CssTools/CssTable",
       "name": "css-table",
-      "build": true,
+      "build": false,
       "build-simple-enable": true,
       "dependencies": [],
       "build-files": [
@@ -190,7 +209,7 @@
     {
       "path": "packages/Tooltip",
       "name": "tooltip",
-      "build": false,
+      "build": true,
       "build-simple-enable": true,
       "dependencies": [
         {
@@ -208,7 +227,11 @@
         "TooltipLib.js",
         "TooltipMainTemplateData.js",
         "TooltipShownSettings.js",
-        "Types.js"
+        "Types.js",
+        "index.js",
+        "webpackAliases.js",
+        "webpack.aliases.mjs",
+        "webpack.aliases.cjs"
       ]
     },
     {
