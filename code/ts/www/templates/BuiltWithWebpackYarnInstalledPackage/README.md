@@ -2,9 +2,7 @@
 
 ### Watch site in action
 
-[https://workspace.brightday.email/templates/BuiltWithWebpackYarnInstalledPackage/BuiltWithWebpackYarnInstalledPackage.html](https://workspace.brightday.email/templates/BuiltWithWebpackYarnInstalledPackage/BuiltWithWebpackYarnInstalledPackage.html)
-
-
+[templates/BuiltWithWebpackYarnInstalledPackage](https://workspace.brightday.email/templates/BuiltWithWebpackYarnInstalledPackage/BuiltWithWebpackYarnInstalledPackage.html)
 
 
 ## BUILDING WITH WEBPACK 
