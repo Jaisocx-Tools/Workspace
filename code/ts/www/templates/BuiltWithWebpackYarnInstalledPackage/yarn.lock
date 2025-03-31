@@ -38,7 +38,7 @@
   optionalDependencies:
     "@jaisocx/event-emitter" "^1.4.x"
 
-"@jaisocx/tooltip@^1.2.4":
+"@jaisocx/tooltip@^1.2.x":
   version "1.2.4"
   resolved "https://registry.yarnpkg.com/@jaisocx/tooltip/-/tooltip-1.2.4.tgz#f6f32b8b5a32acaf606bfea8e6f4e7923292449b"
   integrity sha512-mOOVQ3y5eYeFXS+EMBj76MVq5JMTn9kWQoIlbKQYLaBYQzyjcXLwhoKKOyYJyGkvU0PPgGOKfCGlPn6HHuMWEg==

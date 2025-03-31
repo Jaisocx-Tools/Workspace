@@ -19,7 +19,7 @@
     "webpack": "webpack"
   },
   "dependencies": {
-    "@jaisocx/css-clean-start": "^1.3.x",
+    "@jaisocx/css-clean-start": "^1.3.22",
     "@jaisocx/tooltip": "^1.2.x"
   },
   "devDependencies": {

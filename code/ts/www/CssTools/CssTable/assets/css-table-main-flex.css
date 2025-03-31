@@ -93,13 +93,14 @@
     max-width: var(--workspace-table-thin--cell--column-label--width);
     min-width: var(--workspace-table-thin--cell--column-label--width);
 
-    background: var(--workspace-table-thin--cell--column-label--background);
-
     font-family: var(--workspace-table--column-label--font-family);
     font-weight: var(--workspace-table-thin--cell--column-label--font-weight);
     font-size: var(--workspace-table-thin--cell--column-label--font-size);
     line-height: var(--workspace-table-thin--cell--column-label--line-height);
     letter-spacing: var(--workspace-table-thin--cell--column-label--letter-spacing);
+    color: var(--workspace-table--cell--text-color);
+
+    background: var(--workspace-table-thin--cell--column-label--background);
   }
 
   .workspace-css-table .row .cell .cell-value {
@@ -109,6 +110,9 @@
     font-size: var(--workspace-table-thin--cell-value--font-size);
     line-height: var(--workspace-table-thin--cell-value--line-height);
     letter-spacing: var(--workspace-table-thin--cell-value--letter-spacing);
+    color: var(--workspace-table--cell--text-color);
+
+    background: var(--workspace-table-thin--cell-value--background);
     
   }
   
@@ -135,7 +139,6 @@
 
   .workspace-css-table .row.desktop-columns-labels-holder {
     display: flex;
-    background: var(--workspace-table-bright--cell--column-label--background);
   }
 
   .workspace-css-table .row.desktop-columns-labels-holder .cell .column-label {
@@ -148,6 +151,8 @@
     font-size: var(--workspace-table-bright--cell--column-label--font-size);
     line-height: var(--workspace-table-bright--cell--column-label--line-height);
     letter-spacing: var(--workspace-table-bright--cell--column-label--letter-spacing);
+
+    background: var(--workspace-table-bright--cell--column-label--background);
   }
 
   .workspace-css-table .row .cell:first-of-type {
@@ -177,6 +182,8 @@
     font-size: var(--workspace-table-bright--cell-value--font-size);
     line-height: var(--workspace-table-bright--cell-value--line-height);
     letter-spacing: var(--workspace-table-bright--cell-value--letter-spacing);
+
+    background: var(--workspace-table-thin--cell-value--background);
   }
 
 }

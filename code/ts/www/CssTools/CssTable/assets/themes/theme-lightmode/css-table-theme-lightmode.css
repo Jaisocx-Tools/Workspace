@@ -9,6 +9,7 @@
   --workspace-table--cell--text-color: #42414d;
 
   --workspace-table--column-label--background: whitesmoke;
+  /* --workspace-table-thin--cell--column-label--background */
   --workspace-table--cell-value--background: white;
 
   --workspace-table-thin--record--border-width: 1rem;

@@ -1,5 +1,5 @@
 /* all variables are set in the theme-base .css file */
-.workspace-css-table {
+.workspace-css-table-holder {
 
   --workspace-table--font-family: "Arial";
   --workspace-table--column-label--font-family: var(--workspace-table--font-family);
