@@ -36,31 +36,15 @@
   flex-direction:          row;
   align-items:             stretch;
   justify-content:         stretch;
+  height:                  auto;
+  overflow-x:              hidden;
+  overflow-y:              visible;
 
   /* when a word ends, it breaks, when too long word oer one line full width, it breaks too */
   word-break: break-word; 
-
   font-variant:            no-common-ligatures tabular-nums;
 
-  
-  overflow-x:              hidden;
-  overflow-y:              visible;
-  height:                  auto;
-
   border-left:             var(--workspace-table--cell--border);
-
-  color:                   var(--workspace-table--cell--text-color);
-
-  background-color:        var(--workspace-table--cell--background-color);
-
-  background-image:        var(--workspace-table--cell--background-image);
-  background-position:     var(--workspace-table--cell--background-position);
-  background-size:         var(--workspace-table--cell--background-size);
-  background-repeat:       var(--workspace-table--cell--background-repeat);
-  background-origin:       var(--workspace-table--cell--background-origin); 
-  background-clip:         var(--workspace-table--cell--background-clip);
-  background-attachment:   var(--workspace-table--cell--background-attachment);
-
 }
 
 
