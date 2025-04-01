@@ -1,0 +1,8 @@
+
+/* all variables */
+@import url("themes/theme-base/css-table-theme-base.css");
+@import url("responsive/css-table--responsive-imports-relative.css");
+@import url("presets/css-table-presets.css");
+
+/* main .css file */
+@import url("css-table-main.css");

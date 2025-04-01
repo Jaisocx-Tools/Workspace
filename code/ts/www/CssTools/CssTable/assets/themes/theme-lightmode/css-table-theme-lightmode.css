@@ -2,19 +2,38 @@
 .theme-lightmode .workspace-css-table-holder *,
 .theme-lightmode.workspace-css-table-holder * {
 
+  --workspace-table--cell--text-color: grey;
+  --workspace-table--cell--background: whitesmoke;
+
+  /* --workspace-table--cell--column-label--background: whitesmoke; */
+  /* --workspace-table--cell--cell-value--background: white; */
+
+
+  /* mobile thin layout */
+  /* --workspace-table-thin--cell--column-label--text-color: white; */
+  /* --workspace-table-thin--cell--column-label--background: lightpink; */
+
+  /* --workspace-table-thin--cell--cell-value--text-color: #bb2222; */
+  /* --workspace-table-thin--cell--cell-value--background: whitesmoke; */
+
+
+  /* laptop bright layout */
+  /* --workspace-table-bright--cell--column-label--text-color: whitesmoke; */
+  /* --workspace-table-bright--cell--column-label--background: steelblue; */
+
+  /* --workspace-table-thin--cell--cell-value--text-color: #bb2222; */
+  /* --workspace-table-thin--cell--cell-value--background: whitesmoke; */
+
+
+
   --workspace-table--font-family: "Arial";
   --workspace-table--column-label--font-family: var(--workspace-table--font-family);
-  --workspace-table--cell-value--font-family: var(--workspace-table--font-family);
+  --workspace-table--cell--cell-value--font-family: var(--workspace-table--font-family);
 
-  --workspace-table--cell--text-color: #42414d;
-
-  --workspace-table--column-label--background: whitesmoke;
-  /* --workspace-table-thin--cell--column-label--background */
-  --workspace-table--cell-value--background: white;
 
   --workspace-table-thin--record--border-width: 1rem;
   --workspace-table--border-color: grey;
-  --workspace-table--record--border: var(--workspace-table-thin--record--border-width) var(--workspace-table--border-style) var(--workspace-table--border-color);
+  --workspace-table--row--border: var(--workspace-table-thin--record--border-width) var(--workspace-table--border-style) var(--workspace-table--border-color);
 
 }
 

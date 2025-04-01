@@ -1,6 +1,6 @@
 /* sm mobile portrait */
 @media (min-width: 376px) and (max-width: 480px) and (orientation: portrait) {
-  .workspace main {
+  .workspace main .workspace-css-table-holder {
     /* --clean-start__site__background: yellow; */
 
     --clean-start__site__width: var(--clean-start__site__width__sm_mobile_portrait);
@@ -11,6 +11,10 @@
 
     --clean-start__line-height__mobile: var(--clean-start__line-height__mobile_portrait);
     --clean-start__line-height: var(--clean-start__line-height__mobile);
+
+
+    --workspace-table-thin--cell--column-label--font-size: 0.8rem;
+    --workspace-table-thin--cell--cell-value--font-size: 0.8rem;
   }
 
   /* verifying responsive rules applies */

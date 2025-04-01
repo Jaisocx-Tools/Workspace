@@ -19,6 +19,11 @@
   overflow-y:              var(--workspace-table--main--overflow-y);
   overflow-x:              var(--workspace-table--main--overflow-x);
 
+  display:                 flex;
+  flex-direction:          column;
+  align-items:             stretch;
+  justify-content:         flex-start;
+
   border-radius:           var(--workspace-table--main--border-radius);
   border:                  var(--workspace-table--main--border);
 }
@@ -28,25 +33,14 @@
   min-width:               100%;
   max-width:               unset;
 
+  display:                 flex;
   border-bottom:           var(--workspace-table--row--border);
 }
 
 .workspace-css-table-holder .cell {
-  display:                 flex;
-  flex-direction:          row;
-  align-items:             stretch;
-  justify-content:         stretch;
-
-  /* when a word ends, it breaks, when too long word oer one line full width, it breaks too */
-  word-break: break-word; 
-
-  font-variant:            no-common-ligatures tabular-nums;
-
-  
   overflow-x:              hidden;
   overflow-y:              visible;
   height:                  auto;
-
   border-left:             var(--workspace-table--cell--border);
 
   color:                   var(--workspace-table--cell--text-color);
@@ -61,6 +55,18 @@
   background-clip:         var(--workspace-table--cell--background-clip);
   background-attachment:   var(--workspace-table--cell--background-attachment);
 
+
+
+
+
+
+  
+  display: block;
+  
+  /* when a word ends, it breaks, when too long word oer one line full width, it breaks too */
+  word-break: break-word; 
+
+  font-variant:            no-common-ligatures tabular-nums;
 }
 
 
@@ -72,7 +78,7 @@
 
 
 .workspace-css-table-holder .column-label {
-  font-family:             var(--workspace-table--cell--column-label--font-family);
+  font-family:             var(--workspace-table--column-label--font-family);
   font-weight:             var(--workspace-table--cell--column-label--font-weight);
   font-size:               var(--workspace-table--cell--column-label--font-size);
   line-height:             var(--workspace-table--cell--column-label--line-height);
@@ -89,11 +95,6 @@
   background-origin:       var(--workspace-table--cell--column-label--background-origin);
   background-clip:         var(--workspace-table--cell--column-label--background-clip);
   background-attachment:   var(--workspace-table--cell--column-label--background-attachment); 
-
-  display:                 flex;
-  flex-direction:          row;
-  align-items:             stretch;
-  justify-content:         flex-start;
 }
 
 .workspace-css-table-holder .cell-value {
@@ -102,8 +103,8 @@
   line-break:              normal;
   word-break:              break-word;
 
-  font-size:               var(--workspace-table--cell--cell-value--font-size);
   font-weight:             var(--workspace-table--cell--cell-value--font-weight);
+  font-size:               var(--workspace-table--cell--cell-value--font-size);
   line-height:             var(--workspace-table--cell--cell-value--line-height);
   letter-spacing:          var(--workspace-table--cell--cell-value--letter-spacing);
 
@@ -118,11 +119,6 @@
   background-origin:       var(--workspace-table--cell--cell-value--background-origin);
   background-clip:         var(--workspace-table--cell--cell-value--background-clip);
   background-attachment:   var(--workspace-table--cell--cell-value--background-attachment); 
-
-  display:                 flex;
-  flex-direction:          row;
-  align-items:             stretch;
-  justify-content:         flex-start;
 }
 
 
@@ -130,15 +126,7 @@
 /* MEDIA RULE FOR SMALL DEVICESS, IN THIS TABLE LAYOUT FIELDS IN A RECORD ARE PLACED VERTICALLY, NOT IN ONE LINE. */
 @media only screen and (max-width: 768px) {
 
-  .workspace-css-table-holder .workspace-css-table {
-    display:                    flex;
-    flex-direction:             column;
-    align-items:                stretch;
-    justify-content:            flex-start; 
-  }
-
   .workspace-css-table-holder .row {
-    display:                    flex;
     flex-direction:             column;
 
     justify-content:            flex-start;
@@ -168,12 +156,11 @@
   }
 
   .workspace-css-table-holder.thin-styles-applied .column-label {
-    font-family:                var(--workspace-table-thin--cell--column-label--font-family);
-    font-size:                  var(--workspace-table-thin--cell--column-label--font-size);
+    font-family:                var(--workspace-table--column-label--font-family);
     font-weight:                var(--workspace-table-thin--cell--column-label--font-weight);
+    font-size:                  var(--workspace-table-thin--cell--column-label--font-size);
     line-height:                var(--workspace-table-thin--cell--column-label--line-height);
     letter-spacing:             var(--workspace-table-thin--cell--column-label--letter-spacing);
-    padding:                    var(--workspace-table-thin--cell--column-label--padding);
 
     color:                      var(--workspace-table-thin--cell--column-label--text-color);
 
@@ -186,6 +173,7 @@
     background-origin:          var(--workspace-table-thin--cell--column-label--background-origin);
     background-clip:            var(--workspace-table-thin--cell--column-label--background-clip);
     background-attachment:      var(--workspace-table-thin--cell--column-label--background-attachment); 
+    padding-left:               var(--workspace-table-thin--cell--column-label--padding-left);
   }
 
   .workspace-css-table-holder .cell-value {
@@ -193,12 +181,10 @@
   }
 
   .workspace-css-table-holder.thin-styles-applied .cell-value {
-    font-family:                var(--workspace-table-thin--cell--cell-value--font-family);
-    font-size:                  var(--workspace-table-thin--cell--cell-value--font-size);
     font-weight:                var(--workspace-table-thin--cell--cell-value--font-weight);
+    font-size:                  var(--workspace-table-thin--cell--cell-value--font-size);
     line-height:                var(--workspace-table-thin--cell--cell-value--line-height);
     letter-spacing:             var(--workspace-table-thin--cell--cell-value--letter-spacing);
-    padding:                    var(--workspace-table-thin--cell--cell-value--padding);
 
     color:                      var(--workspace-table-thin--cell--cell-value--text-color);
     
@@ -211,6 +197,7 @@
     background-origin:          var(--workspace-table-thin--cell--cell-value--background-origin);
     background-clip:            var(--workspace-table-thin--cell--cell-value--background-clip);
     background-attachment:      var(--workspace-table-thin--cell--cell-value--background-attachment); 
+    padding-left:               var(--workspace-table-thin--cell--cell-value--padding-left);
   }
   
 
@@ -229,22 +216,10 @@
 /* MEDIA RULE FOR LAPTOP, DESKTOP AND BIG SCREENS, IN THIS TABLE LAYOUT FIELDS IN A RECORD ARE PLACED IN ONE LINE. */
 @media only screen and (min-width: 769px) {
 
-  .workspace-css-table-holder .workspace-css-table {
-    display:                   grid;
-    grid-template-columns:     100%;
-  }
-
   .workspace-css-table-holder .row {
-    /* flex-direction:            row;
+    flex-direction:            row;
     align-items:               stretch;
-    justify-content:           flex-start; */
-
-    /* display:                 grid; */
-    display: grid;
-    /* grid-template-columns: auto; */
-    grid-template-columns:   12rem 8rem 28rem minmax( 20rem, 1fr );
-    gap: 0; /* Space between cells */
-
+    justify-content:           flex-start;
   }
 
   /* THE COLUMN LABEL, SHOWN IN MOBILE VIEW ON THE LEFT SIDE, here hides in the desktop view */
@@ -253,7 +228,7 @@
   }
 
   .workspace-css-table-holder .row.desktop-columns-labels-holder {
-    /* display:                   flex; */
+    display:                   flex;
   }
 
   .workspace-css-table-holder .cell:first-of-type {
@@ -277,12 +252,10 @@
   }
 
   .workspace-css-table-holder.bright-styles-applied .row.desktop-columns-labels-holder .column-label {
-    font-family:              var(--workspace-table-bright--cell--column-label--font-family);
-    font-size:                var(--workspace-table-bright--cell--column-label--font-size);
     font-weight:              var(--workspace-table-bright--cell--column-label--font-weight);
+    font-size:                var(--workspace-table-bright--cell--column-label--font-size);
     line-height:              var(--workspace-table-bright--cell--column-label--line-height);
     letter-spacing:           var(--workspace-table-bright--cell--column-label--letter-spacing);
-    padding:                  var(--workspace-table-bright--cell--column-label--padding);
 
     color:                    var(--workspace-table-bright--cell--column-label--text-color);
 
@@ -295,6 +268,7 @@
     background-origin:        var(--workspace-table-bright--cell--column-label--background-origin);
     background-clip:          var(--workspace-table-bright--cell--column-label--background-clip);
     background-attachment:    var(--workspace-table-bright--cell--column-label--background-attachment); 
+    padding-left:             var(--workspace-table-bright--cell--column-label--padding-left);
   }
 
   .workspace-css-table-holder .cell-value {
@@ -304,13 +278,10 @@
   }
 
   .workspace-css-table-holder.bright-styles-applied .cell-value {
-    font-family:              var(--workspace-table-bright--cell--cell-value--font-family);
-    font-size:                var(--workspace-table-bright--cell--cell-value--font-size);
     font-weight:              var(--workspace-table-bright--cell--cell-value--font-weight);
+    font-size:                var(--workspace-table-bright--cell--cell-value--font-size);
     line-height:              var(--workspace-table-bright--cell--cell-value--line-height);
     letter-spacing:           var(--workspace-table-bright--cell--cell-value--letter-spacing);
-    padding:                  var(--workspace-table-bright--cell--cell-value--padding);
-
 
     color:                    var(--workspace-table-bright--cell--cell-value--text-color);
 
@@ -323,6 +294,7 @@
     background-origin:        var(--workspace-table-bright--cell--cell-value--background-origin);
     background-clip:          var(--workspace-table-bright--cell--cell-value--background-clip);
     background-attachment:    var(--workspace-table-bright--cell--cell-value--background-attachment); 
+    padding-left:             var(--workspace-table-bright--cell--cell-value--padding-left);
   }
 
 }
