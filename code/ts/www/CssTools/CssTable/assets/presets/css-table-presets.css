@@ -17,7 +17,10 @@
   --clean-start__site__max_width__md_tablet_portrait: 83%;
   --clean-start__site__width__md_tablet_portrait: 83%;
   --clean-start__site__min_width__md_tablet_portrait: 83%;
+
+  --clean-start__site__padding
 }
+
 
 .workspace-css-table-holder .cell.example .cell-value {
   /* TASK: TO WRITE AN EXAMPLE CSS CLASS WITH EXTENDED TEXT PROPS, TO DOCUMENT THE CSS SELECTORS. */
