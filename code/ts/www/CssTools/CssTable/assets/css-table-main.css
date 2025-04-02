@@ -150,12 +150,19 @@
   .workspace-css-table-holder .row.desktop-columns-labels-holder {
     display:                    none;
   }
+
+  .workspace-css-table-holder .cell {
+    width: 100%;
+    max-width: 100%;
+    min-width: 100%;
+  }
   
  
   /* STYLES FOR ALL SPAN TAGS IN THE TABLE CELL, FIELD LABEL AND THE SPAN WITH THE VALUE */
   .workspace-css-table-holder .column-label,
   .workspace-css-table-holder .cell-value {
     padding:                    var(--workspace-table-thin--cell--padding);
+    display: inline-block;
   }
 
 
