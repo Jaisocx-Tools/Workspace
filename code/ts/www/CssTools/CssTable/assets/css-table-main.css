@@ -127,7 +127,7 @@
 
 
 /* MEDIA RULE FOR SMALL DEVICESS, IN THIS TABLE LAYOUT FIELDS IN A RECORD ARE PLACED VERTICALLY, NOT IN ONE LINE. */
-@media only screen and (max-width: 768px) and (orientation: portrait) {
+@media only screen and (max-width: 1280px) and (orientation: portrait) {
 
   .workspace-css-table-holder .workspace-css-table {
     display:                    flex;
@@ -233,8 +233,8 @@
 
 
 /* MEDIA RULE FOR LAPTOP, DESKTOP AND BIG SCREENS, IN THIS TABLE LAYOUT FIELDS IN A RECORD ARE PLACED IN ONE LINE. */
-@media only screen and ( (min-width: 569px) and (max-width: 768px) and (orientation: landscape) ),
-       only screen and (min-width: 769px) {
+@media only screen and ( (min-width: 569px) and (max-width: 1280px) and (orientation: landscape) ),
+       only screen and (min-width: 1281px) {
 
   .workspace-css-table-holder .workspace-css-table {
     display:                   grid;
