@@ -158,7 +158,7 @@
   --workspace-table-thin--cell--cell-value--text-color:             #333;
 
   /* --workspace-table-thin--cell--cell-value--background-color: var(--workspace-table--cell--cell-value--background-color); */
-  --workspace-table-thin--cell--cell-value--background-color:       whitesmoke;
+  --workspace-table-thin--cell--cell-value--background-color:       #fbfefc;
 
   --workspace-table-thin--cell--cell-value--background-image:         unset; /* url("https://workspace.brightday.email/cdn/jaisocx-tools/tree/assets/themes/theme-funny/mini-images/data-types/money-transfer.png"); */
   --workspace-table-thin--cell--cell-value--background-position:      0 0;

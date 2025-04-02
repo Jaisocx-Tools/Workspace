@@ -10,18 +10,10 @@
 
 
 
-  /* --workspace-table-thin--cell--column-label--font-size: 1.4rem;
-  --workspace-table-thin--cell--cell-value--font-size: 1.4rem;
-
-  --workspace-table-bright--cell--column-label--font-size: 1.4rem;
-  --workspace-table-bright--cell--cell-value--font-size: 1.4rem; */
-
-
-
-  --workspace-table-thin--cell--column-label--text-color: var(--clean-start__text-color-h, #60646a);
+  --workspace-table-thin--cell--column-label--text-color: #eaeaea;
   --workspace-table-thin--cell--cell-value--text-color: var(--clean-start__text-color, #222a2e);
 
-  --workspace-table-bright--cell--column-label--text-color: var(--clean-start__text-color-h, #60646a);
+  --workspace-table-bright--cell--column-label--text-color: #eaeaea;
   --workspace-table-bright--cell--cell-value--text-color: var(--clean-start__text-color, #222a2e);
 
 
