@@ -3,8 +3,6 @@
   .workspace main {
     /* --clean-start__site__background: yellow; */
 
-    --clean-start__site__padding: 1rem 0 1rem 0;
-
     --clean-start__site__width: var(--clean-start__site__width__xs_mobile_portrait);
     --clean-start__site__overflow_x: var(--clean-start__site__overflow_x__s_mobile);
 

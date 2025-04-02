@@ -2,20 +2,35 @@
 .theme-darkmode .workspace-css-table-holder *,
 .theme-darkmode.workspace-css-table-holder * {
 
-  --workspace-table--font-family: "Arial";
-  --workspace-table--column-label--font-family: var(--workspace-table--font-family);
-  --workspace-table--cell--cell-value--font-family: var(--workspace-table--font-family);
+  --workspace-table-thin--cell--column-label--font-family: var(--clean-start__font-family, "Arial");
+  --workspace-table-thin--cell--cell-value--font-family: var(--clean-start__font-family, "Arial");
 
-  --workspace-table--cell--text-color: whitesmoke;
+  --workspace-table-bright--cell--column-label--font-family: var(--clean-start__font-family, "Arial");
+  --workspace-table-bright--cell--cell-value--font-family: var(--clean-start__font-family, "Arial");
 
-  --workspace-table--column-label--background: #42414d;
-  --workspace-table--cell--cell-value--background: black;
 
-  --workspace-table-thin--record--border-width: 1rem;
-  --workspace-table--border-color: white;
-  --workspace-table--row--border: var(--workspace-table-thin--record--border-width) var(--workspace-table--border-style) var(--workspace-table--border-color);
+
+  --workspace-table-thin--cell--column-label--font-size: 1.4rem;
+  --workspace-table-thin--cell--cell-value--font-size: 1.4rem;
+
+  --workspace-table-bright--cell--column-label--font-size: 1.4rem;
+  --workspace-table-bright--cell--cell-value--font-size: 1.4rem;
+
+
+
+  --workspace-table-thin--cell--column-label--text-color: var(--clean-start__text-color-h, #a0ffa0);
+  --workspace-table-thin--cell--cell-value--text-color: var(--clean-start__text-color, #e0ffe0);
+
+  --workspace-table-bright--cell--column-label--text-color: var(--clean-start__text-color-h, #a0ffa0);
+  --workspace-table-bright--cell--cell-value--text-color: var(--clean-start__text-color, #e0ffe0);
+
+
+
+  --workspace-table-thin--cell--column-label--background-color: var(--clean-start__tag_body__background, #42414d);
+  --workspace-table-thin--cell--cell-value--background-color: var(--clean-start__site__background, #222);
+
+  --workspace-table-bright--cell--column-label--background-color: var(--clean-start__tag_body__background, #42414d);
+  --workspace-table-bright--cell--cell-value--background-color: var(--clean-start__site__background, #222);
 
 }
-
-
 
