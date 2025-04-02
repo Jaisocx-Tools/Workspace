@@ -11,8 +11,15 @@
 
     --clean-start__line-height__tablet: var(--clean-start__line-height__tablet_portrait);
     --clean-start__line-height: var(--clean-start__line-height__tablet);
-  }    
+  }
+/* 
+  .workspace main .workspace-css-table-holder {
+    --workspace-table-thin--cell--column-label--font-size: var(--workspace-table-thin--cell--column-label--font-size__mobile_portrait);
+    --workspace-table-thin--cell--column-label--line-height: var(--workspace-table-thin--cell--column-label--line-height__mobile_portrait);
 
+    --workspace-table-thin--cell--cell-value--font-size: var(--workspace-table-thin--cell--cell-value--font-size__mobile_portrait);
+    --workspace-table-thin--cell--cell-value--line-height: var(--workspace-table-thin--cell--cell-value--line-height__mobile_portrait);
+  } */
 
   /* verifying responsive rules applies */
   .workspace.verify-responsive-rule-applies main h1::before {

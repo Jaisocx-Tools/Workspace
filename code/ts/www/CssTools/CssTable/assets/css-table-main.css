@@ -1,3 +1,18 @@
+.workspace {
+  --clean-start__site__width__xs_mobile_portrait: 100%;
+  --clean-start__site__max_width__xs_mobile_portrait: 100%;
+  --clean-start__site__min_width__xs_mobile_portrait: 100%;
+
+  --clean-start__site__width__s_mobile_portrait: 100%;
+  --clean-start__site__max_width__s_mobile_portrait: 100%;
+  --clean-start__site__min_width__s_mobile_portrait: 100%;
+
+  --clean-start__site__width__sm_mobile_portrait: 100%;
+  --clean-start__site__max_width__sm_mobile_portrait: 100%;
+  --clean-start__site__min_width__sm_mobile_portrait: 100%;
+}
+
+
 .workspace-css-table-holder {
   display:                 flex;
   flex-direction:          column;
@@ -112,7 +127,7 @@
 
 
 /* MEDIA RULE FOR SMALL DEVICESS, IN THIS TABLE LAYOUT FIELDS IN A RECORD ARE PLACED VERTICALLY, NOT IN ONE LINE. */
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 768px) and (orientation: portrait) {
 
   .workspace-css-table-holder .workspace-css-table {
     display:                    flex;
@@ -211,7 +226,8 @@
 
 
 /* MEDIA RULE FOR LAPTOP, DESKTOP AND BIG SCREENS, IN THIS TABLE LAYOUT FIELDS IN A RECORD ARE PLACED IN ONE LINE. */
-@media only screen and (min-width: 769px) {
+@media only screen and ( (min-width: 569px) and (max-width: 768px) and (orientation: landscape) ),
+       only screen and (min-width: 769px) {
 
   .workspace-css-table-holder .workspace-css-table {
     display:                   grid;
