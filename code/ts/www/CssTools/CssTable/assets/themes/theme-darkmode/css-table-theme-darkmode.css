@@ -2,11 +2,11 @@
 .theme-darkmode .workspace-css-table-holder *,
 .theme-darkmode.workspace-css-table-holder * {
 
-  --workspace-table-thin--cell--column-label--font-family: var(--clean-start__font-family, "Arial");
-  --workspace-table-thin--cell--cell-value--font-family: var(--clean-start__font-family, "Arial");
+  --workspace-table-thin--cell--column-label--font-family: var(--clean-start__font-family, Niconne), "Arial";
+  --workspace-table-thin--cell--cell-value--font-family: var(--clean-start__font-family, Niconne), "Arial";
 
-  --workspace-table-bright--cell--column-label--font-family: var(--clean-start__font-family, "Arial");
-  --workspace-table-bright--cell--cell-value--font-family: var(--clean-start__font-family, "Arial");
+  --workspace-table-bright--cell--column-label--font-family: var(--clean-start__font-family, Niconne), "Arial";
+  --workspace-table-bright--cell--cell-value--font-family: var(--clean-start__font-family, Niconne), "Arial";
 
 
 

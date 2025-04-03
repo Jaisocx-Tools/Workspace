@@ -74,10 +74,12 @@
     {
       "path": "CssTools/CssTable",
       "name": "css-table",
-      "build": false,
+      "build": true,
       "build-simple-enable": true,
       "dependencies": [],
       "build-files": [
+        "Preloader.js",
+        "ThemesPreloadsCssTable.js",
         "index.js",
         "webpackAliases.js",
         "webpack.aliases.mjs",
@@ -209,7 +211,7 @@
     {
       "path": "packages/Tooltip",
       "name": "tooltip",
-      "build": true,
+      "build": false,
       "build-simple-enable": true,
       "dependencies": [
         {

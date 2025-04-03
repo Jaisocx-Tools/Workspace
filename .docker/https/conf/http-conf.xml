@@ -64,6 +64,13 @@
                            cache="update"
                            list="true" 
                            each-folder-content-file-name="index.html" />
+                     <alias comment="preferred cdn url for one node_modules/assets subfolder of one tool, where are @jaisocx/ site js and css tool .css files and .css themes and mini-images"
+                           art="folder"
+                           url="/cdn/jaisocx-tools/css-table/assets/"
+                           path="/var/www/cdn/SitesTools/node_modules/@jaisocx/css-table/assets"
+                           cache="update"
+                           list="true" 
+                           each-folder-content-file-name="index.html" />
                     <alias comment="preferred cdn url for one node_modules/assets subfolder of one tool, where are @jaisocx/ site js and css tool .css files and .css themes and mini-images"
                            art="folder"
                            url="/cdn/jaisocx-tools/tooltip/assets/"
