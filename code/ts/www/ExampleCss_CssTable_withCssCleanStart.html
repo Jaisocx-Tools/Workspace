@@ -12,15 +12,21 @@
   <script src="CssTools/CssTable/build/Simple/Preloader.js"></script>
   <script src="CssTools/CssTable/build/Simple/ThemesPreloadsCssTable.js"></script>
 
+  <!-- FOR THE CSS TABLE YOU NEED ALWAYS TO SET IN THIS FILE THE WIDTH OF COLUMNS
+  AND THIS .css FILE HAS TO BE ALWAYS REFERRED IN HTML DOC OR OTHER IMPORTS. -->
+  <link rel="stylesheet" href="CssTools/CssTable/assets/themes/columns/columns.css">
 
-  <link rel="stylesheet" href="CssTools/CssTable/assets/themes/theme-lightmode/css-table-theme-lightmode-cdn.css">
+
+
+  <!-- <link rel="stylesheet" href="CssTools/CssTable/assets/themes/theme-lightmode/css-table-theme-lightmode-cdn.css">
   <link rel="stylesheet" href="CssTools/CssTable/assets/themes/theme-darkmode/css-table-theme-darkmode-cdn.css">
 
-  <link rel="stylesheet" href="CssTools/CssTable/assets/css-table-main-cdn.css">
+  <link rel="stylesheet" href="CssTools/CssTable/assets/css-table-main-cdn.css"> -->
 
-  <!-- <link rel="stylesheet" href="CssTools/CssTable/assets/themes/theme-lightmode/css-table-theme-lightmode-relative.css">
+
+  <link rel="stylesheet" href="CssTools/CssTable/assets/themes/theme-lightmode/css-table-theme-lightmode-relative.css">
   <link rel="stylesheet" href="CssTools/CssTable/assets/themes/theme-darkmode/css-table-theme-darkmode-relative.css">
-  <link rel="stylesheet" href="CssTools/CssTable/assets/css-table-main-relative.css"> -->
+  <link rel="stylesheet" href="CssTools/CssTable/assets/css-table-main-relative.css">
 
 
   <style>
@@ -87,7 +93,8 @@
     </content>
 
 
-    <div class="workspace-css-table-holder thin-styles-applied bright-styles-applied">
+  <!-- <div class="workspace-css-table-holder example-table-columns-4 thin-styles-applied bright-styles-applied"> -->
+  <div class="workspace-css-table-holder example-table-columns-4">
     <div class="workspace-css-table">
       <div class="row desktop-columns-labels-holder">
         <div class="cell"><span class="column-label">attribute</span></div>
@@ -127,9 +134,9 @@
   </div>
 
 
-
-<!-- 
-  <div class="workspace-css-table-holder cols-12 theme-darkmode">
+  <!-- THE WORKAROUND TO BREAK URLS AFTER THE SLASH SYMBOL: THE ZERO LENGTH WHITESPACE SPECIAL CHAR: &#8203; -->
+  <!-- 
+  <div class="workspace-css-table-holder example-table-columns-12">
     <div class="workspace-css-table">
       <div class="row desktop-columns-labels-holder">
         <div class="cell"><span class="column-label">attribute</span></div>
@@ -149,9 +156,9 @@
         <div class="cell"><span class="column-label">attribute</span><span class="cell-value">
             port</span></div>
         <div class="cell"><span class="column-label">type</span><span class="cell-value">number</span></div>
-        <div class="cell"><span class="column-label">long text 1</span><span class="cell-value">https://workspace.brightday.email/CssTools/CssCleanStart/assets/themes/theme-lightmode/clean-start-theme-lightmode-webpack.css</span></div>
-        <div class="cell"><span class="column-label">long text 2</span><span class="cell-value">https://workspace.brightday.email/CssTools/CssCleanStart/assets/themes/theme-lightmode/clean-start-theme-lightmode-webpack.css</span></div>
-        <div class="cell"><span class="column-label">long text 3</span><span class="cell-value">https://workspace.brightday.email/CssTools/CssCleanStart/assets/themes/theme-lightmode/clean-start-theme-lightmode-webpack.css</span></div>
+        <div class="cell"><span class="column-label">long text 1</span><span class="cell-value">https://workspace.brightday.email/CssTools/CssCleanStart/&#8203;assets/themes/theme-lightmode/clean-start-theme-lightmode-webpack.css</span></div>
+        <div class="cell"><span class="column-label">long text 2</span><span class="cell-value">https://workspace.brightday.email/CssTools/CssCleanStart/assets/themes/theme-lightmode</span></div>
+        <div class="cell"><span class="column-label">long text 3</span><span class="cell-value">https://workspace.brightday.email/CssTools/CssCleanStart</span></div>
         <div class="cell"><span class="column-label">values</span><span class="cell-value">e.g. 443</span></div>
         <div class="cell"><span class="column-label">values</span><span class="cell-value">e.g. 443</span></div>
         <div class="cell"><span class="column-label">description</span><span class="cell-value">the port number for the server to accept
@@ -169,7 +176,7 @@
         <div class="cell"><span class="column-label">attribute</span><span class="cell-value">
             alternative-port</span></div>
         <div class="cell"><span class="column-label">type</span><span class="cell-value">number</span></div>
-        <div class="cell"><span class="column-label">long text 1</span><span class="cell-value">https://workspace.brightday.email/CssTools/CssCleanStart/assets/themes/theme-lightmode/clean-start-theme-lightmode-webpack.css</span></div>
+        <div class="cell"><span class="column-label">long text 1</span><span class="cell-value">https://workspace.brightday.email/CssTools/CssCleanStart/assets/themes/theme-lightmode</span></div>
         <div class="cell"><span class="column-label">long text 2</span><span class="cell-value">https://workspace.brightday.email/CssTools/CssCleanStart/assets/themes/theme-lightmode/clean-start-theme-lightmode-webpack.css</span></div>
         <div class="cell"><span class="column-label">long text 3</span><span class="cell-value">https://workspace.brightday.email/CssTools/CssCleanStart/assets/themes/theme-lightmode/clean-start-theme-lightmode-webpack.css</span></div>
         <div class="cell"><span class="column-label">values</span><span class="cell-value">e.g. 8443</span></div>
@@ -188,8 +195,8 @@
       <div class="row">
         <div class="cell"><span class="column-label">attribute</span><span class="cell-value">secure</span></div>
         <div class="cell"><span class="column-label">type</span><span class="cell-value">boolean</span></div>
-        <div class="cell"><span class="column-label">long text 1</span><span class="cell-value">https://workspace.brightday.email/CssTools/CssCleanStart/assets/themes/theme-lightmode/clean-start-theme-lightmode-webpack.css</span></div>
-        <div class="cell"><span class="column-label">long text 2</span><span class="cell-value">https://workspace.brightday.email/CssTools/CssCleanStart/assets/themes/theme-lightmode/clean-start-theme-lightmode-webpack.css</span></div>
+        <div class="cell"><span class="column-label">long text 1</span><span class="cell-value">https://workspace.brightday.email/CssTools/CssCleanStart</span></div>
+        <div class="cell"><span class="column-label">long text 2</span><span class="cell-value">https://workspace.brightday.email/CssTools/CssCleanStart</span></div>
         <div class="cell"><span class="column-label">long text 3</span><span class="cell-value">https://workspace.brightday.email/CssTools/CssCleanStart/assets/themes/theme-lightmode/clean-start-theme-lightmode-webpack.css</span></div>
         <div class="cell"><span class="column-label">values</span><span class="cell-value">true | false</span></div>
         <div class="cell"><span class="column-label">description</span><span class="cell-value">please specify, where to use HTTPS
@@ -268,7 +275,7 @@
     }
 
     
-    // DOCUMENT ONLOAD, INVOKES THE FUNCTION TO RENDER TOOLTIP ON SITE OPENED IN BROWSER.
+    // DOCUMENT ONLOAD, INVOKES THE FUNCTION TO PRELOAD THEME FONTS
     document.addEventListener('DOMContentLoaded', () => {
 
       const preloader = new Preloader();

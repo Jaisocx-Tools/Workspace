@@ -56,7 +56,7 @@
   overflow-y:              visible;
 
   /* when a word ends, it breaks, when too long word oer one line full width, it breaks too */
-  word-break: break-word; 
+  word-break:              normal; 
   font-variant:            no-common-ligatures tabular-nums;
 
   border-left:             var(--workspace-table--cell--border);
@@ -242,16 +242,9 @@
   }
 
   .workspace-css-table-holder .row {
-    /* flex-direction:            row;
-    align-items:               stretch;
-    justify-content:           flex-start; */
-
-    /* display:                 grid; */
-    display: grid;
-    /* grid-template-columns: auto; */
-    grid-template-columns:   12rem 8rem 28rem minmax( 20rem, 1fr );
-    gap: 0; /* Space between cells */
-
+    display:                   grid;
+    grid-template-columns:   var(--workspace-table-bright--grid-template-columns);
+    gap:                       0; /* Space between cells */
   }
 
   /* THE COLUMN LABEL, SHOWN IN MOBILE VIEW ON THE LEFT SIDE, here hides in the desktop view */

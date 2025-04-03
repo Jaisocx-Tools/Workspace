@@ -84,9 +84,9 @@
 /* TESTED CSS PROPS WITH EXTENSIBILITY FEATURE. EXTENSIBILTY DOESNT DO WITH BACKGROUND PROPS */
 
 /* THESE STYLES ARE APPLIED TO .cell CSS CLASS */
-  --workspace-table--cell--text-color:                            red;
+  --workspace-table--cell--text-color:                            #339933;
 
-  --workspace-table--cell--background-color:                      black;
+  --workspace-table--cell--background-color:                      #fbfefc;
 
   --workspace-table--cell--background-image:                        none;
   --workspace-table--cell--background-position:                     0 0;
@@ -99,10 +99,10 @@
 
 
   /* --workspace-table--cell--column-label--text-color: var(--workspace-table--cell--text-color); */
-  --workspace-table--cell--column-label--text-color:              whitesmoke;
+  --workspace-table--cell--column-label--text-color:              #339933;
 
   /* --workspace-table--cell--column-label--background-color: var(--workspace-table--cell--background-color); */
-  --workspace-table--cell--column-label--background-color:        grey;
+  --workspace-table--cell--column-label--background-color:        #f2fff2;
 
   --workspace-table--cell--column-label--background-image:          var(--workspace-table--cell--background-image);
   --workspace-table--cell--column-label--background-position:       0 0;
@@ -115,10 +115,10 @@
 
 
   /* --workspace-table--cell--cell-value--text-color: var(--workspace-table--cell--text-color); */
-  --workspace-table--cell--cell-value--text-color:                darkgrey;
+  --workspace-table--cell--cell-value--text-color:                #333;
 
   /* --workspace-table--cell--cell-value--background-color: var(--workspace-table--cell--background-color); */
-  --workspace-table--cell--cell-value--background-color:          whitesmoke;
+  --workspace-table--cell--cell-value--background-color:          #fbfefc;
 
   --workspace-table--cell--cell-value--background-image:            var(--workspace-table--cell--background-image);
   --workspace-table--cell--cell-value--background-position:         0 0;
@@ -135,7 +135,7 @@
   --workspace-table-thin--cell--column-label--text-color:          #339933;
 
   /* --workspace-table-thin--cell--column-label--background-color: var(--workspace-table--cell--column-label--background-color); */
-  --workspace-table-thin--cell--column-label--background-color:      #f2fff2;
+  --workspace-table-thin--cell--column-label--background-color:    #f2fff2;
 
   --workspace-table-thin--cell--column-label--background-image:      unset; /* url("https://workspace.brightday.email/cdn/jaisocx-tools/tree/assets/themes/theme-funny/mini-images/data-types/house.png"); */
   --workspace-table-thin--cell--column-label--background-position:   0 0;

@@ -48,10 +48,15 @@
   word-break: keep-all !important;
   display: block !important;
 }
+
 .workspace-css-table-holder .cell.keep-line .cell-value {
-  /* keep cell width by long word in a cell */
-  word-break: keep-all;
+  /* it didn't work to keep cell width by long word in a cell, 
+      since grid is for the markup with cells one level without enbracing row tags. 
+      the grid markup suits for instance when showing products in online store. */
+  /* this prop allows to keep the text one line nowrapped. however the overflow will apply. */
+  white-space: nowrap;
 }
+
 .workspace-css-table-holder .cell.number .cell-value {
   /* font-variant-numeric:   oldstyle-nums !important; */
   text-align:             right;
