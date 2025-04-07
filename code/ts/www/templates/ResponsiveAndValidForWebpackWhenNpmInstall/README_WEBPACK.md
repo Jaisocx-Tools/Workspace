@@ -79,7 +79,7 @@ the webpack aliases You can import for the webpack here:
 ```
 ...
 import { WebpackAliases as CleanStartWebpackAliases } from '@jaisocx/css-clean-start/WebpackAliases';
-import { WebpackAliases as TooltipWebpackAliases } from '@jaisocx/tooltip/WebpackAliases';
+import { WebpackAliases as TreeWebpackAliases } from '@jaisocx/tree/WebpackAliases';
 ```
 
 
@@ -91,7 +91,7 @@ The lines in this webpack.config.mjs:
   resolve: {
     alias: {
       ...CleanStartWebpackAliases.resolve.alias,
-      ...TooltipWebpackAliases.resolve.alias,
+      ...TreeWebpackAliases.resolve.alias,
     },
     extensions: [".js", ".json", ".css"],
     fallback: {
