@@ -78,7 +78,8 @@ the webpack aliases You can import for the webpack here:
 
 ```
 ...
-import { WebpackAliases } from '@jaisocx/tree/WebpackAliases'; // this is the art to import webpack aliases in the Workspace @jaisocx/ js and css tools.
+import { WebpackAliases as CleanStartWebpackAliases } from '@jaisocx/css-clean-start/WebpackAliases';
+import { WebpackAliases as TooltipWebpackAliases } from '@jaisocx/tooltip/WebpackAliases';
 ```
 
 
@@ -89,7 +90,8 @@ The lines in this webpack.config.mjs:
   // line 23
   resolve: {
     alias: {
-      ...WebpackAliases.resolve.alias,
+      ...CleanStartWebpackAliases.resolve.alias,
+      ...TooltipWebpackAliases.resolve.alias,
     },
     extensions: [".js", ".json", ".css"],
     fallback: {
@@ -116,9 +118,9 @@ To use the rich webpack feature aliases, set this folders structure and these pr
 
 ### 1.2. ${PackageRoot}/src/* files like in this package every:
 1. index.ts
-2. webpack.aliases.cjs
-3. webpack.aliases.mjs
-4. webpackAliases.ts
+2. webpackAliases.ts
+3. webpack.aliases.cjs
+4. webpack.aliases.mjs
 
 
 ### 1.3 import styles in a .ts or .js file like this:
@@ -241,7 +243,18 @@ Just save a copy in the `${Workspace}/code/ts/www/packages` folder.
 
 For example, when You published before with rules in this doc point 1. a package named `@jaisocx/template-css-clean-start`
 
+When **Docker Compose** is on, 
+to run a script in the node docker service, first enter the node docker service like this: in Terminal, cd to Workspace root, paste and Enter:
 ```
+docker compose exec ts bash
+```
+
+Then, in the same Terminal Tab, however already in the docker volume of the node service "ts", this was mapped in `${Workspace}/docker-compose.yml`
+```
+# 1. navigate to Your new package folder in the node service volume:
+cd /var/www/code/ts/www/packages/<YourNewPackage>
+
+# 2. install the npm package
 npm install "@jaisocx/template-css-clean-start"
 ```
 
@@ -264,10 +277,12 @@ import "@jaisocx/template-css-clean-start";
 
 **TypeScript** entry file: `${packageRoot}/src/index.ts`
 
-```
-import { AnyClass } "@jaisocx/template-css-clean-start";
+Note: in the package @jaisocx/template-css-clean-start there was no js classes, however this is just an example of the import of a js class from the installed package.
 
-// when in .ts entry file index.ts
+Assuming, in the installed package entry file index.ts, the js class `AnyClass` was exported, then it will be accessible in Your code like this:
+```
+import { AnyClass } from "@jaisocx/template-css-clean-start";
+
 (window as any).AnyClass = AnyClass;
 ```
 
@@ -276,9 +291,8 @@ import { AnyClass } "@jaisocx/template-css-clean-start";
 ### 2.e. or, import js classes in a .js file
 
 ```
-import { AnyClass } "@jaisocx/template-css-clean-start";
+import { AnyClass } from "@jaisocx/template-css-clean-start";
 
-// when in .js entry file index.js file:
 window.AnyClass = AnyClass;
 ```
 
@@ -286,6 +300,7 @@ window.AnyClass = AnyClass;
 
 ### 2.f. The .json file with paths alias, used for webpack builds:
 
+in the npm installed package, the json with aliases is here:
 ```
 node_modules/@jaisocx/template-css-clean-start/webpack.aliases.json
 ```
@@ -293,6 +308,17 @@ node_modules/@jaisocx/template-css-clean-start/webpack.aliases.json
 
 ### 2.g. the entry styles .css file, imported in `${packageRoot}/src/index.ts` with the webpack alias
 
+The alias was defined in the package in the `webpack.aliases.json`:
+```
+"@jaisocx-css-clean-start-assets": "${packageRoot}/assets/"
+```
+
+and the styles file was imported in that package in the `src/index.ts` file:
+```
+import "@jaisocx-css-clean-start-assets/clean-start-main-webpack.css"
+```
+
+When the package was installed to Your package with `npm install`, the styles .css file, this is imported in Your new package via `import "@jaisocx/template-css-clean-start";` is here:
 
 ```
 node_modules/@jaisocx/template-css-clean-start/assets/clean-start-main-webpack.css
@@ -300,7 +326,7 @@ node_modules/@jaisocx/template-css-clean-start/assets/clean-start-main-webpack.c
 
 
 
-### 2.h. this import statement in the installed package is here:
+### 2.h. this styles import statement in the installed package, with webpack alias, was here:
 ```
 // in file: ${packageRoot}/node_modules/@jaisocx/template-css-clean-start/build/ESNext/index.js
 
@@ -314,7 +340,9 @@ import "@jaisocx-css-clean-start-assets/clean-start-main-webpack.css"
 
 
 
-### 2.j. append development npm packages in the `${PackageRoot}/package.json` and npm script name to build with the Webpack
+### 2.j. append development npm packages in the `${PackageRoot}/package.json` and npm script to build a bundle.js with the Webpack
+
+I have planned to place centrally in the Workspace project the npm deps and the config files for the Webpack library, too, like I already have done for the Typescript and the Eslint in the Workspace. However for now, every pack still has the local copies of the same npm dependencies for a webpack build in the node_modules folder in every package, since the workaround with the Webpack was new to me. I used before the entire install of a rich JS and PHP Frameworks for a WebApplication, and developed one project many months. This project is not a web app, but an example of building reusable js libraries of not many code lines, for the later install via npm or yarn. 
 
 ```
  "scripts": {
@@ -339,13 +367,19 @@ import "@jaisocx-css-clean-start-assets/clean-start-main-webpack.css"
 
 ### 2.k. install development npm packages
 
+To start the docker services, if not started:
+```
+docker compose up -d
+```
+
+
 When **Docker Compose** is on, 
 to run a script in the node docker service, first enter the node docker service like this: in Terminal, cd to Workspace root, paste and Enter:
 ```
 docker compose exec ts bash
 ```
 
-Then You may build Your new package with Webpack
+Then You may install the packages
 
 ```
 # 1. navigate to Your new package folder in the node service volume:
@@ -359,6 +393,9 @@ npm install
 
 
 ### 2.l. make new file on path `${PackageRoot}/webpack.config.mjs`
+
+This file is the standard webpack.config.js file, 
+and just the import statements for the Webpack aliases and their assignments in the `resolve.alias` config's prop are up to webpack build. The best, later this file will be placed centrally, too. And the example of a package with all configs and npm dependencies for the Typescript, the Eslint and the Webpack, and local node_modules folder, is of use for sure.
 
 ```
 // this webpack config is to build this package with webpack.
@@ -447,7 +484,7 @@ export default {
 
 ### 2.m. build with the Webpack
 
-When **Docker Compose** is on, 
+When **Docker Compose** is on, if not entered the node docker service,
 to run a script in the node docker service, first enter the node docker service like this: in Terminal, cd to Workspace root, paste and Enter:
 ```
 docker compose exec ts bash
@@ -525,9 +562,13 @@ In Your .html You can now access this imported js class like this:
 
 ```
 <script>
-let anyClass = new AnyClass();
-anyClass.someProp = "some value";
-anyClass.someMethod("some arg");
+document.addEventListener('DOMContentLoaded', () => {
+
+  let anyClass = new AnyClass();
+  anyClass.someProp = "some value";
+  anyClass.someMethod("some arg");
+
+});
 </script>
 ```
 
@@ -547,10 +588,12 @@ anyClass.someMethod("some arg");
 
     <h1>Tree example</h1>
 
-    <div id="tree-holder" class="theme-base"></div>
+    <!-- Tree javascript class will append in this html node the html to render the json -->
+    <div id="tree-holder"></div>
 
     <script>
 
+      // a js function declared
       function renderDataLikeTree( data ) {
         let tree = new Tree();
         tree
@@ -561,6 +604,11 @@ anyClass.someMethod("some arg");
           .render( data ); 
       }
 
+      // This statement invokes code, 
+      // when the browser loads the site and may access loaded styles, 
+      // js classes, and knows this html doc nodes.
+      // Otherwise, the js engine might not know about 
+      // some js classes and functions and html nodes. 
       document.addEventListener('DOMContentLoaded', () => {
 
         // get data from a https endpoint:
