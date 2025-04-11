@@ -1,0 +1,12 @@
+/* theme-lightmode */
+/* usage with cdn example */
+/* https://workspace.brightday.email/cdn/jaisocx-tools/css-clean-start/assets/ */
+
+/* css variables */
+@import url("https://workspace.brightday.email/cdn/jaisocx-tools/css-clean-start/assets/themes/theme-base/clean-start-theme-base.css");
+
+/* responsive */
+@import url("https://workspace.brightday.email/cdn/jaisocx-tools/css-clean-start/assets/responsive/clean-start--responsive-imports-main.css");
+
+@import url("https://workspace.brightday.email/cdn/jaisocx-tools/css-clean-start/assets/clean-start-main.css");
+

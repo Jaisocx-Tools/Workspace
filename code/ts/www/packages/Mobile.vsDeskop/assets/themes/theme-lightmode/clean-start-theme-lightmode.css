@@ -1,0 +1,31 @@
+/* theme-lightmode */
+.workspace.theme-lightmode,
+.workspace .theme-lightmode {
+
+  --clean-start__rem: 16px;
+
+  --clean-start__font-family: "Baloo Paaji 2";
+
+  --clean-start__text-color: #222a2e;
+  --clean-start__text-color-h: #60646a;
+
+  --clean-start__tag_body__background: steelblue;
+  --clean-start__site__background: #fcfcfc;
+
+  --clean-start__anchor__text-color: slateblue;
+  --clean-start__anchor__text-color-hover: blue;
+  --clean-start__anchor__text-color-visited: var(--clean-start__anchor__text-color);
+  --clean-start__anchor__text-color-visited-hover: var(--clean-start__anchor__text-color-hover);
+
+
+  /* All other tags. FONT-SIZE AND LINE-HEIGHT RESPONSIVE */
+  /* --clean-start__font-size__mobile__predefined: 1.4rem;
+  --clean-start__line-height__mobile__predefined: 1.9rem;
+
+  --clean-start__font-size__predefined: 1.25rem;
+  --clean-start__line-height__predefined: 1.8rem; */
+
+}
+
+
+

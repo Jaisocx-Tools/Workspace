@@ -1,0 +1,335 @@
+html.workspace {
+  font-size: var(--clean-start__rem);
+}
+
+
+html.workspace head,
+html.workspace head *,
+html.workspace script {
+  visibility: hidden;
+  max-height: 0;
+  max-width: 0;
+  overflow-y: hidden;
+  overflow-x: hidden;
+}
+
+
+.workspace, 
+.workspace * {
+
+  position: var(--clean-start__position);
+  display: var(--clean-start__custom-tags__display);
+  box-sizing: var(--clean-start__box-sizing);
+
+  line-break: strict;
+  word-wrap: normal;
+  word-break: normal;
+
+  color: var(--clean-start__text-color);
+
+  border-width: var(--clean-start__border-width);
+  border-style: var(--clean-start__border-style);
+  border-color: var(--clean-start__border-color);
+
+}
+
+.workspace, 
+.workspace *:not(ul),
+.workspace *:not(ol),
+.workspace *:not(li) {
+
+  margin: var(--clean-start__margin);
+  padding: var(--clean-start__padding);
+
+}
+
+
+
+.workspace, 
+.workspace *:not(pre) {
+  font-family: var(--clean-start__font-family);
+}
+
+.workspace pre {
+  font-family: var(--clean-start__font-family-pre, "Courier New", Courier, monospace);
+}
+
+
+.workspace, 
+.workspace *:not(h1),
+.workspace *:not(h2),
+.workspace *:not(h3),
+.workspace *:not(h4),
+.workspace *:not(h5),
+.workspace *:not(h6)  {
+
+  font-size: var(--clean-start__font-size);
+  line-height: var(--clean-start__line-height);
+
+}
+
+
+
+.workspace h1,
+.workspace h2,
+.workspace h3,
+.workspace h4,
+.workspace h5,
+.workspace h6 {
+  font-weight: var(--clean-start__font-weight_h);
+  color: var(--clean-start__text-color-h);
+}
+
+.workspace h1 {
+  font-size: var(--clean-start__font-size_h1);
+  line-height: var(--clean-start__line-height_h1);
+}
+.workspace h2 {
+  font-size: var(--clean-start__font-size_h2);
+  line-height: var(--clean-start__line-height_h2);
+}
+.workspace h3 {
+  font-size: var(--clean-start__font-size_h3);
+  line-height: var(--clean-start__line-height_h3);
+}
+.workspace h4 {
+  font-size: var(--clean-start__font-size_h4);
+  line-height: var(--clean-start__line-height_h4);
+}
+.workspace h5 {
+  font-size: var(--clean-start__font-size_h5);
+  line-height: var(--clean-start__line-height_h5);
+}
+.workspace h6 {
+  font-size: var(--clean-start__font-size_h6);
+  line-height: var(--clean-start__line-height_h6);
+}
+
+
+html.workspace {
+  top: 0;
+
+  width: var(--clean-start__tag_body__width);
+  max-width: var(--clean-start__tag_body__max_width);
+  min-width: var(--clean-start__tag_body__min_width);
+
+  overflow-x: hidden;
+}
+
+.workspace body {
+  background: var(--clean-start__tag_body__background);
+
+  /* NOT READY: RESPONSIVE FEATURE!!! */
+  height:     var(--clean-start__tag_body__height);
+  max-height: var(--clean-start__tag_body__height_max);
+  min-height: var(--clean-start__tag_body__height_min);
+
+  width:     var(--clean-start__tag_body__width);
+  max-width: var(--clean-start__tag_body__max_width);
+  min-width: var(--clean-start__tag_body__min_width);
+
+  overflow-y: visible;
+  overflow-x: var(--clean-start__tag_body__overflow-x);
+}
+
+.workspace main {
+  margin: var(--clean-start__site__margin) !important;
+  padding: var(--clean-start__site__padding) !important;
+  background: var(--clean-start__site__background);
+
+  /* NOT READY: RESPONSIVE FEATURE!!! */
+  height:     var(--clean-start__site__height);
+  max-height: var(--clean-start__site__height_max);
+  min-height: var(--clean-start__site__height_min);
+
+  width:     var(--clean-start__site__width);
+  max-width: var(--clean-start__site__max_width);
+  min-width: var(--clean-start__site__min_width);
+
+  overflow: var(--clean-start__site__overflow_x) var(--clean-start__site__overflow_y);
+}
+
+
+
+/* Paragraph html tag <p> */
+.workspace p {
+  margin: var(--clean-start__p__margin);
+}
+
+
+/* Hyperlink html tag <a> (anchor) */
+.workspace a {
+  color: var(--clean-start__anchor__text-color);
+  text-decoration: none;
+}
+.workspace a:hover {
+  color: var(--clean-start__anchor__text-color-hover);
+  text-decoration: underline;
+}
+.workspace a:visited {
+  color: var(--clean-start__anchor__text-color-visited);
+  text-decoration: none;
+}
+.workspace a:visited:hover {
+  color: var(--clean-start__anchor__text-color-visited-hover);
+  text-decoration: underline;
+}
+
+
+
+
+/* block tags reset */
+.workspace address,
+.workspace article,
+.workspace aside,
+.workspace blockquote,
+.workspace body,
+.workspace canvas,
+.workspace dd,
+.workspace div,
+.workspace dl,
+.workspace dt,
+.workspace fieldset,
+.workspace figcaption,
+.workspace figure,
+.workspace footer,
+.workspace form,
+.workspace h1,
+.workspace h2,
+.workspace h3,
+.workspace h4,
+.workspace h5,
+.workspace h6,
+.workspace header,
+.workspace hr,
+/* .workspace li, */
+.workspace main,
+.workspace nav,
+.workspace noscript,
+/* .workspace ol, */
+.workspace output,
+.workspace p,
+.workspace pre,
+.workspace section,
+/* .workspace ul, */
+.workspace video {
+  display: var(--clean-start__block-tags__display, block);
+}
+
+
+
+/* inline tags reset */
+.workspace span,
+.workspace a,
+.workspace b,
+.workspace big,
+.workspace br,
+.workspace cite,
+.workspace code,
+.workspace del,
+.workspace em,
+.workspace i,
+.workspace img,
+.workspace ins,
+.workspace label,
+.workspace map,
+.workspace mark,
+.workspace q,
+.workspace s,
+.workspace samp,
+.workspace small,
+.workspace strong,
+.workspace sub,
+.workspace sup,
+.workspace time,
+.workspace u,
+.workspace var {
+    display: var(--clean-start__inline-tags__display, inline-block);
+}
+
+
+/* Table no reset */
+.workspace table {
+  display: table;
+}
+
+.workspace table caption {
+  display: 	table-caption;
+}
+
+.workspace colgroup {
+  display: table-column-group;
+}
+
+.workspace col {
+  display: table-column;
+}
+
+.workspace thead {
+  display: table-header-group;
+}
+
+.workspace tbody {
+  display: table-row-group;
+}
+
+.workspace tfoot {
+  display: table-footer-group;
+}
+
+.workspace tr {
+  display: table-row;
+}
+
+.workspace th, 
+.workspace td {
+  display: table-cell;
+}
+
+
+
+/* UL and OL tags reset */
+.workspace.ul-reset ul, 
+.workspace.ul-reset ol, 
+.workspace.ul-reset li, 
+.workspace .ul-reset ul, 
+.workspace .ul-reset ol, 
+.workspace .ul-reset li,
+.workspace ul.ul-reset,
+.workspace ol.ul-reset, 
+.workspace ul.ul-reset li,
+.workspace ol.ul-reset li {
+
+  list-style-type: none;
+
+  position: var(--clean-start__position);
+  display: var(--clean-start__inline-tags__display, inline-block);
+  box-sizing: var(--clean-start__box-sizing);
+
+  margin: var(--clean-start__margin);
+  padding: var(--clean-start__padding);
+
+  border-width: var(--clean-start__border-width);
+  border-style: var(--clean-start__border-style);
+  border-color: var(--clean-start__border-color);
+
+}
+
+
+
+/* verifying responsive rules applies */
+/* set this css class on demand at <html> tag like this: <html class="workspace verify-responsive-rule-applies" */
+.workspace.verify-responsive-rule-applies main h1::before {
+  content: "";
+  position: relative;
+  top: 0;
+  left: 0;
+  display: block;
+  background-color: antiquewhite;
+  color: orange;
+  padding: 0.2rem 0.4rem;
+  border: 1px solid red;
+  border-radius: 0.4rem;
+  font-size: var(--clean-start__font-size);
+  line-height: var(--clean-start__line-height);
+}

@@ -28,6 +28,21 @@
       ]
     },
     {
+      "path": "packages/Mobile.vsDeskop",
+      "name": "mobile-vs-desktop",
+      "build": true,
+      "build-simple-enable": true,
+      "dependencies": [],
+      "build-files": [
+        "MediaruleNames.js",
+        "Mobile.vsDesktopPack.js",
+        "index.js",
+        "webpackAliases.js",
+        "webpack.aliases.mjs",
+        "webpack.aliases.cjs"
+      ]
+    },
+    {
       "path": "examples/ExampleCssCleanStartWebpack",
       "name": "example-css-clean-start",
       "build": false,
@@ -74,7 +89,7 @@
     {
       "path": "CssTools/CssTable",
       "name": "css-table",
-      "build": true,
+      "build": false,
       "build-simple-enable": true,
       "dependencies": [],
       "build-files": [

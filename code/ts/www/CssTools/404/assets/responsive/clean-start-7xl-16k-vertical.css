@@ -1,0 +1,28 @@
+/* 7xl 16k vertical */
+@media (min-width: 8641px) and (orientation: portrait) {
+  .workspace main {
+    /* --clean-start__site__background: cornsilk; */
+
+    --clean-start__tag_body__width: var(--clean-start__tag_body__width__7xl_16k_vertical);
+    --clean-start__tag_body__max_width: var(--clean-start__tag_body__max_width__7xl_16k_vertical);
+    --clean-start__tag_body__min_width: var(--clean-start__tag_body__min_width__7xl_16k_vertical);
+
+    --clean-start__site__width: var(--clean-start__site__width__7xl_16k_vertical);
+    --clean-start__site__max_width: var(--clean-start__site__max_width__7xl_16k_vertical);
+    --clean-start__site__min_width: var(--clean-start__site__min_width__7xl_16k_vertical);
+
+    --clean-start__site__overflow_x: var(--clean-start__site__overflow_x__7xl_16k_vertical);
+
+
+
+    --clean-start__font-size: var(--clean-start__font-size__7xl_16k_vertical);
+    --clean-start__line-height: var(--clean-start__line-height__7xl_16k_vertical);
+  }    
+
+
+  /* verifying responsive rules applies */
+  .workspace.verify-responsive-rule-applies main h1::before {
+    content: "7xl 16k vertical" !important;
+  }
+}
+
