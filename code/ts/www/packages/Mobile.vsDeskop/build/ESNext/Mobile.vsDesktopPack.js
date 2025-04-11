@@ -87,6 +87,30 @@ export class MobileVsDesktopPack {
         let mediaruleNameMatches = this.matchOrientation(this.#KEYWORDS_ORIENTATION_LANDSCAPE, force);
         return mediaruleNameMatches;
     }
+    toJson(force) {
+        let mediaruleName = this.getMediaruleName(force);
+        let notToUpdate = false;
+        let isMobile = this.isMobile(notToUpdate);
+        let isTablet = this.isTablet(notToUpdate);
+        let isDesktop = this.isDesktop(notToUpdate);
+        let isOrientationPortrait = this.isOrientationPortrait(notToUpdate);
+        let isOrientationLandscape = this.isOrientationLandscape(notToUpdate);
+        let mediaruleJson = {
+            "mediaruleName": mediaruleName,
+            "isMobile": isMobile,
+            "isTablet": isTablet,
+            "isDesktop": isDesktop,
+            "isOrientationPortrait": isOrientationPortrait,
+            "isOrientationLandscape": isOrientationLandscape,
+        };
+        return mediaruleJson;
+    }
+    toString() {
+        let force = true;
+        let mediaruleJson = this.toJson(force);
+        let jsonString = JSON.stringify(mediaruleJson, null, 2);
+        return jsonString;
+    }
     getBrowserTabDimensions() {
         throw new Error("Not implemented");
         // return "Not implemented";

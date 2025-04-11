@@ -82,20 +82,26 @@
       output.insertAdjacentHTML( 'beforeEnd', locHtml );
     }
 
+    function setOnSite( html ) {
+      let output = document.getElementById('output');
+      
+      output.innerHTML = html;
+    }
 
-    function mediaruleNameTest() {
+
+    function mediaruleNameTest( force ) {
       let mobileVsDesktopPack = new MobileVsDesktopPack();
-      addOnSite( 
-        mobileVsDesktopPack.getMediaruleName()
-      );
 
-      let isMobile = mobileVsDesktopPack.isMobile();
-      let isTablet = mobileVsDesktopPack.isTablet();
-      let isDesktop = mobileVsDesktopPack.isDesktop();
-      let isOrientationPortrait = mobileVsDesktopPack.isOrientationPortrait();
-      let isOrientationLandscape = mobileVsDesktopPack.isOrientationLandscape();
+      let mediaruleName = mobileVsDesktopPack.getMediaruleName( force );
+
+      let isMobile = mobileVsDesktopPack.isMobile( false );
+      let isTablet = mobileVsDesktopPack.isTablet( false );
+      let isDesktop = mobileVsDesktopPack.isDesktop( false );
+      let isOrientationPortrait = mobileVsDesktopPack.isOrientationPortrait( false );
+      let isOrientationLandscape = mobileVsDesktopPack.isOrientationLandscape( false );
 
       let lines = {
+        "mediaruleName": mediaruleName,
         "isMobile": isMobile,
         "isTablet": isTablet,
         "isDesktop": isDesktop,
@@ -104,9 +110,16 @@
       };
       let locHtml = JSON.stringify(lines, null, 2);
 
+      addOnSite( mediaruleName );
+
       addOnSite( locHtml );
     }
 
+    function mediaruleNameTestJson() {
+      let mobileVsDesktopPack = new MobileVsDesktopPack();
+      let mediaruleJsonText = mobileVsDesktopPack.toString();
+      setOnSite( mediaruleJsonText );
+    }
 
     function allMediarulesShow() {
 
@@ -175,24 +188,50 @@
         });
     }
 
-    function assignEventsHandlers() {
-      let btn_LoadData = document.getElementById('btn_LoadData');
-      btn_LoadData.addEventListener(
-        'click', 
-        () => {
-          let locUrl = document.getElementById("inp_url").value;
-          loadRemoteData( locUrl );
+    function addResizeEventHandler() {
+      window.addEventListener('resize', () => {
+        mediaruleNameTestJson();
+      });
+    }
+
+    function addClickButtonLoadDataEventHandler() {
+
+      try {
+
+        let btn_LoadData = document.getElementById('btn_LoadData');
+
+        if ( !btn_LoadData ) {
+          throw new Error("Button not found. \nEncommented or not set in the html.");
         }
-      );
+
+        btn_LoadData.addEventListener(
+          'click', 
+          () => {
+            let locUrl = document.getElementById("inp_url").value;
+            loadRemoteData( locUrl );
+          }
+        );
+
+      } catch (error) {
+        console.error('Error:', error);
+        addOnSite( 'Error: ' + error.message );
+      }
+
+    }
+
+    function assignEventsHandlers() {
+      addResizeEventHandler();
+      // addClickButtonLoadDataEventHandler();
     } 
     
     // Call the function to load remote data when the DOM is fully loaded
     // This ensures that the function is called after the HTML content is loaded
     // and the DOM is ready for manipulation
     document.addEventListener('DOMContentLoaded', () => {
-      // assignEventsHandlers();
+      assignEventsHandlers();
 
-      mediaruleNameTest();
+      // mediaruleNameTest();
+      mediaruleNameTestJson();
 
       //allMediarulesShow();  
     });

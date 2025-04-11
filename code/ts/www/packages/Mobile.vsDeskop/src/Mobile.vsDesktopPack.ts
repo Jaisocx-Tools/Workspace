@@ -143,6 +143,39 @@ export class MobileVsDesktopPack {
     return mediaruleNameMatches;
   }
 
+  public toJson( force: boolean ): any {
+    let mediaruleName: string = this.getMediaruleName( force );
+
+    let notToUpdate: boolean = false;
+    let isMobile: boolean = this.isMobile( notToUpdate );
+    let isTablet: boolean = this.isTablet( notToUpdate );
+    let isDesktop: boolean = this.isDesktop( notToUpdate );
+    let isOrientationPortrait: boolean = this.isOrientationPortrait( notToUpdate );
+    let isOrientationLandscape: boolean = this.isOrientationLandscape( notToUpdate );
+
+    let mediaruleJson: object = {
+      "mediaruleName": mediaruleName,
+      "isMobile": isMobile,
+      "isTablet": isTablet,
+      "isDesktop": isDesktop,
+      "isOrientationPortrait": isOrientationPortrait,
+      "isOrientationLandscape": isOrientationLandscape,
+    };
+    
+    return mediaruleJson;
+  }
+
+  public toString() {
+    let force: boolean = true;
+    let mediaruleJson: any = this.toJson( force );
+    let jsonString: string = JSON.stringify( 
+      mediaruleJson, 
+      null, 
+      2 );
+
+    return jsonString;
+  }
+
   public getBrowserTabDimensions(): string {
     throw new Error("Not implemented");
     // return "Not implemented";

@@ -13,6 +13,8 @@ export declare class MobileVsDesktopPack {
     matchOrientation(keywords: string[], force: boolean): boolean;
     isOrientationPortrait(force: boolean): boolean;
     isOrientationLandscape(force: boolean): boolean;
+    toJson(force: boolean): any;
+    toString(): string;
     getBrowserTabDimensions(): string;
 }
 //# sourceMappingURL=Mobile.vsDesktopPack.d.ts.map
