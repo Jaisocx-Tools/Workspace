@@ -1,0 +1,20 @@
+<conf-idm>
+  <user id="User" password="password" granted-roles="READER" />
+  <user id="DataReader" password="password" granted-roles="READER_DATA_SECURED" />
+  
+  <role id="READER">
+    <!-- with docker, here should be the port, set in the http-conf.xml (:443), and not the outer docker container port, when another, for example (:2291) -->
+    <granted-alias url="workspace.brightday.email:443/" methods="GET" />
+    <granted-alias url="workspace.brightday.email:443/${any}" methods="GET" />
+    <granted-alias url="workspace.brightday.email:80/" methods="GET" />
+    <granted-alias url="workspace.brightday.email:80/${any}" methods="GET" />
+  </role>
+
+  <role id="READER_DATA_SECURED">
+    <!-- with docker, here should be the port, set in the http-conf.xml (:443), and not the outer docker container port, when another, for example (:2291) -->
+    <granted-alias url="workspace.brightday.email:443/cdn/data_secured/" methods="GET" />
+    <granted-alias url="workspace.brightday.email:443/cdn/data_secured/${any}" methods="GET" />
+  </role>
+</conf-idm>
+
+

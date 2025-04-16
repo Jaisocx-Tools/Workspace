@@ -1,0 +1,95 @@
+<html>
+  <head>
+    <title>CharcodeConverter Example</title>
+  </head>
+  <body>
+
+    <h1>CharcodeConverter Example</h1>
+
+    <p>Under development</p>
+
+    <script src="packages/CharcodeConverter/build/Simple/Charcodes.js"></script>
+    <script src="packages/CharcodeConverter/build/Simple/CharcodeConverter.js"></script>
+
+    <script>
+      function getMcTimestamp() {
+        const now = performance.timeOrigin + performance.now(); // Combine the origin and high-res time
+        return Math.round( (now * 1_000) ); // Convert milliSeconds to MicroSeconds
+      }
+
+
+      document.addEventListener('DOMContentLoaded', async () => {
+
+        const timestamp1 = getMcTimestamp();
+        const charcodeConverter = CharcodeConverter.getInstance();
+        const timestamp2 = getMcTimestamp();
+
+        console.log(
+          "CharcodeConverter.getInstance() time mc", 
+          ( timestamp2 - timestamp1 )
+        );
+
+        const timestamp32 = getMcTimestamp();
+        charcodeConverter.loadCharset( 'Han' );
+        const timestamp33 = getMcTimestamp();
+
+        console.log (
+          "China. charcodeConverter.loadCharset(); time mc", 
+          ( timestamp33 - timestamp32 )
+        );
+
+
+        const text1 = `除了做好“土特产”文章，培育新产业新业态，各地农村还发挥当地独特优势，加强农业文化遗产保护和利用转化，因地制宜发展农文旅融合新业态，拓展农业多种功能，实现乡村多元价值。`; 
+        const text = ' Hello World! ';
+
+        const AUTOLOAD_TRUE = 1;
+        const AUTOLOAD_FALSE = 0;
+
+        const timestamp4 = getMcTimestamp();
+        let buf = charcodeConverter.stringToArray( text1, AUTOLOAD_FALSE );
+        const timestamp5 = getMcTimestamp();
+
+        console.log(
+          "stringToArray time mc", 
+          ( timestamp5 - timestamp4 )
+        );
+
+        charcodeConverter.log( buf );
+        
+
+        const timestamp7 = getMcTimestamp();
+        const textDecoded = charcodeConverter.join( { bufs: buf } );
+        const timestamp8 = getMcTimestamp();
+
+        console.log(
+          "arrayToString time mc", 
+          ( timestamp8 - timestamp7 )
+        );
+
+
+        charcodeConverter.log( textDecoded );
+
+        const timestamp16 = getMcTimestamp();
+        const charcodeConverter2 = CharcodeConverter.getInstance();
+        const timestamp17 = getMcTimestamp();
+
+        console.log(
+          "CharcodeConverter.getInstance() time mc", 
+          ( timestamp17 - timestamp16 )
+        );
+
+
+        console.log(
+          "texts equal: ",
+          JSON.stringify( text1 == textDecoded )
+        );        
+
+      });
+    </script>
+  </body>
+</html>
+
+
+
+
+

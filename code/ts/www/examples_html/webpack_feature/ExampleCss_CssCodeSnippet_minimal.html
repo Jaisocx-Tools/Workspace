@@ -1,0 +1,209 @@
+<!doctype html>
+<html lang="en" class="workspace long theme-lightmode">
+<head>
+  <meta charset="utf-8">
+  <title>css-code-snippet</title>
+
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+
+  <script src="./../../examples/ExampleCssCleanStartWebpack/build/webpack/example-css-clean-start-bundle.js"></script>
+
+
+  <!-- code snippet styles via cdn. the next code snippet ver will be improved for usage with fewer <link tags. -->
+  <link rel="stylesheet" href="https://workspace.brightday.email/cdn/jaisocx-tools/css-code-snippet/assets/themes/csstool-codesnippet-theme-colour-salad.css">
+  <link rel="stylesheet" href="https://workspace.brightday.email/cdn/jaisocx-tools/css-code-snippet/assets/themes/csstool-codesnippet-theme-size-little.css">
+  <link rel="stylesheet" href="https://workspace.brightday.email/cdn/jaisocx-tools/css-code-snippet/assets/themes/csstool-codesnippet-theme-base.css">
+  <link rel="stylesheet" href="https://workspace.brightday.email/cdn/jaisocx-tools/css-code-snippet/assets/csstool-codesnippet-theme-styles-main.css">
+  <link rel="stylesheet" href="https://workspace.brightday.email/cdn/jaisocx-tools/css-code-snippet/assets/lines-numbers-variables/code-snippet-lines-numbers-99.css">
+
+  <style>
+
+    .CodeSnippetHolder#code-snippet-example-thin {
+      --lines-number: 29;
+
+      --code-snippet-tool--width: 28rem;
+      --code-snippet-tool--height: 22rem;
+      --overflow-y: auto;
+    }
+
+    /* Mobile landscape */
+    @media ( (max-height: 440px) and (orientation: landscape) ) {
+
+      .CodeSnippetHolder#code-snippet-example-thin {
+        --code-snippet-tool--width: 28rem;
+        --code-snippet-tool--height: auto;
+        --overflow-y: auto;
+
+        flex-grow: 1;
+      }
+    }
+
+  </style>
+
+
+<style>
+
+  .workspace {
+    --button-width: fit-content;
+  }
+
+  .workspace themebuttons {
+    width: fit-content;
+    display: grid; 
+    grid-auto-flow: column;
+    column-gap: 3rem; 
+    margin: 0.9rem 0 6rem 0;
+  }
+
+  .workspace themebuttons button {
+    width: var(--button-width);
+  }
+
+  .current::after {
+    content: "";
+    position: absolute;
+    bottom: -0.3rem;
+    left: 0;
+    width: 100%;
+    height: 0;
+    max-height: 0;
+    overflow-y: hidden;
+    border-bottom-width: 0.14rem;
+    border-bottom-style: solid;
+    border-bottom-color: var(--clean-start__text-color);
+  }
+
+  .workspace button {
+    background-color: transparent;
+    text-align: left;
+  }
+
+  #tooltip-button {
+    font-family: fantasy;
+  }
+
+</style>
+</head>
+<body>
+  <main>
+
+    <ThemeButtons>
+      <button id="button-turn-on-base-theme">Base Theme</button>
+      <button id="button-turn-on-custom-theme" data-theme="theme-custom">The Custom Styles</button>
+      <button id="button-turn-on-daymode" data-theme="theme-lightmode">Day Mode</button>
+      <button id="button-turn-on-nightmode" data-theme="theme-darkmode">Night Mode</button>  
+    </ThemeButtons>
+
+
+    <h1>A css tool "CodeSnippet"</h1>
+
+      <CodeSnippetHolder id="code-snippet-example-thin" class="CodeSnippetHolder blue little">
+          <pre class="CodeSnippetArea">
+import { TestBed } from '@angular/core/testing';
+import { AppComponent } from './app.component';
+
+describe('AppComponent', () => {
+  beforeEach(async () => {
+    await TestBed.configureTestingModule({
+      imports: [AppComponent],
+    }).compileComponents();
+  });
+
+  it('should create the app', () => {
+    const fixture = TestBed.createComponent(AppComponent);
+    const app = fixture.componentInstance;
+    expect(app).toBeTruthy();
+  });
+
+  it(`should have the 'angular' title`, () => {
+    const fixture = TestBed.createComponent(AppComponent);
+    const app = fixture.componentInstance;
+    expect(app.title).toEqual('angular');
+  });
+
+  it('should render title', () => {
+    const fixture = TestBed.createComponent(AppComponent);
+    fixture.detectChanges();
+    const compiled = fixture.nativeElement as HTMLElement;
+    expect(compiled.querySelector('h1')?.textContent).toContain('Hello, angular');
+  });
+});
+          </pre>
+        </CodeSnippetHolder>
+      
+    </main>
+
+    <script>
+
+      currentButtonNodeClicked = null;
+  
+      // declaring the function, this is used in the event handler of the theme turning button when clicked on this button.
+      function turnOnTheme ( buttonNodeClicked ) {
+  
+        if ( currentButtonNodeClicked !==  null ) {
+          currentButtonNodeClicked.classList.remove( "current" );
+        }
+  
+        const htmlNode = document.getElementsByTagName("html")[0];
+        const htmlNodeClassList = htmlNode.classList;
+  
+        const themeCssClassPrefix = "theme";
+  
+        htmlNodeClassList.forEach (
+          (cssClassName) => {
+            if ( cssClassName.startsWith( themeCssClassPrefix ) === true ) {
+              htmlNodeClassList.remove( cssClassName );
+            }
+          }
+        );
+  
+        const themeName = buttonNodeClicked.dataset.theme;
+        htmlNode.classList.add( themeName );
+        currentButtonNodeClicked = buttonNodeClicked;
+        currentButtonNodeClicked.classList.add( "current" );
+  
+      }
+  
+      // declaring the function, this adds to buttons the event handler to turn on the theme.
+      // this function is invoked when the site loads in the browser, 
+      // in the event handler for the event DOMContentLoaded
+      function addThemeButtonsEventHandlers() {
+  
+        const buttonsIDs = [
+          "button-turn-on-base-theme",
+          "button-turn-on-custom-theme",
+          "button-turn-on-daymode",
+          "button-turn-on-nightmode"
+        ];
+  
+        for ( let buttonId of buttonsIDs ) {
+  
+          let buttonNode = document.getElementById( buttonId );
+  
+          buttonNode.addEventListener (
+            "click",
+            (evt) => { 
+              let buttonNodeClicked = evt.target;
+              turnOnTheme ( buttonNodeClicked ); 
+            }
+          );
+  
+        }
+      }
+  
+      
+      // DOCUMENT ONLOAD, INVOKES THE FUNCTION TO RENDER TOOLTIP ON SITE OPENED IN BROWSER.
+      document.addEventListener('DOMContentLoaded', () => {
+  
+        // adding to buttons the event handler to turn on the theme.
+        addThemeButtonsEventHandlers();
+  
+      });
+  
+    </script>
+  
+    </body>
+</html>
+
+

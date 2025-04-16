@@ -1,0 +1,11 @@
+{
+  "dependencies": {
+    "@jaisocx/css-clean-start": "^1.3.x",
+    "@jaisocx/css-code-snippet": "^1.2.4",
+    "@jaisocx/css-table": "^1.2.3",
+    "@jaisocx/example-built-with-webpack": "^1.0.0",
+    "@jaisocx/example-css-clean-start": "^1.3.2",
+    "@jaisocx/tooltip": "^1.2.3",
+    "@jaisocx/tree": "^1.5.36"
+  }
+}

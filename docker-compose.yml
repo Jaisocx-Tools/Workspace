@@ -1,0 +1,90 @@
+services:
+
+  # the dockerized service with nodejs and npm fixed ver
+  # to develop in typescript and javascript
+  # and to build npm dependencies and Your js code with Webpack
+  # to bundle.js having .css already available just via <script src="bundle.js" /> 
+  # for usage in html files on sites.
+  ts:
+    build:
+      context: ./.docker/ts
+    volumes:
+      - "${relativeProjectPathWithTsCode}/:${tsServicePathInDockerVolume}/"
+      - "./cdn/:${tsServicePathCdn}/"
+    ports:
+      - 8083:8083
+      - 3000:3000
+    networks:
+      - workspace_network
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+
+  # the dockerized php-fpm service for server side scripts,
+  # e.g. in this project to produce json data from database.
+  # json data became normal for obtaining data from server
+  # by sites ui tools.
+  php:
+    build:
+      context: ./.docker/php
+    volumes:
+      - ./.docker/php/logs/:/php-logs/
+      - ./code/php/:/var/www/code/php/
+    environment:
+      TIMEZONE: "${TIMEZONE}"
+    networks:
+      - workspace_network
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+
+  # the dockerized https service to build the endpoint for publishing sites. 
+  # To develop locally, You need to add a text line in file /etc/hosts like this:
+  # 127.0.0.1    workspace.brightday.email
+  # where 127.0.0.1 is the address of Your machine known by Your browser on Your machine.
+  # works in MS Windows WSL, Unix and Linux OS, MacOS.
+  https:
+    build:
+      context: ./.docker/https
+    volumes:
+      - ./.docker/https/conf/:/usr/lib/jaisocx-http/apps/congratulations/conf/
+      - ./.docker/https/etc/:/usr/lib/jaisocx-http/etc/
+      - ./.docker/https/ssl/:/usr/lib/jaisocx-http/ssl/
+      - ./.docker/https/logs/:/usr/lib/jaisocx-http/logs/
+      - ./code/ts/www/:/var/www/code/ts/www/
+      - ./code/php/:/var/www/code/php/
+      - "./cdn/:${tsServicePathCdn}/"
+    ports:
+      - 443:443
+      - 80:80
+    networks:
+      - workspace_network
+    environment:
+      PHP_FPM_HOST: "php:9000"
+      JAVA_XMS: "2g"
+      JAVA_XMX: "2g"
+  #      php hostname like php service name="php", port from docker/php/conf/php-fpm.d/www.conf "listen" directive (listen = 127.0.0.1:9000)
+
+  database:
+    image: mysql:8.0
+    command: --default-authentication-plugin=mysql_native_password
+    restart: always
+    ports:
+      - "${MYSQL_PORT}:3306"
+    volumes:
+      - ./.docker/database/data/:/var/lib/mysq/
+      - ./.docker/database/docker-entrypoint-initdb.d/:/docker-entrypoint-initdb.d/
+      - ./.docker/database/conf/:/etc/mysql/mysql.conf.d/
+    environment:
+      MYSQL_DATABASE: "${MYSQL_DATABASE}"
+      MYSQL_USER: "${MYSQL_USER}"
+      MYSQL_PASSWORD: "${MYSQL_PASSWORD}"
+      MYSQL_ROOT_PASSWORD: "${MYSQL_ROOT_PASSWORD}"
+      MYSQL_PORT: "${MYSQL_PORT}"
+    networks:
+      - workspace_network
+    
+networks:
+  workspace_network:
+    driver: bridge
+
+
+

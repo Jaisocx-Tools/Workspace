@@ -1,0 +1,40 @@
+/* theme-lightmode */
+.theme-lightmode .workspace-css-table-holder *,
+.theme-lightmode.workspace-css-table-holder * {
+
+  --workspace-table--cell--font-family: var(--clean-start__font-family, "Baloo Paaji 2"), "Arial";
+
+  --workspace-table--cell--column-label--font-family: var(--clean-start__font-family, "Baloo Paaji 2"), "Arial";
+  --workspace-table--cell--cell-value--font-family: var(--clean-start__font-family, "Baloo Paaji 2"), "Arial";
+
+  --workspace-table-thin--cell--column-label--font-family: var(--clean-start__font-family, "Baloo Paaji 2"), "Arial";
+  --workspace-table-thin--cell--cell-value--font-family: var(--clean-start__font-family, "Baloo Paaji 2"), "Arial";
+
+  --workspace-table-bright--cell--column-label--font-family: var(--clean-start__font-family, "Baloo Paaji 2"), "Arial";
+  --workspace-table-bright--cell--cell-value--font-family: var(--clean-start__font-family, "Baloo Paaji 2"), "Arial";
+
+
+
+  --workspace-table--cell--column-label--text-color: #eaeaea;
+  --workspace-table--cell--cell-value--text-color: var(--clean-start__text-color, #222a2e);
+
+  --workspace-table-thin--cell--column-label--text-color: #eaeaea;
+  --workspace-table-thin--cell--cell-value--text-color: var(--clean-start__text-color, #222a2e);
+
+  --workspace-table-bright--cell--column-label--text-color: #eaeaea;
+  --workspace-table-bright--cell--cell-value--text-color: var(--clean-start__text-color, #222a2e);
+
+
+  --workspace-table--cell--column-label--background-color: var(--clean-start__tag_body__background, #59e);
+  --workspace-table--cell--cell-value--background-color: var(--clean-start__site__background, #fcfcfc);
+
+  --workspace-table-thin--cell--column-label--background-color: var(--clean-start__tag_body__background, #59e);
+  --workspace-table-thin--cell--cell-value--background-color: var(--clean-start__site__background, #fcfcfc);
+
+  --workspace-table-bright--cell--column-label--background-color: var(--clean-start__tag_body__background, #59e);
+  --workspace-table-bright--cell--cell-value--background-color: var(--clean-start__site__background, #fcfcfc);
+
+}
+
+
+

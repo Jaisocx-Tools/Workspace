@@ -1,0 +1,1 @@
+{"version":3,"file":"TooltipShownSettings.d.ts","sourceRoot":"","sources":["../../src/TooltipShownSettings.ts"],"names":[],"mappings":"AAGA,qBAAa,oBAAoB;IAC/B,iBAAiB,EAAE,GAAG,CAAC;IACvB,oBAAoB,EAAE,GAAG,CAAC;IAC1B,mBAAmB,EAAG,IAAI,GAAG,UAAU,CAAC,OAAO,UAAU,CAAC,CAAC;gBAGzD,EAAE,EAAE,GAAG,EACP,aAAa,EAAE,GAAG,EAClB,aAAa,EAAG,IAAI,GAAG,UAAU,CAAC,OAAO,UAAU,CAAC;CAMvD"}

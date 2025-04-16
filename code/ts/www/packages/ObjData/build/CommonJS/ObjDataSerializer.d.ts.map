@@ -1,0 +1,1 @@
+{"version":3,"file":"ObjDataSerializer.d.ts","sourceRoot":"","sources":["../../src/ObjDataSerializer.ts"],"names":[],"mappings":"AAEA,OAAO,EAAE,mBAAmB,EAAE,MAAM,mBAAmB,CAAC;AAExD,qBAAa,iBAAiB;IAE5B,MAAM,CAAC,SAAS,CAAE,QAAQ,EAAE,GAAG,GAAI,UAAU;IAO7C,MAAM,CAAC,iBAAiB,CACtB,QAAQ,EAAE,GAAG,EACb,SAAS,EAAE,GAAG,GACb,UAAU;IAwGb,MAAM,CAAC,oBAAoB,CACzB,UAAU,EAAE,mBAAmB,GAC9B,UAAU;CAyCd"}

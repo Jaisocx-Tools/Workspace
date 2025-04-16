@@ -1,0 +1,331 @@
+.workspace {
+  --clean-start__site__width__xs_mobile_portrait: 100%;
+  --clean-start__site__max_width__xs_mobile_portrait: 100%;
+  --clean-start__site__min_width__xs_mobile_portrait: 100%;
+
+  --clean-start__site__width__s_mobile_portrait: 100%;
+  --clean-start__site__max_width__s_mobile_portrait: 100%;
+  --clean-start__site__min_width__s_mobile_portrait: 100%;
+
+  --clean-start__site__width__sm_mobile_portrait: 100%;
+  --clean-start__site__max_width__sm_mobile_portrait: 100%;
+  --clean-start__site__min_width__sm_mobile_portrait: 100%;
+}
+
+
+.workspace-css-table-holder {
+  display:                 flex;
+  flex-direction:          column;
+  align-items:             flex-start;
+  justify-content:         flex-start;
+
+  width:                   var(--workspace-table-holder--width);
+  max-width:               var(--workspace-table-holder--width-max);
+  min-width:               var(--workspace-table-holder--width-min);
+
+  overflow:                var(--workspace-table-holder--overflow-x) var(--workspace-table-holder--overflow-y);
+}
+
+.workspace-css-table-holder .workspace-css-table {
+  width:                   var(--workspace-table--main--width);
+  max-width:               var(--workspace-table--main--width-max);
+  min-width:               var(--workspace-table--main--width-min);
+
+  overflow-y:              var(--workspace-table--main--overflow-y);
+  overflow-x:              var(--workspace-table--main--overflow-x);
+
+  border-radius:           var(--workspace-table--main--border-radius);
+  border:                  var(--workspace-table--main--border);
+}
+
+.workspace-css-table-holder .row {
+  width:                   fit-content;
+  min-width:               100%;
+  max-width:               unset;
+
+  border-bottom:           var(--workspace-table--row--border);
+}
+
+.workspace-css-table-holder .cell {
+  display:                 flex;
+  flex-direction:          row;
+  align-items:             stretch;
+  justify-content:         stretch;
+  height:                  auto;
+  overflow-x:              hidden;
+  overflow-y:              visible;
+
+  /* when a word ends, it breaks, when too long word oer one line full width, it breaks too */
+  word-break:              normal; 
+  font-variant:            no-common-ligatures tabular-nums;
+
+  border-left:             var(--workspace-table--cell--border);
+}
+
+
+/* CELL VALUE LOOK AND FEEL PRETTIFYING */
+.workspace-css-table-holder .cell span {
+  display:                 block;
+  overflow:                hidden;
+}
+
+
+.workspace-css-table-holder .column-label {
+  font-family:             var(--workspace-table--cell--column-label--font-family);
+  font-weight:             var(--workspace-table--cell--column-label--font-weight);
+  font-size:               var(--workspace-table--cell--column-label--font-size);
+  line-height:             var(--workspace-table--cell--column-label--line-height);
+  letter-spacing:          var(--workspace-table--cell--column-label--letter-spacing);
+
+  color:                   var(--workspace-table--cell--column-label--text-color);
+
+  background-color:        var(--workspace-table--cell--column-label--background-color);
+
+  background-image:        var(--workspace-table--cell--column-label--background-image);
+  background-position:     var(--workspace-table--cell--column-label--background-position);
+  background-size:         var(--workspace-table--cell--column-label--background-size);
+  background-repeat:       var(--workspace-table--cell--column-label--background-repeat);
+  background-origin:       var(--workspace-table--cell--column-label--background-origin);
+  background-clip:         var(--workspace-table--cell--column-label--background-clip);
+  background-attachment:   var(--workspace-table--cell--column-label--background-attachment); 
+
+  display:                 flex;
+  flex-direction:          row;
+  align-items:             stretch;
+  justify-content:         flex-start;
+}
+
+.workspace-css-table-holder .cell-value {
+  font-family:             var(--workspace-table--cell--cell-value--font-family);
+
+  line-break:              normal;
+  word-break:              break-word;
+
+  font-size:               var(--workspace-table--cell--cell-value--font-size);
+  font-weight:             var(--workspace-table--cell--cell-value--font-weight);
+  line-height:             var(--workspace-table--cell--cell-value--line-height);
+  letter-spacing:          var(--workspace-table--cell--cell-value--letter-spacing);
+
+  color:                   var(--workspace-table--cell--cell-value--text-color);
+  
+  background-color:        var(--workspace-table--cell--cell-value--background-color);
+
+  background-image:        var(--workspace-table--cell--cell-value--background-image);
+  background-position:     var(--workspace-table--cell--cell-value--background-position);
+  background-size:         var(--workspace-table--cell--cell-value--background-size);
+  background-repeat:       var(--workspace-table--cell--cell-value--background-repeat);
+  background-origin:       var(--workspace-table--cell--cell-value--background-origin);
+  background-clip:         var(--workspace-table--cell--cell-value--background-clip);
+  background-attachment:   var(--workspace-table--cell--cell-value--background-attachment); 
+
+  display:                 flex;
+  flex-direction:          row;
+  align-items:             stretch;
+  justify-content:         flex-start;
+}
+
+
+
+/* MEDIA RULE FOR SMALL DEVICESS, IN THIS TABLE LAYOUT FIELDS IN A RECORD ARE PLACED VERTICALLY, NOT IN ONE LINE. */
+@media only screen and (min-width: 10px) and (max-width: 440px),
+       only screen and (max-width: 1280px) and (orientation: portrait) {
+
+  .workspace-css-table-holder .workspace-css-table {
+    display:                    flex;
+    flex-direction:             column;
+    align-items:                stretch;
+    justify-content:            flex-start; 
+  }
+
+  .workspace-css-table-holder .row {
+    display:                    flex;
+    flex-direction:             column;
+
+    justify-content:            flex-start;
+    align-items:                flex-start;
+
+    border-bottom:              var(--workspace-table--row--border);
+  }
+
+  /* TABLE'S COLUMNS LABELS IN THE DESKTOP VIEW, ABOVE THE TABLE, HIDES IN MOBILE HERE */
+  .workspace-css-table-holder .row.desktop-columns-labels-holder {
+    display:                    none;
+  }
+
+  .workspace-css-table-holder .cell {
+    width: 100%;
+    max-width: 100%;
+    min-width: 100%;
+  }
+  
+ 
+  /* STYLES FOR ALL SPAN TAGS IN THE TABLE CELL, FIELD LABEL AND THE SPAN WITH THE VALUE */
+  .workspace-css-table-holder .column-label,
+  .workspace-css-table-holder .cell-value {
+    padding:                    var(--workspace-table-thin--cell--padding);
+    display: inline-block;
+  }
+
+
+  /* THE COLUMN LABEL, SHOWN IN MOBILE VIEW ON THE LEFT SIDE */
+  .workspace-css-table-holder .column-label {
+    width:                      var(--workspace-table-thin--cell--column-label--width);
+    max-width:                  var(--workspace-table-thin--cell--column-label--width);
+    min-width:                  var(--workspace-table-thin--cell--column-label--width);
+  }
+
+  .workspace-css-table-holder.thin-styles-applied .column-label {
+    font-family:                var(--workspace-table-thin--cell--column-label--font-family);
+    font-size:                  var(--workspace-table-thin--cell--column-label--font-size);
+    font-weight:                var(--workspace-table-thin--cell--column-label--font-weight);
+    line-height:                var(--workspace-table-thin--cell--column-label--line-height);
+    letter-spacing:             var(--workspace-table-thin--cell--column-label--letter-spacing);
+    padding:                    var(--workspace-table-thin--cell--column-label--padding);
+
+    color:                      var(--workspace-table-thin--cell--column-label--text-color);
+
+    background-color:           var(--workspace-table-thin--cell--column-label--background-color);
+
+    background-image:           var(--workspace-table-thin--cell--column-label--background-image);
+    background-position:        var(--workspace-table-thin--cell--column-label--background-position);
+    background-size:            var(--workspace-table-thin--cell--column-label--background-size);
+    background-repeat:          var(--workspace-table-thin--cell--column-label--background-repeat);
+    background-origin:          var(--workspace-table-thin--cell--column-label--background-origin);
+    background-clip:            var(--workspace-table-thin--cell--column-label--background-clip);
+    background-attachment:      var(--workspace-table-thin--cell--column-label--background-attachment); 
+  }
+
+  .workspace-css-table-holder .cell-value {
+    flex-grow:                  1;
+  }
+
+  .workspace-css-table-holder.thin-styles-applied .cell-value {
+    font-family:                var(--workspace-table-thin--cell--cell-value--font-family);
+    font-size:                  var(--workspace-table-thin--cell--cell-value--font-size);
+    font-weight:                var(--workspace-table-thin--cell--cell-value--font-weight);
+    line-height:                var(--workspace-table-thin--cell--cell-value--line-height);
+    letter-spacing:             var(--workspace-table-thin--cell--cell-value--letter-spacing);
+    padding:                    var(--workspace-table-thin--cell--cell-value--padding);
+
+    color:                      var(--workspace-table-thin--cell--cell-value--text-color);
+    
+    background-color:           var(--workspace-table-thin--cell--cell-value--background-color);
+
+    background-image:           var(--workspace-table-thin--cell--cell-value--background-image);
+    background-position:        var(--workspace-table-thin--cell--cell-value--background-position);
+    background-size:            var(--workspace-table-thin--cell--cell-value--background-size);
+    background-repeat:          var(--workspace-table-thin--cell--cell-value--background-repeat);
+    background-origin:          var(--workspace-table-thin--cell--cell-value--background-origin);
+    background-clip:            var(--workspace-table-thin--cell--cell-value--background-clip);
+    background-attachment:      var(--workspace-table-thin--cell--cell-value--background-attachment); 
+  }
+  
+
+  /* when mobile, every record, displayed as column, obtains on te top and at the bottom the padding for finer look and feel */
+  .workspace-css-table-holder .cell:first-of-type span {
+    padding-top:                var(--workspace-table-thin--record--padding-top);
+  }
+  .workspace-css-table-holder .cell:last-of-type span {
+    padding-bottom:             var(--workspace-table-thin--record--padding-bottom);
+  }
+
+}
+
+
+
+/* MEDIA RULE FOR LAPTOP, DESKTOP AND BIG SCREENS, IN THIS TABLE LAYOUT FIELDS IN A RECORD ARE PLACED IN ONE LINE. */
+@media only screen and ( (min-width: 441px) and (max-width: 1280px) and (orientation: landscape) ),
+       only screen and (min-width: 1281px) {
+
+  .workspace-css-table-holder .workspace-css-table {
+    display:                   grid;
+    grid-template-columns:     100%;
+  }
+
+  .workspace-css-table-holder .row {
+    display:                   grid;
+    grid-template-columns:     var(--workspace-table-bright--grid-template-columns);
+    gap:                       0; /* Space between cells */
+  }
+
+  /* THE COLUMN LABEL, SHOWN IN MOBILE VIEW ON THE LEFT SIDE, here hides in the desktop view */
+  .workspace-css-table-holder .workspace-css-table .column-label {
+    display:                   none;
+  }
+
+  .workspace-css-table-holder .row.desktop-columns-labels-holder {
+    /* display:                   flex; */
+  }
+
+  .workspace-css-table-holder .cell:first-of-type {
+    border-left-width:         0;
+  }
+  .workspace-css-table-holder .cell:last-of-type {
+    flex-grow:                 1;
+  }
+
+  /* STYLES FOR ALL SPAN TAGS IN THE TABLE CELL. IN THE DESKTOP VIEW THERE IS JUST ONE SPAN WITH THE VALUE. COLUMN LABEL HIDES. */
+  .workspace-css-table-holder .column-label,
+  .workspace-css-table-holder .cell-value {
+    padding:                  var(--workspace-table-bright--cell--padding);
+  }
+
+  .workspace-css-table-holder .row.desktop-columns-labels-holder .column-label {
+    width:                    100%;
+    max-width:                unset;
+    min-width:                unset;
+    display:                  flex;
+  }
+
+  .workspace-css-table-holder.bright-styles-applied .row.desktop-columns-labels-holder .column-label {
+    font-family:              var(--workspace-table-bright--cell--column-label--font-family);
+    font-size:                var(--workspace-table-bright--cell--column-label--font-size);
+    font-weight:              var(--workspace-table-bright--cell--column-label--font-weight);
+    line-height:              var(--workspace-table-bright--cell--column-label--line-height);
+    letter-spacing:           var(--workspace-table-bright--cell--column-label--letter-spacing);
+    padding:                  var(--workspace-table-bright--cell--column-label--padding);
+
+    color:                    var(--workspace-table-bright--cell--column-label--text-color);
+
+    background-color:         var(--workspace-table-bright--cell--column-label--background-color);
+
+    background-image:         var(--workspace-table-bright--cell--column-label--background-image);
+    background-position:      var(--workspace-table-bright--cell--column-label--background-position);
+    background-size:          var(--workspace-table-bright--cell--column-label--background-size);
+    background-repeat:        var(--workspace-table-bright--cell--column-label--background-repeat);
+    background-origin:        var(--workspace-table-bright--cell--column-label--background-origin);
+    background-clip:          var(--workspace-table-bright--cell--column-label--background-clip);
+    background-attachment:    var(--workspace-table-bright--cell--column-label--background-attachment); 
+  }
+
+  .workspace-css-table-holder .cell-value {
+    width:                    100%;
+    max-width:                unset;
+    min-width:                unset;
+  }
+
+  .workspace-css-table-holder.bright-styles-applied .cell-value {
+    font-family:              var(--workspace-table-bright--cell--cell-value--font-family);
+    font-size:                var(--workspace-table-bright--cell--cell-value--font-size);
+    font-weight:              var(--workspace-table-bright--cell--cell-value--font-weight);
+    line-height:              var(--workspace-table-bright--cell--cell-value--line-height);
+    letter-spacing:           var(--workspace-table-bright--cell--cell-value--letter-spacing);
+    padding:                  var(--workspace-table-bright--cell--cell-value--padding);
+
+
+    color:                    var(--workspace-table-bright--cell--cell-value--text-color);
+
+    background-color:         var(--workspace-table-bright--cell--cell-value--background-color);
+
+    background-image:         var(--workspace-table-bright--cell--cell-value--background-image);
+    background-position:      var(--workspace-table-bright--cell--cell-value--background-position);
+    background-size:          var(--workspace-table-bright--cell--cell-value--background-size);
+    background-repeat:        var(--workspace-table-bright--cell--cell-value--background-repeat);
+    background-origin:        var(--workspace-table-bright--cell--cell-value--background-origin);
+    background-clip:          var(--workspace-table-bright--cell--cell-value--background-clip);
+    background-attachment:    var(--workspace-table-bright--cell--cell-value--background-attachment); 
+  }
+
+}
+
+

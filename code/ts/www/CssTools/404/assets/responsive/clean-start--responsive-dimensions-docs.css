@@ -1,0 +1,138 @@
+/* CSS Variables for Responsive Design */
+
+:root {
+
+  /* Extra Small Mobile (XS) */
+  --screen-xs-mobile-portrait-til: 320px;
+  --screen-xs-mobile-portrait-from: 321px;
+
+  --screen-xs-mobile-landscape-til: 568px; /* iPhone SE landscape */
+  --screen-xs-mobile-landscape-from: 569px; /* iPhone SE landscape */
+
+  
+  /* Small Mobile (S) */
+  --screen-s-mobile-portrait-til: 375px; /* iPhone X, Galaxy S */
+  --screen-s-mobile-portrait-from: 376px; /* iPhone X, Galaxy S */
+
+  --screen-s-mobile-landscape-til: 667px; 
+  --screen-s-mobile-landscape-from: 668px; 
+
+
+  /* Small-Medium Mobile (SM) */
+  --screen-sm-mobile-portrait-til: 480px; /* Large smartphones */
+  --screen-sm-mobile-portrait-from: 481px; /* Large smartphones */
+
+  --screen-sm-mobile-landscape-til: 812px; /* iPhone 13 Pro Max */
+  --screen-sm-mobile-landscape-from: 813px; /* iPhone 13 Pro Max */
+
+
+  /* Tablets (MD) */
+   /* iPads, Small Tablets */
+  --screen-md-tablet-portrait-til: 768px;
+  --screen-md-tablet-portrait-from: 769px;
+
+  --screen-md-tablet-landscape-til: 1024px;
+  --screen-md-tablet-landscape-from: 1025px;
+
+
+  /* Large Tablets and Small Laptops (LG) */
+  --screen-lg-laptop-til: 1024px;
+  --screen-lg-laptop-from: 1025px;
+
+
+  /* Desktop (XL) */
+  --screen-xl-desktop-til: 1280px;
+  --screen-xl-desktop-from: 1281px;
+
+
+  /* Large Screens (Ultra-wide) XXL */
+  --screen-xxl-ultra-til: 1600px;
+  --screen-xxl-ultra-from: 1601px;
+
+
+  /* HD, Extra Large Screens (4K and above) 3XL 
+  3xl-extra
+  */
+  --screen-hd-width-til: 1920px;
+  --screen-hd-height-til: 1080px;
+
+  --screen-hd-width-from: 1921px;
+  --screen-hd-height-from: 1081px;
+
+
+  /* Quad HD (QHD) / 2K */
+  --screen-qhd-width-til: 2560px;
+  --screen-qhd-height-til: 1440px;
+
+  --screen-qhd-width-from: 2561px;
+  --screen-qhd-height-from: 1441px;
+
+
+  /* Ultra High Definition - UHD 4K */
+  /*
+  Resolution: 3840 x 2160 pixels​
+
+  Popular:
+
+  LG OLED C1 Series: Features a 65-inch display with deep blacks and vibrant colors.​
+  Wikipedia
+
+  Samsung QN90A Neo QLED: Known for its high peak brightness and excellent contrast.​
+  RTINGS.com
+
+  Sony Bravia XR A90J: Offers impressive image processing and color accuracy.​
+  */
+  --screen-4k-ultra-hd-width-til: 3840px;
+  --screen-4k-ultra-hd-height-til: 2160px;
+
+  --screen-4k-ultra-hd-width-from: 3841px;
+  --screen-4k-ultra-hd-height-from: 2161px;
+
+
+  /* 
+  8K Resolution:
+
+  Resolution: 7680 x 4320 pixels​
+
+  Popular:
+
+  Samsung QN900D 8K QLED: Delivers excellent picture quality with fantastic contrast and high peak brightness. ​
+  RTINGS.com
+
+  LG ZX 8K OLED: Features an 88-inch display with self-emissive pixels for perfect blacks.​
+
+  Sony Z9J 8K LED: Available in 75 and 85-inch sizes, known for its cognitive processor XR.
+  */
+  --screen-8k-width-til: 7680px;
+  --screen-8k-height-til: 4320px;
+
+  --screen-8k-width-from: 7681px;
+  --screen-8k-height-from: 4321px;
+
+
+
+  /*
+  16K Resolution:
+
+  Resolution: 15360 x 8640 pixels​
+
+  FlatPanelsHD
+
+  Current Status:
+
+  16K TVs are in the prototype stage. 
+  For instance, Chinese display panel maker BOE unveiled a 110-inch 16K LCD TV panel, 
+  showcasing the future potential of ultra-high-resolution displays.
+  */
+  --screen-16k-width-til: 15360px;
+  --screen-16k-height-til: 8640px;
+
+  --screen-16k-width-from: 15361px;
+  --screen-16k-height-from: 8641px;
+
+}
+
+
+
+
+

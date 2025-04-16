@@ -1,0 +1,27 @@
+
+@media ( (min-width: 4px) and (max-width: 440px) and (orientation: portrait) ) {
+  .tooltip {
+    --tooltip__font_size: var(--tooltip__font_size__mobile);
+  }
+}
+
+@media ( (min-width: 4px) and (max-width: 803px) and (orientation: landscape) ) {
+  .tooltip {
+    --tooltip__font_size: var(--tooltip__font_size__mobile);
+  }
+}
+
+
+@media ( (min-width: 441px) and (max-width: 803px) and (orientation: portrait) ) {
+  .tooltip {
+    --tooltip__font_size: var(--tooltip__font_size__tablet);
+  }
+}
+
+@media ( (min-width: 804px) and (max-width: 1025px) and (orientation: landscape) ) {
+  .tooltip {
+    --tooltip__font_size: var(--tooltip__font_size__tablet);
+  }
+}
+
+

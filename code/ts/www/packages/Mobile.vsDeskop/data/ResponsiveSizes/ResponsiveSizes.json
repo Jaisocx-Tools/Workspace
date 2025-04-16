@@ -1,0 +1,244 @@
+{
+  "title": "Responsive Sizes",
+  "description": "A summary of sizes for sites responsive design impl via coding styles @media queries",
+  "tags": ["sites", "css", "responsive", "@media", "media queries"],
+  "author": "Jaisocx Company",
+  "dateFormatEurope": "2025-04-12",
+  "dateFormatUS": "04/12/2025",
+  "dateFormatted": "the 12th of April 2025",
+  "latestUpdate": "2025-04-12",
+  "developer_agreement": {
+    "developer_agrees": true,
+    "developer_agrees_to_use_just_for": "The developer agrees to use this data exclusively for refining and bug-fixing of sites' visual interfaces, making them well seeing on wide monitors, mobiles and tablets as well.",
+    "developer_agrees_never_to_use_for": "The developer agrees never use this dataset on sites development, when a site is intended or planned or already does discriminating or phishing."
+  },
+  "data": {
+    "mobile_xs": {
+      "range_orderby_id": 10,
+      "width": {
+        "from": "240px",
+        "to": "320px"
+      },
+      "height": {
+        "from": "320px",
+        "to": "500px"
+      },
+      "art": "mobile",
+      "art_size": "xs",
+      "orientation_standard": "portrait",
+      "is_orientation_standard_nearly_always": false
+    },
+    "mobile_s": {
+      "range_orderby_id": 20,
+      "width": {
+        "from": "321px",
+        "to": "374px"
+      },
+      "height": {
+        "from": "501px",
+        "to": "667px"
+      },
+      "art": "mobile",
+      "art_size": "s",
+      "orientation_standard": "portrait",
+      "is_orientation_standard_nearly_always": false
+    },
+    "mobile_sm": {
+      "range_orderby_id": 30,
+      "width": {
+        "from": "375px",
+        "to": "430px"
+      },
+      "height": {
+        "from": "668px",
+        "to": "736px"
+      },
+      "art": "mobile",
+      "art_size": "sm",
+      "orientation_standard": "portrait",
+      "is_orientation_standard_nearly_always": false
+    },
+    "mobile_md": {
+      "range_orderby_id": 40,
+      "width": {
+        "from": "431px",
+        "to": "480px"
+      },
+      "height": {
+        "from": "737px",
+        "to": "812px"
+      },
+      "art": "mobile",
+      "art_size": "md",
+      "orientation_standard": "portrait",
+      "is_orientation_standard_nearly_always": false
+    },
+    "tablet_sm": {
+      "range_orderby_id": 50,
+      "width": {
+        "from": "481px",
+        "to": "767px"
+      },
+      "height": {
+        "from": "813px",
+        "to": "960px"
+      },
+      "art": "tablet",
+      "art_size": "sm",
+      "orientation_standard": "portrait",
+      "is_orientation_standard_nearly_always": false
+    },
+    "tablet_md": {
+      "range_orderby_id": 60,
+      "width": {
+        "from": "768px",
+        "to": "1024px"
+      },
+      "height": {
+        "from": "961px",
+        "to": "1024px"
+      },
+      "art": "tablet",
+      "art_size": "md",
+      "orientation_standard": "portrait",
+      "is_orientation_standard_nearly_always": false
+    },
+    "laptop_sm": {
+      "range_orderby_id": 70,
+      "width": {
+        "from": "1025px",
+        "to": "1279px"
+      },
+      "height": {
+        "from": "1025px",
+        "to": "1080px"
+      },
+      "art": "laptop",
+      "art_size": "sm",
+      "orientation_standard": "landscape",
+      "is_orientation_standard_nearly_always": true
+    },
+    "laptop_md": {
+      "range_orderby_id": 80,
+      "width": {
+        "from": "1280px",
+        "to": "1439px"
+      },
+      "height": {
+        "from": "1081px",
+        "to": "1200px"
+      },
+      "art": "laptop",
+      "art_size": "md",
+      "orientation_standard": "landscape",
+      "is_orientation_standard_nearly_always": true
+    },
+    "laptop_lg": {
+      "range_orderby_id": 90,
+      "width": {
+        "from": "1440px",
+        "to": "1600px"
+      },
+      "height": {
+        "from": "1201px",
+        "to": "1440px"
+      },
+      "art": "laptop",
+      "art_size": "lg",
+      "orientation_standard": "landscape",
+      "is_orientation_standard_nearly_always": true
+    },
+    "desktop_xl": {
+      "range_orderby_id": 100,
+      "width": {
+        "from": "1601px",
+        "to": "1920px"
+      },
+      "height": {
+        "from": "1441px",
+        "to": "1600px"
+      },
+      "art": "desktop",
+      "art_size": "xl",
+      "orientation_standard": "landscape",
+      "is_orientation_standard_nearly_always": true
+    },
+    "desktop_xxl": {
+      "range_orderby_id": 110,
+      "width": {
+        "from": "1921px",
+        "to": "2560px"
+      },
+      "height": {
+        "from": "1601px",
+        "to": "2160px"
+      },
+      "art": "desktop",
+      "art_size": "xxl",
+      "orientation_standard": "landscape",
+      "is_orientation_standard_nearly_always": true
+    },
+    "display_qhd": {
+      "range_orderby_id": 120,
+      "width": {
+        "from": "2561px",
+        "to": "3840px"
+      },
+      "height": {
+        "from": "2161px",
+        "to": "2160px"
+      },
+      "art": "display",
+      "art_size": "qhd",
+      "orientation_standard": "landscape",
+      "is_orientation_standard_nearly_always": true
+    },
+    "display_4k": {
+      "range_orderby_id": 130,
+      "width": {
+        "from": "3841px",
+        "to": "7680px"
+      },
+      "height": {
+        "from": "2161px",
+        "to": "4320px"
+      },
+      "art": "display",
+      "art_size": "4k",
+      "orientation_standard": "landscape",
+      "is_orientation_standard_nearly_always": true
+    },
+    "display_8k": {
+      "range_orderby_id": 140,
+      "width": {
+        "from": "7681px",
+        "to": "15360px"
+      },
+      "height": {
+        "from": "4321px",
+        "to": "8640px"
+      },
+      "art": "display",
+      "art_size": "8k",
+      "orientation_standard": "landscape",
+      "is_orientation_standard_nearly_always": true
+    },
+    "display_16k": {
+      "range_orderby_id": 150,
+      "width": {
+        "from": "15361px",
+        "to": "25360px"
+      },
+      "height": {
+        "from": "8641px",
+        "to": "9999px"
+      },
+      "art": "display",
+      "art_size": "16k",
+      "orientation_standard": "landscape",
+      "is_orientation_standard_nearly_always": true
+    }
+  }
+}
+
+

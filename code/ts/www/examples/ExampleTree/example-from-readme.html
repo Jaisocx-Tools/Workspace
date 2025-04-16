@@ -1,0 +1,37 @@
+<html>
+  <head>
+    <title>Tree Example</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- th path to webpack built bundle.js here: -->
+    <script src="build/webpack/example-tree-bundle.js"></script>
+  </head>
+  <body>
+
+    <h1>Tree example</h1>
+
+    <div id="tree-holder" class="theme-base"></div>
+
+    <script>
+
+      function renderDataLikeTree( data ) {
+        let tree = new Tree();
+        tree
+          .setMainHtmlNodeId("tree-holder")
+          .setNodesWithIcons(true)
+          .setNodesOpenedMode(TreeConstants.NodesOpenedMode.ALL_SHOWN)
+          .setRenderingMode(TreeConstants.RenderingMode.Ease)
+          .render( data ); 
+      }
+
+      document.addEventListener('DOMContentLoaded', () => {
+
+        // get data from a https endpoint:
+        fetch("https://api.artic.edu/api/v1/artworks")
+          .then( response => response.json() )
+          .then( data => renderDataLikeTree( data ) );
+
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,33 @@
+# in the .env file in the root of this project are Your project's settings,
+# and therefore it is advised not to keep in open source repositories. 
+# the .env file in .gitignore isn't published then in Your git repo.
+
+/.env
+
+/**/node_modules
+/**/vendor
+/**/.DS_Store
+/code/php/objdata_usage/vendor/
+
+/.docker/database/volumes/
+/.docker/https/logs
+/.docker/php/logs
+/docker-compose.yml.2
+/hc.tmp
+
+
+/.readme/temporary/
+
+/someBashExamples.sh
+/code/ts/build_tools/ReadmeToHtml/
+
+/code/ts/www/ExampleSimple_Table-test.html
+
+
+/push.txt
+
+
+/code/ts/www/packages/Mobile.vsDeskop/test-devices-sizes.html
+
+
+

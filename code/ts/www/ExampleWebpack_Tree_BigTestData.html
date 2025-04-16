@@ -1,0 +1,50 @@
+<html>
+  <head>
+    <title>Tree Example</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+    <!-- Task: to check out the css rules applied -->
+    <script src="examples/ExampleTree/build/webpack/example-tree-bundle.js"></script>
+
+  </head>
+  <body>
+
+    <h1>Tree example</h1>
+
+    <h2>loading and rendering compressed 14MB to 400KB by url (should work only when published at an http server)</h2>
+
+    <div id="tree-holder-configured" class="theme-funny"></div>
+
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        
+        class TreeMetadata2 {
+            constructor() {
+                this.NODE_ICON__SRC = "icon";
+                this.NODE_LABEL__TEXT = "label";
+                this.SUBTREE = "subtree";
+                this.NODE__ID = "id";
+                this.NODE__HOLDER_ID = "holderId";
+                this.NODE__PATH = "PATH";
+                this.NODE__ORDER = "order";
+                this.NODE__HYPERLINK = "href";
+                this.NODE__OPENED = "opened";
+                this.NODE__CSS_CLASS_NAME = "cssClassName";
+                this.NODE__ART = "art";
+            }
+        }
+
+        const tree = new Tree();
+        tree
+          .setDebug(false)
+          .setMainHtmlNodeId("tree-holder-configured")
+          .setNodesOpenedMode( TreeConstants.NodesOpenedMode.ALL_HIDE )
+          .setRenderingMode( TreeConstants.RenderingMode.Conf )
+          .load( 'examples/ExampleTree/json/big_test_data.json' );
+      });
+    </script>
+  </body>
+</html>
+

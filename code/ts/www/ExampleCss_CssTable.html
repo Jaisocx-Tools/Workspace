@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html class="browser-width-when-portrait theme-lightmode">
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>Under construction: Css Table</title>
+
+
+  <!-- 1. to save up ssd on the sever machine, we use cdn to keep centrally media and font files,
+  used by multiple projects, so not to copy they many times.
+  2. for the fine grained site performance when turning on a theme,
+  we use to preload the fonts files and mini images at once on page load in the browser tab.
+  3. so that the fonts files and other media 
+  are not loaded many times when showing multiple instances of a css or js tool on a page,
+  these media files and fonts are referenced by same unique url on the cdn.
+  4. I tested with the css-table-main-cdn.css, 
+  loaded the Preloader for this purpose,
+  and the fonts files were loaded just once, 
+  "Niconne" and 2 files of "Baloo Paaji 2" font, Regular and Semi Bold.
+  When enabled the Day Mode theme-lightmode and Night Mode theme-darkmode,
+  the fonts have applied immediately and themes choice performance have looked well.
+  5. During local development, You may erase these 2 <script> tags. 
+    Otherwise, You may rebuild Your css-table-main-relative.css to reference there fonts files via Your cdn.  -->
+
+  <!-- <script src="CssTools/CssTable/build/Simple/Preloader.js"></script> -->
+  <!-- <script src="CssTools/CssTable/build/Simple/ThemesPreloadsCssTable.js"></script> -->
+
+
+  <link rel="stylesheet" href="CssTools/CssTable/assets/themes/columns/columns.css">
+
+  <link rel="stylesheet" href="CssTools/CssTable/assets/themes/theme-lightmode/css-table-theme-lightmode-relative.css">
+  <link rel="stylesheet" href="CssTools/CssTable/assets/css-table-main-relative.css">
+
+</head>
+<body>
+
+  <main>
+
+    <h1 style="font-family: Verdana;">Css Table</h1>
+
+    <div class="workspace-css-table-holder example-table-columns-4">
+      <div class="workspace-css-table">
+        <div class="row desktop-columns-labels-holder">
+          <div class="cell"><span class="column-label">attribute</span></div>
+          <div class="cell"><span class="column-label">type</span></div>
+          <div class="cell"><span class="column-label">values</span></div>
+          <div class="cell"><span class="column-label">description</span></div>
+        </div>
+        <div class="row">
+          <div class="cell"><span class="column-label">attribute</span><span class="cell-value">
+              port</span></div>
+          <div class="cell"><span class="column-label">type</span><span class="cell-value">number</span></div>
+          <div class="cell"><span class="column-label">values</span><span class="cell-value">443</span></div>
+          <div class="cell"><span class="column-label">description</span><span class="cell-value">the port number for the server 
+            to accept browsers' connections</span></div>
+        </div>
+        <div class="row">
+          <div class="cell"><span class="column-label">attribute</span><span class="cell-value">
+              alternative-port</span></div>
+          <div class="cell"><span class="column-label">type</span><span class="cell-value">number</span></div>
+          <div class="cell"><span class="column-label">description</span><span class="cell-value">for development and testing purposes
+            only. if default port is busy,
+            then the server starts listening on the alternative port.</span></div>
+          <div class="cell"><span class="column-label">values</span><span class="cell-value">8443</span></div>
+        </div>
+        <div class="row">
+          <div class="cell"><span class="column-label">attribute</span><span class="cell-value">secure</span></div>
+          <div class="cell"><span class="column-label">type</span><span class="cell-value">boolean</span></div>
+          <div class="cell"><span class="column-label">values</span><span class="cell-value">true | false</span></div>
+          <div class="cell"><span class="column-label">description</span><span class="cell-value">please specify, where to use HTTPS
+              secured connection with TLS or not.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </main>
+
+  <script>
+
+    // DOCUMENT ONLOAD, INVOKES THE FUNCTION TO PRELOAD THEME FONTS
+
+    // document.addEventListener('DOMContentLoaded', () => {
+
+    //   const preloader = new Preloader();
+    //     preloader
+    //       .setThemesPreloads( themesPreloads )
+    //       .setWebpackAlias( "@jaisocx-css-table-cdn-fonts" )
+    //       .setWebpackAliasReplace( "https://workspace.brightday.email/cdn/www/fonts" )
+    //       .init();
+
+    // });
+
+  </script>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+

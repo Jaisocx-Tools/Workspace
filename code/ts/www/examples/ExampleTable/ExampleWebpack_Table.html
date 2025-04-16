@@ -1,0 +1,61 @@
+<html>
+  <head>
+    <title>Tree Example</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <script src="build/webpack/example-table-bundle.js"></script>
+
+  </head>
+  <body>
+
+      <h1>Table built by webpack example</h1>
+      <p>In development</p>
+  
+      <div>
+        <button id="button-theme-base">Theme Base</button>
+        <button id="button-theme-custom">Theme Custom</button>
+      </div>
+
+      <main>
+        <div id="table_1"></div>
+      </main>
+  
+      <script>
+        let table = null;
+  
+        document.addEventListener('DOMContentLoaded', () => {
+          table = new Table();
+          table
+            .setHtmlHolderNodeSelector ( "#table_1" )
+            .setCssClasses ( "theme-custom" )
+            .setConfUrl ( "json/table-conf_table-records_images_8.json" )
+            .setDataUrl ( "json/table-records_images_8.json" )
+            .setMobileLookAndFeelMaxWidth ( 830 )
+            .load();
+
+
+          
+        document.getElementById("button-theme-base").addEventListener(
+          "click",
+          ( evt ) => {
+            table.htmlHolderNode.className = "table";
+          }
+        );
+
+        document.getElementById("button-theme-custom").addEventListener(
+          "click",
+          ( evt ) => {
+            table.htmlHolderNode.className = "table theme-custom";
+          }
+        );
+
+
+        });
+  
+      </script>
+    </body>
+</html>
+
+
+

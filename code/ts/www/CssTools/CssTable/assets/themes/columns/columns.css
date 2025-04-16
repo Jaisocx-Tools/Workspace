@@ -1,0 +1,9 @@
+/* YOU CAN SET HERE YOUR OWN VARIABLE FOR GRID WIDTHS OF COLUMNS */
+.workspace-css-table-holder.example-table-columns-4 {
+  --workspace-table-bright--grid-template-columns:   12rem 8rem 24rem minmax( 20rem, 1fr );
+}
+
+.workspace-css-table-holder.example-table-columns-12 {
+  --workspace-table-bright--grid-template-columns:   9rem 8rem 24rem 24rem 24rem 8rem 24rem 20rem 8rem 8rem 8rem minmax( 24rem, 1fr );
+}
+

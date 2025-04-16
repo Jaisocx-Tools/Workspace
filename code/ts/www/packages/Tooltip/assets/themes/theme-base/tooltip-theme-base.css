@@ -1,0 +1,33 @@
+
+.tooltip {
+
+  --tooltip__background: #fffffa;
+  
+  --tooltip__text_color: black;
+  --tooltip__font_family: Courier;
+  --tooltip__font_size: 0.925rem;
+  --tooltip__font_size__mobile: 1.3rem;
+  --tooltip__font_size__tablet: 1.3rem;  
+
+  --tooltip__border_width: 1px;
+  --tooltip__border_style: solid;
+  --tooltip__border_color: #ec5;
+  --tooltip__border_radius: 0.5rem;
+
+  --tooltip__content_padding: 0.8rem;
+  --tooltip_event_target_padding: 0.3rem;
+
+  --tooltip_arrow__size: 0.835rem;
+  --tooltip_arrow__background: var(--tooltip__background);
+  --tooltip_arrow__border_color: var(--tooltip__border_color);
+  --tooltip_arrow__border_style: var(--tooltip__border_style);
+  --tooltip_arrow__border_width: var(--tooltip__border_width);
+
+  --tooltip__width: 12rem;
+
+  --tooltip__min_height: unset;
+  --tooltip__height: auto;
+  --tooltip__overflow_y: visible;
+
+}
+

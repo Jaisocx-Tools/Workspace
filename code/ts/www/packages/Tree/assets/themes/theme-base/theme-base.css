@@ -1,0 +1,45 @@
+.tree {
+  --node-margin: 0 0 0.4rem 0;
+
+  --node-margin: 0 0 0.18rem 0;
+
+  --open-button-size: 68%;
+  
+  --background-color--tree: unset;
+
+  --text-color--dark: #000000;
+
+  --size--jstree-html-node: 1.2rem;
+  --node-label--font-family: 'Baloo Paaji 2';
+  --node-label--font-size: 0.9rem;
+  --node-label--line-height: var(--size--jstree-html-node);
+  --node-label--text-color: unset;
+
+  --text-color--hover: darkgreen;
+
+  --border--jstree-html-node: 0px solid #abc;
+  --border--subtree-parent: 0px solid #abc;
+  --border--jstree-html-node-open-button: 0px solid #abc;
+
+  --icon-margin: 0 0.3rem 0 0;
+  --icon-holder-size: 1.0rem;
+}
+
+/* Mobile portrait */
+@media ( (max-width: 440px) and (orientation: portrait) ) {
+  .tree {
+      --node-margin: 0 0 0.8rem 0;
+      --size--jstree-html-node: 2.1rem;
+      --icon-holder-size: 2.1rem;
+  }
+}
+
+/* Mobile landscape */
+@media ( (max-height: 440px) and (orientation: landscape) ) {
+  .tree {
+      --node-margin: 0 0 0.8rem 0;
+      --size--jstree-html-node: 2.1rem;
+      --icon-holder-size: 2.1rem;
+  }
+}
+

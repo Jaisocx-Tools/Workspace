@@ -1,0 +1,43 @@
+{
+  "name": "@jaisocx/tooltip",
+  "version": "1.2.4",
+  "private": false,
+  "description": "The js tool, showing on some event, sets the right apparance, and calculates the appearance relative to the targetEvent html node, when the js tool is not in the browser visible area",
+  "type": "module",
+  "main": "./build/CommonJS/index.js",
+  "types": "./build/ESNext/index.d.ts",
+  "module": "./build/ESNext/index.js",
+  "exports": {
+    ".": {
+      "import": "./build/ESNext/index.js",
+      "require": "./build/CommonJS/index.js"
+    },
+    "./WebpackAliases": {
+      "import": "./build/ESNext/webpack.aliases.mjs",
+      "require": "./build/CommonJS/webpack.aliases.cjs"
+    }
+  },
+  "files": [
+    "build/CommonJS",
+    "build/ESNext",
+    "build/Simple",
+    "assets",
+    "webpack.aliases.json",
+    "README.md"
+  ],
+  "optionalDependencies": {
+    "@jaisocx/event-emitter": "^1.4.x",
+    "@jaisocx/template-renderer": "^1.4.x"
+  },
+  "keywords": [
+    "tooltip"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "author": "Jaisocx",
+  "license": "ISC"
+}
+
+
+

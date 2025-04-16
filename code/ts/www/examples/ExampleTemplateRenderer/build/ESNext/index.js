@@ -1,0 +1,8 @@
+// src/TemplateRenderer/index.ts
+import { TemplateRenderer } from "@jaisocx/template-renderer";
+export { TemplateRenderer } from "@jaisocx/template-renderer";
+import { ExampleTemplateRenderer } from "./ExampleTemplateRenderer.js";
+export { ExampleTemplateRenderer } from "./ExampleTemplateRenderer.js";
+window.TemplateRenderer = TemplateRenderer;
+window.ExampleTemplateRenderer = ExampleTemplateRenderer;
+//# sourceMappingURL=index.js.map

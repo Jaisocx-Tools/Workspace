@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en" class="workspace long theme-lightmode">
+  <head>
+  <meta charset="utf-8">
+  <title>index.html template</title>
+
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <link rel="stylesheet" href="assets/themes/theme-lightmode/clean-start-theme-lightmode-relative.css">
+  <link rel="stylesheet" href="assets/clean-start-main-relative.css">
+
+</head>
+<body>
+
+  <main>
+
+
+    <h1>index.html Template</h1>
+
+
+    <h3>Theme css class: workspace long theme-lightmode</h3>
+
+    
+    <ul style="margin: 2rem 0;">
+      <li>
+        <a href="theme-basic-long.html">theme-basic-long.html</a>
+      </li>
+      <li>
+        <a href="lightmode-long.html">lightmode-long.html</a>
+      </li>
+      <li>
+        <a href="darkmode-long.html">darkmode-long.html</a>
+      </li>
+    </ul>
+
+    
+    <ul style="margin: 2rem 0;">
+      <li>
+        <a href="theme-basic-browser-width.html">theme-basic-browser-width.html</a>
+      </li>
+      <li>
+        <a href="lightmode-browser-width.html">lightmode-browser-width.html</a>
+      </li>
+      <li>
+        <a href="darkmode-browser-width.html">darkmode-browser-width.html</a>
+      </li>
+    </ul>
+
+    
+    <ul style="margin: 2rem 0;">
+      <li>
+        <a href="theme-basic-small.html">theme-basic-small.html</a>
+      </li>
+      <li>
+        <a href="lightmode-small.html">lightmode-small.html</a>
+      </li>
+      <li>
+        <a href="darkmode-small.html">darkmode-small.html</a>
+      </li>
+    </ul>
+
+    
+    <ul style="margin: 2rem 0;">
+      <li>
+        <a href="theme-basic-browser-width-small.html">theme-basic-browser-width-small.html</a>
+      </li>
+      <li>
+        <a href="lightmode-browser-width-small.html">lightmode-browser-width-small.html</a>
+      </li>
+      <li>
+        <a href="darkmode-browser-width-small.html">darkmode-browser-width-small.html</a>
+      </li>      
+    </ul>
+
+
+    
+    <h3>With css class ul-resize, ul markup</h3>
+
+    <nav class="ul-reset">
+      <ul>
+        <li>
+          <label>No theme set -&gt;</label>
+          <a href="index.template.html" title="Theme LightMode">index.template.html</a>
+        </li>
+        <li>
+          <label> | Theme LightMode -&gt;</label>
+          <a href="example-lightmode.html" title="Theme LightMode">example-lightmode.html</a>
+        </li>
+        <li>
+          <label> | Theme DarkMode -&gt;</label>
+          <a href="example-darkmode.html" title="Theme DarkMode">example-darkmode.html</a>
+        </li>
+      </ul>
+    </nav>
+
+
+    <h3>The Static HTML Table Example</h3>
+    <table>
+      <!-- Table Caption -->
+      <caption>Table Caption</caption>
+
+      <!-- Define column styles -->
+      <colgroup>
+          <col style="width: 8rem;">
+          <col style="width: 8rem;">
+          <col style="width: 8rem;">
+          <col style="width: 8rem;">
+      </colgroup>
+
+      <!-- Table Header -->
+      <thead>
+          <tr>
+              <th>Product</th>
+              <th>Price</th>
+              <th>Quantity</th>
+              <th>Total</th>
+          </tr>
+      </thead>
+
+      <!-- Table Body -->
+      <tbody>
+          <tr>
+              <td>Apple</td>
+              <td>$1.00</td>
+              <td>5</td>
+              <td>$5.00</td>
+          </tr>
+          <tr>
+              <td>Banana</td>
+              <td>$0.50</td>
+              <td>10</td>
+              <td>$5.00</td>
+          </tr>
+          <tr>
+              <td>Orange</td>
+              <td>$0.80</td>
+              <td>7</td>
+              <td>$5.60</td>
+          </tr>
+      </tbody>
+
+      <!-- Table Footer -->
+      <tfoot>
+          <tr>
+              <td colspan="3">Grand Total</td>
+              <td>$15.60</td>
+          </tr>
+      </tfoot>
+    </table>
+
+
+
+
+    <pre>
+      import { TestBed } from '@angular/core/testing';
+      import { AppComponent } from './app.component';
+      
+      describe('AppComponent', () => {
+        beforeEach(async () => {
+          await TestBed.configureTestingModule({
+            imports: [AppComponent],
+          }).compileComponents();
+        });
+      
+        it('should create the app', () => {
+          const fixture = TestBed.createComponent(AppComponent);
+          const app = fixture.componentInstance;
+          expect(app).toBeTruthy();
+        });
+      
+        it(`should have the 'angular' title`, () => {
+          const fixture = TestBed.createComponent(AppComponent);
+          const app = fixture.componentInstance;
+          expect(app.title).toEqual('angular');
+        });
+      
+        it('should render title', () => {
+          const fixture = TestBed.createComponent(AppComponent);
+          fixture.detectChanges();
+          const compiled = fixture.nativeElement as HTMLElement;
+          expect(compiled.querySelector('h1')?.textContent).toContain('Hello, angular');
+        });
+      });
+    </pre>
+
+
+    <pre>
+      import { TestBed } from '@angular/core/testing';
+      import { AppComponent } from './app.component';
+      
+      describe('AppComponent', () => {
+        beforeEach(async () => {
+          await TestBed.configureTestingModule({
+            imports: [AppComponent],
+          }).compileComponents();
+        });
+      
+        it('should create the app', () => {
+          const fixture = TestBed.createComponent(AppComponent);
+          const app = fixture.componentInstance;
+          expect(app).toBeTruthy();
+        });
+      
+        it(`should have the 'angular' title`, () => {
+          const fixture = TestBed.createComponent(AppComponent);
+          const app = fixture.componentInstance;
+          expect(app.title).toEqual('angular');
+        });
+      
+        it('should render title', () => {
+          const fixture = TestBed.createComponent(AppComponent);
+          fixture.detectChanges();
+          const compiled = fixture.nativeElement as HTMLElement;
+          expect(compiled.querySelector('h1')?.textContent).toContain('Hello, angular');
+        });
+      });
+    </pre>
+    
+    
+    <pre>
+      import { TestBed } from '@angular/core/testing';
+      import { AppComponent } from './app.component';
+      
+      describe('AppComponent', () => {
+        beforeEach(async () => {
+          await TestBed.configureTestingModule({
+            imports: [AppComponent],
+          }).compileComponents();
+        });
+      
+        it('should create the app', () => {
+          const fixture = TestBed.createComponent(AppComponent);
+          const app = fixture.componentInstance;
+          expect(app).toBeTruthy();
+        });
+      
+        it(`should have the 'angular' title`, () => {
+          const fixture = TestBed.createComponent(AppComponent);
+          const app = fixture.componentInstance;
+          expect(app.title).toEqual('angular');
+        });
+      
+        it('should render title', () => {
+          const fixture = TestBed.createComponent(AppComponent);
+          fixture.detectChanges();
+          const compiled = fixture.nativeElement as HTMLElement;
+          expect(compiled.querySelector('h1')?.textContent).toContain('Hello, angular');
+        });
+      });
+    </pre>
+    
+    
+    <pre>
+      import { TestBed } from '@angular/core/testing';
+      import { AppComponent } from './app.component';
+      
+      describe('AppComponent', () => {
+        beforeEach(async () => {
+          await TestBed.configureTestingModule({
+            imports: [AppComponent],
+          }).compileComponents();
+        });
+      
+        it('should create the app', () => {
+          const fixture = TestBed.createComponent(AppComponent);
+          const app = fixture.componentInstance;
+          expect(app).toBeTruthy();
+        });
+      
+        it(`should have the 'angular' title`, () => {
+          const fixture = TestBed.createComponent(AppComponent);
+          const app = fixture.componentInstance;
+          expect(app.title).toEqual('angular');
+        });
+      
+        it('should render title', () => {
+          const fixture = TestBed.createComponent(AppComponent);
+          fixture.detectChanges();
+          const compiled = fixture.nativeElement as HTMLElement;
+          expect(compiled.querySelector('h1')?.textContent).toContain('Hello, angular');
+        });
+      });
+    </pre>
+    
+    
+    <pre>
+      import { TestBed } from '@angular/core/testing';
+      import { AppComponent } from './app.component';
+      
+      describe('AppComponent', () => {
+        beforeEach(async () => {
+          await TestBed.configureTestingModule({
+            imports: [AppComponent],
+          }).compileComponents();
+        });
+      
+        it('should create the app', () => {
+          const fixture = TestBed.createComponent(AppComponent);
+          const app = fixture.componentInstance;
+          expect(app).toBeTruthy();
+        });
+      
+        it(`should have the 'angular' title`, () => {
+          const fixture = TestBed.createComponent(AppComponent);
+          const app = fixture.componentInstance;
+          expect(app.title).toEqual('angular');
+        });
+      
+        it('should render title', () => {
+          const fixture = TestBed.createComponent(AppComponent);
+          fixture.detectChanges();
+          const compiled = fixture.nativeElement as HTMLElement;
+          expect(compiled.querySelector('h1')?.textContent).toContain('Hello, angular');
+        });
+      });
+    </pre>
+    
+    
+    <pre>
+      import { TestBed } from '@angular/core/testing';
+      import { AppComponent } from './app.component';
+      
+      describe('AppComponent', () => {
+        beforeEach(async () => {
+          await TestBed.configureTestingModule({
+            imports: [AppComponent],
+          }).compileComponents();
+        });
+      
+        it('should create the app', () => {
+          const fixture = TestBed.createComponent(AppComponent);
+          const app = fixture.componentInstance;
+          expect(app).toBeTruthy();
+        });
+      
+        it(`should have the 'angular' title`, () => {
+          const fixture = TestBed.createComponent(AppComponent);
+          const app = fixture.componentInstance;
+          expect(app.title).toEqual('angular');
+        });
+      
+        it('should render title', () => {
+          const fixture = TestBed.createComponent(AppComponent);
+          fixture.detectChanges();
+          const compiled = fixture.nativeElement as HTMLElement;
+          expect(compiled.querySelector('h1')?.textContent).toContain('Hello, angular');
+        });
+      });
+    </pre>
+    
+
+  </main>
+
+
+
+  <script>
+  // document.addEventListener('DOMContentLoaded', () => {
+  //   //
+  // });
+  </script>
+</body>
+</html>
+
+
+
+
+
+
+

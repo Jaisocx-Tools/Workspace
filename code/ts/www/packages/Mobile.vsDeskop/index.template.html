@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<!-- <html lang="en" class="workspace"> -->
+<!-- <html lang="en" class="workspace long theme-lightmode"> -->
+<html lang="en" class="mobile-vs-desktop workspace long theme-darkmode">
+<!-- <html lang="en" class="workspace small theme-lightmode"> -->
+<!-- <html lang="en" class="workspace small theme-darkmode"> -->
+
+<!-- <html lang="en" class="workspace browser-width long theme-lightmode">       -->
+<!-- <html lang="en" class="workspace browser-width long theme-darkmode"> -->
+<!-- <html lang="en" class="workspace browser-width small theme-lightmode"> -->
+<!-- <html lang="en" class="workspace browser-width small theme-darkmode"> -->
+
+<!-- technique css class for tests. -->
+<!-- <html lang="en" class="workspace verify-responsive-rule-applies long theme-lightmode"> -->
+<!-- <html lang="en" class="workspace verify-responsive-rule-applies long theme-darkmode"> -->
+
+  <head>
+  <meta charset="utf-8">
+  <title>index.html template</title>
+
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <!-- <link rel="stylesheet" href="assets/themes/theme-lightmode/clean-start-theme-lightmode-relative.css"> -->
+  <link rel="stylesheet" href="assets/themes/theme-darkmode/clean-start-theme-darkmode-relative.css">
+  <link rel="stylesheet" href="assets/clean-start-main-relative.css">
+
+
+  <style>
+.mobile-vs-desktop.workspace.long.theme-darkmode {
+  --clean-start__font-family: Tahoma;
+  --clean-start__font-size_h1: 1.6rem;
+  --clean-start__font-size_h2: 1.285rem;
+  --clean-start__line-height_h1: 3rem;
+  --clean-start__line-height_h2: 2.5rem;
+}
+
+.mobile-vs-desktop.workspace.long.theme-darkmode button,
+.mobile-vs-desktop.workspace.long.theme-darkmode input {
+
+  outline: 1px solid limegreen;
+
+  background-color: var(--clean-start__site__background);
+  /* color: black; */
+
+  font-size: 1rem;
+  line-height: 2rem;
+  padding: 0.3rem 0.5rem;
+}
+
+  </style>
+
+
+  <script src="build/Simple/MediaruleNames.js"></script>
+  <script src="build/Simple/Mobile.vsDesktopPack.js"></script>
+
+</head>
+<body>
+
+  <main>
+
+
+    <h1>Mobile vs Desktop</h1>
+
+
+    <h2>Tests</h2>
+
+    <!-- these html lines are for testing the cors. not working for now. -->
+    <!-- <input type="text" id="inp_url" size="50" value="https://update-listing.jaisocx.com:8448/" /> -->
+    <!-- <button id="btn_LoadData">Load Data</button> -->
+
+    <pre id="output" style="width: auto; max-width: 100%; height: auto; overflow-y: visible; overflow-x: auto; padding: 2rem; background-color: darkturquoise; color: white;"></pre>
+
+  </main>
+
+  <script>
+
+    function addOnSite( html ) {
+      let output = document.getElementById('output');
+      
+      let locHtml = html + "\n\n";
+
+      output.insertAdjacentHTML( 'beforeEnd', locHtml );
+    }
+
+    function setOnSite( html ) {
+      let output = document.getElementById('output');
+      
+      output.innerHTML = html;
+    }
+
+
+    function mediaruleNameTest( force ) {
+
+      let mobileVsDesktopPack = new MobileVsDesktopPack();
+
+      let mediaruleName = mobileVsDesktopPack.getMediaruleName( force );
+
+      let isMobile = mobileVsDesktopPack.isMobile( false );
+      let isTablet = mobileVsDesktopPack.isTablet( false );
+      let isDesktop = mobileVsDesktopPack.isDesktop( false );
+      let isOrientationPortrait = mobileVsDesktopPack.isOrientationPortrait( false );
+      let isOrientationLandscape = mobileVsDesktopPack.isOrientationLandscape( false );
+
+      let labelIsMobile = "isMobile";
+      let labelIsTablet = "isTablet";
+      let labelIsDesktop = "isDesktop";
+
+      let isMobilePortrait = ( isMobile && isOrientationPortrait);
+      let labelMediaruleName = isMobilePortrait ? "media" : "mediaruleName";
+      let labelIsOrientationPortrait = isMobilePortrait ? "portrait" : "isOrientationPortrait";
+      let labelIsOrientationLandscape = isMobilePortrait ? "landscape" : "isOrientationLandscape";
+
+      let lines = {
+        [labelMediaruleName]: mediaruleName,
+        [labelIsMobile]: isMobile,
+        [labelIsTablet]: isTablet,
+        [labelIsDesktop]: isDesktop,
+        [labelIsOrientationPortrait]: isOrientationPortrait,
+        [labelIsOrientationLandscape]: isOrientationLandscape
+      };
+
+      let locHtml = JSON.stringify(lines, null, 2);
+
+      setOnSite( mediaruleName + "\n\n" );
+
+      addOnSite( locHtml );
+    }
+
+    function mediaruleNameTestJson() {
+      let mobileVsDesktopPack = new MobileVsDesktopPack();
+      let mediaruleJsonText = mobileVsDesktopPack.toString();
+      setOnSite( mediaruleJsonText );
+    }
+
+    function allMediarulesShow() {
+
+      let mediaruleNames = new MediaruleNames();
+
+      const methods = Object.getOwnPropertyNames(Object.getPrototypeOf(mediaruleNames))
+        .filter( propName => propName.startsWith("getM" ) );
+
+      const methodType = "function";
+
+      let allRules = [];
+      let cssVarName = mediaruleNames.getCssVariableName();
+      let propName = "";
+      let propValue = "";
+      let propvalueType = "";
+      let mediaRule = "";
+      let line = "";
+
+      for ( propName of methods ) {
+
+        propValue = mediaruleNames[propName];
+        if ( !propValue ) {
+          continue;
+        }
+
+        propvalueType = typeof propValue;
+
+        if ( propvalueType === methodType ) {
+          mediaRule = propValue.call(mediaruleNames);
+          line = `${cssVarName}: ${mediaRule};`;
+          allRules.push( line );
+        }
+      }
+
+      let retval = allRules.join("\n")
+      addOnSite( retval );
+      
+    }
+
+    function loadRemoteData( inUrl ) {
+
+      fetch( 
+        inUrl,
+        {
+          method: 'GET',
+          headers: {
+            "Accept": "application/json",
+          }
+        }
+      )
+        .then(response => {
+          if (!response.ok) {
+            addOnSite( 'Network response was not ok' );
+            throw new Error('Network response was not ok');
+          }
+
+          return response.json();
+        })
+        .then(data => {
+          console.log('Data loaded:', data);
+          addOnSite( JSON.stringify(data, null, 2) );
+        })
+        .catch(error => {
+          console.error('Error fetching data:', error);
+          addOnSite( 'Error fetching data: ' + error.message );
+        });
+    }
+
+    function addResizeEventHandler() {
+      window.addEventListener('resize', () => {
+        mediaruleNameTestJson();
+      });
+    }
+
+    function addClickButtonLoadDataEventHandler() {
+
+      try {
+
+        let btn_LoadData = document.getElementById('btn_LoadData');
+
+        if ( !btn_LoadData ) {
+          throw new Error("Button not found. \nEncommented or not set in the html.");
+        }
+
+        btn_LoadData.addEventListener(
+          'click', 
+          () => {
+            let locUrl = document.getElementById("inp_url").value;
+            loadRemoteData( locUrl );
+          }
+        );
+
+      } catch (error) {
+        console.error('Error:', error);
+        addOnSite( 'Error: ' + error.message );
+      }
+
+    }
+
+    function assignEventsHandlers() {
+      addResizeEventHandler();
+      // addClickButtonLoadDataEventHandler();
+    } 
+    
+    // Call the function to load remote data when the DOM is fully loaded
+    // This ensures that the function is called after the HTML content is loaded
+    // and the DOM is ready for manipulation
+    document.addEventListener('DOMContentLoaded', () => {
+      assignEventsHandlers();
+
+      // mediaruleNameTest();
+      mediaruleNameTestJson();
+
+      //allMediarulesShow();  
+    });
+  </script>
+
+</body>
+</html>
+
+
+
+
+
+
+

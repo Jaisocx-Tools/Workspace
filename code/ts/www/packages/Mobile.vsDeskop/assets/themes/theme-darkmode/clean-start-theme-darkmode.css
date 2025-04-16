@@ -1,0 +1,31 @@
+.workspace.theme-darkmode,
+.workspace .theme-darkmode {
+
+  --clean-start__rem: 16px;
+
+  --clean-start__font-family: Niconne;
+
+  --clean-start__text-color: #e0ffe0;
+  --clean-start__site__background: #222;
+  --clean-start__tag_body__background: #42414d;
+
+  --clean-start__text-color-h: #a0ffa0;
+  --clean-start__anchor__text-color: lime;
+  --clean-start__anchor__text-color-hover: yellow;
+  --clean-start__anchor__text-color-visited: var(--clean-start__anchor__text-color);
+  --clean-start__anchor__text-color-visited-hover: var(--clean-start__anchor__text-color-hover);
+
+
+
+  /* All other tags. FONT-SIZE AND LINE-HEIGHT RESPONSIVE */
+
+  /* --clean-start__font-size__mobile__predefined: 1.6rem;
+  --clean-start__line-height__mobile__predefined: 2.3rem;
+
+  --clean-start__font-size__predefined: 1.4rem;
+  --clean-start__line-height__predefined: 2.0rem; */
+
+}
+
+
+

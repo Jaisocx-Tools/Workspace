@@ -1,0 +1,33 @@
+.table.theme-custom {
+  --table-height: 500px;
+  --table-width: 960px;
+
+  --font-size: 0.8rem;
+  --font-family: Verdana;
+
+  --border-color: #cde;
+
+  --background-color-header: ivory;
+  --background-color-row-even: white;
+  --background-color-row-odd: #eef;
+
+  --text-color-header: #468;
+  --text-color-row: #222;
+
+  --image-height: 19rem;
+  --image-width: 19rem;
+  --image-cell-width: 20rem;
+
+
+  --image-cell-padding: 1rem 2rem;
+
+  --table-row-max-height: 12rem;
+  --table-row-min-height: 5rem;
+  --table-row-height: auto;
+
+  --table-row-overflow-y: hidden;
+  --table-row-overflow-x: hidden;
+}
+
+
+

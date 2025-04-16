@@ -1,0 +1,628 @@
+<html>
+  <head>
+    <title>Tree Example</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+    <link href="packages/Tree/assets/tree-styles-main.css" rel="stylesheet" />
+    <link href="packages/Tree/assets/themes/theme-funny/theme-funny.css" rel="stylesheet" />
+
+
+
+    <script src="packages/EventEmitter/build/Simple/EventEmitter.js"></script>
+    <script src="packages/EventEmitter/build/Simple/ImprovedRenderEventEmitter.js"></script>
+    <script src="packages/TemplateRenderer/build/Simple/TemplateRenderer.js"></script>
+  
+
+
+
+    <script src="packages/Tree/build/Simple/typescript/ArrayOrObjectPackage.js"></script>
+
+    <script src="packages/Tree/build/Simple/typescript/TreeConstants.js"></script>
+    <script src="packages/Tree/build/Simple/typescript/TreeConf.js"></script>
+
+    <script src="packages/Tree/build/Simple/typescript/TreeAdapter.js"></script>
+    <script src="packages/Tree/build/Simple/typescript/TreeAdapterModeEase.js"></script>
+    <script src="packages/Tree/build/Simple/typescript/TreeAdapterModeConf.js"></script>
+
+    <script src="packages/Tree/build/Simple/typescript/Tree.js"></script>
+
+
+    <script>
+    let treeJson = [
+    {
+      "icon": "examples/ExampleTree/custom-theme-icons/house.png",
+      "label": "Main",
+      "opened": true,
+      "object-css-class": {
+        "key": "value"
+      },
+      "string-css-class": "<h3>Main tree elem</h3>",
+      "number-css-class": 123456,
+      "bool-css-class": true,
+      "array-css-class": [
+        {
+          "icon": "examples/ExampleTree/custom-theme-icons/google.png",
+          "label": "A Link to Google", 
+          "href": "https://google.com/",
+          "cssClassName": "hyperlink"
+        },
+        [
+          {
+            "icon": "examples/ExampleTree/custom-theme-icons/google.png",
+            "label": "A Link to Google", 
+            "href": "https://google.com/",
+            "cssClassName": "hyperlink"
+          },{
+            "icon": "examples/ExampleTree/custom-theme-icons/google.png",
+            "label": "A Link to Google", 
+            "href": "https://google.com/",
+            "cssClassName": "hyperlink"
+          }
+        ],
+        [
+          "123", "435345", true, 789234,
+          {
+            "a": "b"
+          }
+        ],
+        {
+          "icon": "examples/ExampleTree/custom-theme-icons/catalog.png",
+          "label": "echo html",
+          "opened": true,
+          "subtree": [
+            {
+              "icon": "examples/ExampleTree/custom-theme-icons/html.png",
+              "label": "html 1", 
+              "href": "javascript: void(0);",
+              "text": "<h3>Hello World!</h3><p style=\"color:#26d;\">Have fun with styling and using JSTree tool.</p>"
+            },
+            {
+              "icon": "examples/ExampleTree/custom-theme-icons/html.png",
+              "label": "html 2", 
+              "href": "javascript: void(0);",
+              "text": "<h3>Hello World!</h3><p style=\"color:#d83;\">You can edit code easily, JSTree class is lightweight.</p>"
+            },
+            {
+              "icon": "examples/ExampleTree/custom-theme-icons/html.png",
+              "label": "html 3", 
+              "href": "javascript: void(0);",
+              "text": "<h3>Hello World!</h3><p style=\"color:#00bb00;\">Have a nice day.</p>"
+            }
+          ]
+        },
+        {
+          "icon": "examples/ExampleTree/custom-theme-icons/github.png",
+          "label": "A Link to GitHub", 
+          "href": "https://github.com/orgs/Jaisocx-Tools/repositories",
+          "cssClassName": "hyperlink"
+        }
+      ]
+    },
+    {
+      "fgfgf": {
+        "icon": "examples/ExampleTree/custom-theme-icons/house.png",
+        "label": "Main",
+        "opened": true,
+        "text": "<h3>Main tree elem</h3>",
+        "subtree": {
+          "frnynyr": {
+            "icon": "examples/ExampleTree/custom-theme-icons/google.png",
+            "label": "A Link to Google", 
+            "href": "https://google.com/",
+            "cssClassName": "hyperlink"
+          },
+          "rnyrny": {
+            "icon": "examples/ExampleTree/custom-theme-icons/github.png",
+            "label": "A Link to GitHub", 
+            "href": "https://github.com/orgs/Jaisocx-Tools/repositories",
+            "cssClassName": "hyperlink"
+          },
+          "rynrnyrn": {
+            "icon": "examples/ExampleTree/custom-theme-icons/catalog.png",
+            "label": "echo html",
+            "opened": true,
+            "subtree": {
+              "rnynry": {
+                "icon": "examples/ExampleTree/custom-theme-icons/html.png",
+                "label": "html 1", 
+                "href": "javascript: void(0);",
+                "text": "<h3>Hello World!</h3><p style=\"color:#26d;\">Have fun with styling and using JSTree tool.</p>"
+              },
+              "rynynry": {
+                "icon": "examples/ExampleTree/custom-theme-icons/html.png",
+                "label": "html 2", 
+                "href": "javascript: void(0);",
+                "text": "<h3>Hello World!</h3><p style=\"color:#d83;\">You can edit code easily, JSTree class is lightweight.</p>"
+              },
+              "ghnghn": {
+                "icon": "examples/ExampleTree/custom-theme-icons/html.png",
+                "label": "html 3", 
+                "href": "javascript: void(0);",
+                "text": "<h3>Hello World!</h3><p style=\"color:#00bb00;\">Have a nice day.</p>"
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+          "icon": "examples/ExampleTree/custom-theme-icons/google.png",
+          "label": "A Link to Google", 
+          "href": "https://google.com/",
+          "cssClassName": "hyperlink"
+    }
+  ];
+
+  let data3 = {
+    "streams": [
+        {
+            "index": 0,
+            "codec_name": "h264",
+            "codec_long_name": "H.264 / AVC / MPEG-4 AVC / MPEG-4 part 10",
+            "profile": "High",
+            "codec_type": "video",
+            "codec_tag_string": "avc1",
+            "codec_tag": "0x31637661",
+            "width": 1280,
+            "height": 720,
+            "coded_width": 1280,
+            "coded_height": 720,
+            "closed_captions": 0,
+            "film_grain": 0,
+            "has_b_frames": 1,
+            "pix_fmt": "yuv420p",
+            "level": 31,
+            "color_range": "tv",
+            "color_space": "bt709",
+            "color_transfer": "bt709",
+            "color_primaries": "bt709",
+            "chroma_location": "left",
+            "field_order": "progressive",
+            "refs": 1,
+            "is_avc": "true",
+            "nal_length_size": "4",
+            "id": "0x1",
+            "r_frame_rate": "30/1",
+            "avg_frame_rate": "30/1",
+            "time_base": "1/600",
+            "start_pts": 0,
+            "start_time": "0.000000",
+            "duration_ts": 133960,
+            "duration": "223.266667",
+            "bit_rate": "1486998",
+            "bits_per_raw_sample": "8",
+            "nb_frames": "6698",
+            "extradata_size": 34,
+            "disposition": {
+                "default": 1,
+                "dub": 0,
+                "original": 0,
+                "comment": 0,
+                "lyrics": 0,
+                "karaoke": 0,
+                "forced": 0,
+                "hearing_impaired": 0,
+                "visual_impaired": 0,
+                "clean_effects": 0,
+                "attached_pic": 0,
+                "timed_thumbnails": 0,
+                "non_diegetic": 0,
+                "captions": 0,
+                "descriptions": 0,
+                "metadata": 0,
+                "dependent": 0,
+                "still_image": 0,
+                "multilayer": 0
+            },
+            "tags": {
+                "creation_time": "2024-05-17T06:42:05.000000Z",
+                "language": "und",
+                "handler_name": "Core Media Video",
+                "vendor_id": "[0][0][0][0]"
+            }
+        },
+        {
+            "index": 1,
+            "codec_name": "aac",
+            "codec_long_name": "AAC (Advanced Audio Coding)",
+            "profile": "LC",
+            "codec_type": "audio",
+            "codec_tag_string": "mp4a",
+            "codec_tag": "0x6134706d",
+            "sample_fmt": "fltp",
+            "sample_rate": "48000",
+            "channels": 1,
+            "channel_layout": "mono",
+            "bits_per_sample": 0,
+            "initial_padding": 0,
+            "id": "0x2",
+            "r_frame_rate": "0/0",
+            "avg_frame_rate": "0/0",
+            "time_base": "1/48000",
+            "start_pts": 1528,
+            "start_time": "0.031833",
+            "duration_ts": 10717688,
+            "duration": "223.285167",
+            "bit_rate": "128962",
+            "nb_frames": "10468",
+            "extradata_size": 2,
+            "disposition": {
+                "default": 1,
+                "dub": 0,
+                "original": 0,
+                "comment": 0,
+                "lyrics": 0,
+                "karaoke": 0,
+                "forced": 0,
+                "hearing_impaired": 0,
+                "visual_impaired": 0,
+                "clean_effects": 0,
+                "attached_pic": 0,
+                "timed_thumbnails": 0,
+                "non_diegetic": 0,
+                "captions": 0,
+                "descriptions": 0,
+                "metadata": 0,
+                "dependent": 0,
+                "still_image": 0,
+                "multilayer": 0
+            },
+            "tags": {
+                "creation_time": "2024-05-17T06:42:05.000000Z",
+                "language": "und",
+                "handler_name": "Core Media Audio",
+                "vendor_id": "[0][0][0][0]"
+            }
+        }
+    ],
+    "format": {
+        "filename": "/Users/illiapolianskyi/Movies/Omi_Screen_Recorder/video.mp4",
+        "nb_streams": 2,
+        "nb_programs": 0,
+        "nb_stream_groups": 0,
+        "format_name": "mov,mp4,m4a,3gp,3g2,mj2",
+        "format_long_name": "QuickTime / MOV",
+        "start_time": "0.000000",
+        "duration": "223.317000",
+        "size": "45238914",
+        "bit_rate": "1620616",
+        "probe_score": 100,
+        "tags": {
+            "major_brand": "mp42",
+            "minor_version": "1",
+            "compatible_brands": "isommp41mp42",
+            "creation_time": "2024-05-17T06:42:05.000000Z"
+        }
+    }
+};
+
+let data4 = {
+    "streams": [
+        {
+            "index": 0,
+            "codec_name": "av1",
+            "codec_long_name": "Alliance for Open Media AV1",
+            "profile": "Main",
+            "codec_type": "video",
+            "codec_tag_string": "av01",
+            "codec_tag": "0x31307661",
+            "width": 3840,
+            "height": 2160,
+            "coded_width": 3840,
+            "coded_height": 2160,
+            "closed_captions": 0,
+            "film_grain": 0,
+            "has_b_frames": 0,
+            "pix_fmt": "yuv420p",
+            "level": 12,
+            "color_range": "tv",
+            "color_space": "bt709",
+            "color_transfer": "bt709",
+            "color_primaries": "bt709",
+            "refs": 1,
+            "id": "0x1",
+            "r_frame_rate": "30000/1001",
+            "avg_frame_rate": "919575000/30683081",
+            "time_base": "1/90000",
+            "start_pts": 0,
+            "start_time": "0.000000",
+            "duration_ts": 1288689402,
+            "duration": "14318.771133",
+            "bit_rate": "12138010",
+            "nb_frames": "429135",
+            "extradata_size": 21,
+            "disposition": {
+                "default": 1,
+                "dub": 0,
+                "original": 0,
+                "comment": 0,
+                "lyrics": 0,
+                "karaoke": 0,
+                "forced": 0,
+                "hearing_impaired": 0,
+                "visual_impaired": 0,
+                "clean_effects": 0,
+                "attached_pic": 0,
+                "timed_thumbnails": 0,
+                "non_diegetic": 0,
+                "captions": 0,
+                "descriptions": 0,
+                "metadata": 0,
+                "dependent": 0,
+                "still_image": 0,
+                "multilayer": 0
+            },
+            "tags": {
+                "language": "und",
+                "handler_name": "VideoHandler",
+                "vendor_id": "[0][0][0][0]"
+            }
+        },
+        {
+            "index": 1,
+            "codec_name": "aac",
+            "codec_long_name": "AAC (Advanced Audio Coding)",
+            "profile": "LC",
+            "codec_type": "audio",
+            "codec_tag_string": "mp4a",
+            "codec_tag": "0x6134706d",
+            "sample_fmt": "fltp",
+            "sample_rate": "44100",
+            "channels": 2,
+            "channel_layout": "stereo",
+            "bits_per_sample": 0,
+            "initial_padding": 0,
+            "id": "0x2",
+            "r_frame_rate": "0/0",
+            "avg_frame_rate": "0/0",
+            "time_base": "1/44100",
+            "start_pts": 0,
+            "start_time": "0.000000",
+            "duration_ts": 631461888,
+            "duration": "14318.863673",
+            "bit_rate": "127999",
+            "nb_frames": "616662",
+            "extradata_size": 16,
+            "disposition": {
+                "default": 1,
+                "dub": 0,
+                "original": 0,
+                "comment": 0,
+                "lyrics": 0,
+                "karaoke": 0,
+                "forced": 0,
+                "hearing_impaired": 0,
+                "visual_impaired": 0,
+                "clean_effects": 0,
+                "attached_pic": 0,
+                "timed_thumbnails": 0,
+                "non_diegetic": 0,
+                "captions": 0,
+                "descriptions": 0,
+                "metadata": 0,
+                "dependent": 0,
+                "still_image": 0,
+                "multilayer": 0
+            },
+            "tags": {
+                "language": "und",
+                "handler_name": "SoundHandler",
+                "vendor_id": "[0][0][0][0]"
+            }
+        }
+    ],
+    "format": {
+        "filename": "/Users/illiapolianskyi/Movies/video_loader/Scotland_nature.mp4",
+        "nb_streams": 2,
+        "nb_programs": 0,
+        "nb_stream_groups": 0,
+        "format_name": "mov,mp4,m4a,3gp,3g2,mj2",
+        "format_long_name": "QuickTime / MOV",
+        "start_time": "0.000000",
+        "duration": "14318.863673",
+        "size": "21969836957",
+        "bit_rate": "12274625",
+        "probe_score": 100,
+        "tags": {
+            "major_brand": "isom",
+            "minor_version": "512",
+            "compatible_brands": "isomiso2mp41",
+            "title": "Scotland Nature Relaxing Movie 4K - Meditation Relaxing Music - Wonderful Nature",
+            "encoder": "Lavf58.29.100"
+        }
+    }
+};
+
+let data5 = {
+    "streams": [
+        {
+            "index": 0,
+            "codec_name": "aac",
+            "codec_long_name": "AAC (Advanced Audio Coding)",
+            "profile": "LC",
+            "codec_type": "audio",
+            "codec_tag_string": "mp4a",
+            "codec_tag": "0x6134706d",
+            "sample_fmt": "fltp",
+            "sample_rate": "44100",
+            "channels": 2,
+            "channel_layout": "stereo",
+            "bits_per_sample": 0,
+            "initial_padding": 0,
+            "id": "0x1",
+            "r_frame_rate": "0/0",
+            "avg_frame_rate": "0/0",
+            "time_base": "1/44100",
+            "start_pts": 0,
+            "start_time": "0.000000",
+            "duration_ts": 27348992,
+            "duration": "620.158549",
+            "bit_rate": "127999",
+            "nb_frames": "26708",
+            "extradata_size": 16,
+            "disposition": {
+                "default": 1,
+                "dub": 0,
+                "original": 0,
+                "comment": 0,
+                "lyrics": 0,
+                "karaoke": 0,
+                "forced": 0,
+                "hearing_impaired": 0,
+                "visual_impaired": 0,
+                "clean_effects": 0,
+                "attached_pic": 0,
+                "timed_thumbnails": 0,
+                "non_diegetic": 0,
+                "captions": 0,
+                "descriptions": 0,
+                "metadata": 0,
+                "dependent": 0,
+                "still_image": 0,
+                "multilayer": 0
+            },
+            "tags": {
+                "language": "und",
+                "handler_name": "SoundHandler",
+                "vendor_id": "[0][0][0][0]"
+            }
+        },
+        {
+            "index": 1,
+            "codec_name": "av1",
+            "codec_long_name": "Alliance for Open Media AV1",
+            "profile": "Main",
+            "codec_type": "video",
+            "codec_tag_string": "av01",
+            "codec_tag": "0x31307661",
+            "width": 7680,
+            "height": 4320,
+            "coded_width": 7680,
+            "coded_height": 4320,
+            "closed_captions": 0,
+            "film_grain": 0,
+            "has_b_frames": 0,
+            "pix_fmt": "yuv420p",
+            "level": 17,
+            "color_range": "tv",
+            "color_space": "bt709",
+            "color_transfer": "bt709",
+            "color_primaries": "bt709",
+            "refs": 1,
+            "id": "0x2",
+            "r_frame_rate": "60/1",
+            "avg_frame_rate": "446472/7441",
+            "time_base": "1/90000",
+            "start_pts": 0,
+            "start_time": "0.000000",
+            "duration_ts": 55807500,
+            "duration": "620.083333",
+            "bit_rate": "23348484",
+            "nb_frames": "37206",
+            "extradata_size": 21,
+            "disposition": {
+                "default": 1,
+                "dub": 0,
+                "original": 0,
+                "comment": 0,
+                "lyrics": 0,
+                "karaoke": 0,
+                "forced": 0,
+                "hearing_impaired": 0,
+                "visual_impaired": 0,
+                "clean_effects": 0,
+                "attached_pic": 0,
+                "timed_thumbnails": 0,
+                "non_diegetic": 0,
+                "captions": 0,
+                "descriptions": 0,
+                "metadata": 0,
+                "dependent": 0,
+                "still_image": 0,
+                "multilayer": 0
+            },
+            "tags": {
+                "language": "und",
+                "handler_name": "VideoHandler",
+                "vendor_id": "[0][0][0][0]"
+            }
+        }
+    ],
+    "format": {
+        "filename": "/Users/illiapolianskyi/Movies/video_loader/Toronto8k.mp4",
+        "nb_streams": 2,
+        "nb_programs": 0,
+        "nb_stream_groups": 0,
+        "format_name": "mov,mp4,m4a,3gp,3g2,mj2",
+        "format_long_name": "QuickTime / MOV",
+        "start_time": "0.000000",
+        "duration": "620.158549",
+        "size": "1820395197",
+        "bit_rate": "23482965",
+        "probe_score": 100,
+        "tags": {
+            "major_brand": "isom",
+            "minor_version": "512",
+            "compatible_brands": "isomiso2mp41",
+            "title": "Toronto - 4th Largest City in North America! | 8K Video ULTRA-HD",
+            "encoder": "Lavf58.29.100"
+        }
+    }
+};
+
+
+    </script>
+    </head>
+  <body>
+
+    <div id="example-tree-holder-rendering-mode-ease-custom-theme" class="2theme-funny"></div>
+
+    <h2>load by url (should work only when published at an http server)</h2>
+    <div id="example-tree-holder-rendering-mode-ease"></div>
+
+    <script>
+      // this example renders in a Tree view json as is.
+      // the setting for this is the setRenderingMode method.
+      document.addEventListener('DOMContentLoaded', () => {
+        const tree = new Tree();
+        tree
+          .setDebug(false)
+          .setMainHtmlNodeId("example-tree-holder-rendering-mode-ease-custom-theme")
+          .setNodesWithIcons(true)
+          .setNodesOpenedMode(TreeConstants.NodesOpenedMode.ALL_SHOWN)
+          .setModifiable(true)
+          .setRenderingMode(TreeConstants.RenderingMode.Ease)
+          .addJSTreeEventListener (
+            TreeConstants.TreeEventsNames.EVENT_NAME__TREE_NODE_LABEL__CLICK,
+            (eventName, eventPayload) => {
+              console.log(eventName, eventPayload);
+
+              // on click payload has the ref to the tree.data json, and here we show in console it's value:
+              console.log( tree.getTreeDataNodeByJsonnodePathArray( eventPayload.jsonNode._pathArray ) );
+            }
+          )
+          // .render(treeJson);
+          .render( data5 );
+
+        // here only with required setters
+        let url = ''; //'http://transport.opendata.ch/v1/connections?from=Lausanne&to=Gen%C3%A8ve';
+            //url = 'https://jaisocx.com/application/ld+json';
+            //url = 'https://gomezmig03.github.io/MotivationalAPI/en.json';
+            //url = 'https://api.dictionaryapi.dev/api/v2/entries/en/weather';
+            //url = 'https://datos.gob.es/apidata/catalog/dataset?_sort=title&_pageSize=800&_page=0';
+            //url = 'https://api.artic.edu/api/v1/artworks';
+            url = 'examples/ExampleTree/json/ease.json';
+
+        const treeCustomTheme = new Tree();
+        treeCustomTheme
+          .setMainHtmlNodeId("example-tree-holder-rendering-mode-ease")
+          //.setNodesOpenedMode(TreeConstants.NodesOpenedMode.ALL_HIDE)
+          .setNodesOpenedMode(TreeConstants.NodesOpenedMode.ALL_SHOWN)
+          .load(url);
+      });
+    </script>
+  </body>
+</html>
+

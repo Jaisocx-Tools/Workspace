@@ -1,0 +1,61 @@
+<html class="workspace long theme-darkmode">
+  <head>
+    <title>Tree Example</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+    <link rel="stylesheet" href="CssTools/CssCleanStart/assets/themes/theme-darkmode/clean-start-theme-darkmode-relative.css">
+
+    <!-- CSS CLEAN START THE MAIN .CSS FILE -->
+    <link rel="stylesheet" href="CssTools/CssCleanStart/assets/clean-start-main-relative.css">
+
+    <!-- Task: to check out the css rules applied -->
+    <script src="examples/ExampleTree/build/webpack/example-tree-bundle.js"></script>
+
+  </head>
+  <body>
+
+    <main>
+
+      <h1>Tree example</h1>
+
+      <h2>load by url (should work only when published at an http server)</h2>
+      <div id="tree-holder" class="theme-funny"></div>
+  
+      <div id="tree-holder-configured" class="theme-base"></div>
+
+    </main>
+
+
+
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        
+        const exampleTree = new ExampleTree('tree-holder', 'https://api.artic.edu/api/v1/artworks');
+
+        const tree = new Tree();
+        tree
+          .setDebug(false)
+          .setMainHtmlNodeId("tree-holder-configured")
+          .setDataTypesCssClassesEnabled(true)
+          .setNodesWithIcons(true)
+          .setNodesOpenedMode(TreeConstants.NodesOpenedMode.ALL_HIDE)
+          .setRenderingMode(TreeConstants.RenderingMode.Ease)
+          .setModifiable(false)
+          .addJSTreeEventListener(
+            TreeConstants.TreeEventsNames.EVENT_NAME__TREE_NODE_LABEL__CLICK,
+            (eventName, eventPayload) => {
+              console.log(eventName, eventPayload);
+
+              // on click payload has the ref to the tree.data json, and here we show in console it's value:
+              console.log( tree.getTreeDataNodeByJsonnodePathArray( eventPayload.jsonNode._pathArray ) );
+            }
+          )
+          .load('https://api.artic.edu/api/v1/artworks');
+
+      });
+    </script>
+  </body>
+</html>
+

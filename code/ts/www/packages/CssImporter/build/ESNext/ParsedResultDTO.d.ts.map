@@ -1,0 +1,1 @@
+{"version":3,"file":"ParsedResultDTO.d.ts","sourceRoot":"","sources":["../../src/ParsedResultDTO.ts"],"names":[],"mappings":"AAGA,qBAAa,eAAe;IAC1B,WAAW,EAAE,MAAM,CAAC;IACpB,eAAe,EAAE,UAAU,CAAC;IAE5B,mBAAmB,EAAE,CAAC,eAAe,GAAC,MAAM,EAAE,CAAC,EAAE,CAAC;;IAQlD,eAAe,CAAC,oBAAoB,EAAE,eAAe;IAIrD,QAAQ,CAAC,KAAK,EAAE,MAAM,EAAE;IAGxB,sBAAsB,IAAI,CAAC,eAAe,GAAC,MAAM,EAAE,CAAC,EAAE;CAIvD"}

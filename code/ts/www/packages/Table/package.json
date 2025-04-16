@@ -1,0 +1,34 @@
+{
+  "name": "@jaisocx/table",
+  "version": "1.2.1",
+  "private": false,
+  "description": "",
+  "type": "module",
+  "main": "./build/CommonJS/index.js",
+  "types": "./build/ESNext/index.d.ts",
+  "module": "./build/ESNext/index.js",
+  "exports": {
+    "require": "./build/CommonJS/index.js",
+    "import": "./build/ESNext/index.js"
+  },
+  "files": [
+    "build/CommonJS",
+    "build/ESNext",
+    "assets/",
+    "README.md",
+    "LICENSE"
+  ],
+  "optionalDependencies": {
+    "@jaisocx/event-emitter": "^1.4.x",
+    "@jaisocx/template-renderer": "^1.4.x"
+  },
+  "keywords": [
+    "json",
+    "table"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "author": "Jaisocx",
+  "license": "ISC"
+}

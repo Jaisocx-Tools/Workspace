@@ -1,0 +1,126 @@
+
+/* CLASS TO USE WITH CSS TABLE. WHEN MOBILE PORTRAIT, 100% AND NO BACKGROUND SPACE ON SIDES */
+.workspace.browser-width-when-portrait,
+.workspace.browser-width-when-portrait.long {
+  --clean-start__site__max_width__xs_mobile_portrait: 100%;
+  --clean-start__site__width__xs_mobile_portrait: 100%;
+  --clean-start__site__min_width__xs_mobile_portrait: 100%;
+  
+  --clean-start__site__max_width__s_mobile_portrait: 100%;
+  --clean-start__site__width__s_mobile_portrait: 100%;
+  --clean-start__site__min_width__s_mobile_portrait: 100%;
+
+  --clean-start__site__max_width__sm_mobile_portrait: 100%;
+  --clean-start__site__width__sm_mobile_portrait: 100%;
+  --clean-start__site__min_width__sm_mobile_portrait: 100%;
+
+  --clean-start__site__max_width__md_tablet_portrait: 83%;
+  --clean-start__site__width__md_tablet_portrait: 83%;
+  --clean-start__site__min_width__md_tablet_portrait: 83%;
+}
+
+
+.workspace-css-table-holder .cell.example .cell-value {
+  /* TASK: TO WRITE AN EXAMPLE CSS CLASS WITH EXTENDED TEXT PROPS, TO DOCUMENT THE CSS SELECTORS. */
+
+  word-spacing: 0.9rem;
+  letter-spacing: 0.1rem;
+
+  /* text-transform: none | uppercase | lowercase | capitalize | full-width ; */
+  text-transform: capitalize;
+
+  /* font-variant-caps: normal | small-caps | all-small-caps | petite-caps | all-petite-caps | titling-caps | unicase; */
+  font-variant-caps: titling-caps;
+
+  font-variant: no-common-ligatures tabular-nums;
+
+  text-decoration: underline;
+  text-decoration-style: dotted;
+  text-decoration-color: lime;
+  text-underline-position: under; /* auto */
+
+  font-variant-alternates: historical-forms;
+}
+
+
+.workspace-css-table-holder .cell.keep-like-in-text-editor span.cell-value {
+  white-space:  preserve nowrap !important;
+  word-break: keep-all !important;
+  display: block !important;
+}
+
+.workspace-css-table-holder .cell.keep-line .cell-value {
+  /* it didn't work to keep cell width by long word in a cell, 
+      since grid is for the markup with cells one level without enbracing row tags. 
+      the grid markup suits for instance when showing products in online store. */
+  /* this prop allows to keep the text one line nowrapped. however the overflow will apply. */
+  white-space: nowrap;
+}
+
+.workspace-css-table-holder .cell.number .cell-value {
+  /* font-variant-numeric:   oldstyle-nums !important; */
+  text-align:             right;
+  font-family:            monospace;
+
+  font-variant: no-common-ligatures tabular-nums;
+  /* font-variant-numeric: normal; */
+}
+
+
+
+
+
+/*
+  font-variant-alternates: normal;
+  font-variant-alternates: historical-forms;
+
+  /* Functional notation values
+  font-variant-alternates: stylistic(user-defined-ident);
+  font-variant-alternates: styleset(user-defined-ident);
+  font-variant-alternates: character-variant(user-defined-ident);
+  font-variant-alternates: swash(user-defined-ident);
+  font-variant-alternates: ornaments(user-defined-ident);
+  font-variant-alternates: annotation(user-defined-ident);
+  font-variant-alternates: swash(ident1) annotation(ident2);
+
+*/
+
+
+/*
+Font styles:
+
+font-variant: Switch between small caps and normal font alternatives.
+font-kerning: Switch font kerning options on and off.
+font-feature-settings: Switch various OpenType font features on and off.
+font-variant-alternates: Control the use of alternate glyphs for a given font-face.
+font-variant-caps: Control the use of alternate capital glyphs.
+font-variant-east-asian: Control the usage of alternate glyphs for East Asian scripts, like Japanese and Chinese.
+font-variant-ligatures: Control which ligatures and contextual forms are used in text.
+font-variant-numeric: Control the usage of alternate glyphs for numbers, fractions, and ordinal markers.
+font-variant-position: Control the usage of alternate glyphs of smaller sizes positioned as superscript or subscript.
+font-size-adjust: Adjust the visual size of the font independently of its actual font size.
+font-stretch: Switch between possible alternative stretched versions of a given font.
+text-underline-position: Specify the position of underlines set using the text-decoration-line property underline value.
+text-rendering: Try to perform some text rendering optimization.
+Text layout styles:
+
+text-indent: Specify how much horizontal space should be left before the beginning of the first line of the text content.
+text-overflow: Define how overflowed content that is not displayed is signaled to users.
+white-space: Define how whitespace and associated line breaks inside the element are handled.
+word-break: Specify whether to break lines within words.
+direction: Define the text direction. (This depends on the language and usually it's better to let HTML handle that part as it is tied to the text content.)
+hyphens: Switch on and off hyphenation for supported languages.
+line-break: Relax or strengthen line breaking for Asian languages.
+text-align-last: Define how the last line of a block or a line, right before a forced line break, is aligned.
+text-orientation: Define the orientation of the text in a line.
+overflow-wrap: Specify whether or not the browser may break lines within words in order to prevent overflow.
+writing-mode: Define whether lines of text are laid out horizontally or vertically and the direction in which subsequent lines flow.
+*/
+
+/* . text-decoraion: none | underline | overline | line-through; 
+  . text-decoraion-line: none | underline | overline | line-through | grammar-error | spelling-error;
+  . text-decoraion-style: solid | double | dotted | dashed | wavy;
+  . text-decoraion-color: grey;
+  . text-underline-position: 0; 
+*/
+

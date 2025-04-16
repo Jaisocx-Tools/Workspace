@@ -1,0 +1,396 @@
+{
+  "npm-registry-name": "@jaisocx",
+  "packages": [
+    {
+      "path": "packages/CssImporter",
+      "name": "css-importer",
+      "build": false,
+      "build-simple-enable": false,
+      "dependencies": [],
+      "build-files": [
+        "index.js"
+      ]
+    },
+    {
+      "path": "templates/ResponsiveAndValidForWebpackWhenNpmInstall",
+      "name": "template-css-clean-start",
+      "build": false,
+      "build-simple-enable": true,
+      "dependencies": [],
+      "build-files": [
+        "index.js",
+        "webpackAliases.js",
+        "webpack.aliases.mjs",
+        "webpack.aliases.cjs"
+      ]
+    },
+    {
+      "path": "CssTools/CssCleanStart",
+      "name": "css-clean-start",
+      "build": false,
+      "build-simple-enable": true,
+      "css-importer": {
+        "build": true,
+        "cssFilePath": "assets/clean-start-main-webpack.css",
+        "cssTargetFilePath": "assets/clean-start-main-resolved.css"
+      },
+      "dependencies": [],
+      "build-files": [
+        "index.js",
+        "webpackAliases.js",
+        "webpack.aliases.mjs",
+        "webpack.aliases.cjs"
+      ]
+    },
+    {
+      "path": "packages/Mobile.vsDeskop",
+      "name": "mobile-vs-desktop",
+      "build": true,
+      "build-simple-enable": true,
+      "css-importer": {
+        "build": true,
+        "cssFilePath": "assets/clean-start-main-webpack.css",
+        "cssTargetFilePath": "assets/clean-start-main-resolved.css"
+      },
+      "dependencies": [],
+      "build-files": [
+        "MediaruleNames.js",
+        "Mobile.vsDesktopPack.js",
+        "index.js",
+        "webpackAliases.js",
+        "webpack.aliases.mjs",
+        "webpack.aliases.cjs"
+      ]
+    },
+    {
+      "path": "examples/ExampleCssCleanStartWebpack",
+      "name": "example-css-clean-start",
+      "build": false,
+      "build-simple-enable": true,
+      "dependencies": [
+        {
+          "name": "@jaisocx/css-clean-start",
+          "path": "CssTools/CssCleanStart"
+        }
+      ],
+      "build-files": [
+        "index.js"
+      ]
+    },
+    {
+      "path": "templates/BuiltWithWebpackYarnInstalledPackage",
+      "name": "example-built-with-webpack",
+      "build": false,
+      "build-simple-enable": true,
+      "dependencies": [
+        {
+          "name": "@jaisocx/css-clean-start",
+          "path": "CssTools/CssCleanStart"
+        },
+        {
+          "name": "@jaisocx/tooltip",
+          "path": "packages/Tooltip"
+        }
+      ],
+      "build-files": [
+        "index.js"
+      ]
+    },
+    {
+      "path": "CssTools/CssCodeSnippet",
+      "name": "css-code-snippet",
+      "build": false,
+      "build-simple-enable": true,
+      "dependencies": [],
+      "build-files": [
+        "CssCodeSnippetHelpers.js"
+      ]
+    },
+    {
+      "path": "CssTools/CssTable",
+      "name": "css-table",
+      "build": false,
+      "build-simple-enable": true,
+      "dependencies": [],
+      "build-files": [
+        "Preloader.js",
+        "ThemesPreloadsCssTable.js",
+        "index.js",
+        "webpackAliases.js",
+        "webpack.aliases.mjs",
+        "webpack.aliases.cjs"
+      ]
+    },
+    {
+      "path": "packages/ObjData",
+      "name": "objdata",
+      "build": false,
+      "build-simple-enable": true,
+      "dependencies": [
+      ],
+      "build-files": [
+        "ObjDataConstants.js",
+        "ObjDataTypes.js",
+        "ObjDataPackage.js",
+        "ObjDataParser.js",
+        "ObjDataSerializer.js",
+        "ObjData.js"
+      ]
+    },
+    {
+      "path": "packages/EventEmitter",
+      "name": "event-emitter",
+      "build": false,
+      "build-simple-enable": true,
+      "build-files": [
+        "EventEmitter.js",
+        "ImprovedRenderEventEmitter.js"
+      ]
+    },
+    {
+      "path": "packages/TemplateRenderer",
+      "name": "template-renderer",
+      "build": false,
+      "build-simple-enable": true,
+      "dependencies": [
+        {
+          "name": "@jaisocx/event-emitter",
+          "path": "packages/EventEmitter"
+        }
+      ],
+      "build-files": [
+        "TemplateRenderer.js"
+      ]
+    },
+    {
+      "path": "packages/Tree",
+      "name": "tree",
+      "build": false,
+      "build-simple-enable": true,
+      "dependencies": [
+        {
+          "name": "@jaisocx/event-emitter",
+          "path": "packages/EventEmitter"
+        },
+        {
+          "name": "@jaisocx/template-renderer",
+          "path": "packages/TemplateRenderer"
+        }
+      ],
+      "build-files": [
+        "typescript/ArrayOrObjectPackage.js",
+        "typescript/Tree.js",
+        "typescript/TreeAdapter.js",
+        "typescript/TreeAdapterModeConf.js",
+        "typescript/TreeAdapterModeEase.js",
+        "typescript/TreeConf.js",
+        "typescript/TreeConstants.js",
+        "typescript/Types.js",
+        "webpackAliases.js",
+        "webpack.aliases.mjs",
+        "webpack.aliases.cjs"
+      ]
+    },
+    {
+      "path": "examples/ExampleTemplateRenderer",
+      "name": "example-template-renderer",
+      "build": false,
+      "build-simple-enable": true,
+      "dependencies": [
+        {
+          "name": "@jaisocx/event-emitter",
+          "path": "packages/EventEmitter"
+        },
+        {
+          "name": "@jaisocx/template-renderer",
+          "path": "packages/TemplateRenderer"
+        }
+      ],
+      "build-files": [
+        "ExampleTemplateRenderer.js"
+      ]
+    },
+    {
+      "path": "examples/ExampleTree",
+      "name": "example-tree",
+      "build": false,
+      "build-simple-enable": true,
+      "dependencies": [
+        {
+          "name": "@jaisocx/tree",
+          "path": "packages/Tree"
+        }
+      ],
+      "build-files": [
+        "ExampleTree.js"
+      ],
+      "webpack-bundle.js": {
+        "@status": "this ProjectBuilder.json property 'webpack-bundle.js' is an idea for future implementation, and is now not under development",
+        "@description": "to automate producing of a bundle.ts file for webpack build",
+        "imports": [
+          {
+            "class": "Tree",
+            "from": "@jaisocx/tree"
+          },
+          {
+            "class": "TreeConstants",
+            "from": "@jaisocx/tree"
+          },
+          {
+            "class": "ExampleTree",
+            "from": "./ExampleTree"
+          }
+        ]
+      }
+    },
+    {
+      "path": "packages/Tooltip",
+      "name": "tooltip",
+      "build": false,
+      "build-simple-enable": true,
+      "dependencies": [
+        {
+          "name": "@jaisocx/event-emitter",
+          "path": "packages/EventEmitter"
+        },
+        {
+          "name": "@jaisocx/template-renderer",
+          "path": "packages/TemplateRenderer"
+        }
+      ],
+      "build-files": [
+        "Constants.js",
+        "Tooltip.js",
+        "TooltipLib.js",
+        "TooltipMainTemplateData.js",
+        "TooltipShownSettings.js",
+        "Types.js",
+        "index.js",
+        "webpackAliases.js",
+        "webpack.aliases.mjs",
+        "webpack.aliases.cjs"
+      ]
+    },
+    {
+      "path": "examples/ExampleTooltip",
+      "name": "example-tooltip",
+      "build": false,
+      "build-simple-enable": true,
+      "dependencies": [
+        {
+          "name": "@jaisocx/tooltip",
+          "path": "packages/Tooltip"
+        }
+      ],
+      "build-files": [
+        "ExampleTooltip.js"
+      ]
+    },
+    {
+      "path": "packages/Table",
+      "name": "table",
+      "build": false,
+      "build-simple-enable": true,
+      "dependencies": [
+        {
+          "name": "@jaisocx/event-emitter",
+          "path": "packages/EventEmitter"
+        },
+        {
+          "name": "@jaisocx/template-renderer",
+          "path": "packages/TemplateRenderer"
+        }
+      ],
+      "build-files": [
+        "Table.js"
+      ]
+    },
+    {
+      "path": "examples/ExampleTable",
+      "name": "example-table",
+      "build": false,
+      "build-simple-enable": true,
+      "dependencies": [
+        {
+          "name": "@jaisocx/table",
+          "path": "packages/Table"
+        }
+      ],
+      "build-files": [
+        "ExampleTable.js"
+      ]
+    },
+    {
+      "path": "packages/CharcodeConverter",
+      "name": "charcode-converter",
+      "build": false,
+      "build-simple-enable": true,
+      "dependencies": [],
+      "build-files": [
+        "CharcodeConverter.js",
+        "Charcodes.js"
+      ]
+    },
+    {
+      "path": "packages/WorkspaceTreeWalker",
+      "name": "workspace-tree-walker",
+      "build": false,
+      "build-simple-enable": true,
+      "dependencies": [],
+      "build-files": [
+        "lib/JPath.js",
+        "types/JPathData.js",
+        "types/IterableInfo.js",
+        "types/WorkspaceTreeWalkerPayload.js",
+        "WorkspaceTreeWalker.js"
+      ]
+    },
+    {
+      "path": "packages/ImprovedTemplateRenderer",
+      "name": "improved-template-renderer",
+      "build": false,
+      "build-simple-enable": true,
+      "dependencies": [
+        {
+          "name": "@jaisocx/event-emitter",
+          "path": "packages/EventEmitter"
+        },
+        {
+          "name": "@jaisocx/charcode-converter",
+          "path": "packages/CharcodeConverter"
+        },
+        {
+          "name": "@jaisocx/workspace-tree-walker",
+          "path": "packages/WorkspaceTreeWalker"
+        }
+      ],
+      "build-files": [
+        "lib/TemplateParser.js",
+        "types/DataConf.js",
+        "types/RepeatDataCallbackValue.js",
+        "types/TemplateInfo.js",
+        "types/TemplateConf.js",
+        "ImprovedTemplateRenderer.js",
+        "ImprovedTemplateRendererConstants.js"        
+      ]
+    },
+    {
+      "path": "packages/Api",
+      "name": "api",
+      "build": false,
+      "build-simple-enable": true,
+      "dependencies": [
+        {
+          "name": "@jaisocx/objdata",
+          "path": "packages/ObjData"
+        }
+      ],
+      "build-files": [
+        "Api.js"
+      ]
+    }
+  ]
+}
+
+
+
