@@ -1,34 +1,94 @@
+import * as fs from "node:fs";
+import * as path from "node:path";
+
+
+
 import { ResponsiveDatasetAutomationConstants } from "./ResponsiveDatasetAutomationConstants.js";
 import { ResponsiveDatasetAutomationInterface } from "./ResponsiveDatasetAutomationInterface.js";
 
 
 
 export class ResponsiveDatasetAutomation implements ResponsiveDatasetAutomationInterface {
-  
+
+  mediaAndStylesResponsiveFolderPath: string;
+  datasetFilePath: string;
+
+  dataset: object;
+  templateMediaCssFileContent: string;
+  webpackAliasName: string;
+
+
+
+
+  constructor() {
+    this.dataset = {};
+  }
+
+
+
+
+
+  /**
+   * @ready
+  */
+  setMediaAndStylesResponsiveFolderPath( inFolderPath: string ): ResponsiveDatasetAutomation {
+    this.mediaAndStylesResponsiveFolderPath = inFolderPath;
+
+    return this;
+  }
+
+
   // reads json with sizes
-  readDataset( datasetFilePath: any ): ResponsiveDatasetAutomation {
-    return this;
-  }
-  setDataset( dataset: any ): ResponsiveDatasetAutomation {
+  /**
+   * @ready
+  */
+  readDataset( inDatasetFileRelativePath: string ): ResponsiveDatasetAutomation {
+    this.datasetFilePath = path.resolve ( 
+      this.mediaAndStylesResponsiveFolderPath,
+      inDatasetFileRelativePath 
+    );
+    const json: string = fs.readFileSync( this.datasetFilePath, "utf8" );
+    this.dataset = JSON.parse( json );
+
     return this;
   }
 
 
-  setMediaAndStylesResponsiveFolderPath( folderPath: string ): ResponsiveDatasetAutomation {
+  /**
+   * @ready
+  */
+  setDataset( inDataset: object ): ResponsiveDatasetAutomation {
+    this.dataset = inDataset;
+
     return this;
   }
 
-  readTemplateMediaCssFile( filePath: string ): ResponsiveDatasetAutomation {
+
+  /**
+   * @ready
+  */
+  readTemplateMediaCssFile( inFileRelativePath: string ): ResponsiveDatasetAutomation {
+    const templatePath = path.resolve ( 
+      this.mediaAndStylesResponsiveFolderPath,
+      inFileRelativePath
+    );
+    this.templateMediaCssFileContent = fs.readFileSync( templatePath, "utf8" );
+
     return this;
   }
 
+
+  /**
+   * @ready
+  */
   setWebpackAliasName( alias: string ): ResponsiveDatasetAutomation {
+    this.webpackAliasName = alias;
+
     return this;
   }
  
 
 
-  
   // :root {
   //
   //   Extra Small Mobile (XS)
@@ -43,6 +103,8 @@ export class ResponsiveDatasetAutomation implements ResponsiveDatasetAutomationI
   //   --screen-s-mobile-portrait-from: 321px; 
   //   ...
   produceMediaConstantsCssFile( fileName: string ): ResponsiveDatasetAutomation {
+    
+
     return this;
   }
 
@@ -143,11 +205,18 @@ export class ResponsiveDatasetAutomation implements ResponsiveDatasetAutomationI
 
 
   // json with sizes
+  /**
+   * @ready
+  */
   getDataset(): object {
-    return {};
+    return this.dataset;
   }
+
+  /**
+   * @ready
+  */
   getDatasetFilePath(): string {
-    return "";
+    return this.datasetFilePath;
   }
 
 }
