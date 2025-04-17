@@ -12,16 +12,17 @@
     "developer_agrees_to_use_just_for": "The developer agrees to use this data exclusively for refining and bug-fixing of sites' visual interfaces, making them well seeing on wide monitors, mobiles and tablets as well.",
     "developer_agrees_never_to_use_for": "The developer agrees never use this dataset on sites development, when a site is intended or planned or already does discriminating or phishing."
   },
+  "sizeUnit": "px",
   "data": {
     "mobile_xs": {
       "range_orderby_id": 10,
       "width": {
-        "from": "240px",
-        "to": "320px"
+        "from": 240,
+        "to": 320
       },
       "height": {
-        "from": "320px",
-        "to": "500px"
+        "from": 320,
+        "to": 500
       },
       "art": "mobile",
       "art_size": "xs",
@@ -31,12 +32,12 @@
     "mobile_s": {
       "range_orderby_id": 20,
       "width": {
-        "from": "321px",
-        "to": "374px"
+        "from": 321,
+        "to": 374
       },
       "height": {
-        "from": "501px",
-        "to": "667px"
+        "from": 501,
+        "to": 667
       },
       "art": "mobile",
       "art_size": "s",
@@ -46,12 +47,12 @@
     "mobile_sm": {
       "range_orderby_id": 30,
       "width": {
-        "from": "375px",
-        "to": "430px"
+        "from": 375,
+        "to": 430
       },
       "height": {
-        "from": "668px",
-        "to": "736px"
+        "from": 668,
+        "to": 736
       },
       "art": "mobile",
       "art_size": "sm",
@@ -61,12 +62,12 @@
     "mobile_md": {
       "range_orderby_id": 40,
       "width": {
-        "from": "431px",
-        "to": "480px"
+        "from": 431,
+        "to": 480
       },
       "height": {
-        "from": "737px",
-        "to": "812px"
+        "from": 737,
+        "to": 812
       },
       "art": "mobile",
       "art_size": "md",
@@ -76,12 +77,12 @@
     "tablet_sm": {
       "range_orderby_id": 50,
       "width": {
-        "from": "481px",
-        "to": "767px"
+        "from": 481,
+        "to": 767
       },
       "height": {
-        "from": "813px",
-        "to": "960px"
+        "from": 813,
+        "to": 960
       },
       "art": "tablet",
       "art_size": "sm",
@@ -91,12 +92,12 @@
     "tablet_md": {
       "range_orderby_id": 60,
       "width": {
-        "from": "768px",
-        "to": "1024px"
+        "from": 768,
+        "to": 1024
       },
       "height": {
-        "from": "961px",
-        "to": "1024px"
+        "from": 961,
+        "to": 1024
       },
       "art": "tablet",
       "art_size": "md",
@@ -106,12 +107,12 @@
     "laptop_sm": {
       "range_orderby_id": 70,
       "width": {
-        "from": "1025px",
-        "to": "1279px"
+        "from": 1025,
+        "to": 1279
       },
       "height": {
-        "from": "1025px",
-        "to": "1080px"
+        "from": 1025,
+        "to": 1080
       },
       "art": "laptop",
       "art_size": "sm",
@@ -121,12 +122,12 @@
     "laptop_md": {
       "range_orderby_id": 80,
       "width": {
-        "from": "1280px",
-        "to": "1439px"
+        "from": 1280,
+        "to": 1439
       },
       "height": {
-        "from": "1081px",
-        "to": "1200px"
+        "from": 1081,
+        "to": 1200
       },
       "art": "laptop",
       "art_size": "md",
@@ -136,12 +137,12 @@
     "laptop_lg": {
       "range_orderby_id": 90,
       "width": {
-        "from": "1440px",
-        "to": "1600px"
+        "from": 1440,
+        "to": 1600
       },
       "height": {
-        "from": "1201px",
-        "to": "1440px"
+        "from": 1201,
+        "to": 1440
       },
       "art": "laptop",
       "art_size": "lg",
@@ -151,12 +152,12 @@
     "desktop_xl": {
       "range_orderby_id": 100,
       "width": {
-        "from": "1601px",
-        "to": "1920px"
+        "from": 1601,
+        "to": 1920
       },
       "height": {
-        "from": "1441px",
-        "to": "1600px"
+        "from": 1441,
+        "to": 1600
       },
       "art": "desktop",
       "art_size": "xl",
@@ -166,12 +167,12 @@
     "desktop_xxl": {
       "range_orderby_id": 110,
       "width": {
-        "from": "1921px",
-        "to": "2560px"
+        "from": 1921,
+        "to": 2560
       },
       "height": {
-        "from": "1601px",
-        "to": "2160px"
+        "from": 1601,
+        "to": 2160
       },
       "art": "desktop",
       "art_size": "xxl",
@@ -181,59 +182,59 @@
     "display_qhd": {
       "range_orderby_id": 120,
       "width": {
-        "from": "2561px",
-        "to": "3840px"
+        "from": 2561,
+        "to": 3840
       },
       "height": {
-        "from": "2161px",
-        "to": "2160px"
+        "from": 2161,
+        "to": 2160
       },
       "art": "display",
       "art_size": "qhd",
       "orientation_standard": "landscape",
       "is_orientation_standard_nearly_always": true
     },
-    "display_4k": {
+    "tv_4k": {
       "range_orderby_id": 130,
       "width": {
-        "from": "3841px",
-        "to": "7680px"
+        "from": 3841,
+        "to": 7680
       },
       "height": {
-        "from": "2161px",
-        "to": "4320px"
+        "from": 2161,
+        "to": 4320
       },
-      "art": "display",
+      "art": "tv",
       "art_size": "4k",
       "orientation_standard": "landscape",
       "is_orientation_standard_nearly_always": true
     },
-    "display_8k": {
+    "tv_8k": {
       "range_orderby_id": 140,
       "width": {
-        "from": "7681px",
-        "to": "15360px"
+        "from": 7681,
+        "to": 15360
       },
       "height": {
-        "from": "4321px",
-        "to": "8640px"
+        "from": 4321,
+        "to": 8640
       },
-      "art": "display",
+      "art": "tv",
       "art_size": "8k",
       "orientation_standard": "landscape",
       "is_orientation_standard_nearly_always": true
     },
-    "display_16k": {
+    "tv_16k": {
       "range_orderby_id": 150,
       "width": {
-        "from": "15361px",
-        "to": "25360px"
+        "from": 15361,
+        "to": 25360
       },
       "height": {
-        "from": "8641px",
-        "to": "9999px"
+        "from": 8641,
+        "to": 9999
       },
-      "art": "display",
+      "art": "tv",
       "art_size": "16k",
       "orientation_standard": "landscape",
       "is_orientation_standard_nearly_always": true

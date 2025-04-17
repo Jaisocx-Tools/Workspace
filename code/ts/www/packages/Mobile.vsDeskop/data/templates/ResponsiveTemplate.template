@@ -1,0 +1,14 @@
+/* Responsive rules for: {$id} {$device_art} {$size} {$layout} */
+@media (min-width: {$min-width}) and (max-width: {$max-width}) and (orientation: {$layout}) {
+  .workspace {
+    --media-rule: media_{$id}_{$device_art}_{$size}_{$layout};
+
+  }    
+
+  /* verifying responsive rules applies */
+  .workspace.verify-responsive-rule-applies main h1::before {
+    content: var(--media-rule);
+  }
+
+}
+
