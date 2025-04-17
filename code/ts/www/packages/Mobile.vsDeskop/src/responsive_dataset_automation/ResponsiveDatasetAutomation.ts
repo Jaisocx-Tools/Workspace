@@ -1,8 +1,9 @@
-import { ResponsiveDatasetAutomation } from "./ResponsiveDatasetAutomation.js";
+import { ResponsiveDatasetAutomationConstants } from "./ResponsiveDatasetAutomationConstants.js";
+import { ResponsiveDatasetAutomationInterface } from "./ResponsiveDatasetAutomationInterface.js";
 
 
 
-export interface ResponsiveDatasetAutomationInterface {
+export class ResponsiveDatasetAutomation implements ResponsiveDatasetAutomationInterface {
   
   // reads json with sizes
   readDataset( datasetFilePath: any ): ResponsiveDatasetAutomation; // this

@@ -15,7 +15,7 @@
   "sizeUnit": "px",
   "data": {
     "mobile_xs": {
-      "range_orderby_id": 10,
+      "range_orderby_id": 12,
       "width": {
         "from": 240,
         "to": 320
@@ -30,7 +30,7 @@
       "is_orientation_standard_nearly_always": false
     },
     "mobile_s": {
-      "range_orderby_id": 20,
+      "range_orderby_id": 14,
       "width": {
         "from": 321,
         "to": 374
@@ -45,7 +45,7 @@
       "is_orientation_standard_nearly_always": false
     },
     "mobile_sm": {
-      "range_orderby_id": 30,
+      "range_orderby_id": 16,
       "width": {
         "from": 375,
         "to": 430
@@ -60,7 +60,7 @@
       "is_orientation_standard_nearly_always": false
     },
     "mobile_md": {
-      "range_orderby_id": 40,
+      "range_orderby_id": 18,
       "width": {
         "from": 431,
         "to": 480
@@ -75,7 +75,7 @@
       "is_orientation_standard_nearly_always": false
     },
     "tablet_sm": {
-      "range_orderby_id": 50,
+      "range_orderby_id": 22,
       "width": {
         "from": 481,
         "to": 767
@@ -90,7 +90,7 @@
       "is_orientation_standard_nearly_always": false
     },
     "tablet_md": {
-      "range_orderby_id": 60,
+      "range_orderby_id": 24,
       "width": {
         "from": 768,
         "to": 1024
@@ -105,7 +105,7 @@
       "is_orientation_standard_nearly_always": false
     },
     "laptop_sm": {
-      "range_orderby_id": 70,
+      "range_orderby_id": 32,
       "width": {
         "from": 1025,
         "to": 1279
@@ -120,7 +120,7 @@
       "is_orientation_standard_nearly_always": true
     },
     "laptop_md": {
-      "range_orderby_id": 80,
+      "range_orderby_id": 36,
       "width": {
         "from": 1280,
         "to": 1439
@@ -135,7 +135,7 @@
       "is_orientation_standard_nearly_always": true
     },
     "laptop_lg": {
-      "range_orderby_id": 90,
+      "range_orderby_id": 39,
       "width": {
         "from": 1440,
         "to": 1600
@@ -150,7 +150,7 @@
       "is_orientation_standard_nearly_always": true
     },
     "desktop_xl": {
-      "range_orderby_id": 100,
+      "range_orderby_id": 42,
       "width": {
         "from": 1601,
         "to": 1920
@@ -165,7 +165,7 @@
       "is_orientation_standard_nearly_always": true
     },
     "desktop_xxl": {
-      "range_orderby_id": 110,
+      "range_orderby_id": 44,
       "width": {
         "from": 1921,
         "to": 2560
@@ -179,8 +179,8 @@
       "orientation_standard": "landscape",
       "is_orientation_standard_nearly_always": true
     },
-    "display_qhd": {
-      "range_orderby_id": 120,
+    "desktop_qhd": {
+      "range_orderby_id": 46,
       "width": {
         "from": 2561,
         "to": 3840
@@ -195,7 +195,7 @@
       "is_orientation_standard_nearly_always": true
     },
     "tv_4k": {
-      "range_orderby_id": 130,
+      "range_orderby_id": 52,
       "width": {
         "from": 3841,
         "to": 7680
@@ -210,7 +210,7 @@
       "is_orientation_standard_nearly_always": true
     },
     "tv_8k": {
-      "range_orderby_id": 140,
+      "range_orderby_id": 54,
       "width": {
         "from": 7681,
         "to": 15360
@@ -225,7 +225,7 @@
       "is_orientation_standard_nearly_always": true
     },
     "tv_16k": {
-      "range_orderby_id": 150,
+      "range_orderby_id": 56,
       "width": {
         "from": 15361,
         "to": 25360
