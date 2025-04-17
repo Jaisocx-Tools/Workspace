@@ -6,12 +6,26 @@ import { ResponsiveDatasetAutomationInterface } from "./ResponsiveDatasetAutomat
 export class ResponsiveDatasetAutomation implements ResponsiveDatasetAutomationInterface {
   
   // reads json with sizes
-  readDataset( datasetFilePath: any ): ResponsiveDatasetAutomation; // this
-  setDataset( dataset: any ): ResponsiveDatasetAutomation; // this
+  readDataset( datasetFilePath: any ): ResponsiveDatasetAutomation {
+    return this;
+  }
+  setDataset( dataset: any ): ResponsiveDatasetAutomation {
+    return this;
+  }
 
-  setMediaAndStylesResponsiveFolderPath( folderPath: string ): ResponsiveDatasetAutomation; // this
-  readTemplateMediaCssFile( filePath: string ): ResponsiveDatasetAutomation; // this
-  setWebpackAliasName( alias: string ): ResponsiveDatasetAutomation; // this 
+
+  setMediaAndStylesResponsiveFolderPath( folderPath: string ): ResponsiveDatasetAutomation {
+    return this;
+  }
+
+  readTemplateMediaCssFile( filePath: string ): ResponsiveDatasetAutomation {
+    return this;
+  }
+
+  setWebpackAliasName( alias: string ): ResponsiveDatasetAutomation {
+    return this;
+  }
+ 
 
 
   
@@ -28,16 +42,25 @@ export class ResponsiveDatasetAutomation implements ResponsiveDatasetAutomationI
   //   Small Mobile (S)
   //   --screen-s-mobile-portrait-from: 321px; 
   //   ...
-  produceMediaConstantsCssFile( fileName: string ): ResponsiveDatasetAutomation; // this
+  produceMediaConstantsCssFile( fileName: string ): ResponsiveDatasetAutomation {
+    return this;
+  }
 
 
 
-  produceMediaCssFilesSet(): ResponsiveDatasetAutomation; // this
+
+  produceMediaCssFilesSet(): ResponsiveDatasetAutomation {
+    return this;
+  }
+
 
   produceMediaCssFile ( 
     responsiveDatasetPropName: string, 
     fileName: string 
-  ): ResponsiveDatasetAutomation; // this
+  ): ResponsiveDatasetAutomation {
+    return this;
+  }
+
 
 
 
@@ -50,7 +73,10 @@ export class ResponsiveDatasetAutomation implements ResponsiveDatasetAutomationI
   produceMediaCssImportsCssFile( 
     fileName: string,
     webpackAliased: boolean
-  ): ResponsiveDatasetAutomation; // this
+  ): ResponsiveDatasetAutomation {
+    return this;
+  }
+
 
 
 
@@ -58,7 +84,9 @@ export class ResponsiveDatasetAutomation implements ResponsiveDatasetAutomationI
   produceMediaConstantNameLine ( 
     responsiveDatasetPropName: string,
     orientation: any
-  ): string;
+  ): string {
+    return "";
+  }
 
 
   // @media only screen and (min-width: 786px) and (max-width: 1023px) and (orientation: landscape)
@@ -66,7 +94,9 @@ export class ResponsiveDatasetAutomation implements ResponsiveDatasetAutomationI
     responsiveDatasetPropName: string,
     orientation: any,
     media: any // screen | print | all
-  ): string;
+  ): string {
+    return "";
+  }
 
 
   // --s_56_16k_tv_horizontal__media_rule: "@media only screen and (min-width: 786px) and (max-width: 1023px) and (orientation: landscape)";
@@ -75,7 +105,9 @@ export class ResponsiveDatasetAutomation implements ResponsiveDatasetAutomationI
     responsiveDatasetPropName: string,
     orientation: any,
     media: any // screen | print | all
-  ): string;
+  ): string {
+    return "";
+  }
 
 
   //
@@ -84,14 +116,20 @@ export class ResponsiveDatasetAutomation implements ResponsiveDatasetAutomationI
   //
   // --s_56_16k_tv_horizontal__width__from: 15361px; /* 16k TV */
   // --s_56_16k_tv_horizontal__width__til: 25360px; /* 16k TV */
-  produceMediaConstantLinesSet ( responsiveDatasetPropName: string ): string; // this
+  produceMediaConstantLinesSet ( responsiveDatasetPropName: string ): string {
+    return "";
+  }
+
 
 
   // --s_56_16k_tv_horizontal__width__til: 25360px; /* 16k TV */
   produceMediaConstantLine ( 
     responsiveDatasetPropName: string, 
     orientation: string 
-  ): string; // this
+  ): string {
+    return "";
+  }
+
   
 
   // @import url("@jaisocx-css-clean-start-MediaAndStyles/responsive/clean-start-s-mobile-landscape.css");
@@ -99,12 +137,18 @@ export class ResponsiveDatasetAutomation implements ResponsiveDatasetAutomationI
     relativeImportedFilesFolderPath: string,
     importedFileName: string, 
     webpackAliasName: string, 
-  ): string; // the line in the imports file.
+  ): string {
+    return "";
+  }
 
 
   // json with sizes
-  getDataset(): object;
-  getDatasetFilePath(): string;
+  getDataset(): object {
+    return {};
+  }
+  getDatasetFilePath(): string {
+    return "";
+  }
 
 }
 

@@ -5,7 +5,7 @@ import { ResponsiveDatasetAutomation } from "./ResponsiveDatasetAutomation.js";
 export interface ResponsiveDatasetAutomationInterface {
   
   // reads json with sizes
-  readDataset( datasetFilePath: any ): ResponsiveDatasetAutomation; // this
+  readDataset( datasetFilePath: any ): ResponsiveDatasetAutomation
   setDataset( dataset: any ): ResponsiveDatasetAutomation; // this
 
   setMediaAndStylesResponsiveFolderPath( folderPath: string ): ResponsiveDatasetAutomation; // this
