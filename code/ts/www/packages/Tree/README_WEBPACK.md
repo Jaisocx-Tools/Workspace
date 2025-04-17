@@ -207,7 +207,7 @@ export default {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <!-- th path to webpack built bundle.js here: -->
-    <script src="build/webpack/example-tree-bundle.js"></script>
+    <script src="transpiled/webpack/example-tree-bundle.js"></script>
   </head>
   <body>
 
