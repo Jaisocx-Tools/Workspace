@@ -1,0 +1,42 @@
+import { TemplateRenderer } from "@jaisocx/template-renderer";
+import "@table-MediaAndStyles/table-styles-main-webpack.css";
+export declare class Table {
+    MAX_WIDTH_MOBILE_LOOK_AND_FEEL: number;
+    htmlHolderNodeId: string;
+    htmlHolderNodeSelector: string;
+    htmlHolderNode: HTMLElement | null;
+    cssClasses: string;
+    confUrl: string;
+    dataUrl: string;
+    tableConf: any;
+    loadedTableData: any;
+    tableData: any;
+    debug: boolean;
+    orderByField: string;
+    orderByOrder: string;
+    templateRenderer: TemplateRenderer;
+    constructor();
+    setHtmlHolderNodeId(id: string): Table;
+    setHtmlHolderNodeSelector(selector: string): Table;
+    getHtmlHolderNodeSelector(): string;
+    getHtmlTableNodeSelector(): string;
+    setCssClasses(cssClasses: string): Table;
+    setConfUrl(url: string): Table;
+    setDataUrl(url: string): Table;
+    setMobileLookAndFeelMaxWidth(width: number): Table;
+    load(): Table;
+    render(): undefined;
+    renderTable(): undefined;
+    renderHeader(): string;
+    renderRecord(record: any, recordCounter: number): string;
+    applyColumnsWidths(): undefined;
+    generateGridTemplateColumnsStyle(): string;
+    adjustHeaderPaddingRight(): undefined;
+    getScrollbarWidth(element: HTMLElement | null): number;
+    addWindowResizeEventListener(): Table;
+    addTableClickEventListener(): Table;
+    tableClickEventHandlerSort(event: Event): undefined;
+    sort(columnName: string | undefined): undefined;
+    sortBy(field: string | undefined, order: string): undefined;
+}
+//# sourceMappingURL=Table.d.ts.map

@@ -9,7 +9,7 @@ const require = createRequire(import.meta.url);
 export default {
   resolve: {
     alias: {
-      '@table-assets': path.resolve(__dirname, 'assets/')
+      '@table-MediaAndStyles': path.resolve(__dirname, 'MediaAndStyles/')
     }
   }
 };

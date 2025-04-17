@@ -8,7 +8,7 @@ TSFolderAbsPath="$(dirname "$(realpath "${TSFolderPath}")")"
 # exit 0
 
 
-cleanstartMediarulesPath="${TSFolderAbsPath}/www/CssTools/CssCleanStart/assets/responsive"
+cleanstartMediarulesPath="${TSFolderAbsPath}/www/CssTools/CssCleanStart/MediaAndStyles/responsive"
 targetFolderPath="${TSFolderAbsPath}/www/packages/Mobile.vsDeskop/tmp"
 targetFilename="MediaruleNameCssFiles.list"
 targetFilePath="${targetFolderPath}/${targetFilename}"

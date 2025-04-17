@@ -57,12 +57,12 @@ and for the desktop standard view.
 
   <title>Under construction: Css Table</title>
 
-  <script src="CssTools/CssTable/build/Simple/Preloader.js"></script>
-  <script src="CssTools/CssTable/build/Simple/ThemesPreloadsCssTable.js"></script>
+  <script src="CssTools/CssTable/transpiled/Simple/Preloader.js"></script>
+  <script src="CssTools/CssTable/transpiled/Simple/ThemesPreloadsCssTable.js"></script>
 
-  <!-- <link rel="stylesheet" href="CssTools/CssTable/assets/themes/theme-lightmode/css-table-theme-lightmode-relative.css"> -->
-  <!-- <link rel="stylesheet" href="CssTools/CssTable/assets/themes/theme-darkmode/css-table-theme-darkmode-relative.css"> -->
-  <link rel="stylesheet" href="CssTools/CssTable/assets/css-table-main-relative.css">
+  <!-- <link rel="stylesheet" href="CssTools/CssTable/MediaAndStyles/themes/theme-lightmode/css-table-theme-lightmode-relative.css"> -->
+  <!-- <link rel="stylesheet" href="CssTools/CssTable/MediaAndStyles/themes/theme-darkmode/css-table-theme-darkmode-relative.css"> -->
+  <link rel="stylesheet" href="CssTools/CssTable/MediaAndStyles/css-table-main-relative.css">
 
 </head>
 <body>

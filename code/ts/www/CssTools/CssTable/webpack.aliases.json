@@ -1,5 +1,5 @@
 {
-  "@jaisocx-css-table-assets": "${packageRoot}/assets",
+  "@jaisocx-css-table-MediaAndStyles": "${packageRoot}/MediaAndStyles",
   "@jaisocx-css-table-cdn-fonts": "https://workspace.brightday.email/cdn/www/fonts"
 }
 

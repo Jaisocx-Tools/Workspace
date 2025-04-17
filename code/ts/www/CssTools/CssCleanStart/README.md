@@ -90,7 +90,7 @@ or in some tag, where You don't need html lists rendering with the predefined 90
 
 ## npm for webpack
 
-I use in the package.json th line to push to npm registry the assets/fonts folder.
+I use in the package.json th line to push to npm registry the MediaAndStyles/fonts folder.
 
 this is not the good practice, and I shall use cdn urls for fonts and media in other packages, 
 and in this package I wanted to test the build with webpack with 3rd party dependencies loaded from npm registry,

@@ -15,7 +15,7 @@ console.log( TooltipWebpackAliases );
 
 
 export default {
-  entry: './build/ESNext/index.js', // Entry point for your TypeScript code
+  entry: './transpiled/ESNext/index.js', // Entry point for your TypeScript code
   output: {
     filename: 'example-built-with-webpack-bundle.js', // Output bundle name
     path: path.resolve(__dirname, 'build/webpack'), 
@@ -59,14 +59,14 @@ export default {
         test: /\.(woff|woff2|eot|ttf)$/,
         type: 'asset/resource', // Use Webpack 5's native asset modules for images
         generator: {
-          filename: 'assets/fonts/[name][ext]', // Define output path for assets
+          filename: 'MediaAndStyles/fonts/[name][ext]', // Define output path for MediaAndStyles
         },
       },
       {
         test: /\.(webp|png|jpg|gif|svg)$/,
         type: 'asset/resource', // Use Webpack 5's native asset modules for images
         generator: {
-          filename: 'assets/images/[name][ext]', // Define output path for assets
+          filename: 'MediaAndStyles/images/[name][ext]', // Define output path for MediaAndStyles
         },
       },
     ],

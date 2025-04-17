@@ -12,10 +12,10 @@
     "forceConsistentCasingInFileNames": true,  // Ensure consistent file name casing across the project
     "allowJs": true,  // Allow JavaScript files in your TypeScript project
     "checkJs": false,  // Don't check JS files for type errors (can be turned on if needed)
-    "outDir": "./build/CommonJS",  // Output directory for transpiled files
+    "outDir": "./transpiled/CommonJS",  // Output directory for transpiled files
     "declaration": true,  // Generate .d.ts declaration files for type definitions
     "declarationMap": true,  // Generate declaration maps (helps IDEs and tools like VS Code)
-    "declarationDir": "./build/CommonJS",
+    "declarationDir": "./transpiled/CommonJS",
     "emitDeclarationOnly": false,
     "sourceMap": true,  // Enable source maps for debugging
     "jsx": "react",  // If using React, else change to "react-jsx" or omit this if you're not using React

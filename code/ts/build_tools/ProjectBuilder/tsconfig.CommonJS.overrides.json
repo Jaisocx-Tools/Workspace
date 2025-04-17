@@ -1,8 +1,8 @@
 {
   "extends": "./../../tsconfig.CommonJS.json",
   "compilerOptions": {
-    "outDir": "/var/www/code/ts/build_tools/ProjectBuilder/build/CommonJS",
-    "declarationDir": "/var/www/code/ts/build_tools/ProjectBuilder/build/CommonJS"
+    "outDir": "/var/www/code/ts/build_tools/ProjectBuilder/transpiled/CommonJS",
+    "declarationDir": "/var/www/code/ts/build_tools/ProjectBuilder/transpiled/CommonJS"
   },
   "include": [
     "./src/**/*.ts",  // Include TypeScript files from the source directory

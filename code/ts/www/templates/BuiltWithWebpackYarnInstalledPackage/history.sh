@@ -51,7 +51,7 @@ ls -la build/webpack
 ## total 84
 ## drwxr-xr-x    4 root     root           128 Mar 31 02:22 .
 ## drwxr-xr-x    6 root     root           192 Mar 31 02:22 ..
-## drwxr-xr-x    3 root     root            96 Mar 31 02:22 assets                               # the folder with fonts
+## drwxr-xr-x    3 root     root            96 Mar 31 02:22 MediaAndStyles                               # the folder with fonts
 ## -rw-r--r--    1 root     root         84602 Mar 31 02:22 example-built-with-webpack-bundle.js # the bundle.js
 
 

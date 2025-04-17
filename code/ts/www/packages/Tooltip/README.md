@@ -23,7 +23,7 @@ this is the site ui tool, this is shown or hidden on a click on some another htm
   <head>
     <title>Tooltip Example</title>
 
-    <script src="examples/ExampleTooltip/build/webpack/bundle.js"></script>
+    <script src="examples/ExampleTooltip/transpiled/webpack/bundle.js"></script>
 
   </head>
   <body>

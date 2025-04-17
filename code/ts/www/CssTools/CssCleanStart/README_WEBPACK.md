@@ -9,7 +9,7 @@ To use the rich webpack feature aliases, set this folders structure and these pr
 ### 1.1. ${PackageRoot}/webpack.aliases.json 
 ```
 {
-  "@jaisocx-css-clean-start-assets": "${packageRoot}/assets/"
+  "@jaisocx-css-clean-start-MediaAndStyles": "${packageRoot}/MediaAndStyles/"
 }
 ```
 
@@ -51,24 +51,24 @@ To use the rich webpack feature aliases, set this folders structure and these pr
   "private": false,
   "description": "",
   "type": "module",
-  "main": "./build/CommonJS/index.js",
-  "types": "./build/ESNext/index.d.ts",
-  "module": "./build/ESNext/index.js",
+  "main": "./transpiled/CommonJS/index.js",
+  "types": "./transpiled/ESNext/index.d.ts",
+  "module": "./transpiled/ESNext/index.js",
   "exports": {
     ".": {
-      "import": "./build/ESNext/index.js",
-      "require": "./build/CommonJS/index.js"
+      "import": "./transpiled/ESNext/index.js",
+      "require": "./transpiled/CommonJS/index.js"
     },
     "./WebpackAliases": {
-      "import": "./build/ESNext/webpack.aliases.mjs",
-      "require": "./build/CommonJS/webpack.aliases.cjs"
+      "import": "./transpiled/ESNext/webpack.aliases.mjs",
+      "require": "./transpiled/CommonJS/webpack.aliases.cjs"
     }
   },
   "files": [
     "build/CommonJS",
     "build/ESNext",
     "build/Simple",
-    "assets/",
+    "MediaAndStyles/",
     "webpack.aliases.json",
     "README.md"
   ],
@@ -125,12 +125,12 @@ node_modules/@jaisocx/template-css-clean-start/webpack.aliases.json
 ### a .css file, imported in a .ts with the webpack alias
 
 ```
-node_modules/@jaisocx/tree/assets/tree-styles-main-webpack.css
+node_modules/@jaisocx/tree/MediaAndStyles/tree-styles-main-webpack.css
 ```
 
 this import statement here:
 ```
-import "@jaisocx-tree-assets/tree-styles-main-webpack.css";
+import "@jaisocx-tree-MediaAndStyles/tree-styles-main-webpack.css";
 ```
 
 
@@ -168,7 +168,7 @@ console.log( WebpackAliases );
 
 
 export default {
-  entry: './build/ESNext/index.js', // Entry point for your TypeScript code
+  entry: './transpiled/ESNext/index.js', // Entry point for your TypeScript code
   output: {
     filename: 'example-tree-bundle.js', // Output bundle name
     path: path.resolve(__dirname, 'build/webpack'), 
@@ -211,14 +211,14 @@ export default {
         test: /\.(woff|woff2|eot|ttf)$/,
         type: 'asset/resource', // Use Webpack 5's native asset modules for images
         generator: {
-          filename: 'assets/fonts/[name][ext]', // Define output path for assets
+          filename: 'MediaAndStyles/fonts/[name][ext]', // Define output path for MediaAndStyles
         },
       },
       {
         test: /\.(webp|png|jpg|gif|svg)$/,
         type: 'asset/resource', // Use Webpack 5's native asset modules for images
         generator: {
-          filename: 'assets/images/[name][ext]', // Define output path for assets
+          filename: 'MediaAndStyles/images/[name][ext]', // Define output path for MediaAndStyles
         },
       },
     ],
@@ -238,17 +238,17 @@ export default {
   "private": false,
   "description": "",
   "type": "module",
-  "main": "./build/CommonJS/index.js",
-  "types": "./build/ESNext/index.d.ts",
-  "module": "./build/ESNext/index.js",
+  "main": "./transpiled/CommonJS/index.js",
+  "types": "./transpiled/ESNext/index.d.ts",
+  "module": "./transpiled/ESNext/index.js",
   "exports": {
-    "require": "./build/CommonJS/index.js",
-    "import": "./build/ESNext/index.js"
+    "require": "./transpiled/CommonJS/index.js",
+    "import": "./transpiled/ESNext/index.js"
   },
   "files": [
     "build/CommonJS",
     "build/ESNext",
-    "assets/",
+    "MediaAndStyles/",
     "README.md",
     "LICENSE"
   ],
@@ -323,9 +323,9 @@ export default {
 
 
 
-### THEMES: Assets like miniimages and fonts resolval in bundle.js
-1. for assets in themes files, use webpack.aliases.js like in packages/Tree project.
-2. in the Tree.ts, import main css entrypoint file "@jaisocx-tree-assets/tree-styles-main-webpack.css";
+### THEMES: MediaAndStyles like miniimages and fonts resolval in bundle.js
+1. for MediaAndStyles in themes files, use webpack.aliases.js like in packages/Tree project.
+2. in the Tree.ts, import main css entrypoint file "@jaisocx-tree-MediaAndStyles/tree-styles-main-webpack.css";
 3. in tree-styles-main-webpack.css import theme main css file like this: @import url('themes/theme-base/theme-base-webpack.css');
 4. use webpack.aliasese.js alias like this:
 
@@ -333,8 +333,8 @@ export default {
 
 .tree > ul > li > pre > pre.jstree-html-node-holder-icon.icon-show
 {
-  --datatype-array--image-url: url('@jaisocx-tree-assets/themes/theme-base/mini-images/data-types/icons8-json-96.png');
-  --datatype-object--image-url: url('@jaisocx-tree-assets/themes/theme-base/mini-images/data-types/icons8-json-96.png');
+  --datatype-array--image-url: url('@jaisocx-tree-MediaAndStyles/themes/theme-base/mini-images/data-types/icons8-json-96.png');
+  --datatype-object--image-url: url('@jaisocx-tree-MediaAndStyles/themes/theme-base/mini-images/data-types/icons8-json-96.png');
 }
 
 ```

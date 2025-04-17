@@ -11,7 +11,7 @@ module.exports = {
       "path": require.resolve("path-browserify"),
     },
   },
-  entry: './build/CommonJS/index.js', // Entry point for your TypeScript code
+  entry: './transpiled/CommonJS/index.js', // Entry point for your TypeScript code
   output: {
     filename: 'example-css-clean-start-bundle.js', // Output bundle name
     path: path.resolve(__dirname, 'build/webpack'), 
@@ -45,14 +45,14 @@ module.exports = {
         test: /\.(woff|woff2|eot|ttf)$/,
         type: 'asset/resource', // Use Webpack 5's native asset modules for images
         generator: {
-          filename: 'assets/fonts/[name][ext]', // Define output path for assets
+          filename: 'MediaAndStyles/fonts/[name][ext]', // Define output path for MediaAndStyles
         },
       },
       {
         test: /\.(webp|png|jpg|gif|svg)$/,
         type: 'asset/resource', // Use Webpack 5's native asset modules for images
         generator: {
-          filename: 'assets/images/[name][ext]', // Define output path for assets
+          filename: 'MediaAndStyles/images/[name][ext]', // Define output path for MediaAndStyles
         },
       },
     ],

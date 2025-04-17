@@ -1,8 +1,8 @@
 {
   "extends": "./../../tsconfig.ESNext.json",
   "compilerOptions": {
-    "outDir": "/var/www/code/ts/build_tools/ProjectBuilder/build/ESNext",
-    "declarationDir": "/var/www/code/ts/build_tools/ProjectBuilder/build/ESNext"
+    "outDir": "/var/www/code/ts/build_tools/ProjectBuilder/transpiled/ESNext",
+    "declarationDir": "/var/www/code/ts/build_tools/ProjectBuilder/transpiled/ESNext"
   },
   "include": [
     "./src/**/*.ts",  // Include TypeScript files from the source directory

@@ -40,15 +40,15 @@ yarn init
   "author": "Jaisocx",
   "private": false,
   "type": "module",
-  "main": "./build/CommonJS/index.js",
-  "types": "./build/ESNext/index.d.ts",
-  "module": "./build/ESNext/index.js",
+  "main": "./transpiled/CommonJS/index.js",
+  "types": "./transpiled/ESNext/index.d.ts",
+  "module": "./transpiled/ESNext/index.js",
   "files": [
     "build/CommonJS",
     "build/ESNext",
     "build/Simple",
     "build/webpack",
-    "assets/",
+    "MediaAndStyles/",
     "README.md"
   ],
   "scripts": {
@@ -154,7 +154,7 @@ ls -la build/webpack
  total 84
  drwxr-xr-x    4 root     root           128 Mar 31 02:22 .
  drwxr-xr-x    6 root     root           192 Mar 31 02:22 ..
- drwxr-xr-x    3 root     root            96 Mar 31 02:22 assets                                the folder with fonts
+ drwxr-xr-x    3 root     root            96 Mar 31 02:22 MediaAndStyles                                the folder with fonts
  -rw-r--r--    1 root     root         84602 Mar 31 02:22 example-built-with-webpack-bundle.js  the bundle.js
 ```
 

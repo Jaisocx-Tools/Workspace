@@ -52,7 +52,7 @@ In Workspace, the aliases for the webpack are set in the file `${PackageRoot}/we
 
 ```
 {
-  "@jaisocx-css-clean-start-assets": "${packageRoot}/assets/"
+  "@jaisocx-css-clean-start-MediaAndStyles": "${packageRoot}/MediaAndStyles/"
 }
 ```
 
@@ -111,7 +111,7 @@ To use the rich webpack feature aliases, set this folders structure and these pr
 ### 1.1. ${PackageRoot}/webpack.aliases.json 
 ```
 {
-  "@jaisocx-css-clean-start-assets": "${packageRoot}/assets/"
+  "@jaisocx-css-clean-start-MediaAndStyles": "${packageRoot}/MediaAndStyles/"
 }
 ```
 
@@ -127,12 +127,12 @@ To use the rich webpack feature aliases, set this folders structure and these pr
 
 **TypeScript** entry file: `${packageRoot}/src/index.ts`
 
-**Styles** entry file: `${packageRoot}/assets/clean-start-main-webpack.css`
+**Styles** entry file: `${packageRoot}/MediaAndStyles/clean-start-main-webpack.css`
 
 ```
 // in .ts entry file index.ts
 
-import "@jaisocx-css-clean-start-assets/clean-start-main-webpack.css"
+import "@jaisocx-css-clean-start-MediaAndStyles/clean-start-main-webpack.css"
 ```
 
 
@@ -174,23 +174,23 @@ import "@jaisocx-css-clean-start-assets/clean-start-main-webpack.css"
   "private": false,
   "description": "The template to start a tool for sites, applied responsive view in browsers on all devices",
   "type": "module",
-  "main": "./build/CommonJS/index.js",
-  "types": "./build/ESNext/index.d.ts",
-  "module": "./build/ESNext/index.js",
+  "main": "./transpiled/CommonJS/index.js",
+  "types": "./transpiled/ESNext/index.d.ts",
+  "module": "./transpiled/ESNext/index.js",
   "exports": {
     ".": {
-      "import": "./build/ESNext/index.js",
-      "require": "./build/CommonJS/index.js"
+      "import": "./transpiled/ESNext/index.js",
+      "require": "./transpiled/CommonJS/index.js"
     },
     "./WebpackAliases": {
-      "import": "./build/ESNext/webpack.aliases.mjs",
-      "require": "./build/CommonJS/webpack.aliases.cjs"
+      "import": "./transpiled/ESNext/webpack.aliases.mjs",
+      "require": "./transpiled/CommonJS/webpack.aliases.cjs"
     }
   },
   "files": [
     "README.md",
     "webpack.aliases.json", // the file sets the webpack aliases to resolve urls of styles and bound resources like media and fonts
-    "assets/",
+    "MediaAndStyles/",
     "build/CommonJS",
     "build/ESNext",
     "build/Simple"
@@ -310,27 +310,27 @@ node_modules/@jaisocx/template-css-clean-start/webpack.aliases.json
 
 The alias was defined in the package in the `webpack.aliases.json`:
 ```
-"@jaisocx-css-clean-start-assets": "${packageRoot}/assets/"
+"@jaisocx-css-clean-start-MediaAndStyles": "${packageRoot}/MediaAndStyles/"
 ```
 
 and the styles file was imported in that package in the `src/index.ts` file:
 ```
-import "@jaisocx-css-clean-start-assets/clean-start-main-webpack.css"
+import "@jaisocx-css-clean-start-MediaAndStyles/clean-start-main-webpack.css"
 ```
 
 When the package was installed to Your package with `npm install`, the styles .css file, this is imported in Your new package via `import "@jaisocx/template-css-clean-start";` is here:
 
 ```
-node_modules/@jaisocx/template-css-clean-start/assets/clean-start-main-webpack.css
+node_modules/@jaisocx/template-css-clean-start/MediaAndStyles/clean-start-main-webpack.css
 ```
 
 
 
 ### 2.h. this styles import statement in the installed package, with webpack alias, was here:
 ```
-// in file: ${packageRoot}/node_modules/@jaisocx/template-css-clean-start/build/ESNext/index.js
+// in file: ${packageRoot}/node_modules/@jaisocx/template-css-clean-start/transpiled/ESNext/index.js
 
-import "@jaisocx-css-clean-start-assets/clean-start-main-webpack.css"
+import "@jaisocx-css-clean-start-MediaAndStyles/clean-start-main-webpack.css"
 ```
 
 
@@ -421,7 +421,7 @@ console.log( WebpackAliases );
 
 
 export default {
-  entry: './build/ESNext/index.js', // Entry point for your transpiled code
+  entry: './transpiled/ESNext/index.js', // Entry point for your transpiled code
   output: {
     filename: 'Your-package-bundle.js', // Output bundle name
     path: path.resolve(__dirname, 'build/webpack'), 
@@ -464,14 +464,14 @@ export default {
         test: /\.(woff|woff2|eot|ttf)$/,
         type: 'asset/resource', // Use Webpack 5's native asset modules for images
         generator: {
-          filename: 'assets/fonts/[name][ext]', // Define output path for assets
+          filename: 'MediaAndStyles/fonts/[name][ext]', // Define output path for MediaAndStyles
         },
       },
       {
         test: /\.(webp|png|jpg|gif|svg)$/,
         type: 'asset/resource', // Use Webpack 5's native asset modules for images
         generator: {
-          filename: 'assets/images/[name][ext]', // Define output path for assets
+          filename: 'MediaAndStyles/images/[name][ext]', // Define output path for MediaAndStyles
         },
       },
     ],
@@ -509,7 +509,7 @@ in the point **2.l** above You have the lines `filename:...` and `path: ...`.
 the path will be `${PackageRoot}/${path}/${filename}`
 ```
 export default {
-  entry: './build/ESNext/index.js', // Entry point for your transpiled code
+  entry: './transpiled/ESNext/index.js', // Entry point for your transpiled code
   output: {
     filename: 'Your-package-bundle.js', // Output bundle name
     path: path.resolve(__dirname, 'build/webpack'), // path of the bundle.js
@@ -520,7 +520,7 @@ export default {
 
 the **bundle.js** file resides here:
 ```
-${PackageRoot}/build/webpack/Your-package-bundle.js
+${PackageRoot}/transpiled/webpack/Your-package-bundle.js
 ```
 
 
@@ -582,7 +582,7 @@ document.addEventListener('DOMContentLoaded', () => {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <!-- the path to webpack built bundle.js here: -->
-    <script src="examples/ExampleTree/build/webpack/example-tree-bundle.js"></script>
+    <script src="examples/ExampleTree/transpiled/webpack/example-tree-bundle.js"></script>
   </head>
   <body>
 

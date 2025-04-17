@@ -1,0 +1,9 @@
+/* css variables */
+@import url("@jaisocx-css-clean-start-MediaAndStyles/themes/theme-base/clean-start-theme-base.css");
+
+/* responsive */
+@import url("@jaisocx-css-clean-start-MediaAndStyles/responsive/clean-start--responsive-imports-main-webpack.css");
+
+/* main css file, css logics with rules set via variables in the theme .css files imported above */
+@import url("@jaisocx-css-clean-start-MediaAndStyles/clean-start-main.css");
+

@@ -1,0 +1,10 @@
+@font-face {
+  font-family: Niconne;
+
+  /* here to use the workaround with aliases for webpack build from @jaisocx/tree */
+  src:  url("@jaisocx-css-clean-start-MediaAndStyles/fonts/Niconne/Niconne-Regular.ttf") format("truetype");
+
+  font-weight: 800; /* ExtraBold */
+  font-style: normal;
+}
+

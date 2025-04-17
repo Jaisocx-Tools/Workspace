@@ -16,7 +16,7 @@ import { TooltipLib } from "./TooltipLib.js";
 import { TooltipInterface } from "./TooltipInterface.js";
 import { TooltipShownSettings } from "./TooltipShownSettings.js";
 
-import "@jaisocx-tooltip-assets/tooltip-styles-main-webpack.css";
+import "@jaisocx-tooltip-MediaAndStyles/tooltip-styles-main-webpack.css";
 
 
 // the class to produce dynamic a tooltip.

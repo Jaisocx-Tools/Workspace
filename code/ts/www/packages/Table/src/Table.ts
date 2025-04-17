@@ -1,7 +1,7 @@
 import { TableInterface } from "./TableInterface.js";
 import { TemplateRenderer } from "@jaisocx/template-renderer";
 
-import "@table-assets/table-styles-main-webpack.css";
+import "@table-MediaAndStyles/table-styles-main-webpack.css";
 
 
 export class Table {

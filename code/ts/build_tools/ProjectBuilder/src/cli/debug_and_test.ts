@@ -66,7 +66,7 @@ console.log(
 
 const cssFilePath: any = path.resolve( 
   cssCleanStartPath, 
-  "assets/clean-start-main-webpack.css" );
+  "MediaAndStyles/clean-start-main-webpack.css" );
 if (false === fs.existsSync( cssFilePath ) ) {
   throw new Error(`cssFilePath not available at path: ${cssFilePath}`);
 }
@@ -77,7 +77,7 @@ console.log(
 
 const cssTargetFilePath: any = path.resolve( 
   cssCleanStartPath, 
-  "assets/clean-start-main-packaged.css" );
+  "MediaAndStyles/clean-start-main-packaged.css" );
 if (true === fs.existsSync( cssTargetFilePath ) ) {
   fs.unlinkSync( cssTargetFilePath );
   console.log(

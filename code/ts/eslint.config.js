@@ -75,7 +75,7 @@ export default [
     },
   },
   {
-    files: ["www/**/build/Simple/**/*.js"],
+    files: ["www/**/transpiled/Simple/**/*.js"],
     plugins: {
       jaisocx: jaisocxPlugin,
     },

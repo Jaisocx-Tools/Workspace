@@ -9,7 +9,7 @@ const require = createRequire(import.meta.url);
 export default {
   resolve: {
     alias: {
-      '@jaisocx-tooltip-assets': path.resolve(__dirname, 'assets/')
+      '@jaisocx-tooltip-MediaAndStyles': path.resolve(__dirname, 'MediaAndStyles/')
     }
   }
 };

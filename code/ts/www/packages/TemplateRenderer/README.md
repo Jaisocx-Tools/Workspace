@@ -101,10 +101,10 @@ index.html
   </head>
   <body>
 
-    <script src="packages/EventEmitter/build/Simple/EventEmitter.js"></script>
-    <script src="packages/TemplateRenderer/build/Simple/TemplateRenderer.js"></script>
+    <script src="packages/EventEmitter/transpiled/Simple/EventEmitter.js"></script>
+    <script src="packages/TemplateRenderer/transpiled/Simple/TemplateRenderer.js"></script>
   
-    <script src="examples/ExampleTemplateRenderer/build/Simple/ExampleTemplateRenderer.js"></script>
+    <script src="examples/ExampleTemplateRenderer/transpiled/Simple/ExampleTemplateRenderer.js"></script>
     <script>
       document.addEventListener('DOMContentLoaded', () => {
         const example = new ExampleTemplateRenderer();

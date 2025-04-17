@@ -31,8 +31,8 @@
       "build-simple-enable": true,
       "css-importer": {
         "build": true,
-        "cssFilePath": "assets/clean-start-main-webpack.css",
-        "cssTargetFilePath": "assets/clean-start-main-resolved.css"
+        "cssFilePath": "MediaAndStyles/clean-start-main-webpack.css",
+        "cssTargetFilePath": "MediaAndStyles/clean-start-main-resolved.css"
       },
       "dependencies": [],
       "build-files": [
@@ -49,8 +49,8 @@
       "build-simple-enable": true,
       "css-importer": {
         "build": true,
-        "cssFilePath": "assets/clean-start-main-webpack.css",
-        "cssTargetFilePath": "assets/clean-start-main-resolved.css"
+        "cssFilePath": "MediaAndStyles/clean-start-main-webpack.css",
+        "cssTargetFilePath": "MediaAndStyles/clean-start-main-resolved.css"
       },
       "dependencies": [],
       "build-files": [

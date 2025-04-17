@@ -2,9 +2,9 @@
 
 ## webpack notices
 
-### THEMES: Assets like miniimages and fonts resolval in bundle.js
-1. for assets in themes files, use webpack.aliases.js like in packages/Tree project.
-2. in the Tree.ts, import main css entrypoint file "@jaisocx-tree-assets/tree-styles-main-webpack.css";
+### THEMES: MediaAndStyles like miniimages and fonts resolval in bundle.js
+1. for MediaAndStyles in themes files, use webpack.aliases.js like in packages/Tree project.
+2. in the Tree.ts, import main css entrypoint file "@jaisocx-tree-MediaAndStyles/tree-styles-main-webpack.css";
 3. in tree-styles-main-webpack.css import theme main css file like this: @import url('themes/theme-base/theme-base-webpack.css');
 4. use webpack.aliasese.js alias like this:
 
@@ -12,8 +12,8 @@
 
 .tree > ul > li > pre > pre.jstree-html-node-holder-icon.icon-show
 {
-  --datatype-array--image-url: url('@jaisocx-tree-assets/themes/theme-base/mini-images/data-types/icons8-json-96.png');
-  --datatype-object--image-url: url('@jaisocx-tree-assets/themes/theme-base/mini-images/data-types/icons8-json-96.png');
+  --datatype-array--image-url: url('@jaisocx-tree-MediaAndStyles/themes/theme-base/mini-images/data-types/icons8-json-96.png');
+  --datatype-object--image-url: url('@jaisocx-tree-MediaAndStyles/themes/theme-base/mini-images/data-types/icons8-json-96.png');
 }
 
 ```

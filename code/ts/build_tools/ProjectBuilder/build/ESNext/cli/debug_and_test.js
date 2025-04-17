@@ -31,12 +31,12 @@ if (false === fs.existsSync(webpackAliasesPath)) {
     throw new Error(`webpackAliasesPath not available at path: ${webpackAliasesPath}`);
 }
 console.log("webpackAliasesPath", webpackAliasesPath);
-const cssFilePath = path.resolve(cssCleanStartPath, "assets/clean-start-main-webpack.css");
+const cssFilePath = path.resolve(cssCleanStartPath, "MediaAndStyles/clean-start-main-webpack.css");
 if (false === fs.existsSync(cssFilePath)) {
     throw new Error(`cssFilePath not available at path: ${cssFilePath}`);
 }
 console.log("cssFilePath", cssFilePath);
-const cssTargetFilePath = path.resolve(cssCleanStartPath, "assets/clean-start-main-packaged.css");
+const cssTargetFilePath = path.resolve(cssCleanStartPath, "MediaAndStyles/clean-start-main-packaged.css");
 if (true === fs.existsSync(cssTargetFilePath)) {
     fs.unlinkSync(cssTargetFilePath);
     console.log("cssTargetFilePath deleted", cssTargetFilePath);
