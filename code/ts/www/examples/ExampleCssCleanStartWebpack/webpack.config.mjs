@@ -17,7 +17,7 @@ export default {
   entry: './transpiled/ESNext/index.js', // Entry point for your TypeScript code
   output: {
     filename: 'example-css-clean-start-bundle.js', // Output bundle name
-    path: path.resolve(__dirname, 'build/webpack'), 
+    path: path.resolve(__dirname, 'transpiled/webpack'), 
   },
   resolve: {
     alias: {

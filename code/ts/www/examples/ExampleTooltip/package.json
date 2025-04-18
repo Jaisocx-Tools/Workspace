@@ -12,8 +12,8 @@
     "import": "./transpiled/ESNext/index.js"
   },
   "files": [
-    "build/CommonJS",
-    "build/ESNext",
+    "transpiled/CommonJS",
+    "transpiled/ESNext",
     "MediaAndStyles/",
     "README.md",
     "LICENSE"

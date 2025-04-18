@@ -1,5 +1,5 @@
 {
-  "name": "@jaisocx/files-writer",
+  "name": "@jaisocx/file-writer",
   "version": "1.2.1",
   "private": false,
   "description": "",
@@ -12,8 +12,8 @@
     "import": "./transpiled/ESNext/index.js"
   },
   "files": [
-    "build/CommonJS",
-    "build/ESNext",
+    "transpiled/CommonJS",
+    "transpiled/ESNext",
     "README.md"
   ],
   "keywords": [

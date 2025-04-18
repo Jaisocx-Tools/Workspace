@@ -10,7 +10,8 @@ export class FileWriter {
         this.debug = false;
         this.fileWriterConstants = new FileWriterConstants();
         this.offsetInFile = 0;
-        this.fileHandle = null;
+        this.fileHandle = new Object();
+        this.filePath = "";
     }
     setDebug(toDebug) {
         this.debug = toDebug;

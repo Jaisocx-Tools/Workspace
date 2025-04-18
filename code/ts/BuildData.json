@@ -3,11 +3,13 @@
   "packages": [
     {
       "path": "packages/FileWriter",
-      "name": "files-writer",
+      "name": "file-writer",
       "build": true,
       "build-simple-enable": false,
       "dependencies": [],
-      "build-files": []
+      "build-files": [
+        "index.js"
+      ]
     },
     {
       "path": "packages/CssImporter",

@@ -45,8 +45,8 @@ ls -la node_modules
 yarn exec webpack
 
 
-# viewing build/webpack folder, there will be the bundle.js
-ls -la build/webpack
+# viewing transpiled/webpack folder, there will be the bundle.js
+ls -la transpiled/webpack
 
 ## total 84
 ## drwxr-xr-x    4 root     root           128 Mar 31 02:22 .

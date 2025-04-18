@@ -18,9 +18,9 @@
     }
   },
   "files": [
-    "build/CommonJS",
-    "build/ESNext",
-    "build/Simple",
+    "transpiled/CommonJS",
+    "transpiled/ESNext",
+    "transpiled/Simple",
     "MediaAndStyles/",
     "webpack.aliases.json",
     "README.md",

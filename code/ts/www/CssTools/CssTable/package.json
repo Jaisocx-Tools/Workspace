@@ -18,9 +18,9 @@
     }
   },
   "files": [
-    "build/CommonJS",
-    "build/ESNext",
-    "build/Simple",
+    "transpiled/CommonJS",
+    "transpiled/ESNext",
+    "transpiled/Simple",
     "webpack.aliases.json",
     "MediaAndStyles/**/*.css",
     "example.html",

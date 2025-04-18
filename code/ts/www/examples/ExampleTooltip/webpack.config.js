@@ -20,7 +20,7 @@ export default {
   entry: './transpiled/ESNext/index.js', // Entry point for your TypeScript code
   output: {
     filename: 'example-tooltip-bundle.js', // Output bundle name
-    path: path.resolve(__dirname, 'build/webpack'), // Output directory
+    path: path.resolve(__dirname, 'transpiled/webpack'), // Output directory
   },
   resolve: {
     alias: {

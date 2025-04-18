@@ -12,8 +12,8 @@ export class FileWriter {
 
   debug: boolean;
   fileWriterConstants: FileWriterConstants;
-  offsetInFile: 0;
-  fileHandle: FileHandle|null;
+  offsetInFile: number;
+  fileHandle: FileHandle;
   filePath: string;
 
 
@@ -21,7 +21,8 @@ export class FileWriter {
     this.debug = false;
     this.fileWriterConstants = new FileWriterConstants();
     this.offsetInFile = 0;
-    this.fileHandle = null;
+    this.fileHandle = new Object() as FileHandle;
+    this.filePath = "";
   }
 
   setDebug( toDebug: boolean ): FileWriter {
@@ -29,7 +30,6 @@ export class FileWriter {
 
     return this;
   }
-
 
 
   async getFileHandleToExistingFile( 
@@ -56,7 +56,6 @@ export class FileWriter {
 
     return this.fileHandle;
   }
-
 
 
   async cleanupFileAndGetNewFileHandle( 
@@ -95,7 +94,6 @@ export class FileWriter {
 
     return this.fileHandle;
   }
-
 
 
   async appendToFile (

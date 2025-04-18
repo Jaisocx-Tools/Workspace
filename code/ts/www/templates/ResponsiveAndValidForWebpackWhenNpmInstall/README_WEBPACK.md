@@ -191,9 +191,9 @@ import "@jaisocx-css-clean-start-MediaAndStyles/clean-start-main-webpack.css"
     "README.md",
     "webpack.aliases.json", // the file sets the webpack aliases to resolve urls of styles and bound resources like media and fonts
     "MediaAndStyles/",
-    "build/CommonJS",
-    "build/ESNext",
-    "build/Simple"
+    "transpiled/CommonJS",
+    "transpiled/ESNext",
+    "transpiled/Simple"
   ]
 }
 ```
@@ -410,7 +410,7 @@ import postcssUrl from "postcss-url";
 import { WebpackAliases } from '@jaisocx/template-css-clean-start/WebpackAliases';
 
 // when building with the Webpack and using the aliases of this package, then:
-// import { WebpackAliases } from "build/ESNext/webpack.aliases.mjs";
+// import { WebpackAliases } from "transpiled/ESNext/webpack.aliases.mjs";
 
 
 let __filename = fileURLToPath(import.meta.url);
@@ -424,7 +424,7 @@ export default {
   entry: './transpiled/ESNext/index.js', // Entry point for your transpiled code
   output: {
     filename: 'Your-package-bundle.js', // Output bundle name
-    path: path.resolve(__dirname, 'build/webpack'), 
+    path: path.resolve(__dirname, 'transpiled/webpack'), 
   },
   resolve: {
     alias: {
@@ -512,7 +512,7 @@ export default {
   entry: './transpiled/ESNext/index.js', // Entry point for your transpiled code
   output: {
     filename: 'Your-package-bundle.js', // Output bundle name
-    path: path.resolve(__dirname, 'build/webpack'), // path of the bundle.js
+    path: path.resolve(__dirname, 'transpiled/webpack'), // path of the bundle.js
   },
 
 ```
@@ -544,7 +544,7 @@ If example.html is on path `${PackageRoot}/example.html`,
 the **url of the bundle.js** will be:
 
 ```
-build/webpack/Your-package-bundle.js
+transpiled/webpack/Your-package-bundle.js
 ```
 
 

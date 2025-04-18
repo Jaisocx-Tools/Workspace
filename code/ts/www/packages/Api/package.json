@@ -15,8 +15,8 @@
     "@jaisocx/objdata": "2.1.1"
   },
   "files": [
-    "build/CommonJS",
-    "build/ESNext",
+    "transpiled/CommonJS",
+    "transpiled/ESNext",
     "ObjDataConstants.json",
     "README.md"
   ],

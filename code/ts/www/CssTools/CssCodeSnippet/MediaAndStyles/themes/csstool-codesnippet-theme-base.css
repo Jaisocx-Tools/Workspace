@@ -6,7 +6,7 @@
       file: code/ts/www/CssTools/CssCodeSnippet/MediaAndStyles/lines-numbers-variables/code-snippet-lines-numbers-300.css
       contains css vriable --lines-numbers--content--300
 
-      CssCodeSnippetHelpers js class in file build/Simple/CssCodeSnippetHelpers.js
+      CssCodeSnippetHelpers js class in file transpiled/Simple/CssCodeSnippetHelpers.js
       can produce custom lines numbers text.
       CssCodeSnippetHelpers.linesNumbersTextToConsole( 20 );
    */

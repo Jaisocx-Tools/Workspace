@@ -44,10 +44,10 @@ yarn init
   "types": "./transpiled/ESNext/index.d.ts",
   "module": "./transpiled/ESNext/index.js",
   "files": [
-    "build/CommonJS",
-    "build/ESNext",
-    "build/Simple",
-    "build/webpack",
+    "transpiled/CommonJS",
+    "transpiled/ESNext",
+    "transpiled/Simple",
+    "transpiled/webpack",
     "MediaAndStyles/",
     "README.md"
   ],
@@ -145,9 +145,9 @@ yarn exec webpack
 ```
 
 
-. viewing build/webpack folder, there will be the bundle.js
+. viewing transpiled/webpack folder, there will be the bundle.js
 ```
-ls -la build/webpack
+ls -la transpiled/webpack
 ```
 
 ```

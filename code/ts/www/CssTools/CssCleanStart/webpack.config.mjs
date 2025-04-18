@@ -10,7 +10,7 @@ import { fileURLToPath } from "node:url";
 // import * as pathBrowserify from "path-browserify";
 import postcssUrl from "postcss-url";
 
-import { WebpackAliases } from "build/ESNext/webpack.aliases.mjs";
+import { WebpackAliases } from "transpiled/ESNext/webpack.aliases.mjs";
 
 
 let __filename = fileURLToPath(import.meta.url);
@@ -24,7 +24,7 @@ export default {
   entry: './transpiled/ESNext/index.js', // Entry point for your TypeScript code
   output: {
     filename: 'example-tree-bundle.js', // Output bundle name
-    path: path.resolve(__dirname, 'build/webpack'), 
+    path: path.resolve(__dirname, 'transpiled/webpack'), 
   },
   resolve: {
     alias: {

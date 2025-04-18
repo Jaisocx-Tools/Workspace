@@ -21,10 +21,10 @@
     "webpack": "webpack"
   },
   "files": [
-    "build/CommonJS",
-    "build/ESNext",
-    "build/Simple",
-    "build/webpack",
+    "transpiled/CommonJS",
+    "transpiled/ESNext",
+    "transpiled/Simple",
+    "transpiled/webpack",
     "MediaAndStyles/themes/",
     "MediaAndStyles/responsive/",
     "MediaAndStyles/fonts/",

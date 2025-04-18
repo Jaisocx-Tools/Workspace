@@ -65,9 +65,9 @@ builder
   .setRelativePathFromRootTsConfigCatalogPath("build_tools")
   .setRelativePathFromRootLintCatalog(".")
   .setRelativePathFromRootWww("www")
-  .setBuildCjsCatalogName("build/CommonJS")
-  .setBuildEsmCatalogName("build/ESNext")
-  .setBuildSimpleCatalogName("build/Simple")
+  .setBuildCjsCatalogName("transpiled/CommonJS")
+  .setBuildEsmCatalogName("transpiled/ESNext")
+  .setBuildSimpleCatalogName("transpiled/Simple")
   .build(buildData);
 
 

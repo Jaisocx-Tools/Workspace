@@ -15,8 +15,8 @@
     "ExportConstants": "node ./transpiled/ESNext/ExportConstants.js"
   },
   "files": [
-    "build/CommonJS",
-    "build/ESNext",
+    "transpiled/CommonJS",
+    "transpiled/ESNext",
     "ObjDataConstants.json",
     "README.md"
   ],

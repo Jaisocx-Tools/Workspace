@@ -3,8 +3,8 @@ import { FileWriterConstants } from "./FileWriterConstants.js";
 export declare class FileWriter {
     debug: boolean;
     fileWriterConstants: FileWriterConstants;
-    offsetInFile: 0;
-    fileHandle: FileHandle | null;
+    offsetInFile: number;
+    fileHandle: FileHandle;
     filePath: string;
     constructor();
     setDebug(toDebug: boolean): FileWriter;

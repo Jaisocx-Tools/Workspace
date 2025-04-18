@@ -12,9 +12,9 @@
     "import": "./transpiled/ESNext/index.js"
   },
   "files": [
-    "build/CommonJS",
-    "build/ESNext",
-    "build/Simple",
+    "transpiled/CommonJS",
+    "transpiled/ESNext",
+    "transpiled/Simple",
     "MediaAndStyles/",
     "ExampleCss_CssCodeSnippet.html",
     "README.md"

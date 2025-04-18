@@ -12,10 +12,10 @@
     "import": "./transpiled/ESNext/index.js"
   },
   "files": [
-    "build/CommonJS",
-    "build/ESNext",
-    "build/Simple",
-    "build/webpack",
+    "transpiled/CommonJS",
+    "transpiled/ESNext",
+    "transpiled/Simple",
+    "transpiled/webpack",
     "MediaAndStyles/",
     "README_WEBPACK.md",
     "LICENSE"

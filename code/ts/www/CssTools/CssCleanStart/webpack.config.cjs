@@ -7,7 +7,7 @@
 
 
 const path = require("path");
-const WebpackAliases = require("build/CommonJS/webpack.aliases.cjs"); // ✅ Import alias file using CommonJS
+const WebpackAliases = require("transpiled/CommonJS/webpack.aliases.cjs"); // ✅ Import alias file using CommonJS
 
 module.exports = {
   resolve: {
@@ -22,7 +22,7 @@ module.exports = {
   entry: './transpiled/CommonJS/index.js', // Entry point for your TypeScript code
   output: {
     filename: 'example-tree-bundle.js', // Output bundle name
-    path: path.resolve(__dirname, 'build/webpack'), 
+    path: path.resolve(__dirname, 'transpiled/webpack'), 
   },
   module: {
     rules: [

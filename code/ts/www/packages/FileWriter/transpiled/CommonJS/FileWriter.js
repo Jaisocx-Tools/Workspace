@@ -11,7 +11,8 @@ class FileWriter {
         this.debug = false;
         this.fileWriterConstants = new FileWriterConstants_js_1.FileWriterConstants();
         this.offsetInFile = 0;
-        this.fileHandle = null;
+        this.fileHandle = new Object();
+        this.filePath = "";
     }
     setDebug(toDebug) {
         this.debug = toDebug;

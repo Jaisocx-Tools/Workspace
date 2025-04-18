@@ -65,9 +65,9 @@ To use the rich webpack feature aliases, set this folders structure and these pr
     }
   },
   "files": [
-    "build/CommonJS",
-    "build/ESNext",
-    "build/Simple",
+    "transpiled/CommonJS",
+    "transpiled/ESNext",
+    "transpiled/Simple",
     "MediaAndStyles/",
     "webpack.aliases.json",
     "README.md"
@@ -171,7 +171,7 @@ export default {
   entry: './transpiled/ESNext/index.js', // Entry point for your TypeScript code
   output: {
     filename: 'example-tree-bundle.js', // Output bundle name
-    path: path.resolve(__dirname, 'build/webpack'), 
+    path: path.resolve(__dirname, 'transpiled/webpack'), 
   },
   resolve: {
     alias: {
@@ -246,8 +246,8 @@ export default {
     "import": "./transpiled/ESNext/index.js"
   },
   "files": [
-    "build/CommonJS",
-    "build/ESNext",
+    "transpiled/CommonJS",
+    "transpiled/ESNext",
     "MediaAndStyles/",
     "README.md",
     "LICENSE"
@@ -341,7 +341,7 @@ export default {
 
 5. without the webpack build, use another relative urls in the .css files, loaded in <link rel="stylesheet" href="">.
 6. with webpack produced bundle.js, several themes can be imported, and then used in html holder node <div id="tree-1" class="theme-extended-1">
-7. when copying to the webpack build theme css files, urls have to be rewritten absolute, starting with / , and not relative like when working in browser with build/Simple
+7. when copying to the webpack build theme css files, urls have to be rewritten absolute, starting with / , and not relative like when working in browser with transpiled/Simple
 8. have to try with other data, like .json and other.
 9. in json the urls have to be absolute, or base64 contents.
 
