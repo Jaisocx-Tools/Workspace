@@ -7,7 +7,7 @@ export declare class FileWriter {
     fileHandle: FileHandle;
     filePath: string;
     constructor();
-    setDebug(toDebug: boolean): FileWriter;
+    setDebug(inDebug: boolean): FileWriter;
     getFileHandleToExistingFile(inFilePath: string, mode: string): Promise<FileHandle>;
     cleanupFileAndGetNewFileHandle(inFilePath: string, mode: string): Promise<FileHandle>;
     toAddToFileInLoop_CleanupFileAndGetNewFileHandle(inFilePath: string): Promise<FileHandle>;

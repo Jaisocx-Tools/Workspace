@@ -20,8 +20,8 @@ export class EventEmitter {
     this.EventArtJSEvent = "JSEvent";
   }
 
-  setDebug(toDebug: boolean): EventEmitter {
-    this.debug = toDebug;
+  setDebug(inDebug: boolean): EventEmitter {
+    this.debug = inDebug;
     return this;
   }
 

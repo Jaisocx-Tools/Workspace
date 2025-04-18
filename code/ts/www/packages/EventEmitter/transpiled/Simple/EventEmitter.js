@@ -9,8 +9,8 @@ class EventEmitter {
     this.EventArtJSEvent = "JSEvent";
   }
 
-  setDebug(toDebug) {
-    this.debug = toDebug;
+  setDebug(inDebug) {
+    this.debug = inDebug;
 
     return this;
   }

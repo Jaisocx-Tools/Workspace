@@ -11,8 +11,8 @@ export class Api {
     this._timestamps = new Object();
   }
 
-  public setDebug( toDebug: boolean ): Api {
-    this._debug = toDebug;
+  public setDebug( inDebug: boolean ): Api {
+    this._debug = inDebug;
 
     return this;
   }

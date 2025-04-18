@@ -4,7 +4,7 @@ export declare class EventEmitter {
     debug: boolean;
     EventArtJSEvent: any;
     constructor();
-    setDebug(toDebug: boolean): EventEmitter;
+    setDebug(inDebug: boolean): EventEmitter;
     isObjectEmpty(obj: object): boolean;
     addThisClassEventListener(eventName: any, eventHandler: (eventName: any, payload: any) => EventHandlerReturnValue | null | undefined | void): EventEmitter;
     emitEvent(eventName: any, payload: any): EventEmitResult[];

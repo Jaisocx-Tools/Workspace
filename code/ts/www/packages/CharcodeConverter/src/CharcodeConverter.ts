@@ -68,8 +68,8 @@ export class CharcodeConverter {
   }
 
 
-  setDebug( toDebug: boolean ): CharcodeConverter {
-    this._debug = toDebug;
+  setDebug( inDebug: boolean ): CharcodeConverter {
+    this._debug = inDebug;
 
     return this;
   }

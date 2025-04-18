@@ -15,7 +15,7 @@ export declare class CharcodeConverter {
     constructor();
     static getInstance(): CharcodeConverter;
     protected _init(): undefined;
-    setDebug(toDebug: boolean): CharcodeConverter;
+    setDebug(inDebug: boolean): CharcodeConverter;
     setLookupIterationsMax(iterationsMax: number): CharcodeConverter;
     log(key: any, data: any): undefined;
     join(inoutObj: any): number;

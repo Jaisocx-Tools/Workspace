@@ -13,8 +13,8 @@ export class FileWriter {
         this.fileHandle = new Object();
         this.filePath = "";
     }
-    setDebug(toDebug) {
-        this.debug = toDebug;
+    setDebug(inDebug) {
+        this.debug = inDebug;
         return this;
     }
     async getFileHandleToExistingFile(inFilePath, mode) {

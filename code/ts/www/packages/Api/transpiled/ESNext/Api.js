@@ -6,8 +6,8 @@ export class Api {
         this._debug = false;
         this._timestamps = new Object();
     }
-    setDebug(toDebug) {
-        this._debug = toDebug;
+    setDebug(inDebug) {
+        this._debug = inDebug;
         return this;
     }
     getNsTimestamp() {

@@ -25,8 +25,8 @@ class CharcodeConverter {
     _init() {
         this.preloadCharsetBasedOnLanguage();
     }
-    setDebug(toDebug) {
-        this._debug = toDebug;
+    setDebug(inDebug) {
+        this._debug = inDebug;
         return this;
     }
     //@onDemand

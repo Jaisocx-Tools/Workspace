@@ -25,8 +25,8 @@ export class FileWriter {
     this.filePath = "";
   }
 
-  setDebug( toDebug: boolean ): FileWriter {
-    this.debug = toDebug;
+  setDebug( inDebug: boolean ): FileWriter {
+    this.debug = inDebug;
 
     return this;
   }
