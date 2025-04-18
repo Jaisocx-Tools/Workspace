@@ -32,7 +32,3 @@ EXPOSE 3000
 EXPOSE 8083
 
 ENTRYPOINT [ "/entrypoint/entrypoint.sh" ]
-
-CMD ["bash", "-c", "tail -f < /dev/null"]
-
-
