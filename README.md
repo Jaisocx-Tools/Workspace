@@ -13,7 +13,6 @@ docker compose build ts
 docker compose up ts -d
 ```
 
-2. 
 
 
 ## Understanding NPM Version Symbols
