@@ -194,6 +194,8 @@ export class BaseParser implements BaseParserInterface {
 
   }
 
+
+
   public async appendToFile (
     fd: FileHandle,
     bitsbuf: Uint8Array,
@@ -201,8 +203,9 @@ export class BaseParser implements BaseParserInterface {
   ): Promise<void> {
 
     let isError: boolean = false;
+
     try {
-      await fd.appendFile( bitsbuf.subarray( 
+      await fd.appendFile( bitsbuf.subarray ( 
         range[0], 
         range[1] ) );
     } catch (err) {

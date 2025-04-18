@@ -89,7 +89,8 @@ export interface ResponsiveDatasetAutomationInterface {
   // --s_56_16k_tv_horizontal__width__til: 25360px; /* 16k TV */
   produceMediaConstantLine ( 
     responsiveDatasetPropName: string, 
-    orientation: string 
+    orientation: string,
+    isStartValue: boolean 
   ): string; // this
   
 

@@ -1,0 +1,30 @@
+{
+  "name": "@jaisocx/files-writer",
+  "version": "1.2.1",
+  "private": false,
+  "description": "",
+  "type": "module",
+  "main": "./transpiled/CommonJS/index.js",
+  "types": "./transpiled/ESNext/index.d.ts",
+  "module": "./transpiled/ESNext/index.js",
+  "exports": {
+    "require": "./transpiled/CommonJS/index.js",
+    "import": "./transpiled/ESNext/index.js"
+  },
+  "files": [
+    "build/CommonJS",
+    "build/ESNext",
+    "README.md"
+  ],
+  "keywords": [
+    "fs",
+    "file write"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "author": "Jaisocx",
+  "license": "nope"
+}
+
+

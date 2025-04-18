@@ -4,6 +4,7 @@ export class ResponsiveDatasetAutomationConstants {
   #mediaRuleName: string;
   #mediaConstantNameStart: string;
 
+  #mediaLine: string[];
   #mediaRule: string;
   #mediaRuleScreen: string;
   #mediaRulePrint: string;
@@ -27,6 +28,7 @@ export class ResponsiveDatasetAutomationConstants {
 
   #cssVariablePrefix: string;
   #cssVariableNameValueDelimiter: string;
+  #cssExpressionEnd: string;
   #doubleQuote: string;
   #commentStart: string;
   #commentEnd: string;
@@ -43,9 +45,10 @@ export class ResponsiveDatasetAutomationConstants {
 
   constructor() {
     this.#keywordMediarule = "media_rule";
-    this.#mediaRuleName = "--media_rule_name";
+    this.#mediaRuleName = "media_rule_name";
     this.#mediaConstantNameStart = "s";
 
+    this.#mediaLine = [];
     this.#mediaRule = "@media only ";
     this.#mediaRuleScreen = "screen";
     this.#mediaRulePrint = "print";
@@ -69,6 +72,7 @@ export class ResponsiveDatasetAutomationConstants {
 
     this.#cssVariablePrefix = "--";
     this.#cssVariableNameValueDelimiter = ": ";
+    this.#cssExpressionEnd = ": ";
     this.#doubleQuote = "\"";
     this.#commentStart = "/*";
     this.#commentEnd = "*/";
@@ -145,6 +149,9 @@ export class ResponsiveDatasetAutomationConstants {
   getCssVariableNameValueDelimiter(): string {
     return this.#cssVariableNameValueDelimiter;
   }
+  getCssExpressionEnd(): string {
+    return this.#cssExpressionEnd;
+  }
   getDoubleQuote(): string {
     return this.#doubleQuote;
   }
@@ -173,6 +180,66 @@ export class ResponsiveDatasetAutomationConstants {
     return this.#maxWidth;
   }
 
+  getMediaLine (
+    media: string,
+    minWidth: string,
+    maxWidth: string,
+    orientation: string
+  ): string {
+
+    let mediaLine: string = "";
+
+    const mediaPos: number = 1;
+    const minWidthPos: number = 6;
+    const maxWidthPos: number = 13;
+    const orientationPos: number = 20;
+
+    if ( this.#mediaLine.length !== 0 ) {
+      this.#mediaLine[ mediaPos ] = media;
+      this.#mediaLine[ minWidthPos ] = minWidth;
+      this.#mediaLine[ maxWidthPos ] = maxWidth;
+      this.#mediaLine[ orientationPos ] = orientation;
+
+      mediaLine = this.#mediaLine.join( "" );
+
+      return mediaLine;
+    }
+
+    let words: string[] = [
+      this.#mediaRule,
+      media,
+
+      this.#mediaRuleAnd,
+
+      this.#braceRoundStart,
+      this.#minWidth,
+      this.#cssVariableNameValueDelimiter,
+      minWidth,
+      this.#unitPx,
+      this.#braceRoundEnd,
+
+      this.#mediaRuleAnd,
+
+      this.#braceRoundStart,
+      this.#maxWidth,
+      this.#cssVariableNameValueDelimiter,
+      maxWidth,
+      this.#unitPx,
+      this.#braceRoundEnd,
+
+      this.#mediaRuleAnd,
+
+      this.#braceRoundStart,
+      this.#mediaRuleOrientation,
+      this.#cssVariableNameValueDelimiter,
+      orientation,
+      this.#braceRoundEnd
+    ];
+
+    mediaLine = words.join( "" );
+
+    return mediaLine;
+  }
 }
 
 
