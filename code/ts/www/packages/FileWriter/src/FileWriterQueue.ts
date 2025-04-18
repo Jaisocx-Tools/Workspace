@@ -47,9 +47,10 @@ export class FileWriterQueue {
     queueSize: number,
     extendBy: number
   ) {
+    this.queueSizeExtendBy = 120;
 
-    if ( extendBy === 0 ) {
-      this.queueSizeExtendBy = 102;
+    if ( extendBy >= 1 ) {
+      this.queueSizeExtendBy = extendBy;
     }
 
     if ( queueSize === 0 ) {
@@ -117,7 +118,9 @@ export class FileWriterQueue {
 
 
 
-  cleanupQueue( start: number, end: number ): void {
+  cleanupQueue( 
+    start: number, 
+    end: number ): void {
 
     if ( start < 0 ) {
       start = 0;
@@ -160,6 +163,8 @@ export class FileWriterQueue {
     }
     
   }
+
+
 
   enqueue ( 
     bitsbufName: string, 

@@ -27,11 +27,12 @@ export class TaskFileWritingQueue {
   }
 
   toObject(): object {
-    return { "bitsbuf": this.#bitsbuf, "range": this.#range };
+    return { "bitsbuf": this.#bitsbuf, 
+      "range": this.#range };
   }
 
   toString(): string {
-    const taskAsObject: object = new Object();
+    const taskAsObject: any = new Object();
 
     const bitsbufAsText: string = (new TextDecoder()).decode( this.#bitsbuf );
     taskAsObject["bitsbuf"] = bitsbufAsText;
