@@ -1,20 +1,25 @@
+import { EventEmitter } from "@jaisocx/event-emitter";
 import { FileHandle } from "fs/promises";
 import { FileWriter } from "./FileWriter";
 
 
 
-type QueueTask = {
+export type QueueTask = {
   bitsbuf: Uint8Array;
   range: number[];
+  bitsbufName: string;
 };
 
 
 
-export class FileWriterQueue {
+export class FileWriterQueue extends EventEmitter {
+
+  eventEOF: any;
 
   debug: boolean;
   fileWriter: FileWriter;
-  isWriting = false;
+  isWriting: boolean;
+  hasToStop: boolean;
   namedBitsbufs: any;
   queue: (QueueTask|number)[]|null;
   enqueuedId: number;
@@ -47,6 +52,13 @@ export class FileWriterQueue {
     queueSize: number,
     extendBy: number
   ) {
+    super();
+
+    this.eventEOF = {
+      eventName: "EOF",
+      eventDescription: "File was written until EOF."
+    };
+
     this.queueSizeExtendBy = 120;
 
     if ( extendBy >= 1 ) {
@@ -63,12 +75,24 @@ export class FileWriterQueue {
 
     this.debug = false;
     this.fileWriter = inFileWriter;
+    this.isWriting = false;
+    this.hasToStop = false;
     this.namedBitsbufs = new Object();
   }
 
   // method to write to the console infos from methods.
   setDebug( inDebug: boolean ): FileWriterQueue {
     this.debug = inDebug;
+    return this;
+  }
+
+  setHasToStop( toStop: boolean ): FileWriterQueue {
+    this.hasToStop = toStop;
+
+    if ( this.debug === true ) {
+      console.log( `FileWriterQueue.setHasToStop( ${toStop} )` );
+    }
+
     return this;
   }
 
@@ -147,7 +171,12 @@ export class FileWriterQueue {
     bitsbuf: Uint8Array,
     range: number[] 
   ): void {
-    if ( range[0] < 0 || range[1] > bitsbuf.byteLength || range[0] >= range[1] ) {
+    if ( range[0] === range[1] ) {
+      console.error("Range start and end are the same. Skipping enqueueing and writing of this range...");
+      return;
+    }
+
+    if ( range[0] < 0 || range[0] > range[1] || range[1] > bitsbuf.byteLength ) {
       throw new Error("Start or End boundaries are out of bitsbuf size.");
     }
 
@@ -177,15 +206,36 @@ export class FileWriterQueue {
       throw new Error(`Named bits buf "${bitsbufName}" was not set in this queue.`);
     }
 
-    this.validateOnEnqueueTask (
-      bitsbuf,
-      range
-    );
+    try {
+      this.validateOnEnqueueTask (
+        bitsbuf,
+        range
+      );  
+    } catch (err) {
+      console.error(
+        err,
+        bitsbufName,
+        bitsbuf,
+        bitsbuf.length,
+        range
+      );
 
-    // @ts-ignore
-    this.queue[this.enqueuedId] = { 
-      bitsbuf, 
-      range } as QueueTask;
+      throw err;
+    }
+
+    if ( this.debug === true ) {
+      // @ts-ignore
+      this.queue[this.enqueuedId] = { 
+        bitsbuf, 
+        range,
+        "bitsbufName": bitsbufName } as QueueTask;
+    } else {
+      // @ts-ignore
+      this.queue[this.enqueuedId] = { 
+        bitsbuf, 
+        range,
+        "bitsbufName": "" } as QueueTask;
+    }
 
     this.enqueuedId++;
 
@@ -203,25 +253,79 @@ export class FileWriterQueue {
     this.isWriting = true;
 
     // @ts-ignore
-    const { bitsbuf, range } = this.queue[this.workingQueueId];
+    const queueTask: QueueTask = this.queue[this.workingQueueId];
+
+    if ( this.debug === true ) {
+      console.log (
+        "FileWriterQueue.processQueue()",
+        "Before fileWriter.appendToFile()",
+        queueTask
+      );
+    }
 
     this.fileWriter
-      .appendToFile( bitsbuf, range )
+      .appendToFile( 
+        queueTask.bitsbuf, 
+        queueTask.range )
       .then (
-        () => {
+        ( arg: number ) => {
+
+          this.workingQueueId++;
 
           // checks, whether last written was the last task in the queue.
           if ( this.workingQueueId === this.enqueuedId ) {
             this.isWriting = false;
-            return;
+
+            if ( this.hasToStop === true ) {
+              this.fileWriter.filehandleClose()
+                .then (
+                  ( arg: number ) => {
+                    // emit event "File was written until EOF."
+                    this.emitEvent (
+                      this.eventEOF.eventName,
+                      { eventDescription: "in FileWriterQueue.processQueue() on hasToStop = true, " + this.eventEOF.eventDescription }
+                    );
+                  }
+                );
+            }
+
+            return 1;
           }
 
-          this.workingQueueId++;
-          
           this.processQueue();
         }
       );
-    
+
+  }
+
+  filehandleClose(): void {
+    if ( this.isWriting === true ) {
+      this.setHasToStop ( true );
+    }
+
+    if ( ( this.workingQueueId > this.enqueuedId ) === false ) {
+      console.error(
+        "Set to close the filehandle",
+        "exiting, since not all written.",
+        this.workingQueueId,
+        this.enqueuedId
+      );
+
+      return;
+    }
+
+    this.fileWriter.filehandleClose()
+      .then (
+        ( arg: number ) => {
+          // emit event "File was written until EOF."
+          this.emitEvent (
+            this.eventEOF.eventName,
+            { eventDescription: "in FileWriterQueue.filehandleClose(), " + this.eventEOF.eventDescription }
+          );
+        }
+      );
+
+    return;
   }
 }
 

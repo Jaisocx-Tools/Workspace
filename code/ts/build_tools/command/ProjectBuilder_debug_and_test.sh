@@ -11,6 +11,7 @@ node "./transpiled/${tsconfigVersion}/cli/debug_and_test.js"       --ProjectRoot
 
 # to run in the debug terminal
 # node "./debug_and_test.js"  --ProjectRoot="/Users/illiapolianskyi/Projects/JAISOCX_SITES_TOOLS/workspace/code/ts"  --BuildData="BuildData.json"  --PackagesPath="www"
+# node "./debug_and_test.js"  --ProjectRoot="/var/www/code/ts"  --BuildData="BuildData.json"  --PackagesPath="www"
 
 
 

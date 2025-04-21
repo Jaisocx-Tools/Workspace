@@ -1,12 +1,16 @@
+import { EventEmitter } from "@jaisocx/event-emitter";
 import { FileWriter } from "./FileWriter";
-type QueueTask = {
+export type QueueTask = {
     bitsbuf: Uint8Array;
     range: number[];
+    bitsbufName: string;
 };
-export declare class FileWriterQueue {
+export declare class FileWriterQueue extends EventEmitter {
+    eventEOF: any;
     debug: boolean;
     fileWriter: FileWriter;
     isWriting: boolean;
+    hasToStop: boolean;
     namedBitsbufs: any;
     queue: (QueueTask | number)[] | null;
     enqueuedId: number;
@@ -14,6 +18,7 @@ export declare class FileWriterQueue {
     queueSizeExtendBy: number;
     constructor(inFileWriter: FileWriter, queueSize: number, extendBy: number);
     setDebug(inDebug: boolean): FileWriterQueue;
+    setHasToStop(toStop: boolean): FileWriterQueue;
     setQueueSizeExtendBy(extendBy: number): FileWriterQueue;
     /**
      * @description instantiates the new QueueTasks array of bigger size,
@@ -31,6 +36,6 @@ export declare class FileWriterQueue {
     validateOnEnqueueTask(bitsbuf: Uint8Array, range: number[]): void;
     enqueue(bitsbufName: string, range: number[]): void;
     processQueue(): void;
+    filehandleClose(): void;
 }
-export {};
 //# sourceMappingURL=FileWriterQueue.d.ts.map

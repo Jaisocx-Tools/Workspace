@@ -1,3 +1,4 @@
-export { FileWriter } from "./FileWriter.js";
 export { FileWriterConstants } from "./FileWriterConstants.js";
+export { FileWriter } from "./FileWriter.js";
+export { FileWriterQueue, QueueTask } from "./FileWriterQueue.js";
 //# sourceMappingURL=index.d.ts.map

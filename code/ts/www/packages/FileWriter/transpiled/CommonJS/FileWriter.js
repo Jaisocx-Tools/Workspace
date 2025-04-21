@@ -11,7 +11,7 @@ class FileWriter {
         this.debug = false;
         this.fileWriterConstants = new FileWriterConstants_js_1.FileWriterConstants();
         this.offsetInFile = 0;
-        this.fileHandle = new Object();
+        this.fileHandle = null;
         this.filePath = "";
     }
     setDebug(inDebug) {
@@ -55,30 +55,45 @@ class FileWriter {
     async appendToFile(bitsbuf, range) {
         let isError = false;
         if (this.offsetInFile === 0) {
+            // @ts-ignore
             const stats = await this.fileHandle.stat(); // get current file size
             this.offsetInFile = stats.size;
         }
+        if (this.debug === true) {
+            console.log("FileWriter.appendToFile()", "Before file write", range, this.filePath);
+        }
+        let len = (range[1] - range[0]);
         try {
-            await this.fileHandle.write(bitsbuf, range[0], range[1], this.offsetInFile);
+            // @ts-ignore
+            await this.fileHandle.write(bitsbuf, range[0], len, this.offsetInFile);
         }
         catch (err) {
             isError = true;
             console.log(err);
+        }
+        if (this.debug === true) {
+            console.log("FileWriter.appendToFile()", "After file write", range, this.filePath);
         }
         if (isError === true) {
             await this.filehandleClose();
             throw new Error("Error writing file");
         }
         this.offsetInFile += (range[1] - range[0]);
+        return 1;
     }
     async filehandleClose() {
+        if (this.fileHandle === null) {
+            return 0;
+        }
         try {
+            // @ts-ignore
             await this.fileHandle.close();
         }
         catch (err) { }
         if (this.debug === true) {
-            console.log("File closed.");
+            console.log("FileWriter.filehandleClose()", "After filehandle closed.", this.filePath);
         }
+        return 1;
     }
 }
 exports.FileWriter = FileWriter;

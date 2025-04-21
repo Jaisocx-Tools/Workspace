@@ -24,5 +24,26 @@ export class ParsedResultDTO {
     return this.rangesOrDtoOfImport;
   }
 
+  toJson(): string {
+    let retVal: any = {
+      "cssFilePath": this.cssFilePath,
+      "cssFileContents": this.cssFileContents,
+      "rangesOrDtoOfImport": ""
+    };
+
+    let rangesArrayToString: any[] = [];
+
+    for ( let elem of this.rangesOrDtoOfImport ) {
+      if ( elem instanceof ParsedResultDTO ) {
+        rangesArrayToString.push( elem.toJson() );
+      } else {
+        rangesArrayToString.push( elem );
+      }
+    }
+
+    retVal["rangesOrDtoOfImport"] = rangesArrayToString;
+
+    return retVal;
+  }
 }
 

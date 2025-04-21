@@ -1,7 +1,8 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.FileWriterQueue = void 0;
-class FileWriterQueue {
+const event_emitter_1 = require("@jaisocx/event-emitter");
+class FileWriterQueue extends event_emitter_1.EventEmitter {
     // future task for the fine tuning of the queue array growth.
     // the idea is to estimate the intensity of writing tasks,
     // the fixed queue array size to have an imagination on RAM usage extensivity,
@@ -21,7 +22,11 @@ class FileWriterQueue {
     // toWaitWhenLeftPercentage: number;
     // toWaitWhenLeftTasksNumber: number;
     constructor(inFileWriter, queueSize, extendBy) {
-        this.isWriting = false;
+        super();
+        this.eventEOF = {
+            eventName: "EOF",
+            eventDescription: "File was written until EOF."
+        };
         this.queueSizeExtendBy = 120;
         if (extendBy >= 1) {
             this.queueSizeExtendBy = extendBy;
@@ -34,11 +39,20 @@ class FileWriterQueue {
         this.workingQueueId = 0;
         this.debug = false;
         this.fileWriter = inFileWriter;
+        this.isWriting = false;
+        this.hasToStop = false;
         this.namedBitsbufs = new Object();
     }
     // method to write to the console infos from methods.
     setDebug(inDebug) {
         this.debug = inDebug;
+        return this;
+    }
+    setHasToStop(toStop) {
+        this.hasToStop = toStop;
+        if (this.debug === true) {
+            console.log(`FileWriterQueue.setHasToStop( ${toStop} )`);
+        }
         return this;
     }
     // fine tuning mehod
@@ -92,7 +106,11 @@ class FileWriterQueue {
         }
     }
     validateOnEnqueueTask(bitsbuf, range) {
-        if (range[0] < 0 || range[1] > bitsbuf.byteLength || range[0] >= range[1]) {
+        if (range[0] === range[1]) {
+            console.error("Range start and end are the same. Skipping enqueueing and writing of this range...");
+            return;
+        }
+        if (range[0] < 0 || range[0] > range[1] || range[1] > bitsbuf.byteLength) {
             throw new Error("Start or End boundaries are out of bitsbuf size.");
         }
         // @ts-ignore
@@ -112,12 +130,29 @@ class FileWriterQueue {
         if (bitsbuf === undefined) {
             throw new Error(`Named bits buf "${bitsbufName}" was not set in this queue.`);
         }
-        this.validateOnEnqueueTask(bitsbuf, range);
-        // @ts-ignore
-        this.queue[this.enqueuedId] = {
-            bitsbuf,
-            range
-        };
+        try {
+            this.validateOnEnqueueTask(bitsbuf, range);
+        }
+        catch (err) {
+            console.error(err, bitsbufName, bitsbuf, bitsbuf.length, range);
+            throw err;
+        }
+        if (this.debug === true) {
+            // @ts-ignore
+            this.queue[this.enqueuedId] = {
+                bitsbuf,
+                range,
+                "bitsbufName": bitsbufName
+            };
+        }
+        else {
+            // @ts-ignore
+            this.queue[this.enqueuedId] = {
+                bitsbuf,
+                range,
+                "bitsbufName": ""
+            };
+        }
         this.enqueuedId++;
         if (!this.isWriting) {
             this.processQueue();
@@ -127,18 +162,43 @@ class FileWriterQueue {
         // @ts-ignore
         this.isWriting = true;
         // @ts-ignore
-        const { bitsbuf, range } = this.queue[this.workingQueueId];
+        const queueTask = this.queue[this.workingQueueId];
+        if (this.debug === true) {
+            console.log("FileWriterQueue.processQueue()", "Before fileWriter.appendToFile()", queueTask);
+        }
         this.fileWriter
-            .appendToFile(bitsbuf, range)
-            .then(() => {
+            .appendToFile(queueTask.bitsbuf, queueTask.range)
+            .then((arg) => {
+            this.workingQueueId++;
             // checks, whether last written was the last task in the queue.
             if (this.workingQueueId === this.enqueuedId) {
                 this.isWriting = false;
-                return;
+                if (this.hasToStop === true) {
+                    this.fileWriter.filehandleClose()
+                        .then((arg) => {
+                        // emit event "File was written until EOF."
+                        this.emitEvent(this.eventEOF.eventName, { eventDescription: "in FileWriterQueue.processQueue() on hasToStop = true, " + this.eventEOF.eventDescription });
+                    });
+                }
+                return 1;
             }
-            this.workingQueueId++;
             this.processQueue();
         });
+    }
+    filehandleClose() {
+        if (this.isWriting === true) {
+            this.setHasToStop(true);
+        }
+        if ((this.workingQueueId > this.enqueuedId) === false) {
+            console.error("Set to close the filehandle", "exiting, since not all written.", this.workingQueueId, this.enqueuedId);
+            return;
+        }
+        this.fileWriter.filehandleClose()
+            .then((arg) => {
+            // emit event "File was written until EOF."
+            this.emitEvent(this.eventEOF.eventName, { eventDescription: "in FileWriterQueue.filehandleClose(), " + this.eventEOF.eventDescription });
+        });
+        return;
     }
 }
 exports.FileWriterQueue = FileWriterQueue;

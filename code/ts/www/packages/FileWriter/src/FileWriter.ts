@@ -13,7 +13,7 @@ export class FileWriter {
   debug: boolean;
   fileWriterConstants: FileWriterConstants;
   offsetInFile: number;
-  fileHandle: FileHandle;
+  fileHandle: FileHandle|null;
   filePath: string;
 
 
@@ -21,7 +21,7 @@ export class FileWriter {
     this.debug = false;
     this.fileWriterConstants = new FileWriterConstants();
     this.offsetInFile = 0;
-    this.fileHandle = new Object() as FileHandle;
+    this.fileHandle = null;
     this.filePath = "";
   }
 
@@ -54,7 +54,7 @@ export class FileWriter {
 
     this.fileHandle = locFileHandle;
 
-    return this.fileHandle;
+    return this.fileHandle as FileHandle;
   }
 
 
@@ -80,7 +80,7 @@ export class FileWriter {
 
     await this.getFileHandleToExistingFile( this.filePath, mode );
 
-    return this.fileHandle;
+    return this.fileHandle as FileHandle;
   }
 
 
@@ -92,32 +92,51 @@ export class FileWriter {
       this.fileWriterConstants.getFHandleModeAdd() 
     );
 
-    return this.fileHandle;
+    return this.fileHandle as FileHandle;
   }
 
 
   async appendToFile (
     bitsbuf: Uint8Array,
     range: number[]
-  ): Promise<void> {
+  ): Promise<number> {
 
     let isError: boolean = false;
 
     if ( this.offsetInFile === 0 ) {
+      // @ts-ignore
       const stats = await this.fileHandle.stat(); // get current file size
       this.offsetInFile = stats.size;
     }
 
+    if ( this.debug === true ) {
+      console.log( 
+        "FileWriter.appendToFile()", 
+        "Before file write", 
+        range, 
+        this.filePath );
+    }
+    let len: number = ( range[1] - range[0] );
+
     try {
+      // @ts-ignore
       await this.fileHandle.write( 
         bitsbuf,
         range[0], 
-        range[1],
+        len,
         this.offsetInFile
       );
     } catch ( err ) {
       isError = true;
       console.log ( err );  
+    }
+
+    if ( this.debug === true ) {
+      console.log( 
+        "FileWriter.appendToFile()", 
+        "After file write", 
+        range, 
+        this.filePath );
     }
 
     if ( isError === true ) {
@@ -127,16 +146,28 @@ export class FileWriter {
     }
 
     this.offsetInFile += ( range[1] - range[0] );
+
+    return 1;
   }
 
-  async filehandleClose(): Promise<void> {
+  async filehandleClose(): Promise<number> {
+    if ( this.fileHandle === null ) {
+      return 0;
+    }
+
     try {
+      // @ts-ignore
       await this.fileHandle.close();
     } catch (err) {}
 
     if ( this.debug === true ) {
-      console.log( "File closed." );
+      console.log( 
+        "FileWriter.filehandleClose()", 
+        "After filehandle closed.", 
+        this.filePath );
     }
+
+    return 1;
   }
 
 }

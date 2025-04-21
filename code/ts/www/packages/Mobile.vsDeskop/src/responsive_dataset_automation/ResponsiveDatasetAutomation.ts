@@ -23,7 +23,12 @@ export class ResponsiveDatasetAutomation implements ResponsiveDatasetAutomationI
 
   constructor() {
     this.automationConstants = new ResponsiveDatasetAutomationConstants();
+    this.mediaAndStylesResponsiveFolderPath = "";
+    this.datasetFilePath = "";
+
     this.dataset = {};
+    this.templateMediaCssFileContent = "";
+    this.webpackAliasName = "";
   }
 
 
@@ -49,7 +54,9 @@ export class ResponsiveDatasetAutomation implements ResponsiveDatasetAutomationI
       this.mediaAndStylesResponsiveFolderPath,
       inDatasetFileRelativePath 
     );
-    const json: string = fs.readFileSync( this.datasetFilePath, "utf8" );
+    const json: string = fs.readFileSync( 
+      this.datasetFilePath, 
+      "utf8" );
     this.dataset = JSON.parse( json );
 
     return this;
@@ -123,41 +130,41 @@ export class ResponsiveDatasetAutomation implements ResponsiveDatasetAutomationI
     fileName: string 
   ): ResponsiveDatasetAutomation {
 
-    do in constants class array, logics like method there already 
-    sets 3 variables on an array Id
+    // do in constants class array, logics like method there already 
+    // sets 3 variables on an array Id
 
-    let words = method();
-    words[1] = nediaRuleName;
-    words[2] = mediaRuleLine;
-    words[3] = mediaRuleConstantLine;
-
-
-    mediaRuleName;
-    mediaRuleLine;
-    mediaRuleConstantLine;
+    // let words = method();
+    // words[1] = nediaRuleName;
+    // words[2] = mediaRuleLine;
+    // words[3] = mediaRuleConstantLine;
 
 
-    let words1 = this.templateMediaCssFileContent.split( mediaRuleName );
+    // mediaRuleName;
+    // mediaRuleLine;
+    // mediaRuleConstantLine;
 
-    let words2 = words1[1].split( mediaRuleLine );
 
-    let words3 = words2[1].split( mediaRuleConstantLine );
+    // let words1 = this.templateMediaCssFileContent.split( mediaRuleName );
 
-    let words: string[] = [
-      words1[0],
-      mediaRuleName,
-      words2[0],
-      mediaRuleLine,
-      words3[0],
-      mediaRuleConstantLine,
-      words3[1]
-    ];
+    // let words2 = words1[1].split( mediaRuleLine );
 
-    for ( let block of words ) {
-      fs.appedFileSync( fileName, block );
-    }
+    // let words3 = words2[1].split( mediaRuleConstantLine );
 
-    fd.close();
+    // let words: string[] = [
+    //   words1[0],
+    //   mediaRuleName,
+    //   words2[0],
+    //   mediaRuleLine,
+    //   words3[0],
+    //   mediaRuleConstantLine,
+    //   words3[1]
+    // ];
+
+    // for ( let block of words ) {
+    //   fs.appedFileSync( fileName, block );
+    // }
+
+    // fd.close();
 
 
     return this;
@@ -187,7 +194,7 @@ export class ResponsiveDatasetAutomation implements ResponsiveDatasetAutomationI
   produceMediaCssImportLine ( 
     relativeImportedFilesFolderPath: string,
     importedFileName: string, 
-    webpackAliasName: string, 
+    webpackAliasName: string 
   ): string {
     let words: string[] = [
       this.automationConstants.getImportUrlStart(),
@@ -285,8 +292,8 @@ export class ResponsiveDatasetAutomation implements ResponsiveDatasetAutomationI
     let minWidth: string = sizes["from"] as string;
     let maxWidth: string = sizes["to"] as string;
 
-   //`"@media only ${media} and (min-width: ${minWidth}px) and (max-width: ${maxWidth}px) and (orientation: ${orientation})";`;
-   let mediaLine: string = this.automationConstants.getMediaLine (
+    //`"@media only ${media} and (min-width: ${minWidth}px) and (max-width: ${maxWidth}px) and (orientation: ${orientation})";`;
+    let mediaLine: string = this.automationConstants.getMediaLine (
       media,
       minWidth,
       maxWidth,

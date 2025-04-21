@@ -6,5 +6,6 @@ export declare class ParsedResultDTO {
     addParsedResult(importParseResultDTO: ParsedResultDTO): void;
     addRange(range: number[]): void;
     getRangesOrDtoOfImport(): (ParsedResultDTO | number[])[];
+    toJson(): string;
 }
 //# sourceMappingURL=ParsedResultDTO.d.ts.map

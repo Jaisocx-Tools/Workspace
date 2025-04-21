@@ -22,9 +22,7 @@ export function getWebpackAliases(packageRoot) {
     const pathReplaced = aliasPath.replace(
       PROJECT_ROOT_PLACEHOLDER, 
       CHAR_ZERO_LEN);
-    const pathResolved = path.resolve(
-      packageRoot, 
-      pathReplaced);
+    const pathResolved = path.resolve(packageRoot, pathReplaced);
     webpackAliasesResolved[propName] = pathResolved;
   }
 

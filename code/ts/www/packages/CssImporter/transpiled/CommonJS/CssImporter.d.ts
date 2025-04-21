@@ -1,4 +1,5 @@
 import { FileHandle } from "node:fs/promises";
+import { FileWriter, FileWriterQueue } from "@jaisocx/file-writer";
 import { CssImporterConstants } from "./CssImporterConstants.js";
 import { BaseParser } from "./BaseParser.js";
 import { ParsedResultDTO } from "./ParsedResultDTO.js";
@@ -9,6 +10,8 @@ export declare class CssImporter {
     webpackAliases: any | false;
     cssFilePath: string;
     cssTargetFilePath: string;
+    fileWriter: FileWriter;
+    fileWriterQueue: FileWriterQueue;
     constructor();
     setPackagePath(packagePath: string): CssImporter;
     getPackagePath(): string;
@@ -23,7 +26,7 @@ export declare class CssImporter {
     /**
      * @info based on methods call .validBitsbufRefsRefine(), .resolveUrlBitsbufWithWebpackAlias(), fs.read and fs.write files.
      */
-    cssBundleMake(inFd: FileHandle, inFilePath: string, counterStop: number): Promise<ParsedResultDTO>;
-    compareRanges(fileContentsBuffer: Uint8Array, ranges: number[][], resultDTO: ParsedResultDTO, inFd: FileHandle, mainRangeStart: number, inLastRangeIx: number, counterStop: number, isRangeImportUrl: boolean): Promise<number>;
+    cssBundleMake(inParsedResultDTO: ParsedResultDTO, inFd: FileHandle, inFilePath: string, bitsbufName: string, counterStop: number): ParsedResultDTO;
+    compareRanges(fileContentsBuffer: Uint8Array, bitsbufName: string, ranges: number[][], inResultDTO: ParsedResultDTO, inFd: FileHandle, mainRangeStart: number, inLastRangeIx: number, counterStop: number, isRangeImportUrl: boolean): number;
 }
 //# sourceMappingURL=CssImporter.d.ts.map

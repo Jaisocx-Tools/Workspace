@@ -4,9 +4,14 @@
     {
       "path": "packages/FileWriter",
       "name": "file-writer",
-      "build": true,
+      "build": false,
       "build-simple-enable": false,
-      "dependencies": [],
+      "dependencies": [
+        {
+          "name": "@jaisocx/event-emitter",
+          "path": "packages/EventEmitter"
+        }
+      ],
       "build-files": [
         "index.js"
       ]
@@ -14,9 +19,14 @@
     {
       "path": "packages/CssImporter",
       "name": "css-importer",
-      "build": false,
+      "build": true,
       "build-simple-enable": false,
-      "dependencies": [],
+      "dependencies": [
+        {
+          "name": "@jaisocx/file-writer",
+          "path": "packages/FileWriter"
+        }
+      ],
       "build-files": [
         "index.js"
       ]
@@ -55,7 +65,7 @@
     {
       "path": "packages/Mobile.vsDeskop",
       "name": "mobile-vs-desktop",
-      "build": false,
+      "build": true,
       "build-simple-enable": true,
       "css-importer": {
         "build": true,
