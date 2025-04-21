@@ -547,126 +547,8 @@
 
 
 
-
-:root {
-
- 
-  --screen-xs-mobile-portrait-from: 3px;
-  --screen-xs-mobile-portrait-til: 320px;
-
-  --screen-xs-mobile-landscape-til: 568px;
-  --screen-xs-mobile-landscape-from: 569px;
-
-  
- 
-  --screen-s-mobile-portrait-from: 321px;
-  --screen-s-mobile-portrait-til: 375px;
-
-  --screen-s-mobile-landscape-til: 667px; 
-  --screen-s-mobile-landscape-from: 668px; 
-
-
- 
-  --screen-sm-mobile-portrait-from: 376px;
-  --screen-sm-mobile-portrait-til: 430px;
-
-  --screen-sm-mobile-landscape-til: 812px;
-  --screen-sm-mobile-landscape-from: 813px;
-
-
- 
-  --screen-md-mobile-portrait-from: 431px;
-  --screen-md-mobile-portrait-til: 480px;
-
-  --screen-md-mobile-landscape-til: 812px;
-  --screen-md-mobile-landscape-from: 813px;
-
-  
- 
- 
-  --screen-sm-tablet-portrait-from: 481px;
-  --screen-sm-tablet-portrait-til: 767px;
-
-  --screen-sm-tablet-landscape-til: 1024px;
-  --screen-sm-tablet-landscape-from: 1025px;
- 
-
-  
-  --screen-md-tablet-portrait-from: 768px;
-  --screen-md-tablet-portrait-til: 1024px;
-
-  --screen-md-tablet-landscape-til: 1024px;
-  --screen-md-tablet-landscape-from: 1025px;
-
-
- 
-  --screen-lg-laptop-from: 1025px;
-  --screen-lg-laptop-til: 1440px;
-
-
- 
-  --screen-xl-desktop-from: 1441px;
-  --screen-xl-desktop-til: 1600px;
-
-
- 
-  --screen-xxl-ultra-from: 1601px;
-  --screen-xxl-ultra-til: 1920px;
-
-
- 
-  --screen-hd-width-from: 1921px;
-  --screen-hd-height-from: 1081px;
-
-  --screen-hd-width-til: 2560px;
-  --screen-hd-height-til: 1080px;
-
-
-
- 
-  --screen-qhd-width-from: 2561px;
-  --screen-qhd-height-from: 1441px;
-
-  --screen-qhd-width-til: 3840px;
-  --screen-qhd-height-til: 1440px;
-
-
-
- 
- 
-  --screen-4k-ultra-hd-width-from: 3841px;
-  --screen-4k-ultra-hd-height-from: 2161px;
-
-  --screen-4k-ultra-hd-width-til: 7680px;
-  --screen-4k-ultra-hd-height-til: 2160px;
-
-
-
- 
-  --screen-8k-width-from: 7681px;
-  --screen-8k-height-from: 4321px;
-
-  --screen-8k-width-til: 15360px;
-  --screen-8k-height-til: 4320px;
-
-
-
-
- 
-  --screen-16k-width-from: 15361px;
-  --screen-16k-height-from: 8641px;
-
-  --screen-16k-width-til: 253610px;
-  --screen-16k-height-til: 8640px;
-}
-
-
-
 @media (min-width: 90px) and (max-width: 568px) and (orientation: landscape) {
-  .workspace {
-    --media-rule: media_xs_mobile_landscape;
-
-    
+  .workspace main {
    
 
     --clean-start__tag_body__width: var(--clean-start__tag_body__width__xs_mobile_landscape);
@@ -694,11 +576,7 @@
 
 
 @media (min-width: 40px) and (max-width: 320px) and (orientation: portrait) {
-
-  .workspace {
-    --media-rule: media_xs_mobile_portrait;
-
-
+  .workspace main {
    
 
     --clean-start__tag_body__width: var(--clean-start__tag_body__width__xs_mobile_portrait);
@@ -722,19 +600,11 @@
   .workspace.verify-responsive-rule-applies main h1::before {
     content: "xs mobile portrait" !important;
   }
-
 }
 
 
-
-
-
 @media (min-width: 569px) and (max-width: 667px) and (orientation: landscape) {
-  .workspace {
-    --media-rule: media_s_mobile_landscape;
-
-
-    
+  .workspace main {
    
 
     --clean-start__tag_body__width: var(--clean-start__tag_body__width__s_mobile_landscape);
@@ -764,11 +634,7 @@
 
 
 @media (min-width: 321px) and (max-width: 375px) and (orientation: portrait) {
-  .workspace {
-    --media-rule: media_s_mobile_portrait;
-
-
-    
+  .workspace main {
    
 
     --clean-start__tag_body__width: var(--clean-start__tag_body__width__s_mobile_portrait);
@@ -798,10 +664,7 @@
 
 
 @media (min-width: 668px) and (max-width: 812px) and (orientation: landscape) {
-  .workspace {
-    --media-rule: media_sm_mobile_landscape;
-
-    
+  .workspace main {
    
 
     --clean-start__tag_body__width: var(--clean-start__tag_body__width__sm_mobile_landscape);
@@ -831,10 +694,7 @@
 
 
 @media (min-width: 376px) and (max-width: 480px) and (orientation: portrait) {
-  .workspace {
-    --media-rule: media_sm_mobile_portrait;
-
-    
+  .workspace main {
    
 
     --clean-start__tag_body__width: var(--clean-start__tag_body__width__sm_mobile_portrait);
@@ -866,10 +726,7 @@
 
 @media (min-width: 813px) and (max-width: 1024px) and (orientation: landscape) {
 
-  .workspace {
-    --media-rule: media_md_tablet_landscape;
-
-    
+  .workspace main {
    
 
     --clean-start__tag_body__width: var(--clean-start__tag_body__width__md_tablet_landscape);
@@ -899,14 +756,8 @@
 }
 
 
-
-@media only screen and (min-width: 481px) and (max-width: 768px) and (orientation: portrait) {
-
-  .workspace {
-
-    --media-rule: media_md_tablet_portrait;
-
-    
+@media (min-width: 481px) and (max-width: 768px) and (orientation: portrait) {
+  .workspace main {
    
 
     --clean-start__tag_body__width: var(--clean-start__tag_body__width__md_tablet_portrait);
@@ -929,20 +780,15 @@
   }    
 
 
-
  
   .workspace.verify-responsive-rule-applies main h1::before {
     content: "md tablet portrait" !important;
   }
-
 }
 
 
 @media (min-width: 1025px) and (max-width: 1280px) and (orientation: landscape) {
-  .workspace {
-    --media-rule: media_lg_laptop_horizontal;
-
-    
+  .workspace main {
    
 
     --clean-start__tag_body__width: var(--clean-start__tag_body__width__lg_laptop_horizontal);
@@ -973,10 +819,7 @@
 
 
 @media (min-width: 769px) and (max-width: 1024px) and (orientation: portrait) {
-  .workspace {
-    --media-rule: media_lg_laptop_vertical;
-
-    
+  .workspace main {
    
 
     --clean-start__tag_body__width: var(--clean-start__tag_body__width__lg_laptop_vertical);
@@ -1004,10 +847,7 @@
 
 
 @media (min-width: 1281px) and (max-width: 1600px) and (orientation: landscape) {
-  .workspace {
-    --media-rule: media_xl_desktop_horizontal;
-
-    
+  .workspace main {
    
 
     --clean-start__tag_body__width: var(--clean-start__tag_body__width__xl_desktop_horizontal);
@@ -1038,10 +878,7 @@
 
 
 @media (min-width: 1025px) and (max-width: 1280px) and (orientation: portrait) {
-  .workspace {
-    --media-rule: media_xl_desktop_vertical;
-
-    
+  .workspace main {
    
 
     --clean-start__tag_body__width: var(--clean-start__tag_body__width__xl_desktop_vertical);
@@ -1072,9 +909,7 @@
 
 
 @media (min-width: 1601px) and (max-width: 1920px) and (orientation: landscape) {
-  .workspace {
-    --media-rule: media_2xl_ultra_wide_horizontal;
-    
+  .workspace main {
    
 
     --clean-start__tag_body__width: var(--clean-start__tag_body__width__xxl_ultra_wide_horizontal);
@@ -1105,8 +940,7 @@
 
 
 @media (min-width: 1281px) and (max-width: 1600px) and (orientation: portrait) {
-  .workspace {
-    --media-rule: media_2xl_ultra_wide_vertical;
+  .workspace main {
    
 
     --clean-start__tag_body__width: var(--clean-start__tag_body__width__xxl_ultra_wide_vertical);
@@ -1134,9 +968,7 @@
 
 
 @media (min-width: 1921px) and (max-width: 2560px) and (orientation: landscape) {
-  .workspace {
-    --media-rule: media_3xl_hd_horizontal;
-    
+  .workspace main {
    
 
     --clean-start__tag_body__width: var(--clean-start__tag_body__width__3xl_hd_horizontal);
@@ -1164,9 +996,7 @@
 
 
 @media (min-width: 1601px) and (max-width: 1920px) and (orientation: portrait) {
-  .workspace {
-    --media-rule: media_3xl_hd_vertical;
-    
+  .workspace main {
    
 
     --clean-start__tag_body__width: var(--clean-start__tag_body__width__3xl_hd_vertical);
@@ -1194,11 +1024,7 @@
 
 
 @media (min-width: 2561px) and (max-width: 3840px) and (orientation: landscape) {
-  .workspace {
-    --media-rule: media_4xl_qhd_horizontal;
-
-
-    
+  .workspace main {
    
 
     --clean-start__tag_body__width: var(--clean-start__tag_body__width__4xl_qhd_horizontal);
@@ -1226,11 +1052,7 @@
 
 
 @media (min-width: 1921px) and (max-width: 2160px) and (orientation: portrait) {
-  .workspace {
-    --media-rule: media_4xl_qhd_vertical;
-
-
-    
+  .workspace main {
    
 
     --clean-start__tag_body__width: var(--clean-start__tag_body__width__4xl_qhd_vertical);
@@ -1258,11 +1080,7 @@
 
 
 @media (min-width: 3841px) and (max-width: 7680px) and (orientation: landscape) {
-  .workspace {
-    --media-rule: media_5xl_4k_ultra_hd_horizontal;
-
-
-    
+  .workspace main {
    
 
     --clean-start__tag_body__width: var(--clean-start__tag_body__width__5xl_4k_ultra_hd_horizontal);
@@ -1290,9 +1108,7 @@
 
 
 @media (min-width: 2161px) and (max-width: 4320px) and (orientation: portrait) {
-  .workspace {
-    --media-rule: media_5xl_4k_ultra_hd_vertical;
-    
+  .workspace main {
    
 
     --clean-start__tag_body__width: var(--clean-start__tag_body__width__5xl_4k_ultra_hd_vertical);
@@ -1320,9 +1136,7 @@
 
 
 @media (min-width: 7681px) and (max-width: 15360px) and (orientation: landscape) {
-  .workspace {
-    --media-rule: media_6xl_8k_horizontal;
-    
+  .workspace main {
    
 
     --clean-start__tag_body__width: var(--clean-start__tag_body__width__6xl_8k_horizontal);
@@ -1350,10 +1164,7 @@
 
 
 @media (min-width: 4320px) and (max-width: 8640px) and (orientation: portrait) {
-  .workspace {
-    --media-rule: media_6xl_8k_vertical;
-
-    
+  .workspace main {
    
 
     --clean-start__tag_body__width: var(--clean-start__tag_body__width__6xl_8k_vertical);
@@ -1382,10 +1193,7 @@
 
 @media (min-width: 15361px) and (orientation: landscape) {
 
-  .workspace {
-    --media-rule: media_7xl_16k_horizontal;
-
-    
+  .workspace main {
    
 
     --clean-start__tag_body__width: var(--clean-start__tag_body__width__7xl_16k_horizontal);
@@ -1416,11 +1224,7 @@
 
 
 @media (min-width: 8641px) and (orientation: portrait) {
-  .workspace {
-    --media-rule: media_7xl_16k_vertical;
-
-
-    
+  .workspace main {
    
 
     --clean-start__tag_body__width: var(--clean-start__tag_body__width__7xl_16k_vertical);

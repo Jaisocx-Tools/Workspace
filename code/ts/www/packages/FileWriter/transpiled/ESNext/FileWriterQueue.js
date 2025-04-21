@@ -197,7 +197,9 @@ export class FileWriterQueue extends EventEmitter {
             this.setHasToStop(true);
         }
         if ((this.workingQueueId > this.enqueuedId) === false) {
-            console.error("Set to close the filehandle", "exiting, since not all written.", this.workingQueueId, this.enqueuedId);
+            if (this.debug === true) {
+                console.error("FileWriterQueue.filehandleClose(): ", "setHasToStop(true), and exists, since the queue was not written to the target file.", this.workingQueueId, this.enqueuedId);
+            }
             return;
         }
         this.fileWriter.filehandleClose()

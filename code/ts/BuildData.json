@@ -19,7 +19,7 @@
     {
       "path": "packages/CssImporter",
       "name": "css-importer",
-      "build": true,
+      "build": false,
       "build-simple-enable": false,
       "dependencies": [
         {
@@ -47,8 +47,8 @@
     {
       "path": "CssTools/CssCleanStart",
       "name": "css-clean-start",
-      "build": false,
-      "build-simple-enable": true,
+      "build": true,
+      "build-simple-enable": false,
       "css-importer": {
         "build": true,
         "cssFilePath": "MediaAndStyles/clean-start-main-webpack.css",

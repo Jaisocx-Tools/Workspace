@@ -9,7 +9,7 @@ import { CssImporter } from "@jaisocx/css-importer";
 export class ProjectBuilder {
   isLocalDevelopment: number;
 
-  cssImporter: CssImporter;
+  cssImporters: CssImporter[];
 
   absolutePathToProjectRoot: any;
 
@@ -30,7 +30,7 @@ export class ProjectBuilder {
   constructor() {
     this.isLocalDevelopment = 1;
 
-    this.cssImporter = new CssImporter();
+    this.cssImporters = new Array() as CssImporter[];
 
     this.absolutePathToProjectRoot = "";
 
@@ -129,8 +129,10 @@ export class ProjectBuilder {
   }
 
   buildPackage(packageJson: any) {
+    let timeStamp: any = (new Date()).toISOString();
+
     console.log("\n\n\n===============================");
-    console.log(`MODULE ${packageJson.name}`);
+    console.log(`${timeStamp} MODULE ${packageJson.name}`);
     console.log("===============================\n");
 
     let packagePath: any = path.resolve(
@@ -138,7 +140,8 @@ export class ProjectBuilder {
       packageJson.path);
 
     // install or link npm dependencies
-    console.log(`Package [ ${packageJson.name} ]: Calling npm dependencies install`);
+    timeStamp = (new Date()).toISOString();
+    console.log(`${timeStamp} Package [ ${packageJson.name} ]: Calling npm dependencies install`);
     this.installPackageDependencies(
       packageJson, 
       packagePath);
@@ -149,13 +152,15 @@ export class ProjectBuilder {
       "ls -lahrts src", 
       true);
 
-    console.log(`Package [ ${packageJson.name} ]: Prettifying with Eslint TypeScript code in ${packagePath}`);
+    timeStamp = (new Date()).toISOString();
+    console.log(`${timeStamp} Package [ ${packageJson.name} ]: Prettifying with Eslint TypeScript code in ${packagePath}`);
     this.prettifyWithEslint(
       packagePath, 
       `${packagePath}/src/**/*.ts`, 
       false);
 
-    console.log(`Package [ ${packageJson.name} ]: ESNext Transpiling TypeScript code in ${packagePath}`);
+    timeStamp = (new Date()).toISOString();
+    console.log(`${timeStamp} Package [ ${packageJson.name} ]: ESNext Transpiling TypeScript code in ${packagePath}`);
     // transpile modern node version compatible
     const tsconfigESNextName: any = "tsconfig.ESNext.json";
     const tsconfigESNextPath: any = `${this.absolutePathToProjectRoot}/${tsconfigESNextName}`;
@@ -163,7 +168,8 @@ export class ProjectBuilder {
       packagePath, 
       tsconfigESNextPath);
 
-    console.log(`Package [ ${packageJson.name} ]: CommonjS Transpiling TypeScript code in ${packagePath}`);
+    timeStamp = (new Date()).toISOString();
+    console.log(`${timeStamp} Package [ ${packageJson.name} ]: CommonjS Transpiling TypeScript code in ${packagePath}`);
     // transpile legacy node versions compatible
     const tsconfigCommonJSName: any = "tsconfig.CommonJS.json";
     const tsconfigCommonJSPath: any = `${this.absolutePathToProjectRoot}/${tsconfigCommonJSName}`;
@@ -173,26 +179,35 @@ export class ProjectBuilder {
 
     // link this package for usage in local development in other .ts files
     if (this.getIsLocalDevelopment()) {
-      console.log(`Package [ ${packageJson.name} ]: npm link package ${packageJson.name} for local usage with other`);
+      timeStamp = (new Date()).toISOString();
+      console.log(`${timeStamp} Package [ ${packageJson.name} ]: npm link package ${packageJson.name} for local usage with other`);
       this.runCommandLine(
         packagePath, 
         "npm link", 
         false);
     }
 
-    const timeStamp: any = (new Date()).toISOString();
-
     // building simple .js files to use in example.hml via <script src="...js"
-    console.log(`${timeStamp} Package [ ${packageJson.name} ]: building simple .js for usage in .html in script tag as src`);
-    this.buildSimple(
-      packageJson, 
-      packagePath);
+    if ( packageJson["build-simple-enable"] === true ) {
+      timeStamp = (new Date()).toISOString();
+      console.log(`${timeStamp} Package [ ${packageJson.name} ]: building simple .js for usage in .html in script tag as src`);
+      this.buildSimple(
+        packageJson, 
+        packagePath);
+    }
 
     // resolve @import url(@alias/style.css) in .css
-    console.log(`${timeStamp} Package [ ${packageJson.name} ]: packing css`);
-    this.cssImporterRun(
-      packageJson, 
-      packagePath);
+    const confNodeCss: any|undefined = packageJson["css-importer"];
+
+    if (confNodeCss !== undefined && confNodeCss.build === true ) {
+      timeStamp = (new Date()).toISOString();
+      console.log(`${timeStamp} Package [ ${packageJson.name} ]: packing css`);
+      this.cssImporterRun(
+        confNodeCss, 
+        packagePath
+      );
+    }
+
   }
 
   installPackageDependencies(
@@ -301,17 +316,17 @@ export class ProjectBuilder {
     }
   }
 
+  /**
+   * 
+   * @param confNodeCss: any|undefined = packageJson["css-importer"];
+   * @param packagePath 
+   */
   cssImporterRun( 
-    packageJson: any, 
+    confNodeCss: any, 
     packagePath: any ) {
     
-    const confNodeCss: any|undefined = packageJson["css-importer"];
-
-    if (confNodeCss === undefined || confNodeCss.build !== true ) {
-      return;
-    }
-
-    this.cssImporter
+    let cssImporter: CssImporter = new CssImporter();
+    cssImporter
       .setPackagePath( packagePath )
       .setCssFilePath( path.resolve( 
         packagePath, 
@@ -322,6 +337,8 @@ export class ProjectBuilder {
       .build().then( ( result: number ) => {
         console.log(`css importer built ${packagePath}: ${result}`);
       });
+    
+    this.cssImporters.push( cssImporter );
   }
 
   transpileTypeScriptSources (

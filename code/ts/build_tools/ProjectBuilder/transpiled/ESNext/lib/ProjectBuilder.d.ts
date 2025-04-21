@@ -1,7 +1,7 @@
 import { CssImporter } from "@jaisocx/css-importer";
 export declare class ProjectBuilder {
     isLocalDevelopment: number;
-    cssImporter: CssImporter;
+    cssImporters: CssImporter[];
     absolutePathToProjectRoot: any;
     relativePathFromRootTsConfigCatalogPath: any;
     absolutePathFromRootTsConfigCatalogPath: any;
@@ -27,7 +27,12 @@ export declare class ProjectBuilder {
     buildPackage(packageJson: any): void;
     installPackageDependencies(packageJson: any, packagePath: any): void;
     buildSimple(packageJson: any, packagePath: any): void;
-    cssImporterRun(packageJson: any, packagePath: any): void;
+    /**
+     *
+     * @param confNodeCss: any|undefined = packageJson["css-importer"];
+     * @param packagePath
+     */
+    cssImporterRun(confNodeCss: any, packagePath: any): void;
     transpileTypeScriptSources(tsconfigCatalogPath: any, tsconfigFileName: any, logToConsole: boolean): any;
     transpileTypescriptSourcesWithPath(packagePath: any, tsconfigPath: any): any;
     prettifyWithEslint(packagePath: any, pathToPrettify: any, logToConsole: boolean): any;

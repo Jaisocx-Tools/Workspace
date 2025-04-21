@@ -45,7 +45,7 @@ const css_importer_1 = require("@jaisocx/css-importer");
 class ProjectBuilder {
     constructor() {
         this.isLocalDevelopment = 1;
-        this.cssImporter = new css_importer_1.CssImporter();
+        this.cssImporters = new Array();
         this.absolutePathToProjectRoot = "";
         this.relativePathFromRootTsConfigCatalogPath = "";
         this.absolutePathFromRootTsConfigCatalogPath = "";
@@ -118,39 +118,51 @@ class ProjectBuilder {
         }
     }
     buildPackage(packageJson) {
+        let timeStamp = (new Date()).toISOString();
         console.log("\n\n\n===============================");
-        console.log(`MODULE ${packageJson.name}`);
+        console.log(`${timeStamp} MODULE ${packageJson.name}`);
         console.log("===============================\n");
         let packagePath = path.resolve(this.absolutePathFromRootWww, packageJson.path);
         // install or link npm dependencies
-        console.log(`Package [ ${packageJson.name} ]: Calling npm dependencies install`);
+        timeStamp = (new Date()).toISOString();
+        console.log(`${timeStamp} Package [ ${packageJson.name} ]: Calling npm dependencies install`);
         this.installPackageDependencies(packageJson, packagePath);
         // console output list of files in the package src catalog
         this.runCommandLine(packagePath, "ls -lahrts src", true);
-        console.log(`Package [ ${packageJson.name} ]: Prettifying with Eslint TypeScript code in ${packagePath}`);
+        timeStamp = (new Date()).toISOString();
+        console.log(`${timeStamp} Package [ ${packageJson.name} ]: Prettifying with Eslint TypeScript code in ${packagePath}`);
         this.prettifyWithEslint(packagePath, `${packagePath}/src/**/*.ts`, false);
-        console.log(`Package [ ${packageJson.name} ]: ESNext Transpiling TypeScript code in ${packagePath}`);
+        timeStamp = (new Date()).toISOString();
+        console.log(`${timeStamp} Package [ ${packageJson.name} ]: ESNext Transpiling TypeScript code in ${packagePath}`);
         // transpile modern node version compatible
         const tsconfigESNextName = "tsconfig.ESNext.json";
         const tsconfigESNextPath = `${this.absolutePathToProjectRoot}/${tsconfigESNextName}`;
         this.transpileTypescriptSourcesWithPath(packagePath, tsconfigESNextPath);
-        console.log(`Package [ ${packageJson.name} ]: CommonjS Transpiling TypeScript code in ${packagePath}`);
+        timeStamp = (new Date()).toISOString();
+        console.log(`${timeStamp} Package [ ${packageJson.name} ]: CommonjS Transpiling TypeScript code in ${packagePath}`);
         // transpile legacy node versions compatible
         const tsconfigCommonJSName = "tsconfig.CommonJS.json";
         const tsconfigCommonJSPath = `${this.absolutePathToProjectRoot}/${tsconfigCommonJSName}`;
         this.transpileTypescriptSourcesWithPath(packagePath, tsconfigCommonJSPath);
         // link this package for usage in local development in other .ts files
         if (this.getIsLocalDevelopment()) {
-            console.log(`Package [ ${packageJson.name} ]: npm link package ${packageJson.name} for local usage with other`);
+            timeStamp = (new Date()).toISOString();
+            console.log(`${timeStamp} Package [ ${packageJson.name} ]: npm link package ${packageJson.name} for local usage with other`);
             this.runCommandLine(packagePath, "npm link", false);
         }
-        const timeStamp = (new Date()).toISOString();
         // building simple .js files to use in example.hml via <script src="...js"
-        console.log(`${timeStamp} Package [ ${packageJson.name} ]: building simple .js for usage in .html in script tag as src`);
-        this.buildSimple(packageJson, packagePath);
+        if (packageJson["build-simple-enable"] === true) {
+            timeStamp = (new Date()).toISOString();
+            console.log(`${timeStamp} Package [ ${packageJson.name} ]: building simple .js for usage in .html in script tag as src`);
+            this.buildSimple(packageJson, packagePath);
+        }
         // resolve @import url(@alias/style.css) in .css
-        console.log(`${timeStamp} Package [ ${packageJson.name} ]: packing css`);
-        this.cssImporterRun(packageJson, packagePath);
+        const confNodeCss = packageJson["css-importer"];
+        if (confNodeCss !== undefined && confNodeCss.build === true) {
+            timeStamp = (new Date()).toISOString();
+            console.log(`${timeStamp} Package [ ${packageJson.name} ]: packing css`);
+            this.cssImporterRun(confNodeCss, packagePath);
+        }
     }
     installPackageDependencies(packageJson, packagePath) {
         let dependencyCatalogPath = "";
@@ -217,18 +229,21 @@ class ProjectBuilder {
             this.prettifyWithEslint(packagePath, `${this.buildSimpleCatalogName}/${buildFileName}`, false);
         }
     }
-    cssImporterRun(packageJson, packagePath) {
-        const confNodeCss = packageJson["css-importer"];
-        if (confNodeCss === undefined || confNodeCss.build !== true) {
-            return;
-        }
-        this.cssImporter
+    /**
+     *
+     * @param confNodeCss: any|undefined = packageJson["css-importer"];
+     * @param packagePath
+     */
+    cssImporterRun(confNodeCss, packagePath) {
+        let cssImporter = new css_importer_1.CssImporter();
+        cssImporter
             .setPackagePath(packagePath)
             .setCssFilePath(path.resolve(packagePath, confNodeCss.cssFilePath))
             .setCssTargetFilePath(path.resolve(packagePath, confNodeCss.cssTargetFilePath))
             .build().then((result) => {
             console.log(`css importer built ${packagePath}: ${result}`);
         });
+        this.cssImporters.push(cssImporter);
     }
     transpileTypeScriptSources(tsconfigCatalogPath, tsconfigFileName, logToConsole) {
         const consoleCommand = `cd "${tsconfigCatalogPath}" && tsc -p "${tsconfigFileName}"`;

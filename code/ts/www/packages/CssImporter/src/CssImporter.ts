@@ -10,6 +10,8 @@ import { ParsedResultDTO } from "./ParsedResultDTO.js";
 
 export class CssImporter {
 
+  debug: boolean;
+
   cssImporterConstants: CssImporterConstants;
   baseParser: BaseParser;
 
@@ -25,6 +27,8 @@ export class CssImporter {
 
 
   constructor() {
+    this.debug = false;
+
     this.cssImporterConstants = new CssImporterConstants();
     this.baseParser = new BaseParser();
 
@@ -35,7 +39,7 @@ export class CssImporter {
 
     this.fileWriter = new FileWriter();
     this.fileWriter
-      .setDebug( true );
+      .setDebug( false );
 
     this.fileWriterQueue = new FileWriterQueue (
       this.fileWriter,
@@ -43,8 +47,14 @@ export class CssImporter {
       200
     );
     this.fileWriterQueue
-      .setDebug( true );
+      .setDebug( false );
 
+  }
+
+  setDebug( inDebug: boolean ): CssImporter {
+    this.debug = inDebug;
+
+    return this;
   }
 
   setPackagePath( packagePath: string ): CssImporter {
@@ -116,6 +126,9 @@ export class CssImporter {
 
   async build(): Promise<number> {
 
+    let hasError: boolean = false;
+    let err: any = {};
+
     let webpackAliases = this.getWebpackAliases();
 
     // NOTICE: HARDCODED
@@ -126,15 +139,17 @@ export class CssImporter {
     );
 
     // example to be notified on write end and file handle close.
-    this.fileWriterQueue.addThisClassEventListener (
-      this.fileWriterQueue.eventEOF.eventName,
-      (eventName, payload) => {
-        console.log ( 
-          "EOF", 
-          {eventName, 
-            payload} );
-      }
-    );
+    if ( this.debug === true ) {
+      this.fileWriterQueue.addThisClassEventListener (
+        this.fileWriterQueue.eventEOF.eventName,
+        (eventName, payload) => {
+          console.log ( 
+            "EOF", 
+            {eventName, 
+              payload} );
+        }
+      );
+    }
 
     let inOutResultDTO: ParsedResultDTO = new ParsedResultDTO();
     let resultDTO: ParsedResultDTO = new ParsedResultDTO();
@@ -143,42 +158,54 @@ export class CssImporter {
       this.baseParser.setWebpackAliases (
         webpackAliases, 
         this.packagePath);
-      resultDTO = this.cssBundleMake(
+      resultDTO = this.cssBundleMake (
         inOutResultDTO,
-        fd,
         this.cssFilePath, 
         this.cssFilePath,
         counterStop);
     } catch (error) {
       console.error(error);
+      err = error;
+      hasError = true;
     }
 
-    console.log(
-      "All files enqueued", 
-      this.cssTargetFilePath
-    );
+    if ( hasError === true ) {
+      this.fileWriter.filehandleClose();
 
-    fs.writeFileSync( 
-      "inOutResultDTO", 
-      JSON.stringify(
-        inOutResultDTO.toJson(), 
-        null, 
-        2) );
-    fs.writeFileSync( 
-      "resultDTO", 
-      JSON.stringify(
-        resultDTO.toJson(), 
-        null, 
-        2) );
+      throw err;
+    }
+
+    if ( this.debug === true ) {
+      console.log (
+        "All files enqueued", 
+        this.cssTargetFilePath
+      );
   
+      fs.writeFileSync( 
+        "inOutResultDTO", 
+        JSON.stringify(
+          inOutResultDTO.toJson(), 
+          null, 
+          2) );
+      fs.writeFileSync( 
+        "resultDTO", 
+        JSON.stringify(
+          resultDTO.toJson(), 
+          null, 
+          2) );
+    }
+
     this.fileWriterQueue.setHasToStop( true );
 
     this.fileWriterQueue.filehandleClose();
 
-    console.log(
-      "CssImporter.build()", 
-      "After this.fileWriterQueue.filehandleClose();", 
-      this.cssTargetFilePath);
+    if ( this.debug === true ) {
+      console.log (
+        "CssImporter.build()", 
+        "After this.fileWriterQueue.filehandleClose();", 
+        this.cssTargetFilePath
+      );
+    }
 
     return 1;
   }
@@ -190,7 +217,6 @@ export class CssImporter {
    */
   public cssBundleMake (
     inParsedResultDTO: ParsedResultDTO,
-    inFd: FileHandle,
     inFilePath: string, 
     bitsbufName: string,
     counterStop: number 
@@ -221,16 +247,17 @@ export class CssImporter {
       counterStop
     );
 
-    // console.log( "Comments:\n" );
-    // this.contentPreviewByRange( 
-    //   fileContentsBuffer, 
-    //   bitsBufRefs_Comments );
+    if ( this.debug === true ) {
+      console.log( "Comments:\n" );
+      this.baseParser.contentPreviewByRange( 
+        fileContentsBuffer, 
+        bitsBufRefs_Comments );
 
-    // console.log( "\n\nCss without comments:\n" );
-    // this.contentPreviewByRange( 
-    //   fileContentsBuffer, 
-    //   bitsBufRefs_NoComments );
-
+      console.log( "\n\nCss without comments:\n" );
+      this.baseParser.contentPreviewByRange( 
+        fileContentsBuffer, 
+        bitsBufRefs_NoComments );
+    }
 
     this.baseParser.validBitsbufRefsRefine ( 
       fileContentsBuffer,
@@ -241,17 +268,17 @@ export class CssImporter {
       counterStop
     );
 
-    // console.log( "\n\nImports:\n" );
-    // this.contentPreviewByRange( fileContentsBuffer, bitsBufRefs_ImportURLs );
+    if ( this.debug === true ) {
+      console.log( "\n\nImports:\n" );
+      this.baseParser.contentPreviewByRange( 
+        fileContentsBuffer, 
+        bitsBufRefs_ImportURLs );
 
-    // console.log( "\n\nCss with no imports no comments:\n" );
-    // this.contentPreviewByRange( fileContentsBuffer, bitsBufRefs_NoImports );
-
-
-
-
-
-
+      console.log( "\n\nCss with no imports no comments:\n" );
+      this.baseParser.contentPreviewByRange( 
+        fileContentsBuffer, 
+        bitsBufRefs_NoImports );
+    }
 
     let refsIx: number = 0;
     let numberOfRanges: number = bitsBufRefs_NoImports.length;
@@ -259,8 +286,6 @@ export class CssImporter {
     let rangeStart: number = 0;
     let rangeEnd: number = 0;
 
-    // # let fd: FileHandle = await fs.promises.open( this.cssTargetFilePath, "a" );
-    
     let resultDTO: ParsedResultDTO = new ParsedResultDTO();
     resultDTO.cssFilePath = inFilePath;
     resultDTO.cssFileContents = fileContentsBuffer;
@@ -292,11 +317,6 @@ export class CssImporter {
           continue;
         }
 
-        // await this.baseParser.appendToFile( 
-        //   inFd, 
-        //   fileContentsBuffer, 
-        //   range );
-
         this.fileWriterQueue.enqueue (
           resultDTO.cssFilePath,
           range
@@ -319,7 +339,6 @@ export class CssImporter {
           bitsbufName,
           bitsBufRefs_ImportURLs,
           resultDTO,
-          inFd,
           firstRangeStart,
           latestImportsIx,
           counterStop,
@@ -348,10 +367,6 @@ export class CssImporter {
         }
 
         resultDTO.addRange( range );
-        // await this.baseParser.appendToFile( 
-        //   inFd, 
-        //   fileContentsBuffer, 
-        //   range );
 
         this.fileWriterQueue.enqueue (
           resultDTO.cssFilePath,
@@ -369,10 +384,6 @@ export class CssImporter {
         }
 
         resultDTO.addRange( range );
-        // await this.baseParser.appendToFile( 
-        //   inFd, 
-        //   fileContentsBuffer, 
-        //   range );
         
         this.fileWriterQueue.enqueue (
           resultDTO.cssFilePath,
@@ -390,7 +401,6 @@ export class CssImporter {
         bitsbufName,
         bitsBufRefs_ImportURLs,
         resultDTO,
-        inFd,
         rangeStart,
         latestImportsIx,
         counterStop,
@@ -398,8 +408,6 @@ export class CssImporter {
       );
 
     }
-
-    // # await fd.close();
 
     resultDTO.cssFileContents = new Uint8Array();
 
@@ -414,7 +422,6 @@ export class CssImporter {
     bitsbufName: string,
     ranges: number[][],
     inResultDTO: ParsedResultDTO,
-    inFd: FileHandle,
     mainRangeStart: number,
     inLastRangeIx: number,
     counterStop: number,
@@ -437,15 +444,11 @@ export class CssImporter {
 
       if ( isRangeImportUrl === false ) {
         inResultDTO.addRange( importRange );
-        // await this.baseParser.appendToFile( 
-        //   inFd, 
-        //   fileContentsBuffer, 
-        //   importRange );
 
-        // this.fileWriterQueue.enqueue (
-        //   bitsbufName,
-        //   importRange
-        // );
+        this.fileWriterQueue.enqueue (
+          bitsbufName,
+          importRange
+        );
 
         continue;
       }
@@ -455,15 +458,12 @@ export class CssImporter {
         ranges[importsIx],
         this.webpackAliases
       );
-      // console.log( cssFileToImport_Path );
 
       // temp workaround, the inp file bitsbuf's name has t o be a number, or a description text or file path for debugging purposes.
       let bitsbufNameSubcall: string = cssFileToImport_Path;
 
-
       let importParseResultDTO: ParsedResultDTO = this.cssBundleMake ( 
         inResultDTO,
-        inFd, 
         cssFileToImport_Path, 
         bitsbufNameSubcall,
         counterStop );
