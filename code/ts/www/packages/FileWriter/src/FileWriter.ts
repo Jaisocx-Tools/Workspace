@@ -3,6 +3,7 @@ import path from "node:path";
 import { Buffer } from "node:buffer";
 import { Stats } from "node:fs";
 import { FileHandle } from "node:fs/promises";
+import { TextEncoder, TextDecoder } from "node:util";
 
 import { FileWriterConstants } from "./FileWriterConstants.js";
 
@@ -15,6 +16,8 @@ export class FileWriter {
   offsetInFile: number;
   fileHandle: FileHandle|null;
   filePath: string;
+  textDecoder: TextDecoder;
+  textEncoder: TextEncoder;
 
 
   constructor() {
@@ -23,6 +26,8 @@ export class FileWriter {
     this.offsetInFile = 0;
     this.fileHandle = null;
     this.filePath = "";
+    this.textDecoder = new TextDecoder();
+    this.textEncoder = new TextEncoder();
   }
 
   setDebug( inDebug: boolean ): FileWriter {
@@ -32,9 +37,9 @@ export class FileWriter {
   }
 
 
-  async getFileHandleToExistingFile( 
+  async initFileHandleToExistingFile ( 
     inFilePath: string, 
-    mode: string ): Promise<FileHandle> {
+    mode: string ): Promise<number> {
 
     if ( fs.existsSync( inFilePath ) === false ) {
       throw new Error( `File not found: ${inFilePath}` );
@@ -54,15 +59,16 @@ export class FileWriter {
 
     this.fileHandle = locFileHandle;
 
-    return this.fileHandle as FileHandle;
+    return 1;
   }
 
 
   async cleanupFileAndGetNewFileHandle( 
     inFilePath: string, 
-    mode: string ): Promise<FileHandle> {
+    mode: string ): Promise<number> {
+    this.offsetInFile = 0;
     this.filePath = inFilePath;
-
+    
     if ( fs.existsSync( this.filePath ) === true ) {
       fs.unlinkSync( this.filePath );
 
@@ -78,23 +84,179 @@ export class FileWriter {
       console.log( `File touched: ${this.filePath}` );
     }
 
-    await this.getFileHandleToExistingFile( this.filePath, mode );
+    let opened: number = await this.initFileHandleToExistingFile( this.filePath, mode );
 
-    return this.fileHandle as FileHandle;
+    return opened;
   }
 
 
   // TASK: few chars methods names and doc comments.
-  async toAddToFileInLoop_CleanupFileAndGetNewFileHandle( inFilePath: string ): Promise<FileHandle> {
+  async toAddToFileInLoop_CleanupFileAndGetNewFileHandle( inFilePath: string ): Promise<number> {
     
-    await this.cleanupFileAndGetNewFileHandle( 
+    let opened: number = await this.cleanupFileAndGetNewFileHandle ( 
       inFilePath,
       this.fileWriterConstants.getFHandleModeAdd() 
     );
 
-    return this.fileHandle as FileHandle;
+    return opened;
   }
 
+
+  async rewriteFileWithBitsbuf (
+    filePath: string,
+    content: Uint8Array
+  ): Promise<number> { 
+    let opened: number = await this.cleanupFileAndGetNewFileHandle ( 
+      filePath, 
+      this.fileWriterConstants.getFHandleModeWrite() 
+    );
+
+    let written: number = await this.appendBitsbufToFile( content );
+    let closed: number = await this.filehandleClose();
+
+    return 1;
+  }
+
+  async rewriteFileWithBitsbufByRange (
+    filePath: string,
+    content: Uint8Array,
+    range: number[]
+  ): Promise<number> { 
+    let opened: number = await this.cleanupFileAndGetNewFileHandle ( 
+      filePath, 
+      this.fileWriterConstants.getFHandleModeWrite() 
+    );
+
+    let written: number = await this.appendToFile( content, range );
+    let closed: number = await this.filehandleClose();
+
+    return 1;
+  }
+
+
+  async rewriteFileWithMixedArray (
+    filePath: string,
+    content: (Uint8Array|Uint8Array[])[]
+  ): Promise<number> { 
+    let opened: number = await this.toAddToFileInLoop_CleanupFileAndGetNewFileHandle( filePath );
+    let written: number = await this.appendMixedArrayToFile( content );
+    let closed: number = await this.filehandleClose();
+
+    return 1;
+  }
+
+
+  // not as flexible like <Mixed>, however little bit faster.
+  async appendFlatArrayToFile (
+    bitbufs: Uint8Array[]
+  ): Promise<number> { 
+    
+    let i: number = 0;
+    let textArrayLen: number = bitbufs.length;
+    let content: Uint8Array|Uint8Array[];
+
+    for ( i = 0; i < textArrayLen; i++ ) {
+      content = bitbufs[i];
+
+      if ( this.debug === true ) {
+        let text: string = this.textDecoder.decode( content );
+        console.info( text );
+      }
+
+      await this.appendBitsbufToFile( content );
+    }
+
+    return 1;
+  }
+
+
+  async appendMixedArrayToFile (
+    bitbufs: (Uint8Array|Uint8Array[])[]
+  ): Promise<number> { 
+    
+    let i: number = 0;
+    let textArrayLen: number = bitbufs.length;
+    let content: Uint8Array|Uint8Array[];
+    let joinedArray: Uint8Array = new Uint8Array();
+
+    for ( i = 0; i < textArrayLen; i++ ) {
+      content = bitbufs[i];
+      if ( typeof content[0] === "number" ) { // UintArray
+        // @ts-ignore
+        joinedArray = content;
+      // @ts-ignore
+      } else if ( typeof content[0][0] === "number" ) { // UintArray[]
+        // @ts-ignore
+        joinedArray = this.concatUint8Arrays( content );
+      }
+
+      if ( this.debug === true ) {
+        let mediaConstantLineText: string = this.textDecoder.decode( joinedArray );
+        console.info( mediaConstantLineText );
+      }
+
+      await this.appendBitsbufToFile( joinedArray );
+    }
+
+    return 1;
+  }
+
+ 
+  async appendTextArrayToFile (
+    textArray: (string[]|string)[]
+  ): Promise<number> { 
+
+    let content: string[]|string;
+    let textArrayLen: number = textArray.length;
+    let i = 0;
+
+    for ( i = 0; i < textArrayLen; i++ ) {
+      content = textArray[i];
+
+      if ( Array.isArray( content ) ) {
+        await this.appendTextArrayToFile( content );
+      } else {
+        await this.appendTextToFile( content );
+      }
+
+    }
+
+    return 1;
+  }
+
+
+  async appendTextToFile (
+    content: string
+  ): Promise<number> { 
+
+    let bitsbuf: Uint8Array = this.textEncoder.encode( content );
+    let range: number[] = new Array() as number[];
+
+    range[0] = 0;
+    range[1] = bitsbuf.byteLength;
+
+    let retVal: number = await this.appendToFile (
+      bitsbuf,
+      range
+    );
+
+    return retVal;
+  }
+
+  async appendBitsbufToFile (
+    bitsbuf: Uint8Array
+  ): Promise<number> {
+    let bitsbufLen: number = bitsbuf.byteLength;
+
+    let range: number[] =   [0, bitsbufLen];
+
+    let retVal: number = await this.appendToFile(
+      bitsbuf,
+      range
+    );
+
+    return retVal;
+  }
 
   async appendToFile (
     bitsbuf: Uint8Array,
@@ -168,6 +330,20 @@ export class FileWriter {
     }
 
     return 1;
+  }
+
+
+  concatUint8Arrays(arrays: Uint8Array[]): Uint8Array {
+    const totalLength = arrays.reduce(
+      (sum, arr) => sum + arr.byteLength, 
+      0);
+    const result = new Uint8Array(totalLength);
+    let offset = 0;
+    for (const arr of arrays) {
+      result.set(arr, offset);
+      offset += arr.length;
+    }
+    return result;
   }
 
 }

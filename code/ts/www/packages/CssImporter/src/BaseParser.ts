@@ -7,6 +7,7 @@ import { FileHandle } from "node:fs/promises";
 import { CssImporterConstants } from "./CssImporterConstants.js";
 import { BaseParserInterface } from "./BaseParserInterface.js";
 import { ParsedResultDTO } from "./ParsedResultDTO.js";
+import { FileWriter } from "@jaisocx/file-writer";
 
 
 
@@ -193,38 +194,6 @@ export class BaseParser implements BaseParserInterface {
     return new Uint8Array( importedFileBuf.buffer, importedFileBuf.byteOffset, importedFileBuf.byteLength );
 
   }
-
-
-
-  public async appendToFile (
-    fd: FileHandle,
-    bitsbuf: Uint8Array,
-    range: number[]
-  ): Promise<void> {
-
-    let isError: boolean = false;
-
-    try {
-      await fd.appendFile( bitsbuf.subarray ( 
-        range[0], 
-        range[1] ) );
-    } catch (err) {
-      isError = true;
-      console.log( 
-        "Error: ", 
-        err );  
-    }
-
-    if ( isError === true ) {
-      try {
-        await fd.close();
-      } catch (err) {}
-
-      throw new Error( "Error writing file" );
-    }
-
-  }
-
 
 
   /**

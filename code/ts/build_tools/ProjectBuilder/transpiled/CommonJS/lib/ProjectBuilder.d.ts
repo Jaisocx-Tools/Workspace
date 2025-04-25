@@ -1,7 +1,5 @@
-import { CssImporter } from "@jaisocx/css-importer";
 export declare class ProjectBuilder {
     isLocalDevelopment: number;
-    cssImporters: CssImporter[];
     absolutePathToProjectRoot: any;
     relativePathFromRootTsConfigCatalogPath: any;
     absolutePathFromRootTsConfigCatalogPath: any;

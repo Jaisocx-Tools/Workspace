@@ -41,11 +41,11 @@ const child_process_1 = require("child_process");
 const fs = __importStar(require("node:fs"));
 const path = __importStar(require("node:path"));
 const json5_1 = __importDefault(require("json5"));
-const css_importer_1 = require("@jaisocx/css-importer");
+//import { CssImporter } from "@jaisocx/css-importer";
 class ProjectBuilder {
     constructor() {
         this.isLocalDevelopment = 1;
-        this.cssImporters = new Array();
+        //this.cssImporters = new Array() as CssImporter[];
         this.absolutePathToProjectRoot = "";
         this.relativePathFromRootTsConfigCatalogPath = "";
         this.absolutePathFromRootTsConfigCatalogPath = "";
@@ -235,15 +235,19 @@ class ProjectBuilder {
      * @param packagePath
      */
     cssImporterRun(confNodeCss, packagePath) {
-        let cssImporter = new css_importer_1.CssImporter();
-        cssImporter
-            .setPackagePath(packagePath)
-            .setCssFilePath(path.resolve(packagePath, confNodeCss.cssFilePath))
-            .setCssTargetFilePath(path.resolve(packagePath, confNodeCss.cssTargetFilePath))
-            .build().then((result) => {
-            console.log(`css importer built ${packagePath}: ${result}`);
-        });
-        this.cssImporters.push(cssImporter);
+        // let cssImporter: CssImporter = new CssImporter();
+        // cssImporter
+        //   .setPackagePath( packagePath )
+        //   .setCssFilePath( path.resolve( 
+        //     packagePath, 
+        //     confNodeCss.cssFilePath ) )
+        //   .setCssTargetFilePath( path.resolve( 
+        //     packagePath, 
+        //     confNodeCss.cssTargetFilePath ) )
+        //   .build().then( ( result: number ) => {
+        //     console.log(`css importer built ${packagePath}: ${result}`);
+        //   });
+        // this.cssImporters.push( cssImporter );
     }
     transpileTypeScriptSources(tsconfigCatalogPath, tsconfigFileName, logToConsole) {
         const consoleCommand = `cd "${tsconfigCatalogPath}" && tsc -p "${tsconfigFileName}"`;

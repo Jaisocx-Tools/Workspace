@@ -4,7 +4,7 @@
     {
       "path": "packages/FileWriter",
       "name": "file-writer",
-      "build": false,
+      "build": true,
       "build-simple-enable": false,
       "dependencies": [
         {
@@ -47,7 +47,7 @@
     {
       "path": "CssTools/CssCleanStart",
       "name": "css-clean-start",
-      "build": true,
+      "build": false,
       "build-simple-enable": false,
       "css-importer": {
         "build": true,
@@ -63,16 +63,25 @@
       ]
     },
     {
-      "path": "packages/Mobile.vsDeskop",
+      "path": "packages/Mobile.vsDesktop",
       "name": "mobile-vs-desktop",
       "build": true,
       "build-simple-enable": true,
       "css-importer": {
-        "build": true,
+        "build": false,
         "cssFilePath": "MediaAndStyles/clean-start-main-webpack.css",
         "cssTargetFilePath": "MediaAndStyles/clean-start-main-resolved.css"
       },
-      "dependencies": [],
+      "dependencies": [
+        {
+          "name": "@jaisocx/file-writer",
+          "path": "packages/FileWriter"
+        },
+        {
+          "name": "@jaisocx/template-renderer",
+          "path": "packages/TemplateRenderer"
+        }
+      ],
       "build-files": [
         "MediaruleNames.js",
         "Mobile.vsDesktopPack.js",
@@ -170,12 +179,20 @@
     {
       "path": "packages/TemplateRenderer",
       "name": "template-renderer",
-      "build": false,
+      "build": true,
       "build-simple-enable": true,
       "dependencies": [
         {
           "name": "@jaisocx/event-emitter",
           "path": "packages/EventEmitter"
+        },
+        {
+          "name": "@jaisocx/file-writer",
+          "path": "packages/FileWriter"
+        },
+        {
+          "name": "@jaisocx/css-importer",
+          "path": "packages/CssImporter"
         }
       ],
       "build-files": [

@@ -5,6 +5,9 @@
   // config: "XDebug Symfony app under docker" is for debugging with jaisocx-http under docker in this setup.
   "version": "0.2.0",
   "configurations": [
+    
+    
+    
     {
       "name": "Debug Site",
       "type": "php",

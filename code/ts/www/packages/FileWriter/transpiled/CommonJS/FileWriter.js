@@ -5,6 +5,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.FileWriter = void 0;
 const node_fs_1 = __importDefault(require("node:fs"));
+const node_util_1 = require("node:util");
 const FileWriterConstants_js_1 = require("./FileWriterConstants.js");
 class FileWriter {
     constructor() {
@@ -13,12 +14,14 @@ class FileWriter {
         this.offsetInFile = 0;
         this.fileHandle = null;
         this.filePath = "";
+        this.textDecoder = new node_util_1.TextDecoder();
+        this.textEncoder = new node_util_1.TextEncoder();
     }
     setDebug(inDebug) {
         this.debug = inDebug;
         return this;
     }
-    async getFileHandleToExistingFile(inFilePath, mode) {
+    async initFileHandleToExistingFile(inFilePath, mode) {
         if (node_fs_1.default.existsSync(inFilePath) === false) {
             throw new Error(`File not found: ${inFilePath}`);
         }
@@ -29,9 +32,10 @@ class FileWriter {
             console.log(`File opened: ${this.filePath}`);
         }
         this.fileHandle = locFileHandle;
-        return this.fileHandle;
+        return 1;
     }
     async cleanupFileAndGetNewFileHandle(inFilePath, mode) {
+        this.offsetInFile = 0;
         this.filePath = inFilePath;
         if (node_fs_1.default.existsSync(this.filePath) === true) {
             node_fs_1.default.unlinkSync(this.filePath);
@@ -44,13 +48,99 @@ class FileWriter {
         if (this.debug === true) {
             console.log(`File touched: ${this.filePath}`);
         }
-        await this.getFileHandleToExistingFile(this.filePath, mode);
-        return this.fileHandle;
+        let opened = await this.initFileHandleToExistingFile(this.filePath, mode);
+        return opened;
     }
     // TASK: few chars methods names and doc comments.
     async toAddToFileInLoop_CleanupFileAndGetNewFileHandle(inFilePath) {
-        await this.cleanupFileAndGetNewFileHandle(inFilePath, this.fileWriterConstants.getFHandleModeAdd());
-        return this.fileHandle;
+        let opened = await this.cleanupFileAndGetNewFileHandle(inFilePath, this.fileWriterConstants.getFHandleModeAdd());
+        return opened;
+    }
+    async rewriteFileWithBitsbuf(filePath, content) {
+        let opened = await this.cleanupFileAndGetNewFileHandle(filePath, this.fileWriterConstants.getFHandleModeWrite());
+        let written = await this.appendBitsbufToFile(content);
+        let closed = await this.filehandleClose();
+        return 1;
+    }
+    async rewriteFileWithBitsbufByRange(filePath, content, range) {
+        let opened = await this.cleanupFileAndGetNewFileHandle(filePath, this.fileWriterConstants.getFHandleModeWrite());
+        let written = await this.appendToFile(content, range);
+        let closed = await this.filehandleClose();
+        return 1;
+    }
+    async rewriteFileWithMixedArray(filePath, content) {
+        let opened = await this.toAddToFileInLoop_CleanupFileAndGetNewFileHandle(filePath);
+        let written = await this.appendMixedArrayToFile(content);
+        let closed = await this.filehandleClose();
+        return 1;
+    }
+    // not as flexible like <Mixed>, however little bit faster.
+    async appendFlatArrayToFile(bitbufs) {
+        let i = 0;
+        let textArrayLen = bitbufs.length;
+        let content;
+        for (i = 0; i < textArrayLen; i++) {
+            content = bitbufs[i];
+            if (this.debug === true) {
+                let text = this.textDecoder.decode(content);
+                console.info(text);
+            }
+            await this.appendBitsbufToFile(content);
+        }
+        return 1;
+    }
+    async appendMixedArrayToFile(bitbufs) {
+        let i = 0;
+        let textArrayLen = bitbufs.length;
+        let content;
+        let joinedArray = new Uint8Array();
+        for (i = 0; i < textArrayLen; i++) {
+            content = bitbufs[i];
+            if (typeof content[0] === "number") { // UintArray
+                // @ts-ignore
+                joinedArray = content;
+                // @ts-ignore
+            }
+            else if (typeof content[0][0] === "number") { // UintArray[]
+                // @ts-ignore
+                joinedArray = this.concatUint8Arrays(content);
+            }
+            if (this.debug === true) {
+                let mediaConstantLineText = this.textDecoder.decode(joinedArray);
+                console.info(mediaConstantLineText);
+            }
+            await this.appendBitsbufToFile(joinedArray);
+        }
+        return 1;
+    }
+    async appendTextArrayToFile(textArray) {
+        let content;
+        let textArrayLen = textArray.length;
+        let i = 0;
+        for (i = 0; i < textArrayLen; i++) {
+            content = textArray[i];
+            if (Array.isArray(content)) {
+                await this.appendTextArrayToFile(content);
+            }
+            else {
+                await this.appendTextToFile(content);
+            }
+        }
+        return 1;
+    }
+    async appendTextToFile(content) {
+        let bitsbuf = this.textEncoder.encode(content);
+        let range = new Array();
+        range[0] = 0;
+        range[1] = bitsbuf.byteLength;
+        let retVal = await this.appendToFile(bitsbuf, range);
+        return retVal;
+    }
+    async appendBitsbufToFile(bitsbuf) {
+        let bitsbufLen = bitsbuf.byteLength;
+        let range = [0, bitsbufLen];
+        let retVal = await this.appendToFile(bitsbuf, range);
+        return retVal;
     }
     async appendToFile(bitsbuf, range) {
         let isError = false;
@@ -94,6 +184,16 @@ class FileWriter {
             console.log("FileWriter.filehandleClose()", "After filehandle closed.", this.filePath);
         }
         return 1;
+    }
+    concatUint8Arrays(arrays) {
+        const totalLength = arrays.reduce((sum, arr) => sum + arr.byteLength, 0);
+        const result = new Uint8Array(totalLength);
+        let offset = 0;
+        for (const arr of arrays) {
+            result.set(arr, offset);
+            offset += arr.length;
+        }
+        return result;
     }
 }
 exports.FileWriter = FileWriter;

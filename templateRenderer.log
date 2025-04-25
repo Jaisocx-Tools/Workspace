@@ -1,0 +1,66 @@
+TemplateRenderer.optimize(): 274291 ns
+TemplateRenderer.render_opt(): 41292 ns
+TemplateRenderer.render_opt(): 5792 ns
+TemplateRenderer.render_opt(): 9625 ns
+TemplateRenderer.render_opt(): 13458 ns
+TemplateRenderer.render_opt(): 13083 ns
+TemplateRenderer.render_opt(): 4667 ns
+TemplateRenderer.render_opt(): 4083 ns
+TemplateRenderer.render_opt(): 4209 ns
+TemplateRenderer.render_opt(): 8208 ns
+TemplateRenderer.render_opt(): 6625 ns
+TemplateRenderer.render_opt(): 4291 ns
+TemplateRenderer.render_opt(): 3958 ns
+TemplateRenderer.render_opt(): 3416 ns
+TemplateRenderer.render_opt(): 4500 ns
+TemplateRenderer.render_opt(): 3958 ns
+TemplateRenderer.render_opt(): 3666 ns
+TemplateRenderer.render_opt(): 3500 ns
+TemplateRenderer.render_opt(): 3667 ns
+TemplateRenderer.render_opt(): 3584 ns
+TemplateRenderer.render_opt(): 3500 ns
+TemplateRenderer.render_opt(): 3500 ns
+TemplateRenderer.render_opt(): 3417 ns
+TemplateRenderer.render_opt(): 5291 ns
+TemplateRenderer.render_opt(): 4125 ns
+TemplateRenderer.render_opt(): 3666 ns
+TemplateRenderer.render_opt(): 3416 ns
+TemplateRenderer.render_opt(): 3250 ns
+TemplateRenderer.render_opt(): 3250 ns
+TemplateRenderer.render_opt(): 3042 ns
+TemplateRenderer.render_opt(): 3125 ns
+
+
+
+
+TemplateRenderer.render_str(): 103375 ns
+TemplateRenderer.render_str(): 4917 ns
+TemplateRenderer.render_str(): 3208 ns
+TemplateRenderer.render_str(): 6000 ns
+TemplateRenderer.render_str(): 7375 ns
+TemplateRenderer.render_str(): 2667 ns
+TemplateRenderer.render_str(): 3208 ns
+TemplateRenderer.render_str(): 2375 ns
+TemplateRenderer.render_str(): 3084 ns
+TemplateRenderer.render_str(): 4833 ns
+TemplateRenderer.render_str(): 7792 ns
+TemplateRenderer.render_str(): 3833 ns
+TemplateRenderer.render_str(): 5583 ns
+TemplateRenderer.render_str(): 3416 ns
+TemplateRenderer.render_str(): 3625 ns
+TemplateRenderer.render_str(): 2834 ns
+TemplateRenderer.render_str(): 2500 ns
+TemplateRenderer.render_str(): 2000 ns
+TemplateRenderer.render_str(): 2000 ns
+TemplateRenderer.render_str(): 2083 ns
+TemplateRenderer.render_str(): 3041 ns
+TemplateRenderer.render_str(): 25042 ns
+TemplateRenderer.render_str(): 8041 ns
+TemplateRenderer.render_str(): 2500 ns
+TemplateRenderer.render_str(): 3167 ns
+TemplateRenderer.render_str(): 1958 ns
+TemplateRenderer.render_str(): 1833 ns
+TemplateRenderer.render_str(): 1542 ns
+TemplateRenderer.render_str(): 1333 ns
+TemplateRenderer.render_str(): 1291 ns
+

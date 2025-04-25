@@ -2,7 +2,7 @@ import { resolve } from "path";
 import { fileURLToPath } from "url";
 import typescriptEslintPlugin from "@typescript-eslint/eslint-plugin";
 import typescriptEslintParser from "@typescript-eslint/parser";
-import jaisocxPlugin from "eslint-plugin-jaisocx";
+import jaisocxPlugin from "./build_tools/EslintPlugins/EslintPluginJaisocxJS/src/index.js";
 
 const MAX_LINE_LENGTH = 255;
 const INDENT = 2;

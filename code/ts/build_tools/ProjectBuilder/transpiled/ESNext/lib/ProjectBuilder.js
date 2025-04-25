@@ -2,10 +2,10 @@ import { execSync } from "child_process";
 import * as fs from "node:fs";
 import * as path from "node:path";
 import JSON5 from "json5";
-import { CssImporter } from "@jaisocx/css-importer";
+//import { CssImporter } from "@jaisocx/css-importer";
 export class ProjectBuilder {
     isLocalDevelopment;
-    cssImporters;
+    //cssImporters: CssImporter[];
     absolutePathToProjectRoot;
     relativePathFromRootTsConfigCatalogPath;
     absolutePathFromRootTsConfigCatalogPath;
@@ -18,7 +18,7 @@ export class ProjectBuilder {
     buildSimpleCatalogName;
     constructor() {
         this.isLocalDevelopment = 1;
-        this.cssImporters = new Array();
+        //this.cssImporters = new Array() as CssImporter[];
         this.absolutePathToProjectRoot = "";
         this.relativePathFromRootTsConfigCatalogPath = "";
         this.absolutePathFromRootTsConfigCatalogPath = "";
@@ -208,15 +208,19 @@ export class ProjectBuilder {
      * @param packagePath
      */
     cssImporterRun(confNodeCss, packagePath) {
-        let cssImporter = new CssImporter();
-        cssImporter
-            .setPackagePath(packagePath)
-            .setCssFilePath(path.resolve(packagePath, confNodeCss.cssFilePath))
-            .setCssTargetFilePath(path.resolve(packagePath, confNodeCss.cssTargetFilePath))
-            .build().then((result) => {
-            console.log(`css importer built ${packagePath}: ${result}`);
-        });
-        this.cssImporters.push(cssImporter);
+        // let cssImporter: CssImporter = new CssImporter();
+        // cssImporter
+        //   .setPackagePath( packagePath )
+        //   .setCssFilePath( path.resolve( 
+        //     packagePath, 
+        //     confNodeCss.cssFilePath ) )
+        //   .setCssTargetFilePath( path.resolve( 
+        //     packagePath, 
+        //     confNodeCss.cssTargetFilePath ) )
+        //   .build().then( ( result: number ) => {
+        //     console.log(`css importer built ${packagePath}: ${result}`);
+        //   });
+        // this.cssImporters.push( cssImporter );
     }
     transpileTypeScriptSources(tsconfigCatalogPath, tsconfigFileName, logToConsole) {
         const consoleCommand = `cd "${tsconfigCatalogPath}" && tsc -p "${tsconfigFileName}"`;

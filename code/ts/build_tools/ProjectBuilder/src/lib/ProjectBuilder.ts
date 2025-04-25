@@ -3,13 +3,13 @@ import * as fs from "node:fs";
 import * as path from "node:path";
 import JSON5 from "json5";
 import { IDependency } from "./types.js";
-import { CssImporter } from "@jaisocx/css-importer";
+//import { CssImporter } from "@jaisocx/css-importer";
 
 
 export class ProjectBuilder {
   isLocalDevelopment: number;
 
-  cssImporters: CssImporter[];
+  //cssImporters: CssImporter[];
 
   absolutePathToProjectRoot: any;
 
@@ -30,7 +30,7 @@ export class ProjectBuilder {
   constructor() {
     this.isLocalDevelopment = 1;
 
-    this.cssImporters = new Array() as CssImporter[];
+    //this.cssImporters = new Array() as CssImporter[];
 
     this.absolutePathToProjectRoot = "";
 
@@ -325,20 +325,20 @@ export class ProjectBuilder {
     confNodeCss: any, 
     packagePath: any ) {
     
-    let cssImporter: CssImporter = new CssImporter();
-    cssImporter
-      .setPackagePath( packagePath )
-      .setCssFilePath( path.resolve( 
-        packagePath, 
-        confNodeCss.cssFilePath ) )
-      .setCssTargetFilePath( path.resolve( 
-        packagePath, 
-        confNodeCss.cssTargetFilePath ) )
-      .build().then( ( result: number ) => {
-        console.log(`css importer built ${packagePath}: ${result}`);
-      });
+    // let cssImporter: CssImporter = new CssImporter();
+    // cssImporter
+    //   .setPackagePath( packagePath )
+    //   .setCssFilePath( path.resolve( 
+    //     packagePath, 
+    //     confNodeCss.cssFilePath ) )
+    //   .setCssTargetFilePath( path.resolve( 
+    //     packagePath, 
+    //     confNodeCss.cssTargetFilePath ) )
+    //   .build().then( ( result: number ) => {
+    //     console.log(`css importer built ${packagePath}: ${result}`);
+    //   });
     
-    this.cssImporters.push( cssImporter );
+    // this.cssImporters.push( cssImporter );
   }
 
   transpileTypeScriptSources (

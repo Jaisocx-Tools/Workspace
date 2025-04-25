@@ -1,0 +1,77 @@
+.workspace {
+    --s_12_mobile_xs_portrait__width__from: 240px;
+    --s_12_mobile_xs_portrait__width__til: 320px;
+    --s_12_mobile_xs_landscape__width__from: 320px;
+    --s_12_mobile_xs_landscape__width__til: 500px;
+
+    --s_14_mobile_s_portrait__width__from: 321px;
+    --s_14_mobile_s_portrait__width__til: 374px;
+    --s_14_mobile_s_landscape__width__from: 501px;
+    --s_14_mobile_s_landscape__width__til: 667px;
+
+    --s_16_mobile_sm_portrait__width__from: 375px;
+    --s_16_mobile_sm_portrait__width__til: 430px;
+    --s_16_mobile_sm_landscape__width__from: 668px;
+    --s_16_mobile_sm_landscape__width__til: 736px;
+
+    --s_18_mobile_md_portrait__width__from: 431px;
+    --s_18_mobile_md_portrait__width__til: 480px;
+    --s_18_mobile_md_landscape__width__from: 737px;
+    --s_18_mobile_md_landscape__width__til: 812px;
+
+    --s_22_tablet_sm_portrait__width__from: 481px;
+    --s_22_tablet_sm_portrait__width__til: 767px;
+    --s_22_tablet_sm_landscape__width__from: 813px;
+    --s_22_tablet_sm_landscape__width__til: 960px;
+
+    --s_24_tablet_md_portrait__width__from: 768px;
+    --s_24_tablet_md_portrait__width__til: 1024px;
+    --s_24_tablet_md_landscape__width__from: 961px;
+    --s_24_tablet_md_landscape__width__til: 1024px;
+
+    --s_32_laptop_sm_portrait__width__from: 1025px;
+    --s_32_laptop_sm_portrait__width__til: 1080px;
+    --s_32_laptop_sm_landscape__width__from: 1025px;
+    --s_32_laptop_sm_landscape__width__til: 1279px;
+
+    --s_36_laptop_md_portrait__width__from: 1081px;
+    --s_36_laptop_md_portrait__width__til: 1200px;
+    --s_36_laptop_md_landscape__width__from: 1280px;
+    --s_36_laptop_md_landscape__width__til: 1439px;
+
+    --s_39_laptop_lg_portrait__width__from: 1201px;
+    --s_39_laptop_lg_portrait__width__til: 1440px;
+    --s_39_laptop_lg_landscape__width__from: 1440px;
+    --s_39_laptop_lg_landscape__width__til: 1600px;
+
+    --s_42_desktop_xl_portrait__width__from: 1441px;
+    --s_42_desktop_xl_portrait__width__til: 1600px;
+    --s_42_desktop_xl_landscape__width__from: 1601px;
+    --s_42_desktop_xl_landscape__width__til: 1920px;
+
+    --s_44_desktop_xxl_portrait__width__from: 1601px;
+    --s_44_desktop_xxl_portrait__width__til: 2160px;
+    --s_44_desktop_xxl_landscape__width__from: 1921px;
+    --s_44_desktop_xxl_landscape__width__til: 2560px;
+
+    --s_46_display_qhd_portrait__width__from: 2161px;
+    --s_46_display_qhd_portrait__width__til: 2160px;
+    --s_46_display_qhd_landscape__width__from: 2561px;
+    --s_46_display_qhd_landscape__width__til: 3840px;
+
+    --s_52_tv_4k_portrait__width__from: 2161px;
+    --s_52_tv_4k_portrait__width__til: 4320px;
+    --s_52_tv_4k_landscape__width__from: 3841px;
+    --s_52_tv_4k_landscape__width__til: 7680px;
+
+    --s_54_tv_8k_portrait__width__from: 4321px;
+    --s_54_tv_8k_portrait__width__til: 8640px;
+    --s_54_tv_8k_landscape__width__from: 7681px;
+    --s_54_tv_8k_landscape__width__til: 15360px;
+
+    --s_56_tv_16k_portrait__width__from: 8641px;
+    --s_56_tv_16k_portrait__width__til: 9999px;
+    --s_56_tv_16k_landscape__width__from: 15361px;
+    --s_56_tv_16k_landscape__width__til: 25360px;
+
+}
