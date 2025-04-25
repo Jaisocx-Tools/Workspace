@@ -1,18 +1,22 @@
 import * as fs from "node:fs";
 import * as path from "node:path";
-import { FileHandle } from "node:fs/promises";
-import { QueueTask, FileWriterConstants, FileWriter, FileWriterQueue } from "@jaisocx/file-writer";
+import { TextDecoder } from "node:util";
+
+import { FileWriter, FileWriterQueue } from "@jaisocx/file-writer";
+import { BaseParser, FileReader } from "@jaisocx/base-parser";
+
 import { CssImporterConstants } from "./CssImporterConstants.js";
-import { BaseParser } from "./BaseParser.js";
+import { CssImporterInterface } from "./CssImporterInterface.js";
 import { ParsedResultDTO } from "./ParsedResultDTO.js";
 
 
 
-export class CssImporter {
+export class CssImporter implements CssImporterInterface {
 
   debug: boolean;
 
   cssImporterConstants: CssImporterConstants;
+  fileReader: FileReader;
   baseParser: BaseParser;
 
   packagePath: string;
@@ -24,12 +28,13 @@ export class CssImporter {
   fileWriter: FileWriter;
   fileWriterQueue: FileWriterQueue;
 
-
+  textDecoder: TextDecoder;
 
   constructor() {
     this.debug = false;
 
     this.cssImporterConstants = new CssImporterConstants();
+    this.fileReader = new FileReader();
     this.baseParser = new BaseParser();
 
     this.packagePath = "";
@@ -49,6 +54,7 @@ export class CssImporter {
     this.fileWriterQueue
       .setDebug( false );
 
+    this.textDecoder = new TextDecoder( "utf8" );
   }
 
   setDebug( inDebug: boolean ): CssImporter {
@@ -80,10 +86,6 @@ export class CssImporter {
   }
   getCssTargetFilePath(): string {
     return this.cssTargetFilePath;
-  }
-  setWebpackAliases( webpackAliases: object ): CssImporter {
-    this.webpackAliases = webpackAliases;
-    return this;
   }
 
   readJsonFile( filePath: string ): any {
@@ -123,6 +125,93 @@ export class CssImporter {
     return this.webpackAliases;
   }
 
+  public setWebpackAliases( 
+    aliasesObject: any,
+    packageRoot: string
+  ): CssImporter {
+    this.webpackAliases = aliasesObject;
+
+    let webpackAliasVariableNamePackageRoot: string = this.cssImporterConstants.getWebpackAliasVariableNamePackageRoot();
+
+    let alias: string = "";
+    let aliasValue: string = "";
+    for ( alias in this.webpackAliases ) {
+      aliasValue = this.webpackAliases[alias];
+      aliasValue = aliasValue.replace( 
+        webpackAliasVariableNamePackageRoot, 
+        packageRoot );
+      this.webpackAliases[alias] = aliasValue;
+    }
+
+    return this;
+  }
+
+
+  /**
+   * 
+   * @param inBitsbuf 
+   * @param filePathTextRefs 
+   * @param webpackAliases the object, read from the file webpack.aliases.json
+   * @returns 
+   */
+  public resolveUrlBitsbufWithWebpackAlias ( 
+    inBitsbuf: Uint8Array, 
+    filePathTextRefs: number[],
+    webpackAliases: any
+  ): string {
+    let filePathBitsbuf: Uint8Array = inBitsbuf.subarray( 
+      filePathTextRefs[0], 
+      filePathTextRefs[1] );
+    let filePathUntrimmed: string = this.textDecoder.decode( filePathBitsbuf );
+
+    let filePathTrimmed: string = filePathUntrimmed.trim();
+    let filePathAliased: string = this.baseParser.trimQuotes( filePathTrimmed );
+
+    let urlResolved: boolean = false;
+    let alias: string = "";
+    let filePathResolved: string = "";
+
+    if ( filePathAliased.startsWith("@") === false ) {
+      return filePathAliased;
+    }
+
+    for ( alias in webpackAliases ) {
+
+      if ( filePathAliased.startsWith( alias + "/" ) === false ) {
+        continue;
+      }
+
+      filePathResolved = filePathAliased.replace ( 
+        ( 
+          alias + "/" ), 
+        (
+          webpackAliases[alias]
+        ) 
+      );
+      filePathResolved = path.resolve( filePathResolved );        
+
+      urlResolved = true;
+      break;
+
+    }
+
+    // @ts-ignore
+    if ( urlResolved === false ) {
+      let aliasesJson = JSON.stringify ( 
+        webpackAliases, 
+        null, 
+        2 );
+      let errMsg: string = `The @import statement url in the css file:\n${filePathAliased}\nwas not prefixed with no of webpack aliases: \n${aliasesJson}`;
+      throw new Error( errMsg );
+    }
+
+    if ( fs.existsSync( filePathResolved ) === false ) {
+      let errMsg: string = `The file path resolved with webpack alias does not exist:\n${filePathResolved}`;
+      throw new Error( errMsg );
+    }
+    
+    return filePathResolved;
+  }
 
   async build(): Promise<number> {
 
@@ -134,7 +223,7 @@ export class CssImporter {
     // NOTICE: HARDCODED
     let counterStop = 1200;
 
-    let fd: FileHandle = await this.fileWriter.toAddToFileInLoop_CleanupFileAndGetNewFileHandle (
+    let opened: number = await this.fileWriterQueue.fileWriter.toAddToFileInLoop_CleanupFileAndGetNewFileHandle (
       this.cssTargetFilePath
     );
 
@@ -155,7 +244,7 @@ export class CssImporter {
     let resultDTO: ParsedResultDTO = new ParsedResultDTO();
 
     try {
-      this.baseParser.setWebpackAliases (
+      this.setWebpackAliases (
         webpackAliases, 
         this.packagePath);
       resultDTO = this.cssBundleMake (
@@ -170,7 +259,8 @@ export class CssImporter {
     }
 
     if ( hasError === true ) {
-      this.fileWriter.filehandleClose();
+      let closed: number = await this.fileWriter.filehandleClose();
+      err.closed = closed;
 
       throw err;
     }
@@ -207,7 +297,7 @@ export class CssImporter {
       );
     }
 
-    return 1;
+    return opened;
   }
 
 
@@ -222,12 +312,12 @@ export class CssImporter {
     counterStop: number 
   ): ParsedResultDTO {
 
-    let fileContentsBuffer: Uint8Array = this.baseParser.readFileContentsAsBitsBuf ( inFilePath );
+    let fileContentsBuffer: Uint8Array = this.fileReader.readFileContentsAsBitsBuf ( inFilePath );
 
     let fileSize: number = fileContentsBuffer.length;
     let fileLastIx: number = fileSize - 1;
 
-    let bitsBufRefs_ReadFile: number[][] = [[0, fileLastIx]];
+    let bitsBufRefs_ReadFile: number[][] = [[0, (fileLastIx + 1)]];
     let bitsBufRefs_NoComments: number[][] = [];
     let bitsBufRefs_Comments: number[][] = [];
     let bitsBufRefs_NoImports: number[][] = [];
@@ -432,7 +522,7 @@ export class CssImporter {
     let lastRangeIx = inLastRangeIx;
     let numberOfRanges: number = ranges.length;
 
-    for ( importsIx = lastRangeIx; importsIx < ranges.length; importsIx++ ) {
+    for ( importsIx = lastRangeIx; importsIx < numberOfRanges; importsIx++ ) {
       lastRangeIx = importsIx;
 
       let importRange: number[] = ranges[importsIx];
@@ -453,7 +543,7 @@ export class CssImporter {
         continue;
       }
 
-      let cssFileToImport_Path: string = this.baseParser.resolveUrlBitsbufWithWebpackAlias (
+      let cssFileToImport_Path: string = this.resolveUrlBitsbufWithWebpackAlias (
         fileContentsBuffer,
         ranges[importsIx],
         this.webpackAliases

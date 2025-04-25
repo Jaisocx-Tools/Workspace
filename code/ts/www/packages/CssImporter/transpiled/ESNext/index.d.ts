@@ -1,6 +1,5 @@
 export { CssImporterConstants } from "./CssImporterConstants.js";
-export { ParsedResultDTO } from "./ParsedResultDTO.js";
-export { BaseParserInterface } from "./BaseParserInterface.js";
-export { BaseParser } from "./BaseParser.js";
+export { CssImporterInterface } from "./CssImporterInterface.js";
 export { CssImporter } from "./CssImporter.js";
+export { ParsedResultDTO } from "./ParsedResultDTO.js";
 //# sourceMappingURL=index.d.ts.map
