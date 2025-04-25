@@ -16,10 +16,11 @@ export declare class ResponsiveDatasetAutomation implements ResponsiveDatasetAut
     templateRenderer: TemplateRenderer;
     constructor();
     timestampsLogNs<T extends (...args: any[]) => any>(fn: T, label?: string, logTimestamp?: boolean): (...args: Parameters<T>) => ReturnType<T>;
+    run(pathToJsonDatasetForResponsiveSizes: string, responsiveTemplateFilePath: string, subfolderName: string, responsiveMediaQueriesFilesPrefix: string, mediaConstantsFileName: string, webpackAliasName: string): Promise<number>;
     /**
      * @ready
     */
-    setMediaAndStylesResponsiveFolderPath(inFolderPath: string): ResponsiveDatasetAutomation;
+    setMediaAndStylesResponsiveFolderPath(inFolderRelativePath: string): ResponsiveDatasetAutomation;
     /**
      * @ready
     */
@@ -51,7 +52,8 @@ export declare class ResponsiveDatasetAutomation implements ResponsiveDatasetAut
     /**
      * @ready
      */
-    produceMediaCssImportsCssFile(targetFileName: string, relativeImportedFilesFolderPath: string, importedFilenamePrefix: string, webpackAliased: boolean): Promise<number>;
+    produceMediaCssImportsCssFile(targetFileName: string, relativeImportedFilesFolderPath: string, mediaConstantsFileName: string, importedFilenamePrefix: string, webpackAliased: boolean): Promise<number>;
+    loopMediaCssImportsCssFile(data: any, importedFilenamePrefix: string, relativeImportedFilesFolderPath: string, webpackAliased: boolean): Promise<number>;
     /**
      * @ready
     */

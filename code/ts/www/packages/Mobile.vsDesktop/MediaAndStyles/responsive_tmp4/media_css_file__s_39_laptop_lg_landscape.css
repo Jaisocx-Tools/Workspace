@@ -1,0 +1,14 @@
+/* Responsive rules for: s_39_laptop_lg_landscape */
+@media only screen and (min-width: 1440px) and (max-width: 1600px) and (orientation: landscape) {
+  .workspace {
+    --media_rule_name: s_39_laptop_lg_landscape;
+
+  }    
+
+  /* verifying responsive rules applies */
+  .workspace.verify-responsive-rule-applies main h1::before {
+    content: var(--media-rule);
+  }
+
+}
+

@@ -1,6 +1,7 @@
 {
   "name": "@jaisocx/mobile-vs-desktop",
   "version": "1.2.1",
+  "author": "Jaisocx",
   "private": false,
   "description": "",
   "type": "module",
@@ -39,8 +40,10 @@
   "publishConfig": {
     "access": "public"
   },
-  "author": "Jaisocx",
-  "license": "ISC"
+  "optionalDependencies": {
+    "@jaisocx/file-writer": "^1.2.2",
+    "@jaisocx/template-renderer": "^1.4.1"
+  }
 }
 
 

@@ -1,0 +1,14 @@
+/* Responsive rules for: s_12_mobile_xs_landscape */
+@media only screen and (min-width: 320px) and (max-width: 500px) and (orientation: landscape) {
+  .workspace {
+    --media_rule_name: s_12_mobile_xs_landscape;
+
+  }    
+
+  /* verifying responsive rules applies */
+  .workspace.verify-responsive-rule-applies main h1::before {
+    content: var(--media-rule);
+  }
+
+}
+

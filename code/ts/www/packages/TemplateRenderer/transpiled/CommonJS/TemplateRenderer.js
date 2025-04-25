@@ -27,6 +27,7 @@ class TemplateRenderer extends event_emitter_1.EventEmitter {
     }
     initDataRecord() {
         let dataRecord = new Object();
+        dataRecord.isOptimized = false;
         dataRecord.textTemplate = "";
         dataRecord.dataForRendering = new Object();
         dataRecord.bitsbufTemplate = new Uint8Array();
@@ -34,6 +35,13 @@ class TemplateRenderer extends event_emitter_1.EventEmitter {
         dataRecord.optimizedPlaceholdersEntries = new Object();
         dataRecord.optimizedTemplate = new Array();
         return dataRecord;
+    }
+    addNewDataRecord() {
+        let dataRecord = this.initDataRecord();
+        this.dataRecords.push(dataRecord);
+        __classPrivateFieldSet(this, _TemplateRenderer_activeDataRecordId, (this.dataRecords.length - 1), "f");
+        this.dataRecords[__classPrivateFieldGet(this, _TemplateRenderer_activeDataRecordId, "f")].id = __classPrivateFieldGet(this, _TemplateRenderer_activeDataRecordId, "f");
+        return this.dataRecords[__classPrivateFieldGet(this, _TemplateRenderer_activeDataRecordId, "f")];
     }
     getActiveDataRecord() {
         let dataRecord;
@@ -59,12 +67,23 @@ class TemplateRenderer extends event_emitter_1.EventEmitter {
         __classPrivateFieldSet(this, _TemplateRenderer_activeDataRecordId, id, "f");
         return this.dataRecords[id];
     }
-    addNewDataRecord() {
-        let dataRecord = this.initDataRecord();
-        this.dataRecords.push(dataRecord);
-        __classPrivateFieldSet(this, _TemplateRenderer_activeDataRecordId, (this.dataRecords.length - 1), "f");
-        this.dataRecords[__classPrivateFieldGet(this, _TemplateRenderer_activeDataRecordId, "f")].id = __classPrivateFieldGet(this, _TemplateRenderer_activeDataRecordId, "f");
-        return this.dataRecords[__classPrivateFieldGet(this, _TemplateRenderer_activeDataRecordId, "f")];
+    setActiveDataRecord(dataRecord) {
+        if (__classPrivateFieldGet(this, _TemplateRenderer_activeDataRecordId, "f") === 0) {
+            let obj = new Object();
+            this.dataRecords.push(obj);
+        }
+        let id = dataRecord.id;
+        if (id === 0) {
+            id = this.dataRecords.length;
+            dataRecord.id = id;
+            this.dataRecords.push(dataRecord);
+        }
+        else {
+            id = dataRecord.id;
+            this.dataRecords[id] = dataRecord;
+        }
+        __classPrivateFieldSet(this, _TemplateRenderer_activeDataRecordId, id, "f");
+        return id;
     }
     setDebug(debug) {
         this.debug = debug;
@@ -85,7 +104,11 @@ class TemplateRenderer extends event_emitter_1.EventEmitter {
             throw new Error("No template neither data were set.");
         }
         let dataRecord = this.getActiveDataRecord();
-        let renderedHtml = this.replaceTemplateRendererWithDataForRendering();
+        if (dataRecord.isOptimized === false) {
+            this.optimize(dataRecord.id);
+            dataRecord = this.dataRecords[dataRecord.id];
+        }
+        let renderedHtml = this.renderOptimizedToStringDataText(dataRecord.id, dataRecord.dataForRendering);
         if (this.debug) {
             console.log("renderedHtml before afterRender event emitted", renderedHtml);
         }
@@ -116,21 +139,20 @@ class TemplateRenderer extends event_emitter_1.EventEmitter {
         }
         return renderedHtml;
     }
-    replaceTemplateRendererWithDataForRendering() {
-        let dataRecord = this.getActiveDataRecord();
-        let renderedHtml_1 = "";
-        let renderedHtml_2 = dataRecord.textTemplate;
-        for (const placeholderName in dataRecord.dataForRendering) {
-            renderedHtml_1 = renderedHtml_2;
-            const stringToReplace = `{{ ${placeholderName} }}`;
+    // the faster method.
+    renderOptimizedDataBitsbufs(templateDataRecordId, dataForRendering) {
+        let dataRecord = this.getDataRecordById(templateDataRecordId);
+        dataRecord.dataForRendering = dataForRendering;
+        let bitsbufsArray = [...dataRecord.optimizedBitsbufTemplate];
+        for (let placeholderName in dataRecord.dataForRendering) {
+            let placeholderEntries = dataRecord.optimizedPlaceholdersEntries[placeholderName];
             // @ts-ignore
-            let valueToSet = dataRecord.dataForRendering[placeholderName];
-            if (!valueToSet) {
-                valueToSet = "";
+            let placehoder = dataRecord.dataForRendering[placeholderName];
+            for (let i of placeholderEntries) {
+                bitsbufsArray[i] = placehoder;
             }
-            renderedHtml_2 = renderedHtml_1.replace(stringToReplace, valueToSet);
         }
-        return renderedHtml_2;
+        return bitsbufsArray;
     }
     renderOptimizedToStringDataText(templateDataRecordId, dataForRendering) {
         let dataRecord = this.getDataRecordById(templateDataRecordId);
@@ -180,21 +202,6 @@ class TemplateRenderer extends event_emitter_1.EventEmitter {
             }
         }
         return textBlocks;
-    }
-    // the faster method.
-    renderOptimizedDataBitsbufs(templateDataRecordId, dataForRendering) {
-        let dataRecord = this.getDataRecordById(templateDataRecordId);
-        dataRecord.dataForRendering = dataForRendering;
-        let bitsbufsArray = [...dataRecord.optimizedBitsbufTemplate];
-        for (let placeholderName in dataRecord.dataForRendering) {
-            let placeholderEntries = dataRecord.optimizedPlaceholdersEntries[placeholderName];
-            // @ts-ignore
-            let placehoder = dataRecord.dataForRendering[placeholderName];
-            for (let i of placeholderEntries) {
-                bitsbufsArray[i] = placehoder;
-            }
-        }
-        return bitsbufsArray;
     }
     optimize(templateDataRecordId) {
         let dataRecord = this.getDataRecordById(templateDataRecordId);
@@ -263,6 +270,7 @@ class TemplateRenderer extends event_emitter_1.EventEmitter {
             }
         }
         dataRecord.optimizedTemplate = [...records];
+        dataRecord.isOptimized = true;
         return 1;
     }
     orderedRecords(inRecords) {
@@ -280,6 +288,23 @@ class TemplateRenderer extends event_emitter_1.EventEmitter {
             }
         });
         return [...records];
+    }
+    // old method String.replace() in loop over all charrs of the template every loop iterations.
+    replaceTemplateRendererWithDataForRendering() {
+        let dataRecord = this.getActiveDataRecord();
+        let renderedHtml_1 = "";
+        let renderedHtml_2 = dataRecord.textTemplate;
+        for (const placeholderName in dataRecord.dataForRendering) {
+            renderedHtml_1 = renderedHtml_2;
+            const stringToReplace = `{{ ${placeholderName} }}`;
+            // @ts-ignore
+            let valueToSet = dataRecord.dataForRendering[placeholderName];
+            if (!valueToSet) {
+                valueToSet = "";
+            }
+            renderedHtml_2 = renderedHtml_1.replace(stringToReplace, valueToSet);
+        }
+        return renderedHtml_2;
     }
 }
 exports.TemplateRenderer = TemplateRenderer;

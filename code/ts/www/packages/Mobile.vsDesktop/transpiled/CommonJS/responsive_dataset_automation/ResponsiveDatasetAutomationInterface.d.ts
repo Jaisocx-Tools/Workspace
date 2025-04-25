@@ -8,7 +8,7 @@ export interface ResponsiveDatasetAutomationInterface {
     produceMediaConstantsCssFile(fileName: string): Promise<number>;
     produceMediaCssFilesSet(filenamePrefix: string): Promise<number>;
     produceMediaCssFile(filenamePrefix: string, responsiveDatasetPropName: string, fileName: string): Promise<number>;
-    produceMediaCssImportsCssFile(targetFileName: string, relativeImportedFilesFolderPath: string, importedFilenamePrefix: string, webpackAliased: boolean): Promise<number>;
+    produceMediaCssImportsCssFile(targetFileName: string, relativeImportedFilesFolderPath: string, mediaConstantsFileName: string, importedFilenamePrefix: string, webpackAliased: boolean): Promise<number>;
     produceMediaConstantNameLine(responsiveDatasetPropName: string, orientation: any): Uint8Array[];
     produceMediaRule(responsiveDatasetPropName: string, orientation: any, media: any): Uint8Array[];
     produceMediaRuleConstantLine(constantName: any, responsiveDatasetPropName: string, orientation: any, media: any): (Uint8Array | Uint8Array[])[];

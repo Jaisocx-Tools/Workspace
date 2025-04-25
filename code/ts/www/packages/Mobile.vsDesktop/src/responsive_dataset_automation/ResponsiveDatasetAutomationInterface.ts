@@ -50,6 +50,7 @@ export interface ResponsiveDatasetAutomationInterface {
   produceMediaCssImportsCssFile ( 
     targetFileName: string,
     relativeImportedFilesFolderPath: string,
+    mediaConstantsFileName: string,
     importedFilenamePrefix: string,
     webpackAliased: boolean
   ): Promise<number>; // this

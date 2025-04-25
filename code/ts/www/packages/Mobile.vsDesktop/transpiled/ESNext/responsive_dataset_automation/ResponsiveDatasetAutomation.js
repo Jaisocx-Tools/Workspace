@@ -56,11 +56,28 @@ export class ResponsiveDatasetAutomation {
             return result;
         };
     }
+    async run(pathToJsonDatasetForResponsiveSizes, responsiveTemplateFilePath, subfolderName, responsiveMediaQueriesFilesPrefix, mediaConstantsFileName, webpackAliasName) {
+        this
+            .readDataset(pathToJsonDatasetForResponsiveSizes)
+            .readTemplateMediaCssFile(responsiveTemplateFilePath)
+            .setWebpackAliasName(webpackAliasName)
+            .setMediaAndStylesResponsiveFolderPath(["MediaAndStyles", "/", subfolderName].join(""));
+        await this.produceMediaConstantsCssFile(mediaConstantsFileName);
+        await this.produceMediaCssFilesSet(responsiveMediaQueriesFilesPrefix);
+        let isWebpackAliased_true = true;
+        await this.produceMediaCssImportsCssFile("MediaCssImports_Webpack.css", subfolderName, mediaConstantsFileName, responsiveMediaQueriesFilesPrefix, isWebpackAliased_true);
+        let isWebpackAliased_false = false;
+        await this.produceMediaCssImportsCssFile("MediaCssImports.css", "", mediaConstantsFileName, responsiveMediaQueriesFilesPrefix, isWebpackAliased_false);
+        return 1;
+    }
     /**
      * @ready
     */
-    setMediaAndStylesResponsiveFolderPath(inFolderPath) {
-        this.mediaAndStylesResponsiveFolderPath = inFolderPath;
+    setMediaAndStylesResponsiveFolderPath(inFolderRelativePath) {
+        this.mediaAndStylesResponsiveFolderPath = inFolderRelativePath;
+        if (fs.existsSync(inFolderRelativePath) === false) {
+            fs.mkdirSync(inFolderRelativePath);
+        }
         return this;
     }
     // reads json with sizes
@@ -117,7 +134,7 @@ export class ResponsiveDatasetAutomation {
         let responsiveDatasetPropName = "";
         let mediaConstantLinesSet = new Array();
         await this.fileWriter.toAddToFileInLoop_CleanupFileAndGetNewFileHandle(path.resolve(this.mediaAndStylesResponsiveFolderPath, targetFileName));
-        let cssClassStartLine = this.textEncoder.encode(".workspace {\n");
+        let cssClassStartLine = this.textEncoder.encode(".workspace {\n\n");
         await this.fileWriter.appendBitsbufToFile(cssClassStartLine);
         let i = 0;
         let propsNumber = propNames.length;
@@ -152,7 +169,6 @@ export class ResponsiveDatasetAutomation {
         main: for (responsiveDatasetPropName of propNames) {
             for (orientation of orientationKeywords) {
                 await this.produceMediaCssFile(filenamePrefix, responsiveDatasetPropName, orientation);
-                break main;
             }
         }
         return 1;
@@ -207,9 +223,11 @@ export class ResponsiveDatasetAutomation {
     //   
     // @import url("@jaisocx-css-clean-start-MediaAndStyles/responsive/clean-start-s-mobile-landscape.css");
     // ...  
-    async produceMediaCssImportsCssFile(targetFileName, relativeImportedFilesFolderPath, importedFilenamePrefix, webpackAliased) {
+    async produceMediaCssImportsCssFile(targetFileName, relativeImportedFilesFolderPath, mediaConstantsFileName, importedFilenamePrefix, webpackAliased) {
         // @ts-ignore
         let data = this.dataset.data;
+        let targetFilePath = path.resolve(this.mediaAndStylesResponsiveFolderPath, targetFileName);
+        let opened = await this.fileWriter.toAddToFileInLoop_CleanupFileAndGetNewFileHandle(targetFilePath);
         let importedFileName = "";
         let webpackAliasName = "";
         let mediaName = "";
@@ -217,17 +235,37 @@ export class ResponsiveDatasetAutomation {
         if (webpackAliased === true) {
             webpackAliasName = this.webpackAliasName;
         }
+        else {
+            webpackAliasName = ".";
+        }
+        importedFileName = mediaConstantsFileName;
+        mediaCssImportLine = this.produceMediaCssImportLine(relativeImportedFilesFolderPath, importedFileName, webpackAliasName);
+        let written = await this.fileWriter.appendTextToFile((mediaCssImportLine + "\n"));
+        written = await this.loopMediaCssImportsCssFile(data, importedFilenamePrefix, relativeImportedFilesFolderPath, webpackAliased);
+        written = await this.fileWriter.appendTextToFile("\n\n");
+        await this.fileWriter.filehandleClose();
+        return 1;
+    }
+    async loopMediaCssImportsCssFile(data, importedFilenamePrefix, relativeImportedFilesFolderPath, webpackAliased) {
+        let importedFileName = "";
+        let webpackAliasName = "";
+        let mediaName = "";
+        let mediaCssImportLine = "";
+        if (webpackAliased === true) {
+            webpackAliasName = this.webpackAliasName;
+        }
+        else {
+            webpackAliasName = ".";
+        }
         let orientationKeywords = this.automationConstants.getOrientationKeywords();
-        await this.fileWriter.toAddToFileInLoop_CleanupFileAndGetNewFileHandle(path.resolve(this.mediaAndStylesResponsiveFolderPath, targetFileName));
         for (let responsiveDatasetPropName in data) {
             for (let orientation of orientationKeywords) {
                 mediaName = this.produceMediaName(responsiveDatasetPropName, orientation);
-                importedFileName = `${importedFilenamePrefix}${mediaName}.css`;
+                importedFileName = [importedFilenamePrefix, mediaName, ".css"].join("");
                 mediaCssImportLine = this.produceMediaCssImportLine(relativeImportedFilesFolderPath, importedFileName, webpackAliasName);
-                await this.fileWriter.appendTextToFile(mediaCssImportLine);
+                let written = await this.fileWriter.appendTextToFile(mediaCssImportLine);
             }
         }
-        await this.fileWriter.filehandleClose();
         return 1;
     }
     // @import url("@jaisocx-css-clean-start-MediaAndStyles/responsive/clean-start-s-mobile-landscape.css");
@@ -235,12 +273,15 @@ export class ResponsiveDatasetAutomation {
      * @ready
     */
     produceMediaCssImportLine(relativeImportedFilesFolderPath, importedFileName, webpackAliasName) {
+        let relativePath = "";
+        if (relativeImportedFilesFolderPath && relativeImportedFilesFolderPath.length !== 0) {
+            relativePath = [relativeImportedFilesFolderPath, "/"].join("");
+        }
         let words = [
             this.automationConstants.getImportUrlStart(),
             webpackAliasName,
             "/",
-            relativeImportedFilesFolderPath,
-            "/",
+            relativePath,
             importedFileName,
             this.automationConstants.getImportUrlEnd(),
             this.automationConstants.getN()

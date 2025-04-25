@@ -7,6 +7,7 @@ import { BaseParser } from "@jaisocx/css-importer";
 
 type TemplateRendererDataRecord = {
   id: number;
+  isOptimized: boolean;
   textTemplate: string;
   dataForRendering: object;
 
@@ -53,6 +54,7 @@ export class TemplateRenderer extends EventEmitter {
   initDataRecord(): TemplateRendererDataRecord {
     let dataRecord: TemplateRendererDataRecord = new Object() as TemplateRendererDataRecord;
 
+    dataRecord.isOptimized = false;
     dataRecord.textTemplate = "";
     dataRecord.dataForRendering = new Object();
 
@@ -64,7 +66,16 @@ export class TemplateRenderer extends EventEmitter {
     return dataRecord;
   }
 
-  protected getActiveDataRecord(): TemplateRendererDataRecord {
+  addNewDataRecord(): TemplateRendererDataRecord {
+    let dataRecord: TemplateRendererDataRecord = this.initDataRecord();
+    this.dataRecords.push( dataRecord );
+    this.#activeDataRecordId = ( this.dataRecords.length - 1 );
+    this.dataRecords[this.#activeDataRecordId].id = this.#activeDataRecordId;
+
+    return this.dataRecords[this.#activeDataRecordId];
+  }
+
+  getActiveDataRecord(): TemplateRendererDataRecord {
     let dataRecord: TemplateRendererDataRecord;
 
     if ( this.#activeDataRecordId === 0 ) {
@@ -95,13 +106,28 @@ export class TemplateRenderer extends EventEmitter {
     return this.dataRecords[id];
   }
 
-  addNewDataRecord(): TemplateRendererDataRecord {
-    let dataRecord: TemplateRendererDataRecord = this.initDataRecord();
-    this.dataRecords.push( dataRecord );
-    this.#activeDataRecordId = ( this.dataRecords.length - 1 );
-    this.dataRecords[this.#activeDataRecordId].id = this.#activeDataRecordId;
+  setActiveDataRecord( dataRecord: TemplateRendererDataRecord ): number {
+    
+    if ( this.#activeDataRecordId === 0 ) {
+      let obj: TemplateRendererDataRecord = new Object() as TemplateRendererDataRecord;
+      this.dataRecords.push( obj );
+    }
 
-    return this.dataRecords[this.#activeDataRecordId];
+    let id: number = dataRecord.id;
+    if ( id === 0 ) {
+      id = this.dataRecords.length;
+      dataRecord.id = id;
+      this.dataRecords.push( dataRecord );
+
+    } else {
+      id = dataRecord.id;
+      this.dataRecords[id] = dataRecord;
+
+    }
+
+    this.#activeDataRecordId = id;
+
+    return id;
   }
 
   setDebug(debug: boolean): TemplateRenderer {
@@ -124,15 +150,21 @@ export class TemplateRenderer extends EventEmitter {
   }
 
 
-
   render(): any {
     if ( this.#activeDataRecordId === 0 ) {
       throw new Error( "No template neither data were set." );
     }
 
     let dataRecord: TemplateRendererDataRecord = this.getActiveDataRecord();
+    if ( dataRecord.isOptimized === false ) {
+      this.optimize( dataRecord.id );
+      dataRecord = this.dataRecords[ dataRecord.id ];
+    }
 
-    let renderedHtml = this.replaceTemplateRendererWithDataForRendering();
+    let renderedHtml = this.renderOptimizedToStringDataText (
+      dataRecord.id,
+      dataRecord.dataForRendering
+    );
 
     if (this.debug) {
       console.log(
@@ -181,31 +213,28 @@ export class TemplateRenderer extends EventEmitter {
   }
 
 
-  replaceTemplateRendererWithDataForRendering(): any {
 
-    let dataRecord: TemplateRendererDataRecord = this.getActiveDataRecord();
+  // the faster method.
+  renderOptimizedDataBitsbufs ( 
+    templateDataRecordId: number, 
+    dataForRendering: any 
+  ): Uint8Array[] {
+    let dataRecord: TemplateRendererDataRecord = this.getDataRecordById( templateDataRecordId );
+    dataRecord.dataForRendering = dataForRendering;
 
-    let renderedHtml_1 = "";
-    let renderedHtml_2 = dataRecord.textTemplate;
+    let bitsbufsArray: Uint8Array[] = [...dataRecord.optimizedBitsbufTemplate];
 
-    for (const placeholderName in dataRecord.dataForRendering) {
-      renderedHtml_1 = renderedHtml_2;
-
-      const stringToReplace = `{{ ${placeholderName} }}`;
-
+    for ( let placeholderName in dataRecord.dataForRendering ) {
+      let placeholderEntries: number[] = dataRecord.optimizedPlaceholdersEntries[placeholderName] as number[];
       // @ts-ignore
-      let valueToSet = dataRecord.dataForRendering[placeholderName];
-      if (!valueToSet) {
-        valueToSet = "";
+      let placehoder: Uint8Array = dataRecord.dataForRendering[placeholderName];
+    
+      for ( let i of placeholderEntries ) {
+        bitsbufsArray[i] = placehoder;
       }
-
-      renderedHtml_2 = renderedHtml_1.replace (
-        stringToReplace,
-        valueToSet
-      );
     }
 
-    return renderedHtml_2;
+    return bitsbufsArray;
   }
 
 
@@ -295,31 +324,6 @@ export class TemplateRenderer extends EventEmitter {
   }
 
   
-
-  // the faster method.
-  renderOptimizedDataBitsbufs ( 
-    templateDataRecordId: number, 
-    dataForRendering: any 
-  ): Uint8Array[] {
-    let dataRecord: TemplateRendererDataRecord = this.getDataRecordById( templateDataRecordId );
-    dataRecord.dataForRendering = dataForRendering;
-
-    let bitsbufsArray: Uint8Array[] = [...dataRecord.optimizedBitsbufTemplate];
-
-    for ( let placeholderName in dataRecord.dataForRendering ) {
-      let placeholderEntries: number[] = dataRecord.optimizedPlaceholdersEntries[placeholderName] as number[];
-      // @ts-ignore
-      let placehoder: Uint8Array = dataRecord.dataForRendering[placeholderName];
-   
-      for ( let i of placeholderEntries ) {
-        bitsbufsArray[i] = placehoder;
-      }
-    }
-
-    return bitsbufsArray;
-  }
-
-
 
   optimize ( templateDataRecordId: number ): number {
 
@@ -434,6 +438,7 @@ export class TemplateRenderer extends EventEmitter {
     }
 
     dataRecord.optimizedTemplate = [...records];
+    dataRecord.isOptimized = true;
 
 
     return 1;
@@ -460,6 +465,35 @@ export class TemplateRenderer extends EventEmitter {
     );
 
     return [...records];
+  }
+
+
+  // old method String.replace() in loop over all charrs of the template every loop iterations.
+  replaceTemplateRendererWithDataForRendering(): any {
+
+    let dataRecord: TemplateRendererDataRecord = this.getActiveDataRecord();
+
+    let renderedHtml_1 = "";
+    let renderedHtml_2 = dataRecord.textTemplate;
+
+    for (const placeholderName in dataRecord.dataForRendering) {
+      renderedHtml_1 = renderedHtml_2;
+
+      const stringToReplace = `{{ ${placeholderName} }}`;
+
+      // @ts-ignore
+      let valueToSet = dataRecord.dataForRendering[placeholderName];
+      if (!valueToSet) {
+        valueToSet = "";
+      }
+
+      renderedHtml_2 = renderedHtml_1.replace (
+        stringToReplace,
+        valueToSet
+      );
+    }
+
+    return renderedHtml_2;
   }
 
 }

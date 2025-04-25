@@ -2,6 +2,7 @@ import { EventEmitter } from "@jaisocx/event-emitter";
 import { BaseParser } from "@jaisocx/css-importer";
 type TemplateRendererDataRecord = {
     id: number;
+    isOptimized: boolean;
     textTemplate: string;
     dataForRendering: object;
     bitsbufTemplate: Uint8Array;
@@ -20,22 +21,23 @@ export declare class TemplateRenderer extends EventEmitter {
     dataRecords: TemplateRendererDataRecord[];
     constructor();
     initDataRecord(): TemplateRendererDataRecord;
-    protected getActiveDataRecord(): TemplateRendererDataRecord;
+    addNewDataRecord(): TemplateRendererDataRecord;
+    getActiveDataRecord(): TemplateRendererDataRecord;
     getActiveDataRecordId(): number;
     getDataRecordById(id: number): TemplateRendererDataRecord;
     setActiveRecordId(id: number): TemplateRendererDataRecord;
-    addNewDataRecord(): TemplateRendererDataRecord;
+    setActiveDataRecord(dataRecord: TemplateRendererDataRecord): number;
     setDebug(debug: boolean): TemplateRenderer;
     setTemplate(template: string): TemplateRenderer;
     setData(dataForRendering: object): TemplateRenderer;
     render(): any;
-    replaceTemplateRendererWithDataForRendering(): any;
+    renderOptimizedDataBitsbufs(templateDataRecordId: number, dataForRendering: any): Uint8Array[];
     renderOptimizedToStringDataText(templateDataRecordId: number, dataForRendering: any): string;
     renderOptimizedToStringDataBitsbufs(templateDataRecordId: number, dataForRendering: any): string;
     renderOptimizedTextBlocks(templateDataRecordId: number, dataForRendering: any): string[];
-    renderOptimizedDataBitsbufs(templateDataRecordId: number, dataForRendering: any): Uint8Array[];
     optimize(templateDataRecordId: number): number;
     protected orderedRecords(inRecords: OptimizedTemplateRecord[]): OptimizedTemplateRecord[];
+    replaceTemplateRendererWithDataForRendering(): any;
 }
 export {};
 //# sourceMappingURL=TemplateRenderer.d.ts.map

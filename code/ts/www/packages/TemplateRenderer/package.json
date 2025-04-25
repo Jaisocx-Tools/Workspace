@@ -1,6 +1,6 @@
 {
   "name": "@jaisocx/template-renderer",
-  "version": "1.4.1",
+  "version": "1.5.1",
   "private": false,
   "description": "",
   "type": "module",
@@ -19,7 +19,8 @@
     "LICENSE"
   ],
   "optionalDependencies": {
-    "@jaisocx/event-emitter": "^1.4.x"
+    "@jaisocx/event-emitter": "~1.4.x",
+    "@jaisocx/css-importer": "~1.2.8"
   },
   "publishConfig": {
     "access": "public"

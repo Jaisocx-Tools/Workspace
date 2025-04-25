@@ -4,7 +4,7 @@
     {
       "path": "packages/FileWriter",
       "name": "file-writer",
-      "build": true,
+      "build": false,
       "build-simple-enable": false,
       "dependencies": [
         {
@@ -179,16 +179,12 @@
     {
       "path": "packages/TemplateRenderer",
       "name": "template-renderer",
-      "build": true,
+      "build": false,
       "build-simple-enable": true,
       "dependencies": [
         {
           "name": "@jaisocx/event-emitter",
           "path": "packages/EventEmitter"
-        },
-        {
-          "name": "@jaisocx/file-writer",
-          "path": "packages/FileWriter"
         },
         {
           "name": "@jaisocx/css-importer",

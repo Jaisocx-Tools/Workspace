@@ -1,0 +1,14 @@
+/* Responsive rules for: s_54_tv_8k_portrait */
+@media only screen and (min-width: 4321px) and (max-width: 8640px) and (orientation: portrait) {
+  .workspace {
+    --media_rule_name: s_54_tv_8k_portrait;
+
+  }    
+
+  /* verifying responsive rules applies */
+  .workspace.verify-responsive-rule-applies main h1::before {
+    content: var(--media-rule);
+  }
+
+}
+
