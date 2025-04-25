@@ -15,6 +15,7 @@
   "files": [
     "transpiled/CommonJS",
     "transpiled/ESNext",
+    "transpiled/Simple",
     "README.md"
   ],
   "keywords": [
