@@ -1,0 +1,13 @@
+/* Responsive rules for: s_56_tv_16k_landscape*/
+@media only screen and (min-width: 15361px) and (max-width: 25360px) and (orientation: landscape){
+  .workspace {
+    --media_rule_name: s_56_tv_16k_landscape;
+  }    
+
+  /* verifying responsive rules applies */
+  .workspace.verify-responsive-rule-applies main h1::before {
+    content: var(--media-rule);
+  }
+
+}
+

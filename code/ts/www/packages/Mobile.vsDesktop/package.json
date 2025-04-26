@@ -42,7 +42,8 @@
   },
   "optionalDependencies": {
     "@jaisocx/file-writer": "^1.2.2",
-    "@jaisocx/template-renderer": "^1.4.1"
+    "@jaisocx/template-renderer": "^1.4.1",
+    "@jaisocx/css-importer": "^1.2.8"
   }
 }
 

@@ -1,11 +1,11 @@
-import { TextEncoder } from "node:util";
-import { EventEmitter, EventEmitResult, EventHandlerReturnValue } from "@jaisocx/event-emitter";
-import { BaseParser } from "@jaisocx/css-importer";
-//import { FileWriter } from "@jaisocx/file-writer";
+import { TextEncoder, TextDecoder } from "node:util";
+
+import { EventEmitter, EventEmitResult } from "@jaisocx/event-emitter";
+import { TokensParser } from "@jaisocx/tokens-parser";
 
 
 
-type TemplateRendererDataRecord = {
+export type TemplateRendererDataRecord = {
   id: number;
   isOptimized: boolean;
   textTemplate: string;
@@ -19,7 +19,7 @@ type TemplateRendererDataRecord = {
 
 
 
-type OptimizedTemplateRecord  = {
+export type OptimizedTemplateRecord  = {
   placeholderName: string;
   range: number[];
 }
@@ -29,11 +29,13 @@ type OptimizedTemplateRecord  = {
 export class TemplateRenderer extends EventEmitter {
   EVENT_NAME__AFTER_RENDER: any;
 
-  baseParser: BaseParser;
-  //fileWriter: FileWriter;
+  tokensParser: TokensParser;
 
   dataRecords: TemplateRendererDataRecord[];
   #activeDataRecordId: number;
+
+  textEncoder: TextEncoder;
+  textDecoder: TextDecoder;
 
 
 
@@ -42,11 +44,13 @@ export class TemplateRenderer extends EventEmitter {
 
     this.EVENT_NAME__AFTER_RENDER = "afterRender";
 
-    this.baseParser = new BaseParser();
-    //this.fileWriter = new FileWriter();
+    this.tokensParser = new TokensParser();
 
     this.dataRecords = new Array() as TemplateRendererDataRecord[];
     this.#activeDataRecordId = 0;
+
+    this.textEncoder = new TextEncoder();
+    this.textDecoder = new TextDecoder( "utf8" );
   }
 
 
@@ -281,7 +285,7 @@ export class TemplateRenderer extends EventEmitter {
       if ( typeof bitsbufElem === "string" ) {
         textBlocks[i] = bitsbufElem;
       } else {
-        textBlocks[i] = this.baseParser.textDecoder.decode( bitsbufElem );
+        textBlocks[i] = this.textDecoder.decode( bitsbufElem );
       }
     }
 
@@ -307,7 +311,7 @@ export class TemplateRenderer extends EventEmitter {
     let bitsbufElem: Uint8Array = new Uint8Array(); 
     for ( let i = 0; i < bitsbufsArray.length; i++ ) {
       bitsbufElem = bitsbufsArray[i];
-      textBlocks[i] = this.baseParser.textDecoder.decode( bitsbufElem );
+      textBlocks[i] = this.textDecoder.decode( bitsbufElem );
     }
 
     for ( let placeholderName in dataRecord.dataForRendering ) {
@@ -327,107 +331,86 @@ export class TemplateRenderer extends EventEmitter {
 
   optimize ( templateDataRecordId: number ): number {
 
+    let maxIterationsNumber: number = 1200;
+
     let dataRecord: TemplateRendererDataRecord = this.getDataRecordById( templateDataRecordId );
 
     if ( dataRecord.bitsbufTemplate.byteLength === 0 ) {
-      dataRecord.bitsbufTemplate = this.baseParser.textEncoder.encode( dataRecord.textTemplate );
+      dataRecord.bitsbufTemplate = this.tokensParser.textEncoder.encode( dataRecord.textTemplate );
     }
 
 
-    let start: number = 0;
     let end: number = dataRecord.bitsbufTemplate.length;
-    let inBitsBufRange: number[] = new Array(2) as number[];
-    let tokenMatchedRange: number[] = [0,0];
+    let templateLookupRange: number[] = [0, end];
 
-    inBitsBufRange[0] = 0;
-    inBitsBufRange[1] = end;
+    let placeholdersNames: string[] = Object.keys( dataRecord.dataForRendering );
+    let severalTokensSets: string[][] = placeholdersNames.map(
+      ( placeholderName: string ) => {
+        let placeholderMarkup: string = [ "{{ ", placeholderName, " }}" ].join("");
+        return [ placeholderMarkup ];
+      }
+    );
 
+    let bitsbufsRanges: number[][] = new Array(1) as number[][];
+    bitsbufsRanges[0] = templateLookupRange;
 
-    main: for ( let placeholderName in dataRecord.dataForRendering ) {
+    let inOutRanges_WithoutTokenizedAreas: number[][] = new Array() as number[][];
+    let inOutRanges_TokensSetsMatched: number[][][] = new Array( placeholdersNames.length ) as number[][][];
 
-      const stringToReplace = `{{ ${placeholderName} }}`;
-  
-      let tokens: Uint8Array[] = [this.baseParser.textEncoder.encode( stringToReplace )];
-  
-      let i: number = 0;
-      let maxIterations: number = 120;
-      start = 0;
+    let numberOfPlaceholdersMatched: number = this.tokensParser
+      .parseAroundSeveralTokensSets ( 
+        dataRecord.bitsbufTemplate,
+        bitsbufsRanges, // datatype explained: [ [startRef: number, endRef: number], [startRef: number, endRef: number], ... ];
+        severalTokensSets, // where one tokensSet is array of datatype string[]
+        inOutRanges_WithoutTokenizedAreas,
+        inOutRanges_TokensSetsMatched,
+        maxIterationsNumber
+      );
 
-      for ( i = 0; i < maxIterations; i++ ) {
+    for ( let placeholderId = 0; placeholderId < placeholdersNames.length; placeholderId++ ) {
 
-        let pos: Number|false = this.baseParser.getRangeOfTokensSetMatch ( 
-          dataRecord.bitsbufTemplate,
-          inBitsBufRange,
-          tokens,
-          tokenMatchedRange,
-          start,
-          end
-        );
+      let placeholderName: string = placeholdersNames[placeholderId];
 
-        if ( pos === false ) {
-          break;
-        }
+      let tokensMatchedRanges: number[][] = inOutRanges_TokensSetsMatched[placeholderId];
 
+      for ( let tokenId = 0; tokenId < tokensMatchedRanges.length; tokenId++ ) {
         let templateRecord: OptimizedTemplateRecord = new Object() as OptimizedTemplateRecord;
-        templateRecord.range = [...tokenMatchedRange];
+        templateRecord.range = [...tokensMatchedRanges[tokenId]];
         templateRecord.placeholderName = placeholderName;
         dataRecord.optimizedTemplate.push( templateRecord );
-
-        start = pos as number;
       }
-
     }
 
-
-
-    let records: OptimizedTemplateRecord[] = this.orderedRecords( dataRecord.optimizedTemplate );
-
-    start = 0;
     let fixedTemplateRecord: OptimizedTemplateRecord = new Object() as OptimizedTemplateRecord;
-    let templateRange: number[] = [0, 0];
 
-    for ( let record of records ) {
-      templateRange = [start,0];
-
-      let matchedRangeStart: number = record.range[0];
-      templateRange[1] = matchedRangeStart;
-
-      start = record.range[1] + 1;
+    for ( let templateRange of inOutRanges_WithoutTokenizedAreas ) {
 
       fixedTemplateRecord = new Object() as OptimizedTemplateRecord;
-      fixedTemplateRecord.placeholderName = "_";
       fixedTemplateRecord.range = templateRange;
+      fixedTemplateRecord.placeholderName = "_";
 
       dataRecord.optimizedTemplate.push( fixedTemplateRecord );
     }
 
-    templateRange = [start, end];
-    fixedTemplateRecord = new Object() as OptimizedTemplateRecord;
-    fixedTemplateRecord.placeholderName = "_";
-    fixedTemplateRecord.range = templateRange;
-    dataRecord.optimizedTemplate.push( fixedTemplateRecord );
-
-    records = this.orderedRecords( dataRecord.optimizedTemplate );
-
-
-
-    dataRecord.optimizedBitsbufTemplate = new Array(dataRecord.optimizedTemplate.length) as Uint8Array[];
     dataRecord.optimizedPlaceholdersEntries = new Object();
 
-    for ( let placeholderName in dataRecord.dataForRendering ) {
+    for ( let placeholderId = 0; placeholderId < placeholdersNames.length; placeholderId++ ) {
+      let placeholderName: string = placeholdersNames[placeholderId];
+
       dataRecord.optimizedPlaceholdersEntries[placeholderName] = new Array() as number[];
     }
 
+    let optimizedRecords: OptimizedTemplateRecord[] = this.orderedRecords( dataRecord.optimizedTemplate );
+    dataRecord.optimizedBitsbufTemplate = new Array( optimizedRecords.length ) as Uint8Array[];
 
+    for ( let i = 0; i < optimizedRecords.length; i++ ) {
 
-    for ( let i = 0; i < records.length; i++ ) {
-
-      let record: OptimizedTemplateRecord = records[i];
+      let record: OptimizedTemplateRecord = optimizedRecords[i];
       let placeholderName: string = record.placeholderName;
       let bitsbuf: Uint8Array = new Uint8Array();
 
       if ( placeholderName === "_" ) {
-        bitsbuf = dataRecord.bitsbufTemplate.subarray( 
+        bitsbuf = dataRecord.bitsbufTemplate.subarray ( 
           record.range[0], 
           record.range[1] );
         dataRecord.optimizedBitsbufTemplate[i] = bitsbuf;
@@ -437,11 +420,10 @@ export class TemplateRenderer extends EventEmitter {
 
     }
 
-    dataRecord.optimizedTemplate = [...records];
+    dataRecord.optimizedTemplate = [...optimizedRecords];
     dataRecord.isOptimized = true;
 
-
-    return 1;
+    return numberOfPlaceholdersMatched;
   }
 
 

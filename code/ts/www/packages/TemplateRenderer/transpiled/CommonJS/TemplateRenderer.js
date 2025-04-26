@@ -13,17 +13,19 @@ var __classPrivateFieldGet = (this && this.__classPrivateFieldGet) || function (
 var _TemplateRenderer_activeDataRecordId;
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.TemplateRenderer = void 0;
+const node_util_1 = require("node:util");
 const event_emitter_1 = require("@jaisocx/event-emitter");
-const css_importer_1 = require("@jaisocx/css-importer");
+const tokens_parser_1 = require("@jaisocx/tokens-parser");
 class TemplateRenderer extends event_emitter_1.EventEmitter {
     constructor() {
         super();
         _TemplateRenderer_activeDataRecordId.set(this, void 0);
         this.EVENT_NAME__AFTER_RENDER = "afterRender";
-        this.baseParser = new css_importer_1.BaseParser();
-        //this.fileWriter = new FileWriter();
+        this.tokensParser = new tokens_parser_1.TokensParser();
         this.dataRecords = new Array();
         __classPrivateFieldSet(this, _TemplateRenderer_activeDataRecordId, 0, "f");
+        this.textEncoder = new node_util_1.TextEncoder();
+        this.textDecoder = new node_util_1.TextDecoder("utf8");
     }
     initDataRecord() {
         let dataRecord = new Object();
@@ -174,7 +176,7 @@ class TemplateRenderer extends event_emitter_1.EventEmitter {
                 textBlocks[i] = bitsbufElem;
             }
             else {
-                textBlocks[i] = this.baseParser.textDecoder.decode(bitsbufElem);
+                textBlocks[i] = this.textDecoder.decode(bitsbufElem);
             }
         }
         let renderedText = textBlocks.join("");
@@ -191,7 +193,7 @@ class TemplateRenderer extends event_emitter_1.EventEmitter {
         let bitsbufElem = new Uint8Array();
         for (let i = 0; i < bitsbufsArray.length; i++) {
             bitsbufElem = bitsbufsArray[i];
-            textBlocks[i] = this.baseParser.textDecoder.decode(bitsbufElem);
+            textBlocks[i] = this.textDecoder.decode(bitsbufElem);
         }
         for (let placeholderName in dataRecord.dataForRendering) {
             let placeholderEntries = dataRecord.optimizedPlaceholdersEntries[placeholderName];
@@ -204,61 +206,52 @@ class TemplateRenderer extends event_emitter_1.EventEmitter {
         return textBlocks;
     }
     optimize(templateDataRecordId) {
+        let maxIterationsNumber = 1200;
         let dataRecord = this.getDataRecordById(templateDataRecordId);
         if (dataRecord.bitsbufTemplate.byteLength === 0) {
-            dataRecord.bitsbufTemplate = this.baseParser.textEncoder.encode(dataRecord.textTemplate);
+            dataRecord.bitsbufTemplate = this.tokensParser.textEncoder.encode(dataRecord.textTemplate);
         }
-        let start = 0;
         let end = dataRecord.bitsbufTemplate.length;
-        let inBitsBufRange = new Array(2);
-        let tokenMatchedRange = [0, 0];
-        inBitsBufRange[0] = 0;
-        inBitsBufRange[1] = end;
-        main: for (let placeholderName in dataRecord.dataForRendering) {
-            const stringToReplace = `{{ ${placeholderName} }}`;
-            let tokens = [this.baseParser.textEncoder.encode(stringToReplace)];
-            let i = 0;
-            let maxIterations = 120;
-            start = 0;
-            for (i = 0; i < maxIterations; i++) {
-                let pos = this.baseParser.getRangeOfTokensSetMatch(dataRecord.bitsbufTemplate, inBitsBufRange, tokens, tokenMatchedRange, start, end);
-                if (pos === false) {
-                    break;
-                }
+        let templateLookupRange = [0, end];
+        let placeholdersNames = Object.keys(dataRecord.dataForRendering);
+        let severalTokensSets = placeholdersNames.map((placeholderName) => {
+            let placeholderMarkup = ["{{ ", placeholderName, " }}"].join("");
+            return [placeholderMarkup];
+        });
+        let bitsbufsRanges = new Array(1);
+        bitsbufsRanges[0] = templateLookupRange;
+        let inOutRanges_WithoutTokenizedAreas = new Array();
+        let inOutRanges_TokensSetsMatched = new Array(placeholdersNames.length);
+        let numberOfPlaceholdersMatched = this.tokensParser
+            .parseAroundSeveralTokensSets(dataRecord.bitsbufTemplate, bitsbufsRanges, // datatype explained: [ [startRef: number, endRef: number], [startRef: number, endRef: number], ... ];
+        severalTokensSets, // where one tokensSet is array of datatype string[]
+        inOutRanges_WithoutTokenizedAreas, inOutRanges_TokensSetsMatched, maxIterationsNumber);
+        for (let placeholderId = 0; placeholderId < placeholdersNames.length; placeholderId++) {
+            let placeholderName = placeholdersNames[placeholderId];
+            let tokensMatchedRanges = inOutRanges_TokensSetsMatched[placeholderId];
+            for (let tokenId = 0; tokenId < tokensMatchedRanges.length; tokenId++) {
                 let templateRecord = new Object();
-                templateRecord.range = [...tokenMatchedRange];
+                templateRecord.range = [...tokensMatchedRanges[tokenId]];
                 templateRecord.placeholderName = placeholderName;
                 dataRecord.optimizedTemplate.push(templateRecord);
-                start = pos;
             }
         }
-        let records = this.orderedRecords(dataRecord.optimizedTemplate);
-        start = 0;
         let fixedTemplateRecord = new Object();
-        let templateRange = [0, 0];
-        for (let record of records) {
-            templateRange = [start, 0];
-            let matchedRangeStart = record.range[0];
-            templateRange[1] = matchedRangeStart;
-            start = record.range[1] + 1;
+        for (let templateRange of inOutRanges_WithoutTokenizedAreas) {
             fixedTemplateRecord = new Object();
-            fixedTemplateRecord.placeholderName = "_";
             fixedTemplateRecord.range = templateRange;
+            fixedTemplateRecord.placeholderName = "_";
             dataRecord.optimizedTemplate.push(fixedTemplateRecord);
         }
-        templateRange = [start, end];
-        fixedTemplateRecord = new Object();
-        fixedTemplateRecord.placeholderName = "_";
-        fixedTemplateRecord.range = templateRange;
-        dataRecord.optimizedTemplate.push(fixedTemplateRecord);
-        records = this.orderedRecords(dataRecord.optimizedTemplate);
-        dataRecord.optimizedBitsbufTemplate = new Array(dataRecord.optimizedTemplate.length);
         dataRecord.optimizedPlaceholdersEntries = new Object();
-        for (let placeholderName in dataRecord.dataForRendering) {
+        for (let placeholderId = 0; placeholderId < placeholdersNames.length; placeholderId++) {
+            let placeholderName = placeholdersNames[placeholderId];
             dataRecord.optimizedPlaceholdersEntries[placeholderName] = new Array();
         }
-        for (let i = 0; i < records.length; i++) {
-            let record = records[i];
+        let optimizedRecords = this.orderedRecords(dataRecord.optimizedTemplate);
+        dataRecord.optimizedBitsbufTemplate = new Array(optimizedRecords.length);
+        for (let i = 0; i < optimizedRecords.length; i++) {
+            let record = optimizedRecords[i];
             let placeholderName = record.placeholderName;
             let bitsbuf = new Uint8Array();
             if (placeholderName === "_") {
@@ -269,9 +262,9 @@ class TemplateRenderer extends event_emitter_1.EventEmitter {
                 dataRecord.optimizedPlaceholdersEntries[placeholderName].push(i);
             }
         }
-        dataRecord.optimizedTemplate = [...records];
+        dataRecord.optimizedTemplate = [...optimizedRecords];
         dataRecord.isOptimized = true;
-        return 1;
+        return numberOfPlaceholdersMatched;
     }
     orderedRecords(inRecords) {
         let records = inRecords.sort((recordA, recordB) => {

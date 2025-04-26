@@ -164,12 +164,9 @@ export class ResponsiveDatasetAutomationConstants {
         let bitsbufsTextBlocks = new Array();
         let textBlockName = "";
         let textBlockNameFirstLetterUC = "";
-        let propertyName = "";
         let getMethodName = "";
         let getBitsbufsMethodName = "";
-        let bitsbufsPropertyName = "";
         for (textBlockName of textsBlocksNamesArray) {
-            propertyName = `#${textBlockName}`;
             textBlockNameFirstLetterUC = (textBlockName.charAt(0).toUpperCase() + textBlockName.slice(1));
             getMethodName = `get${textBlockNameFirstLetterUC}`;
             getBitsbufsMethodName = `getBitbufs${textBlockNameFirstLetterUC}`;

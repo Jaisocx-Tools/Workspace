@@ -2,10 +2,10 @@ import { execSync } from "child_process";
 import * as fs from "node:fs";
 import * as path from "node:path";
 import JSON5 from "json5";
-//import { CssImporter } from "@jaisocx/css-importer";
+import { CssImporter } from "@jaisocx/css-importer";
 export class ProjectBuilder {
     isLocalDevelopment;
-    //cssImporters: CssImporter[];
+    cssImporters;
     absolutePathToProjectRoot;
     relativePathFromRootTsConfigCatalogPath;
     absolutePathFromRootTsConfigCatalogPath;
@@ -18,7 +18,7 @@ export class ProjectBuilder {
     buildSimpleCatalogName;
     constructor() {
         this.isLocalDevelopment = 1;
-        //this.cssImporters = new Array() as CssImporter[];
+        this.cssImporters = new Array();
         this.absolutePathToProjectRoot = "";
         this.relativePathFromRootTsConfigCatalogPath = "";
         this.absolutePathFromRootTsConfigCatalogPath = "";
@@ -101,10 +101,10 @@ export class ProjectBuilder {
         console.log(`${timeStamp} Package [ ${packageJson.name} ]: Calling npm dependencies install`);
         this.installPackageDependencies(packageJson, packagePath);
         // console output list of files in the package src catalog
-        this.runCommandLine(packagePath, "ls -lahrts src", true);
+        this.runCommandLine(packagePath, "ls -lahrts src");
         timeStamp = (new Date()).toISOString();
         console.log(`${timeStamp} Package [ ${packageJson.name} ]: Prettifying with Eslint TypeScript code in ${packagePath}`);
-        this.prettifyWithEslint(packagePath, `${packagePath}/src/**/*.ts`, false);
+        this.prettifyWithEslint(packagePath, `${packagePath}/src/**/*.ts`);
         timeStamp = (new Date()).toISOString();
         console.log(`${timeStamp} Package [ ${packageJson.name} ]: ESNext Transpiling TypeScript code in ${packagePath}`);
         // transpile modern node version compatible
@@ -121,7 +121,7 @@ export class ProjectBuilder {
         if (this.getIsLocalDevelopment()) {
             timeStamp = (new Date()).toISOString();
             console.log(`${timeStamp} Package [ ${packageJson.name} ]: npm link package ${packageJson.name} for local usage with other`);
-            this.runCommandLine(packagePath, "npm link", false);
+            this.runCommandLine(packagePath, "npm link");
         }
         // building simple .js files to use in example.hml via <script src="...js"
         if (packageJson["build-simple-enable"] === true) {
@@ -149,13 +149,13 @@ export class ProjectBuilder {
                 for (localDependency of dependencies) {
                     dependencyCatalogPath = path.resolve(this.absolutePathFromRootWww, localDependency.path);
                     console.log(`cd && npm link in catalog: [ ${dependencyCatalogPath} ]`);
-                    this.runCommandLine(dependencyCatalogPath, `cd "${dependencyCatalogPath}" && npm link`, false);
+                    this.runCommandLine(dependencyCatalogPath, `cd "${dependencyCatalogPath}" && npm link`);
                     localDependenciesNames.push(localDependency.name);
                 }
                 const packagesToLinkJoined = localDependenciesNames.join(" ");
                 const npmLinkCommand = `cd "${packagePath}" && npm link ${packagesToLinkJoined}`;
                 console.log(`${npmLinkCommand}`);
-                this.runCommandLine(packagePath, npmLinkCommand, false);
+                this.runCommandLine(packagePath, npmLinkCommand);
             }
             else {
                 console.log(`Package [ ${packageJson.name} ]: npm install from npm registry`);
@@ -185,21 +185,21 @@ export class ProjectBuilder {
         }
         buildSimpleCatalogPath = packagePath + "/" + this.buildSimpleCatalogName;
         if (false === fs.existsSync(buildSimpleCatalogPath)) {
-            this.runCommandLine(packagePath, `mkdir -p "${buildSimpleCatalogPath}"`, false);
+            this.runCommandLine(packagePath, `mkdir -p "${buildSimpleCatalogPath}"`);
         }
         for (const buildFileName of buildFiles) {
             const buildFilePath = buildCatalogPath + "/" + buildFileName;
             const buildSimpleFilePath = buildSimpleCatalogPath + "/" + buildFileName;
             if (true === fs.existsSync(buildSimpleFilePath)) {
-                this.runCommandLine(packagePath, `rm "${buildSimpleFilePath}"`, false);
+                this.runCommandLine(packagePath, `rm "${buildSimpleFilePath}"`);
             }
             const fileSimplePathDir = path.parse(buildSimpleFilePath).dir;
             if (false === fs.existsSync(fileSimplePathDir)) {
-                this.runCommandLine(packagePath, `mkdir -p "${fileSimplePathDir}"`, false);
+                this.runCommandLine(packagePath, `mkdir -p "${fileSimplePathDir}"`);
             }
-            this.runCommandLine(packagePath, `cp "${buildFilePath}" "${buildSimpleFilePath}"`, false);
+            this.runCommandLine(packagePath, `cp "${buildFilePath}" "${buildSimpleFilePath}"`);
             // @ts-ignore
-            this.prettifyWithEslint(packagePath, `${this.buildSimpleCatalogName}/${buildFileName}`, false);
+            this.prettifyWithEslint(packagePath, `${this.buildSimpleCatalogName}/${buildFileName}`);
         }
     }
     /**
@@ -208,23 +208,23 @@ export class ProjectBuilder {
      * @param packagePath
      */
     cssImporterRun(confNodeCss, packagePath) {
-        // let cssImporter: CssImporter = new CssImporter();
-        // cssImporter
-        //   .setPackagePath( packagePath )
-        //   .setCssFilePath( path.resolve( 
-        //     packagePath, 
-        //     confNodeCss.cssFilePath ) )
-        //   .setCssTargetFilePath( path.resolve( 
-        //     packagePath, 
-        //     confNodeCss.cssTargetFilePath ) )
-        //   .build().then( ( result: number ) => {
-        //     console.log(`css importer built ${packagePath}: ${result}`);
-        //   });
-        // this.cssImporters.push( cssImporter );
+        // console.info(
+        //   confNodeCss,
+        //   packagePath
+        // );
+        let cssImporter = new CssImporter();
+        cssImporter
+            .setPackagePath(packagePath)
+            .setCssFilePath(path.resolve(packagePath, confNodeCss.cssFilePath))
+            .setCssTargetFilePath(path.resolve(packagePath, confNodeCss.cssTargetFilePath))
+            .build().then((result) => {
+            console.log(`css importer built ${packagePath}: ${result}`);
+        });
+        this.cssImporters.push(cssImporter);
     }
-    transpileTypeScriptSources(tsconfigCatalogPath, tsconfigFileName, logToConsole) {
+    transpileTypeScriptSources(tsconfigCatalogPath, tsconfigFileName) {
         const consoleCommand = `cd "${tsconfigCatalogPath}" && tsc -p "${tsconfigFileName}"`;
-        return this.runCommandLine(tsconfigCatalogPath, consoleCommand, logToConsole);
+        return this.runCommandLine(tsconfigCatalogPath, consoleCommand);
     }
     transpileTypescriptSourcesWithPath(packagePath, tsconfigPath) {
         const tsconfigJson = fs.readFileSync(tsconfigPath);
@@ -246,19 +246,21 @@ export class ProjectBuilder {
             const absPath = `${packagePath}/src/${filePath}`;
             return fs.lstatSync(absPath).isFile();
         });
-        const packagePathRelative = packagePath.replace(`${this.absolutePathToProjectRoot}/`, "");
+        // const packagePathRelative = packagePath.replace(
+        //   `${this.absolutePathToProjectRoot}/`, 
+        //   "");
         //const filesListJoinedString: any = `${packagePathRelative}/src/` + filesList.join(` ${packagePathRelative}/src/`);
         const filesListJoinedString = "src/" + filesList.join(" src/");
         const transpileOptionsString = transpileOptions.join(" ");
         // cd packagePath ensures usage of package.json installed deps for this exact subpackage.
         const transpileCommand = `cd "${packagePath}" && npx tsc ${filesListJoinedString} ${transpileOptionsString}`;
-        return this.runCommandLine(`${packagePath}`, transpileCommand, true);
+        return this.runCommandLine(`${packagePath}`, transpileCommand);
     }
-    prettifyWithEslint(packagePath, pathToPrettify, logToConsole) {
+    prettifyWithEslint(packagePath, pathToPrettify) {
         const consoleCommand = `cd "${packagePath}" && npx eslint "${pathToPrettify}" --fix`;
-        return this.runCommandLine(packagePath, consoleCommand, logToConsole);
+        return this.runCommandLine(packagePath, consoleCommand);
     }
-    runCommandLine(configCatalogPath, consoleCommand, logToConsole) {
+    runCommandLine(configCatalogPath, consoleCommand) {
         let result = null;
         try {
             result = execSync(consoleCommand, this.getSpawnSyncPayload(configCatalogPath));

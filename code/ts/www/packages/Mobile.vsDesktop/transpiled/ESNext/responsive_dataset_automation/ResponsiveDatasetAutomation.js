@@ -3,6 +3,7 @@ import * as path from "node:path";
 import { TextEncoder, TextDecoder } from "node:util";
 import { FileWriter } from "@jaisocx/file-writer";
 import { TemplateRenderer } from "@jaisocx/template-renderer";
+import { CssImporter } from "@jaisocx/css-importer";
 import { ResponsiveDatasetAutomationConstants } from "./ResponsiveDatasetAutomationConstants.js";
 export class ResponsiveDatasetAutomation {
     automationConstants;
@@ -32,30 +33,6 @@ export class ResponsiveDatasetAutomation {
         this.templateRenderer
             .setDebug(false);
     }
-    timestampsLogNs(fn, label = "Function", logTimestamp = true) {
-        return (...args) => {
-            let logTime = (startTimestampNs, logMessage, log) => {
-                const endTimestampNs = process.hrtime.bigint();
-                // @ts-ignore
-                const interval = BigInt(endTimestampNs - startTimestampNs);
-                if (log === true) {
-                    console.log(`${logMessage}: ${interval} ns`);
-                }
-                return interval;
-            };
-            const start = process.hrtime.bigint();
-            const result = fn(...args);
-            // Handle async functions
-            if (result instanceof Promise) {
-                return result.then(res => {
-                    logTime(start, label, logTimestamp);
-                    return result;
-                });
-            }
-            logTime(start, label, logTimestamp);
-            return result;
-        };
-    }
     async run(pathToJsonDatasetForResponsiveSizes, responsiveTemplateFilePath, subfolderName, responsiveMediaQueriesFilesPrefix, mediaConstantsFileName, webpackAliasName) {
         this
             .readDataset(pathToJsonDatasetForResponsiveSizes)
@@ -68,7 +45,14 @@ export class ResponsiveDatasetAutomation {
         await this.produceMediaCssImportsCssFile("MediaCssImports_Webpack.css", subfolderName, mediaConstantsFileName, responsiveMediaQueriesFilesPrefix, isWebpackAliased_true);
         let isWebpackAliased_false = false;
         await this.produceMediaCssImportsCssFile("MediaCssImports.css", "", mediaConstantsFileName, responsiveMediaQueriesFilesPrefix, isWebpackAliased_false);
-        return 1;
+        let packagePath = path.resolve(this.mediaAndStylesResponsiveFolderPath, "../../");
+        let cssImporter = new CssImporter();
+        let cssImporterBuilt = await cssImporter
+            .setPackagePath(packagePath)
+            .setCssFilePath(path.resolve(packagePath, "MediaAndStyles", "clean-start-main-webpack.css"))
+            .setCssTargetFilePath(path.resolve(packagePath, "MediaAndStyles", "clean-start-main-pack.css"))
+            .build();
+        return cssImporterBuilt;
     }
     /**
      * @ready
@@ -165,13 +149,14 @@ export class ResponsiveDatasetAutomation {
             "mediaRuleConstanLine": ""
         })
             .getActiveDataRecordId();
-        this.timestampsLogNs(this.templateRenderer.optimize.bind(this.templateRenderer), "TemplateRenderer.optimize()", true)(templateRendererDataRecordId);
-        main: for (responsiveDatasetPropName of propNames) {
+        this.templateRenderer.optimize(templateRendererDataRecordId);
+        let mediaRetVal = 0;
+        for (responsiveDatasetPropName of propNames) {
             for (orientation of orientationKeywords) {
-                await this.produceMediaCssFile(filenamePrefix, responsiveDatasetPropName, orientation);
+                mediaRetVal = await this.produceMediaCssFile(filenamePrefix, responsiveDatasetPropName, orientation);
             }
         }
-        return 1;
+        return mediaRetVal;
     }
     /**
      * @ready
@@ -209,10 +194,11 @@ export class ResponsiveDatasetAutomation {
         // );
         let fileName = [filenamePrefix, mediaNameText, ".css"].join("");
         let mediaCssFilePath = path.resolve(this.mediaAndStylesResponsiveFolderPath, fileName);
-        let opened = await this.fileWriter.toAddToFileInLoop_CleanupFileAndGetNewFileHandle(mediaCssFilePath);
-        let written = await this.fileWriter.appendFlatArrayToFile(content);
-        let closed = await this.fileWriter.filehandleClose();
-        return written;
+        let retVal = 0;
+        retVal = await this.fileWriter.toAddToFileInLoop_CleanupFileAndGetNewFileHandle(mediaCssFilePath);
+        retVal = await this.fileWriter.appendFlatArrayToFile(content);
+        retVal = await this.fileWriter.filehandleClose();
+        return retVal;
     }
     /**
      * @ready
@@ -227,10 +213,9 @@ export class ResponsiveDatasetAutomation {
         // @ts-ignore
         let data = this.dataset.data;
         let targetFilePath = path.resolve(this.mediaAndStylesResponsiveFolderPath, targetFileName);
-        let opened = await this.fileWriter.toAddToFileInLoop_CleanupFileAndGetNewFileHandle(targetFilePath);
+        let fileWriterRetVal = await this.fileWriter.toAddToFileInLoop_CleanupFileAndGetNewFileHandle(targetFilePath);
         let importedFileName = "";
         let webpackAliasName = "";
-        let mediaName = "";
         let mediaCssImportLine = "";
         if (webpackAliased === true) {
             webpackAliasName = this.webpackAliasName;
@@ -240,11 +225,11 @@ export class ResponsiveDatasetAutomation {
         }
         importedFileName = mediaConstantsFileName;
         mediaCssImportLine = this.produceMediaCssImportLine(relativeImportedFilesFolderPath, importedFileName, webpackAliasName);
-        let written = await this.fileWriter.appendTextToFile((mediaCssImportLine + "\n"));
-        written = await this.loopMediaCssImportsCssFile(data, importedFilenamePrefix, relativeImportedFilesFolderPath, webpackAliased);
-        written = await this.fileWriter.appendTextToFile("\n\n");
-        await this.fileWriter.filehandleClose();
-        return 1;
+        fileWriterRetVal = await this.fileWriter.appendTextToFile((mediaCssImportLine + "\n"));
+        fileWriterRetVal = await this.loopMediaCssImportsCssFile(data, importedFilenamePrefix, relativeImportedFilesFolderPath, webpackAliased);
+        fileWriterRetVal = await this.fileWriter.appendTextToFile("\n\n");
+        fileWriterRetVal = await this.fileWriter.filehandleClose();
+        return fileWriterRetVal;
     }
     async loopMediaCssImportsCssFile(data, importedFilenamePrefix, relativeImportedFilesFolderPath, webpackAliased) {
         let importedFileName = "";
@@ -258,15 +243,16 @@ export class ResponsiveDatasetAutomation {
             webpackAliasName = ".";
         }
         let orientationKeywords = this.automationConstants.getOrientationKeywords();
+        let written = 0;
         for (let responsiveDatasetPropName in data) {
             for (let orientation of orientationKeywords) {
                 mediaName = this.produceMediaName(responsiveDatasetPropName, orientation);
                 importedFileName = [importedFilenamePrefix, mediaName, ".css"].join("");
                 mediaCssImportLine = this.produceMediaCssImportLine(relativeImportedFilesFolderPath, importedFileName, webpackAliasName);
-                let written = await this.fileWriter.appendTextToFile(mediaCssImportLine);
+                written = await this.fileWriter.appendTextToFile(mediaCssImportLine);
             }
         }
-        return 1;
+        return written;
     }
     // @import url("@jaisocx-css-clean-start-MediaAndStyles/responsive/clean-start-s-mobile-landscape.css");
     /**

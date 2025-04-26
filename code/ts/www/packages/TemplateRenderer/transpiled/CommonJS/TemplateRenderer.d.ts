@@ -1,6 +1,7 @@
+import { TextEncoder, TextDecoder } from "node:util";
 import { EventEmitter } from "@jaisocx/event-emitter";
-import { BaseParser } from "@jaisocx/css-importer";
-type TemplateRendererDataRecord = {
+import { TokensParser } from "@jaisocx/tokens-parser";
+export type TemplateRendererDataRecord = {
     id: number;
     isOptimized: boolean;
     textTemplate: string;
@@ -10,15 +11,17 @@ type TemplateRendererDataRecord = {
     optimizedPlaceholdersEntries: any;
     optimizedTemplate: OptimizedTemplateRecord[];
 };
-type OptimizedTemplateRecord = {
+export type OptimizedTemplateRecord = {
     placeholderName: string;
     range: number[];
 };
 export declare class TemplateRenderer extends EventEmitter {
     #private;
     EVENT_NAME__AFTER_RENDER: any;
-    baseParser: BaseParser;
+    tokensParser: TokensParser;
     dataRecords: TemplateRendererDataRecord[];
+    textEncoder: TextEncoder;
+    textDecoder: TextDecoder;
     constructor();
     initDataRecord(): TemplateRendererDataRecord;
     addNewDataRecord(): TemplateRendererDataRecord;
@@ -39,5 +42,4 @@ export declare class TemplateRenderer extends EventEmitter {
     protected orderedRecords(inRecords: OptimizedTemplateRecord[]): OptimizedTemplateRecord[];
     replaceTemplateRendererWithDataForRendering(): any;
 }
-export {};
 //# sourceMappingURL=TemplateRenderer.d.ts.map

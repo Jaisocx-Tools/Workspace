@@ -1,0 +1,13 @@
+/* Responsive rules for: s_42_desktop_xl_landscape*/
+@media only screen and (min-width: 1601px) and (max-width: 1920px) and (orientation: landscape){
+  .workspace {
+    --media_rule_name: s_42_desktop_xl_landscape;
+  }    
+
+  /* verifying responsive rules applies */
+  .workspace.verify-responsive-rule-applies main h1::before {
+    content: var(--media-rule);
+  }
+
+}
+

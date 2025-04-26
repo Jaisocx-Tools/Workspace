@@ -28,7 +28,7 @@
   },
   "optionalDependencies": {
     "@jaisocx/file-writer": "^1.2.9",
-    "@jaisocx/base-parser": "^1.2.1"
+    "@jaisocx/tokens-parser": "^1.2.1"
   }
 }
 

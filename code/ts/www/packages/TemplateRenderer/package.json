@@ -1,6 +1,7 @@
 {
   "name": "@jaisocx/template-renderer",
-  "version": "1.5.1",
+  "version": "1.5.6",
+  "author": "Jaisocx",
   "private": false,
   "description": "",
   "type": "module",
@@ -19,15 +20,16 @@
     "LICENSE"
   ],
   "optionalDependencies": {
-    "@jaisocx/event-emitter": "~1.4.x",
-    "@jaisocx/css-importer": "~1.2.8"
+    "@jaisocx/event-emitter": "^1.4.1",
+    "@jaisocx/tokens-parser": "^1.2.1"
   },
   "publishConfig": {
     "access": "public"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC"
+  "keywords": [
+    "template",
+    "render"
+  ]
 }
 
 

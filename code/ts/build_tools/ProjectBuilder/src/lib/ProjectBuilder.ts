@@ -3,13 +3,13 @@ import * as fs from "node:fs";
 import * as path from "node:path";
 import JSON5 from "json5";
 import { IDependency } from "./types.js";
-//import { CssImporter } from "@jaisocx/css-importer";
+import { CssImporter } from "@jaisocx/css-importer";
 
 
 export class ProjectBuilder {
   isLocalDevelopment: number;
 
-  //cssImporters: CssImporter[];
+  cssImporters: CssImporter[];
 
   absolutePathToProjectRoot: any;
 
@@ -30,7 +30,7 @@ export class ProjectBuilder {
   constructor() {
     this.isLocalDevelopment = 1;
 
-    //this.cssImporters = new Array() as CssImporter[];
+    this.cssImporters = new Array() as CssImporter[];
 
     this.absolutePathToProjectRoot = "";
 
@@ -149,15 +149,13 @@ export class ProjectBuilder {
     // console output list of files in the package src catalog
     this.runCommandLine(
       packagePath, 
-      "ls -lahrts src", 
-      true);
+      "ls -lahrts src");
 
     timeStamp = (new Date()).toISOString();
     console.log(`${timeStamp} Package [ ${packageJson.name} ]: Prettifying with Eslint TypeScript code in ${packagePath}`);
     this.prettifyWithEslint(
       packagePath, 
-      `${packagePath}/src/**/*.ts`, 
-      false);
+      `${packagePath}/src/**/*.ts`);
 
     timeStamp = (new Date()).toISOString();
     console.log(`${timeStamp} Package [ ${packageJson.name} ]: ESNext Transpiling TypeScript code in ${packagePath}`);
@@ -183,8 +181,7 @@ export class ProjectBuilder {
       console.log(`${timeStamp} Package [ ${packageJson.name} ]: npm link package ${packageJson.name} for local usage with other`);
       this.runCommandLine(
         packagePath, 
-        "npm link", 
-        false);
+        "npm link");
     }
 
     // building simple .js files to use in example.hml via <script src="...js"
@@ -232,8 +229,7 @@ export class ProjectBuilder {
           console.log(`cd && npm link in catalog: [ ${dependencyCatalogPath} ]`);
           this.runCommandLine(
             dependencyCatalogPath, 
-            `cd "${dependencyCatalogPath}" && npm link`, 
-            false);
+            `cd "${dependencyCatalogPath}" && npm link`);
           localDependenciesNames.push(localDependency.name);
         }
 
@@ -242,8 +238,7 @@ export class ProjectBuilder {
         console.log(`${npmLinkCommand}`);
         this.runCommandLine(
           packagePath, 
-          npmLinkCommand, 
-          false);
+          npmLinkCommand);
         
       } else {
         console.log(`Package [ ${packageJson.name} ]: npm install from npm registry`);
@@ -280,8 +275,7 @@ export class ProjectBuilder {
     if (false === fs.existsSync(buildSimpleCatalogPath)) {
       this.runCommandLine(
         packagePath, 
-        `mkdir -p "${buildSimpleCatalogPath}"`, 
-        false);
+        `mkdir -p "${buildSimpleCatalogPath}"`);
     }
 
     for (const buildFileName of buildFiles) {
@@ -291,28 +285,24 @@ export class ProjectBuilder {
       if (true === fs.existsSync(buildSimpleFilePath)) {
         this.runCommandLine(
           packagePath, 
-          `rm "${buildSimpleFilePath}"`, 
-          false);
+          `rm "${buildSimpleFilePath}"`);
       }
 
       const fileSimplePathDir: any = path.parse(buildSimpleFilePath).dir;
       if (false === fs.existsSync(fileSimplePathDir) ) {
         this.runCommandLine(
           packagePath, 
-          `mkdir -p "${fileSimplePathDir}"`, 
-          false);
+          `mkdir -p "${fileSimplePathDir}"`);
       }
 
       this.runCommandLine(
         packagePath, 
-        `cp "${buildFilePath}" "${buildSimpleFilePath}"`, 
-        false);
+        `cp "${buildFilePath}" "${buildSimpleFilePath}"`);
 
       // @ts-ignore
       this.prettifyWithEslint(
         packagePath, 
-        `${this.buildSimpleCatalogName}/${buildFileName}`, 
-        false);
+        `${this.buildSimpleCatalogName}/${buildFileName}`);
     }
   }
 
@@ -324,33 +314,36 @@ export class ProjectBuilder {
   cssImporterRun( 
     confNodeCss: any, 
     packagePath: any ) {
+
+    // console.info(
+    //   confNodeCss,
+    //   packagePath
+    // );
     
-    // let cssImporter: CssImporter = new CssImporter();
-    // cssImporter
-    //   .setPackagePath( packagePath )
-    //   .setCssFilePath( path.resolve( 
-    //     packagePath, 
-    //     confNodeCss.cssFilePath ) )
-    //   .setCssTargetFilePath( path.resolve( 
-    //     packagePath, 
-    //     confNodeCss.cssTargetFilePath ) )
-    //   .build().then( ( result: number ) => {
-    //     console.log(`css importer built ${packagePath}: ${result}`);
-    //   });
+    let cssImporter: CssImporter = new CssImporter();
+    cssImporter
+      .setPackagePath( packagePath )
+      .setCssFilePath( path.resolve( 
+        packagePath, 
+        confNodeCss.cssFilePath ) )
+      .setCssTargetFilePath( path.resolve( 
+        packagePath, 
+        confNodeCss.cssTargetFilePath ) )
+      .build().then( ( result: number ) => {
+        console.log(`css importer built ${packagePath}: ${result}`);
+      });
     
-    // this.cssImporters.push( cssImporter );
+    this.cssImporters.push( cssImporter );
   }
 
   transpileTypeScriptSources (
     tsconfigCatalogPath: any, 
-    tsconfigFileName: any,
-    logToConsole: boolean
+    tsconfigFileName: any
   ): any {
     const consoleCommand: any = `cd "${tsconfigCatalogPath}" && tsc -p "${tsconfigFileName}"`;
     return this.runCommandLine(
       tsconfigCatalogPath, 
-      consoleCommand, 
-      logToConsole);
+      consoleCommand);
   }
 
   transpileTypescriptSourcesWithPath(
@@ -380,9 +373,9 @@ export class ProjectBuilder {
       return fs.lstatSync(absPath).isFile(); 
     });
 
-    const packagePathRelative = packagePath.replace(
-      `${this.absolutePathToProjectRoot}/`, 
-      "");
+    // const packagePathRelative = packagePath.replace(
+    //   `${this.absolutePathToProjectRoot}/`, 
+    //   "");
     //const filesListJoinedString: any = `${packagePathRelative}/src/` + filesList.join(` ${packagePathRelative}/src/`);
     const filesListJoinedString: any = "src/" + filesList.join(" src/");
     const transpileOptionsString: any = transpileOptions.join(" ");
@@ -391,26 +384,22 @@ export class ProjectBuilder {
     const transpileCommand: any = `cd "${packagePath}" && npx tsc ${filesListJoinedString} ${transpileOptionsString}`;
     return this.runCommandLine(
       `${packagePath}`, 
-      transpileCommand, 
-      true);
+      transpileCommand);
   }
 
   prettifyWithEslint(
     packagePath: any, 
-    pathToPrettify: any, 
-    logToConsole: boolean
+    pathToPrettify: any
   ): any {
     const consoleCommand: any = `cd "${packagePath}" && npx eslint "${pathToPrettify}" --fix`;
     return this.runCommandLine(
       packagePath, 
-      consoleCommand, 
-      logToConsole);
+      consoleCommand);
   }
 
   runCommandLine(
     configCatalogPath: any, 
-    consoleCommand: any, 
-    logToConsole: boolean
+    consoleCommand: any
   ): any {
     let result: any = null;
     try {

@@ -1,5 +1,7 @@
+import { CssImporter } from "@jaisocx/css-importer";
 export declare class ProjectBuilder {
     isLocalDevelopment: number;
+    cssImporters: CssImporter[];
     absolutePathToProjectRoot: any;
     relativePathFromRootTsConfigCatalogPath: any;
     absolutePathFromRootTsConfigCatalogPath: any;
@@ -31,10 +33,10 @@ export declare class ProjectBuilder {
      * @param packagePath
      */
     cssImporterRun(confNodeCss: any, packagePath: any): void;
-    transpileTypeScriptSources(tsconfigCatalogPath: any, tsconfigFileName: any, logToConsole: boolean): any;
+    transpileTypeScriptSources(tsconfigCatalogPath: any, tsconfigFileName: any): any;
     transpileTypescriptSourcesWithPath(packagePath: any, tsconfigPath: any): any;
-    prettifyWithEslint(packagePath: any, pathToPrettify: any, logToConsole: boolean): any;
-    runCommandLine(configCatalogPath: any, consoleCommand: any, logToConsole: boolean): any;
+    prettifyWithEslint(packagePath: any, pathToPrettify: any): any;
+    runCommandLine(configCatalogPath: any, consoleCommand: any): any;
     getSpawnSyncPayload(contextRoot: any): any;
 }
 //# sourceMappingURL=ProjectBuilder.d.ts.map

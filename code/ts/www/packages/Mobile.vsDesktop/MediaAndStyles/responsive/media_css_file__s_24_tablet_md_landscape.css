@@ -1,0 +1,13 @@
+/* Responsive rules for: s_24_tablet_md_landscape*/
+@media only screen and (min-width: 961px) and (max-width: 1024px) and (orientation: landscape){
+  .workspace {
+    --media_rule_name: s_24_tablet_md_landscape;
+  }    
+
+  /* verifying responsive rules applies */
+  .workspace.verify-responsive-rule-applies main h1::before {
+    content: var(--media-rule);
+  }
+
+}
+

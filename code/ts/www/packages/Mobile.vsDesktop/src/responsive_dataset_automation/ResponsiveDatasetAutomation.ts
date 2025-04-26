@@ -1,10 +1,9 @@
 import * as fs from "node:fs";
 import * as path from "node:path";
-import { Buffer } from "node:buffer";
-import { FileHandle } from "node:fs/promises";
 import { TextEncoder, TextDecoder } from "node:util";
 import { FileWriter } from "@jaisocx/file-writer";
 import { TemplateRenderer } from "@jaisocx/template-renderer";
+import { CssImporter } from "@jaisocx/css-importer";
 
 
 import { ResponsiveDatasetAutomationConstants } from "./ResponsiveDatasetAutomationConstants.js";
@@ -52,50 +51,6 @@ export class ResponsiveDatasetAutomation implements ResponsiveDatasetAutomationI
   }
 
 
-
-  timestampsLogNs<T extends (...args: any[]) => any>(
-    fn: T,
-    label: string = "Function",
-    logTimestamp: boolean = true
-  ): (...args: Parameters<T>) => ReturnType<T> {
-    return (...args: Parameters<T>) => {
-
-      let logTime: CallableFunction = ( startTimestampNs: BigInt, logMessage: string, log: boolean ): BigInt => {
-        const endTimestampNs: BigInt = process.hrtime.bigint();
-
-        // @ts-ignore
-        const interval: BigInt = BigInt( endTimestampNs - startTimestampNs );
-
-        if ( log === true ) {
-          console.log(`${logMessage}: ${interval} ns`);
-        }
-
-        return interval;
-      };
-
-
-
-      const start: BigInt = process.hrtime.bigint();
-  
-      const result: any = fn(...args);
-  
-      // Handle async functions
-      if (result instanceof Promise) {
-
-        return result.then(res => {
-          logTime( start, label, logTimestamp );
-          return result;
-        }) as ReturnType<T>;
-
-      }
-  
-      logTime( start, label, logTimestamp );
-      return result;
-    };
-  }
-
-
-
   async run (
     pathToJsonDatasetForResponsiveSizes: string,
     responsiveTemplateFilePath: string,
@@ -132,10 +87,29 @@ export class ResponsiveDatasetAutomation implements ResponsiveDatasetAutomationI
       isWebpackAliased_false
     );
 
-    return 1;
+
+    let packagePath: string = path.resolve(
+      this.mediaAndStylesResponsiveFolderPath, 
+      "../../");
+
+
+    let cssImporter: CssImporter = new CssImporter();
+    let cssImporterBuilt: number = await cssImporter
+      .setPackagePath( packagePath )
+      .setCssFilePath( path.resolve( 
+        packagePath,
+        "MediaAndStyles",
+        "clean-start-main-webpack.css" ) )
+      .setCssTargetFilePath( path.resolve( 
+        packagePath,
+        "MediaAndStyles",
+        "clean-start-main-pack.css" ) )
+      .build();
+
+    return cssImporterBuilt;
   }
-  
- 
+
+
 
 
   /**
@@ -271,19 +245,14 @@ export class ResponsiveDatasetAutomation implements ResponsiveDatasetAutomationI
       )
       .getActiveDataRecordId();
 
-    this.timestampsLogNs (
-      this.templateRenderer.optimize.bind(this.templateRenderer),
-      "TemplateRenderer.optimize()",
-      true
-    )( templateRendererDataRecordId );
+    this.templateRenderer.optimize( templateRendererDataRecordId );
 
-
-
-    main: for ( responsiveDatasetPropName of propNames ) {
+    let mediaRetVal: number = 0;
+    for ( responsiveDatasetPropName of propNames ) {
 
       for ( orientation of orientationKeywords ) {
 
-        await this.produceMediaCssFile (
+        mediaRetVal = await this.produceMediaCssFile (
           filenamePrefix,
           responsiveDatasetPropName,
           orientation
@@ -294,7 +263,7 @@ export class ResponsiveDatasetAutomation implements ResponsiveDatasetAutomationI
     }
 
 
-    return 1;
+    return mediaRetVal;
   }
 
 
@@ -372,12 +341,13 @@ export class ResponsiveDatasetAutomation implements ResponsiveDatasetAutomationI
     );
 
 
-    let opened: number = await this.fileWriter.toAddToFileInLoop_CleanupFileAndGetNewFileHandle( mediaCssFilePath );
-    let written: number = await this.fileWriter.appendFlatArrayToFile( content );
-    let closed: number = await this.fileWriter.filehandleClose();
+    let retVal: number = 0;
+    retVal = await this.fileWriter.toAddToFileInLoop_CleanupFileAndGetNewFileHandle( mediaCssFilePath );
+    retVal = await this.fileWriter.appendFlatArrayToFile( content );
+    retVal = await this.fileWriter.filehandleClose();
     
 
-    return written;
+    return retVal;
   }
 
 
@@ -407,13 +377,12 @@ export class ResponsiveDatasetAutomation implements ResponsiveDatasetAutomationI
       this.mediaAndStylesResponsiveFolderPath, 
       targetFileName );
 
-    let opened: number = await this.fileWriter.toAddToFileInLoop_CleanupFileAndGetNewFileHandle (
+    let fileWriterRetVal: number = await this.fileWriter.toAddToFileInLoop_CleanupFileAndGetNewFileHandle (
       targetFilePath
     );
 
     let importedFileName: string = "";
     let webpackAliasName: string = "";
-    let mediaName: string = "";
     let mediaCssImportLine: string = "";
 
     if ( webpackAliased === true ) {
@@ -430,22 +399,22 @@ export class ResponsiveDatasetAutomation implements ResponsiveDatasetAutomationI
       webpackAliasName
     );
 
-    let written: number = await this.fileWriter.appendTextToFile (
+    fileWriterRetVal = await this.fileWriter.appendTextToFile (
       ( mediaCssImportLine + "\n" )
     );
 
-    written = await this.loopMediaCssImportsCssFile(
+    fileWriterRetVal = await this.loopMediaCssImportsCssFile(
       data,
       importedFilenamePrefix,
       relativeImportedFilesFolderPath,
       webpackAliased
     );
 
-    written = await this.fileWriter.appendTextToFile("\n\n");
+    fileWriterRetVal = await this.fileWriter.appendTextToFile("\n\n");
 
-    await this.fileWriter.filehandleClose();
+    fileWriterRetVal = await this.fileWriter.filehandleClose();
 
-    return 1;
+    return fileWriterRetVal;
   }
 
 
@@ -469,6 +438,7 @@ export class ResponsiveDatasetAutomation implements ResponsiveDatasetAutomationI
 
     let orientationKeywords: string[] = this.automationConstants.getOrientationKeywords();
 
+    let written: number = 0;
     for ( let responsiveDatasetPropName in data ) {
 
       for ( let orientation of orientationKeywords ) {
@@ -486,7 +456,7 @@ export class ResponsiveDatasetAutomation implements ResponsiveDatasetAutomationI
           webpackAliasName
         );
 
-        let written: number = await this.fileWriter.appendTextToFile (
+        written = await this.fileWriter.appendTextToFile (
           mediaCssImportLine
         );
 
@@ -494,7 +464,7 @@ export class ResponsiveDatasetAutomation implements ResponsiveDatasetAutomationI
 
     }
 
-    return 1;
+    return written;
   }
 
 

@@ -1,0 +1,13 @@
+/* Responsive rules for: s_14_mobile_s_portrait*/
+@media only screen and (min-width: 321px) and (max-width: 374px) and (orientation: portrait){
+  .workspace {
+    --media_rule_name: s_14_mobile_s_portrait;
+  }    
+
+  /* verifying responsive rules applies */
+  .workspace.verify-responsive-rule-applies main h1::before {
+    content: var(--media-rule);
+  }
+
+}
+

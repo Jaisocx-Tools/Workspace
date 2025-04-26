@@ -19,7 +19,9 @@
     "emitDeclarationOnly": false,
     "sourceMap": true,  // Enable source maps for debugging
     "jsx": "react",  // If using React, else change to "react-jsx" or omit this if you're not using React
-    "skipDefaultLibCheck": true  // Skip checking the default lib files
+    "skipDefaultLibCheck": true,  // Skip checking the default lib files
+    "noUnusedLocals": true,
+    "noUnusedParameters": true
   },
   "include": [
     "src/**/*.ts",  // Include TypeScript files from the source directory

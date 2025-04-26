@@ -1,7 +1,3 @@
-import { Buffer } from "node:buffer";
-
-
-
 export class ResponsiveDatasetAutomationConstants {
 
   textEncoder: TextEncoder;
@@ -213,12 +209,11 @@ export class ResponsiveDatasetAutomationConstants {
     let bitsbufsTextBlocks: (Uint8Array|Uint8Array[])[] = new Array() as (Uint8Array|Uint8Array[])[];
     let textBlockName: string = "";
     let textBlockNameFirstLetterUC: string = "";
-    let propertyName: string = "";
     let getMethodName: string = "";
     let getBitsbufsMethodName: string = "";
-    let bitsbufsPropertyName: string = "";
+
     for ( textBlockName of textsBlocksNamesArray ) {
-      propertyName = `#${textBlockName}`;
+
       textBlockNameFirstLetterUC = ( textBlockName.charAt(0).toUpperCase() + textBlockName.slice(1) );
       getMethodName = `get${textBlockNameFirstLetterUC}`;
       getBitsbufsMethodName = `getBitbufs${textBlockNameFirstLetterUC}`;

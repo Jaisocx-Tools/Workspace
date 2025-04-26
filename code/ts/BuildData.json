@@ -17,6 +17,16 @@
       ]
     },
     {
+      "path": "packages/TokensParser",
+      "name": "tokens-parser",
+      "build": false,
+      "build-simple-enable": true,
+      "dependencies": [],
+      "build-files": [
+        "TokensParser.js"
+      ]
+    },
+    {
       "path": "packages/CssImporter",
       "name": "css-importer",
       "build": false,
@@ -25,6 +35,10 @@
         {
           "name": "@jaisocx/file-writer",
           "path": "packages/FileWriter"
+        },
+        {
+          "name": "@jaisocx/tokens-parser",
+          "path": "packages/TokensParser"
         }
       ],
       "build-files": [
@@ -66,11 +80,11 @@
       "path": "packages/Mobile.vsDesktop",
       "name": "mobile-vs-desktop",
       "build": true,
-      "build-simple-enable": true,
+      "build-simple-enable": false,
       "css-importer": {
         "build": false,
         "cssFilePath": "MediaAndStyles/clean-start-main-webpack.css",
-        "cssTargetFilePath": "MediaAndStyles/clean-start-main-resolved.css"
+        "cssTargetFilePath": "MediaAndStyles/clean-start-main-pack.css"
       },
       "dependencies": [
         {
@@ -80,6 +94,10 @@
         {
           "name": "@jaisocx/template-renderer",
           "path": "packages/TemplateRenderer"
+        },
+        {
+          "name": "@jaisocx/css-importer",
+          "path": "packages/CssImporter"
         }
       ],
       "build-files": [
@@ -187,8 +205,8 @@
           "path": "packages/EventEmitter"
         },
         {
-          "name": "@jaisocx/css-importer",
-          "path": "packages/CssImporter"
+          "name": "@jaisocx/tokens-parser",
+          "path": "packages/TokensParser"
         }
       ],
       "build-files": [

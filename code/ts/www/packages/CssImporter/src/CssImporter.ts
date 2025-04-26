@@ -3,7 +3,7 @@ import * as path from "node:path";
 import { TextDecoder } from "node:util";
 
 import { FileWriter, FileWriterQueue } from "@jaisocx/file-writer";
-import { BaseParser, FileReader } from "@jaisocx/base-parser";
+import { TokensParser, FileReader } from "@jaisocx/tokens-parser";
 
 import { CssImporterConstants } from "./CssImporterConstants.js";
 import { CssImporterInterface } from "./CssImporterInterface.js";
@@ -17,7 +17,7 @@ export class CssImporter implements CssImporterInterface {
 
   cssImporterConstants: CssImporterConstants;
   fileReader: FileReader;
-  baseParser: BaseParser;
+  tokensParser: TokensParser;
 
   packagePath: string;
 
@@ -35,7 +35,7 @@ export class CssImporter implements CssImporterInterface {
 
     this.cssImporterConstants = new CssImporterConstants();
     this.fileReader = new FileReader();
-    this.baseParser = new BaseParser();
+    this.tokensParser = new TokensParser();
 
     this.packagePath = "";
     this.webpackAliases = "";
@@ -165,7 +165,7 @@ export class CssImporter implements CssImporterInterface {
     let filePathUntrimmed: string = this.textDecoder.decode( filePathBitsbuf );
 
     let filePathTrimmed: string = filePathUntrimmed.trim();
-    let filePathAliased: string = this.baseParser.trimQuotes( filePathTrimmed );
+    let filePathAliased: string = this.tokensParser.trimQuotes( filePathTrimmed );
 
     let urlResolved: boolean = false;
     let alias: string = "";
@@ -319,53 +319,61 @@ export class CssImporter implements CssImporterInterface {
 
     let bitsBufRefs_ReadFile: number[][] = [[0, (fileLastIx + 1)]];
     let bitsBufRefs_NoComments: number[][] = [];
-    let bitsBufRefs_Comments: number[][] = [];
+    let bitsBufRefs_Comments_Outer: number[][] = [];
+    let bitsBufRefs_Comments_Inner: number[][] = [];
+
     let bitsBufRefs_NoImports: number[][] = [];
-    let bitsBufRefs_ImportURLs: number[][] = [];
+    let bitsBufRefs_ImportURLs_Outer: number[][] = [];
+    let bitsBufRefs_ImportURLs_Inner: number[][] = [];
 
     let cssTokens: any = this.cssImporterConstants.getCssTokens();
     let commentsTokens: any = cssTokens["comment"];
     let importsTokens: any = cssTokens["import"];
 
 
-    this.baseParser.validBitsbufRefsRefine ( 
-      fileContentsBuffer,
-      bitsBufRefs_ReadFile, // datatype explained: [ [startRef: number, endRef: number], [startRef: number, endRef: number], ... ];
-      bitsBufRefs_NoComments,
-      bitsBufRefs_Comments,
-      commentsTokens,
-      counterStop
-    );
+    this.tokensParser
+      .parseWithStartAndEndTokensSets ( 
+        fileContentsBuffer,
+        bitsBufRefs_ReadFile, // datatype explained: [ [startRef: number, endRef: number], [startRef: number, endRef: number], ... ];
+        commentsTokens,
+        bitsBufRefs_NoComments,
+        bitsBufRefs_Comments_Outer,
+        bitsBufRefs_Comments_Inner,
+        counterStop
+      );
 
     if ( this.debug === true ) {
       console.log( "Comments:\n" );
-      this.baseParser.contentPreviewByRange( 
+      this.tokensParser.contentPreviewByRange( 
         fileContentsBuffer, 
-        bitsBufRefs_Comments );
+        bitsBufRefs_Comments_Inner );
 
       console.log( "\n\nCss without comments:\n" );
-      this.baseParser.contentPreviewByRange( 
+      this.tokensParser.contentPreviewByRange( 
         fileContentsBuffer, 
         bitsBufRefs_NoComments );
     }
 
-    this.baseParser.validBitsbufRefsRefine ( 
-      fileContentsBuffer,
-      bitsBufRefs_NoComments, // datatype explained: [ [startRef: number, endRef: number], [startRef: number, endRef: number], ... ];
-      bitsBufRefs_NoImports,
-      bitsBufRefs_ImportURLs,
-      importsTokens,
-      counterStop
-    );
+    this.tokensParser
+      .parseWithStartAndEndTokensSets ( 
+        fileContentsBuffer,
+        bitsBufRefs_NoComments, // datatype explained: [ [startRef: number, endRef: number], [startRef: number, endRef: number], ... ];
+        importsTokens,
+        bitsBufRefs_NoImports,
+        bitsBufRefs_ImportURLs_Outer,
+        bitsBufRefs_ImportURLs_Inner,
+        counterStop
+      );
+
 
     if ( this.debug === true ) {
       console.log( "\n\nImports:\n" );
-      this.baseParser.contentPreviewByRange( 
+      this.tokensParser.contentPreviewByRange( 
         fileContentsBuffer, 
-        bitsBufRefs_ImportURLs );
+        bitsBufRefs_ImportURLs_Inner );
 
       console.log( "\n\nCss with no imports no comments:\n" );
-      this.baseParser.contentPreviewByRange( 
+      this.tokensParser.contentPreviewByRange( 
         fileContentsBuffer, 
         bitsBufRefs_NoImports );
     }
@@ -394,7 +402,7 @@ export class CssImporter implements CssImporterInterface {
 
     // here we handle the css file when no import urls were found in the file.
     // just writing all ranges to target file.
-    if ( bitsBufRefs_ImportURLs.length === 0 ) {
+    if ( bitsBufRefs_ImportURLs_Inner.length === 0 ) {
       resultDTO.rangesOrDtoOfImport = [...bitsBufRefs_NoImports];
 
       for ( refsIx = 0; refsIx < numberOfRanges; refsIx++ ) {
@@ -420,14 +428,14 @@ export class CssImporter implements CssImporterInterface {
 
     } else {
       
-      let firstImportRange: number[] = bitsBufRefs_ImportURLs[0]; // may be undefined
+      let firstImportRange: number[] = bitsBufRefs_ImportURLs_Inner[0]; // may be undefined
       let firstImportRangeStart: number = firstImportRange[0];
 
       if ( firstImportRangeStart < firstRangeStart ) {
         latestImportsIx = this.compareRanges (
           fileContentsBuffer,
           bitsbufName,
-          bitsBufRefs_ImportURLs,
+          bitsBufRefs_ImportURLs_Inner,
           resultDTO,
           firstRangeStart,
           latestImportsIx,
@@ -449,7 +457,7 @@ export class CssImporter implements CssImporterInterface {
 
       // in this condition code applies, when all css import url lines were already done.
       // just writing the bitsbuf of the main range and skip to the next range.
-      if ( latestImportsIx === bitsBufRefs_ImportURLs.length ) {
+      if ( latestImportsIx === bitsBufRefs_ImportURLs_Inner.length ) {
 
         // when the range is of zero size, skip to the next range.
         if ( rangeStart === rangeEnd ) {
@@ -468,7 +476,7 @@ export class CssImporter implements CssImporterInterface {
 
 
 
-      if ( bitsBufRefs_ImportURLs[latestImportsIx][0] > rangeStart ) {
+      if ( bitsBufRefs_ImportURLs_Inner[latestImportsIx][0] > rangeStart ) {
         if ( rangeStart === rangeEnd ) {
           continue;
         }
@@ -489,7 +497,7 @@ export class CssImporter implements CssImporterInterface {
       latestImportsIx = this.compareRanges (
         fileContentsBuffer,
         bitsbufName,
-        bitsBufRefs_ImportURLs,
+        bitsBufRefs_ImportURLs_Inner,
         resultDTO,
         rangeStart,
         latestImportsIx,

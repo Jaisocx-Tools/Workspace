@@ -15,7 +15,6 @@ export declare class ResponsiveDatasetAutomation implements ResponsiveDatasetAut
     textDecoder: TextDecoder;
     templateRenderer: TemplateRenderer;
     constructor();
-    timestampsLogNs<T extends (...args: any[]) => any>(fn: T, label?: string, logTimestamp?: boolean): (...args: Parameters<T>) => ReturnType<T>;
     run(pathToJsonDatasetForResponsiveSizes: string, responsiveTemplateFilePath: string, subfolderName: string, responsiveMediaQueriesFilesPrefix: string, mediaConstantsFileName: string, webpackAliasName: string): Promise<number>;
     /**
      * @ready

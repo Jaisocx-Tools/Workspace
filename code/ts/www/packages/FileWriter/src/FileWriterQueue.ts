@@ -1,5 +1,5 @@
-import { EventEmitter } from "@jaisocx/event-emitter";
 import { FileHandle } from "fs/promises";
+import { EventEmitter } from "@jaisocx/event-emitter";
 import { FileWriter } from "./FileWriter";
 
 
