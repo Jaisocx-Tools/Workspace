@@ -1,7 +1,11 @@
-/* Responsive rules for: s_14_mobile_s_portrait*/
-@media only screen and (min-width: 321px) and (max-width: 374px) and (orientation: portrait){
+/* Responsive rules for: s_14_mobile_s_portrait */
+@media only screen and (min-width: 321px) and (max-width: 374px) and (orientation: portrait) {
   .workspace {
     --media_rule_name: s_14_mobile_s_portrait;
+
+    --width__from: var(--s_14_mobile_s_portrait__width__from);
+    --width__til: var(--s_14_mobile_s_portrait__width__til);
+
   }    
 
   /* verifying responsive rules applies */

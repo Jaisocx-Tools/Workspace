@@ -4,11 +4,19 @@ export class MobileVsDesktopPack {
     #KEYWORDS_ORIENTATION_LANDSCAPE;
     #KEYWORD_MOBILE;
     #KEYWORD_TABLET;
+    #CSS_VARIABLE_NAME__MEDIA_RULE;
+    #CSS_VARIABLE_NAME__WIDTH_FROM;
+    #CSS_VARIABLE_NAME__WIDTH_TIL;
     _mediaruleNamesInstance;
     _mediaRuleName;
+    _mediaRuleSizes;
+    _mediaruleJson;
     constructor() {
         this.#KEYWORD_MOBILE = "_mobile_";
         this.#KEYWORD_TABLET = "_tablet_";
+        this.#CSS_VARIABLE_NAME__MEDIA_RULE = "--media-rule";
+        this.#CSS_VARIABLE_NAME__WIDTH_FROM = "--width__from";
+        this.#CSS_VARIABLE_NAME__WIDTH_TIL = "--width__til";
         this.#KEYWORDS_ORIENTATION_PORTRAIT = [
             "_portrait",
             "_vertical"
@@ -19,6 +27,11 @@ export class MobileVsDesktopPack {
         ];
         this._mediaruleNamesInstance = new MediaruleNames();
         this._mediaRuleName = "";
+        this._mediaRuleSizes = new Object();
+        this._mediaruleJson = new Object();
+    }
+    getCssVariableName_MediaRule() {
+        return this.#CSS_VARIABLE_NAME__MEDIA_RULE;
     }
     getCssValueByHtmlNode(htmlNode, cssVariableName) {
         let cssValue = window
@@ -38,10 +51,23 @@ export class MobileVsDesktopPack {
         if (!force && this._mediaRuleName.length != 0) {
             return this._mediaRuleName;
         }
-        let cssVariableName = this._mediaruleNamesInstance.getCssVariableName();
+        let cssVariableName = this.getCssVariableName_MediaRule();
         let mediaRuleName = this.getCssValueBySelector("html.workspace", cssVariableName);
         this._mediaRuleName = mediaRuleName;
         return this._mediaRuleName;
+    }
+    getMediaruleSizes(force) {
+        let mediaRuleSizesKeys = Object.keys(this._mediaRuleSizes);
+        if (!force && mediaRuleSizesKeys && mediaRuleSizesKeys.length === 2) {
+            return this._mediaRuleSizes;
+        }
+        let cssVariable_WidthFrom = this.getCssValueBySelector("html.workspace", this.#CSS_VARIABLE_NAME__WIDTH_FROM);
+        let cssVariable_WidthTil = this.getCssValueBySelector("html.workspace", this.#CSS_VARIABLE_NAME__WIDTH_TIL);
+        // @ts-ignore
+        this._mediaRuleSizes["minWidth"] = cssVariable_WidthFrom;
+        // @ts-ignore
+        this._mediaRuleSizes["maxWidth"] = cssVariable_WidthTil;
+        return this._mediaRuleSizes;
     }
     isMobile(force) {
         let mediaruleName = this.getMediaruleName(force);
@@ -89,6 +115,11 @@ export class MobileVsDesktopPack {
     }
     toJson(force) {
         let mediaruleName = this.getMediaruleName(force);
+        let mediaruleSizes = this.getMediaruleSizes(force);
+        let mediaruleJsonKeys = Object.keys(this._mediaruleJson);
+        if (!force && mediaruleJsonKeys && mediaruleJsonKeys.length !== 0) {
+            return this._mediaruleJson;
+        }
         let notToUpdate = false;
         let isMobile = this.isMobile(notToUpdate);
         let isTablet = this.isTablet(notToUpdate);
@@ -99,18 +130,20 @@ export class MobileVsDesktopPack {
         let labelIsTablet = "isTablet";
         let labelIsDesktop = "isDesktop";
         let isMobilePortrait = (isMobile && isOrientationPortrait);
-        let labelMediaruleName = isMobilePortrait ? "media" : "mediaruleName";
+        let labelMediaruleName = isMobilePortrait ? "media" : "mediaQueryName";
+        let labelMediaruleSizes = isMobilePortrait ? "width" : "mediaQueryWidth";
         let labelIsOrientationPortrait = isMobilePortrait ? "portrait" : "isOrientationPortrait";
         let labelIsOrientationLandscape = isMobilePortrait ? "landscape" : "isOrientationLandscape";
-        let mediaruleJson = {
+        this._mediaruleJson = {
             [labelMediaruleName]: mediaruleName,
+            [labelMediaruleSizes]: mediaruleSizes,
             [labelIsMobile]: isMobile,
             [labelIsTablet]: isTablet,
             [labelIsDesktop]: isDesktop,
             [labelIsOrientationPortrait]: isOrientationPortrait,
             [labelIsOrientationLandscape]: isOrientationLandscape
         };
-        return mediaruleJson;
+        return this._mediaruleJson;
     }
     toString() {
         let force = true;

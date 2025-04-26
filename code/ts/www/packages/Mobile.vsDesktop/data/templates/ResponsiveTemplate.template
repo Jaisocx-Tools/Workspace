@@ -3,6 +3,9 @@
   .workspace {
     {{ mediaRuleConstanLine }}
 
+    {{ mediaRuleVariable_WidthFrom }}
+    {{ mediaRuleVariable_WidthTil }}
+
   }    
 
   /* verifying responsive rules applies */

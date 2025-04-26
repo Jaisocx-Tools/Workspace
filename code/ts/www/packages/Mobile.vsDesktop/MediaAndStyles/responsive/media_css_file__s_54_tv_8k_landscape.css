@@ -1,7 +1,11 @@
-/* Responsive rules for: s_54_tv_8k_landscape*/
-@media only screen and (min-width: 7681px) and (max-width: 15360px) and (orientation: landscape){
+/* Responsive rules for: s_54_tv_8k_landscape */
+@media only screen and (min-width: 7681px) and (max-width: 15360px) and (orientation: landscape) {
   .workspace {
     --media_rule_name: s_54_tv_8k_landscape;
+
+    --width__from: var(--s_54_tv_8k_landscape__width__from);
+    --width__til: var(--s_54_tv_8k_landscape__width__til);
+
   }    
 
   /* verifying responsive rules applies */

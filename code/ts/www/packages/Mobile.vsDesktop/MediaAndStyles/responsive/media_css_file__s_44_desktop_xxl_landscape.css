@@ -1,7 +1,11 @@
-/* Responsive rules for: s_44_desktop_xxl_landscape*/
-@media only screen and (min-width: 1921px) and (max-width: 2560px) and (orientation: landscape){
+/* Responsive rules for: s_44_desktop_xxl_landscape */
+@media only screen and (min-width: 1921px) and (max-width: 2560px) and (orientation: landscape) {
   .workspace {
     --media_rule_name: s_44_desktop_xxl_landscape;
+
+    --width__from: var(--s_44_desktop_xxl_landscape__width__from);
+    --width__til: var(--s_44_desktop_xxl_landscape__width__til);
+
   }    
 
   /* verifying responsive rules applies */

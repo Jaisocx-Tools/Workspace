@@ -1,7 +1,11 @@
-/* Responsive rules for: s_32_laptop_sm_landscape*/
-@media only screen and (min-width: 1025px) and (max-width: 1279px) and (orientation: landscape){
+/* Responsive rules for: s_32_laptop_sm_landscape */
+@media only screen and (min-width: 1025px) and (max-width: 1279px) and (orientation: landscape) {
   .workspace {
     --media_rule_name: s_32_laptop_sm_landscape;
+
+    --width__from: var(--s_32_laptop_sm_landscape__width__from);
+    --width__til: var(--s_32_laptop_sm_landscape__width__til);
+
   }    
 
   /* verifying responsive rules applies */

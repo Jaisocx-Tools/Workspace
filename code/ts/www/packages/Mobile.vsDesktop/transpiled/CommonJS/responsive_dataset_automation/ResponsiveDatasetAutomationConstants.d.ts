@@ -3,6 +3,7 @@ export declare class ResponsiveDatasetAutomationConstants {
     textEncoder: TextEncoder;
     constructor();
     textsToBitsbufs(): number;
+    textArrayToUnt8Arrays(inArray: string[], inOutBitsbufsTextBlocks: Uint8Array[]): number;
     getKeywordMediarule(): string;
     getMediaRuleName(): string;
     getMediaConstantNameStart(): string;
@@ -41,13 +42,18 @@ export declare class ResponsiveDatasetAutomationConstants {
     getMediaConstantNameLine(): string[];
     getMediaRuleConstantLine(): (string | string[])[];
     getMediaConstantLine(): string[];
+    getMediaRuleVariable_Width(): string[];
     getBitbufsMediaLine(): Uint8Array[];
     getBitbufsMediaConstantNameLine(): Uint8Array[];
     getBitbufsMediaRuleConstantLine(): (Uint8Array | Uint8Array[])[];
     getBitbufsMediaConstantLine(): Uint8Array[];
+    getBitbufsMediaRuleVariable_Width(): Uint8Array[];
+    getBitsbufKeywordFrom(): Uint8Array;
+    getBitsbufKeywordTil(): Uint8Array;
     getMediaLineUpdated(media: string, minWidth: string, maxWidth: string, orientation: string): Uint8Array[];
     getMediaConstantNameLineUpdated(mediaName: string): Uint8Array[];
     getMediaRuleConstantLineUpdated(mediaName: string, mediaLine: Uint8Array[]): (Uint8Array | Uint8Array[])[];
     getMediaConstantLineUpdated(mediaName: string, postfix: string, size: string): Uint8Array[];
+    getMediaRuleVariable_Width_Updated(mediaName: Uint8Array, postfix: Uint8Array): Uint8Array[];
 }
 //# sourceMappingURL=ResponsiveDatasetAutomationConstants.d.ts.map

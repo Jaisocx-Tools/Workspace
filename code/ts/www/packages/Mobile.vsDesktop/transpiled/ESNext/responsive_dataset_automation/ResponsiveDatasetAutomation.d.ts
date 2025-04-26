@@ -36,6 +36,7 @@ export declare class ResponsiveDatasetAutomation implements ResponsiveDatasetAut
      * @ready
     */
     setWebpackAliasName(alias: string): ResponsiveDatasetAutomation;
+    produceMediaRulesTypescriptFile(tsClassName: string): Promise<number>;
     /**
      * @ready
     */

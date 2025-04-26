@@ -87,6 +87,8 @@ export class ResponsiveDatasetAutomation implements ResponsiveDatasetAutomationI
       isWebpackAliased_false
     );
 
+    
+    await this.produceMediaRulesTypescriptFile( "MediaruleNamesNew" );
 
     let packagePath: string = path.resolve(
       this.mediaAndStylesResponsiveFolderPath, 
@@ -172,7 +174,148 @@ export class ResponsiveDatasetAutomation implements ResponsiveDatasetAutomationI
   }
  
 
-  
+
+  async produceMediaRulesTypescriptFile ( 
+    tsClassName: string 
+  ): Promise<number> {
+
+    // @ts-ignore
+    let propNames: any = Object.keys( this.dataset.data );
+    let responsiveDatasetPropName: string = "";
+    let targetFileName: string = [ tsClassName, ".ts" ].join("");
+    
+    let packagePath: string = path.resolve ( 
+      this.mediaAndStylesResponsiveFolderPath, 
+      "../../"
+    );
+    
+    let targetFilePath: string = path.resolve ( 
+      packagePath,
+      "src/",
+      targetFileName 
+    );
+
+    let fileWriterRetval: number = await this.fileWriter.toAddToFileInLoop_CleanupFileAndGetNewFileHandle (
+      targetFilePath
+    );
+
+    let i = 0;
+    let propsNumber: number = propNames.length;
+
+
+    let textBlocks: string[] = [
+      "export class ",
+      tsClassName,
+      " {\n\n"
+    ];
+
+    let tsClassContentBitsbufs: Uint8Array[] = new Array() as Uint8Array[];
+    tsClassContentBitsbufs.push( this.textEncoder.encode ( textBlocks.join("") ) );
+
+
+    let fieldLine: string[] = [
+      "  readonly #",
+      "1",
+      ": string = ",
+      "\"",
+      "4",
+      "\";\n"
+    ];
+    let fieldLineMediaNamePos_1: number = 1;
+    let fieldLineMediaNamePos_3: number = 4;
+    let fieldLineBitsbufs: Uint8Array[] = new Array( fieldLine.length ) as Uint8Array[];
+    let len: number = this.automationConstants.textArrayToUnt8Arrays ( 
+      // @ts-ignore
+      fieldLine,
+      fieldLineBitsbufs
+    );
+
+    let method: string[] = [
+      "  get",
+      "1",
+      "(): string {\n",
+      "    return this.#",
+      "4",
+      ";\n",
+      "  }\n\n"
+    ];
+    let methodBitsbufs: Uint8Array[] = new Array( method.length ) as Uint8Array[];
+    len = this.automationConstants.textArrayToUnt8Arrays ( 
+      // @ts-ignore
+      method,
+      methodBitsbufs
+    );
+    console.log( len );
+    fileWriterRetval = await this.fileWriter.appendMixedArrayToFile ( tsClassContentBitsbufs );
+
+    let mediaName: string = "";
+    let mediaNameBitsbuf: Uint8Array = new Uint8Array();
+    let mediaNameUcFirstPos: number = 1;
+    let mediaNameUcFirstBitsbuf: Uint8Array = new Uint8Array();
+    let mediaNamePos: number = 4;
+
+    
+    // textBlocks.push( tsClassEndLine );
+
+    let orientationKeywords: string[] = this.automationConstants.getOrientationKeywords();
+    let orientationKeywordId: number = 0;
+    let propnameId: number = 0;
+    let orientation: string = "";
+
+    let iterationsNumber: number = ( propsNumber << 1 );
+    let mediaNamesBitsbufs: Uint8Array[] = new Array( iterationsNumber ) as Uint8Array[];
+    tsClassContentBitsbufs = new Array( iterationsNumber ) as Uint8Array[];
+    for ( i = 0; i < iterationsNumber; i++ ) {
+
+      if ( orientationKeywordId === 2 ) {
+        orientationKeywordId = 0;
+        propnameId++;
+      }
+
+      responsiveDatasetPropName = propNames[propnameId];
+      orientation = orientationKeywords[orientationKeywordId];
+
+      mediaName = this.produceMediaName ( 
+        responsiveDatasetPropName,
+        orientation
+      );
+
+      mediaNameBitsbuf = this.textEncoder.encode( mediaName );
+
+      mediaNamesBitsbufs[i] = mediaNameBitsbuf;
+      fieldLineBitsbufs[fieldLineMediaNamePos_1] = mediaNameBitsbuf;
+      fieldLineBitsbufs[fieldLineMediaNamePos_3] = mediaNameBitsbuf;
+
+      tsClassContentBitsbufs[i] = this.fileWriter.concatUint8Arrays( fieldLineBitsbufs );
+
+      orientationKeywordId++;
+    }
+    fileWriterRetval = await this.fileWriter.appendMixedArrayToFile ( tsClassContentBitsbufs );
+
+    let mediaNameUcFirstChar: number = "S".charCodeAt(0);
+    tsClassContentBitsbufs = new Array( iterationsNumber ) as Uint8Array[];
+    for ( i = 0; i < iterationsNumber; i++ ) {
+      mediaNameUcFirstBitsbuf = mediaNamesBitsbufs[i];
+      mediaNameUcFirstBitsbuf[0] = mediaNameUcFirstChar;
+
+      methodBitsbufs[mediaNameUcFirstPos] = mediaNameUcFirstBitsbuf;
+      methodBitsbufs[mediaNamePos] = mediaNameBitsbuf;
+
+      tsClassContentBitsbufs[i] = this.fileWriter.concatUint8Arrays( methodBitsbufs );
+    }
+    let tsClassEndLine: Uint8Array = this.textEncoder.encode( "}\n\n\n" );
+
+    fileWriterRetval = await this.fileWriter.appendMixedArrayToFile ( tsClassContentBitsbufs );
+    tsClassContentBitsbufs = new Array() as Uint8Array[];
+
+    fileWriterRetval = await this.fileWriter.appendBitsbufToFile ( tsClassEndLine );
+
+    fileWriterRetval = await this.fileWriter.filehandleClose();
+
+    return fileWriterRetval;
+  }
+
+
   /**
    * @ready
   */
@@ -240,7 +383,9 @@ export class ResponsiveDatasetAutomation implements ResponsiveDatasetAutomationI
         {
           "mediaName": "",
           "mediaRuleLine": "",
-          "mediaRuleConstanLine": ""
+          "mediaRuleConstanLine": "",
+          "mediaRuleVariable_WidthFrom": "",
+          "mediaRuleVariable_WidthTil": ""
         }
       )
       .getActiveDataRecordId();
@@ -297,16 +442,32 @@ export class ResponsiveDatasetAutomation implements ResponsiveDatasetAutomationI
     let mediaRuleLine: Uint8Array = this.fileWriter.concatUint8Arrays( mediaRuleLinesArray );
     let mediaRuleConstanLine: Uint8Array = this.fileWriter.concatUint8Arrays( mediaRuleConstanLinesArray );
 
-
     // temp for debugging
     // let mediaRuleLineText: string = this.textDecoder.decode ( this.fileWriter.concatUint8Arrays( mediaRuleLine ) );
     // let mediaRuleConstanLineText: string = this.textDecoder.decode ( this.fileWriter.concatUint8Arrays( mediaRuleConstanLine ) );
+
+    let postfix: Uint8Array = this.automationConstants.getBitsbufKeywordFrom();
+    let mediaRuleVariable_WidthFromArray: Uint8Array[] = this.automationConstants.getMediaRuleVariable_Width_Updated (
+      mediaName,
+      postfix
+    );
+    let mediaRuleVariable_WidthFrom: Uint8Array = this.fileWriter.concatUint8Arrays( mediaRuleVariable_WidthFromArray );
+
+
+    postfix = this.automationConstants.getBitsbufKeywordTil();
+    let mediaRuleVariable_WidthTilArray: Uint8Array[] = this.automationConstants.getMediaRuleVariable_Width_Updated (
+      mediaName,
+      postfix
+    );
+    let mediaRuleVariable_WidthTil: Uint8Array = this.fileWriter.concatUint8Arrays( mediaRuleVariable_WidthTilArray );
 
 
     let templateData: any = {
       "mediaName": mediaName,
       "mediaRuleLine": mediaRuleLine,
-      "mediaRuleConstanLine": mediaRuleConstanLine
+      "mediaRuleConstanLine": mediaRuleConstanLine,
+      "mediaRuleVariable_WidthFrom": mediaRuleVariable_WidthFrom,
+      "mediaRuleVariable_WidthTil": mediaRuleVariable_WidthTil
     };
 
     // temp for debugging

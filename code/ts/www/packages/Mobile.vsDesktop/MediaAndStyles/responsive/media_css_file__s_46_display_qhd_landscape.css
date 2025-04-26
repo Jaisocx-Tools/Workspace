@@ -1,7 +1,11 @@
-/* Responsive rules for: s_46_display_qhd_landscape*/
-@media only screen and (min-width: 2561px) and (max-width: 3840px) and (orientation: landscape){
+/* Responsive rules for: s_46_display_qhd_landscape */
+@media only screen and (min-width: 2561px) and (max-width: 3840px) and (orientation: landscape) {
   .workspace {
     --media_rule_name: s_46_display_qhd_landscape;
+
+    --width__from: var(--s_46_display_qhd_landscape__width__from);
+    --width__til: var(--s_46_display_qhd_landscape__width__til);
+
   }    
 
   /* verifying responsive rules applies */

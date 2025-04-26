@@ -1,6 +1,5 @@
 export declare class MediaruleNames {
     #private;
-    getCssVariableName(): string;
     getMEDIA_2xl_ultra_wide_horizontal(): string;
     getMEDIA_2xl_ultra_wide_vertical(): string;
     getMEDIA_3xl_hd_horizontal(): string;

@@ -10,7 +10,7 @@ var __classPrivateFieldGet = (this && this.__classPrivateFieldGet) || function (
     if (typeof state === "function" ? receiver !== state || !f : !state.has(receiver)) throw new TypeError("Cannot read private member from an object whose class did not declare it");
     return kind === "m" ? f : kind === "a" ? f.call(receiver) : f ? f.value : state.get(receiver);
 };
-var _MobileVsDesktopPack_KEYWORDS_ORIENTATION_PORTRAIT, _MobileVsDesktopPack_KEYWORDS_ORIENTATION_LANDSCAPE, _MobileVsDesktopPack_KEYWORD_MOBILE, _MobileVsDesktopPack_KEYWORD_TABLET;
+var _MobileVsDesktopPack_KEYWORDS_ORIENTATION_PORTRAIT, _MobileVsDesktopPack_KEYWORDS_ORIENTATION_LANDSCAPE, _MobileVsDesktopPack_KEYWORD_MOBILE, _MobileVsDesktopPack_KEYWORD_TABLET, _MobileVsDesktopPack_CSS_VARIABLE_NAME__MEDIA_RULE, _MobileVsDesktopPack_CSS_VARIABLE_NAME__WIDTH_FROM, _MobileVsDesktopPack_CSS_VARIABLE_NAME__WIDTH_TIL;
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.MobileVsDesktopPack = void 0;
 const MediaruleNames_js_1 = require("./MediaruleNames.js");
@@ -20,8 +20,14 @@ class MobileVsDesktopPack {
         _MobileVsDesktopPack_KEYWORDS_ORIENTATION_LANDSCAPE.set(this, void 0);
         _MobileVsDesktopPack_KEYWORD_MOBILE.set(this, void 0);
         _MobileVsDesktopPack_KEYWORD_TABLET.set(this, void 0);
+        _MobileVsDesktopPack_CSS_VARIABLE_NAME__MEDIA_RULE.set(this, void 0);
+        _MobileVsDesktopPack_CSS_VARIABLE_NAME__WIDTH_FROM.set(this, void 0);
+        _MobileVsDesktopPack_CSS_VARIABLE_NAME__WIDTH_TIL.set(this, void 0);
         __classPrivateFieldSet(this, _MobileVsDesktopPack_KEYWORD_MOBILE, "_mobile_", "f");
         __classPrivateFieldSet(this, _MobileVsDesktopPack_KEYWORD_TABLET, "_tablet_", "f");
+        __classPrivateFieldSet(this, _MobileVsDesktopPack_CSS_VARIABLE_NAME__MEDIA_RULE, "--media-rule", "f");
+        __classPrivateFieldSet(this, _MobileVsDesktopPack_CSS_VARIABLE_NAME__WIDTH_FROM, "--width__from", "f");
+        __classPrivateFieldSet(this, _MobileVsDesktopPack_CSS_VARIABLE_NAME__WIDTH_TIL, "--width__til", "f");
         __classPrivateFieldSet(this, _MobileVsDesktopPack_KEYWORDS_ORIENTATION_PORTRAIT, [
             "_portrait",
             "_vertical"
@@ -32,6 +38,11 @@ class MobileVsDesktopPack {
         ], "f");
         this._mediaruleNamesInstance = new MediaruleNames_js_1.MediaruleNames();
         this._mediaRuleName = "";
+        this._mediaRuleSizes = new Object();
+        this._mediaruleJson = new Object();
+    }
+    getCssVariableName_MediaRule() {
+        return __classPrivateFieldGet(this, _MobileVsDesktopPack_CSS_VARIABLE_NAME__MEDIA_RULE, "f");
     }
     getCssValueByHtmlNode(htmlNode, cssVariableName) {
         let cssValue = window
@@ -51,10 +62,23 @@ class MobileVsDesktopPack {
         if (!force && this._mediaRuleName.length != 0) {
             return this._mediaRuleName;
         }
-        let cssVariableName = this._mediaruleNamesInstance.getCssVariableName();
+        let cssVariableName = this.getCssVariableName_MediaRule();
         let mediaRuleName = this.getCssValueBySelector("html.workspace", cssVariableName);
         this._mediaRuleName = mediaRuleName;
         return this._mediaRuleName;
+    }
+    getMediaruleSizes(force) {
+        let mediaRuleSizesKeys = Object.keys(this._mediaRuleSizes);
+        if (!force && mediaRuleSizesKeys && mediaRuleSizesKeys.length === 2) {
+            return this._mediaRuleSizes;
+        }
+        let cssVariable_WidthFrom = this.getCssValueBySelector("html.workspace", __classPrivateFieldGet(this, _MobileVsDesktopPack_CSS_VARIABLE_NAME__WIDTH_FROM, "f"));
+        let cssVariable_WidthTil = this.getCssValueBySelector("html.workspace", __classPrivateFieldGet(this, _MobileVsDesktopPack_CSS_VARIABLE_NAME__WIDTH_TIL, "f"));
+        // @ts-ignore
+        this._mediaRuleSizes["minWidth"] = cssVariable_WidthFrom;
+        // @ts-ignore
+        this._mediaRuleSizes["maxWidth"] = cssVariable_WidthTil;
+        return this._mediaRuleSizes;
     }
     isMobile(force) {
         let mediaruleName = this.getMediaruleName(force);
@@ -102,6 +126,11 @@ class MobileVsDesktopPack {
     }
     toJson(force) {
         let mediaruleName = this.getMediaruleName(force);
+        let mediaruleSizes = this.getMediaruleSizes(force);
+        let mediaruleJsonKeys = Object.keys(this._mediaruleJson);
+        if (!force && mediaruleJsonKeys && mediaruleJsonKeys.length !== 0) {
+            return this._mediaruleJson;
+        }
         let notToUpdate = false;
         let isMobile = this.isMobile(notToUpdate);
         let isTablet = this.isTablet(notToUpdate);
@@ -112,18 +141,20 @@ class MobileVsDesktopPack {
         let labelIsTablet = "isTablet";
         let labelIsDesktop = "isDesktop";
         let isMobilePortrait = (isMobile && isOrientationPortrait);
-        let labelMediaruleName = isMobilePortrait ? "media" : "mediaruleName";
+        let labelMediaruleName = isMobilePortrait ? "media" : "mediaQueryName";
+        let labelMediaruleSizes = isMobilePortrait ? "width" : "mediaQueryWidth";
         let labelIsOrientationPortrait = isMobilePortrait ? "portrait" : "isOrientationPortrait";
         let labelIsOrientationLandscape = isMobilePortrait ? "landscape" : "isOrientationLandscape";
-        let mediaruleJson = {
+        this._mediaruleJson = {
             [labelMediaruleName]: mediaruleName,
+            [labelMediaruleSizes]: mediaruleSizes,
             [labelIsMobile]: isMobile,
             [labelIsTablet]: isTablet,
             [labelIsDesktop]: isDesktop,
             [labelIsOrientationPortrait]: isOrientationPortrait,
             [labelIsOrientationLandscape]: isOrientationLandscape
         };
-        return mediaruleJson;
+        return this._mediaruleJson;
     }
     toString() {
         let force = true;
@@ -137,5 +168,5 @@ class MobileVsDesktopPack {
     }
 }
 exports.MobileVsDesktopPack = MobileVsDesktopPack;
-_MobileVsDesktopPack_KEYWORDS_ORIENTATION_PORTRAIT = new WeakMap(), _MobileVsDesktopPack_KEYWORDS_ORIENTATION_LANDSCAPE = new WeakMap(), _MobileVsDesktopPack_KEYWORD_MOBILE = new WeakMap(), _MobileVsDesktopPack_KEYWORD_TABLET = new WeakMap();
+_MobileVsDesktopPack_KEYWORDS_ORIENTATION_PORTRAIT = new WeakMap(), _MobileVsDesktopPack_KEYWORDS_ORIENTATION_LANDSCAPE = new WeakMap(), _MobileVsDesktopPack_KEYWORD_MOBILE = new WeakMap(), _MobileVsDesktopPack_KEYWORD_TABLET = new WeakMap(), _MobileVsDesktopPack_CSS_VARIABLE_NAME__MEDIA_RULE = new WeakMap(), _MobileVsDesktopPack_CSS_VARIABLE_NAME__WIDTH_FROM = new WeakMap(), _MobileVsDesktopPack_CSS_VARIABLE_NAME__WIDTH_TIL = new WeakMap();
 //# sourceMappingURL=Mobile.vsDesktopPack.js.map

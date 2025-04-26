@@ -1,7 +1,5 @@
 export class MediaruleNames {
 
-  readonly #CSS_VARIABLE_NAME = "--media-rule";
-
   readonly #MEDIA_2xl_ultra_wide_horizontal = "media_2xl_ultra_wide_horizontal";
   readonly #MEDIA_2xl_ultra_wide_vertical = "media_2xl_ultra_wide_vertical";
   readonly #MEDIA_3xl_hd_horizontal = "media_3xl_hd_horizontal";
@@ -26,10 +24,6 @@ export class MediaruleNames {
   readonly #MEDIA_xl_desktop_vertical = "media_xl_desktop_vertical";
   readonly #MEDIA_xs_mobile_landscape = "media_xs_mobile_landscape";
   readonly #MEDIA_xs_mobile_portrait = "media_xs_mobile_portrait";
-
-  public getCssVariableName() {
-    return this.#CSS_VARIABLE_NAME;
-  }
 
   public getMEDIA_2xl_ultra_wide_horizontal() {
     return this.#MEDIA_2xl_ultra_wide_horizontal;

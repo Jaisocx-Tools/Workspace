@@ -7,13 +7,23 @@ export class MobileVsDesktopPack {
 
   #KEYWORD_MOBILE: string;
   #KEYWORD_TABLET: string;
+  
+  #CSS_VARIABLE_NAME__MEDIA_RULE: string;
+  #CSS_VARIABLE_NAME__WIDTH_FROM: string;
+  #CSS_VARIABLE_NAME__WIDTH_TIL: string;
 
   protected _mediaruleNamesInstance: MediaruleNames;
   protected _mediaRuleName: string; 
+  protected _mediaRuleSizes: object;
+  protected _mediaruleJson: object;
 
   constructor() {
     this.#KEYWORD_MOBILE = "_mobile_";
     this.#KEYWORD_TABLET = "_tablet_";
+
+    this.#CSS_VARIABLE_NAME__MEDIA_RULE = "--media-rule";
+    this.#CSS_VARIABLE_NAME__WIDTH_FROM = "--width__from";
+    this.#CSS_VARIABLE_NAME__WIDTH_TIL = "--width__til";
 
     this.#KEYWORDS_ORIENTATION_PORTRAIT = [
       "_portrait",
@@ -27,6 +37,12 @@ export class MobileVsDesktopPack {
 
     this._mediaruleNamesInstance = new MediaruleNames();
     this._mediaRuleName = "";
+    this._mediaRuleSizes = new Object();
+    this._mediaruleJson = new Object();
+  }
+
+  public getCssVariableName_MediaRule(): string {
+    return this.#CSS_VARIABLE_NAME__MEDIA_RULE;
   }
 
   public getCssValueByHtmlNode ( 
@@ -64,7 +80,7 @@ export class MobileVsDesktopPack {
       return this._mediaRuleName;
     }
 
-    let cssVariableName: string = this._mediaruleNamesInstance.getCssVariableName();
+    let cssVariableName: string = this.getCssVariableName_MediaRule();
     let mediaRuleName: string = this.getCssValueBySelector (
       "html.workspace",
       cssVariableName
@@ -73,6 +89,31 @@ export class MobileVsDesktopPack {
     this._mediaRuleName = mediaRuleName;
 
     return this._mediaRuleName;
+  }
+
+  public getMediaruleSizes( force: boolean ): object {
+    let mediaRuleSizesKeys: any = Object.keys( this._mediaRuleSizes );
+
+    if ( !force && mediaRuleSizesKeys && mediaRuleSizesKeys.length === 2 ) {
+      return this._mediaRuleSizes;
+    }
+
+    let cssVariable_WidthFrom: string = this.getCssValueBySelector (
+      "html.workspace",
+      this.#CSS_VARIABLE_NAME__WIDTH_FROM
+    );
+    let cssVariable_WidthTil: string = this.getCssValueBySelector (
+      "html.workspace",
+      this.#CSS_VARIABLE_NAME__WIDTH_TIL
+    );
+
+    // @ts-ignore
+    this._mediaRuleSizes["minWidth"] = cssVariable_WidthFrom;
+
+    // @ts-ignore
+    this._mediaRuleSizes["maxWidth"] = cssVariable_WidthTil;
+
+    return this._mediaRuleSizes;
   }
 
   public isMobile( force: boolean ): boolean {
@@ -114,7 +155,7 @@ export class MobileVsDesktopPack {
     return isMediaruleDesktop;
   }
 
-  public matchOrientation( 
+  public matchOrientation ( 
     keywords: string[], 
     force: boolean ): boolean {
     let mediaruleName = this.getMediaruleName( force );
@@ -145,6 +186,12 @@ export class MobileVsDesktopPack {
 
   public toJson( force: boolean ): any {
     let mediaruleName: string = this.getMediaruleName( force );
+    let mediaruleSizes: object = this.getMediaruleSizes( force );
+
+    let mediaruleJsonKeys: string[] = Object.keys(this._mediaruleJson);
+    if ( !force && mediaruleJsonKeys && mediaruleJsonKeys.length !== 0 ) {
+      return this._mediaruleJson;
+    }
 
     let notToUpdate: boolean = false;
     let isMobile: boolean = this.isMobile( notToUpdate );
@@ -158,12 +205,14 @@ export class MobileVsDesktopPack {
     let labelIsDesktop: string = "isDesktop";
 
     let isMobilePortrait: boolean = ( isMobile && isOrientationPortrait);
-    let labelMediaruleName: string = isMobilePortrait ? "media" : "mediaruleName";
+    let labelMediaruleName: string = isMobilePortrait ? "media" : "mediaQueryName";
+    let labelMediaruleSizes: string = isMobilePortrait ? "width" : "mediaQueryWidth";
     let labelIsOrientationPortrait: string = isMobilePortrait ? "portrait" : "isOrientationPortrait";
     let labelIsOrientationLandscape: string = isMobilePortrait ? "landscape" : "isOrientationLandscape";
 
-    let mediaruleJson: object = {
+    this._mediaruleJson = {
       [labelMediaruleName]: mediaruleName,
+      [labelMediaruleSizes]: mediaruleSizes,
       [labelIsMobile]: isMobile,
       [labelIsTablet]: isTablet,
       [labelIsDesktop]: isDesktop,
@@ -171,10 +220,10 @@ export class MobileVsDesktopPack {
       [labelIsOrientationLandscape]: isOrientationLandscape
     };
     
-    return mediaruleJson;
+    return this._mediaruleJson;
   }
 
-  public toString() {
+  public toString(): string {
     let force: boolean = true;
     let mediaruleJson: any = this.toJson( force );
     let jsonString: string = JSON.stringify( 
@@ -190,4 +239,8 @@ export class MobileVsDesktopPack {
     // return "Not implemented";
   }
 }
+
+
+
+
 

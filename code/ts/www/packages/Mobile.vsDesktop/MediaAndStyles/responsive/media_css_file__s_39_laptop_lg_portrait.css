@@ -1,7 +1,11 @@
-/* Responsive rules for: s_39_laptop_lg_portrait*/
-@media only screen and (min-width: 1201px) and (max-width: 1440px) and (orientation: portrait){
+/* Responsive rules for: s_39_laptop_lg_portrait */
+@media only screen and (min-width: 1201px) and (max-width: 1440px) and (orientation: portrait) {
   .workspace {
     --media_rule_name: s_39_laptop_lg_portrait;
+
+    --width__from: var(--s_39_laptop_lg_portrait__width__from);
+    --width__til: var(--s_39_laptop_lg_portrait__width__til);
+
   }    
 
   /* verifying responsive rules applies */

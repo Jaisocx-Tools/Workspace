@@ -29,6 +29,7 @@ export class ResponsiveDatasetAutomationConstants {
 
   #cssVariablePrefix: string;
   #cssVariableNameValueDelimiter: string;
+  #cssVariableReferenceKeyword_Var: string;
   #cssExpressionEnd: string;
   #doubleQuote: string;
   #commentStart: string;
@@ -48,12 +49,17 @@ export class ResponsiveDatasetAutomationConstants {
   #mediaConstantNameLine: string[];
   #mediaRuleConstantLine: (string|string[])[];
   #mediaConstantLine: string[];
+  #mediaRuleVariable_Width: string[];
 
   #bitbufsMediaLine: Uint8Array[];
   #bitbufsMediaConstantNameLine: Uint8Array[];
   #bitbufsMediaRuleConstantLine: (Uint8Array|Uint8Array[])[];
   #bitbufsMediaConstantLine: Uint8Array[];
+  #bitbufsMediaRuleVariable_Width: Uint8Array[];
   #bitsbufN: Uint8Array;
+
+  #bitbufKeywordFrom: Uint8Array;
+  #bitbufKeywordTil: Uint8Array;
 
 
   constructor() {
@@ -86,6 +92,7 @@ export class ResponsiveDatasetAutomationConstants {
 
     this.#cssVariablePrefix = "--";
     this.#cssVariableNameValueDelimiter = ": ";
+    this.#cssVariableReferenceKeyword_Var = "var";
     this.#cssExpressionEnd = ";";
     this.#doubleQuote = "\"";
     this.#commentStart = "/*";
@@ -186,13 +193,40 @@ export class ResponsiveDatasetAutomationConstants {
       this.#cssExpressionEnd
     ];
 
+    this.#mediaRuleVariable_Width = [
+      [this.#cssVariablePrefix,
+        this.#keywordWidth,
+        this.#underscore,
+        this.#underscore].join(""),
+      "1", 
+
+      [this.#cssVariableNameValueDelimiter,
+        this.#cssVariableReferenceKeyword_Var,
+        this.#braceRoundStart,
+
+        this.#cssVariablePrefix].join(""),
+      "3",
+      [this.#underscore,
+        this.#underscore,
+        this.#keywordWidth,
+        this.#underscore,
+        this.#underscore].join(""),
+      "5", 
+
+      [this.#braceRoundEnd,
+        this.#cssExpressionEnd].join("")
+    ];
+
     this.#bitbufsOrientationKeywords = new Array() as Uint8Array[];
     this.#bitbufsMediaLine = new Array() as Uint8Array[];
     this.#bitbufsMediaConstantNameLine = new Array() as Uint8Array[];
     this.#bitbufsMediaRuleConstantLine = new Array() as (Uint8Array|Uint8Array[])[];
     this.#bitbufsMediaConstantLine = new Array() as Uint8Array[];
+    this.#bitbufsMediaRuleVariable_Width = new Array() as Uint8Array[];
     this.#bitsbufN = this.textEncoder.encode( this.#N );
 
+    this.#bitbufKeywordFrom = this.textEncoder.encode( this.#keywordFrom );
+    this.#bitbufKeywordTil = this.textEncoder.encode( this.#keywordTil );
   }
 
   public textsToBitsbufs(): number {
@@ -202,7 +236,8 @@ export class ResponsiveDatasetAutomationConstants {
       "mediaLine",
       "mediaConstantNameLine",
       "mediaRuleConstantLine",
-      "mediaConstantLine"
+      "mediaConstantLine",
+      "mediaRuleVariable_Width"
     ];
 
     let textBlocks: (string|string[])[] = new Array() as (string|string[])[];
@@ -211,6 +246,7 @@ export class ResponsiveDatasetAutomationConstants {
     let textBlockNameFirstLetterUC: string = "";
     let getMethodName: string = "";
     let getBitsbufsMethodName: string = "";
+    let textBlocksLen: number = 0;
 
     for ( textBlockName of textsBlocksNamesArray ) {
 
@@ -223,21 +259,38 @@ export class ResponsiveDatasetAutomationConstants {
       // @ts-ignore
       bitsbufsTextBlocks = this[getBitsbufsMethodName].call(this);
 
-      let textLine: string = "";
-      let bitsbufsTextLine: Uint8Array = this.textEncoder.encode(" ");
-      let i = 0; 
-      let textBlocksLen: number = textBlocks.length;
-      for ( i = 0; i < textBlocksLen; i++ ) {
+      
+      textBlocksLen = this.textArrayToUnt8Arrays ( 
         // @ts-ignore
-        textLine = textBlocks[i];
-        bitsbufsTextLine = this.textEncoder.encode( textLine ); //this.textEncoder.encode( textLine );
+        textBlocks,
+        bitsbufsTextBlocks
+      );
 
-        // @ts-ignore
-        bitsbufsTextBlocks[i] = bitsbufsTextLine; 
-      }
     }
 
-    return 1;
+    return textBlocksLen;
+  }
+
+  textArrayToUnt8Arrays ( 
+    inArray: string[],
+    inOutBitsbufsTextBlocks: Uint8Array[]
+  ): number {
+    
+    let textLine: string = "";
+    let bitsbufsTextLine: Uint8Array = this.textEncoder.encode(" ");
+    let i = 0; 
+    let textBlocksLen: number = inArray.length;
+
+    for ( i = 0; i < textBlocksLen; i++ ) {
+      // @ts-ignore
+      textLine = inArray[i];
+      bitsbufsTextLine = this.textEncoder.encode( textLine ); 
+
+      // @ts-ignore
+      inOutBitsbufsTextBlocks[i] = bitsbufsTextLine; 
+    }
+
+    return textBlocksLen;
   }
 
   getKeywordMediarule(): string {
@@ -357,6 +410,10 @@ export class ResponsiveDatasetAutomationConstants {
     return this.#mediaConstantLine;
   }
 
+  getMediaRuleVariable_Width(): string[] {
+    return this.#mediaRuleVariable_Width;
+  }
+
 
 
   getBitbufsMediaLine(): Uint8Array[] {
@@ -370,6 +427,16 @@ export class ResponsiveDatasetAutomationConstants {
   }
   getBitbufsMediaConstantLine(): Uint8Array[] {
     return this.#bitbufsMediaConstantLine;
+  }
+  getBitbufsMediaRuleVariable_Width(): Uint8Array[] {
+    return this.#bitbufsMediaRuleVariable_Width;
+  }
+
+  getBitsbufKeywordFrom(): Uint8Array {
+    return this.#bitbufKeywordFrom;
+  }
+  getBitsbufKeywordTil(): Uint8Array {
+    return this.#bitbufKeywordTil;
   }
 
 
@@ -427,6 +494,21 @@ export class ResponsiveDatasetAutomationConstants {
     this.#bitbufsMediaConstantLine[sizePos] = this.textEncoder.encode( size );
 
     return this.#bitbufsMediaConstantLine;
+  }
+
+  getMediaRuleVariable_Width_Updated ( 
+    mediaName: Uint8Array, 
+    postfix: Uint8Array
+  ): Uint8Array[] {
+    const postfixPos_1: number = 1;
+    const mediaNamePos: number = 3;
+    const postfixPos_2: number = 5;
+
+    this.#bitbufsMediaRuleVariable_Width[postfixPos_1] = postfix;
+    this.#bitbufsMediaRuleVariable_Width[mediaNamePos] = mediaName;
+    this.#bitbufsMediaRuleVariable_Width[postfixPos_2] = postfix;
+
+    return this.#bitbufsMediaRuleVariable_Width;
   }
 
 }
