@@ -1,0 +1,17 @@
+/* Responsive rules for: style_h03_tablet_sm_landscape */
+@media only screen and (min-width: 813px) and (max-width: 960px) and (orientation: landscape) {
+  .workspace {
+    --media_rule_name: style_h03_tablet_sm_landscape;
+
+    --media_rule__min_width: var(--style_h03_tablet_sm_landscape__min_width);
+    --media_rule__max_width: var(--style_h03_tablet_sm_landscape__max_width);
+
+  }    
+
+  /* verifying responsive rules applies */
+  .workspace.verify-responsive-rule-applies main h1::before {
+    content: var(--media_rule_name);
+  }
+
+}
+

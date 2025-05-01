@@ -15,8 +15,8 @@ export class MobileVsDesktopPack {
         this.#KEYWORD_MOBILE = "_mobile_";
         this.#KEYWORD_TABLET = "_tablet_";
         this.#CSS_VARIABLE_NAME__MEDIA_RULE = "--media-rule";
-        this.#CSS_VARIABLE_NAME__WIDTH_FROM = "--width__from";
-        this.#CSS_VARIABLE_NAME__WIDTH_TIL = "--width__til";
+        this.#CSS_VARIABLE_NAME__WIDTH_FROM = "--min_width";
+        this.#CSS_VARIABLE_NAME__WIDTH_TIL = "--max_width";
         this.#KEYWORDS_ORIENTATION_PORTRAIT = [
             "_portrait",
             "_vertical"

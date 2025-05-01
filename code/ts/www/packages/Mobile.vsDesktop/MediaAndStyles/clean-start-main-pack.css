@@ -555,80 +555,125 @@
 
 .workspace {
 
-    --s_12_mobile_xs_portrait__width__from: 240px;
-    --s_12_mobile_xs_portrait__width__til: 320px;
-    --s_12_mobile_xs_landscape__width__from: 320px;
-    --s_12_mobile_xs_landscape__width__til: 500px;
+    --style_e02_mobile_xs_portrait__width__min_width: 240px;
+    --style_e02_mobile_xs_portrait__width__max_width: 320px;
 
-    --s_14_mobile_s_portrait__width__from: 321px;
-    --s_14_mobile_s_portrait__width__til: 374px;
-    --s_14_mobile_s_landscape__width__from: 501px;
-    --s_14_mobile_s_landscape__width__til: 667px;
+    --style_e02_mobile_xs_landscape__width__min_width: 320px;
+    --style_e02_mobile_xs_landscape__width__max_width: 500px;
 
-    --s_16_mobile_sm_portrait__width__from: 375px;
-    --s_16_mobile_sm_portrait__width__til: 430px;
-    --s_16_mobile_sm_landscape__width__from: 668px;
-    --s_16_mobile_sm_landscape__width__til: 736px;
 
-    --s_18_mobile_md_portrait__width__from: 431px;
-    --s_18_mobile_md_portrait__width__til: 480px;
-    --s_18_mobile_md_landscape__width__from: 737px;
-    --s_18_mobile_md_landscape__width__til: 812px;
 
-    --s_22_tablet_sm_portrait__width__from: 481px;
-    --s_22_tablet_sm_portrait__width__til: 767px;
-    --s_22_tablet_sm_landscape__width__from: 813px;
-    --s_22_tablet_sm_landscape__width__til: 960px;
+    --style_e04_mobile_s_portrait__width__min_width: 321px;
+    --style_e04_mobile_s_portrait__width__max_width: 374px;
 
-    --s_24_tablet_md_portrait__width__from: 768px;
-    --s_24_tablet_md_portrait__width__til: 1024px;
-    --s_24_tablet_md_landscape__width__from: 961px;
-    --s_24_tablet_md_landscape__width__til: 1024px;
+    --style_e04_mobile_s_landscape__width__min_width: 501px;
+    --style_e04_mobile_s_landscape__width__max_width: 667px;
 
-    --s_32_laptop_sm_portrait__width__from: 1025px;
-    --s_32_laptop_sm_portrait__width__til: 1080px;
-    --s_32_laptop_sm_landscape__width__from: 1025px;
-    --s_32_laptop_sm_landscape__width__til: 1279px;
 
-    --s_36_laptop_md_portrait__width__from: 1081px;
-    --s_36_laptop_md_portrait__width__til: 1200px;
-    --s_36_laptop_md_landscape__width__from: 1280px;
-    --s_36_laptop_md_landscape__width__til: 1439px;
 
-    --s_39_laptop_lg_portrait__width__from: 1201px;
-    --s_39_laptop_lg_portrait__width__til: 1440px;
-    --s_39_laptop_lg_landscape__width__from: 1440px;
-    --s_39_laptop_lg_landscape__width__til: 1600px;
+    --style_e06_mobile_sm_portrait__width__min_width: 375px;
+    --style_e06_mobile_sm_portrait__width__max_width: 430px;
 
-    --s_42_desktop_xl_portrait__width__from: 1441px;
-    --s_42_desktop_xl_portrait__width__til: 1600px;
-    --s_42_desktop_xl_landscape__width__from: 1601px;
-    --s_42_desktop_xl_landscape__width__til: 1920px;
+    --style_e06_mobile_sm_landscape__width__min_width: 668px;
+    --style_e06_mobile_sm_landscape__width__max_width: 736px;
 
-    --s_44_desktop_xxl_portrait__width__from: 1601px;
-    --s_44_desktop_xxl_portrait__width__til: 2160px;
-    --s_44_desktop_xxl_landscape__width__from: 1921px;
-    --s_44_desktop_xxl_landscape__width__til: 2560px;
 
-    --s_46_display_qhd_portrait__width__from: 2161px;
-    --s_46_display_qhd_portrait__width__til: 2160px;
-    --s_46_display_qhd_landscape__width__from: 2561px;
-    --s_46_display_qhd_landscape__width__til: 3840px;
 
-    --s_52_tv_4k_portrait__width__from: 2161px;
-    --s_52_tv_4k_portrait__width__til: 4320px;
-    --s_52_tv_4k_landscape__width__from: 3841px;
-    --s_52_tv_4k_landscape__width__til: 7680px;
+    --style_e08_mobile_md_portrait__width__min_width: 431px;
+    --style_e08_mobile_md_portrait__width__max_width: 480px;
 
-    --s_54_tv_8k_portrait__width__from: 4321px;
-    --s_54_tv_8k_portrait__width__til: 8640px;
-    --s_54_tv_8k_landscape__width__from: 7681px;
-    --s_54_tv_8k_landscape__width__til: 15360px;
+    --style_e08_mobile_md_landscape__width__min_width: 737px;
+    --style_e08_mobile_md_landscape__width__max_width: 812px;
 
-    --s_56_tv_16k_portrait__width__from: 8641px;
-    --s_56_tv_16k_portrait__width__til: 9999px;
-    --s_56_tv_16k_landscape__width__from: 15361px;
-    --s_56_tv_16k_landscape__width__til: 25360px;
+
+
+    --style_h03_tablet_sm_portrait__width__min_width: 481px;
+    --style_h03_tablet_sm_portrait__width__max_width: 767px;
+
+    --style_h03_tablet_sm_landscape__width__min_width: 813px;
+    --style_h03_tablet_sm_landscape__width__max_width: 960px;
+
+
+
+    --style_h05_tablet_md_portrait__width__min_width: 768px;
+    --style_h05_tablet_md_portrait__width__max_width: 1024px;
+
+    --style_h05_tablet_md_landscape__width__min_width: 961px;
+    --style_h05_tablet_md_landscape__width__max_width: 1024px;
+
+
+
+    --style_l03_laptop_sm_portrait__width__min_width: 1025px;
+    --style_l03_laptop_sm_portrait__width__max_width: 1080px;
+
+    --style_l03_laptop_sm_landscape__width__min_width: 1025px;
+    --style_l03_laptop_sm_landscape__width__max_width: 1279px;
+
+
+
+    --style_l05_laptop_md_portrait__width__min_width: 1081px;
+    --style_l05_laptop_md_portrait__width__max_width: 1200px;
+
+    --style_l05_laptop_md_landscape__width__min_width: 1280px;
+    --style_l05_laptop_md_landscape__width__max_width: 1439px;
+
+
+
+    --style_l07_laptop_lg_portrait__width__min_width: 1201px;
+    --style_l07_laptop_lg_portrait__width__max_width: 1440px;
+
+    --style_l07_laptop_lg_landscape__width__min_width: 1440px;
+    --style_l07_laptop_lg_landscape__width__max_width: 1600px;
+
+
+
+    --style_s02_desktop_xl_portrait__width__min_width: 1441px;
+    --style_s02_desktop_xl_portrait__width__max_width: 1600px;
+
+    --style_s02_desktop_xl_landscape__width__min_width: 1601px;
+    --style_s02_desktop_xl_landscape__width__max_width: 1920px;
+
+
+
+    --style_s04_desktop_xxl_portrait__width__min_width: 1601px;
+    --style_s04_desktop_xxl_portrait__width__max_width: 2160px;
+
+    --style_s04_desktop_xxl_landscape__width__min_width: 1921px;
+    --style_s04_desktop_xxl_landscape__width__max_width: 2560px;
+
+
+
+    --style_s08_display_qhd_portrait__width__min_width: 2161px;
+    --style_s08_display_qhd_portrait__width__max_width: 2160px;
+
+    --style_s08_display_qhd_landscape__width__min_width: 2561px;
+    --style_s08_display_qhd_landscape__width__max_width: 3840px;
+
+
+
+    --style_t04_tv_4k_portrait__width__min_width: 2161px;
+    --style_t04_tv_4k_portrait__width__max_width: 4320px;
+
+    --style_t04_tv_4k_landscape__width__min_width: 3841px;
+    --style_t04_tv_4k_landscape__width__max_width: 7680px;
+
+
+
+    --style_t08_tv_8k_portrait__width__min_width: 4321px;
+    --style_t08_tv_8k_portrait__width__max_width: 8640px;
+
+    --style_t08_tv_8k_landscape__width__min_width: 7681px;
+    --style_t08_tv_8k_landscape__width__max_width: 15360px;
+
+
+
+    --style_t16_tv_16k_portrait__width__min_width: 8641px;
+    --style_t16_tv_16k_portrait__width__max_width: 9999px;
+
+    --style_t16_tv_16k_landscape__width__min_width: 15361px;
+    --style_t16_tv_16k_landscape__width__max_width: 25360px;
+
+
 
 }
 
@@ -636,16 +681,16 @@
 
 @media only screen and (min-width: 240px) and (max-width: 320px) and (orientation: portrait) {
   .workspace {
-    --media_rule_name: s_12_mobile_xs_portrait;
+    --media_rule_name: style_e02_mobile_xs_portrait;
 
-    --width__from: var(--s_12_mobile_xs_portrait__width__from);
-    --width__til: var(--s_12_mobile_xs_portrait__width__til);
+    --media_rule__min_width: var(--style_e02_mobile_xs_portrait__min_width);
+    --media_rule__max_width: var(--style_e02_mobile_xs_portrait__max_width);
 
   }    
 
   
   .workspace.verify-responsive-rule-applies main h1::before {
-    content: var(--media-rule);
+    content: var(--media_rule_name);
   }
 
 }
@@ -653,16 +698,16 @@
 
 @media only screen and (min-width: 320px) and (max-width: 500px) and (orientation: landscape) {
   .workspace {
-    --media_rule_name: s_12_mobile_xs_landscape;
+    --media_rule_name: style_e02_mobile_xs_landscape;
 
-    --width__from: var(--s_12_mobile_xs_landscape__width__from);
-    --width__til: var(--s_12_mobile_xs_landscape__width__til);
+    --media_rule__min_width: var(--style_e02_mobile_xs_landscape__min_width);
+    --media_rule__max_width: var(--style_e02_mobile_xs_landscape__max_width);
 
   }    
 
   
   .workspace.verify-responsive-rule-applies main h1::before {
-    content: var(--media-rule);
+    content: var(--media_rule_name);
   }
 
 }
@@ -670,16 +715,16 @@
 
 @media only screen and (min-width: 321px) and (max-width: 374px) and (orientation: portrait) {
   .workspace {
-    --media_rule_name: s_14_mobile_s_portrait;
+    --media_rule_name: style_e04_mobile_s_portrait;
 
-    --width__from: var(--s_14_mobile_s_portrait__width__from);
-    --width__til: var(--s_14_mobile_s_portrait__width__til);
+    --media_rule__min_width: var(--style_e04_mobile_s_portrait__min_width);
+    --media_rule__max_width: var(--style_e04_mobile_s_portrait__max_width);
 
   }    
 
   
   .workspace.verify-responsive-rule-applies main h1::before {
-    content: var(--media-rule);
+    content: var(--media_rule_name);
   }
 
 }
@@ -687,16 +732,16 @@
 
 @media only screen and (min-width: 501px) and (max-width: 667px) and (orientation: landscape) {
   .workspace {
-    --media_rule_name: s_14_mobile_s_landscape;
+    --media_rule_name: style_e04_mobile_s_landscape;
 
-    --width__from: var(--s_14_mobile_s_landscape__width__from);
-    --width__til: var(--s_14_mobile_s_landscape__width__til);
+    --media_rule__min_width: var(--style_e04_mobile_s_landscape__min_width);
+    --media_rule__max_width: var(--style_e04_mobile_s_landscape__max_width);
 
   }    
 
   
   .workspace.verify-responsive-rule-applies main h1::before {
-    content: var(--media-rule);
+    content: var(--media_rule_name);
   }
 
 }
@@ -704,16 +749,16 @@
 
 @media only screen and (min-width: 375px) and (max-width: 430px) and (orientation: portrait) {
   .workspace {
-    --media_rule_name: s_16_mobile_sm_portrait;
+    --media_rule_name: style_e06_mobile_sm_portrait;
 
-    --width__from: var(--s_16_mobile_sm_portrait__width__from);
-    --width__til: var(--s_16_mobile_sm_portrait__width__til);
+    --media_rule__min_width: var(--style_e06_mobile_sm_portrait__min_width);
+    --media_rule__max_width: var(--style_e06_mobile_sm_portrait__max_width);
 
   }    
 
   
   .workspace.verify-responsive-rule-applies main h1::before {
-    content: var(--media-rule);
+    content: var(--media_rule_name);
   }
 
 }
@@ -721,16 +766,16 @@
 
 @media only screen and (min-width: 668px) and (max-width: 736px) and (orientation: landscape) {
   .workspace {
-    --media_rule_name: s_16_mobile_sm_landscape;
+    --media_rule_name: style_e06_mobile_sm_landscape;
 
-    --width__from: var(--s_16_mobile_sm_landscape__width__from);
-    --width__til: var(--s_16_mobile_sm_landscape__width__til);
+    --media_rule__min_width: var(--style_e06_mobile_sm_landscape__min_width);
+    --media_rule__max_width: var(--style_e06_mobile_sm_landscape__max_width);
 
   }    
 
   
   .workspace.verify-responsive-rule-applies main h1::before {
-    content: var(--media-rule);
+    content: var(--media_rule_name);
   }
 
 }
@@ -738,16 +783,16 @@
 
 @media only screen and (min-width: 431px) and (max-width: 480px) and (orientation: portrait) {
   .workspace {
-    --media_rule_name: s_18_mobile_md_portrait;
+    --media_rule_name: style_e08_mobile_md_portrait;
 
-    --width__from: var(--s_18_mobile_md_portrait__width__from);
-    --width__til: var(--s_18_mobile_md_portrait__width__til);
+    --media_rule__min_width: var(--style_e08_mobile_md_portrait__min_width);
+    --media_rule__max_width: var(--style_e08_mobile_md_portrait__max_width);
 
   }    
 
   
   .workspace.verify-responsive-rule-applies main h1::before {
-    content: var(--media-rule);
+    content: var(--media_rule_name);
   }
 
 }
@@ -755,16 +800,16 @@
 
 @media only screen and (min-width: 737px) and (max-width: 812px) and (orientation: landscape) {
   .workspace {
-    --media_rule_name: s_18_mobile_md_landscape;
+    --media_rule_name: style_e08_mobile_md_landscape;
 
-    --width__from: var(--s_18_mobile_md_landscape__width__from);
-    --width__til: var(--s_18_mobile_md_landscape__width__til);
+    --media_rule__min_width: var(--style_e08_mobile_md_landscape__min_width);
+    --media_rule__max_width: var(--style_e08_mobile_md_landscape__max_width);
 
   }    
 
   
   .workspace.verify-responsive-rule-applies main h1::before {
-    content: var(--media-rule);
+    content: var(--media_rule_name);
   }
 
 }
@@ -772,16 +817,16 @@
 
 @media only screen and (min-width: 481px) and (max-width: 767px) and (orientation: portrait) {
   .workspace {
-    --media_rule_name: s_22_tablet_sm_portrait;
+    --media_rule_name: style_h03_tablet_sm_portrait;
 
-    --width__from: var(--s_22_tablet_sm_portrait__width__from);
-    --width__til: var(--s_22_tablet_sm_portrait__width__til);
+    --media_rule__min_width: var(--style_h03_tablet_sm_portrait__min_width);
+    --media_rule__max_width: var(--style_h03_tablet_sm_portrait__max_width);
 
   }    
 
   
   .workspace.verify-responsive-rule-applies main h1::before {
-    content: var(--media-rule);
+    content: var(--media_rule_name);
   }
 
 }
@@ -789,16 +834,16 @@
 
 @media only screen and (min-width: 813px) and (max-width: 960px) and (orientation: landscape) {
   .workspace {
-    --media_rule_name: s_22_tablet_sm_landscape;
+    --media_rule_name: style_h03_tablet_sm_landscape;
 
-    --width__from: var(--s_22_tablet_sm_landscape__width__from);
-    --width__til: var(--s_22_tablet_sm_landscape__width__til);
+    --media_rule__min_width: var(--style_h03_tablet_sm_landscape__min_width);
+    --media_rule__max_width: var(--style_h03_tablet_sm_landscape__max_width);
 
   }    
 
   
   .workspace.verify-responsive-rule-applies main h1::before {
-    content: var(--media-rule);
+    content: var(--media_rule_name);
   }
 
 }
@@ -806,16 +851,16 @@
 
 @media only screen and (min-width: 768px) and (max-width: 1024px) and (orientation: portrait) {
   .workspace {
-    --media_rule_name: s_24_tablet_md_portrait;
+    --media_rule_name: style_h05_tablet_md_portrait;
 
-    --width__from: var(--s_24_tablet_md_portrait__width__from);
-    --width__til: var(--s_24_tablet_md_portrait__width__til);
+    --media_rule__min_width: var(--style_h05_tablet_md_portrait__min_width);
+    --media_rule__max_width: var(--style_h05_tablet_md_portrait__max_width);
 
   }    
 
   
   .workspace.verify-responsive-rule-applies main h1::before {
-    content: var(--media-rule);
+    content: var(--media_rule_name);
   }
 
 }
@@ -823,16 +868,16 @@
 
 @media only screen and (min-width: 961px) and (max-width: 1024px) and (orientation: landscape) {
   .workspace {
-    --media_rule_name: s_24_tablet_md_landscape;
+    --media_rule_name: style_h05_tablet_md_landscape;
 
-    --width__from: var(--s_24_tablet_md_landscape__width__from);
-    --width__til: var(--s_24_tablet_md_landscape__width__til);
+    --media_rule__min_width: var(--style_h05_tablet_md_landscape__min_width);
+    --media_rule__max_width: var(--style_h05_tablet_md_landscape__max_width);
 
   }    
 
   
   .workspace.verify-responsive-rule-applies main h1::before {
-    content: var(--media-rule);
+    content: var(--media_rule_name);
   }
 
 }
@@ -840,16 +885,16 @@
 
 @media only screen and (min-width: 1025px) and (max-width: 1080px) and (orientation: portrait) {
   .workspace {
-    --media_rule_name: s_32_laptop_sm_portrait;
+    --media_rule_name: style_l03_laptop_sm_portrait;
 
-    --width__from: var(--s_32_laptop_sm_portrait__width__from);
-    --width__til: var(--s_32_laptop_sm_portrait__width__til);
+    --media_rule__min_width: var(--style_l03_laptop_sm_portrait__min_width);
+    --media_rule__max_width: var(--style_l03_laptop_sm_portrait__max_width);
 
   }    
 
   
   .workspace.verify-responsive-rule-applies main h1::before {
-    content: var(--media-rule);
+    content: var(--media_rule_name);
   }
 
 }
@@ -857,16 +902,16 @@
 
 @media only screen and (min-width: 1025px) and (max-width: 1279px) and (orientation: landscape) {
   .workspace {
-    --media_rule_name: s_32_laptop_sm_landscape;
+    --media_rule_name: style_l03_laptop_sm_landscape;
 
-    --width__from: var(--s_32_laptop_sm_landscape__width__from);
-    --width__til: var(--s_32_laptop_sm_landscape__width__til);
+    --media_rule__min_width: var(--style_l03_laptop_sm_landscape__min_width);
+    --media_rule__max_width: var(--style_l03_laptop_sm_landscape__max_width);
 
   }    
 
   
   .workspace.verify-responsive-rule-applies main h1::before {
-    content: var(--media-rule);
+    content: var(--media_rule_name);
   }
 
 }
@@ -874,16 +919,16 @@
 
 @media only screen and (min-width: 1081px) and (max-width: 1200px) and (orientation: portrait) {
   .workspace {
-    --media_rule_name: s_36_laptop_md_portrait;
+    --media_rule_name: style_l05_laptop_md_portrait;
 
-    --width__from: var(--s_36_laptop_md_portrait__width__from);
-    --width__til: var(--s_36_laptop_md_portrait__width__til);
+    --media_rule__min_width: var(--style_l05_laptop_md_portrait__min_width);
+    --media_rule__max_width: var(--style_l05_laptop_md_portrait__max_width);
 
   }    
 
   
   .workspace.verify-responsive-rule-applies main h1::before {
-    content: var(--media-rule);
+    content: var(--media_rule_name);
   }
 
 }
@@ -891,16 +936,16 @@
 
 @media only screen and (min-width: 1280px) and (max-width: 1439px) and (orientation: landscape) {
   .workspace {
-    --media_rule_name: s_36_laptop_md_landscape;
+    --media_rule_name: style_l05_laptop_md_landscape;
 
-    --width__from: var(--s_36_laptop_md_landscape__width__from);
-    --width__til: var(--s_36_laptop_md_landscape__width__til);
+    --media_rule__min_width: var(--style_l05_laptop_md_landscape__min_width);
+    --media_rule__max_width: var(--style_l05_laptop_md_landscape__max_width);
 
   }    
 
   
   .workspace.verify-responsive-rule-applies main h1::before {
-    content: var(--media-rule);
+    content: var(--media_rule_name);
   }
 
 }
@@ -908,16 +953,16 @@
 
 @media only screen and (min-width: 1201px) and (max-width: 1440px) and (orientation: portrait) {
   .workspace {
-    --media_rule_name: s_39_laptop_lg_portrait;
+    --media_rule_name: style_l07_laptop_lg_portrait;
 
-    --width__from: var(--s_39_laptop_lg_portrait__width__from);
-    --width__til: var(--s_39_laptop_lg_portrait__width__til);
+    --media_rule__min_width: var(--style_l07_laptop_lg_portrait__min_width);
+    --media_rule__max_width: var(--style_l07_laptop_lg_portrait__max_width);
 
   }    
 
   
   .workspace.verify-responsive-rule-applies main h1::before {
-    content: var(--media-rule);
+    content: var(--media_rule_name);
   }
 
 }
@@ -925,16 +970,16 @@
 
 @media only screen and (min-width: 1440px) and (max-width: 1600px) and (orientation: landscape) {
   .workspace {
-    --media_rule_name: s_39_laptop_lg_landscape;
+    --media_rule_name: style_l07_laptop_lg_landscape;
 
-    --width__from: var(--s_39_laptop_lg_landscape__width__from);
-    --width__til: var(--s_39_laptop_lg_landscape__width__til);
+    --media_rule__min_width: var(--style_l07_laptop_lg_landscape__min_width);
+    --media_rule__max_width: var(--style_l07_laptop_lg_landscape__max_width);
 
   }    
 
   
   .workspace.verify-responsive-rule-applies main h1::before {
-    content: var(--media-rule);
+    content: var(--media_rule_name);
   }
 
 }
@@ -942,16 +987,16 @@
 
 @media only screen and (min-width: 1441px) and (max-width: 1600px) and (orientation: portrait) {
   .workspace {
-    --media_rule_name: s_42_desktop_xl_portrait;
+    --media_rule_name: style_s02_desktop_xl_portrait;
 
-    --width__from: var(--s_42_desktop_xl_portrait__width__from);
-    --width__til: var(--s_42_desktop_xl_portrait__width__til);
+    --media_rule__min_width: var(--style_s02_desktop_xl_portrait__min_width);
+    --media_rule__max_width: var(--style_s02_desktop_xl_portrait__max_width);
 
   }    
 
   
   .workspace.verify-responsive-rule-applies main h1::before {
-    content: var(--media-rule);
+    content: var(--media_rule_name);
   }
 
 }
@@ -959,16 +1004,16 @@
 
 @media only screen and (min-width: 1601px) and (max-width: 1920px) and (orientation: landscape) {
   .workspace {
-    --media_rule_name: s_42_desktop_xl_landscape;
+    --media_rule_name: style_s02_desktop_xl_landscape;
 
-    --width__from: var(--s_42_desktop_xl_landscape__width__from);
-    --width__til: var(--s_42_desktop_xl_landscape__width__til);
+    --media_rule__min_width: var(--style_s02_desktop_xl_landscape__min_width);
+    --media_rule__max_width: var(--style_s02_desktop_xl_landscape__max_width);
 
   }    
 
   
   .workspace.verify-responsive-rule-applies main h1::before {
-    content: var(--media-rule);
+    content: var(--media_rule_name);
   }
 
 }
@@ -976,16 +1021,16 @@
 
 @media only screen and (min-width: 1601px) and (max-width: 2160px) and (orientation: portrait) {
   .workspace {
-    --media_rule_name: s_44_desktop_xxl_portrait;
+    --media_rule_name: style_s04_desktop_xxl_portrait;
 
-    --width__from: var(--s_44_desktop_xxl_portrait__width__from);
-    --width__til: var(--s_44_desktop_xxl_portrait__width__til);
+    --media_rule__min_width: var(--style_s04_desktop_xxl_portrait__min_width);
+    --media_rule__max_width: var(--style_s04_desktop_xxl_portrait__max_width);
 
   }    
 
   
   .workspace.verify-responsive-rule-applies main h1::before {
-    content: var(--media-rule);
+    content: var(--media_rule_name);
   }
 
 }
@@ -993,16 +1038,16 @@
 
 @media only screen and (min-width: 1921px) and (max-width: 2560px) and (orientation: landscape) {
   .workspace {
-    --media_rule_name: s_44_desktop_xxl_landscape;
+    --media_rule_name: style_s04_desktop_xxl_landscape;
 
-    --width__from: var(--s_44_desktop_xxl_landscape__width__from);
-    --width__til: var(--s_44_desktop_xxl_landscape__width__til);
+    --media_rule__min_width: var(--style_s04_desktop_xxl_landscape__min_width);
+    --media_rule__max_width: var(--style_s04_desktop_xxl_landscape__max_width);
 
   }    
 
   
   .workspace.verify-responsive-rule-applies main h1::before {
-    content: var(--media-rule);
+    content: var(--media_rule_name);
   }
 
 }
@@ -1010,16 +1055,16 @@
 
 @media only screen and (min-width: 2161px) and (max-width: 2160px) and (orientation: portrait) {
   .workspace {
-    --media_rule_name: s_46_display_qhd_portrait;
+    --media_rule_name: style_s08_display_qhd_portrait;
 
-    --width__from: var(--s_46_display_qhd_portrait__width__from);
-    --width__til: var(--s_46_display_qhd_portrait__width__til);
+    --media_rule__min_width: var(--style_s08_display_qhd_portrait__min_width);
+    --media_rule__max_width: var(--style_s08_display_qhd_portrait__max_width);
 
   }    
 
   
   .workspace.verify-responsive-rule-applies main h1::before {
-    content: var(--media-rule);
+    content: var(--media_rule_name);
   }
 
 }
@@ -1027,16 +1072,16 @@
 
 @media only screen and (min-width: 2561px) and (max-width: 3840px) and (orientation: landscape) {
   .workspace {
-    --media_rule_name: s_46_display_qhd_landscape;
+    --media_rule_name: style_s08_display_qhd_landscape;
 
-    --width__from: var(--s_46_display_qhd_landscape__width__from);
-    --width__til: var(--s_46_display_qhd_landscape__width__til);
+    --media_rule__min_width: var(--style_s08_display_qhd_landscape__min_width);
+    --media_rule__max_width: var(--style_s08_display_qhd_landscape__max_width);
 
   }    
 
   
   .workspace.verify-responsive-rule-applies main h1::before {
-    content: var(--media-rule);
+    content: var(--media_rule_name);
   }
 
 }
@@ -1044,16 +1089,16 @@
 
 @media only screen and (min-width: 2161px) and (max-width: 4320px) and (orientation: portrait) {
   .workspace {
-    --media_rule_name: s_52_tv_4k_portrait;
+    --media_rule_name: style_t04_tv_4k_portrait;
 
-    --width__from: var(--s_52_tv_4k_portrait__width__from);
-    --width__til: var(--s_52_tv_4k_portrait__width__til);
+    --media_rule__min_width: var(--style_t04_tv_4k_portrait__min_width);
+    --media_rule__max_width: var(--style_t04_tv_4k_portrait__max_width);
 
   }    
 
   
   .workspace.verify-responsive-rule-applies main h1::before {
-    content: var(--media-rule);
+    content: var(--media_rule_name);
   }
 
 }
@@ -1061,16 +1106,16 @@
 
 @media only screen and (min-width: 3841px) and (max-width: 7680px) and (orientation: landscape) {
   .workspace {
-    --media_rule_name: s_52_tv_4k_landscape;
+    --media_rule_name: style_t04_tv_4k_landscape;
 
-    --width__from: var(--s_52_tv_4k_landscape__width__from);
-    --width__til: var(--s_52_tv_4k_landscape__width__til);
+    --media_rule__min_width: var(--style_t04_tv_4k_landscape__min_width);
+    --media_rule__max_width: var(--style_t04_tv_4k_landscape__max_width);
 
   }    
 
   
   .workspace.verify-responsive-rule-applies main h1::before {
-    content: var(--media-rule);
+    content: var(--media_rule_name);
   }
 
 }
@@ -1078,16 +1123,16 @@
 
 @media only screen and (min-width: 4321px) and (max-width: 8640px) and (orientation: portrait) {
   .workspace {
-    --media_rule_name: s_54_tv_8k_portrait;
+    --media_rule_name: style_t08_tv_8k_portrait;
 
-    --width__from: var(--s_54_tv_8k_portrait__width__from);
-    --width__til: var(--s_54_tv_8k_portrait__width__til);
+    --media_rule__min_width: var(--style_t08_tv_8k_portrait__min_width);
+    --media_rule__max_width: var(--style_t08_tv_8k_portrait__max_width);
 
   }    
 
   
   .workspace.verify-responsive-rule-applies main h1::before {
-    content: var(--media-rule);
+    content: var(--media_rule_name);
   }
 
 }
@@ -1095,16 +1140,16 @@
 
 @media only screen and (min-width: 7681px) and (max-width: 15360px) and (orientation: landscape) {
   .workspace {
-    --media_rule_name: s_54_tv_8k_landscape;
+    --media_rule_name: style_t08_tv_8k_landscape;
 
-    --width__from: var(--s_54_tv_8k_landscape__width__from);
-    --width__til: var(--s_54_tv_8k_landscape__width__til);
+    --media_rule__min_width: var(--style_t08_tv_8k_landscape__min_width);
+    --media_rule__max_width: var(--style_t08_tv_8k_landscape__max_width);
 
   }    
 
   
   .workspace.verify-responsive-rule-applies main h1::before {
-    content: var(--media-rule);
+    content: var(--media_rule_name);
   }
 
 }
@@ -1112,16 +1157,16 @@
 
 @media only screen and (min-width: 8641px) and (max-width: 9999px) and (orientation: portrait) {
   .workspace {
-    --media_rule_name: s_56_tv_16k_portrait;
+    --media_rule_name: style_t16_tv_16k_portrait;
 
-    --width__from: var(--s_56_tv_16k_portrait__width__from);
-    --width__til: var(--s_56_tv_16k_portrait__width__til);
+    --media_rule__min_width: var(--style_t16_tv_16k_portrait__min_width);
+    --media_rule__max_width: var(--style_t16_tv_16k_portrait__max_width);
 
   }    
 
   
   .workspace.verify-responsive-rule-applies main h1::before {
-    content: var(--media-rule);
+    content: var(--media_rule_name);
   }
 
 }
@@ -1129,16 +1174,16 @@
 
 @media only screen and (min-width: 15361px) and (max-width: 25360px) and (orientation: landscape) {
   .workspace {
-    --media_rule_name: s_56_tv_16k_landscape;
+    --media_rule_name: style_t16_tv_16k_landscape;
 
-    --width__from: var(--s_56_tv_16k_landscape__width__from);
-    --width__til: var(--s_56_tv_16k_landscape__width__til);
+    --media_rule__min_width: var(--style_t16_tv_16k_landscape__min_width);
+    --media_rule__max_width: var(--style_t16_tv_16k_landscape__max_width);
 
   }    
 
   
   .workspace.verify-responsive-rule-applies main h1::before {
-    content: var(--media-rule);
+    content: var(--media_rule_name);
   }
 
 }

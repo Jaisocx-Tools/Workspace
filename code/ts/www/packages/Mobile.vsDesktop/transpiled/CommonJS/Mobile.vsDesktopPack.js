@@ -26,8 +26,8 @@ class MobileVsDesktopPack {
         __classPrivateFieldSet(this, _MobileVsDesktopPack_KEYWORD_MOBILE, "_mobile_", "f");
         __classPrivateFieldSet(this, _MobileVsDesktopPack_KEYWORD_TABLET, "_tablet_", "f");
         __classPrivateFieldSet(this, _MobileVsDesktopPack_CSS_VARIABLE_NAME__MEDIA_RULE, "--media-rule", "f");
-        __classPrivateFieldSet(this, _MobileVsDesktopPack_CSS_VARIABLE_NAME__WIDTH_FROM, "--width__from", "f");
-        __classPrivateFieldSet(this, _MobileVsDesktopPack_CSS_VARIABLE_NAME__WIDTH_TIL, "--width__til", "f");
+        __classPrivateFieldSet(this, _MobileVsDesktopPack_CSS_VARIABLE_NAME__WIDTH_FROM, "--min_width", "f");
+        __classPrivateFieldSet(this, _MobileVsDesktopPack_CSS_VARIABLE_NAME__WIDTH_TIL, "--max_width", "f");
         __classPrivateFieldSet(this, _MobileVsDesktopPack_KEYWORDS_ORIENTATION_PORTRAIT, [
             "_portrait",
             "_vertical"

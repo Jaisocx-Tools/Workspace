@@ -15,14 +15,14 @@
   "sizeUnit": "px",
   "data": {
     "mobile_xs": {
-      "range_orderby_id": 12,
+      "range_orderby_id": "e02",
       "width": {
-        "from": 240,
-        "til": 320
+        "min_width": 240,
+        "max_width": 320
       },
       "height": {
-        "from": 320,
-        "til": 500
+        "min_width": 320,
+        "max_width": 500
       },
       "art": "mobile",
       "art_size": "xs",
@@ -30,14 +30,14 @@
       "is_orientation_standard_nearly_always": false
     },
     "mobile_s": {
-      "range_orderby_id": 14,
+      "range_orderby_id": "e04",
       "width": {
-        "from": 321,
-        "til": 374
+        "min_width": 321,
+        "max_width": 374
       },
       "height": {
-        "from": 501,
-        "til": 667
+        "min_width": 501,
+        "max_width": 667
       },
       "art": "mobile",
       "art_size": "s",
@@ -45,14 +45,14 @@
       "is_orientation_standard_nearly_always": false
     },
     "mobile_sm": {
-      "range_orderby_id": 16,
+      "range_orderby_id": "e06",
       "width": {
-        "from": 375,
-        "til": 430
+        "min_width": 375,
+        "max_width": 430
       },
       "height": {
-        "from": 668,
-        "til": 736
+        "min_width": 668,
+        "max_width": 736
       },
       "art": "mobile",
       "art_size": "sm",
@@ -60,14 +60,14 @@
       "is_orientation_standard_nearly_always": false
     },
     "mobile_md": {
-      "range_orderby_id": 18,
+      "range_orderby_id": "e08",
       "width": {
-        "from": 431,
-        "til": 480
+        "min_width": 431,
+        "max_width": 480
       },
       "height": {
-        "from": 737,
-        "til": 812
+        "min_width": 737,
+        "max_width": 812
       },
       "art": "mobile",
       "art_size": "md",
@@ -75,14 +75,14 @@
       "is_orientation_standard_nearly_always": false
     },
     "tablet_sm": {
-      "range_orderby_id": 22,
+      "range_orderby_id": "h03",
       "width": {
-        "from": 481,
-        "til": 767
+        "min_width": 481,
+        "max_width": 767
       },
       "height": {
-        "from": 813,
-        "til": 960
+        "min_width": 813,
+        "max_width": 960
       },
       "art": "tablet",
       "art_size": "sm",
@@ -90,14 +90,14 @@
       "is_orientation_standard_nearly_always": false
     },
     "tablet_md": {
-      "range_orderby_id": 24,
+      "range_orderby_id": "h05",
       "width": {
-        "from": 768,
-        "til": 1024
+        "min_width": 768,
+        "max_width": 1024
       },
       "height": {
-        "from": 961,
-        "til": 1024
+        "min_width": 961,
+        "max_width": 1024
       },
       "art": "tablet",
       "art_size": "md",
@@ -105,14 +105,14 @@
       "is_orientation_standard_nearly_always": false
     },
     "laptop_sm": {
-      "range_orderby_id": 32,
+      "range_orderby_id": "l03",
       "width": {
-        "from": 1025,
-        "til": 1279
+        "min_width": 1025,
+        "max_width": 1279
       },
       "height": {
-        "from": 1025,
-        "til": 1080
+        "min_width": 1025,
+        "max_width": 1080
       },
       "art": "laptop",
       "art_size": "sm",
@@ -120,14 +120,14 @@
       "is_orientation_standard_nearly_always": true
     },
     "laptop_md": {
-      "range_orderby_id": 36,
+      "range_orderby_id": "l05",
       "width": {
-        "from": 1280,
-        "til": 1439
+        "min_width": 1280,
+        "max_width": 1439
       },
       "height": {
-        "from": 1081,
-        "til": 1200
+        "min_width": 1081,
+        "max_width": 1200
       },
       "art": "laptop",
       "art_size": "md",
@@ -135,14 +135,14 @@
       "is_orientation_standard_nearly_always": true
     },
     "laptop_lg": {
-      "range_orderby_id": 39,
+      "range_orderby_id": "l07",
       "width": {
-        "from": 1440,
-        "til": 1600
+        "min_width": 1440,
+        "max_width": 1600
       },
       "height": {
-        "from": 1201,
-        "til": 1440
+        "min_width": 1201,
+        "max_width": 1440
       },
       "art": "laptop",
       "art_size": "lg",
@@ -150,14 +150,14 @@
       "is_orientation_standard_nearly_always": true
     },
     "desktop_xl": {
-      "range_orderby_id": 42,
+      "range_orderby_id": "s02",
       "width": {
-        "from": 1601,
-        "til": 1920
+        "min_width": 1601,
+        "max_width": 1920
       },
       "height": {
-        "from": 1441,
-        "til": 1600
+        "min_width": 1441,
+        "max_width": 1600
       },
       "art": "desktop",
       "art_size": "xl",
@@ -165,14 +165,14 @@
       "is_orientation_standard_nearly_always": true
     },
     "desktop_xxl": {
-      "range_orderby_id": 44,
+      "range_orderby_id": "s04",
       "width": {
-        "from": 1921,
-        "til": 2560
+        "min_width": 1921,
+        "max_width": 2560
       },
       "height": {
-        "from": 1601,
-        "til": 2160
+        "min_width": 1601,
+        "max_width": 2160
       },
       "art": "desktop",
       "art_size": "xxl",
@@ -180,14 +180,14 @@
       "is_orientation_standard_nearly_always": true
     },
     "desktop_qhd": {
-      "range_orderby_id": 46,
+      "range_orderby_id": "s08",
       "width": {
-        "from": 2561,
-        "til": 3840
+        "min_width": 2561,
+        "max_width": 3840
       },
       "height": {
-        "from": 2161,
-        "til": 2160
+        "min_width": 2161,
+        "max_width": 2160
       },
       "art": "display",
       "art_size": "qhd",
@@ -195,14 +195,14 @@
       "is_orientation_standard_nearly_always": true
     },
     "tv_4k": {
-      "range_orderby_id": 52,
+      "range_orderby_id": "t04",
       "width": {
-        "from": 3841,
-        "til": 7680
+        "min_width": 3841,
+        "max_width": 7680
       },
       "height": {
-        "from": 2161,
-        "til": 4320
+        "min_width": 2161,
+        "max_width": 4320
       },
       "art": "tv",
       "art_size": "4k",
@@ -210,14 +210,14 @@
       "is_orientation_standard_nearly_always": true
     },
     "tv_8k": {
-      "range_orderby_id": 54,
+      "range_orderby_id": "t08",
       "width": {
-        "from": 7681,
-        "til": 15360
+        "min_width": 7681,
+        "max_width": 15360
       },
       "height": {
-        "from": 4321,
-        "til": 8640
+        "min_width": 4321,
+        "max_width": 8640
       },
       "art": "tv",
       "art_size": "8k",
@@ -225,14 +225,14 @@
       "is_orientation_standard_nearly_always": true
     },
     "tv_16k": {
-      "range_orderby_id": 56,
+      "range_orderby_id": "t16",
       "width": {
-        "from": 15361,
-        "til": 25360
+        "min_width": 15361,
+        "max_width": 25360
       },
       "height": {
-        "from": 8641,
-        "til": 9999
+        "min_width": 8641,
+        "max_width": 9999
       },
       "art": "tv",
       "art_size": "16k",

@@ -51,7 +51,7 @@ export class ResponsiveDatasetAutomationConstants {
         this.textEncoder = new TextEncoder();
         this.#keywordMediarule = "media_rule";
         this.#mediaRuleName = "media_rule_name";
-        this.#mediaConstantNameStart = "s";
+        this.#mediaConstantNameStart = "style";
         this.#mediaRule = "@media only ";
         this.#mediaRuleScreen = "screen";
         this.#mediaRulePrint = "print";
@@ -66,8 +66,8 @@ export class ResponsiveDatasetAutomationConstants {
         this.#importUrlStart = "@import url(\"";
         this.#importUrlEnd = "\");";
         this.#keywordWidth = "width";
-        this.#keywordFrom = "from";
-        this.#keywordTil = "til";
+        this.#keywordFrom = "min_width";
+        this.#keywordTil = "max_width";
         this.#cssVariablePrefix = "--";
         this.#cssVariableNameValueDelimiter = ": ";
         this.#cssVariableReferenceKeyword_Var = "var";
@@ -153,7 +153,7 @@ export class ResponsiveDatasetAutomationConstants {
         ];
         this.#mediaRuleVariable_Width = [
             [this.#cssVariablePrefix,
-                this.#keywordWidth,
+                this.#keywordMediarule,
                 this.#underscore,
                 this.#underscore].join(""),
             "1",
@@ -163,9 +163,6 @@ export class ResponsiveDatasetAutomationConstants {
                 this.#cssVariablePrefix].join(""),
             "3",
             [this.#underscore,
-                this.#underscore,
-                this.#keywordWidth,
-                this.#underscore,
                 this.#underscore].join(""),
             "5",
             [this.#braceRoundEnd,

@@ -1,0 +1,17 @@
+/* Responsive rules for: style_l05_laptop_md_portrait */
+@media only screen and (min-width: 1081px) and (max-width: 1200px) and (orientation: portrait) {
+  .workspace {
+    --media_rule_name: style_l05_laptop_md_portrait;
+
+    --media_rule__min_width: var(--style_l05_laptop_md_portrait__min_width);
+    --media_rule__max_width: var(--style_l05_laptop_md_portrait__max_width);
+
+  }    
+
+  /* verifying responsive rules applies */
+  .workspace.verify-responsive-rule-applies main h1::before {
+    content: var(--media_rule_name);
+  }
+
+}
+

@@ -172,7 +172,7 @@ export class ResponsiveDatasetAutomation implements ResponsiveDatasetAutomationI
 
     return this;
   }
- 
+
 
 
   async produceMediaRulesTypescriptFile ( 
@@ -251,10 +251,10 @@ export class ResponsiveDatasetAutomation implements ResponsiveDatasetAutomationI
     let mediaName: string = "";
     let mediaNameBitsbuf: Uint8Array = new Uint8Array();
     let mediaNameUcFirstPos: number = 1;
-    let mediaNameUcFirstBitsbuf: Uint8Array = new Uint8Array();
+    // let mediaNameUcFirstBitsbuf: Uint8Array = new Uint8Array();
     let mediaNamePos: number = 4;
 
-    
+
     // textBlocks.push( tsClassEndLine );
 
     let orientationKeywords: string[] = this.automationConstants.getOrientationKeywords();
@@ -264,7 +264,7 @@ export class ResponsiveDatasetAutomation implements ResponsiveDatasetAutomationI
 
     let iterationsNumber: number = ( propsNumber << 1 );
     let mediaNamesBitsbufs: Uint8Array[] = new Array( iterationsNumber ) as Uint8Array[];
-    tsClassContentBitsbufs = new Array( iterationsNumber ) as Uint8Array[];
+    tsClassContentBitsbufs = new Array( iterationsNumber + 1 ) as Uint8Array[];
     for ( i = 0; i < iterationsNumber; i++ ) {
 
       if ( orientationKeywordId === 2 ) {
@@ -290,25 +290,27 @@ export class ResponsiveDatasetAutomation implements ResponsiveDatasetAutomationI
 
       orientationKeywordId++;
     }
+    tsClassContentBitsbufs[iterationsNumber] = this.textEncoder.encode( "\n\n\n" );
     fileWriterRetval = await this.fileWriter.appendMixedArrayToFile ( tsClassContentBitsbufs );
 
     let mediaNameUcFirstChar: number = "S".charCodeAt(0);
-    tsClassContentBitsbufs = new Array( iterationsNumber ) as Uint8Array[];
+    let mediaNameLcFirstChar: number = "s".charCodeAt(0);
+    // tsClassContentBitsbufs = new Array( iterationsNumber + 1 ) as Uint8Array[];
     for ( i = 0; i < iterationsNumber; i++ ) {
-      mediaNameUcFirstBitsbuf = mediaNamesBitsbufs[i];
-      mediaNameUcFirstBitsbuf[0] = mediaNameUcFirstChar;
+      mediaNameBitsbuf = mediaNamesBitsbufs[i];
 
-      methodBitsbufs[mediaNameUcFirstPos] = mediaNameUcFirstBitsbuf;
+      methodBitsbufs[mediaNameUcFirstPos] = mediaNameBitsbuf;
+      methodBitsbufs[mediaNameUcFirstPos][0] = mediaNameUcFirstChar;
+
       methodBitsbufs[mediaNamePos] = mediaNameBitsbuf;
+      methodBitsbufs[mediaNamePos][0] = mediaNameLcFirstChar;
 
       tsClassContentBitsbufs[i] = this.fileWriter.concatUint8Arrays( methodBitsbufs );
     }
-    let tsClassEndLine: Uint8Array = this.textEncoder.encode( "}\n\n\n" );
+    tsClassContentBitsbufs[iterationsNumber] = this.textEncoder.encode( "}\n\n\n" );
 
     fileWriterRetval = await this.fileWriter.appendMixedArrayToFile ( tsClassContentBitsbufs );
     tsClassContentBitsbufs = new Array() as Uint8Array[];
-
-    fileWriterRetval = await this.fileWriter.appendBitsbufToFile ( tsClassEndLine );
 
     fileWriterRetval = await this.fileWriter.filehandleClose();
 
@@ -723,8 +725,8 @@ export class ResponsiveDatasetAutomation implements ResponsiveDatasetAutomationI
       orientation 
     );
 
-    let minWidth: string = (new Number(sizes["from"])).toString();
-    let maxWidth: string = (new Number(sizes["til"])).toString();
+    let minWidth: string = (new Number(sizes[this.automationConstants.getKeywordFrom()])).toString();
+    let maxWidth: string = (new Number(sizes[this.automationConstants.getKeywordTil()])).toString();
 
     //`"@media only ${media} and (min-width: ${minWidth}px) and (max-width: ${maxWidth}px) and (orientation: ${orientation})";`;
     let mediaLine: Uint8Array[] = this.automationConstants.getMediaLineUpdated (
@@ -758,8 +760,8 @@ export class ResponsiveDatasetAutomation implements ResponsiveDatasetAutomationI
       orientation 
     );
 
-    let minWidth: string = sizes["from"] as string;
-    let maxWidth: string = sizes["til"] as string;
+    let minWidth: string = sizes[this.automationConstants.getKeywordFrom()] as string;
+    let maxWidth: string = sizes[this.automationConstants.getKeywordTil()] as string;
 
     //`"@media only ${media} and (min-width: ${minWidth}px) and (max-width: ${maxWidth}px) and (orientation: ${orientation})";`;
     let mediaLine: Uint8Array[] = this.automationConstants.getMediaLineUpdated (
@@ -779,11 +781,11 @@ export class ResponsiveDatasetAutomation implements ResponsiveDatasetAutomationI
 
 
   //
-  // --s_56_16k_tv_vertical__width__from: 8641px; /* 16k TV */
-  // --s_56_16k_tv_vertical__width__til: 9999px; /* 16k TV */
+  // --s_56_16k_tv_vertical__min_width: 8641px; /* 16k TV */
+  // --s_56_16k_tv_vertical__max_width: 9999px; /* 16k TV */
   //
-  // --s_56_16k_tv_horizontal__width__from: 15361px; /* 16k TV */
-  // --s_56_16k_tv_horizontal__width__til: 25360px; /* 16k TV */
+  // --s_56_16k_tv_horizontal__min_width: 15361px; /* 16k TV */
+  // --s_56_16k_tv_horizontal__max_width: 25360px; /* 16k TV */
   /**
    * @ready
   */
@@ -811,6 +813,10 @@ export class ResponsiveDatasetAutomation implements ResponsiveDatasetAutomationI
         );
         mediaLine.push(newLine);
 
+        if ( isStartValue === false ) {
+          mediaLine.push( newLine );
+        }
+
         mediaLines[mediaLinePos] = mediaLine;
 
         mediaLinePos++;
@@ -818,6 +824,7 @@ export class ResponsiveDatasetAutomation implements ResponsiveDatasetAutomationI
       }
     }
 
+    mediaLines[3].push(newLine);
     mediaLines[3].push(newLine);
 
     return mediaLines;
@@ -855,7 +862,7 @@ export class ResponsiveDatasetAutomation implements ResponsiveDatasetAutomationI
 
 
 
-  // --s_56_16k_tv_horizontal__width__til: 25360px; /* 16k TV */
+  // --s_56_16k_tv_horizontal__max_width: 25360px; /* 16k TV */
   /**
    * @ready
   */
@@ -899,6 +906,49 @@ export class ResponsiveDatasetAutomation implements ResponsiveDatasetAutomationI
 
     return [...mediaConstantLine];
   }
+
+
+  produceMediaConstantName ( 
+    responsiveDatasetPropName: string, 
+    orientation: string,
+    isStartValue: boolean
+  ): Uint8Array[] {
+
+    const mediaName: string = this.produceMediaName ( 
+      responsiveDatasetPropName,
+      orientation
+    );
+
+    let postfix: string = "";
+    if ( isStartValue === true ) { 
+      postfix = this.automationConstants.getKeywordFrom();
+    } else {
+      postfix = this.automationConstants.getKeywordTil();
+    }
+
+    let size: string = "";
+    let sizes: any = this.getSizesByOrientation ( 
+      responsiveDatasetPropName, 
+      orientation 
+    );
+
+    size = (new Number(sizes[postfix])).toString();
+
+
+    let mediaConstantLine: Uint8Array[] = this.automationConstants.getMediaConstantNameUpdated (
+      mediaName,
+      postfix,
+      size
+    );
+
+    //if ( this.debug === true ) {
+    let mediaConstantLineText: string = this.textDecoder.decode( this.fileWriter.concatUint8Arrays(mediaConstantLine) );
+    console.info( mediaConstantLineText );
+    //}
+
+    return [...mediaConstantLine];
+  }
+
 
 
   // json with sizes

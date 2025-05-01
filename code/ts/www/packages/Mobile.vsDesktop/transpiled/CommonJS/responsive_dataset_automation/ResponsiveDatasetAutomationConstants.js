@@ -65,7 +65,7 @@ class ResponsiveDatasetAutomationConstants {
         this.textEncoder = new TextEncoder();
         __classPrivateFieldSet(this, _ResponsiveDatasetAutomationConstants_keywordMediarule, "media_rule", "f");
         __classPrivateFieldSet(this, _ResponsiveDatasetAutomationConstants_mediaRuleName, "media_rule_name", "f");
-        __classPrivateFieldSet(this, _ResponsiveDatasetAutomationConstants_mediaConstantNameStart, "s", "f");
+        __classPrivateFieldSet(this, _ResponsiveDatasetAutomationConstants_mediaConstantNameStart, "style", "f");
         __classPrivateFieldSet(this, _ResponsiveDatasetAutomationConstants_mediaRule, "@media only ", "f");
         __classPrivateFieldSet(this, _ResponsiveDatasetAutomationConstants_mediaRuleScreen, "screen", "f");
         __classPrivateFieldSet(this, _ResponsiveDatasetAutomationConstants_mediaRulePrint, "print", "f");
@@ -80,8 +80,8 @@ class ResponsiveDatasetAutomationConstants {
         __classPrivateFieldSet(this, _ResponsiveDatasetAutomationConstants_importUrlStart, "@import url(\"", "f");
         __classPrivateFieldSet(this, _ResponsiveDatasetAutomationConstants_importUrlEnd, "\");", "f");
         __classPrivateFieldSet(this, _ResponsiveDatasetAutomationConstants_keywordWidth, "width", "f");
-        __classPrivateFieldSet(this, _ResponsiveDatasetAutomationConstants_keywordFrom, "from", "f");
-        __classPrivateFieldSet(this, _ResponsiveDatasetAutomationConstants_keywordTil, "til", "f");
+        __classPrivateFieldSet(this, _ResponsiveDatasetAutomationConstants_keywordFrom, "min_width", "f");
+        __classPrivateFieldSet(this, _ResponsiveDatasetAutomationConstants_keywordTil, "max_width", "f");
         __classPrivateFieldSet(this, _ResponsiveDatasetAutomationConstants_cssVariablePrefix, "--", "f");
         __classPrivateFieldSet(this, _ResponsiveDatasetAutomationConstants_cssVariableNameValueDelimiter, ": ", "f");
         __classPrivateFieldSet(this, _ResponsiveDatasetAutomationConstants_cssVariableReferenceKeyword_Var, "var", "f");
@@ -167,7 +167,7 @@ class ResponsiveDatasetAutomationConstants {
         ], "f");
         __classPrivateFieldSet(this, _ResponsiveDatasetAutomationConstants_mediaRuleVariable_Width, [
             [__classPrivateFieldGet(this, _ResponsiveDatasetAutomationConstants_cssVariablePrefix, "f"),
-                __classPrivateFieldGet(this, _ResponsiveDatasetAutomationConstants_keywordWidth, "f"),
+                __classPrivateFieldGet(this, _ResponsiveDatasetAutomationConstants_keywordMediarule, "f"),
                 __classPrivateFieldGet(this, _ResponsiveDatasetAutomationConstants_underscore, "f"),
                 __classPrivateFieldGet(this, _ResponsiveDatasetAutomationConstants_underscore, "f")].join(""),
             "1",
@@ -177,9 +177,6 @@ class ResponsiveDatasetAutomationConstants {
                 __classPrivateFieldGet(this, _ResponsiveDatasetAutomationConstants_cssVariablePrefix, "f")].join(""),
             "3",
             [__classPrivateFieldGet(this, _ResponsiveDatasetAutomationConstants_underscore, "f"),
-                __classPrivateFieldGet(this, _ResponsiveDatasetAutomationConstants_underscore, "f"),
-                __classPrivateFieldGet(this, _ResponsiveDatasetAutomationConstants_keywordWidth, "f"),
-                __classPrivateFieldGet(this, _ResponsiveDatasetAutomationConstants_underscore, "f"),
                 __classPrivateFieldGet(this, _ResponsiveDatasetAutomationConstants_underscore, "f")].join(""),
             "5",
             [__classPrivateFieldGet(this, _ResponsiveDatasetAutomationConstants_braceRoundEnd, "f"),

@@ -1,0 +1,17 @@
+/* Responsive rules for: style_e04_mobile_s_landscape */
+@media only screen and (min-width: 501px) and (max-width: 667px) and (orientation: landscape) {
+  .workspace {
+    --media_rule_name: style_e04_mobile_s_landscape;
+
+    --media_rule__min_width: var(--style_e04_mobile_s_landscape__min_width);
+    --media_rule__max_width: var(--style_e04_mobile_s_landscape__max_width);
+
+  }    
+
+  /* verifying responsive rules applies */
+  .workspace.verify-responsive-rule-applies main h1::before {
+    content: var(--media_rule_name);
+  }
+
+}
+

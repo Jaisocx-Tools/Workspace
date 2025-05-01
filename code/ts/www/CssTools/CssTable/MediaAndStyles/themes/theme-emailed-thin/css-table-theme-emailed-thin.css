@@ -1,0 +1,55 @@
+/* theme-emailed-thin */
+.theme-emailed-thin .workspace-css-table-holder *,
+.theme-emailed-thin.workspace-css-table-holder * {
+  --column-label-width: 8rem;
+}
+
+
+.theme-emailed-thin .workspace-css-table-holder,
+.theme-emailed-thin.workspace-css-table-holder,
+.theme-emailed-thin .workspace-css-table-holder .row:not(.desktop-columns-labels-holder),
+.theme-emailed-thin.workspace-css-table-holder .row:not(.desktop-columns-labels-holder),
+.theme-emailed-thin .workspace-css-table-holder .cell,
+.theme-emailed-thin.workspace-css-table-holder .cell {
+
+  width:                   100%;
+  min-width:               100%;
+  max-width:               100%;
+
+  display: block;
+
+  overflow-x:              hidden;
+  overflow-y:              visible;
+
+  height:                  auto;
+  min-height:              fit-content;
+  max-height:              unset;
+}
+
+
+.theme-emailed-thin .workspace-css-table-holder .row:not(.desktop-columns-labels-holder),
+.theme-emailed-thin.workspace-css-table-holder .row:not(.desktop-columns-labels-holder),
+.theme-emailed-thin .workspace-css-table-holder .cell,
+.theme-emailed-thin.workspace-css-table-holder .cell {
+}
+
+.theme-emailed-thin .workspace-css-table-holder .cell .cell-value,
+.theme-emailed-thin.workspace-css-table-holder .cell .cell-value {
+  width:                   fit-content;
+  min-width:               fit-content;
+  max-width:               unset;
+}
+
+.theme-emailed-thin .workspace-css-table-holder .cell .column-label,
+.theme-emailed-thin.workspace-css-table-holder .cell .column-label,
+.theme-emailed-thin .workspace-css-table-holder .cell .cell-value,
+.theme-emailed-thin.workspace-css-table-holder .cell .cell-value {
+  display:                 inline-block;
+
+  overflow-x:              hidden;
+  overflow-y:              visible;
+
+  height:                  auto;
+  min-height:              100%;
+  max-height:              unset;
+}

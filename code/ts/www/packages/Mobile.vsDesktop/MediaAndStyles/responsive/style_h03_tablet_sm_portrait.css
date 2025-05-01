@@ -1,0 +1,17 @@
+/* Responsive rules for: style_h03_tablet_sm_portrait */
+@media only screen and (min-width: 481px) and (max-width: 767px) and (orientation: portrait) {
+  .workspace {
+    --media_rule_name: style_h03_tablet_sm_portrait;
+
+    --media_rule__min_width: var(--style_h03_tablet_sm_portrait__min_width);
+    --media_rule__max_width: var(--style_h03_tablet_sm_portrait__max_width);
+
+  }    
+
+  /* verifying responsive rules applies */
+  .workspace.verify-responsive-rule-applies main h1::before {
+    content: var(--media_rule_name);
+  }
+
+}
+

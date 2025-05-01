@@ -1,0 +1,17 @@
+/* Responsive rules for: style_t04_tv_4k_landscape */
+@media only screen and (min-width: 3841px) and (max-width: 7680px) and (orientation: landscape) {
+  .workspace {
+    --media_rule_name: style_t04_tv_4k_landscape;
+
+    --media_rule__min_width: var(--style_t04_tv_4k_landscape__min_width);
+    --media_rule__max_width: var(--style_t04_tv_4k_landscape__max_width);
+
+  }    
+
+  /* verifying responsive rules applies */
+  .workspace.verify-responsive-rule-applies main h1::before {
+    content: var(--media_rule_name);
+  }
+
+}
+

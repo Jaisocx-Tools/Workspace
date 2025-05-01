@@ -1,0 +1,714 @@
+<!DOCTYPE html>
+<html class="workspace theme-emailed-thin long browser-width-when-portrait">
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>Under construction: Css Table</title>
+
+  <!-- CSS CLEAN START THE WEBPACK BUILT BUNDLE.JS FILE -->
+  <!-- <script src="examples/ExampleCssCleanStartWebpack/transpiled/webpack/example-css-clean-start-bundle.js"></script> -->
+
+  <link rel="stylesheet" href="CssTools/CssCleanStart/MediaAndStyles/themes/theme-lightmode/clean-start-theme-lightmode-relative.css">
+  <link rel="stylesheet" href="CssTools/CssCleanStart/MediaAndStyles/clean-start-main-relative.css">
+
+  <!-- FOR THE CSS TABLE YOU NeD ALWAYS TO SET IN THIS FILE THE WIDTH OF COLUMNS
+  AND THIS .css FILE HAS TO BE ALWAYS REFERRED IN HTML DOC OR OTHER IMPORTS. -->
+  <link rel="stylesheet" href="CssTools/CssTable/MediaAndStyles/themes/columns/columns.css">
+
+
+  <link rel="stylesheet" href="CssTools/CssTable/MediaAndStyles/themes/theme-emailed-thin/css-table-theme-emailed-thin.css">
+  <link rel="stylesheet" href="CssTools/CssTable/MediaAndStyles/themes/theme-lightmode/css-table-theme-lightmode-cdn.css">
+  <link rel="stylesheet" href="CssTools/CssTable/MediaAndStyles/themes/theme-darkmode/css-table-theme-darkmode-cdn.css">
+
+  <link rel="stylesheet" href="CssTools/CssTable/MediaAndStyles/css-table-main-cdn.css">
+
+
+  <link rel="stylesheet" href="CssTools/CssTable/MediaAndStyles/themes/theme-lightmode/css-table-theme-lightmode-relative.css">
+  <link rel="stylesheet" href="CssTools/CssTable/MediaAndStyles/themes/theme-darkmode/css-table-theme-darkmode-relative.css">
+  <link rel="stylesheet" href="CssTools/CssTable/MediaAndStyles/css-table-main-relative.css">
+
+
+
+  <style>
+
+    :root {
+      --main-width: 100%;
+      --imageholder-width: 100%;
+      --imageholder-height: 100%;
+      /* --main-background-color: #eaffea; */
+      --main-background-color: whitesmoke;
+      --img-width: 380px;
+      --img-height: 320px;
+    }
+
+    .workspace.theme-emailed-thin.long.browser-width-when-portrait,
+    .workspace.theme-emailed-thin.long.browser-width-when-portrait .level_first,
+    .workspace.theme-emailed-thin.long.browser-width-when-portrait .level_first .level_second {
+      margin: 0;
+
+      margin-top: 0;
+      margin-left: 0;
+      margin-right: 0;
+      margin-bottom: 0;
+
+      padding: 0;
+
+      width: 100%;
+      max-width: 100%;
+      min-width: 100%;
+
+      overflow-x: hidden;
+
+      --height: fit-content;
+      height: var(--height);
+      max-height: var(--height);
+      min-height: 100%;
+
+      overflow-y: visible;
+    }
+
+    .workspace.theme-emailed-thin.long.browser-width-when-portrait {
+
+      --clean-start__tag_body__height: fit-content;
+      --clean-start__tag_body__height_max: fit-content;
+      --clean-start__tag_body__height_min: auto;
+  
+      --clean-start__tag_body__width: 100%;
+      --clean-start__tag_body__max_width: 100%;
+      --clean-start__tag_body__min_width: 100%;
+
+
+      --clean-start__tag_body__overflow-x: hidden;
+      --clean-start__tag_body__overflow-y: visible;
+
+      --clean-start__site__width: 100%;
+      --clean-start__site__overflow_x: hidden;
+      --clean-start__site__overflow_y: visible;
+    }
+
+    .workspace.theme-emailed-thin.long.browser-width-when-portrait .images {
+      display: block;
+
+      width: var(--main-width);
+      max-width: var(--main-width);
+      min-width: var(--main-width);
+
+      height: auto;
+      max-height: max-content;
+      min-height: fit-content;
+
+      /* flex-wrap: wrap; */
+
+      background: var(--main-background-color);
+      margin-bottom: 3rem;
+      border: 1px solid gren;
+
+      overflow-y: visible;
+      overflow-x: hidden;
+    }
+    .workspace.theme-emailed-thin.long.browser-width-when-portrait .images > .cell {
+      display: inline-block;
+
+      width: var(--img-width);
+      max-width: 100%;
+      min-width: unset;
+
+      height: var(--img-height);
+      max-height: var(--img-height);
+      min-height: var(--img-height);
+
+      padding: 0.6rem;
+      overflow: hidden;
+
+      /* background: #f2fff2; */
+    }
+    .workspace.theme-emailed-thin.long.browser-width-when-portrait .images > .cell > .image-holder {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: center;
+
+      width: var(--imageholder-width);
+      max-width: var(--imageholder-width);
+      min-width: var(--imageholder-width);
+
+      height: var(--imageholder-height);
+      max-height: var(--imageholder-height);
+      min-height: var(--imageholder-height);
+
+      overflow: hidden;
+
+      padding: 0.8rem;
+      background-color: #ffffff;
+    }
+    .workspace.theme-emailed-thin.long.browser-width-when-portrait .images > .cell > .image-holder > img {
+      display: inline-block;
+
+      width: auto;
+      max-width: 100%;
+
+      height: auto;
+      max-height: 100%;
+
+      overflow: hidden;
+    }
+
+    .workspace.theme-emailed-thin.long.browser-width-when-portrait .email_address {
+      margin: 1.6rem 0;
+    }
+
+    .workspace.theme-emailed-thin.long.browser-width-when-portrait .text,
+    .workspace.theme-emailed-thin.long.browser-width-when-portrait .text .paragraph {
+      width: 100%;
+      max-width: 100%;
+      line-break: normal;
+    }
+
+    .workspace.theme-emailed-thin.long.browser-width-when-portrait .text .paragraph {
+      margin: 1.4rem 0;
+    }
+
+    .workspace.theme-emailed-thin.long.browser-width-when-portrait .text .line {
+      display: block;
+      margin: 0;
+    }
+    .workspace.theme-emailed-thin.long.browser-width-when-portrait .text .line:first-of-type {
+      margin: 1.9rem 0 0 0;
+    }
+    .workspace.theme-emailed-thin.long.browser-width-when-portrait .text .line:last-of-type {
+      margin: 0 0 1.9rem 0;
+    }
+
+
+    
+  </style>
+</head>
+<body class="level_first">
+
+  <main class="level_second">
+
+    <!-- <h1>Asking Advice</h1>
+    <div class="email_address">to: support@protonmail.zendesk.com</div>
+
+
+    <div class="text">
+      <div class="paragraph">
+        Good evening, dear Protonmail Company Support Team,
+      </div>
+      <div class="paragraph">
+        I have built a simple html styles inliner and smpt sending Java class,
+      the emails are well styled sent to a protonmail email account, all fine,
+      </div>
+      <div class="paragraph">
+        however, in the Protonmail Mobile Application on my mobile device, 
+      the email messages from other senders show the invitation to load remote content, 
+      like of content-type image/*, and then the images are shown in the email of content-type text/html.
+      </div>
+      <div class="paragraph">
+        I instead send the well formed .eml email message 
+      with html tags &lt;img src="cid: &lt;a_cid_of_an_image_in_base64&gt;", 
+      and the base64 content of images are in the same email message of content-type multipart... 
+      formed in .eml format according to RFC.
+      the base64 is then not the remote content, 
+      and in the Google Chrome browser these images are shown the best way, 
+      but in the mobile app not, and no invitation to show the images, 
+      and when in the settings of this mobile app I set "enable remote images" 
+      neither the images were not shown.
+      </div>
+      <div class="paragraph">
+        Do You know where to read on Protonmail mobile app rules 
+      to allow rendering or showing contents of tags &lt;img with src attr 
+      referencing a cid of multipart email message in base64?
+      </div>
+      <span class="line">
+        Sincerely Yours, 
+      </span>
+      <span class="line">
+        Elias
+      </span>
+      <span class="line">
+        Jaisocx Software Architect.
+      </span>
+    </div> -->
+    
+    <div class="images">
+      <div class="cell">
+        <div class="image-holder">
+          <img src="/cdn/www/media/images/html_inliner_example/cyberpunk-6061251_1280.jpg" alt="Image 1" descrption="example of rendered image by cid." />
+        </div>
+      </div>
+      <div class="cell">
+        <div class="image-holder">
+          <img src="/cdn/www/media/images/html_inliner_example/desktop-5636733_1280.jpg" alt="Image 2" descrption="example of rendered image by cid." />
+        </div>
+      </div>
+      <div class="cell">
+        <div class="image-holder">
+          <img src="/cdn/www/media/images/html_inliner_example/gearstick-7740670_1280.jpg" alt="Image 3" descrption="example of rendered image by cid." />
+        </div>
+      </div>
+      <div class="cell">
+        <div class="image-holder">
+          <img src="/cdn/www/media/images/html_inliner_example/laptop-5673901_1280.jpg" alt="Image 4" descrption="example of rendered image by cid." />
+        </div>
+      </div>
+      <div class="cell">
+        <div class="image-holder">
+          <img src="/cdn/www/media/images/html_inliner_example/screw-1924174_1280.jpg" alt="Image 4" descrption="example of rendered image by cid." />
+        </div>
+      </div>
+      <div class="cell">
+        <div class="image-holder">
+          <img src="/cdn/www/media/images/html_inliner_example/vintage-camera-6835351_1280.jpg" alt="Image 5" descrption="example of rendered image by cid." />
+        </div>
+      </div>
+      <div class="cell">
+        <div class="image-holder">
+          <img src="/cdn/www/media/images/html_inliner_example/airport-2471662_1280.jpg" alt="Image 6" descrption="example of rendered image by cid." />
+        </div>
+      </div>
+      <div class="cell">
+        <div class="image-holder">
+          <img src="/cdn/www/media/images/html_inliner_example/work-3938876_1280.jpg" alt="Image 7" descrption="example of rendered image by cid." />
+        </div>
+      </div>
+    </div>
+
+  <div class="workspace-css-table-holder example-table-columns-4 thin-styles-applied bright-styles-applied">
+  <!-- <div class="workspace-css-table-holder example-table-columns-4"> -->
+    <div class="workspace-css-table">
+      <div class="row desktop-columns-labels-holder">
+        <div class="cell column-1"><span class="column-label">attribute</span></div>
+        <div class="cell column-2"><span class="column-label">type</span></div>
+        <div class="cell column-3"><span class="column-label">values</span></div>
+        <div class="cell column-4"><span class="column-label">description</span></div>
+      </div>
+      <div class="row">
+        <div class="cell column-1"><span class="column-label">attribute</span><span class="cell-value">
+            port</span></div>
+        <div class="cell column-2"><span class="column-label">type</span><span class="cell-value">number</span></div>
+        <div class="cell column-3"><span class="column-label">values</span><span class="cell-value">443</span></div>
+        <div class="cell column-4"><span class="column-label">description</span><span class="cell-value">
+  the port number for the server 
+  to accept browsers' connections
+        </span>
+        </div>
+      </div>
+      <div class="row">
+        <div class="cell column-1"><span class="column-label">attribute</span><span class="cell-value">
+            alternative-port</span></div>
+        <div class="cell column-2"><span class="column-label">type</span><span class="cell-value">number</span></div>
+        <div class="cell column-3"><span class="column-label">description</span><span class="cell-value">for development and testing purposes
+          only. if default port is busy,
+          then the server starts listening on the alternative port.</span></div>
+        <div class="cell column-4"><span class="column-label">values</span><span class="cell-value">8443</span></div>
+      </div>
+      <div class="row">
+        <div class="cell column-1"><span class="column-label">attribute</span><span class="cell-value">secure</span></div>
+        <div class="cell column-2"><span class="column-label">type</span><span class="cell-value">boolean</span></div>
+        <div class="cell column-3"><span class="column-label">values</span><span class="cell-value">true | false</span></div>
+        <div class="cell column-4"><span class="column-label">description</span><span class="cell-value">please specify, where to use HTTPS
+            secured connection with TLS or not.</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  </main>
+
+  <script>
+
+  const stylesPropsToCheck = [
+    "position",
+    "display",
+    "box-sizing",
+    "overflow",
+
+    "padding",
+    "margin",
+
+    "width",
+    "min-width",
+    "max-width",
+
+    "height",
+    "min-height",
+    "max-height",
+
+    "flex-direction",
+    "flex-grow",
+    "align-items",
+    "justify-content",
+
+    "font-family",
+    "line-height",
+    "font-size",
+
+    "color",
+    "background",
+    "background-color",
+
+    "whitespace",
+    "line-break",
+    "word-wrap",
+    "word-break",
+
+    "border",
+    "border-width",
+    "border-style",
+    "border-color",
+    "border-radius"
+  ];
+
+  const stylesPropsToSet = [
+    "position",
+    "display",
+    "box-sizing",
+    "overflow",
+
+    "padding",
+    "margin",
+
+    "width",
+    "min-width",
+    "max-width",
+
+    "flex-direction",
+    "flex-grow",
+    "align-items",
+    "justify-content",
+
+    "font-family",
+    "line-height",
+    "font-size",
+
+    "color",
+    "background",
+    "background-color",
+
+    "whitespace",
+    "line-break",
+    "word-wrap",
+    "word-break",
+
+    "border",
+    "border-width",
+    "border-style",
+    "border-color",
+    "border-radius"
+  ];
+
+  const tagsHide = [
+    "HEAD", "STYLE"
+  ];
+  const allowedTags = ["HTML", "BODY", "MAIN", "H1", "PRE", "P", "DIV", "SPAN",
+  "IMAGES", "CELL", "IMAGE-HOLDER", "IMG"
+  ];
+  let replaces = {
+    "<html": "<div", 
+    "</html>": "</div>", 
+    "<body": "<div",  
+    "</body>": "</div>",  
+    "<main": "<div",  
+    "</main>": "</div>",
+  };
+  let debug = true;
+
+  function getAuthoredStyleValue(element, property) {
+    for (const sheet of document.styleSheets) {
+        try {
+            for (const rule of sheet.cssRules || []) {
+                if (rule.selectorText && element.matches(rule.selectorText)) {
+                    const value = rule.style.getPropertyValue(property);
+                    if (value) return value.trim();
+                }
+            }
+        } catch (e) {
+            // ignore CORS-restricted stylesheets
+        }
+    }
+    return null;
+  }
+
+  function getDeclaredCSSValue(element, property ) {
+    // 1. Check inline style first
+    const inline = element.style.getPropertyValue(property);
+    if (inline) return inline.trim();
+
+    // 2. Scan all matching CSS rules in cascade order
+    let matchedValue = null;
+
+    for (const sheet of document.styleSheets) {
+        let rules;
+        try {
+            rules = sheet.cssRules;
+        } catch (e) {
+            // Ignore CORS-protected stylesheets
+            continue;
+        }
+
+        for (let rule of rules) {
+            if (rule.type === CSSRule.STYLE_RULE && element.matches(rule.selectorText)) {
+                let val = rule.style.getPropertyValue(property);
+                if (val) {
+                  if ( val.startsWith("var(") ) {
+                    let variableName = val.substring( 4, (val.length - 1) );
+                    matchedValue = getComputedStyle( element ).getPropertyValue( variableName );
+                  } else {
+                    matchedValue = val.trim(); // Override previous if more recent in cascade
+                  }
+                }
+            }
+        }
+    }
+
+    if ( !matchedValue ) {
+      if ( stylesPropsToSet.includes( property ) ) {
+        matchedValue = getComputedStyle( element ).getPropertyValue( property );
+      }
+    }
+
+    return matchedValue;
+  }
+
+
+  function copyAllStyles( node, newNode, cssProps ) {
+    let propName = "";
+    let styleValue = "";
+    for ( propName of cssProps ) {
+      // styleValue = getAuthoredStyleValue( node, propName );
+      styleValue = getDeclaredCSSValue( node, propName );
+
+      if ( !styleValue ) {
+        continue;
+      }
+
+      newNode.style[propName] = styleValue;
+    }
+  }
+
+
+  function concatClassNames( node, delimiter ) {
+    let classList = node.classList;
+    let classes = [];
+    let className = "";
+    for ( let classNameId = 0; classNameId < classList.length; classNameId++ ) {
+      className = classList.item( classNameId );
+      classes.push( className );
+    }
+
+    return classes.join( delimiter );
+  }
+
+  function getConcatenatedClassNames( root ) {
+    let nodes = root.childNodes;
+    let node = {};
+    let mainNodesWithClasses = [];
+
+    if ( debug === true ) {
+      let name = "";
+      let classes = "";
+      for ( let nodeNumber = 0; nodeNumber < nodes.length; nodeNumber++ ) {
+        node = nodes[nodeNumber];
+        if ( node.nodeType !== 1 ) {
+          continue;
+        }
+
+        classes = concatClassNames( node, "." );
+        name = `${node.nodeName}.${classes}`;
+        mainNodesWithClasses.push( name );
+      }
+    }
+
+    return mainNodesWithClasses;
+  }
+
+  function inlineStyleAllNodes( root, newDoc, newElem ) {
+
+    let nodes = root.childNodes;
+    let node = {};
+
+    let mainNodeWithClasses = "";
+    let newNodeWithClasses = "";
+
+    let mainNodesWithClasses = [];
+    let newNodesWithClasses = [];
+    let newNodesWithClassesAfter = [];
+
+    if ( debug === true ) {
+      mainNodeWithClasses = root.nodeName + "." + concatClassNames( root, "." );
+      newNodeWithClasses = newElem.nodeName + "." + concatClassNames( newElem, "." );
+
+      mainNodesWithClasses = getConcatenatedClassNames( root );
+      newNodesWithClasses = getConcatenatedClassNames( newElem );
+    }
+
+    for( let nodeNumber=0; nodeNumber<nodes.length; nodeNumber++ ) {
+      let node = nodes[nodeNumber];
+      let newNode = {};
+      let newNodeApplied = {};
+
+      if (node.nodeType === 1 && !allowedTags.includes(node.nodeName)) {
+        continue;
+      } else if ( node.nodeType === 3 ) {
+        if ( !node.nodeValue ) {
+          continue;
+        }
+
+        newNode = newDoc.createTextNode( node.nodeValue );
+        newElem.appendChild(newNode);
+        continue;
+
+      } else if ( node.nodeType !== 1 ) {
+        continue;
+      }
+
+      newNode = newDoc.createElement(node.nodeName);
+      if ( debug === true ) {
+        newNode.className = concatClassNames( node, " " );
+      }
+
+      if ( node.nodeName === "IMG" ) {
+        newNode.src = node.src.replace( "https://workspace.brightday.email/cdn/www/media/images/html_inliner_example/", "images/" );
+      }
+
+      copyAllStyles( node, newNode, stylesPropsToCheck );
+      
+      newElem.appendChild(newNode);
+    }
+    if ( debug === true ) {
+      newNodesWithClasses = getConcatenatedClassNames( newElem );
+    }
+
+
+    let newNodeNumber = 0;
+    for( let nodeNumber = 0; nodeNumber < nodes.length; nodeNumber++ ) {
+      let node = nodes[nodeNumber];
+      if (node.nodeType === 1 && !allowedTags.includes(node.nodeName)) {
+        continue;
+      } else if ( node.nodeType === 3 ) {
+        if ( node.nodeValue ) {
+          newNodeNumber++;
+        }
+        
+        continue;
+
+      } else if ( node.nodeType !== 1 ) {
+        continue;
+      }
+
+      inlineStyleAllNodes( node, newDoc, newElem.childNodes[newNodeNumber] ); // Recursively get all children
+      if ( debug === true ) {
+        newNodesWithClassesAfter = getConcatenatedClassNames( newElem );
+      }
+      newNodeNumber++;
+    }
+
+    if ( debug === true ) {
+        newNodesWithClassesAfter = getConcatenatedClassNames( newElem );
+    }
+
+    return;
+  }
+
+
+  function inlineTable( selector ) {
+    let targetNode = {};
+    let node = {};
+    let mainNodeWithClasses = "";
+    let newNodeWithClasses = "";
+
+    let mainNodesWithClasses = [];
+    let newNodesWithClasses = [];
+
+    let inlineStyledHtml = "";
+
+    let mainNode = document.querySelector( selector );
+    node = mainNode;
+    const newDoc = document.implementation.createHTMLDocument("Filtered Document");
+    const docElem = newDoc.documentElement;
+
+    let computedStyles = {};
+    let newNode = {};
+    let newNodeApplied = {};
+    if ( node.tagName === "HTML" ) {
+      node = document.querySelector( "html" );
+      newNodeApplied = newDoc.querySelector("html");
+    } else {
+      newNode = newDoc.createElement( node.tagName );
+      newNodeApplied = docElem.appendChild( newNode );
+    }
+    targetNode = newNodeApplied;
+
+    if ( debug === true ) {
+      mainNodesWithClasses = getConcatenatedClassNames( node );
+      newNodesWithClasses = getConcatenatedClassNames( newNodeApplied );
+    }
+
+    if ( debug === true ) {
+      newNodeApplied.className = concatClassNames( node, " " );
+    }
+
+    copyAllStyles( node, newNodeApplied, stylesPropsToCheck );
+
+
+    if ( mainNode.tagName === "HTML" ) {
+      node = document.querySelector("body");
+      newNodeApplied = docElem.querySelector("body");
+
+      if ( debug === true ) {
+        newNodeApplied.className = concatClassNames( node, " " );
+      }
+
+      copyAllStyles( node, newNodeApplied, stylesPropsToCheck );
+    }
+
+    if ( debug === true ) {
+      mainNodesWithClasses = getConcatenatedClassNames( node );
+      newNodesWithClasses = getConcatenatedClassNames( newNodeApplied );
+    }
+    
+    inlineStyleAllNodes( node, newDoc, newNodeApplied );
+
+    if ( debug === true ) {
+      newNodesWithClasses = getConcatenatedClassNames( newNodeApplied );
+    }
+
+    let str1 = "";
+    let str2 = targetNode.outerHTML;
+    let str3 = "";
+    let strToReplace = "";
+    let wasReplaced = true; 
+    while ( wasReplaced === true ) {
+      str3 = str2;
+
+      for ( let key in replaces ) {
+        strToReplace = key;
+        str1 = str2.replace( strToReplace, replaces[key] );
+        str2 = str1;
+      }
+
+      wasReplaced = ( str3 !== str2 );
+
+      if ( wasReplaced === false ) {
+        break;
+      }
+    }
+
+    console.log( str2 );
+  }
+  
+  document.addEventListener( "DOMContentLoaded", () => { inlineTable( "html" ); } );
+  
+  </script>
+  
+</body>
+</html>
+
+
+
+
+
+
+

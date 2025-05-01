@@ -4,7 +4,7 @@ async function MediaDeviceInfo() {
     let pathToJsonDatasetForResponsiveSizes = "/Users/illiapolianskyi/Projects/JAISOCX_SITES_TOOLS/Workspace/code/ts/www/packages/Mobile.vsDesktop/data/ResponsiveSizes/ResponsiveSizes.json";
     let responsiveTemplateFilePath = "/Users/illiapolianskyi/Projects/JAISOCX_SITES_TOOLS/Workspace/code/ts/www/packages/Mobile.vsDesktop/data/templates/ResponsiveTemplate.template";
     let subfolderName = "responsive";
-    let responsiveMediaQueriesFilesPrefix = "media_css_file__";
+    let responsiveMediaQueriesFilesPrefix = "";
     let mediaConstantsFileName = "MediaConstants.css";
     let webpackAliasName = "@jaisocx-css-clean-start-MediaAndStyles";
     return await responsiveDatasetAutomation

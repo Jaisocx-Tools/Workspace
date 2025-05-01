@@ -32,7 +32,6 @@ TemplateRenderer.render_opt(): 3125 ns
 
 
 
-
 TemplateRenderer.render_str(): 103375 ns
 TemplateRenderer.render_str(): 4917 ns
 TemplateRenderer.render_str(): 3208 ns

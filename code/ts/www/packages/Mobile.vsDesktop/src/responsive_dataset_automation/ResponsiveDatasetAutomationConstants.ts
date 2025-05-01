@@ -47,6 +47,7 @@ export class ResponsiveDatasetAutomationConstants {
 
   #mediaLine: string[];
   #mediaConstantNameLine: string[];
+  #mediaConstantName: string[];
   #mediaRuleConstantLine: (string|string[])[];
   #mediaConstantLine: string[];
   #mediaRuleVariable_Width: string[];
@@ -54,6 +55,7 @@ export class ResponsiveDatasetAutomationConstants {
   #bitbufsMediaLine: Uint8Array[];
   #bitbufsMediaConstantNameLine: Uint8Array[];
   #bitbufsMediaRuleConstantLine: (Uint8Array|Uint8Array[])[];
+  #bitbufsMediaConstantName: Uint8Array[];
   #bitbufsMediaConstantLine: Uint8Array[];
   #bitbufsMediaRuleVariable_Width: Uint8Array[];
   #bitsbufN: Uint8Array;
@@ -67,7 +69,7 @@ export class ResponsiveDatasetAutomationConstants {
 
     this.#keywordMediarule = "media_rule";
     this.#mediaRuleName = "media_rule_name";
-    this.#mediaConstantNameStart = "s";
+    this.#mediaConstantNameStart = "style";
 
     this.#mediaRule = "@media only ";
     this.#mediaRuleScreen = "screen";
@@ -87,8 +89,8 @@ export class ResponsiveDatasetAutomationConstants {
     this.#importUrlEnd = "\");";
 
     this.#keywordWidth = "width";
-    this.#keywordFrom = "from";
-    this.#keywordTil = "til";
+    this.#keywordFrom = "min_width";
+    this.#keywordTil = "max_width";
 
     this.#cssVariablePrefix = "--";
     this.#cssVariableNameValueDelimiter = ": ";
@@ -173,6 +175,8 @@ export class ResponsiveDatasetAutomationConstants {
       this.#N
     ];
 
+
+
     this.#mediaConstantLine = [
       this.#backgroundSpace,
       this.#backgroundSpace,
@@ -183,19 +187,16 @@ export class ResponsiveDatasetAutomationConstants {
       "5",
       this.#underscore,
       this.#underscore,
-      this.#keywordWidth,
-      this.#underscore,
-      this.#underscore,
-      "11",
+      "8",
       this.#cssVariableNameValueDelimiter,
-      "13",
+      "10",
       this.#unitPx,
       this.#cssExpressionEnd
     ];
 
     this.#mediaRuleVariable_Width = [
       [this.#cssVariablePrefix,
-        this.#keywordWidth,
+        this.#keywordMediarule,
         this.#underscore,
         this.#underscore].join(""),
       "1", 
@@ -207,9 +208,6 @@ export class ResponsiveDatasetAutomationConstants {
         this.#cssVariablePrefix].join(""),
       "3",
       [this.#underscore,
-        this.#underscore,
-        this.#keywordWidth,
-        this.#underscore,
         this.#underscore].join(""),
       "5", 
 
@@ -220,6 +218,7 @@ export class ResponsiveDatasetAutomationConstants {
     this.#bitbufsOrientationKeywords = new Array() as Uint8Array[];
     this.#bitbufsMediaLine = new Array() as Uint8Array[];
     this.#bitbufsMediaConstantNameLine = new Array() as Uint8Array[];
+    this.#bitbufsMediaConstantName = new Array() as Uint8Array[];
     this.#bitbufsMediaRuleConstantLine = new Array() as (Uint8Array|Uint8Array[])[];
     this.#bitbufsMediaConstantLine = new Array() as Uint8Array[];
     this.#bitbufsMediaRuleVariable_Width = new Array() as Uint8Array[];
@@ -481,19 +480,19 @@ export class ResponsiveDatasetAutomationConstants {
     return this.#bitbufsMediaRuleConstantLine;
   }
 
-  getMediaConstantLineUpdated( 
+  getMediaConstantNameUpdated( 
     mediaName: string, 
     postfix: string, 
     size: string ): Uint8Array[] {
     const mediaNamePos: number = 5;
-    const postfixPos: number = 11;
-    const sizePos: number = 13;
+    const postfixPos: number = 8;
+    // const sizePos: number = 10;
 
-    this.#bitbufsMediaConstantLine[mediaNamePos] = this.textEncoder.encode( mediaName );
-    this.#bitbufsMediaConstantLine[postfixPos] = this.textEncoder.encode( postfix );
-    this.#bitbufsMediaConstantLine[sizePos] = this.textEncoder.encode( size );
+    this.#bitbufsMediaConstantName[mediaNamePos] = this.textEncoder.encode( mediaName );
+    this.#bitbufsMediaConstantName[postfixPos] = this.textEncoder.encode( postfix );
+    // this.#bitbufsMediaConstantLine[sizePos] = this.textEncoder.encode( size );
 
-    return this.#bitbufsMediaConstantLine;
+    return this.#bitbufsMediaConstantName;
   }
 
   getMediaRuleVariable_Width_Updated ( 

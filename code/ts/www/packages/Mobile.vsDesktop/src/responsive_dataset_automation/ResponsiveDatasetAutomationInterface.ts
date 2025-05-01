@@ -82,15 +82,15 @@ export interface ResponsiveDatasetAutomationInterface {
 
 
   //
-  // --s_56_16k_tv_vertical__width__from: 8641px; /* 16k TV */
-  // --s_56_16k_tv_vertical__width__til: 9999px; /* 16k TV */
+  // --s_56_16k_tv_vertical__min_width: 8641px; /* 16k TV */
+  // --s_56_16k_tv_vertical__max_width: 9999px; /* 16k TV */
   //
-  // --s_56_16k_tv_horizontal__width__from: 15361px; /* 16k TV */
-  // --s_56_16k_tv_horizontal__width__til: 25360px; /* 16k TV */
+  // --s_56_16k_tv_horizontal__min_width: 15361px; /* 16k TV */
+  // --s_56_16k_tv_horizontal__max_width: 25360px; /* 16k TV */
   produceMediaConstantLinesSet ( responsiveDatasetPropName: string ): Uint8Array[][]; // this
 
 
-  // --s_56_16k_tv_horizontal__width__til: 25360px; /* 16k TV */
+  // --s_56_16k_tv_horizontal__max_width: 25360px; /* 16k TV */
   produceMediaConstantLine ( 
     responsiveDatasetPropName: string, 
     orientation: string,
