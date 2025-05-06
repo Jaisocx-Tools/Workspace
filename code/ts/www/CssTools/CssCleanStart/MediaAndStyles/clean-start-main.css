@@ -34,9 +34,7 @@ html.workspace script {
 }
 
 .workspace, 
-.workspace *:not(ul),
-.workspace *:not(ol),
-.workspace *:not(li) {
+.workspace *:not(ul):not(ol):not(li) {
 
   margin: var(--clean-start__margin);
   padding: var(--clean-start__padding);
@@ -55,13 +53,7 @@ html.workspace script {
 }
 
 
-.workspace, 
-.workspace *:not(h1),
-.workspace *:not(h2),
-.workspace *:not(h3),
-.workspace *:not(h4),
-.workspace *:not(h5),
-.workspace *:not(h6)  {
+.workspace *:not(h1):not(h2):not(h3):not(h4):not(h5):not(h6) {
 
   font-size: var(--clean-start__font-size);
   line-height: var(--clean-start__line-height);

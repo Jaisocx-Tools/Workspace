@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+<html class="workspace theme-emailed-thin long browser-width-when-portrait">
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>Under construction: Css Table</title>
+
+
+  <script src="packages/Text/transpiled/Simple/Trimmer.js"></script>
+  <script src="packages/CssHtml/transpiled/Simple/CssHtml.js"></script>
+  <script src="packages/CssHtml/transpiled/Simple/CssSelectorWeight.js"></script>
+  <script src="packages/InlinerToSendHtmlEmail/transpiled/Simple/InlinerToSendHtmlEmailConstants.js"></script>
+  <script src="packages/InlinerToSendHtmlEmail/transpiled/Simple/InlinerToSendHtmlEmail.js"></script>
+
+  <!-- CSS CLEAN START THE WEBPACK BUILT BUNDLE.JS FILE -->
+  <!-- <script src="examples/ExampleCssCleanStartWebpack/transpiled/webpack/example-css-clean-start-bundle.js"></script> -->
+
+  <link rel="stylesheet" href="CssTools/CssCleanStart/MediaAndStyles/themes/theme-lightmode/clean-start-theme-lightmode-relative.css">
+  <link rel="stylesheet" href="CssTools/CssCleanStart/MediaAndStyles/clean-start-main-relative.css">
+
+  <!-- FOR THE CSS TABLE YOU NeD ALWAYS TO SET IN THIS FILE THE WIDTH OF COLUMNS
+  AND THIS .css FILE HAS TO BE ALWAYS REFERRED IN HTML DOC OR OTHER IMPORTS. -->
+  <link rel="stylesheet" href="CssTools/CssTable/MediaAndStyles/themes/columns/columns.css">
+
+
+  <link rel="stylesheet" href="CssTools/CssTable/MediaAndStyles/themes/theme-emailed-thin/css-table-theme-emailed-thin.css">
+  <!-- <link rel="stylesheet" href="CssTools/CssTable/MediaAndStyles/themes/theme-lightmode/css-table-theme-lightmode-relative.css">
+  <link rel="stylesheet" href="CssTools/CssTable/MediaAndStyles/themes/theme-darkmode/css-table-theme-darkmode-relative.css"> -->
+  <link rel="stylesheet" href="CssTools/CssTable/MediaAndStyles/css-table-main-relative.css">
+
+
+  <!-- CssCodeSnippet -->
+  <link rel="stylesheet" href="CssTools/CssCodeSnippet/MediaAndStyles/themes/csstool-codesnippet-theme-colour-rosa.css">
+  <link rel="stylesheet" href="CssTools/CssCodeSnippet/MediaAndStyles/themes/csstool-codesnippet-theme-colour-blue.css">
+  <link rel="stylesheet" href="CssTools/CssCodeSnippet/MediaAndStyles/themes/csstool-codesnippet-theme-colour-salad.css">
+  <link rel="stylesheet" href="CssTools/CssCodeSnippet/MediaAndStyles/themes/csstool-codesnippet-theme-size-little.css">
+  <link rel="stylesheet" href="CssTools/CssCodeSnippet/MediaAndStyles/themes/csstool-codesnippet-theme-size-large.css">
+  <link rel="stylesheet" href="CssTools/CssCodeSnippet/MediaAndStyles/themes/csstool-codesnippet-theme-base.css">
+  <link rel="stylesheet" href="CssTools/CssCodeSnippet/MediaAndStyles/csstool-codesnippet-theme-styles-main.css">
+  <link rel="stylesheet" href="CssTools/CssCodeSnippet/MediaAndStyles/lines-numbers-variables/code-snippet-lines-numbers-300.css">
+
+
+
+  <style>
+
+    :root {
+      --clean-start__site__margin: 0;
+      --clean-start__site__padding: 0.4rem;
+      --clean-start__site__background: inherit;
+      --clean-start__tag_body__background: inherit;
+      --clean-start__custom-tags__display: block;
+
+
+      --clean-start__text-color: inherit;
+      --clean-start__text-color-h: inherit;
+      --clean-start__font-size_h1: 1.9rem;
+
+      --main-width: 100%;
+      --imageholder-width: 100%;
+      --imageholder-height: 100%;
+      --main-background-color: inherit;
+      --img-width: 320px;
+      --img-height: 234px;
+    }
+
+    .workspace.theme-emailed-thin.long.browser-width-when-portrait,
+    .workspace.theme-emailed-thin.long.browser-width-when-portrait .level_first,
+    .workspace.theme-emailed-thin.long.browser-width-when-portrait .level_first .level_second {
+      margin: 0;
+
+      margin-top: 0;
+      margin-left: 0;
+      margin-right: 0;
+      margin-bottom: 0;
+
+      padding: 0;
+
+      width: 100%;
+      max-width: 100%;
+      min-width: 100%;
+
+      overflow-x: hidden;
+
+      --height: fit-content;
+      height: var(--height);
+      max-height: var(--height);
+      min-height: 100%;
+
+      overflow-y: visible;
+    }
+
+    .workspace.theme-emailed-thin.long.browser-width-when-portrait {
+
+      --clean-start__tag_body__height: fit-content;
+      --clean-start__tag_body__height_max: fit-content;
+      --clean-start__tag_body__height_min: auto;
+  
+      --clean-start__tag_body__width: 100%;
+      --clean-start__tag_body__max_width: 100%;
+      --clean-start__tag_body__min_width: 100%;
+
+
+      --clean-start__tag_body__overflow-x: hidden;
+      --clean-start__tag_body__overflow-y: visible;
+
+      --clean-start__site__width: 100%;
+      --clean-start__site__overflow_x: hidden;
+      --clean-start__site__overflow_y: visible;
+    }
+
+    .workspace.theme-emailed-thin.long.browser-width-when-portrait .images {
+      display: block;
+
+      width: var(--main-width);
+      max-width: var(--main-width);
+      min-width: var(--main-width);
+
+      height: auto;
+      max-height: max-content;
+      min-height: fit-content;
+
+      /* flex-wrap: wrap; */
+
+      background: var(--main-background-color);
+      margin-bottom: 3rem;
+
+      overflow-y: visible;
+      overflow-x: hidden;
+    }
+    .workspace.theme-emailed-thin.long.browser-width-when-portrait .images > .cell {
+      display: inline-block;
+
+      width:     var(--img-width);
+      max-width: 100%;
+      min-width: unset;      
+
+      height:     var(--img-height);
+      max-height: fit-content;
+      min-height: var(--img-height);
+
+      overflow-x: hidden;
+      overflow-y: visible;
+
+      margin: 0 0.6rem 0.6rem 0;
+      overflow: hidden;
+
+      /* background: #f2fff2; */
+      background: black;
+      border: 1px solid lime;
+    }
+
+    .workspace.theme-emailed-thin.long.browser-width-when-portrait .images .cell .image-holder {
+      display: inline-block;
+
+      width: 100%;
+      max-width: 100%;
+      min-width: 100%;      
+
+      height: auto;
+      min-height: fit-content;
+      max-height: unset;
+
+      overflow-x: hidden;
+      overflow-y: visible;
+
+      padding: 0.8rem;
+      margin: 0 0 0 0 !important;
+      /* background: #ffffff; */
+      background: inherit;
+      /* border: 1px solid crimson; */
+    }
+    
+    .workspace.theme-emailed-thin.long.browser-width-when-portrait .images > .cell > .image-holder > img {
+      display: inline-block;
+
+      width: auto;
+      max-width: 100%;
+
+      height: auto;
+      max-height: 100%;
+
+      overflow: hidden;
+    }
+
+
+    .workspace.theme-emailed-thin.long.browser-width-when-portrait .email_address {
+      margin: 1.6rem 0;
+    }
+
+    .workspace.theme-emailed-thin.long.browser-width-when-portrait .text,
+    .workspace.theme-emailed-thin.long.browser-width-when-portrait .text .paragraph {
+      width: 100%;
+      max-width: 100%;
+      line-break: normal;
+    }
+
+    .workspace.theme-emailed-thin.long.browser-width-when-portrait .text .paragraph {
+      margin: 1.4rem 0;
+    }
+
+    .workspace.theme-emailed-thin.long.browser-width-when-portrait .text .line {
+      display: block;
+      margin: 0;
+    }
+    .workspace.theme-emailed-thin.long.browser-width-when-portrait .text .line:first-of-type {
+      margin: 1.9rem 0 0 0;
+    }
+    .workspace.theme-emailed-thin.long.browser-width-when-portrait .text .line:last-of-type {
+      margin: 0 0 1.9rem 0;
+    }
+
+
+    .workspace.theme-emailed-thin.long.browser-width-when-portrait s {
+      text-decoration: none;
+
+      display: block;
+      position: static;
+      
+    }
+
+    #inlinertoolarea {
+      position: fixed;
+
+      top: 3rem;
+      right: 3rem;
+
+      height: auto;
+      width: auto;
+
+      overflow: visible;
+      z-index: 1000;
+    }
+
+    #inlinerbuttonarea {
+      display: block;
+      z-index: 1002;
+    }
+
+    #btn-show-inline-text {
+      display: block;
+      position: static;
+      z-index: 1008;
+
+      background-color: steelblue;
+      color: aliceblue;
+      border: 1px solid #66ddff;
+      border-radius: 0.2rem;
+      padding: 0.4rem 0.8rem;
+    }
+
+    #inlinertextarea {
+      /* height: var(--code-snippet-tool--height);
+      width: var(--code-snippet-tool--width);
+      max-width: var(--code-snippet-tool--width); */
+
+      position: absolute;
+      top: 2rem;
+      right: -2rem;
+
+      overflow: visible;
+    }
+
+    #inlinertextarea nav {
+      display: flex;
+      flex-direction: row;
+      align-items: baseline;
+      justify-content: flex-start;
+    }
+
+    #inlinertextarea nav button {
+      width: auto;
+      height: auto;
+      overflow: visible;
+
+      padding: 0.16rem 0.9rem 0.16rem 0.9rem;
+      margin: 0 0.3rem 0.16rem 0;
+
+      background-color: #f2f9ff;
+      color: #000;
+      border: 1px solid #44ddff;
+      border-radius: 0.6rem;
+      
+      font-size: 0.674rem;
+      line-height: 0.674rem;
+
+      letter-spacing: 1px;
+    }
+
+    #inlinertextarea nav button:hover {
+      background-color: #a5d7ff;
+      color: #049;
+      border: 1px solid #1166ff;
+    }
+
+    #inlinertextarea nav button:focus {
+      background-color: #c5e9ff;
+      color: #fff;
+      border: 1px solid #2288ff;
+    }
+
+    .workspace.theme-emailed-thin.long.browser-width-when-portrait .CodeSnippetHolder#code-snippet-inlinetext {
+      --lines-number: 27;
+      --lines-numbers--content: var(--lines-numbers--content--300);
+
+      --code-snippet-tool--width: 43rem;
+      --code-snippet-tool--height: auto;
+      --overflow-y: auto;
+      --overflow-x: auto;
+    }
+  </style>
+
+</head>
+<body class="level_first">
+
+  <s id="inlinertoolarea" style="display: block;">
+    <s id="inlinerbuttonarea">
+      <button id="btn-show-inline-text">Show Inliner</button>
+    </s>
+
+    <s id="inlinertextarea" style="display: none;">
+      <nav>
+        <button id="btn-inline-html">Produce Inline HTML</button>
+        <button id="btn-copy-inline-text">Copy To Clipboard</button>
+        <button id="btn-inline-text-in-new-tab">Show In New Tab</button>
+      </nav>
+
+      <CodeSnippetHolder id="code-snippet-inlinetext" class="CodeSnippetHolder little blue">
+        <pre class="CodeSnippetArea" id="inlinetext"></pre>
+      </CodeSnippetHolder>
+
+    </s>
+  </s>
+
+  <main class="level_second">
+
+    <h1>Hello</h1>
+    <!-- <div class="email_address">to: support@</div> -->
+
+
+    <div class="text">
+      <div class="paragraph">
+        Good evening,
+      </div>
+      
+      <div class="paragraph">
+        I send the well formed .eml email message 
+      with html tags &lt;img src="cid: &lt;a_cid_of_an_image_in_base64&gt;", 
+      and the base64 content of images are in the same email message of content-type multipart... 
+      formed in .eml format according to RFC.
+      the base64 is then not the remote content, 
+      and in the Google Chrome browser these images are shown the best way.
+      </div>
+      
+      <span class="line">
+        Sincerely Yours, 
+      </span>
+      <span class="line">
+        Elias
+      </span>
+      <span class="line">
+        Jaisocx Software Architect.
+      </span>
+    </div>
+    
+    <div class="images">
+      <div class="cell">
+        <div class="image-holder">
+          <img src="/cdn/www/media/images/html_inliner_example/cyberpunk-6061251_1280.jpg" alt="Image 1" descrption="example of rendered image by cid." />
+        </div>
+      </div>
+      <div class="cell">
+        <div class="image-holder">
+          <img src="/cdn/www/media/images/html_inliner_example/desktop-5636733_1280.jpg" alt="Image 2" descrption="example of rendered image by cid." />
+        </div>
+      </div>
+      <div class="cell">
+        <div class="image-holder">
+          <img src="/cdn/www/media/images/html_inliner_example/gearstick-7740670_1280.jpg" alt="Image 3" descrption="example of rendered image by cid." />
+        </div>
+      </div>
+      <div class="cell">
+        <div class="image-holder">
+          <img src="/cdn/www/media/images/html_inliner_example/laptop-5673901_1280.jpg" alt="Image 4" descrption="example of rendered image by cid." />
+        </div>
+      </div>
+      <div class="cell">
+        <div class="image-holder">
+          <img src="/cdn/www/media/images/html_inliner_example/screw-1924174_1280.jpg" alt="Image 4" descrption="example of rendered image by cid." />
+        </div>
+      </div>
+      <div class="cell">
+        <div class="image-holder">
+          <img src="/cdn/www/media/images/html_inliner_example/vintage-camera-6835351_1280.jpg" alt="Image 5" descrption="example of rendered image by cid." />
+        </div>
+      </div>
+      <div class="cell">
+        <div class="image-holder">
+          <img src="/cdn/www/media/images/html_inliner_example/airport-2471662_1280.jpg" alt="Image 6" descrption="example of rendered image by cid." />
+        </div>
+      </div>
+      <div class="cell">
+        <div class="image-holder">
+          <img src="/cdn/www/media/images/html_inliner_example/work-3938876_1280.jpg" alt="Image 7" descrption="example of rendered image by cid." />
+        </div>
+      </div>
+    </div>
+
+  <div class="workspace-css-table-holder example-table-columns-4 thin-styles-applied bright-styles-applied">
+  <!-- <div class="workspace-css-table-holder example-table-columns-4"> -->
+    <div class="workspace-css-table">
+      <div class="row desktop-columns-labels-holder">
+        <div class="cell column-1"><span class="column-label">attribute</span></div>
+        <div class="cell column-2"><span class="column-label">type</span></div>
+        <div class="cell column-3"><span class="column-label">values</span></div>
+        <div class="cell column-4"><span class="column-label">description</span></div>
+      </div>
+      <div class="row">
+        <div class="cell column-1"><span class="column-label">attribute</span><span class="cell-value">
+            port</span></div>
+        <div class="cell column-2"><span class="column-label">type</span><span class="cell-value">number</span></div>
+        <div class="cell column-3"><span class="column-label">values</span><span class="cell-value">443</span></div>
+        <div class="cell column-4"><span class="column-label">description</span><span class="cell-value">
+  the port number for the server 
+  to accept browsers' connections
+        </span>
+        </div>
+      </div>
+      <div class="row">
+        <div class="cell column-1"><span class="column-label">attribute</span><span class="cell-value">
+            alternative-port</span></div>
+        <div class="cell column-2"><span class="column-label">type</span><span class="cell-value">number</span></div>
+        <div class="cell column-3"><span class="column-label">description</span><span class="cell-value">for development and testing purposes
+          only. if default port is busy,
+          then the server starts listening on the alternative port.</span></div>
+        <div class="cell column-4"><span class="column-label">values</span><span class="cell-value">8443</span></div>
+      </div>
+      <div class="row">
+        <div class="cell column-1"><span class="column-label">attribute</span><span class="cell-value">secure</span></div>
+        <div class="cell column-2"><span class="column-label">type</span><span class="cell-value">boolean</span></div>
+        <div class="cell column-3"><span class="column-label">values</span><span class="cell-value">true | false</span></div>
+        <div class="cell column-4"><span class="column-label">description</span><span class="cell-value">please specify, where to use HTTPS
+            secured connection with TLS or not.</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  </main>
+
+  <script>
+
+  let globBaseUrlToReplace = "";
+  let globBaseUrlReplacedWith = "";
+  // globBaseUrlToReplace = "/cdn/www/media/images/html_inliner_example/";
+  // globBaseUrlReplacedWith = "images/";
+
+
+  let debug = true;
+
+  function showHide_InlinerButton( e, withCtrl, withShift, keyCode ) {
+
+    let ctrl = withCtrl ? e.ctrlKey : true;
+    let shift = withShift ? e.shift : true;
+
+    if ( ctrl && shift && e.code === keyCode ) {
+      let inlinerToolArea = document.getElementById( "inlinertoolarea" );
+
+      let shownStyleValue = ( inlinerToolArea.style.display === "none" ) ? "block" : "none";
+
+      inlinerToolArea.style.display = shownStyleValue;
+
+      if ( shownStyleValue === "none" ) {
+        let textArea = document.getElementById("inlinertextarea");
+        textArea.style.display = shownStyleValue;
+      }
+    }
+  }
+
+
+  function showInlineText( e ) {
+    let textArea = document.getElementById("inlinertextarea");
+    let shownStyleValue = ( textArea.style.display === "none" ) ? "block" : "none";
+    textArea.style.display = shownStyleValue;
+  }
+
+
+  function inlineText( e, baseUrlToReplace, baseUrlReplacedWith ) {
+    let inliner = new InlinerToSendHtmlEmail();
+    let cssHtmlPackage = inliner.cssHtmlPackage;
+
+    let inlineText = inliner.inline ( 
+      "html", 
+      inliner.constants.stylesPropsToCheck, 
+      baseUrlToReplace, 
+      baseUrlReplacedWith 
+    );
+
+    let textHtmlNode = document.getElementById("inlinetext");
+    textHtmlNode.innerHTML = cssHtmlPackage.escapeHTML( inlineText );
+  }
+
+
+  async function copyInlineText( e ) {
+    let cssHtmlPackage = new CssHtml();
+    let textHtmlNode = document.getElementById("inlinetext");
+    let inlineText = cssHtmlPackage.unescapeHTML( textHtmlNode.innerHTML );
+
+    await navigator.clipboard.writeText( inlineText );
+
+    return 1;
+  }
+
+
+  function inlineTextInNewTab( e ) {
+    let cssHtmlPackage = new CssHtml();
+    let textHtmlNode = document.getElementById("inlinetext");
+    let inlineText = cssHtmlPackage.unescapeHTML( textHtmlNode.innerHTML );
+
+    const newWin = window.open();
+    newWin.document.write( inlineText );
+    newWin.document.close(); // Important!
+  }
+
+
+
+  function assignEventHandler_ShowHide_InlinerButton( withCtrl, withShift, keyCode ) {
+    document.addEventListener('keypress', function (e) {
+      showHide_InlinerButton( e, withCtrl, withShift, keyCode );
+    });
+  }
+
+  function assignEventHandler_BtnShowInlineText( buttonId, eventName ) {
+    let eventTriggeringHtmlElem = document.getElementById( buttonId );
+
+    eventTriggeringHtmlElem.addEventListener ( eventName, function(e){ showInlineText( e ); } );
+  }
+
+  function assignEventHandler_BtnInlineText( buttonId, eventName, baseUrlToReplace, baseUrlReplacedWith ) {
+    let eventTriggeringHtmlElem = document.getElementById( buttonId );
+
+    eventTriggeringHtmlElem.addEventListener ( eventName, function(e){ inlineText( e, baseUrlToReplace, baseUrlReplacedWith ); } );
+  }
+
+  function assignEventHandler_BtnCopyInlineText( buttonId, eventName ) {
+    let eventTriggeringHtmlElem = document.getElementById( buttonId );
+
+    eventTriggeringHtmlElem.addEventListener ( eventName, function(e){ copyInlineText( e ); } );
+  }
+
+  function assignEventHandler_BtnInlineTextInNewTab( buttonId, eventName ) {
+    let eventTriggeringHtmlElem = document.getElementById( buttonId );
+
+    eventTriggeringHtmlElem.addEventListener ( eventName, function(e){ inlineTextInNewTab( e ); } );
+  }
+
+
+  function assignEventsHandlers() {
+    assignEventHandler_ShowHide_InlinerButton( true, false, "KeyQ" );
+    assignEventHandler_BtnShowInlineText( "btn-show-inline-text", "click" );
+    assignEventHandler_BtnInlineText( "btn-inline-html", "click", globBaseUrlToReplace, globBaseUrlReplacedWith );
+    assignEventHandler_BtnCopyInlineText( "btn-copy-inline-text", "click" );
+    assignEventHandler_BtnInlineTextInNewTab( "btn-inline-text-in-new-tab", "click" );
+  }
+
+  document.addEventListener( "DOMContentLoaded", () => { assignEventsHandlers(); } );
+
+  </script>
+  
+</body>
+</html>
+
+
+
+
+
+
+

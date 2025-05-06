@@ -1,22 +1,32 @@
 /* theme-emailed-thin */
-.theme-emailed-thin .workspace-css-table-holder *,
-.theme-emailed-thin.workspace-css-table-holder * {
-  --column-label-width: 8rem;
+.workspace.theme-emailed-thin .workspace-css-table-holder {
+  --column-label-width: 9rem;
+
+  --workspace-table-thin--cell--column-label--font-size: 0.98rem;
+  --workspace-table-thin--cell--column-label--line-height: 1.095rem;
+
+  --workspace-table-thin--cell--cell-value--font-size: 0.95rem;
+  --workspace-table-thin--cell--cell-value--line-height: 1.095rem;
+
+}
+
+.workspace.theme-emailed-thin .workspace-css-table-holder,
+.workspace.theme-emailed-thin .workspace-css-table-holder .workspace-css-table,
+.workspace.theme-emailed-thin .workspace-css-table-holder .workspace-css-table .row:not(.desktop-columns-labels-holder) {
+  display: block;
+  flex-direction: unset;
 }
 
 
-.theme-emailed-thin .workspace-css-table-holder,
-.theme-emailed-thin.workspace-css-table-holder,
-.theme-emailed-thin .workspace-css-table-holder .row:not(.desktop-columns-labels-holder),
-.theme-emailed-thin.workspace-css-table-holder .row:not(.desktop-columns-labels-holder),
-.theme-emailed-thin .workspace-css-table-holder .cell,
-.theme-emailed-thin.workspace-css-table-holder .cell {
+
+.workspace.theme-emailed-thin .workspace-css-table-holder,
+.workspace.theme-emailed-thin .workspace-css-table-holder .workspace-css-table,
+.workspace.theme-emailed-thin .workspace-css-table-holder .workspace-css-table .row,
+.workspace.theme-emailed-thin .workspace-css-table-holder .workspace-css-table .row .cell {
 
   width:                   100%;
   min-width:               100%;
   max-width:               100%;
-
-  display: block;
 
   overflow-x:              hidden;
   overflow-y:              visible;
@@ -27,25 +37,30 @@
 }
 
 
-.theme-emailed-thin .workspace-css-table-holder .row:not(.desktop-columns-labels-holder),
-.theme-emailed-thin.workspace-css-table-holder .row:not(.desktop-columns-labels-holder),
-.theme-emailed-thin .workspace-css-table-holder .cell,
-.theme-emailed-thin.workspace-css-table-holder .cell {
+.workspace.theme-emailed-thin .workspace-css-table-holder .row.desktop-columns-labels-holder {
+  display: none;
 }
 
-.theme-emailed-thin .workspace-css-table-holder .cell .cell-value,
-.theme-emailed-thin.workspace-css-table-holder .cell .cell-value {
-  width:                   fit-content;
-  min-width:               fit-content;
-  max-width:               unset;
+
+.workspace.theme-emailed-thin .workspace-css-table-holder,
+.workspace.theme-emailed-thin .workspace-css-table-holder .workspace-css-table,
+.workspace.theme-emailed-thin .workspace-css-table-holder .workspace-css-table .row:not(.desktop-columns-labels-holder) {
+  display: block;
 }
 
-.theme-emailed-thin .workspace-css-table-holder .cell .column-label,
-.theme-emailed-thin.workspace-css-table-holder .cell .column-label,
-.theme-emailed-thin .workspace-css-table-holder .cell .cell-value,
-.theme-emailed-thin.workspace-css-table-holder .cell .cell-value {
-  display:                 inline-block;
 
+/* .theme-emailed-thin .workspace-css-table-holder .workspace-css-table .row:not(.desktop-columns-labels-holder),
+.theme-emailed-thin .workspace-css-table-holder .workspace-css-table .row .cell {
+} */
+
+
+.workspace.theme-emailed-thin .workspace-css-table-holder .workspace-css-table .row .cell {
+  display: flex;
+}
+
+
+.workspace.theme-emailed-thin .workspace-css-table-holder .workspace-css-table .row .cell .column-label,
+.workspace.theme-emailed-thin .workspace-css-table-holder .workspace-css-table .row .cell .cell-value {
   overflow-x:              hidden;
   overflow-y:              visible;
 
@@ -53,3 +68,22 @@
   min-height:              100%;
   max-height:              unset;
 }
+
+.workspace.theme-emailed-thin .workspace-css-table-holder .workspace-css-table .row .cell .column-label {
+  width:                   var(--column-label-width);
+  min-width:               var(--column-label-width);
+  max-width:               var(--column-label-width);
+
+  background:              var(--workspace-table-thin--cell--column-label--background-color);
+}
+
+.workspace.theme-emailed-thin .workspace-css-table-holder .workspace-css-table .row .cell .cell-value {
+  flex-grow:               1;
+
+  width:                   unset;
+  min-width:               unset;
+  max-width:               unset;
+
+  background:              var(--workspace-table-thin--cell--cell-value--background-color) !important;
+}
+

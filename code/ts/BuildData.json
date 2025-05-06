@@ -77,9 +77,54 @@
       ]
     },
     {
+      "path": "packages/Text",
+      "name": "text",
+      "build": false,
+      "build-simple-enable": true,
+      "dependencies": [],
+      "build-files": [
+        "Trimmer.js"
+      ]
+    },
+    {
+      "path": "packages/CssHtml",
+      "name": "css-html",
+      "build": false,
+      "build-simple-enable": true,
+      "dependencies": [],
+      "build-files": [
+        "CssHtml.js",
+        "CssSelectorWeight.js"
+      ]
+    },
+    {
+      "path": "packages/InlinerToSendHtmlEmail",
+      "name": "email-html-inliner",
+      "build": false,
+      "build-simple-enable": true,
+      "dependencies": [
+        {
+          "name": "@jaisocx/text",
+          "path": "packages/Text"
+        },
+        {
+          "name": "@jaisocx/css-html",
+          "path": "packages/CssHtml"
+        }
+      ],
+      "build-files": [
+        "index.js",
+        "InlinerToSendHtmlEmail.js",
+        "InlinerToSendHtmlEmailConstants.js",
+        "webpackAliases.js",
+        "webpack.aliases.mjs",
+        "webpack.aliases.cjs"
+      ]
+    },
+    {
       "path": "packages/Mobile.vsDesktop",
       "name": "mobile-vs-desktop",
-      "build": true,
+      "build": false,
       "build-simple-enable": false,
       "css-importer": {
         "build": false,

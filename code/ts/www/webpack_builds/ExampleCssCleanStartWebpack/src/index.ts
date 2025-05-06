@@ -15,5 +15,5 @@ import "@jaisocx-css-clean-start-MediaAndStyles/themes/theme-darkmode/clean-star
 
 /* Custom theme in this package  */
 // this theme doesnt use aliases or bound resourceUsage. we can use the standard theme file
-import "./../../MediaAndStyles/themes/theme-custom/clean-start-theme-custom.css";
+import "../../MediaAndStyles/themes/theme-custom/clean-start-theme-custom.css";
 
