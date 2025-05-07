@@ -43,7 +43,9 @@
   <link rel="stylesheet" href="CssTools/CssCodeSnippet/MediaAndStyles/themes/csstool-codesnippet-theme-size-large.css">
   <link rel="stylesheet" href="CssTools/CssCodeSnippet/MediaAndStyles/themes/csstool-codesnippet-theme-base.css">
   <link rel="stylesheet" href="CssTools/CssCodeSnippet/MediaAndStyles/csstool-codesnippet-theme-styles-main.css">
-  <link rel="stylesheet" href="CssTools/CssCodeSnippet/MediaAndStyles/lines-numbers-variables/code-snippet-lines-numbers-300.css">
+  <!-- <link rel="stylesheet" href="CssTools/CssCodeSnippet/MediaAndStyles/lines-numbers-variables/code-snippet-lines-numbers-300.css"> -->
+  <!-- <link rel="stylesheet" href="packages/EmailHtmlInliner/MediaAndStyles/CssCodeSnippet/code-snippet-lines-numbers-999.css"> -->
+  <link rel="stylesheet" href="packages/EmailHtmlInliner/MediaAndStyles/CssCodeSnippet/code-snippet-lines-numbers-2999.css">
 
 
 
@@ -215,105 +217,109 @@
       margin: 0 0 1.9rem 0;
     }
 
-
-    .workspace.theme-emailed-thin.long.browser-width-when-portrait s {
-      text-decoration: none;
-
-      display: block;
-      position: static;
-      
-    }
-
-    #inlinertoolarea {
-      position: fixed;
-
-      top: 3rem;
-      right: 3rem;
-
-      height: auto;
-      width: auto;
-
-      overflow: visible;
-      z-index: 1000;
-    }
-
-    #inlinerbuttonarea {
-      display: block;
-      z-index: 1002;
-    }
-
-    #btn-show-inline-text {
-      display: block;
-      position: static;
-      z-index: 1008;
-
-      background-color: steelblue;
-      color: aliceblue;
-      border: 1px solid #66ddff;
-      border-radius: 0.2rem;
-      padding: 0.4rem 0.8rem;
-    }
-
-    #inlinertextarea {
-      /* height: var(--code-snippet-tool--height);
-      width: var(--code-snippet-tool--width);
-      max-width: var(--code-snippet-tool--width); */
-
-      position: absolute;
-      top: 2rem;
-      right: -2rem;
-
-      overflow: visible;
-    }
-
-    #inlinertextarea nav {
-      display: flex;
-      flex-direction: row;
-      align-items: baseline;
-      justify-content: flex-start;
-    }
-
-    #inlinertextarea nav button {
-      width: auto;
-      height: auto;
-      overflow: visible;
-
-      padding: 0.16rem 0.9rem 0.16rem 0.9rem;
-      margin: 0 0.3rem 0.16rem 0;
-
-      background-color: #f2f9ff;
-      color: #000;
-      border: 1px solid #44ddff;
-      border-radius: 0.6rem;
-      
-      font-size: 0.674rem;
-      line-height: 0.674rem;
-
-      letter-spacing: 1px;
-    }
-
-    #inlinertextarea nav button:hover {
-      background-color: #a5d7ff;
-      color: #049;
-      border: 1px solid #1166ff;
-    }
-
-    #inlinertextarea nav button:focus {
-      background-color: #c5e9ff;
-      color: #fff;
-      border: 1px solid #2288ff;
-    }
-
-    .workspace.theme-emailed-thin.long.browser-width-when-portrait .CodeSnippetHolder#code-snippet-inlinetext {
-      --lines-number: 27;
-      --lines-numbers--content: var(--lines-numbers--content--300);
-
-      --code-snippet-tool--width: 43rem;
-      --code-snippet-tool--height: auto;
-      --overflow-y: auto;
-      --overflow-x: auto;
-    }
   </style>
+
+
+<style name="inliner-ui-tool">
+  .workspace.theme-emailed-thin.long.browser-width-when-portrait .CodeSnippetHolder#code-snippet-inlinetext {
+    --lines-numbers--content: var(--lines-numbers--content--2999);
+    --lines-number: 1200;
+
+    --code-snippet-tool--width: 29rem;
+    --code-snippet-tool--height: 32rem;
+    --overflow-y: auto;
+    --overflow-x: auto;
+  }
+
+  .workspace.theme-emailed-thin.long.browser-width-when-portrait s {
+    text-decoration: none;
+
+    display: block;
+    position: static;
+    
+  }
+
+  #inlinertoolarea {
+    position: fixed;
+
+    top: 2rem;
+    right: 1rem;
+
+    height: auto;
+    width: auto;
+
+    overflow: visible;
+    z-index: 1000;
+  }
+
+  #inlinerbuttonarea {
+    display: block;
+    z-index: 1002;
+  }
+
+  #btn-show-inline-text {
+    display: block;
+    position: static;
+    z-index: 1008;
+
+    background-color: steelblue;
+    color: aliceblue;
+    border: 1px solid #66ddff;
+    border-radius: 0.2rem;
+    padding: 0.4rem 0.8rem;
+  }
+
+  #inlinertextarea {
+    /* height: var(--code-snippet-tool--height);
+    width: var(--code-snippet-tool--width);
+    max-width: var(--code-snippet-tool--width); */
+
+    position: absolute;
+    top: 4rem;
+    right: 0;
+
+    overflow: visible;
+  }
+
+  #inlinertextarea nav {
+    display: flex;
+    flex-direction: row;
+    align-items: baseline;
+    justify-content: flex-start;
+  }
+
+  #inlinertextarea nav button {
+    width: auto;
+    height: auto;
+    overflow: visible;
+
+    padding: 0.16rem 0.9rem 0.16rem 0.9rem;
+    margin: 0 0.3rem 0.16rem 0;
+
+    background-color: #f2f9ff;
+    color: #000;
+    border: 1px solid #44ddff;
+    border-radius: 0.6rem;
+    
+    font-size: 0.674rem;
+    line-height: 0.674rem;
+
+    letter-spacing: 1px;
+  }
+
+  #inlinertextarea nav button:hover {
+    background-color: #a5d7ff;
+    color: #049;
+    border: 1px solid #1166ff;
+  }
+
+  #inlinertextarea nav button:focus {
+    background-color: #c5e9ff;
+    color: #fff;
+    border: 1px solid #2288ff;
+  }
+
+</style>
 
 </head>
 <body class="level_first">
@@ -463,8 +469,16 @@
   }
 
 
+  
   function inlineText( e, baseUrlToReplace, baseUrlReplacedWith ) {
     let inliner = new EmailHtmlInliner();
+    inliner
+      .setDebug( true )
+      .setNumberBackgroundSpacesBefore_tagStart( 0 )
+      .setNumberBackgroundSpacesBefore_attrStart( 2 )
+      .setNumberBackgroundSpacesBefore_styleStart( 4 );
+
+
     let cssHtmlPackage = inliner.cssHtmlPackage;
 
     let inlineText = inliner.inline ( 
@@ -478,7 +492,6 @@
     let textHtmlNode = document.getElementById("inlinetext");
     textHtmlNode.innerHTML = cssHtmlPackage.escapeHTML( inlineText );
   }
-
 
   async function copyInlineText( e ) {
     let cssHtmlPackage = new CssHtml();

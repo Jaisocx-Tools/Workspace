@@ -106,6 +106,10 @@ h1 {
     }
   </style>
   <script>
+    let glob_LinesNumbersToProduce_Amount = 3;
+    // glob_LinesNumbersToProduce_Amount = 2999;
+
+
     function applyIdAndTheme(themeNames, codeSnippetId) {
 
       const h3 = document.querySelector('h3');
@@ -125,7 +129,7 @@ h1 {
       const CodeSnippetHolder = document.querySelector('CodeSnippetHolder');
       applyH3innerHTML(CodeSnippetHolder.classList.item(1), CodeSnippetHolder.id);
 
-      CssCodeSnippetHelpers.linesNumbersTextToConsole(3);
+      CssCodeSnippetHelpers.linesNumbersTextToConsole( glob_LinesNumbersToProduce_Amount );
     });
   </script>
 </head>

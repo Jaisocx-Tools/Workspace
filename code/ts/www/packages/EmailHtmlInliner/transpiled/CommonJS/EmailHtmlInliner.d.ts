@@ -9,8 +9,14 @@ export declare class EmailHtmlInliner {
     cssHtmlPackage: CssHtml;
     cssSelectorWeightPackage: CssSelectorWeight;
     remBasePxValue: number;
+    numberBackgroundSpacesBefore_tagStart: number;
+    numberBackgroundSpacesBefore_attrStart: number;
+    numberBackgroundSpacesBefore_styleStart: number;
     constructor();
     setDebug(inDebug: boolean): EmailHtmlInliner;
+    setNumberBackgroundSpacesBefore_tagStart(num: number): EmailHtmlInliner;
+    setNumberBackgroundSpacesBefore_attrStart(num: number): EmailHtmlInliner;
+    setNumberBackgroundSpacesBefore_styleStart(num: number): EmailHtmlInliner;
     inline(inHtmlDocument: Document, inHtmlDocQuerySelector: string, inStylesPropsToCheck: string[], inBaseUrlToReplace: string, inBaseUrlReplacedWith: string): string;
     inlineStyleAllNodes(root: HTMLElement, newDoc: Document, newElem: HTMLElement, inOutInheritedStyles: any, inOutArrayRulesMatchingPropsAndMedia: any[], inOutObjectFilteredRulesAndSpecifitiesByCssPropname: any, inBaseUrlToReplace: string, inBaseUrlReplacedWith: string): number;
     copyAllStyles(node: HTMLElement, newNode: HTMLElement, inOutInheritedStyles: any, inArrayRulesMatchingPropsAndMedia: any[], inObjectFilteredRulesAndSpecifitiesByCssPropname: any): undefined;

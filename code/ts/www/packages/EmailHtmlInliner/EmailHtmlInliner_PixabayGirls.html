@@ -32,7 +32,8 @@
   <link rel="stylesheet" href="CssTools/CssCodeSnippet/MediaAndStyles/themes/csstool-codesnippet-theme-base.css">
   <link rel="stylesheet" href="CssTools/CssCodeSnippet/MediaAndStyles/csstool-codesnippet-theme-styles-main.css">
   <link rel="stylesheet" href="CssTools/CssCodeSnippet/MediaAndStyles/lines-numbers-variables/code-snippet-lines-numbers-300.css">
-
+  <!-- <link rel="stylesheet" href="packages/EmailHtmlInliner/MediaAndStyles/CssCodeSnippet/code-snippet-lines-numbers-999.css"> -->
+  <!-- <link rel="stylesheet" href="packages/EmailHtmlInliner/MediaAndStyles/CssCodeSnippet/code-snippet-lines-numbers-2999.css"> -->
 
   <style>
 
@@ -191,6 +192,15 @@
   </style>
 
   <style name="inliner-ui-tool">
+    .workspace.theme-emailed-thin.long.browser-width-when-portrait .CodeSnippetHolder#code-snippet-inlinetext {
+      --lines-numbers--content: var(--lines-numbers--content--300);
+      --lines-number: 300;
+
+      --code-snippet-tool--width: 29rem;
+      --code-snippet-tool--height: 32rem;
+      --overflow-y: auto;
+      --overflow-x: auto;
+    }
 
     .workspace.theme-emailed-thin.long.browser-width-when-portrait s {
       text-decoration: none;
@@ -203,8 +213,8 @@
     #inlinertoolarea {
       position: fixed;
 
-      top: 3rem;
-      right: 3rem;
+      top: 2rem;
+      right: 1rem;
 
       height: auto;
       width: auto;
@@ -236,8 +246,8 @@
       max-width: var(--code-snippet-tool--width); */
 
       position: absolute;
-      top: 2rem;
-      right: -2rem;
+      top: 4rem;
+      right: 0;
 
       overflow: visible;
     }
@@ -280,15 +290,6 @@
       border: 1px solid #2288ff;
     }
 
-    .workspace.theme-emailed-thin.long.browser-width-when-portrait .CodeSnippetHolder#code-snippet-inlinetext {
-      --lines-number: 27;
-      --lines-numbers--content: var(--lines-numbers--content--300);
-
-      --code-snippet-tool--width: 43rem;
-      --code-snippet-tool--height: auto;
-      --overflow-y: auto;
-      --overflow-x: auto;
-    }
   </style>
 </head>
 <body class="level_first">
@@ -386,6 +387,13 @@
 
     function inlineText( e, baseUrlToReplace, baseUrlReplacedWith ) {
       let inliner = new EmailHtmlInliner();
+      inliner
+        .setDebug( true )
+        .setNumberBackgroundSpacesBefore_tagStart( 0 )
+        .setNumberBackgroundSpacesBefore_attrStart( 2 )
+        .setNumberBackgroundSpacesBefore_styleStart( 4 );
+
+
       let cssHtmlPackage = inliner.cssHtmlPackage;
 
       let inlineText = inliner.inline ( 

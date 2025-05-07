@@ -1,9 +1,10 @@
 export class CssCodeSnippetHelpers {
 
   public static linesNumbersTextToConsole(linesNumber: number): undefined {
-    console.info( 
+    console.log ( 
       `Custom lines numbers ( ${linesNumber} ) text generated to use with lines-numbers-variables`, 
-      CssCodeSnippetHelpers.getLinesNumbersString( linesNumber ) );
+      { "linesNumbers": CssCodeSnippetHelpers.getLinesNumbersString( linesNumber ) } 
+    );
   }
   
   public static getLinesNumbersString(linesNumber: number): any {
@@ -17,7 +18,7 @@ export class CssCodeSnippetHelpers {
       "6": "\\0036",
       "7": "\\0037",
       "8": "\\0038",
-      "9": "\\0039",
+      "9": "\\0039"
     };
 
     const whiteSpaceEncoded: string = "\\00a";

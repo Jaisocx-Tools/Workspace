@@ -13,9 +13,24 @@ class EmailHtmlInliner {
         this.cssHtmlPackage = new css_html_1.CssHtml();
         this.cssSelectorWeightPackage = new css_html_1.CssSelectorWeight();
         this.remBasePxValue = this.cssHtmlPackage.getRemBasePxValue();
+        this.numberBackgroundSpacesBefore_tagStart = 0;
+        this.numberBackgroundSpacesBefore_attrStart = 2;
+        this.numberBackgroundSpacesBefore_styleStart = 4;
     }
     setDebug(inDebug) {
         this.debug = inDebug;
+        return this;
+    }
+    setNumberBackgroundSpacesBefore_tagStart(num) {
+        this.numberBackgroundSpacesBefore_tagStart = num;
+        return this;
+    }
+    setNumberBackgroundSpacesBefore_attrStart(num) {
+        this.numberBackgroundSpacesBefore_attrStart = num;
+        return this;
+    }
+    setNumberBackgroundSpacesBefore_styleStart(num) {
+        this.numberBackgroundSpacesBefore_styleStart = num;
         return this;
     }
     inline(inHtmlDocument, inHtmlDocQuerySelector, inStylesPropsToCheck, inBaseUrlToReplace, inBaseUrlReplacedWith) {
@@ -78,7 +93,13 @@ class EmailHtmlInliner {
         // if ( this.debug === true ) {
         //   newNodesWithClasses = this.getConcatenatedClassNames( newNodeApplied );
         // }
-        inlineStyledHtml = targetNode.outerHTML;
+        let backgroundSpacesTag = this.numberBackgroundSpacesBefore_tagStart ? (" ").repeat(this.numberBackgroundSpacesBefore_tagStart) : "";
+        let backgroundSpacesAttr = this.numberBackgroundSpacesBefore_attrStart ? (" ").repeat(this.numberBackgroundSpacesBefore_attrStart) : "";
+        let backgroundSpacesStyle = this.numberBackgroundSpacesBefore_styleStart ? (" ").repeat(this.numberBackgroundSpacesBefore_styleStart) : "";
+        inlineStyledHtml = targetNode.outerHTML
+            .replaceAll("><", (">\n" + backgroundSpacesTag + "<"))
+            .replaceAll("\" ", ("\" \n" + backgroundSpacesAttr))
+            .replaceAll("; ", (";\n" + backgroundSpacesStyle));
         return inlineStyledHtml;
     }
     inlineStyleAllNodes(root, newDoc, newElem, inOutInheritedStyles, inOutArrayRulesMatchingPropsAndMedia, inOutObjectFilteredRulesAndSpecifitiesByCssPropname, inBaseUrlToReplace, inBaseUrlReplacedWith) {

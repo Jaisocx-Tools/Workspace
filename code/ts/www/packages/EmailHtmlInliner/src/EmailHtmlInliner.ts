@@ -14,6 +14,9 @@ export class EmailHtmlInliner {
   cssHtmlPackage: CssHtml;
   cssSelectorWeightPackage: CssSelectorWeight;
   remBasePxValue: number;
+  numberBackgroundSpacesBefore_tagStart: number;
+  numberBackgroundSpacesBefore_attrStart: number;
+  numberBackgroundSpacesBefore_styleStart: number;
 
   constructor () {
     this.htmlDocument = undefined;
@@ -22,8 +25,11 @@ export class EmailHtmlInliner {
     this.trimmer = new Trimmer();
     this.cssHtmlPackage = new CssHtml();
     this.cssSelectorWeightPackage = new CssSelectorWeight();
-
     this.remBasePxValue = this.cssHtmlPackage.getRemBasePxValue();
+
+    this.numberBackgroundSpacesBefore_tagStart = 0;
+    this.numberBackgroundSpacesBefore_attrStart = 2;
+    this.numberBackgroundSpacesBefore_styleStart = 4;
   }
 
 
@@ -34,6 +40,23 @@ export class EmailHtmlInliner {
     return this;
   }
 
+  setNumberBackgroundSpacesBefore_tagStart( num: number ): EmailHtmlInliner {
+    this.numberBackgroundSpacesBefore_tagStart = num;
+
+    return this;
+  }
+
+  setNumberBackgroundSpacesBefore_attrStart( num: number ): EmailHtmlInliner {
+    this.numberBackgroundSpacesBefore_attrStart = num;
+
+    return this;
+  }
+
+  setNumberBackgroundSpacesBefore_styleStart( num: number ): EmailHtmlInliner {
+    this.numberBackgroundSpacesBefore_styleStart = num;
+
+    return this;
+  }
 
 
   inline ( 
@@ -153,7 +176,20 @@ export class EmailHtmlInliner {
     //   newNodesWithClasses = this.getConcatenatedClassNames( newNodeApplied );
     // }
 
-    inlineStyledHtml = targetNode.outerHTML;
+    let backgroundSpacesTag: string = this.numberBackgroundSpacesBefore_tagStart ? (" ").repeat( this.numberBackgroundSpacesBefore_tagStart ) : "";
+    let backgroundSpacesAttr: string = this.numberBackgroundSpacesBefore_attrStart ? (" ").repeat( this.numberBackgroundSpacesBefore_attrStart ) : "";
+    let backgroundSpacesStyle: string = this.numberBackgroundSpacesBefore_styleStart ? (" ").repeat( this.numberBackgroundSpacesBefore_styleStart ) : "";
+
+    inlineStyledHtml = targetNode.outerHTML
+      .replaceAll( 
+        "><",  ( 
+          ">\n" + backgroundSpacesTag + "<" ) )
+      .replaceAll( 
+        "\" ", ( 
+          "\" \n" + backgroundSpacesAttr ) )
+      .replaceAll( 
+        "; ",  ( 
+          ";\n" + backgroundSpacesStyle ) );
 
     return inlineStyledHtml;
   }

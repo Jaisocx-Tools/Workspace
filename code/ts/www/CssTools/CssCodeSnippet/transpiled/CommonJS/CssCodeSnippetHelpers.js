@@ -3,7 +3,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.CssCodeSnippetHelpers = void 0;
 class CssCodeSnippetHelpers {
     static linesNumbersTextToConsole(linesNumber) {
-        console.info(`Custom lines numbers ( ${linesNumber} ) text generated to use with lines-numbers-variables`, CssCodeSnippetHelpers.getLinesNumbersString(linesNumber));
+        console.log(`Custom lines numbers ( ${linesNumber} ) text generated to use with lines-numbers-variables`, { "linesNumbers": CssCodeSnippetHelpers.getLinesNumbersString(linesNumber) });
     }
     static getLinesNumbersString(linesNumber) {
         const numberToUnicode = {
@@ -16,7 +16,7 @@ class CssCodeSnippetHelpers {
             "6": "\\0036",
             "7": "\\0037",
             "8": "\\0038",
-            "9": "\\0039",
+            "9": "\\0039"
         };
         const whiteSpaceEncoded = "\\00a";
         let retValue = "";
