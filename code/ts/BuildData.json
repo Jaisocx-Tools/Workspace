@@ -100,7 +100,7 @@
     {
       "path": "packages/EmailHtmlInliner",
       "name": "email-html-inliner",
-      "build": true,
+      "build": false,
       "build-simple-enable": true,
       "dependencies": [
         {

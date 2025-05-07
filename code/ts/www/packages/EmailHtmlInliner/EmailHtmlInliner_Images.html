@@ -61,7 +61,7 @@
 
 
       --clean-start__text-color: inherit;
-      --clean-start__text-color-h: inherit;
+      --clean-start__text-color-h: #339955;
       --clean-start__font-size_h1: 1.9rem;
 
       --main-width: 100%;
@@ -351,11 +351,6 @@
     <div class="images">
       <div class="cell">
         <div class="image-holder">
-          <img src="./../../../cdn/www/media/images/html_inliner_example/AsiaTown_1280.jpg" alt="Image AsiaTown" descrption="example of rendered image by cid." />
-        </div>
-      </div>
-      <div class="cell">
-        <div class="image-holder">
           <img src="./../../../cdn/www/media/images/html_inliner_example/Airport-2471662_1280.jpg" alt="Image Airport" descrption="example of rendered image by cid." />
         </div>
       </div>
@@ -437,8 +432,8 @@
 
   let globBaseUrlToReplace = "";
   let globBaseUrlReplacedWith = "";
-  // globBaseUrlToReplace = "/cdn/www/media/images/html_inliner_example/";
-  // globBaseUrlReplacedWith = "images/";
+  globBaseUrlToReplace = "./../../../cdn/www/media/images/html_inliner_example/";
+  globBaseUrlReplacedWith = "images/";
 
 
   let debug = true;
