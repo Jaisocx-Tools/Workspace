@@ -1,6 +1,6 @@
 {
   "name": "@jaisocx/email-html-inliner",
-  "version": "1.3.2",
+  "version": "1.3.3",
   "author": "Jaisocx",
   "private": false,
   "description": "",
@@ -23,7 +23,8 @@
     "transpiled/ESNext",
     "transpiled/Simple",
     "webpack.aliases.json",
-    "ExampleCss_ImagesEmailed.html",
+    "EmailHtmlInliner_Images.html",
+    "EmailHtmlInliner_PixabayGirls.html",
     "README.md",
     "README_WEBPACK.md",
     "LICENSE"
