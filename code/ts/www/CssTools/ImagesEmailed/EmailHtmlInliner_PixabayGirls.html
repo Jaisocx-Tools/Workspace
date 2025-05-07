@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html class="workspace theme-emailed-thin long browser-width-when-portrait">
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <!-- THIS IS THE SETTING TO USE THE URLS LIKE IN THE FOLDER www WITH ALL HTML EXAMPLES. -->
+  <base href="./../../">
+
+  <title>Emailed Images</title>
+
+  <!-- CSS CLEAN START THE WEBPACK BUILT BUNDLE.JS FILE -->
+  <!-- <script src="examples/ExampleCssCleanStartWebpack/transpiled/webpack/example-css-clean-start-bundle.js"></script> -->
+
+  <link rel="stylesheet" href="CssTools/CssCleanStart/MediaAndStyles/themes/theme-lightmode/clean-start-theme-lightmode-relative.css">
+  <link rel="stylesheet" href="CssTools/CssCleanStart/MediaAndStyles/clean-start-main-relative.css">
+
+  <style>
+
+    :root {
+      --clean-start__text-color: #448;
+      --clean-start__text-color-h: #579;
+
+      --main-width: 100%;
+      /* --main-background-color: #eaffea; */
+      --main-background-color: #fffff2;
+    }
+
+    .workspace.theme-emailed-thin.long.browser-width-when-portrait,
+    .workspace.theme-emailed-thin.long.browser-width-when-portrait .level_first,
+    .workspace.theme-emailed-thin.long.browser-width-when-portrait .level_first .level_second {
+      margin: 0;
+
+      margin-top: 0;
+      margin-left: 0;
+      margin-right: 0;
+      margin-bottom: 0;
+
+      padding: 0;
+
+      width: 100%;
+      max-width: 100%;
+      min-width: 100%;
+
+      overflow-x: hidden;
+
+      --height: fit-content;
+      height: var(--height);
+      max-height: var(--height);
+      min-height: 100%;
+
+      overflow-y: visible;
+    }
+
+    .workspace.theme-emailed-thin.long.browser-width-when-portrait {
+
+      --clean-start__tag_body__height: fit-content;
+      --clean-start__tag_body__height_max: fit-content;
+      --clean-start__tag_body__height_min: auto;
+  
+      --clean-start__tag_body__width: 100%;
+      --clean-start__tag_body__max_width: 100%;
+      --clean-start__tag_body__min_width: 100%;
+
+
+      --clean-start__tag_body__overflow-x: hidden;
+      --clean-start__tag_body__overflow-y: visible;
+
+      --clean-start__site__width: 100%;
+      --clean-start__site__overflow_x: hidden;
+      --clean-start__site__overflow_y: visible;
+    }
+
+    .workspace.theme-emailed-thin.long.browser-width-when-portrait .images {
+      display: block;
+
+      width: var(--main-width);
+      max-width: var(--main-width);
+      min-width: var(--main-width);
+
+      height: auto;
+      max-height: max-content;
+      min-height: fit-content;
+
+      /* flex-wrap: wrap; */
+
+      background: var(--main-background-color);
+      margin-bottom: 3rem;
+      border: 1px solid gren;
+
+      overflow-y: visible;
+      overflow-x: hidden;
+    }
+    .workspace.theme-emailed-thin.long.browser-width-when-portrait .images > .cell {
+      display: inline-block;
+
+      width:     820px;
+      max-width: 100%;
+      min-width: unset;      
+
+      height:     auto;
+      min-height: fit-content;
+      max-height: unset;
+
+      overflow-x: hidden;
+      overflow-y: visible;
+
+      padding: 0.6rem;
+      overflow: hidden;
+
+      /* background: #f2fff2; */
+    }
+
+    .workspace.theme-emailed-thin.long.browser-width-when-portrait .images .cell .image-holder {
+      display: inline-block;
+
+      width: 100%;
+      max-width: 100%;
+      min-width: 100%;      
+
+      height: auto;
+      min-height: fit-content;
+      max-height: unset;
+
+      overflow-x: hidden;
+      overflow-y: visible;
+
+      padding: 0.8rem;
+      background-color: #ffffff;
+    }
+    
+    .workspace.theme-emailed-thin.long.browser-width-when-portrait .images > .cell > .image-holder > img {
+      display: inline-block;
+
+      width: auto;
+      max-width: 100%;
+
+      height: auto;
+      max-height: 100%;
+
+      overflow: hidden;
+    }
+
+    .workspace.theme-emailed-thin.long.browser-width-when-portrait .email_address {
+      margin: 1.6rem 0;
+    }
+
+    .workspace.theme-emailed-thin.long.browser-width-when-portrait .text,
+    .workspace.theme-emailed-thin.long.browser-width-when-portrait .text .paragraph {
+      width: 100%;
+      max-width: 100%;
+      line-break: normal;
+    }
+
+    .workspace.theme-emailed-thin.long.browser-width-when-portrait .text .paragraph {
+      margin: 1.4rem 0;
+    }
+
+    .workspace.theme-emailed-thin.long.browser-width-when-portrait .text .line {
+      display: block;
+      margin: 0;
+    }
+    .workspace.theme-emailed-thin.long.browser-width-when-portrait .text .line:first-of-type {
+      margin: 1.9rem 0 0 0;
+    }
+    .workspace.theme-emailed-thin.long.browser-width-when-portrait .text .line:last-of-type {
+      margin: 0 0 1.9rem 0;
+    }
+
+  </style>
+
+</head>
+<body class="level_first">
+
+  <main class="level_second">
+
+    <h1>Images Emailed</h1>
+    <p>The CSS Workaround For Responsive Layout when emailing images, since some webmail apps don't support @media queries.</p>
+    
+    <div class="images">
+      <div class="cell">
+        <div class="image-holder img1">
+          <img src="./../../../cdn/www/media/images/pixabay_girls/ai-generated-8619183_1280.jpg" alt="Image 1" descrption="example of rendered image by cid." />
+        </div>
+      </div>
+      <div class="cell">
+        <div class="image-holder img2">
+          <img src="./../../../cdn/www/media/images/pixabay_girls/ai-generated-8845661_1280.jpg" alt="Image 2" descrption="example of rendered image by cid." />
+        </div>
+      </div>
+      <div class="cell">
+        <div class="image-holder img3">
+          <img src="./../../../cdn/www/media/images/pixabay_girls/ai-generated-8845663_1280.jpg" alt="Image 3" descrption="example of rendered image by cid." />
+        </div>
+      </div>
+      <div class="cell">
+        <div class="image-holder img4">
+          <img src="./../../../cdn/www/media/images/pixabay_girls/anime-8169104_1920.jpg" alt="Image 4" descrption="example of rendered image by cid." />
+        </div>
+      </div>
+      
+    </div>
+
+  </main>
+  
+</body>
+</html>
+
+
+
+
+
+
+

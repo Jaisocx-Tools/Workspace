@@ -98,9 +98,9 @@
       ]
     },
     {
-      "path": "packages/InlinerToSendHtmlEmail",
+      "path": "packages/EmailHtmlInliner",
       "name": "email-html-inliner",
-      "build": false,
+      "build": true,
       "build-simple-enable": true,
       "dependencies": [
         {
@@ -114,8 +114,8 @@
       ],
       "build-files": [
         "index.js",
-        "InlinerToSendHtmlEmail.js",
-        "InlinerToSendHtmlEmailConstants.js",
+        "EmailHtmlInliner.js",
+        "EmailHtmlInlinerConstants.js",
         "webpackAliases.js",
         "webpack.aliases.mjs",
         "webpack.aliases.cjs"

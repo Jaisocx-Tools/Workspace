@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html class="workspace theme-emailed-thin long browser-width-when-portrait">
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <!-- THIS IS THE SETTING TO USE THE URLS LIKE IN THE FOLDER www WITH ALL HTML EXAMPLES. -->
+  <base href="./../../">
+
+
+  <title>Example EmailHtmlInliner: Images and Css Table</title>
+
+  <!-- CSS CLEAN START THE WEBPACK BUILT BUNDLE.JS FILE -->
+  <!-- <script src="examples/ExampleCssCleanStartWebpack/transpiled/webpack/example-css-clean-start-bundle.js"></script> -->
+
+  <link rel="stylesheet" href="CssTools/CssCleanStart/MediaAndStyles/themes/theme-lightmode/clean-start-theme-lightmode-relative.css">
+  <link rel="stylesheet" href="CssTools/CssCleanStart/MediaAndStyles/clean-start-main-relative.css">
+
+  <!-- FOR THE CSS TABLE YOU NeD ALWAYS TO SET IN THIS FILE THE WIDTH OF COLUMNS
+  AND THIS .css FILE HAS TO BE ALWAYS REFERRED IN HTML DOC OR OTHER IMPORTS. -->
+  <link rel="stylesheet" href="CssTools/CssTable/MediaAndStyles/themes/columns/columns.css">
+
+
+  <link rel="stylesheet" href="CssTools/CssTable/MediaAndStyles/themes/theme-emailed-thin/css-table-theme-emailed-thin.css">
+  <!-- <link rel="stylesheet" href="CssTools/CssTable/MediaAndStyles/themes/theme-lightmode/css-table-theme-lightmode-relative.css">
+  <link rel="stylesheet" href="CssTools/CssTable/MediaAndStyles/themes/theme-darkmode/css-table-theme-darkmode-relative.css"> -->
+  <link rel="stylesheet" href="CssTools/CssTable/MediaAndStyles/css-table-main-relative.css">
+
+  <style>
+
+    :root {
+      --clean-start__site__margin: 0;
+      --clean-start__site__padding: 0.4rem;
+      --clean-start__site__background: inherit;
+      --clean-start__tag_body__background: inherit;
+      --clean-start__custom-tags__display: block;
+
+
+      --clean-start__text-color: inherit;
+      --clean-start__text-color-h: inherit;
+      --clean-start__font-size_h1: 1.9rem;
+
+      --main-width: 100%;
+      --imageholder-width: 100%;
+      --imageholder-height: 100%;
+      --main-background-color: inherit;
+      --img-width: 320px;
+      --img-height: 234px;
+    }
+
+    .workspace.theme-emailed-thin.long.browser-width-when-portrait,
+    .workspace.theme-emailed-thin.long.browser-width-when-portrait .level_first,
+    .workspace.theme-emailed-thin.long.browser-width-when-portrait .level_first .level_second {
+      margin: 0;
+
+      margin-top: 0;
+      margin-left: 0;
+      margin-right: 0;
+      margin-bottom: 0;
+
+      padding: 0;
+
+      width: 100%;
+      max-width: 100%;
+      min-width: 100%;
+
+      overflow-x: hidden;
+
+      --height: fit-content;
+      height: var(--height);
+      max-height: var(--height);
+      min-height: 100%;
+
+      overflow-y: visible;
+    }
+
+    .workspace.theme-emailed-thin.long.browser-width-when-portrait {
+
+      --clean-start__tag_body__height: fit-content;
+      --clean-start__tag_body__height_max: fit-content;
+      --clean-start__tag_body__height_min: auto;
+  
+      --clean-start__tag_body__width: 100%;
+      --clean-start__tag_body__max_width: 100%;
+      --clean-start__tag_body__min_width: 100%;
+
+
+      --clean-start__tag_body__overflow-x: hidden;
+      --clean-start__tag_body__overflow-y: visible;
+
+      --clean-start__site__width: 100%;
+      --clean-start__site__overflow_x: hidden;
+      --clean-start__site__overflow_y: visible;
+    }
+
+    .workspace.theme-emailed-thin.long.browser-width-when-portrait .images {
+      display: block;
+
+      width: var(--main-width);
+      max-width: var(--main-width);
+      min-width: var(--main-width);
+
+      height: auto;
+      max-height: max-content;
+      min-height: fit-content;
+
+      /* flex-wrap: wrap; */
+
+      background: var(--main-background-color);
+      margin-bottom: 3rem;
+
+      overflow-y: visible;
+      overflow-x: hidden;
+    }
+    .workspace.theme-emailed-thin.long.browser-width-when-portrait .images > .cell {
+      display: inline-block;
+
+      width:     var(--img-width);
+      max-width: 100%;
+      min-width: unset;      
+
+      height:     var(--img-height);
+      max-height: fit-content;
+      min-height: var(--img-height);
+
+      overflow-x: hidden;
+      overflow-y: visible;
+
+      margin: 0 0.6rem 0.6rem 0;
+      overflow: hidden;
+
+      /* background: #f2fff2; */
+      background: black;
+      border: 1px solid lime;
+    }
+
+    .workspace.theme-emailed-thin.long.browser-width-when-portrait .images .cell .image-holder {
+      display: inline-block;
+
+      width: 100%;
+      max-width: 100%;
+      min-width: 100%;      
+
+      height: auto;
+      min-height: fit-content;
+      max-height: unset;
+
+      overflow-x: hidden;
+      overflow-y: visible;
+
+      padding: 0.8rem;
+      margin: 0 0 0 0 !important;
+      /* background: #ffffff; */
+      background: inherit;
+      /* border: 1px solid crimson; */
+    }
+    
+    .workspace.theme-emailed-thin.long.browser-width-when-portrait .images > .cell > .image-holder > img {
+      display: inline-block;
+
+      width: auto;
+      max-width: 100%;
+
+      height: auto;
+      max-height: 100%;
+
+      overflow: hidden;
+    }
+
+
+    .workspace.theme-emailed-thin.long.browser-width-when-portrait .email_address {
+      margin: 1.6rem 0;
+    }
+
+    .workspace.theme-emailed-thin.long.browser-width-when-portrait .text,
+    .workspace.theme-emailed-thin.long.browser-width-when-portrait .text .paragraph {
+      width: 100%;
+      max-width: 100%;
+      line-break: normal;
+    }
+
+    .workspace.theme-emailed-thin.long.browser-width-when-portrait .text .paragraph {
+      margin: 1.4rem 0;
+    }
+
+    .workspace.theme-emailed-thin.long.browser-width-when-portrait .text .line {
+      display: block;
+      margin: 0;
+    }
+    .workspace.theme-emailed-thin.long.browser-width-when-portrait .text .line:first-of-type {
+      margin: 1.9rem 0 0 0;
+    }
+    .workspace.theme-emailed-thin.long.browser-width-when-portrait .text .line:last-of-type {
+      margin: 0 0 1.9rem 0;
+    }
+
+  </style>
+
+</head>
+<body class="level_first">
+
+  <main class="level_second">
+
+    <h1>Good day</h1>
+
+    <div class="images">
+      <div class="cell">
+        <div class="image-holder">
+          <img src="./../../../cdn/www/media/images/html_inliner_example/AsiaTown_1280.jpg" alt="Image AsiaTown" descrption="example of rendered image by cid." />
+        </div>
+      </div>
+      <div class="cell">
+        <div class="image-holder">
+          <img src="./../../../cdn/www/media/images/html_inliner_example/Airport-2471662_1280.jpg" alt="Image Airport" descrption="example of rendered image by cid." />
+        </div>
+      </div>
+      <div class="cell">
+        <div class="image-holder">
+          <img src="./../../../cdn/www/media/images/html_inliner_example/Desktop-5636733_1280.jpg" alt="Image Desktop" descrption="example of rendered image by cid." />
+        </div>
+      </div>
+      <div class="cell">
+        <div class="image-holder">
+          <img src="./../../../cdn/www/media/images/html_inliner_example/Laptop-5673901_1280.jpg" alt="Image Laptop" descrption="example of rendered image by cid." />
+        </div>
+      </div>
+      <div class="cell">
+        <div class="image-holder">
+          <img src="./../../../cdn/www/media/images/html_inliner_example/InCar-7740670_1280.jpg" alt="Image In the Car" descrption="example of rendered image by cid." />
+        </div>
+      </div>
+      <div class="cell">
+        <div class="image-holder">
+          <img src="./../../../cdn/www/media/images/html_inliner_example/WorkTools-1924174_1280.jpg" alt="Image WorkTools" descrption="example of rendered image by cid." />
+        </div>
+      </div>
+      <div class="cell">
+        <div class="image-holder">
+          <img src="./../../../cdn/www/media/images/html_inliner_example/PhotoCamera-6835351_1280.jpg" alt="Image Photo Camera" descrption="example of rendered image by cid." />
+        </div>
+      </div>
+      <div class="cell">
+        <div class="image-holder">
+          <img src="./../../../cdn/www/media/images/html_inliner_example/Work-3938876_1280.jpg" alt="Image Work" descrption="example of rendered image by cid." />
+        </div>
+      </div>
+    </div>
+
+  <div class="workspace-css-table-holder example-table-columns-4 thin-styles-applied bright-styles-applied">
+  <!-- <div class="workspace-css-table-holder example-table-columns-4"> -->
+    <div class="workspace-css-table">
+      <div class="row desktop-columns-labels-holder">
+        <div class="cell column-1"><span class="column-label">attribute</span></div>
+        <div class="cell column-2"><span class="column-label">type</span></div>
+        <div class="cell column-3"><span class="column-label">values</span></div>
+        <div class="cell column-4"><span class="column-label">description</span></div>
+      </div>
+      <div class="row">
+        <div class="cell column-1"><span class="column-label">attribute</span><span class="cell-value">
+            port</span></div>
+        <div class="cell column-2"><span class="column-label">type</span><span class="cell-value">number</span></div>
+        <div class="cell column-3"><span class="column-label">values</span><span class="cell-value">443</span></div>
+        <div class="cell column-4"><span class="column-label">description</span><span class="cell-value">
+  the port number for the server 
+  to accept browsers' connections
+        </span>
+        </div>
+      </div>
+      <div class="row">
+        <div class="cell column-1"><span class="column-label">attribute</span><span class="cell-value">
+            alternative-port</span></div>
+        <div class="cell column-2"><span class="column-label">type</span><span class="cell-value">number</span></div>
+        <div class="cell column-3"><span class="column-label">description</span><span class="cell-value">for development and testing purposes
+          only. if default port is busy,
+          then the server starts listening on the alternative port.</span></div>
+        <div class="cell column-4"><span class="column-label">values</span><span class="cell-value">8443</span></div>
+      </div>
+      <div class="row">
+        <div class="cell column-1"><span class="column-label">attribute</span><span class="cell-value">secure</span></div>
+        <div class="cell column-2"><span class="column-label">type</span><span class="cell-value">boolean</span></div>
+        <div class="cell column-3"><span class="column-label">values</span><span class="cell-value">true | false</span></div>
+        <div class="cell column-4"><span class="column-label">description</span><span class="cell-value">please specify, where to use HTTPS
+            secured connection with TLS or not.</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  </main>
+  
+</body>
+</html>
+
+
+
+
+
+
+
