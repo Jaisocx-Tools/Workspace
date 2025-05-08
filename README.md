@@ -192,7 +192,7 @@ The relevant Readme file in the example package for this theme
 
 ## STATUS OF THE PROJECT
 
-The Project is under development now, 28 January 2025.
+The Project is under development now, 05th of May 2025.
 
 ### The features ready to use:
 1. The infrastructure for **development of Typescript libraries**.
@@ -201,8 +201,8 @@ The Project is under development now, 28 January 2025.
     1. HTTPS server, serving volumes `code/ts/www` and `code/php`, with the **brightday.email** wildcard TLS cert, valid til November 2025. Locally, when set some subdomain entry of `brightday.email` domain in `/etc/hosts` file, this is helpful to test with valid **https endpoints**. And in the config file `.docker/https/conf/http-conf.xml`, don't set the domain name `workspace.brightday.email` for Your local tests, this is reserved already, here are the examples published.
     2. **JWT protection** feature for **https** endpoints under **Jaisocx** dockerized service `https`.
     3. **NodeJS 23** dockerized volume with services:
-        1. **node** command line interface. node --version: v23.3.0.
-        2. **npm** command line interface. npm --version: 10.9.0.
+        1. **node** command line interface. node --version: v23.11.0.
+        2. **npm** command line interface. npm --version: 10.9.2.
         3. **yarn@1.22.19** package manager is installed in the node docker service, however is not used by ProjectBuilder. You are free to rebuild the PackageBuilder to use yarn. I shall note to develop .env setting for the choice of npm or yarn.
         3. **Express** NodeJS Framework example application in `code/ts/express/app` http://localhost:3000/
         4. **Node http server** endpoint http://localhost:8083/, serving volume `code/ts`.
@@ -357,7 +357,7 @@ Then, You can use Your new ProjectBuilder version to build Your packages in this
 
 ### what is Webpack build result?
 
-`code/ts/www/webpack_builds/ExampleTree/build-webpack/bundle.js`
+`code/ts/www/webpack_builds/ExampleTree/transpiled/webpack/bundle.js`
 
 is usable in a static `.html` page even, after each webpack rebuild, too.
 
@@ -365,7 +365,7 @@ is usable in a static `.html` page even, after each webpack rebuild, too.
 usage of this `bundle.js` in a static `.html` page:
 
 ```
-  <script src="webpack_builds/ExampleTree/build-webpack/bundle.js"></script>
+  <script src="webpack_builds/ExampleTree/transpiled/webpack/bundle.js"></script>
 
 ...
 

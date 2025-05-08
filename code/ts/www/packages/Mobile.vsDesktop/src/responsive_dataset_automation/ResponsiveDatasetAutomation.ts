@@ -668,7 +668,7 @@ export class ResponsiveDatasetAutomation implements ResponsiveDatasetAutomationI
   produceMediaName ( 
     responsiveDatasetPropName: string,
     orientation: any
-  ): string {
+  ): Uint8Array[] {
     // @ts-ignore
     let responsiveDatasetProp: any = this.dataset.data[ responsiveDatasetPropName ];
 

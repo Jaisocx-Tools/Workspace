@@ -45,6 +45,7 @@ export class ResponsiveDatasetAutomationConstants {
   #orientationKeywords: string[];
   #bitbufsOrientationKeywords: Uint8Array[];
 
+  #mediaName: string[];
   #mediaLine: string[];
   #mediaConstantNameLine: string[];
   #mediaConstantName: string[];
@@ -52,7 +53,9 @@ export class ResponsiveDatasetAutomationConstants {
   #mediaConstantLine: string[];
   #mediaRuleVariable_Width: string[];
 
+  #bitbufsMediaName: Uint8Array[];
   #bitbufsMediaLine: Uint8Array[];
+  #bitbufMediaConstantNameStart: Uint8Array;
   #bitbufsMediaConstantNameLine: Uint8Array[];
   #bitbufsMediaRuleConstantLine: (Uint8Array|Uint8Array[])[];
   #bitbufsMediaConstantName: Uint8Array[];
@@ -114,6 +117,18 @@ export class ResponsiveDatasetAutomationConstants {
     this.#orientationKeywords = [
       this.#mediaRuleOrientationPortrait,
       this.#mediaRuleOrientationLandscape
+    ];
+
+    this.#mediaName = [
+      this.#mediaConstantNameStart,
+      this.#underscore,
+      "range_orderby_id",
+      this.#underscore,
+      "art",
+      this.#underscore,
+      "art_size",
+      this.#underscore,
+      "orientation"
     ];
 
     this.#mediaLine = [
@@ -216,6 +231,8 @@ export class ResponsiveDatasetAutomationConstants {
     ];
 
     this.#bitbufsOrientationKeywords = new Array() as Uint8Array[];
+    this.#bitbufMediaConstantNameStart = this.textEncoder.encode( this.#mediaConstantNameStart );
+    this.#bitbufsMediaName = new Array() as Uint8Array[];
     this.#bitbufsMediaLine = new Array() as Uint8Array[];
     this.#bitbufsMediaConstantNameLine = new Array() as Uint8Array[];
     this.#bitbufsMediaConstantName = new Array() as Uint8Array[];
@@ -232,6 +249,7 @@ export class ResponsiveDatasetAutomationConstants {
     
     let textsBlocksNamesArray: any = [
       "orientationKeywords",
+      "mediaName",
       "mediaLine",
       "mediaConstantNameLine",
       "mediaRuleConstantLine",
@@ -438,7 +456,24 @@ export class ResponsiveDatasetAutomationConstants {
     return this.#bitbufKeywordTil;
   }
 
+  getMediaName (
+    rangeOrderbyId: string,
+    art: string,
+    artSize: string,
+    orientation: string
+  ): Uint8Array[] {
+    const rangeOrderbyIdPos: number = 2;
+    const artPos: number = 4;
+    const artSizePos: number = 6;
+    const orientationPos: number = 8;
 
+    this.#bitbufsMediaName[ rangeOrderbyIdPos ] = this.textEncoder.encode( rangeOrderbyId );
+    this.#bitbufsMediaName[ artPos ] = this.textEncoder.encode( art );
+    this.#bitbufsMediaName[ artSizePos ] = this.textEncoder.encode( artSize );
+    this.#bitbufsMediaName[ orientationPos ] = this.textEncoder.encode( orientation );
+
+    return this.#bitbufsMediaName;
+  }
 
   getMediaLineUpdated (
     media: string,
@@ -460,7 +495,7 @@ export class ResponsiveDatasetAutomationConstants {
     return this.#bitbufsMediaLine;
   }
 
-  getMediaConstantNameLineUpdated( mediaName: string ): Uint8Array[] {
+  getMediaConstantNameLineUpdated ( mediaName: string ): Uint8Array[] {
     const mediaNamePos: number = 3;
 
     this.#bitbufsMediaConstantNameLine[mediaNamePos] = this.textEncoder.encode( mediaName );
@@ -468,7 +503,7 @@ export class ResponsiveDatasetAutomationConstants {
     return this.#bitbufsMediaConstantNameLine;
   }
 
-  getMediaRuleConstantLineUpdated( 
+  getMediaRuleConstantLineUpdated ( 
     mediaName: string, 
     mediaLine: Uint8Array[] ): (Uint8Array|Uint8Array[])[] {
     const mediaNamePos: number = 5;
@@ -480,7 +515,7 @@ export class ResponsiveDatasetAutomationConstants {
     return this.#bitbufsMediaRuleConstantLine;
   }
 
-  getMediaConstantNameUpdated( 
+  getMediaConstantNameUpdated ( 
     mediaName: string, 
     postfix: string, 
     size: string ): Uint8Array[] {
