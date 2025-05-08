@@ -1,0 +1,104 @@
+<conf>
+    <conf-idm path="/usr/lib/jaisocx-http/apps/congratulations/conf/idm-conf.xml" />
+    <conf-http>
+        <servers>
+            <server port="443" alternative-port="2288" secure="true">
+                <domain
+                    name="workspace.brightday.email"
+                    jks-path="/usr/lib/jaisocx-http/ssl/brightday.email.jks"
+                    jks-alias="brightday.email"
+                    jks-passphrase="JW5MYPKHbdqetvr4yfshiFwwjvr4fakE43qJUtgh7A2hNEW"
+                    document-root="/var/www/code/php"
+                    publish-charset="UTF-8" src-charset="UTF-8">
+                    <alias comment="typescript code"
+                           art="folder"
+                           url="/"
+                           path="/var/www/code/ts/www/"
+                           cache="cache"
+                           list="true" 
+                           each-folder-content-file-name="index.html" />
+                    <alias comment="php code"
+                           art="folder"
+                           url="/php/"
+                           path="/var/www/code/php/"
+                           cache="update"
+                           list="true" 
+                           each-folder-content-file-name="index.php" />
+
+
+                    <alias comment="cdn for data, fonts and media"
+                           art="folder"
+                           url="/cdn/www/"
+                           path="/var/www/cdn/www/"
+                           cache="cache"
+                           list="true" 
+                           each-folder-content-file-name="index.html" />
+                    <alias comment="cdn for data, secured with basic auth. On demand, You can set auth JWT"
+                           art="folder"
+                           url="/cdn/data_secured/"
+                           path="/var/www/cdn/data_secured/"
+                           authorization="basic"
+                           cache="cache"
+                           list="true" 
+                           each-folder-content-file-name="index.html" />
+                    
+                    <alias comment="cdn for the entire node_modules subfolder. the fast to declare url, however not preferred, since node_modules can have very a lot of dependencies. then can't set cache mode, since many GB of RAM used. Here are @jaisocx/ sites js and css tools, installed via yarn install or npm install"
+                           art="folder"
+                           url="/cdn/jaisocx-tools-all/"
+                           path="/var/www/cdn/SitesTools/node_modules/@jaisocx/"
+                           cache="cache"
+                           list="true" 
+                           each-folder-content-file-name="index.html" />
+                    
+                    <alias comment="preferred cdn url for one node_modules/MediaAndStyles subfolder of one tool, where are @jaisocx/ site js and css tool .css files and .css themes and mini-images"
+                           art="folder"
+                           url="/cdn/jaisocx-tools/css-clean-start/MediaAndStyles/"
+                           path="/var/www/cdn/SitesTools/node_modules/@jaisocx/css-clean-start/MediaAndStyles"
+                           cache="cache"
+                           list="true" 
+                           each-folder-content-file-name="index.html" />
+                    <alias comment="preferred cdn url for one node_modules/MediaAndStyles subfolder of one tool, where are @jaisocx/ site js and css tool .css files and .css themes and mini-images"
+                           art="folder"
+                           url="/cdn/jaisocx-tools/css-code-snippet/MediaAndStyles/"
+                           path="/var/www/cdn/SitesTools/node_modules/@jaisocx/css-code-snippet/MediaAndStyles"
+                           cache="cache"
+                           list="true" 
+                           each-folder-content-file-name="index.html" />
+                     <alias comment="preferred cdn url for one node_modules/MediaAndStyles subfolder of one tool, where are @jaisocx/ site js and css tool .css files and .css themes and mini-images"
+                           art="folder"
+                           url="/cdn/jaisocx-tools/css-table/MediaAndStyles/"
+                           path="/var/www/cdn/SitesTools/node_modules/@jaisocx/css-table/MediaAndStyles"
+                           cache="cache"
+                           list="true" 
+                           each-folder-content-file-name="index.html" />
+                    <alias comment="preferred cdn url for one node_modules/MediaAndStyles subfolder of one tool, where are @jaisocx/ site js and css tool .css files and .css themes and mini-images"
+                           art="folder"
+                           url="/cdn/jaisocx-tools/tooltip/MediaAndStyles/"
+                           path="/var/www/cdn/SitesTools/node_modules/@jaisocx/tooltip/MediaAndStyles"
+                           cache="cache"
+                           list="true" 
+                           each-folder-content-file-name="index.html" />
+                    <alias comment="preferred cdn url for one node_modules/MediaAndStyles subfolder of one tool, where are @jaisocx/ site js and css tool .css files and .css themes and mini-images"
+                           art="folder"
+                           url="/cdn/jaisocx-tools/tree/MediaAndStyles/"
+                           path="/var/www/cdn/SitesTools/node_modules/@jaisocx/tree/MediaAndStyles"
+                           cache="cache"
+                           list="true" 
+                           each-folder-content-file-name="index.html" />
+                    
+                    
+                </domain>
+            </server>
+            <server port="80" alternative-port="2289" secure="false">
+                <domain
+                    name="workspace.brightday.email">
+                    <alias comment="on the plain port 80 without TLS, this alias will redirect all requests to normal https:// url, defined above in server node port 443, secure=true"
+                           art="redirection"
+                           url="/${any}"
+                           path="https://workspace.brightday.email/" />
+                </domain>
+            </server>
+        </servers>
+    </conf-http>
+</conf>
+
