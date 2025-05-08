@@ -4,7 +4,81 @@
 
 
 
-## News: 
+## News: 08th of May 2025. 
+
+1. New npm Package **EmailHtmlInliner** `@jaisocx/email-html-inliner` and site to watch The Inliner in action: [https://workspace.brightday.email/packages/EmailHtmlInliner/EmailHtmlInliner_Images.html](https://workspace.brightday.email/packages/EmailHtmlInliner/EmailHtmlInliner_Images.html)
+
+
+2. Stricter tsconfig.json rules. Checks unused variables. Wen You have to invoke the callback and don't use the callback's in arg, the workaround is to prefix the method's in arg name with the underscore symbol. 
+
+```
+addEventHandler(
+  eventName,
+  ( _eventName: string, payload: any ) => {
+
+    // the _eventName var is never written in this callback.
+    // when not _ prefixed, the tsc typescript transpiler throws exception and exits.
+
+    console.log( payload );
+  }
+);
+```
+
+
+2. Since now this project is of great use when You **develop and push to npm CSS tools and themes**, too, thanks to the new features `css-importer` and fine tuning of package.json working examples and project's config for Webpack builds.
+
+
+3. How to build **Your CDN example** with The [Jaisocx.com](https://jaisocx.com/) Sites Server in `docker-compose.yml` and `.docker/https/conf/http-conf.xml`
+
+
+4. **Renamings**: in the www folder, the most `examples` were moved to the new `webpack_builds`. Why: the examples were just the webpack builds with no other features or funcs. That is why they are just webpack builds as they are.
+
+    4.1. In ts packages, renamed were: 
+    
+    4.1. `assets` -> `MediaAndStyles`. **Assets** is the keyword in Online Banking apps. **Styles** is the keyword in Sites development since 1990th. 
+    
+    4.2. `build` -> `transpiled`. **Transpile** is the keyword of The Typescript Language, and **build** is the keyword of The Webpack Tool.
+
+
+
+5. **Fine Tuning ProjectBuilder's Config**. In the config file `BuildData.json` there are new features to fine tune the ts build.
+
+    5.1. `build-simple-enable` works. Turns on writes .js files listed in `"build-files"`. Path is: `${packageRoot}/transpiled/Simple`.
+      
+    5.2. `css-importer`: packs on demand all .css files to one `"cssTargetFilePath"`, if all other .css files were referenced in the `"cssFilePath"` via @import url("styles-filename.css");
+      
+    5.3. in templates folder, there is:
+        
+      5.3.1. the package.json solution to set webpack aliases in a very nice webpack.aliases.json file, very few lines of json.
+      
+      5.3.2. the webpack.aliases.json example
+      
+      5.3.3. webpack aliases are available when this packagee is installed via npm i.
+
+
+```
+{
+  "path": "CssTools/CssCleanStart",
+  "name": "css-clean-start",
+  "build": true,
+  "build-simple-enable": false,
+  "css-importer": {
+    "build": true,
+    "cssFilePath": "MediaAndStyles/clean-start-main-webpack.css",
+    "cssTargetFilePath": "MediaAndStyles/clean-start-main-resolved.css"
+  },
+  "dependencies": [],
+  "build-files": [
+    "index.js",
+    "webpackAliases.js",
+    "webpack.aliases.mjs",
+    "webpack.aliases.cjs"
+  ]
+}
+```
+
+#### News in March 2025. 
+
 1. docker service `ts` was upgraded to v`23.11.0`, npm v`10.9.2` (I experiensed best performance and the documentation tells about new typescript files run feature available after v23.6.0) You need to rebuild the `ts` service.
 ```
 docker compose stop ts
@@ -203,10 +277,10 @@ The Project is under development now, 05th of May 2025.
     3. **NodeJS 23** dockerized volume with services:
         1. **node** command line interface. node --version: v23.11.0.
         2. **npm** command line interface. npm --version: 10.9.2.
-        3. **yarn@1.22.19** package manager is installed in the node docker service, however is not used by ProjectBuilder. You are free to rebuild the PackageBuilder to use yarn. I shall note to develop .env setting for the choice of npm or yarn.
-        3. **Express** NodeJS Framework example application in `code/ts/express/app` http://localhost:3000/
+        3. **yarn@4.9.1** package manager is installed in the node docker service, however is not used by ProjectBuilder. You are free to rebuild the PackageBuilder to use yarn. I shall note to develop .env setting for the choice of npm or yarn.
+        3. **Express@5.1.0** NodeJS Framework example application in `code/ts/express/app` http://localhost:3000/
         4. **Node http server** endpoint http://localhost:8083/, serving volume `code/ts`.
-    4. Backend interpreting language **PHP 8.3** dockerized service
+    4. Backend interpreting language **PHP 8.4** dockerized service
     with **XDebug** installed and configured, to use with Jaisocx https server, serving volume `code/php`, too.
     5. **MySQL Database** dockerized service, e.g. to test Typescript tools, rendering JSON data, by delivering JSON http responses, built by backend scripting languages, read tables records from a database.
 
