@@ -1,15 +1,15 @@
 # Tree json tool examples
 
-1. [https://workspace.brightday.email/examples/ExampleTree/example-from-readme.html](https://workspace.brightday.email/examples/ExampleTree/example-from-readme.html)
+1. [https://workspace.brightday.email/webpack_builds/ExampleTree/example-from-readme.html](https://workspace.brightday.email/webpack_builds/ExampleTree/example-from-readme.html)
 
 
 2. [https://workspace.brightday.email/](https://workspace.brightday.email/)
 
 
-3. [https://workspace.brightday.email/examples/ExampleTree/](https://workspace.brightday.email/examples/ExampleTree/)
+3. [https://workspace.brightday.email/webpack_builds/ExampleTree/](https://workspace.brightday.email/webpack_builds/ExampleTree/)
 
 
-4. [https://github.com/Jaisocx-Tools/Workspace/tree/main/code/ts/www/examples/ExampleTree](https://github.com/Jaisocx-Tools/Workspace/tree/main/code/ts/www/examples/ExampleTree)
+4. [https://github.com/Jaisocx-Tools/Workspace/tree/main/code/ts/www/webpack_builds/ExampleTree](https://github.com/Jaisocx-Tools/Workspace/tree/main/code/ts/www/webpack_builds/ExampleTree)
 
 
 5. [https://github.com/Jaisocx-Tools/Workspace/tree/main/code/ts/www/packages/Tree](https://github.com/Jaisocx-Tools/Workspace/tree/main/code/ts/www/packages/Tree)
@@ -60,7 +60,7 @@ import "@jaisocx-tree-MediaAndStyles/tree-styles-main-webpack.css";
 when under docker:
 ```
 docker compose exec ts bash
-cd www/examples/ExampleTree
+cd www/webpack_builds/ExampleTree
 ```
 
 when the console is on the ExampleTree package root path:

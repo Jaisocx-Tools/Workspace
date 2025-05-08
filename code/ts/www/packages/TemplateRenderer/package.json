@@ -1,6 +1,6 @@
 {
   "name": "@jaisocx/template-renderer",
-  "version": "1.5.6",
+  "version": "1.5.7",
   "author": "Jaisocx",
   "private": false,
   "description": "",
@@ -16,8 +16,7 @@
     "transpiled/CommonJS",
     "transpiled/ESNext",
     "MediaAndStyles/",
-    "README.md",
-    "LICENSE"
+    "README.md"
   ],
   "optionalDependencies": {
     "@jaisocx/event-emitter": "^1.4.1",

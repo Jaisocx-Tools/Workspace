@@ -19,7 +19,7 @@
     "LICENSE"
   ],
   "optionalDependencies": {
-    "@jaisocx/template-renderer": "^1.2.x"
+    "@jaisocx/template-renderer": "^1.5.6"
   }
 }
 

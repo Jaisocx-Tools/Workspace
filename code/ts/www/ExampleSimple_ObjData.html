@@ -12,7 +12,7 @@
     <script src="packages/ObjData/transpiled/Simple/ObjData.js"></script>
 
     <script src="packages/Api/transpiled/Simple/Api.js"></script>
-    <script src="examples/ExampleTree/transpiled/webpack/example-tree-bundle.js"></script>
+    <script src="webpack_builds/ExampleTree/transpiled/webpack/example-tree-bundle.js"></script>
 
   </head>
   <body>
@@ -126,7 +126,7 @@
 
   document.addEventListener('DOMContentLoaded', async () => {
  
-    const response = await fetch('/examples/ExampleTree/json/big_test_data.json');
+    const response = await fetch('/webpack_builds/ExampleTree/json/big_test_data.json');
     const jsonText = await response.text();
 
     const timestamp1 = getNsTimestamp();

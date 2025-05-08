@@ -50,9 +50,7 @@ class TemplateRenderer extends event_emitter_1.EventEmitter {
         if (__classPrivateFieldGet(this, _TemplateRenderer_activeDataRecordId, "f") === 0) {
             let obj = new Object();
             this.dataRecords.push(obj);
-            dataRecord = this.initDataRecord();
-            this.dataRecords.push(dataRecord);
-            __classPrivateFieldSet(this, _TemplateRenderer_activeDataRecordId, 1, "f");
+            dataRecord = this.addNewDataRecord();
         }
         else {
             dataRecord = this.dataRecords[__classPrivateFieldGet(this, _TemplateRenderer_activeDataRecordId, "f")];

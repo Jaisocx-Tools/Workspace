@@ -2,7 +2,7 @@
 // that is why the webpack.aliases.mjs is referenced locally.
 
 // when using aliases from other jaisocx tool,
-// I use like in code/ts/www/examples/ExampleCssCleanStartWebpack:
+// I use like in code/ts/www/webpack_builds/ExampleCssCleanStartWebpack:
 // import { WebpackAliases } from '@jaisocx/css-clean-start/WebpackAliases';
 
 import * as path from "node:path";

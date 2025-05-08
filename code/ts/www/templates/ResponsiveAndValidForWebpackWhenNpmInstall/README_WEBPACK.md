@@ -72,7 +72,7 @@ Also, when You install the package via `yarn install "PackageName"` or `npm inst
 
 path: `${PackagRoot}/webpack.config.mjs`
 
-For example, in Workspace when importing `@jaisocx/tree` in `ExampleTree` package: `code/ts/www/examples/ExampleTree/webpack.config.mjs`
+For example, in Workspace when importing `@jaisocx/tree` in `ExampleTree` package: `code/ts/www/webpack_builds/ExampleTree/webpack.config.mjs`
 
 the webpack aliases You can import for the webpack here:
 
@@ -406,7 +406,7 @@ import { fileURLToPath } from "node:url";
 import postcssUrl from "postcss-url";
 
 // when using aliases from other jaisocx tool,
-// Use like in code/ts/www/examples/ExampleCssCleanStartWebpack:
+// Use like in code/ts/www/webpack_builds/ExampleCssCleanStartWebpack:
 import { WebpackAliases } from '@jaisocx/template-css-clean-start/WebpackAliases';
 
 // when building with the Webpack and using the aliases of this package, then:
@@ -582,7 +582,7 @@ document.addEventListener('DOMContentLoaded', () => {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <!-- the path to webpack built bundle.js here: -->
-    <script src="examples/ExampleTree/transpiled/webpack/example-tree-bundle.js"></script>
+    <script src="webpack_builds/ExampleTree/transpiled/webpack/example-tree-bundle.js"></script>
   </head>
   <body>
 

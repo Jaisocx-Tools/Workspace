@@ -2,7 +2,7 @@
 // that is why the webpack.aliases.cjs is referenced locally.
 
 // when using aliases from other jaisocx tool,
-// I use like in code/ts/www/examples/ExampleCssCleanStartWebpack:
+// I use like in code/ts/www/webpack_builds/ExampleCssCleanStartWebpack:
 // const WebpackAliases = require("@jaisocx/css-clean-start/WebpackAliases"); // ✅ Import alias file using CommonJS
 
 

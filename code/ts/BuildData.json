@@ -155,7 +155,7 @@
       ]
     },
     {
-      "path": "examples/ExampleCssCleanStartWebpack",
+      "path": "webpack_builds/ExampleCssCleanStartWebpack",
       "name": "example-css-clean-start",
       "build": false,
       "build-simple-enable": true,
@@ -307,7 +307,7 @@
       ]
     },
     {
-      "path": "examples/ExampleTree",
+      "path": "webpack_builds/ExampleTree",
       "name": "example-tree",
       "build": false,
       "build-simple-enable": true,
@@ -368,7 +368,7 @@
       ]
     },
     {
-      "path": "examples/ExampleTooltip",
+      "path": "webpack_builds/ExampleTooltip",
       "name": "example-tooltip",
       "build": false,
       "build-simple-enable": true,
@@ -402,7 +402,7 @@
       ]
     },
     {
-      "path": "examples/ExampleTable",
+      "path": "webpack_builds/ExampleTable",
       "name": "example-table",
       "build": false,
       "build-simple-enable": true,

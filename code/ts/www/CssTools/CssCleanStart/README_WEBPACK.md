@@ -140,7 +140,7 @@ import "@jaisocx-tree-MediaAndStyles/tree-styles-main-webpack.css";
 when under docker:
 ```
 docker compose exec ts bash
-cd www/examples/ExampleTree
+cd www/webpack_builds/ExampleTree
 ```
 
 when the console is on the ExampleTree package root path:

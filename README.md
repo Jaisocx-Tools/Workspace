@@ -345,7 +345,7 @@ Then, You can use Your new ProjectBuilder version to build Your packages in this
 
 ## THE WEBPACK BUILD EXAMPLE
 
-`code/ts/www/examples/ExampleTree`
+`code/ts/www/webpack_builds/ExampleTree`
 
 ## Status of webpack build feature support in this project
 
@@ -357,7 +357,7 @@ Then, You can use Your new ProjectBuilder version to build Your packages in this
 
 ### what is Webpack build result?
 
-`code/ts/www/examples/ExampleTree/build-webpack/bundle.js`
+`code/ts/www/webpack_builds/ExampleTree/build-webpack/bundle.js`
 
 is usable in a static `.html` page even, after each webpack rebuild, too.
 
@@ -365,7 +365,7 @@ is usable in a static `.html` page even, after each webpack rebuild, too.
 usage of this `bundle.js` in a static `.html` page:
 
 ```
-  <script src="examples/ExampleTree/build-webpack/bundle.js"></script>
+  <script src="webpack_builds/ExampleTree/build-webpack/bundle.js"></script>
 
 ...
 
@@ -393,7 +393,7 @@ usage of this `bundle.js` in a static `.html` page:
 - to rebuild bundle.js with webpack:
 
 ```
-cd code/ts/www/examples/ExampleTree
+cd code/ts/www/webpack_builds/ExampleTree
 npm run webpack
 ```
 

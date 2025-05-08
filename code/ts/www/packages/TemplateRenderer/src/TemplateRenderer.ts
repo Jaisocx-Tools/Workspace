@@ -86,9 +86,7 @@ export class TemplateRenderer extends EventEmitter {
       let obj: TemplateRendererDataRecord = new Object() as TemplateRendererDataRecord;
       this.dataRecords.push( obj );
 
-      dataRecord = this.initDataRecord();
-      this.dataRecords.push( dataRecord );
-      this.#activeDataRecordId = 1;
+      dataRecord = this.addNewDataRecord();
     } else {
       dataRecord = this.dataRecords[this.#activeDataRecordId];
     }

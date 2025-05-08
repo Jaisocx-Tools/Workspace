@@ -26,7 +26,7 @@ export class ExampleTemplateRenderer {
         this.TemplateRenderer
             .setTemplate(this.template)
             .setData(this.data);
-        const eventHandler1 = (eventName, payload) => {
+        const eventHandler1 = (_eventName, payload) => {
             payload.html = payload.html.replaceAll("<", "&lt;");
             const eventHandlerReturnValue = new class {
                 payloadReturned = payload;
@@ -35,7 +35,7 @@ export class ExampleTemplateRenderer {
             return eventHandlerReturnValue;
         };
         this.TemplateRenderer.addThisClassEventListener(this.TemplateRenderer.EVENT_NAME__AFTER_RENDER, eventHandler1);
-        const eventHandler2 = (eventName, payload) => {
+        const eventHandler2 = (_eventName, payload) => {
             payload.html = payload.html.replaceAll(">", "&gt;");
             const eventHandlerReturnValue = new class {
                 payloadReturned = payload;

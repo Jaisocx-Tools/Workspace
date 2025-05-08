@@ -36,7 +36,7 @@ export class ExampleTemplateRenderer {
       .setTemplate(this.template)
       .setData(this.data);
 
-    const eventHandler1: any = ( eventName: any, payload: any ) => {
+    const eventHandler1: any = ( _eventName: any, payload: any ) => {
       payload.html = payload.html.replaceAll(
         "<", 
         "&lt;");
@@ -54,7 +54,7 @@ export class ExampleTemplateRenderer {
       eventHandler1
     );
 
-    const eventHandler2: any = ( eventName: any, payload: any ) => {
+    const eventHandler2: any = ( _eventName: any, payload: any ) => {
       payload.html = payload.html.replaceAll(
         ">", 
         "&gt;");
