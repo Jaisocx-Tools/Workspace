@@ -79,6 +79,9 @@
 
       --clean-start__font-size__mobile_portrait: 1.4rem;
       --clean-start__line-height__mobile_portrait: 1.8rem;
+
+      --clean-start__font-size__tablet_portrait: 1.4rem;
+      --clean-start__line-height__tablet_portrait: 1.8rem;
     }
 
     .workspace {
@@ -88,8 +91,6 @@
     .workspace themebuttons {
       width: fit-content;
       display: grid; 
-      column-gap: 3rem; 
-      margin: 0.9rem 0 6rem 0;
     }
 
     .workspace themebuttons button {
@@ -120,10 +121,28 @@
     }
 
 
-    @media screen and (min-width: 440px) and (orientation: portrait),
-    screen and ( (min-width: 40px) and (orientation: landscape) ) {
+    @media screen and (min-width: 440px) and (max-width: 1130px) and (orientation: portrait),
+    screen and ( (min-width: 40px) and (max-width: 1130px) and (orientation: landscape) ) {
+      .workspace.browser-width-when-mobile-portrait {
+        --clean-start__site__width__all_sizes: 90%;
+        --clean-start__site__width__when_mobile_portrait: 100%;
+      }
+
+      .workspace themebuttons {
+        grid-auto-flow: row;
+        row-gap: 1rem;
+      }
+
+    }
+
+    @media screen and (min-width: 1131px) {
+      .workspace.browser-width-when-mobile-portrait {
+        --clean-start__site__width__all_sizes: 70%;
+      }
+
       .workspace themebuttons {
         grid-auto-flow: column;
+        column-gap: 3rem; 
       }
     }
   </style>
