@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" class="workspace long">
+<html lang="en" class="workspace long browser-width-when-mobile-portrait css-code-snippet-example">
 <head>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
@@ -38,6 +38,49 @@
 
   <style>
 
+    .workspace.browser-width-when-mobile-portrait.css-code-snippet-example.rosa,
+    .workspace.browser-width-when-mobile-portrait.css-code-snippet-example.blue,
+    .workspace.browser-width-when-mobile-portrait.css-code-snippet-example.salad {
+      --clean-start__site__background: var(--code-snippet--theme-color);
+    }
+
+    .workspace.browser-width-when-mobile-portrait.css-code-snippet-example.theme-darkmode.rosa,
+    .workspace.browser-width-when-mobile-portrait.css-code-snippet-example.theme-darkmode.blue,
+    .workspace.browser-width-when-mobile-portrait.css-code-snippet-example.theme-darkmode.salad {
+      --clean-start__site__background: black;
+    }
+
+
+    .workspace.browser-width-when-mobile-portrait {
+      --clean-start__site__width__all_sizes: 70%;
+      --clean-start__site__width__when_mobile_portrait: 100%;
+
+      --clean-start__site__width__predefined: var(--clean-start__site__width__all_sizes);
+      --clean-start__site__max_width__predefined: var(--clean-start__site__width__all_sizes);
+      --clean-start__site__min_width__predefined: var(--clean-start__site__width__all_sizes);
+
+
+      --clean-start__site__width__sm_mobile_portrait: var(--clean-start__site__width__when_mobile_portrait);
+      --clean-start__site__max_width__sm_mobile_portrait: var(--clean-start__site__width__when_mobile_portrait);
+      --clean-start__site__min_width__sm_mobile_portrait: var(--clean-start__site__width__when_mobile_portrait);
+
+      --clean-start__site__width__s_mobile_portrait: var(--clean-start__site__width__when_mobile_portrait);
+      --clean-start__site__max_width__s_mobile_portrait: var(--clean-start__site__width__when_mobile_portrait);
+      --clean-start__site__min_width__s_mobile_portrait: var(--clean-start__site__width__when_mobile_portrait);
+
+      --clean-start__site__width__xs_mobile_portrait: var(--clean-start__site__width__when_mobile_portrait);
+      --clean-start__site__max_width__xs_mobile_portrait: var(--clean-start__site__width__when_mobile_portrait);
+      --clean-start__site__min_width__xs_mobile_portrait: var(--clean-start__site__width__when_mobile_portrait);
+
+
+      --clean-start__font-family: Arial;
+      --clean-start__font-size_h1: 1.63rem;
+      --clean-start__line-height_h1: 4.2rem;
+
+      --clean-start__font-size__mobile_portrait: 1.4rem;
+      --clean-start__line-height__mobile_portrait: 1.8rem;
+    }
+
     .workspace {
       --button-width: fit-content;
     }
@@ -45,7 +88,6 @@
     .workspace themebuttons {
       width: fit-content;
       display: grid; 
-      grid-auto-flow: column;
       column-gap: 3rem; 
       margin: 0.9rem 0 6rem 0;
     }
@@ -74,9 +116,16 @@
     }
 
     #tooltip-button {
-      font-family: fantasy;
+      /* font-family: fantasy; */
     }
 
+
+    @media screen and (min-width: 440px) and (orientation: portrait),
+    screen and ( (min-width: 40px) and (orientation: landscape) ) {
+      .workspace themebuttons {
+        grid-auto-flow: column;
+      }
+    }
   </style>
 
 
@@ -123,17 +172,16 @@
     <h1>Css Code Snippet Example</h1>
 
     <ThemeButtons>
-      <button id="button-turn-on-base-theme" data-theme="rosa">Base Theme</button>
-      <button id="button-turn-on-daymode" data-theme="theme-lightmode blue">Day Mode</button>
-      <button id="button-turn-on-nightmode" data-theme="theme-darkmode salad">Night Mode</button>  
-      <button id="button-turn-on-daymode-cssCodeSnippet-rosa" data-theme="theme-lightmode rosa">Rosa Day Mode</button>
-      <button id="button-turn-on-daymode-cssCodeSnippet-blue" data-theme="theme-lightmode blue">Blue Day Mode</button>
-      <button id="button-turn-on-daymode-cssCodeSnippet-salad" data-theme="theme-lightmode salad">GreenDay Mode</button>
+      <button id="button-turn-on-nightmode-cssCodeSnippet-rosa" data-theme="theme-darkmode rosa">Rosa NightMode</button>
+      <button id="button-turn-on-daymode-cssCodeSnippet-blue" data-theme="theme-lightmode blue">Blue DayMode</button>
+      <button id="button-turn-on-nightmode-cssCodeSnippet-blue" data-theme="theme-darkmode blue">Blue NightMode</button>  
+      <button id="button-turn-on-cssCodeSnippet-salad" data-theme="salad">GreenDay</button>
+      <button id="button-turn-on-nightmode-cssCodeSnippet-salad" data-theme="theme-darkmode salad">Green NightMode</button>
     </ThemeButtons>
 
 
 
-    <CodeSnippetHolder id="code-snippet-example" class="CodeSnippetHolder salad">
+    <CodeSnippetHolder id="code-snippet-example" class="CodeSnippetHolder">
       <pre class="CodeSnippetArea">
 import { TestBed } from '@angular/core/testing';
 import { AppComponent } from './app.component';
@@ -214,13 +262,12 @@ expect(compiled.querySelector('h1')?.textContent).toContain('Hello, angular');
     // in the event handler for the event DOMContentLoaded
     function addThemeButtonsEventHandlers() {
 
-      const buttonsIDs = [
-        "button-turn-on-base-theme",
-        "button-turn-on-daymode",
-        "button-turn-on-nightmode",
-        "button-turn-on-daymode-cssCodeSnippet-rosa",
+      let buttonsIDs = [
+        "button-turn-on-nightmode-cssCodeSnippet-rosa",
         "button-turn-on-daymode-cssCodeSnippet-blue",
-        "button-turn-on-daymode-cssCodeSnippet-salad",
+        "button-turn-on-nightmode-cssCodeSnippet-blue",
+        "button-turn-on-cssCodeSnippet-salad",
+        "button-turn-on-nightmode-cssCodeSnippet-salad"
       ];
 
       for ( let buttonId of buttonsIDs ) {

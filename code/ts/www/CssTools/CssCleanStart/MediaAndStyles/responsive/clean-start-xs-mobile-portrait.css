@@ -24,5 +24,11 @@
   .workspace.verify-responsive-rule-applies main h1::before {
     content: "xs mobile portrait" !important;
   }
+
+  .workspace themebuttons {
+    grid-auto-flow: row;
+    row-gap: 1rem;
+  }
+
 }
 

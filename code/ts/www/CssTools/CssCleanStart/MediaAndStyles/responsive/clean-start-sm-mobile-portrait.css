@@ -27,5 +27,9 @@
     content: "sm mobile portrait" !important;
   }
 
+  .workspace themebuttons {
+    grid-auto-flow: row;
+    row-gap: 1rem;
+  }
 }
 

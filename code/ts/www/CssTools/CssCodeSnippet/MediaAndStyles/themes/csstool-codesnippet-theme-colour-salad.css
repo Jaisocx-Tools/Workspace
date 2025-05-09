@@ -1,5 +1,9 @@
 /* tool variables */
+.workspace.salad,
+.workspace .salad,
 .CodeSnippetHolder.salad {
+
+  --code-snippet--theme-color: #f2fff8;
 
   /* code snippet tool borders */
   /* by color */

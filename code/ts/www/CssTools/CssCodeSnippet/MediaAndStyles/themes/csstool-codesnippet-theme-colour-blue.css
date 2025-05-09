@@ -1,5 +1,9 @@
 /* tool variables */
+.workspace.blue,
+.workspace .blue,
 .CodeSnippetHolder.blue {
+
+  --code-snippet--theme-color: #f8fdff;
 
   /* code snippet tool borders */
   /* by color */

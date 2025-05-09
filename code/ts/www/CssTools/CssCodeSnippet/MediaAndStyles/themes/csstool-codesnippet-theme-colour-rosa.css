@@ -1,5 +1,9 @@
 /* tool variables */
+.workspace.rosa,
+.workspace .rosa,
 .CodeSnippetHolder.rosa {
+
+  --code-snippet--theme-color: #fff;
   
   /* code snippet tool borders */
   /* by color */
