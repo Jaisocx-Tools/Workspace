@@ -373,7 +373,7 @@ First check **whether You have both** `package.json` and `package-lock.json` fil
 
 #### a) **Both** `package.json` and `package-lock.json`
 
-1. `npm install`: (**package-lock.json**) `the exact version` of npm package and it's npm dependencies will be installed, thes were set in the `package-lock.json`.
+1. `npm install`: (**package-lock.json**) `the exact version` of npm package and it's npm dependencies will be installed, these were set in the `package-lock.json`.
 
 2. `npm update`: (**package.json**) `in the limited range` of versions numbers, set in the `package.json`. The newest available version, allowed by range, will be installed. 
 
