@@ -1,6 +1,101 @@
 # JAISOCX TYPESCRIPT TOOLS BUILDER
 
-##  WARNING: MYSQL DATABASE docker-compose.yml has been modified in this project. First do MySQL backup, if git pull this project to upgrade!!!
+##  WARNING: This Project is with a dockerized MYSQL DATABASE Instance. Before every git pull to update this project, even without checking whether Docker settings were changed, first do MySQL db dump and db dump backup. The dockerized db services sometimes can recreate a fresh and clean db instance, when some Docker config file was changed, and after "git pull && docker compose restart", too.
+
+
+I appologize for oft renamings. This project is still under development in May 2025, and is not a published and developed earlier ready, tested and proved library.
+
+Why already published: the several js tools are ready, nevertheless.
+
+
+
+## Features ready to use, however will be upgraded later for sure.
+
+1. Typescript: central config to transpile typescript code and the central transpiler node dependencies `node_modules` folder once.
+
+2. Code prettifier: Eslint central config and addons examples.
+
+3. Webpack: templates and examples of config files and npm packages folders, documentation.
+
+4. Dockerized services: node, php, https endpoint, database.
+
+5. Themes development examples in several Sites Tools. 
+
+    5.1. Tooltip
+
+    5.2. Tree
+
+    5.3. CssCodeSnippet
+
+    5.4. CssTable
+
+6. EmailHtmlInliner to set inline styles to html before send via email.
+
+7. Base ts packages published on npm to install via Yarn and Npm.
+
+    7.1. EventEmitter
+
+    7.2. TemplateRenderer
+
+    7.3. FileWriter
+
+    7.4. ObjData
+
+    7.5. Text (Just one method, and for now may be used like the example of a package of static methods just like a namespace for reusable code blocks)
+
+    7.6. CssHtml: package with several methods for working with css.
+
+    7.7. TokensParser ( The package with base methods to parse one art of text data formats )
+
+    7.8. CssImporter
+
+
+
+## Not tested features, however are in development tasks.
+
+1. Base typescript classes inheritance considering the required methods and methods args in Base classes. For example, class ContextMenu extends Tooltip {}.
+
+2. packages/Api. Used in one example .html, for now I didn't find no documented infos whether I tested this package with CORS and every other https feature and http request method and request payload art. Just an example for ObjData.
+
+
+## Under development, not ready
+
+1. Mobile.vsDesktop. Primary in development, not updated longer ago, due to development of related classes in other packages.
+
+2. CssCleanStart is aimed for the foreseen html nodes syles when coding html and viewing the site in browser whether the markup implements the design. When tested the Mobile.vsDesktop package on site with CssCleanStart, then several not exact dimensions in @media queries implemented in CssCleanStart were encountered, and now the new feature in the Mobile.vsDesktop produces the automated set of .css files by .json data with more precise dimensions (is under minor bugfixing). The number of @media queries ( over 20 ), when seems overflowing for a Site or a Tool, may be easily encommented in the main importing .css file with symbols /**/, and the ready now CssImporter package solves the feel of .css imports overflow in Browsers' Dev Console Netwok Tab, when loading a site with CssCleanStart on it. This feature of the CssImporter to load just one .css file or one bundle.js with the CssCleanStart and other SitesTools and Themes is available, however a config or tool to fine tune easily the set of .css files imported and packed with CssImporter and Webpack was not set to dev tasks neither was started.
+
+3. CssTools/404 is the first template for the set of automated sites responses. This may be a 100vh 100% template for entire browser tab sized responsive static cached pages to avoid blank screens of responses to the unhandled requests, server responses about errors or requests being processed confirmations like "file upload done". Waits for the Mobile.vsDesktop to start writing with the bugfixed responsive feature of the CssCleanStart. 
+
+4. ImprovedTemplateRenderer, will be used to improve rendering json and objdata by SitesTools.
+
+5. WorkspaceTreeWalker. The recursion is a hard coding task. Even few standard reusable solutions published may save up development cost. When, with aim of the finer programming model, developed standard callbacks for just 3 well known json data arts to render with templates, the encountered bugs of renderer were not tracked, even when debugged the code, and for now one datatype still is rendered with the implemented callback not the right way. The development is postponed, unfortunately, due to lack of ideas to bugfix these 3 standard callbacks. Once solved, these standard callbacks will solve rendering task of the most arts of json data. The multilevel arrays of objects have to be declared in templates with simple html snippets, and rendered with often similar logics. Later, when developing new SitesTools, the further callbacks to render new encountered json data arts have to be easily added, or overridden or implemented in extending classes. And for now (about js Table and refined TemplateRenderer with WorkspaceTreeWalker) the tables normally render more than 3 levels of tags: table, rows, cells, cell data, cell labels, cell rendering config infos objects. However the template may be the very ease html snippet. The rich templating engines give more freedom in coding, and this package will solve once rendering of 3 json data arts, and these jsons are very very often. A simple solution for let say 70% of tasks is good. And for the very hard tasks, understood, other expensive tools are used with rich features, taking into account the size of install required. The example may be a Database Server Setup and js instruction array.find() to solve the task finding a value in a dataset.
+
+6. Table. Waits for ImprovedTemplateRenderer and WorkspaceTreeWalker.
+
+
+
+
+
+
+
+## The Aim Of The Setup
+
+1. Building Project to keep availble reusable ts | js packages for good. You are free to use for Your code as well, and just like a project infrastructure, too.
+
+2. Aimed no concurrency to frameworks, rather to develop a very easy workaround and a ts interface, when instantiating the Angular, Vue3 and React components by one component class in every framework, and a ts tool installed via yarn or npm install. At this timestamp, I didn't align the few Sites Tools (Tooltip, Tree, CodeSnippet) to the standard interface and standard .get...() .set...() methods, .render() and .load() methods' input args, taking into account every https feature and CORS and Authorization; standard methods namings for js interactive tools for the events targets html elems, themes support. For now I tried the very few not similar ts tools, and already see several improvals to be done. 
+
+3. The easiest solutions, even, for the Responsive Sites Feature in 2025. Am on writing in May 2025 the workarounds.
+
+
+The live install to test whether one can profit in development and the feedback already have shown:
+
+1. the need to rename and align similarly methods and props, in order to rename once and to keep same for the longer period, and later, when starting a new tool, to align the new tools to the already proved development patterns in this project. 
+
+2. the responsive feature needs a lot of attention and lot of coding and documenting time. 
+
+
+
+
 
 
 
@@ -25,36 +120,147 @@ addEventHandler(
 ```
 
 
-2. Since now this project is of great use when You **develop and push to npm CSS tools and themes**, too, thanks to the new features `css-importer` and fine tuning of package.json working examples and project's config for Webpack builds.
+3. Since now this project is of great use when You **develop and push to npm CSS tools and themes**, too, thanks to the new features `css-importer` and fine tuning of package.json working examples and project's config for Webpack builds.
 
 
-3. How to build **Your CDN example** with The [Jaisocx.com](https://jaisocx.com/) Sites Server in `docker-compose.yml` and `.docker/https/conf/http-conf.xml`
+4. How to build **Your CDN example** with The [Jaisocx.com](https://jaisocx.com/) Sites Server in `docker-compose.yml` and `.docker/https/conf/http-conf.xml`
 
 
-4. **Renamings**: in the www folder, the most `examples` were moved to the new `webpack_builds`. Why: the examples were just the webpack builds with no other features or funcs. That is why they are just webpack builds as they are.
+5. **Renamings**: in the www folder, the most `examples` were moved to the new `webpack_builds`. Why: the examples were just the webpack builds with no other features or funcs. That is why they are just webpack builds as they are.
 
-    4.1. In ts packages, renamed were: 
+    5.1. In ts packages, renamed were: 
     
-    4.1. `assets` -> `MediaAndStyles`. **Assets** is the keyword in Online Banking apps. **Styles** is the keyword in Sites development since 1990th. 
+    5.1. `assets` -> `MediaAndStyles`. **Assets** is the keyword in Online Banking apps. **Styles** is the keyword in Sites development since 1990th. 
     
-    4.2. `build` -> `transpiled`. **Transpile** is the keyword of The Typescript Language, and **build** is the keyword of The Webpack Tool.
+    5.2. `build` -> `transpiled`. **Transpile** is the keyword of The Typescript Language, and **build** is the keyword of The Webpack Tool.
 
 
 
-5. **Fine Tuning ProjectBuilder's Config**. In the config file `BuildData.json` there are new features to fine tune the ts build.
+6. **Fine Tuning ProjectBuilder's Config**. In the config file `BuildData.json` there are new features to fine tune the ts build.
 
-    5.1. `build-simple-enable` works. Turns on writes .js files listed in `"build-files"`. Path is: `${packageRoot}/transpiled/Simple`.
+    6.1. `build-simple-enable` works. Turns on writes .js files listed in `"build-files"`. Path is: `${packageRoot}/transpiled/Simple`.
       
-    5.2. `css-importer`: packs on demand all .css files to one `"cssTargetFilePath"`, if all other .css files were referenced in the `"cssFilePath"` via @import url("styles-filename.css");
-      
-    5.3. in templates folder, there is:
-        
-      5.3.1. the package.json solution to set webpack aliases in a very nice webpack.aliases.json file, very few lines of json.
-      
-      5.3.2. the webpack.aliases.json example
-      
-      5.3.3. webpack aliases are available when this packagee is installed via npm i.
+    6.2. `css-importer`: packs on demand all .css files to one `"cssTargetFilePath"`, if all other .css files were referenced in the `"cssFilePath"` via @import url("styles-filename.css");
 
+
+
+### 7. The new template "ResponsiveAndValidForWebpackWhenNpmInstall"
+
+
+`code/ts/www/templates/ResponsiveAndValidForWebpackWhenNpmInstall`
+
+
+Just **copy paste** to start a **new** npm ts | js package **from scratch**. There are just package.json and .js files for the webpack feature.
+
+
+This template is developed for the nice workaround to publish on **npm webpack aliases** when aimed to set this npm package available in other ts tools for builds there with The Webpack to `bundle.js`, when installed there this package via **npm install**. 
+
+
+Why good to use this template for SitesTools: whenever You planned to import there styles or not, later the imported .css files, images, themes and fonts may be installed and noone knew before. The few .js and .json files in this template will no harm the new package size too extensive.
+
+
+The bundle.js may be published on Your cdn endpoint on Your demand for CSS themes of CSS and JS tools, too.
+
+Then the css className applied in html, turns on the CSS Theme, even when one `bundle.js` is referenced in the .html doc with the `script` tag.
+
+```
+<html>
+<head>
+<script src="https://cdn.sitesdevs.com/bundles/sites-tool-themes-bundle.js"></script>
+</head>
+<body>
+
+<!-- via css class name You may turn on every theme imported in the sites-tool-themes-bundle.js 
+When the bundle.js includes imported themes, just the typing in the css class name other theme class name will update the site's theme in browser's tab after site reload.
+-->
+<sites-tool class="sites-tool theme-nightmode theme-rich-fonts">
+...
+</sites-tool>
+</body>
+</html>
+```
+
+
+### block started "Explaining Schema":
+
+1. You plan to develop and publish Your ts tool on npm like `@softwareDevs/base-sites-tool`;
+
+2. this tool imports styles prefixed with webpack aliases.
+
+3. In other tool "SitesToolNumberTwo" You install this npm package to use there:
+
+`packages/SitesToolNumberTwo`
+
+```
+npm install "@softwareDevs/base-sites-tool"
+```
+
+
+4. Use base-sites-tool number 1 in the new tool:
+
+```
+// importing styles, there in .css files are import statements:
+// @import url("@base-sites-tool-webpack-alias/imported-style1.css");
+import from "@softwareDevs/base-sites-tool";
+
+
+// importing a js class
+import { BaseSitesTool } from "@softwareDevs/base-sites-tool";
+...
+...
+```
+
+
+5. making available to The Webpack the aliases from the imported base-sites-tool:
+
+```
+// packages/SitesToolNumberTwo/index.ts:
+// making available to The Webpack the aliases from the imported base-sites-tool:
+export { WebpackAliases as BaseSitesToolAliases } from "@softwareDevs/base-sites-tool/WebpackAliases";
+```
+
+
+6. then, in the `packages/SitesToolNumberTwo` You may run the webpack and the Webpack can resolve the aliases of the packages installed with npm, and of the base-sites-tool, too.
+
+
+7. No worries, I published READMEs.md in the templates. From time to time I postpone coding new feature 2 weeks or months, then I start to read the documentation on new to me technology again and then very easily can understand. 
+
+
+
+### block finished "Explaining Schema"
+
+
+
+
+
+
+#### 7.1. the webpack.aliases.json example
+
+```
+{
+  "@base-sites-tool-webpack-alias-styles": "${packageRoot}/MediaAndStyles/"
+}
+```
+
+
+#### 7.2. the package.json solution to declare webpack aliases to be vailable for Webpack in the importing packages.
+
+```
+"exports": {
+  ".": {
+    "import": "./transpiled/ESNext/index.js",
+    "require": "./transpiled/CommonJS/index.js"
+  },
+  "./WebpackAliases": {
+    "import": "./transpiled/ESNext/webpack.aliases.mjs",
+    "require": "./transpiled/CommonJS/webpack.aliases.cjs"
+  }
+}
+```
+
+
+
+#### 7.3. BuildData.json in the field "build-files" hardcoded webpack.* files. 
 
 ```
 {
@@ -77,7 +283,9 @@ addEventHandler(
 }
 ```
 
-#### News in March 2025. 
+
+
+## News in March 2025. 
 
 1. docker service `ts` was upgraded to v`23.11.0`, npm v`10.9.2` (I experiensed best performance and the documentation tells about new typescript files run feature available after v23.6.0) You need to rebuild the `ts` service.
 ```
@@ -424,7 +632,7 @@ Then, You can use Your new ProjectBuilder version to build Your packages in this
 ## Status of webpack build feature support in this project
 
 - Under development, however the example is working well.
-- Centrally it is **not enabled yet**, the `build-webpack/bundle.js` is **not** being produced now by **ProjectBuilder** in each example module.
+- Centrally it is **not enabled**, the `build-webpack/bundle.js` is **not** being produced now by **ProjectBuilder** in each example module.
 
 - It seems, `index.ts` for import statements in other `.ts` files must be different, than `bundle.ts` file, used to build a webpack's `bundle.js` to include in a `.html` page in `<script src="..../bundle.js">`.
 
