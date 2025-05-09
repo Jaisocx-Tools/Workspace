@@ -8,7 +8,15 @@
   <base href="./../../">
 
 
+
   <title>Example EmailHtmlInliner: Images and Css Table</title>
+
+
+  <script src="packages/Text/transpiled/Simple/Trimmer.js"></script>
+  <script src="packages/CssHtml/transpiled/Simple/CssHtml.js"></script>
+  <script src="packages/CssHtml/transpiled/Simple/CssSelectorWeight.js"></script>
+  <script src="packages/EmailHtmlInliner/transpiled/Simple/EmailHtmlInlinerConstants.js"></script>
+  <script src="packages/EmailHtmlInliner/transpiled/Simple/EmailHtmlInliner.js"></script>
 
   <!-- CSS CLEAN START THE WEBPACK BUILT BUNDLE.JS FILE -->
   <!-- <script src="webpack_builds/ExampleCssCleanStartWebpack/transpiled/webpack/example-css-clean-start-bundle.js"></script> -->
@@ -25,6 +33,21 @@
   <!-- <link rel="stylesheet" href="CssTools/CssTable/MediaAndStyles/themes/theme-lightmode/css-table-theme-lightmode-relative.css">
   <link rel="stylesheet" href="CssTools/CssTable/MediaAndStyles/themes/theme-darkmode/css-table-theme-darkmode-relative.css"> -->
   <link rel="stylesheet" href="CssTools/CssTable/MediaAndStyles/css-table-main-relative.css">
+
+
+  <!-- CssCodeSnippet -->
+  <link rel="stylesheet" href="CssTools/CssCodeSnippet/MediaAndStyles/themes/csstool-codesnippet-theme-colour-rosa.css">
+  <link rel="stylesheet" href="CssTools/CssCodeSnippet/MediaAndStyles/themes/csstool-codesnippet-theme-colour-blue.css">
+  <link rel="stylesheet" href="CssTools/CssCodeSnippet/MediaAndStyles/themes/csstool-codesnippet-theme-colour-salad.css">
+  <link rel="stylesheet" href="CssTools/CssCodeSnippet/MediaAndStyles/themes/csstool-codesnippet-theme-size-little.css">
+  <link rel="stylesheet" href="CssTools/CssCodeSnippet/MediaAndStyles/themes/csstool-codesnippet-theme-size-large.css">
+  <link rel="stylesheet" href="CssTools/CssCodeSnippet/MediaAndStyles/themes/csstool-codesnippet-theme-base.css">
+  <link rel="stylesheet" href="CssTools/CssCodeSnippet/MediaAndStyles/csstool-codesnippet-theme-styles-main.css">
+  <!-- <link rel="stylesheet" href="CssTools/CssCodeSnippet/MediaAndStyles/lines-numbers-variables/code-snippet-lines-numbers-300.css"> -->
+  <!-- <link rel="stylesheet" href="packages/EmailHtmlInliner/MediaAndStyles/CssCodeSnippet/code-snippet-lines-numbers-999.css"> -->
+  <link rel="stylesheet" href="packages/EmailHtmlInliner/MediaAndStyles/CssCodeSnippet/code-snippet-lines-numbers-2999.css">
+
+
 
   <style>
 
@@ -196,8 +219,129 @@
 
   </style>
 
+
+<style name="inliner-ui-tool">
+  .workspace.theme-emailed-thin.long.browser-width-when-portrait .CodeSnippetHolder#code-snippet-inlinetext {
+    --lines-numbers--content: var(--lines-numbers--content--2999);
+    --lines-number: 1200;
+
+    --code-snippet-tool--width: 29rem;
+    --code-snippet-tool--height: 32rem;
+    --overflow-y: auto;
+    --overflow-x: auto;
+  }
+
+  .workspace.theme-emailed-thin.long.browser-width-when-portrait s {
+    text-decoration: none;
+
+    display: block;
+    position: static;
+    
+  }
+
+  #inlinertoolarea {
+    position: fixed;
+
+    top: 2rem;
+    right: 1rem;
+
+    height: auto;
+    width: auto;
+
+    overflow: visible;
+    z-index: 1000;
+  }
+
+  #inlinerbuttonarea {
+    display: block;
+    z-index: 1002;
+  }
+
+  #btn-show-inline-text {
+    display: block;
+    position: static;
+    z-index: 1008;
+
+    background-color: steelblue;
+    color: aliceblue;
+    border: 1px solid #66ddff;
+    border-radius: 0.2rem;
+    padding: 0.4rem 0.8rem;
+  }
+
+  #inlinertextarea {
+    /* height: var(--code-snippet-tool--height);
+    width: var(--code-snippet-tool--width);
+    max-width: var(--code-snippet-tool--width); */
+
+    position: absolute;
+    top: 4rem;
+    right: 0;
+
+    overflow: visible;
+  }
+
+  #inlinertextarea nav {
+    display: flex;
+    flex-direction: row;
+    align-items: baseline;
+    justify-content: flex-start;
+  }
+
+  #inlinertextarea nav button {
+    width: auto;
+    height: auto;
+    overflow: visible;
+
+    padding: 0.16rem 0.9rem 0.16rem 0.9rem;
+    margin: 0 0.3rem 0.16rem 0;
+
+    background-color: #f2f9ff;
+    color: #000;
+    border: 1px solid #44ddff;
+    border-radius: 0.6rem;
+    
+    font-size: 0.674rem;
+    line-height: 0.674rem;
+
+    letter-spacing: 1px;
+  }
+
+  #inlinertextarea nav button:hover {
+    background-color: #a5d7ff;
+    color: #049;
+    border: 1px solid #1166ff;
+  }
+
+  #inlinertextarea nav button:focus {
+    background-color: #c5e9ff;
+    color: #fff;
+    border: 1px solid #2288ff;
+  }
+
+</style>
+
 </head>
 <body class="level_first">
+
+  <s id="inlinertoolarea" style="display: block;">
+    <s id="inlinerbuttonarea">
+      <button id="btn-show-inline-text">Show Inliner</button>
+    </s>
+
+    <s id="inlinertextarea" style="display: none;">
+      <nav>
+        <button id="btn-inline-html">Produce Inline HTML</button>
+        <button id="btn-copy-inline-text">Copy To Clipboard</button>
+        <button id="btn-inline-text-in-new-tab">Show In New Tab</button>
+      </nav>
+
+      <CodeSnippetHolder id="code-snippet-inlinetext" class="CodeSnippetHolder little blue">
+        <pre class="CodeSnippetArea" id="inlinetext"></pre>
+      </CodeSnippetHolder>
+
+    </s>
+  </s>
 
   <main class="level_second">
 
@@ -287,6 +431,133 @@
   </div>
 
   </main>
+
+  <script>
+
+  let globBaseUrlToReplace = "";
+  let globBaseUrlReplacedWith = "";
+  // globBaseUrlToReplace = "./../../../cdn/www/media/images/html_inliner_example/";
+  // globBaseUrlReplacedWith = "images/";
+
+
+  let debug = true;
+
+  function showHide_InlinerButton( e, withCtrl, withShift, keyCode ) {
+
+    let ctrl = withCtrl ? e.ctrlKey : true;
+    let shift = withShift ? e.shift : true;
+
+    if ( ctrl && shift && e.code === keyCode ) {
+      let inlinerToolArea = document.getElementById( "inlinertoolarea" );
+
+      let shownStyleValue = ( inlinerToolArea.style.display === "none" ) ? "block" : "none";
+
+      inlinerToolArea.style.display = shownStyleValue;
+
+      if ( shownStyleValue === "none" ) {
+        let textArea = document.getElementById("inlinertextarea");
+        textArea.style.display = shownStyleValue;
+      }
+    }
+  }
+
+
+  function showInlineText( e ) {
+    let textArea = document.getElementById("inlinertextarea");
+    let shownStyleValue = ( textArea.style.display === "none" ) ? "block" : "none";
+    textArea.style.display = shownStyleValue;
+  }
+
+
+  
+  function inlineText( e, baseUrlToReplace, baseUrlReplacedWith ) {
+    let inliner = new EmailHtmlInliner();
+    inliner
+      .setDebug( true )
+      .setNumberBackgroundSpacesBefore_tagStart( 0 )
+      .setNumberBackgroundSpacesBefore_attrStart( 2 )
+      .setNumberBackgroundSpacesBefore_styleStart( 4 );
+
+
+    let cssHtmlPackage = inliner.cssHtmlPackage;
+
+    let inlineText = inliner.inline ( 
+      document,
+      "html", 
+      inliner.constants.stylesPropsToCheck, 
+      baseUrlToReplace, 
+      baseUrlReplacedWith 
+    );
+
+    let textHtmlNode = document.getElementById("inlinetext");
+    textHtmlNode.innerHTML = cssHtmlPackage.escapeHTML( inlineText );
+  }
+
+  async function copyInlineText( e ) {
+    let cssHtmlPackage = new CssHtml();
+    let textHtmlNode = document.getElementById("inlinetext");
+    let inlineText = cssHtmlPackage.unescapeHTML( textHtmlNode.innerHTML );
+
+    await navigator.clipboard.writeText( inlineText );
+
+    return 1;
+  }
+
+
+  function inlineTextInNewTab( e ) {
+    let cssHtmlPackage = new CssHtml();
+    let textHtmlNode = document.getElementById("inlinetext");
+    let inlineText = cssHtmlPackage.unescapeHTML( textHtmlNode.innerHTML );
+
+    const newWin = window.open();
+    newWin.document.write( inlineText );
+    newWin.document.close(); // Important!
+  }
+
+
+
+  function assignEventHandler_ShowHide_InlinerButton( withCtrl, withShift, keyCode ) {
+    document.addEventListener('keypress', function (e) {
+      showHide_InlinerButton( e, withCtrl, withShift, keyCode );
+    });
+  }
+
+  function assignEventHandler_BtnShowInlineText( buttonId, eventName ) {
+    let eventTriggeringHtmlElem = document.getElementById( buttonId );
+
+    eventTriggeringHtmlElem.addEventListener ( eventName, function(e){ showInlineText( e ); } );
+  }
+
+  function assignEventHandler_BtnInlineText( buttonId, eventName, baseUrlToReplace, baseUrlReplacedWith ) {
+    let eventTriggeringHtmlElem = document.getElementById( buttonId );
+
+    eventTriggeringHtmlElem.addEventListener ( eventName, function(e){ inlineText( e, baseUrlToReplace, baseUrlReplacedWith ); } );
+  }
+
+  function assignEventHandler_BtnCopyInlineText( buttonId, eventName ) {
+    let eventTriggeringHtmlElem = document.getElementById( buttonId );
+
+    eventTriggeringHtmlElem.addEventListener ( eventName, function(e){ copyInlineText( e ); } );
+  }
+
+  function assignEventHandler_BtnInlineTextInNewTab( buttonId, eventName ) {
+    let eventTriggeringHtmlElem = document.getElementById( buttonId );
+
+    eventTriggeringHtmlElem.addEventListener ( eventName, function(e){ inlineTextInNewTab( e ); } );
+  }
+
+
+  function assignEventsHandlers() {
+    assignEventHandler_ShowHide_InlinerButton( true, false, "KeyQ" );
+    assignEventHandler_BtnShowInlineText( "btn-show-inline-text", "click" );
+    assignEventHandler_BtnInlineText( "btn-inline-html", "click", globBaseUrlToReplace, globBaseUrlReplacedWith );
+    assignEventHandler_BtnCopyInlineText( "btn-copy-inline-text", "click" );
+    assignEventHandler_BtnInlineTextInNewTab( "btn-inline-text-in-new-tab", "click" );
+  }
+
+  document.addEventListener( "DOMContentLoaded", () => { assignEventsHandlers(); } );
+
+  </script>
   
 </body>
 </html>
