@@ -419,12 +419,17 @@
     {
       "path": "packages/CharcodeConverter",
       "name": "charcode-converter",
-      "build": false,
+      "build": true,
       "build-simple-enable": true,
       "dependencies": [],
       "build-files": [
         "CharcodeConverter.js",
-        "Charcodes.js"
+        "Charcodes.js",
+        "JsonWriter.js",
+        "Countries.js",
+        "CountriesCodes.js",
+        "LanguagesCodes.js",
+        "WriteAllDataSetsCommand.js"
       ]
     },
     {

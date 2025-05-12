@@ -1,27 +1,109 @@
-npm install "@jaisocx/file-writer"
-npm install "@jaisocx/tokens-parser"
-npm install "@jaisocx/css-importer"
-npm install "@jaisocx/template-css-clean-start"
-npm install "@jaisocx/css-clean-start"
-npm install "@jaisocx/text"
-npm install "@jaisocx/css-html"
-npm install "@jaisocx/email-html-inliner"
-npm install "@jaisocx/mobile-vs-desktop"
-npm install "@jaisocx/example-css-clean-start"
-npm install "@jaisocx/example-built-with-webpack"
-npm install "@jaisocx/css-code-snippet"
-npm install "@jaisocx/css-table"
-npm install "@jaisocx/objdata"
-npm install "@jaisocx/event-emitter"
-npm install "@jaisocx/template-renderer"
-npm install "@jaisocx/tree"
-npm install "@jaisocx/example-template-renderer"
-npm install "@jaisocx/example-tree"
-npm install "@jaisocx/tooltip"
-npm install "@jaisocx/example-tooltip"
-npm install "@jaisocx/table"
-npm install "@jaisocx/example-table"
-npm install "@jaisocx/charcode-converter"
-npm install "@jaisocx/workspace-tree-walker"
-npm install "@jaisocx/improved-template-renderer"
-npm install "@jaisocx/api"
+<html>
+<body>
+<div class="wordlist-wrapper">
+
+          <div class="wordlist-section">
+<div class="wordlist-section__title" id="wls-id-a">A</div><div class="wordlist-item">Afghanistan</div><div class="wordlist-item">Albania</div><div class="wordlist-item">Algeria</div><div class="wordlist-item">Andorra</div><div class="wordlist-item">Angola</div><div class="wordlist-item">Antigua and Barbuda</div><div class="wordlist-item">Argentina</div><div class="wordlist-item">Armenia</div><div class="wordlist-item">Australia</div><div class="wordlist-item">Austria</div><div class="wordlist-item">Azerbaijan</div>          </div>
+
+          <div class="wordlist-section wordlist-section--not-first">
+<div class="wordlist-section__title" id="wls-id-b">B</div><div class="wordlist-item">Bahamas</div><div class="wordlist-item">Bahrain</div><div class="wordlist-item">Bangladesh</div><div class="wordlist-item">Barbados</div><div class="wordlist-item">Belarus</div><div class="wordlist-item">Belgium</div><div class="wordlist-item">Belize</div><div class="wordlist-item">Benin</div><div class="wordlist-item">Bhutan</div><div class="wordlist-item">Bolivia</div><div class="wordlist-item">Bosnia and Herzegovina</div><div class="wordlist-item">Botswana</div><div class="wordlist-item">Brazil</div><div class="wordlist-item">Brunei</div><div class="wordlist-item">Bulgaria</div><div class="wordlist-item">Burkina Faso</div><div class="wordlist-item">Burma</div><div class="wordlist-item">Burundi</div>          </div>
+
+          <div class="wordlist-section wordlist-section--not-first">
+<div class="wordlist-section__title" id="wls-id-c">C</div><div class="wordlist-item">Cambodia</div><div class="wordlist-item">Cameroon</div><div class="wordlist-item">Canada</div><div class="wordlist-item">Cape Verde</div><div class="wordlist-item">Central African Republic</div><div class="wordlist-item">Chad</div><div class="wordlist-item">Chile</div><div class="wordlist-item">China</div><div class="wordlist-item">Comoros</div><div class="wordlist-item">Congo, Dem. Rep. of the</div><div class="wordlist-item">Congo, Rep of the</div><div class="wordlist-item">Costa Rica</div><div class="wordlist-item">Côte d'Ivoire</div><div class="wordlist-item">Croatia</div><div class="wordlist-item">Cuba</div><div class="wordlist-item">Cyprus</div><div class="wordlist-item">Czech Republic</div>          </div>
+
+          <div class="wordlist-section wordlist-section--not-first">
+<div class="wordlist-section__title" id="wls-id-d">D</div><div class="wordlist-item">Denmark</div><div class="wordlist-item">Djibouti</div><div class="wordlist-item">Dominica</div><div class="wordlist-item">Dominican Republic</div>          </div>
+
+          <div class="wordlist-section wordlist-section--not-first">
+<div class="wordlist-section__title" id="wls-id-e">E</div><div class="wordlist-item">East Timor</div><div class="wordlist-item">Ecuador</div><div class="wordlist-item">Egypt</div><div class="wordlist-item">El Salvador</div><div class="wordlist-item">Equatorial Guinea</div><div class="wordlist-item">Eritrea</div><div class="wordlist-item">Estonia</div><div class="wordlist-item">Eswatini</div><div class="wordlist-item">Ethiopia</div>          </div>
+
+          <div class="wordlist-section wordlist-section--not-first">
+<div class="wordlist-section__title" id="wls-id-f">F</div><div class="wordlist-item">Fiji</div><div class="wordlist-item">Finland</div><div class="wordlist-item">France</div>          </div>
+
+          <div class="wordlist-section wordlist-section--not-first">
+<div class="wordlist-section__title" id="wls-id-g">G</div><div class="wordlist-item">Gabon</div><div class="wordlist-item">The Gambia</div><div class="wordlist-item">Georgia</div><div class="wordlist-item">Germany</div><div class="wordlist-item">Ghana</div><div class="wordlist-item">Greece</div><div class="wordlist-item">Grenada</div><div class="wordlist-item">Guatemala</div><div class="wordlist-item">Guinea</div><div class="wordlist-item">Guinea-Bissau</div><div class="wordlist-item">Guyana</div>          </div>
+
+          <div class="wordlist-section wordlist-section--not-first">
+<div class="wordlist-section__title" id="wls-id-h">H</div><div class="wordlist-item">Haiti</div><div class="wordlist-item">Honduras</div><div class="wordlist-item">Hungary</div>          </div>
+
+          <div class="wordlist-section wordlist-section--not-first">
+<div class="wordlist-section__title" id="wls-id-i">I</div><div class="wordlist-item">Iceland</div><div class="wordlist-item">India</div><div class="wordlist-item">Indonesia</div><div class="wordlist-item">Iran</div><div class="wordlist-item">Iraq</div><div class="wordlist-item">Ireland</div><div class="wordlist-item">Israel</div><div class="wordlist-item">Italy</div>          </div>
+
+          <div class="wordlist-section wordlist-section--not-first">
+<div class="wordlist-section__title" id="wls-id-j">J</div><div class="wordlist-item">Jamaica</div><div class="wordlist-item">Japan</div><div class="wordlist-item">Jordan</div>          </div>
+
+          <div class="wordlist-section wordlist-section--not-first">
+<div class="wordlist-section__title" id="wls-id-k">K</div><div class="wordlist-item">Kazakhstan</div><div class="wordlist-item">Kenya</div><div class="wordlist-item">Kiribati</div><div class="wordlist-item">Korea, North</div><div class="wordlist-item">Korea, South</div><div class="wordlist-item">Kuwait</div><div class="wordlist-item">Kyrgyzstan</div>          </div>
+
+          <div class="wordlist-section wordlist-section--not-first">
+<div class="wordlist-section__title" id="wls-id-l">L</div><div class="wordlist-item">Laos</div><div class="wordlist-item">Latvia</div><div class="wordlist-item">Lebanon</div><div class="wordlist-item">Lesotho</div><div class="wordlist-item">Liberia</div><div class="wordlist-item">Libya</div><div class="wordlist-item">Liechtenstein</div><div class="wordlist-item">Lithuania</div><div class="wordlist-item">Luxembourg</div>          </div>
+
+          <div class="wordlist-section wordlist-section--not-first">
+<div class="wordlist-section__title" id="wls-id-m">M</div><div class="wordlist-item">Macedonia</div><div class="wordlist-item">Madagascar</div><div class="wordlist-item">Malawi</div><div class="wordlist-item">Malaysia</div><div class="wordlist-item">Maldives</div><div class="wordlist-item">Mali</div><div class="wordlist-item">Malta</div><div class="wordlist-item">Marshall Islands</div><div class="wordlist-item">Mauritania</div><div class="wordlist-item">Mauritius</div><div class="wordlist-item">Mexico</div><div class="wordlist-item">Micronesia</div><div class="wordlist-item">Moldova</div><div class="wordlist-item">Monaco</div><div class="wordlist-item">Mongolia</div><div class="wordlist-item">Montenegro</div><div class="wordlist-item">Morocco</div><div class="wordlist-item">Mozambique</div>          </div>
+
+          <div class="wordlist-section wordlist-section--not-first">
+<div class="wordlist-section__title" id="wls-id-n">N</div><div class="wordlist-item">Namibia</div><div class="wordlist-item">Nauru</div><div class="wordlist-item">Nepal</div><div class="wordlist-item">Netherlands</div><div class="wordlist-item">New Zealand</div><div class="wordlist-item">Nicaragua</div><div class="wordlist-item">Niger</div><div class="wordlist-item">Nigeria</div><div class="wordlist-item">Norway</div>          </div>
+
+          <div class="wordlist-section wordlist-section--not-first">
+<div class="wordlist-section__title" id="wls-id-o">O</div><div class="wordlist-item">Oman</div>          </div>
+
+          <div class="wordlist-section wordlist-section--not-first">
+<div class="wordlist-section__title" id="wls-id-p">P</div><div class="wordlist-item">Pakistan</div><div class="wordlist-item">Palau</div><div class="wordlist-item">Panama</div><div class="wordlist-item">Papua New Guinea</div><div class="wordlist-item">Paraguay</div><div class="wordlist-item">Peru</div><div class="wordlist-item">Philippines</div><div class="wordlist-item">Poland</div><div class="wordlist-item">Portugal</div>          </div>
+
+          <div class="wordlist-section wordlist-section--not-first">
+<div class="wordlist-section__title" id="wls-id-q">Q</div><div class="wordlist-item">Qatar</div>          </div>
+
+          <div class="wordlist-section wordlist-section--not-first">
+<div class="wordlist-section__title" id="wls-id-r">R</div><div class="wordlist-item">Romania</div><div class="wordlist-item">Russia</div><div class="wordlist-item">Rwanda</div>          </div>
+
+          <div class="wordlist-section wordlist-section--not-first">
+<div class="wordlist-section__title" id="wls-id-s">S</div><div class="wordlist-item">Saint Kitts and Nevis</div><div class="wordlist-item">Saint Lucia</div><div class="wordlist-item">Saint Vincent and the Grenadines</div><div class="wordlist-item">Samoa</div><div class="wordlist-item">San Marino</div><div class="wordlist-item">São Tomé and Príncipe</div><div class="wordlist-item">Saudi Arabia</div><div class="wordlist-item">Senegal</div><div class="wordlist-item">Serbia</div><div class="wordlist-item">Seychelles</div><div class="wordlist-item">Sierra Leone</div><div class="wordlist-item">Singapore</div><div class="wordlist-item">Slovakia</div><div class="wordlist-item">Slovenia</div><div class="wordlist-item">Solomon Islands</div><div class="wordlist-item">Somalia</div><div class="wordlist-item">South Africa</div><div class="wordlist-item">Spain</div><div class="wordlist-item">Sri Lanka</div><div class="wordlist-item">Sudan</div><div class="wordlist-item">Suriname</div><div class="wordlist-item">Sweden</div><div class="wordlist-item">Switzerland</div><div class="wordlist-item">Syria</div>          </div>
+
+          <div class="wordlist-section wordlist-section--not-first">
+<div class="wordlist-section__title" id="wls-id-t">T</div><div class="wordlist-item">Tajikistan</div><div class="wordlist-item">Tanzania</div><div class="wordlist-item">Thailand</div><div class="wordlist-item">Togo</div><div class="wordlist-item">Tonga</div><div class="wordlist-item">Trinidad and Tobago</div><div class="wordlist-item">Tunisia</div><div class="wordlist-item">Turkey</div><div class="wordlist-item">Turkmenistan</div><div class="wordlist-item">Tuvalu</div>          </div>
+
+          <div class="wordlist-section wordlist-section--not-first">
+<div class="wordlist-section__title" id="wls-id-u">U</div><div class="wordlist-item">Uganda</div><div class="wordlist-item">Ukraine</div><div class="wordlist-item">United Arab Emirates</div><div class="wordlist-item">United Kingdom</div><div class="wordlist-item">United States of America</div><div class="wordlist-item">Uruguay</div><div class="wordlist-item">Uzbekistan</div>          </div>
+
+          <div class="wordlist-section wordlist-section--not-first">
+<div class="wordlist-section__title" id="wls-id-v">V</div><div class="wordlist-item">Vanuatu</div><div class="wordlist-item">Vatican City</div><div class="wordlist-item">Venezuela</div><div class="wordlist-item">Vietnam</div>          </div>
+
+          <div class="wordlist-section wordlist-section--not-first">
+<div class="wordlist-section__title" id="wls-id-y">Y</div><div class="wordlist-item">Yemen</div>          </div>
+
+          <div class="wordlist-section wordlist-section--not-first">
+<div class="wordlist-section__title" id="wls-id-z">Z</div><div class="wordlist-item">Zambia</div><div class="wordlist-item">Zimbabwe</div>          </div>
+      </div>
+
+
+<script>
+
+let globTagsQuerySelector = ".wordlist-item";
+
+function getTagsTextsAsArray( querySelector ) {
+  let tags = document.querySelectorAll( querySelector );
+
+  let locTagsTexts = new Array( tags.length );
+
+  let tag = new Object();
+  
+  let tagId = 0;
+  for ( tagId = 0; tagId < tags.length; tagsId++ ) {
+    tag = tags[tagId];
+    locTagsTexts[tagId] = tag.innerText;
+  }
+
+  return locTagsTexts;
+}
+
+document.addEventListener(
+  "DOMDocumentLoaded",
+  () => {
+    let tagsTexts = getTagsTextsAsArray( globTagsQuerySelector );
+  }
+);
+
+
+</script>
+</body>
+</html>

@@ -28,7 +28,7 @@ the lookup tables are the RAM, used by the sites surfer's browser, when a sites 
 
 
 ## window.CharcodeConverter available in the js, when in js code: import { CharcodeConverter } from @jaisocx/charcode-converter; and built with Webpack.
-in the src/index.ts and transpiled/ESNext/index.js and transpiled/NextJS/index.js file, the central file in this npm package,
+in the src/index.ts and transpiled/ESNext/index.js and transpiled/CommonJS/index.js file, the central file in this npm package,
 the CharcodeConverter class is added to the browser's window js class,
 and this js class can be seen in the browser's developers console, 
 when researching window class.

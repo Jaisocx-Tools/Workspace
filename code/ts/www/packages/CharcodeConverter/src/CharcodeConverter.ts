@@ -102,143 +102,143 @@ export class CharcodeConverter {
 
   
 
-  join ( 
-    inoutObj: any 
-  ): number { // length bytes of the entire rendered html text in the inoutobj.retVal, .join('') once.
+  // join ( 
+  //   inoutObj: any 
+  // ): number { // length bytes of the entire rendered html text in the inoutobj.retVal, .join('') once.
 
-    const autoload: number = 0;
+  //   const autoload: number = 0;
 
-    const NAVIGATE_WITH_CALLBACK: number = 2;
-    const NAVIGATE_NO_CALLBACK: number = 4;
+  //   const NAVIGATE_WITH_CALLBACK: number = 2;
+  //   const NAVIGATE_NO_CALLBACK: number = 4;
 
-    let localInMethod_lastOffsetStringArray: number = 0;
-
-
-    // gets one char by charcode form the lookup tables, very fast via bitsbuffer ref.
-    const implGetChar: CallableFunction = autoload ? this.getCharAndAutoload.bind(this) : this.getChar.bind(this);
+  //   let localInMethod_lastOffsetStringArray: number = 0;
 
 
-    const isBitsbuffer: Function = ( array: any ): number => {
-      return ( array instanceof Uint16Array ) ? 1 : 0;
-    };
+  //   // gets one char by charcode form the lookup tables, very fast via bitsbuffer ref.
+  //   const implGetChar: CallableFunction = autoload ? this.getCharAndAutoload.bind(this) : this.getChar.bind(this);
 
 
-    const navigateMultidim: Function = (
-      toUseCallback: number,
-      array: any,
-      callback: CallableFunction
-    ): any => {
-
-      let retVal: any = {
-        bitbufsNumber: 0,
-        sumBitbufsLen: 0
-      };
+  //   const isBitsbuffer: Function = ( array: any ): number => {
+  //     return ( array instanceof Uint16Array ) ? 1 : 0;
+  //   };
 
 
-      if ( isBitsbuffer( array ) === 1 ) {
+  //   const navigateMultidim: Function = (
+  //     toUseCallback: number,
+  //     array: any,
+  //     callback: CallableFunction
+  //   ): any => {
 
-        retVal.bitbufsNumber = 1;
-        retVal.sumBitbufsLen = ( array as Uint16Array ).length;
-
-        if ( toUseCallback === NAVIGATE_WITH_CALLBACK ) {
-          callback( array );
-        }
-
-      } else {
-
-        let sum: any;
-
-        for ( let a of array ) {
-
-          if ( isBitsbuffer( a ) === 1 ) {
-            retVal.bitbufsNumber += 1;
-            retVal.sumBitbufsLen += ( a as Uint16Array ).length;
-
-            if ( toUseCallback === NAVIGATE_WITH_CALLBACK ) {
-              callback( a );
-            }
-
-            continue;
-          }
-
-          sum = navigateMultidim (
-            toUseCallback,
-            a,
-            null
-          );
-
-          retVal.bitbufsNumber += sum.bitbufsNumber;
-          retVal.sumBitbufsLen += sum.sumBitbufsLen;
-
-        }
-
-      }
-
-      return retVal;
-
-    };
+  //     let retVal: any = {
+  //       bitbufsNumber: 0,
+  //       sumBitbufsLen: 0
+  //     };
 
 
-    const sizesObj: any = navigateMultidim ( 
-      NAVIGATE_NO_CALLBACK,
-      inoutObj.bufs,
-      null
-    );
+  //     if ( isBitsbuffer( array ) === 1 ) {
 
-    const flatBitbufsArray: Array<Uint16Array> = new Array<Uint16Array>( sizesObj.bitbufsNumber );
-    const resultStringArray: string[] = new Array<string>( sizesObj.sumBitbufsLen );
+  //       retVal.bitbufsNumber = 1;
+  //       retVal.sumBitbufsLen = ( array as Uint16Array ).length;
+
+  //       if ( toUseCallback === NAVIGATE_WITH_CALLBACK ) {
+  //         callback( array );
+  //       }
+
+  //     } else {
+
+  //       let sum: any;
+
+  //       for ( let a of array ) {
+
+  //         if ( isBitsbuffer( a ) === 1 ) {
+  //           retVal.bitbufsNumber += 1;
+  //           retVal.sumBitbufsLen += ( a as Uint16Array ).length;
+
+  //           if ( toUseCallback === NAVIGATE_WITH_CALLBACK ) {
+  //             callback( a );
+  //           }
+
+  //           continue;
+  //         }
+
+  //         sum = navigateMultidim (
+  //           toUseCallback,
+  //           a,
+  //           null
+  //         );
+
+  //         retVal.bitbufsNumber += sum.bitbufsNumber;
+  //         retVal.sumBitbufsLen += sum.sumBitbufsLen;
+
+  //       }
+
+  //     }
+
+  //     return retVal;
+
+  //   };
 
 
-    const summary: any = {
-      bitbufsNumber: sizesObj.bitbufsNumber,
-      sumBitbufsLen: sizesObj.sumBitbufsLen,
-      flatBitbufsArray: flatBitbufsArray,
-      resultStringArray: resultStringArray
-    };
+  //   const sizesObj: any = navigateMultidim ( 
+  //     NAVIGATE_NO_CALLBACK,
+  //     inoutObj.bufs,
+  //     null
+  //   );
+
+  //   const flatBitbufsArray: Array<Uint16Array> = new Array<Uint16Array>( sizesObj.bitbufsNumber );
+  //   const resultStringArray: string[] = new Array<string>( sizesObj.sumBitbufsLen );
+
+
+  //   const summary: any = {
+  //     bitbufsNumber: sizesObj.bitbufsNumber,
+  //     sumBitbufsLen: sizesObj.sumBitbufsLen,
+  //     flatBitbufsArray: flatBitbufsArray,
+  //     resultStringArray: resultStringArray
+  //   };
   
   
-    let charcode: number = 0;
-    let char: string = "";
+  //   let charcode: number = 0;
+  //   let char: string = "";
 
-    const navigateMultidimCallback: CallableFunction = ( array: any ): any => {
+  //   const navigateMultidimCallback: CallableFunction = ( array: any ): any => {
 
-      const lastOffset: number = localInMethod_lastOffsetStringArray;
-      let targetValueArrayOffset: number = lastOffset;
-      let inpArrayOffset: number = 0;
-      let inpArraySize: number = array.length;
+  //     const lastOffset: number = localInMethod_lastOffsetStringArray;
+  //     let targetValueArrayOffset: number = lastOffset;
+  //     let inpArrayOffset: number = 0;
+  //     let inpArraySize: number = array.length;
 
-      for ( 
-        ( inpArrayOffset = 0 );
-        ( inpArrayOffset < inpArraySize );
-        ( inpArrayOffset += 1 )
-      ) {
+  //     for ( 
+  //       ( inpArrayOffset = 0 );
+  //       ( inpArrayOffset < inpArraySize );
+  //       ( inpArrayOffset += 1 )
+  //     ) {
 
-        charcode = array[inpArrayOffset];
-        char = implGetChar( charcode );
+  //       charcode = array[inpArrayOffset];
+  //       char = implGetChar( charcode );
     
-        resultStringArray[targetValueArrayOffset] = char;
-        targetValueArrayOffset += 1;
+  //       resultStringArray[targetValueArrayOffset] = char;
+  //       targetValueArrayOffset += 1;
 
-      }
+  //     }
 
-      localInMethod_lastOffsetStringArray = targetValueArrayOffset;
+  //     localInMethod_lastOffsetStringArray = targetValueArrayOffset;
 
-    };
+  //   };
 
 
-    const summaryAfterFillCharbuf: any = navigateMultidim ( 
-      NAVIGATE_WITH_CALLBACK,
-      inoutObj.bufs,
-      navigateMultidimCallback
-    );
+  //   const _summaryAfterFillCharbuf: any = navigateMultidim ( 
+  //     NAVIGATE_WITH_CALLBACK,
+  //     inoutObj.bufs,
+  //     navigateMultidimCallback
+  //   );
 
     
-    const EMPTY_STRING: string = (new String("")).valueOf();
-    summary.html = summary.resultStringArray.join(EMPTY_STRING);
+  //   const EMPTY_STRING: string = (new String("")).valueOf();
+  //   summary.html = summary.resultStringArray.join(EMPTY_STRING);
   
 
-    return summary;
-  }
+  //   return summary;
+  // }
 
 
 
@@ -352,8 +352,6 @@ export class CharcodeConverter {
 
   getCharcode ( target: string ): number {
 
-    let opsNumber: number = 0;
-
     let charcode: number = CharcodeConverter.CHAR_NOT_FOUND;
     //opsNumber++;
 
@@ -449,9 +447,6 @@ export class CharcodeConverter {
       if ( elemsNumberRemainingRangeToLookup < 4 ) {
 
         let lookupTableIndex = 0;
-        //opsNumber += 1;
-
-        let iterationsNumber: number = 4;
         //opsNumber += 1;
 
         rangeLowerBound++;
@@ -634,9 +629,9 @@ export class CharcodeConverter {
   // Detect charset from country code, language, or HTTP header
   public detectCharset(): string {
 
-    const language: string = this.detectSiteLanguage();
-    const country: string = this.detectSiteCountry();
-    const acceptLanguage: string = this.detectBrowserAcceptLanguage();
+    // const language: string = this.detectSiteLanguage();
+    // const country: string = this.detectSiteCountry();
+    // const acceptLanguage: string = this.detectBrowserAcceptLanguage();
 
     return (
     // charsetsData.languages[language] ||

@@ -18,7 +18,6 @@ export declare class CharcodeConverter {
     setDebug(inDebug: boolean): CharcodeConverter;
     setLookupIterationsMax(iterationsMax: number): CharcodeConverter;
     log(key: any, data: any): undefined;
-    join(inoutObj: any): number;
     stringToArray(text: string, autoload: number): Uint16Array;
     arrayToString(buf: Uint16Array, autoload: number): string;
     getChar(charcode: number): string;

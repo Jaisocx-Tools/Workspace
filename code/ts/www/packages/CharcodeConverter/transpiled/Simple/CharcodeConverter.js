@@ -64,98 +64,6 @@ class CharcodeConverter {
     console.log(key, data);
   }
 
-  join(inoutObj) {
-    const autoload = 0;
-    const NAVIGATE_WITH_CALLBACK = 2;
-    const NAVIGATE_NO_CALLBACK = 4;
-    let localInMethod_lastOffsetStringArray = 0;
-    // gets one char by charcode form the lookup tables, very fast via bitsbuffer ref.
-    const implGetChar = autoload ? this.getCharAndAutoload.bind(this) : this.getChar.bind(this);
-    const isBitsbuffer = (array) => {
-      return (array instanceof Uint16Array) ? 1 : 0;
-    }
-
-         ;
-    const navigateMultidim = (toUseCallback, array, callback) => {
-      let retVal = {
-        bitbufsNumber: 0,
-        sumBitbufsLen: 0
-      };
-
-      if (isBitsbuffer(array) === 1) {
-        retVal.bitbufsNumber = 1;
-        retVal.sumBitbufsLen = array.length;
-
-        if (toUseCallback === NAVIGATE_WITH_CALLBACK) {
-          callback(array);
-        }
-      }
-      else {
-        let sum;
-
-        for (let a of array) {
-          if (isBitsbuffer(a) === 1) {
-            retVal.bitbufsNumber += 1;
-            retVal.sumBitbufsLen += a.length;
-
-            if (toUseCallback === NAVIGATE_WITH_CALLBACK) {
-              callback(a);
-            }
-
-            continue;
-          }
-
-          sum = navigateMultidim(toUseCallback, a, null);
-          retVal.bitbufsNumber += sum.bitbufsNumber;
-          retVal.sumBitbufsLen += sum.sumBitbufsLen;
-        }
-      }
-
-      return retVal;
-    }
-
-         ;
-    const sizesObj = navigateMultidim(
-      NAVIGATE_NO_CALLBACK, 
-      inoutObj.bufs, 
-      null);
-    const flatBitbufsArray = new Array(sizesObj.bitbufsNumber);
-    const resultStringArray = new Array(sizesObj.sumBitbufsLen);
-    const summary = {
-      bitbufsNumber: sizesObj.bitbufsNumber,
-      sumBitbufsLen: sizesObj.sumBitbufsLen,
-      flatBitbufsArray: flatBitbufsArray,
-      resultStringArray: resultStringArray
-    };
-    let charcode = 0;
-    let char = "";
-    const navigateMultidimCallback = (array) => {
-      const lastOffset = localInMethod_lastOffsetStringArray;
-      let targetValueArrayOffset = lastOffset;
-      let inpArrayOffset = 0;
-      let inpArraySize = array.length;
-
-      for ((inpArrayOffset = 0); (inpArrayOffset < inpArraySize); (inpArrayOffset += 1)) {
-        charcode = array[inpArrayOffset];
-        char = implGetChar(charcode);
-        resultStringArray[targetValueArrayOffset] = char;
-        targetValueArrayOffset += 1;
-      }
-
-      localInMethod_lastOffsetStringArray = targetValueArrayOffset;
-    }
-
-         ;
-    const summaryAfterFillCharbuf = navigateMultidim(
-      NAVIGATE_WITH_CALLBACK, 
-      inoutObj.bufs, 
-      navigateMultidimCallback);
-    const EMPTY_STRING = (new String("")).valueOf();
-    summary.html = summary.resultStringArray.join(EMPTY_STRING);
-
-    return summary;
-  }
-
   stringToArray(text, autoload) {
     const resultArrayLength = text.length;
     const resultArray = new Uint16Array(resultArrayLength);
@@ -207,7 +115,6 @@ class CharcodeConverter {
   }
 
   getCharcode(target) {
-    let opsNumber = 0;
     let charcode = CharcodeConverter.CHAR_NOT_FOUND;
     //opsNumber++;
     let rangeLowerBound = 0;
@@ -265,8 +172,6 @@ class CharcodeConverter {
 
       if (elemsNumberRemainingRangeToLookup < 4) {
         let lookupTableIndex = 0;
-        //opsNumber += 1;
-        let iterationsNumber = 4;
         //opsNumber += 1;
         rangeLowerBound++;
         //opsNumber += 1;
@@ -382,10 +287,9 @@ class CharcodeConverter {
   }
   // Detect charset from country code, language, or HTTP header
   detectCharset() {
-    const language = this.detectSiteLanguage();
-    const country = this.detectSiteCountry();
-    const acceptLanguage = this.detectBrowserAcceptLanguage();
-
+    // const language: string = this.detectSiteLanguage();
+    // const country: string = this.detectSiteCountry();
+    // const acceptLanguage: string = this.detectBrowserAcceptLanguage();
     return (
     // charsetsData.languages[language] ||
     // charsetsData.countries[country] ||
