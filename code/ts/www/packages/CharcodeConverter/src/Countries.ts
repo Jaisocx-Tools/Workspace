@@ -1,15 +1,15 @@
-import { JsonWriter } from "./JsonWriter.js";
+import { JsonWriter } from "@jaisocx/cdn-datasets-base";
 
 
 export class Countries extends JsonWriter {
-  #data: string[];
+  _data: string[];
   
   static _singletonInstance: Countries;
 
   constructor() {
     super();
 
-    this.#data = this.initData();
+    this._data = this.initData();
     this.filePath = "";
   }
 
@@ -23,11 +23,11 @@ export class Countries extends JsonWriter {
   }
 
   getCountriesNames(): string[] {
-    return this.#data;
+    return this._data;
   }
 
   saveCountriesNames( inFilePath: string ): number {
-    let locSaved: number = this.saveData( inFilePath, this.#data );
+    let locSaved: number = this.saveData( inFilePath, this._data );
 
     return locSaved;
   }

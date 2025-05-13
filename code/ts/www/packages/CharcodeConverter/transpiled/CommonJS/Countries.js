@@ -1,24 +1,11 @@
 "use strict";
-var __classPrivateFieldSet = (this && this.__classPrivateFieldSet) || function (receiver, state, value, kind, f) {
-    if (kind === "m") throw new TypeError("Private method is not writable");
-    if (kind === "a" && !f) throw new TypeError("Private accessor was defined without a setter");
-    if (typeof state === "function" ? receiver !== state || !f : !state.has(receiver)) throw new TypeError("Cannot write private member to an object whose class did not declare it");
-    return (kind === "a" ? f.call(receiver, value) : f ? f.value = value : state.set(receiver, value)), value;
-};
-var __classPrivateFieldGet = (this && this.__classPrivateFieldGet) || function (receiver, state, kind, f) {
-    if (kind === "a" && !f) throw new TypeError("Private accessor was defined without a getter");
-    if (typeof state === "function" ? receiver !== state || !f : !state.has(receiver)) throw new TypeError("Cannot read private member from an object whose class did not declare it");
-    return kind === "m" ? f : kind === "a" ? f.call(receiver) : f ? f.value : state.get(receiver);
-};
-var _Countries_data;
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Countries = void 0;
-const JsonWriter_js_1 = require("./JsonWriter.js");
-class Countries extends JsonWriter_js_1.JsonWriter {
+const cdn_datasets_base_1 = require("@jaisocx/cdn-datasets-base");
+class Countries extends cdn_datasets_base_1.JsonWriter {
     constructor() {
         super();
-        _Countries_data.set(this, void 0);
-        __classPrivateFieldSet(this, _Countries_data, this.initData(), "f");
+        this._data = this.initData();
         this.filePath = "";
     }
     static getSingletonInstance() {
@@ -28,10 +15,10 @@ class Countries extends JsonWriter_js_1.JsonWriter {
         return Countries._singletonInstance;
     }
     getCountriesNames() {
-        return __classPrivateFieldGet(this, _Countries_data, "f");
+        return this._data;
     }
     saveCountriesNames(inFilePath) {
-        let locSaved = this.saveData(inFilePath, __classPrivateFieldGet(this, _Countries_data, "f"));
+        let locSaved = this.saveData(inFilePath, this._data);
         return locSaved;
     }
     initData() {
@@ -239,5 +226,4 @@ class Countries extends JsonWriter_js_1.JsonWriter {
     }
 }
 exports.Countries = Countries;
-_Countries_data = new WeakMap();
 //# sourceMappingURL=Countries.js.map

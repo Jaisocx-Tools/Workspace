@@ -40,11 +40,35 @@ const CountriesCodes_js_1 = require("./CountriesCodes.js");
 const LanguagesCodes_js_1 = require("./LanguagesCodes.js");
 class WriteAllDataSetsCommand {
     static write(folderPath) {
-        Countries_js_1.Countries.getSingletonInstance().saveCountriesNames(path.resolve(folderPath, "countriesNames.json"));
-        CountriesCodes_js_1.CountriesCodes.getSingletonInstance().saveCountriesCodes(path.resolve(folderPath, "countriesCodesAsArray.json"));
-        CountriesCodes_js_1.CountriesCodes.getSingletonInstance().saveCountriesCodesIndexedByCountryCode(path.resolve(folderPath, "countriesCodesIndexedByCountryCode.json"));
-        LanguagesCodes_js_1.LanguagesCodes.getSingletonInstance().saveLanguagesCodes(path.resolve(folderPath, "languagesCodesAsArray.json"));
-        LanguagesCodes_js_1.LanguagesCodes.getSingletonInstance().saveLanguagesCodesIndexedByLanguageCode(path.resolve(folderPath, "languagesCodesIndexedByLanguageCode.json"));
+        let pathResolveFunc;
+        let isPathDefined = true;
+        try {
+            pathResolveFunc = path.resolve;
+        }
+        catch (e) {
+            isPathDefined = false;
+        }
+        if (isPathDefined === false) {
+            pathResolveFunc = (inPath1, inPath2) => { return [inPath1, inPath2].join("/"); };
+        }
+        // @ts-ignore
+        Countries_js_1.Countries.getSingletonInstance().saveCountriesNames(pathResolveFunc(folderPath, "countriesNames.json"));
+        // @ts-ignore
+        CountriesCodes_js_1.CountriesCodes.getSingletonInstance().saveCountriesCodes(pathResolveFunc(folderPath, "countriesCodesAsArray.json"));
+        CountriesCodes_js_1.CountriesCodes.getSingletonInstance().saveCountriesCodesIndexedByKeys("country_code", 
+        // @ts-ignore
+        pathResolveFunc(folderPath, "countriesCodesIndexedByCountryCode.json"));
+        CountriesCodes_js_1.CountriesCodes.getSingletonInstance().saveCountriesCodesIndexedByKeys("country_name", 
+        // @ts-ignore
+        pathResolveFunc(folderPath, "countriesCodesIndexedByCountryName.json"));
+        // @ts-ignore
+        LanguagesCodes_js_1.LanguagesCodes.getSingletonInstance().saveLanguagesCodes(pathResolveFunc(folderPath, "languagesCodesAsArray.json"));
+        LanguagesCodes_js_1.LanguagesCodes.getSingletonInstance().saveLanguagesCodesIndexedByKeys("language_code", 
+        // @ts-ignore
+        pathResolveFunc(folderPath, "languagesCodesIndexedByLanguageCode.json"));
+        LanguagesCodes_js_1.LanguagesCodes.getSingletonInstance().saveLanguagesCodesIndexedByKeys("language_names[0]", 
+        // @ts-ignore
+        pathResolveFunc(folderPath, "languagesCodesIndexedByLanguageName.json"));
         return 1;
     }
 }

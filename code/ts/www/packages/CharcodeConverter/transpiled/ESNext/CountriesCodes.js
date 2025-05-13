@@ -1,13 +1,9 @@
-import { JsonWriter } from "./JsonWriter.js";
-export class CountriesCodes extends JsonWriter {
-    #data;
-    #dataAsObject;
+import { DatasetBase } from "@jaisocx/cdn-datasets-base";
+export class CountriesCodes extends DatasetBase {
     static _singletonInstance;
     constructor() {
         super();
-        this.#data = this.initData();
-        this.#dataAsObject = this.initDataAsObject();
-        this.filePath = "";
+        this._data = this.initData();
     }
     static getSingletonInstance() {
         if (CountriesCodes._singletonInstance === undefined) {
@@ -16,31 +12,18 @@ export class CountriesCodes extends JsonWriter {
         return CountriesCodes._singletonInstance;
     }
     getCountriesCodes() {
-        return this.#data;
+        return this._data;
     }
-    getCountriesCodesIndexedByCountryCode() {
-        return this.#dataAsObject;
+    getCountriesCodesIndexedByKeys(key) {
+        return this.getDataIndexedByKeys(key);
     }
     saveCountriesCodes(inFilePath) {
-        let locSaved = this.saveData(inFilePath, this.#data);
+        let locSaved = this.saveData(inFilePath, this._data);
         return locSaved;
     }
-    saveCountriesCodesIndexedByCountryCode(inFilePath) {
-        let locSaved = this.saveData(inFilePath, this.#dataAsObject);
+    saveCountriesCodesIndexedByKeys(key, inFilePath) {
+        let locSaved = this.saveDataIndexedByKeys(key, inFilePath);
         return locSaved;
-    }
-    initDataAsObject() {
-        let locDataAsObject = new Object();
-        let arrayItemId = 0;
-        let arrayItem;
-        let arrayLen = this.#data.length;
-        let countryCode2Chars = "";
-        for (arrayItemId = 0; arrayItemId < arrayLen; arrayItemId++) {
-            arrayItem = this.#data[arrayItemId];
-            countryCode2Chars = arrayItem.country_code;
-            locDataAsObject[countryCode2Chars] = arrayItem;
-        }
-        return locDataAsObject;
     }
     initData() {
         let locData = [
@@ -51,14 +34,14 @@ export class CountriesCodes extends JsonWriter {
                 "languages_codes_and_names": [
                     {
                         "language_code": "ps",
-                        "languages_names": [
+                        "language_names": [
                             "Pashto",
                             "Pushto"
                         ]
                     },
                     {
                         "language_code": "fa-AF",
-                        "languages_names": [
+                        "language_names": [
                             "Dari",
                             "Dari Persian",
                             "Afghan Persian"
@@ -73,7 +56,7 @@ export class CountriesCodes extends JsonWriter {
                 "languages_codes_and_names": [
                     {
                         "language_code": "sq",
-                        "languages_names": [
+                        "language_names": [
                             "Albanian"
                         ]
                     }
@@ -86,7 +69,7 @@ export class CountriesCodes extends JsonWriter {
                 "languages_codes_and_names": [
                     {
                         "language_code": "ar",
-                        "languages_names": [
+                        "language_names": [
                             "Arabic"
                         ]
                     }
@@ -99,7 +82,7 @@ export class CountriesCodes extends JsonWriter {
                 "languages_codes_and_names": [
                     {
                         "language_code": "ca",
-                        "languages_names": [
+                        "language_names": [
                             "Catalan"
                         ]
                     }
@@ -112,7 +95,7 @@ export class CountriesCodes extends JsonWriter {
                 "languages_codes_and_names": [
                     {
                         "language_code": "pt",
-                        "languages_names": [
+                        "language_names": [
                             "Portuguese"
                         ]
                     }
@@ -125,7 +108,7 @@ export class CountriesCodes extends JsonWriter {
                 "languages_codes_and_names": [
                     {
                         "language_code": "en",
-                        "languages_names": [
+                        "language_names": [
                             "English"
                         ]
                     }
@@ -138,7 +121,7 @@ export class CountriesCodes extends JsonWriter {
                 "languages_codes_and_names": [
                     {
                         "language_code": "es",
-                        "languages_names": [
+                        "language_names": [
                             "Spanish"
                         ]
                     }
@@ -151,7 +134,7 @@ export class CountriesCodes extends JsonWriter {
                 "languages_codes_and_names": [
                     {
                         "language_code": "hy",
-                        "languages_names": [
+                        "language_names": [
                             "Armenian"
                         ]
                     }
@@ -164,7 +147,7 @@ export class CountriesCodes extends JsonWriter {
                 "languages_codes_and_names": [
                     {
                         "language_code": "en",
-                        "languages_names": [
+                        "language_names": [
                             "English"
                         ]
                     }
@@ -177,7 +160,7 @@ export class CountriesCodes extends JsonWriter {
                 "languages_codes_and_names": [
                     {
                         "language_code": "de",
-                        "languages_names": [
+                        "language_names": [
                             "German"
                         ]
                     }
@@ -190,7 +173,7 @@ export class CountriesCodes extends JsonWriter {
                 "languages_codes_and_names": [
                     {
                         "language_code": "az",
-                        "languages_names": [
+                        "language_names": [
                             "Azerbaijani"
                         ]
                     }
@@ -203,7 +186,7 @@ export class CountriesCodes extends JsonWriter {
                 "languages_codes_and_names": [
                     {
                         "language_code": "en",
-                        "languages_names": [
+                        "language_names": [
                             "English"
                         ]
                     }
@@ -216,7 +199,7 @@ export class CountriesCodes extends JsonWriter {
                 "languages_codes_and_names": [
                     {
                         "language_code": "ar",
-                        "languages_names": [
+                        "language_names": [
                             "Arabic"
                         ]
                     }
@@ -229,7 +212,7 @@ export class CountriesCodes extends JsonWriter {
                 "languages_codes_and_names": [
                     {
                         "language_code": "bn",
-                        "languages_names": [
+                        "language_names": [
                             "Bengali",
                             "Bangla"
                         ]
@@ -243,7 +226,7 @@ export class CountriesCodes extends JsonWriter {
                 "languages_codes_and_names": [
                     {
                         "language_code": "en",
-                        "languages_names": [
+                        "language_names": [
                             "English"
                         ]
                     }
@@ -256,13 +239,13 @@ export class CountriesCodes extends JsonWriter {
                 "languages_codes_and_names": [
                     {
                         "language_code": "be",
-                        "languages_names": [
+                        "language_names": [
                             "Belarusian"
                         ]
                     },
                     {
                         "language_code": "ru",
-                        "languages_names": [
+                        "language_names": [
                             "Russian"
                         ]
                     }
@@ -275,19 +258,19 @@ export class CountriesCodes extends JsonWriter {
                 "languages_codes_and_names": [
                     {
                         "language_code": "nl",
-                        "languages_names": [
+                        "language_names": [
                             "Dutch"
                         ]
                     },
                     {
                         "language_code": "fr",
-                        "languages_names": [
+                        "language_names": [
                             "French"
                         ]
                     },
                     {
                         "language_code": "de",
-                        "languages_names": [
+                        "language_names": [
                             "German"
                         ]
                     }
@@ -300,7 +283,7 @@ export class CountriesCodes extends JsonWriter {
                 "languages_codes_and_names": [
                     {
                         "language_code": "en",
-                        "languages_names": [
+                        "language_names": [
                             "English"
                         ]
                     }
@@ -313,7 +296,7 @@ export class CountriesCodes extends JsonWriter {
                 "languages_codes_and_names": [
                     {
                         "language_code": "fr",
-                        "languages_names": [
+                        "language_names": [
                             "French"
                         ]
                     }
@@ -326,7 +309,7 @@ export class CountriesCodes extends JsonWriter {
                 "languages_codes_and_names": [
                     {
                         "language_code": "dz",
-                        "languages_names": [
+                        "language_names": [
                             "Dzongkha"
                         ]
                     }
@@ -339,19 +322,19 @@ export class CountriesCodes extends JsonWriter {
                 "languages_codes_and_names": [
                     {
                         "language_code": "es",
-                        "languages_names": [
+                        "language_names": [
                             "Spanish"
                         ]
                     },
                     {
                         "language_code": "qu",
-                        "languages_names": [
+                        "language_names": [
                             "Quechua"
                         ]
                     },
                     {
                         "language_code": "ay",
-                        "languages_names": [
+                        "language_names": [
                             "Aymara"
                         ]
                     }
@@ -364,19 +347,19 @@ export class CountriesCodes extends JsonWriter {
                 "languages_codes_and_names": [
                     {
                         "language_code": "bs",
-                        "languages_names": [
+                        "language_names": [
                             "Bosnian"
                         ]
                     },
                     {
                         "language_code": "hr",
-                        "languages_names": [
+                        "language_names": [
                             "Croatian"
                         ]
                     },
                     {
                         "language_code": "sr",
-                        "languages_names": [
+                        "language_names": [
                             "Serbian"
                         ]
                     }
@@ -389,13 +372,13 @@ export class CountriesCodes extends JsonWriter {
                 "languages_codes_and_names": [
                     {
                         "language_code": "en",
-                        "languages_names": [
+                        "language_names": [
                             "English"
                         ]
                     },
                     {
                         "language_code": "tn",
-                        "languages_names": [
+                        "language_names": [
                             "Tswana",
                             "Setswana"
                         ]
@@ -409,7 +392,7 @@ export class CountriesCodes extends JsonWriter {
                 "languages_codes_and_names": [
                     {
                         "language_code": "pt",
-                        "languages_names": [
+                        "language_names": [
                             "Portuguese"
                         ]
                     }
@@ -422,7 +405,7 @@ export class CountriesCodes extends JsonWriter {
                 "languages_codes_and_names": [
                     {
                         "language_code": "ms",
-                        "languages_names": [
+                        "language_names": [
                             "Malay"
                         ]
                     }
@@ -435,7 +418,7 @@ export class CountriesCodes extends JsonWriter {
                 "languages_codes_and_names": [
                     {
                         "language_code": "bg",
-                        "languages_names": [
+                        "language_names": [
                             "Bulgarian"
                         ]
                     }
@@ -448,7 +431,7 @@ export class CountriesCodes extends JsonWriter {
                 "languages_codes_and_names": [
                     {
                         "language_code": "fr",
-                        "languages_names": [
+                        "language_names": [
                             "French"
                         ]
                     }
@@ -461,19 +444,19 @@ export class CountriesCodes extends JsonWriter {
                 "languages_codes_and_names": [
                     {
                         "language_code": "rn",
-                        "languages_names": [
+                        "language_names": [
                             "Kirundi"
                         ]
                     },
                     {
                         "language_code": "fr",
-                        "languages_names": [
+                        "language_names": [
                             "French"
                         ]
                     },
                     {
                         "language_code": "en",
-                        "languages_names": [
+                        "language_names": [
                             "English"
                         ]
                     }
@@ -486,7 +469,7 @@ export class CountriesCodes extends JsonWriter {
                 "languages_codes_and_names": [
                     {
                         "language_code": "km",
-                        "languages_names": [
+                        "language_names": [
                             "Khmer"
                         ]
                     }
@@ -499,13 +482,13 @@ export class CountriesCodes extends JsonWriter {
                 "languages_codes_and_names": [
                     {
                         "language_code": "en",
-                        "languages_names": [
+                        "language_names": [
                             "English"
                         ]
                     },
                     {
                         "language_code": "fr",
-                        "languages_names": [
+                        "language_names": [
                             "French"
                         ]
                     }
@@ -518,13 +501,13 @@ export class CountriesCodes extends JsonWriter {
                 "languages_codes_and_names": [
                     {
                         "language_code": "en",
-                        "languages_names": [
+                        "language_names": [
                             "English"
                         ]
                     },
                     {
                         "language_code": "fr",
-                        "languages_names": [
+                        "language_names": [
                             "French"
                         ]
                     }
@@ -536,7 +519,7 @@ export class CountriesCodes extends JsonWriter {
                 "languages_codes_and_names": [
                     {
                         "language_code": "pt",
-                        "languages_names": [
+                        "language_names": [
                             "Portuguese"
                         ]
                     }
@@ -549,13 +532,13 @@ export class CountriesCodes extends JsonWriter {
                 "languages_codes_and_names": [
                     {
                         "language_code": "fr",
-                        "languages_names": [
+                        "language_names": [
                             "French"
                         ]
                     },
                     {
                         "language_code": "sg",
-                        "languages_names": [
+                        "language_names": [
                             "Sango"
                         ]
                     }
@@ -568,13 +551,13 @@ export class CountriesCodes extends JsonWriter {
                 "languages_codes_and_names": [
                     {
                         "language_code": "fr",
-                        "languages_names": [
+                        "language_names": [
                             "French"
                         ]
                     },
                     {
                         "language_code": "ar",
-                        "languages_names": [
+                        "language_names": [
                             "Arabic"
                         ]
                     }
@@ -587,7 +570,7 @@ export class CountriesCodes extends JsonWriter {
                 "languages_codes_and_names": [
                     {
                         "language_code": "es",
-                        "languages_names": [
+                        "language_names": [
                             "Spanish"
                         ]
                     }
@@ -600,19 +583,19 @@ export class CountriesCodes extends JsonWriter {
                 "languages_codes_and_names": [
                     {
                         "language_code": "zh",
-                        "languages_names": [
+                        "language_names": [
                             "Chinese"
                         ]
                     },
                     {
                         "language_code": "zh-Hant",
-                        "languages_names": [
+                        "language_names": [
                             "Chinese (Traditional)"
                         ]
                     },
                     {
                         "language_code": "zh-Hans",
-                        "languages_names": [
+                        "language_names": [
                             "Chinese (Simplified)"
                         ]
                     }
@@ -626,13 +609,13 @@ export class CountriesCodes extends JsonWriter {
                     "Comorian",
                     {
                         "language_code": "ar",
-                        "languages_names": [
+                        "language_names": [
                             "Arabic"
                         ]
                     },
                     {
                         "language_code": "fr",
-                        "languages_names": [
+                        "language_names": [
                             "French"
                         ]
                     }
@@ -644,7 +627,7 @@ export class CountriesCodes extends JsonWriter {
                 "languages_codes_and_names": [
                     {
                         "language_code": "fr",
-                        "languages_names": [
+                        "language_names": [
                             "French"
                         ]
                     }
@@ -656,7 +639,7 @@ export class CountriesCodes extends JsonWriter {
                 "languages_codes_and_names": [
                     {
                         "language_code": "fr",
-                        "languages_names": [
+                        "language_names": [
                             "French"
                         ]
                     }
@@ -669,7 +652,7 @@ export class CountriesCodes extends JsonWriter {
                 "languages_codes_and_names": [
                     {
                         "language_code": "es",
-                        "languages_names": [
+                        "language_names": [
                             "Spanish"
                         ]
                     }
@@ -682,7 +665,7 @@ export class CountriesCodes extends JsonWriter {
                 "languages_codes_and_names": [
                     {
                         "language_code": "hr",
-                        "languages_names": [
+                        "language_names": [
                             "Croatian"
                         ]
                     }
@@ -695,7 +678,7 @@ export class CountriesCodes extends JsonWriter {
                 "languages_codes_and_names": [
                     {
                         "language_code": "es",
-                        "languages_names": [
+                        "language_names": [
                             "Spanish"
                         ]
                     }
@@ -708,13 +691,13 @@ export class CountriesCodes extends JsonWriter {
                 "languages_codes_and_names": [
                     {
                         "language_code": "el",
-                        "languages_names": [
+                        "language_names": [
                             "Greek"
                         ]
                     },
                     {
                         "language_code": "tr",
-                        "languages_names": [
+                        "language_names": [
                             "Turkish"
                         ]
                     }
@@ -727,7 +710,7 @@ export class CountriesCodes extends JsonWriter {
                 "languages_codes_and_names": [
                     {
                         "language_code": "cs",
-                        "languages_names": [
+                        "language_names": [
                             "Czech"
                         ]
                     }
@@ -740,7 +723,7 @@ export class CountriesCodes extends JsonWriter {
                 "languages_codes_and_names": [
                     {
                         "language_code": "fr",
-                        "languages_names": [
+                        "language_names": [
                             "French"
                         ]
                     }
@@ -753,7 +736,7 @@ export class CountriesCodes extends JsonWriter {
                 "languages_codes_and_names": [
                     {
                         "language_code": "da",
-                        "languages_names": [
+                        "language_names": [
                             "Danish"
                         ]
                     }
@@ -766,13 +749,13 @@ export class CountriesCodes extends JsonWriter {
                 "languages_codes_and_names": [
                     {
                         "language_code": "ar",
-                        "languages_names": [
+                        "language_names": [
                             "Arabic"
                         ]
                     },
                     {
                         "language_code": "fr",
-                        "languages_names": [
+                        "language_names": [
                             "French"
                         ]
                     }
@@ -785,7 +768,7 @@ export class CountriesCodes extends JsonWriter {
                 "languages_codes_and_names": [
                     {
                         "language_code": "en",
-                        "languages_names": [
+                        "language_names": [
                             "English"
                         ]
                     }
@@ -798,7 +781,7 @@ export class CountriesCodes extends JsonWriter {
                 "languages_codes_and_names": [
                     {
                         "language_code": "es",
-                        "languages_names": [
+                        "language_names": [
                             "Spanish"
                         ]
                     }
@@ -811,7 +794,7 @@ export class CountriesCodes extends JsonWriter {
                     "Tetum",
                     {
                         "language_code": "pt",
-                        "languages_names": [
+                        "language_names": [
                             "Portuguese"
                         ]
                     }
@@ -824,7 +807,7 @@ export class CountriesCodes extends JsonWriter {
                 "languages_codes_and_names": [
                     {
                         "language_code": "es",
-                        "languages_names": [
+                        "language_names": [
                             "Spanish"
                         ]
                     }
@@ -837,7 +820,7 @@ export class CountriesCodes extends JsonWriter {
                 "languages_codes_and_names": [
                     {
                         "language_code": "ar",
-                        "languages_names": [
+                        "language_names": [
                             "Arabic"
                         ]
                     }
@@ -850,7 +833,7 @@ export class CountriesCodes extends JsonWriter {
                 "languages_codes_and_names": [
                     {
                         "language_code": "es",
-                        "languages_names": [
+                        "language_names": [
                             "Spanish"
                         ]
                     }
@@ -863,19 +846,19 @@ export class CountriesCodes extends JsonWriter {
                 "languages_codes_and_names": [
                     {
                         "language_code": "es",
-                        "languages_names": [
+                        "language_names": [
                             "Spanish"
                         ]
                     },
                     {
                         "language_code": "fr",
-                        "languages_names": [
+                        "language_names": [
                             "French"
                         ]
                     },
                     {
                         "language_code": "pt",
-                        "languages_names": [
+                        "language_names": [
                             "Portuguese"
                         ]
                     }
@@ -888,19 +871,19 @@ export class CountriesCodes extends JsonWriter {
                 "languages_codes_and_names": [
                     {
                         "language_code": "ti",
-                        "languages_names": [
+                        "language_names": [
                             "Tigrinya"
                         ]
                     },
                     {
                         "language_code": "ar",
-                        "languages_names": [
+                        "language_names": [
                             "Arabic"
                         ]
                     },
                     {
                         "language_code": "en",
-                        "languages_names": [
+                        "language_names": [
                             "English"
                         ]
                     }
@@ -913,7 +896,7 @@ export class CountriesCodes extends JsonWriter {
                 "languages_codes_and_names": [
                     {
                         "language_code": "et",
-                        "languages_names": [
+                        "language_names": [
                             "Estonian"
                         ]
                     }
@@ -926,13 +909,13 @@ export class CountriesCodes extends JsonWriter {
                 "languages_codes_and_names": [
                     {
                         "language_code": "ss",
-                        "languages_names": [
+                        "language_names": [
                             "Swati"
                         ]
                     },
                     {
                         "language_code": "en",
-                        "languages_names": [
+                        "language_names": [
                             "English"
                         ]
                     }
@@ -945,7 +928,7 @@ export class CountriesCodes extends JsonWriter {
                 "languages_codes_and_names": [
                     {
                         "language_code": "am",
-                        "languages_names": [
+                        "language_names": [
                             "Amharic"
                         ]
                     }
@@ -958,19 +941,19 @@ export class CountriesCodes extends JsonWriter {
                 "languages_codes_and_names": [
                     {
                         "language_code": "en",
-                        "languages_names": [
+                        "language_names": [
                             "English"
                         ]
                     },
                     {
                         "language_code": "fj",
-                        "languages_names": [
+                        "language_names": [
                             "Fijian"
                         ]
                     },
                     {
                         "language_code": "hi",
-                        "languages_names": [
+                        "language_names": [
                             "Hindi"
                         ]
                     }
@@ -983,13 +966,13 @@ export class CountriesCodes extends JsonWriter {
                 "languages_codes_and_names": [
                     {
                         "language_code": "fi",
-                        "languages_names": [
+                        "language_names": [
                             "Finnish"
                         ]
                     },
                     {
                         "language_code": "sv",
-                        "languages_names": [
+                        "language_names": [
                             "Swedish"
                         ]
                     }
@@ -1002,7 +985,7 @@ export class CountriesCodes extends JsonWriter {
                 "languages_codes_and_names": [
                     {
                         "language_code": "fr",
-                        "languages_names": [
+                        "language_names": [
                             "French"
                         ]
                     }
@@ -1015,7 +998,7 @@ export class CountriesCodes extends JsonWriter {
                 "languages_codes_and_names": [
                     {
                         "language_code": "fr",
-                        "languages_names": [
+                        "language_names": [
                             "French"
                         ]
                     }
@@ -1028,7 +1011,7 @@ export class CountriesCodes extends JsonWriter {
                 "languages_codes_and_names": [
                     {
                         "language_code": "ka",
-                        "languages_names": [
+                        "language_names": [
                             "Georgian"
                         ]
                     }
@@ -1041,7 +1024,7 @@ export class CountriesCodes extends JsonWriter {
                 "languages_codes_and_names": [
                     {
                         "language_code": "de",
-                        "languages_names": [
+                        "language_names": [
                             "German"
                         ]
                     }
@@ -1054,7 +1037,7 @@ export class CountriesCodes extends JsonWriter {
                 "languages_codes_and_names": [
                     {
                         "language_code": "en",
-                        "languages_names": [
+                        "language_names": [
                             "English"
                         ]
                     }
@@ -1067,7 +1050,7 @@ export class CountriesCodes extends JsonWriter {
                 "languages_codes_and_names": [
                     {
                         "language_code": "el",
-                        "languages_names": [
+                        "language_names": [
                             "Greek"
                         ]
                     }
@@ -1080,7 +1063,7 @@ export class CountriesCodes extends JsonWriter {
                 "languages_codes_and_names": [
                     {
                         "language_code": "en",
-                        "languages_names": [
+                        "language_names": [
                             "English"
                         ]
                     }
@@ -1093,7 +1076,7 @@ export class CountriesCodes extends JsonWriter {
                 "languages_codes_and_names": [
                     {
                         "language_code": "es",
-                        "languages_names": [
+                        "language_names": [
                             "Spanish"
                         ]
                     }
@@ -1106,7 +1089,7 @@ export class CountriesCodes extends JsonWriter {
                 "languages_codes_and_names": [
                     {
                         "language_code": "fr",
-                        "languages_names": [
+                        "language_names": [
                             "French"
                         ]
                     }
@@ -1119,7 +1102,7 @@ export class CountriesCodes extends JsonWriter {
                 "languages_codes_and_names": [
                     {
                         "language_code": "pt",
-                        "languages_names": [
+                        "language_names": [
                             "Portuguese"
                         ]
                     }
@@ -1132,7 +1115,7 @@ export class CountriesCodes extends JsonWriter {
                 "languages_codes_and_names": [
                     {
                         "language_code": "en",
-                        "languages_names": [
+                        "language_names": [
                             "English"
                         ]
                     }
@@ -1145,13 +1128,13 @@ export class CountriesCodes extends JsonWriter {
                 "languages_codes_and_names": [
                     {
                         "language_code": "ht",
-                        "languages_names": [
+                        "language_names": [
                             "Haitian Creole"
                         ]
                     },
                     {
                         "language_code": "fr",
-                        "languages_names": [
+                        "language_names": [
                             "French"
                         ]
                     }
@@ -1164,7 +1147,7 @@ export class CountriesCodes extends JsonWriter {
                 "languages_codes_and_names": [
                     {
                         "language_code": "es",
-                        "languages_names": [
+                        "language_names": [
                             "Spanish"
                         ]
                     }
@@ -1177,7 +1160,7 @@ export class CountriesCodes extends JsonWriter {
                 "languages_codes_and_names": [
                     {
                         "language_code": "hu",
-                        "languages_names": [
+                        "language_names": [
                             "Hungarian"
                         ]
                     }
@@ -1190,7 +1173,7 @@ export class CountriesCodes extends JsonWriter {
                 "languages_codes_and_names": [
                     {
                         "language_code": "is",
-                        "languages_names": [
+                        "language_names": [
                             "Icelandic"
                         ]
                     }
@@ -1203,137 +1186,137 @@ export class CountriesCodes extends JsonWriter {
                 "languages_codes_and_names": [
                     {
                         "language_code": "hi",
-                        "languages_names": [
+                        "language_names": [
                             "Hindi"
                         ]
                     },
                     {
                         "language_code": "bn",
-                        "languages_names": [
+                        "language_names": [
                             "Bengali",
                             "Bangla"
                         ]
                     },
                     {
                         "language_code": "te",
-                        "languages_names": [
+                        "language_names": [
                             "Telugu"
                         ]
                     },
                     {
                         "language_code": "mr",
-                        "languages_names": [
+                        "language_names": [
                             "Marathi"
                         ]
                     },
                     {
                         "language_code": "ta",
-                        "languages_names": [
+                        "language_names": [
                             "Tamil"
                         ]
                     },
                     {
                         "language_code": "ur",
-                        "languages_names": [
+                        "language_names": [
                             "Urdu"
                         ]
                     },
                     {
                         "language_code": "gu",
-                        "languages_names": [
+                        "language_names": [
                             "Gujarati"
                         ]
                     },
                     {
                         "language_code": "ml",
-                        "languages_names": [
+                        "language_names": [
                             "Malayalam"
                         ]
                     },
                     {
                         "language_code": "kn",
-                        "languages_names": [
+                        "language_names": [
                             "Kannada"
                         ]
                     },
                     {
                         "language_code": "or",
-                        "languages_names": [
+                        "language_names": [
                             "Odia",
                             "Oriya"
                         ]
                     },
                     {
                         "language_code": "pa",
-                        "languages_names": [
+                        "language_names": [
                             "Punjabi",
                             "Eastern Punjabi"
                         ]
                     },
                     {
                         "language_code": "as",
-                        "languages_names": [
+                        "language_names": [
                             "Assamese"
                         ]
                     },
                     {
                         "language_code": "mai",
-                        "languages_names": [
+                        "language_names": [
                             "Maithili"
                         ]
                     },
                     {
                         "language_code": "sat",
-                        "languages_names": [
+                        "language_names": [
                             "Santali"
                         ]
                     },
                     {
                         "language_code": "ks",
-                        "languages_names": [
+                        "language_names": [
                             "Kashmiri"
                         ]
                     },
                     {
                         "language_code": "ne",
-                        "languages_names": [
+                        "language_names": [
                             "Nepali"
                         ]
                     },
                     {
                         "language_code": "kok",
-                        "languages_names": [
+                        "language_names": [
                             "Konkani"
                         ]
                     },
                     {
                         "language_code": "sd",
-                        "languages_names": [
+                        "language_names": [
                             "Sindhi"
                         ]
                     },
                     {
                         "language_code": "doi",
-                        "languages_names": [
+                        "language_names": [
                             "Dogri"
                         ]
                     },
                     {
                         "language_code": "mni",
-                        "languages_names": [
+                        "language_names": [
                             "Manipuri",
                             "Meitei"
                         ]
                     },
                     {
                         "language_code": "brx",
-                        "languages_names": [
+                        "language_names": [
                             "Bodo"
                         ]
                     },
                     {
                         "language_code": "sa",
-                        "languages_names": [
+                        "language_names": [
                             "Sanskrit"
                         ]
                     }
@@ -1346,7 +1329,7 @@ export class CountriesCodes extends JsonWriter {
                 "languages_codes_and_names": [
                     {
                         "language_code": "id, in",
-                        "languages_names": [
+                        "language_names": [
                             "Indonesian"
                         ]
                     }
@@ -1359,7 +1342,7 @@ export class CountriesCodes extends JsonWriter {
                 "languages_codes_and_names": [
                     {
                         "language_code": "fa",
-                        "languages_names": [
+                        "language_names": [
                             "Persian",
                             "Farsi"
                         ]
@@ -1373,13 +1356,13 @@ export class CountriesCodes extends JsonWriter {
                 "languages_codes_and_names": [
                     {
                         "language_code": "ar",
-                        "languages_names": [
+                        "language_names": [
                             "Arabic"
                         ]
                     },
                     {
                         "language_code": "ku",
-                        "languages_names": [
+                        "language_names": [
                             "Kurdish"
                         ]
                     }
@@ -1392,13 +1375,13 @@ export class CountriesCodes extends JsonWriter {
                 "languages_codes_and_names": [
                     {
                         "language_code": "ga",
-                        "languages_names": [
+                        "language_names": [
                             "Irish"
                         ]
                     },
                     {
                         "language_code": "en",
-                        "languages_names": [
+                        "language_names": [
                             "English"
                         ]
                     }
@@ -1411,13 +1394,13 @@ export class CountriesCodes extends JsonWriter {
                 "languages_codes_and_names": [
                     {
                         "language_code": "he",
-                        "languages_names": [
+                        "language_names": [
                             "Hebrew"
                         ]
                     },
                     {
                         "language_code": "ar",
-                        "languages_names": [
+                        "language_names": [
                             "Arabic"
                         ]
                     }
@@ -1430,7 +1413,7 @@ export class CountriesCodes extends JsonWriter {
                 "languages_codes_and_names": [
                     {
                         "language_code": "it",
-                        "languages_names": [
+                        "language_names": [
                             "Italian"
                         ]
                     }
@@ -1443,7 +1426,7 @@ export class CountriesCodes extends JsonWriter {
                 "languages_codes_and_names": [
                     {
                         "language_code": "en",
-                        "languages_names": [
+                        "language_names": [
                             "English"
                         ]
                     }
@@ -1456,7 +1439,7 @@ export class CountriesCodes extends JsonWriter {
                 "languages_codes_and_names": [
                     {
                         "language_code": "ja",
-                        "languages_names": [
+                        "language_names": [
                             "Japanese"
                         ]
                     }
@@ -1469,7 +1452,7 @@ export class CountriesCodes extends JsonWriter {
                 "languages_codes_and_names": [
                     {
                         "language_code": "ar",
-                        "languages_names": [
+                        "language_names": [
                             "Arabic"
                         ]
                     }
@@ -1482,13 +1465,13 @@ export class CountriesCodes extends JsonWriter {
                 "languages_codes_and_names": [
                     {
                         "language_code": "kk",
-                        "languages_names": [
+                        "language_names": [
                             "Kazakh"
                         ]
                     },
                     {
                         "language_code": "ru",
-                        "languages_names": [
+                        "language_names": [
                             "Russian"
                         ]
                     }
@@ -1501,13 +1484,13 @@ export class CountriesCodes extends JsonWriter {
                 "languages_codes_and_names": [
                     {
                         "language_code": "en",
-                        "languages_names": [
+                        "language_names": [
                             "English"
                         ]
                     },
                     {
                         "language_code": "sw",
-                        "languages_names": [
+                        "language_names": [
                             "Swahili",
                             "Kiswahili"
                         ]
@@ -1521,7 +1504,7 @@ export class CountriesCodes extends JsonWriter {
                 "languages_codes_and_names": [
                     {
                         "language_code": "en",
-                        "languages_names": [
+                        "language_names": [
                             "English"
                         ]
                     },
@@ -1534,7 +1517,7 @@ export class CountriesCodes extends JsonWriter {
                 "languages_codes_and_names": [
                     {
                         "language_code": "ko",
-                        "languages_names": [
+                        "language_names": [
                             "Korean"
                         ]
                     }
@@ -1546,7 +1529,7 @@ export class CountriesCodes extends JsonWriter {
                 "languages_codes_and_names": [
                     {
                         "language_code": "ko",
-                        "languages_names": [
+                        "language_names": [
                             "Korean"
                         ]
                     }
@@ -1559,7 +1542,7 @@ export class CountriesCodes extends JsonWriter {
                 "languages_codes_and_names": [
                     {
                         "language_code": "ar",
-                        "languages_names": [
+                        "language_names": [
                             "Arabic"
                         ]
                     }
@@ -1572,13 +1555,13 @@ export class CountriesCodes extends JsonWriter {
                 "languages_codes_and_names": [
                     {
                         "language_code": "ky",
-                        "languages_names": [
+                        "language_names": [
                             "Kyrgyz"
                         ]
                     },
                     {
                         "language_code": "ru",
-                        "languages_names": [
+                        "language_names": [
                             "Russian"
                         ]
                     }
@@ -1590,7 +1573,7 @@ export class CountriesCodes extends JsonWriter {
                 "languages_codes_and_names": [
                     {
                         "language_code": "lo",
-                        "languages_names": [
+                        "language_names": [
                             "Lao"
                         ]
                     }
@@ -1603,7 +1586,7 @@ export class CountriesCodes extends JsonWriter {
                 "languages_codes_and_names": [
                     {
                         "language_code": "lv",
-                        "languages_names": [
+                        "language_names": [
                             "Latvian",
                             "Lettish"
                         ]
@@ -1617,13 +1600,13 @@ export class CountriesCodes extends JsonWriter {
                 "languages_codes_and_names": [
                     {
                         "language_code": "ar",
-                        "languages_names": [
+                        "language_names": [
                             "Arabic"
                         ]
                     },
                     {
                         "language_code": "fr",
-                        "languages_names": [
+                        "language_names": [
                             "French"
                         ]
                     }
@@ -1636,13 +1619,13 @@ export class CountriesCodes extends JsonWriter {
                 "languages_codes_and_names": [
                     {
                         "language_code": "st",
-                        "languages_names": [
+                        "language_names": [
                             "Sesotho"
                         ]
                     },
                     {
                         "language_code": "en",
-                        "languages_names": [
+                        "language_names": [
                             "English"
                         ]
                     }
@@ -1655,7 +1638,7 @@ export class CountriesCodes extends JsonWriter {
                 "languages_codes_and_names": [
                     {
                         "language_code": "en",
-                        "languages_names": [
+                        "language_names": [
                             "English"
                         ]
                     }
@@ -1668,7 +1651,7 @@ export class CountriesCodes extends JsonWriter {
                 "languages_codes_and_names": [
                     {
                         "language_code": "ar",
-                        "languages_names": [
+                        "language_names": [
                             "Arabic"
                         ]
                     }
@@ -1681,7 +1664,7 @@ export class CountriesCodes extends JsonWriter {
                 "languages_codes_and_names": [
                     {
                         "language_code": "de",
-                        "languages_names": [
+                        "language_names": [
                             "German"
                         ]
                     }
@@ -1694,7 +1677,7 @@ export class CountriesCodes extends JsonWriter {
                 "languages_codes_and_names": [
                     {
                         "language_code": "lt",
-                        "languages_names": [
+                        "language_names": [
                             "Lithuanian"
                         ]
                     }
@@ -1707,19 +1690,19 @@ export class CountriesCodes extends JsonWriter {
                 "languages_codes_and_names": [
                     {
                         "language_code": "lb",
-                        "languages_names": [
+                        "language_names": [
                             "Luxembourgish"
                         ]
                     },
                     {
                         "language_code": "fr",
-                        "languages_names": [
+                        "language_names": [
                             "French"
                         ]
                     },
                     {
                         "language_code": "de",
-                        "languages_names": [
+                        "language_names": [
                             "German"
                         ]
                     }
@@ -1732,7 +1715,7 @@ export class CountriesCodes extends JsonWriter {
                 "languages_codes_and_names": [
                     {
                         "language_code": "mk",
-                        "languages_names": [
+                        "language_names": [
                             "Macedonian"
                         ]
                     }
@@ -1745,13 +1728,13 @@ export class CountriesCodes extends JsonWriter {
                 "languages_codes_and_names": [
                     {
                         "language_code": "mg",
-                        "languages_names": [
+                        "language_names": [
                             "Malagasy"
                         ]
                     },
                     {
                         "language_code": "fr",
-                        "languages_names": [
+                        "language_names": [
                             "French"
                         ]
                     }
@@ -1764,13 +1747,13 @@ export class CountriesCodes extends JsonWriter {
                 "languages_codes_and_names": [
                     {
                         "language_code": "en",
-                        "languages_names": [
+                        "language_names": [
                             "English"
                         ]
                     },
                     {
                         "language_code": "ny",
-                        "languages_names": [
+                        "language_names": [
                             "Chichewa",
                             "Chewa",
                             "Nyanja"
@@ -1785,7 +1768,7 @@ export class CountriesCodes extends JsonWriter {
                 "languages_codes_and_names": [
                     {
                         "language_code": "ms",
-                        "languages_names": [
+                        "language_names": [
                             "Malay"
                         ]
                     }
@@ -1798,7 +1781,7 @@ export class CountriesCodes extends JsonWriter {
                 "languages_codes_and_names": [
                     {
                         "language_code": "dv",
-                        "languages_names": [
+                        "language_names": [
                             "Divehi",
                             "Dhivehi",
                             "Maldivian"
@@ -1813,7 +1796,7 @@ export class CountriesCodes extends JsonWriter {
                 "languages_codes_and_names": [
                     {
                         "language_code": "fr",
-                        "languages_names": [
+                        "language_names": [
                             "French"
                         ]
                     }
@@ -1826,13 +1809,13 @@ export class CountriesCodes extends JsonWriter {
                 "languages_codes_and_names": [
                     {
                         "language_code": "mt",
-                        "languages_names": [
+                        "language_names": [
                             "Maltese"
                         ]
                     },
                     {
                         "language_code": "en",
-                        "languages_names": [
+                        "language_names": [
                             "English"
                         ]
                     }
@@ -1845,13 +1828,13 @@ export class CountriesCodes extends JsonWriter {
                 "languages_codes_and_names": [
                     {
                         "language_code": "mh",
-                        "languages_names": [
+                        "language_names": [
                             "Marshallese"
                         ]
                     },
                     {
                         "language_code": "en",
-                        "languages_names": [
+                        "language_names": [
                             "English"
                         ]
                     }
@@ -1864,7 +1847,7 @@ export class CountriesCodes extends JsonWriter {
                 "languages_codes_and_names": [
                     {
                         "language_code": "ar",
-                        "languages_names": [
+                        "language_names": [
                             "Arabic"
                         ]
                     }
@@ -1877,13 +1860,13 @@ export class CountriesCodes extends JsonWriter {
                 "languages_codes_and_names": [
                     {
                         "language_code": "en",
-                        "languages_names": [
+                        "language_names": [
                             "English"
                         ]
                     },
                     {
                         "language_code": "fr",
-                        "languages_names": [
+                        "language_names": [
                             "French"
                         ]
                     }
@@ -1896,7 +1879,7 @@ export class CountriesCodes extends JsonWriter {
                 "languages_codes_and_names": [
                     {
                         "language_code": "es",
-                        "languages_names": [
+                        "language_names": [
                             "Spanish"
                         ]
                     }
@@ -1909,7 +1892,7 @@ export class CountriesCodes extends JsonWriter {
                 "languages_codes_and_names": [
                     {
                         "language_code": "en",
-                        "languages_names": [
+                        "language_names": [
                             "English"
                         ]
                     }
@@ -1922,7 +1905,7 @@ export class CountriesCodes extends JsonWriter {
                 "languages_codes_and_names": [
                     {
                         "language_code": "ro",
-                        "languages_names": [
+                        "language_names": [
                             "Romanian"
                         ]
                     }
@@ -1935,7 +1918,7 @@ export class CountriesCodes extends JsonWriter {
                 "languages_codes_and_names": [
                     {
                         "language_code": "fr",
-                        "languages_names": [
+                        "language_names": [
                             "French"
                         ]
                     }
@@ -1948,7 +1931,7 @@ export class CountriesCodes extends JsonWriter {
                 "languages_codes_and_names": [
                     {
                         "language_code": "mn",
-                        "languages_names": [
+                        "language_names": [
                             "Mongolian"
                         ]
                     }
@@ -1969,7 +1952,7 @@ export class CountriesCodes extends JsonWriter {
                 "languages_codes_and_names": [
                     {
                         "language_code": "ar",
-                        "languages_names": [
+                        "language_names": [
                             "Arabic"
                         ]
                     },
@@ -1983,7 +1966,7 @@ export class CountriesCodes extends JsonWriter {
                 "languages_codes_and_names": [
                     {
                         "language_code": "pt",
-                        "languages_names": [
+                        "language_names": [
                             "Portuguese"
                         ]
                     }
@@ -1996,7 +1979,7 @@ export class CountriesCodes extends JsonWriter {
                 "languages_codes_and_names": [
                     {
                         "language_code": "en",
-                        "languages_names": [
+                        "language_names": [
                             "English"
                         ]
                     }
@@ -2010,7 +1993,7 @@ export class CountriesCodes extends JsonWriter {
                     "Nauruan",
                     {
                         "language_code": "en",
-                        "languages_names": [
+                        "language_names": [
                             "English"
                         ]
                     }
@@ -2023,7 +2006,7 @@ export class CountriesCodes extends JsonWriter {
                 "languages_codes_and_names": [
                     {
                         "language_code": "ne",
-                        "languages_names": [
+                        "language_names": [
                             "Nepali"
                         ]
                     }
@@ -2036,7 +2019,7 @@ export class CountriesCodes extends JsonWriter {
                 "languages_codes_and_names": [
                     {
                         "language_code": "nl",
-                        "languages_names": [
+                        "language_names": [
                             "Dutch"
                         ]
                     }
@@ -2049,7 +2032,7 @@ export class CountriesCodes extends JsonWriter {
                 "languages_codes_and_names": [
                     {
                         "language_code": "en",
-                        "languages_names": [
+                        "language_names": [
                             "English"
                         ]
                     },
@@ -2063,7 +2046,7 @@ export class CountriesCodes extends JsonWriter {
                 "languages_codes_and_names": [
                     {
                         "language_code": "es",
-                        "languages_names": [
+                        "language_names": [
                             "Spanish"
                         ]
                     }
@@ -2076,7 +2059,7 @@ export class CountriesCodes extends JsonWriter {
                 "languages_codes_and_names": [
                     {
                         "language_code": "fr",
-                        "languages_names": [
+                        "language_names": [
                             "French"
                         ]
                     }
@@ -2089,7 +2072,7 @@ export class CountriesCodes extends JsonWriter {
                 "languages_codes_and_names": [
                     {
                         "language_code": "en",
-                        "languages_names": [
+                        "language_names": [
                             "English"
                         ]
                     }
@@ -2102,7 +2085,7 @@ export class CountriesCodes extends JsonWriter {
                 "languages_codes_and_names": [
                     {
                         "language_code": "no",
-                        "languages_names": [
+                        "language_names": [
                             "Norwegian"
                         ]
                     }
@@ -2115,7 +2098,7 @@ export class CountriesCodes extends JsonWriter {
                 "languages_codes_and_names": [
                     {
                         "language_code": "ar",
-                        "languages_names": [
+                        "language_names": [
                             "Arabic"
                         ]
                     }
@@ -2128,13 +2111,13 @@ export class CountriesCodes extends JsonWriter {
                 "languages_codes_and_names": [
                     {
                         "language_code": "ur",
-                        "languages_names": [
+                        "language_names": [
                             "Urdu"
                         ]
                     },
                     {
                         "language_code": "en",
-                        "languages_names": [
+                        "language_names": [
                             "English"
                         ]
                     }
@@ -2148,7 +2131,7 @@ export class CountriesCodes extends JsonWriter {
                     "Palauan",
                     {
                         "language_code": "en",
-                        "languages_names": [
+                        "language_names": [
                             "English"
                         ]
                     }
@@ -2161,7 +2144,7 @@ export class CountriesCodes extends JsonWriter {
                 "languages_codes_and_names": [
                     {
                         "language_code": "es",
-                        "languages_names": [
+                        "language_names": [
                             "Spanish"
                         ]
                     }
@@ -2174,14 +2157,14 @@ export class CountriesCodes extends JsonWriter {
                 "languages_codes_and_names": [
                     {
                         "language_code": "en",
-                        "languages_names": [
+                        "language_names": [
                             "English"
                         ]
                     },
                     "Tok Pisin",
                     {
                         "language_code": "ho",
-                        "languages_names": [
+                        "language_names": [
                             "Hiri Motu"
                         ]
                     }
@@ -2194,13 +2177,13 @@ export class CountriesCodes extends JsonWriter {
                 "languages_codes_and_names": [
                     {
                         "language_code": "es",
-                        "languages_names": [
+                        "language_names": [
                             "Spanish"
                         ]
                     },
                     {
                         "language_code": "gn",
-                        "languages_names": [
+                        "language_names": [
                             "Guarani"
                         ]
                     }
@@ -2213,19 +2196,19 @@ export class CountriesCodes extends JsonWriter {
                 "languages_codes_and_names": [
                     {
                         "language_code": "es",
-                        "languages_names": [
+                        "language_names": [
                             "Spanish"
                         ]
                     },
                     {
                         "language_code": "qu",
-                        "languages_names": [
+                        "language_names": [
                             "Quechua"
                         ]
                     },
                     {
                         "language_code": "ay",
-                        "languages_names": [
+                        "language_names": [
                             "Aymara"
                         ]
                     }
@@ -2239,7 +2222,7 @@ export class CountriesCodes extends JsonWriter {
                     "Filipino",
                     {
                         "language_code": "en",
-                        "languages_names": [
+                        "language_names": [
                             "English"
                         ]
                     }
@@ -2252,7 +2235,7 @@ export class CountriesCodes extends JsonWriter {
                 "languages_codes_and_names": [
                     {
                         "language_code": "pl",
-                        "languages_names": [
+                        "language_names": [
                             "Polish"
                         ]
                     }
@@ -2265,7 +2248,7 @@ export class CountriesCodes extends JsonWriter {
                 "languages_codes_and_names": [
                     {
                         "language_code": "pt",
-                        "languages_names": [
+                        "language_names": [
                             "Portuguese"
                         ]
                     }
@@ -2278,7 +2261,7 @@ export class CountriesCodes extends JsonWriter {
                 "languages_codes_and_names": [
                     {
                         "language_code": "ar",
-                        "languages_names": [
+                        "language_names": [
                             "Arabic"
                         ]
                     }
@@ -2291,7 +2274,7 @@ export class CountriesCodes extends JsonWriter {
                 "languages_codes_and_names": [
                     {
                         "language_code": "ro",
-                        "languages_names": [
+                        "language_names": [
                             "Romanian"
                         ]
                     }
@@ -2304,7 +2287,7 @@ export class CountriesCodes extends JsonWriter {
                 "languages_codes_and_names": [
                     {
                         "language_code": "ru",
-                        "languages_names": [
+                        "language_names": [
                             "Russian"
                         ]
                     }
@@ -2317,20 +2300,20 @@ export class CountriesCodes extends JsonWriter {
                 "languages_codes_and_names": [
                     {
                         "language_code": "rw",
-                        "languages_names": [
+                        "language_names": [
                             "Kinyarwanda",
                             "Rwanda"
                         ]
                     },
                     {
                         "language_code": "fr",
-                        "languages_names": [
+                        "language_names": [
                             "French"
                         ]
                     },
                     {
                         "language_code": "en",
-                        "languages_names": [
+                        "language_names": [
                             "English"
                         ]
                     }
@@ -2343,7 +2326,7 @@ export class CountriesCodes extends JsonWriter {
                 "languages_codes_and_names": [
                     {
                         "language_code": "en",
-                        "languages_names": [
+                        "language_names": [
                             "English"
                         ]
                     }
@@ -2356,7 +2339,7 @@ export class CountriesCodes extends JsonWriter {
                 "languages_codes_and_names": [
                     {
                         "language_code": "en",
-                        "languages_names": [
+                        "language_names": [
                             "English"
                         ]
                     }
@@ -2369,7 +2352,7 @@ export class CountriesCodes extends JsonWriter {
                 "languages_codes_and_names": [
                     {
                         "language_code": "en",
-                        "languages_names": [
+                        "language_names": [
                             "English"
                         ]
                     }
@@ -2382,13 +2365,13 @@ export class CountriesCodes extends JsonWriter {
                 "languages_codes_and_names": [
                     {
                         "language_code": "sm",
-                        "languages_names": [
+                        "language_names": [
                             "Samoan"
                         ]
                     },
                     {
                         "language_code": "en",
-                        "languages_names": [
+                        "language_names": [
                             "English"
                         ]
                     }
@@ -2401,7 +2384,7 @@ export class CountriesCodes extends JsonWriter {
                 "languages_codes_and_names": [
                     {
                         "language_code": "it",
-                        "languages_names": [
+                        "language_names": [
                             "Italian"
                         ]
                     }
@@ -2414,7 +2397,7 @@ export class CountriesCodes extends JsonWriter {
                 "languages_codes_and_names": [
                     {
                         "language_code": "ar",
-                        "languages_names": [
+                        "language_names": [
                             "Arabic"
                         ]
                     }
@@ -2427,7 +2410,7 @@ export class CountriesCodes extends JsonWriter {
                 "languages_codes_and_names": [
                     {
                         "language_code": "fr",
-                        "languages_names": [
+                        "language_names": [
                             "French"
                         ]
                     }
@@ -2440,7 +2423,7 @@ export class CountriesCodes extends JsonWriter {
                 "languages_codes_and_names": [
                     {
                         "language_code": "sr",
-                        "languages_names": [
+                        "language_names": [
                             "Serbian"
                         ]
                     }
@@ -2454,13 +2437,13 @@ export class CountriesCodes extends JsonWriter {
                     "Seychellois Creole",
                     {
                         "language_code": "en",
-                        "languages_names": [
+                        "language_names": [
                             "English"
                         ]
                     },
                     {
                         "language_code": "fr",
-                        "languages_names": [
+                        "language_names": [
                             "French"
                         ]
                     }
@@ -2473,7 +2456,7 @@ export class CountriesCodes extends JsonWriter {
                 "languages_codes_and_names": [
                     {
                         "language_code": "en",
-                        "languages_names": [
+                        "language_names": [
                             "English"
                         ]
                     }
@@ -2486,20 +2469,20 @@ export class CountriesCodes extends JsonWriter {
                 "languages_codes_and_names": [
                     {
                         "language_code": "en",
-                        "languages_names": [
+                        "language_names": [
                             "English"
                         ]
                     },
                     {
                         "language_code": "ms",
-                        "languages_names": [
+                        "language_names": [
                             "Malay"
                         ]
                     },
                     "Mandarin",
                     {
                         "language_code": "ta",
-                        "languages_names": [
+                        "language_names": [
                             "Tamil"
                         ]
                     }
@@ -2512,7 +2495,7 @@ export class CountriesCodes extends JsonWriter {
                 "languages_codes_and_names": [
                     {
                         "language_code": "sk",
-                        "languages_names": [
+                        "language_names": [
                             "Slovak"
                         ]
                     }
@@ -2525,7 +2508,7 @@ export class CountriesCodes extends JsonWriter {
                 "languages_codes_and_names": [
                     {
                         "language_code": "sl",
-                        "languages_names": [
+                        "language_names": [
                             "Slovenian"
                         ]
                     }
@@ -2538,7 +2521,7 @@ export class CountriesCodes extends JsonWriter {
                 "languages_codes_and_names": [
                     {
                         "language_code": "en",
-                        "languages_names": [
+                        "language_names": [
                             "English"
                         ]
                     }
@@ -2551,13 +2534,13 @@ export class CountriesCodes extends JsonWriter {
                 "languages_codes_and_names": [
                     {
                         "language_code": "so",
-                        "languages_names": [
+                        "language_names": [
                             "Somali"
                         ]
                     },
                     {
                         "language_code": "ar",
-                        "languages_names": [
+                        "language_names": [
                             "Arabic"
                         ]
                     }
@@ -2570,25 +2553,25 @@ export class CountriesCodes extends JsonWriter {
                 "languages_codes_and_names": [
                     {
                         "language_code": "af",
-                        "languages_names": [
+                        "language_names": [
                             "Afrikaans"
                         ]
                     },
                     {
                         "language_code": "en",
-                        "languages_names": [
+                        "language_names": [
                             "English"
                         ]
                     },
                     {
                         "language_code": "zu",
-                        "languages_names": [
+                        "language_names": [
                             "Zulu"
                         ]
                     },
                     {
                         "language_code": "xh",
-                        "languages_names": [
+                        "language_names": [
                             "Xhosa"
                         ]
                     },
@@ -2602,7 +2585,7 @@ export class CountriesCodes extends JsonWriter {
                 "languages_codes_and_names": [
                     {
                         "language_code": "es",
-                        "languages_names": [
+                        "language_names": [
                             "Spanish"
                         ]
                     }
@@ -2616,7 +2599,7 @@ export class CountriesCodes extends JsonWriter {
                     "Sinhala",
                     {
                         "language_code": "ta",
-                        "languages_names": [
+                        "language_names": [
                             "Tamil"
                         ]
                     }
@@ -2629,13 +2612,13 @@ export class CountriesCodes extends JsonWriter {
                 "languages_codes_and_names": [
                     {
                         "language_code": "ar",
-                        "languages_names": [
+                        "language_names": [
                             "Arabic"
                         ]
                     },
                     {
                         "language_code": "en",
-                        "languages_names": [
+                        "language_names": [
                             "English"
                         ]
                     }
@@ -2648,7 +2631,7 @@ export class CountriesCodes extends JsonWriter {
                 "languages_codes_and_names": [
                     {
                         "language_code": "nl",
-                        "languages_names": [
+                        "language_names": [
                             "Dutch"
                         ]
                     }
@@ -2661,7 +2644,7 @@ export class CountriesCodes extends JsonWriter {
                 "languages_codes_and_names": [
                     {
                         "language_code": "sv",
-                        "languages_names": [
+                        "language_names": [
                             "Swedish"
                         ]
                     }
@@ -2674,25 +2657,25 @@ export class CountriesCodes extends JsonWriter {
                 "languages_codes_and_names": [
                     {
                         "language_code": "de",
-                        "languages_names": [
+                        "language_names": [
                             "German"
                         ]
                     },
                     {
                         "language_code": "fr",
-                        "languages_names": [
+                        "language_names": [
                             "French"
                         ]
                     },
                     {
                         "language_code": "it",
-                        "languages_names": [
+                        "language_names": [
                             "Italian"
                         ]
                     },
                     {
                         "language_code": "rm",
-                        "languages_names": [
+                        "language_names": [
                             "Romansh"
                         ]
                     }
@@ -2705,7 +2688,7 @@ export class CountriesCodes extends JsonWriter {
                 "languages_codes_and_names": [
                     {
                         "language_code": "ar",
-                        "languages_names": [
+                        "language_names": [
                             "Arabic"
                         ]
                     }
@@ -2718,7 +2701,7 @@ export class CountriesCodes extends JsonWriter {
                 "languages_codes_and_names": [
                     {
                         "language_code": "pt",
-                        "languages_names": [
+                        "language_names": [
                             "Portuguese"
                         ]
                     }
@@ -2731,7 +2714,7 @@ export class CountriesCodes extends JsonWriter {
                 "languages_codes_and_names": [
                     {
                         "language_code": "tg",
-                        "languages_names": [
+                        "language_names": [
                             "Tajik"
                         ]
                     }
@@ -2744,14 +2727,14 @@ export class CountriesCodes extends JsonWriter {
                 "languages_codes_and_names": [
                     {
                         "language_code": "sw",
-                        "languages_names": [
+                        "language_names": [
                             "Swahili",
                             "Kiswahili"
                         ]
                     },
                     {
                         "language_code": "en",
-                        "languages_names": [
+                        "language_names": [
                             "English"
                         ]
                     }
@@ -2764,7 +2747,7 @@ export class CountriesCodes extends JsonWriter {
                 "languages_codes_and_names": [
                     {
                         "language_code": "th",
-                        "languages_names": [
+                        "language_names": [
                             "Thai"
                         ]
                     }
@@ -2777,7 +2760,7 @@ export class CountriesCodes extends JsonWriter {
                 "languages_codes_and_names": [
                     {
                         "language_code": "en",
-                        "languages_names": [
+                        "language_names": [
                             "English"
                         ]
                     }
@@ -2790,7 +2773,7 @@ export class CountriesCodes extends JsonWriter {
                 "languages_codes_and_names": [
                     {
                         "language_code": "fr",
-                        "languages_names": [
+                        "language_names": [
                             "French"
                         ]
                     }
@@ -2804,7 +2787,7 @@ export class CountriesCodes extends JsonWriter {
                     "Tongan",
                     {
                         "language_code": "en",
-                        "languages_names": [
+                        "language_names": [
                             "English"
                         ]
                     }
@@ -2817,7 +2800,7 @@ export class CountriesCodes extends JsonWriter {
                 "languages_codes_and_names": [
                     {
                         "language_code": "en",
-                        "languages_names": [
+                        "language_names": [
                             "English"
                         ]
                     }
@@ -2830,7 +2813,7 @@ export class CountriesCodes extends JsonWriter {
                 "languages_codes_and_names": [
                     {
                         "language_code": "ar",
-                        "languages_names": [
+                        "language_names": [
                             "Arabic"
                         ]
                     }
@@ -2843,7 +2826,7 @@ export class CountriesCodes extends JsonWriter {
                 "languages_codes_and_names": [
                     {
                         "language_code": "tr",
-                        "languages_names": [
+                        "language_names": [
                             "Turkish"
                         ]
                     }
@@ -2856,7 +2839,7 @@ export class CountriesCodes extends JsonWriter {
                 "languages_codes_and_names": [
                     {
                         "language_code": "tk",
-                        "languages_names": [
+                        "language_names": [
                             "Turkmen"
                         ]
                     }
@@ -2870,7 +2853,7 @@ export class CountriesCodes extends JsonWriter {
                     "Tuvaluan",
                     {
                         "language_code": "en",
-                        "languages_names": [
+                        "language_names": [
                             "English"
                         ]
                     }
@@ -2883,13 +2866,13 @@ export class CountriesCodes extends JsonWriter {
                 "languages_codes_and_names": [
                     {
                         "language_code": "en",
-                        "languages_names": [
+                        "language_names": [
                             "English"
                         ]
                     },
                     {
                         "language_code": "sw",
-                        "languages_names": [
+                        "language_names": [
                             "Swahili",
                             "Kiswahili"
                         ]
@@ -2903,7 +2886,7 @@ export class CountriesCodes extends JsonWriter {
                 "languages_codes_and_names": [
                     {
                         "language_code": "uk",
-                        "languages_names": [
+                        "language_names": [
                             "Ukrainian"
                         ]
                     }
@@ -2916,7 +2899,7 @@ export class CountriesCodes extends JsonWriter {
                 "languages_codes_and_names": [
                     {
                         "language_code": "ar",
-                        "languages_names": [
+                        "language_names": [
                             "Arabic"
                         ]
                     }
@@ -2929,7 +2912,7 @@ export class CountriesCodes extends JsonWriter {
                 "languages_codes_and_names": [
                     {
                         "language_code": "en",
-                        "languages_names": [
+                        "language_names": [
                             "English"
                         ]
                     }
@@ -2942,7 +2925,7 @@ export class CountriesCodes extends JsonWriter {
                 "languages_codes_and_names": [
                     {
                         "language_code": "en",
-                        "languages_names": [
+                        "language_names": [
                             "English"
                         ]
                     }
@@ -2955,7 +2938,7 @@ export class CountriesCodes extends JsonWriter {
                 "languages_codes_and_names": [
                     {
                         "language_code": "es",
-                        "languages_names": [
+                        "language_names": [
                             "Spanish"
                         ]
                     }
@@ -2968,7 +2951,7 @@ export class CountriesCodes extends JsonWriter {
                 "languages_codes_and_names": [
                     {
                         "language_code": "uz",
-                        "languages_names": [
+                        "language_names": [
                             "Uzbek"
                         ]
                     }
@@ -2981,19 +2964,19 @@ export class CountriesCodes extends JsonWriter {
                 "languages_codes_and_names": [
                     {
                         "language_code": "bi",
-                        "languages_names": [
+                        "language_names": [
                             "Bislama"
                         ]
                     },
                     {
                         "language_code": "en",
-                        "languages_names": [
+                        "language_names": [
                             "English"
                         ]
                     },
                     {
                         "language_code": "fr",
-                        "languages_names": [
+                        "language_names": [
                             "French"
                         ]
                     }
@@ -3006,13 +2989,13 @@ export class CountriesCodes extends JsonWriter {
                 "languages_codes_and_names": [
                     {
                         "language_code": "it",
-                        "languages_names": [
+                        "language_names": [
                             "Italian"
                         ]
                     },
                     {
                         "language_code": "la",
-                        "languages_names": [
+                        "language_names": [
                             "Latin"
                         ]
                     }
@@ -3025,7 +3008,7 @@ export class CountriesCodes extends JsonWriter {
                 "languages_codes_and_names": [
                     {
                         "language_code": "es",
-                        "languages_names": [
+                        "language_names": [
                             "Spanish"
                         ]
                     }
@@ -3038,7 +3021,7 @@ export class CountriesCodes extends JsonWriter {
                 "languages_codes_and_names": [
                     {
                         "language_code": "vi",
-                        "languages_names": [
+                        "language_names": [
                             "Vietnamese"
                         ]
                     }
@@ -3051,7 +3034,7 @@ export class CountriesCodes extends JsonWriter {
                 "languages_codes_and_names": [
                     {
                         "language_code": "ar",
-                        "languages_names": [
+                        "language_names": [
                             "Arabic"
                         ]
                     }
@@ -3064,7 +3047,7 @@ export class CountriesCodes extends JsonWriter {
                 "languages_codes_and_names": [
                     {
                         "language_code": "en",
-                        "languages_names": [
+                        "language_names": [
                             "English"
                         ]
                     }
@@ -3077,7 +3060,7 @@ export class CountriesCodes extends JsonWriter {
                 "languages_codes_and_names": [
                     {
                         "language_code": "ny",
-                        "languages_names": [
+                        "language_names": [
                             "Chichewa",
                             "Chewa",
                             "Nyanja"
@@ -3085,44 +3068,44 @@ export class CountriesCodes extends JsonWriter {
                     },
                     {
                         "language_code": "cib",
-                        "languages_names": [
+                        "language_names": [
                             "Chibarwe"
                         ]
                     },
                     {
                         "language_code": "en",
-                        "languages_names": [
+                        "language_names": [
                             "English"
                         ]
                     },
                     {
                         "language_code": "kck",
-                        "languages_names": [
+                        "language_names": [
                             "Kalanga"
                         ]
                     },
                     {
                         "language_code": "xam",
-                        "languages_names": [
+                        "language_names": [
                             "Koisan",
                             "Khoisan"
                         ]
                     },
                     {
                         "language_code": "nmq",
-                        "languages_names": [
+                        "language_names": [
                             "Nambya"
                         ]
                     },
                     {
                         "language_code": "ndc",
-                        "languages_names": [
+                        "language_names": [
                             "Ndau"
                         ]
                     },
                     {
                         "language_code": "nde",
-                        "languages_names": [
+                        "language_names": [
                             "Ndebele",
                             "Sindebele",
                             "Northern Ndebele"
@@ -3130,52 +3113,52 @@ export class CountriesCodes extends JsonWriter {
                     },
                     {
                         "language_code": "shg",
-                        "languages_names": [
+                        "language_names": [
                             "Shangani",
                             "Tsonga-Shangani"
                         ]
                     },
                     {
                         "language_code": "sn",
-                        "languages_names": [
+                        "language_names": [
                             "Shona"
                         ]
                     },
                     {
                         "language_code": "st",
-                        "languages_names": [
+                        "language_names": [
                             "Sotho",
                             "Southern Sotho"
                         ]
                     },
                     {
                         "language_code": "to",
-                        "languages_names": [
+                        "language_names": [
                             "Tonga"
                         ]
                     },
                     {
                         "language_code": "tn",
-                        "languages_names": [
+                        "language_names": [
                             "Tswana",
                             "Setswana"
                         ]
                     },
                     {
                         "language_code": "ve",
-                        "languages_names": [
+                        "language_names": [
                             "Venda"
                         ]
                     },
                     {
                         "language_code": "xh",
-                        "languages_names": [
+                        "language_names": [
                             "Xhosa"
                         ]
                     },
                     {
                         "language_code": "zsl",
-                        "languages_names": [
+                        "language_names": [
                             "Zimbabwean Sign Language"
                         ]
                     }

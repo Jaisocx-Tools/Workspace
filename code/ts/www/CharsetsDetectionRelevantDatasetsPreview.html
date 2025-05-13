@@ -20,10 +20,10 @@
         padding: 1rem 1rem 4rem 1rem !important;
 
         --clean-start__font-size_h1: 1.8rem;
-        --clean-start__font-size_h2: 1.2rem;
+        --clean-start__font-size_h2: 1.0rem;
 
-        --clean-start__line-height_h1: 4.0rem;
-        --clean-start__line-height_h2: 3.0rem;
+        --clean-start__line-height_h1: 5.0rem;
+        --clean-start__line-height_h2: 4.0rem;
       }
   
       .workspace {
@@ -94,6 +94,21 @@
 
 <script src="packages/Tree/transpiled/Simple/typescript/Tree.js"></script>
 
+
+<script src="packages/JPath/transpiled/Simple/JPath.js"></script>
+<script src="packages/CdnDatasetsBase/transpiled/Simple/JsonWriter.js"></script>
+<script src="packages/CdnDatasetsBase/transpiled/Simple/DatasetBase.js"></script>
+
+
+
+
+<script src="packages/CharcodeConverter/transpiled/Simple/Countries.js"></script>
+<script src="packages/CharcodeConverter/transpiled/Simple/CountriesCodes.js"></script>
+<script src="packages/CharcodeConverter/transpiled/Simple/LanguagesCodes.js"></script>
+<script src="packages/CharcodeConverter/transpiled/Simple/WriteAllDataSetsCommand.js"></script>
+
+
+
   </head>
   <body>
 
@@ -110,12 +125,6 @@
       </ThemeButtons>
 
 
-      <div>
-        <h2>Urls of raw datasets</h2>
-        <div id="urls_tree"></div>
-      </div>
-
- 
     </main>
   
 
@@ -194,39 +203,77 @@
     
 
   <script>
+    let turnOnDebuggingInfos = false;
 
     let datasetsBaseUrl = "https://workspace.brightday.email/packages/CharcodeConverter/cdn_data/";
 
+    let rawUrlsRenderedLabelText = "Urls of rawdata";
+    let rawUrlsRenderedTreeId = "url_tree";
+
     let datasetsFileNames = [
-      {
-        "label_text": "Alphabeths",
-        "fileName": "alphabeths"
-      },
-      {
-        "label_text": "UTF-16 Preview",
-        "fileName": "unicode_chars_groups"
-      },
-      {
-        "label_text": "Languages codes and countries",
-        "fileName": "languagesCodesIndexedByLanguageCode"
-      },
-      {
-        "label_text": "Languages codes and countries array",
-        "fileName": "languagesCodesAsArray"
-      },
       {
         "label_text": "Countries names",
         "fileName": "countriesNames"
       },
       {
-        "label_text": "Countries codes and languages",
+        "label_text": "UTF-16 CharsGroups for Alphabeths Preview til 64 symbols",
+        "fileName": "unicode_chars_groups_with_keys"
+      },
+      {
+        "label_text": "Language Name => language code, countries (codes and names)",
+        "fileName": "languagesCodesIndexedByLanguageName"
+      },
+      {
+        "label_text": "Country Name => country code, languages ( codes and names )",
+        "fileName": "countriesCodesIndexedByCountryName"
+      },
+      {
+        "label_text": "Language code => language name, countries (codes and names)",
+        "fileName": "languagesCodesIndexedByLanguageCode"
+      },
+      {
+        "label_text": "Country code => country name, languages ( codes and names )",
         "fileName": "countriesCodesIndexedByCountryCode"
       },
       {
-        "label_text": "Countries codes and languages array",
+        "label_text": "Numeric keys, UTF-16 CharsGroups for Alphabeths Preview til 64 symbols",
+        "fileName": "unicode_chars_groups"
+      },
+      {
+        "label_text": "Numeric keys, Languages codes and countries",
+        "fileName": "languagesCodesAsArray"
+      },
+      {
+        "label_text": "Numeric keys, Countries codes and languages",
         "fileName": "countriesCodesAsArray"
       },
+      {
+        "label_text": "Numeric keys, Numeric Chars Ranges Lookup of Alphabeths",
+        "fileName": "alphabeths"
+      },
     ];
+
+    async function utf16PreviewToNamedKeysDataset() {
+      let url = [ datasetsBaseUrl, "unicode_chars_groups.json" ].join( "" );
+      let response = await fetch( url );
+      let data = await response.json();
+
+      let datsetWithNamedKeys = new Object();
+      for ( let charsGroupInfo of data ) {
+        let charsetGroupName = charsGroupInfo["blk"];
+        if ( charsetGroupName === null ) {
+          continue;
+        }
+        
+        if ( datsetWithNamedKeys[charsetGroupName] === undefined ) {
+          datsetWithNamedKeys[charsetGroupName] = new Array();
+        }
+
+        datsetWithNamedKeys[charsetGroupName].push( charsGroupInfo );
+      }
+
+      return datsetWithNamedKeys;
+    }
 
 
     function loadAndRenderTree( url, treeId ) {
@@ -237,7 +284,7 @@
         .setNodesOpenedMode( TreeConstants.NodesOpenedMode.ALL_HIDE )
         .setRenderingMode( TreeConstants.RenderingMode.Ease )
         .setNodesWithIcons( true )
-        .setDebug( false )
+        .setDebug( turnOnDebuggingInfos )
         .load( url );
 
     }
@@ -250,7 +297,16 @@
         .setNodesOpenedMode( TreeConstants.NodesOpenedMode.JSON_DATA_DEFINED )
         .setRenderingMode( TreeConstants.RenderingMode.Conf )
         .setNodesWithIcons( true )
-        .setDebug( false )
+        .setDebug( turnOnDebuggingInfos )
+        .addJSTreeEventListener (
+          TreeConstants.TreeEventsNames.EVENT_NAME__TREE_NODE_LABEL__CLICK,
+          ( eventName, payload ) => {
+            if ( tree.debug == true ) {
+              console.log( { eventName, payload } );
+            }
+            tree.openButtonClickHandler.call( tree, payload );
+          }
+        )
         .render( inTreeData );
 
     }
@@ -258,7 +314,7 @@
     function genDatasetsTree( conf, baseUrl ) {
 
       let treeData = {
-        "label": "Datasets urls",
+        "label": rawUrlsRenderedLabelText,
         "opened": true,
         "subtree": [],
       };
@@ -273,7 +329,6 @@
         let treeNode = new Object();
         
         treeNode["label"] = labelText;
-        treeNode["href"] = url;
         treeNode["opened"] = false;
         treeNode["subtree"] = [
           {
@@ -287,6 +342,16 @@
       }
 
       return treeData;
+    }
+
+    function renderUrlsOfRawDatasets( inLabelText, inTreeId, conf, baseUrl ) {
+      let mainHtmlNode = this.document.querySelector("main");
+
+      let nodeOuterHTML = `<div><h2>${inLabelText}</h2><div id="${inTreeId}"></div></div>\n\n\n`;
+      mainHtmlNode.insertAdjacentHTML( "beforeEnd", nodeOuterHTML );
+
+      let locTreeData = genDatasetsTree( conf, baseUrl );
+      renderTree( locTreeData, inTreeId );
     }
 
     function loadAllPreviewDatasets( conf, baseUrl ) {
@@ -324,13 +389,14 @@
     }
 
 
-    document.addEventListener('DOMContentLoaded', () => {
-
-      let treeData = genDatasetsTree( datasetsFileNames, datasetsBaseUrl );
-      renderTree( treeData, "urls_tree" );
+    document.addEventListener(
+      'DOMContentLoaded', 
+      async () => {
 
       loadAllPreviewDatasets( datasetsFileNames, datasetsBaseUrl );
+      renderUrlsOfRawDatasets( rawUrlsRenderedLabelText, rawUrlsRenderedTreeId, datasetsFileNames, datasetsBaseUrl );
 
+      // WriteAllDataSetsCommand.write( "since the node:fs.writeFileSync is not allowed im browsers, the json datasets are logged in the browser's dev console" );
     });
 
   </script>

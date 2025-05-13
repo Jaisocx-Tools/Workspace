@@ -1,13 +1,9 @@
-class LanguagesCodes extends JsonWriter {
-  #data;
-  #dataAsObject;
+class LanguagesCodes extends DatasetBase {
   static _singletonInstance;
 
   constructor() {
     super();
-    this.#data = this.initData();
-    this.#dataAsObject = this.initDataAsObject();
-    this.filePath = "";
+    this._data = this.initData();
   }
 
   static getSingletonInstance() {
@@ -19,69 +15,51 @@ class LanguagesCodes extends JsonWriter {
   }
 
   getLanguagesCodes() {
-    return this.#data;
+    return this._data;
   }
 
-  getLanguagesCodesIndexedByLanguageCode() {
-    return this.#dataAsObject;
+  getLanguagesCodesIndexedByKeys(key) {
+    return this.getDataIndexedByKeys(key);
   }
 
   saveLanguagesCodes(inFilePath) {
-    let locSaved = this.saveData(inFilePath, this.#data);
+    let locSaved = this.saveData(inFilePath, this._data);
 
     return locSaved;
   }
 
-  saveLanguagesCodesIndexedByLanguageCode(inFilePath) {
-    let locSaved = this.saveData(
-      inFilePath, 
-      this.#dataAsObject);
+  saveLanguagesCodesIndexedByKeys(key, inFilePath) {
+    let locSaved = this.saveDataIndexedByKeys(key, inFilePath);
 
     return locSaved;
-  }
-
-  initDataAsObject() {
-    let locDataAsObject = new Object();
-    let arrayItemId = 0;
-    let arrayItem;
-    let arrayLen = this.#data.length;
-    let countryCode2Chars = "";
-
-    for (arrayItemId = 0; arrayItemId < arrayLen; arrayItemId++) {
-      arrayItem = this.#data[arrayItemId];
-      countryCode2Chars = arrayItem.language_code;
-      locDataAsObject[countryCode2Chars] = arrayItem;
-    }
-
-    return locDataAsObject;
   }
 
   initData() {
     let locData = [
       {
         "language_code": "aa",
-        "language_name": [
+        "language_names": [
           "Afar"
         ],
         "countries": []
       },
       {
         "language_code": "ab",
-        "language_name": [
+        "language_names": [
           "Abkhazian"
         ],
         "countries": []
       },
       {
         "language_code": "ae",
-        "language_name": [
+        "language_names": [
           "Avestan"
         ],
         "countries": []
       },
       {
         "language_code": "af",
-        "language_name": [
+        "language_names": [
           "Afrikaans"
         ],
         "countries": [
@@ -94,14 +72,14 @@ class LanguagesCodes extends JsonWriter {
       },
       {
         "language_code": "ak",
-        "language_name": [
+        "language_names": [
           "Akan"
         ],
         "countries": []
       },
       {
         "language_code": "am",
-        "language_name": [
+        "language_names": [
           "Amharic"
         ],
         "countries": [
@@ -114,14 +92,14 @@ class LanguagesCodes extends JsonWriter {
       },
       {
         "language_code": "an",
-        "language_name": [
+        "language_names": [
           "Aragonese"
         ],
         "countries": []
       },
       {
         "language_code": "ar",
-        "language_name": [
+        "language_names": [
           "Arabic"
         ],
         "countries": [
@@ -249,7 +227,7 @@ class LanguagesCodes extends JsonWriter {
       },
       {
         "language_code": "as",
-        "language_name": [
+        "language_names": [
           "Assamese"
         ],
         "countries": [
@@ -262,7 +240,7 @@ class LanguagesCodes extends JsonWriter {
       },
       {
         "language_code": "as",
-        "language_name": [
+        "language_names": [
           "Assamese"
         ],
         "countries": [
@@ -275,14 +253,14 @@ class LanguagesCodes extends JsonWriter {
       },
       {
         "language_code": "av",
-        "language_name": [
+        "language_names": [
           "Avaric"
         ],
         "countries": []
       },
       {
         "language_code": "ay",
-        "language_name": [
+        "language_names": [
           "Aymara"
         ],
         "countries": [
@@ -300,7 +278,7 @@ class LanguagesCodes extends JsonWriter {
       },
       {
         "language_code": "az",
-        "language_name": [
+        "language_names": [
           "Azerbaijani"
         ],
         "countries": [
@@ -313,14 +291,14 @@ class LanguagesCodes extends JsonWriter {
       },
       {
         "language_code": "ba",
-        "language_name": [
+        "language_names": [
           "Bashkir"
         ],
         "countries": []
       },
       {
         "language_code": "be",
-        "language_name": [
+        "language_names": [
           "Belarusian"
         ],
         "countries": [
@@ -333,7 +311,7 @@ class LanguagesCodes extends JsonWriter {
       },
       {
         "language_code": "bg",
-        "language_name": [
+        "language_names": [
           "Bulgarian"
         ],
         "countries": [
@@ -346,14 +324,14 @@ class LanguagesCodes extends JsonWriter {
       },
       {
         "language_code": "bh",
-        "language_name": [
+        "language_names": [
           "Bihari"
         ],
         "countries": []
       },
       {
         "language_code": "bi",
-        "language_name": [
+        "language_names": [
           "Bislama"
         ],
         "countries": [
@@ -366,14 +344,14 @@ class LanguagesCodes extends JsonWriter {
       },
       {
         "language_code": "bm",
-        "language_name": [
+        "language_names": [
           "Bambara"
         ],
         "countries": []
       },
       {
         "language_code": "bn",
-        "language_name": [
+        "language_names": [
           "Bengali",
           "Bangla"
         ],
@@ -392,7 +370,7 @@ class LanguagesCodes extends JsonWriter {
       },
       {
         "language_code": "bn",
-        "language_name": [
+        "language_names": [
           "Bengali",
           "Bangla"
         ],
@@ -411,21 +389,21 @@ class LanguagesCodes extends JsonWriter {
       },
       {
         "language_code": "bo",
-        "language_name": [
+        "language_names": [
           "Tibetan"
         ],
         "countries": []
       },
       {
         "language_code": "br",
-        "language_name": [
+        "language_names": [
           "Breton"
         ],
         "countries": []
       },
       {
         "language_code": "brx",
-        "language_name": [
+        "language_names": [
           "Bodo"
         ],
         "countries": [
@@ -438,7 +416,7 @@ class LanguagesCodes extends JsonWriter {
       },
       {
         "language_code": "bs",
-        "language_name": [
+        "language_names": [
           "Bosnian"
         ],
         "countries": [
@@ -451,7 +429,7 @@ class LanguagesCodes extends JsonWriter {
       },
       {
         "language_code": "ca",
-        "language_name": [
+        "language_names": [
           "Catalan"
         ],
         "countries": [
@@ -464,21 +442,21 @@ class LanguagesCodes extends JsonWriter {
       },
       {
         "language_code": "ce",
-        "language_name": [
+        "language_names": [
           "Chechen"
         ],
         "countries": []
       },
       {
         "language_code": "ch",
-        "language_name": [
+        "language_names": [
           "Chamorro"
         ],
         "countries": []
       },
       {
         "language_code": "cib",
-        "language_name": [
+        "language_names": [
           "Chibarwe"
         ],
         "countries": [
@@ -491,21 +469,21 @@ class LanguagesCodes extends JsonWriter {
       },
       {
         "language_code": "co",
-        "language_name": [
+        "language_names": [
           "Corsican"
         ],
         "countries": []
       },
       {
         "language_code": "cr",
-        "language_name": [
+        "language_names": [
           "Cree"
         ],
         "countries": []
       },
       {
         "language_code": "cs",
-        "language_name": [
+        "language_names": [
           "Czech"
         ],
         "countries": [
@@ -518,7 +496,7 @@ class LanguagesCodes extends JsonWriter {
       },
       {
         "language_code": "cu",
-        "language_name": [
+        "language_names": [
           "Old Church Slavonic",
           "Old Bulgarian"
         ],
@@ -526,21 +504,21 @@ class LanguagesCodes extends JsonWriter {
       },
       {
         "language_code": "cv",
-        "language_name": [
+        "language_names": [
           "Chuvash"
         ],
         "countries": []
       },
       {
         "language_code": "cy",
-        "language_name": [
+        "language_names": [
           "Welsh"
         ],
         "countries": []
       },
       {
         "language_code": "da",
-        "language_name": [
+        "language_names": [
           "Danish"
         ],
         "countries": [
@@ -553,7 +531,7 @@ class LanguagesCodes extends JsonWriter {
       },
       {
         "language_code": "de",
-        "language_name": [
+        "language_names": [
           "German"
         ],
         "countries": [
@@ -591,7 +569,7 @@ class LanguagesCodes extends JsonWriter {
       },
       {
         "language_code": "doi",
-        "language_name": [
+        "language_names": [
           "Dogri"
         ],
         "countries": [
@@ -604,7 +582,7 @@ class LanguagesCodes extends JsonWriter {
       },
       {
         "language_code": "dv",
-        "language_name": [
+        "language_names": [
           "Divehi",
           "Dhivehi",
           "Maldivian"
@@ -619,7 +597,7 @@ class LanguagesCodes extends JsonWriter {
       },
       {
         "language_code": "dz",
-        "language_name": [
+        "language_names": [
           "Dzongkha"
         ],
         "countries": [
@@ -632,14 +610,14 @@ class LanguagesCodes extends JsonWriter {
       },
       {
         "language_code": "ee",
-        "language_name": [
+        "language_names": [
           "Ewe"
         ],
         "countries": []
       },
       {
         "language_code": "el",
-        "language_name": [
+        "language_names": [
           "Greek"
         ],
         "countries": [
@@ -657,7 +635,7 @@ class LanguagesCodes extends JsonWriter {
       },
       {
         "language_code": "en",
-        "language_name": [
+        "language_names": [
           "English"
         ],
         "countries": [
@@ -945,7 +923,7 @@ class LanguagesCodes extends JsonWriter {
       },
       {
         "language_code": "en",
-        "language_name": [
+        "language_names": [
           "English"
         ],
         "countries": [
@@ -1233,14 +1211,14 @@ class LanguagesCodes extends JsonWriter {
       },
       {
         "language_code": "eo",
-        "language_name": [
+        "language_names": [
           "Esperanto"
         ],
         "countries": []
       },
       {
         "language_code": "es",
-        "language_name": [
+        "language_names": [
           "Spanish"
         ],
         "countries": [
@@ -1343,7 +1321,7 @@ class LanguagesCodes extends JsonWriter {
       },
       {
         "language_code": "et",
-        "language_name": [
+        "language_names": [
           "Estonian"
         ],
         "countries": [
@@ -1356,14 +1334,14 @@ class LanguagesCodes extends JsonWriter {
       },
       {
         "language_code": "eu",
-        "language_name": [
+        "language_names": [
           "Basque"
         ],
         "countries": []
       },
       {
         "language_code": "fa",
-        "language_name": [
+        "language_names": [
           "Persian",
           "Farsi"
         ],
@@ -1377,7 +1355,7 @@ class LanguagesCodes extends JsonWriter {
       },
       {
         "language_code": "fa-AF",
-        "language_name": [
+        "language_names": [
           "Dari",
           "Dari Persian",
           "Afghan Persian"
@@ -1392,7 +1370,7 @@ class LanguagesCodes extends JsonWriter {
       },
       {
         "language_code": "ff",
-        "language_name": [
+        "language_names": [
           "Fula",
           "Fulah",
           "Pulaar",
@@ -1402,7 +1380,7 @@ class LanguagesCodes extends JsonWriter {
       },
       {
         "language_code": "fi",
-        "language_name": [
+        "language_names": [
           "Finnish"
         ],
         "countries": [
@@ -1415,7 +1393,7 @@ class LanguagesCodes extends JsonWriter {
       },
       {
         "language_code": "fj",
-        "language_name": [
+        "language_names": [
           "Fijian"
         ],
         "countries": [
@@ -1428,14 +1406,14 @@ class LanguagesCodes extends JsonWriter {
       },
       {
         "language_code": "fo",
-        "language_name": [
+        "language_names": [
           "Faroese"
         ],
         "countries": []
       },
       {
         "language_code": "fr",
-        "language_name": [
+        "language_names": [
           "French"
         ],
         "countries": [
@@ -1583,14 +1561,14 @@ class LanguagesCodes extends JsonWriter {
       },
       {
         "language_code": "fy",
-        "language_name": [
+        "language_names": [
           "Western Frisian"
         ],
         "countries": []
       },
       {
         "language_code": "ga",
-        "language_name": [
+        "language_names": [
           "Irish"
         ],
         "countries": [
@@ -1603,7 +1581,7 @@ class LanguagesCodes extends JsonWriter {
       },
       {
         "language_code": "gd",
-        "language_name": [
+        "language_names": [
           "Gaelic",
           "Scottish"
         ],
@@ -1611,14 +1589,14 @@ class LanguagesCodes extends JsonWriter {
       },
       {
         "language_code": "gl",
-        "language_name": [
+        "language_names": [
           "Galician"
         ],
         "countries": []
       },
       {
         "language_code": "gn",
-        "language_name": [
+        "language_names": [
           "Guarani"
         ],
         "countries": [
@@ -1631,7 +1609,7 @@ class LanguagesCodes extends JsonWriter {
       },
       {
         "language_code": "gu",
-        "language_name": [
+        "language_names": [
           "Gujarati"
         ],
         "countries": [
@@ -1644,7 +1622,7 @@ class LanguagesCodes extends JsonWriter {
       },
       {
         "language_code": "gu",
-        "language_name": [
+        "language_names": [
           "Gujarati"
         ],
         "countries": [
@@ -1657,7 +1635,7 @@ class LanguagesCodes extends JsonWriter {
       },
       {
         "language_code": "gv",
-        "language_name": [
+        "language_names": [
           "Gaelic",
           "Manx"
         ],
@@ -1665,21 +1643,21 @@ class LanguagesCodes extends JsonWriter {
       },
       {
         "language_code": "gv",
-        "language_name": [
+        "language_names": [
           "Manx"
         ],
         "countries": []
       },
       {
         "language_code": "ha",
-        "language_name": [
+        "language_names": [
           "Hausa"
         ],
         "countries": []
       },
       {
         "language_code": "he",
-        "language_name": [
+        "language_names": [
           "Hebrew"
         ],
         "countries": [
@@ -1692,7 +1670,7 @@ class LanguagesCodes extends JsonWriter {
       },
       {
         "language_code": "hi",
-        "language_name": [
+        "language_names": [
           "Hindi"
         ],
         "countries": [
@@ -1710,7 +1688,7 @@ class LanguagesCodes extends JsonWriter {
       },
       {
         "language_code": "hi",
-        "language_name": [
+        "language_names": [
           "Hindi"
         ],
         "countries": [
@@ -1728,7 +1706,7 @@ class LanguagesCodes extends JsonWriter {
       },
       {
         "language_code": "ho",
-        "language_name": [
+        "language_names": [
           "Hiri Motu"
         ],
         "countries": [
@@ -1741,7 +1719,7 @@ class LanguagesCodes extends JsonWriter {
       },
       {
         "language_code": "hr",
-        "language_name": [
+        "language_names": [
           "Croatian"
         ],
         "countries": [
@@ -1759,7 +1737,7 @@ class LanguagesCodes extends JsonWriter {
       },
       {
         "language_code": "ht",
-        "language_name": [
+        "language_names": [
           "Haitian Creole"
         ],
         "countries": [
@@ -1772,7 +1750,7 @@ class LanguagesCodes extends JsonWriter {
       },
       {
         "language_code": "hu",
-        "language_name": [
+        "language_names": [
           "Hungarian"
         ],
         "countries": [
@@ -1785,7 +1763,7 @@ class LanguagesCodes extends JsonWriter {
       },
       {
         "language_code": "hy",
-        "language_name": [
+        "language_names": [
           "Armenian"
         ],
         "countries": [
@@ -1798,21 +1776,21 @@ class LanguagesCodes extends JsonWriter {
       },
       {
         "language_code": "hz",
-        "language_name": [
+        "language_names": [
           "Herero"
         ],
         "countries": []
       },
       {
         "language_code": "ia",
-        "language_name": [
+        "language_names": [
           "Interlingua"
         ],
         "countries": []
       },
       {
         "language_code": "id, in",
-        "language_name": [
+        "language_names": [
           "Indonesian"
         ],
         "countries": [
@@ -1825,49 +1803,49 @@ class LanguagesCodes extends JsonWriter {
       },
       {
         "language_code": "ie",
-        "language_name": [
+        "language_names": [
           "Interlingue"
         ],
         "countries": []
       },
       {
         "language_code": "ig",
-        "language_name": [
+        "language_names": [
           "Igbo"
         ],
         "countries": []
       },
       {
         "language_code": "ii",
-        "language_name": [
+        "language_names": [
           "Nuosu"
         ],
         "countries": []
       },
       {
         "language_code": "ii",
-        "language_name": [
+        "language_names": [
           "Sichuan Yi"
         ],
         "countries": []
       },
       {
         "language_code": "ik",
-        "language_name": [
+        "language_names": [
           "Inupiak"
         ],
         "countries": []
       },
       {
         "language_code": "io",
-        "language_name": [
+        "language_names": [
           "Ido"
         ],
         "countries": []
       },
       {
         "language_code": "is",
-        "language_name": [
+        "language_names": [
           "Icelandic"
         ],
         "countries": [
@@ -1880,7 +1858,7 @@ class LanguagesCodes extends JsonWriter {
       },
       {
         "language_code": "it",
-        "language_name": [
+        "language_names": [
           "Italian"
         ],
         "countries": [
@@ -1908,14 +1886,14 @@ class LanguagesCodes extends JsonWriter {
       },
       {
         "language_code": "iu",
-        "language_name": [
+        "language_names": [
           "Inuktitut"
         ],
         "countries": []
       },
       {
         "language_code": "ja",
-        "language_name": [
+        "language_names": [
           "Japanese"
         ],
         "countries": [
@@ -1928,21 +1906,21 @@ class LanguagesCodes extends JsonWriter {
       },
       {
         "language_code": "ji",
-        "language_name": [
+        "language_names": [
           "Yiddish"
         ],
         "countries": []
       },
       {
         "language_code": "jv",
-        "language_name": [
+        "language_names": [
           "Javanese"
         ],
         "countries": []
       },
       {
         "language_code": "ka",
-        "language_name": [
+        "language_names": [
           "Georgian"
         ],
         "countries": [
@@ -1955,7 +1933,7 @@ class LanguagesCodes extends JsonWriter {
       },
       {
         "language_code": "kck",
-        "language_name": [
+        "language_names": [
           "Kalanga"
         ],
         "countries": [
@@ -1968,28 +1946,28 @@ class LanguagesCodes extends JsonWriter {
       },
       {
         "language_code": "kg",
-        "language_name": [
+        "language_names": [
           "Kongo"
         ],
         "countries": []
       },
       {
         "language_code": "ki",
-        "language_name": [
+        "language_names": [
           "Kikuyu"
         ],
         "countries": []
       },
       {
         "language_code": "kj",
-        "language_name": [
+        "language_names": [
           "Kwanyama"
         ],
         "countries": []
       },
       {
         "language_code": "kk",
-        "language_name": [
+        "language_names": [
           "Kazakh"
         ],
         "countries": [
@@ -2002,14 +1980,14 @@ class LanguagesCodes extends JsonWriter {
       },
       {
         "language_code": "kl",
-        "language_name": [
+        "language_names": [
           "Greenlandic"
         ],
         "countries": []
       },
       {
         "language_code": "kl",
-        "language_name": [
+        "language_names": [
           "Kalaallisut",
           "Greenlandic"
         ],
@@ -2017,7 +1995,7 @@ class LanguagesCodes extends JsonWriter {
       },
       {
         "language_code": "km",
-        "language_name": [
+        "language_names": [
           "Khmer"
         ],
         "countries": [
@@ -2030,7 +2008,7 @@ class LanguagesCodes extends JsonWriter {
       },
       {
         "language_code": "kn",
-        "language_name": [
+        "language_names": [
           "Kannada"
         ],
         "countries": [
@@ -2043,7 +2021,7 @@ class LanguagesCodes extends JsonWriter {
       },
       {
         "language_code": "kn",
-        "language_name": [
+        "language_names": [
           "Kannada"
         ],
         "countries": [
@@ -2056,7 +2034,7 @@ class LanguagesCodes extends JsonWriter {
       },
       {
         "language_code": "ko",
-        "language_name": [
+        "language_names": [
           "Korean"
         ],
         "countries": [
@@ -2070,7 +2048,7 @@ class LanguagesCodes extends JsonWriter {
       },
       {
         "language_code": "kok",
-        "language_name": [
+        "language_names": [
           "Konkani"
         ],
         "countries": [
@@ -2083,14 +2061,14 @@ class LanguagesCodes extends JsonWriter {
       },
       {
         "language_code": "kr",
-        "language_name": [
+        "language_names": [
           "Kanuri"
         ],
         "countries": []
       },
       {
         "language_code": "ks",
-        "language_name": [
+        "language_names": [
           "Kashmiri"
         ],
         "countries": [
@@ -2103,7 +2081,7 @@ class LanguagesCodes extends JsonWriter {
       },
       {
         "language_code": "ks",
-        "language_name": [
+        "language_names": [
           "Kashmiri"
         ],
         "countries": [
@@ -2116,7 +2094,7 @@ class LanguagesCodes extends JsonWriter {
       },
       {
         "language_code": "ku",
-        "language_name": [
+        "language_names": [
           "Kurdish"
         ],
         "countries": [
@@ -2129,21 +2107,21 @@ class LanguagesCodes extends JsonWriter {
       },
       {
         "language_code": "kv",
-        "language_name": [
+        "language_names": [
           "Komi"
         ],
         "countries": []
       },
       {
         "language_code": "kw",
-        "language_name": [
+        "language_names": [
           "Cornish"
         ],
         "countries": []
       },
       {
         "language_code": "ky",
-        "language_name": [
+        "language_names": [
           "Kyrgyz"
         ],
         "countries": [
@@ -2156,7 +2134,7 @@ class LanguagesCodes extends JsonWriter {
       },
       {
         "language_code": "la",
-        "language_name": [
+        "language_names": [
           "Latin"
         ],
         "countries": [
@@ -2169,7 +2147,7 @@ class LanguagesCodes extends JsonWriter {
       },
       {
         "language_code": "lb",
-        "language_name": [
+        "language_names": [
           "Luxembourgish"
         ],
         "countries": [
@@ -2182,7 +2160,7 @@ class LanguagesCodes extends JsonWriter {
       },
       {
         "language_code": "lg",
-        "language_name": [
+        "language_names": [
           "Luganda",
           "Ganda"
         ],
@@ -2190,7 +2168,7 @@ class LanguagesCodes extends JsonWriter {
       },
       {
         "language_code": "li",
-        "language_name": [
+        "language_names": [
           "Limburgish",
           "Limburger"
         ],
@@ -2198,14 +2176,14 @@ class LanguagesCodes extends JsonWriter {
       },
       {
         "language_code": "ln",
-        "language_name": [
+        "language_names": [
           "Lingala"
         ],
         "countries": []
       },
       {
         "language_code": "lo",
-        "language_name": [
+        "language_names": [
           "Lao"
         ],
         "countries": [
@@ -2218,7 +2196,7 @@ class LanguagesCodes extends JsonWriter {
       },
       {
         "language_code": "lt",
-        "language_name": [
+        "language_names": [
           "Lithuanian"
         ],
         "countries": [
@@ -2231,14 +2209,14 @@ class LanguagesCodes extends JsonWriter {
       },
       {
         "language_code": "lu",
-        "language_name": [
+        "language_names": [
           "Luga-Katanga"
         ],
         "countries": []
       },
       {
         "language_code": "lv",
-        "language_name": [
+        "language_names": [
           "Latvian",
           "Lettish"
         ],
@@ -2252,7 +2230,7 @@ class LanguagesCodes extends JsonWriter {
       },
       {
         "language_code": "mai",
-        "language_name": [
+        "language_names": [
           "Maithili"
         ],
         "countries": [
@@ -2265,7 +2243,7 @@ class LanguagesCodes extends JsonWriter {
       },
       {
         "language_code": "mg",
-        "language_name": [
+        "language_names": [
           "Malagasy"
         ],
         "countries": [
@@ -2278,7 +2256,7 @@ class LanguagesCodes extends JsonWriter {
       },
       {
         "language_code": "mh",
-        "language_name": [
+        "language_names": [
           "Marshallese"
         ],
         "countries": [
@@ -2291,14 +2269,14 @@ class LanguagesCodes extends JsonWriter {
       },
       {
         "language_code": "mi",
-        "language_name": [
+        "language_names": [
           "Maori"
         ],
         "countries": []
       },
       {
         "language_code": "mk",
-        "language_name": [
+        "language_names": [
           "Macedonian"
         ],
         "countries": [
@@ -2311,7 +2289,7 @@ class LanguagesCodes extends JsonWriter {
       },
       {
         "language_code": "ml",
-        "language_name": [
+        "language_names": [
           "Malayalam"
         ],
         "countries": [
@@ -2324,7 +2302,7 @@ class LanguagesCodes extends JsonWriter {
       },
       {
         "language_code": "ml",
-        "language_name": [
+        "language_names": [
           "Malayalam"
         ],
         "countries": [
@@ -2337,7 +2315,7 @@ class LanguagesCodes extends JsonWriter {
       },
       {
         "language_code": "mn",
-        "language_name": [
+        "language_names": [
           "Mongolian"
         ],
         "countries": [
@@ -2350,7 +2328,7 @@ class LanguagesCodes extends JsonWriter {
       },
       {
         "language_code": "mni",
-        "language_name": [
+        "language_names": [
           "Manipuri",
           "Meitei"
         ],
@@ -2364,7 +2342,7 @@ class LanguagesCodes extends JsonWriter {
       },
       {
         "language_code": "mo",
-        "language_name": [
+        "language_names": [
           "Moldavian"
         ],
         "countries": [
@@ -2377,7 +2355,7 @@ class LanguagesCodes extends JsonWriter {
       },
       {
         "language_code": "mr",
-        "language_name": [
+        "language_names": [
           "Marathi"
         ],
         "countries": [
@@ -2390,7 +2368,7 @@ class LanguagesCodes extends JsonWriter {
       },
       {
         "language_code": "mr",
-        "language_name": [
+        "language_names": [
           "Marathi"
         ],
         "countries": [
@@ -2403,7 +2381,7 @@ class LanguagesCodes extends JsonWriter {
       },
       {
         "language_code": "ms",
-        "language_name": [
+        "language_names": [
           "Malay"
         ],
         "countries": [
@@ -2426,7 +2404,7 @@ class LanguagesCodes extends JsonWriter {
       },
       {
         "language_code": "mt",
-        "language_name": [
+        "language_names": [
           "Maltese"
         ],
         "countries": [
@@ -2439,28 +2417,28 @@ class LanguagesCodes extends JsonWriter {
       },
       {
         "language_code": "na",
-        "language_name": [
+        "language_names": [
           "Nauru"
         ],
         "countries": []
       },
       {
         "language_code": "nb",
-        "language_name": [
+        "language_names": [
           "Norwegian bokmål"
         ],
         "countries": []
       },
       {
         "language_code": "nd",
-        "language_name": [
+        "language_names": [
           "Northern Ndebele"
         ],
         "countries": []
       },
       {
         "language_code": "ndc",
-        "language_name": [
+        "language_names": [
           "Ndau"
         ],
         "countries": [
@@ -2473,7 +2451,7 @@ class LanguagesCodes extends JsonWriter {
       },
       {
         "language_code": "nde",
-        "language_name": [
+        "language_names": [
           "Ndebele",
           "Sindebele",
           "Northern Ndebele"
@@ -2488,7 +2466,7 @@ class LanguagesCodes extends JsonWriter {
       },
       {
         "language_code": "ne",
-        "language_name": [
+        "language_names": [
           "Nepali"
         ],
         "countries": [
@@ -2506,7 +2484,7 @@ class LanguagesCodes extends JsonWriter {
       },
       {
         "language_code": "ne",
-        "language_name": [
+        "language_names": [
           "Nepali"
         ],
         "countries": [
@@ -2524,14 +2502,14 @@ class LanguagesCodes extends JsonWriter {
       },
       {
         "language_code": "ng",
-        "language_name": [
+        "language_names": [
           "Ndonga"
         ],
         "countries": []
       },
       {
         "language_code": "nl",
-        "language_name": [
+        "language_names": [
           "Dutch"
         ],
         "countries": [
@@ -2554,7 +2532,7 @@ class LanguagesCodes extends JsonWriter {
       },
       {
         "language_code": "nmq",
-        "language_name": [
+        "language_names": [
           "Nambya"
         ],
         "countries": [
@@ -2567,14 +2545,14 @@ class LanguagesCodes extends JsonWriter {
       },
       {
         "language_code": "nn",
-        "language_name": [
+        "language_names": [
           "Norwegian nynorsk"
         ],
         "countries": []
       },
       {
         "language_code": "no",
-        "language_name": [
+        "language_names": [
           "Norwegian"
         ],
         "countries": [
@@ -2587,21 +2565,21 @@ class LanguagesCodes extends JsonWriter {
       },
       {
         "language_code": "nr",
-        "language_name": [
+        "language_names": [
           "Southern Ndebele"
         ],
         "countries": []
       },
       {
         "language_code": "nv",
-        "language_name": [
+        "language_names": [
           "Navajo"
         ],
         "countries": []
       },
       {
         "language_code": "ny",
-        "language_name": [
+        "language_names": [
           "Chichewa",
           "Chewa",
           "Nyanja"
@@ -2621,7 +2599,7 @@ class LanguagesCodes extends JsonWriter {
       },
       {
         "language_code": "ny",
-        "language_name": [
+        "language_names": [
           "Chewa",
           "Chichewa",
           "Nyanja"
@@ -2641,21 +2619,21 @@ class LanguagesCodes extends JsonWriter {
       },
       {
         "language_code": "oc",
-        "language_name": [
+        "language_names": [
           "Occitan"
         ],
         "countries": []
       },
       {
         "language_code": "oj",
-        "language_name": [
+        "language_names": [
           "Ojibwe"
         ],
         "countries": []
       },
       {
         "language_code": "om",
-        "language_name": [
+        "language_names": [
           "Oromo",
           "Afaan Oromo"
         ],
@@ -2663,14 +2641,14 @@ class LanguagesCodes extends JsonWriter {
       },
       {
         "language_code": "or",
-        "language_name": [
+        "language_names": [
           "Oriya"
         ],
         "countries": []
       },
       {
         "language_code": "or",
-        "language_name": [
+        "language_names": [
           "Odia",
           "Oriya"
         ],
@@ -2684,14 +2662,14 @@ class LanguagesCodes extends JsonWriter {
       },
       {
         "language_code": "os",
-        "language_name": [
+        "language_names": [
           "Ossetian"
         ],
         "countries": []
       },
       {
         "language_code": "pa",
-        "language_name": [
+        "language_names": [
           "Punjabi",
           "Eastern Punjabi"
         ],
@@ -2705,7 +2683,7 @@ class LanguagesCodes extends JsonWriter {
       },
       {
         "language_code": "pa",
-        "language_name": [
+        "language_names": [
           "Punjabi",
           "Panjabi"
         ],
@@ -2719,14 +2697,14 @@ class LanguagesCodes extends JsonWriter {
       },
       {
         "language_code": "pi",
-        "language_name": [
+        "language_names": [
           "Pāli"
         ],
         "countries": []
       },
       {
         "language_code": "pl",
-        "language_name": [
+        "language_names": [
           "Polish"
         ],
         "countries": [
@@ -2739,7 +2717,7 @@ class LanguagesCodes extends JsonWriter {
       },
       {
         "language_code": "ps",
-        "language_name": [
+        "language_names": [
           "Pashto",
           "Pushto"
         ],
@@ -2753,7 +2731,7 @@ class LanguagesCodes extends JsonWriter {
       },
       {
         "language_code": "pt",
-        "language_name": [
+        "language_names": [
           "Portuguese"
         ],
         "countries": [
@@ -2801,7 +2779,7 @@ class LanguagesCodes extends JsonWriter {
       },
       {
         "language_code": "qu",
-        "language_name": [
+        "language_names": [
           "Quechua"
         ],
         "countries": [
@@ -2819,7 +2797,7 @@ class LanguagesCodes extends JsonWriter {
       },
       {
         "language_code": "rm",
-        "language_name": [
+        "language_names": [
           "Romansh"
         ],
         "countries": [
@@ -2832,7 +2810,7 @@ class LanguagesCodes extends JsonWriter {
       },
       {
         "language_code": "rn",
-        "language_name": [
+        "language_names": [
           "Kirundi"
         ],
         "countries": [
@@ -2845,7 +2823,7 @@ class LanguagesCodes extends JsonWriter {
       },
       {
         "language_code": "ro",
-        "language_name": [
+        "language_names": [
           "Romanian"
         ],
         "countries": [
@@ -2863,7 +2841,7 @@ class LanguagesCodes extends JsonWriter {
       },
       {
         "language_code": "ru",
-        "language_name": [
+        "language_names": [
           "Russian"
         ],
         "countries": [
@@ -2891,7 +2869,7 @@ class LanguagesCodes extends JsonWriter {
       },
       {
         "language_code": "rw",
-        "language_name": [
+        "language_names": [
           "Kinyarwanda",
           "Rwanda"
         ],
@@ -2905,7 +2883,7 @@ class LanguagesCodes extends JsonWriter {
       },
       {
         "language_code": "sa",
-        "language_name": [
+        "language_names": [
           "Sanskrit"
         ],
         "countries": [
@@ -2918,7 +2896,7 @@ class LanguagesCodes extends JsonWriter {
       },
       {
         "language_code": "sa",
-        "language_name": [
+        "language_names": [
           "Sanskrit"
         ],
         "countries": [
@@ -2931,7 +2909,7 @@ class LanguagesCodes extends JsonWriter {
       },
       {
         "language_code": "sat",
-        "language_name": [
+        "language_names": [
           "Santali"
         ],
         "countries": [
@@ -2944,7 +2922,7 @@ class LanguagesCodes extends JsonWriter {
       },
       {
         "language_code": "sd",
-        "language_name": [
+        "language_names": [
           "Sindhi"
         ],
         "countries": [
@@ -2957,7 +2935,7 @@ class LanguagesCodes extends JsonWriter {
       },
       {
         "language_code": "sd",
-        "language_name": [
+        "language_names": [
           "Sindhi"
         ],
         "countries": [
@@ -2970,14 +2948,14 @@ class LanguagesCodes extends JsonWriter {
       },
       {
         "language_code": "se",
-        "language_name": [
+        "language_names": [
           "Sami"
         ],
         "countries": []
       },
       {
         "language_code": "sg",
-        "language_name": [
+        "language_names": [
           "Sango"
         ],
         "countries": [
@@ -2990,14 +2968,14 @@ class LanguagesCodes extends JsonWriter {
       },
       {
         "language_code": "sh",
-        "language_name": [
+        "language_names": [
           "Serbo-Croatian"
         ],
         "countries": []
       },
       {
         "language_code": "shg",
-        "language_name": [
+        "language_names": [
           "Shangani",
           "Tsonga-Shangani"
         ],
@@ -3011,14 +2989,14 @@ class LanguagesCodes extends JsonWriter {
       },
       {
         "language_code": "si",
-        "language_name": [
+        "language_names": [
           "Sinhalese"
         ],
         "countries": []
       },
       {
         "language_code": "sk",
-        "language_name": [
+        "language_names": [
           "Slovak"
         ],
         "countries": [
@@ -3031,7 +3009,7 @@ class LanguagesCodes extends JsonWriter {
       },
       {
         "language_code": "sl",
-        "language_name": [
+        "language_names": [
           "Slovenian"
         ],
         "countries": [
@@ -3044,7 +3022,7 @@ class LanguagesCodes extends JsonWriter {
       },
       {
         "language_code": "sm",
-        "language_name": [
+        "language_names": [
           "Samoan"
         ],
         "countries": [
@@ -3057,7 +3035,7 @@ class LanguagesCodes extends JsonWriter {
       },
       {
         "language_code": "sn",
-        "language_name": [
+        "language_names": [
           "Shona"
         ],
         "countries": [
@@ -3070,7 +3048,7 @@ class LanguagesCodes extends JsonWriter {
       },
       {
         "language_code": "sn",
-        "language_name": [
+        "language_names": [
           "Shona"
         ],
         "countries": [
@@ -3083,7 +3061,7 @@ class LanguagesCodes extends JsonWriter {
       },
       {
         "language_code": "so",
-        "language_name": [
+        "language_names": [
           "Somali"
         ],
         "countries": [
@@ -3096,7 +3074,7 @@ class LanguagesCodes extends JsonWriter {
       },
       {
         "language_code": "sq",
-        "language_name": [
+        "language_names": [
           "Albanian"
         ],
         "countries": [
@@ -3109,7 +3087,7 @@ class LanguagesCodes extends JsonWriter {
       },
       {
         "language_code": "sr",
-        "language_name": [
+        "language_names": [
           "Serbian"
         ],
         "countries": [
@@ -3127,7 +3105,7 @@ class LanguagesCodes extends JsonWriter {
       },
       {
         "language_code": "ss",
-        "language_name": [
+        "language_names": [
           "Swati"
         ],
         "countries": [
@@ -3140,7 +3118,7 @@ class LanguagesCodes extends JsonWriter {
       },
       {
         "language_code": "ss",
-        "language_name": [
+        "language_names": [
           "Swati"
         ],
         "countries": [
@@ -3153,7 +3131,7 @@ class LanguagesCodes extends JsonWriter {
       },
       {
         "language_code": "st",
-        "language_name": [
+        "language_names": [
           "Sesotho"
         ],
         "countries": [
@@ -3166,7 +3144,7 @@ class LanguagesCodes extends JsonWriter {
       },
       {
         "language_code": "st",
-        "language_name": [
+        "language_names": [
           "Sotho",
           "Southern Sotho"
         ],
@@ -3180,14 +3158,14 @@ class LanguagesCodes extends JsonWriter {
       },
       {
         "language_code": "su",
-        "language_name": [
+        "language_names": [
           "Sundanese"
         ],
         "countries": []
       },
       {
         "language_code": "sv",
-        "language_name": [
+        "language_names": [
           "Swedish"
         ],
         "countries": [
@@ -3205,7 +3183,7 @@ class LanguagesCodes extends JsonWriter {
       },
       {
         "language_code": "sw",
-        "language_name": [
+        "language_names": [
           "Swahili",
           "Kiswahili"
         ],
@@ -3229,7 +3207,7 @@ class LanguagesCodes extends JsonWriter {
       },
       {
         "language_code": "ta",
-        "language_name": [
+        "language_names": [
           "Tamil"
         ],
         "countries": [
@@ -3252,7 +3230,7 @@ class LanguagesCodes extends JsonWriter {
       },
       {
         "language_code": "ta",
-        "language_name": [
+        "language_names": [
           "Tamil"
         ],
         "countries": [
@@ -3275,7 +3253,7 @@ class LanguagesCodes extends JsonWriter {
       },
       {
         "language_code": "te",
-        "language_name": [
+        "language_names": [
           "Telugu"
         ],
         "countries": [
@@ -3288,7 +3266,7 @@ class LanguagesCodes extends JsonWriter {
       },
       {
         "language_code": "te",
-        "language_name": [
+        "language_names": [
           "Telugu"
         ],
         "countries": [
@@ -3301,7 +3279,7 @@ class LanguagesCodes extends JsonWriter {
       },
       {
         "language_code": "tg",
-        "language_name": [
+        "language_names": [
           "Tajik"
         ],
         "countries": [
@@ -3314,7 +3292,7 @@ class LanguagesCodes extends JsonWriter {
       },
       {
         "language_code": "th",
-        "language_name": [
+        "language_names": [
           "Thai"
         ],
         "countries": [
@@ -3327,7 +3305,7 @@ class LanguagesCodes extends JsonWriter {
       },
       {
         "language_code": "ti",
-        "language_name": [
+        "language_names": [
           "Tigrinya"
         ],
         "countries": [
@@ -3340,7 +3318,7 @@ class LanguagesCodes extends JsonWriter {
       },
       {
         "language_code": "tk",
-        "language_name": [
+        "language_names": [
           "Turkmen"
         ],
         "countries": [
@@ -3353,21 +3331,21 @@ class LanguagesCodes extends JsonWriter {
       },
       {
         "language_code": "tl",
-        "language_name": [
+        "language_names": [
           "Tagalog"
         ],
         "countries": []
       },
       {
         "language_code": "tn",
-        "language_name": [
+        "language_names": [
           "Setswana"
         ],
         "countries": []
       },
       {
         "language_code": "tn",
-        "language_name": [
+        "language_names": [
           "Tswana",
           "Setswana"
         ],
@@ -3386,7 +3364,7 @@ class LanguagesCodes extends JsonWriter {
       },
       {
         "language_code": "to",
-        "language_name": [
+        "language_names": [
           "Tonga"
         ],
         "countries": [
@@ -3399,7 +3377,7 @@ class LanguagesCodes extends JsonWriter {
       },
       {
         "language_code": "toi",
-        "language_name": [
+        "language_names": [
           "Tonga",
           "Zambezi Tonga"
         ],
@@ -3413,7 +3391,7 @@ class LanguagesCodes extends JsonWriter {
       },
       {
         "language_code": "tr",
-        "language_name": [
+        "language_names": [
           "Turkish"
         ],
         "countries": [
@@ -3431,42 +3409,42 @@ class LanguagesCodes extends JsonWriter {
       },
       {
         "language_code": "ts",
-        "language_name": [
+        "language_names": [
           "Tsonga"
         ],
         "countries": []
       },
       {
         "language_code": "tt",
-        "language_name": [
+        "language_names": [
           "Tatar"
         ],
         "countries": []
       },
       {
         "language_code": "tw",
-        "language_name": [
+        "language_names": [
           "Twi"
         ],
         "countries": []
       },
       {
         "language_code": "ty",
-        "language_name": [
+        "language_names": [
           "Tahitian"
         ],
         "countries": []
       },
       {
         "language_code": "ug",
-        "language_name": [
+        "language_names": [
           "Uyghur"
         ],
         "countries": []
       },
       {
         "language_code": "uk",
-        "language_name": [
+        "language_names": [
           "Ukrainian"
         ],
         "countries": [
@@ -3479,7 +3457,7 @@ class LanguagesCodes extends JsonWriter {
       },
       {
         "language_code": "ur",
-        "language_name": [
+        "language_names": [
           "Urdu"
         ],
         "countries": [
@@ -3497,7 +3475,7 @@ class LanguagesCodes extends JsonWriter {
       },
       {
         "language_code": "ur",
-        "language_name": [
+        "language_names": [
           "Urdu"
         ],
         "countries": [
@@ -3515,7 +3493,7 @@ class LanguagesCodes extends JsonWriter {
       },
       {
         "language_code": "uz",
-        "language_name": [
+        "language_names": [
           "Uzbek"
         ],
         "countries": [
@@ -3528,7 +3506,7 @@ class LanguagesCodes extends JsonWriter {
       },
       {
         "language_code": "ve",
-        "language_name": [
+        "language_names": [
           "Venda"
         ],
         "countries": [
@@ -3541,7 +3519,7 @@ class LanguagesCodes extends JsonWriter {
       },
       {
         "language_code": "ve",
-        "language_name": [
+        "language_names": [
           "Venda"
         ],
         "countries": [
@@ -3554,7 +3532,7 @@ class LanguagesCodes extends JsonWriter {
       },
       {
         "language_code": "vi",
-        "language_name": [
+        "language_names": [
           "Vietnamese"
         ],
         "countries": [
@@ -3567,28 +3545,28 @@ class LanguagesCodes extends JsonWriter {
       },
       {
         "language_code": "vo",
-        "language_name": [
+        "language_names": [
           "Volapük"
         ],
         "countries": []
       },
       {
         "language_code": "wa",
-        "language_name": [
+        "language_names": [
           "Wallon"
         ],
         "countries": []
       },
       {
         "language_code": "wo",
-        "language_name": [
+        "language_names": [
           "Wolof"
         ],
         "countries": []
       },
       {
         "language_code": "xam",
-        "language_name": [
+        "language_names": [
           "Koisan",
           "Khoisan"
         ],
@@ -3602,7 +3580,7 @@ class LanguagesCodes extends JsonWriter {
       },
       {
         "language_code": "xh",
-        "language_name": [
+        "language_names": [
           "Xhosa"
         ],
         "countries": [
@@ -3620,7 +3598,7 @@ class LanguagesCodes extends JsonWriter {
       },
       {
         "language_code": "xh",
-        "language_name": [
+        "language_names": [
           "Xhosa"
         ],
         "countries": [
@@ -3638,21 +3616,21 @@ class LanguagesCodes extends JsonWriter {
       },
       {
         "language_code": "yi",
-        "language_name": [
+        "language_names": [
           "Yiddish"
         ],
         "countries": []
       },
       {
         "language_code": "yo",
-        "language_name": [
+        "language_names": [
           "Yoruba"
         ],
         "countries": []
       },
       {
         "language_code": "za",
-        "language_name": [
+        "language_names": [
           "Zhuang",
           "Chuang"
         ],
@@ -3660,7 +3638,7 @@ class LanguagesCodes extends JsonWriter {
       },
       {
         "language_code": "zh",
-        "language_name": [
+        "language_names": [
           "Chinese"
         ],
         "countries": [
@@ -3673,7 +3651,7 @@ class LanguagesCodes extends JsonWriter {
       },
       {
         "language_code": "zh-Hans",
-        "language_name": [
+        "language_names": [
           "Chinese (Simplified)"
         ],
         "countries": [
@@ -3686,7 +3664,7 @@ class LanguagesCodes extends JsonWriter {
       },
       {
         "language_code": "zh-Hant",
-        "language_name": [
+        "language_names": [
           "Chinese (Traditional)"
         ],
         "countries": [
@@ -3699,7 +3677,7 @@ class LanguagesCodes extends JsonWriter {
       },
       {
         "language_code": "zsl",
-        "language_name": [
+        "language_names": [
           "Zimbabwean Sign Language"
         ],
         "countries": [
@@ -3712,7 +3690,7 @@ class LanguagesCodes extends JsonWriter {
       },
       {
         "language_code": "zu",
-        "language_name": [
+        "language_names": [
           "Zulu"
         ],
         "countries": [

@@ -417,15 +417,51 @@
       ]
     },
     {
+      "path": "packages/JPath",
+      "name": "jpath",
+      "build": false,
+      "build-simple-enable": true,
+      "dependencies": [],
+      "build-files": [
+        "JPath.js",
+        "JPathData.js"
+      ]
+    },
+    {
+      "path": "packages/CdnDatasetsBase",
+      "name": "cdn-datasets-base",
+      "build": true,
+      "build-simple-enable": true,
+      "dependencies": [
+        {
+          "name": "@jaisocx/jpath",
+          "path": "packages/JPath"
+        }
+      ],
+      "build-files": [
+        "JsonWriter.js",
+        "DatasetBase.js",
+        "WriteAllDataSetsCommand.js"
+      ]
+    },
+    {
       "path": "packages/CharcodeConverter",
       "name": "charcode-converter",
       "build": true,
       "build-simple-enable": true,
-      "dependencies": [],
+      "dependencies": [
+        {
+          "name": "@jaisocx/jpath",
+          "path": "packages/JPath"
+        },
+        {
+          "name": "@jaisocx/cdn-datasets-base",
+          "path": "packages/CdnDatasetsBase"
+        }
+      ],
       "build-files": [
         "CharcodeConverter.js",
         "Charcodes.js",
-        "JsonWriter.js",
         "Countries.js",
         "CountriesCodes.js",
         "LanguagesCodes.js",

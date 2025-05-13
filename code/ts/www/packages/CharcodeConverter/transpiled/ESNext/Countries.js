@@ -1,10 +1,10 @@
-import { JsonWriter } from "./JsonWriter.js";
+import { JsonWriter } from "@jaisocx/cdn-datasets-base";
 export class Countries extends JsonWriter {
-    #data;
+    _data;
     static _singletonInstance;
     constructor() {
         super();
-        this.#data = this.initData();
+        this._data = this.initData();
         this.filePath = "";
     }
     static getSingletonInstance() {
@@ -14,10 +14,10 @@ export class Countries extends JsonWriter {
         return Countries._singletonInstance;
     }
     getCountriesNames() {
-        return this.#data;
+        return this._data;
     }
     saveCountriesNames(inFilePath) {
-        let locSaved = this.saveData(inFilePath, this.#data);
+        let locSaved = this.saveData(inFilePath, this._data);
         return locSaved;
     }
     initData() {

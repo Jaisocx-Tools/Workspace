@@ -1,14 +1,12 @@
-import { JsonWriter } from "./JsonWriter.js";
-export declare class CountriesCodes extends JsonWriter {
-    #private;
+import { DatasetBase } from "@jaisocx/cdn-datasets-base";
+export declare class CountriesCodes extends DatasetBase {
     static _singletonInstance: CountriesCodes;
     constructor();
     static getSingletonInstance(): CountriesCodes;
     getCountriesCodes(): any[];
-    getCountriesCodesIndexedByCountryCode(): any[];
+    getCountriesCodesIndexedByKeys(key: string): any[];
     saveCountriesCodes(inFilePath: string): number;
-    saveCountriesCodesIndexedByCountryCode(inFilePath: string): number;
-    initDataAsObject(): any;
+    saveCountriesCodesIndexedByKeys(key: string, inFilePath: string): number;
     initData(): any[];
 }
 //# sourceMappingURL=CountriesCodes.d.ts.map

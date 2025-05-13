@@ -3,6 +3,18 @@
 [README.md HOME](./../../README.md)
 
 
+## News: 12th of May 2025
+
+1. Datasets published for Sites quality improvals, to use on CDN too, to lookup countries codes and languages names and codes.
+
+
+[https://workspace.brightday.email/CharsetsDetectionRelevantDatasetsPreview.html](https://workspace.brightday.email/CharsetsDetectionRelevantDatasetsPreview.html)
+
+
+
+
+2. Upgraded typescript packages to the newest ver.
+
 
 
 ## News: May 2025. 

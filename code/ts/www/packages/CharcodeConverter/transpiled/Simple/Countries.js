@@ -1,10 +1,10 @@
 class Countries extends JsonWriter {
-  #data;
+  _data;
   static _singletonInstance;
 
   constructor() {
     super();
-    this.#data = this.initData();
+    this._data = this.initData();
     this.filePath = "";
   }
 
@@ -17,11 +17,11 @@ class Countries extends JsonWriter {
   }
 
   getCountriesNames() {
-    return this.#data;
+    return this._data;
   }
 
   saveCountriesNames(inFilePath) {
-    let locSaved = this.saveData(inFilePath, this.#data);
+    let locSaved = this.saveData(inFilePath, this._data);
 
     return locSaved;
   }

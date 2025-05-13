@@ -1,6 +1,6 @@
-import { JsonWriter } from "./JsonWriter.js";
+import { JsonWriter } from "@jaisocx/cdn-datasets-base";
 export declare class Countries extends JsonWriter {
-    #private;
+    _data: string[];
     static _singletonInstance: Countries;
     constructor();
     static getSingletonInstance(): Countries;
