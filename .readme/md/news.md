@@ -29,6 +29,8 @@ the template package to copy-paste to start a new package with Vite:
 
 `code/ts/www/templates/ViteWithSassAndLess`
 
+To start watching with Vite in dev mode:
+
 ```
 docker compose exec ts bash
 cd /var/www/code/ts
@@ -37,6 +39,15 @@ npx vite --config www/templates/ViteWithSassAndLess/vite.config.ts
 
 navigate to <http://localhost:5173/> 
 
+
+To build with Vite:
+```
+docker compose exec ts bash
+cd /var/www/code/ts
+npx vite build --config www/templates/ViteWithSassAndLess/vite.config.ts
+```
+
+navigate to <https://workspace.brightday.email/templates/ViteWithSassAndLess/dist/> 
 
 
 #### 2. Vitest Testing Framework applied in this project.
