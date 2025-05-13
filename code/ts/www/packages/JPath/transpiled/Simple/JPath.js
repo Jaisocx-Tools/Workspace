@@ -99,6 +99,12 @@ class JPath {
     }
   }
 
+  static getByJPathExpression(jpathExpression, value) {
+    const jpath = JPath.parse(jpathExpression);
+
+    return JPath.getByJPath(jpath, value);
+  }
+
   static getByJPath(jpath, value) {
     if (!value) {
       return null;
@@ -183,8 +189,8 @@ class JPath {
         }
 
         jpathKey = jpathSplitted.slice((
-          leftBracePosition + 1), (
-          rightBracePosition - 1));
+          leftBracePosition + 1), 
+        rightBracePosition);
         jpathKeyNumeric = +jpathKey;
 
         if (Number.isInteger(jpathKeyNumeric) === true) {
@@ -230,12 +236,6 @@ class JPath {
     }
 
     return this._jpath;
-  }
-
-  static getByJPathExpression(jpathExpression, value) {
-    const jpath = JPath.parse(jpathExpression);
-
-    return JPath.getByJPath(jpath, value);
   }
 
   static getJPathName(

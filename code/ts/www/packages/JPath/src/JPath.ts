@@ -285,8 +285,8 @@ export class JPath {
 
 
         jpathKey = jpathSplitted.slice( (
-          leftBracePosition + 1), (
-          rightBracePosition - 1) );
+          leftBracePosition + 1), 
+        rightBracePosition );
         jpathKeyNumeric = +jpathKey;
 
         if ( Number.isInteger( jpathKeyNumeric ) === true ) {

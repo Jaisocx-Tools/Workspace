@@ -19,6 +19,7 @@
     "LICENSE"
   ],
   "scripts": {
+    "test": "vitest",
     "server": "http-server ./www -p 8083 -o"
   },
   "keywords": [],
@@ -30,17 +31,18 @@
   },
   "devDependencies": {
     "@types/node": "~22.15.17",
-    "typescript-eslint": "~8.32.1",
+    "@typescript-eslint/eslint-plugin": "~8.32.1",
+    "@typescript-eslint/parser": "~8.32.1",
     "@typescript-eslint/type-utils": "~8.32.1",
     "@typescript-eslint/utils": "~8.32.1",
-    "@typescript-eslint/parser": "~8.32.1",
-    "@typescript-eslint/eslint-plugin": "~8.32.1",
     "braces": ">=3.0.3",
     "core-js": "~3.42.0",
     "eslint": "~9.26.0",
     "eslint-plugin-jaisocx": "file:transpiled_tools/EslintPlugins/EslintPluginJaisocxJS",
     "ts-node": "~10.9.2",
-    "typescript": "~5.8.3"
+    "typescript": "~5.8.3",
+    "typescript-eslint": "~8.32.1",
+    "vitest": "^3.1.3"
   },
   "packageManager": "yarn@4.9.1+sha512.f95ce356460e05be48d66401c1ae64ef84d163dd689964962c6888a9810865e39097a5e9de748876c2e0bf89b232d583c33982773e9903ae7a76257270986538"
 }

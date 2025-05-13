@@ -419,7 +419,7 @@
     {
       "path": "packages/JPath",
       "name": "jpath",
-      "build": false,
+      "build": true,
       "build-simple-enable": true,
       "dependencies": [],
       "build-files": [
@@ -447,7 +447,7 @@
     {
       "path": "packages/CharcodeConverter",
       "name": "charcode-converter",
-      "build": true,
+      "build": false,
       "build-simple-enable": true,
       "dependencies": [
         {

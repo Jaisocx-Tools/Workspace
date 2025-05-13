@@ -74,6 +74,19 @@ class JPath {
             holderId = id;
         }
     }
+    static getByJPathExpression(jpathExpression, value) {
+        const jpath = JPath.parse(jpathExpression);
+        return JPath.getByJPath(jpath, value);
+    }
+    // faster than JPath.getByJPathExpression( jpathExpression: string, value: any );
+    // recommended when the lookup more than once with the same jpathExpression,
+    // or when You already at once build the jpath array variables to perform lookups
+    // like this: let jpath: (string|number)[] = [ "tokens", "startTokens", 0, "length" ];
+    //    let jpath = JPath.parse( "subtree[1].opened" ); => [ "subtree", 1, "opened" ]
+    //    let obj = { "subtree": [{ "opened": false }, { "opened": true }] };
+    //    let valueFound = JPath.getByJPath( jpath, obj );
+    //    console.log( valueFound ); 
+    //    prints out => true  
     static getByJPath(jpath, value) {
         if (!value) {
             return null;
@@ -106,6 +119,15 @@ class JPath {
         }
         return targetValue;
     }
+    // jpath string exression as "subtree[1].opened" => [ "subtree", 1, "opened" ]
+    // with this art of array of properties names of javascript object tree 
+    //  it is easier to get the property value of any datatype in javascript objects and arrays. 
+    //  later usage of the jpath array: 
+    //    let jpath = JPath.parse( "subtree[1].opened" );
+    //    let obj = { "subtree": [{ "opened": false }, { "opened": true }] };
+    //    let valueFound = JPath.getByJPath( jpath, obj );
+    //    console.log( valueFound ); 
+    //    prints out => true
     static parse(jpathExpression) {
         const jpath = [];
         const jpathSplittedByPoints = jpathExpression.split(".");
@@ -120,6 +142,17 @@ class JPath {
             let rightBracePosition = 0;
             let jpathKey = "";
             let jpathKeyNumeric = 0;
+            // the loop to find arrays indexes in a property,
+            // when looking for an item in multilevel arrays.
+            // for example: "tokens[startTokens][0].length"
+            // pushes to jpath array in the first iteration like this:
+            //    jpath.push( "tokens" );
+            //    jpath.push( "startTokens" ), 
+            //  then in the next iteration 
+            //    jpath.push( 0 );
+            //  and then exits the cycle.
+            //  the push of prop "length" is performed then 
+            //    in the next iteration of the "loopSplittedByPoints: for" cycle above
             while (leftBracePosition !== (-1)) {
                 // in this while loop, 
                 // when the next step is done, 
@@ -145,12 +178,14 @@ class JPath {
                     throw new Error("JPathExpression synthax");
                     break;
                 }
+                // the property name before opening square brace [ is being pushed to jpath array
+                //  when the opening square brace [ is found first time.
                 if (matchedFirstTime === false) {
                     jpathKey = jpathSplitted.slice(0, leftBracePosition);
                     jpath.push(jpathKey);
                     matchedFirstTime = true;
                 }
-                jpathKey = jpathSplitted.slice((leftBracePosition + 1), (rightBracePosition - 1));
+                jpathKey = jpathSplitted.slice((leftBracePosition + 1), rightBracePosition);
                 jpathKeyNumeric = +jpathKey;
                 if (Number.isInteger(jpathKeyNumeric) === true) {
                     jpath.push(jpathKeyNumeric);
@@ -184,10 +219,6 @@ class JPath {
             this._jpath = JPath.parse(this._jpathExpression);
         }
         return this._jpath;
-    }
-    static getByJPathExpression(jpathExpression, value) {
-        const jpath = JPath.parse(jpathExpression);
-        return JPath.getByJPath(jpath, value);
     }
     static getJPathName(jpathExpression, delimiter) {
         let jpath = JPath.parse(jpathExpression);

@@ -3,6 +3,38 @@
 [README.md HOME](./../../README.md)
 
 
+## News: 13th of May 2025
+
+#### 1. Vitest Testng Framework applied in this project.
+
+*The very very nice user experience at the first site. Installed via npm like a charm, first test written ran at once, no need no project rebuild. Found the bug thanks to the Vitest test ran, and bugfixed then. The very very nice testing framework.*
+
+![Vitest test ran](./images/tests/Vitest_test_ran.jpg)
+
+
+
+1. To update Your project:
+
+```
+docker compose exec ts bash
+cd /var/www/code/ts
+npm install
+```
+
+2. A test available: `code/ts/www/packages/JPath/test/JPath.test.ts`
+
+3. To run tests:
+
+```
+docker compose exec ts bash
+cd /var/www/code/ts
+npm run test
+```
+
+4. After tests have been run, when no need watcher to run tests every changes made to *.test.ts files, to exit Vitest watch test mode: press the key "q"
+
+
+
 ## News: 12th of May 2025
 
 1. Datasets published for Sites quality improvals, to use on CDN too, to lookup countries codes and languages names and codes.
@@ -14,6 +46,14 @@
 
 
 2. Upgraded typescript packages to the newest ver.
+
+To update Your project:
+
+```
+docker compose exec ts bash
+cd /var/www/code/ts
+npm install
+```
 
 
 
