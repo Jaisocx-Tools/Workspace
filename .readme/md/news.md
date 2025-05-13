@@ -5,33 +5,86 @@
 
 ## News: 13th of May 2025
 
-#### 1. Vitest Testing Framework applied in this project.
-
-*The very very nice user experience at the first site. Installed via npm like a charm, first test written ran at once, no need no project rebuild. Found the bug thanks to the Vitest test ran, and bugfixed then. The very very nice testing framework.*
-
-![Vitest test ran](./images/tests/Vitest_test_ran.jpg)
-
-
-
-1. To update Your project:
+#### 1. To apply new npm tools:
+**Vite Framework**, 
+**SASS** and **LESS** Styles preprocessors and 
+**Vitest Testing Framework**, 
+You need to update in Your project ts dockerized service and 
+install new npm development dependencies:
 
 ```
+docker compose rm ts
+docker compose build ts
+docker compose up ts -d
+
+
 docker compose exec ts bash
 cd /var/www/code/ts
 npm install
 ```
 
-2. A test available: `code/ts/www/packages/JPath/test/JPath.test.ts`
+#### 2. Vite Framework applied in this project
 
-3. To run tests:
+the template package to copy-paste to start a new package with Vite:
+
+`code/ts/www/templates/ViteWithSassAndLess`
 
 ```
 docker compose exec ts bash
 cd /var/www/code/ts
-npm run test
+npx vite --config www/templates/ViteWithSassAndLess/vite.config.ts
 ```
 
-4. After tests have been run, when no need watcher to run tests every changes made to *.test.ts files, to exit Vitest watch test mode: press the key "q"
+navigate to <http://localhost:5173/> 
+
+
+
+#### 2. Vitest Testing Framework applied in this project.
+
+*The very very nice user experience at the first site. Installed via npm like a charm, first test written ran at once, no need no project rebuild. Found the bug thanks to the Vitest test ran, and bugfixed then. The very very nice testing framework.*
+
+A test example available: `code/ts/www/packages/JPath/test/JPath.test.ts`
+
+
+![Vitest test ran](./images/tests/Vitest_test_ran.jpg)
+
+
+
+2. To run tests:
+
+```
+docker compose exec ts bash
+cd /var/www/code/ts
+
+## via script in package.json:
+##   why good: when didn't know instruction "npx vitest run", 
+##   the normal way to lookup for scripts in package.json for sure))
+npm run test
+
+## or, in watch mode: 
+npm run test-watch
+
+
+## via npx command line tool: 
+# npx vitest run
+
+## or, in watch mode: 
+# npx vitest
+```
+
+
+
+
+
+#### 3. SASS and LESS Style Preprocessors applied in this project
+
+*Example usage in .ts code:*
+
+```
+import "./styles/main.scss"; // for SASS
+import "./styles/main.less"; // for LESS
+```
+
 
 
 
