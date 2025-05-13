@@ -5,7 +5,7 @@
 
 ## News: 13th of May 2025
 
-#### 1. Vitest Testng Framework applied in this project.
+#### 1. Vitest Testing Framework applied in this project.
 
 *The very very nice user experience at the first site. Installed via npm like a charm, first test written ran at once, no need no project rebuild. Found the bug thanks to the Vitest test ran, and bugfixed then. The very very nice testing framework.*
 
