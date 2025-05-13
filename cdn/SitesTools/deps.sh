@@ -14,6 +14,8 @@ npm install "@jaisocx/event-emitter"
 npm install "@jaisocx/template-renderer"
 npm install "@jaisocx/tree"
 npm install "@jaisocx/tooltip"
+npm install "@jaisocx/jpath"
+npm install "@jaisocx/cdn-datasets-base"
 npm install "@jaisocx/charcode-converter"
 npm install "@jaisocx/api"
 
