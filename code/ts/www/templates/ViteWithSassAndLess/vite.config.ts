@@ -2,6 +2,7 @@ import { defineConfig } from 'vite';
 import path from 'path';
 
 export default defineConfig({
+  base: './',
   root: __dirname, // tells Vite this config is local to packages/ui
   resolve: {
     alias: {

@@ -20,7 +20,7 @@
     "README.md"
   ],
   "optionalDependencies": {
-    "@jaisocx/jpath": "^1.2.1"
+    "@jaisocx/jpath": "^1.2.2"
   },
   "publishConfig": {
     "access": "public"
