@@ -2,11 +2,11 @@ import { Trimmer } from "@jaisocx/text";
 import { CssHtml, CssSelectorWeight, SpecifityAndSelector } from "@jaisocx/css-html";
 
 import { EmailHtmlInlinerConstants } from "./EmailHtmlInlinerConstants.js";
-import { RuleAndSpecifities } from "./EmailHtmlInlinerTypes.js";
 import { EmailHtmlInlinerInterface } from "./EmailHtmlInlinerInterface.js";
+import { RuleAndSpecifities } from "./EmailHtmlInlinerTypes.js";
 
 
-export class EmailHtmlInliner {
+export class EmailHtmlInliner implements EmailHtmlInlinerInterface {
   
   htmlDocument: Document|undefined;
   debug: boolean;
@@ -80,17 +80,16 @@ export class EmailHtmlInliner {
 
 
     // 3rd arg RuleAndSpecifities[], matching css props in this.constants.stylesPropsToCheck: string[]
-    let locInOutArrayRulesMatchingPropsAndMedia: any[] = new Array();
+    let locInOutArrayRulesMatchingPropsAndMedia: RuleAndSpecifities[] = new Array() as RuleAndSpecifities[];
     
     // 4th arg inOutObjectFilteredRulesAndSpecifitiesByCssPropname is the same RuleAndSpecifities[] however an Object() with keys = Css prop name.
-    let locInOutObjectFilteredRulesAndSpecifitiesByCssPropname: any = new Object(); 
+    // let locInOutObjectFilteredRulesAndSpecifitiesByCssPropname: any = new Object(); 
 
     // filters all rules, matching css props in this.constants.stylesPropsToCheck: string[]
     this.setRulesMatchingPropsAndMedia ( 
       locRulesMatchingMedia, 
       inStylesPropsToCheck,
-      locInOutArrayRulesMatchingPropsAndMedia,
-      locInOutObjectFilteredRulesAndSpecifitiesByCssPropname
+      locInOutArrayRulesMatchingPropsAndMedia
     );
 
 
@@ -115,7 +114,9 @@ export class EmailHtmlInliner {
     targetNode = newNodeApplied;
 
 
+    // @ts-ignore
     let mainNodesWithClasses: string[] = [];
+    // @ts-ignore
     let newNodesWithClasses: string[] = [];
 
     if ( this.debug === true ) {
@@ -130,8 +131,7 @@ export class EmailHtmlInliner {
       node, 
       newNodeApplied,
       locInOutInheritedStyles,
-      locInOutArrayRulesMatchingPropsAndMedia,
-      locInOutObjectFilteredRulesAndSpecifitiesByCssPropname
+      locInOutArrayRulesMatchingPropsAndMedia
     );
 
     let cssPropName: any = "";
@@ -162,8 +162,7 @@ export class EmailHtmlInliner {
         node, 
         newNodeApplied,
         locInOutInheritedStyles,
-        locInOutArrayRulesMatchingPropsAndMedia,
-        locInOutObjectFilteredRulesAndSpecifitiesByCssPropname
+        locInOutArrayRulesMatchingPropsAndMedia
       );
     }
 
@@ -178,7 +177,6 @@ export class EmailHtmlInliner {
       newNodeApplied,
       locInOutInheritedStyles,
       locInOutArrayRulesMatchingPropsAndMedia,
-      locInOutObjectFilteredRulesAndSpecifitiesByCssPropname,
       inBaseUrlToReplace,
       inBaseUrlReplacedWith 
     );
@@ -212,35 +210,37 @@ export class EmailHtmlInliner {
     newDoc: Document, 
     newElem: HTMLElement, 
     inOutInheritedStyles: any,
-    inOutArrayRulesMatchingPropsAndMedia: any[],
-    inOutObjectFilteredRulesAndSpecifitiesByCssPropname: any,
+    inOutArrayRulesMatchingPropsAndMedia: RuleAndSpecifities[],
     inBaseUrlToReplace: string,
     inBaseUrlReplacedWith: string
   ): number {
 
-    // let locInOutNodeStyles: any = {};
     let locInOutNewNodeToInheritStyles: any = {};
 
     let nodes: NodeListOf<ChildNode> = root.childNodes;
     let node: HTMLElement;
     let newNode: Text|HTMLElement;
-    // let newNodeApplied: HTMLElement;
 
 
-    // let mainNodeWithClasses: string = "";
-    // let newNodeWithClasses: string = "";
+    // @ts-ignore
+    let mainNodeWithClasses: string = "";
+    // @ts-ignore
+    let newNodeWithClasses: string = "";
 
-    // let mainNodesWithClasses: string[] = new Array() as string[];
-    // let newNodesWithClasses: string[] = new Array() as string[];
-    // let newNodesWithClassesAfter: string[] = new Array() as string[];
+    // @ts-ignore
+    let mainNodesWithClasses: string[] = new Array() as string[];
+    // @ts-ignore
+    let newNodesWithClasses: string[] = new Array() as string[];
+    // @ts-ignore
+    let newNodesWithClassesAfter: string[] = new Array() as string[];
 
-    // if ( this.debug === true ) {
-    // mainNodeWithClasses = root.nodeName + "." + this.cssHtmlPackage.concatClassNames( root, "." );
-    // newNodeWithClasses = newElem.nodeName + "." + this.cssHtmlPackage.concatClassNames( newElem, "." );
+    if ( this.debug === true ) {
+      mainNodeWithClasses = root.nodeName + "." + this.cssHtmlPackage.concatClassNames( root, "." );
+      newNodeWithClasses = newElem.nodeName + "." + this.cssHtmlPackage.concatClassNames( newElem, "." );
 
-    // mainNodesWithClasses = this.getConcatenatedClassNames( root );
-    // newNodesWithClasses = this.getConcatenatedClassNames( newElem );
-    // }
+      mainNodesWithClasses = this.getConcatenatedClassNames( root );
+      newNodesWithClasses = this.getConcatenatedClassNames( newElem );
+    }
 
 
     let nodeNumber: number = 0;
@@ -268,7 +268,7 @@ export class EmailHtmlInliner {
         newNode.className = node.className;
       }
 
-      if ( node.nodeName === "IMG" ) {
+      if ( node.nodeName.toLowerCase() === "img" ) {
         let imageSrc: string|null = node.getAttribute( "src" );
         
         if ( imageSrc ) {
@@ -283,20 +283,18 @@ export class EmailHtmlInliner {
         node, 
         newNode,
         inOutInheritedStyles,
-        inOutArrayRulesMatchingPropsAndMedia,
-        inOutObjectFilteredRulesAndSpecifitiesByCssPropname
+        inOutArrayRulesMatchingPropsAndMedia
       );
 
       newElem.appendChild(newNode);
     }
 
-    // if ( this.debug === true ) {
-    //   newNodesWithClasses = this.getConcatenatedClassNames( newElem );
-    // }
+    if ( this.debug === true ) {
+      newNodesWithClasses = this.getConcatenatedClassNames( newElem );
+    }
 
 
     let newNodeNumber: number = 0;
-    //let cssPropsToCheck: string[] = Object.keys( inOutObjectFilteredRulesAndSpecifitiesByCssPropname );
     let cssPropsInherited: string[] = this.constants.inheritingProps;
     let cssPropname: any = "";
     let cssPropValueParent: string = "";
@@ -348,33 +346,39 @@ export class EmailHtmlInliner {
         newNode,
         locInOutNewNodeToInheritStyles,
         inOutArrayRulesMatchingPropsAndMedia,
-        inOutObjectFilteredRulesAndSpecifitiesByCssPropname,
         inBaseUrlToReplace,
         inBaseUrlReplacedWith
       );
 
-      // if ( this.debug === true ) {
-      //   newNodesWithClassesAfter = this.getConcatenatedClassNames( newElem );
-      // }
+      if ( this.debug === true ) {
+        newNodesWithClassesAfter = this.getConcatenatedClassNames( newElem );
+      }
 
       newNodeNumber++;
     }
 
-    // if ( this.debug === true ) {
-    //     newNodesWithClassesAfter = this.getConcatenatedClassNames( newElem );
-    // }
+    if ( this.debug === true ) {
+      newNodesWithClassesAfter = this.getConcatenatedClassNames( newElem );
+    }
 
     return newNodeNumber;
   }
 
 
 
+  /**
+   * 
+   * @param node 
+   * @param newNode 
+   * @param inOutInheritedStyles : // Object, key: css prop name, value: css prop value
+   * @param inArrayRulesMatchingPropsAndMedia : RuleAndSpecifities[] filtered for current media query matching
+   * @param inObjectFilteredRulesAndSpecifitiesByCssPropname : Object with key = css prop name => RuleAndSpecifities[] filtered for current media query matching and relevant css props
+   */
   copyAllStyles ( 
     node: HTMLElement, 
     newNode: HTMLElement,
     inOutInheritedStyles: any,
-    inArrayRulesMatchingPropsAndMedia: any[],
-    inObjectFilteredRulesAndSpecifitiesByCssPropname: any
+    inArrayRulesMatchingPropsAndMedia: RuleAndSpecifities[]
   ): undefined {
     
     let styleValueNewNodeParent: string = "";
@@ -382,8 +386,12 @@ export class EmailHtmlInliner {
     let nodeName: string = node.nodeName.toLowerCase();
 
     let locInOutArrayCssSelectorsMatchingPropsAndMediaAndNode: string[] = new Array() as string[];
-    let locInOutArrayRulesMatchingPropsAndMediaAndNode: string[] = new Array() as string[];
+    let locInOutArrayRulesMatchingPropsAndMediaAndNode: RuleAndSpecifities[] = new Array() as RuleAndSpecifities[];
 
+
+    // filter by node.matches( cssSelector )
+    // filters inArrayRulesMatchingPropsAndMedia: RuleAndSpecifities[] matching node
+    // and writes to locInOutArrayRulesMatchingPropsAndMediaAndNode: RuleAndSpecifities[]
     this.setCssRulesMatchingNode ( 
       node, 
       inArrayRulesMatchingPropsAndMedia,
@@ -391,31 +399,26 @@ export class EmailHtmlInliner {
       locInOutArrayRulesMatchingPropsAndMediaAndNode
     );
 
-    // let locObjectFilteredRulesAndSpecifities: any = this.getCssRulesMatchingNodeAndProps ( 
-    //   locInOutArrayCssSelectorsMatchingPropsAndMediaAndNode,
-    //   inObjectFilteredRulesAndSpecifitiesByCssPropname
-    // );
 
-    let cssPropertiesNames: string[] = this.constants.stylesPropsToCheck; //Object.keys( locObjectFilteredRulesAndSpecifities );
-    let cssRulesMatchingNode: string[] = new Array() as string[];
+
+
     let cssPropDefaults: string[] = new Array() as string[];
     let cssPropDefaultsValueMatches: boolean = false;
     let nodeStylesDefaults: any = this.constants.tagsStylesDefaults[newNode.nodeName];
-    // let nodeStylesDefaultsSet: boolean = ( nodeStylesDefaults !== undefined );
-    // let tagDefaultCssValueMatches: boolean = false;
+    let nodeStylesDefaultsSet: boolean = ( nodeStylesDefaults !== undefined );
+
+
+    let cssPropertiesNames: string[] = this.constants.stylesPropsToCheck;
     let cssPropertyName: any = "";
 
     for ( cssPropertyName of cssPropertiesNames ) {
 
-      cssRulesMatchingNode = locObjectFilteredRulesAndSpecifities[cssPropertyName];
-      if ( cssRulesMatchingNode === undefined ) {
-        continue;
-      }
-
       styleValue = this.getDeclaredCSSValue( 
-        cssRulesMatchingNode, 
+        locInOutArrayRulesMatchingPropsAndMediaAndNode, 
         node, 
-        cssPropertyName );
+        cssPropertyName 
+      );
+
       if ( !styleValue ) {
         continue;
       }
@@ -444,7 +447,10 @@ export class EmailHtmlInliner {
         // cssPropDefaultsValueMatches === true, when one of default styles for css prop matches the calculated style of the node.
         cssPropDefaultsValueMatches = ( cssPropDefaults && ( cssPropDefaults.includes( styleValue ) === true ) );
         cssPropDefaultsValueMatches = ( ( cssPropDefaultsValueMatches === true ) || ( this.constants.stylesPropsDefaults["all"].includes( styleValue ) === true ) );
-        cssPropDefaultsValueMatches = ( ( cssPropDefaultsValueMatches === true ) || ( nodeStylesDefaults === styleValue ) );
+
+        if ( nodeStylesDefaultsSet === true ) {
+          cssPropDefaultsValueMatches = ( ( cssPropDefaultsValueMatches === true ) || ( nodeStylesDefaults === styleValue ) );
+        }
         
         // matches the default value 
         if ( cssPropDefaultsValueMatches === true ) {
@@ -490,6 +496,172 @@ export class EmailHtmlInliner {
   }
 
 
+
+
+  getDeclaredCSSValue ( 
+    allCssRules: RuleAndSpecifities[], 
+    node: HTMLElement, 
+    cssPropertyName: string 
+  ): string {
+    
+    // 1. Check inline style first
+    const inlineStyleValue: string = node.style.getPropertyValue(cssPropertyName);
+    if ( inlineStyleValue ) {
+      return this.trimmer.trimQuotes( inlineStyleValue ) || inlineStyleValue;
+    }
+
+
+
+    // 2. Scan all matching CSS rules
+    let matchedValue: string = "";
+    // let cssPropertyValueByCssRule: string = "";
+
+    let cssPropertyValueByBrowser: string = window.getComputedStyle( node ).getPropertyValue( cssPropertyName );
+    let trimmedCssPropertyValueByBrowser: string = this.trimmer.trimQuotes( cssPropertyValueByBrowser ) || cssPropertyValueByBrowser;
+
+    let objCssRuleAndSpecifity: RuleAndSpecifities = new Object() as RuleAndSpecifities;
+    let objCssRuleAndSpecifityHigher: RuleAndSpecifities = new Object() as RuleAndSpecifities;
+    let cssRule: any = new Object() as CSSStyleRule;
+    let specifityAndSelectorObj: SpecifityAndSelector = new Object() as SpecifityAndSelector;
+    let specifity: number[] = new Array() as number[];
+    let specifityHigher: number[] = new Array() as number[];
+    let matchedValueApplied: boolean = false;
+    
+    specifityHigher = [0, 0, 0, 0, 0, 0];
+
+    let specifitiesComparison: number = 0;
+
+    let cssValueByRule: string = "";
+
+    for ( objCssRuleAndSpecifity of allCssRules ) {
+      cssRule = objCssRuleAndSpecifity.rule;
+      
+      cssValueByRule = cssRule.style.getPropertyValue(cssPropertyName);
+      if ( !cssValueByRule ) {
+        continue;
+      }
+
+
+      if ( objCssRuleAndSpecifity.specifitiesAndSelectors.length === 1 ) {
+        specifity = objCssRuleAndSpecifity.specifitiesAndSelectors[0].specifity;
+        specifitiesComparison = this.cssSelectorWeightPackage.compareSpecificity( 
+          specifity, 
+          specifityHigher );
+
+        if ( specifitiesComparison >= 0 ) {
+          matchedValueApplied = true;
+          specifityHigher = [ ...specifity ];
+
+          objCssRuleAndSpecifity.cssValueByRule = cssValueByRule;
+          objCssRuleAndSpecifityHigher = { ...objCssRuleAndSpecifity };
+        }
+
+      } else {
+
+        for ( specifityAndSelectorObj of objCssRuleAndSpecifity.specifitiesAndSelectors ) {
+
+          if ( node.matches( specifityAndSelectorObj.cssSelector ) === true ) {
+            continue;
+          }
+
+          specifity = specifityAndSelectorObj.specifity;
+          specifitiesComparison = this.cssSelectorWeightPackage.compareSpecificity( 
+            specifity, 
+            specifityHigher );
+
+          if ( specifitiesComparison >= 0 ) {
+            matchedValueApplied = true;
+            specifityHigher = [ ...specifity ];
+
+            objCssRuleAndSpecifity.cssValueByRule = cssValueByRule;
+            objCssRuleAndSpecifityHigher = { ...objCssRuleAndSpecifity };
+          }
+
+        }
+      }
+      
+    }
+
+    if ( matchedValueApplied === true ) {
+      matchedValue = this.processOneCssValueByRule ( 
+        node, 
+        objCssRuleAndSpecifityHigher.cssValueByRule
+      );
+    }
+
+    if ( this.debug === true ) {
+      this.buildAndPrintLogRecord (
+        node, 
+        cssPropertyName,
+        objCssRuleAndSpecifityHigher,
+        trimmedCssPropertyValueByBrowser,
+        matchedValue
+      );
+    }
+
+    return matchedValue;
+  }
+
+
+
+  // base method to get the css prop value
+  processOneCssValueByRule ( 
+    node: HTMLElement, 
+    cssValueByRule: string 
+  ): string {
+
+    let matchedValue: string = "";
+    let trimmedCssValueByRule: string = "";
+    let variableName: string = "";
+    let variableValue: string = "";
+
+
+    trimmedCssValueByRule = this.trimmer.trimQuotes( cssValueByRule ) || cssValueByRule;
+
+    if ( trimmedCssValueByRule.startsWith("var(") ) {
+      variableName = trimmedCssValueByRule.substring( 
+        4, (
+          trimmedCssValueByRule.length - 1) );
+      variableValue = window.getComputedStyle( node ).getPropertyValue( variableName );
+      matchedValue = this.trimmer.trimQuotes( variableValue ) || variableValue;
+
+      if ( matchedValue.includes("rem") ) {
+
+        let values: string[] = matchedValue.split( " " );
+
+        for ( let i = 0; i < values.length; i++ ) {
+          let size: string = values[i];
+          values[i] = this.cssHtmlPackage.remToPx( size, this.remBasePxValue ) || size;
+        }
+
+        matchedValue = values.join( " " );
+
+      }
+
+    } else if ( trimmedCssValueByRule.includes("rem") ) {
+
+      let values: string[] = trimmedCssValueByRule.split( " " );
+
+      for ( let i = 0; i < values.length; i++ ) {
+        let size: string = values[i];
+        values[i] = this.cssHtmlPackage.remToPx( size, this.remBasePxValue ) || size;
+      }
+      matchedValue = values.join( " " );
+    } else {
+      matchedValue = trimmedCssValueByRule; // Override previous if more recent in cascade
+    }
+
+    return matchedValue;
+  }
+
+  // END BLOCK MAIN METHODS
+
+
+
+
+
+
+
   // START BLOCK  METHODS TO PRE-BUILD DATA SETS TO AVOID AMBIGOUS METHODS CALLS ON SAME CSSRULES MANY TIMES.
   // pre-build method to add all rules matching current media
   getRulesMatchingMedia(): RuleAndSpecifities[] {
@@ -497,7 +669,7 @@ export class EmailHtmlInliner {
     let rulesMatching: RuleAndSpecifities[] = new Array() as RuleAndSpecifities[];
 
     // @ts-ignore
-    let styleSheets: StyleSheetList = this.htmlDocument.styleSheets;
+    let styleSheets: CSSStyleSheet[] = this.htmlDocument.adoptedStyleSheets;
     let sheet: CSSStyleSheet;
 
     for ( sheet of styleSheets ) {
@@ -521,13 +693,15 @@ export class EmailHtmlInliner {
     let nestedCssRules: any;
     let objectPushedTemplate: RuleAndSpecifities = {
       "rule": new Object() as CSSStyleRule,
-      "specifitiesAndSelectors": new Array() as SpecifityAndSelector[]
+      "specifitiesAndSelectors": new Array() as SpecifityAndSelector[],
+      "cssValueByRule": ""
     };
 
     let objectPushed: RuleAndSpecifities = { ...objectPushedTemplate };
 
     let rule: CSSRule;
-    for ( rule of cssRules ) {
+    for ( let key in cssRules ) {
+      rule = cssRules[key];
 
       if (rule instanceof CSSStyleRule ) {
 
@@ -603,11 +777,10 @@ export class EmailHtmlInliner {
   setRulesMatchingPropsAndMedia ( 
     inRulesAndSpecifities: RuleAndSpecifities[], 
     inStylesPropsToCheck: string[],
-    inOutArrayFilteredRulesAndSpecifities: RuleAndSpecifities[], 
-    inOutObjectFilteredRulesAndSpecifitiesByCssPropname: any
+    inOutArrayFilteredRulesAndSpecifities: RuleAndSpecifities[]
   ): undefined {
 
-    let cssRuleAndSpecifityArray: any = new Array();
+    // let cssRuleAndSpecifityArray: RuleAndSpecifities[] = new Array() as RuleAndSpecifities[];
     let ruleOnceMatchedCssPropname: boolean = false;
     let specifityId: number = 0;
     let specifitiesNumber: number = 0;
@@ -628,11 +801,11 @@ export class EmailHtmlInliner {
           continue;
         }
 
-        cssRuleAndSpecifityArray = inOutObjectFilteredRulesAndSpecifitiesByCssPropname[cssPropertyName];
-        if ( cssRuleAndSpecifityArray === undefined ) {
-          inOutObjectFilteredRulesAndSpecifitiesByCssPropname[cssPropertyName] = new Array();
-          cssRuleAndSpecifityArray = inOutObjectFilteredRulesAndSpecifitiesByCssPropname[cssPropertyName];
-        }
+        // cssRuleAndSpecifityArray = inOutObjectFilteredRulesAndSpecifitiesByCssPropname[cssPropertyName];
+        // if ( cssRuleAndSpecifityArray === undefined ) {
+        //   inOutObjectFilteredRulesAndSpecifitiesByCssPropname[cssPropertyName] = new Array();
+        //   cssRuleAndSpecifityArray = inOutObjectFilteredRulesAndSpecifitiesByCssPropname[cssPropertyName];
+        // }
 
         specifitiesNumber = objCssRuleAndSpecifity.specifitiesAndSelectors.length;
         for ( specifityId = 0; specifityId < specifitiesNumber; specifityId++ ) {
@@ -646,7 +819,7 @@ export class EmailHtmlInliner {
 
         }
 
-        cssRuleAndSpecifityArray.push( objCssRuleAndSpecifity );
+        // cssRuleAndSpecifityArray.push( objCssRuleAndSpecifity );
 
         if ( ruleOnceMatchedCssPropname === true ) {
           continue;
@@ -662,176 +835,13 @@ export class EmailHtmlInliner {
   }
 
 
-
-  getDeclaredCSSValue ( 
-    allCssRules: any, 
-    node: HTMLElement, 
-    cssPropertyName: string 
-  ) {
-    
-    // 1. Check inline style first
-    const inlineStyleValue: string = node.style.getPropertyValue(cssPropertyName);
-    if ( inlineStyleValue ) {
-      return this.trimmer.trimQuotes( inlineStyleValue ) || inlineStyleValue;
-    }
-
-
-
-    // 2. Scan all matching CSS rules
-    let matchedValue: string = "";
-    // let cssPropertyValueByCssRule: string = "";
-
-    let cssPropertyValueByBrowser: string = window.getComputedStyle( node ).getPropertyValue( cssPropertyName );
-    let trimmedCssPropertyValueByBrowser: string = this.trimmer.trimQuotes( cssPropertyValueByBrowser ) || cssPropertyValueByBrowser;
-
-    let objCssRuleAndSpecifity: any = {};
-    let objCssRuleAndSpecifityHigher: any = {};
-    let cssRule: any = {};
-    let specifityAndSelectorObj: any = {};
-    let specifity: number[] = [];
-    let specifityHigher: number[] = [];
-    let matchedValueApplied: boolean = false;
-    
-    specifityHigher = [0, 0, 0, 0, 0, 0];
-
-    let specifitiesComparison: number = 0;
-
-    // let cssRulesRelevant: any[] = [];
-    let cssValueByRule: string = "";
-
-    for ( objCssRuleAndSpecifity of allCssRules ) {
-      cssRule = objCssRuleAndSpecifity.rule;
-      
-      cssValueByRule = cssRule.style.getPropertyValue(cssPropertyName);
-      if ( !cssValueByRule ) {
-        continue;
-      }
-
-
-      if ( objCssRuleAndSpecifity.specifities.length === 1 ) {
-        specifity = objCssRuleAndSpecifity.specifities[0].specifity;
-        specifitiesComparison = this.cssSelectorWeightPackage.compareSpecificity( 
-          specifity, 
-          specifityHigher );
-
-        if ( specifitiesComparison >= 0 ) {
-          matchedValueApplied = true;
-          specifityHigher = [ ...specifity ];
-
-          objCssRuleAndSpecifity["cssValueByRule"] = cssValueByRule;
-          objCssRuleAndSpecifityHigher = { ...objCssRuleAndSpecifity };
-        }
-
-      } else {
-
-        for ( specifityAndSelectorObj of objCssRuleAndSpecifity.specifities ) {
-
-          if ( node.matches( specifityAndSelectorObj.text ) === true ) {
-            continue;
-          }
-
-          specifity = specifityAndSelectorObj.specifity;
-          specifitiesComparison = this.cssSelectorWeightPackage.compareSpecificity( 
-            specifity, 
-            specifityHigher );
-
-          if ( specifitiesComparison >= 0 ) {
-            matchedValueApplied = true;
-            specifityHigher = [ ...specifity ];
-
-            objCssRuleAndSpecifity["cssValueByRule"] = cssValueByRule;
-            objCssRuleAndSpecifityHigher = { ...objCssRuleAndSpecifity };
-          }
-
-        }
-      }
-      
-    }
-
-    if ( matchedValueApplied === true ) {
-      matchedValue = this.processOneCssValueByRule ( 
-        node, 
-        objCssRuleAndSpecifityHigher["cssValueByRule"]
-      );
-    }
-
-    if ( this.debug === true ) {
-      this.buildAndPrintLogRecord (
-        node, 
-        cssPropertyName,
-        objCssRuleAndSpecifityHigher,
-        trimmedCssPropertyValueByBrowser,
-        matchedValue
-      );
-    }
-
-    return matchedValue;
-  }
-
-  // base method to get the css prop value
-  processOneCssValueByRule ( 
-    node: HTMLElement, 
-    cssValueByRule: string 
-  ): string {
-
-    let matchedValue: string = "";
-    let trimmedCssValueByRule: string = "";
-    let variableName: string = "";
-    let variableValue: string = "";
-
-
-    trimmedCssValueByRule = this.trimmer.trimQuotes( cssValueByRule ) || cssValueByRule;
-
-    if ( trimmedCssValueByRule.startsWith("var(") ) {
-      variableName = trimmedCssValueByRule.substring( 
-        4, (
-          trimmedCssValueByRule.length - 1) );
-      variableValue = window.getComputedStyle( node ).getPropertyValue( variableName );
-      matchedValue = this.trimmer.trimQuotes( variableValue ) || variableValue;
-
-      if ( matchedValue.includes("rem") ) {
-
-        let values: string[] = matchedValue.split( " " );
-
-        for ( let i = 0; i < values.length; i++ ) {
-          let size: string = values[i];
-          values[i] = this.cssHtmlPackage.remToPx( size, this.remBasePxValue ) || size;
-        }
-
-        matchedValue = values.join( " " );
-
-      }
-
-    } else if ( trimmedCssValueByRule.includes("rem") ) {
-
-      let values: string[] = trimmedCssValueByRule.split( " " );
-
-      for ( let i = 0; i < values.length; i++ ) {
-        let size: string = values[i];
-        values[i] = this.cssHtmlPackage.remToPx( size, this.remBasePxValue ) || size;
-      }
-      matchedValue = values.join( " " );
-    } else {
-      matchedValue = trimmedCssValueByRule; // Override previous if more recent in cascade
-    }
-
-    return matchedValue;
-  }
-
-  // END BLOCK MAIN METHODS
-
-
-
-  // pre-build method for css styles names used to inline
-
-
-
   // pre-build method for node 
+  // filter by node.matches( cssSelector )
   setCssRulesMatchingNode ( 
     node: HTMLElement, 
-    inArrayRulesMatchingPropsAndMedia: any[],
-    inOutArrayCssSelectorsMatchingPropsAndMediaAndNode: any[],
-    inOutArrayRulesMatchingPropsAndMediaAndNode: any[]
+    inArrayRulesMatchingPropsAndMedia: RuleAndSpecifities[],
+    inOutArrayCssSelectorsMatchingPropsAndMediaAndNode: string[],
+    inOutArrayRulesMatchingPropsAndMediaAndNode: RuleAndSpecifities[]
   ): undefined {
     
     let obj: any = new Object();
@@ -852,58 +862,22 @@ export class EmailHtmlInliner {
     // inOutArrayCssSelectorsMatchingPropsAndMediaAndNode = [...uniqueSet];
 
   }
-
-
-
-  // pre-build method for node and css props
-  getCssRulesMatchingNodeAndProps (
-    inArrayCssSelectorsMatchingPropsAndMediaAndNode: any[],
-    inObjectRulesMatchingPropsAndMedia: any
-  ) {
-
-    let locObjectRulesMatchingPropsAndMedia: any = new Object();
-    let cssPropName: string = "";
-    let cssPropsArrayCreated: boolean = false;
-    let cssRulesMatchingCssProp: any[] = new Array();
-    let cssSelector: string = "";
-    let cssSelectorMatchesCssProp: boolean = false;
-    let cssProps: string[] = Object.keys( inObjectRulesMatchingPropsAndMedia );
-    let locObjLevel2: any = new Object();
-    let filteredCssRulesMatchingCssProp: any[] = new Array();
-
-    for ( cssPropName of cssProps ) {
-
-      cssPropsArrayCreated = false;
-      cssRulesMatchingCssProp = inObjectRulesMatchingPropsAndMedia[cssPropName];
-
-      for ( locObjLevel2 of cssRulesMatchingCssProp ) {
-        cssSelector = locObjLevel2.rule.selectorText;
-        cssSelectorMatchesCssProp = inArrayCssSelectorsMatchingPropsAndMediaAndNode.includes( cssSelector );
-
-        if ( cssSelectorMatchesCssProp === false ) {
-          continue;
-        }
-
-        if ( cssPropsArrayCreated === false ) {
-          locObjectRulesMatchingPropsAndMedia[cssPropName] = new Array();
-          cssPropsArrayCreated = true;
-        }
-
-        filteredCssRulesMatchingCssProp = locObjectRulesMatchingPropsAndMedia[cssPropName];
-        filteredCssRulesMatchingCssProp.push( locObjLevel2 );
-      }
-    }
-
-    return locObjectRulesMatchingPropsAndMedia;
-  }
-
   // END OF THE BLOCK  METHODS TO PRE-BUILD DATA SETS
 
 
+  
 
 
 
 
+
+
+
+
+
+
+
+  // debugging purposes.
   buildAndPrintLogRecord (
     node: HTMLElement, 
     cssPropertyName: string,

@@ -1,3 +1,2 @@
-export class EmailHtmlinlinerTypes {
-}
-//# sourceMappingURL=EmailHtmlinlinerTypes.js.map
+export {};
+//# sourceMappingURL=EmailHtmlInlinerTypes.js.map

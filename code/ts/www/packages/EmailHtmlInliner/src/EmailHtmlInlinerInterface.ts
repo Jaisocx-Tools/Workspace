@@ -1,6 +1,5 @@
-import { RuleAndSpecifities } from "./EmailHtmlinlinerTypes.js";
 import { EmailHtmlInliner } from "./EmailHtmlInliner.js";
-
+import { RuleAndSpecifities } from "./EmailHtmlInlinerTypes.js";
 
 
 export interface EmailHtmlInlinerInterface {
@@ -27,7 +26,6 @@ export interface EmailHtmlInlinerInterface {
     newElem: HTMLElement, 
     inOutInheritedStyles: any,
     inOutArrayRulesMatchingPropsAndMedia: any[],
-    inOutObjectFilteredRulesAndSpecifitiesByCssPropname: any,
     inBaseUrlToReplace: string,
     inBaseUrlReplacedWith: string
   ): number;
@@ -40,6 +38,27 @@ export interface EmailHtmlInlinerInterface {
     inObjectFilteredRulesAndSpecifitiesByCssPropname: any
   ): undefined;
 
+  getDeclaredCSSValue ( 
+    allCssRules: RuleAndSpecifities[], 
+    node: HTMLElement, 
+    cssPropertyName: string 
+  ): string;
+
+  
+  processOneCssValueByRule ( 
+    node: HTMLElement, 
+    cssValueByRule: string 
+  ): string;
+
+  // END BLOCK MAIN METHODS
+
+
+
+
+  
+
+
+  // START BLOCK  METHODS TO PRE-BUILD DATA SETS TO AVOID AMBIGOUS METHODS CALLS ON SAME CSSRULES MANY TIMES.
 
   // returns the array of css rules and specifities for these rules, 
   // matching the media queries in current device monitor.
@@ -63,25 +82,14 @@ export interface EmailHtmlInlinerInterface {
   ): undefined;
 
 
-
-
-
-
-
-
-
-
-  getDeclaredCSSValue ( 
-    allCssRules: any, 
+  // pre-build method for node 
+  setCssRulesMatchingNode ( 
     node: HTMLElement, 
-    cssPropertyName: string 
-  );
+    inArrayRulesMatchingPropsAndMedia: RuleAndSpecifities[],
+    inOutArrayCssSelectorsMatchingPropsAndMediaAndNode: string[],
+    inOutArrayRulesMatchingPropsAndMediaAndNode: RuleAndSpecifities[]
+  ): undefined;
 
-  
-  processOneCssValueByRule ( 
-    node: HTMLElement, 
-    cssValueByRule: string 
-  ): string;
 
 
   
@@ -93,12 +101,7 @@ export interface EmailHtmlInlinerInterface {
     inOutArrayRulesMatchingPropsAndMediaAndNode: any[]
   ): undefined;
 
-  getCssRulesMatchingNodeAndProps (
-    inArrayCssSelectorsMatchingPropsAndMediaAndNode: any[],
-    inObjectRulesMatchingPropsAndMedia: any
-  );
-
-
+  // END OF THE BLOCK  METHODS TO PRE-BUILD DATA SETS
 
 
 

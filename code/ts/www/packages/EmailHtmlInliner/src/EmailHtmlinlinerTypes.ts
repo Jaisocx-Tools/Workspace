@@ -5,6 +5,7 @@ export type RuleAndSpecifities = {
 
   rule: CSSStyleRule;
   specifitiesAndSelectors: SpecifityAndSelector[];
+  cssValueByRule: string;
 
 }
 

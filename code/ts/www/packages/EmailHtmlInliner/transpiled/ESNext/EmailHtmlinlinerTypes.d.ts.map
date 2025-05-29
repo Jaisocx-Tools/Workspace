@@ -1,1 +1,1 @@
-{"version":3,"file":"EmailHtmlinlinerTypes.d.ts","sourceRoot":"","sources":["../../src/EmailHtmlinlinerTypes.ts"],"names":[],"mappings":"AAAA,qBAAa,qBAAqB;CAIjC"}
+{"version":3,"file":"EmailHtmlInlinerTypes.d.ts","sourceRoot":"","sources":["../../src/EmailHtmlInlinerTypes.ts"],"names":[],"mappings":"AAAA,OAAO,EAAE,oBAAoB,EAAE,MAAM,mBAAmB,CAAC;AAGzD,MAAM,MAAM,kBAAkB,GAAG;IAE/B,IAAI,EAAE,YAAY,CAAC;IACnB,uBAAuB,EAAE,oBAAoB,EAAE,CAAC;IAChD,cAAc,EAAE,MAAM,CAAC;CAExB,CAAA"}
