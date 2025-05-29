@@ -299,6 +299,7 @@ class EmailHtmlInliner {
     inObjectFilteredRulesAndSpecifitiesByCssPropname) {
     let styleValueNewNodeParent = "";
     let styleValue = "";
+    let nodeName = node.nodeName.toLowerCase();
     let locInOutArrayCssSelectorsMatchingPropsAndMediaAndNode = new Array();
     let locInOutArrayRulesMatchingPropsAndMediaAndNode = new Array();
     this.setCssRulesMatchingNode(
@@ -314,8 +315,8 @@ class EmailHtmlInliner {
     let cssPropDefaults = new Array();
     let cssPropDefaultsValueMatches = false;
     let nodeStylesDefaults = this.constants.tagsStylesDefaults[newNode.nodeName];
-    let nodeStylesDefaultsSet = (nodeStylesDefaults !== undefined);
-    let tagDefaultCssValueMatches = false;
+    // let nodeStylesDefaultsSet: boolean = ( nodeStylesDefaults !== undefined );
+    // let tagDefaultCssValueMatches: boolean = false;
     let cssPropertyName = "";
 
     for (cssPropertyName of cssPropertiesNames) {
@@ -338,22 +339,21 @@ class EmailHtmlInliner {
         continue;
       }
 
-      cssPropDefaults = this.constants.stylesPropsDefaults[cssPropertyName];
-      cssPropDefaultsValueMatches = ((cssPropDefaults !== undefined) && (cssPropDefaults.includes(styleValue) === true));
-
-      if (cssPropDefaultsValueMatches === false) {
-        cssPropDefaultsValueMatches = (cssPropDefaultsValueMatches || (this.constants.stylesPropsDefaults["all"].includes(styleValue) === true));
-      }
-      // feature to check the default values for tags. for now just tagsStylesDefaults["DIV"]["display"] = "block";
-      if ((cssPropDefaultsValueMatches === false) && (nodeStylesDefaultsSet === true)) {
-        tagDefaultCssValueMatches = (nodeStylesDefaults[cssPropertyName] === styleValue);
-        cssPropDefaultsValueMatches = (cssPropDefaultsValueMatches || tagDefaultCssValueMatches);
-      }
-      // matches the default value 
-      if (cssPropDefaultsValueMatches === true) {
-        // matches the default value
-        // skipping.
-        continue;
+      if (((this.constants.tagsNotZeroPadding.includes(nodeName) === true) &&
+                ((cssPropertyName.startsWith("padding") === true) ||
+                    (cssPropertyName.startsWith("margin") === true))) === false) {
+        // cssPropDefaults as boolean === true, when a default style for css prop exists
+        cssPropDefaults = this.constants.stylesPropsDefaults[cssPropertyName];
+        // cssPropDefaultsValueMatches === true, when one of default styles for css prop matches the calculated style of the node.
+        cssPropDefaultsValueMatches = (cssPropDefaults && (cssPropDefaults.includes(styleValue) === true));
+        cssPropDefaultsValueMatches = ((cssPropDefaultsValueMatches === true) || (this.constants.stylesPropsDefaults["all"].includes(styleValue) === true));
+        cssPropDefaultsValueMatches = ((cssPropDefaultsValueMatches === true) || (nodeStylesDefaults === styleValue));
+        // matches the default value 
+        if (cssPropDefaultsValueMatches === true) {
+          // matches the default value
+          // skipping.
+          continue;
+        }
       }
 
       if (this.constants.inheritingProps.includes(cssPropertyName) === false) {

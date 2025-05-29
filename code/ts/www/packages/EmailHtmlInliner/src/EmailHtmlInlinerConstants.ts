@@ -2,6 +2,7 @@ export class EmailHtmlInlinerConstants {
 
   public stylesPropsDefaults: any;
   public tagsStylesDefaults: any;
+  public tagsNotZeroPadding: string[];
   public stylesPropsToCheck: string[];
   public inheritingProps: string[];
   public allowedTags: string[];
@@ -27,7 +28,7 @@ export class EmailHtmlInlinerConstants {
     };
   
     this.tagsStylesDefaults = {
-      "DIV": { 
+      "div": { 
         "display": "block" 
       }
     };
@@ -113,6 +114,35 @@ export class EmailHtmlInlinerConstants {
       "BODY",  
       "MAIN"  
     ];
+
+    this.tagsNotZeroPadding = [
+      "body",
+      "h1",
+      "h2",
+      "h3",
+      "h4",
+      "h5",
+      "h6",
+      "p",
+      "blockquote",
+      "pre",
+      "ul",
+      "ol",
+      "li",
+      "fieldset",
+      "table",
+      "form",
+      "hr",
+      "dl",
+      "dt",
+      "dd",
+      "button",
+      "input",
+      "textarea",
+      "th",
+      "td"
+    ];
+
   }
 
 }

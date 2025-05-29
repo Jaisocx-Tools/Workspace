@@ -13,7 +13,7 @@ export interface ResponsiveDatasetAutomationInterface {
   setWebpackAliasName( alias: string ): ResponsiveDatasetAutomation; // this 
 
 
-  
+
   // :root {
   //
   //   Extra Small Mobile (XS)
@@ -28,8 +28,6 @@ export interface ResponsiveDatasetAutomationInterface {
   //   --screen-s-mobile-portrait-from: 321px; 
   //   ...
   produceMediaConstantsCssFile( fileName: string ): Promise<number>; // this
-
-
 
   produceMediaCssFilesSet( filenamePrefix: string ): Promise<number>; // this
 

@@ -368,6 +368,7 @@ export class EmailHtmlInliner {
     
     let styleValueNewNodeParent: string = "";
     let styleValue: string = "";
+    let nodeName: string = node.nodeName.toLowerCase();
 
     let locInOutArrayCssSelectorsMatchingPropsAndMediaAndNode: string[] = new Array() as string[];
     let locInOutArrayRulesMatchingPropsAndMediaAndNode: string[] = new Array() as string[];
@@ -389,8 +390,8 @@ export class EmailHtmlInliner {
     let cssPropDefaults: string[] = new Array() as string[];
     let cssPropDefaultsValueMatches: boolean = false;
     let nodeStylesDefaults: any = this.constants.tagsStylesDefaults[newNode.nodeName];
-    let nodeStylesDefaultsSet: boolean = ( nodeStylesDefaults !== undefined );
-    let tagDefaultCssValueMatches: boolean = false;
+    // let nodeStylesDefaultsSet: boolean = ( nodeStylesDefaults !== undefined );
+    // let tagDefaultCssValueMatches: boolean = false;
     let cssPropertyName: any = "";
 
     for ( cssPropertyName of cssPropertiesNames ) {
@@ -413,23 +414,34 @@ export class EmailHtmlInliner {
         continue;
       }
 
-      cssPropDefaults = this.constants.stylesPropsDefaults[cssPropertyName];
-      cssPropDefaultsValueMatches = ( ( cssPropDefaults !== undefined ) && ( cssPropDefaults.includes( styleValue ) === true ) );
-      if ( cssPropDefaultsValueMatches === false ) {
-        cssPropDefaultsValueMatches = ( cssPropDefaultsValueMatches || ( this.constants.stylesPropsDefaults["all"].includes( styleValue ) === true ) );
-      }
 
-      // feature to check the default values for tags. for now just tagsStylesDefaults["DIV"]["display"] = "block";
-      if ( ( cssPropDefaultsValueMatches === false ) && ( nodeStylesDefaultsSet === true ) ) {
-        tagDefaultCssValueMatches = ( nodeStylesDefaults[cssPropertyName] === styleValue );
-        cssPropDefaultsValueMatches = ( cssPropDefaultsValueMatches || tagDefaultCssValueMatches );
-      }
+      // several tags don't have the default zero size in css props padding and margin.
+      // that is why we don't bypass the css props padding and margin, when set to tags like html, body, h1, and several others.
+      if (
+        ( 
+          ( this.constants.tagsNotZeroPadding.includes( nodeName ) === true ) &&
+          (
+            ( cssPropertyName.startsWith("padding") === true ) ||
+            ( cssPropertyName.startsWith("margin") === true )
+          )
+        ) === false
+      ) {
 
-      // matches the default value 
-      if ( cssPropDefaultsValueMatches === true ) {
-        // matches the default value
-        // skipping.
-        continue;
+        // cssPropDefaults as boolean === true, when a default style for css prop exists
+        cssPropDefaults = this.constants.stylesPropsDefaults[cssPropertyName];
+
+        // cssPropDefaultsValueMatches === true, when one of default styles for css prop matches the calculated style of the node.
+        cssPropDefaultsValueMatches = ( cssPropDefaults && ( cssPropDefaults.includes( styleValue ) === true ) );
+        cssPropDefaultsValueMatches = ( ( cssPropDefaultsValueMatches === true ) || ( this.constants.stylesPropsDefaults["all"].includes( styleValue ) === true ) );
+        cssPropDefaultsValueMatches = ( ( cssPropDefaultsValueMatches === true ) || ( nodeStylesDefaults === styleValue ) );
+        
+        // matches the default value 
+        if ( cssPropDefaultsValueMatches === true ) {
+          // matches the default value
+          // skipping.
+          continue;
+        }
+
       }
 
       // from here else: in other cases the default value did NOT match.

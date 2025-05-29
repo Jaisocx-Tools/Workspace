@@ -2,69 +2,69 @@ export class ResponsiveDatasetAutomationConstants {
 
   textEncoder: TextEncoder;
 
-  #keywordMediarule: string;
-  #mediaRuleName: string;
-  #mediaConstantNameStart: string;
+  keywordMediarule: string;
+  mediaRuleName: string;
+  mediaConstantNameStart: string;
 
-  #mediaRule: string;
-  #mediaRuleScreen: string;
-  #mediaRulePrint: string;
-  #mediaRuleOrientation: string;
-  #mediaRuleOrientationLandscape: string;
-  #mediaRuleOrientationPortrait: string;
+  mediaRule: string;
+  mediaRuleScreen: string;
+  mediaRulePrint: string;
+  mediaRuleOrientation: string;
+  mediaRuleOrientationLandscape: string;
+  mediaRuleOrientationPortrait: string;
   
-  #mediaRuleAnd: string;
+  mediaRuleAnd: string;
 
-  #braceRoundStart: string;
-  #braceRoundEnd: string;
-  #braceFigureStart: string;
-  #braceFigureEnd: string;
+  braceRoundStart: string;
+  braceRoundEnd: string;
+  braceFigureStart: string;
+  braceFigureEnd: string;
 
-  #importUrlStart: string;
-  #importUrlEnd: string;
+  importUrlStart: string;
+  importUrlEnd: string;
 
-  #keywordWidth: string;
-  #keywordFrom: string;
-  #keywordTil: string;
+  keywordWidth: string;
+  keywordFrom: string;
+  keywordTil: string;
 
-  #cssVariablePrefix: string;
-  #cssVariableNameValueDelimiter: string;
-  #cssVariableReferenceKeyword_Var: string;
-  #cssExpressionEnd: string;
-  #doubleQuote: string;
-  #commentStart: string;
-  #commentEnd: string;
-  #backgroundSpace: string;
-  #N: string;
-  #underscore: string;
-  #unitPx: string;
+  cssVariablePrefix: string;
+  cssVariableNameValueDelimiter: string;
+  cssVariableReferenceKeyword_Var: string;
+  cssExpressionEnd: string;
+  doubleQuote: string;
+  commentStart: string;
+  commentEnd: string;
+  backgroundSpace: string;
+  N: string;
+  underscore: string;
+  unitPx: string;
 
-  #minWidth: string;
-  #maxWidth: string;
+  minWidth: string;
+  maxWidth: string;
   
-  #orientationKeywords: string[];
-  #bitbufsOrientationKeywords: Uint8Array[];
+  orientationKeywords: string[];
+  bitbufsOrientationKeywords: Uint8Array[];
 
-  #mediaName: string[];
-  #mediaLine: string[];
-  #mediaConstantNameLine: string[];
-  #mediaConstantName: string[];
-  #mediaRuleConstantLine: (string|string[])[];
-  #mediaConstantLine: string[];
-  #mediaRuleVariable_Width: string[];
+  mediaName: string[];
+  mediaLine: string[];
+  mediaConstantNameLine: string[];
+  mediaConstantName: string[];
+  mediaRuleConstantLine: (string|string[])[];
+  mediaConstantLine: string[];
+  mediaRuleVariable_Width: string[];
 
-  #bitbufsMediaName: Uint8Array[];
-  #bitbufsMediaLine: Uint8Array[];
-  #bitbufMediaConstantNameStart: Uint8Array;
-  #bitbufsMediaConstantNameLine: Uint8Array[];
-  #bitbufsMediaRuleConstantLine: (Uint8Array|Uint8Array[])[];
-  #bitbufsMediaConstantName: Uint8Array[];
-  #bitbufsMediaConstantLine: Uint8Array[];
-  #bitbufsMediaRuleVariable_Width: Uint8Array[];
-  #bitsbufN: Uint8Array;
+  bitbufsMediaName: Uint8Array[];
+  bitbufsMediaLine: Uint8Array[];
+  bitbufMediaConstantNameStart: Uint8Array;
+  bitbufsMediaConstantNameLine: Uint8Array[];
+  bitbufsMediaRuleConstantLine: (Uint8Array|Uint8Array[])[];
+  bitbufsMediaConstantName: Uint8Array[];
+  bitbufsMediaConstantLine: Uint8Array[];
+  bitbufsMediaRuleVariable_Width: Uint8Array[];
+  bitsbufN: Uint8Array;
 
-  #bitbufKeywordFrom: Uint8Array;
-  #bitbufKeywordTil: Uint8Array;
+  bitbufKeywordFrom: Uint8Array;
+  bitbufKeywordTil: Uint8Array;
 
 
   constructor() {

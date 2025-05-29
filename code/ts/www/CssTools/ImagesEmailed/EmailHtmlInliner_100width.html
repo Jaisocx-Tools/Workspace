@@ -40,12 +40,12 @@
   <style>
 
     :root {
-      --clean-start__text-color: #448;
-      --clean-start__text-color-h: #579;
+      --clean-start__text-color: #242;
+      --clean-start__text-color-h: #262;
 
       --main-width: 100%;
       /* --main-background-color: #eaffea; */
-      --main-background-color: #fffff2;
+      --main-background-color: green;
     }
 
     .workspace.theme-emailed-thin.long.browser-width-when-portrait,
@@ -88,9 +88,14 @@
       --clean-start__tag_body__overflow-x: hidden;
       --clean-start__tag_body__overflow-y: visible;
 
+      --clean-start__tag_body__background: grey;
+
+
       --clean-start__site__width: 100%;
       --clean-start__site__overflow_x: hidden;
       --clean-start__site__overflow_y: visible;
+
+      --clean-start__site__background: lime;
     }
 
     .workspace.theme-emailed-thin.long.browser-width-when-portrait .images {
@@ -116,7 +121,7 @@
     .workspace.theme-emailed-thin.long.browser-width-when-portrait .images > .cell {
       display: inline-block;
 
-      width:     820px;
+      width:     var(--main-width);
       max-width: 100%;
       min-width: unset;      
 
@@ -148,13 +153,14 @@
       overflow-y: visible;
 
       padding: 0.8rem;
-      background-color: #ffffff;
+      background: #ffffff;
     }
     
     .workspace.theme-emailed-thin.long.browser-width-when-portrait .images > .cell > .image-holder > img {
       display: inline-block;
 
       width: auto;
+      min-width: 100%;
       max-width: 100%;
 
       height: auto;
@@ -326,28 +332,41 @@
     <p>The Workaround For Responsive Layout when emailing images, since some webmail apps don't support @media queries.</p>
     <p>On Desktop|Laptop, the KeyBoard [CTRL]+[Q] hides|shows the Inliner UI tool button.</p>
 
+
+
     <div class="images">
+
+
       <div class="cell">
         <div class="image-holder img1">
-          <img src="./../../../cdn/www/media/images/pixabay_girls/ai-generated-8619183_1280.jpg" alt="Image 1" descrption="example of rendered image by cid." />
+          <img src="./../../../cdn/www/media/images/html_inliner_webmail_100width/anthony-maw-pTgajQtycuE-unsplash.jpg" alt="Image 1" descrption="example of rendered image by cid." />
         </div>
       </div>
       <div class="cell">
         <div class="image-holder img2">
-          <img src="./../../../cdn/www/media/images/pixabay_girls/ai-generated-8845661_1280.jpg" alt="Image 2" descrption="example of rendered image by cid." />
+          <img src="./../../../cdn/www/media/images/html_inliner_webmail_100width/chi-liu-Bj_MIJ3vpT4-unsplash.jpg" alt="Image 2" descrption="example of rendered image by cid." />
         </div>
       </div>
+
       <div class="cell">
         <div class="image-holder img3">
-          <img src="./../../../cdn/www/media/images/pixabay_girls/ai-generated-8845663_1280.jpg" alt="Image 3" descrption="example of rendered image by cid." />
+          <img src="./../../../cdn/www/media/images/html_inliner_webmail_100width/joshua-woroniecki-o5nOR7XVPZw-unsplash.jpg" alt="Image 3" descrption="example of rendered image by cid." />
         </div>
       </div>
+
       <div class="cell">
         <div class="image-holder img4">
-          <img src="./../../../cdn/www/media/images/pixabay_girls/anime-8169104_1920.jpg" alt="Image 4" descrption="example of rendered image by cid." />
+          <img src="./../../../cdn/www/media/images/html_inliner_webmail_100width/kalen-emsley-0ic2ZYeDQx4-unsplash.jpg" alt="Image 4" descrption="example of rendered image by cid." />
         </div>
       </div>
-      
+
+      <div class="cell">
+        <div class="image-holder img5">
+          <img src="./../../../cdn/www/media/images/html_inliner_webmail_100width/kevin-mueller-59HvwdKmJ5g-unsplash.jpg" alt="Image 5" descrption="example of rendered image by cid." />
+        </div>
+      </div>
+
+
     </div>
 
   </main>
@@ -356,8 +375,8 @@
 
     let globBaseUrlToReplace = "";
     let globBaseUrlReplacedWith = "";
-    // globBaseUrlToReplace = "./../../../cdn/www/media/images/pixabay_girls/";
-    // globBaseUrlReplacedWith = "images_pixabay_girls/";
+    // globBaseUrlToReplace = "./../../../cdn/www/media/images/html_inliner_webmail_100width/";
+    // globBaseUrlReplacedWith = "html_inliner_webmail_100width/";
 
 
     let debug = true;
