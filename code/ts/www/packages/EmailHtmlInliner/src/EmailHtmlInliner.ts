@@ -380,12 +380,12 @@ export class EmailHtmlInliner {
       locInOutArrayRulesMatchingPropsAndMediaAndNode
     );
 
-    let locObjectFilteredRulesAndSpecifities: any = this.getCssRulesMatchingNodeAndProps ( 
-      locInOutArrayCssSelectorsMatchingPropsAndMediaAndNode,
-      inObjectFilteredRulesAndSpecifitiesByCssPropname
-    );
+    // let locObjectFilteredRulesAndSpecifities: any = this.getCssRulesMatchingNodeAndProps ( 
+    //   locInOutArrayCssSelectorsMatchingPropsAndMediaAndNode,
+    //   inObjectFilteredRulesAndSpecifitiesByCssPropname
+    // );
 
-    let cssPropertiesNames: string[] = Object.keys( locObjectFilteredRulesAndSpecifities );
+    let cssPropertiesNames: string[] = this.constants.stylesPropsToCheck; //Object.keys( locObjectFilteredRulesAndSpecifities );
     let cssRulesMatchingNode: string[] = new Array() as string[];
     let cssPropDefaults: string[] = new Array() as string[];
     let cssPropDefaultsValueMatches: boolean = false;
@@ -895,8 +895,8 @@ export class EmailHtmlInliner {
     }
 
     // TODO
-    let uniqueSet = new Set( inOutArrayCssSelectorsMatchingPropsAndMediaAndNode );
-    inOutArrayCssSelectorsMatchingPropsAndMediaAndNode = [...uniqueSet];
+    // let uniqueSet = new Set( inOutArrayCssSelectorsMatchingPropsAndMediaAndNode );
+    // inOutArrayCssSelectorsMatchingPropsAndMediaAndNode = [...uniqueSet];
 
   }
 

@@ -537,8 +537,8 @@ export class EmailHtmlInliner {
             inOutArrayRulesMatchingPropsAndMediaAndNode.push(obj);
         }
         // TODO
-        let uniqueSet = new Set(inOutArrayCssSelectorsMatchingPropsAndMediaAndNode);
-        inOutArrayCssSelectorsMatchingPropsAndMediaAndNode = [...uniqueSet];
+        // let uniqueSet = new Set( inOutArrayCssSelectorsMatchingPropsAndMediaAndNode );
+        // inOutArrayCssSelectorsMatchingPropsAndMediaAndNode = [...uniqueSet];
     }
     // pre-build method for node and css props
     getCssRulesMatchingNodeAndProps(inArrayCssSelectorsMatchingPropsAndMediaAndNode, inObjectRulesMatchingPropsAndMedia) {
