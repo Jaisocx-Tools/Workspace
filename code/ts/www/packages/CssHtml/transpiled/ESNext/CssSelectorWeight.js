@@ -57,20 +57,20 @@ export class CssSelectorWeight {
         return comparisonValue;
     }
     // @description: used by Inliner, this is the custom method.
-    // @return { "specifity": [], "text": "" }[]
+    // @return { "specifity": [], "cssSelector": "" }[]
     calculateSpecifities(selectorText) {
         let selector = selectorText.replace(/["'][^"']*["']/g, "");
         let selectors = new Array();
         let s = "";
-        let specifities = new Array();
+        let specifitiesAndSelectors = new Array();
         let specifity = new Array(6); // new Array(6) as number[]
         let objTemplate = { "specifity": [],
-            "text": "" };
-        let obj = {};
+            "cssSelector": "" };
+        let obj = { ...objTemplate };
         if (selector.includes(",") === false) {
             specifity = this.calculateOneRuleSpecificity(selector);
-            obj = { "specifity": [...specifity] };
-            specifities.push(obj);
+            obj.specifity = [...specifity];
+            specifitiesAndSelectors.push(obj);
         }
         else {
             selectors = selector
@@ -81,11 +81,11 @@ export class CssSelectorWeight {
                 specifity = this.calculateOneRuleSpecificity(s);
                 obj = { ...objTemplate };
                 obj.specifity = specifity;
-                obj.text = s;
-                specifities.push(obj);
+                obj.cssSelector = s;
+                specifitiesAndSelectors.push(obj);
             }
         }
-        return specifities;
+        return specifitiesAndSelectors;
     }
 }
 //# sourceMappingURL=CssSelectorWeight.js.map

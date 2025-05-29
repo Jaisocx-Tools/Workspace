@@ -1,3 +1,6 @@
+import { SpecifityAndSelector } from "./CssSelectorWeightTypes.js";
+
+
 export class CssSelectorWeight {
 
   calculateOneRuleSpecificity ( selectorText: string ): number[] {
@@ -88,22 +91,22 @@ export class CssSelectorWeight {
   }
 
   // @description: used by Inliner, this is the custom method.
-  // @return { "specifity": [], "text": "" }[]
-  calculateSpecifities ( selectorText: string ): { "specifity": [], "text": "" }[] {
+  // @return { "specifity": [], "cssSelector": "" }[]
+  calculateSpecifities ( selectorText: string ): SpecifityAndSelector[] {
     let selector: string = selectorText.replace(/["'][^"']*["']/g, "");
     let selectors: string[] = new Array() as string[];
     let s: string = "";
 
-    let specifities: { "specifity": [], "text": "" }[] = new Array() as { "specifity": [], "text": "" }[]; 
+    let specifitiesAndSelectors: SpecifityAndSelector[] = new Array() as SpecifityAndSelector[]; 
     let specifity: number[] = new Array(6) as number[]; // new Array(6) as number[]
-    let objTemplate: any = { "specifity": [], 
-      "text": "" };
-    let obj: any = {};
+    let objTemplate: SpecifityAndSelector = { "specifity": [], 
+      "cssSelector": "" };
+    let obj: SpecifityAndSelector = {...objTemplate};
 
     if ( selector.includes(",") === false ) {
       specifity = this.calculateOneRuleSpecificity( selector );
-      obj = { "specifity": [...specifity] };
-      specifities.push( obj );
+      obj.specifity = [...specifity];
+      specifitiesAndSelectors.push( obj );
 
     } else {
       selectors = selector
@@ -116,14 +119,14 @@ export class CssSelectorWeight {
         
         obj = {...objTemplate};
         obj.specifity = specifity;
-        obj.text = s;
+        obj.cssSelector = s;
 
-        specifities.push( obj );
+        specifitiesAndSelectors.push( obj );
       }
 
     }
 
-    return specifities;
+    return specifitiesAndSelectors;
   }
   
 }

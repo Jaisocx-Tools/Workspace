@@ -210,8 +210,11 @@ class EmailHtmlInliner {
         let locInOutArrayCssSelectorsMatchingPropsAndMediaAndNode = new Array();
         let locInOutArrayRulesMatchingPropsAndMediaAndNode = new Array();
         this.setCssRulesMatchingNode(node, inArrayRulesMatchingPropsAndMedia, locInOutArrayCssSelectorsMatchingPropsAndMediaAndNode, locInOutArrayRulesMatchingPropsAndMediaAndNode);
-        let locObjectFilteredRulesAndSpecifities = this.getCssRulesMatchingNodeAndProps(locInOutArrayCssSelectorsMatchingPropsAndMediaAndNode, inObjectFilteredRulesAndSpecifitiesByCssPropname);
-        let cssPropertiesNames = Object.keys(locObjectFilteredRulesAndSpecifities);
+        // let locObjectFilteredRulesAndSpecifities: any = this.getCssRulesMatchingNodeAndProps ( 
+        //   locInOutArrayCssSelectorsMatchingPropsAndMediaAndNode,
+        //   inObjectFilteredRulesAndSpecifitiesByCssPropname
+        // );
+        let cssPropertiesNames = this.constants.stylesPropsToCheck; //Object.keys( locObjectFilteredRulesAndSpecifities );
         let cssRulesMatchingNode = new Array();
         let cssPropDefaults = new Array();
         let cssPropDefaultsValueMatches = false;

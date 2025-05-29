@@ -1,7 +1,8 @@
 import { Trimmer } from "@jaisocx/text";
 import { CssHtml, CssSelectorWeight } from "@jaisocx/css-html";
 import { EmailHtmlInlinerConstants } from "./EmailHtmlInlinerConstants.js";
-export declare class EmailHtmlInliner {
+import { EmailHtmlInlinerInterface } from "./EmailHtmlInlinerInterface.js";
+export declare class EmailHtmlInliner implements EmailHtmlInlinerInterface {
     htmlDocument: Document | undefined;
     debug: boolean;
     constants: EmailHtmlInlinerConstants;
