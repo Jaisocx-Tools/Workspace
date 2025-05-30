@@ -20,26 +20,39 @@ export interface EmailHtmlInlinerInterface {
     inBaseUrlReplacedWith: string
   ): string;
 
+  
+  
   inlineStyleAllNodes ( 
     root: HTMLElement, 
     newDoc: Document, 
     newElem: HTMLElement, 
     inOutInheritedStyles: any,
-    inOutArrayRulesMatchingPropsAndMedia: any[],
+    inOutArrayRulesMatchingPropsAndMedia: RuleAndSpecifities[],
     inBaseUrlToReplace: string,
     inBaseUrlReplacedWith: string
   ): number;
 
+
+
+  /**
+   * 
+   * @param node 
+   * @param newNode 
+   * @param inOutInheritedStyles : // Object, key: css prop name, value: css prop value
+   * @param inArrayRulesMatchingPropsAndMedia : RuleAndSpecifities[] filtered for current media query matching
+   * @param inObjectFilteredRulesAndSpecifitiesByCssPropname : Object with key = css prop name => RuleAndSpecifities[] filtered for current media query matching and relevant css props
+   */
   copyAllStyles ( 
     node: HTMLElement, 
     newNode: HTMLElement,
     inOutInheritedStyles: any,
-    inArrayRulesMatchingPropsAndMedia: any[],
-    inObjectFilteredRulesAndSpecifitiesByCssPropname: any
+    inArrayRulesMatchingPropsAndMedia: RuleAndSpecifities[]
   ): undefined;
 
+
+
   getDeclaredCSSValue ( 
-    allCssRules: RuleAndSpecifities[], 
+    cssStyleRulesMatchingNode: RuleAndSpecifities[], 
     node: HTMLElement, 
     cssPropertyName: string 
   ): string;
