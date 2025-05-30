@@ -47,7 +47,7 @@ cd /var/www/code/ts
 npx vite build --config www/templates/ViteWithSassAndLess/vite.config.ts
 ```
 
-navigate to <https://workspace.brightday.email/templates/ViteWithSassAndLess/dist/> 
+navigate to <https://sandbox.brightday.email/templates/ViteWithSassAndLess/dist/> 
 
 
 #### 2. Vitest Testing Framework applied in this project.
@@ -104,7 +104,7 @@ import "./styles/main.less"; // for LESS
 1. Datasets published for Sites quality improvals, to use on CDN too, to lookup countries codes and languages names and codes.
 
 
-[https://workspace.brightday.email/CharsetsDetectionRelevantDatasetsPreview.html](https://workspace.brightday.email/CharsetsDetectionRelevantDatasetsPreview.html)
+[https://sandbox.brightday.email/CharsetsDetectionRelevantDatasetsPreview.html](https://sandbox.brightday.email/CharsetsDetectionRelevantDatasetsPreview.html)
 
 
 
@@ -123,7 +123,7 @@ npm install
 
 ## News: May 2025. 
 
-1. New npm Package **EmailHtmlInliner** `@jaisocx/email-html-inliner` and site to watch The Inliner in action: [https://workspace.brightday.email/packages/EmailHtmlInliner/EmailHtmlInliner_Images.html](https://workspace.brightday.email/packages/EmailHtmlInliner/EmailHtmlInliner_Images.html)
+1. New npm Package **EmailHtmlInliner** `@jaisocx/email-html-inliner` and site to watch The Inliner in action: [https://sandbox.brightday.email/packages/EmailHtmlInliner/EmailHtmlInliner_Images.html](https://sandbox.brightday.email/packages/EmailHtmlInliner/EmailHtmlInliner_Images.html)
 
 
 2. Stricter tsconfig.json rules. Checks unused variables. Wen You have to invoke the callback and don't use the callback's in arg, the workaround is to prefix the method's in arg name with the underscore symbol. 

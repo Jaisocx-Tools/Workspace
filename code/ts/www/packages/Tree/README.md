@@ -7,9 +7,9 @@
 
 ## preview in action here:
 
-[https://workspace.brightday.email/ExampleSimple_TreeRenderingModeConf.html](https://workspace.brightday.email/ExampleSimple_TreeRenderingModeConf.html)
+[https://sandbox.brightday.email/ExampleSimple_TreeRenderingModeConf.html](https://sandbox.brightday.email/ExampleSimple_TreeRenderingModeConf.html)
 
-[https://workspace.brightday.email/ExampleSimple_TreeRenderingModeEase.html](https://workspace.brightday.email/ExampleSimple_TreeRenderingModeEase.html)
+[https://sandbox.brightday.email/ExampleSimple_TreeRenderingModeEase.html](https://sandbox.brightday.email/ExampleSimple_TreeRenderingModeEase.html)
 
 
 

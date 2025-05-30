@@ -13,7 +13,7 @@
 
 3. **Dockerized services**, to use in development:
 
-    1. HTTPS server, serving volumes `code/ts/www` and `code/php`, with the **brightday.email** wildcard TLS cert, valid til November 2025. Locally, when set some subdomain entry of `brightday.email` domain in `/etc/hosts` file, this is helpful to test with valid **https endpoints**. And in the config file `.docker/https/conf/http-conf.xml`, don't set the domain name `workspace.brightday.email` for Your local tests, this is reserved already, here are the examples published.
+    1. HTTPS server, serving volumes `code/ts/www` and `code/php`, with the **brightday.email** wildcard TLS cert, valid til November 2025. Locally, when set some subdomain entry of `brightday.email` domain in `/etc/hosts` file, this is helpful to test with valid **https endpoints**. And in the config file `.docker/https/conf/http-conf.xml`, don't set the domain name `sandbox.brightday.email` for Your local tests, this is reserved already, here are the examples published.
 
     2. **JWT protection** feature for **https** endpoints under **Jaisocx** dockerized service `https`.
 

@@ -39,7 +39,7 @@ services:
 
   # the dockerized https service to build the endpoint for publishing sites. 
   # To develop locally, You need to add a text line in file /etc/hosts like this:
-  # 127.0.0.1    workspace.brightday.email
+  # 127.0.0.1    sandbox.brightday.email
   # where 127.0.0.1 is the address of Your machine known by Your browser on Your machine.
   # works in MS Windows WSL, Unix and Linux OS, MacOS.
   https:

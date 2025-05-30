@@ -13,7 +13,7 @@
 Path: `code/ts/www/examples_html/webpack_feature/ExampleCss_CssCodeSnippet_minimal.html`
 
 
-Url: [https://workspace.brightday.email/examples_html/webpack_feature/ExampleCss_CssCodeSnippet_minimal.html](https://workspace.brightday.email/examples_html/webpack_feature/ExampleCss_CssCodeSnippet_minimal.html)
+Url: [https://sandbox.brightday.email/examples_html/webpack_feature/ExampleCss_CssCodeSnippet_minimal.html](https://sandbox.brightday.email/examples_html/webpack_feature/ExampleCss_CssCodeSnippet_minimal.html)
 
 
 

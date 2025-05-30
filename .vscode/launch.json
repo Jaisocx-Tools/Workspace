@@ -28,7 +28,7 @@
       "type": "php",
       "request": "launch",
       "runtimeArgs": [
-          "-S", "workspace.brightday.email/php/", "-t", "."
+          "-S", "sandbox.brightday.email/php/", "-t", "."
       ],
       "pathMappings": {
           "/var/www/code/php": "${workspaceFolder}/code/php"

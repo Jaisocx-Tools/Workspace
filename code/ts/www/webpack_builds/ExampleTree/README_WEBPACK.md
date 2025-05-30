@@ -1,12 +1,12 @@
 # Tree json tool examples
 
-1. [https://workspace.brightday.email/webpack_builds/ExampleTree/example-from-readme.html](https://workspace.brightday.email/webpack_builds/ExampleTree/example-from-readme.html)
+1. [https://sandbox.brightday.email/webpack_builds/ExampleTree/example-from-readme.html](https://sandbox.brightday.email/webpack_builds/ExampleTree/example-from-readme.html)
 
 
-2. [https://workspace.brightday.email/](https://workspace.brightday.email/)
+2. [https://sandbox.brightday.email/](https://sandbox.brightday.email/)
 
 
-3. [https://workspace.brightday.email/webpack_builds/ExampleTree/](https://workspace.brightday.email/webpack_builds/ExampleTree/)
+3. [https://sandbox.brightday.email/webpack_builds/ExampleTree/](https://sandbox.brightday.email/webpack_builds/ExampleTree/)
 
 
 4. [https://github.com/Jaisocx-Tools/Workspace/tree/main/code/ts/www/webpack_builds/ExampleTree](https://github.com/Jaisocx-Tools/Workspace/tree/main/code/ts/www/webpack_builds/ExampleTree)

@@ -4,10 +4,10 @@
 Illia Polianskyi
 
 ## see in action
-1. [https://workspace.brightday.email/ExampleCss_CssCodeSnippet_minimal.html](https://workspace.brightday.email/ExampleCss_CssCodeSnippet_minimal.html)
+1. [https://sandbox.brightday.email/ExampleCss_CssCodeSnippet_minimal.html](https://sandbox.brightday.email/ExampleCss_CssCodeSnippet_minimal.html)
 
 
-2. [https://workspace.brightday.email/ExampleCss_CssCodeSnippet.html](https://workspace.brightday.email/ExampleCss_CssCodeSnippet.html)
+2. [https://sandbox.brightday.email/ExampleCss_CssCodeSnippet.html](https://sandbox.brightday.email/ExampleCss_CssCodeSnippet.html)
 
 ## github
 

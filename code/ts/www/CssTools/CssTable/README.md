@@ -5,13 +5,13 @@
 
 ## The latest .tgz archive (v.1.3.2. 03.04.2025)
 
-[Workspace.brightday.email/CssTools/CssTable/jaisocx-css-table-1.3.2.tgz](https://workspace.brightday.email/CssTools/CssTable/jaisocx-css-table-1.3.2.tgz)
+[sandbox.brightday.email/CssTools/CssTable/jaisocx-css-table-1.3.2.tgz](https://sandbox.brightday.email/CssTools/CssTable/jaisocx-css-table-1.3.2.tgz)
 
 
 
 ## Watch site in action
 
-[Workspace.brightday.email/ExampleCss_CssTable_withCssCleanStart.html](https://workspace.brightday.email/ExampleCss_CssTable_withCssCleanStart.html)
+[sandbox.brightday.email/ExampleCss_CssTable_withCssCleanStart.html](https://sandbox.brightday.email/ExampleCss_CssTable_withCssCleanStart.html)
 
 
 
@@ -118,7 +118,7 @@ and for the desktop standard view.
         preloader
           .setThemesPreloads( themesPreloads )
           .setWebpackAlias( "@jaisocx-css-table-cdn-fonts" )
-          .setWebpackAliasReplace( "https://workspace.brightday.email/cdn/www/fonts" )
+          .setWebpackAliasReplace( "https://sandbox.brightday.email/cdn/www/fonts" )
           .init();
 
     });

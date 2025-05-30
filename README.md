@@ -45,7 +45,7 @@ Why already published: the several js tools are ready, nevertheless.
 
 #### URL of this Project deployed on https endpoint
 
-[https://workspace.brightday.email](https://workspace.brightday.email/)
+[https://sandbox.brightday.email](https://sandbox.brightday.email/)
 
 
 

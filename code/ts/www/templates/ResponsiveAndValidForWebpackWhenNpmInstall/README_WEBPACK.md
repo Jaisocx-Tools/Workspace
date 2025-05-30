@@ -11,7 +11,7 @@ The Webpack tool is for making Javascript and Styles .css files of Your project 
 
 When installing a sites tool via `npm install <PackageName>`, You are not sure, how the styles .css files and JavaScript files were referenced in the .html doc, when the developer tested her/his sites tool.
 
-1. when with the cdn-like url with the domain name like this : `<link rel="stylesheet" href="https://workspace.brightday.email/a-sites-tool/styles/style.css">`, this will work good,
+1. when with the cdn-like url with the domain name like this : `<link rel="stylesheet" href="https://sandbox.brightday.email/a-sites-tool/styles/style.css">`, this will work good,
 however when You publish on Your domain, then You will need replace all these urls, if You don't want to rely on the cdn in Your project.
 
 2. when with the url starts with the Slash symbol like this: `<link rel="stylesheet" href="/a-sites-tool/styles/style.css">`, this works well, too, however urls with the Slash symbol on start mean this is the same url on Your server, too, after domain name. And when the styles file is published on Your sites endpoint on another url, the sites tool will not work, since the styles file will not be loaded in the browser.
@@ -20,11 +20,11 @@ however when You publish on Your domain, then You will need replace all these ur
 
 For example, a sites tool .html was: 
 
-`https://workspace.brightday.email/a-sites-tool-example/`
+`https://sandbox.brightday.email/a-sites-tool-example/`
 
 and the styles file:
 
-`https://workspace.brightday.email/a-sites-tool-example/styles/style.css`
+`https://sandbox.brightday.email/a-sites-tool-example/styles/style.css`
 
 and on .html was referenced with the relative url:
 
@@ -34,11 +34,11 @@ this was all fine,
 
 and when installed from npm the tool, and Your .html doc is on the same url:
 
-`https://workspace.brightday.email/a-sites-tool-example/`
+`https://sandbox.brightday.email/a-sites-tool-example/`
 
 however the new sites tool You publish on another url:
 
-`https://workspace.brightday.email/my-installed-packages/a-new-sites-tool/styles/style.css`
+`https://sandbox.brightday.email/my-installed-packages/a-new-sites-tool/styles/style.css`
 
 then the relative url will not work.
 
