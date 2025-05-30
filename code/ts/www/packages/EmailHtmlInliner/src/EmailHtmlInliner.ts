@@ -82,11 +82,8 @@ export class EmailHtmlInliner implements EmailHtmlInlinerInterface {
     // 3rd arg RuleAndSpecifities[], matching css props in this.constants.stylesPropsToCheck: string[]
     let locInOutArrayRulesMatchingPropsAndMedia: RuleAndSpecifities[] = new Array() as RuleAndSpecifities[];
     
-    // 4th arg inOutObjectFilteredRulesAndSpecifitiesByCssPropname is the same RuleAndSpecifities[] however an Object() with keys = Css prop name.
-    // let locInOutObjectFilteredRulesAndSpecifitiesByCssPropname: any = new Object(); 
-
     // filters all rules, matching css props in this.constants.stylesPropsToCheck: string[]
-    this.setRulesMatchingPropsAndMedia ( 
+    this.filterMatchesCssPropsAllowed ( 
       locRulesMatchingMedia, 
       inStylesPropsToCheck,
       locInOutArrayRulesMatchingPropsAndMedia
@@ -391,7 +388,7 @@ export class EmailHtmlInliner implements EmailHtmlInlinerInterface {
     // filter by node.matches( cssSelector )
     // filters inArrayRulesMatchingPropsAndMedia: RuleAndSpecifities[] matching node
     // and writes to locInOutArrayRulesMatchingPropsAndMediaAndNode: RuleAndSpecifities[]
-    this.setCssRulesMatchingNode ( 
+    this.filterMatchesNode ( 
       node, 
       inArrayRulesMatchingPropsAndMedia,
       locInOutArrayRulesMatchingPropsAndMediaAndNode
@@ -497,7 +494,7 @@ export class EmailHtmlInliner implements EmailHtmlInlinerInterface {
 
 
   getDeclaredCSSValue ( 
-    allCssRules: RuleAndSpecifities[], 
+    cssStyleRulesMatchingNode: RuleAndSpecifities[], 
     node: HTMLElement, 
     cssPropertyName: string 
   ): string {
@@ -521,6 +518,8 @@ export class EmailHtmlInliner implements EmailHtmlInlinerInterface {
     let cssRule: any = new Object() as CSSStyleRule;
     let specifityAndSelectorObj: SpecifityAndSelector = new Object() as SpecifityAndSelector;
     let specifity: number[] = new Array() as number[];
+    let specifityCloned: number[] = new Array() as number[];
+    let specifityUpdated: number[] = new Array() as number[];
     let specifityHigher: number[] = new Array() as number[];
     let matchedValueApplied: boolean = false;
     
@@ -530,7 +529,12 @@ export class EmailHtmlInliner implements EmailHtmlInlinerInterface {
 
     let cssValueByRule: string = "";
 
-    for ( objCssRuleAndSpecifity of allCssRules ) {
+
+
+    for ( objCssRuleAndSpecifity of cssStyleRulesMatchingNode ) {
+
+      matchedValueApplied = false;
+
       cssRule = objCssRuleAndSpecifity.rule;
       
       cssValueByRule = cssRule.style.getPropertyValue(cssPropertyName);
@@ -546,13 +550,22 @@ export class EmailHtmlInliner implements EmailHtmlInlinerInterface {
         }
 
         specifity = specifityAndSelectorObj.specifity;
-        specifitiesComparison = this.cssSelectorWeightPackage.compareSpecificity( 
-          specifity, 
+        specifityCloned = [...specifity];
+
+        specifityUpdated = this.cssSelectorWeightPackage.updateSpecifityByCssProperty (
+          cssRule.style,
+          cssPropertyName,
+          specifityCloned
+        );
+
+
+        specifitiesComparison = this.cssSelectorWeightPackage.compareSpecificity ( 
+          specifityUpdated, 
           specifityHigher );
 
         if ( specifitiesComparison >= 0 ) {
           matchedValueApplied = true;
-          specifityHigher = [ ...specifity ];
+          specifityHigher = [ ...specifityUpdated ];
 
           objCssRuleAndSpecifity.cssValueByRule = cssValueByRule;
           objCssRuleAndSpecifityHigher = { ...objCssRuleAndSpecifity };
@@ -563,6 +576,7 @@ export class EmailHtmlInliner implements EmailHtmlInlinerInterface {
     }
 
     if ( matchedValueApplied === true ) {
+      // this is return value.
       matchedValue = this.processOneCssValueByRule ( 
         node, 
         objCssRuleAndSpecifityHigher.cssValueByRule
@@ -582,6 +596,8 @@ export class EmailHtmlInliner implements EmailHtmlInlinerInterface {
     return matchedValue;
   }
 
+
+  
 
 
   // base method to get the css prop value
@@ -644,9 +660,12 @@ export class EmailHtmlInliner implements EmailHtmlInlinerInterface {
 
   // START BLOCK  METHODS TO PRE-BUILD DATA SETS TO AVOID AMBIGOUS METHODS CALLS ON SAME CSSRULES MANY TIMES.
   // 1) first invoked line 79
-  // pre-build method to add all rules matching current media
+  // filters out CSSMediaRule by media query to current device monitor size
+  // all MediaRule types are recursively set as CSSStyleRule
+  // relays on subcall to the next recursive method calculateSpecifitiesForAllRules()
   getRulesMatchingMedia(): RuleAndSpecifities[] {
 
+    // the return variable
     let rulesMatching: RuleAndSpecifities[] = new Array() as RuleAndSpecifities[];
 
     // @ts-ignore
@@ -663,6 +682,7 @@ export class EmailHtmlInliner implements EmailHtmlInlinerInterface {
 
     return rulesMatching;
   }
+
 
 
   // filters out CSSMediaRule by media query to current device monitor size
@@ -756,7 +776,7 @@ export class EmailHtmlInliner implements EmailHtmlInlinerInterface {
 
 
 
-  // 2)
+  // 2) line 86 invoked once in main method inline()
   // filters all rules, matching css props in this.constants.stylesPropsToCheck: string[]
   // filters 1st arg inRulesAndSpecifities: RuleAndSpecifities[] and writes to 3rd arg inOutArrayFilteredRulesAndSpecifities
   // 4th arg inOutObjectFilteredRulesAndSpecifitiesByCssPropname is the same RuleAndSpecifities[] however an Object() with keys = Css prop name.
@@ -797,15 +817,6 @@ export class EmailHtmlInliner implements EmailHtmlInlinerInterface {
 
 
 
-  // objSpecifityAndSelector.specifity = this.cssSelectorWeightPackage.updateSpecifityByCssProperty ( 
-  //           cssRule.style,
-  //           cssPropertyName,
-  //           [...objSpecifityAndSelector.specifity]
-  //         );
-
-
-
-
 
 
   // 3) 
@@ -815,7 +826,7 @@ export class EmailHtmlInliner implements EmailHtmlInlinerInterface {
    * 
    * @param node 
    * @param inArrayRulesMatchingPropsAndMedia 
-   * @param inOutArrayRulesMatchingPropsAndMediaAndNode // rule added to the in out arg of this method.
+  // rule added to the in out arg of this method.
    *           // this is return variable.
    */
   filterMatchesNode ( 

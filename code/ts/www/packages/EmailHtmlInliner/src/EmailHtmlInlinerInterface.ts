@@ -59,17 +59,23 @@ export interface EmailHtmlInlinerInterface {
 
 
   // START BLOCK  METHODS TO PRE-BUILD DATA SETS TO AVOID AMBIGOUS METHODS CALLS ON SAME CSSRULES MANY TIMES.
-
-  // returns the array of css rules and specifities for these rules, 
-  // matching the media queries in current device monitor.
+  // 1) first invoked line 79
+  // filters out CSSMediaRule by media query to current device monitor size
+  // all MediaRule types are recursively set as CSSStyleRule
+  // relays on subcall to the next recursive method calculateSpecifitiesForAllRules()
   getRulesMatchingMedia(): RuleAndSpecifities[];
 
 
-  // subcall for the method above getRulesMatchingMedia(): RuleAndSpecifities[];
+  
+  // filters out CSSMediaRule by media query to current device monitor size
+  // all MediaRule types are recursively set as CSSStyleRule to the 2nd in arg inOutRulesMatching
+  // pre-build subcall of 1) method of getRulesMatchingMedia() to add all rules matching current media
   calculateSpecifitiesForAllRules ( 
-      cssRules: CSSRuleList, 
-      inOutRulesMatching: RuleAndSpecifities[] 
+    cssRules: CSSRuleList, 
+    inOutRulesMatching: RuleAndSpecifities[] 
   ): undefined;
+
+
 
 
 

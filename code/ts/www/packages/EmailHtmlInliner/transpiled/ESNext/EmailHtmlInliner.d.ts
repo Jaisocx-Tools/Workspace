@@ -30,12 +30,19 @@ export declare class EmailHtmlInliner implements EmailHtmlInlinerInterface {
      * @param inObjectFilteredRulesAndSpecifitiesByCssPropname : Object with key = css prop name => RuleAndSpecifities[] filtered for current media query matching and relevant css props
      */
     copyAllStyles(node: HTMLElement, newNode: HTMLElement, inOutInheritedStyles: any, inArrayRulesMatchingPropsAndMedia: RuleAndSpecifities[]): undefined;
-    getDeclaredCSSValue(allCssRules: RuleAndSpecifities[], node: HTMLElement, cssPropertyName: string): string;
+    getDeclaredCSSValue(cssStyleRulesMatchingNode: RuleAndSpecifities[], node: HTMLElement, cssPropertyName: string): string;
     processOneCssValueByRule(node: HTMLElement, cssValueByRule: string): string;
     getRulesMatchingMedia(): RuleAndSpecifities[];
     calculateSpecifitiesForAllRules(cssRules: CSSRuleList, inOutRulesMatching: RuleAndSpecifities[]): undefined;
-    setRulesMatchingPropsAndMedia(inRulesAndSpecifities: RuleAndSpecifities[], inStylesPropsToCheck: string[], inOutArrayFilteredRulesAndSpecifities: RuleAndSpecifities[]): undefined;
-    setCssRulesMatchingNode(node: HTMLElement, inArrayRulesMatchingPropsAndMedia: RuleAndSpecifities[], inOutArrayCssSelectorsMatchingPropsAndMediaAndNode: string[], inOutArrayRulesMatchingPropsAndMediaAndNode: RuleAndSpecifities[]): undefined;
+    filterMatchesCssPropsAllowed(inRulesAndSpecifities: RuleAndSpecifities[], inStylesPropsToCheck: string[], inOutArrayFilteredRulesAndSpecifities: RuleAndSpecifities[]): undefined;
+    /**
+     *
+     * @param node
+     * @param inArrayRulesMatchingPropsAndMedia
+    // rule added to the in out arg of this method.
+     *           // this is return variable.
+     */
+    filterMatchesNode(node: HTMLElement, inArrayRulesMatchingPropsAndMedia: RuleAndSpecifities[], inOutArrayRulesMatchingPropsAndMediaAndNode: RuleAndSpecifities[]): undefined;
     buildAndPrintLogRecord(node: HTMLElement, cssPropertyName: string, ruleAndSpecifity: any, valueByBrowser: string, valueByInliner: string): undefined;
     getConcatenatedClassNames(root: HTMLElement): string[];
 }

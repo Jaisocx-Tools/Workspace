@@ -61,10 +61,8 @@ class EmailHtmlInliner {
     let locRulesMatchingMedia = this.getRulesMatchingMedia();
     // 3rd arg RuleAndSpecifities[], matching css props in this.constants.stylesPropsToCheck: string[]
     let locInOutArrayRulesMatchingPropsAndMedia = new Array();
-    // 4th arg inOutObjectFilteredRulesAndSpecifitiesByCssPropname is the same RuleAndSpecifities[] however an Object() with keys = Css prop name.
-    // let locInOutObjectFilteredRulesAndSpecifitiesByCssPropname: any = new Object(); 
     // filters all rules, matching css props in this.constants.stylesPropsToCheck: string[]
-    this.setRulesMatchingPropsAndMedia(
+    this.filterMatchesCssPropsAllowed(
       locRulesMatchingMedia, 
       inStylesPropsToCheck, 
       locInOutArrayRulesMatchingPropsAndMedia);
@@ -322,15 +320,13 @@ class EmailHtmlInliner {
     let styleValueNewNodeParent = "";
     let styleValue = "";
     let nodeName = node.nodeName.toLowerCase();
-    let locInOutArrayCssSelectorsMatchingPropsAndMediaAndNode = new Array();
     let locInOutArrayRulesMatchingPropsAndMediaAndNode = new Array();
     // filter by node.matches( cssSelector )
     // filters inArrayRulesMatchingPropsAndMedia: RuleAndSpecifities[] matching node
     // and writes to locInOutArrayRulesMatchingPropsAndMediaAndNode: RuleAndSpecifities[]
-    this.setCssRulesMatchingNode(
+    this.filterMatchesNode(
       node, 
       inArrayRulesMatchingPropsAndMedia, 
-      locInOutArrayCssSelectorsMatchingPropsAndMediaAndNode, 
       locInOutArrayRulesMatchingPropsAndMediaAndNode);
     let cssPropDefaults = new Array();
     let cssPropDefaultsValueMatches = false;
@@ -397,7 +393,7 @@ class EmailHtmlInliner {
   }
 
   getDeclaredCSSValue(
-    allCssRules, 
+    cssStyleRulesMatchingNode, 
     node, 
     cssPropertyName) {
     // 1. Check inline style first
@@ -415,13 +411,16 @@ class EmailHtmlInliner {
     let cssRule = new Object();
     let specifityAndSelectorObj = new Object();
     let specifity = new Array();
+    let specifityCloned = new Array();
+    let specifityUpdated = new Array();
     let specifityHigher = new Array();
     let matchedValueApplied = false;
     specifityHigher = [0, 0, 0, 0, 0, 0];
     let specifitiesComparison = 0;
     let cssValueByRule = "";
 
-    for (objCssRuleAndSpecifity of allCssRules) {
+    for (objCssRuleAndSpecifity of cssStyleRulesMatchingNode) {
+      matchedValueApplied = false;
       cssRule = objCssRuleAndSpecifity.rule;
       cssValueByRule = cssRule.style.getPropertyValue(cssPropertyName);
 
@@ -435,13 +434,18 @@ class EmailHtmlInliner {
         }
 
         specifity = specifityAndSelectorObj.specifity;
+        specifityCloned = [...specifity];
+        specifityUpdated = this.cssSelectorWeightPackage.updateSpecifityByCssProperty(
+          cssRule.style, 
+          cssPropertyName, 
+          specifityCloned);
         specifitiesComparison = this.cssSelectorWeightPackage.compareSpecificity(
-          specifity, 
+          specifityUpdated, 
           specifityHigher);
 
         if (specifitiesComparison >= 0) {
           matchedValueApplied = true;
-          specifityHigher = [...specifity];
+          specifityHigher = [...specifityUpdated];
           objCssRuleAndSpecifity.cssValueByRule = cssValueByRule;
           objCssRuleAndSpecifityHigher = { ...objCssRuleAndSpecifity };
         }
@@ -449,6 +453,7 @@ class EmailHtmlInliner {
     }
 
     if (matchedValueApplied === true) {
+      // this is return value.
       matchedValue = this.processOneCssValueByRule(
         node, 
         objCssRuleAndSpecifityHigher.cssValueByRule);
@@ -509,6 +514,7 @@ class EmailHtmlInliner {
   }
 
   getRulesMatchingMedia() {
+    // the return variable
     let rulesMatching = new Array();
     // @ts-ignore
     let styleSheets = this.htmlDocument.styleSheets;
@@ -523,7 +529,7 @@ class EmailHtmlInliner {
 
     return rulesMatching;
   }
-  // pre-build subcall method of getRulesMatchingMedia() to add all rules matching current media
+
   calculateSpecifitiesForAllRules(
     cssRules, 
     inOutRulesMatching) {
@@ -596,71 +602,58 @@ class EmailHtmlInliner {
     }
   }
 
-  setRulesMatchingPropsAndMedia(
+  filterMatchesCssPropsAllowed(
     inRulesAndSpecifities, 
     inStylesPropsToCheck, 
     inOutArrayFilteredRulesAndSpecifities) {
-    let ruleOnceMatchedCssPropname = false;
-    let specifityId = 0;
-    let specifitiesNumber = 0;
+    // the value when true then added to array by filter.
+    let isCssPropInRuleSet = false;
     let objCssRuleAndSpecifity = new Object();
-    let cssRule;
-    let cssValueByRule = "";
-    let cssPropertyName = "";
-    let objSpecifityAndSelector = new Object();
+    let cssStyleRule;
+    let cssPropsAvailable = new Array(1);
 
     for (objCssRuleAndSpecifity of inRulesAndSpecifities) {
-      ruleOnceMatchedCssPropname = false;
-      cssRule = objCssRuleAndSpecifity.rule;
+      isCssPropInRuleSet = false;
+      cssStyleRule = objCssRuleAndSpecifity.rule;
+      // obtaining css props available in a CSSStyleRule
+      cssPropsAvailable = this.cssHtmlPackage.getCssPropertiesNames_ofCSSStyleRule(cssStyleRule);
+      isCssPropInRuleSet = inStylesPropsToCheck.some((cssPropName) => { return cssPropsAvailable.includes(cssPropName); });
 
-      for (cssPropertyName of inStylesPropsToCheck) {
-        cssValueByRule = cssRule.style.getPropertyValue(cssPropertyName);
-
-        if (!cssValueByRule) {
-          continue;
-        }
-
-        specifitiesNumber = objCssRuleAndSpecifity.specifitiesAndSelectors.length;
-
-        for (specifityId = 0; specifityId < specifitiesNumber; specifityId++) {
-          objSpecifityAndSelector = objCssRuleAndSpecifity.specifitiesAndSelectors[specifityId];
-          objSpecifityAndSelector.specifity = this.cssSelectorWeightPackage.updateSpecifityByCssProperty(
-            cssRule.style, 
-            cssPropertyName, 
-            [...objSpecifityAndSelector.specifity]);
-        }
+      if (isCssPropInRuleSet === true) {
+        // rule added to the in out arg of this method.
+        // this is the return variable.
+        inOutArrayFilteredRulesAndSpecifities.push({ ...objCssRuleAndSpecifity });
       }
-      //@ts-ignore
-      if (ruleOnceMatchedCssPropname === true) {
-        continue;
-      }
-
-      ruleOnceMatchedCssPropname = true;
-      inOutArrayFilteredRulesAndSpecifities.push({ ...objCssRuleAndSpecifity });
     }
   }
 
-  setCssRulesMatchingNode(
+  filterMatchesNode(
     node, 
     inArrayRulesMatchingPropsAndMedia, 
-    inOutArrayCssSelectorsMatchingPropsAndMediaAndNode, 
     inOutArrayRulesMatchingPropsAndMediaAndNode) {
     let obj = new Object();
+    let specifityAndSelector = new Object();
     let cssSelector = "";
+    let ruleIsMatching = false;
 
     for (obj of inArrayRulesMatchingPropsAndMedia) {
-      cssSelector = obj.rule.selectorText;
+      ruleIsMatching = false;
 
-      if (node.matches(cssSelector) === false) {
-        continue;
+      for (specifityAndSelector of obj.specifitiesAndSelectors) {
+        cssSelector = specifityAndSelector.cssSelector;
+
+        if (node.matches(cssSelector) === true) {
+          ruleIsMatching = true;
+          break;
+        }
       }
 
-      inOutArrayCssSelectorsMatchingPropsAndMediaAndNode.push(cssSelector);
-      inOutArrayRulesMatchingPropsAndMediaAndNode.push(obj);
+      if (ruleIsMatching === true) {
+        // rule added to the in out arg of this method.
+        // this is return variable.
+        inOutArrayRulesMatchingPropsAndMediaAndNode.push(obj);
+      }
     }
-    // TODO
-    // let uniqueSet = new Set( inOutArrayCssSelectorsMatchingPropsAndMediaAndNode );
-    // inOutArrayCssSelectorsMatchingPropsAndMediaAndNode = [...uniqueSet];
   }
 
   buildAndPrintLogRecord(

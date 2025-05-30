@@ -12,9 +12,15 @@ export interface EmailHtmlInlinerInterface {
     processOneCssValueByRule(node: HTMLElement, cssValueByRule: string): string;
     getRulesMatchingMedia(): RuleAndSpecifities[];
     calculateSpecifitiesForAllRules(cssRules: CSSRuleList, inOutRulesMatching: RuleAndSpecifities[]): undefined;
-    setRulesMatchingPropsAndMedia(inRulesAndSpecifities: RuleAndSpecifities[], inStylesPropsToCheck: string[], inOutArrayFilteredRulesAndSpecifities: RuleAndSpecifities[], inOutObjectFilteredRulesAndSpecifitiesByCssPropname: any): undefined;
-    setCssRulesMatchingNode(node: HTMLElement, inArrayRulesMatchingPropsAndMedia: RuleAndSpecifities[], inOutArrayCssSelectorsMatchingPropsAndMediaAndNode: string[], inOutArrayRulesMatchingPropsAndMediaAndNode: RuleAndSpecifities[]): undefined;
-    setCssRulesMatchingNode(node: HTMLElement, inArrayRulesMatchingPropsAndMedia: any[], inOutArrayCssSelectorsMatchingPropsAndMediaAndNode: any[], inOutArrayRulesMatchingPropsAndMediaAndNode: any[]): undefined;
+    filterMatchesCssPropsAllowed(inRulesAndSpecifities: RuleAndSpecifities[], inStylesPropsToCheck: string[], inOutArrayFilteredRulesAndSpecifities: RuleAndSpecifities[]): undefined;
+    /**
+     *
+     * @param node
+     * @param inArrayRulesMatchingPropsAndMedia
+     * @param inOutArrayRulesMatchingPropsAndMediaAndNode // rule added to the in out arg of this method.
+     *           // this is return variable.
+     */
+    filterMatchesNode(node: HTMLElement, inArrayRulesMatchingPropsAndMedia: RuleAndSpecifities[], inOutArrayRulesMatchingPropsAndMediaAndNode: RuleAndSpecifities[]): undefined;
     buildAndPrintLogRecord(node: HTMLElement, cssPropertyName: string, ruleAndSpecifity: any, valueByBrowser: string, valueByInliner: string): undefined;
     getConcatenatedClassNames(root: HTMLElement): string[];
 }
