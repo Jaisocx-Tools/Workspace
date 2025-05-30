@@ -82,23 +82,21 @@ export interface EmailHtmlInlinerInterface {
   ): undefined;
 
 
+
+  // 3) 
   // pre-build method for node 
+  // filter by node.matches( cssSelector )
+  /**
+   * 
+   * @param node 
+   * @param inArrayRulesMatchingPropsAndMedia 
+   * @param inOutArrayRulesMatchingPropsAndMediaAndNode // rule added to the in out arg of this method.
+   *           // this is return variable.
+   */
   setCssRulesMatchingNode ( 
     node: HTMLElement, 
     inArrayRulesMatchingPropsAndMedia: RuleAndSpecifities[],
-    inOutArrayCssSelectorsMatchingPropsAndMediaAndNode: string[],
     inOutArrayRulesMatchingPropsAndMediaAndNode: RuleAndSpecifities[]
-  ): undefined;
-
-
-
-  
-
-  setCssRulesMatchingNode ( 
-    node: HTMLElement, 
-    inArrayRulesMatchingPropsAndMedia: any[],
-    inOutArrayCssSelectorsMatchingPropsAndMediaAndNode: any[],
-    inOutArrayRulesMatchingPropsAndMediaAndNode: any[]
   ): undefined;
 
   // END OF THE BLOCK  METHODS TO PRE-BUILD DATA SETS

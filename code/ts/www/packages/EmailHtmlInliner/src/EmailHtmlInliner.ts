@@ -385,7 +385,6 @@ export class EmailHtmlInliner implements EmailHtmlInlinerInterface {
     let styleValue: string = "";
     let nodeName: string = node.nodeName.toLowerCase();
 
-    let locInOutArrayCssSelectorsMatchingPropsAndMediaAndNode: string[] = new Array() as string[];
     let locInOutArrayRulesMatchingPropsAndMediaAndNode: RuleAndSpecifities[] = new Array() as RuleAndSpecifities[];
 
 
@@ -395,7 +394,6 @@ export class EmailHtmlInliner implements EmailHtmlInlinerInterface {
     this.setCssRulesMatchingNode ( 
       node, 
       inArrayRulesMatchingPropsAndMedia,
-      locInOutArrayCssSelectorsMatchingPropsAndMediaAndNode,
       locInOutArrayRulesMatchingPropsAndMediaAndNode
     );
 
@@ -645,6 +643,7 @@ export class EmailHtmlInliner implements EmailHtmlInlinerInterface {
 
 
   // START BLOCK  METHODS TO PRE-BUILD DATA SETS TO AVOID AMBIGOUS METHODS CALLS ON SAME CSSRULES MANY TIMES.
+  // 1) first invoked line 79
   // pre-build method to add all rules matching current media
   getRulesMatchingMedia(): RuleAndSpecifities[] {
 
@@ -666,8 +665,9 @@ export class EmailHtmlInliner implements EmailHtmlInlinerInterface {
   }
 
 
-
-  // pre-build subcall method of getRulesMatchingMedia() to add all rules matching current media
+  // filters out CSSMediaRule by media query to current device monitor size
+  // all MediaRule types are recursively set as CSSStyleRule to the 2nd in arg inOutRulesMatching
+  // pre-build subcall of 1) method of getRulesMatchingMedia() to add all rules matching current media
   calculateSpecifitiesForAllRules ( 
     cssRules: CSSRuleList, 
     inOutRulesMatching: RuleAndSpecifities[] 
@@ -754,6 +754,7 @@ export class EmailHtmlInliner implements EmailHtmlInlinerInterface {
 
 
 
+  // 2)
   // filters all rules, matching css props in this.constants.stylesPropsToCheck: string[]
   // filters 1st arg inRulesAndSpecifities: RuleAndSpecifities[] and writes to 3rd arg inOutArrayFilteredRulesAndSpecifities
   // 4th arg inOutObjectFilteredRulesAndSpecifitiesByCssPropname is the same RuleAndSpecifities[] however an Object() with keys = Css prop name.
@@ -810,31 +811,47 @@ export class EmailHtmlInliner implements EmailHtmlInlinerInterface {
   }
 
 
+  // 3) 
   // pre-build method for node 
   // filter by node.matches( cssSelector )
+  /**
+   * 
+   * @param node 
+   * @param inArrayRulesMatchingPropsAndMedia 
+   * @param inOutArrayRulesMatchingPropsAndMediaAndNode // rule added to the in out arg of this method.
+   *           // this is return variable.
+   */
   setCssRulesMatchingNode ( 
     node: HTMLElement, 
     inArrayRulesMatchingPropsAndMedia: RuleAndSpecifities[],
-    inOutArrayCssSelectorsMatchingPropsAndMediaAndNode: string[],
     inOutArrayRulesMatchingPropsAndMediaAndNode: RuleAndSpecifities[]
   ): undefined {
     
-    let obj: any = new Object();
+    let obj: RuleAndSpecifities = new Object() as RuleAndSpecifities;
+    let specifityAndSelector: SpecifityAndSelector = new Object() as SpecifityAndSelector;
     let cssSelector: string = "";
+    let ruleIsMatching: boolean = false;
 
     for ( obj of inArrayRulesMatchingPropsAndMedia ) {
-      cssSelector = obj.rule.selectorText;
-      if ( node.matches( cssSelector ) === false ) {
-        continue;
-      }
-      
-      inOutArrayCssSelectorsMatchingPropsAndMediaAndNode.push( cssSelector );
-      inOutArrayRulesMatchingPropsAndMediaAndNode.push( obj );
-    }
+      ruleIsMatching = false;
 
-    // TODO
-    // let uniqueSet = new Set( inOutArrayCssSelectorsMatchingPropsAndMediaAndNode );
-    // inOutArrayCssSelectorsMatchingPropsAndMediaAndNode = [...uniqueSet];
+      for ( specifityAndSelector of obj.specifitiesAndSelectors ) {
+        cssSelector = specifityAndSelector.cssSelector;
+
+        if ( node.matches( cssSelector ) === true ) {
+          ruleIsMatching = true;
+          break;
+        }
+
+      }
+
+      if ( ruleIsMatching === true ) {
+        // rule added to the in out arg of this method.
+        // this is return variable.
+        inOutArrayRulesMatchingPropsAndMediaAndNode.push( obj );
+      }
+
+    }
 
   }
   // END OF THE BLOCK  METHODS TO PRE-BUILD DATA SETS
