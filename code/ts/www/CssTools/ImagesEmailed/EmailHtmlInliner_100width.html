@@ -45,7 +45,15 @@
 
       --main-width: 100%;
       /* --main-background-color: #eaffea; */
-      --main-background-color: green;
+      --main-background-color: white;
+
+      --image-cell--padding: 0 0 1rem 0;
+      --image-holder--padding: 0;
+
+
+      --images-area--background: white;
+      --image-cell--background: transparent;
+      --image-holder--background: transparent;
     }
 
     .workspace.theme-emailed-thin.long.browser-width-when-portrait,
@@ -88,14 +96,16 @@
       --clean-start__tag_body__overflow-x: hidden;
       --clean-start__tag_body__overflow-y: visible;
 
-      --clean-start__tag_body__background: grey;
+
+      /* this was applied in webmail app */
+      --clean-start__tag_body__background: var(--main-background-color);
 
 
       --clean-start__site__width: 100%;
       --clean-start__site__overflow_x: hidden;
       --clean-start__site__overflow_y: visible;
 
-      --clean-start__site__background: lime;
+      --clean-start__site__background: var(--main-background-color);
     }
 
     .workspace.theme-emailed-thin.long.browser-width-when-portrait .images {
@@ -111,9 +121,9 @@
 
       /* flex-wrap: wrap; */
 
-      background: var(--main-background-color);
+      background: var(--images-area--background);
       margin-bottom: 3rem;
-      border: 1px solid gren;
+      border: 0px solid green;
 
       overflow-y: visible;
       overflow-x: hidden;
@@ -132,10 +142,12 @@
       overflow-x: hidden;
       overflow-y: visible;
 
-      padding: 0.6rem;
+      padding: var(--image-cell--padding);
       overflow: hidden;
 
-      /* background: #f2fff2; */
+      line-height: unset;
+
+      background: var(--image-cell--background);
     }
 
     .workspace.theme-emailed-thin.long.browser-width-when-portrait .images .cell .image-holder {
@@ -152,8 +164,10 @@
       overflow-x: hidden;
       overflow-y: visible;
 
-      padding: 0.8rem;
-      background: #ffffff;
+      padding: var(--image-holder--padding);
+      background: var(--image-holder--background);
+
+      line-height: unset;
     }
     
     .workspace.theme-emailed-thin.long.browser-width-when-portrait .images > .cell > .image-holder > img {
@@ -167,6 +181,8 @@
       max-height: 100%;
 
       overflow: hidden;
+
+      line-height: unset;
     }
 
     .workspace.theme-emailed-thin.long.browser-width-when-portrait .email_address {
@@ -375,8 +391,8 @@
 
     let globBaseUrlToReplace = "";
     let globBaseUrlReplacedWith = "";
-    // globBaseUrlToReplace = "./../../../cdn/www/media/images/html_inliner_webmail_100width/";
-    // globBaseUrlReplacedWith = "html_inliner_webmail_100width/";
+    globBaseUrlToReplace = "./../../../cdn/www/media/images/html_inliner_webmail_100width/";
+    globBaseUrlReplacedWith = "html_inliner_webmail_100width/";
 
 
     let debug = true;

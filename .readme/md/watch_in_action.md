@@ -32,8 +32,7 @@
 
 ## Email Html Inliner
 
-[https://workspace.brightday.email/Example_EmailHtmlInliner_PixabayGirls.html](https://workspace.brightday.email/Example_EmailHtmlInliner_PixabayGirls.html)
-
+[https://workspace.brightday.email/CssTools/ImagesEmailed/EmailHtmlInliner_100width.html](https://workspace.brightday.email/CssTools/ImagesEmailed/EmailHtmlInliner_100width.html)
 
 [https://workspace.brightday.email/Example_EmailHtmlInliner_Images.html](https://workspace.brightday.email/Example_EmailHtmlInliner_Images.html)
 
