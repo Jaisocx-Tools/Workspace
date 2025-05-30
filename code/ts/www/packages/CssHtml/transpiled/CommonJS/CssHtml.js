@@ -97,6 +97,26 @@ class CssHtml {
         let cssVariableValue = this.getVariableValue(element, variableName);
         return cssVariableValue;
     }
+    getCssPropertiesNames_ofCSSStyleRule(cssStyleRule) {
+        /**
+          cssStyleRule.style is a CSSStyleDeclaration object.
+          cssStyleRule.style.length gives the number of properties explicitly set.
+          cssStyleRule.style[i] accesses the property name at index i.
+          This avoids inherited properties or prototype keys you'd get with Object.keys( cssStyleRule.style ).
+        */
+        let ruleStyles = cssStyleRule.style;
+        let cssPropName = "";
+        let cssPropId = 0;
+        let numberOfCssProps = ruleStyles.length;
+        // obtaining css props available in a CSSStyleRule
+        // this is the return value.
+        let cssPropsAvailable = new Array(numberOfCssProps);
+        for (cssPropId = 0; cssPropId < numberOfCssProps; cssPropId++) {
+            cssPropName = ruleStyles[cssPropId];
+            cssPropsAvailable[cssPropId] = cssPropName;
+        }
+        return cssPropsAvailable;
+    }
 }
 exports.CssHtml = CssHtml;
 //# sourceMappingURL=CssHtml.js.map

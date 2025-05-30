@@ -144,6 +144,35 @@ export class CssHtml {
 
     return cssVariableValue;
   }
+
+  getCssPropertiesNames_ofCSSStyleRule( cssStyleRule: CSSStyleRule ): string[] {
+    /**
+      cssStyleRule.style is a CSSStyleDeclaration object.
+      cssStyleRule.style.length gives the number of properties explicitly set.
+      cssStyleRule.style[i] accesses the property name at index i.
+      This avoids inherited properties or prototype keys you'd get with Object.keys( cssStyleRule.style ).
+    */
+
+
+    let ruleStyles: CSSStyleDeclaration = cssStyleRule.style;
+
+    let cssPropName: string = "";
+    let cssPropId: number = 0;
+    let numberOfCssProps: number = ruleStyles.length;
+
+    // obtaining css props available in a CSSStyleRule
+    // this is the return value.
+    let cssPropsAvailable: string[] = new Array(numberOfCssProps) as string[];
+
+
+    for ( cssPropId = 0; cssPropId < numberOfCssProps; cssPropId++ ) {
+      cssPropName = ruleStyles[cssPropId];
+      cssPropsAvailable[cssPropId] = cssPropName;
+    }
+
+    return cssPropsAvailable;
+
+  }
   
 }
 

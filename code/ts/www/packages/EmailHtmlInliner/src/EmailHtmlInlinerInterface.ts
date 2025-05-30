@@ -72,13 +72,15 @@ export interface EmailHtmlInlinerInterface {
   ): undefined;
 
 
+
+  // 2)
+  // filters all rules, matching css props in this.constants.stylesPropsToCheck: string[]
   // filters 1st arg inRulesAndSpecifities: RuleAndSpecifities[] and writes to 3rd arg inOutArrayFilteredRulesAndSpecifities
   // 4th arg inOutObjectFilteredRulesAndSpecifitiesByCssPropname is the same RuleAndSpecifities[] however an Object() with keys = Css prop name.
-  setRulesMatchingPropsAndMedia ( 
+    filterMatchesCssPropsAllowed ( 
     inRulesAndSpecifities: RuleAndSpecifities[], 
     inStylesPropsToCheck: string[],
-    inOutArrayFilteredRulesAndSpecifities: RuleAndSpecifities[], 
-    inOutObjectFilteredRulesAndSpecifitiesByCssPropname: any
+    inOutArrayFilteredRulesAndSpecifities: RuleAndSpecifities[]
   ): undefined;
 
 
@@ -93,7 +95,7 @@ export interface EmailHtmlInlinerInterface {
    * @param inOutArrayRulesMatchingPropsAndMediaAndNode // rule added to the in out arg of this method.
    *           // this is return variable.
    */
-  setCssRulesMatchingNode ( 
+  filterMatchesNode ( 
     node: HTMLElement, 
     inArrayRulesMatchingPropsAndMedia: RuleAndSpecifities[],
     inOutArrayRulesMatchingPropsAndMediaAndNode: RuleAndSpecifities[]

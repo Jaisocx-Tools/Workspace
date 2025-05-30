@@ -754,61 +754,58 @@ export class EmailHtmlInliner implements EmailHtmlInlinerInterface {
 
 
 
+
+
   // 2)
   // filters all rules, matching css props in this.constants.stylesPropsToCheck: string[]
   // filters 1st arg inRulesAndSpecifities: RuleAndSpecifities[] and writes to 3rd arg inOutArrayFilteredRulesAndSpecifities
   // 4th arg inOutObjectFilteredRulesAndSpecifitiesByCssPropname is the same RuleAndSpecifities[] however an Object() with keys = Css prop name.
-  setRulesMatchingPropsAndMedia ( 
+  filterMatchesCssPropsAllowed ( 
     inRulesAndSpecifities: RuleAndSpecifities[], 
     inStylesPropsToCheck: string[],
     inOutArrayFilteredRulesAndSpecifities: RuleAndSpecifities[]
   ): undefined {
 
-    let ruleOnceMatchedCssPropname: boolean = false;
-    let specifityId: number = 0;
-    let specifitiesNumber: number = 0;
+
+    // the value when true then added to array by filter.
+    let isCssPropInRuleSet: boolean = false;
+
     let objCssRuleAndSpecifity: RuleAndSpecifities = new Object() as RuleAndSpecifities;
-    let cssRule: CSSStyleRule;
-    let cssValueByRule: string = "";
-    let cssPropertyName: string = "";
-    let objSpecifityAndSelector: SpecifityAndSelector = new Object() as SpecifityAndSelector;
+    let cssStyleRule: CSSStyleRule;
+    let cssPropsAvailable: string[] = new Array(1) as string[];
 
     for ( objCssRuleAndSpecifity of inRulesAndSpecifities ) {
-      ruleOnceMatchedCssPropname = false;
-      cssRule = objCssRuleAndSpecifity.rule;
+      isCssPropInRuleSet = false;
 
-      for ( cssPropertyName of inStylesPropsToCheck ) {
-        cssValueByRule = cssRule.style.getPropertyValue( cssPropertyName );
+      cssStyleRule = objCssRuleAndSpecifity.rule;
 
-        if ( !cssValueByRule ) {
-          continue;
-        }
+      // obtaining css props available in a CSSStyleRule
+      cssPropsAvailable = this.cssHtmlPackage.getCssPropertiesNames_ofCSSStyleRule( cssStyleRule );
 
-        specifitiesNumber = objCssRuleAndSpecifity.specifitiesAndSelectors.length;
-        for ( specifityId = 0; specifityId < specifitiesNumber; specifityId++ ) {
-          objSpecifityAndSelector = objCssRuleAndSpecifity.specifitiesAndSelectors[specifityId];
+      isCssPropInRuleSet = inStylesPropsToCheck.some( ( cssPropName: string ) => { return cssPropsAvailable.includes( cssPropName ); });
 
-          objSpecifityAndSelector.specifity = this.cssSelectorWeightPackage.updateSpecifityByCssProperty ( 
-            cssRule.style,
-            cssPropertyName,
-            [...objSpecifityAndSelector.specifity]
-          );
-
-        }
-
-      }
-
-      //@ts-ignore
-      if ( ruleOnceMatchedCssPropname === true ) {
-        continue;
+      if ( isCssPropInRuleSet === true ) {
+        // rule added to the in out arg of this method.
+        // this is the return variable.
+        inOutArrayFilteredRulesAndSpecifities.push( {...objCssRuleAndSpecifity} );
       } 
-
-      ruleOnceMatchedCssPropname = true;
-      inOutArrayFilteredRulesAndSpecifities.push( {...objCssRuleAndSpecifity} );
 
     }
 
   }
+
+
+
+
+  // objSpecifityAndSelector.specifity = this.cssSelectorWeightPackage.updateSpecifityByCssProperty ( 
+  //           cssRule.style,
+  //           cssPropertyName,
+  //           [...objSpecifityAndSelector.specifity]
+  //         );
+
+
+
+
 
 
   // 3) 
@@ -821,7 +818,7 @@ export class EmailHtmlInliner implements EmailHtmlInlinerInterface {
    * @param inOutArrayRulesMatchingPropsAndMediaAndNode // rule added to the in out arg of this method.
    *           // this is return variable.
    */
-  setCssRulesMatchingNode ( 
+  filterMatchesNode ( 
     node: HTMLElement, 
     inArrayRulesMatchingPropsAndMedia: RuleAndSpecifities[],
     inOutArrayRulesMatchingPropsAndMediaAndNode: RuleAndSpecifities[]

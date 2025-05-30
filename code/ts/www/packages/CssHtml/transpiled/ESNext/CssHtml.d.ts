@@ -17,5 +17,6 @@ export declare class CssHtml {
     remToPxAllValues(cssPropertyValue: string): string | false;
     getVariableValue(element: HTMLElement, variableName: string): string;
     resolveCssValueIfVariable(element: HTMLElement, cssValue: string): string | false;
+    getCssPropertiesNames_ofCSSStyleRule(cssStyleRule: CSSStyleRule): string[];
 }
 //# sourceMappingURL=CssHtml.d.ts.map
