@@ -380,7 +380,7 @@ export class EmailHtmlInliner implements EmailHtmlInlinerInterface {
     
     let styleValueNewNodeParent: string = "";
     let styleValue: string = "";
-    let nodeName: string = node.nodeName.toLowerCase();
+    let nodeName: string = node.tagName.toLowerCase();
 
     let locInOutArrayRulesMatchingPropsAndMediaAndNode: RuleAndSpecifities[] = new Array() as RuleAndSpecifities[];
 
@@ -399,7 +399,7 @@ export class EmailHtmlInliner implements EmailHtmlInlinerInterface {
 
     let cssPropDefaults: string[] = new Array() as string[];
     let cssPropDefaultsValueMatches: boolean = false;
-    let nodeStylesDefaults: any = this.constants.tagsStylesDefaults[newNode.nodeName];
+    let nodeStylesDefaults: any = this.constants.tagsStylesDefaults[newNode.tagName.toLowerCase()];
     let nodeStylesDefaultsSet: boolean = ( nodeStylesDefaults !== undefined );
 
 
@@ -407,6 +407,9 @@ export class EmailHtmlInliner implements EmailHtmlInlinerInterface {
     let cssPropertyName: any = "";
 
     for ( cssPropertyName of cssPropertiesNames ) {
+
+      cssPropDefaultsValueMatches = false;
+
 
       styleValue = this.getDeclaredCSSValue( 
         locInOutArrayRulesMatchingPropsAndMediaAndNode, 
@@ -469,6 +472,8 @@ export class EmailHtmlInliner implements EmailHtmlInlinerInterface {
 
       }
 
+
+
       // from here else: inheritance
 
       // check out the css prop value in the above DOM tree
@@ -529,11 +534,11 @@ export class EmailHtmlInliner implements EmailHtmlInlinerInterface {
 
     let cssValueByRule: string = "";
 
+    let nodeMatchingParent: HTMLElement | null = new Object() as HTMLElement;
+
 
 
     for ( objCssRuleAndSpecifity of cssStyleRulesMatchingNode ) {
-
-      matchedValueApplied = false;
 
       cssRule = objCssRuleAndSpecifity.rule;
       
@@ -545,9 +550,12 @@ export class EmailHtmlInliner implements EmailHtmlInlinerInterface {
 
       for ( specifityAndSelectorObj of objCssRuleAndSpecifity.specifitiesAndSelectors ) {
 
-        if ( node.matches( specifityAndSelectorObj.cssSelector ) === false ) {
+        nodeMatchingParent = node.closest( specifityAndSelectorObj.cssSelector );
+
+        if ( nodeMatchingParent && nodeMatchingParent.matches( specifityAndSelectorObj.cssSelector ) === false ) {
           continue;
         }
+
 
         specifity = specifityAndSelectorObj.specifity;
         specifityCloned = [...specifity];
@@ -597,7 +605,7 @@ export class EmailHtmlInliner implements EmailHtmlInlinerInterface {
   }
 
 
-  
+
 
 
   // base method to get the css prop value
@@ -802,7 +810,7 @@ export class EmailHtmlInliner implements EmailHtmlInlinerInterface {
       // obtaining css props available in a CSSStyleRule
       cssPropsAvailable = this.cssHtmlPackage.getCssPropertiesNames_ofCSSStyleRule( cssStyleRule );
 
-      isCssPropInRuleSet = inStylesPropsToCheck.some( ( cssPropName: string ) => { return cssPropsAvailable.includes( cssPropName ); });
+      isCssPropInRuleSet = ( inStylesPropsToCheck.find( ( cssPropName: string ) => { return cssPropsAvailable.includes( cssPropName ); }) !== undefined );
 
       if ( isCssPropInRuleSet === true ) {
         // rule added to the in out arg of this method.
@@ -856,7 +864,7 @@ export class EmailHtmlInliner implements EmailHtmlInlinerInterface {
       if ( ruleIsMatching === true ) {
         // rule added to the in out arg of this method.
         // this is return variable.
-        inOutArrayRulesMatchingPropsAndMediaAndNode.push( obj );
+        inOutArrayRulesMatchingPropsAndMediaAndNode.push( {...obj} );
       }
 
     }
