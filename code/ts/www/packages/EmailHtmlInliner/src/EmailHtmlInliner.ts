@@ -150,7 +150,7 @@ export class EmailHtmlInliner implements EmailHtmlInlinerInterface {
 
 
 
-    if ( mainNode.tagName === "HTML" ) {
+    if ( mainNode.tagName.toLowerCase() === "html" ) {
       node = this.htmlDocument.querySelector("body") as HTMLElement;
       newNodeApplied = docElem.querySelector("body") as HTMLElement;
 
@@ -514,7 +514,6 @@ export class EmailHtmlInliner implements EmailHtmlInlinerInterface {
 
     // 2. Scan all matching CSS rules
     let matchedValue: string = "";
-    // let cssPropertyValueByCssRule: string = "";
 
     let cssPropertyValueByBrowser: string = window.getComputedStyle( node ).getPropertyValue( cssPropertyName );
     let trimmedCssPropertyValueByBrowser: string = this.trimmer.trimQuotes( cssPropertyValueByBrowser ) || cssPropertyValueByBrowser;
@@ -542,8 +541,13 @@ export class EmailHtmlInliner implements EmailHtmlInlinerInterface {
       }
 
 
-      if ( objCssRuleAndSpecifity.specifitiesAndSelectors.length === 1 ) {
-        specifity = objCssRuleAndSpecifity.specifitiesAndSelectors[0].specifity;
+      for ( specifityAndSelectorObj of objCssRuleAndSpecifity.specifitiesAndSelectors ) {
+
+        if ( node.matches( specifityAndSelectorObj.cssSelector ) === false ) {
+          continue;
+        }
+
+        specifity = specifityAndSelectorObj.specifity;
         specifitiesComparison = this.cssSelectorWeightPackage.compareSpecificity( 
           specifity, 
           specifityHigher );
@@ -556,28 +560,6 @@ export class EmailHtmlInliner implements EmailHtmlInlinerInterface {
           objCssRuleAndSpecifityHigher = { ...objCssRuleAndSpecifity };
         }
 
-      } else {
-
-        for ( specifityAndSelectorObj of objCssRuleAndSpecifity.specifitiesAndSelectors ) {
-
-          if ( node.matches( specifityAndSelectorObj.cssSelector ) === true ) {
-            continue;
-          }
-
-          specifity = specifityAndSelectorObj.specifity;
-          specifitiesComparison = this.cssSelectorWeightPackage.compareSpecificity( 
-            specifity, 
-            specifityHigher );
-
-          if ( specifitiesComparison >= 0 ) {
-            matchedValueApplied = true;
-            specifityHigher = [ ...specifity ];
-
-            objCssRuleAndSpecifity.cssValueByRule = cssValueByRule;
-            objCssRuleAndSpecifityHigher = { ...objCssRuleAndSpecifity };
-          }
-
-        }
       }
       
     }
@@ -669,10 +651,11 @@ export class EmailHtmlInliner implements EmailHtmlInlinerInterface {
     let rulesMatching: RuleAndSpecifities[] = new Array() as RuleAndSpecifities[];
 
     // @ts-ignore
-    let styleSheets: CSSStyleSheet[] = this.htmlDocument.adoptedStyleSheets;
+    let styleSheets: StyleSheetList = this.htmlDocument.styleSheets;
     let sheet: CSSStyleSheet;
 
-    for ( sheet of styleSheets ) {
+    for ( let key in styleSheets ) {
+      sheet = styleSheets[key];
       this.calculateSpecifitiesForAllRules ( 
         sheet.cssRules, 
         rulesMatching 
@@ -780,7 +763,6 @@ export class EmailHtmlInliner implements EmailHtmlInlinerInterface {
     inOutArrayFilteredRulesAndSpecifities: RuleAndSpecifities[]
   ): undefined {
 
-    // let cssRuleAndSpecifityArray: RuleAndSpecifities[] = new Array() as RuleAndSpecifities[];
     let ruleOnceMatchedCssPropname: boolean = false;
     let specifityId: number = 0;
     let specifitiesNumber: number = 0;
@@ -801,12 +783,6 @@ export class EmailHtmlInliner implements EmailHtmlInlinerInterface {
           continue;
         }
 
-        // cssRuleAndSpecifityArray = inOutObjectFilteredRulesAndSpecifitiesByCssPropname[cssPropertyName];
-        // if ( cssRuleAndSpecifityArray === undefined ) {
-        //   inOutObjectFilteredRulesAndSpecifitiesByCssPropname[cssPropertyName] = new Array();
-        //   cssRuleAndSpecifityArray = inOutObjectFilteredRulesAndSpecifitiesByCssPropname[cssPropertyName];
-        // }
-
         specifitiesNumber = objCssRuleAndSpecifity.specifitiesAndSelectors.length;
         for ( specifityId = 0; specifityId < specifitiesNumber; specifityId++ ) {
           objSpecifityAndSelector = objCssRuleAndSpecifity.specifitiesAndSelectors[specifityId];
@@ -814,21 +790,20 @@ export class EmailHtmlInliner implements EmailHtmlInlinerInterface {
           objSpecifityAndSelector.specifity = this.cssSelectorWeightPackage.updateSpecifityByCssProperty ( 
             cssRule.style,
             cssPropertyName,
-            objSpecifityAndSelector.specifity
+            [...objSpecifityAndSelector.specifity]
           );
 
         }
 
-        // cssRuleAndSpecifityArray.push( objCssRuleAndSpecifity );
-
-        if ( ruleOnceMatchedCssPropname === true ) {
-          continue;
-        } 
-
-        ruleOnceMatchedCssPropname = true;
-        inOutArrayFilteredRulesAndSpecifities.push( {...objCssRuleAndSpecifity} );
-
       }
+
+      //@ts-ignore
+      if ( ruleOnceMatchedCssPropname === true ) {
+        continue;
+      } 
+
+      ruleOnceMatchedCssPropname = true;
+      inOutArrayFilteredRulesAndSpecifities.push( {...objCssRuleAndSpecifity} );
 
     }
 

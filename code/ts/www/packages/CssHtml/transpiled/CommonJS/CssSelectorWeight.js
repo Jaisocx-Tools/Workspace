@@ -73,6 +73,7 @@ class CssSelectorWeight {
         if (selector.includes(",") === false) {
             specifity = this.calculateOneRuleSpecificity(selector);
             obj.specifity = [...specifity];
+            obj.cssSelector = selector;
             specifitiesAndSelectors.push(obj);
         }
         else {

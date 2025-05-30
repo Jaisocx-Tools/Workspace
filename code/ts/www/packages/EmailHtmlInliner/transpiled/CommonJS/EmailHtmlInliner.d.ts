@@ -20,7 +20,7 @@ export declare class EmailHtmlInliner implements EmailHtmlInlinerInterface {
     setNumberBackgroundSpacesBefore_attrStart(num: number): EmailHtmlInliner;
     setNumberBackgroundSpacesBefore_styleStart(num: number): EmailHtmlInliner;
     inline(inHtmlDocument: Document, inHtmlDocQuerySelector: string, inStylesPropsToCheck: string[], inBaseUrlToReplace: string, inBaseUrlReplacedWith: string): string;
-    inlineStyleAllNodes(root: HTMLElement, newDoc: Document, newElem: HTMLElement, inOutInheritedStyles: any, inOutArrayRulesMatchingPropsAndMedia: any[], inBaseUrlToReplace: string, inBaseUrlReplacedWith: string): number;
+    inlineStyleAllNodes(root: HTMLElement, newDoc: Document, newElem: HTMLElement, inOutInheritedStyles: any, inOutArrayRulesMatchingPropsAndMedia: RuleAndSpecifities[], inBaseUrlToReplace: string, inBaseUrlReplacedWith: string): number;
     /**
      *
      * @param node
