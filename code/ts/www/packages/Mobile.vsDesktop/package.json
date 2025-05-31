@@ -18,6 +18,9 @@
       "require": "./transpiled/CommonJS/webpack.aliases.cjs"
     }
   },
+  "scripts": {
+    "dataset": "node \"transpiled/ESNext/responsive_dataset_automation/produceResponsiveDataset.js\""
+  },
   "files": [
     "transpiled/CommonJS",
     "transpiled/ESNext",

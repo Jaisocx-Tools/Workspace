@@ -540,6 +540,25 @@ class ResponsiveDatasetAutomation {
         //}
         return [...mediaConstantLine];
     }
+    produceMediaConstantName(responsiveDatasetPropName, orientation, isStartValue) {
+        const mediaName = this.produceMediaName(responsiveDatasetPropName, orientation);
+        let postfix = "";
+        if (isStartValue === true) {
+            postfix = this.automationConstants.getKeywordFrom();
+        }
+        else {
+            postfix = this.automationConstants.getKeywordTil();
+        }
+        let size = "";
+        let sizes = this.getSizesByOrientation(responsiveDatasetPropName, orientation);
+        size = (new Number(sizes[postfix])).toString();
+        let mediaConstantLine = this.automationConstants.getMediaConstantNameUpdated(mediaName, postfix, size);
+        //if ( this.debug === true ) {
+        let mediaConstantLineText = this.textDecoder.decode(this.fileWriter.concatUint8Arrays(mediaConstantLine));
+        console.info(mediaConstantLineText);
+        //}
+        return [...mediaConstantLine];
+    }
     // json with sizes
     /**
      * @ready

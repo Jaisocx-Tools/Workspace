@@ -1,6 +1,6 @@
 {
   "name": "@jaisocx/objdata",
-  "version": "2.1.1",
+  "version": "2.1.2",
   "private": false,
   "description": "ObjData represents the Objects and array and arrays of objects, where no parsing by bytewise chars comparisons are not used (XML and Json are in all text IDEs readable/writable, and use comaparisons of chars), and the instantiating a JavaScript Object instance is done without parsing by chars markup.",
   "type": "module",
@@ -17,6 +17,7 @@
   "files": [
     "transpiled/CommonJS",
     "transpiled/ESNext",
+    "transpiled/Simple",
     "ObjDataConstants.json",
     "README.md"
   ],

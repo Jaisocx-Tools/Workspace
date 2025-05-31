@@ -1,6 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.FileWriterQueue = void 0;
+// import { FileHandle } from "fs/promises";
 const event_emitter_1 = require("@jaisocx/event-emitter");
 class FileWriterQueue extends event_emitter_1.EventEmitter {
     // future task for the fine tuning of the queue array growth.
@@ -168,14 +169,14 @@ class FileWriterQueue extends event_emitter_1.EventEmitter {
         }
         this.fileWriter
             .appendToFile(queueTask.bitsbuf, queueTask.range)
-            .then((arg) => {
+            .then((_arg1) => {
             this.workingQueueId++;
             // checks, whether last written was the last task in the queue.
             if (this.workingQueueId === this.enqueuedId) {
                 this.isWriting = false;
                 if (this.hasToStop === true) {
                     this.fileWriter.filehandleClose()
-                        .then((arg) => {
+                        .then((_arg2) => {
                         // emit event "File was written until EOF."
                         this.emitEvent(this.eventEOF.eventName, { eventDescription: "in FileWriterQueue.processQueue() on hasToStop = true, " + this.eventEOF.eventDescription });
                     });
@@ -196,7 +197,7 @@ class FileWriterQueue extends event_emitter_1.EventEmitter {
             return;
         }
         this.fileWriter.filehandleClose()
-            .then((arg) => {
+            .then((_arg) => {
             // emit event "File was written until EOF."
             this.emitEvent(this.eventEOF.eventName, { eventDescription: "in FileWriterQueue.filehandleClose(), " + this.eventEOF.eventDescription });
         });

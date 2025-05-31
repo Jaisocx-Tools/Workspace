@@ -1,52 +1,57 @@
 export class ResponsiveDatasetAutomationConstants {
     textEncoder;
-    #keywordMediarule;
-    #mediaRuleName;
-    #mediaConstantNameStart;
-    #mediaRule;
-    #mediaRuleScreen;
-    #mediaRulePrint;
-    #mediaRuleOrientation;
-    #mediaRuleOrientationLandscape;
-    #mediaRuleOrientationPortrait;
-    #mediaRuleAnd;
-    #braceRoundStart;
-    #braceRoundEnd;
-    #braceFigureStart;
-    #braceFigureEnd;
-    #importUrlStart;
-    #importUrlEnd;
-    #keywordWidth;
-    #keywordFrom;
-    #keywordTil;
-    #cssVariablePrefix;
-    #cssVariableNameValueDelimiter;
-    #cssVariableReferenceKeyword_Var;
-    #cssExpressionEnd;
-    #doubleQuote;
-    #commentStart;
-    #commentEnd;
-    #backgroundSpace;
-    #N;
-    #underscore;
-    #unitPx;
-    #minWidth;
-    #maxWidth;
-    #orientationKeywords;
-    #bitbufsOrientationKeywords;
-    #mediaLine;
-    #mediaConstantNameLine;
-    #mediaRuleConstantLine;
-    #mediaConstantLine;
-    #mediaRuleVariable_Width;
-    #bitbufsMediaLine;
-    #bitbufsMediaConstantNameLine;
-    #bitbufsMediaRuleConstantLine;
-    #bitbufsMediaConstantLine;
-    #bitbufsMediaRuleVariable_Width;
-    #bitsbufN;
-    #bitbufKeywordFrom;
-    #bitbufKeywordTil;
+    keywordMediarule;
+    mediaRuleName;
+    mediaConstantNameStart;
+    mediaRule;
+    mediaRuleScreen;
+    mediaRulePrint;
+    mediaRuleOrientation;
+    mediaRuleOrientationLandscape;
+    mediaRuleOrientationPortrait;
+    mediaRuleAnd;
+    braceRoundStart;
+    braceRoundEnd;
+    braceFigureStart;
+    braceFigureEnd;
+    importUrlStart;
+    importUrlEnd;
+    keywordWidth;
+    keywordFrom;
+    keywordTil;
+    cssVariablePrefix;
+    cssVariableNameValueDelimiter;
+    cssVariableReferenceKeyword_Var;
+    cssExpressionEnd;
+    doubleQuote;
+    commentStart;
+    commentEnd;
+    backgroundSpace;
+    N;
+    underscore;
+    unitPx;
+    minWidth;
+    maxWidth;
+    orientationKeywords;
+    bitbufsOrientationKeywords;
+    mediaName;
+    mediaLine;
+    mediaConstantNameLine;
+    mediaConstantName;
+    mediaRuleConstantLine;
+    mediaConstantLine;
+    mediaRuleVariable_Width;
+    bitbufsMediaName;
+    bitbufsMediaLine;
+    bitbufMediaConstantNameStart;
+    bitbufsMediaConstantNameLine;
+    bitbufsMediaRuleConstantLine;
+    bitbufsMediaConstantName;
+    bitbufsMediaConstantLine;
+    bitbufsMediaRuleVariable_Width;
+    bitsbufN;
+    bitbufKeywordFrom;
+    bitbufKeywordTil;
     constructor() {
         this.textEncoder = new TextEncoder();
         this.#keywordMediarule = "media_rule";
@@ -84,6 +89,17 @@ export class ResponsiveDatasetAutomationConstants {
         this.#orientationKeywords = [
             this.#mediaRuleOrientationPortrait,
             this.#mediaRuleOrientationLandscape
+        ];
+        this.#mediaName = [
+            this.#mediaConstantNameStart,
+            this.#underscore,
+            "range_orderby_id",
+            this.#underscore,
+            "art",
+            this.#underscore,
+            "art_size",
+            this.#underscore,
+            "orientation"
         ];
         this.#mediaLine = [
             this.#mediaRule,
@@ -142,12 +158,9 @@ export class ResponsiveDatasetAutomationConstants {
             "5",
             this.#underscore,
             this.#underscore,
-            this.#keywordWidth,
-            this.#underscore,
-            this.#underscore,
-            "11",
+            "8",
             this.#cssVariableNameValueDelimiter,
-            "13",
+            "10",
             this.#unitPx,
             this.#cssExpressionEnd
         ];
@@ -169,8 +182,11 @@ export class ResponsiveDatasetAutomationConstants {
                 this.#cssExpressionEnd].join("")
         ];
         this.#bitbufsOrientationKeywords = new Array();
+        this.#bitbufMediaConstantNameStart = this.textEncoder.encode(this.#mediaConstantNameStart);
+        this.#bitbufsMediaName = new Array();
         this.#bitbufsMediaLine = new Array();
         this.#bitbufsMediaConstantNameLine = new Array();
+        this.#bitbufsMediaConstantName = new Array();
         this.#bitbufsMediaRuleConstantLine = new Array();
         this.#bitbufsMediaConstantLine = new Array();
         this.#bitbufsMediaRuleVariable_Width = new Array();
@@ -181,6 +197,7 @@ export class ResponsiveDatasetAutomationConstants {
     textsToBitsbufs() {
         let textsBlocksNamesArray = [
             "orientationKeywords",
+            "mediaName",
             "mediaLine",
             "mediaConstantNameLine",
             "mediaRuleConstantLine",
@@ -360,6 +377,17 @@ export class ResponsiveDatasetAutomationConstants {
     getBitsbufKeywordTil() {
         return this.#bitbufKeywordTil;
     }
+    getMediaName(rangeOrderbyId, art, artSize, orientation) {
+        const rangeOrderbyIdPos = 2;
+        const artPos = 4;
+        const artSizePos = 6;
+        const orientationPos = 8;
+        this.#bitbufsMediaName[rangeOrderbyIdPos] = this.textEncoder.encode(rangeOrderbyId);
+        this.#bitbufsMediaName[artPos] = this.textEncoder.encode(art);
+        this.#bitbufsMediaName[artSizePos] = this.textEncoder.encode(artSize);
+        this.#bitbufsMediaName[orientationPos] = this.textEncoder.encode(orientation);
+        return this.#bitbufsMediaName;
+    }
     getMediaLineUpdated(media, minWidth, maxWidth, orientation) {
         const mediaPos = 1;
         const minWidthPos = 6;
@@ -383,14 +411,14 @@ export class ResponsiveDatasetAutomationConstants {
         this.#bitbufsMediaRuleConstantLine[mediaLinePos] = mediaLine;
         return this.#bitbufsMediaRuleConstantLine;
     }
-    getMediaConstantLineUpdated(mediaName, postfix, size) {
+    getMediaConstantNameUpdated(mediaName, postfix, size) {
         const mediaNamePos = 5;
-        const postfixPos = 11;
-        const sizePos = 13;
-        this.#bitbufsMediaConstantLine[mediaNamePos] = this.textEncoder.encode(mediaName);
-        this.#bitbufsMediaConstantLine[postfixPos] = this.textEncoder.encode(postfix);
-        this.#bitbufsMediaConstantLine[sizePos] = this.textEncoder.encode(size);
-        return this.#bitbufsMediaConstantLine;
+        const postfixPos = 8;
+        // const sizePos: number = 10;
+        this.#bitbufsMediaConstantName[mediaNamePos] = this.textEncoder.encode(mediaName);
+        this.#bitbufsMediaConstantName[postfixPos] = this.textEncoder.encode(postfix);
+        // this.#bitbufsMediaConstantLine[sizePos] = this.textEncoder.encode( size );
+        return this.#bitbufsMediaConstantName;
     }
     getMediaRuleVariable_Width_Updated(mediaName, postfix) {
         const postfixPos_1 = 1;

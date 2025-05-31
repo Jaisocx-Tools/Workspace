@@ -1,4 +1,4 @@
-import { FileHandle } from "fs/promises";
+// import { FileHandle } from "fs/promises";
 import { EventEmitter } from "@jaisocx/event-emitter";
 import { FileWriter } from "./FileWriter";
 
@@ -119,14 +119,14 @@ export class FileWriterQueue extends EventEmitter {
   extendQueue( extendBy: number ): number {
 
     // @ts-ignore
-    let queueSize = this.queue.length;
+    let queueSize: number = this.queue.length;
     let extendedSize: number = queueSize + extendBy;
     let extendedQueue: QueueTask[] = new Array( extendedSize ) as QueueTask[];
 
     let queueTask: QueueTask = new Object() as QueueTask;
     let firstQueueTaskId: number = this.workingQueueId;
     let lastSetQueueTaskId: number = this.enqueuedId;
-    let i = 0;
+    let i: number = 0;
 
     for ( i = firstQueueTaskId; i < lastSetQueueTaskId; i++ ) {
       // @ts-ignore
@@ -268,7 +268,7 @@ export class FileWriterQueue extends EventEmitter {
         queueTask.bitsbuf, 
         queueTask.range )
       .then (
-        ( arg: number ) => {
+        ( _arg1: number ) => {
 
           this.workingQueueId++;
 
@@ -279,7 +279,7 @@ export class FileWriterQueue extends EventEmitter {
             if ( this.hasToStop === true ) {
               this.fileWriter.filehandleClose()
                 .then (
-                  ( arg: number ) => {
+                  ( _arg2: number ) => {
                     // emit event "File was written until EOF."
                     this.emitEvent (
                       this.eventEOF.eventName,
@@ -319,7 +319,7 @@ export class FileWriterQueue extends EventEmitter {
 
     this.fileWriter.filehandleClose()
       .then (
-        ( arg: number ) => {
+        ( _arg: number ) => {
           // emit event "File was written until EOF."
           this.emitEvent (
             this.eventEOF.eventName,

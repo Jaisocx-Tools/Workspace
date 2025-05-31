@@ -1,6 +1,6 @@
 {
   "name": "@jaisocx/api",
-  "version": "1.2.1",
+  "version": "1.2.2",
   "private": false,
   "description": "",
   "type": "module",
@@ -12,11 +12,12 @@
     "import": "./transpiled/ESNext/index.js"
   },
   "optionalDependencies": {
-    "@jaisocx/objdata": "2.1.1"
+    "@jaisocx/objdata": "2.1.2"
   },
   "files": [
     "transpiled/CommonJS",
     "transpiled/ESNext",
+    "transpiled/Simple",
     "ObjDataConstants.json",
     "README.md"
   ],

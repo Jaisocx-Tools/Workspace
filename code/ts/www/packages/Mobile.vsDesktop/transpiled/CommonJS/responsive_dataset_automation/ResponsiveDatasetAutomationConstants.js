@@ -1,200 +1,153 @@
 "use strict";
-var __classPrivateFieldSet = (this && this.__classPrivateFieldSet) || function (receiver, state, value, kind, f) {
-    if (kind === "m") throw new TypeError("Private method is not writable");
-    if (kind === "a" && !f) throw new TypeError("Private accessor was defined without a setter");
-    if (typeof state === "function" ? receiver !== state || !f : !state.has(receiver)) throw new TypeError("Cannot write private member to an object whose class did not declare it");
-    return (kind === "a" ? f.call(receiver, value) : f ? f.value = value : state.set(receiver, value)), value;
-};
-var __classPrivateFieldGet = (this && this.__classPrivateFieldGet) || function (receiver, state, kind, f) {
-    if (kind === "a" && !f) throw new TypeError("Private accessor was defined without a getter");
-    if (typeof state === "function" ? receiver !== state || !f : !state.has(receiver)) throw new TypeError("Cannot read private member from an object whose class did not declare it");
-    return kind === "m" ? f : kind === "a" ? f.call(receiver) : f ? f.value : state.get(receiver);
-};
-var _ResponsiveDatasetAutomationConstants_keywordMediarule, _ResponsiveDatasetAutomationConstants_mediaRuleName, _ResponsiveDatasetAutomationConstants_mediaConstantNameStart, _ResponsiveDatasetAutomationConstants_mediaRule, _ResponsiveDatasetAutomationConstants_mediaRuleScreen, _ResponsiveDatasetAutomationConstants_mediaRulePrint, _ResponsiveDatasetAutomationConstants_mediaRuleOrientation, _ResponsiveDatasetAutomationConstants_mediaRuleOrientationLandscape, _ResponsiveDatasetAutomationConstants_mediaRuleOrientationPortrait, _ResponsiveDatasetAutomationConstants_mediaRuleAnd, _ResponsiveDatasetAutomationConstants_braceRoundStart, _ResponsiveDatasetAutomationConstants_braceRoundEnd, _ResponsiveDatasetAutomationConstants_braceFigureStart, _ResponsiveDatasetAutomationConstants_braceFigureEnd, _ResponsiveDatasetAutomationConstants_importUrlStart, _ResponsiveDatasetAutomationConstants_importUrlEnd, _ResponsiveDatasetAutomationConstants_keywordWidth, _ResponsiveDatasetAutomationConstants_keywordFrom, _ResponsiveDatasetAutomationConstants_keywordTil, _ResponsiveDatasetAutomationConstants_cssVariablePrefix, _ResponsiveDatasetAutomationConstants_cssVariableNameValueDelimiter, _ResponsiveDatasetAutomationConstants_cssVariableReferenceKeyword_Var, _ResponsiveDatasetAutomationConstants_cssExpressionEnd, _ResponsiveDatasetAutomationConstants_doubleQuote, _ResponsiveDatasetAutomationConstants_commentStart, _ResponsiveDatasetAutomationConstants_commentEnd, _ResponsiveDatasetAutomationConstants_backgroundSpace, _ResponsiveDatasetAutomationConstants_N, _ResponsiveDatasetAutomationConstants_underscore, _ResponsiveDatasetAutomationConstants_unitPx, _ResponsiveDatasetAutomationConstants_minWidth, _ResponsiveDatasetAutomationConstants_maxWidth, _ResponsiveDatasetAutomationConstants_orientationKeywords, _ResponsiveDatasetAutomationConstants_bitbufsOrientationKeywords, _ResponsiveDatasetAutomationConstants_mediaLine, _ResponsiveDatasetAutomationConstants_mediaConstantNameLine, _ResponsiveDatasetAutomationConstants_mediaRuleConstantLine, _ResponsiveDatasetAutomationConstants_mediaConstantLine, _ResponsiveDatasetAutomationConstants_mediaRuleVariable_Width, _ResponsiveDatasetAutomationConstants_bitbufsMediaLine, _ResponsiveDatasetAutomationConstants_bitbufsMediaConstantNameLine, _ResponsiveDatasetAutomationConstants_bitbufsMediaRuleConstantLine, _ResponsiveDatasetAutomationConstants_bitbufsMediaConstantLine, _ResponsiveDatasetAutomationConstants_bitbufsMediaRuleVariable_Width, _ResponsiveDatasetAutomationConstants_bitsbufN, _ResponsiveDatasetAutomationConstants_bitbufKeywordFrom, _ResponsiveDatasetAutomationConstants_bitbufKeywordTil;
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.ResponsiveDatasetAutomationConstants = void 0;
 class ResponsiveDatasetAutomationConstants {
     constructor() {
-        _ResponsiveDatasetAutomationConstants_keywordMediarule.set(this, void 0);
-        _ResponsiveDatasetAutomationConstants_mediaRuleName.set(this, void 0);
-        _ResponsiveDatasetAutomationConstants_mediaConstantNameStart.set(this, void 0);
-        _ResponsiveDatasetAutomationConstants_mediaRule.set(this, void 0);
-        _ResponsiveDatasetAutomationConstants_mediaRuleScreen.set(this, void 0);
-        _ResponsiveDatasetAutomationConstants_mediaRulePrint.set(this, void 0);
-        _ResponsiveDatasetAutomationConstants_mediaRuleOrientation.set(this, void 0);
-        _ResponsiveDatasetAutomationConstants_mediaRuleOrientationLandscape.set(this, void 0);
-        _ResponsiveDatasetAutomationConstants_mediaRuleOrientationPortrait.set(this, void 0);
-        _ResponsiveDatasetAutomationConstants_mediaRuleAnd.set(this, void 0);
-        _ResponsiveDatasetAutomationConstants_braceRoundStart.set(this, void 0);
-        _ResponsiveDatasetAutomationConstants_braceRoundEnd.set(this, void 0);
-        _ResponsiveDatasetAutomationConstants_braceFigureStart.set(this, void 0);
-        _ResponsiveDatasetAutomationConstants_braceFigureEnd.set(this, void 0);
-        _ResponsiveDatasetAutomationConstants_importUrlStart.set(this, void 0);
-        _ResponsiveDatasetAutomationConstants_importUrlEnd.set(this, void 0);
-        _ResponsiveDatasetAutomationConstants_keywordWidth.set(this, void 0);
-        _ResponsiveDatasetAutomationConstants_keywordFrom.set(this, void 0);
-        _ResponsiveDatasetAutomationConstants_keywordTil.set(this, void 0);
-        _ResponsiveDatasetAutomationConstants_cssVariablePrefix.set(this, void 0);
-        _ResponsiveDatasetAutomationConstants_cssVariableNameValueDelimiter.set(this, void 0);
-        _ResponsiveDatasetAutomationConstants_cssVariableReferenceKeyword_Var.set(this, void 0);
-        _ResponsiveDatasetAutomationConstants_cssExpressionEnd.set(this, void 0);
-        _ResponsiveDatasetAutomationConstants_doubleQuote.set(this, void 0);
-        _ResponsiveDatasetAutomationConstants_commentStart.set(this, void 0);
-        _ResponsiveDatasetAutomationConstants_commentEnd.set(this, void 0);
-        _ResponsiveDatasetAutomationConstants_backgroundSpace.set(this, void 0);
-        _ResponsiveDatasetAutomationConstants_N.set(this, void 0);
-        _ResponsiveDatasetAutomationConstants_underscore.set(this, void 0);
-        _ResponsiveDatasetAutomationConstants_unitPx.set(this, void 0);
-        _ResponsiveDatasetAutomationConstants_minWidth.set(this, void 0);
-        _ResponsiveDatasetAutomationConstants_maxWidth.set(this, void 0);
-        _ResponsiveDatasetAutomationConstants_orientationKeywords.set(this, void 0);
-        _ResponsiveDatasetAutomationConstants_bitbufsOrientationKeywords.set(this, void 0);
-        _ResponsiveDatasetAutomationConstants_mediaLine.set(this, void 0);
-        _ResponsiveDatasetAutomationConstants_mediaConstantNameLine.set(this, void 0);
-        _ResponsiveDatasetAutomationConstants_mediaRuleConstantLine.set(this, void 0);
-        _ResponsiveDatasetAutomationConstants_mediaConstantLine.set(this, void 0);
-        _ResponsiveDatasetAutomationConstants_mediaRuleVariable_Width.set(this, void 0);
-        _ResponsiveDatasetAutomationConstants_bitbufsMediaLine.set(this, void 0);
-        _ResponsiveDatasetAutomationConstants_bitbufsMediaConstantNameLine.set(this, void 0);
-        _ResponsiveDatasetAutomationConstants_bitbufsMediaRuleConstantLine.set(this, void 0);
-        _ResponsiveDatasetAutomationConstants_bitbufsMediaConstantLine.set(this, void 0);
-        _ResponsiveDatasetAutomationConstants_bitbufsMediaRuleVariable_Width.set(this, void 0);
-        _ResponsiveDatasetAutomationConstants_bitsbufN.set(this, void 0);
-        _ResponsiveDatasetAutomationConstants_bitbufKeywordFrom.set(this, void 0);
-        _ResponsiveDatasetAutomationConstants_bitbufKeywordTil.set(this, void 0);
         this.textEncoder = new TextEncoder();
-        __classPrivateFieldSet(this, _ResponsiveDatasetAutomationConstants_keywordMediarule, "media_rule", "f");
-        __classPrivateFieldSet(this, _ResponsiveDatasetAutomationConstants_mediaRuleName, "media_rule_name", "f");
-        __classPrivateFieldSet(this, _ResponsiveDatasetAutomationConstants_mediaConstantNameStart, "style", "f");
-        __classPrivateFieldSet(this, _ResponsiveDatasetAutomationConstants_mediaRule, "@media only ", "f");
-        __classPrivateFieldSet(this, _ResponsiveDatasetAutomationConstants_mediaRuleScreen, "screen", "f");
-        __classPrivateFieldSet(this, _ResponsiveDatasetAutomationConstants_mediaRulePrint, "print", "f");
-        __classPrivateFieldSet(this, _ResponsiveDatasetAutomationConstants_mediaRuleOrientation, "orientation", "f");
-        __classPrivateFieldSet(this, _ResponsiveDatasetAutomationConstants_mediaRuleOrientationLandscape, "landscape", "f");
-        __classPrivateFieldSet(this, _ResponsiveDatasetAutomationConstants_mediaRuleOrientationPortrait, "portrait", "f");
-        __classPrivateFieldSet(this, _ResponsiveDatasetAutomationConstants_mediaRuleAnd, " and ", "f");
-        __classPrivateFieldSet(this, _ResponsiveDatasetAutomationConstants_braceRoundStart, "(", "f");
-        __classPrivateFieldSet(this, _ResponsiveDatasetAutomationConstants_braceRoundEnd, ")", "f");
-        __classPrivateFieldSet(this, _ResponsiveDatasetAutomationConstants_braceFigureStart, "{", "f");
-        __classPrivateFieldSet(this, _ResponsiveDatasetAutomationConstants_braceFigureEnd, "}", "f");
-        __classPrivateFieldSet(this, _ResponsiveDatasetAutomationConstants_importUrlStart, "@import url(\"", "f");
-        __classPrivateFieldSet(this, _ResponsiveDatasetAutomationConstants_importUrlEnd, "\");", "f");
-        __classPrivateFieldSet(this, _ResponsiveDatasetAutomationConstants_keywordWidth, "width", "f");
-        __classPrivateFieldSet(this, _ResponsiveDatasetAutomationConstants_keywordFrom, "min_width", "f");
-        __classPrivateFieldSet(this, _ResponsiveDatasetAutomationConstants_keywordTil, "max_width", "f");
-        __classPrivateFieldSet(this, _ResponsiveDatasetAutomationConstants_cssVariablePrefix, "--", "f");
-        __classPrivateFieldSet(this, _ResponsiveDatasetAutomationConstants_cssVariableNameValueDelimiter, ": ", "f");
-        __classPrivateFieldSet(this, _ResponsiveDatasetAutomationConstants_cssVariableReferenceKeyword_Var, "var", "f");
-        __classPrivateFieldSet(this, _ResponsiveDatasetAutomationConstants_cssExpressionEnd, ";", "f");
-        __classPrivateFieldSet(this, _ResponsiveDatasetAutomationConstants_doubleQuote, "\"", "f");
-        __classPrivateFieldSet(this, _ResponsiveDatasetAutomationConstants_commentStart, "/*", "f");
-        __classPrivateFieldSet(this, _ResponsiveDatasetAutomationConstants_commentEnd, "*/", "f");
-        __classPrivateFieldSet(this, _ResponsiveDatasetAutomationConstants_backgroundSpace, " ", "f");
-        __classPrivateFieldSet(this, _ResponsiveDatasetAutomationConstants_N, "\n", "f");
-        __classPrivateFieldSet(this, _ResponsiveDatasetAutomationConstants_underscore, "_", "f");
-        __classPrivateFieldSet(this, _ResponsiveDatasetAutomationConstants_unitPx, "px", "f");
-        __classPrivateFieldSet(this, _ResponsiveDatasetAutomationConstants_minWidth, "min-width", "f");
-        __classPrivateFieldSet(this, _ResponsiveDatasetAutomationConstants_maxWidth, "max-width", "f");
-        __classPrivateFieldSet(this, _ResponsiveDatasetAutomationConstants_orientationKeywords, [
-            __classPrivateFieldGet(this, _ResponsiveDatasetAutomationConstants_mediaRuleOrientationPortrait, "f"),
-            __classPrivateFieldGet(this, _ResponsiveDatasetAutomationConstants_mediaRuleOrientationLandscape, "f")
-        ], "f");
-        __classPrivateFieldSet(this, _ResponsiveDatasetAutomationConstants_mediaLine, [
-            __classPrivateFieldGet(this, _ResponsiveDatasetAutomationConstants_mediaRule, "f"),
+        this. = "media_rule";
+        this. = "media_rule_name";
+        this. = "style";
+        this. = "@media only ";
+        this. = "screen";
+        this. = "print";
+        this. = "orientation";
+        this. = "landscape";
+        this. = "portrait";
+        this. = " and ";
+        this. = "(";
+        this. = ")";
+        this. = "{";
+        this. = "}";
+        this. = "@import url(\"";
+        this. = "\");";
+        this. = "width";
+        this. = "min_width";
+        this. = "max_width";
+        this. = "--";
+        this. = ": ";
+        this. = "var";
+        this. = ";";
+        this. = "\"";
+        this. = "/*";
+        this. = "*/";
+        this. = " ";
+        this. = "\n";
+        this. = "_";
+        this. = "px";
+        this. = "min-width";
+        this. = "max-width";
+        this. = [
+            this.,
+            this.
+        ];
+        this. = [
+            this.,
+            this.,
+            "range_orderby_id",
+            this.,
+            "art",
+            this.,
+            "art_size",
+            this.,
+            "orientation"
+        ];
+        this. = [
+            this.,
             "1",
-            __classPrivateFieldGet(this, _ResponsiveDatasetAutomationConstants_mediaRuleAnd, "f"),
-            __classPrivateFieldGet(this, _ResponsiveDatasetAutomationConstants_braceRoundStart, "f"),
-            __classPrivateFieldGet(this, _ResponsiveDatasetAutomationConstants_minWidth, "f"),
-            __classPrivateFieldGet(this, _ResponsiveDatasetAutomationConstants_cssVariableNameValueDelimiter, "f"),
+            this.,
+            this.,
+            this.,
+            this.,
             "6",
-            __classPrivateFieldGet(this, _ResponsiveDatasetAutomationConstants_unitPx, "f"),
-            __classPrivateFieldGet(this, _ResponsiveDatasetAutomationConstants_braceRoundEnd, "f"),
-            __classPrivateFieldGet(this, _ResponsiveDatasetAutomationConstants_mediaRuleAnd, "f"),
-            __classPrivateFieldGet(this, _ResponsiveDatasetAutomationConstants_braceRoundStart, "f"),
-            __classPrivateFieldGet(this, _ResponsiveDatasetAutomationConstants_maxWidth, "f"),
-            __classPrivateFieldGet(this, _ResponsiveDatasetAutomationConstants_cssVariableNameValueDelimiter, "f"),
+            this.,
+            this.,
+            this.,
+            this.,
+            this.,
+            this.,
             "13",
-            __classPrivateFieldGet(this, _ResponsiveDatasetAutomationConstants_unitPx, "f"),
-            __classPrivateFieldGet(this, _ResponsiveDatasetAutomationConstants_braceRoundEnd, "f"),
-            __classPrivateFieldGet(this, _ResponsiveDatasetAutomationConstants_mediaRuleAnd, "f"),
-            __classPrivateFieldGet(this, _ResponsiveDatasetAutomationConstants_braceRoundStart, "f"),
-            __classPrivateFieldGet(this, _ResponsiveDatasetAutomationConstants_mediaRuleOrientation, "f"),
-            __classPrivateFieldGet(this, _ResponsiveDatasetAutomationConstants_cssVariableNameValueDelimiter, "f"),
+            this.,
+            this.,
+            this.,
+            this.,
+            this.,
+            this.,
             "20",
-            __classPrivateFieldGet(this, _ResponsiveDatasetAutomationConstants_braceRoundEnd, "f")
-        ], "f");
-        __classPrivateFieldSet(this, _ResponsiveDatasetAutomationConstants_mediaConstantNameLine, [
-            __classPrivateFieldGet(this, _ResponsiveDatasetAutomationConstants_cssVariablePrefix, "f"),
-            __classPrivateFieldGet(this, _ResponsiveDatasetAutomationConstants_mediaRuleName, "f"),
-            __classPrivateFieldGet(this, _ResponsiveDatasetAutomationConstants_cssVariableNameValueDelimiter, "f"),
+            this.
+        ];
+        this. = [
+            this.,
+            this.,
+            this.,
             "3",
-            __classPrivateFieldGet(this, _ResponsiveDatasetAutomationConstants_cssExpressionEnd, "f")
-        ], "f");
-        __classPrivateFieldSet(this, _ResponsiveDatasetAutomationConstants_mediaRuleConstantLine, [
-            __classPrivateFieldGet(this, _ResponsiveDatasetAutomationConstants_backgroundSpace, "f"),
-            __classPrivateFieldGet(this, _ResponsiveDatasetAutomationConstants_backgroundSpace, "f"),
-            __classPrivateFieldGet(this, _ResponsiveDatasetAutomationConstants_backgroundSpace, "f"),
-            __classPrivateFieldGet(this, _ResponsiveDatasetAutomationConstants_backgroundSpace, "f"),
-            __classPrivateFieldGet(this, _ResponsiveDatasetAutomationConstants_cssVariablePrefix, "f"),
+            this.
+        ];
+        this. = [
+            this.,
+            this.,
+            this.,
+            this.,
+            this.,
             "5",
-            __classPrivateFieldGet(this, _ResponsiveDatasetAutomationConstants_underscore, "f"),
-            __classPrivateFieldGet(this, _ResponsiveDatasetAutomationConstants_underscore, "f"),
-            __classPrivateFieldGet(this, _ResponsiveDatasetAutomationConstants_keywordMediarule, "f"),
-            __classPrivateFieldGet(this, _ResponsiveDatasetAutomationConstants_cssVariableNameValueDelimiter, "f"),
-            __classPrivateFieldGet(this, _ResponsiveDatasetAutomationConstants_doubleQuote, "f"),
+            this.,
+            this.,
+            this.,
+            this.,
+            this.,
             "11",
-            __classPrivateFieldGet(this, _ResponsiveDatasetAutomationConstants_doubleQuote, "f"),
-            __classPrivateFieldGet(this, _ResponsiveDatasetAutomationConstants_cssExpressionEnd, "f"),
-            __classPrivateFieldGet(this, _ResponsiveDatasetAutomationConstants_N, "f")
-        ], "f");
-        __classPrivateFieldSet(this, _ResponsiveDatasetAutomationConstants_mediaConstantLine, [
-            __classPrivateFieldGet(this, _ResponsiveDatasetAutomationConstants_backgroundSpace, "f"),
-            __classPrivateFieldGet(this, _ResponsiveDatasetAutomationConstants_backgroundSpace, "f"),
-            __classPrivateFieldGet(this, _ResponsiveDatasetAutomationConstants_backgroundSpace, "f"),
-            __classPrivateFieldGet(this, _ResponsiveDatasetAutomationConstants_backgroundSpace, "f"),
-            __classPrivateFieldGet(this, _ResponsiveDatasetAutomationConstants_cssVariablePrefix, "f"),
+            this.,
+            this.,
+            this.
+        ];
+        this. = [
+            this.,
+            this.,
+            this.,
+            this.,
+            this.,
             "5",
-            __classPrivateFieldGet(this, _ResponsiveDatasetAutomationConstants_underscore, "f"),
-            __classPrivateFieldGet(this, _ResponsiveDatasetAutomationConstants_underscore, "f"),
-            __classPrivateFieldGet(this, _ResponsiveDatasetAutomationConstants_keywordWidth, "f"),
-            __classPrivateFieldGet(this, _ResponsiveDatasetAutomationConstants_underscore, "f"),
-            __classPrivateFieldGet(this, _ResponsiveDatasetAutomationConstants_underscore, "f"),
-            "11",
-            __classPrivateFieldGet(this, _ResponsiveDatasetAutomationConstants_cssVariableNameValueDelimiter, "f"),
-            "13",
-            __classPrivateFieldGet(this, _ResponsiveDatasetAutomationConstants_unitPx, "f"),
-            __classPrivateFieldGet(this, _ResponsiveDatasetAutomationConstants_cssExpressionEnd, "f")
-        ], "f");
-        __classPrivateFieldSet(this, _ResponsiveDatasetAutomationConstants_mediaRuleVariable_Width, [
-            [__classPrivateFieldGet(this, _ResponsiveDatasetAutomationConstants_cssVariablePrefix, "f"),
-                __classPrivateFieldGet(this, _ResponsiveDatasetAutomationConstants_keywordMediarule, "f"),
-                __classPrivateFieldGet(this, _ResponsiveDatasetAutomationConstants_underscore, "f"),
-                __classPrivateFieldGet(this, _ResponsiveDatasetAutomationConstants_underscore, "f")].join(""),
+            this.,
+            this.,
+            "8",
+            this.,
+            "10",
+            this.,
+            this.
+        ];
+        this. = [
+            [this.,
+                this.,
+                this.,
+                this.].join(""),
             "1",
-            [__classPrivateFieldGet(this, _ResponsiveDatasetAutomationConstants_cssVariableNameValueDelimiter, "f"),
-                __classPrivateFieldGet(this, _ResponsiveDatasetAutomationConstants_cssVariableReferenceKeyword_Var, "f"),
-                __classPrivateFieldGet(this, _ResponsiveDatasetAutomationConstants_braceRoundStart, "f"),
-                __classPrivateFieldGet(this, _ResponsiveDatasetAutomationConstants_cssVariablePrefix, "f")].join(""),
+            [this.,
+                this.,
+                this.,
+                this.].join(""),
             "3",
-            [__classPrivateFieldGet(this, _ResponsiveDatasetAutomationConstants_underscore, "f"),
-                __classPrivateFieldGet(this, _ResponsiveDatasetAutomationConstants_underscore, "f")].join(""),
+            [this.,
+                this.].join(""),
             "5",
-            [__classPrivateFieldGet(this, _ResponsiveDatasetAutomationConstants_braceRoundEnd, "f"),
-                __classPrivateFieldGet(this, _ResponsiveDatasetAutomationConstants_cssExpressionEnd, "f")].join("")
-        ], "f");
-        __classPrivateFieldSet(this, _ResponsiveDatasetAutomationConstants_bitbufsOrientationKeywords, new Array(), "f");
-        __classPrivateFieldSet(this, _ResponsiveDatasetAutomationConstants_bitbufsMediaLine, new Array(), "f");
-        __classPrivateFieldSet(this, _ResponsiveDatasetAutomationConstants_bitbufsMediaConstantNameLine, new Array(), "f");
-        __classPrivateFieldSet(this, _ResponsiveDatasetAutomationConstants_bitbufsMediaRuleConstantLine, new Array(), "f");
-        __classPrivateFieldSet(this, _ResponsiveDatasetAutomationConstants_bitbufsMediaConstantLine, new Array(), "f");
-        __classPrivateFieldSet(this, _ResponsiveDatasetAutomationConstants_bitbufsMediaRuleVariable_Width, new Array(), "f");
-        __classPrivateFieldSet(this, _ResponsiveDatasetAutomationConstants_bitsbufN, this.textEncoder.encode(__classPrivateFieldGet(this, _ResponsiveDatasetAutomationConstants_N, "f")), "f");
-        __classPrivateFieldSet(this, _ResponsiveDatasetAutomationConstants_bitbufKeywordFrom, this.textEncoder.encode(__classPrivateFieldGet(this, _ResponsiveDatasetAutomationConstants_keywordFrom, "f")), "f");
-        __classPrivateFieldSet(this, _ResponsiveDatasetAutomationConstants_bitbufKeywordTil, this.textEncoder.encode(__classPrivateFieldGet(this, _ResponsiveDatasetAutomationConstants_keywordTil, "f")), "f");
+            [this.,
+                this.].join("")
+        ];
+        this. = new Array();
+        this. = this.textEncoder.encode(this.);
+        this. = new Array();
+        this. = new Array();
+        this. = new Array();
+        this. = new Array();
+        this. = new Array();
+        this. = new Array();
+        this. = new Array();
+        this. = this.textEncoder.encode(this.);
+        this. = this.textEncoder.encode(this.);
+        this. = this.textEncoder.encode(this.);
     }
     textsToBitsbufs() {
         let textsBlocksNamesArray = [
             "orientationKeywords",
+            "mediaName",
             "mediaLine",
             "mediaConstantNameLine",
             "mediaRuleConstantLine",
@@ -237,185 +190,195 @@ class ResponsiveDatasetAutomationConstants {
         return textBlocksLen;
     }
     getKeywordMediarule() {
-        return __classPrivateFieldGet(this, _ResponsiveDatasetAutomationConstants_keywordMediarule, "f");
+        return this.;
     }
     getMediaRuleName() {
-        return __classPrivateFieldGet(this, _ResponsiveDatasetAutomationConstants_mediaRuleName, "f");
+        return this.;
     }
     getMediaConstantNameStart() {
-        return __classPrivateFieldGet(this, _ResponsiveDatasetAutomationConstants_mediaConstantNameStart, "f");
+        return this.;
     }
     getMediaRule() {
-        return __classPrivateFieldGet(this, _ResponsiveDatasetAutomationConstants_mediaRule, "f");
+        return this.;
     }
     getMediaRuleScreen() {
-        return __classPrivateFieldGet(this, _ResponsiveDatasetAutomationConstants_mediaRuleScreen, "f");
+        return this.;
     }
     getMediaRulePrint() {
-        return __classPrivateFieldGet(this, _ResponsiveDatasetAutomationConstants_mediaRulePrint, "f");
+        return this.;
     }
     getMediaRuleOrientation() {
-        return __classPrivateFieldGet(this, _ResponsiveDatasetAutomationConstants_mediaRuleOrientation, "f");
+        return this.;
     }
     getMediaRuleOrientationLandscape() {
-        return __classPrivateFieldGet(this, _ResponsiveDatasetAutomationConstants_mediaRuleOrientationLandscape, "f");
+        return this.;
     }
     getMediaRuleOrientationPortrait() {
-        return __classPrivateFieldGet(this, _ResponsiveDatasetAutomationConstants_mediaRuleOrientationPortrait, "f");
+        return this.;
     }
     getMediaRuleAnd() {
-        return __classPrivateFieldGet(this, _ResponsiveDatasetAutomationConstants_mediaRuleAnd, "f");
+        return this.;
     }
     getBraceRoundStart() {
-        return __classPrivateFieldGet(this, _ResponsiveDatasetAutomationConstants_braceRoundStart, "f");
+        return this.;
     }
     getBraceRoundEnd() {
-        return __classPrivateFieldGet(this, _ResponsiveDatasetAutomationConstants_braceRoundEnd, "f");
+        return this.;
     }
     getBraceFigureStart() {
-        return __classPrivateFieldGet(this, _ResponsiveDatasetAutomationConstants_braceFigureStart, "f");
+        return this.;
     }
     getBraceFigureEnd() {
-        return __classPrivateFieldGet(this, _ResponsiveDatasetAutomationConstants_braceFigureEnd, "f");
+        return this.;
     }
     getImportUrlStart() {
-        return __classPrivateFieldGet(this, _ResponsiveDatasetAutomationConstants_importUrlStart, "f");
+        return this.;
     }
     getImportUrlEnd() {
-        return __classPrivateFieldGet(this, _ResponsiveDatasetAutomationConstants_importUrlEnd, "f");
+        return this.;
     }
     getKeywordWidth() {
-        return __classPrivateFieldGet(this, _ResponsiveDatasetAutomationConstants_keywordWidth, "f");
+        return this.;
     }
     getKeywordFrom() {
-        return __classPrivateFieldGet(this, _ResponsiveDatasetAutomationConstants_keywordFrom, "f");
+        return this.;
     }
     getKeywordTil() {
-        return __classPrivateFieldGet(this, _ResponsiveDatasetAutomationConstants_keywordTil, "f");
+        return this.;
     }
     getCssVariablePrefix() {
-        return __classPrivateFieldGet(this, _ResponsiveDatasetAutomationConstants_cssVariablePrefix, "f");
+        return this.;
     }
     getCssVariableNameValueDelimiter() {
-        return __classPrivateFieldGet(this, _ResponsiveDatasetAutomationConstants_cssVariableNameValueDelimiter, "f");
+        return this.;
     }
     getCssExpressionEnd() {
-        return __classPrivateFieldGet(this, _ResponsiveDatasetAutomationConstants_cssExpressionEnd, "f");
+        return this.;
     }
     getDoubleQuote() {
-        return __classPrivateFieldGet(this, _ResponsiveDatasetAutomationConstants_doubleQuote, "f");
+        return this.;
     }
     getCommentStart() {
-        return __classPrivateFieldGet(this, _ResponsiveDatasetAutomationConstants_commentStart, "f");
+        return this.;
     }
     getCommentEnd() {
-        return __classPrivateFieldGet(this, _ResponsiveDatasetAutomationConstants_commentEnd, "f");
+        return this.;
     }
     getBackgroundSpace() {
-        return __classPrivateFieldGet(this, _ResponsiveDatasetAutomationConstants_backgroundSpace, "f");
+        return this.;
     }
     getN() {
-        return __classPrivateFieldGet(this, _ResponsiveDatasetAutomationConstants_N, "f");
+        return this.;
     }
     getBitsbufN() {
-        return __classPrivateFieldGet(this, _ResponsiveDatasetAutomationConstants_bitsbufN, "f");
+        return this.;
     }
     getUnderscore() {
-        return __classPrivateFieldGet(this, _ResponsiveDatasetAutomationConstants_underscore, "f");
+        return this.;
     }
     getUnitPx() {
-        return __classPrivateFieldGet(this, _ResponsiveDatasetAutomationConstants_unitPx, "f");
+        return this.;
     }
     getMinWidth() {
-        return __classPrivateFieldGet(this, _ResponsiveDatasetAutomationConstants_minWidth, "f");
+        return this.;
     }
     getMaxWidth() {
-        return __classPrivateFieldGet(this, _ResponsiveDatasetAutomationConstants_maxWidth, "f");
+        return this.;
     }
     getBitbufsOrientationKeywords() {
-        return __classPrivateFieldGet(this, _ResponsiveDatasetAutomationConstants_bitbufsOrientationKeywords, "f");
+        return this.;
     }
     getOrientationKeywords() {
-        return __classPrivateFieldGet(this, _ResponsiveDatasetAutomationConstants_orientationKeywords, "f");
+        return this.;
     }
     getMediaLine() {
-        return __classPrivateFieldGet(this, _ResponsiveDatasetAutomationConstants_mediaLine, "f");
+        return this.;
     }
     getMediaConstantNameLine() {
-        return __classPrivateFieldGet(this, _ResponsiveDatasetAutomationConstants_mediaConstantNameLine, "f");
+        return this.;
     }
     getMediaRuleConstantLine() {
-        return __classPrivateFieldGet(this, _ResponsiveDatasetAutomationConstants_mediaRuleConstantLine, "f");
+        return this.;
     }
     getMediaConstantLine() {
-        return __classPrivateFieldGet(this, _ResponsiveDatasetAutomationConstants_mediaConstantLine, "f");
+        return this.;
     }
     getMediaRuleVariable_Width() {
-        return __classPrivateFieldGet(this, _ResponsiveDatasetAutomationConstants_mediaRuleVariable_Width, "f");
+        return this.;
     }
     getBitbufsMediaLine() {
-        return __classPrivateFieldGet(this, _ResponsiveDatasetAutomationConstants_bitbufsMediaLine, "f");
+        return this.;
     }
     getBitbufsMediaConstantNameLine() {
-        return __classPrivateFieldGet(this, _ResponsiveDatasetAutomationConstants_bitbufsMediaConstantNameLine, "f");
+        return this.;
     }
     getBitbufsMediaRuleConstantLine() {
-        return __classPrivateFieldGet(this, _ResponsiveDatasetAutomationConstants_bitbufsMediaRuleConstantLine, "f");
+        return this.;
     }
     getBitbufsMediaConstantLine() {
-        return __classPrivateFieldGet(this, _ResponsiveDatasetAutomationConstants_bitbufsMediaConstantLine, "f");
+        return this.;
     }
     getBitbufsMediaRuleVariable_Width() {
-        return __classPrivateFieldGet(this, _ResponsiveDatasetAutomationConstants_bitbufsMediaRuleVariable_Width, "f");
+        return this.;
     }
     getBitsbufKeywordFrom() {
-        return __classPrivateFieldGet(this, _ResponsiveDatasetAutomationConstants_bitbufKeywordFrom, "f");
+        return this.;
     }
     getBitsbufKeywordTil() {
-        return __classPrivateFieldGet(this, _ResponsiveDatasetAutomationConstants_bitbufKeywordTil, "f");
+        return this.;
+    }
+    getMediaName(rangeOrderbyId, art, artSize, orientation) {
+        const rangeOrderbyIdPos = 2;
+        const artPos = 4;
+        const artSizePos = 6;
+        const orientationPos = 8;
+        this.[rangeOrderbyIdPos] = this.textEncoder.encode(rangeOrderbyId);
+        this.[artPos] = this.textEncoder.encode(art);
+        this.[artSizePos] = this.textEncoder.encode(artSize);
+        this.[orientationPos] = this.textEncoder.encode(orientation);
+        return this.;
     }
     getMediaLineUpdated(media, minWidth, maxWidth, orientation) {
         const mediaPos = 1;
         const minWidthPos = 6;
         const maxWidthPos = 13;
         const orientationPos = 20;
-        __classPrivateFieldGet(this, _ResponsiveDatasetAutomationConstants_bitbufsMediaLine, "f")[mediaPos] = this.textEncoder.encode(media);
-        __classPrivateFieldGet(this, _ResponsiveDatasetAutomationConstants_bitbufsMediaLine, "f")[minWidthPos] = this.textEncoder.encode(minWidth);
-        __classPrivateFieldGet(this, _ResponsiveDatasetAutomationConstants_bitbufsMediaLine, "f")[maxWidthPos] = this.textEncoder.encode(maxWidth);
-        __classPrivateFieldGet(this, _ResponsiveDatasetAutomationConstants_bitbufsMediaLine, "f")[orientationPos] = this.textEncoder.encode(orientation);
-        return __classPrivateFieldGet(this, _ResponsiveDatasetAutomationConstants_bitbufsMediaLine, "f");
+        this.[mediaPos] = this.textEncoder.encode(media);
+        this.[minWidthPos] = this.textEncoder.encode(minWidth);
+        this.[maxWidthPos] = this.textEncoder.encode(maxWidth);
+        this.[orientationPos] = this.textEncoder.encode(orientation);
+        return this.;
     }
     getMediaConstantNameLineUpdated(mediaName) {
         const mediaNamePos = 3;
-        __classPrivateFieldGet(this, _ResponsiveDatasetAutomationConstants_bitbufsMediaConstantNameLine, "f")[mediaNamePos] = this.textEncoder.encode(mediaName);
-        return __classPrivateFieldGet(this, _ResponsiveDatasetAutomationConstants_bitbufsMediaConstantNameLine, "f");
+        this.[mediaNamePos] = this.textEncoder.encode(mediaName);
+        return this.;
     }
     getMediaRuleConstantLineUpdated(mediaName, mediaLine) {
         const mediaNamePos = 5;
         const mediaLinePos = 11;
-        __classPrivateFieldGet(this, _ResponsiveDatasetAutomationConstants_bitbufsMediaRuleConstantLine, "f")[mediaNamePos] = this.textEncoder.encode(mediaName);
-        __classPrivateFieldGet(this, _ResponsiveDatasetAutomationConstants_bitbufsMediaRuleConstantLine, "f")[mediaLinePos] = mediaLine;
-        return __classPrivateFieldGet(this, _ResponsiveDatasetAutomationConstants_bitbufsMediaRuleConstantLine, "f");
+        this.[mediaNamePos] = this.textEncoder.encode(mediaName);
+        this.[mediaLinePos] = mediaLine;
+        return this.;
     }
-    getMediaConstantLineUpdated(mediaName, postfix, size) {
+    getMediaConstantNameUpdated(mediaName, postfix, size) {
         const mediaNamePos = 5;
-        const postfixPos = 11;
-        const sizePos = 13;
-        __classPrivateFieldGet(this, _ResponsiveDatasetAutomationConstants_bitbufsMediaConstantLine, "f")[mediaNamePos] = this.textEncoder.encode(mediaName);
-        __classPrivateFieldGet(this, _ResponsiveDatasetAutomationConstants_bitbufsMediaConstantLine, "f")[postfixPos] = this.textEncoder.encode(postfix);
-        __classPrivateFieldGet(this, _ResponsiveDatasetAutomationConstants_bitbufsMediaConstantLine, "f")[sizePos] = this.textEncoder.encode(size);
-        return __classPrivateFieldGet(this, _ResponsiveDatasetAutomationConstants_bitbufsMediaConstantLine, "f");
+        const postfixPos = 8;
+        // const sizePos: number = 10;
+        this.[mediaNamePos] = this.textEncoder.encode(mediaName);
+        this.[postfixPos] = this.textEncoder.encode(postfix);
+        // this.#bitbufsMediaConstantLine[sizePos] = this.textEncoder.encode( size );
+        return this.;
     }
     getMediaRuleVariable_Width_Updated(mediaName, postfix) {
         const postfixPos_1 = 1;
         const mediaNamePos = 3;
         const postfixPos_2 = 5;
-        __classPrivateFieldGet(this, _ResponsiveDatasetAutomationConstants_bitbufsMediaRuleVariable_Width, "f")[postfixPos_1] = postfix;
-        __classPrivateFieldGet(this, _ResponsiveDatasetAutomationConstants_bitbufsMediaRuleVariable_Width, "f")[mediaNamePos] = mediaName;
-        __classPrivateFieldGet(this, _ResponsiveDatasetAutomationConstants_bitbufsMediaRuleVariable_Width, "f")[postfixPos_2] = postfix;
-        return __classPrivateFieldGet(this, _ResponsiveDatasetAutomationConstants_bitbufsMediaRuleVariable_Width, "f");
+        this.[postfixPos_1] = postfix;
+        this.[mediaNamePos] = mediaName;
+        this.[postfixPos_2] = postfix;
+        return this.;
     }
 }
 exports.ResponsiveDatasetAutomationConstants = ResponsiveDatasetAutomationConstants;
-_ResponsiveDatasetAutomationConstants_keywordMediarule = new WeakMap(), _ResponsiveDatasetAutomationConstants_mediaRuleName = new WeakMap(), _ResponsiveDatasetAutomationConstants_mediaConstantNameStart = new WeakMap(), _ResponsiveDatasetAutomationConstants_mediaRule = new WeakMap(), _ResponsiveDatasetAutomationConstants_mediaRuleScreen = new WeakMap(), _ResponsiveDatasetAutomationConstants_mediaRulePrint = new WeakMap(), _ResponsiveDatasetAutomationConstants_mediaRuleOrientation = new WeakMap(), _ResponsiveDatasetAutomationConstants_mediaRuleOrientationLandscape = new WeakMap(), _ResponsiveDatasetAutomationConstants_mediaRuleOrientationPortrait = new WeakMap(), _ResponsiveDatasetAutomationConstants_mediaRuleAnd = new WeakMap(), _ResponsiveDatasetAutomationConstants_braceRoundStart = new WeakMap(), _ResponsiveDatasetAutomationConstants_braceRoundEnd = new WeakMap(), _ResponsiveDatasetAutomationConstants_braceFigureStart = new WeakMap(), _ResponsiveDatasetAutomationConstants_braceFigureEnd = new WeakMap(), _ResponsiveDatasetAutomationConstants_importUrlStart = new WeakMap(), _ResponsiveDatasetAutomationConstants_importUrlEnd = new WeakMap(), _ResponsiveDatasetAutomationConstants_keywordWidth = new WeakMap(), _ResponsiveDatasetAutomationConstants_keywordFrom = new WeakMap(), _ResponsiveDatasetAutomationConstants_keywordTil = new WeakMap(), _ResponsiveDatasetAutomationConstants_cssVariablePrefix = new WeakMap(), _ResponsiveDatasetAutomationConstants_cssVariableNameValueDelimiter = new WeakMap(), _ResponsiveDatasetAutomationConstants_cssVariableReferenceKeyword_Var = new WeakMap(), _ResponsiveDatasetAutomationConstants_cssExpressionEnd = new WeakMap(), _ResponsiveDatasetAutomationConstants_doubleQuote = new WeakMap(), _ResponsiveDatasetAutomationConstants_commentStart = new WeakMap(), _ResponsiveDatasetAutomationConstants_commentEnd = new WeakMap(), _ResponsiveDatasetAutomationConstants_backgroundSpace = new WeakMap(), _ResponsiveDatasetAutomationConstants_N = new WeakMap(), _ResponsiveDatasetAutomationConstants_underscore = new WeakMap(), _ResponsiveDatasetAutomationConstants_unitPx = new WeakMap(), _ResponsiveDatasetAutomationConstants_minWidth = new WeakMap(), _ResponsiveDatasetAutomationConstants_maxWidth = new WeakMap(), _ResponsiveDatasetAutomationConstants_orientationKeywords = new WeakMap(), _ResponsiveDatasetAutomationConstants_bitbufsOrientationKeywords = new WeakMap(), _ResponsiveDatasetAutomationConstants_mediaLine = new WeakMap(), _ResponsiveDatasetAutomationConstants_mediaConstantNameLine = new WeakMap(), _ResponsiveDatasetAutomationConstants_mediaRuleConstantLine = new WeakMap(), _ResponsiveDatasetAutomationConstants_mediaConstantLine = new WeakMap(), _ResponsiveDatasetAutomationConstants_mediaRuleVariable_Width = new WeakMap(), _ResponsiveDatasetAutomationConstants_bitbufsMediaLine = new WeakMap(), _ResponsiveDatasetAutomationConstants_bitbufsMediaConstantNameLine = new WeakMap(), _ResponsiveDatasetAutomationConstants_bitbufsMediaRuleConstantLine = new WeakMap(), _ResponsiveDatasetAutomationConstants_bitbufsMediaConstantLine = new WeakMap(), _ResponsiveDatasetAutomationConstants_bitbufsMediaRuleVariable_Width = new WeakMap(), _ResponsiveDatasetAutomationConstants_bitsbufN = new WeakMap(), _ResponsiveDatasetAutomationConstants_bitbufKeywordFrom = new WeakMap(), _ResponsiveDatasetAutomationConstants_bitbufKeywordTil = new WeakMap();
 //# sourceMappingURL=ResponsiveDatasetAutomationConstants.js.map

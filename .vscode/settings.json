@@ -1,0 +1,90 @@
+{
+  "files.autoSave": "afterDelay",
+  "files.encoding": "utf8",
+  "editor.tabSize": 2,
+  "editor.insertSpaces": true,
+  "javascript.preferences.quoteStyle": "double",
+  "typescript.preferences.quoteStyle": "double",
+
+  "eslint.format.enable": false,
+  "prettier.enable": false,
+  "volar.formatting.enable": false,
+  "intelephense.format.enable": false,
+
+  "files.autoGuessEncoding": false,
+  "files.trimTrailingWhitespace": false,
+  "files.insertFinalNewline": false,
+
+  "editor.formatOnSave": false,
+  "editor.formatOnType": false,
+  "editor.formatOnPaste": false,
+  "editor.defaultFormatter": null,
+  "editor.codeActionsOnSave": {},
+
+  "html.format.enable": false,
+  "css.format.enable": false,
+  "scss.format.enable": false,
+  "javascript.format.enable": false,
+  "typescript.format.enable": false,
+  "json.format.enable": false,
+
+  "[html]": {
+    "editor.formatOnSave": false,
+    "editor.formatOnType": false,
+    "editor.formatOnPaste": false
+  },
+  "[css]": {
+    "editor.formatOnSave": false,
+    "editor.formatOnType": false,
+    "editor.formatOnPaste": false
+  },
+  "[scss]": {
+    "editor.formatOnSave": false,
+    "editor.formatOnType": false,
+    "editor.formatOnPaste": false
+  },
+  "[typescript]": {
+    "editor.formatOnSave": false,
+    "editor.formatOnType": false,
+    "editor.formatOnPaste": false
+  },
+  "[javascript]": {
+    "editor.formatOnSave": false,
+    "editor.formatOnType": false,
+    "editor.formatOnPaste": false
+  },
+  "[json]": {
+    "editor.formatOnSave": false,
+    "editor.formatOnType": false,
+    "editor.formatOnPaste": false
+  },
+  "[php]": {
+    "editor.formatOnSave": false,
+    "editor.formatOnType": false,
+    "editor.formatOnPaste": false
+  },
+  "[java]": {
+    "editor.formatOnSave": false,
+    "editor.formatOnType": false,
+    "editor.formatOnPaste": false
+  },
+
+
+  "editor.autoClosingBrackets": "never",
+  "editor.autoClosingQuotes": "never",
+  "editor.autoClosingComments": "never",
+  "editor.autoClosingOvertype": "never",
+  "editor.autoSurround": "never",
+  "editor.autoIndent": "none",
+  "editor.detectIndentation": false,
+  "editor.trimAutoWhitespace": false,
+
+  "editor.suggest.snippetsPreventQuickSuggestions": true,
+  "editor.parameterHints.enabled": true,
+  "editor.quickSuggestions": {
+    "other": true,
+    "comments": false,
+    "strings": false
+  }
+
+}

@@ -61,7 +61,7 @@ export declare class ResponsiveDatasetAutomation implements ResponsiveDatasetAut
     /**
      * @ready
      */
-    produceMediaName(responsiveDatasetPropName: string, orientation: any): string;
+    produceMediaName(responsiveDatasetPropName: string, orientation: any): Uint8Array[];
     /**
      * @ready
      */
@@ -88,6 +88,7 @@ export declare class ResponsiveDatasetAutomation implements ResponsiveDatasetAut
      * @ready
     */
     produceMediaConstantLine(responsiveDatasetPropName: string, orientation: string, isStartValue: boolean): Uint8Array[];
+    produceMediaConstantName(responsiveDatasetPropName: string, orientation: string, isStartValue: boolean): Uint8Array[];
     /**
      * @ready
     */

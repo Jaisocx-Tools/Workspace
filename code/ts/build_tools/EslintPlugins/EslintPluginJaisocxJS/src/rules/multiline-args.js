@@ -51,21 +51,37 @@ export const MultilineArgs = {
         applyRule = false;
       }
 
-      if ( applyRule ) {
-        args.forEach((arg, index) => {
-          const previousToken = context.getSourceCode().getTokenBefore(arg);
-          
-          if (previousToken.loc.end.line === arg.loc.start.line) {
-            context.report({
-              node: arg,
-              message: "Each argument should be on a new line.",
-              fix(fixer) {
-                return fixer.insertTextBefore(arg, "\n" + " ".repeat(node.loc.start.column + eslintConfigIdentPrefixSizeForOneLevel));
-              }
-            });
+      if ( applyRule === false ) {
+        return;
+      }
+
+      args.forEach((arg, index) => {
+        const previousToken = context.getSourceCode().getTokenBefore(arg);
+        
+        if (previousToken.loc.end.line === arg.loc.start.line) {
+          context.report({
+            node: arg,
+            message: "Each argument should be on a new line.",
+            fix(fixer) {
+              return fixer.insertTextBefore(arg, "\n" + " ".repeat(node.loc.start.column + eslintConfigIdentPrefixSizeForOneLevel));
+            }
+          });
+        }
+      });
+
+      const lastArg = args[args.length - 1];
+      const closingParen = src.getTokenAfter(lastArg, token => token.value === ')');
+
+      if (closingParen && closingParen.loc.start.line === lastArg.loc.end.line) {
+        context.report({
+          node: closingParen,
+          message: "Closing parenthesis should be on a new line after the last argument.",
+          fix(fixer) {
+            return fixer.insertTextBefore(closingParen, "\n" + " ".repeat(node.loc.start.column));
           }
         });
       }
+
     }
 
     return {

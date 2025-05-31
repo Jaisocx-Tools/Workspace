@@ -1,6 +1,4 @@
 import fs from "node:fs";
-import path from "node:path";
-import { Buffer } from "node:buffer";
 import { Stats } from "node:fs";
 import { FileHandle } from "node:fs/promises";
 import { TextEncoder, TextDecoder } from "node:util";
@@ -106,12 +104,15 @@ export class FileWriter {
     filePath: string,
     content: Uint8Array
   ): Promise<number> { 
+    //@ts-ignore
     let opened: number = await this.cleanupFileAndGetNewFileHandle ( 
       filePath, 
       this.fileWriterConstants.getFHandleModeWrite() 
     );
 
+    //@ts-ignore
     let written: number = await this.appendBitsbufToFile( content );
+    //@ts-ignore
     let closed: number = await this.filehandleClose();
 
     return 1;
@@ -122,12 +123,15 @@ export class FileWriter {
     content: Uint8Array,
     range: number[]
   ): Promise<number> { 
+    //@ts-ignore
     let opened: number = await this.cleanupFileAndGetNewFileHandle ( 
       filePath, 
       this.fileWriterConstants.getFHandleModeWrite() 
     );
 
+    //@ts-ignore
     let written: number = await this.appendToFile( content, range );
+    //@ts-ignore
     let closed: number = await this.filehandleClose();
 
     return 1;
@@ -138,8 +142,11 @@ export class FileWriter {
     filePath: string,
     content: (Uint8Array|Uint8Array[])[]
   ): Promise<number> { 
+    //@ts-ignore
     let opened: number = await this.toAddToFileInLoop_CleanupFileAndGetNewFileHandle( filePath );
+    //@ts-ignore
     let written: number = await this.appendMixedArrayToFile( content );
+    //@ts-ignore
     let closed: number = await this.filehandleClose();
 
     return 1;
@@ -267,7 +274,7 @@ export class FileWriter {
 
     if ( this.offsetInFile === 0 ) {
       // @ts-ignore
-      const stats = await this.fileHandle.stat(); // get current file size
+      const stats: Stats = await this.fileHandle.stat(); // get current file size
       this.offsetInFile = stats.size;
     }
 

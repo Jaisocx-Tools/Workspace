@@ -1,4 +1,4 @@
-let themesPreloads = {
+export let themesPreloads = {
   "theme-lightmode": [
     "@jaisocx-css-table-cdn-fonts/Niconne/Niconne-Regular.ttf"
   ],
@@ -7,3 +7,4 @@ let themesPreloads = {
     "@jaisocx-css-table-cdn-fonts/Baloo_Paaji_2/static/BalooPaaji2-SemiBold.ttf"
   ]
 };
+//# sourceMappingURL=ThemesPreloadsCssTable.js.map

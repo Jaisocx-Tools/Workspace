@@ -6,8 +6,8 @@ async function MediaDeviceInfo(): Promise<number> {
 
   const responsiveDatasetAutomation: ResponsiveDatasetAutomation = new ResponsiveDatasetAutomation();
 
-  let pathToJsonDatasetForResponsiveSizes: string = "/Users/illiapolianskyi/Projects/JAISOCX_SITES_TOOLS/Workspace/code/ts/www/packages/Mobile.vsDesktop/data/ResponsiveSizes/ResponsiveSizes.json";
-  let responsiveTemplateFilePath: string = "/Users/illiapolianskyi/Projects/JAISOCX_SITES_TOOLS/Workspace/code/ts/www/packages/Mobile.vsDesktop/data/templates/ResponsiveTemplate.template";
+  let pathToJsonDatasetForResponsiveSizes: string = "/var/www/code/ts/www/packages/Mobile.vsDesktop/data/ResponsiveSizes/ResponsiveSizes.json";
+  let responsiveTemplateFilePath: string = "/var/www/code/ts/www/packages/Mobile.vsDesktop/data/templates/ResponsiveTemplate.template";
   let subfolderName: string = "responsive";
   let responsiveMediaQueriesFilesPrefix: string = "";
   let mediaConstantsFileName: string = "MediaConstants.css";

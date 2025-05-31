@@ -58,20 +58,29 @@ export class FileWriter {
         return opened;
     }
     async rewriteFileWithBitsbuf(filePath, content) {
+        //@ts-ignore
         let opened = await this.cleanupFileAndGetNewFileHandle(filePath, this.fileWriterConstants.getFHandleModeWrite());
+        //@ts-ignore
         let written = await this.appendBitsbufToFile(content);
+        //@ts-ignore
         let closed = await this.filehandleClose();
         return 1;
     }
     async rewriteFileWithBitsbufByRange(filePath, content, range) {
+        //@ts-ignore
         let opened = await this.cleanupFileAndGetNewFileHandle(filePath, this.fileWriterConstants.getFHandleModeWrite());
+        //@ts-ignore
         let written = await this.appendToFile(content, range);
+        //@ts-ignore
         let closed = await this.filehandleClose();
         return 1;
     }
     async rewriteFileWithMixedArray(filePath, content) {
+        //@ts-ignore
         let opened = await this.toAddToFileInLoop_CleanupFileAndGetNewFileHandle(filePath);
+        //@ts-ignore
         let written = await this.appendMixedArrayToFile(content);
+        //@ts-ignore
         let closed = await this.filehandleClose();
         return 1;
     }

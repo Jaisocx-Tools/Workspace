@@ -19,7 +19,11 @@ class Api {
     return BigInt(Math.floor(now * 1_000_000)); // Convert milliseconds to nanoseconds
   }
 
-  fetchObjData(url, method, requestHeaders) {
+  fetchObjData(url, 
+    //@ts-ignore
+    method, 
+    //@ts-ignore
+    requestHeaders) {
     if (this._debug) {
       this._timestamps["1Request"] = new Object();
       this._timestamps["1Request"]["start"] = this.getNsTimestamp();

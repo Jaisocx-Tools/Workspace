@@ -15,7 +15,11 @@ class Api {
         const now = performance.timeOrigin + performance.now(); // Combine the origin and high-res time
         return BigInt(Math.floor(now * 1000000)); // Convert milliseconds to nanoseconds
     }
-    fetchObjData(url, method, requestHeaders) {
+    fetchObjData(url, 
+    //@ts-ignore
+    method, 
+    //@ts-ignore
+    requestHeaders) {
         if (this._debug) {
             this._timestamps["1Request"] = new Object();
             this._timestamps["1Request"]["start"] = this.getNsTimestamp();

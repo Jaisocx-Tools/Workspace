@@ -24,7 +24,9 @@ export class Api {
 
   public fetchObjData (
     url: string,
+    //@ts-ignore
     method: string,
+    //@ts-ignore
     requestHeaders: any[]
   ): Promise<any> {
     
