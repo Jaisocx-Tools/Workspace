@@ -28,7 +28,7 @@
                            path="/var/www/code/ts/www/"
                            cache="update"
                            list="true" 
-                           each-folder-content-file-name="index.html" />
+                           each-folder-content-file-name="root.html" />
                     <alias comment="php code"
                            art="folder"
                            url="/php/"
@@ -44,7 +44,7 @@
                            path="/var/www/cdn/www/"
                            cache="update"
                            list="true" 
-                           each-folder-content-file-name="index.html" />
+                           each-folder-content-file-name="root.html" />
                     <alias comment="cdn for data, secured with basic auth. On demand, You can set auth JWT"
                            art="folder"
                            url="/cdn/data_secured/"
@@ -52,7 +52,7 @@
                            authorization="basic"
                            cache="update"
                            list="true" 
-                           each-folder-content-file-name="index.html" />
+                           each-folder-content-file-name="root.html" />
                     
                     <alias comment="cdn for the entire node_modules subfolder. the fast to declare url, however not preferred, since node_modules can have very a lot of dependencies. then can't set cache mode, since many GB of RAM used. Here are @jaisocx/ sites js and css tools, installed via yarn install or npm install"
                            art="folder"
@@ -60,7 +60,7 @@
                            path="/var/www/cdn/SitesTools/node_modules/@jaisocx/"
                            cache="update"
                            list="true" 
-                           each-folder-content-file-name="index.html" />
+                           each-folder-content-file-name="root.html" />
                     
                     <alias comment="preferred cdn url for one node_modules/MediaAndStyles subfolder of one tool, where are @jaisocx/ site js and css tool .css files and .css themes and mini-images"
                            art="folder"
@@ -68,35 +68,35 @@
                            path="/var/www/cdn/SitesTools/node_modules/@jaisocx/css-clean-start/assets"
                            cache="update"
                            list="true" 
-                           each-folder-content-file-name="index.html" />
+                           each-folder-content-file-name="root.html" />
                     <alias comment="preferred cdn url for one node_modules/MediaAndStyles subfolder of one tool, where are @jaisocx/ site js and css tool .css files and .css themes and mini-images"
                            art="folder"
                            url="/cdn/jaisocx-tools/css-code-snippet/MediaAndStyles/"
                            path="/var/www/cdn/SitesTools/node_modules/@jaisocx/css-code-snippet/MediaAndStyles"
                            cache="update"
                            list="true" 
-                           each-folder-content-file-name="index.html" />
+                           each-folder-content-file-name="root.html" />
                      <alias comment="preferred cdn url for one node_modules/MediaAndStyles subfolder of one tool, where are @jaisocx/ site js and css tool .css files and .css themes and mini-images"
                            art="folder"
                            url="/cdn/jaisocx-tools/css-table/MediaAndStyles/"
                            path="/var/www/cdn/SitesTools/node_modules/@jaisocx/css-table/MediaAndStyles"
                            cache="update"
                            list="true" 
-                           each-folder-content-file-name="index.html" />
+                           each-folder-content-file-name="root.html" />
                     <alias comment="preferred cdn url for one node_modules/MediaAndStyles subfolder of one tool, where are @jaisocx/ site js and css tool .css files and .css themes and mini-images"
                            art="folder"
                            url="/cdn/jaisocx-tools/tooltip/MediaAndStyles/"
                            path="/var/www/cdn/SitesTools/node_modules/@jaisocx/tooltip/MediaAndStyles"
                            cache="update"
                            list="true" 
-                           each-folder-content-file-name="index.html" />
+                           each-folder-content-file-name="root.html" />
                     <alias comment="preferred cdn url for one node_modules/MediaAndStyles subfolder of one tool, where are @jaisocx/ site js and css tool .css files and .css themes and mini-images"
                            art="folder"
                            url="/cdn/jaisocx-tools/tree/MediaAndStyles/"
                            path="/var/www/cdn/SitesTools/node_modules/@jaisocx/tree/MediaAndStyles"
                            cache="update"
                            list="true" 
-                           each-folder-content-file-name="index.html" />
+                           each-folder-content-file-name="root.html" />
                     
                     
                 </domain>
