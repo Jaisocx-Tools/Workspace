@@ -3,7 +3,19 @@
     <conf-http>
         <servers>
             <server port="443" alternative-port="2288" secure="true">
-                <domain
+              <domain
+                    name="workspace.brightday.email"
+                    jks-path="/usr/lib/jaisocx-http/ssl/brightday.email.jks"
+                    jks-alias="brightday.email"
+                    jks-passphrase="JW5MYPKHbdqetvr4yfshiFwwjvr4fakE43qJUtgh7A2hNEW"
+                    document-root="/var/www/code/php"
+                    publish-charset="UTF-8" src-charset="UTF-8">
+                    <alias comment="newer subdomain sandbox"
+                           art="redirection"
+                           url="/${any}"
+                           path="https://sandbox.brightday.email/" />
+              </domain>
+              <domain
                     name="sandbox.brightday.email"
                     jks-path="/usr/lib/jaisocx-http/ssl/brightday.email.jks"
                     jks-alias="brightday.email"
@@ -90,7 +102,15 @@
                 </domain>
             </server>
             <server port="80" alternative-port="2289" secure="false">
-                <domain
+              <domain
+                    name="workspace.brightday.email"
+                    publish-charset="UTF-8" src-charset="UTF-8">
+                    <alias comment="on the plain port 80 without TLS, this alias will redirect all requests to normal https:// url, defined above in server node port 443, secure=true"
+                           art="redirection"
+                           url="/${any}"
+                           path="https://sandbox.brightday.email/" />
+              </domain>
+              <domain
                     name="sandbox.brightday.email">
                     <alias comment="on the plain port 80 without TLS, this alias will redirect all requests to normal https:// url, defined above in server node port 443, secure=true"
                            art="redirection"
