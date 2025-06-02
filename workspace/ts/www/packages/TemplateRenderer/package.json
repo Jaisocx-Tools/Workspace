@@ -1,6 +1,6 @@
 {
   "name": "@jaisocx/template-renderer",
-  "version": "1.5.7",
+  "version": "1.5.8",
   "author": "Jaisocx",
   "private": false,
   "description": "",
@@ -15,12 +15,12 @@
   "files": [
     "transpiled/CommonJS",
     "transpiled/ESNext",
-    "MediaAndStyles/",
+    "transpiled/Simple",
     "README.md"
   ],
   "optionalDependencies": {
-    "@jaisocx/event-emitter": "^1.4.1",
-    "@jaisocx/tokens-parser": "^1.2.1"
+    "@jaisocx/event-emitter": "^1.4.2",
+    "@jaisocx/tokens-parser": "^1.2.2"
   },
   "publishConfig": {
     "access": "public"

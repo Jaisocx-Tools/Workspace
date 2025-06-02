@@ -172,7 +172,8 @@ export class TemplateRenderer extends EventEmitter {
     }
     // the way to improve:
     // after optimization, create once dataRecord.optimizedBitsbufTemplate of texts, so not to decode to strings.
-    renderOptimizedTextBlocks(templateDataRecordId, dataForRendering // { key: text }
+    renderOptimizedTextBlocks(templateDataRecordId, dataForRendering
+    // { key: text }
     ) {
         let dataRecord = this.getDataRecordById(templateDataRecordId);
         dataRecord.dataForRendering = dataForRendering;
@@ -211,8 +212,10 @@ export class TemplateRenderer extends EventEmitter {
         let inOutRanges_WithoutTokenizedAreas = new Array();
         let inOutRanges_TokensSetsMatched = new Array(placeholdersNames.length);
         let numberOfPlaceholdersMatched = this.tokensParser
-            .parseAroundSeveralTokensSets(dataRecord.bitsbufTemplate, bitsbufsRanges, // datatype explained: [ [startRef: number, endRef: number], [startRef: number, endRef: number], ... ];
-        severalTokensSets, // where one tokensSet is array of datatype string[]
+            .parseAroundSeveralTokensSets(dataRecord.bitsbufTemplate, bitsbufsRanges, 
+        // datatype explained: [ [startRef: number, endRef: number], [startRef: number, endRef: number], ... ];
+        severalTokensSets, 
+        // where one tokensSet is array of datatype string[]
         inOutRanges_WithoutTokenizedAreas, inOutRanges_TokensSetsMatched, maxIterationsNumber);
         for (let placeholderId = 0; placeholderId < placeholdersNames.length; placeholderId++) {
             let placeholderName = placeholdersNames[placeholderId];

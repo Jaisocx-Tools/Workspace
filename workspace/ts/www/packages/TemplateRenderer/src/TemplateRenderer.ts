@@ -38,7 +38,6 @@ export class TemplateRenderer extends EventEmitter {
   textDecoder: TextDecoder;
 
 
-
   constructor() {
     super();
 
@@ -54,7 +53,6 @@ export class TemplateRenderer extends EventEmitter {
   }
 
 
-
   initDataRecord(): TemplateRendererDataRecord {
     let dataRecord: TemplateRendererDataRecord = new Object() as TemplateRendererDataRecord;
 
@@ -65,10 +63,11 @@ export class TemplateRenderer extends EventEmitter {
     dataRecord.bitsbufTemplate = new Uint8Array();
     dataRecord.optimizedBitsbufTemplate = new Array() as Uint8Array[];
     dataRecord.optimizedPlaceholdersEntries = new Object();
-    dataRecord.optimizedTemplate = new Array() as OptimizedTemplateRecord[]; 
+    dataRecord.optimizedTemplate = new Array() as OptimizedTemplateRecord[];
 
     return dataRecord;
   }
+
 
   addNewDataRecord(): TemplateRendererDataRecord {
     let dataRecord: TemplateRendererDataRecord = this.initDataRecord();
@@ -78,6 +77,7 @@ export class TemplateRenderer extends EventEmitter {
 
     return this.dataRecords[this.#activeDataRecordId];
   }
+
 
   getActiveDataRecord(): TemplateRendererDataRecord {
     let dataRecord: TemplateRendererDataRecord;
@@ -94,13 +94,16 @@ export class TemplateRenderer extends EventEmitter {
     return dataRecord;
   }
 
+
   getActiveDataRecordId(): number {
     return this.#activeDataRecordId;
   }
 
+
   getDataRecordById( id: number ) {
     return this.dataRecords[id];
   }
+
 
   setActiveRecordId( id: number ): TemplateRendererDataRecord {
     this.#activeDataRecordId = id;
@@ -108,14 +111,16 @@ export class TemplateRenderer extends EventEmitter {
     return this.dataRecords[id];
   }
 
+
   setActiveDataRecord( dataRecord: TemplateRendererDataRecord ): number {
-    
+
     if ( this.#activeDataRecordId === 0 ) {
       let obj: TemplateRendererDataRecord = new Object() as TemplateRendererDataRecord;
       this.dataRecords.push( obj );
     }
 
     let id: number = dataRecord.id;
+
     if ( id === 0 ) {
       id = this.dataRecords.length;
       dataRecord.id = id;
@@ -132,10 +137,13 @@ export class TemplateRenderer extends EventEmitter {
     return id;
   }
 
+
   setDebug(debug: boolean): TemplateRenderer {
     this.debug = debug;
+
     return this;
   }
+
 
   setTemplate( template: string ): TemplateRenderer {
     let dataRecord: TemplateRendererDataRecord = this.getActiveDataRecord();
@@ -143,6 +151,7 @@ export class TemplateRenderer extends EventEmitter {
 
     return this;
   }
+
 
   setData( dataForRendering: object ): TemplateRenderer {
     let dataRecord: TemplateRendererDataRecord = this.getActiveDataRecord();
@@ -158,6 +167,7 @@ export class TemplateRenderer extends EventEmitter {
     }
 
     let dataRecord: TemplateRendererDataRecord = this.getActiveDataRecord();
+
     if ( dataRecord.isOptimized === false ) {
       this.optimize( dataRecord.id );
       dataRecord = this.dataRecords[ dataRecord.id ];
@@ -187,12 +197,14 @@ export class TemplateRenderer extends EventEmitter {
       const last: number = eventResult.length - 1;
 
       let payloadReturned: any = null;
+
       for ( let eventResultsStep = last; eventResultsStep > (-1); eventResultsStep-- ) {
         try {
+
           // @ts-ignore
-          payloadReturned = eventResult[eventResultsStep].result.payloadReturned; 
+          payloadReturned = eventResult[eventResultsStep].result.payloadReturned;
         } catch (e) {}
-        
+
         if ( !payloadReturned ) {
           continue;
         }
@@ -210,16 +222,15 @@ export class TemplateRenderer extends EventEmitter {
     } else if (this.debug) {
       console.log("afterRender event did not change html");
     }
-    
+
     return renderedHtml;
   }
 
 
-
   // the faster method.
-  renderOptimizedDataBitsbufs ( 
-    templateDataRecordId: number, 
-    dataForRendering: any 
+  renderOptimizedDataBitsbufs (
+    templateDataRecordId: number,
+    dataForRendering: any
   ): Uint8Array[] {
     let dataRecord: TemplateRendererDataRecord = this.getDataRecordById( templateDataRecordId );
     dataRecord.dataForRendering = dataForRendering;
@@ -228,9 +239,11 @@ export class TemplateRenderer extends EventEmitter {
 
     for ( let placeholderName in dataRecord.dataForRendering ) {
       let placeholderEntries: number[] = dataRecord.optimizedPlaceholdersEntries[placeholderName] as number[];
+
+
       // @ts-ignore
       let placehoder: Uint8Array = dataRecord.dataForRendering[placeholderName];
-    
+
       for ( let i of placeholderEntries ) {
         bitsbufsArray[i] = placehoder;
       }
@@ -240,18 +253,16 @@ export class TemplateRenderer extends EventEmitter {
   }
 
 
-
-  renderOptimizedToStringDataText ( 
-    templateDataRecordId: number, 
-    dataForRendering: any 
+  renderOptimizedToStringDataText (
+    templateDataRecordId: number,
+    dataForRendering: any
   ): string {
-
     let dataRecord: TemplateRendererDataRecord = this.getDataRecordById ( templateDataRecordId );
     dataRecord.dataForRendering = dataForRendering;
 
-    let textBlocks: string[] = this.renderOptimizedTextBlocks ( 
+    let textBlocks: string[] = this.renderOptimizedTextBlocks (
       templateDataRecordId,
-      dataRecord.dataForRendering 
+      dataRecord.dataForRendering
     );
 
     let renderedText: any = textBlocks.join("");
@@ -260,17 +271,16 @@ export class TemplateRenderer extends EventEmitter {
   }
 
 
-  renderOptimizedToStringDataBitsbufs ( 
-    templateDataRecordId: number, 
-    dataForRendering: any 
+  renderOptimizedToStringDataBitsbufs (
+    templateDataRecordId: number,
+    dataForRendering: any
   ): string {
-
     let dataRecord: TemplateRendererDataRecord = this.getDataRecordById ( templateDataRecordId );
     dataRecord.dataForRendering = dataForRendering;
 
-    let bitsbufsArray: (Uint8Array|string)[] = this.renderOptimizedDataBitsbufs ( 
+    let bitsbufsArray: (Uint8Array|string)[] = this.renderOptimizedDataBitsbufs (
       templateDataRecordId,
-      dataRecord.dataForRendering 
+      dataRecord.dataForRendering
     );
 
     let bitsbufsArrayLen: number = bitsbufsArray.length;
@@ -278,8 +288,8 @@ export class TemplateRenderer extends EventEmitter {
     let i: number = 0;
 
     for ( i = 0; i < bitsbufsArrayLen; i++ ) {
-
       let bitsbufElem: (Uint8Array|string) = bitsbufsArray[i];
+
       if ( typeof bitsbufElem === "string" ) {
         textBlocks[i] = bitsbufElem;
       } else {
@@ -293,12 +303,14 @@ export class TemplateRenderer extends EventEmitter {
   }
 
 
-
   // the way to improve:
   // after optimization, create once dataRecord.optimizedBitsbufTemplate of texts, so not to decode to strings.
   renderOptimizedTextBlocks (
-    templateDataRecordId: number, 
-    dataForRendering: any // { key: text }
+    templateDataRecordId: number,
+    dataForRendering: any
+
+
+    // { key: text }
   ): string[] {
     let dataRecord: TemplateRendererDataRecord = this.getDataRecordById( templateDataRecordId );
     dataRecord.dataForRendering = dataForRendering;
@@ -306,7 +318,8 @@ export class TemplateRenderer extends EventEmitter {
     let bitsbufsArray: Uint8Array[] = [...dataRecord.optimizedBitsbufTemplate];
     let textBlocks: string[] = new Array() as string[];
 
-    let bitsbufElem: Uint8Array = new Uint8Array(); 
+    let bitsbufElem: Uint8Array = new Uint8Array();
+
     for ( let i = 0; i < bitsbufsArray.length; i++ ) {
       bitsbufElem = bitsbufsArray[i];
       textBlocks[i] = this.textDecoder.decode( bitsbufElem );
@@ -314,9 +327,11 @@ export class TemplateRenderer extends EventEmitter {
 
     for ( let placeholderName in dataRecord.dataForRendering ) {
       let placeholderEntries: number[] = dataRecord.optimizedPlaceholdersEntries[placeholderName] as number[];
+
+
       // @ts-ignore
       let placehoder: string = dataRecord.dataForRendering[placeholderName];
-   
+
       for ( let i of placeholderEntries ) {
         textBlocks[i] = placehoder;
       }
@@ -325,10 +340,8 @@ export class TemplateRenderer extends EventEmitter {
     return textBlocks;
   }
 
-  
 
   optimize ( templateDataRecordId: number ): number {
-
     let maxIterationsNumber: number = 1200;
 
     let dataRecord: TemplateRendererDataRecord = this.getDataRecordById( templateDataRecordId );
@@ -345,6 +358,7 @@ export class TemplateRenderer extends EventEmitter {
     let severalTokensSets: string[][] = placeholdersNames.map(
       ( placeholderName: string ) => {
         let placeholderMarkup: string = [ "{{ ", placeholderName, " }}" ].join("");
+
         return [ placeholderMarkup ];
       }
     );
@@ -356,17 +370,22 @@ export class TemplateRenderer extends EventEmitter {
     let inOutRanges_TokensSetsMatched: number[][][] = new Array( placeholdersNames.length ) as number[][][];
 
     let numberOfPlaceholdersMatched: number = this.tokensParser
-      .parseAroundSeveralTokensSets ( 
+      .parseAroundSeveralTokensSets (
         dataRecord.bitsbufTemplate,
-        bitsbufsRanges, // datatype explained: [ [startRef: number, endRef: number], [startRef: number, endRef: number], ... ];
-        severalTokensSets, // where one tokensSet is array of datatype string[]
+        bitsbufsRanges,
+
+
+        // datatype explained: [ [startRef: number, endRef: number], [startRef: number, endRef: number], ... ];
+        severalTokensSets,
+
+
+        // where one tokensSet is array of datatype string[]
         inOutRanges_WithoutTokenizedAreas,
         inOutRanges_TokensSetsMatched,
         maxIterationsNumber
       );
 
     for ( let placeholderId = 0; placeholderId < placeholdersNames.length; placeholderId++ ) {
-
       let placeholderName: string = placeholdersNames[placeholderId];
 
       let tokensMatchedRanges: number[][] = inOutRanges_TokensSetsMatched[placeholderId];
@@ -382,7 +401,6 @@ export class TemplateRenderer extends EventEmitter {
     let fixedTemplateRecord: OptimizedTemplateRecord = new Object() as OptimizedTemplateRecord;
 
     for ( let templateRange of inOutRanges_WithoutTokenizedAreas ) {
-
       fixedTemplateRecord = new Object() as OptimizedTemplateRecord;
       fixedTemplateRecord.range = templateRange;
       fixedTemplateRecord.placeholderName = "_";
@@ -402,15 +420,15 @@ export class TemplateRenderer extends EventEmitter {
     dataRecord.optimizedBitsbufTemplate = new Array( optimizedRecords.length ) as Uint8Array[];
 
     for ( let i = 0; i < optimizedRecords.length; i++ ) {
-
       let record: OptimizedTemplateRecord = optimizedRecords[i];
       let placeholderName: string = record.placeholderName;
       let bitsbuf: Uint8Array = new Uint8Array();
 
       if ( placeholderName === "_" ) {
-        bitsbuf = dataRecord.bitsbufTemplate.subarray ( 
-          record.range[0], 
-          record.range[1] );
+        bitsbuf = dataRecord.bitsbufTemplate.subarray (
+          record.range[0],
+          record.range[1]
+        );
         dataRecord.optimizedBitsbufTemplate[i] = bitsbuf;
       } else {
         dataRecord.optimizedPlaceholdersEntries[placeholderName].push( i );
@@ -425,12 +443,9 @@ export class TemplateRenderer extends EventEmitter {
   }
 
 
-
   protected orderedRecords( inRecords: OptimizedTemplateRecord[] ): OptimizedTemplateRecord[] {
-
     let records: OptimizedTemplateRecord[] = inRecords.sort (
       (recordA: OptimizedTemplateRecord, recordB: OptimizedTemplateRecord) => {
-
         let startA: number = recordA.range[0];
         let startB: number = recordB.range[0];
 
@@ -450,7 +465,6 @@ export class TemplateRenderer extends EventEmitter {
 
   // old method String.replace() in loop over all charrs of the template every loop iterations.
   replaceTemplateRendererWithDataForRendering(): any {
-
     let dataRecord: TemplateRendererDataRecord = this.getActiveDataRecord();
 
     let renderedHtml_1 = "";
@@ -461,8 +475,10 @@ export class TemplateRenderer extends EventEmitter {
 
       const stringToReplace = `{{ ${placeholderName} }}`;
 
+
       // @ts-ignore
       let valueToSet = dataRecord.dataForRendering[placeholderName];
+
       if (!valueToSet) {
         valueToSet = "";
       }
