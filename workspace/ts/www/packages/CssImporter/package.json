@@ -1,6 +1,6 @@
 {
   "name": "@jaisocx/css-importer",
-  "version": "1.3.2",
+  "version": "1.3.3",
   "author": "Jaisocx",
   "private": false,
   "description": "",
@@ -15,7 +15,6 @@
   "files": [
     "transpiled/CommonJS",
     "transpiled/ESNext",
-    "transpiled/Simple",
     "README.md"
   ],
   "keywords": [
@@ -28,8 +27,8 @@
     "access": "public"
   },
   "optionalDependencies": {
-    "@jaisocx/file-writer": "^1.2.2",
-    "@jaisocx/tokens-parser": "^1.2.1"
+    "@jaisocx/file-writer": "^1.2.4",
+    "@jaisocx/tokens-parser": "^1.2.2"
   }
 }
 

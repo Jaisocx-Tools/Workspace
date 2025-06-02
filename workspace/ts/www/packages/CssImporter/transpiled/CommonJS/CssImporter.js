@@ -217,7 +217,8 @@ class CssImporter {
         let commentsTokens = cssTokens["comment"];
         let importsTokens = cssTokens["import"];
         this.tokensParser
-            .parseWithStartAndEndTokensSets(fileContentsBuffer, bitsBufRefs_ReadFile, // datatype explained: [ [startRef: number, endRef: number], [startRef: number, endRef: number], ... ];
+            .parseWithStartAndEndTokensSets(fileContentsBuffer, bitsBufRefs_ReadFile, 
+        // datatype explained: [ [startRef: number, endRef: number], [startRef: number, endRef: number], ... ];
         commentsTokens, bitsBufRefs_NoComments, bitsBufRefs_Comments_Outer, bitsBufRefs_Comments_Inner, counterStop);
         if (this.debug === true) {
             console.log("Comments:\n");
@@ -226,7 +227,8 @@ class CssImporter {
             this.tokensParser.contentPreviewByRange(fileContentsBuffer, bitsBufRefs_NoComments);
         }
         this.tokensParser
-            .parseWithStartAndEndTokensSets(fileContentsBuffer, bitsBufRefs_NoComments, // datatype explained: [ [startRef: number, endRef: number], [startRef: number, endRef: number], ... ];
+            .parseWithStartAndEndTokensSets(fileContentsBuffer, bitsBufRefs_NoComments, 
+        // datatype explained: [ [startRef: number, endRef: number], [startRef: number, endRef: number], ... ];
         importsTokens, bitsBufRefs_NoImports, bitsBufRefs_ImportURLs_Outer, bitsBufRefs_ImportURLs_Inner, counterStop);
         if (this.debug === true) {
             console.log("\n\nImports:\n");
@@ -268,7 +270,8 @@ class CssImporter {
             return resultDTO;
         }
         else {
-            let firstImportRange = bitsBufRefs_ImportURLs_Inner[0]; // may be undefined
+            let firstImportRange = bitsBufRefs_ImportURLs_Inner[0];
+            // may be undefined
             let firstImportRangeStart = firstImportRange[0];
             if (firstImportRangeStart < firstRangeStart) {
                 latestImportsIx = this.compareRanges(fileContentsBuffer, bitsbufName, bitsBufRefs_ImportURLs_Inner, resultDTO, firstRangeStart, latestImportsIx, counterStop, true);

@@ -74,7 +74,7 @@
     {
       "path": "packages/FileWriter",
       "name": "file-writer",
-      "build": true,
+      "build": false,
       "build-simple-enable": false,
       "dependencies": [
         {
@@ -87,7 +87,7 @@
     {
       "path": "packages/CssImporter",
       "name": "css-importer",
-      "build": false,
+      "build": true,
       "build-simple-enable": false,
       "dependencies": [
         {

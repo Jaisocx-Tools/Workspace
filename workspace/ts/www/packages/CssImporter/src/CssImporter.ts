@@ -30,6 +30,7 @@ export class CssImporter implements CssImporterInterface {
 
   textDecoder: TextDecoder;
 
+
   constructor() {
     this.debug = false;
 
@@ -57,11 +58,13 @@ export class CssImporter implements CssImporterInterface {
     this.textDecoder = new TextDecoder( "utf8" );
   }
 
+
   setDebug( inDebug: boolean ): CssImporter {
     this.debug = inDebug;
 
     return this;
   }
+
 
   setPackagePath( packagePath: string ): CssImporter {
     this.packagePath = packagePath;
@@ -69,33 +72,46 @@ export class CssImporter implements CssImporterInterface {
     return this;
   }
 
+
   getPackagePath(): string {
     return this.packagePath;
   }
+
+
   setCssFilePath( cssFilePath: string ): CssImporter {
     this.cssFilePath = cssFilePath;
 
     return this;
   }
+
+
   getCssFilePath(): string {
     return this.cssFilePath;
   }
+
+
   setCssTargetFilePath( cssTargetFilePath: string ): CssImporter {
     this.cssTargetFilePath = cssTargetFilePath;
+
     return this;
   }
+
+
   getCssTargetFilePath(): string {
     return this.cssTargetFilePath;
   }
 
+
   readJsonFile( filePath: string ): any {
     const contents: string = fs.readFileSync(
       filePath,
-      "utf-8" );
+      "utf-8"
+    );
     let aliasesObj: object = JSON.parse( contents );
 
     return aliasesObj;
   }
+
 
   getWebpackAliases(): object|false {
 
@@ -125,6 +141,7 @@ export class CssImporter implements CssImporterInterface {
     return this.webpackAliases;
   }
 
+
   public setWebpackAliases(
     aliasesObject: any,
     packageRoot: string
@@ -135,6 +152,7 @@ export class CssImporter implements CssImporterInterface {
 
     let alias: string = "";
     let aliasValue: string = "";
+
     for ( alias in this.webpackAliases ) {
       aliasValue = this.webpackAliases[alias];
       aliasValue = aliasValue.replace(
@@ -155,6 +173,8 @@ export class CssImporter implements CssImporterInterface {
    * @param webpackAliases the object, read from the file webpack.aliases.json
    * @returns
    */
+
+
   public resolveUrlBitsbufWithWebpackAlias (
     inBitsbuf: Uint8Array,
     filePathTextRefs: number[],
@@ -197,12 +217,14 @@ export class CssImporter implements CssImporterInterface {
 
     }
 
+
     // @ts-ignore
     if ( urlResolved === false ) {
       let aliasesJson = JSON.stringify (
         webpackAliases,
         null,
-        2 );
+        2
+      );
       let errMsg: string = `The @import statement url in the css file:\n${filePathAliased}\nwas not prefixed with no of webpack aliases: \n${aliasesJson}`;
       throw new Error( errMsg );
     }
@@ -215,12 +237,13 @@ export class CssImporter implements CssImporterInterface {
     return filePathResolved;
   }
 
-  async build(): Promise<number> {
 
+  async build(): Promise<number> {
     let hasError: boolean = false;
     let err: any = {};
 
     let webpackAliases = this.getWebpackAliases();
+
 
     // NOTICE: HARDCODED
     let counterStop = 1200;
@@ -228,6 +251,7 @@ export class CssImporter implements CssImporterInterface {
     let opened: number = await this.fileWriterQueue.fileWriter.toAddToFileInLoop_CleanupFileAndGetNewFileHandle (
       this.cssTargetFilePath
     );
+
 
     // example to be notified on write end and file handle close.
     if ( this.debug === true ) {
@@ -289,7 +313,8 @@ export class CssImporter implements CssImporterInterface {
         JSON.stringify(
           resultDTO.toJson(),
           null,
-          2)
+          2
+        )
       );
     }
 
@@ -309,17 +334,17 @@ export class CssImporter implements CssImporterInterface {
   }
 
 
-
   /**
    * @info based on methods call .validBitsbufRefsRefine(), .resolveUrlBitsbufWithWebpackAlias(), fs.read and fs.write files.
    */
+
+
   public cssBundleMake (
     inParsedResultDTO: ParsedResultDTO,
     inFilePath: string,
     bitsbufName: string,
     counterStop: number
   ): ParsedResultDTO {
-
     let fileContentsBuffer: Uint8Array = this.fileReader.readFileContentsAsBitsBuf ( inFilePath );
 
     let fileSize: number = fileContentsBuffer.length;
@@ -342,7 +367,10 @@ export class CssImporter implements CssImporterInterface {
     this.tokensParser
       .parseWithStartAndEndTokensSets (
         fileContentsBuffer,
-        bitsBufRefs_ReadFile, // datatype explained: [ [startRef: number, endRef: number], [startRef: number, endRef: number], ... ];
+        bitsBufRefs_ReadFile,
+
+
+        // datatype explained: [ [startRef: number, endRef: number], [startRef: number, endRef: number], ... ];
         commentsTokens,
         bitsBufRefs_NoComments,
         bitsBufRefs_Comments_Outer,
@@ -367,14 +395,16 @@ export class CssImporter implements CssImporterInterface {
     this.tokensParser
       .parseWithStartAndEndTokensSets (
         fileContentsBuffer,
-        bitsBufRefs_NoComments, // datatype explained: [ [startRef: number, endRef: number], [startRef: number, endRef: number], ... ];
+        bitsBufRefs_NoComments,
+
+
+        // datatype explained: [ [startRef: number, endRef: number], [startRef: number, endRef: number], ... ];
         importsTokens,
         bitsBufRefs_NoImports,
         bitsBufRefs_ImportURLs_Outer,
         bitsBufRefs_ImportURLs_Inner,
         counterStop
       );
-
 
     if ( this.debug === true ) {
       console.log( "\n\nImports:\n" );
@@ -422,6 +452,7 @@ export class CssImporter implements CssImporterInterface {
         rangeStart = range[0];
         rangeEnd = range[1];
 
+
         // when the range is of zero size, skip to the next range.
         if ( rangeStart === rangeEnd ) {
           continue;
@@ -436,11 +467,14 @@ export class CssImporter implements CssImporterInterface {
 
       resultDTO.cssFileContents = new Uint8Array();
       inParsedResultDTO.addParsedResult( resultDTO );
+
       return resultDTO;
 
     } else {
+      let firstImportRange: number[] = bitsBufRefs_ImportURLs_Inner[0];
 
-      let firstImportRange: number[] = bitsBufRefs_ImportURLs_Inner[0]; // may be undefined
+
+      // may be undefined
       let firstImportRangeStart: number = firstImportRange[0];
 
       if ( firstImportRangeStart < firstRangeStart ) {
@@ -457,10 +491,7 @@ export class CssImporter implements CssImporterInterface {
       }
     }
 
-
-
     for ( refsIx = 0; refsIx < numberOfRanges; refsIx++ ) {
-
       range = [...bitsBufRefs_NoImports[refsIx]];
 
       rangeStart = range[0];
@@ -485,8 +516,6 @@ export class CssImporter implements CssImporterInterface {
 
         continue;
       }
-
-
 
       if ( bitsBufRefs_ImportURLs_Inner[latestImportsIx][0] > rangeStart ) {
         if ( rangeStart === rangeEnd ) {
@@ -537,7 +566,6 @@ export class CssImporter implements CssImporterInterface {
     counterStop: number,
     isRangeImportUrl: boolean
   ): number {
-
     let importsIx=0;
     let lastRangeIx = inLastRangeIx;
     let numberOfRanges: number = ranges.length;
@@ -568,6 +596,7 @@ export class CssImporter implements CssImporterInterface {
         ranges[importsIx],
         this.webpackAliases
       );
+
 
       // temp workaround, the inp file bitsbuf's name has t o be a number, or a description text or file path for debugging purposes.
       let bitsbufNameSubcall: string = cssFileToImport_Path;
