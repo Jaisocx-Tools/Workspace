@@ -11,8 +11,10 @@ export class Api {
         return this;
     }
     getNsTimestamp() {
-        const now = performance.timeOrigin + performance.now(); // Combine the origin and high-res time
-        return BigInt(Math.floor(now * 1_000_000)); // Convert milliseconds to nanoseconds
+        const now = performance.timeOrigin + performance.now();
+        // Combine the origin and high-res time
+        return BigInt(Math.floor(now * 1_000_000));
+        // Convert milliseconds to nanoseconds
     }
     fetchObjData(url, 
     //@ts-ignore

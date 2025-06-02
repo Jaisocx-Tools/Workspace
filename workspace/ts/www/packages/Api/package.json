@@ -1,8 +1,12 @@
 {
   "name": "@jaisocx/api",
-  "version": "1.2.2",
+  "version": "1.2.3",
   "private": false,
   "description": "",
+  "keywords": [
+    "api",
+    "objdata"
+  ],
   "type": "module",
   "main": "./transpiled/CommonJS/index.js",
   "types": "./transpiled/ESNext/index.d.ts",
@@ -11,18 +15,15 @@
     "require": "./transpiled/ComonJS/index.js",
     "import": "./transpiled/ESNext/index.js"
   },
-  "optionalDependencies": {
-    "@jaisocx/objdata": "2.1.2"
-  },
   "files": [
     "transpiled/CommonJS",
     "transpiled/ESNext",
     "transpiled/Simple",
-    "ObjDataConstants.json",
     "README.md"
   ],
-  "keywords": [
-  ],
+  "optionalDependencies": {
+    "@jaisocx/objdata": "2.1.3"
+  },
   "publishConfig": {
     "access": "public"
   },

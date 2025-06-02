@@ -143,6 +143,7 @@
       ]
     },
     {
+      "ready-to-use": false,
       "path": "packages/Mobile.vsDesktop",
       "name": "mobile-vs-desktop",
       "build": false,
@@ -221,7 +222,7 @@
     {
       "path": "packages/TemplateRenderer",
       "name": "template-renderer",
-      "build": true,
+      "build": false,
       "build-simple-enable": true,
       "dependencies": [
         {
@@ -238,6 +239,7 @@
       ]
     },
     {
+      "ready-to-use": false,
       "path": "packages/WorkspaceTreeWalker",
       "name": "workspace-tree-walker",
       "build": false,
@@ -252,6 +254,7 @@
       ]
     },
     {
+      "ready-to-use": false,
       "path": "packages/ImprovedTemplateRenderer",
       "name": "improved-template-renderer",
       "build": false,
@@ -283,7 +286,7 @@
     {
       "path": "packages/Api",
       "name": "api",
-      "build": false,
+      "build": true,
       "build-simple-enable": true,
       "dependencies": [
         {
