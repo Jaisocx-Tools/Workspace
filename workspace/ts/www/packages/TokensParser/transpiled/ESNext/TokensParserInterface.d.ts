@@ -11,9 +11,7 @@ export interface TokensParserInterface {
      * @param inOutRanges_TokensSetsMatched : number[][][]
      * @param maxIterationsNumber : number
      */
-    parseAroundSeveralTokensSets(inBitsbuf: Uint8Array, inBitsbufRanges: number[][], // datatype explained: [ [startRef: number, endRef: number], [startRef: number, endRef: number], ... ];
-    inSeveralTokensSets: string[][], // where one tokensSet is array of datatype string[]
-    inOutRanges_WithoutTokenizedAreas: number[][], inOutRanges_TokensSetsMatched: number[][][], maxIterationsNumber: number): number;
+    parseAroundSeveralTokensSets(inBitsbuf: Uint8Array, inBitsbufRanges: number[][], inSeveralTokensSets: string[][], inOutRanges_WithoutTokenizedAreas: number[][], inOutRanges_TokensSetsMatched: number[][][], maxIterationsNumber: number): number;
     /**
      * @info based on method call .getRangeOfTokensSetMatch()
      * @returns number of tokenized areas matched.
@@ -25,8 +23,7 @@ export interface TokensParserInterface {
      * @param inOutRanges_EnbracedByTokens_Inner : number[][]
      * @param maximalIterationsNumber : number
      */
-    parseWithStartAndEndTokensSets(inBitsbuf: Uint8Array, inBitsbufRanges: number[][], // datatype explained: [ [startRef: number, endRef: number], [startRef: number, endRef: number], ... ];
-    inTokens: {
+    parseWithStartAndEndTokensSets(inBitsbuf: Uint8Array, inBitsbufRanges: number[][], inTokens: {
         "setBegin": string[];
         "setEnd": string[];
     }, inOutRanges_WithoutTokenizedAreas: number[][], inOutRanges_EnbracedByTokens_Outer: number[][], inOutRanges_EnbracedByTokens_Inner: number[][], maximalIterationsNumber: number): number;

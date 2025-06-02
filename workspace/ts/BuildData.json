@@ -15,7 +15,7 @@
     {
       "path": "packages/JPath",
       "name": "jpath",
-      "build": true,
+      "build": false,
       "build-simple-enable": true,
       "dependencies": [],
       "build-files": [
@@ -26,7 +26,7 @@
     {
       "path": "packages/ObjData",
       "name": "objdata",
-      "build": false,
+      "build": true,
       "build-simple-enable": true,
       "dependencies": [
       ],
@@ -276,7 +276,7 @@
         "types/TemplateInfo.js",
         "types/TemplateConf.js",
         "ImprovedTemplateRenderer.js",
-        "ImprovedTemplateRendererConstants.js"        
+        "ImprovedTemplateRendererConstants.js"
       ]
     },
     {

@@ -290,7 +290,7 @@ export const LineDelimiters = {
       let linesReplacement = "";
 
       if (toSetLinesNumber === true) {
-        console.log(lineStartTokenBefore?.type, lineStartToken.type, node.type, linesRequired);
+        // console.log(lineStartTokenBefore?.type, lineStartToken.type, node.type, linesRequired);
 
         rangeStart = lineStartTokenBefore ? lineStartTokenBefore.range[1] : 0;
         rangeEnd = lineStartToken.range[0];

@@ -10,6 +10,7 @@ export class FileReader {
 
   textEncoder: TextEncoder;
 
+
   constructor() {
     this.textEncoder = new TextEncoder();
   }
@@ -17,39 +18,42 @@ export class FileReader {
 
   public readFileContentsAsBitsBuf( filePath: string ): Uint8Array {
     let fileContentsBitsBuf: Uint8Array = fs.readFileSync( filePath );
-    
+
     return fileContentsBitsBuf;
   }
 
 
-  public readFileContentsAsString( 
-    filePath: string, 
-    inCharsetName: string ): string {
+  public readFileContentsAsString(
+    filePath: string,
+    inCharsetName: string
+  ): string {
     let locCharsetName: string = "ascii";
+
     if ( inCharsetName !== undefined && inCharsetName.length !== 0 ) {
       locCharsetName = inCharsetName;
     }
 
     let fileContentsBuffer: Uint8Array = this.readFileContentsAsBitsBuf( filePath );
-    
+
     let decoder: TextDecoder = new TextDecoder( locCharsetName );
     let fileContents: string = decoder.decode( fileContentsBuffer );
 
-    // console.log( fileContentsBuffer ); 
-    console.log( fileContents ); 
+
+    // console.log( fileContentsBuffer );
+    console.log( fileContents );
 
     return fileContents;
   }
 
 
   public async readFileToBuffer( filePath: string ): Promise<Uint8Array> {
-
     let fileToImportStats: Stats = await fs.promises.stat( filePath );
     let fileToImportSize: number = fileToImportStats.size;
     let importedFileBuf: Buffer = Buffer.alloc( fileToImportSize );
-    let fileToImportFilehandle: FileHandle = await fs.promises.open( 
-      filePath, 
-      "r" );
+    let fileToImportFilehandle: FileHandle = await fs.promises.open(
+      filePath,
+      "r"
+    );
 
     try {
       await fileToImportFilehandle.read( importedFileBuf );

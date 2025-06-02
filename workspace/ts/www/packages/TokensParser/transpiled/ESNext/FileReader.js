@@ -18,7 +18,7 @@ export class FileReader {
         let fileContentsBuffer = this.readFileContentsAsBitsBuf(filePath);
         let decoder = new TextDecoder(locCharsetName);
         let fileContents = decoder.decode(fileContentsBuffer);
-        // console.log( fileContentsBuffer ); 
+        // console.log( fileContentsBuffer );
         console.log(fileContents);
         return fileContents;
     }

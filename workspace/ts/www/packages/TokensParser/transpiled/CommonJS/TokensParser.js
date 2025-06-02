@@ -35,8 +35,10 @@ class TokensParser {
      * @param inOutRanges_TokensSetsMatched : number[][][]
      * @param maxIterationsNumber : number
      */
-    parseAroundSeveralTokensSets(inBitsbuf, inBitsbufRanges, // datatype explained: [ [startRef: number, endRef: number], [startRef: number, endRef: number], ... ];
-    inSeveralTokensSets, // where one tokensSet is array of datatype string[]
+    parseAroundSeveralTokensSets(inBitsbuf, inBitsbufRanges, 
+    // datatype explained: [ [startRef: number, endRef: number], [startRef: number, endRef: number], ... ];
+    inSeveralTokensSets, 
+    // where one tokensSet is array of datatype string[]
     inOutRanges_WithoutTokenizedAreas, inOutRanges_TokensSetsMatched, maxIterationsNumber) {
         let numberOfTokensSetsMatched = 0;
         let start = 0;
@@ -129,7 +131,8 @@ class TokensParser {
      * @param inOutRanges_EnbracedByTokens_Inner : number[][]
      * @param maximalIterationsNumber : number
      */
-    parseWithStartAndEndTokensSets(inBitsbuf, inBitsbufRanges, // datatype explained: [ [startRef: number, endRef: number], [startRef: number, endRef: number], ... ];
+    parseWithStartAndEndTokensSets(inBitsbuf, inBitsbufRanges, 
+    // datatype explained: [ [startRef: number, endRef: number], [startRef: number, endRef: number], ... ];
     inTokens, inOutRanges_WithoutTokenizedAreas, inOutRanges_EnbracedByTokens_Outer, inOutRanges_EnbracedByTokens_Inner, maximalIterationsNumber) {
         // POINTERS IN THE IN BUF, NORMALLY FILE CONTENTS.
         // refined inBitsbufRanges, same dataype as the inBitsbufRanges
@@ -137,14 +140,14 @@ class TokensParser {
         // POINTERS IN THE IN BUF, NORMALLY FILE CONTENTS.
         // the refs, where the block, marked by parser, resides.
         // the marked block is delimitered in the file content with the start tokens set and the end tokens set.
-        // For example: 
+        // For example:
         //        @import url( "https://url" );   \r\n
         //        @import url (https://url);\n
         // never sure, whether a background space somewhere or several, and whether surrounded with quotes symbols.
-        // that is why we can relay on tokens sets, like this: 
+        // that is why we can relay on tokens sets, like this:
         //      the css import statement start denoted by tokens set: [ "@import", " url", "(" ]
         //              fnish of this line is denoted by tokens set: [ ")", ";" ]
-        // since some formats are not too strict, and I in this method wanted to provide the way 
+        // since some formats are not too strict, and I in this method wanted to provide the way
         //    to relay on the very standard keywords and symbols in the formats.
         // The handling background spaces may be performed in the extending class.
         // this class gathers refs, to avoid strings copies by value when parsing, and when concatenating.
@@ -181,11 +184,9 @@ class TokensParser {
          */
         let positionOfACharInTheInBitsBuf = 0;
         let lookupStart = 0;
-        /**
-         * @label for iteratingInRangesOfRefs
-         */
         iteratingInRangesOfRefs: for (inBitsbufId = 0; inBitsbufId < inBitsbufNumber; inBitsbufId++) {
-            let inBitsBufRange = inBitsbufRanges[inBitsbufId]; // datatype explained: [startRef: number, endRef: number]
+            let inBitsBufRange = inBitsbufRanges[inBitsbufId];
+            // datatype explained: [startRef: number, endRef: number]
             if (inBitsBufRange[startPos] === inBitsBufRange[endPos]) {
                 // the range is empty, no need to parse.
                 continue iteratingInRangesOfRefs;
@@ -266,18 +267,22 @@ class TokensParser {
     getRangeOfTokensSetMatch(inBitsbuf, tokenSetAsBitsbufs, inOutRange, lookupStartPos, lookupEndPos) {
         let startPos = 0;
         let endPos = 1;
-        let positionOfACharInTheInBitsBuf = lookupStartPos; // the first iteration is: inBitsBufRange[startPos]; however here is any step, not always just the first.
-        let tokenMatched_LastChar_Pos = 0; // the position in the inBitsbuf, where the last char of the current token compared matched.
+        let positionOfACharInTheInBitsBuf = lookupStartPos;
+        // the first iteration is: inBitsBufRange[startPos]; however here is any step, not always just the first.
+        let tokenMatched_LastChar_Pos = 0;
+        // the position in the inBitsbuf, where the last char of the current token compared matched.
         // searching til the block starts
         let tokensSetPos = 0;
-        let token = tokenSetAsBitsbufs[tokensSetPos]; // to the token var assigned the first token in the tokens set
-        let tokenMatched_FirstChar_Pos = 0; // the position in the inBitsBuffer, where the matched token has the first char matched.
+        let token = tokenSetAsBitsbufs[tokensSetPos];
+        // to the token var assigned the first token in the tokens set
+        let tokenMatched_FirstChar_Pos = 0;
+        // the position in the inBitsBuffer, where the matched token has the first char matched.
         let tokenFirstMatched = false;
         for (tokensSetPos = 0; tokensSetPos < tokenSetAsBitsbufs.length; tokensSetPos++) {
             // the next token of the tokens charsets denoting start of some block in the text when parsing.
             token = tokenSetAsBitsbufs[tokensSetPos];
             // trying to match the next token.
-            // once the next token did not match, 
+            // once the next token did not match,
             // means the entire tokens set did not match,
             // means no match.
             // then starting to match the very first token again,
@@ -285,7 +290,8 @@ class TokensParser {
             // when still no match til the end of a bitsbuf of a Range,
             // means no block encountered, this we wanted to find and to exclude from the valid blocks in the inBitsbuf.
             // means the entire block parsed, is valid.
-            tokenMatched_FirstChar_Pos = this.firstIndexOf(inBitsbuf, token, positionOfACharInTheInBitsBuf, // inBitsBufRange[startPos], later iterations the next match.
+            tokenMatched_FirstChar_Pos = this.firstIndexOf(inBitsbuf, token, positionOfACharInTheInBitsBuf, 
+            // inBitsBufRange[startPos], later iterations the next match.
             lookupEndPos);
             // if the comment block did not start, exit from searching in current range
             // if === false, EXIT TO HANDLE THE NEXT RANGE
@@ -313,13 +319,13 @@ class TokensParser {
             // first comment token matched on the start of the file, pos = 0.
             // the length of the token is 1 bytes ({0: "@"})
             // the last position of the token matched is the same first position = 0.
-            // however, the range [0,0] like seems denoting a zero len range, 
+            // however, the range [0,0] like seems denoting a zero len range,
             // and the range indeed has 1 byte length.
             // I set the range then [0,1] and this invokes the impression of a one char long token,
             // however in the programming logics position 1 is the position of the next char,
-            // and when the final char in the text of let's say 200 chars length matches, 
+            // and when the final char in the text of let's say 200 chars length matches,
             // then the range like [")", ";"] [198,200] matched, the real pos of symbol ";" is 199,
-            // and the pos 200 is out of bounds in the text of 200 chars length. 
+            // and the pos 200 is out of bounds in the text of 200 chars length.
             // just to notice this logics.
             // "end" keyword rather to interpret as "the next pos after the last char in the token matched".
             tokenMatched_LastChar_Pos = (tokenMatched_FirstChar_Pos.valueOf() + token.length);
@@ -402,7 +408,7 @@ class TokensParser {
                     continue;
                 }
             }
-            // the next char in the token is compared with the next char in the 
+            // the next char in the token is compared with the next char in the
             tokenChar = inToken_Uint8Array[offset];
             if (b === tokenChar) {
                 // @var offset: the offset of an tokenChar: octet in the token inBitsBuf: Uint8Array.

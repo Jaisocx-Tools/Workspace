@@ -1,6 +1,6 @@
 {
   "name": "@jaisocx/jpath",
-  "version": "1.2.2",
+  "version": "1.2.3",
   "author": "Jaisocx",
   "keywords": [
     "jpath",
@@ -24,6 +24,7 @@
     "transpiled/CommonJS",
     "transpiled/ESNext",
     "transpiled/Simple",
+    "test",
     "README.md"
   ],
   "publishConfig": {
