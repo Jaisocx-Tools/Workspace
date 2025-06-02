@@ -1,3 +1,4 @@
+import * as path from "node:path";
 export class JPath {
 
   public static JPATH_EXPRESSION_MAX_SIZE: number = 8;
@@ -205,9 +206,7 @@ export class JPath {
     const jpathSplittedByPoints: string[] = jpathExpression.split(".");
     let jpathSplitted: string = "";
 
-    loopSplittedByPoints:
-
-    for (
+    loopSplittedByPoints: for (
       jpathSplitted
       of jpathSplittedByPoints
     ) {
@@ -333,7 +332,7 @@ export class JPath {
 
     return this;
   }
-  getJPath(): (string|number)[] {
+  public getJPath(): (string|number)[] {
 
     if (
       (

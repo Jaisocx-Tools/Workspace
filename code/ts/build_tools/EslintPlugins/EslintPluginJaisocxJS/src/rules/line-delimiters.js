@@ -12,7 +12,7 @@ export const LineDelimiters = {
       {
         type: "object",
         properties: {
-          "methods": {
+          "class": {
             type: "object",
             properties: {
               "lines": {
@@ -22,7 +22,7 @@ export const LineDelimiters = {
             },
             additionalProperties: false
           },
-          "ret": {
+          "methods": {
             type: "object",
             properties: {
               "lines": {
@@ -38,6 +38,16 @@ export const LineDelimiters = {
               "lines": { 
                 type: "number", 
                 minimum: 1 
+              }
+            },
+            additionalProperties: false
+          },
+          "return": {
+            type: "object",
+            properties: {
+              "lines": {
+                type: "number",
+                minimum: 1
               }
             },
             additionalProperties: false
@@ -74,7 +84,20 @@ export const LineDelimiters = {
     const BEFORE = 1;
     const BEFORE_AND_AFTER = 2;
     const sourceCode = context.getSourceCode();
-
+    
+    const keywordPuctuator = "Punctuator";
+    const keywordKeyword = "Keyword";
+    const keywordExport = "export";
+    const keywordColon = ":";
+    
+    const labeledBlocksNames = [
+      "WhileStatement",
+      "ForStatement",
+      "ForInStatement",
+      "ForOfStatement"
+    ];
+      
+      
     // here we get eslintrc.js config rules
     const indentRuleConfig = (context && context.settings && context.settings.indent) || [ESLINT_CONFIG_INDENTATION_SIZE, ESLINT_CONFIG_INDENTATION_SIZE]; // Default to ESLINT_CONFIG_INDENTATION_SIZE spaces
     const eslintConfigIdentPrefixSizeForOneLevel = Array.isArray(indentRuleConfig) ? indentRuleConfig[1] : ESLINT_CONFIG_INDENTATION_SIZE;
@@ -84,14 +107,16 @@ export const LineDelimiters = {
       mode,
       spacingType
     ) {
+      console.log( node.type );
 
       const options = context.options[0] || {};
 
       const spacing = {
-        methods: options.methods.lines,
-        blocks: options.blocks.lines,
-        above_comments: options.above_comments.lines,
-        minmax_newlines: options.minmax_newlines.lines
+        "class": options.class.lines,
+        "methods": options.methods.lines,
+        "blocks": options.blocks.lines,
+        "above_comments": options.above_comments.lines,
+        "minmax_newlines": options.minmax_newlines.lines
       };
 
       let linesRequired = 0;
@@ -111,9 +136,9 @@ export const LineDelimiters = {
         before = false;
       }
       
-      if (!before) {
-        return;
-      }
+      // if (!before) {
+      //   return;
+      // }
 
       const searchKey = "Punctuator";
       const blockStart = "{";
@@ -133,11 +158,38 @@ export const LineDelimiters = {
         before: 0,
         after: 0
       };
-
+      
       let linesNumberToSet = 0;
+      
+      let lineStartToken = {};
+      let lineStartTokenBefore = {};
+
+      let labelToken = {};
+      let labelTokenBefore = {};
+
+      let exportKeywordToken = {};
+      let exportKeywordTokenBefore = {};
+
+      if (labeledBlocksNames.includes(node.type) && (before.value === keywordColon)) {
+        labelToken = sourceCode.getTokenBefore(before);
+        labelTokenBefore = sourceCode.getTokenBefore(labelToken);
+        
+        lineStartToken = labelToken;
+        lineStartTokenBefore = labelTokenBefore;
+        
+      } else if ((before.type === keywordKeyword) && (before.value === keywordExport)) {
+        exportKeywordToken = before;
+        exportKeywordTokenBefore = sourceCode.getTokenBefore( exportKeywordToken );
+        
+        lineStartToken = exportKeywordToken;
+        lineStartTokenBefore = exportKeywordTokenBefore;
+      } else {
+        lineStartToken = node;
+        lineStartTokenBefore = before;
+      }
 
       //if (isFirstInBlock === false) {
-        lineDiff.before = node.loc.start.line - ( before ? before.loc.end.line : 0 );
+        lineDiff.before = lineStartToken.loc.start.line - (lineStartTokenBefore ? lineStartTokenBefore.loc.end.line : 0);
         linesNumberToSet = linesRequired + 1;
       //}
       
@@ -154,21 +206,22 @@ export const LineDelimiters = {
           console.log( before, node.type);
         }
       }
-
+      
+      
 
       if ((toBypass !== true) && (lineDiff.before !== linesNumberToSet ) ) {
         // if ((isFirstInBlock === false) && (lineDiff.before !== linesNumberToSet)) {
         let rangeStart = 0;
         let rangeEnd = 0;
 
-        rangeStart = before ? before.range[1] : 0;
-        rangeEnd = node.range[0];
+        rangeStart = lineStartTokenBefore ? lineStartTokenBefore.range[1] : 0;
+        rangeEnd = lineStartToken.range[0];
+        whiteSpacesNumber = lineStartToken.loc.start.column;
         
-        whiteSpacesNumber = node.loc.start.column;
 
         if (rangeStart && rangeEnd ) {
 
-          let mustWhitespacesNumber = node.loc.start.column;
+          let mustWhitespacesNumber = lineStartToken.loc.start.column;
           let linesReplacement = "\n".repeat(linesNumberToSet) + " ".repeat(mustWhitespacesNumber);
           let range = [rangeStart, rangeEnd];
           mode = "before";
@@ -249,21 +302,22 @@ export const LineDelimiters = {
     }
 
     return {
-      FunctionDeclaration: function (node) {
+      // ClassDeclaration: Keyword class after keyword export
+      // FunctionExpression: function args block in round braces
+      // FunctionDeclaration: function body
+      ClassDeclaration: function (node) {
+        checkBlockSpacing(
+          node,
+          BEFORE,
+          "class"
+        );
+      },
+      MethodDefinition: function (node) {
         checkBlockSpacing(
           node,
           BEFORE,
           "methods"
         );
-      },
-      ArrowFunctionExpression: function (node) {
-        if (node.parent && node.parent.type === "VariableDeclarator") {
-          checkBlockSpacing(
-            node,
-            BEFORE,
-            "blocks"
-          );
-        }
       },
       IfStatement: function (node) {
         checkBlockSpacing(
@@ -304,7 +358,7 @@ export const LineDelimiters = {
         checkBlockSpacing(
           node,
           BEFORE,
-          "ret"
+          "return"
         );
       }
     };

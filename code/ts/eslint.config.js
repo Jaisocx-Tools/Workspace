@@ -63,9 +63,10 @@ export default [
       "jaisocx/line-delimiters": [
         "error",
         {
-          "methods": { "lines": 3 },
-          "blocks": { "lines": 1 },
-          "ret": { "lines": 3 },
+          "class": { "lines": 5 },
+          "methods": { "lines": 5 },
+          "blocks": { "lines": 5 },
+          "return": { "lines": 5 },
           "above_comments": { "lines": 2 },
           "minmax_newlines": { "lines": 1 }
         }
