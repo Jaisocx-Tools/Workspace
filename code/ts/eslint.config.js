@@ -63,12 +63,30 @@ export default [
       "jaisocx/line-delimiters": [
         "error",
         {
-          "class": { "lines": 3 },
-          "methods": { "lines": 3 },
-          "blocks": { "lines": 1 },
-          "return": { "lines": 5 },
-          "above_comments": { "lines": 2 },
-          "minmax_newlines": { "lines": 2 }
+          "class": {
+            "lines_before": 3,
+            "lines_before_on_block_start": 0
+          },
+          "methods": {
+            "lines_before": 3,
+            "lines_before_on_block_start": 1
+          },
+          "blocks": {
+            "lines_before": 1,
+            "lines_before_on_block_start": 1
+          },
+          "return": {
+            "lines_before": 3,
+            "lines_before_on_block_start": 0
+          },
+          "above_comments": {
+            "lines_before": 2,
+            "lines_before_on_block_start": 0
+          },
+          "code_lines": {
+            "lines_before": 2,
+            "lines_before_on_block_start": 0
+          }
         }
       ],
       "comma-dangle": [
@@ -94,10 +112,10 @@ export default [
       "jaisocx/line-delimiters": [
         "error",
         {
-          "methods": { "lines": 3 },
-          "blocks": { "lines": 2 },
-          "above_comments": { "lines": 2 },
-          "minmax_newlines": { "lines": 1 }
+          "methods": { "lines_before": 3 },
+          "blocks": { "lines_before": 2 },
+          "above_comments": { "lines_before": 2 },
+          "code_lines": { "lines_before": 1 }
         }
       ],
       "comma-dangle": [

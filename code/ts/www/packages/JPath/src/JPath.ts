@@ -1,4 +1,7 @@
 import * as path from "node:path";
+
+
+
 export class JPath {
 
   public static JPATH_EXPRESSION_MAX_SIZE: number = 8;
@@ -7,11 +10,16 @@ export class JPath {
   protected _jpathExpression: string;
   protected _jpathExpressionMaxSize: number;
 
+
+
   constructor() {
     this._jpath = [];
     this._jpathExpression = "";
     this._jpathExpressionMaxSize = JPath.JPATH_EXPRESSION_MAX_SIZE;
   }
+
+
+
   public static setByJPath (
     obj: any,
     jpath: (string|number)[],
@@ -23,7 +31,6 @@ export class JPath {
     let key: any = null;
 
     for ( key of jpath ) {
-
       datatypeNode = typeof key;
 
       if ( !obj[key] ) {
@@ -45,6 +52,8 @@ export class JPath {
 
   }
 
+
+
   public static setByJPathWalkFlatRebuild (
     obj: any,
     jpath: (string|number)[],
@@ -53,7 +62,6 @@ export class JPath {
     nameId: string,
     branchName: string
   ) {
-
     const jpathLen: number = jpath.length;
     let jpathIx: number;
     let jpathLastIx: number = jpathLen - 1;
@@ -66,7 +74,6 @@ export class JPath {
     obj[nameId] = id;
 
     for ( jpathIx = 1; jpathIx < jpathLen; jpathIx++ ) {
-
       id = jpath[jpathIx];
 
       foundNode = false;
@@ -87,7 +94,10 @@ export class JPath {
 
       foundNode = toGetById.find (
         ( node: any ) => {
-          const matches: boolean = ( node[nameId] === id );return matches;
+          const matches: boolean = ( node[nameId] === id );
+
+
+          return matches;
         }
       );
 
@@ -121,11 +131,14 @@ export class JPath {
 
   }
 
+
+
   public static getByJPathExpression (
     jpathExpression: string,
     value: any
   ): any {
     const jpath: (string|number)[] = JPath.parse( jpathExpression );
+
 
     return JPath.getByJPath(
       jpath,
@@ -142,6 +155,9 @@ export class JPath {
   //    let valueFound = JPath.getByJPath( jpath, obj );
   //    console.log( valueFound );
   //    prints out => true
+
+
+
   public static getByJPath (
     jpath: (string|number)[],
     value: any
@@ -188,6 +204,7 @@ export class JPath {
 
     }
 
+
     return targetValue;
 
   }
@@ -201,6 +218,9 @@ export class JPath {
   //    let valueFound = JPath.getByJPath( jpath, obj );
   //    console.log( valueFound );
   //    prints out => true
+
+
+
   public static parse( jpathExpression: string ): (string|number)[] {
     const jpath: (string|number)[] = [];
 
@@ -211,7 +231,6 @@ export class JPath {
       jpathSplitted
       of jpathSplittedByPoints
     ) {
-
       const jpathSplittedLenth: number = jpathSplitted ? jpathSplitted.length : 0;
 
       if ( jpathSplittedLenth === 0 ) {
@@ -279,7 +298,6 @@ export class JPath {
         //  when the opening square brace [ is found first time.
 
         if ( matchedFirstTime === false ) {
-
           jpathKey = jpathSplitted.slice (
             0,
             leftBracePosition
@@ -313,26 +331,39 @@ export class JPath {
 
     }
 
+
     return jpath;
   }
+
+
 
   public setJPathExpression( jpathExpression: string ): JPath {
     this._jpathExpression = jpathExpression;
 
+
     return this;
   }
+
+
 
   public setJPathExpressionMaxSize( maxSize: number ): JPath {
     this._jpathExpressionMaxSize = maxSize;
 
+
     return this;
   }
+
+
 
   public setJPath( jpath: (string|number)[] ): JPath {
     this._jpath = jpath;
 
+
     return this;
   }
+
+
+
   public getJPath(): (string|number)[] {
 
     if (
@@ -344,8 +375,11 @@ export class JPath {
       this._jpath = JPath.parse( this._jpathExpression );
     }
 
+
     return this._jpath;
   }
+
+
 
   public static getJPathName (
     jpathExpression: string,
@@ -353,6 +387,8 @@ export class JPath {
   ): string {
     let jpath: (string|number)[] = JPath.parse( jpathExpression );
     let jpathName: string = jpath.join( delimiter );
+
+
     return jpathName;
   }
 
