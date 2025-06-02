@@ -14,36 +14,35 @@ export class Trimmer {
   SYMBOL_FIGURED_BRACE_CLOSE: string = "}";
 
 
-
   constructor() {
     this.SYMBOL_DOUBLE_QUOTE = "\"";
     this.SYMBOL_SINGLE_QUOTE = "'";
     this.SYMBOL_BACKSLASH_QUOTE = "`";
-  
+
     this.SYMBOL_ROUND_BRACE_OPEN = "(";
     this.SYMBOL_ROUND_BRACE_CLOSE = ")";
-  
+
     this.SYMBOL_SQUARE_BRACE_OPEN = "[";
     this.SYMBOL_SQUARE_BRACE_CLOSE = "]";
-  
+
     this.SYMBOL_FIGURED_BRACE_OPEN = "{";
     this.SYMBOL_FIGURED_BRACE_CLOSE = "}";
   }
+
 
   trimSurroundingChars (
     inText: string,
     inSurroundingChars: string[][]
   ): string|false {
-
     let sourceLen: number = inText.length;
     let i: number = 0;
-  
+
     let trimmed: string = inText.trim();
     let trimmedLen: number = trimmed.length;
     let trimmedLastPos: number = 0;
     let trimmedFirstChar: number = 0;
     let trimmedLastChar: number = 0;
-  
+
     let locSurroundingCharCodes = new Array(inSurroundingChars.length) as number[][];
     let j: number = 0;
 
@@ -51,7 +50,7 @@ export class Trimmer {
     let charCodes: number[] = new Array() as number[];
     let surroundingCharsLen: number = 0;
     let char: string = "";
-  
+
     for ( i = 0; i < inSurroundingChars.length; i++ ) {
       chars = inSurroundingChars[i];
       surroundingCharsLen = chars.length;
@@ -73,10 +72,9 @@ export class Trimmer {
     let tempText: string = "";
 
     for ( i = 0; i < locSurroundingCharCodes.length; i++ ) {
-
       trimmedLen = trimmed.length;
       trimmedLastPos = trimmedLen - 1;
-  
+
       trimmedFirstChar = trimmed.charCodeAt( 0 );
       trimmedLastChar = trimmed.charCodeAt( trimmedLastPos );
 
@@ -89,17 +87,20 @@ export class Trimmer {
         symbolStart = charCodes[0];
         symbolFinish = charCodes[1];
       }
-  
-      if ( 
-        ( trimmedFirstChar === symbolStart ) && 
-        ( trimmedLastChar === symbolFinish ) 
+
+      if (
+        ( trimmedFirstChar === symbolStart ) &&
+        ( trimmedLastChar === symbolFinish )
       ) {
         matched = true;
-        tempText = trimmed.substring( 1, trimmedLastPos );
+        tempText = trimmed.substring(
+          1,
+          trimmedLastPos
+        );
         trimmed = tempText;
       }
     }
-  
+
     if ( matched === false ) {
       return matched;
     }
@@ -107,8 +108,8 @@ export class Trimmer {
     return trimmed;
   }
 
-  trimQuotes( inText: string ): string|false {
 
+  trimQuotes( inText: string ): string|false {
     let retVal: string|boolean = this.trimSurroundingChars (
       inText,
       [
@@ -120,8 +121,8 @@ export class Trimmer {
     return retVal;
   }
 
-  trimRoundBraces( inText: string ): string|false {
 
+  trimRoundBraces( inText: string ): string|false {
     let retVal: string|boolean = this.trimSurroundingChars (
       inText,
       [
@@ -132,8 +133,8 @@ export class Trimmer {
     return retVal;
   }
 
-  trimRoundBracesAndQuotesInside( inText: string ): string|false {
 
+  trimRoundBracesAndQuotesInside( inText: string ): string|false {
     let retVal: string|boolean = this.trimSurroundingChars (
       inText,
       [
@@ -146,8 +147,8 @@ export class Trimmer {
     return retVal;
   }
 
-  trimSquareBraces( inText: string ): string|false {
 
+  trimSquareBraces( inText: string ): string|false {
     let retVal: string|boolean = this.trimSurroundingChars (
       inText,
       [
@@ -158,8 +159,8 @@ export class Trimmer {
     return retVal;
   }
 
-  trimSquareBracesAndQuotesInside( inText: string ): string|false {
 
+  trimSquareBracesAndQuotesInside( inText: string ): string|false {
     let retVal: string|boolean = this.trimSurroundingChars (
       inText,
       [
@@ -172,8 +173,8 @@ export class Trimmer {
     return retVal;
   }
 
-  trimFiguredBraces( inText: string ): string|false {
 
+  trimFiguredBraces( inText: string ): string|false {
     let retVal: string|boolean = this.trimSurroundingChars (
       inText,
       [
@@ -184,8 +185,8 @@ export class Trimmer {
     return retVal;
   }
 
-  trimFiguredBracesAndQuotesInside( inText: string ): string|false {
 
+  trimFiguredBracesAndQuotesInside( inText: string ): string|false {
     let retVal: string|boolean = this.trimSurroundingChars (
       inText,
       [
