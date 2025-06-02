@@ -27,7 +27,7 @@ export class CssSelectorWeight {
         // Count ::before, ::after, others
         let matchingAfterlike = (selectorWithoutNot.match(/::[\w-]+/g) || []);
         e += matchingAfterlike.length;
-        // exactness level of the css rule, nodes positions in the DOM tree 
+        // exactness level of the css rule, nodes positions in the DOM tree
         // > ~ +
         f += (selector.match(/[>+~]+/g) || []).length;
         return [a, b, c, d, e, f];
@@ -63,7 +63,8 @@ export class CssSelectorWeight {
         let selectors = new Array();
         let s = "";
         let specifitiesAndSelectors = new Array();
-        let specifity = new Array(6); // new Array(6) as number[]
+        let specifity = new Array(6);
+        // new Array(6) as number[]
         let objTemplate = { "specifity": [],
             "cssSelector": "" };
         let obj = { ...objTemplate };
@@ -76,8 +77,12 @@ export class CssSelectorWeight {
         else {
             selectors = selector
                 .split(",")
-                .map(s => { return s.trim(); })
-                .map(s => { return s.replace(/["'][^"']*["']/g, ""); });
+                .map(s => {
+                return s.trim();
+            })
+                .map(s => {
+                return s.replace(/["'][^"']*["']/g, "");
+            });
             for (s of selectors) {
                 specifity = this.calculateOneRuleSpecificity(s);
                 obj = { ...objTemplate };

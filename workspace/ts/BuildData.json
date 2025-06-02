@@ -53,7 +53,7 @@
     {
       "path": "packages/CssHtml",
       "name": "css-html",
-      "build": false,
+      "build": true,
       "build-simple-enable": true,
       "dependencies": [],
       "build-files": [
