@@ -1,15 +1,18 @@
 import { DatasetBase } from "@jaisocx/cdn-datasets-base";
 
 
+
 export class LanguagesCodes extends DatasetBase {
-  
+
   static _singletonInstance: LanguagesCodes;
+
 
   constructor() {
     super();
 
     this._data = this.initData();
   }
+
 
   static getSingletonInstance(): LanguagesCodes {
 
@@ -20,9 +23,11 @@ export class LanguagesCodes extends DatasetBase {
     return LanguagesCodes._singletonInstance;
   }
 
+
   getLanguagesCodes(): any[] {
     return this._data;
   }
+
 
   getLanguagesCodesIndexedByKeys( key: string ): any[] {
     return this.getDataIndexedByKeys( key );
@@ -30,22 +35,29 @@ export class LanguagesCodes extends DatasetBase {
 
 
   saveLanguagesCodes( inFilePath: string ): number {
-    let locSaved: number = this.saveData( inFilePath, this._data );
+    let locSaved: number = this.saveData(
+      inFilePath,
+      this._data
+    );
 
     return locSaved;
   }
 
-  saveLanguagesCodesIndexedByKeys( 
-    key: string, 
-    inFilePath: string ): number {
-    let locSaved: number = this.saveDataIndexedByKeys( key, inFilePath );
+
+  saveLanguagesCodesIndexedByKeys(
+    key: string,
+    inFilePath: string
+  ): number {
+    let locSaved: number = this.saveDataIndexedByKeys(
+      key,
+      inFilePath
+    );
 
     return locSaved;
   }
 
 
   initData(): any[] {
-
     let locData = [
       {
         "language_code": "aa",

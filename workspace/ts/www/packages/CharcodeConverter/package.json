@@ -1,8 +1,11 @@
 {
   "name": "@jaisocx/charcode-converter",
-  "version": "1.4.1",
+  "version": "1.4.2",
   "author": "Jaisocx",
-  "keywords": [],  
+  "keywords": [
+    "cdn",
+    "languages-codes"
+  ],
   "private": false,
   "description": "",
   "type": "module",
@@ -14,15 +17,15 @@
     "import": "./transpiled/ESNext/index.js"
   },
   "files": [
+    "cdn_data",
     "transpiled/CommonJS",
     "transpiled/ESNext",
     "transpiled/Simple",
-    "cdn_data",
     "README.md"
   ],
   "optionalDependencies": {
-    "@jaisocx/event-emitter": "^1.4.x",
-    "@jaisocx/cdn-datasets-base": "^1.2.1"
+    "@jaisocx/event-emitter": "^1.4.2",
+    "@jaisocx/cdn-datasets-base": "^1.2.2"
   },
   "publishConfig": {
     "access": "public"

@@ -49,7 +49,9 @@ class WriteAllDataSetsCommand {
             isPathDefined = false;
         }
         if (isPathDefined === false) {
-            pathResolveFunc = (inPath1, inPath2) => { return [inPath1, inPath2].join("/"); };
+            pathResolveFunc = (inPath1, inPath2) => {
+                return [inPath1, inPath2].join("/");
+            };
         }
         // @ts-ignore
         Countries_js_1.Countries.getSingletonInstance().saveCountriesNames(pathResolveFunc(folderPath, "countriesNames.json"));

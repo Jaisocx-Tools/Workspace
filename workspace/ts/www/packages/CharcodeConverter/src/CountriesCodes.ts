@@ -1,15 +1,18 @@
 import { DatasetBase } from "@jaisocx/cdn-datasets-base";
 
 
+
 export class CountriesCodes extends DatasetBase {
-  
+
   static _singletonInstance: CountriesCodes;
+
 
   constructor() {
     super();
 
     this._data = this.initData();
   }
+
 
   static getSingletonInstance(): CountriesCodes {
 
@@ -20,30 +23,41 @@ export class CountriesCodes extends DatasetBase {
     return CountriesCodes._singletonInstance;
   }
 
+
   getCountriesCodes(): any[] {
     return this._data;
   }
+
 
   getCountriesCodesIndexedByKeys( key: string ): any[] {
     return this.getDataIndexedByKeys( key );
   }
 
+
   saveCountriesCodes( inFilePath: string ): number {
-    let locSaved: number = this.saveData( inFilePath, this._data );
+    let locSaved: number = this.saveData(
+      inFilePath,
+      this._data
+    );
 
     return locSaved;
   }
 
-  saveCountriesCodesIndexedByKeys( 
-    key: string, 
-    inFilePath: string ): number {
-    let locSaved: number = this.saveDataIndexedByKeys( key, inFilePath );
+
+  saveCountriesCodesIndexedByKeys(
+    key: string,
+    inFilePath: string
+  ): number {
+    let locSaved: number = this.saveDataIndexedByKeys(
+      key,
+      inFilePath
+    );
 
     return locSaved;
   }
+
 
   initData(): any[] {
-
     let locData = [
       {
         "country_name": "Afghanistan",

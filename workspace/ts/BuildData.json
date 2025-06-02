@@ -104,7 +104,7 @@
     {
       "path": "packages/CdnDatasetsBase",
       "name": "cdn-datasets-base",
-      "build": true,
+      "build": false,
       "build-simple-enable": true,
       "dependencies": [
         {

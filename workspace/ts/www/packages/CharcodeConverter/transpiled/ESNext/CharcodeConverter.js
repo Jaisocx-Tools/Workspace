@@ -58,8 +58,8 @@ export class CharcodeConverter {
         }
         console.log(key, data);
     }
-    // join ( 
-    //   inoutObj: any 
+    // join (
+    //   inoutObj: any
     // ): number { // length bytes of the entire rendered html text in the inoutobj.retVal, .join('') once.
     //   const autoload: number = 0;
     //   const NAVIGATE_WITH_CALLBACK: number = 2;
@@ -107,7 +107,7 @@ export class CharcodeConverter {
     //     }
     //     return retVal;
     //   };
-    //   const sizesObj: any = navigateMultidim ( 
+    //   const sizesObj: any = navigateMultidim (
     //     NAVIGATE_NO_CALLBACK,
     //     inoutObj.bufs,
     //     null
@@ -127,7 +127,7 @@ export class CharcodeConverter {
     //     let targetValueArrayOffset: number = lastOffset;
     //     let inpArrayOffset: number = 0;
     //     let inpArraySize: number = array.length;
-    //     for ( 
+    //     for (
     //       ( inpArrayOffset = 0 );
     //       ( inpArrayOffset < inpArraySize );
     //       ( inpArrayOffset += 1 )
@@ -139,7 +139,7 @@ export class CharcodeConverter {
     //     }
     //     localInMethod_lastOffsetStringArray = targetValueArrayOffset;
     //   };
-    //   const _summaryAfterFillCharbuf: any = navigateMultidim ( 
+    //   const _summaryAfterFillCharbuf: any = navigateMultidim (
     //     NAVIGATE_WITH_CALLBACK,
     //     inoutObj.bufs,
     //     navigateMultidimCallback
@@ -166,7 +166,7 @@ export class CharcodeConverter {
         //     "": text,
         //     "lookupTableLen": this._charToNum_AlignedSymbols.length,
         //     "resultArrayLength": resultArrayLength,
-        //     "iterationsNumber": resultArrayIndex, 
+        //     "iterationsNumber": resultArrayIndex,
         //   }
         // );
         // this.log (
@@ -175,7 +175,7 @@ export class CharcodeConverter {
         //     "": text,
         //     "lookupTableLen": this._charToNum_AlignedSymbols.length,
         //     "resultArrayLength": resultArrayLength,
-        //     "iterationsNumber": resultArrayIndex 
+        //     "iterationsNumber": resultArrayIndex
         //   }
         // );
         return resultArray;
@@ -198,7 +198,7 @@ export class CharcodeConverter {
         //     "buf": buf,
         //     "lookupTableLen": this._charToNum_AlignedSymbols.length,
         //     "resultStringLength": resultStringLength,
-        //     "iterationsNumber": resultStringIndex, 
+        //     "iterationsNumber": resultStringIndex,
         //   }
         // );
         const EMPTY_STRING = (new String("")).valueOf();
@@ -212,7 +212,7 @@ export class CharcodeConverter {
         //     "charcode": charcode,
         //     "lookupTableLen": this._charToNum_AlignedSymbols.length,
         //     "resultStringLength": 1,
-        //     "iterationsNumber": 1, 
+        //     "iterationsNumber": 1,
         //   }
         // );
         return this._numToChar[charcode];
@@ -327,8 +327,8 @@ export class CharcodeConverter {
                 continue;
             }
         }
-        // here for sure the opsNumber grows very much. 
-        // the opsNumber counter is to estimate simple opcodes number 
+        // here for sure the opsNumber grows very much.
+        // the opsNumber counter is to estimate simple opcodes number
         // to compare efficiency if looking for an algorythm to rewrite in low level code.
         // this.log (
         //   "getCharcode",
@@ -337,7 +337,7 @@ export class CharcodeConverter {
         //     "lookupTableLen": this._charToNum_AlignedSymbols.length,
         //     "resultStringLength": 1,
         //     "iterationsNumber": lookupStep,
-        //     "opsNumber": opsNumber, 
+        //     "opsNumber": opsNumber,
         //   }
         // );
         //opsNumber += 1;
@@ -375,8 +375,8 @@ export class CharcodeConverter {
                     .split("-")
                     .map((base16number) => parseInt(base16number, 16));
                 if (charcode >= start && charcode <= end) {
-                    // this.log( 
-                    //   "loadCharset, alphabet ${alphabet}", 
+                    // this.log(
+                    //   "loadCharset, alphabet ${alphabet}",
                     //   alphabet );
                     this.loadCharset(alphabet);
                     return;
@@ -429,7 +429,7 @@ export class CharcodeConverter {
         let [charcodeRangeFirstCharcode, charcodeRangeHighestCharcode] = [];
         let charcodeRange = "";
         let ranges = charset.unicode_ranges;
-        // for each unicode range in this charset, 
+        // for each unicode range in this charset,
         // fills array of chars, to lookup by charcode of datatype number.
         for (charcodeRange of ranges) {
             [charcodeRangeFirstCharcode, charcodeRangeHighestCharcode] = charcodeRange.split("-").map(base16number => parseInt(base16number, 16));
