@@ -11,8 +11,8 @@
       "request": "attach",
       "port": 9229,
       "address": "localhost",
-      "localRoot": "${workspaceFolder}/code/ts",
-      "remoteRoot": "/var/www/code/ts",
+      "localRoot": "${workspaceFolder}/workspace/ts",
+      "remoteRoot": "/var/www/workspace/ts",
       "restart": false,
       "skipFiles": ["<node_internals>/**"]
     },
@@ -22,7 +22,7 @@
       "request": "launch",
       "port": 9007,
       "pathMappings": {
-          "/var/www/code/php": "${workspaceFolder}/code/php"
+          "/var/www/workspace/php": "${workspaceFolder}/workspace/php"
       },
       "profile": false,
       "openProfile": true,
@@ -39,7 +39,7 @@
           "-S", "sandbox.brightday.email/php/", "-t", "."
       ],
       "pathMappings": {
-          "/var/www/code/php": "${workspaceFolder}/code/php"
+          "/var/www/workspace/php": "${workspaceFolder}/workspace/php"
       },
       "noDebug": true, // <-- disable debugging
       "profile": true, // <-- enable profiling
@@ -57,7 +57,7 @@
       "runtimeExecutable": "/usr/local/bin/php",
       "port": 9007,
       "pathMappings": {
-          "/var/www/code/php": "${workspaceFolder}/code/php"
+          "/var/www/workspace/php": "${workspaceFolder}/workspace/php"
       },
       "log": true
     }

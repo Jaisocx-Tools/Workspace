@@ -14,7 +14,7 @@ pathToEnv="${thisPath}/.env"
 
 
 
-# when there is the .env 
+# when there is the .env
 if [ -e "${pathToEnv}" ]; then
   # Obtaining the Project's settings from the .env
   source "${pathToEnv}"
@@ -22,12 +22,12 @@ if [ -e "${pathToEnv}" ]; then
 
   # the constants from the .env, pleae don't use there hardcoed, the best to set in the .env file :
   # tsconfigVersion="ESNext"
-  # relativeProjectPathWithTsCode="./code/ts"
-  # tsServicePathInDockerVolume="/var/www/code/ts"
+  # relativeProjectPathWithTsCode="./workspace/ts"
+  # tsServicePathInDockerVolume="/var/www/workspace/ts"
 
   # the command line tool PackageBuilder.ts is best to invoke in the dockerized node service,
-  # since the node ver. 23 and npm ver. are fixed in Your setup, 
-  # until changed in ./docker/ts/Dockerfile in the first line: 
+  # since the node ver. 23 and npm ver. are fixed in Your setup,
+  # until changed in ./docker/ts/Dockerfile in the first line:
   # FROM node:23-alpine3.19
   # this line invokes the .sh command to call the ProjectBuilder.ts the desired way.
 
