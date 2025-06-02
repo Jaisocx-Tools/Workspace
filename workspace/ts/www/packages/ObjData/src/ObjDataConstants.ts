@@ -1,19 +1,39 @@
 import { writeFileSync } from "fs";
 
+
+
 export class ObjDataConstants {
 
   // here are refs, relative to ObjData serialized byte buffer start, where numeric variable values reside.
   static FIELDS_POINTERS: any = {
-    HEADERS_LENGTH: 20, // the constant value of every Object field header number of bytes. These header fields are described here in this FIELDS_POINTERS object.
-    LENGTH_ALL: 0, // the packet starts on the first position with the 32 bit long numeric value
-    LENGTH_ALL_FIELD_LEN: 4, 
-    DATATYPE: 4, // on the 5th byte resides datatype numeric constant with the 32 bit long numeric value
+    HEADERS_LENGTH: 20,
+
+
+    // the constant value of every Object field header number of bytes. These header fields are described here in this FIELDS_POINTERS object.
+    LENGTH_ALL: 0,
+
+
+    // the packet starts on the first position with the 32 bit long numeric value
+    LENGTH_ALL_FIELD_LEN: 4,
+    DATATYPE: 4,
+
+
+    // on the 5th byte resides datatype numeric constant with the 32 bit long numeric value
     DATATYPE_FIELD_LEN: 4,
-    NUMBER_VALUE_UNIT: 8, // on the 9th byte resides unit numeric constant  with the 32 bit long numeric value
+    NUMBER_VALUE_UNIT: 8,
+
+
+    // on the 9th byte resides unit numeric constant  with the 32 bit long numeric value
     NUMBER_VALUE_UNIT_FIELD_LEN: 4,
-    PROPS_AMOUNT: 12, // on the 13th byte resides the 32 bit long numeric value
+    PROPS_AMOUNT: 12,
+
+
+    // on the 13th byte resides the 32 bit long numeric value
     PROPS_AMOUNT_FIELD_LEN: 4,
-    PROPERTY_NAME_LENGTH: 16, // on the 17th byte resides the 32 bit long numeric value
+    PROPERTY_NAME_LENGTH: 16,
+
+
+    // on the 17th byte resides the 32 bit long numeric value
     PROPERTY_NAME_LENGTH_FIELD_LEN: 4,
     PROPERTY_NAME_START: 20
   };
@@ -125,7 +145,7 @@ export class ObjDataConstants {
     TEXT_CSS: 58,
     TEXT_JSON: 59,
     TEXT_LD_JSON: 591,
-    
+
     TEXT_URL: 592,
 
     TEXT_DATETIME: 593,
@@ -142,20 +162,21 @@ export class ObjDataConstants {
     CSS_IMPORT_EXPRESSION: 68
   };
 
+
   public static exportConstants() {
-    
     let objDataConstants: object = {
       FIELDS_POINTERS: ObjDataConstants.FIELDS_POINTERS,
       UNITS: ObjDataConstants.UNITS,
       DATA_TYPES: ObjDataConstants.DATA_TYPES
     };
-    
+
     writeFileSync (
-      "ObjDataConstants.json", 
+      "ObjDataConstants.json",
       JSON.stringify(
-        objDataConstants, 
-        null, 
-        2)
+        objDataConstants,
+        null,
+        2
+      )
     );
 
   }

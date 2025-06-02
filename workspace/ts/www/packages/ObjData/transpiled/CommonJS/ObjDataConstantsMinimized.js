@@ -9,15 +9,21 @@ ObjDataConstants.PROPERTY_NAME_START = 12;
 ObjDataConstants.HEADERS_LENGTH = 12;
 // here are refs, relative to ObjData serialized byte buffer start, where numeric variable values reside.
 ObjDataConstants.FIELDS_POINTERS = {
-    LENGTH_ALL: 0, // the packet starts on the first position with the 32 bit numeric long value
-    LENGTH_ALL_FIELD_LEN: 4, // the packet starts on the first position with the 32 bit numeric long value
-    DATATYPE: 4, // on the 5th byte resides datatype numeric constant 8 bit unsigned byte value up to 255.
+    LENGTH_ALL: 0,
+    // the packet starts on the first position with the 32 bit numeric long value
+    LENGTH_ALL_FIELD_LEN: 4,
+    // the packet starts on the first position with the 32 bit numeric long value
+    DATATYPE: 4,
+    // on the 5th byte resides datatype numeric constant 8 bit unsigned byte value up to 255.
     DATATYPE_FIELD_LEN: 1,
-    NUMBER_VALUE_UNIT: 5, // on the 6th byte resides unit numeric constant 8 bit unsigned byte value up to 255
+    NUMBER_VALUE_UNIT: 5,
+    // on the 6th byte resides unit numeric constant 8 bit unsigned byte value up to 255
     NUMBER_VALUE_UNIT_FIELD_LEN: 1,
-    PROPS_AMOUNT: 6, // on the 7th byte resides 32 bit unsigned int value up to MAX_INT_VALUE
+    PROPS_AMOUNT: 6,
+    // on the 7th byte resides 32 bit unsigned int value up to MAX_INT_VALUE
     PROPS_AMOUNT_FIELD_LEN: 4,
-    PROPERTY_NAME_LENGTH: 10, // on the 11th byte resides 16 bit short int value 
+    PROPERTY_NAME_LENGTH: 10,
+    // on the 11th byte resides 16 bit short int value
     PROPERTY_NAME_LENGTH_FIELD_LEN: 2
 };
 ObjDataConstants.UNITS = {

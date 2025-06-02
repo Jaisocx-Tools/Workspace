@@ -1,5 +1,7 @@
 import { ObjDataConstants } from "./ObjDataConstants";
 
+
+
 export class ObjDataHelpingProps {
 
   lengthAll: number;
@@ -12,6 +14,7 @@ export class ObjDataHelpingProps {
   propertyValueLength: number;
   propertyValueStart: number;
 
+
   constructor() {
     this.lengthAll = 0;
     this.datatype = 0;
@@ -19,7 +22,7 @@ export class ObjDataHelpingProps {
     this.propsAmount = 0;
     this.propertyNameLength = 0;
     this.propertyNameStart = ObjDataConstants.FIELDS_POINTERS.PROPERTY_NAME_START;
-  
+
     this.propertyValueLength = 0;
     this.propertyValueStart = 0;
   }

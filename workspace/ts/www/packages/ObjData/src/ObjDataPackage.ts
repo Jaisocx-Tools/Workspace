@@ -4,22 +4,26 @@ export class ObjDataPackage {
     arrays: Uint8Array[]
   ): Uint8Array {
     const totalLength = arrays.reduce(
-      (sum, arr) => sum + arr.length, 
-      0);
+      (sum, arr) => sum + arr.length,
+      0
+    );
     const result = new Uint8Array(totalLength);
     let offset = 0;
+
     for (const arr of arrays) {
       result.set(
-        arr, 
+        arr,
         offset);
       offset += arr.length;
     }
+
     return result;
   }
 
+
   static parseByteBufToNumber (
-    byteBuf: Uint8Array, 
-    offset: number, 
+    byteBuf: Uint8Array,
+    offset: number,
     len: number
   ): number {
     let result: number = 0;
@@ -34,22 +38,26 @@ export class ObjDataPackage {
     return result;
   }
 
+
   static parseByteBufToText (
-    byteBuf: Uint8Array, 
-    offset: number, 
+    byteBuf: Uint8Array,
+    offset: number,
     len: number,
     charsetName: any
   ): any {
     return new TextDecoder(charsetName).decode(byteBuf.slice(
-      offset, 
-      offset + len));
+      offset,
+      offset + len
+    ));
   }
+
 
   static serializeTextToByteBuf (
     text: any
   ): Uint8Array {
     return  new TextEncoder().encode(text);
   }
+
 
   static serializeNumberToByteBuf (
     num: number,
@@ -64,7 +72,7 @@ export class ObjDataPackage {
       byteBufOffset = offset + loopCounter;
       byteBuf[byteBufOffset] = ((num >> ((len - 1 - loopCounter) << 3 )) & 0xFF);
     }
-    
+
   }
 }
 

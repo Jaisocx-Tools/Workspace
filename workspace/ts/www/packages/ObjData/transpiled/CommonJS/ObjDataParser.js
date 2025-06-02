@@ -81,9 +81,11 @@ class ObjDataParser {
         }
         // Get response as a binary array (use arrayBuffer for byte data)
         const buffer = await response.arrayBuffer();
+        //@ts-ignore
         const uint8Array = new Uint8Array(buffer);
         // Deserialize the data
-        return; // this.deserialize(uint8Array);
+        return;
+        // this.deserialize(uint8Array);
     }
 }
 exports.ObjDataParser = ObjDataParser;

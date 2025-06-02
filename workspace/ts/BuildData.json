@@ -26,12 +26,13 @@
     {
       "path": "packages/ObjData",
       "name": "objdata",
-      "build": true,
+      "build": false,
       "build-simple-enable": true,
       "dependencies": [
       ],
       "build-files": [
         "ObjDataConstants.js",
+        "ObjDataConstantsMinimized.js",
         "ObjDataTypes.js",
         "ObjDataPackage.js",
         "ObjDataParser.js",

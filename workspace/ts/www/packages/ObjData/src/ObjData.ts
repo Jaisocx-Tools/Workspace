@@ -1,6 +1,8 @@
 import { ObjDataParser } from "./ObjDataParser.js";
 import { ObjDataSerializer } from "./ObjDataSerializer.js";
 
+
+
 export class ObjData {
 
   static parse( objDataByteBuf: Uint8Array ): any {
@@ -8,6 +10,7 @@ export class ObjData {
       objDataByteBuf
     );
   }
+
 
   static serialize( anyValue: any ): Uint8Array {
     return ObjDataSerializer.serialize (

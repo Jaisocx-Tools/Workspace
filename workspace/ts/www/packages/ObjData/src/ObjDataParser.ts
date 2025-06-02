@@ -2,12 +2,13 @@ import { ObjDataPackage } from "./ObjDataPackage.js";
 import { ObjDataConstants } from "./ObjDataConstants.js";
 import { ObjDataHelpingProps } from "./ObjDataTypes.js";
 
+
+
 export class ObjDataParser {
 
-  static parse ( 
+  static parse (
     objDataByteBuf: Uint8Array
   ): any {
-
     const dataHelper: ObjDataHelpingProps = ObjDataParser.parsePropHeaders (
       objDataByteBuf,
       0
@@ -28,14 +29,12 @@ export class ObjDataParser {
     dataHelper: ObjDataHelpingProps,
     parentObject: any
   ): any {
-
     let retValue: any = null;
 
     if (
       ( dataHelper.datatype === ObjDataConstants.DATA_TYPES.ARRAY )
       || ( dataHelper.datatype === ObjDataConstants.DATA_TYPES.OBJECT )
     ) {
-
       if ( dataHelper.datatype === ObjDataConstants.DATA_TYPES.ARRAY ) {
         retValue = [];
       } else {
@@ -47,7 +46,6 @@ export class ObjDataParser {
       let arrayItemOffset: number = offset + dataHelper.propertyValueStart;
 
       for ( loopCounter = 0; loopCounter < arrayItemsAmount; loopCounter++ ) {
-        
         const arrayItemDataHelper: ObjDataHelpingProps = ObjDataParser.parsePropHeaders (
           objDataByteBuf,
           arrayItemOffset
@@ -66,7 +64,7 @@ export class ObjDataParser {
     } else if ( dataHelper.datatype === ObjDataConstants.DATA_TYPES.NUMBER ) {
       retValue = ObjDataPackage.parseByteBufToNumber (
         objDataByteBuf,
-        ( 
+        (
           offset + dataHelper.propertyValueStart ),
         dataHelper.propertyValueLength
       );
@@ -74,7 +72,7 @@ export class ObjDataParser {
     } else if ( dataHelper.datatype === ObjDataConstants.DATA_TYPES.TEXT_PLAIN ) {
       retValue = ObjDataPackage.parseByteBufToText (
         objDataByteBuf,
-        ( 
+        (
           offset + dataHelper.propertyValueStart ),
         dataHelper.propertyValueLength,
         "utf8"
@@ -82,35 +80,36 @@ export class ObjDataParser {
 
     } else {
       retValue = "Hu hu";
-      
+
       retValue = ObjDataPackage.parseByteBufToText(
         objDataByteBuf, (
-          offset + dataHelper.propertyValueStart), 
-        dataHelper.propertyValueLength, 
-        "utf8");
+          offset + dataHelper.propertyValueStart),
+        dataHelper.propertyValueLength,
+        "utf8"
+      );
 
     }
 
-    
     if ( parentObject !== null ) {
       let propName: any = null;
+
       if ( Array.isArray( parentObject ) ) {
         propName = ObjDataPackage.parseByteBufToNumber (
           objDataByteBuf,
-          ( 
+          (
             offset + dataHelper.propertyNameStart ),
           dataHelper.propertyNameLength
         );
-  
+
       } else {
         propName = ObjDataPackage.parseByteBufToText (
           objDataByteBuf,
-          ( 
+          (
             offset + dataHelper.propertyNameStart ),
           dataHelper.propertyNameLength,
           "utf8"
         );
-  
+
       }
 
       parentObject[propName] = retValue;
@@ -120,11 +119,11 @@ export class ObjDataParser {
 
   }
 
+
   static parsePropHeaders (
     byteBuf: Uint8Array,
     offset: number
   ): ObjDataHelpingProps {
-
     const dataHelper: ObjDataHelpingProps = new ObjDataHelpingProps();
 
     let fieldOffset: number = offset;
@@ -180,32 +179,42 @@ export class ObjDataParser {
   }
 
 
-
   // Fetch method to get and parse data from the server with flexible headers and method options
   static async fetchData(
-    url: any, 
-    method: any = "GET", 
+    url: any,
+    method: any = "GET",
     headers: Record<string, string> = {}
   ): Promise<any> {
+
     // Fetch request with flexible headers and method
     const response = await fetch(
-      url, 
+      url,
       {
         method: method,
         headers: headers
-      });
+      }
+    );
+
 
     // Check for successful response
     if (!response.ok) {
       throw new Error(`HTTP error! status: ${response.status}`);
     }
 
+
     // Get response as a binary array (use arrayBuffer for byte data)
-    const buffer = await response.arrayBuffer();
-    const uint8Array = new Uint8Array(buffer);
+    const buffer: ArrayBuffer = await response.arrayBuffer();
+
+
+    //@ts-ignore
+    const uint8Array: Uint8Array = new Uint8Array(buffer);
+
 
     // Deserialize the data
-    return; // this.deserialize(uint8Array);
+    return;
+
+
+    // this.deserialize(uint8Array);
   }
 }
 
