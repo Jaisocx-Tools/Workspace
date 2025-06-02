@@ -96,18 +96,20 @@ export const LineDelimiters = {
       "ForInStatement",
       "ForOfStatement"
     ];
-      
-      
+    
+    
     // here we get eslintrc.js config rules
     const indentRuleConfig = (context && context.settings && context.settings.indent) || [ESLINT_CONFIG_INDENTATION_SIZE, ESLINT_CONFIG_INDENTATION_SIZE]; // Default to ESLINT_CONFIG_INDENTATION_SIZE spaces
     const eslintConfigIdentPrefixSizeForOneLevel = Array.isArray(indentRuleConfig) ? indentRuleConfig[1] : ESLINT_CONFIG_INDENTATION_SIZE;
 
-    function checkBlockSpacing (
+    
+    
+    function checkBlockSpacing(
       node,
       mode,
       spacingType
     ) {
-      console.log( node.type );
+      // console.log( node.type );
 
       const options = context.options[0] || {};
 
@@ -120,6 +122,7 @@ export const LineDelimiters = {
       };
 
       let linesRequired = 0;
+      let newLineCharsNumber = 0;
 
       let locSpacingType = spacingType;
       linesRequired = spacing[locSpacingType];
@@ -127,6 +130,9 @@ export const LineDelimiters = {
         locSpacingType = "minmax_newlines";
         linesRequired = spacing[locSpacingType];
       }
+
+      newLineCharsNumber = linesRequired + 1;
+
 
       let before = {};
       
@@ -159,7 +165,6 @@ export const LineDelimiters = {
         after: 0
       };
       
-      let linesNumberToSet = 0;
       
       let lineStartToken = {};
       let lineStartTokenBefore = {};
@@ -189,28 +194,30 @@ export const LineDelimiters = {
       }
 
       //if (isFirstInBlock === false) {
-        lineDiff.before = lineStartToken.loc.start.line - (lineStartTokenBefore ? lineStartTokenBefore.loc.end.line : 0);
-        linesNumberToSet = linesRequired + 1;
+        lineDiff.before = lineStartToken.loc.start.line - (lineStartTokenBefore ? lineStartTokenBefore.loc.end.line : 0) - 1;
       //}
       
       
-      let toBypass = false;
+      let toSetLinesNumber = true;
       if (node.type === "IfStatement") {
-        //let beforeBefore = sourceCode.getTokenBefore(before);
-        toBypass = ((before.type === "Keyword") && (before.value === "else"));
-        // console.log( beforeBefore, before, node.type, toBypass );
+        toSetLinesNumber = !((before.type === "Keyword") && (before.value === "else"));
+
       } else if (locSpacingType === "minmax_newlines") {
-        toBypass = !((lineDiff.before > 1) && (lineDiff.before !== linesNumberToSet));
-        if ( toBypass !== true ) {
-          console.log(node.type, locSpacingType, linesNumberToSet);
-          console.log( before, node.type);
-        }
+        // toSetLinesNumber = ((lineDiff.before > 0) && (lineDiff.before !== linesRequired));
+        toSetLinesNumber = ((lineDiff.before > linesRequired));
+
+      } else {
+        toSetLinesNumber = (lineDiff.before !== linesRequired);
+
       }
       
       
 
-      if ((toBypass !== true) && (lineDiff.before !== linesNumberToSet ) ) {
-        // if ((isFirstInBlock === false) && (lineDiff.before !== linesNumberToSet)) {
+      if ((toSetLinesNumber === true) && (locSpacingType === "return" ) ) {
+        console.log(node.type, locSpacingType, linesRequired);
+        console.log(before, node.type);
+
+
         let rangeStart = 0;
         let rangeEnd = 0;
 
@@ -222,16 +229,16 @@ export const LineDelimiters = {
         if (rangeStart && rangeEnd ) {
 
           let mustWhitespacesNumber = lineStartToken.loc.start.column;
-          let linesReplacement = "\n".repeat(linesNumberToSet) + " ".repeat(mustWhitespacesNumber);
+          let linesReplacement = "\n".repeat(newLineCharsNumber) + " ".repeat(mustWhitespacesNumber);
           let range = [rangeStart, rangeEnd];
           mode = "before";
-          let text = `Expected ${linesNumberToSet} empty line${linesNumberToSet > 1 ? "s" : ""} found ${lineDiff.before} ${mode} block.`;
+          let text = `Expected ${linesRequired} empty line${linesRequired > 1 ? "s" : ""} found ${lineDiff.before} ${mode} block.`;
           console.log(text);
           
           context.report({
             node,
             range,
-            message: `Expected ${linesNumberToSet} empty line${linesNumberToSet > 1 ? "s" : ""} found ${lineDiff.before} ${mode} block.`,
+            message: "Hoi!", //`Expected ${linesRequired} empty line${linesRequired > 1 ? "s" : ""} found ${lineDiff.before} ${mode} block.`,
             fix(fixer) {
               return fixer.replaceTextRange(range, linesReplacement );
             }
@@ -264,7 +271,7 @@ export const LineDelimiters = {
 
       lineDiff.after = after.loc.start.line - node.loc.end.line;
 
-      if (!isLastInParent && (mode === BEFORE_AND_AFTER) && (lineDiff.after !== linesNumberToSet)) {
+      if (!isLastInParent && (mode === BEFORE_AND_AFTER) && (lineDiff.after !== newLineCharsNumber)) {
         let rangeEnd = 0;
 
         whiteSpacesNumber = after.loc.start.column;
@@ -276,16 +283,16 @@ export const LineDelimiters = {
           
         //   identationLevel = (whiteSpacesNumber / eslintConfigIdentPrefixSizeForOneLevel);
         //   mustWhitespacesNumber = (identationLevel * eslintConfigIdentPrefixSizeForOneLevel);
-        //   linesReplacement = "\n".repeat(linesNumberToSet) + " ".repeat(mustWhitespacesNumber);
+        //   linesReplacement = "\n".repeat(newLineCharsNumber) + " ".repeat(mustWhitespacesNumber);
         //   range = [node.end, rangeEnd];
         //   mode = "after";
-        //   text = `Expected ${linesNumberToSet} empty line${linesNumberToSet > 1 ? "s" : ""} ${mode} block.`;
+        //   text = `Expected ${newLineCharsNumber} empty line${newLineCharsNumber > 1 ? "s" : ""} ${mode} block.`;
         //   console.log(text);
 
         //   context.report({
         //     node,
         //     range,
-        //     message: `Expected ${linesNumberToSet} empty line${linesNumberToSet > 1 ? "s" : ""} ${mode} block.`,
+        //     message: `Expected ${newLineCharsNumber} empty line${newLineCharsNumber > 1 ? "s" : ""} ${mode} block.`,
         //     fix(fixer) {
 
         //       return fixer.replaceTextRange(
@@ -299,12 +306,56 @@ export const LineDelimiters = {
           
         // }
       }
+
     }
 
+
+    function checkBlockSpacingAllTokens(
+      node,
+      mode,
+      spacingType
+    ) {
+
+      console.log(node.type);
+
+      let handledTokensNames = [
+        "ClassDeclaration",
+        "MethodDefinition",
+        "FunctionDeclaration",
+        "IfStatement",
+        "WhileStatement",
+        "ForStatement",
+        "ForInStatement",
+        "ForOfStatement",
+        "ReturnStatement",
+      ];
+
+      let allTokens = sourceCode.getTokens(node).filter(
+        (token) => {
+          return (handledTokensNames.includes(token.type) === false);
+        }
+      );
+
+      console.log(allTokens);
+
+      allTokens.forEach(
+        (t) => {
+          console.log(t.type);
+          checkBlockSpacing(
+            t,
+            BEFORE,
+            spacingType
+          );
+        }
+      );
+
+    }
+    
+    
     return {
       // ClassDeclaration: Keyword class after keyword export
-      // FunctionExpression: function args block in round braces
-      // FunctionDeclaration: function body
+      // FunctionExpression: function body
+      // FunctionDeclaration: function args block in round braces
       ClassDeclaration: function (node) {
         checkBlockSpacing(
           node,
@@ -317,6 +368,13 @@ export const LineDelimiters = {
           node,
           BEFORE,
           "methods"
+        );
+      },
+      FunctionExpression: function (node) {
+        checkBlockSpacingAllTokens(
+          node,
+          BEFORE,
+          "minmax_newlines"
         );
       },
       IfStatement: function (node) {
@@ -354,54 +412,19 @@ export const LineDelimiters = {
           "blocks"
         );
       },
-      ReturnStatement: function (node) {
-        checkBlockSpacing(
-          node,
-          BEFORE,
-          "return"
-        );
-      }
+      // ReturnStatement: function (node) {
+      //   checkBlockSpacing(
+      //     node,
+      //     BEFORE,
+      //     "return"
+      //   );
+      // }
     };
   }
 
 };
 
 
-
-      // ExportNamedDeclaration: function(node) {
-      //   const types = [
-      //     "IfStatement",
-      //     "WhileStatement",
-      //     "ForStatement",
-      //     "ForInStatement",
-      //     "ForOfStatement",
-      //     "ReturnStatement",
-      //     "FunctionDeclaration",
-      //     "FunctionExpression",
-      //     "ArrowFunctionExpression",
-      //   ];
-
-      //   let allTokens = sourceCode.getTokens(node).filter(
-      //     (n) => {
-      //       return (types.includes(n.type) === false);
-      //     }
-      //   );
-
-      //   allTokens.forEach((n) => {
-      //     checkBlockSpacing(
-      //       n,
-      //       BEFORE,
-      //       "minmax_newlines"
-      //     );
-      //   });
-
-      //   checkBlockSpacing(
-      //     node,
-      //     BEFORE,
-      //     "minmax_newlines"
-      //   );
-
-// },
 
 
 
@@ -416,20 +439,6 @@ export const LineDelimiters = {
 //     );
 //   });
 // },
-
-
-
-// FunctionExpression: function (node) {
-//   if (node.parent && node.parent.type === "VariableDeclarator") {
-//     checkBlockSpacing(
-//       node,
-//       BEFORE,
-//       "blocks"
-//     );
-//   }
-// },
-
-
 
 
 

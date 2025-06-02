@@ -63,12 +63,12 @@ export default [
       "jaisocx/line-delimiters": [
         "error",
         {
-          "class": { "lines": 5 },
-          "methods": { "lines": 5 },
-          "blocks": { "lines": 5 },
+          "class": { "lines": 3 },
+          "methods": { "lines": 3 },
+          "blocks": { "lines": 1 },
           "return": { "lines": 5 },
           "above_comments": { "lines": 2 },
-          "minmax_newlines": { "lines": 1 }
+          "minmax_newlines": { "lines": 2 }
         }
       ],
       "comma-dangle": [

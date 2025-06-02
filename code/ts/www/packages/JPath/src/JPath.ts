@@ -35,6 +35,7 @@ export class JPath {
         }
       }
 
+
       obj = obj[key];
 
     }
