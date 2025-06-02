@@ -1,40 +1,36 @@
-# in the .env file in the root of this project are Your project's settings,
-# and therefore it is advised not to keep in open source repositories. 
-# the .env file in .gitignore isn't published then in Your git repo.
-
-/.env
-
 /**/node_modules
 /**/vendor
-/**/.DS_Store
-/code/php/objdata_usage/vendor/
 
-/.docker/database/volumes/
-/.docker/https/logs
-/.docker/php/logs
+/**/.DS_Store
+/.idea/
+
+/docker/database/volumes/
+/docker/https/logs
+/docker/php/logs
+
+
+/docs/temporary/
+
+
+/workspace/ts/build_tools/ReadmeToHtml/
+/workspace/ts/www/ExampleSimple_Table-test.html
+/workspace/ts/www/packages/Mobile.vsDeskop/test-devices-sizes.html
+/workspace/ts/www/packages/CharcodeConverter/tmp_data_gitignored/
+/workspace/ts/www/gen_Countries_and_languges_code_and_name.html
+/workspace/ts/www/gen_LanguagesCodes_and_Countries.html
+/workspace/ts/www/gen_UnicodeCharsFilteredData.html
+/workspace/ts/www/tmp.html
+
+
+# in the .env file in the root of this project are Your project's settings,
+# and therefore it is advised not to keep in open source repositories.
+# the .env file in .gitignore isn't published then in Your git repo.
+/.env
+/bitbucket-pipelines.yml
+
+
+
 /docker-compose.yml.2
 /hc.tmp
-
-
-/.readme/temporary/
-
 /someBashExamples.sh
-/code/ts/build_tools/ReadmeToHtml/
-
-/code/ts/www/ExampleSimple_Table-test.html
-
-
-/push.txt
-
-
-/code/ts/www/packages/Mobile.vsDeskop/test-devices-sizes.html
-
-
-/code/ts/www/packages/CharcodeConverter/tmp_data_gitignored/
-/code/ts/www/gen_Countries_and_languges_code_and_name.html
-/code/ts/www/gen_LanguagesCodes_and_Countries.html
-/code/ts/www/gen_UnicodeCharsFilteredData.html
-/code/ts/www/tmp.html
-
-
 
