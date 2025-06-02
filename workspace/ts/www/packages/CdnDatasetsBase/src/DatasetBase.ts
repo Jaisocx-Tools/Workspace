@@ -8,7 +8,8 @@ export class DatasetBase extends JsonWriter {
 
   _data: any[];
   _dataAsObject: any;
-  
+
+
   constructor() {
     super();
 
@@ -20,37 +21,42 @@ export class DatasetBase extends JsonWriter {
     this.filePath = "";
   }
 
+
   getData(): any[] {
     return this._data;
   }
 
+
   getDataIndexedByKeys( jpathExpression: string ): any[] {
-    let jpathName: string = JPath.getJPathName( 
-      jpathExpression, 
-      this.JPATH_NAME_DELIMITER );
-    
+    let jpathName: string = JPath.getJPathName(
+      jpathExpression,
+      this.JPATH_NAME_DELIMITER
+    );
+
     if ( this._dataAsObject[jpathName] === undefined ) {
       this._dataAsObject[jpathName] = this.initDataAsObject( jpathExpression );
     }
-    
+
     return this._dataAsObject[jpathName];
   }
 
 
-  saveDataIndexedByKeys( 
-    jpathExpression: string, 
-    inFilePath: string ): number {
-    let locSaved: number = this.saveData ( 
-      inFilePath, 
-      this.getDataIndexedByKeys( jpathExpression ) );
+  saveDataIndexedByKeys(
+    jpathExpression: string,
+    inFilePath: string
+  ): number {
+    let locSaved: number = this.saveData (
+      inFilePath,
+      this.getDataIndexedByKeys( jpathExpression )
+    );
 
     return locSaved;
   }
 
+
   initDataAsObject( jpathExpression: string ): any {
-    
     let jpath: (string|number)[] = JPath.parse( jpathExpression );
-    
+
     let locDataAsObject: any = new Object();
 
     let arrayItemId: number = 0;
@@ -60,7 +66,6 @@ export class DatasetBase extends JsonWriter {
 
     let orderedDatasetByKey: any[] = this._data.sort(
       ( a: any, b: any ): number => {
-        
         let aValue = JPath.getByJPath( jpath, a );
         let bValue = JPath.getByJPath( jpath, b );
 
@@ -74,7 +79,10 @@ export class DatasetBase extends JsonWriter {
 
     for ( arrayItemId = 0; arrayItemId < arrayLen; arrayItemId++ ) {
       arrayItem = orderedDatasetByKey[ arrayItemId ];
-      keyValue = JPath.getByJPath( jpath, arrayItem );
+      keyValue = JPath.getByJPath(
+        jpath,
+        arrayItem
+      );
 
       if ( locDataAsObject[keyValue] === undefined ) {
         locDataAsObject[keyValue] = new Array();

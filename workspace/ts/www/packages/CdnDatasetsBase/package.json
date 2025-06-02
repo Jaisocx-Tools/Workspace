@@ -1,8 +1,10 @@
 {
   "name": "@jaisocx/cdn-datasets-base",
-  "version": "1.2.1",
+  "version": "1.2.2",
   "author": "Jaisocx",
-  "keywords": [],  
+  "keywords": [
+    "cdn"
+  ],
   "private": false,
   "description": "",
   "type": "module",
@@ -20,7 +22,7 @@
     "README.md"
   ],
   "optionalDependencies": {
-    "@jaisocx/jpath": "^1.2.2"
+    "@jaisocx/jpath": "^1.2.3"
   },
   "publishConfig": {
     "access": "public"

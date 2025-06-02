@@ -1,30 +1,40 @@
 class JsonWriter {
-  filePath;
+    filePath;
 
-  constructor() {
-    this.filePath = "";
-  }
-  // in browsers logs to console, doesn't save to file.
-  saveData(inFilePath, data) {
-    let json = JSON.stringify(data, null, 2);
-    let isFsDefined = true;
-    try {
-      fs.writeFileSync(
-        inFilePath, 
-        json, 
-        { encoding: "utf-8" });
-      this.filePath = inFilePath;
-    }
-    catch (e) {
-      isFsDefined = false;
+
+    constructor() {
+        this.filePath = "";
     }
 
-    if (isFsDefined === false) {
-      console.log(inFilePath, json);
-    }
 
-    return 1;
-  }
-} 
+    // in browsers logs to console, doesn't save to file.
+    saveData(
+        inFilePath,
+        data
+    ) {
+        let json = JSON.stringify(data, null, 2);
+        let isFsDefined = true;
+        try {
+            fs.writeFileSync(
+                inFilePath,
+                json,
+                { encoding: "utf-8" }
+            );
+            this.filePath = inFilePath;
+        }
+        catch (e) {
+            isFsDefined = false;
+        }
+
+        if (isFsDefined === false) {
+            console.log(
+                inFilePath,
+                json
+            );
+        }
+
+        return 1;
+    }
+}
 
 

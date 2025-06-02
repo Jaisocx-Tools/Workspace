@@ -87,7 +87,7 @@
     {
       "path": "packages/CssImporter",
       "name": "css-importer",
-      "build": true,
+      "build": false,
       "build-simple-enable": false,
       "dependencies": [
         {
@@ -104,7 +104,7 @@
     {
       "path": "packages/CdnDatasetsBase",
       "name": "cdn-datasets-base",
-      "build": false,
+      "build": true,
       "build-simple-enable": true,
       "dependencies": [
         {

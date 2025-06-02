@@ -47,7 +47,9 @@ class WriteAllDataSetsCommand {
             isPathDefined = false;
         }
         if (isPathDefined === false) {
-            pathResolveFunc = (inPath1, inPath2) => { return [inPath1, inPath2].join("/"); };
+            pathResolveFunc = (inPath1, inPath2) => {
+                return [inPath1, inPath2].join("/");
+            };
         }
         let datasetBase = new DatasetBase_js_1.DatasetBase();
         datasetBase.saveDataIndexedByKeys("items[2]", 
