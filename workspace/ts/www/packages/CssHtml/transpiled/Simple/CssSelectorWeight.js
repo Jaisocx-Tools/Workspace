@@ -3,14 +3,8 @@ class CssSelectorWeight {
     calculateOneRuleSpecificity(selectorText) {
 
         // Remove strings to avoid confusion with quotes inside selectors
-        let selector = selectorText.replace(
-            /["'][^"']*["']/g,
-            ""
-        );
-        let selectorWithoutNot = selector.replace(
-            /:not\([^)]+\)/g,
-            ""
-        );
+        let selector = selectorText.replace(/["'][^"']*["']/g, "");
+        let selectorWithoutNot = selector.replace(/:not\([^)]+\)/g, "");
         let a = 0;
         let b = 0;
         let c = 0;
@@ -72,10 +66,7 @@ class CssSelectorWeight {
     }
 
 
-    compareSpecificity(
-        specificity1,
-        specificity2
-    ) {
+    compareSpecificity(specificity1, specificity2) {
         let comparisonValue = 0;
         let i = 0;
         let maxIterationsNumber = 6;
@@ -99,10 +90,7 @@ class CssSelectorWeight {
     // @description: used by Inliner, this is the custom method.
     // @return { "specifity": [], "cssSelector": "" }[]
     calculateSpecifities(selectorText) {
-        let selector = selectorText.replace(
-            /["'][^"']*["']/g,
-            ""
-        );
+        let selector = selectorText.replace(/["'][^"']*["']/g, "");
         let selectors = new Array();
         let s = "";
         let specifitiesAndSelectors = new Array();
@@ -127,10 +115,7 @@ class CssSelectorWeight {
                     return s.trim();
                 })
                 .map(s => {
-                    return s.replace(
-                        /["'][^"']*["']/g,
-                        ""
-                    );
+                    return s.replace(/["'][^"']*["']/g, "");
                 });
 
             for (s of selectors) {

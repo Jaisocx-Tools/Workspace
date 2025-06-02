@@ -6,32 +6,32 @@
 
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  
-  
-    <link rel="stylesheet" href="CssTools/CssCleanStart/MediaAndStyles/themes/theme-lightmode/clean-start-theme-lightmode-relative.css">
-    <link rel="stylesheet" href="CssTools/CssCleanStart/MediaAndStyles/themes/theme-darkmode/clean-start-theme-darkmode-relative.css">
-  
+
+
+    <link rel="stylesheet" href="sites_tools/css_tools/CssCleanStart/MediaAndStyles/themes/theme-lightmode/clean-start-theme-lightmode-relative.css">
+    <link rel="stylesheet" href="sites_tools/css_tools/CssCleanStart/MediaAndStyles/themes/theme-darkmode/clean-start-theme-darkmode-relative.css">
+
     <!-- CSS CLEAN START THE MAIN .CSS FILE -->
-    <link rel="stylesheet" href="CssTools/CssCleanStart/MediaAndStyles/clean-start-main-relative.css">
-    
+    <link rel="stylesheet" href="sites_tools/css_tools/CssCleanStart/MediaAndStyles/clean-start-main-relative.css">
+
     <style>
-  
+
       .workspace {
         --button-width: fit-content;
       }
-  
+
       .workspace themebuttons {
         width: fit-content;
-        display: grid; 
+        display: grid;
         grid-auto-flow: column;
-        column-gap: 3rem; 
+        column-gap: 3rem;
         margin: 0.9rem 0 6rem 0;
       }
-  
+
       .workspace themebuttons button {
         width: var(--button-width);
       }
-  
+
       .current::after {
         content: "";
         position: absolute;
@@ -45,16 +45,16 @@
         border-bottom-style: solid;
         border-bottom-color: var(--clean-start__text-color);
       }
-  
+
       .workspace button {
         background-color: transparent;
         text-align: left;
       }
-  
+
       #tooltip-button {
         font-family: fantasy;
       }
-  
+
     </style>
 
 
@@ -78,20 +78,20 @@
     <main>
 
       <h1>ObjData Example</h1>
-     
+
       <ThemeButtons>
         <button id="button-turn-on-base-theme">Base Theme</button>
         <button id="button-turn-on-daymode" data-theme="theme-lightmode">Day Mode</button>
-        <button id="button-turn-on-nightmode" data-theme="theme-darkmode">Night Mode</button>  
+        <button id="button-turn-on-nightmode" data-theme="theme-darkmode">Night Mode</button>
       </ThemeButtons>
 
       <h3>The ObjData bitsbuffer obtained from an Https endpoint, serialized by PHP v8.4.4 composer lib jaisocx/objdata</h3>
 
       <tree id="tree-holder"></tree>
- 
+
     </main>
-  
-  
+
+
     <script>
 
 
@@ -125,7 +125,7 @@ function turnOnTheme ( buttonNodeClicked ) {
 }
 
 // declaring the function, this adds to buttons the event handler to turn on the theme.
-// this function is invoked when the site loads in the browser, 
+// this function is invoked when the site loads in the browser,
 // in the event handler for the event DOMContentLoaded
 function addThemeButtonsEventHandlers() {
 
@@ -141,9 +141,9 @@ function addThemeButtonsEventHandlers() {
 
     buttonNode.addEventListener (
       "click",
-      (evt) => { 
+      (evt) => {
         let buttonNodeClicked = evt.target;
-        turnOnTheme ( buttonNodeClicked ); 
+        turnOnTheme ( buttonNodeClicked );
       }
     );
 
@@ -180,8 +180,8 @@ function addThemeButtonsEventHandlers() {
     let objectFromPhpEndpoint = await api
       .setDebug(true)
       .fetchObjData(
-        ( window.location.origin + url ), 
-        "GET", 
+        ( window.location.origin + url ),
+        "GET",
         []
       );
 
@@ -193,7 +193,7 @@ function addThemeButtonsEventHandlers() {
       .setMainHtmlNodeId("tree-holder")
       .setNodesOpenedMode( TreeConstants.NodesOpenedMode.ALL_SHOWN )
       .render( objectFromPhpEndpoint );
-    
+
   }
 
   function testCustomHttpRequestMethod( url, method ) {
@@ -211,7 +211,7 @@ function addThemeButtonsEventHandlers() {
         document.getElementsByTagName("BODY")[0]
           .append( node );
 
-      } 
+      }
     );
   }
 
@@ -228,7 +228,7 @@ function addThemeButtonsEventHandlers() {
     const timestamp2 = getNsTimestamp();
 
     console.log(
-      "ObjData obtained, parsed and rendered with Tree() time in ns", 
+      "ObjData obtained, parsed and rendered with Tree() time in ns",
       ( timestamp2 - timestamp1 )
     );
 

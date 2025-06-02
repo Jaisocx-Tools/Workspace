@@ -122,7 +122,7 @@ When the bundle.js includes imported themes, just the typing in the css class na
 
 ```
 {
-  "path": "CssTools/CssCleanStart",
+  "path": "sites_tools/css_tools/CssCleanStart",
   "name": "css-clean-start",
   "build": true,
   "build-simple-enable": false,

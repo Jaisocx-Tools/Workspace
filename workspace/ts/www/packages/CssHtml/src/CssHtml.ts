@@ -27,51 +27,21 @@ export class CssHtml {
 
   escapeHTML(str: string): string {
     return str
-      .replace(
-        /&/g,
-        "&amp;"
-      )
-      .replace(
-        /</g,
-        "&lt;"
-      )
-      .replace(
-        />/g,
-        "&gt;"
-      )
-      .replace(
-        /"/g,
-        "&quot;"
-      )
-      .replace(
-        /'/g,
-        "&#039;"
-      );
+      .replace( /&/g, "&amp;" )
+      .replace( /</g, "&lt;" )
+      .replace( />/g, "&gt;" )
+      .replace( /"/g, "&quot;" )
+      .replace( /'/g, "&#039;" );
   }
 
 
   unescapeHTML(str: string): string {
     return str
-      .replace(
-        /&lt;/g,
-        "<"
-      )
-      .replace(
-        /&gt;/g,
-        ">"
-      )
-      .replace(
-        /&quot;/g,
-        "\""
-      )
-      .replace(
-        /&#039;/g,
-        "'"
-      )
-      .replace(
-        /&amp;/g,
-        "&"
-      );
+      .replace( /&lt;/g, "<" )
+      .replace( /&gt;/g, ">" )
+      .replace( /&quot;/g, "\"" )
+      .replace( /&#039;/g, "'" )
+      .replace( /&amp;/g, "&" );
   }
 
 

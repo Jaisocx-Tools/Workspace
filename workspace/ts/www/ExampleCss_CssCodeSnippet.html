@@ -6,31 +6,31 @@
 
   <title>Css Code Snippet</title>
 
-  <link rel="stylesheet" href="CssTools/CssCleanStart/MediaAndStyles/themes/theme-lightmode/clean-start-theme-lightmode-relative.css">
-  <link rel="stylesheet" href="CssTools/CssCleanStart/MediaAndStyles/themes/theme-darkmode/clean-start-theme-darkmode-relative.css">
+  <link rel="stylesheet" href="sites_tools/css_tools/CssCleanStart/MediaAndStyles/themes/theme-lightmode/clean-start-theme-lightmode-relative.css">
+  <link rel="stylesheet" href="sites_tools/css_tools/CssCleanStart/MediaAndStyles/themes/theme-darkmode/clean-start-theme-darkmode-relative.css">
 
   <!-- CSS CLEAN START THE MAIN .CSS FILE -->
-  <link rel="stylesheet" href="CssTools/CssCleanStart/MediaAndStyles/clean-start-main-relative.css">
+  <link rel="stylesheet" href="sites_tools/css_tools/CssCleanStart/MediaAndStyles/clean-start-main-relative.css">
 
-  
+
 
 
   <!-- CSS CODE SNIPPET THEMES -->
 
-  <link rel="stylesheet" href="CssTools/CssCodeSnippet/MediaAndStyles/themes/csstool-codesnippet-theme-colour-rosa.css">
-  <link rel="stylesheet" href="CssTools/CssCodeSnippet/MediaAndStyles/themes/csstool-codesnippet-theme-colour-salad.css">
-  <link rel="stylesheet" href="CssTools/CssCodeSnippet/MediaAndStyles/themes/csstool-codesnippet-theme-colour-blue.css">
+  <link rel="stylesheet" href="sites_tools/css_tools/CssCodeSnippet/MediaAndStyles/themes/csstool-codesnippet-theme-colour-rosa.css">
+  <link rel="stylesheet" href="sites_tools/css_tools/CssCodeSnippet/MediaAndStyles/themes/csstool-codesnippet-theme-colour-salad.css">
+  <link rel="stylesheet" href="sites_tools/css_tools/CssCodeSnippet/MediaAndStyles/themes/csstool-codesnippet-theme-colour-blue.css">
 
 
-  <link rel="stylesheet" href="CssTools/CssCodeSnippet/MediaAndStyles/themes/csstool-codesnippet-theme-size-large.css">
-  <link rel="stylesheet" href="CssTools/CssCodeSnippet/MediaAndStyles/themes/csstool-codesnippet-theme-size-little.css">
+  <link rel="stylesheet" href="sites_tools/css_tools/CssCodeSnippet/MediaAndStyles/themes/csstool-codesnippet-theme-size-large.css">
+  <link rel="stylesheet" href="sites_tools/css_tools/CssCodeSnippet/MediaAndStyles/themes/csstool-codesnippet-theme-size-little.css">
 
 
   <!-- CSS CODE SNIPPET -->
-  <link rel="stylesheet" href="CssTools/CssCodeSnippet/MediaAndStyles/themes/csstool-codesnippet-theme-base.css">
-  <link rel="stylesheet" href="CssTools/CssCodeSnippet/MediaAndStyles/csstool-codesnippet-theme-styles-main.css">
+  <link rel="stylesheet" href="sites_tools/css_tools/CssCodeSnippet/MediaAndStyles/themes/csstool-codesnippet-theme-base.css">
+  <link rel="stylesheet" href="sites_tools/css_tools/CssCodeSnippet/MediaAndStyles/csstool-codesnippet-theme-styles-main.css">
 
-  <link rel="stylesheet" href="CssTools/CssCodeSnippet/MediaAndStyles/lines-numbers-variables/code-snippet-lines-numbers-99.css">
+  <link rel="stylesheet" href="sites_tools/css_tools/CssCodeSnippet/MediaAndStyles/lines-numbers-variables/code-snippet-lines-numbers-99.css">
 
 
 
@@ -90,7 +90,7 @@
 
     .workspace themebuttons {
       width: fit-content;
-      display: grid; 
+      display: grid;
     }
 
     .workspace themebuttons button {
@@ -142,7 +142,7 @@
 
       .workspace themebuttons {
         grid-auto-flow: column;
-        column-gap: 3rem; 
+        column-gap: 3rem;
       }
     }
   </style>
@@ -166,7 +166,7 @@
   .CodeSnippetHolder#code-snippet-example-thin {
     --lines-number: 29;
   }
-  
+
   .CodeSnippetHolder#code-snippet-example {
     --code-snippet-tool--width: 100%;
     --overflow-x: auto;
@@ -174,15 +174,15 @@
     --code-snippet-tool--height: auto;
     --overflow-y: visible;
   }
-  
+
   .CodeSnippetHolder#code-snippet-example-thin {
     --code-snippet-tool--width: 28rem;
     --code-snippet-tool--height: 22rem;
     --overflow-y: auto;
   }
-  
+
   </style>
-  
+
 </head>
 <body>
 
@@ -193,7 +193,7 @@
     <ThemeButtons>
       <button id="button-turn-on-nightmode-cssCodeSnippet-rosa" data-theme="theme-darkmode rosa">Rosa NightMode</button>
       <button id="button-turn-on-daymode-cssCodeSnippet-blue" data-theme="theme-lightmode blue">Blue DayMode</button>
-      <button id="button-turn-on-nightmode-cssCodeSnippet-blue" data-theme="theme-darkmode blue">Blue NightMode</button>  
+      <button id="button-turn-on-nightmode-cssCodeSnippet-blue" data-theme="theme-darkmode blue">Blue NightMode</button>
       <button id="button-turn-on-cssCodeSnippet-salad" data-theme="salad">GreenDay</button>
       <button id="button-turn-on-nightmode-cssCodeSnippet-salad" data-theme="theme-darkmode salad">Green NightMode</button>
     </ThemeButtons>
@@ -233,7 +233,7 @@ describe('AppComponent', () => {
 });
       </pre>
     </CodeSnippetHolder>
-  
+
   </main>
 
 
@@ -260,7 +260,7 @@ describe('AppComponent', () => {
       }
 
       const themeNames = buttonNodeClicked.dataset.theme.split( " " );
-      
+
 
       const htmlNode = document.getElementsByTagName("html")[0];
       className = [ ...docClassNames, ...themeNames ].join( " " );
@@ -271,13 +271,13 @@ describe('AppComponent', () => {
       cssCodeSnippet.className = className;
 
 
-      
+
       currentButtonNodeClicked = buttonNodeClicked;
       currentButtonNodeClicked.classList.add( "current" );
     }
 
     // declaring the function, this adds to buttons the event handler to turn on the theme.
-    // this function is invoked when the site loads in the browser, 
+    // this function is invoked when the site loads in the browser,
     // in the event handler for the event DOMContentLoaded
     function addThemeButtonsEventHandlers() {
 
@@ -295,9 +295,9 @@ describe('AppComponent', () => {
 
         buttonNode.addEventListener (
           "click",
-          (evt) => { 
+          (evt) => {
             let buttonNodeClicked = evt.target;
-            turnOnTheme ( buttonNodeClicked ); 
+            turnOnTheme ( buttonNodeClicked );
           }
         );
 

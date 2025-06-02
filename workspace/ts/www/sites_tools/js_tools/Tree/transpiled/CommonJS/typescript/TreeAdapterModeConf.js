@@ -4,8 +4,8 @@ exports.TreeAdapterModeConf = void 0;
 const TreeAdapter_js_1 = require("./TreeAdapter.js");
 const TreeConstants_js_1 = require("./TreeConstants.js");
 class TreeAdapterModeConf extends TreeAdapter_js_1.TreeAdapter {
-    getSubtreeNodeToRender(loopPropertyValue, loopPropertyKey) {
-        return loopPropertyValue;
+    getSubtreeNodeToRender(_loopPropertyValue, _loopPropertyKey) {
+        return _loopPropertyValue;
     }
     getDataForRendering(node, flatNodeClone, dataTypeString, hasSubtree) {
         var _a;
@@ -50,8 +50,8 @@ class TreeAdapterModeConf extends TreeAdapter_js_1.TreeAdapter {
         const cssClasses = cssClassesArray.join("");
         return cssClasses;
     }
-    getTreeNodeCssClasses__dataTypesCssClassesDisabled(dataTypeString, node) {
-        const cssClassesNodeValue = node[this.conf.NODE__CSS_CLASS_NAME];
+    getTreeNodeCssClasses__dataTypesCssClassesDisabled(_dataTypeString, _node) {
+        const cssClassesNodeValue = _node[this.conf.NODE__CSS_CLASS_NAME];
         const cssClassesArray = [
             ("class=\""),
             (cssClassesNodeValue),
@@ -61,10 +61,10 @@ class TreeAdapterModeConf extends TreeAdapter_js_1.TreeAdapter {
         return cssClasses;
     }
     // dummy placeholders
-    escapeHTMLForAttribute(arg) {
+    escapeHTMLForAttribute(_arg) {
         throw new Error("Method not implemented.");
     }
-    getTreeNodeCssClasses(dataTypeString, value) {
+    getTreeNodeCssClasses(_dataTypeString, _value) {
         throw new Error("Method not implemented.");
     }
 }

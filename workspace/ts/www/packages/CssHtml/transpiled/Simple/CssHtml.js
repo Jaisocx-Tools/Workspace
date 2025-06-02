@@ -25,58 +25,25 @@ class CssHtml {
 
     escapeHTML(str) {
         return str
-            .replace(
-                /&/g,
-                "&amp;"
-            )
-            .replace(
-                /</g,
-                "&lt;"
-            )
-            .replace(
-                />/g,
-                "&gt;"
-            )
-            .replace(
-                /"/g,
-                "&quot;"
-            )
-            .replace(
-                /'/g,
-                "&#039;"
-            );
+            .replace(/&/g, "&amp;")
+            .replace(/</g, "&lt;")
+            .replace(/>/g, "&gt;")
+            .replace(/"/g, "&quot;")
+            .replace(/'/g, "&#039;");
     }
 
 
     unescapeHTML(str) {
         return str
-            .replace(
-                /&lt;/g,
-                "<"
-            )
-            .replace(
-                /&gt;/g,
-                ">"
-            )
-            .replace(
-                /&quot;/g,
-                "\""
-            )
-            .replace(
-                /&#039;/g,
-                "'"
-            )
-            .replace(
-                /&amp;/g,
-                "&"
-            );
+            .replace(/&lt;/g, "<")
+            .replace(/&gt;/g, ">")
+            .replace(/&quot;/g, "\"")
+            .replace(/&#039;/g, "'")
+            .replace(/&amp;/g, "&");
     }
 
 
-    concatClassNames(
-        node,
-        delimiter
-    ) {
+    concatClassNames(node, delimiter) {
         return node.className.split(" ").join(delimiter);
     }
 
@@ -98,30 +65,21 @@ class CssHtml {
         let substringEndPos = (remPxValue.length - this.KEYWORD_PX.length);
 
         if (remPxValue.endsWith(this.KEYWORD_PX)) {
-            remBasePxValueNumber = +(remPxValue.substring(
-                0,
-                substringEndPos
-            ));
+            remBasePxValueNumber = +(remPxValue.substring(0, substringEndPos));
         }
 
         return remBasePxValueNumber;
     }
 
 
-    remToPx(
-        remValue,
-        inRemBasePxValue
-    ) {
+    remToPx(remValue, inRemBasePxValue) {
         let locRemBasePxValue = inRemBasePxValue || this.getRemBasePxValue();
 
         if (remValue.endsWith(this.KEYWORD_REM) === false) {
             return false;
         }
         let substringEndPos = (remValue.length - this.KEYWORD_REM.length);
-        let remValNumber = +(remValue.substring(
-            0,
-            substringEndPos
-        ));
+        let remValNumber = +(remValue.substring(0, substringEndPos));
         let remValToPxNumber = (remValNumber * locRemBasePxValue);
 
 
@@ -145,10 +103,7 @@ class CssHtml {
 
         for (i = 0; i < values.length; i++) {
             size = values[i];
-            remToPxRetVal = this.remToPx(
-                size,
-                locRemBasePxValue
-            );
+            remToPxRetVal = this.remToPx(size, locRemBasePxValue);
 
             if (remToPxRetVal === false) {
                 values[i] = size;
@@ -163,20 +118,14 @@ class CssHtml {
     }
 
 
-    getVariableValue(
-        element,
-        variableName
-    ) {
+    getVariableValue(element, variableName) {
         let cssVariableValue = window.getComputedStyle(element).getPropertyValue(variableName);
 
         return cssVariableValue;
     }
 
 
-    resolveCssValueIfVariable(
-        element,
-        cssValue
-    ) {
+    resolveCssValueIfVariable(element, cssValue) {
 
         if (cssValue.startsWith(this.KEYWORD_CSS_VARIABLE_START) === false) {
             return false;
@@ -187,10 +136,7 @@ class CssHtml {
             substringStartPos,
             substringEndPos
         );
-        let cssVariableValue = this.getVariableValue(
-            element,
-            variableName
-        );
+        let cssVariableValue = this.getVariableValue(element, variableName);
 
         return cssVariableValue;
     }

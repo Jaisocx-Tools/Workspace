@@ -285,7 +285,7 @@ export class Tree extends ImprovedRenderEventEmitter {
         }, objectKeys);
         return renderSubtreeResult;
     }
-    renderSubtreeCallback(isArray, loopCounter, loopPropertyValue, loopPropertyKey, arrayOrObject, previousCallbackResult, callbackPayload) {
+    renderSubtreeCallback(_isArray, loopCounter, loopPropertyValue, loopPropertyKey, _arrayOrObject, previousCallbackResult, callbackPayload) {
         let currentNodeSubtreeLength = (previousCallbackResult) || 0;
         const { subtreeHtmlHolder, flatNodeHolderClone } = callbackPayload;
         const subtreeJsonNode = this.getSubtreeNodeToRender(loopPropertyValue, loopPropertyKey);
@@ -299,7 +299,7 @@ export class Tree extends ImprovedRenderEventEmitter {
             console.log(node);
         }
         const nodeClone = this.updateDataNodeIdAndPath(node, nodePosition, nodeKey, flatNodeHolderClone, holder);
-        const { isArray, subtreeNodeDataType, subtreeNodeDataTypeString, hasSubtree, subtreeJsonNodes, objectKeys } = this.checkDataNodeSubtree(node);
+        const { isArray, subtreeNodeDataTypeString, hasSubtree, subtreeJsonNodes, objectKeys } = this.checkDataNodeSubtree(node);
         // TODO: EXTENSIBILITY FEATURE
         const dataForRendering = this.getDataForRendering(node, nodeClone, subtreeNodeDataTypeString, hasSubtree);
         const nodeHtml = this.templateRenderer
@@ -350,17 +350,17 @@ export class Tree extends ImprovedRenderEventEmitter {
         };
     }
     // TEMPORARY IMPL TO KEEP POINTERS TO JSON DATA NODES IN HTML TREE NODES IN HTML NODE DATA ATTRIBUTES
-    updateDataNodeIdAndPath(node, nodePosition, nodeKey, flatNodeHolderClone, holder) {
+    updateDataNodeIdAndPath(node, nodePosition, nodeKey, flatNodeHolderClone, _holder) {
         const id = node[this.conf.NODE__ID] ?? null;
         const holderId = node[this.conf.NODE__HOLDER_ID] ?? null;
         const flatCloneHolderId = flatNodeHolderClone._flatClone ? flatNodeHolderClone._flatClone[this.conf.NODE__ID] : null;
         const pathInJsonOfNodeHolder = flatNodeHolderClone._pathArray ?? ["ROOT-unhandled"];
-        let pathKeyInNodeHolder = JSON.stringify(nodeKey);
+        // let pathKeyInNodeHolder = JSON.stringify(nodeKey);
         let pathInJsonArray = [
             ...pathInJsonOfNodeHolder
         ];
         if ((pathInJsonOfNodeHolder.length > 1) && this.renderingMode === TreeConstants.RenderingMode.Conf) {
-            const subtreePropName = JSON.stringify(this.conf.SUBTREE);
+            // const subtreePropName: any = JSON.stringify(this.conf.SUBTREE);
             pathInJsonArray.push(this.conf.SUBTREE);
             pathInJsonArray.push(nodeKey);
             //pathKeyInNodeHolder = `[${subtreePropName}][${pathKeyInNodeHolder}]`;
@@ -401,7 +401,7 @@ export class Tree extends ImprovedRenderEventEmitter {
         return nodeClone;
     }
     getTreeDataNodeByJsonnodePathArray(jPathArray) {
-        // since complexity of building jPath array in modeEase and modeConf, the JPathArray is not the same, 
+        // since complexity of building jPath array in modeEase and modeConf, the JPathArray is not the same,
         // and modeEase was built from item at index 2, since it has array item at index 1 "Top": this.data["Top"], and modeConf does not have this array item.
         // modeConf was built recursively already from item at index 1.
         const startingIndexValidJpath = (this.renderingMode === TreeConstants.RenderingMode.Conf) ? 1 : 2;
@@ -417,10 +417,10 @@ export class Tree extends ImprovedRenderEventEmitter {
         }, data);
     }
     // ADAPTIVE PLACEHOLDERS
-    getSubtreeNodeToRender(loopPropertyValue, loopPropertyKey) {
+    getSubtreeNodeToRender(_loopPropertyValue, _loopPropertyKey) {
         return null;
     }
-    getDataForRendering(node, flatNodeClone, dataTypeString, hasSubtree) {
+    getDataForRendering(_node, _flatNodeClone, _dataTypeString, _hasSubtree) {
         return {
             iconSrc: "",
             iconShowClassName: "",
@@ -435,7 +435,7 @@ export class Tree extends ImprovedRenderEventEmitter {
             hasSubtree: true
         };
     }
-    getTreeNodeCssClasses(dataType, node) {
+    getTreeNodeCssClasses(_dataType, _node) {
         return "";
     }
     // FINISH BLOCK ADAPTIVE PLACEHOLDERS
@@ -500,7 +500,7 @@ export class Tree extends ImprovedRenderEventEmitter {
         }
     }
     // the predefined events handlers
-    treeNodeLableClickHandler(eventPayload) {
+    treeNodeLableClickHandler(_eventPayload) {
         // example for custom event handler, the placeholder
     }
     // END EVENTS BLOCK

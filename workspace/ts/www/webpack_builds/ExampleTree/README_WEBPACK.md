@@ -12,7 +12,7 @@
 4. [https://github.com/Jaisocx-Tools/Workspace/tree/main/workspace/ts/www/webpack_builds/ExampleTree](https://github.com/Jaisocx-Tools/Workspace/tree/main/workspace/ts/www/webpack_builds/ExampleTree)
 
 
-5. [https://github.com/Jaisocx-Tools/Workspace/tree/main/workspace/ts/www/packages/Tree](https://github.com/Jaisocx-Tools/Workspace/tree/main/workspace/ts/www/packages/Tree)
+5. [https://github.com/Jaisocx-Tools/Workspace/tree/main/workspace/ts/www/sites_tools/js_tools/Tree](https://github.com/Jaisocx-Tools/Workspace/tree/main/workspace/ts/www/sites_tools/js_tools/Tree)
 
 
 
@@ -244,7 +244,7 @@ export default {
 
 
 ### THEMES: MediaAndStyles like miniimages and fonts resolval in bundle.js
-1. for MediaAndStyles in themes files, use webpack.aliases.js like in packages/Tree project.
+1. for MediaAndStyles in themes files, use webpack.aliases.js like in sites_tools/js_tools/Tree project.
 2. in the Tree.ts, import main css entrypoint file "@jaisocx-tree-MediaAndStyles/tree-styles-main-webpack.css";
 3. in tree-styles-main-webpack.css import theme main css file like this: @import url('themes/theme-base/theme-base-webpack.css');
 4. use webpack.aliasese.js alias like this:

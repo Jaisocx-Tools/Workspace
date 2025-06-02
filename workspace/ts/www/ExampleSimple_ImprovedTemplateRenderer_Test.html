@@ -2,7 +2,7 @@
   <head>
     <title>TemplateRenderer Example</title>
 
-    <link rel="stylesheet" href="CssTools/CssCleanStart/MediaAndStyles/clean-start.css">
+    <link rel="stylesheet" href="sites_tools/css_tools/CssCleanStart/MediaAndStyles/clean-start.css">
 
 
     <script src="packages/EventEmitter/transpiled/Simple/EventEmitter.js"></script>
@@ -13,21 +13,21 @@
     <script src="packages/CharcodeConverter/transpiled/Simple/CharcodeConverter.js"></script>
 
 
- 
+
     <script src="packages/WorkspaceTreeWalker/transpiled/Simple/types/WorkspaceTreeWalkerPayload.js"></script>
     <script src="packages/WorkspaceTreeWalker/transpiled/Simple/types/JPathData.js"></script>
     <script src="packages/WorkspaceTreeWalker/transpiled/Simple/types/IterableInfo.js"></script>
     <script src="packages/WorkspaceTreeWalker/transpiled/Simple/lib/JPath.js"></script>
     <script src="packages/WorkspaceTreeWalker/transpiled/Simple/WorkspaceTreeWalker.js"></script>
 
-    
+
 
     <script src="packages/ImprovedTemplateRenderer/transpiled/Simple/lib/TemplateParser.js"></script>
     <script src="packages/ImprovedTemplateRenderer/transpiled/Simple/types/DataConf.js"></script>
     <script src="packages/ImprovedTemplateRenderer/transpiled/Simple/types/RepeatDataCallbackValue.js"></script>
     <script src="packages/ImprovedTemplateRenderer/transpiled/Simple/types/TemplateInfo.js"></script>
     <script src="packages/ImprovedTemplateRenderer/transpiled/Simple/types/TemplateConf.js"></script>
-    <script src="packages/ImprovedTemplateRenderer/transpiled/Simple/ImprovedTemplateRendererConstants.js"></script>    
+    <script src="packages/ImprovedTemplateRenderer/transpiled/Simple/ImprovedTemplateRendererConstants.js"></script>
     <script src="packages/ImprovedTemplateRenderer/transpiled/Simple/ImprovedTemplateRenderer.js"></script>
 
 
@@ -69,19 +69,19 @@
     <h1>Example ImprovedTemplateRenderer</h1>
     <h2>In development</h2>
     <p>The &lt;script&gt tag below is with code, this is not working. Just the code snippets to build later the methods in the ImprovedTemplateRenderer class.</p>
-    <p>This Tool will be not very transparently written, 
+    <p>This Tool will be not very transparently written,
       and will have a heavier to read ts code.</p>
-    <p>The ImprovedTemplateRenderer is of great use to render json data of bigger size in the browser with some workaround 
-      to acheive the better site performance 
+    <p>The ImprovedTemplateRenderer is of great use to render json data of bigger size in the browser with some workaround
+      to acheive the better site performance
       like fast rendering and after rendering keeping browser's tab and the entre browser healthy.</p>
-    <p>The aim of this tool is, with the feature copy by reference, to save up rendering costs and time, 
-      placing the rendered templates html in the array and nested arrays, 
+    <p>The aim of this tool is, with the feature copy by reference, to save up rendering costs and time,
+      placing the rendered templates html in the array and nested arrays,
       since then the possible reallocation of arrays will be few html byte buffers refs RAM addresses rewrites,
       than with texts concatenation rewriting each byte in all byte buffers.</p>
-    <p>For sure, the resulting html will be the byte buffer, 
+    <p>For sure, the resulting html will be the byte buffer,
       but I shall try in the rendering process to place each byte into byte buffers with rendered templates, maybe reallocated, very few times.</p>
-    <p>And the textual html templates array items, 
-      I'd like to preprocess once, using low level chars comparisons, 
+    <p>And the textual html templates array items,
+      I'd like to preprocess once, using low level chars comparisons,
       in order to acheive the fast and costs saving up rendering of every templateHtml in the templates array, too.</p>
 
 
@@ -145,7 +145,7 @@
                                           "startRepeat": true,
                                           "subtreeRepeatTag": "columnLabels",
                                           "repeatTagConfDataApplies": true,
-                                          "useRepeatCallback": false 
+                                          "useRepeatCallback": false
                                         },
           "colLabelOpen":                 {
                                             "tag": "columnLabels",
@@ -158,8 +158,8 @@
           "colLabelClose":                {
                                             "tag": "columnLabels"
                                           },
-          "colsLabelsHolderClose":      { 
-                                          "tag": "main" 
+          "colsLabelsHolderClose":      {
+                                          "tag": "main"
                                         },
           "recordsHolderOpen":          {
                                           "tag": "main",
@@ -189,10 +189,10 @@
           "recordClose":                  {
                                             "tag": "record"
                                           },
-          "recordsHolderClose":         { 
+          "recordsHolderClose":         {
                                           "tag": "main"
                                         },
-          "tableClose":               { 
+          "tableClose":               {
                                         "tag": "main"
                                       }
         };
@@ -201,18 +201,18 @@
 
         //@custom
         //@method produceDataConf
-        //@overrides the abstract method to get the dataConf, 
+        //@overrides the abstract method to get the dataConf,
         //            or overrides the default method getDataConf() if there))
-        //@purpose: to define the dataConf, 
-        //            the dataConf is the array of the data used to set instead of the placeholders, 
-        //            the templates names are = dataConf.templateName; 
+        //@purpose: to define the dataConf,
+        //            the dataConf is the array of the data used to set instead of the placeholders,
+        //            the templates names are = dataConf.templateName;
         //            template name is the templatesConf object's keys.
-        //            This array items, templates, will be appended to the result html 
+        //            This array items, templates, will be appended to the result html
         //            in the exact order they are applied here.
-        let produceDataConf = ( 
-          cssClasses, 
-          tableColumnsConf, 
-          tableRecordsData 
+        let produceDataConf = (
+          cssClasses,
+          tableColumnsConf,
+          tableRecordsData
         ) => {
 
           // why the array and the ambiguous props without no data prop set in the data method:
@@ -220,11 +220,11 @@
           // when iterating an array in the cycle.
           // here we just list the templates names in the order,
           // the js will process them.
-          // and this is in the same order, like in the templatesObject 
+          // and this is in the same order, like in the templatesObject
           // and in the templates rendering rules config templatesConf.
 
-          //@conf-type data assignment. 
-          // tool-art based props names set in this config. 
+          //@conf-type data assignment.
+          // tool-art based props names set in this config.
           // tool-art and tool-exemplar-context, since every Table on every other site has data from other tables.
           const dataConf = [
             { template: "tableOpen", "placeholderData": cssClasses },
@@ -254,17 +254,17 @@
         //
         // the table has 2 columns: id and text.
         // label prop tells the innerHTML for the columns labels of the table.
-        let tableColumnsConfObject = { 
-          "id": { 
-            "columnName": "id", 
+        let tableColumnsConfObject = {
+          "id": {
+            "columnName": "id",
             "label": "ID",
             "cssClass": "columnLabel number right",
-          }, 
-          "text": { 
-            "columnName": "text", 
+          },
+          "text": {
+            "columnName": "text",
             "label": "Text",
             "cssClass": "columnLabel text left",
-          } 
+          }
         };
 
         let tableColumnsOrder = [
@@ -307,7 +307,7 @@
 
         // when the data is fetched from the https url,
         // for every custom templates list,
-        // a custom function sets the right data 
+        // a custom function sets the right data
         // for every template when needed,
         // for a placeholder,
         // or for repeating templates,
@@ -330,7 +330,7 @@
           .setDataConf( dataConf )
           .render( obj, "main" );
 
-        
+
         let renderedTableHtml = obj.retVal;
 
         const holderHtmlNode = document.querySelector( holderHtmlNodeSelector );
@@ -342,7 +342,7 @@
         );
 
         console.log( "this .html file, \nfunction renderExampleTableJson(). \nThis test func finished at it's last js code line." );
-        
+
       }
 
 
@@ -351,7 +351,7 @@
 
         // another art of the templates set:
         // the array with array's elems keys of datatype number.
-        // this templates array is easier to prettify manually 
+        // this templates array is easier to prettify manually
         // to see clearly the html structure of the site ui tool.
         // however, when applying rules for the templates lines,
         // there will be certanly more mistakes,
@@ -382,8 +382,8 @@
 
 
 
-      document.addEventListener ( 
-        'DOMContentLoaded', 
+      document.addEventListener (
+        'DOMContentLoaded',
         () => {
 
           renderExampleTableJson();

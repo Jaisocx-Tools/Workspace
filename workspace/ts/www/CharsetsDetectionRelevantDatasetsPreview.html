@@ -6,14 +6,14 @@
 
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  
-  
-    <link rel="stylesheet" href="CssTools/CssCleanStart/MediaAndStyles/themes/theme-lightmode/clean-start-theme-lightmode-relative.css">
-    <link rel="stylesheet" href="CssTools/CssCleanStart/MediaAndStyles/themes/theme-darkmode/clean-start-theme-darkmode-relative.css">
-  
+
+
+    <link rel="stylesheet" href="sites_tools/css_tools/CssCleanStart/MediaAndStyles/themes/theme-lightmode/clean-start-theme-lightmode-relative.css">
+    <link rel="stylesheet" href="sites_tools/css_tools/CssCleanStart/MediaAndStyles/themes/theme-darkmode/clean-start-theme-darkmode-relative.css">
+
     <!-- CSS CLEAN START THE MAIN .CSS FILE -->
-    <link rel="stylesheet" href="CssTools/CssCleanStart/MediaAndStyles/clean-start-main-relative.css">
-    
+    <link rel="stylesheet" href="sites_tools/css_tools/CssCleanStart/MediaAndStyles/clean-start-main-relative.css">
+
     <style>
 
       html.workspace.small.example-configured-tree > body > main {
@@ -25,23 +25,23 @@
         --clean-start__line-height_h1: 5.0rem;
         --clean-start__line-height_h2: 4.0rem;
       }
-  
+
       .workspace {
         --button-width: fit-content;
       }
-  
+
       .workspace themebuttons {
         width: fit-content;
-        display: grid; 
+        display: grid;
         grid-auto-flow: column;
-        column-gap: 3rem; 
+        column-gap: 3rem;
         margin: 0.9rem 0 2rem 0;
       }
-  
+
       .workspace themebuttons button {
         width: var(--button-width);
       }
-  
+
       .current::after {
         content: "";
         position: absolute;
@@ -55,23 +55,23 @@
         border-bottom-style: solid;
         border-bottom-color: var(--clean-start__text-color);
       }
-  
+
       .workspace button {
         background-color: transparent;
         text-align: left;
       }
-  
+
       #tooltip-button {
         font-family: fantasy;
       }
-  
+
     </style>
 
 
 
 
-<link href="packages/Tree/MediaAndStyles/tree-styles-main.css" rel="stylesheet" />
-<link href="packages/Tree/MediaAndStyles/themes/theme-funny/theme-funny.css" rel="stylesheet" />
+<link href="sites_tools/js_tools/Tree/MediaAndStyles/tree-styles-main.css" rel="stylesheet" />
+<link href="sites_tools/js_tools/Tree/MediaAndStyles/themes/theme-funny/theme-funny.css" rel="stylesheet" />
 
 
 
@@ -83,16 +83,16 @@
 
 
 
-<script src="packages/Tree/transpiled/Simple/typescript/ArrayOrObjectPackage.js"></script>
+<script src="sites_tools/js_tools/Tree/transpiled/Simple/typescript/ArrayOrObjectPackage.js"></script>
 
-<script src="packages/Tree/transpiled/Simple/typescript/TreeConstants.js"></script>
-<script src="packages/Tree/transpiled/Simple/typescript/TreeConf.js"></script>
+<script src="sites_tools/js_tools/Tree/transpiled/Simple/typescript/TreeConstants.js"></script>
+<script src="sites_tools/js_tools/Tree/transpiled/Simple/typescript/TreeConf.js"></script>
 
-<script src="packages/Tree/transpiled/Simple/typescript/TreeAdapter.js"></script>
-<script src="packages/Tree/transpiled/Simple/typescript/TreeAdapterModeEase.js"></script>
-<script src="packages/Tree/transpiled/Simple/typescript/TreeAdapterModeConf.js"></script>
+<script src="sites_tools/js_tools/Tree/transpiled/Simple/typescript/TreeAdapter.js"></script>
+<script src="sites_tools/js_tools/Tree/transpiled/Simple/typescript/TreeAdapterModeEase.js"></script>
+<script src="sites_tools/js_tools/Tree/transpiled/Simple/typescript/TreeAdapterModeConf.js"></script>
 
-<script src="packages/Tree/transpiled/Simple/typescript/Tree.js"></script>
+<script src="sites_tools/js_tools/Tree/transpiled/Simple/typescript/Tree.js"></script>
 
 
 <script src="packages/JPath/transpiled/Simple/JPath.js"></script>
@@ -117,16 +117,16 @@
     <main>
 
       <h1>Charsets Preview Data</h1>
-     
+
       <ThemeButtons>
         <button id="button-turn-on-base-theme">Base Theme</button>
         <button id="button-turn-on-daymode" data-theme="theme-lightmode">Day Mode</button>
-        <button id="button-turn-on-nightmode" data-theme="theme-darkmode">Night Mode</button>  
+        <button id="button-turn-on-nightmode" data-theme="theme-darkmode">Night Mode</button>
       </ThemeButtons>
 
 
     </main>
-  
+
 
     <!-- THEME BUTTONS SCRIPT -->
   <script>
@@ -162,7 +162,7 @@
     }
 
     // declaring the function, this adds to buttons the event handler to turn on the theme.
-    // this function is invoked when the site loads in the browser, 
+    // this function is invoked when the site loads in the browser,
     // in the event handler for the event DOMContentLoaded
     function addThemeButtonsEventHandlers() {
 
@@ -178,9 +178,9 @@
 
         buttonNode.addEventListener (
           "click",
-          (evt) => { 
+          (evt) => {
             let buttonNodeClicked = evt.target;
-            turnOnTheme ( buttonNodeClicked ); 
+            turnOnTheme ( buttonNodeClicked );
           }
         );
 
@@ -200,7 +200,7 @@
 
   </script>
 
-    
+
 
   <script>
     let turnOnDebuggingInfos = false;
@@ -264,7 +264,7 @@
         if ( charsetGroupName === null ) {
           continue;
         }
-        
+
         if ( datsetWithNamedKeys[charsetGroupName] === undefined ) {
           datsetWithNamedKeys[charsetGroupName] = new Array();
         }
@@ -327,7 +327,7 @@
         let url = [ baseUrl, fileNameBase, ".json" ].join( "" );
 
         let treeNode = new Object();
-        
+
         treeNode["label"] = labelText;
         treeNode["opened"] = false;
         treeNode["subtree"] = [
@@ -362,7 +362,7 @@
       };
 
       let mainHtmlNode = this.document.querySelector("main");
-      
+
       for ( let confObj of conf ) {
 
         let labelText = confObj["label_text"];
@@ -390,7 +390,7 @@
 
 
     document.addEventListener(
-      'DOMContentLoaded', 
+      'DOMContentLoaded',
       async () => {
 
       loadAllPreviewDatasets( datasetsFileNames, datasetsBaseUrl );

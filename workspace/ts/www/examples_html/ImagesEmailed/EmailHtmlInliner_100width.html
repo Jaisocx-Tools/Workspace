@@ -13,27 +13,27 @@
   <script src="packages/Text/transpiled/Simple/Trimmer.js"></script>
   <script src="packages/CssHtml/transpiled/Simple/CssHtml.js"></script>
   <script src="packages/CssHtml/transpiled/Simple/CssSelectorWeight.js"></script>
-  <script src="packages/EmailHtmlInliner/transpiled/Simple/EmailHtmlInlinerConstants.js"></script>
-  <script src="packages/EmailHtmlInliner/transpiled/Simple/EmailHtmlInliner.js"></script>
+  <script src="sites_tools/js_tools/EmailHtmlInliner/transpiled/Simple/EmailHtmlInlinerConstants.js"></script>
+  <script src="sites_tools/js_tools/EmailHtmlInliner/transpiled/Simple/EmailHtmlInliner.js"></script>
 
   <!-- CSS CLEAN START THE WEBPACK BUILT BUNDLE.JS FILE -->
   <!-- <script src="webpack_builds/ExampleCssCleanStartWebpack/transpiled/webpack/example-css-clean-start-bundle.js"></script> -->
 
-  <link rel="stylesheet" href="CssTools/CssCleanStart/MediaAndStyles/themes/theme-lightmode/clean-start-theme-lightmode-relative.css">
-  <link rel="stylesheet" href="CssTools/CssCleanStart/MediaAndStyles/clean-start-main-relative.css">
+  <link rel="stylesheet" href="sites_tools/css_tools/CssCleanStart/MediaAndStyles/themes/theme-lightmode/clean-start-theme-lightmode-relative.css">
+  <link rel="stylesheet" href="sites_tools/css_tools/CssCleanStart/MediaAndStyles/clean-start-main-relative.css">
 
 
   <!-- CssCodeSnippet -->
-  <link rel="stylesheet" href="CssTools/CssCodeSnippet/MediaAndStyles/themes/csstool-codesnippet-theme-colour-rosa.css">
-  <link rel="stylesheet" href="CssTools/CssCodeSnippet/MediaAndStyles/themes/csstool-codesnippet-theme-colour-blue.css">
-  <link rel="stylesheet" href="CssTools/CssCodeSnippet/MediaAndStyles/themes/csstool-codesnippet-theme-colour-salad.css">
-  <link rel="stylesheet" href="CssTools/CssCodeSnippet/MediaAndStyles/themes/csstool-codesnippet-theme-size-little.css">
-  <link rel="stylesheet" href="CssTools/CssCodeSnippet/MediaAndStyles/themes/csstool-codesnippet-theme-size-large.css">
-  <link rel="stylesheet" href="CssTools/CssCodeSnippet/MediaAndStyles/themes/csstool-codesnippet-theme-base.css">
-  <link rel="stylesheet" href="CssTools/CssCodeSnippet/MediaAndStyles/csstool-codesnippet-theme-styles-main.css">
-  <link rel="stylesheet" href="CssTools/CssCodeSnippet/MediaAndStyles/lines-numbers-variables/code-snippet-lines-numbers-300.css">
-  <!-- <link rel="stylesheet" href="packages/EmailHtmlInliner/MediaAndStyles/CssCodeSnippet/code-snippet-lines-numbers-999.css"> -->
-  <!-- <link rel="stylesheet" href="packages/EmailHtmlInliner/MediaAndStyles/CssCodeSnippet/code-snippet-lines-numbers-2999.css"> -->
+  <link rel="stylesheet" href="sites_tools/css_tools/CssCodeSnippet/MediaAndStyles/themes/csstool-codesnippet-theme-colour-rosa.css">
+  <link rel="stylesheet" href="sites_tools/css_tools/CssCodeSnippet/MediaAndStyles/themes/csstool-codesnippet-theme-colour-blue.css">
+  <link rel="stylesheet" href="sites_tools/css_tools/CssCodeSnippet/MediaAndStyles/themes/csstool-codesnippet-theme-colour-salad.css">
+  <link rel="stylesheet" href="sites_tools/css_tools/CssCodeSnippet/MediaAndStyles/themes/csstool-codesnippet-theme-size-little.css">
+  <link rel="stylesheet" href="sites_tools/css_tools/CssCodeSnippet/MediaAndStyles/themes/csstool-codesnippet-theme-size-large.css">
+  <link rel="stylesheet" href="sites_tools/css_tools/CssCodeSnippet/MediaAndStyles/themes/csstool-codesnippet-theme-base.css">
+  <link rel="stylesheet" href="sites_tools/css_tools/CssCodeSnippet/MediaAndStyles/csstool-codesnippet-theme-styles-main.css">
+  <link rel="stylesheet" href="sites_tools/css_tools/CssCodeSnippet/MediaAndStyles/lines-numbers-variables/code-snippet-lines-numbers-300.css">
+  <!-- <link rel="stylesheet" href="sites_tools/js_tools/EmailHtmlInliner/MediaAndStyles/CssCodeSnippet/code-snippet-lines-numbers-999.css"> -->
+  <!-- <link rel="stylesheet" href="sites_tools/js_tools/EmailHtmlInliner/MediaAndStyles/CssCodeSnippet/code-snippet-lines-numbers-2999.css"> -->
 
 
 
@@ -87,7 +87,7 @@
       --clean-start__tag_body__height: fit-content;
       --clean-start__tag_body__height_max: fit-content;
       --clean-start__tag_body__height_min: auto;
-  
+
       --clean-start__tag_body__width: 100%;
       --clean-start__tag_body__max_width: 100%;
       --clean-start__tag_body__min_width: 100%;
@@ -133,7 +133,7 @@
 
       width:     var(--main-width);
       max-width: 100%;
-      min-width: unset;      
+      min-width: unset;
 
       height:     auto;
       min-height: fit-content;
@@ -155,7 +155,7 @@
 
       width: 100%;
       max-width: 100%;
-      min-width: 100%;      
+      min-width: 100%;
 
       height: auto;
       min-height: fit-content;
@@ -169,7 +169,7 @@
 
       line-height: 0;
     }
-    
+
     .workspace.theme-emailed-thin.long.browser-width-when-portrait .images > .cell > .image-holder > img {
       display: inline-block;
 
@@ -212,7 +212,7 @@
     }
 
 
-    
+
   </style>
 
 
@@ -232,7 +232,7 @@
 
     display: block;
     position: static;
-    
+
   }
 
   #inlinertoolarea {
@@ -296,7 +296,7 @@
     color: #000;
     border: 1px solid #44ddff;
     border-radius: 0.6rem;
-    
+
     font-size: 0.674rem;
     line-height: 0.674rem;
 
@@ -436,19 +436,19 @@
 
       let cssHtmlPackage = inliner.cssHtmlPackage;
 
-      let inlineText = inliner.inline ( 
+      let inlineText = inliner.inline (
         document,
-        "html", 
-        inliner.constants.stylesPropsToCheck, 
-        baseUrlToReplace, 
-        baseUrlReplacedWith 
+        "html",
+        inliner.constants.stylesPropsToCheck,
+        baseUrlToReplace,
+        baseUrlReplacedWith
       );
 
       let textHtmlNode = document.getElementById("inlinetext");
       textHtmlNode.innerHTML = cssHtmlPackage.escapeHTML( inlineText );
     }
 
-    
+
 
     async function copyInlineText( e ) {
       let cssHtmlPackage = new CssHtml();
@@ -516,7 +516,7 @@
     document.addEventListener( "DOMContentLoaded", () => { assignEventsHandlers(); } );
 
   </script>
-  
+
 </body>
 </html>
 

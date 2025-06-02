@@ -52,7 +52,7 @@ import { CssImporter } from "@jaisocx/css-importer";
 
 
 // paths examples:
-const cssCleanStartPath: any = path.resolve( "www/CssTools/CssCleanStart" );
+const cssCleanStartPath: any = path.resolve( "www/sites_tools/css_tools/CssCleanStart" );
 const cssFilePath: any = path.resolve( cssCleanStartPath, "MediaAndStyles/clean-start-main-webpack.css" );
 const cssTargetFilePath: any = path.resolve( cssCleanStartPath, "MediaAndStyles/clean-start-main-packaged.css" );
 
@@ -66,7 +66,7 @@ cssImporter
   .build()
     .then( ( result: number ) => {
         console.log("build result", result);
-      } 
+      }
     );
 
 ```

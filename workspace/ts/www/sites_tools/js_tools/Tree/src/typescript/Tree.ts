@@ -1,10 +1,10 @@
 import {
-  EventEmitter, ImprovedRenderEventEmitter, EventEmitResult, EventHandlerReturnValue
+  ImprovedRenderEventEmitter, EventHandlerReturnValue
 } from "@jaisocx/event-emitter";
 import { TemplateRenderer } from "@jaisocx/template-renderer";
 
 import {
-  ITreeRenderRetValue, IRenderingMode, IRenderTemplateRendererData, IRenderSubtreeResult, ITreeAdapter
+  ITreeRenderRetValue, IRenderTemplateRendererData, ITreeAdapter
 } from "./Types.js";
 import { TreeConstants } from "./TreeConstants.js";
 import { TreeConf } from "./TreeConf.js";
@@ -420,11 +420,11 @@ export class Tree extends ImprovedRenderEventEmitter {
   }
 
   renderSubtreeCallback(
-    isArray: number,
+    _isArray: number,
     loopCounter: number,
     loopPropertyValue: any,
     loopPropertyKey: any,
-    arrayOrObject: any,
+    _arrayOrObject: any,
     previousCallbackResult: number|null,
     callbackPayload: any
   ): number {
@@ -470,7 +470,7 @@ export class Tree extends ImprovedRenderEventEmitter {
     );
 
     const {
-      isArray, subtreeNodeDataType, subtreeNodeDataTypeString, hasSubtree, subtreeJsonNodes, objectKeys
+      isArray, subtreeNodeDataTypeString, hasSubtree, subtreeJsonNodes, objectKeys
     }: {
           isArray: number;
           subtreeNodeDataType: number;
@@ -568,20 +568,20 @@ export class Tree extends ImprovedRenderEventEmitter {
     nodePosition: number,
     nodeKey: any,
     flatNodeHolderClone: any,
-    holder: HTMLElement
+    _holder: HTMLElement
   ): any {
     const id: any = node[this.conf.NODE__ID] ?? null;
     const holderId: any = node[this.conf.NODE__HOLDER_ID] ?? null;
     const flatCloneHolderId: any = flatNodeHolderClone._flatClone ? flatNodeHolderClone._flatClone[this.conf.NODE__ID] : null;
 
     const pathInJsonOfNodeHolder: any[] = flatNodeHolderClone._pathArray ?? ["ROOT-unhandled"];
-    let pathKeyInNodeHolder = JSON.stringify(nodeKey);
+    // let pathKeyInNodeHolder = JSON.stringify(nodeKey);
 
     let pathInJsonArray: any[] = [
       ...pathInJsonOfNodeHolder
     ];
     if ((pathInJsonOfNodeHolder.length > 1) && this.renderingMode === TreeConstants.RenderingMode.Conf) {
-      const subtreePropName: any = JSON.stringify(this.conf.SUBTREE);
+      // const subtreePropName: any = JSON.stringify(this.conf.SUBTREE);
       pathInJsonArray.push(this.conf.SUBTREE);
       pathInJsonArray.push(nodeKey);
       //pathKeyInNodeHolder = `[${subtreePropName}][${pathKeyInNodeHolder}]`;
@@ -630,10 +630,10 @@ export class Tree extends ImprovedRenderEventEmitter {
 
   getTreeDataNodeByJsonnodePathArray ( jPathArray: any[] ): any {
 
-    // since complexity of building jPath array in modeEase and modeConf, the JPathArray is not the same, 
+    // since complexity of building jPath array in modeEase and modeConf, the JPathArray is not the same,
     // and modeEase was built from item at index 2, since it has array item at index 1 "Top": this.data["Top"], and modeConf does not have this array item.
     // modeConf was built recursively already from item at index 1.
-    const startingIndexValidJpath: number = ( this.renderingMode === TreeConstants.RenderingMode.Conf ) ? 1 : 2; 
+    const startingIndexValidJpath: number = ( this.renderingMode === TreeConstants.RenderingMode.Conf ) ? 1 : 2;
     return jPathArray
       .reduce (
         (
@@ -642,14 +642,14 @@ export class Tree extends ImprovedRenderEventEmitter {
           arrayItemIndex: number
         ) => {
           return ( arrayItemIndex < startingIndexValidJpath ) ? reducedRetValue : reducedRetValue[arrayItem];
-        }, 
+        },
         this.data
       );
   }
 
-  getByJPath( 
+  getByJPath(
     data: any,
-    jPathArray: any[] 
+    jPathArray: any[]
   ): any {
     return jPathArray
       .reduce (
@@ -658,24 +658,24 @@ export class Tree extends ImprovedRenderEventEmitter {
           arrayItem: any
         ) => {
           return reducedRetValue[arrayItem];
-        }, 
+        },
         data
       );
   }
 
   // ADAPTIVE PLACEHOLDERS
   getSubtreeNodeToRender(
-    loopPropertyValue: any,
-    loopPropertyKey: any
+    _loopPropertyValue: any,
+    _loopPropertyKey: any
   ): any {
     return null;
   }
 
   getDataForRendering(
-    node: any,
-    flatNodeClone: any,
-    dataTypeString: any,
-    hasSubtree: boolean
+    _node: any,
+    _flatNodeClone: any,
+    _dataTypeString: any,
+    _hasSubtree: boolean
   ): IRenderTemplateRendererData {
     return {
       iconSrc: "",
@@ -693,8 +693,8 @@ export class Tree extends ImprovedRenderEventEmitter {
   }
 
   getTreeNodeCssClasses(
-    dataType: any,
-    node: any
+    _dataType: any,
+    _node: any
   ): any {
     return "";
   }
@@ -773,16 +773,16 @@ export class Tree extends ImprovedRenderEventEmitter {
           jsonNode
         );
       }
-  
+
       eventPayload = {
         ...eventPayload,
         jsonNode,
         treeHtmlNode,
         treeHtmlNodeHolder: treeHtmlNode.closest("li")
       };
-  
+
       customEventHandler.call(
-        this, 
+        this,
         eventPayload);
 
       this.emitEvent (
@@ -814,7 +814,7 @@ export class Tree extends ImprovedRenderEventEmitter {
   }
 
   // the predefined events handlers
-  treeNodeLableClickHandler(eventPayload: any) {
+  treeNodeLableClickHandler(_eventPayload: any) {
     // example for custom event handler, the placeholder
   }
   // END EVENTS BLOCK
@@ -831,22 +831,10 @@ export class Tree extends ImprovedRenderEventEmitter {
 
   escapeHTMLForAttribute(str: any): any {
     return str
-      .replace(
-        /"/g,
-        "&quot;"
-      ) // Replace double quotes
-      .replace(
-        /'/g,
-        "&#39;"
-      ) // Replace single quotes
-      .replace(
-        /</g,
-        "&lt;"
-      ) // Replace <
-      .replace(
-        />/g,
-        "&gt;"
-      ); // Replace >
+      .replace( /"/g, "&quot;" ) // Replace double quotes
+      .replace( /'/g, "&#39;" ) // Replace single quotes
+      .replace( /</g, "&lt;" ) // Replace <
+      .replace( />/g, "&gt;" ); // Replace >
   }
 
   unescapeHTMLFromAttribute(str: any|undefined): any {
@@ -854,22 +842,10 @@ export class Tree extends ImprovedRenderEventEmitter {
       return "";
     }
     return str
-      .replace(
-        /&quot;/g,
-        "\""
-      ) // Replace double quotes
-      .replace(
-        /&#39;/g,
-        "'"
-      ) // Replace single quotes
-      .replace(
-        /&lt;/g,
-        "<"
-      ) // Replace <
-      .replace(
-        /&gt;/g,
-        ">"
-      ); // Replace >
+      .replace( /&quot;/g, "\"" ) // Replace double quotes
+      .replace( /&#39;/g, "'" ) // Replace single quotes
+      .replace( /&lt;/g, "<" ) // Replace <
+      .replace( /&gt;/g, ">" ); // Replace >
   }
 
   getTreeHtmlNodeDatasetJson(htmlNode: HTMLElement|null): any {

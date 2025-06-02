@@ -38,24 +38,24 @@ class TreeAdapterModeEase extends TreeAdapter_js_1.TreeAdapter {
         };
         return dataForRendering;
     }
-    getTreeNodeCssClasses__dataTypesCssClassesEnabled(dataTypeString, node) {
+    getTreeNodeCssClasses__dataTypesCssClassesEnabled(_dataTypeString, _node) {
         const cssClassesArray = [
             ("class=\""),
             (TreeConstants_js_1.TreeConstants.TreeCssClassNames.PREFIX__CLASS_DATATYPE),
-            (dataTypeString),
+            (_dataTypeString),
             ("\"")
         ];
         const cssClasses = cssClassesArray.join("");
         return cssClasses;
     }
-    getTreeNodeCssClasses__dataTypesCssClassesDisabled(dataTypeString, node) {
+    getTreeNodeCssClasses__dataTypesCssClassesDisabled(_dataTypeString, _node) {
         throw new Error("Method not implemented.");
     }
     // dummy placeholders
-    escapeHTMLForAttribute(arg) {
+    escapeHTMLForAttribute(_arg) {
         throw new Error("Method not implemented.");
     }
-    getTreeNodeCssClasses(dataTypeString, value) {
+    getTreeNodeCssClasses(_dataTypeString, _value) {
         throw new Error("Method not implemented.");
     }
 }

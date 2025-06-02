@@ -4,10 +4,10 @@
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link rel="stylesheet" href="packages/Tooltip/MediaAndStyles/tooltip-styles-main.css" />
+    <link rel="stylesheet" href="sites_tools/js_tools/Tooltip/MediaAndStyles/tooltip-styles-main.css" />
 
     <!-- a temporary theme to test a dynamic size context menu -->
-    <link rel="stylesheet" href="packages/Tooltip/MediaAndStyles/themes/theme-context/tooltip-theme-context.css" />
+    <link rel="stylesheet" href="sites_tools/js_tools/Tooltip/MediaAndStyles/themes/theme-context/tooltip-theme-context.css" />
 
 
     <script src="packages/EventEmitter/transpiled/Simple/EventEmitter.js"></script>
@@ -16,14 +16,14 @@
     <script src="packages/TokensParser/transpiled/Simple/TokensParser.js"></script>
     <script src="packages/TemplateRenderer/transpiled/Simple/TemplateRenderer.js"></script>
 
-    <script src="packages/Tooltip/transpiled/Simple/Types.js"></script>
-    <script src="packages/Tooltip/transpiled/Simple/TooltipMainTemplateData.js"></script>    
-    <script src="packages/Tooltip/transpiled/Simple/Constants.js"></script>
-    <script src="packages/Tooltip/transpiled/Simple/TooltipLib.js"></script>
-    <script src="packages/Tooltip/transpiled/Simple/TooltipShownSettings.js"></script>
-    <script src="packages/Tooltip/transpiled/Simple/Tooltip.js"></script>
+    <script src="sites_tools/js_tools/Tooltip/transpiled/Simple/Types.js"></script>
+    <script src="sites_tools/js_tools/Tooltip/transpiled/Simple/TooltipMainTemplateData.js"></script>
+    <script src="sites_tools/js_tools/Tooltip/transpiled/Simple/Constants.js"></script>
+    <script src="sites_tools/js_tools/Tooltip/transpiled/Simple/TooltipLib.js"></script>
+    <script src="sites_tools/js_tools/Tooltip/transpiled/Simple/TooltipShownSettings.js"></script>
+    <script src="sites_tools/js_tools/Tooltip/transpiled/Simple/Tooltip.js"></script>
 
-    
+
     <style>
 
     body, body * {
@@ -72,7 +72,7 @@
       overflow-x: hidden;
       overflow-y: auto;
     }
-    
+
     html,
     body,
     p,
@@ -219,7 +219,7 @@
       <background></background>
       <description>
         <h1>Tooltip Example</h1>
-  
+
         <h2>Description</h2>
         <p>
           The Tooltip sites ui tool is able to do this:
@@ -233,7 +233,7 @@
 
         <div class="static-overflow-scroll">
           <div class="event-targets-holder static-overflow-scroll">
-    
+
             <p style="margin-bottom: 14rem;">
               <label title="Theme Context">context</label>
               <button id="tooltip-show-button-context" class="mini-image-event-target">i</button>
@@ -248,16 +248,16 @@
               <label title="Theme Darkmode" >darkmode theme</label>
               <button id="tooltip-show-button-darkmode" class="mini-image-event-target">i</button>
             </p>
-    
+
             <p style="margin-bottom: 2rem;">
               <label title="Theme Base">base theme</label>
               <button id="tooltip-show-button" class="mini-image-event-target">i</button>
             </p>
-    
+
 
           </div>
         </div>
-    
+
       </description>
     </main>
 
@@ -295,7 +295,7 @@ tooltipContext
     0.73,
     "rem"
   )
-  .setHtml ( 
+  .setHtml (
     `
     &lt;ul&gt;
       &lt;li&gt;Context Item 1&lt;/li&gt;
@@ -323,38 +323,38 @@ tooltipContext
 
 
 
-    
+
 
 
     <script>
       document.addEventListener('DOMContentLoaded', () => {
 
         // 1. one tooltip shown.
-        //const tooltipHideBehaviour = Constants.TooltipHideBehaviour.HIDE_WHEN_CLICK__ANYWHERE; 
+        //const tooltipHideBehaviour = Constants.TooltipHideBehaviour.HIDE_WHEN_CLICK__ANYWHERE;
 
         // 2. able to show all tooltips by clicking every,
         //    and able to hide all tooltips one click on somewhere else in this site inside the open browser's tab.
-        const tooltipHideBehaviour = Constants.TooltipHideBehaviour.HIDE_WHEN_CLICK__OTHER_THAN_EVENT_TARGET; 
+        const tooltipHideBehaviour = Constants.TooltipHideBehaviour.HIDE_WHEN_CLICK__OTHER_THAN_EVENT_TARGET;
 
         // 3. all tooltips are shown, and in order to hide the event target has to be clicked.
         //const tooltipHideBehaviour = Constants.TooltipHideBehaviour.HIDE_WHEN_CLICK__EVENT_TARGET;
 
-        // 1. one tooltip shown, and hides on timeout, too.  
+        // 1. one tooltip shown, and hides on timeout, too.
         //const tooltipHideBehaviour = Constants.TooltipHideBehaviour.HIDE_AFTER_TIMEOUT__AND__WHEN_CLICK__ANYWHERE;
-        
+
         // 2. lke the 2. and with timeout feature
         //const tooltipHideBehaviour = Constants.TooltipHideBehaviour.HIDE_AFTER_TIMEOUT__AND__WHEN_CLICK__OTHER_THAN_EVENT_TARGET;
-        
+
         // 3. like the 3. and with the timeout feature
         //const tooltipHideBehaviour = Constants.TooltipHideBehaviour.HIDE_AFTER_TIMEOUT__AND__WHEN_CLICK__EVENT_TARGET;
 
         const tooltipHideTimoutMilliseconds = 3000;
 
-          
+
         const tooltipBase = new Tooltip();
         tooltipBase
           .setEventTargetSelector( "#tooltip-show-button-base" )
-          .setHtml ( 
+          .setHtml (
             `<h2>Hello World!</h2>
             <p>Tooltip with minimal required properties set. All default values applied.</p>
             ` )
@@ -368,7 +368,7 @@ tooltipContext
           .setTimeoutToCloseMillis( tooltipHideTimoutMilliseconds )
           .setEventTargetHtmlNodeId( "tooltip-show-button-context" )
           .setCssClasses( "theme-context shown_effect_fadeIn with-transition" )
-          .setHtml ( 
+          .setHtml (
             `
             <ul class="context">
               <li>Context Item 1</li>
@@ -443,7 +443,7 @@ tooltipContext
             Constants.CssSizeDim.REM
           )
           .render();
-        
+
         //tooltip.showTooltip();
 
 

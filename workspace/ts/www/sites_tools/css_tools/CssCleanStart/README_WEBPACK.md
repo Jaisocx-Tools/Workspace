@@ -6,7 +6,7 @@
 To use the rich webpack feature aliases, set this folders structure and these predefined files for Your new package, like in this package.
 
 
-### 1.1. ${PackageRoot}/webpack.aliases.json 
+### 1.1. ${PackageRoot}/webpack.aliases.json
 ```
 {
   "@jaisocx-css-clean-start-MediaAndStyles": "${packageRoot}/MediaAndStyles/"
@@ -171,7 +171,7 @@ export default {
   entry: './transpiled/ESNext/index.js', // Entry point for your TypeScript code
   output: {
     filename: 'example-tree-bundle.js', // Output bundle name
-    path: path.resolve(__dirname, 'transpiled/webpack'), 
+    path: path.resolve(__dirname, 'transpiled/webpack'),
   },
   resolve: {
     alias: {
@@ -179,7 +179,7 @@ export default {
     },
     extensions: [".js", ".json", ".css"],
     fallback: {
-      "path": "path-browserify", 
+      "path": "path-browserify",
     },
   },
   module: {
@@ -187,7 +187,7 @@ export default {
       {
         test: /\.css$/,
         use: [
-          'style-loader', 
+          'style-loader',
           'css-loader',
           {
             loader: 'postcss-loader',
@@ -304,7 +304,7 @@ export default {
           .setNodesWithIcons(true)
           .setNodesOpenedMode(TreeConstants.NodesOpenedMode.ALL_SHOWN)
           .setRenderingMode(TreeConstants.RenderingMode.Ease)
-          .render( data ); 
+          .render( data );
       }
 
       document.addEventListener('DOMContentLoaded', () => {
@@ -324,7 +324,7 @@ export default {
 
 
 ### THEMES: MediaAndStyles like miniimages and fonts resolval in bundle.js
-1. for MediaAndStyles in themes files, use webpack.aliases.js like in packages/Tree project.
+1. for MediaAndStyles in themes files, use webpack.aliases.js like in sites_tools/js_tools/Tree project.
 2. in the Tree.ts, import main css entrypoint file "@jaisocx-tree-MediaAndStyles/tree-styles-main-webpack.css";
 3. in tree-styles-main-webpack.css import theme main css file like this: @import url('themes/theme-base/theme-base-webpack.css');
 4. use webpack.aliasese.js alias like this:

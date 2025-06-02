@@ -14,7 +14,7 @@
 
 
 ## a little outdated version of .ts code here:
-[https://github.com/Jaisocx-Tools/Workspace/tree/893773a85e33f103d8b0b838bf4004bd45a4e164/workspace/ts/www/packages/Tree](https://github.com/Jaisocx-Tools/Workspace/tree/893773a85e33f103d8b0b838bf4004bd45a4e164/workspace/ts/www/packages/Tree)
+[https://github.com/Jaisocx-Tools/Workspace/tree/893773a85e33f103d8b0b838bf4004bd45a4e164/workspace/ts/www/sites_tools/js_tools/Tree](https://github.com/Jaisocx-Tools/Workspace/tree/893773a85e33f103d8b0b838bf4004bd45a4e164/workspace/ts/www/sites_tools/js_tools/Tree)
 
 In Project "Workspace"
 [https://github.com/Jaisocx-Tools/Workspace](https://github.com/Jaisocx-Tools/Workspace)
@@ -25,7 +25,7 @@ git clone ssh:
 git clone https:
 `https://github.com/Jaisocx-Tools/Workspace.git`
 
-at relative path `workspace/ts/www/packages/Tree`
+at relative path `workspace/ts/www/sites_tools/js_tools/Tree`
 
 
 

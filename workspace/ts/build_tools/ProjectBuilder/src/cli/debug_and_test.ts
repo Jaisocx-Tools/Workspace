@@ -48,7 +48,7 @@ if (false === fs.existsSync( packagesPath ) ) {
 
 const cssCleanStartPath: any = path.resolve(
   commandArgs.ProjectRoot,
-  "www/CssTools/CssCleanStart"
+  "www/sites_tools/css_tools/CssCleanStart"
 );
 if (false === fs.existsSync( cssCleanStartPath ) ) {
   throw new Error(`cssCleanStartPath not available at path: ${cssCleanStartPath}`);

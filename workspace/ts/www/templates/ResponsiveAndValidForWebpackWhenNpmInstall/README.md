@@ -20,30 +20,30 @@ several .css files will be loaded with size of very few KB.
 
 ## The latest .tgz archive (v.1.2.14 24th of March 2025)
 
-[https://sandbox.brightday.email/CssTools/CssCleanStart/jaisocx-css-clean-start-1.2.14-with-fonts.tgz](https://sandbox.brightday.email/CssTools/CssCleanStart/jaisocx-css-clean-start-1.2.14-with-fonts.tgz)
+[https://sandbox.brightday.email/sites_tools/css_tools/CssCleanStart/jaisocx-css-clean-start-1.2.14-with-fonts.tgz](https://sandbox.brightday.email/sites_tools/css_tools/CssCleanStart/jaisocx-css-clean-start-1.2.14-with-fonts.tgz)
 
 
-[https://sandbox.brightday.email/CssTools/CssCleanStart/jaisocx-css-clean-start-1.2.14.tgz](https://sandbox.brightday.email/CssTools/CssCleanStart/jaisocx-css-clean-start-1.2.14.tgz)
+[https://sandbox.brightday.email/sites_tools/css_tools/CssCleanStart/jaisocx-css-clean-start-1.2.14.tgz](https://sandbox.brightday.email/sites_tools/css_tools/CssCleanStart/jaisocx-css-clean-start-1.2.14.tgz)
 
 
 
 
 ## Watch site in action
 
-[https://sandbox.brightday.email/CssTools/CssCleanStart/index.template.html](https://sandbox.brightday.email/CssTools/CssCleanStart/index.template.html)
+[https://sandbox.brightday.email/sites_tools/css_tools/CssCleanStart/index.template.html](https://sandbox.brightday.email/sites_tools/css_tools/CssCleanStart/index.template.html)
 
 
-[https://sandbox.brightday.email/CssTools/CssCleanStart/example-lightmode.html](https://sandbox.brightday.email/CssTools/CssCleanStart/example-lightmode.html)
+[https://sandbox.brightday.email/sites_tools/css_tools/CssCleanStart/example-lightmode.html](https://sandbox.brightday.email/sites_tools/css_tools/CssCleanStart/example-lightmode.html)
 
 
-[https://sandbox.brightday.email/CssTools/CssCleanStart/example-darkmode.html](https://sandbox.brightday.email/CssTools/CssCleanStart/example-darkmode.html)
+[https://sandbox.brightday.email/sites_tools/css_tools/CssCleanStart/example-darkmode.html](https://sandbox.brightday.email/sites_tools/css_tools/CssCleanStart/example-darkmode.html)
 
 
 
 
 
 ## Github
-[https://github.com/Jaisocx-Tools/Workspace/tree/main/workspace/ts/www/CssTools/CssCleanStart](https://github.com/Jaisocx-Tools/Workspace/tree/main/workspace/ts/www/CssTools/CssCleanStart)
+[https://github.com/Jaisocx-Tools/Workspace/tree/main/workspace/ts/www/sites_tools/css_tools/CssCleanStart](https://github.com/Jaisocx-Tools/Workspace/tree/main/workspace/ts/www/sites_tools/css_tools/CssCleanStart)
 
 
 

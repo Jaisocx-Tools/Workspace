@@ -56,7 +56,7 @@ const packagesPath = path.resolve(commandArgs.ProjectRoot, commandArgs.PackagesP
 if (false === fs.existsSync(packagesPath)) {
     throw new Error(`modulesPath not available at path: ${packagesPath}`);
 }
-const cssCleanStartPath = path.resolve(commandArgs.ProjectRoot, "www/CssTools/CssCleanStart");
+const cssCleanStartPath = path.resolve(commandArgs.ProjectRoot, "www/sites_tools/css_tools/CssCleanStart");
 if (false === fs.existsSync(cssCleanStartPath)) {
     throw new Error(`cssCleanStartPath not available at path: ${cssCleanStartPath}`);
 }

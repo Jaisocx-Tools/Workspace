@@ -4,10 +4,10 @@ import { IRenderTemplateRendererData, ITreeAdapter } from "./Types.js";
 
 export class TreeAdapterModeConf extends TreeAdapter implements ITreeAdapter {
   getSubtreeNodeToRender(
-    loopPropertyValue: any,
-    loopPropertyKey: any
+    _loopPropertyValue: any,
+    _loopPropertyKey: any
   ): any {
-    return loopPropertyValue;
+    return _loopPropertyValue;
   }
 
   getDataForRendering(
@@ -76,10 +76,10 @@ export class TreeAdapterModeConf extends TreeAdapter implements ITreeAdapter {
   }
 
   getTreeNodeCssClasses__dataTypesCssClassesDisabled(
-    dataTypeString: any,
-    node: any
+    _dataTypeString: any,
+    _node: any
   ): any {
-    const cssClassesNodeValue: any = node[this.conf.NODE__CSS_CLASS_NAME];
+    const cssClassesNodeValue: any = _node[this.conf.NODE__CSS_CLASS_NAME];
 
     const cssClassesArray: any[] = [
       ("class=\""),
@@ -93,13 +93,13 @@ export class TreeAdapterModeConf extends TreeAdapter implements ITreeAdapter {
   }
 
   // dummy placeholders
-  escapeHTMLForAttribute(arg: any): any {
+  escapeHTMLForAttribute(_arg: any): any {
     throw new Error("Method not implemented.");
   }
 
   getTreeNodeCssClasses(
-    dataTypeString: any,
-    value: any
+    _dataTypeString: any,
+    _value: any
   ): any {
     throw new Error("Method not implemented.");
   }

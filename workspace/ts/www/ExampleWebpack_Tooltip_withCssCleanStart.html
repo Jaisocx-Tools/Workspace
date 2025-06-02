@@ -6,11 +6,11 @@
 
   <title>index.html template</title>
 
-  <link rel="stylesheet" href="CssTools/CssCleanStart/MediaAndStyles/themes/theme-lightmode/clean-start-theme-lightmode-relative.css">
-  <link rel="stylesheet" href="CssTools/CssCleanStart/MediaAndStyles/themes/theme-darkmode/clean-start-theme-darkmode-relative.css">
+  <link rel="stylesheet" href="sites_tools/css_tools/CssCleanStart/MediaAndStyles/themes/theme-lightmode/clean-start-theme-lightmode-relative.css">
+  <link rel="stylesheet" href="sites_tools/css_tools/CssCleanStart/MediaAndStyles/themes/theme-darkmode/clean-start-theme-darkmode-relative.css">
 
   <!-- CSS CLEAN START THE MAIN .CSS FILE -->
-  <link rel="stylesheet" href="CssTools/CssCleanStart/MediaAndStyles/clean-start-main-relative.css">
+  <link rel="stylesheet" href="sites_tools/css_tools/CssCleanStart/MediaAndStyles/clean-start-main-relative.css">
 
   <!-- TOOTLIP BUILD WITH WEBPACK -->
   <script src="webpack_builds/ExampleTooltip/transpiled/webpack/example-tooltip-bundle.js"></script>
@@ -23,9 +23,9 @@
 
     .workspace themebuttons {
       width: fit-content;
-      display: grid; 
+      display: grid;
       grid-auto-flow: column;
-      column-gap: 3rem; 
+      column-gap: 3rem;
       margin: 0.9rem 0 6rem 0;
     }
 
@@ -67,11 +67,11 @@
     <ThemeButtons>
       <button id="button-turn-on-base-theme">Base Theme</button>
       <button id="button-turn-on-daymode" data-theme="theme-lightmode">Day Mode</button>
-      <button id="button-turn-on-nightmode" data-theme="theme-darkmode">Night Mode</button>  
+      <button id="button-turn-on-nightmode" data-theme="theme-darkmode">Night Mode</button>
     </ThemeButtons>
 
     <!-- the button when clicked, then the Tooltip is shown.
-    In the Tooltip API is named EventTarget. 
+    In the Tooltip API is named EventTarget.
     The main event target is then the main js event.
     The main js event for the Tooltip, is to click or ap to show and hide the Tooltip. -->
     <button id="tooltip-button">Click me!</button>
@@ -112,7 +112,7 @@
     }
 
     // declaring the function, this adds to buttons the event handler to turn on the theme.
-    // this function is invoked when the site loads in the browser, 
+    // this function is invoked when the site loads in the browser,
     // in the event handler for the event DOMContentLoaded
     function addThemeButtonsEventHandlers() {
 
@@ -128,16 +128,16 @@
 
         buttonNode.addEventListener (
           "click",
-          (evt) => { 
+          (evt) => {
             let buttonNodeClicked = evt.target;
-            turnOnTheme ( buttonNodeClicked ); 
+            turnOnTheme ( buttonNodeClicked );
           }
         );
 
       }
     }
 
-    // declaring the function, this is the example of usage to activate a Toolitp. 
+    // declaring the function, this is the example of usage to activate a Toolitp.
     // (The tooltip will be not shown, just waiting for events).
     function tooltipRender() {
       const tooltipDarkmode = new Tooltip();

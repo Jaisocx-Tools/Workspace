@@ -11,26 +11,26 @@
   used by multiple projects, so not to copy they many times.
   2. for the fine grained site performance when turning on a theme,
   we use to preload the fonts files and mini images at once on page load in the browser tab.
-  3. so that the fonts files and other media 
+  3. so that the fonts files and other media
   are not loaded many times when showing multiple instances of a css or js tool on a page,
   these media files and fonts are referenced by same unique url on the cdn.
-  4. I tested with the css-table-main-cdn.css, 
+  4. I tested with the css-table-main-cdn.css,
   loaded the Preloader for this purpose,
-  and the fonts files were loaded just once, 
+  and the fonts files were loaded just once,
   "Niconne" and 2 files of "Baloo Paaji 2" font, Regular and Semi Bold.
   When enabled the Day Mode theme-lightmode and Night Mode theme-darkmode,
   the fonts have applied immediately and themes choice performance have looked well.
-  5. During local development, You may erase these 2 <script> tags. 
+  5. During local development, You may erase these 2 <script> tags.
     Otherwise, You may rebuild Your css-table-main-relative.css to reference there fonts files via Your cdn.  -->
 
-  <!-- <script src="CssTools/CssTable/transpiled/Simple/Preloader.js"></script> -->
-  <!-- <script src="CssTools/CssTable/transpiled/Simple/ThemesPreloadsCssTable.js"></script> -->
+  <!-- <script src="sites_tools/css_tools/CssTable/transpiled/Simple/Preloader.js"></script> -->
+  <!-- <script src="sites_tools/css_tools/CssTable/transpiled/Simple/ThemesPreloadsCssTable.js"></script> -->
 
 
-  <link rel="stylesheet" href="CssTools/CssTable/MediaAndStyles/themes/columns/columns.css">
+  <link rel="stylesheet" href="sites_tools/css_tools/CssTable/MediaAndStyles/themes/columns/columns.css">
 
-  <link rel="stylesheet" href="CssTools/CssTable/MediaAndStyles/themes/theme-lightmode/css-table-theme-lightmode-relative.css">
-  <link rel="stylesheet" href="CssTools/CssTable/MediaAndStyles/css-table-main-relative.css">
+  <link rel="stylesheet" href="sites_tools/css_tools/CssTable/MediaAndStyles/themes/theme-lightmode/css-table-theme-lightmode-relative.css">
+  <link rel="stylesheet" href="sites_tools/css_tools/CssTable/MediaAndStyles/css-table-main-relative.css">
 
 </head>
 <body>
@@ -52,7 +52,7 @@
               port</span></div>
           <div class="cell"><span class="column-label">type</span><span class="cell-value">number</span></div>
           <div class="cell"><span class="column-label">values</span><span class="cell-value">443</span></div>
-          <div class="cell"><span class="column-label">description</span><span class="cell-value">the port number for the server 
+          <div class="cell"><span class="column-label">description</span><span class="cell-value">the port number for the server
             to accept browsers' connections</span></div>
         </div>
         <div class="row">
@@ -94,7 +94,7 @@
 
   </script>
 
-  
+
 </body>
 </html>
 

@@ -67,7 +67,7 @@ You can also **set the authorization** rule for this endpoint, if the resources 
 2. npm package name:
 `@jaisocx/css-clean-start`
 
-3. path: [./../../workspace/ts/www/CssTools/CssCleanStart/README.md](./../../workspace/ts/www/CssTools/CssCleanStart/README.md)
+3. path: [./../../workspace/ts/www/sites_tools/css_tools/CssCleanStart/README.md](./../../workspace/ts/www/sites_tools/css_tools/CssCleanStart/README.md)
 
 
 4. watch in action with styles referenced at cdn (example of **css code snippet**, however with usage of cdn for **css clean start** styles and themes):
@@ -75,10 +75,10 @@ You can also **set the authorization** rule for this endpoint, if the resources 
 
 
 5. code on Gituhub
-[https://github.com/Jaisocx-Tools/Workspace/tree/main/workspace/ts/www/CssTools/CssCleanStart](https://github.com/Jaisocx-Tools/Workspace/tree/main/workspace/ts/www/CssTools/CssCleanStart)
+[https://github.com/Jaisocx-Tools/Workspace/tree/main/workspace/ts/www/sites_tools/css_tools/CssCleanStart](https://github.com/Jaisocx-Tools/Workspace/tree/main/workspace/ts/www/sites_tools/css_tools/CssCleanStart)
 
 
 6. code on sandbox.brightday.email
-[https://sandbox.brightday.email/CssTools/CssCleanStart/](https://sandbox.brightday.email/CssTools/CssCleanStart/)
+[https://sandbox.brightday.email/sites_tools/css_tools/CssCleanStart/](https://sandbox.brightday.email/sites_tools/css_tools/CssCleanStart/)
 
 

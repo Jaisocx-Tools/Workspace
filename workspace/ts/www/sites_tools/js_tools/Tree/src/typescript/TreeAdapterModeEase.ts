@@ -55,13 +55,13 @@ export class TreeAdapterModeEase extends TreeAdapter implements ITreeAdapter {
   }
 
   getTreeNodeCssClasses__dataTypesCssClassesEnabled(
-    dataTypeString: any,
-    node: any
+    _dataTypeString: any,
+    _node: any
   ): any {
     const cssClassesArray: any[] = [
       ("class=\""),
       (TreeConstants.TreeCssClassNames.PREFIX__CLASS_DATATYPE),
-      (dataTypeString),
+      (_dataTypeString),
       ("\"")
     ];
 
@@ -71,20 +71,20 @@ export class TreeAdapterModeEase extends TreeAdapter implements ITreeAdapter {
   }
 
   getTreeNodeCssClasses__dataTypesCssClassesDisabled(
-    dataTypeString: any,
-    node: any
+    _dataTypeString: any,
+    _node: any
   ): any {
     throw new Error("Method not implemented.");
   }
 
   // dummy placeholders
-  escapeHTMLForAttribute(arg: any): any {
+  escapeHTMLForAttribute(_arg: any): any {
     throw new Error("Method not implemented.");
   }
 
   getTreeNodeCssClasses(
-    dataTypeString: any,
-    value: any
+    _dataTypeString: any,
+    _value: any
   ): any {
     throw new Error("Method not implemented.");
   }

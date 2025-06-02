@@ -1,8 +1,8 @@
 import { TreeAdapter } from "./TreeAdapter.js";
 import { TreeConstants } from "./TreeConstants.js";
 export class TreeAdapterModeConf extends TreeAdapter {
-    getSubtreeNodeToRender(loopPropertyValue, loopPropertyKey) {
-        return loopPropertyValue;
+    getSubtreeNodeToRender(_loopPropertyValue, _loopPropertyKey) {
+        return _loopPropertyValue;
     }
     getDataForRendering(node, flatNodeClone, dataTypeString, hasSubtree) {
         let openButtonClassName = "";
@@ -46,8 +46,8 @@ export class TreeAdapterModeConf extends TreeAdapter {
         const cssClasses = cssClassesArray.join("");
         return cssClasses;
     }
-    getTreeNodeCssClasses__dataTypesCssClassesDisabled(dataTypeString, node) {
-        const cssClassesNodeValue = node[this.conf.NODE__CSS_CLASS_NAME];
+    getTreeNodeCssClasses__dataTypesCssClassesDisabled(_dataTypeString, _node) {
+        const cssClassesNodeValue = _node[this.conf.NODE__CSS_CLASS_NAME];
         const cssClassesArray = [
             ("class=\""),
             (cssClassesNodeValue),
@@ -57,10 +57,10 @@ export class TreeAdapterModeConf extends TreeAdapter {
         return cssClasses;
     }
     // dummy placeholders
-    escapeHTMLForAttribute(arg) {
+    escapeHTMLForAttribute(_arg) {
         throw new Error("Method not implemented.");
     }
-    getTreeNodeCssClasses(dataTypeString, value) {
+    getTreeNodeCssClasses(_dataTypeString, _value) {
         throw new Error("Method not implemented.");
     }
 }

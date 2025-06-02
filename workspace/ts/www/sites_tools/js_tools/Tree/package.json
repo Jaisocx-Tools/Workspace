@@ -1,6 +1,7 @@
 {
   "name": "@jaisocx/tree",
-  "version": "1.5.36",
+  "version": "1.5.37",
+  "author": "Jaisocx",
   "private": false,
   "description": "",
   "type": "module",
@@ -24,12 +25,11 @@
     "MediaAndStyles/",
     "webpack.aliases.json",
     "README.md",
-    "README_WEBPACK.md",
-    "LICENSE"
+    "README_WEBPACK.md"
   ],
   "optionalDependencies": {
-    "@jaisocx/event-emitter": "^1.4.x",
-    "@jaisocx/template-renderer": "^1.4.x"
+    "@jaisocx/event-emitter": "^1.4.2",
+    "@jaisocx/template-renderer": "^1.5.8"
   },
   "keywords": [
     "json",
@@ -38,7 +38,6 @@
   "publishConfig": {
     "access": "public"
   },
-  "author": "Jaisocx",
   "license": "ISC"
 }
 

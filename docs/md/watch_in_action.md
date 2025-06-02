@@ -62,7 +62,7 @@
 
 the html template to use when building projects from scratch.
 
-[https://sandbox.brightday.email/CssTools/CssCleanStart/index.template.html](https://sandbox.brightday.email/CssTools/CssCleanStart/index.template.html)
+[https://sandbox.brightday.email/sites_tools/css_tools/CssCleanStart/index.template.html](https://sandbox.brightday.email/sites_tools/css_tools/CssCleanStart/index.template.html)
 
 
 

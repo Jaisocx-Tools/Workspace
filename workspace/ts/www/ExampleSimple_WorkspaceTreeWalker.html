@@ -2,14 +2,14 @@
   <head>
     <title>WorkspaceTreeWalker Example</title>
 
-    <link rel="stylesheet" href="CssTools/CssCleanStart/MediaAndStyles/themes/theme-lightmode/clean-start-theme-lightmode-relative.css">
-    <link rel="stylesheet" href="CssTools/CssCleanStart/MediaAndStyles/themes/theme-darkmode/clean-start-theme-darkmode-relative.css">
-  
+    <link rel="stylesheet" href="sites_tools/css_tools/CssCleanStart/MediaAndStyles/themes/theme-lightmode/clean-start-theme-lightmode-relative.css">
+    <link rel="stylesheet" href="sites_tools/css_tools/CssCleanStart/MediaAndStyles/themes/theme-darkmode/clean-start-theme-darkmode-relative.css">
+
     <!-- CSS CLEAN START THE MAIN .CSS FILE -->
-    <link rel="stylesheet" href="CssTools/CssCleanStart/MediaAndStyles/clean-start-main-relative.css">
+    <link rel="stylesheet" href="sites_tools/css_tools/CssCleanStart/MediaAndStyles/clean-start-main-relative.css">
 
 
-    
+
     <script src="packages/WorkspaceTreeWalker/transpiled/Simple/types/WorkspaceTreeWalkerPayload.js"></script>
     <script src="packages/WorkspaceTreeWalker/transpiled/Simple/types/JPathData.js"></script>
     <script src="packages/WorkspaceTreeWalker/transpiled/Simple/types/IterableInfo.js"></script>
@@ -18,12 +18,12 @@
 
     <script src="webpack_builds/ExampleTree/transpiled/webpack/example-tree-bundle.js"></script>
 
-    <link rel="stylesheet" href="CssTools/CssCodeSnippet/MediaAndStyles/themes/rosa.css">
-    <link rel="stylesheet" href="CssTools/CssCodeSnippet/MediaAndStyles/themes/sky-blue.css">
-    <link rel="stylesheet" href="CssTools/CssCodeSnippet/MediaAndStyles/themes/salad.css">
+    <link rel="stylesheet" href="sites_tools/css_tools/CssCodeSnippet/MediaAndStyles/themes/rosa.css">
+    <link rel="stylesheet" href="sites_tools/css_tools/CssCodeSnippet/MediaAndStyles/themes/sky-blue.css">
+    <link rel="stylesheet" href="sites_tools/css_tools/CssCodeSnippet/MediaAndStyles/themes/salad.css">
 
-    <link rel="stylesheet" href="CssTools/CssCodeSnippet/MediaAndStyles/css-code-snippet-styles-main.css">
-    <link rel="stylesheet" href="CssTools/CssCodeSnippet/MediaAndStyles/lines-numbers-variables/code-snippet-lines-numbers-99.css">
+    <link rel="stylesheet" href="sites_tools/css_tools/CssCodeSnippet/MediaAndStyles/css-code-snippet-styles-main.css">
+    <link rel="stylesheet" href="sites_tools/css_tools/CssCodeSnippet/MediaAndStyles/lines-numbers-variables/code-snippet-lines-numbers-99.css">
 
     <style>
 
@@ -57,14 +57,14 @@
     --lines-number: 8;
   }
 
-/*   
+/*
   .CodeSnippetHolder#code-snippet-example-thin {
     --lines-number: 33;
     --code-snippet-tool--width: 28rem;
     --code-snippet-tool--height: 22rem;
     --overflow-y: auto;
     --code_snippet__font_family: Arial;
-  
+
     --code-snippet--line-height: 1.2rem;
     --code-snippet--font-size: 0.775rem;
   } */
@@ -153,7 +153,7 @@ function workspaceTreeWalkerCallback (
 function exampleUseWorkspaceTreeWalkerFlatData() {
 
   const inOutPayload = new WorkspaceTreeWalkerPayload();
-  
+
   inOutPayload.dataset = flatRecursionDataset;
   inOutPayload.transformedDataset = treeDataset;
 
@@ -162,7 +162,7 @@ function exampleUseWorkspaceTreeWalkerFlatData() {
   inOutPayload.nameHolderId = "parentId";
   inOutPayload.nameId = "id";
   inOutPayload.branchName = "branch";
-  
+
   const treeWalker = new WorkspaceTreeWalker();
   treeWalker.walk (
     // WorkspaceTreeWalker.WALK_MODE.WALK_MODE_FLAT_REPEATING,
@@ -211,8 +211,8 @@ function renderTreeDataset() {
 <h3>Set these functions work the right way on the .html page.</h3>
 <CodeSnippetHolder id="code-snippet-walkFlatRepeatingInit" class="CodeSnippetHolder salad TreeWalkerPage">
   <pre class="CodeSnippetArea">
-document.addEventListener ( 
-  'DOMContentLoaded', 
+document.addEventListener (
+  'DOMContentLoaded',
   () => {
     exampleUseWorkspaceTreeWalkerFlatData();
     renderFlatDataset();
@@ -282,7 +282,7 @@ document.addEventListener (
 
         // the jpath can be like this: [main, 3, 5, 8, 12]
         // these are the keys in the object, where the TreeWalker walks.
-        // we append to the TransformedDataset the node, 
+        // we append to the TransformedDataset the node,
         // if does not exist, and in the most cases,
         // in the last iteration, where jpathIx === jpathLastIx.
         for ( jpathIx = 1; jpathIx < jpathLen; jpathIx++ ) {
@@ -290,7 +290,7 @@ document.addEventListener (
           id = jpath[jpathIx];
 
           foundNode = false;
-            
+
           let toGetById = [];
 
           if ( Array.isArray( transformedDatasetNode ) ) {
@@ -318,7 +318,7 @@ document.addEventListener (
               ( !foundNode ) ||
               ( inOutPayload.iterationsData )
             ) &&
-            ( jpathIx === jpathLastIx ) 
+            ( jpathIx === jpathLastIx )
           ) {
 
             newItem = {
@@ -337,7 +337,7 @@ document.addEventListener (
 
           } else if (
             ( !foundNode ) &&
-            ( jpathIx < jpathLastIx ) 
+            ( jpathIx < jpathLastIx )
           ) {
 
             newItem = {
@@ -397,7 +397,7 @@ document.addEventListener (
       function exampleUseWorkspaceTreeWalkerFlatData() {
 
         const inOutPayload = new WorkspaceTreeWalkerPayload();
-        
+
         inOutPayload.dataset = flatRecursiveDataset;
         inOutPayload.transformedDataset = treeDataset;
 
@@ -406,7 +406,7 @@ document.addEventListener (
         inOutPayload.nameHolderId = "parentId";
         inOutPayload.nameId = "id";
         inOutPayload.branchName = "branch";
-        
+
         const treeWalker = new WorkspaceTreeWalker();
         treeWalker.walk (
           // WorkspaceTreeWalker.WALK_MODE.WALK_MODE_FLAT_REPEATING,
@@ -455,8 +455,8 @@ document.addEventListener (
           .render( treeDataset );
       }
 
-      document.addEventListener ( 
-        'DOMContentLoaded', 
+      document.addEventListener (
+        'DOMContentLoaded',
         () => {
 
           exampleFlatDataWithIterationsData();

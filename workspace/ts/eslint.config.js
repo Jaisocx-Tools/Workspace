@@ -64,7 +64,7 @@ export default [
       "indent": ["error", 2, { "SwitchCase": 2 }],
       "no-mixed-spaces-and-tabs": "error",
 
-      "jaisocx/multiline-args": ["error", { "args-chars-max-number": 10 }],
+      "jaisocx/multiline-args": ["error", { "args-chars-max-number": 28 }],
       "jaisocx/line-delimiters": [
         "error",
         {
@@ -118,7 +118,7 @@ export default [
       "indent": ["error", TSC_OUTPUT_INDENTATION_SIZE],
 
       "jaisocx/class-statement-cleanup": "error",
-      "jaisocx/multiline-args": ["error", { "args-chars-max-number": 10 }],
+      "jaisocx/multiline-args": ["error", { "args-chars-max-number": 28 }],
       "jaisocx/line-delimiters": [
         "error",
         {

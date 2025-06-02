@@ -123,7 +123,7 @@ npm install
 
 ## News: May 2025.
 
-1. New npm Package **EmailHtmlInliner** `@jaisocx/email-html-inliner` and site to watch The Inliner in action: [https://sandbox.brightday.email/packages/EmailHtmlInliner/EmailHtmlInliner_Images.html](https://sandbox.brightday.email/packages/EmailHtmlInliner/EmailHtmlInliner_Images.html)
+1. New npm Package **EmailHtmlInliner** `@jaisocx/email-html-inliner` and site to watch The Inliner in action: [https://sandbox.brightday.email/sites_tools/js_tools/EmailHtmlInliner/EmailHtmlInliner_Images.html](https://sandbox.brightday.email/sites_tools/js_tools/EmailHtmlInliner/EmailHtmlInliner_Images.html)
 
 
 2. Stricter tsconfig.json rules. Checks unused variables. Wen You have to invoke the callback and don't use the callback's in arg, the workaround is to prefix the method's in arg name with the underscore symbol.

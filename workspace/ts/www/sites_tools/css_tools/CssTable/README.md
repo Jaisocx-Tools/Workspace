@@ -5,7 +5,7 @@
 
 ## The latest .tgz archive (v.1.3.2. 03.04.2025)
 
-[sandbox.brightday.email/CssTools/CssTable/jaisocx-css-table-1.3.2.tgz](https://sandbox.brightday.email/CssTools/CssTable/jaisocx-css-table-1.3.2.tgz)
+[sandbox.brightday.email/sites_tools/css_tools/CssTable/jaisocx-css-table-1.3.2.tgz](https://sandbox.brightday.email/sites_tools/css_tools/CssTable/jaisocx-css-table-1.3.2.tgz)
 
 
 
@@ -17,7 +17,7 @@
 
 ## Github
 
-[Github.com/Jaisocx-Tools/Workspace/tree/main/workspace/ts/www/CssTools/CssTable](https://github.com/Jaisocx-Tools/Workspace/tree/main/workspace/ts/www/CssTools/CssTable)
+[Github.com/Jaisocx-Tools/Workspace/tree/main/workspace/ts/www/sites_tools/css_tools/CssTable](https://github.com/Jaisocx-Tools/Workspace/tree/main/workspace/ts/www/sites_tools/css_tools/CssTable)
 
 
 ## Status
@@ -57,12 +57,12 @@ and for the desktop standard view.
 
   <title>Under construction: Css Table</title>
 
-  <script src="CssTools/CssTable/transpiled/Simple/Preloader.js"></script>
-  <script src="CssTools/CssTable/transpiled/Simple/ThemesPreloadsCssTable.js"></script>
+  <script src="sites_tools/css_tools/CssTable/transpiled/Simple/Preloader.js"></script>
+  <script src="sites_tools/css_tools/CssTable/transpiled/Simple/ThemesPreloadsCssTable.js"></script>
 
-  <!-- <link rel="stylesheet" href="CssTools/CssTable/MediaAndStyles/themes/theme-lightmode/css-table-theme-lightmode-relative.css"> -->
-  <!-- <link rel="stylesheet" href="CssTools/CssTable/MediaAndStyles/themes/theme-darkmode/css-table-theme-darkmode-relative.css"> -->
-  <link rel="stylesheet" href="CssTools/CssTable/MediaAndStyles/css-table-main-relative.css">
+  <!-- <link rel="stylesheet" href="sites_tools/css_tools/CssTable/MediaAndStyles/themes/theme-lightmode/css-table-theme-lightmode-relative.css"> -->
+  <!-- <link rel="stylesheet" href="sites_tools/css_tools/CssTable/MediaAndStyles/themes/theme-darkmode/css-table-theme-darkmode-relative.css"> -->
+  <link rel="stylesheet" href="sites_tools/css_tools/CssTable/MediaAndStyles/css-table-main-relative.css">
 
 </head>
 <body>
