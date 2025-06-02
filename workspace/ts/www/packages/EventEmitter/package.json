@@ -1,6 +1,7 @@
 {
   "name": "@jaisocx/event-emitter",
-  "version": "1.4.1",
+  "version": "1.4.2",
+  "author": "Jaisocx",
   "private": false,
   "description": "",
   "type": "module",
@@ -14,9 +15,8 @@
   "files": [
     "transpiled/CommonJS",
     "transpiled/ESNext",
-    "MediaAndStyles/",
-    "README.md",
-    "LICENSE"
+    "transpiled/Simple",
+    "README.md"
   ],
   "keywords": [
     "event",
@@ -26,7 +26,6 @@
   "publishConfig": {
     "access": "public"
   },
-  "author": "Jaisocx",
   "license": "ISC"
 }
 

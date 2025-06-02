@@ -53,12 +53,22 @@
     {
       "path": "packages/CssHtml",
       "name": "css-html",
-      "build": true,
+      "build": false,
       "build-simple-enable": true,
       "dependencies": [],
       "build-files": [
         "CssHtml.js",
         "CssSelectorWeight.js"
+      ]
+    },
+    {
+      "path": "packages/EventEmitter",
+      "name": "event-emitter",
+      "build": true,
+      "build-simple-enable": true,
+      "build-files": [
+        "EventEmitter.js",
+        "ImprovedRenderEventEmitter.js"
       ]
     },
     {
@@ -206,16 +216,6 @@
         "webpackAliases.js",
         "webpack.aliases.mjs",
         "webpack.aliases.cjs"
-      ]
-    },
-    {
-      "path": "packages/EventEmitter",
-      "name": "event-emitter",
-      "build": false,
-      "build-simple-enable": true,
-      "build-files": [
-        "EventEmitter.js",
-        "ImprovedRenderEventEmitter.js"
       ]
     },
     {

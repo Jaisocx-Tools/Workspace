@@ -1,6 +1,7 @@
 import { EventEmitter } from "./EventEmitter.js";
 import { EventHandlerReturnValue, EventEmitResult } from "./Types.js";
 
+
 // This class is used with JSTree to keep browser working with ease, even with several tens of MBs JSON data file.
 export class ImprovedRenderEventEmitter extends EventEmitter {
   eventsHandlersSetDom: any;
@@ -8,6 +9,7 @@ export class ImprovedRenderEventEmitter extends EventEmitter {
   mainHolderHtmlNode: HTMLElement|null;
 
   EventArtDOMEventOptimized: any;
+
 
   constructor() {
     super();
@@ -18,19 +20,25 @@ export class ImprovedRenderEventEmitter extends EventEmitter {
     this.EventArtDOMEventOptimized = "DOMEventOptimized";
   }
 
+
   setDebug(debug: boolean): ImprovedRenderEventEmitter {
     this.debug = debug;
+
     return this;
   }
 
+
   addDomEventListeners(): ImprovedRenderEventEmitter {
+
     // here is just the right assignment of few dom event listeners.
     // Don't edit here, please!
     for (const eventName in this.eventsHandlersSetDom) {
       const eventHandlers = this.eventsHandlersSetDom[eventName];
+
       if (this.isObjectEmpty(eventHandlers)) {
         continue;
       }
+
 
       // here we add one dom event listener for each event, like click, contextmenu, dblcick and others, when any
       // @ts-ignore
@@ -43,16 +51,18 @@ export class ImprovedRenderEventEmitter extends EventEmitter {
     return this;
   }
 
+
   // this method just sets an event handler function by event name and a holder elem selector to an object,
   // and then all event handlers are executed on this.emitDomEvent method call.
   // The difference is, that we addEventListener once to the main html node,
-  // and not to each html node, it is best, 
+  // and not to each html node, it is best,
   // when the html tool is populated with a larger json data file of several tens or hundreds MBs, for example.
   addDomEventListener(
     eventName: any,
     selector: any,
     eventHandler: CallableFunction
   ): ImprovedRenderEventEmitter {
+
     if (!this.eventsHandlersSetDom[eventName]) {
       this.eventsHandlersSetDom[eventName] = {};
     }
@@ -66,6 +76,7 @@ export class ImprovedRenderEventEmitter extends EventEmitter {
     return this;
   }
 
+
   // Don't edit here, please
   emitDomEvent(
     eventName: any,
@@ -74,17 +85,20 @@ export class ImprovedRenderEventEmitter extends EventEmitter {
     const results: EventEmitResult[] = [];
 
     const eventHandlersBySelectors = this.eventsHandlersSetDom[eventName];
+
     if (this.isObjectEmpty(eventHandlersBySelectors)) {
       return results;
     }
 
     for (const selector in eventHandlersBySelectors) {
       const eventHandlers = eventHandlersBySelectors[selector];
+
       if (!eventHandlers || eventHandlers.length === 0) {
         continue;
       }
 
       const eventTarget = payload.event.target.closest(selector);
+
       if (!eventTarget) {
         continue;
       }
@@ -92,6 +106,7 @@ export class ImprovedRenderEventEmitter extends EventEmitter {
       payload.eventTarget = eventTarget;
 
       for (const eventHandler of eventHandlers) {
+
         if (!eventHandler || (typeof eventHandler) !== "function") {
           continue;
         }
@@ -107,6 +122,7 @@ export class ImprovedRenderEventEmitter extends EventEmitter {
           payload,
           result
         });
+
         if (result && result.payloadReturned) {
           payload = result.payloadReturned;
         }
@@ -116,8 +132,10 @@ export class ImprovedRenderEventEmitter extends EventEmitter {
     return results;
   }
 
+
   optimizedDomEventHandler(event: Event): void {
     const eventTarget: HTMLElement|null = event.target as HTMLElement;
+
     if (
       eventTarget
             && eventTarget.nodeName === "A"
@@ -135,6 +153,7 @@ export class ImprovedRenderEventEmitter extends EventEmitter {
 
     const eventName: any = event.type;
     const eventHandlers: any = this.eventsHandlersSetDom[eventName];
+
     if (this.isObjectEmpty(eventHandlers)) {
       return;
     }

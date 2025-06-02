@@ -31,7 +31,7 @@ export class ImprovedRenderEventEmitter extends EventEmitter {
     // this method just sets an event handler function by event name and a holder elem selector to an object,
     // and then all event handlers are executed on this.emitDomEvent method call.
     // The difference is, that we addEventListener once to the main html node,
-    // and not to each html node, it is best, 
+    // and not to each html node, it is best,
     // when the html tool is populated with a larger json data file of several tens or hundreds MBs, for example.
     addDomEventListener(eventName, selector, eventHandler) {
         if (!this.eventsHandlersSetDom[eventName]) {

@@ -1,7 +1,7 @@
 
 // when extended EventEmitter,
 // and added an event handler function,
-// then this function 
+// then this function
 // has to accept input arg of this interface datatype EventHandlerInputArg
 export interface EventHandlerInputArg {
   eventName: any;

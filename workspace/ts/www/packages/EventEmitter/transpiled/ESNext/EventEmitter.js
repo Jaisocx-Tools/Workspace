@@ -1,9 +1,3 @@
-// The purpose is, when had extended EventEmitter,
-// the class can add event listeners callable functoins,
-// and then, during development,
-// we can in some code areas emit these events.
-// This is the nice solution, more convinient,
-// thn just passing a method arg callback or of type function. 
 export class EventEmitter {
     eventsHandlersSetThisClass;
     debug;

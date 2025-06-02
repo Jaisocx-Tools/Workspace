@@ -1,17 +1,14 @@
 import { EventHandlerReturnValue, EventEmitResult } from "./Types.js";
 
-// The purpose is, when had extended EventEmitter,
-// the class can add event listeners callable functoins,
-// and then, during development,
-// we can in some code areas emit these events.
-// This is the nice solution, more convinient,
-// thn just passing a method arg callback or of type function. 
+
+
 export class EventEmitter {
   eventsHandlersSetThisClass: any;
 
   debug: boolean;
 
   EventArtJSEvent: any;
+
 
   constructor() {
     this.eventsHandlersSetThisClass = {};
@@ -20,30 +17,38 @@ export class EventEmitter {
     this.EventArtJSEvent = "JSEvent";
   }
 
+
   setDebug(inDebug: boolean): EventEmitter {
     this.debug = inDebug;
+
     return this;
   }
 
+
   isObjectEmpty(obj: object): boolean {
+
     // Check if the object is null or undefined
     if (obj === undefined || obj === null) {
       return true;
     }
+
 
     // Check if the object is an actual object and not another type
     if (typeof obj !== "object") {
       return false;
     }
 
+
     // Check if the object has any own properties
     if (Object.keys(obj).length === 0) {
       return true;
     }
 
+
     // If all checks pass, the object is not undefined, null, or empty
     return false;
   }
+
 
   // this method just sets an event handler function by event name to an object,
   // and then all event handlers are executed on this.emitEvent method call.
@@ -61,6 +66,7 @@ export class EventEmitter {
 
     return this;
   }
+
 
   // this.emitEvent method call You can place inside Your js code,
   // where You wish to provide the interface of optional adding a custom event listener in Your JS class.
@@ -82,6 +88,7 @@ export class EventEmitter {
     }
 
     const eventHandlers = this.eventsHandlersSetThisClass[eventName];
+
     if (!eventHandlers || eventHandlers.length === 0) {
       if (this.debug) {
         console.log(
@@ -138,6 +145,7 @@ export class EventEmitter {
       eventEmitResults.push( eventEmitResult );
 
       if (eventHandlerResult && eventHandlerResult.payloadReturned) {
+
         // @ts-ignore
         payload = eventHandlerResult.payloadReturned;
       }

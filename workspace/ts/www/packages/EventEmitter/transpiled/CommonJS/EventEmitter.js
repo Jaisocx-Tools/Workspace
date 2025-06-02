@@ -1,12 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.EventEmitter = void 0;
-// The purpose is, when had extended EventEmitter,
-// the class can add event listeners callable functoins,
-// and then, during development,
-// we can in some code areas emit these events.
-// This is the nice solution, more convinient,
-// thn just passing a method arg callback or of type function. 
 class EventEmitter {
     constructor() {
         this.eventsHandlersSetThisClass = {};
