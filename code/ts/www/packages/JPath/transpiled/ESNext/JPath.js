@@ -90,8 +90,8 @@ export class JPath {
     //    let jpath = JPath.parse( "subtree[1].opened" ); => [ "subtree", 1, "opened" ]
     //    let obj = { "subtree": [{ "opened": false }, { "opened": true }] };
     //    let valueFound = JPath.getByJPath( jpath, obj );
-    //    console.log( valueFound ); 
-    //    prints out => true  
+    //    console.log( valueFound );
+    //    prints out => true
     static getByJPath(jpath, value) {
         if (!value) {
             return null;
@@ -125,13 +125,13 @@ export class JPath {
         return targetValue;
     }
     // jpath string exression as "subtree[1].opened" => [ "subtree", 1, "opened" ]
-    // with this art of array of properties names of javascript object tree 
-    //  it is easier to get the property value of any datatype in javascript objects and arrays. 
-    //  later usage of the jpath array: 
+    // with this art of array of properties names of javascript object tree
+    //  it is easier to get the property value of any datatype in javascript objects and arrays.
+    //  later usage of the jpath array:
     //    let jpath = JPath.parse( "subtree[1].opened" );
     //    let obj = { "subtree": [{ "opened": false }, { "opened": true }] };
     //    let valueFound = JPath.getByJPath( jpath, obj );
-    //    console.log( valueFound ); 
+    //    console.log( valueFound );
     //    prints out => true
     static parse(jpathExpression) {
         const jpath = [];
@@ -152,22 +152,22 @@ export class JPath {
             // for example: "tokens[startTokens][0].length"
             // pushes to jpath array in the first iteration like this:
             //    jpath.push( "tokens" );
-            //    jpath.push( "startTokens" ), 
-            //  then in the next iteration 
+            //    jpath.push( "startTokens" ),
+            //  then in the next iteration
             //    jpath.push( 0 );
             //  and then exits the cycle.
-            //  the push of prop "length" is performed then 
+            //  the push of prop "length" is performed then
             //    in the next iteration of the "loopSplittedByPoints: for" cycle above
             while (leftBracePosition !== (-1)) {
-                // in this while loop, 
-                // when the next step is done, 
+                // in this while loop,
+                // when the next step is done,
                 // .indexOf searches from the rightBracePosition,
                 // matched in the previous while iteration.
                 leftBracePosition = jpathSplitted.indexOf("[", rightBracePosition);
                 // if an opening brace was not matched,
                 //        means, this jpath expression does not contain [] expression,
-                //        and this key item 
-                //        from the splitted by dots jpath 
+                //        and this key item
+                //        from the splitted by dots jpath
                 //        is pushed to the target value array,
                 //        and continues to check the next jpath key item.
                 if (leftBracePosition === (-1)) {
@@ -175,9 +175,9 @@ export class JPath {
                     continue loopSplittedByPoints;
                 }
                 rightBracePosition = jpathSplitted.indexOf("]", leftBracePosition);
-                // here means, 
-                //  when square braced key opened, 
-                //  but the closing square brace not matched, 
+                // here means,
+                //  when square braced key opened,
+                //  but the closing square brace not matched,
                 //  the JPath expression is wrong.
                 if (rightBracePosition === (-1)) {
                     throw new Error("JPathExpression synthax");

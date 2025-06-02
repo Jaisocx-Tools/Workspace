@@ -1,100 +1,122 @@
-import { resolve } from "path";
+import { resolve } from "node:path";
+import * as fs from "node:fs";
 import { fileURLToPath } from "url";
 import typescriptEslintPlugin from "@typescript-eslint/eslint-plugin";
 import typescriptEslintParser from "@typescript-eslint/parser";
 import jaisocxPlugin from "./build_tools/EslintPlugins/EslintPluginJaisocxJS/src/index.js";
 
-const MAX_LINE_LENGTH = 255;
-const INDENT = 2;
 
 // Resolve paths for tsconfig in an ESM context
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = resolve(__filename, "..");
-const tsconfig = resolve(__dirname, "tsconfig.ESNext.json");
+const tsconfigPath = resolve(__dirname, "tsconfig.ESNext.json");
 
 export default [
   {
-    ignores: ["node_modules/**"],
-    languageOptions: {
-      ecmaVersion: 2023, // Ensure latest JS features
-      sourceType: "module", // Node.js ESM support
+    "ignores": ["node_modules/**"],
+    "languageOptions": {
+      "ecmaVersion": 2023,
+      "sourceType": "module"
     },
-    rules: {
-      indent: ["error", INDENT, { SwitchCase: 2 }], // INDENT number spaces per indentation level
+    "rules": {
+      "indent": ["error", 2, { "SwitchCase": 2 }],
       "no-mixed-spaces-and-tabs": "error",
-      quotes: ["error", "double"]
-    },
+      "quotes": ["warn", "double"],
+      "no-trailing-spaces": ["error", { "skipBlankLines": false, "ignoreComments": false }]
+    }
   },
   {
-    files: ["*.json"],
-    rules: {
+    "files": ["*.json"],
+    "rules": {
       "quote-props": ["error", "always"],
-      quotes: ["error", "double"],
+      "quotes": ["error", "double"],
       "comma-dangle": [
         "error",
         {
-          arrays: "never",
-          objects: "never",
-          imports: "never",
-          exports: "never",
-          functions: "never",
-        },
-      ],
-    },
+          "arrays": "never",
+          "objects": "never",
+          "imports": "never",
+          "exports": "never",
+          "functions": "never"
+        }
+      ]
+    }
   },
   {
-    files: ["src/**/*.ts", "www/**/src/**/*.ts"],
-    plugins: {
+    "files": ["src/**/*.ts", "www/**/src/**/*.ts"],
+    "plugins": {
       "@typescript-eslint": typescriptEslintPlugin,
-      jaisocx: jaisocxPlugin,
+      "jaisocx": jaisocxPlugin
     },
-    languageOptions: {
-      parser: typescriptEslintParser,
-      parserOptions: {
-        ecmaVersion: 2023, // Latest ECMAScript version
-        sourceType: "module", // Node.js ESM support
-        project: tsconfig, // Path to your tsconfig file for type-checking
-      },
+    "languageOptions": {
+      "parser": typescriptEslintParser,
+      "parserOptions": {
+        "ecmaVersion": 2023,
+        "sourceType": "module",
+        "project": tsconfigPath
+      }
     },
-    rules: {
-      "max-len": ["error", { code: MAX_LINE_LENGTH }],
-      semi: ["error", "always"],
-      "no-extra-semi": "error",
-      "jaisocx/line-delimiters": "error",
-      "jaisocx/multiline-args": "error",
+    "rules": {
+      "indent": ["error", 2, { "SwitchCase": 2 }],
+      "no-mixed-spaces-and-tabs": "error",
+      "jaisocx/multiline-args": ["error", { "args-chars-max-number": 10 }],
+      "jaisocx/line-delimiters": [
+        "error",
+        {
+          "methods": { "lines": 3 },
+          "blocks": { "lines": 1 },
+          "ret": { "lines": 3 },
+          "above_comments": { "lines": 2 },
+          "minmax_newlines": { "lines": 1 }
+        }
+      ],
       "comma-dangle": [
         "error",
         {
-          arrays: "never",
-          objects: "never",
-          imports: "never",
-          exports: "never",
-          functions: "never",
-        },
+          "arrays": "never",
+          "objects": "never",
+          "imports": "never",
+          "exports": "never",
+          "functions": "never"
+        }
       ],
-    },
+      "no-extra-semi": "error",
+      "semi": ["error", "always"]
+    }
   },
   {
-    files: ["www/**/transpiled/Simple/**/*.js"],
-    plugins: {
-      jaisocx: jaisocxPlugin,
+    "files": ["www/**/transpiled/Simple/**/*.cjs"],
+    "plugins": {
+      "jaisocx": jaisocxPlugin
     },
-    rules: {
-      "jaisocx/class-statement-cleanup": "error",
-      "jaisocx/line-delimiters": "error",
-      "jaisocx/multiline-args": "error",
-      "comma-dangle": [
-        "error", {
-          arrays: "never",
-          objects: "never",
-          imports: "never",
-          exports: "never",
-          functions: "never",
-        },
+    "rules": {
+      "jaisocx/line-delimiters": [
+        "error",
+        {
+          "methods": { "lines": 3 },
+          "blocks": { "lines": 2 },
+          "above_comments": { "lines": 2 },
+          "minmax_newlines": { "lines": 1 }
+        }
       ],
-      "max-len": ["error", { code: MAX_LINE_LENGTH }],
-      semi: ["error", "always"],
-      "no-extra-semi": "error",
-    },
-  },
+      "comma-dangle": [
+        "error",
+        {
+          "arrays": "never",
+          "objects": "never",
+          "imports": "never",
+          "exports": "never",
+          "functions": "never"
+        }
+      ],
+      "jaisocx/multiline-args": ["error", { "args-chars-max-number": 10 }],
+      "jaisocx/class-statement-cleanup": "error",
+      "semi": ["error", "always"],
+      "no-extra-semi": "error"
+    }
+  }
 ];
+
+
+
+

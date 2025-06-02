@@ -9,13 +9,27 @@ export const MultilineArgs = {
     },
     fixable: "whitespace",
     schema: [
-      { "args-chars-max-number": { type: "number" } }, 
+      {
+        type: "object",
+        properties: {
+          "args-chars-max-number": {
+            type: "number",
+            minimum: 5
+          }
+        },
+        additionalProperties: false
+      }
     ]
   },
   create: function (context) {
-    const indentRuleConfig = context.settings?.["indent"] || [2, 2]; // Default to 2 spaces
-    const argsCharsMaxNumber = context.settings?.["args-chars-max-number"] || 24;
-    const eslintConfigIdentPrefixSizeForOneLevel = Array.isArray(indentRuleConfig) ? indentRuleConfig[1] : 2;
+
+    let indentRuleConfig = context.settings?.["indent"] || [2, 2]; // Default to 2 spaces
+
+    let options = context.options[0] || {};
+    let argsCharsMaxNumber = options["args-chars-max-number"];
+
+
+    let eslintConfigIdentPrefixSizeForOneLevel = Array.isArray(indentRuleConfig) ? indentRuleConfig[1] : 2;
 
     // Helper function to enforce that each argument is on a new line.
     function enforceNewLines(node, args) {
@@ -69,20 +83,23 @@ export const MultilineArgs = {
         }
       });
 
-      const lastArg = args[args.length - 1];
-      const closingParen = src.getTokenAfter(lastArg, token => token.value === ')');
+      let argLastId = args.length - 1; 
+      let lastArg = args[argLastId];
+      let afterLastArgTokenBrace = src.getTokenAfter(lastArg, token => token.value.startsWith( ")" ) );
 
-      if (closingParen && closingParen.loc.start.line === lastArg.loc.end.line) {
+      if ( afterLastArgTokenBrace && ( lastArg.loc.end.line === afterLastArgTokenBrace.loc.start.line ) ) {
         context.report({
-          node: closingParen,
-          message: "Closing parenthesis should be on a new line after the last argument.",
+          node: afterLastArgTokenBrace,
+          message: "the round brace on the new line after the method's last in argument.",
           fix(fixer) {
-            return fixer.insertTextBefore(closingParen, "\n" + " ".repeat(node.loc.start.column));
+            return fixer.insertTextBefore( afterLastArgTokenBrace, ( "\n" + " ".repeat( lastArg.loc.start.column ) ) );
           }
         });
       }
 
     }
+
+
 
     return {
       // Check for function declarations

@@ -15,92 +15,107 @@ const commandArgs: any = {
 argv.forEach( ( arg ) => {
   let [key, value] = arg.split("=");
   key = key.replace(
-    "--", 
+    "--",
     "");
   commandArgs[key] = value ? value.replace(
-    /(^"|"$)/g, 
-    "") : ""; // Remove quotes if any
+    /(^"|"$)/g,
+    ""
+  ) : ""; // Remove quotes if any
 });
 
 console.log(
-  "commandArgs", 
-  commandArgs);
+  "commandArgs",
+  commandArgs
+);
 
-const buildDataPath: any = path.resolve( 
-  commandArgs.ProjectRoot, 
-  commandArgs.BuildData );
+const buildDataPath: any = path.resolve(
+  commandArgs.ProjectRoot,
+  commandArgs.BuildData
+);
 if (false === fs.existsSync( buildDataPath ) ) {
   throw new Error(`BuildData.json not available at path: ${buildDataPath}`);
 }
 
 
-const packagesPath: any = path.resolve( 
-  commandArgs.ProjectRoot, 
-  commandArgs.PackagesPath );
+const packagesPath: any = path.resolve(
+  commandArgs.ProjectRoot,
+  commandArgs.PackagesPath
+);
 if (false === fs.existsSync( packagesPath ) ) {
   throw new Error(`modulesPath not available at path: ${packagesPath}`);
 }
 
 
-const cssCleanStartPath: any = path.resolve( 
-  commandArgs.ProjectRoot, 
-  "www/CssTools/CssCleanStart" );
+const cssCleanStartPath: any = path.resolve(
+  commandArgs.ProjectRoot,
+  "www/CssTools/CssCleanStart"
+);
 if (false === fs.existsSync( cssCleanStartPath ) ) {
   throw new Error(`cssCleanStartPath not available at path: ${cssCleanStartPath}`);
 }
 console.log(
-  "cssCleanStartPath", 
-  cssCleanStartPath);
+  "cssCleanStartPath",
+  cssCleanStartPath
+);
 
 
-const webpackAliasesPath: any = path.resolve( 
-  cssCleanStartPath, 
-  "webpack.aliases.json" );
+const webpackAliasesPath: any = path.resolve(
+  cssCleanStartPath,
+  "webpack.aliases.json"
+);
 if (false === fs.existsSync( webpackAliasesPath ) ) {
   throw new Error(`webpackAliasesPath not available at path: ${webpackAliasesPath}`);
 }
 console.log(
-  "webpackAliasesPath", 
-  webpackAliasesPath);
+  "webpackAliasesPath",
+  webpackAliasesPath
+);
 
 
-const cssFilePath: any = path.resolve( 
-  cssCleanStartPath, 
-  "MediaAndStyles/clean-start-main-webpack.css" );
+const cssFilePath: any = path.resolve(
+  cssCleanStartPath,
+  "MediaAndStyles/clean-start-main-webpack.css"
+);
 if (false === fs.existsSync( cssFilePath ) ) {
   throw new Error(`cssFilePath not available at path: ${cssFilePath}`);
 }
 console.log(
-  "cssFilePath", 
-  cssFilePath);
+  "cssFilePath",
+  cssFilePath
+);
 
 
-const cssTargetFilePath: any = path.resolve( 
-  cssCleanStartPath, 
-  "MediaAndStyles/clean-start-main-packaged.css" );
+const cssTargetFilePath: any = path.resolve(
+  cssCleanStartPath,
+  "MediaAndStyles/clean-start-main-packaged.css"
+);
 if (true === fs.existsSync( cssTargetFilePath ) ) {
   fs.unlinkSync( cssTargetFilePath );
   console.log(
-    "cssTargetFilePath deleted", 
-    cssTargetFilePath);
+    "cssTargetFilePath deleted",
+    cssTargetFilePath
+  );
 }
 
 fs.writeFileSync(
-  cssTargetFilePath, 
-  "", 
-  { encoding: "ascii" });
+  cssTargetFilePath,
+  "",
+  { encoding: "ascii" }
+);
 
 if (false === fs.existsSync( cssTargetFilePath ) ) {
   throw new Error(`cssTargetFilePath not available at path: ${cssTargetFilePath}`);
 } else {
   console.log(
-    "cssTargetFilePath created", 
-    cssTargetFilePath);
+    "cssTargetFilePath created",
+    cssTargetFilePath
+  );
 }
 
 console.log(
-  "cssTargetFilePath", 
-  cssTargetFilePath);
+  "cssTargetFilePath",
+  cssTargetFilePath
+);
 
 
 
@@ -112,9 +127,10 @@ cssImporter
   .build()
   .then( ( result: number ) => {
     console.log(
-      "css importer build result", 
-      result);
-  } 
+      "css importer build result",
+      result
+    );
+  }
   );
 
 

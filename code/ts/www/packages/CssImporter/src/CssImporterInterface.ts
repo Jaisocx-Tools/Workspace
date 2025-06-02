@@ -16,13 +16,13 @@ export interface CssImporterInterface {
 
   getWebpackAliases(): object|false;
 
-  setWebpackAliases( 
+  setWebpackAliases(
     aliasesObject: any,
     packageRoot: string
   ): CssImporter;
 
-  resolveUrlBitsbufWithWebpackAlias ( 
-    inBitsbuf: Uint8Array, 
+  resolveUrlBitsbufWithWebpackAlias (
+    inBitsbuf: Uint8Array,
     filePathTextRefs: number[],
     webpackAliases: any
   ): string;
@@ -31,9 +31,9 @@ export interface CssImporterInterface {
 
   cssBundleMake (
     inParsedResultDTO: ParsedResultDTO,
-    inFilePath: string, 
+    inFilePath: string,
     bitsbufName: string,
-    counterStop: number 
+    counterStop: number
   ): ParsedResultDTO;
 
   compareRanges (

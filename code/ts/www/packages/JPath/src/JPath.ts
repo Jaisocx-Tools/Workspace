@@ -11,8 +11,6 @@ export class JPath {
     this._jpathExpression = "";
     this._jpathExpressionMaxSize = JPath.JPATH_EXPRESSION_MAX_SIZE;
   }
-
-
   public static setByJPath (
     obj: any,
     jpath: (string|number)[],
@@ -28,6 +26,7 @@ export class JPath {
       datatypeNode = typeof key;
 
       if ( !obj[key] ) {
+
         if ( datatypeNode === "number" ) {
           obj[key] = new Array();
         } else {
@@ -43,7 +42,6 @@ export class JPath {
     obj[jpathLastIx] = value;
 
   }
-
 
   public static setByJPathWalkFlatRebuild (
     obj: any,
@@ -70,7 +68,7 @@ export class JPath {
       id = jpath[jpathIx];
 
       foundNode = false;
-        
+
       let toGetById: any[] = [];
 
       if ( Array.isArray( obj ) ) {
@@ -87,8 +85,7 @@ export class JPath {
 
       foundNode = toGetById.find (
         ( node: any ) => {
-          const matches: boolean = ( node[nameId] === id );
-          return matches;
+          const matches: boolean = ( node[nameId] === id );return matches;
         }
       );
 
@@ -106,7 +103,7 @@ export class JPath {
             [nameHolderId]: holderId
           };
         }
-    
+
         toGetById.push( newItem );
         obj[nameId] = holderId;
 
@@ -122,15 +119,16 @@ export class JPath {
 
   }
 
-  public static getByJPathExpression ( 
+  public static getByJPathExpression (
     jpathExpression: string,
     value: any
   ): any {
     const jpath: (string|number)[] = JPath.parse( jpathExpression );
 
-    return JPath.getByJPath( 
-      jpath, 
-      value );
+    return JPath.getByJPath(
+      jpath,
+      value
+    );
   }
 
   // faster than JPath.getByJPathExpression( jpathExpression: string, value: any );
@@ -140,13 +138,13 @@ export class JPath {
   //    let jpath = JPath.parse( "subtree[1].opened" ); => [ "subtree", 1, "opened" ]
   //    let obj = { "subtree": [{ "opened": false }, { "opened": true }] };
   //    let valueFound = JPath.getByJPath( jpath, obj );
-  //    console.log( valueFound ); 
-  //    prints out => true  
-  public static getByJPath ( 
+  //    console.log( valueFound );
+  //    prints out => true
+  public static getByJPath (
     jpath: (string|number)[],
     value: any
   ): any {
-    
+
     if ( !value ) {
       return null;
     }
@@ -160,11 +158,13 @@ export class JPath {
 
     let jpathPropertyKey: (string|number) = "";
     let jpathPropLevel: number = 0;
-    let jpathLevelMax: number = Math.min( 
-      jpath.length, 
-      JPath.JPATH_EXPRESSION_MAX_SIZE );
+    let jpathLevelMax: number = Math.min(
+      jpath.length,
+      JPath.JPATH_EXPRESSION_MAX_SIZE
+    );
 
     for ( jpathPropLevel = 0; jpathPropLevel < jpathLevelMax; jpathPropLevel++ ) {
+
       if ( !targetValue ) {
         break;
       }
@@ -191,13 +191,13 @@ export class JPath {
   }
 
   // jpath string exression as "subtree[1].opened" => [ "subtree", 1, "opened" ]
-  // with this art of array of properties names of javascript object tree 
-  //  it is easier to get the property value of any datatype in javascript objects and arrays. 
-  //  later usage of the jpath array: 
+  // with this art of array of properties names of javascript object tree
+  //  it is easier to get the property value of any datatype in javascript objects and arrays.
+  //  later usage of the jpath array:
   //    let jpath = JPath.parse( "subtree[1].opened" );
   //    let obj = { "subtree": [{ "opened": false }, { "opened": true }] };
   //    let valueFound = JPath.getByJPath( jpath, obj );
-  //    console.log( valueFound ); 
+  //    console.log( valueFound );
   //    prints out => true
   public static parse( jpathExpression: string ): (string|number)[] {
     const jpath: (string|number)[] = [];
@@ -205,9 +205,11 @@ export class JPath {
     const jpathSplittedByPoints: string[] = jpathExpression.split(".");
     let jpathSplitted: string = "";
 
-    loopSplittedByPoints: for ( 
-      jpathSplitted 
-      of jpathSplittedByPoints 
+    loopSplittedByPoints:
+
+    for (
+      jpathSplitted
+      of jpathSplittedByPoints
     ) {
 
       const jpathSplittedLenth: number = jpathSplitted ? jpathSplitted.length : 0;
@@ -228,41 +230,46 @@ export class JPath {
       // for example: "tokens[startTokens][0].length"
       // pushes to jpath array in the first iteration like this:
       //    jpath.push( "tokens" );
-      //    jpath.push( "startTokens" ), 
-      //  then in the next iteration 
+      //    jpath.push( "startTokens" ),
+      //  then in the next iteration
       //    jpath.push( 0 );
       //  and then exits the cycle.
-      //  the push of prop "length" is performed then 
+      //  the push of prop "length" is performed then
       //    in the next iteration of the "loopSplittedByPoints: for" cycle above
+
       while ( leftBracePosition !== (-1) ) {
 
-        // in this while loop, 
-        // when the next step is done, 
+        // in this while loop,
+        // when the next step is done,
         // .indexOf searches from the rightBracePosition,
         // matched in the previous while iteration.
         leftBracePosition = jpathSplitted.indexOf(
-          "[", 
-          rightBracePosition);
+          "[",
+          rightBracePosition
+        );
 
         // if an opening brace was not matched,
         //        means, this jpath expression does not contain [] expression,
-        //        and this key item 
-        //        from the splitted by dots jpath 
+        //        and this key item
+        //        from the splitted by dots jpath
         //        is pushed to the target value array,
         //        and continues to check the next jpath key item.
+
         if ( leftBracePosition === (-1) ) {
           jpath.push( jpathSplitted );
           continue loopSplittedByPoints;
         }
 
         rightBracePosition = jpathSplitted.indexOf(
-          "]", 
-          leftBracePosition);
+          "]",
+          leftBracePosition
+        );
 
-        // here means, 
-        //  when square braced key opened, 
-        //  but the closing square brace not matched, 
+        // here means,
+        //  when square braced key opened,
+        //  but the closing square brace not matched,
         //  the JPath expression is wrong.
+
         if ( rightBracePosition === (-1) ) {
           throw new Error("JPathExpression synthax");
           break;
@@ -270,9 +277,10 @@ export class JPath {
 
         // the property name before opening square brace [ is being pushed to jpath array
         //  when the opening square brace [ is found first time.
+
         if ( matchedFirstTime === false ) {
 
-          jpathKey = jpathSplitted.slice ( 
+          jpathKey = jpathSplitted.slice (
             0,
             leftBracePosition
           );
@@ -283,10 +291,10 @@ export class JPath {
 
         }
 
-
         jpathKey = jpathSplitted.slice( (
-          leftBracePosition + 1), 
-        rightBracePosition );
+          leftBracePosition + 1),
+        rightBracePosition
+        );
         jpathKeyNumeric = +jpathKey;
 
         if ( Number.isInteger( jpathKeyNumeric ) === true ) {
@@ -296,6 +304,7 @@ export class JPath {
         }
 
         rightBracePosition++;
+
         if ( rightBracePosition === jpathSplittedLenth ) {
           continue loopSplittedByPoints;
         }
@@ -324,13 +333,13 @@ export class JPath {
 
     return this;
   }
+  getJPath(): (string|number)[] {
 
-  public getJPath(): (string|number)[] {
-    if ( 
-      ( 
-        ( this._jpathExpression !== null ) && ( this._jpathExpression.length !== 0 ) 
-      ) && 
-      ( this._jpath === null || this._jpath.length === 0 ) 
+    if (
+      (
+        ( this._jpathExpression !== null ) && ( this._jpathExpression.length !== 0 )
+      ) &&
+      ( this._jpath === null || this._jpath.length === 0 )
     ) {
       this._jpath = JPath.parse( this._jpathExpression );
     }
@@ -338,9 +347,9 @@ export class JPath {
     return this._jpath;
   }
 
-  public static getJPathName ( 
-    jpathExpression: string, 
-    delimiter: string 
+  public static getJPathName (
+    jpathExpression: string,
+    delimiter: string
   ): string {
     let jpath: (string|number)[] = JPath.parse( jpathExpression );
     let jpathName: string = jpath.join( delimiter );

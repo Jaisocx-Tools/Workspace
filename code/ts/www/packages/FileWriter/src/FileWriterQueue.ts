@@ -32,7 +32,7 @@ export class FileWriterQueue extends EventEmitter {
   // and when the new task id is over the queue array size,
   // and the working tasks still left and are writing,
   // whether to place the new tasks into the slower queueTasks array,
-  // this uses dynamic reallocation algorythm just via .push() without methods for a software engineer 
+  // this uses dynamic reallocation algorythm just via .push() without methods for a software engineer
   // to enborder precise the queue array growth.
   //
   // for now, the fixed size queue array grows automatique on the event,
@@ -47,7 +47,7 @@ export class FileWriterQueue extends EventEmitter {
 
 
 
-  constructor( 
+  constructor(
     inFileWriter: FileWriter,
     queueSize: number,
     extendBy: number
@@ -112,9 +112,9 @@ export class FileWriterQueue extends EventEmitter {
    *                extendBy is set by value this.queueSizeExtendBy: number
    *                value set in the constructor = 102.
    *                set method is .setQueueSizeExtendBy( extendBy: number );
-   *                
-   * @param extendBy 
-   * @returns 
+   *
+   * @param extendBy
+   * @returns
    */
   extendQueue( extendBy: number ): number {
 
@@ -142,9 +142,10 @@ export class FileWriterQueue extends EventEmitter {
 
 
 
-  cleanupQueue( 
-    start: number, 
-    end: number ): void {
+  cleanupQueue(
+    start: number,
+    end: number
+  ): void {
 
     if ( start < 0 ) {
       start = 0;
@@ -167,9 +168,9 @@ export class FileWriterQueue extends EventEmitter {
 
 
 
-  validateOnEnqueueTask ( 
+  validateOnEnqueueTask (
     bitsbuf: Uint8Array,
-    range: number[] 
+    range: number[]
   ): void {
     if ( range[0] === range[1] ) {
       console.error("Range start and end are the same. Skipping enqueueing and writing of this range...");
@@ -190,14 +191,14 @@ export class FileWriterQueue extends EventEmitter {
         this.extendQueue( this.queueSizeExtendBy );
       }
     }
-    
+
   }
 
 
 
-  enqueue ( 
-    bitsbufName: string, 
-    range: number[] 
+  enqueue (
+    bitsbufName: string,
+    range: number[]
   ): void {
 
     let bitsbuf: Uint8Array = this.namedBitsbufs[bitsbufName];
@@ -210,7 +211,7 @@ export class FileWriterQueue extends EventEmitter {
       this.validateOnEnqueueTask (
         bitsbuf,
         range
-      );  
+      );
     } catch (err) {
       console.error(
         err,
@@ -225,14 +226,14 @@ export class FileWriterQueue extends EventEmitter {
 
     if ( this.debug === true ) {
       // @ts-ignore
-      this.queue[this.enqueuedId] = { 
-        bitsbuf, 
+      this.queue[this.enqueuedId] = {
+        bitsbuf,
         range,
         "bitsbufName": bitsbufName } as QueueTask;
     } else {
       // @ts-ignore
-      this.queue[this.enqueuedId] = { 
-        bitsbuf, 
+      this.queue[this.enqueuedId] = {
+        bitsbuf,
         range,
         "bitsbufName": "" } as QueueTask;
     }
@@ -264,9 +265,10 @@ export class FileWriterQueue extends EventEmitter {
     }
 
     this.fileWriter
-      .appendToFile( 
-        queueTask.bitsbuf, 
-        queueTask.range )
+      .appendToFile(
+        queueTask.bitsbuf,
+        queueTask.range
+      )
       .then (
         ( _arg1: number ) => {
 
@@ -311,7 +313,7 @@ export class FileWriterQueue extends EventEmitter {
           "setHasToStop(true), and exists, since the queue was not written to the target file.",
           this.workingQueueId,
           this.enqueuedId
-        );  
+        );
       }
 
       return;

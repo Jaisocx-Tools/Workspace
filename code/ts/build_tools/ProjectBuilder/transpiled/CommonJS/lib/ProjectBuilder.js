@@ -114,10 +114,10 @@ class ProjectBuilder {
             throw new Error("no packages marked to build in the BuildData.json");
         }
         for (let packageJson of packages) {
-            this.buildPackage(packageJson);
+            this.buildPackage(packageJson, dataJson);
         }
     }
-    buildPackage(packageJson) {
+    buildPackage(packageJson, dataJson) {
         let timeStamp = (new Date()).toISOString();
         console.log("\n\n\n===============================");
         console.log(`${timeStamp} MODULE ${packageJson.name}`);
@@ -129,9 +129,11 @@ class ProjectBuilder {
         this.installPackageDependencies(packageJson, packagePath);
         // console output list of files in the package src catalog
         this.runCommandLine(packagePath, "ls -lahrts src");
-        timeStamp = (new Date()).toISOString();
-        console.log(`${timeStamp} Package [ ${packageJson.name} ]: Prettifying with Eslint TypeScript code in ${packagePath}`);
-        this.prettifyWithEslint(packagePath, `${packagePath}/src/**/*.ts`);
+        if (dataJson["prettify-typescript"] === true) {
+            timeStamp = (new Date()).toISOString();
+            console.log(`${timeStamp} Package [ ${packageJson.name} ]: Prettifying with Eslint TypeScript code in ${packagePath}`);
+            this.prettifyWithEslint(packagePath, `${packagePath}/src/*`);
+        }
         timeStamp = (new Date()).toISOString();
         console.log(`${timeStamp} Package [ ${packageJson.name} ]: ESNext Transpiling TypeScript code in ${packagePath}`);
         // transpile modern node version compatible
@@ -274,7 +276,7 @@ class ProjectBuilder {
             return fs.lstatSync(absPath).isFile();
         });
         // const packagePathRelative = packagePath.replace(
-        //   `${this.absolutePathToProjectRoot}/`, 
+        //   `${this.absolutePathToProjectRoot}/`,
         //   "");
         //const filesListJoinedString: any = `${packagePathRelative}/src/` + filesList.join(` ${packagePathRelative}/src/`);
         const filesListJoinedString = "src/" + filesList.join(" src/");

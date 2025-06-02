@@ -27,7 +27,7 @@ export class TaskFileWritingQueue {
   }
 
   toObject(): object {
-    return { "bitsbuf": this.#bitsbuf, 
+    return { "bitsbuf": this.#bitsbuf,
       "range": this.#range };
   }
 

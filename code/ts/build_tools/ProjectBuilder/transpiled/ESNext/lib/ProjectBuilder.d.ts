@@ -24,7 +24,7 @@ export declare class ProjectBuilder {
     setBuildEsmCatalogName(catalogName: any): ProjectBuilder;
     setBuildSimpleCatalogName(catalogName: any): ProjectBuilder;
     build(dataJson: any): any;
-    buildPackage(packageJson: any): void;
+    buildPackage(packageJson: any, dataJson: any): void;
     installPackageDependencies(packageJson: any, packagePath: any): void;
     buildSimple(packageJson: any, packagePath: any): void;
     /**

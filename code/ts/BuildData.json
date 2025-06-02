@@ -1,5 +1,6 @@
 {
   "npm-registry-name": "@jaisocx",
+  "prettify-typescript": true,
   "packages": [
     {
       "path": "packages/TokensParser",
@@ -14,7 +15,7 @@
     {
       "path": "packages/JPath",
       "name": "jpath",
-      "build": false,
+      "build": true,
       "build-simple-enable": true,
       "dependencies": [],
       "build-files": [
@@ -70,15 +71,13 @@
           "path": "packages/EventEmitter"
         }
       ],
-      "build-files": [
-        "index.js"
-      ]
+      "build-files": []
     },
     {
       "path": "packages/CssImporter",
       "name": "css-importer",
       "build": false,
-      "build-simple-enable": true,
+      "build-simple-enable": false,
       "dependencies": [
         {
           "name": "@jaisocx/file-writer",
@@ -89,9 +88,7 @@
           "path": "packages/TokensParser"
         }
       ],
-      "build-files": [
-        "index.js"
-      ]
+      "build-files": []
     },
     {
       "path": "packages/CdnDatasetsBase",
@@ -138,7 +135,7 @@
       "path": "packages/Mobile.vsDesktop",
       "name": "mobile-vs-desktop",
       "build": false,
-      "build-simple-enable": false,
+      "build-simple-enable": true,
       "css-importer": {
         "build": false,
         "cssFilePath": "MediaAndStyles/clean-start-main-webpack.css",
@@ -171,9 +168,9 @@
       "path": "sites_tools/css_tools/CssCleanStart",
       "name": "css-clean-start",
       "build": false,
-      "build-simple-enable": false,
+      "build-simple-enable": true,
       "css-importer": {
-        "build": false,
+        "build": true,
         "cssFilePath": "MediaAndStyles/clean-start-main-webpack.css",
         "cssTargetFilePath": "MediaAndStyles/clean-start-main-resolved.css"
       },
@@ -377,16 +374,14 @@
       "path": "webpack_builds/ExampleCssCleanStartWebpack",
       "name": "example-css-clean-start",
       "build": false,
-      "build-simple-enable": true,
+      "build-simple-enable": false,
       "dependencies": [
         {
           "name": "@jaisocx/css-clean-start",
           "path": "sites_tools/css_tools/CssCleanStart"
         }
       ],
-      "build-files": [
-        "index.js"
-      ]
+      "build-files": []
     },
     {
       "path": "examples/ExampleTemplateRenderer",
@@ -487,7 +482,7 @@
       "path": "templates/BuiltWithWebpackYarnInstalledPackage",
       "name": "example-built-with-webpack",
       "build": false,
-      "build-simple-enable": true,
+      "build-simple-enable": false,
       "dependencies": [
         {
           "name": "@jaisocx/css-clean-start",
@@ -498,9 +493,7 @@
           "path": "sites_tools/js_tools/Tooltip"
         }
       ],
-      "build-files": [
-        "index.js"
-      ]
+      "build-files": []
     },
     {
       "path": "sites_tools/js_tools/EmailHtmlInliner",

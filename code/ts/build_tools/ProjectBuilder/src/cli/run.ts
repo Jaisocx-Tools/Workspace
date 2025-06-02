@@ -12,50 +12,58 @@ const commandArgs: any = {
 argv.forEach( ( arg ) => {
   let [key, value] = arg.split("=");
   key = key.replace(
-    "--", 
+    "--",
     "");
   commandArgs[key] = value ? value.replace(
-    /(^"|"$)/g, 
-    "") : ""; // Remove quotes if any
+    /(^"|"$)/g,
+    ""
+  ) : ""; // Remove quotes if any
 });
 
 console.log(
-  "commandArgs", 
-  commandArgs);
+  "commandArgs",
+  commandArgs
+);
 
-const buildDataPath: any = path.resolve( 
-  commandArgs.ProjectRoot, 
-  commandArgs.BuildData );
+const buildDataPath: any = path.resolve(
+  commandArgs.ProjectRoot,
+  commandArgs.BuildData
+);
 if (false === fs.existsSync( buildDataPath ) ) {
   throw new Error(`BuildData.json not available at path: ${buildDataPath}`);
 }
 
-const packagesPath: any = path.resolve( 
-  commandArgs.ProjectRoot, 
-  commandArgs.PackagesPath );
+const packagesPath: any = path.resolve(
+  commandArgs.ProjectRoot,
+  commandArgs.PackagesPath
+);
 if (false === fs.existsSync( packagesPath ) ) {
   throw new Error(`modulesPath not available at path: ${packagesPath}`);
 }
 
 const buildDataJson: any = fs.readFileSync(
-  path.resolve( 
-    commandArgs.ProjectRoot, 
-    commandArgs.BuildData ), 
+  path.resolve(
+    commandArgs.ProjectRoot,
+    commandArgs.BuildData
+  ),
   "utf8"
 );
 
 const buildData: any = JSON.parse(buildDataJson);
 
 console.log(
-  "buildDataPath", 
-  buildDataPath);
+  "buildDataPath",
+  buildDataPath
+);
 console.log(
-  "buildData", 
-  buildData);
+  "buildData",
+  buildData
+);
 
 console.log(
-  "packagesPath", 
-  packagesPath);
+  "packagesPath",
+  packagesPath
+);
 
 
 const builder = new ProjectBuilder();

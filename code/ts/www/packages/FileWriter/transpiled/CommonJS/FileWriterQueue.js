@@ -10,7 +10,7 @@ class FileWriterQueue extends event_emitter_1.EventEmitter {
     // and when the new task id is over the queue array size,
     // and the working tasks still left and are writing,
     // whether to place the new tasks into the slower queueTasks array,
-    // this uses dynamic reallocation algorythm just via .push() without methods for a software engineer 
+    // this uses dynamic reallocation algorythm just via .push() without methods for a software engineer
     // to enborder precise the queue array growth.
     //
     // for now, the fixed size queue array grows automatique on the event,

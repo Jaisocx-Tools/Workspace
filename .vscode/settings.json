@@ -24,7 +24,7 @@
   "html.format.enable": false,
   "css.format.enable": false,
   "scss.format.enable": false,
-  "javascript.format.enable": false,
+  "javascript.format.enable": true,
   "typescript.format.enable": false,
   "json.format.enable": false,
 
@@ -45,18 +45,18 @@
   },
   "[typescript]": {
     "editor.formatOnSave": false,
-    "editor.formatOnType": false,
-    "editor.formatOnPaste": false
+    "editor.formatOnType": true,
+    "editor.formatOnPaste": true
   },
   "[javascript]": {
     "editor.formatOnSave": false,
-    "editor.formatOnType": false,
-    "editor.formatOnPaste": false
+    "editor.formatOnType": true,
+    "editor.formatOnPaste": true
   },
   "[json]": {
     "editor.formatOnSave": false,
-    "editor.formatOnType": false,
-    "editor.formatOnPaste": false
+    "editor.formatOnType": true,
+    "editor.formatOnPaste": true
   },
   "[php]": {
     "editor.formatOnSave": false,
