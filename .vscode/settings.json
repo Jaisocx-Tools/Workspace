@@ -3,8 +3,8 @@
   "files.encoding": "utf8",
   "editor.tabSize": 2,
   "editor.insertSpaces": true,
-  "javascript.preferences.quoteStyle": "double",
   "typescript.preferences.quoteStyle": "double",
+  "javascript.preferences.quoteStyle": "double",
 
   "eslint.format.enable": false,
   "prettier.enable": false,
@@ -12,7 +12,7 @@
   "intelephense.format.enable": false,
 
   "files.autoGuessEncoding": false,
-  "files.trimTrailingWhitespace": false,
+  "files.trimTrailingWhitespace": true,
   "files.insertFinalNewline": false,
 
   "editor.formatOnSave": false,
@@ -24,7 +24,7 @@
   "html.format.enable": false,
   "css.format.enable": false,
   "scss.format.enable": false,
-  "javascript.format.enable": true,
+  "javascript.format.enable": false,
   "typescript.format.enable": false,
   "json.format.enable": false,
 
@@ -50,8 +50,8 @@
   },
   "[javascript]": {
     "editor.formatOnSave": false,
-    "editor.formatOnType": true,
-    "editor.formatOnPaste": true
+    "editor.formatOnType": false,
+    "editor.formatOnPaste": false
   },
   "[json]": {
     "editor.formatOnSave": false,
@@ -71,7 +71,7 @@
 
 
   "editor.autoClosingBrackets": "never",
-  "editor.autoClosingQuotes": "never",
+  "editor.autoClosingQuotes": "always",
   "editor.autoClosingComments": "never",
   "editor.autoClosingOvertype": "never",
   "editor.autoSurround": "never",
@@ -83,8 +83,8 @@
   "editor.parameterHints.enabled": true,
   "editor.quickSuggestions": {
     "other": true,
-    "comments": false,
-    "strings": false
+    "comments": true,
+    "strings": true
   }
 
 }

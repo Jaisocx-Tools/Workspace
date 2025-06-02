@@ -1,7 +1,3 @@
-import * as path from "node:path";
-
-
-
 export class JPath {
 
   public static JPATH_EXPRESSION_MAX_SIZE: number = 8;
@@ -11,13 +7,11 @@ export class JPath {
   protected _jpathExpressionMaxSize: number;
 
 
-
   constructor() {
     this._jpath = [];
     this._jpathExpression = "";
     this._jpathExpressionMaxSize = JPath.JPATH_EXPRESSION_MAX_SIZE;
   }
-
 
 
   public static setByJPath (
@@ -34,7 +28,6 @@ export class JPath {
       datatypeNode = typeof key;
 
       if ( !obj[key] ) {
-
         if ( datatypeNode === "number" ) {
           obj[key] = new Array();
         } else {
@@ -47,11 +40,11 @@ export class JPath {
 
     }
 
+
     //@ts-ignore
     obj[jpathLastIx] = value;
 
   }
-
 
 
   public static setByJPathWalkFlatRebuild (
@@ -96,13 +89,11 @@ export class JPath {
         ( node: any ) => {
           const matches: boolean = ( node[nameId] === id );
 
-
           return matches;
         }
       );
 
       if ( !foundNode ) {
-
         if ( jpathIx === jpathLastIx ) {
           newItem = {
             ...value,
@@ -132,19 +123,18 @@ export class JPath {
   }
 
 
-
   public static getByJPathExpression (
     jpathExpression: string,
     value: any
   ): any {
     const jpath: (string|number)[] = JPath.parse( jpathExpression );
 
-
     return JPath.getByJPath(
       jpath,
       value
     );
   }
+
 
   // faster than JPath.getByJPathExpression( jpathExpression: string, value: any );
   // recommended when the lookup more than once with the same jpathExpression,
@@ -155,14 +145,10 @@ export class JPath {
   //    let valueFound = JPath.getByJPath( jpath, obj );
   //    console.log( valueFound );
   //    prints out => true
-
-
-
   public static getByJPath (
     jpath: (string|number)[],
     value: any
   ): any {
-
     if ( !value ) {
       return null;
     }
@@ -182,7 +168,6 @@ export class JPath {
     );
 
     for ( jpathPropLevel = 0; jpathPropLevel < jpathLevelMax; jpathPropLevel++ ) {
-
       if ( !targetValue ) {
         break;
       }
@@ -191,7 +176,6 @@ export class JPath {
       jpathValueFound = targetValue[jpathPropertyKey];
 
       if ( typeof jpathValueFound === "object" ) {
-
         if ( Array.isArray( jpathValueFound ) === true ) {
           targetValue = [...jpathValueFound];
         } else {
@@ -204,10 +188,10 @@ export class JPath {
 
     }
 
-
     return targetValue;
 
   }
+
 
   // jpath string exression as "subtree[1].opened" => [ "subtree", 1, "opened" ]
   // with this art of array of properties names of javascript object tree
@@ -218,9 +202,6 @@ export class JPath {
   //    let valueFound = JPath.getByJPath( jpath, obj );
   //    console.log( valueFound );
   //    prints out => true
-
-
-
   public static parse( jpathExpression: string ): (string|number)[] {
     const jpath: (string|number)[] = [];
 
@@ -255,7 +236,6 @@ export class JPath {
       //  and then exits the cycle.
       //  the push of prop "length" is performed then
       //    in the next iteration of the "loopSplittedByPoints: for" cycle above
-
       while ( leftBracePosition !== (-1) ) {
 
         // in this while loop,
@@ -267,13 +247,13 @@ export class JPath {
           rightBracePosition
         );
 
+
         // if an opening brace was not matched,
         //        means, this jpath expression does not contain [] expression,
         //        and this key item
         //        from the splitted by dots jpath
         //        is pushed to the target value array,
         //        and continues to check the next jpath key item.
-
         if ( leftBracePosition === (-1) ) {
           jpath.push( jpathSplitted );
           continue loopSplittedByPoints;
@@ -284,19 +264,19 @@ export class JPath {
           leftBracePosition
         );
 
+
         // here means,
         //  when square braced key opened,
         //  but the closing square brace not matched,
         //  the JPath expression is wrong.
-
         if ( rightBracePosition === (-1) ) {
           throw new Error("JPathExpression synthax");
           break;
         }
 
+
         // the property name before opening square brace [ is being pushed to jpath array
         //  when the opening square brace [ is found first time.
-
         if ( matchedFirstTime === false ) {
           jpathKey = jpathSplitted.slice (
             0,
@@ -331,41 +311,32 @@ export class JPath {
 
     }
 
-
     return jpath;
   }
-
 
 
   public setJPathExpression( jpathExpression: string ): JPath {
     this._jpathExpression = jpathExpression;
 
-
     return this;
   }
-
 
 
   public setJPathExpressionMaxSize( maxSize: number ): JPath {
     this._jpathExpressionMaxSize = maxSize;
 
-
     return this;
   }
-
 
 
   public setJPath( jpath: (string|number)[] ): JPath {
     this._jpath = jpath;
 
-
     return this;
   }
 
 
-
   public getJPath(): (string|number)[] {
-
     if (
       (
         ( this._jpathExpression !== null ) && ( this._jpathExpression.length !== 0 )
@@ -375,10 +346,8 @@ export class JPath {
       this._jpath = JPath.parse( this._jpathExpression );
     }
 
-
     return this._jpath;
   }
-
 
 
   public static getJPathName (
@@ -387,7 +356,6 @@ export class JPath {
   ): string {
     let jpath: (string|number)[] = JPath.parse( jpathExpression );
     let jpathName: string = jpath.join( delimiter );
-
 
     return jpathName;
   }

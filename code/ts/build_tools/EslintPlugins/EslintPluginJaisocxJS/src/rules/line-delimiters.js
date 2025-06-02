@@ -43,9 +43,9 @@ export const LineDelimiters = {
           "blocks": {
             type: "object",
             properties: {
-              "lines_before": { 
-                type: "number", 
-                minimum: 1 
+              "lines_before": {
+                type: "number",
+                minimum: 1
               },
               "lines_before_on_block_start": {
                 type: "number",
@@ -68,12 +68,12 @@ export const LineDelimiters = {
             },
             additionalProperties: false
           },
-          "above_comments": {
+          "comments": {
             type: "object",
             properties: {
-              "lines_before": { 
-                type: "number", 
-                minimum: 1 
+              "lines_before": {
+                type: "number",
+                minimum: 1
               },
               "lines_before_on_block_start": {
                 type: "number",
@@ -85,9 +85,9 @@ export const LineDelimiters = {
           "code_lines": {
             type: "object",
             properties: {
-              "lines_before": { 
-                type: "number", 
-                minimum: 1 
+              "lines_before": {
+                type: "number",
+                minimum: 1
               },
               "lines_before_on_block_start": {
                 type: "number",
@@ -106,34 +106,34 @@ export const LineDelimiters = {
     const TSC_OUTPUT_INDENTATION_SIZE = 4; // Matches tsc indent rule fixed value, tsc cannot be configured
     const ESLINT_CONFIG_INDENTATION_SIZE = 2; // Matches tsc indent rule fixed value, tsc cannot be configured
     const sourceCode = context.getSourceCode();
-    
+
     const keywordPunctuator = "Punctuator";
     const keywordKeyword = "Keyword";
     const keywordExport = "export";
     const keywordColon = ":";
     const keywordBlockStart = "{";
     const keywordBlockEnd = "}";
-    
+
     const labeledBlocksNames = [
       "WhileStatement",
       "ForStatement",
       "ForInStatement",
       "ForOfStatement"
     ];
-    
-    
-    // here we get eslintrc.js config rules
-    const indentRuleConfig = (context && context.settings && context.settings.indent) || [ESLINT_CONFIG_INDENTATION_SIZE, ESLINT_CONFIG_INDENTATION_SIZE]; // Default to ESLINT_CONFIG_INDENTATION_SIZE spaces
-    const eslintConfigIdentPrefixSizeForOneLevel = Array.isArray(indentRuleConfig) ? indentRuleConfig[1] : ESLINT_CONFIG_INDENTATION_SIZE;
 
-    
-    
+
+    // here we get eslintrc.js config rules
+    const indentRuleConfig = (context && context.settings && context.settings.indent) || ["error", ESLINT_CONFIG_INDENTATION_SIZE];
+    const eslintConfigIdentPrefixSizeForOneLevel = indentRuleConfig[1];
+
+
+
     function checkBlockSpacing(
       node,
       spacingType
     ) {
-      console.log(node.type);
-      
+      // console.log(node.type);
+
       const optionsDefaults = {
         "class": {
           "lines_before": 3,
@@ -143,32 +143,34 @@ export const LineDelimiters = {
           "lines_before": 3,
           "lines_before_on_block_start": 1
         },
+        "comments": {
+          "lines_before": 3,
+          "lines_before_on_block_start": 1
+        },
         "blocks": {
           "lines_before": 1,
-          "lines_before_on_block_start": 0
-        },
-        "return": {
-          "lines_before": 2,
-          "lines_before_on_block_start": 0
-        },
-        "above_comments": {
-          "lines_before": 2,
-          "lines_before_on_block_start": 0
+          "lines_before_on_block_start": 1
         },
         "code_lines": {
           "lines_before": 2,
-          "lines_before_on_block_start": 1
+          "lines_before_on_block_start": 0
+        },
+        "return": {
+          "lines_before": 3,
+          "lines_before_on_block_start": 0
         }
       };
 
       const options = context.options[0] || {};
+
+      let isJsSimple = options.isJsSimple;
 
       const spacing = {
         "class": options.class || optionsDefaults.class,
         "methods": options.methods || optionsDefaults.methods,
         "blocks": options.blocks || optionsDefaults.blocks,
         "return": options["return"] || optionsDefaults["return"],
-        "above_comments": options.above_comments || optionsDefaults.above_comments,
+        "comments": options.comments || optionsDefaults.comments,
         "code_lines": options.code_lines || optionsDefaults.code_lines
       };
 
@@ -181,10 +183,10 @@ export const LineDelimiters = {
         locSpacingType = "code_lines";
         spacingApplied = spacing[locSpacingType];
       }
-      
+
       let mode = "before";
-      let before = {};
-      
+      let before = false;
+
       try {
         before = sourceCode.getTokenBefore(node, { includeComments: true });
       } catch (e) {
@@ -196,20 +198,26 @@ export const LineDelimiters = {
       if (before && (before.value === keywordBlockStart)) {
         isFirstInBlock = true;
         linesRequired = spacingApplied.lines_before_on_block_start;
-        
+        newLineCharsNumber = linesRequired + 1;
+
+      } else if ( !before ) {
+        isFirstInBlock = true;
+        linesRequired = spacingApplied.lines_before_on_block_start;
+        newLineCharsNumber = ( linesRequired ? linesRequired + 1 : 0 );
+
       } else {
         isFirstInBlock = false;
         linesRequired = spacingApplied.lines_before;
+        newLineCharsNumber = linesRequired + 1;
       }
 
-      newLineCharsNumber = linesRequired + 1;
 
       const lineDiff = {
         before: 0,
         after: 0
       };
-      
-      
+
+
       let lineStartToken = {};
       let lineStartTokenBefore = {};
 
@@ -219,17 +227,17 @@ export const LineDelimiters = {
       let exportKeywordToken = {};
       let exportKeywordTokenBefore = {};
 
-      if (labeledBlocksNames.includes(node.type) && (before.value === keywordColon)) {
+      if (labeledBlocksNames.includes(node.type) && ( before && before.value === keywordColon)) {
         labelToken = sourceCode.getTokenBefore(before);
         labelTokenBefore = sourceCode.getTokenBefore(labelToken);
-        
+
         lineStartToken = labelToken;
         lineStartTokenBefore = labelTokenBefore;
-        
-      } else if ((before.type === keywordKeyword) && (before.value === keywordExport)) {
+
+      } else if ( before && (before.type === keywordKeyword) && (before.value === keywordExport)) {
         exportKeywordToken = before;
         exportKeywordTokenBefore = sourceCode.getTokenBefore( exportKeywordToken );
-        
+
         lineStartToken = exportKeywordToken;
         lineStartTokenBefore = exportKeywordTokenBefore;
       } else {
@@ -239,52 +247,69 @@ export const LineDelimiters = {
 
       lineDiff.before = lineStartToken.loc.start.line - (lineStartTokenBefore ? lineStartTokenBefore.loc.end.line : 0) - 1;
 
-      
-      
+      if ((lineStartTokenBefore && lineStartTokenBefore.type === "Line")) { // before is comment
+        linesRequired = 0;
+        newLineCharsNumber = linesRequired + 1;
+      } else if (!lineStartTokenBefore ) {
+        isFirstInBlock = true;
+        linesRequired = spacingApplied.lines_before_on_block_start;
+        newLineCharsNumber = ( (linesRequired !== 0) ? linesRequired + 1 : 0);
+      }
+
+
+
       let toSetLinesNumber = true;
-      if (node.type === "IfStatement") {
-        toSetLinesNumber = !((before.type === "Keyword") && (before.value === "else"));
+      if ((node.type === "ClassDeclaration") && (!lineStartTokenBefore)) {
+        toSetLinesNumber = (lineDiff.before !== linesRequired);
+
+      } else if (node.type === "IfStatement") {
+        let isElseIfToken = (before && (before.type === "Keyword") && (before.value === "else"));
+        toSetLinesNumber = ( isElseIfToken === false );
 
       } else if (locSpacingType === "code_lines") {
         // toSetLinesNumber = ((lineDiff.before > 0) && (lineDiff.before !== linesRequired));
-        toSetLinesNumber = ((lineDiff.before > linesRequired));
+        toSetLinesNumber = (lineDiff.before > linesRequired);
+
+      } else if (locSpacingType === "comments") {
+        toSetLinesNumber = (lineDiff.before !== linesRequired);
 
       } else if (locSpacingType === "return") {
         toSetLinesNumber = (lineDiff.before !== linesRequired);
-        
+
       } else {
         toSetLinesNumber = (lineDiff.before !== linesRequired);
 
       }
-      
-      
-      
+
+
+
       let rangeStart = 0;
       let rangeEnd = 0;
       let range = [0, 0];
       let whiteSpacesNumber = 0;
       let linesReplacement = "";
 
-      if ((toSetLinesNumber === true)) {
-        console.log(node, lineStartToken, linesRequired);
+      if (toSetLinesNumber === true) {
+        console.log(lineStartTokenBefore?.type, lineStartToken.type, node.type, linesRequired);
 
         rangeStart = lineStartTokenBefore ? lineStartTokenBefore.range[1] : 0;
         rangeEnd = lineStartToken.range[0];
+
         whiteSpacesNumber = lineStartToken.loc.start.column;
+
 
         if (rangeStart && rangeEnd ) {
 
-          whiteSpacesNumber = lineStartToken.loc.start.column;
-          linesReplacement = "\n".repeat(newLineCharsNumber) + " ".repeat(whiteSpacesNumber);
+          linesReplacement = (newLineCharsNumber !== 0 ? "\n".repeat(newLineCharsNumber) : "") + (whiteSpacesNumber !== 0 ? " ".repeat(whiteSpacesNumber) : "");
           range = [rangeStart, rangeEnd];
           mode = "before";
-          let text = `Expected ${linesRequired} empty line${linesRequired > 1 ? "s" : ""} found ${lineDiff.before} ${mode} block.`;
-          console.log(text);
-          
+          // let text = `Expected ${linesRequired} empty line${linesRequired > 1 ? "s" : ""} found ${lineDiff.before} ${mode} block.`;
+          // console.log(text);
+
           context.report({
             node,
             range,
-            message: "Hoi!", //`Expected ${linesRequired} empty line${linesRequired > 1 ? "s" : ""} found ${lineDiff.before} ${mode} block.`,
+            message: `Expected ${linesRequired} empty line${linesRequired > 1 ? "s" : ""} found ${lineDiff.before} ${mode} block.`,
             fix(fixer) {
               return fixer.replaceTextRange(range, linesReplacement );
             }
@@ -292,12 +317,12 @@ export const LineDelimiters = {
 
         }
       }
-      
-      
+
+
       return;
 
       let after = {};
-      
+
       try {
         after = sourceCode.getTokenAfter(node, { includeComments: true });
       } catch (e) {
@@ -326,7 +351,7 @@ export const LineDelimiters = {
         // if ( node.end && rangeEnd ) {
 
         //   if ( spacingType === "methods" ) { console.log( "invokes " ); }
-          
+
         //   identationLevel = (whiteSpacesNumber / eslintConfigIdentPrefixSizeForOneLevel);
         //   mustWhitespacesNumber = (identationLevel * eslintConfigIdentPrefixSizeForOneLevel);
         //   linesReplacement = "\n".repeat(newLineCharsNumber) + " ".repeat(mustWhitespacesNumber);
@@ -349,7 +374,7 @@ export const LineDelimiters = {
         //     }
 
         //   });
-          
+
         // }
       }
 
@@ -391,8 +416,8 @@ export const LineDelimiters = {
       );
 
     }
-    
-    
+
+
     return {
       // ClassDeclaration: Keyword class after keyword export
       // FunctionExpression: function body
@@ -445,6 +470,17 @@ export const LineDelimiters = {
           "blocks"
         );
       },
+      Program() {
+        const allComments = sourceCode.getAllComments();
+
+        allComments.forEach((comment) => {
+          checkBlockSpacing(
+            comment,
+            "comments"
+          );
+        });
+
+      },
       ReturnStatement: function (node) {
         checkBlockSpacing(
           node,
@@ -455,24 +491,4 @@ export const LineDelimiters = {
   }
 
 };
-
-
-
-
-
-// Program() {
-//   const allComments = sourceCode.getAllComments();
-
-//   allComments.forEach((comment) => {
-//     checkBlockSpacing(
-//       comment,
-//       BEFORE,
-//       "above_comments"
-//     );
-//   });
-// },
-
-
-
-
 

@@ -11,6 +11,10 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = resolve(__filename, "..");
 const tsconfigPath = resolve(__dirname, "tsconfig.ESNext.json");
 
+
+const TSC_OUTPUT_INDENTATION_SIZE = 4; // Matches tsc indent rule fixed value, tsc cannot be configured
+
+
 export default [
   {
     "ignores": ["node_modules/**"],
@@ -68,23 +72,23 @@ export default [
             "lines_before_on_block_start": 0
           },
           "methods": {
-            "lines_before": 3,
+            "lines_before": 2,
+            "lines_before_on_block_start": 1
+          },
+          "comments": {
+            "lines_before": 2,
             "lines_before_on_block_start": 1
           },
           "blocks": {
             "lines_before": 1,
             "lines_before_on_block_start": 1
           },
-          "return": {
-            "lines_before": 3,
-            "lines_before_on_block_start": 0
-          },
-          "above_comments": {
-            "lines_before": 2,
-            "lines_before_on_block_start": 0
-          },
           "code_lines": {
             "lines_before": 2,
+            "lines_before_on_block_start": 0
+          },
+          "return": {
+            "lines_before": 1,
             "lines_before_on_block_start": 0
           }
         }
@@ -104,18 +108,43 @@ export default [
     }
   },
   {
-    "files": ["www/**/transpiled/Simple/**/*.cjs"],
+    "files": ["transpiled/Simple/**/*.js", "www/**/transpiled/Simple/**/*.js"],
     "plugins": {
       "jaisocx": jaisocxPlugin
     },
     "rules": {
+      "no-mixed-spaces-and-tabs": "error",
+      "indent": ["error", TSC_OUTPUT_INDENTATION_SIZE],
+
+      "jaisocx/class-statement-cleanup": "error",
+      "jaisocx/multiline-args": ["error", { "args-chars-max-number": 10 }],
       "jaisocx/line-delimiters": [
         "error",
         {
-          "methods": { "lines_before": 3 },
-          "blocks": { "lines_before": 2 },
-          "above_comments": { "lines_before": 2 },
-          "code_lines": { "lines_before": 1 }
+          "class": {
+            "lines_before": 3,
+            "lines_before_on_block_start": 0
+          },
+          "methods": {
+            "lines_before": 2,
+            "lines_before_on_block_start": 1
+          },
+          "comments": {
+            "lines_before": 2,
+            "lines_before_on_block_start": 1
+          },
+          "blocks": {
+            "lines_before": 1,
+            "lines_before_on_block_start": 1
+          },
+          "code_lines": {
+            "lines_before": 2,
+            "lines_before_on_block_start": 0
+          },
+          "return": {
+            "lines_before": 1,
+            "lines_before_on_block_start": 0
+          }
         }
       ],
       "comma-dangle": [
@@ -128,10 +157,8 @@ export default [
           "functions": "never"
         }
       ],
-      "jaisocx/multiline-args": ["error", { "args-chars-max-number": 10 }],
-      "jaisocx/class-statement-cleanup": "error",
-      "semi": ["error", "always"],
-      "no-extra-semi": "error"
+      "no-extra-semi": "error",
+      "semi": ["error", "always"]
     }
   }
 ];
