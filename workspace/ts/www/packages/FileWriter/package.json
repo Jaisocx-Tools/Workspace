@@ -1,6 +1,6 @@
 {
   "name": "@jaisocx/file-writer",
-  "version": "1.2.3",
+  "version": "1.2.4",
   "author": "Jaisocx",
   "private": false,
   "description": "",
@@ -14,8 +14,7 @@
   },
   "files": [
     "transpiled/CommonJS",
-    "transpiled/ESNext",
-    "README.md"
+    "transpiled/ESNext"
   ],
   "keywords": [
     "fs",
@@ -25,7 +24,7 @@
     "access": "public"
   },
   "optionalDependencies": {
-    "@jaisocx/event-emitter": "^1.4.1"
+    "@jaisocx/event-emitter": "^1.4.2"
   }
 }
 

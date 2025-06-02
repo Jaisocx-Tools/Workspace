@@ -26,6 +26,7 @@ export class FileWriterQueue extends EventEmitter {
   workingQueueId: number;
   queueSizeExtendBy: number;
 
+
   // future task for the fine tuning of the queue array growth.
   // the idea is to estimate the intensity of writing tasks,
   // the fixed queue array size to have an imagination on RAM usage extensivity,
@@ -44,9 +45,6 @@ export class FileWriterQueue extends EventEmitter {
   // and the queue array size grows.
   // toWaitWhenLeftPercentage: number;
   // toWaitWhenLeftTasksNumber: number;
-
-
-
   constructor(
     inFileWriter: FileWriter,
     queueSize: number,
@@ -80,11 +78,14 @@ export class FileWriterQueue extends EventEmitter {
     this.namedBitsbufs = new Object();
   }
 
+
   // method to write to the console infos from methods.
   setDebug( inDebug: boolean ): FileWriterQueue {
     this.debug = inDebug;
+
     return this;
   }
+
 
   setHasToStop( toStop: boolean ): FileWriterQueue {
     this.hasToStop = toStop;
@@ -96,13 +97,13 @@ export class FileWriterQueue extends EventEmitter {
     return this;
   }
 
+
   // fine tuning mehod
   setQueueSizeExtendBy( extendBy: number ): FileWriterQueue {
     this.queueSizeExtendBy = extendBy;
 
     return this;
   }
-
 
 
   /**
@@ -116,6 +117,8 @@ export class FileWriterQueue extends EventEmitter {
    * @param extendBy
    * @returns
    */
+
+
   extendQueue( extendBy: number ): number {
 
     // @ts-ignore
@@ -129,6 +132,7 @@ export class FileWriterQueue extends EventEmitter {
     let i: number = 0;
 
     for ( i = firstQueueTaskId; i < lastSetQueueTaskId; i++ ) {
+
       // @ts-ignore
       queueTask = this.queue[i];
       extendedQueue[i] = {...queueTask} as QueueTask;
@@ -141,25 +145,27 @@ export class FileWriterQueue extends EventEmitter {
   }
 
 
-
   cleanupQueue(
     start: number,
     end: number
   ): void {
-
     if ( start < 0 ) {
       start = 0;
     }
 
+
     // @ts-ignore
     if ( ( end === 0 ) || ( end > ( this.queue.length - 1 ) ) ) {
+
       // @ts-ignore
       end = ( this.queue.length - 1 );
     }
 
     let queuTaskId: number = start;
     const cleanupValue: number = 1;
+
     for ( queuTaskId = start; queuTaskId < end; queuTaskId++ ) {
+
       // @ts-ignore
       this.queue[queuTaskId] = cleanupValue;
     }
@@ -167,13 +173,14 @@ export class FileWriterQueue extends EventEmitter {
   }
 
 
-
   validateOnEnqueueTask (
     bitsbuf: Uint8Array,
     range: number[]
   ): void {
+
     if ( range[0] === range[1] ) {
       console.error("Range start and end are the same. Skipping enqueueing and writing of this range...");
+
       return;
     }
 
@@ -181,8 +188,10 @@ export class FileWriterQueue extends EventEmitter {
       throw new Error("Start or End boundaries are out of bitsbuf size.");
     }
 
+
     // @ts-ignore
     if ( this.enqueuedId === this.queue.length ) {
+
       // @ts-ignore
       if ( this.workingQueueId === this.queue.length ) {
         this.workingQueueId = 0;
@@ -195,12 +204,10 @@ export class FileWriterQueue extends EventEmitter {
   }
 
 
-
   enqueue (
     bitsbufName: string,
     range: number[]
   ): void {
-
     let bitsbuf: Uint8Array = this.namedBitsbufs[bitsbufName];
 
     if ( bitsbuf === undefined ) {
@@ -225,12 +232,14 @@ export class FileWriterQueue extends EventEmitter {
     }
 
     if ( this.debug === true ) {
+
       // @ts-ignore
       this.queue[this.enqueuedId] = {
         bitsbuf,
         range,
         "bitsbufName": bitsbufName } as QueueTask;
     } else {
+
       // @ts-ignore
       this.queue[this.enqueuedId] = {
         bitsbuf,
@@ -247,11 +256,11 @@ export class FileWriterQueue extends EventEmitter {
   }
 
 
-
   processQueue(): void {
 
     // @ts-ignore
     this.isWriting = true;
+
 
     // @ts-ignore
     const queueTask: QueueTask = this.queue[this.workingQueueId];
@@ -271,8 +280,8 @@ export class FileWriterQueue extends EventEmitter {
       )
       .then (
         ( _arg1: number ) => {
-
           this.workingQueueId++;
+
 
           // checks, whether last written was the last task in the queue.
           if ( this.workingQueueId === this.enqueuedId ) {
@@ -282,6 +291,7 @@ export class FileWriterQueue extends EventEmitter {
               this.fileWriter.filehandleClose()
                 .then (
                   ( _arg2: number ) => {
+
                     // emit event "File was written until EOF."
                     this.emitEvent (
                       this.eventEOF.eventName,
@@ -300,13 +310,14 @@ export class FileWriterQueue extends EventEmitter {
 
   }
 
+
   filehandleClose(): void {
+
     if ( this.isWriting === true ) {
       this.setHasToStop ( true );
     }
 
     if ( ( this.workingQueueId > this.enqueuedId ) === false ) {
-
       if ( this.debug === true ) {
         console.error(
           "FileWriterQueue.filehandleClose(): ",
@@ -322,6 +333,7 @@ export class FileWriterQueue extends EventEmitter {
     this.fileWriter.filehandleClose()
       .then (
         ( _arg: number ) => {
+
           // emit event "File was written until EOF."
           this.emitEvent (
             this.eventEOF.eventName,

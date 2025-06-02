@@ -64,7 +64,7 @@
     {
       "path": "packages/EventEmitter",
       "name": "event-emitter",
-      "build": true,
+      "build": false,
       "build-simple-enable": true,
       "build-files": [
         "EventEmitter.js",
@@ -74,7 +74,7 @@
     {
       "path": "packages/FileWriter",
       "name": "file-writer",
-      "build": false,
+      "build": true,
       "build-simple-enable": false,
       "dependencies": [
         {

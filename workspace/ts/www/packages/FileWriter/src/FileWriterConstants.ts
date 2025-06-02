@@ -8,7 +8,6 @@ export class FileWriterConstants {
   #writeAndRead: string;
 
 
-
   constructor() {
     this.#add = "a";
     this.#addAndRead = "a+";
@@ -18,25 +17,31 @@ export class FileWriterConstants {
     this.#writeAndRead = "w+";
   }
 
+
   getFHandleModeAdd(): string {
     return this.#add;
   }
+
 
   getFHandleModeAddAndRead(): string {
     return this.#addAndRead;
   }
 
+
   getFHandleModeRead(): string {
     return this.#read;
   }
+
 
   getFHandleModeReadAndWrite(): string {
     return this.#readAndWrite;
   }
 
+
   getFHandleModeWrite(): string {
     return this.#write;
   }
+
 
   getFHandleModeWriteAndRead(): string {
     return this.#writeAndRead;

@@ -106,12 +106,14 @@ export class FileWriter {
         let joinedArray = new Uint8Array();
         for (i = 0; i < textArrayLen; i++) {
             content = bitbufs[i];
-            if (typeof content[0] === "number") { // UintArray
+            if (typeof content[0] === "number") {
+                // UintArray
                 // @ts-ignore
                 joinedArray = content;
                 // @ts-ignore
             }
-            else if (typeof content[0][0] === "number") { // UintArray[]
+            else if (typeof content[0][0] === "number") {
+                // UintArray[]
                 // @ts-ignore
                 joinedArray = this.concatUint8Arrays(content);
             }
@@ -156,7 +158,8 @@ export class FileWriter {
         let isError = false;
         if (this.offsetInFile === 0) {
             // @ts-ignore
-            const stats = await this.fileHandle.stat(); // get current file size
+            const stats = await this.fileHandle.stat();
+            // get current file size
             this.offsetInFile = stats.size;
         }
         if (this.debug === true) {
@@ -196,10 +199,14 @@ export class FileWriter {
         return 1;
     }
     concatUint8Arrays(arrays) {
-        const totalLength = arrays.reduce((sum, arr) => sum + arr.byteLength, 0);
+        const totalLength = arrays.reduce((sum, arr) => {
+            return (sum + arr.byteLength);
+        }, 0);
+        // ret value
         const result = new Uint8Array(totalLength);
+        let arr = new Uint8Array();
         let offset = 0;
-        for (const arr of arrays) {
+        for (arr of arrays) {
             result.set(arr, offset);
             offset += arr.length;
         }
