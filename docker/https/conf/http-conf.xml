@@ -64,8 +64,8 @@
 
                     <alias comment="preferred cdn url for one node_modules/MediaAndStyles subfolder of one tool, where are @jaisocx/ site js and css tool .css files and .css themes and mini-images"
                            art="folder"
-                           url="/cdn/jaisocx-tools/css-clean-start/assets/"
-                           path="/var/www/cdn/SitesTools/node_modules/@jaisocx/css-clean-start/assets"
+                           url="/cdn/jaisocx-tools/css-clean-start/MediaAndStyles/"
+                           path="/var/www/cdn/SitesTools/node_modules/@jaisocx/css-clean-start/MediaAndStyles"
                            cache="update"
                            list="true"
                            each-folder-content-file-name="root.html" />
