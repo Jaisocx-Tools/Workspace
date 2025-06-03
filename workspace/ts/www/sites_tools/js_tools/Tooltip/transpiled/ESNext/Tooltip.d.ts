@@ -65,8 +65,7 @@ export declare class Tooltip extends EventEmitter implements TooltipInterface {
     addWindowResizeEventListener(): Tooltip;
     addScrollEventListeners(): Tooltip;
     addEventListeners(): TooltipInterface;
-    showTooltip(toShowCssDisplayValue: any, // Constants.ShowModes: hide, show, turn
-    eventTarget: any): TooltipInterface;
+    showTooltip(toShowCssDisplayValue: any, eventTarget: any): TooltipInterface;
     hideAllTooltips(): undefined;
     hideTooltipsByBehaviours(hideBehaviourArray: any[], tooltipId: any | null): undefined;
     calculateTooltipHtmlNodeDimensions(): Dimensions;

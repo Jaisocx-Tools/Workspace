@@ -1,5 +1,4 @@
-import { TooltipMainTemplateData } from "./TooltipMainTemplateData.js";
-export class Constants {
+class TooltipConstants {
     static EventsNames = class {
         static CLICK = "click";
         static DOUBLE_CLICK = "dblclick";
@@ -20,10 +19,10 @@ export class Constants {
         static AFTER_TOOLTIP_HIDDEN = "afterTooltipHidden";
     };
     static EventsEmitted = [
-        Constants.EventsNames.RESIZE,
-        Constants.TooltipEventsNames.BEFORE_TOOLTIP_SHOWN,
-        Constants.TooltipEventsNames.AFTER_TOOLTIP_SHOWN,
-        Constants.TooltipEventsNames.AFTER_TOOLTIP_HIDDEN
+        TooltipConstants.EventsNames.RESIZE,
+        TooltipConstants.TooltipEventsNames.BEFORE_TOOLTIP_SHOWN,
+        TooltipConstants.TooltipEventsNames.AFTER_TOOLTIP_SHOWN,
+        TooltipConstants.TooltipEventsNames.AFTER_TOOLTIP_HIDDEN
     ];
     static BrowserStorageKeys = class {
         static JAISOCX_TOOLTIPS_EXIST = "JaisocxTooltipsExist";
@@ -79,24 +78,24 @@ export class Constants {
         static DISPLAY = "display";
     };
     static Defaults = class {
-        static tooltipAlignDimensionOne = Constants.AlignDimensionOne.BROWSER_TAB_BORDER_TOP;
-        static tooltipAlignDimensionTwo = Constants.AlignDimensionTwo.EVENT_TARGET_MID;
+        static tooltipAlignDimensionOne = TooltipConstants.AlignDimensionOne.BROWSER_TAB_BORDER_TOP;
+        static tooltipAlignDimensionTwo = TooltipConstants.AlignDimensionTwo.EVENT_TARGET_MID;
         static tooltipPaddingAlignDimensionTwo = 0;
-        static tooltipPaddingSizeDimAlignDimensionTwo = Constants.CssSizeDim.PIXELS;
-        static tooltipHideBehaviour = Constants.TooltipHideBehaviour.HIDE_AFTER_TIMEOUT__AND__WHEN_CLICK__ANYWHERE;
+        static tooltipPaddingSizeDimAlignDimensionTwo = TooltipConstants.CssSizeDim.REM;
+        static tooltipHideBehaviour = TooltipConstants.TooltipHideBehaviour.HIDE_AFTER_TIMEOUT__AND__WHEN_CLICK__ANYWHERE;
         static tooltipHideTimoutMilliseconds = 6000;
         static alternativeTabBorderSides = [
-            Constants.AlignDimensionOne.BROWSER_TAB_BORDER_TOP,
-            Constants.AlignDimensionOne.BROWSER_TAB_BORDER_RIGHT,
-            Constants.AlignDimensionOne.BROWSER_TAB_BORDER_LEFT,
-            Constants.AlignDimensionOne.BROWSER_TAB_BORDER_BOTTOM
+            TooltipConstants.AlignDimensionOne.BROWSER_TAB_BORDER_TOP,
+            TooltipConstants.AlignDimensionOne.BROWSER_TAB_BORDER_RIGHT,
+            TooltipConstants.AlignDimensionOne.BROWSER_TAB_BORDER_LEFT,
+            TooltipConstants.AlignDimensionOne.BROWSER_TAB_BORDER_BOTTOM
         ];
         static withArrow = 1;
         static arrowSize = 0;
-        static arrowSizeDim = Constants.CssSizeDim.REM;
+        static arrowSizeDim = TooltipConstants.CssSizeDim.REM;
         static paddingEventTarget = 0;
-        static paddingDimEventTarget = Constants.CssSizeDim.REM;
-        static cssClasses = Constants.CssClassNames.TOOLTIP_MAIN;
+        static paddingDimEventTarget = TooltipConstants.CssSizeDim.REM;
+        static cssClasses = TooltipConstants.CssClassNames.TOOLTIP_MAIN;
         static templateTooltipContent = `
       {{ html }}
     `;
@@ -105,15 +104,15 @@ export class Constants {
         };
     };
     static tooltipMainTemplate = `
-  <tooltip-main 
-    id="{{ id }}" 
+  <tooltip-main
+    id="{{ id }}"
     class="{{ cssClasses }}">
 
-      <tooltip-arrow 
+      <tooltip-arrow
           class="tooltip-arrow">
       </tooltip-arrow>
 
-      <tooltip-content 
+      <tooltip-content
           class="tooltip-content">
             {{ tooltipContent }}
       </tooltip-content>
@@ -122,4 +121,5 @@ export class Constants {
   `;
     static tooltipMainTemplateData = new TooltipMainTemplateData();
 }
-//# sourceMappingURL=Constants.js.map
+
+

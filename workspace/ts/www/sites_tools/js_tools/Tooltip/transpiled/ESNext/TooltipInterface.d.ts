@@ -19,8 +19,7 @@ export interface TooltipInterface {
     setTooltipHideBehaviour(tooltipHideBehaviour: any): TooltipInterface;
     render(): TooltipInterface;
     addEventListeners(): TooltipInterface;
-    showTooltip(toShowCssDisplayValue: any, // Constants.ShowModes: hide, show, turn
-    eventTarget: any): TooltipInterface;
+    showTooltip(toShowCssDisplayValue: any, eventTarget: any): TooltipInterface;
     calculateTooltipHtmlNodeDimensions(): Dimensions;
 }
 //# sourceMappingURL=TooltipInterface.d.ts.map

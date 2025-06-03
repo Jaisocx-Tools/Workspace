@@ -1,10 +1,8 @@
-import { Constants } from "./Constants.js";
-
-
 export class TooltipShownSettings {
   tooltipHtmlNodeId: any;
   tooltipHideBehaviour: any;
   tooltipHideTimoutId:  null | ReturnType<typeof setTimeout>;
+
 
   constructor(
     id: any,
@@ -14,6 +12,6 @@ export class TooltipShownSettings {
     this.tooltipHtmlNodeId = id;
     this.tooltipHideBehaviour = hideBehaviour;
     this.tooltipHideTimoutId = hideTimeoutId;
-  }  
+  }
 }
 

@@ -1,7 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.TooltipMainTemplateData = void 0;
-// this class here is to type hint the Json data for the TemplateRenderer 
+// this class here is to type hint the Json data for the TemplateRenderer
 // to render the main tooltip html template
 class TooltipMainTemplateData {
     constructor() {

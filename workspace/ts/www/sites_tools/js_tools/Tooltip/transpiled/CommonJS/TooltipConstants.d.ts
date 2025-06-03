@@ -1,5 +1,5 @@
 import { TooltipMainTemplateData } from "./TooltipMainTemplateData.js";
-export declare class Constants {
+export declare class TooltipConstants {
     static EventsNames: {
         new (): {};
         CLICK: any;
@@ -106,4 +106,4 @@ export declare class Constants {
     static tooltipMainTemplate: any;
     static tooltipMainTemplateData: TooltipMainTemplateData;
 }
-//# sourceMappingURL=Constants.d.ts.map
+//# sourceMappingURL=TooltipConstants.d.ts.map

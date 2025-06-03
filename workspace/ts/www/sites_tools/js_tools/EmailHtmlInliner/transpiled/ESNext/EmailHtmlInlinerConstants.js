@@ -8,11 +8,16 @@ export class EmailHtmlInlinerConstants {
     renamedTags;
     constructor() {
         this.stylesPropsDefaults = {
-            "padding": ["0", "0px", "0 0 0 0"], // TODO: H1-H6 and other tags, having default padding and margin values not zero.
-            "padding-top": ["0px", "0"], // TODO: H1-H6 and other tags, having default padding and margin values not zero.
-            "padding-right": ["0px", "0"], // TODO: H1-H6 and other tags, having default padding and margin values not zero.
-            "padding-left": ["0px", "0"], // TODO: H1-H6 and other tags, having default padding and margin values not zero.
-            "padding-bottom": ["0px", "0"], // TODO: H1-H6 and other tags, having default padding and margin values not zero.
+            "padding": ["0", "0px", "0 0 0 0"],
+            // TODO: H1-H6 and other tags, having default padding and margin values not zero.
+            "padding-top": ["0px", "0"],
+            // TODO: H1-H6 and other tags, having default padding and margin values not zero.
+            "padding-right": ["0px", "0"],
+            // TODO: H1-H6 and other tags, having default padding and margin values not zero.
+            "padding-left": ["0px", "0"],
+            // TODO: H1-H6 and other tags, having default padding and margin values not zero.
+            "padding-bottom": ["0px", "0"],
+            // TODO: H1-H6 and other tags, having default padding and margin values not zero.
             "margin": ["0", "0px", "0 0 0 0"],
             "margin-top": ["0px", "0"],
             "margin-right": ["0px", "0"],

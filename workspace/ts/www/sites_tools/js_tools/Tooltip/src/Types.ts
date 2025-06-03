@@ -4,9 +4,10 @@ export class Dimensions {
   right: number;
   left: number;
   bottom: number;
-  
+
   height: number;
   width: number;
+
 
   constructor() {
     this.top = 0;

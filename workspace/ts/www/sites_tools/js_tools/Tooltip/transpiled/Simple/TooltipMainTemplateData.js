@@ -1,49 +1,57 @@
 class TooltipMainTemplateData {
-  id;
-  cssClasses;
-  tooltipContent;
+    id;
+    cssClasses;
+    tooltipContent;
 
-  constructor() {
-    this.id = TooltipMainTemplateData.produceId();
-    this.cssClasses = "";
-    this.tooltipContent = "";
-  }
 
-  static produceId() {
-    const id = "jaisocx_tooltip_" + Math.random() + (new Date()).getTime();
+    constructor() {
+        this.id = TooltipMainTemplateData.produceId();
+        this.cssClasses = "";
+        this.tooltipContent = "";
+    }
 
-    return id;
-  }
 
-  getId() {
-    return this.id;
-  }
+    static produceId() {
+        const id = "jaisocx_tooltip_" + Math.random() + (new Date()).getTime();
 
-  setId(id) {
-    this.id = id;
+        return id;
+    }
 
-    return this;
-  }
 
-  getCssClasses() {
-    return this.cssClasses;
-  }
+    getId() {
+        return this.id;
+    }
 
-  setCssClasses(cssClasses) {
-    this.cssClasses = cssClasses;
 
-    return this;
-  }
+    setId(id) {
+        this.id = id;
 
-  getTooltipContent() {
-    return this.tooltipContent;
-  }
+        return this;
+    }
 
-  setTooltipContent(tooltipContent) {
-    this.tooltipContent = tooltipContent;
 
-    return this;
-  }
-} 
+    getCssClasses() {
+        return this.cssClasses;
+    }
+
+
+    setCssClasses(cssClasses) {
+        this.cssClasses = cssClasses;
+
+        return this;
+    }
+
+
+    getTooltipContent() {
+        return this.tooltipContent;
+    }
+
+
+    setTooltipContent(tooltipContent) {
+        this.tooltipContent = tooltipContent;
+
+        return this;
+    }
+}
 
 

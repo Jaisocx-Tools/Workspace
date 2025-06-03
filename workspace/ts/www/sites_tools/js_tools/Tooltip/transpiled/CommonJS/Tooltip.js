@@ -4,89 +4,85 @@ exports.Tooltip = void 0;
 const event_emitter_1 = require("@jaisocx/event-emitter");
 // TemplateRenderer is the js class to set the json data in the html template the very easy and transparent way.
 const template_renderer_1 = require("@jaisocx/template-renderer");
-// Constants class is the Tooltip package class with constants.
-const Constants_js_1 = require("./Constants.js");
+// TooltipConstants class is the Tooltip package class with constants.
+const TooltipConstants_js_1 = require("./TooltipConstants.js");
 const Types_js_1 = require("./Types.js");
 const TooltipMainTemplateData_js_1 = require("./TooltipMainTemplateData.js");
-// TooltipLib class is the package with singleton method .getInstance() 
+// TooltipLib class is the package with singleton method .getInstance()
 // and the helping methods to calculate the css rules to place the tooltip the right way in the site ui.
 const TooltipLib_js_1 = require("./TooltipLib.js");
 const TooltipShownSettings_js_1 = require("./TooltipShownSettings.js");
 require("@jaisocx-tooltip-MediaAndStyles/tooltip-styles-main-webpack.css");
-// the class to produce dynamic a tooltip.
-// the Constants.template value and the templateRederer json data can be overridden.
-// the main purpose is to render the html template, to handle the js events, 
-// and to place the tooltip the right way near the event target html node.
 class Tooltip extends event_emitter_1.EventEmitter {
     // constructor method sets for the first time values for this class properies.
     constructor() {
         super();
-        this.timeoutToCloseMillis = Constants_js_1.Constants.Defaults.tooltipHideTimoutMilliseconds;
+        this.timeoutToCloseMillis = TooltipConstants_js_1.TooltipConstants.Defaults.tooltipHideTimoutMilliseconds;
         this.timeoutToCloseId = null;
-        this.tooltipHideBehaviour = Constants_js_1.Constants.Defaults.tooltipHideBehaviour;
+        this.tooltipHideBehaviour = TooltipConstants_js_1.TooltipConstants.Defaults.tooltipHideBehaviour;
         // event target, where to click to show the tooltip initial attr id="" value is the zero length text
         this.eventTargetHtmlNodeId = "";
         // css selector, like e.g. "tagName.cssClassName .nestedNodeCssClassName" or "#id"
         this.eventTargetSelector = "";
         this.eventTargetHtmlNode = null;
         this.eventTargetDimensions = new Types_js_1.Dimensions();
-        this.eventName = Constants_js_1.Constants.EventsNames.CLICK;
+        this.eventName = TooltipConstants_js_1.TooltipConstants.EventsNames.CLICK;
         // tooltip dynamic produced html node, the initial attr id="" value is the zero length text
         this.mainHtmlNodeId = "";
         this.mainHtmlNode = null;
         this.tooltipHtmlNodeDimensions = new Types_js_1.Dimensions();
-        // Constants.cssClasses sets cssClass value class="tooltip", 
+        // TooltipConstants.cssClasses sets cssClass value class="tooltip",
         // however there is the setCssClasses public method to override the default css class names for the tooltip html node.
-        this.cssClasses = Constants_js_1.Constants.Defaults.cssClasses;
+        this.cssClasses = TooltipConstants_js_1.TooltipConstants.Defaults.cssClasses;
         // the distance between the eventtarget and the tooltip or the arrow of a tooltip, if arrow has size.
-        this.paddingEventTarget = Constants_js_1.Constants.Defaults.paddingEventTarget;
-        this.paddingDimEventTarget = Constants_js_1.Constants.Defaults.paddingDimEventTarget;
-        // Constants.tooltipAlignDimensionOne sets tooltipAlignDimensionOne value BROWSER_TAB_BORDER_TOP = 1, 
+        this.paddingEventTarget = TooltipConstants_js_1.TooltipConstants.Defaults.paddingEventTarget;
+        this.paddingDimEventTarget = TooltipConstants_js_1.TooltipConstants.Defaults.paddingDimEventTarget;
+        // TooltipConstants.tooltipAlignDimensionOne sets tooltipAlignDimensionOne value BROWSER_TAB_BORDER_TOP = 1,
         // however there is the setTooltipAlignDimensionOne public method to override the default css class names for the tooltip html node.
-        this.tooltipAlignDimensionOne = Constants_js_1.Constants.Defaults.tooltipAlignDimensionOne;
-        // dimension two values set from Constants class static properties
-        this.tooltipAlignDimensionTwo = Constants_js_1.Constants.Defaults.tooltipAlignDimensionTwo;
-        this.tooltipPaddingAlignDimensionTwo = Constants_js_1.Constants.Defaults.tooltipPaddingAlignDimensionTwo;
-        this.tooltipPaddingSizeDimAlignDimensionTwo = Constants_js_1.Constants.Defaults.tooltipPaddingSizeDimAlignDimensionTwo;
+        this.tooltipAlignDimensionOne = TooltipConstants_js_1.TooltipConstants.Defaults.tooltipAlignDimensionOne;
+        // dimension two values set from TooltipConstants class static properties
+        this.tooltipAlignDimensionTwo = TooltipConstants_js_1.TooltipConstants.Defaults.tooltipAlignDimensionTwo;
+        this.tooltipPaddingAlignDimensionTwo = TooltipConstants_js_1.TooltipConstants.Defaults.tooltipPaddingAlignDimensionTwo;
+        this.tooltipPaddingSizeDimAlignDimensionTwo = TooltipConstants_js_1.TooltipConstants.Defaults.tooltipPaddingSizeDimAlignDimensionTwo;
         // lib: TooltipLib singleton instance to use helping methods.
         this.lib = TooltipLib_js_1.TooltipLib.getInstance();
-        // the predefind order to check the side to the eventTarget where to try to show the tooltip, 
+        // the predefind order to check the side to the eventTarget where to try to show the tooltip,
         // if there is enough space til browser's tab border
-        this.alternativeTabBorderSides = Constants_js_1.Constants.Defaults.alternativeTabBorderSides;
+        this.alternativeTabBorderSides = TooltipConstants_js_1.TooltipConstants.Defaults.alternativeTabBorderSides;
         // arrow feature
-        this.withArrow = Constants_js_1.Constants.Defaults.withArrow;
-        this.arrowSize = Constants_js_1.Constants.Defaults.arrowSize;
-        this.arrowSizeDim = Constants_js_1.Constants.Defaults.arrowSizeDim;
+        this.withArrow = TooltipConstants_js_1.TooltipConstants.Defaults.withArrow;
+        this.arrowSize = TooltipConstants_js_1.TooltipConstants.Defaults.arrowSize;
+        this.arrowSizeDim = TooltipConstants_js_1.TooltipConstants.Defaults.arrowSizeDim;
         // templateRenderer is a new class exemplar of the Templaterenderer js class.
         this.templateRenderer = new template_renderer_1.TemplateRenderer();
         this.templateRenderer
-            .setTemplate(Constants_js_1.Constants.Defaults.templateTooltipContent)
-            .setData(Constants_js_1.Constants.Defaults.templateTooltipContent);
+            .setTemplate(TooltipConstants_js_1.TooltipConstants.Defaults.templateTooltipContent)
+            .setData(TooltipConstants_js_1.TooltipConstants.Defaults.templateTooltipContent);
     }
     // override this method to use for advanced visual effects.
     _hide(node) {
         //@ts-ignore
-        node.classList.remove(Constants_js_1.Constants.CssClassNames.TOOLTIP_SHOWN);
+        node.classList.remove(TooltipConstants_js_1.TooltipConstants.CssClassNames.TOOLTIP_SHOWN);
         //@ts-ignore
-        node.classList.add(Constants_js_1.Constants.CssClassNames.TOOLTIP_HIDDEN);
+        node.classList.add(TooltipConstants_js_1.TooltipConstants.CssClassNames.TOOLTIP_HIDDEN);
     }
     // override this method to use for advanced visual effects.
     _show(node) {
         //@ts-ignore
-        node.classList.remove(Constants_js_1.Constants.CssClassNames.TOOLTIP_HIDDEN);
+        node.classList.remove(TooltipConstants_js_1.TooltipConstants.CssClassNames.TOOLTIP_HIDDEN);
         //@ts-ignore
-        node.classList.add(Constants_js_1.Constants.CssClassNames.TOOLTIP_SHOWN);
+        node.classList.add(TooltipConstants_js_1.TooltipConstants.CssClassNames.TOOLTIP_SHOWN);
     }
     // getEventsNamesEmitted: the documentation method to know all events names those are emitted in this ts class
     getEventsNamesEmitted() {
         let eventsNamesEmitted = [];
         eventsNamesEmitted = [
             this.eventName,
-            ...Constants_js_1.Constants.EventsEmitted
+            ...TooltipConstants_js_1.TooltipConstants.EventsEmitted
         ];
         return eventsNamesEmitted;
     }
-    // setDebug is used to turn on the browser developers console infos. 
+    // setDebug is used to turn on the browser developers console infos.
     setDebug(debug) {
         this.debug = debug;
         this.templateRenderer.setDebug(debug);
@@ -100,7 +96,7 @@ class Tooltip extends event_emitter_1.EventEmitter {
     }
     setHtml(html) {
         this.html = html;
-        this.setTemplate(Constants_js_1.Constants.Defaults.templateTooltipContent)
+        this.setTemplate(TooltipConstants_js_1.TooltipConstants.Defaults.templateTooltipContent)
             .setTemplateData({ html });
         return this;
     }
@@ -185,7 +181,7 @@ class Tooltip extends event_emitter_1.EventEmitter {
         this.tooltipHideBehaviour = tooltipHideBehaviour;
         return this;
     }
-    // render(): this method renders the tooltip, and adds the event listener, 
+    // render(): this method renders the tooltip, and adds the event listener,
     // however doesn't show the tooltip.
     // to show the tooltip, the event target html node has to be clicked.
     render() {
@@ -201,19 +197,19 @@ class Tooltip extends event_emitter_1.EventEmitter {
             }
             // TODO: a tooltip shown near the mouse ref on click event, for example
             else {
-                throw new Error(`no id, no css selector, no event target node was set. 
-          use set methods like these: 
-          .setEventTargetHtmlNode(htmlNode) 
-          or .setEventTargetHtmlNodeId('id') 
+                throw new Error(`no id, no css selector, no event target node was set.
+          use set methods like these:
+          .setEventTargetHtmlNode(htmlNode)
+          or .setEventTargetHtmlNodeId('id')
           or .setEventTargetSelector('#id')`);
             }
         }
         if (!this.eventTargetHtmlNode) {
-            throw new Error(`The eventTargetHtmlNode is null, 
-        the id, css selector, or event target node were set wrong. 
-        You need to use other input args for set methods like these: 
-        .setEventTargetHtmlNode(htmlNode) 
-        or .setEventTargetHtmlNodeId('id') 
+            throw new Error(`The eventTargetHtmlNode is null,
+        the id, css selector, or event target node were set wrong.
+        You need to use other input args for set methods like these:
+        .setEventTargetHtmlNode(htmlNode)
+        or .setEventTargetHtmlNodeId('id')
         or .setEventTargetSelector('#id')`);
         }
         const templateData = new TooltipMainTemplateData_js_1.TooltipMainTemplateData();
@@ -229,48 +225,48 @@ class Tooltip extends event_emitter_1.EventEmitter {
         let hiddenShownClassnameMatched = 0;
         for (let i = 0; i < cssClassesArray.length; i++) {
             let className = cssClassesArray[i];
-            if (className.startsWith(Constants_js_1.Constants.CssClassNames.TOOLTIP_CLASSES_HIDDEN_SHOWN_PREFIX)) {
+            if (className.startsWith(TooltipConstants_js_1.TooltipConstants.CssClassNames.TOOLTIP_CLASSES_HIDDEN_SHOWN_PREFIX)) {
                 hiddenShownClassnameMatched = 1;
                 break;
             }
         }
         if (hiddenShownClassnameMatched === 0) {
-            cssClassesArray.push(Constants_js_1.Constants.CssClassNames.TOOLTIP_SHOWN_SIMPLE);
+            cssClassesArray.push(TooltipConstants_js_1.TooltipConstants.CssClassNames.TOOLTIP_SHOWN_SIMPLE);
             this.cssClasses = cssClassesArray.join(" ");
         }
         templateData
-            .setCssClasses(`${Constants_js_1.Constants.CssClassNames.TOOLTIP_MAIN} ${this.cssClasses} ${Constants_js_1.Constants.CssClassNames.TOOLTIP_HIDDEN}`)
+            .setCssClasses(`${TooltipConstants_js_1.TooltipConstants.CssClassNames.TOOLTIP_MAIN} ${this.cssClasses} ${TooltipConstants_js_1.TooltipConstants.CssClassNames.TOOLTIP_HIDDEN}`)
             .setTooltipContent(tooltipContentHtml);
         // the main template contains in the placeholder {{ tooltipContent }} the rendered template from the custom template and data
         const templateRedererTechniq = new template_renderer_1.TemplateRenderer();
         const html = templateRedererTechniq
-            .setTemplate(Constants_js_1.Constants.tooltipMainTemplate)
+            .setTemplate(TooltipConstants_js_1.TooltipConstants.tooltipMainTemplate)
             .setData(templateData)
             .render();
         // at the end of the html BODY in the current html document,
         // the html from the tooltip is being inserted, with html attributes id="" and class=""
         document.getElementsByTagName("BODY")[0]
             .insertAdjacentHTML("beforeend", html);
-        //@ts-ignore      
+        //@ts-ignore
         this.mainHtmlNode = document.getElementById(this.mainHtmlNodeId);
         //@ts-ignore
-        this.arrowHtmlNode = this.mainHtmlNode.getElementsByClassName(Constants_js_1.Constants.CssClassNames.TOOLTIP_ARROW)[0];
+        this.arrowHtmlNode = this.mainHtmlNode.getElementsByClassName(TooltipConstants_js_1.TooltipConstants.CssClassNames.TOOLTIP_ARROW)[0];
         // TODO: rewrite, using improved DOM events hanlder
         this.addEventListeners();
         return this;
     }
     renderTooltipArrowHtmlNode() {
         let arrowNode = document.createElement("tooltip-arrow");
-        arrowNode.className = Constants_js_1.Constants.CssClassNames.TOOLTIP_ARROW;
+        arrowNode.className = TooltipConstants_js_1.TooltipConstants.CssClassNames.TOOLTIP_ARROW;
         //@ts-ignore
         this.mainHtmlNode.append(arrowNode);
         //@ts-ignore
-        this.arrowHtmlNode = this.mainHtmlNode.getElementsByClassName(Constants_js_1.Constants.CssClassNames.TOOLTIP_ARROW)[0];
+        this.arrowHtmlNode = this.mainHtmlNode.getElementsByClassName(TooltipConstants_js_1.TooltipConstants.CssClassNames.TOOLTIP_ARROW)[0];
         return this;
     }
     getLocalStorageArray() {
         let localStorageTooltipsArray = [];
-        const localStorageTooltips = localStorage.getItem(Constants_js_1.Constants.BrowserStorageKeys.JAISOCX_TOOLTIPS_CURRENT);
+        const localStorageTooltips = localStorage.getItem(TooltipConstants_js_1.TooltipConstants.BrowserStorageKeys.JAISOCX_TOOLTIPS_CURRENT);
         if (localStorageTooltips) {
             localStorageTooltipsArray = JSON.parse(localStorageTooltips);
         }
@@ -314,15 +310,15 @@ class Tooltip extends event_emitter_1.EventEmitter {
         return this;
     }
     addCleanupEventHandler() {
-        window.addEventListener(Constants_js_1.Constants.EventsNames.BEFOREUNLOAD, (event) => {
-            localStorage.removeItem(Constants_js_1.Constants.BrowserStorageKeys.JAISOCX_TOOLTIPS_EXIST);
-            localStorage.removeItem(Constants_js_1.Constants.BrowserStorageKeys.JAISOCX_TOOLTIPS_CURRENT);
+        window.addEventListener(TooltipConstants_js_1.TooltipConstants.EventsNames.BEFOREUNLOAD, (_event) => {
+            localStorage.removeItem(TooltipConstants_js_1.TooltipConstants.BrowserStorageKeys.JAISOCX_TOOLTIPS_EXIST);
+            localStorage.removeItem(TooltipConstants_js_1.TooltipConstants.BrowserStorageKeys.JAISOCX_TOOLTIPS_CURRENT);
         });
         return this;
     }
     addClickCurrentTooltipCloseEventHandler() {
         // the local storage marker, that a tooltip class instance is already registered on this page shown in this browser tab.
-        const localStorageTooltips = localStorage.getItem(Constants_js_1.Constants.BrowserStorageKeys.JAISOCX_TOOLTIPS_EXIST);
+        const localStorageTooltips = localStorage.getItem(TooltipConstants_js_1.TooltipConstants.BrowserStorageKeys.JAISOCX_TOOLTIPS_EXIST);
         // the event handler will be added only once.
         // therefore, when this marker already set,
         // the function exits, and another event handler will not be added
@@ -331,16 +327,16 @@ class Tooltip extends event_emitter_1.EventEmitter {
         }
         // this code line adds the event listener function,
         // the function is invoked on every click on this page.
-        document.getElementsByTagName("HTML")[0].addEventListener(Constants_js_1.Constants.EventsNames.CLICK, (evt) => {
+        document.getElementsByTagName("HTML")[0].addEventListener(TooltipConstants_js_1.TooltipConstants.EventsNames.CLICK, (evt) => {
             // console writes the current event payload
             if (this.debug) {
                 console.log(evt);
             }
             // here we get know, that the click was inside the Tooltip html node.
-            // we have to stop here, since the click inside the tooltip is allowed, 
+            // we have to stop here, since the click inside the tooltip is allowed,
             // e.g. when a context menu or to copy inner text
             //@ts-ignore
-            let holderTooltip = evt.target.closest(`.${Constants_js_1.Constants.CssClassNames.TOOLTIP_MAIN}`);
+            let holderTooltip = evt.target.closest(`.${TooltipConstants_js_1.TooltipConstants.CssClassNames.TOOLTIP_MAIN}`);
             //@ts-ignore
             if (holderTooltip) {
                 return;
@@ -349,13 +345,13 @@ class Tooltip extends event_emitter_1.EventEmitter {
             // due to hide behaviour prop.
             // and removes localStorage array with these all registered shown tooltips
             this.hideTooltipsByBehaviours([
-                Constants_js_1.Constants.TooltipHideBehaviour.HIDE_WHEN_CLICK__ANYWHERE,
-                Constants_js_1.Constants.TooltipHideBehaviour.HIDE_WHEN_CLICK__OTHER_THAN_EVENT_TARGET,
-                Constants_js_1.Constants.TooltipHideBehaviour.HIDE_AFTER_TIMEOUT__AND__WHEN_CLICK__ANYWHERE,
-                Constants_js_1.Constants.TooltipHideBehaviour.HIDE_AFTER_TIMEOUT__AND__WHEN_CLICK__OTHER_THAN_EVENT_TARGET
+                TooltipConstants_js_1.TooltipConstants.TooltipHideBehaviour.HIDE_WHEN_CLICK__ANYWHERE,
+                TooltipConstants_js_1.TooltipConstants.TooltipHideBehaviour.HIDE_WHEN_CLICK__OTHER_THAN_EVENT_TARGET,
+                TooltipConstants_js_1.TooltipConstants.TooltipHideBehaviour.HIDE_AFTER_TIMEOUT__AND__WHEN_CLICK__ANYWHERE,
+                TooltipConstants_js_1.TooltipConstants.TooltipHideBehaviour.HIDE_AFTER_TIMEOUT__AND__WHEN_CLICK__OTHER_THAN_EVENT_TARGET
             ], null);
         });
-        localStorage.setItem(Constants_js_1.Constants.BrowserStorageKeys.JAISOCX_TOOLTIPS_EXIST, "true");
+        localStorage.setItem(TooltipConstants_js_1.TooltipConstants.BrowserStorageKeys.JAISOCX_TOOLTIPS_EXIST, "true");
         return this;
     }
     addEventTriggerTooltipShowEventHandler() {
@@ -366,17 +362,17 @@ class Tooltip extends event_emitter_1.EventEmitter {
             }
             evt.preventDefault();
             evt.stopPropagation();
-            this.showTooltip(Constants_js_1.Constants.ShowModes.TURN, Constants_js_1.Constants.EventTarget.EVENT_TARGET);
+            this.showTooltip(TooltipConstants_js_1.TooltipConstants.ShowModes.TURN, TooltipConstants_js_1.TooltipConstants.EventTarget.EVENT_TARGET);
             this.emitEvent(this.eventName, evt);
         });
         return this;
     }
     addWindowResizeEventListener() {
-        window.addEventListener(Constants_js_1.Constants.EventsNames.RESIZE, (evt) => {
+        window.addEventListener(TooltipConstants_js_1.TooltipConstants.EventsNames.RESIZE, (evt) => {
             if (this.debug) {
                 console.log(evt);
             }
-            this.emitEvent(Constants_js_1.Constants.EventsNames.RESIZE, evt);
+            this.emitEvent(TooltipConstants_js_1.TooltipConstants.EventsNames.RESIZE, evt);
             this.calculateTooltipHtmlNodeDimensions();
         });
         return this;
@@ -388,22 +384,22 @@ class Tooltip extends event_emitter_1.EventEmitter {
             console.log("scrollableHolderNodesArray", scrollableHolderNodesArray);
         }
         for (let scrollableHolderNode of scrollableHolderNodesArray) {
-            scrollableHolderNode.node.addEventListener(Constants_js_1.Constants.EventsNames.SCROLL, (evt) => {
+            scrollableHolderNode.node.addEventListener(TooltipConstants_js_1.TooltipConstants.EventsNames.SCROLL, (evt) => {
                 if (this.debug) {
-                    console.log(`${Constants_js_1.Constants.EventsNames.SCROLL} event emitted`, evt);
+                    console.log(`${TooltipConstants_js_1.TooltipConstants.EventsNames.SCROLL} event emitted`, evt);
                 }
                 if (!this.getLocalStorageArray()) {
                     return;
                 }
-                this.emitEvent(Constants_js_1.Constants.EventsNames.SCROLL, evt);
+                this.emitEvent(TooltipConstants_js_1.TooltipConstants.EventsNames.SCROLL, evt);
                 this.calculateTooltipHtmlNodeDimensions();
             });
         }
-        window.addEventListener(Constants_js_1.Constants.EventsNames.RESIZE, (evt) => {
+        window.addEventListener(TooltipConstants_js_1.TooltipConstants.EventsNames.RESIZE, (evt) => {
             if (this.debug) {
                 console.log(evt);
             }
-            this.emitEvent(Constants_js_1.Constants.EventsNames.RESIZE, evt);
+            this.emitEvent(TooltipConstants_js_1.TooltipConstants.EventsNames.RESIZE, evt);
             this.calculateTooltipHtmlNodeDimensions();
         });
         return this;
@@ -418,76 +414,77 @@ class Tooltip extends event_emitter_1.EventEmitter {
             .addWindowResizeEventListener();
         return this;
     }
-    showTooltip(toShowCssDisplayValue, // Constants.ShowModes: hide, show, turn
+    showTooltip(toShowCssDisplayValue, 
+    // TooltipConstants.ShowModes: hide, show, turn
     eventTarget) {
         let toShow = toShowCssDisplayValue;
-        if (toShow === Constants_js_1.Constants.ShowModes.TURN) {
+        if (toShow === TooltipConstants_js_1.TooltipConstants.ShowModes.TURN) {
             //@ts-ignore
-            if (this.mainHtmlNode.classList.contains(Constants_js_1.Constants.CssClassNames.TOOLTIP_HIDDEN)) {
-                toShow = Constants_js_1.Constants.ShowModes.SHOW;
+            if (this.mainHtmlNode.classList.contains(TooltipConstants_js_1.TooltipConstants.CssClassNames.TOOLTIP_HIDDEN)) {
+                toShow = TooltipConstants_js_1.TooltipConstants.ShowModes.SHOW;
             }
             else {
-                toShow = Constants_js_1.Constants.ShowModes.HIDE;
+                toShow = TooltipConstants_js_1.TooltipConstants.ShowModes.HIDE;
             }
         }
-        if (eventTarget === Constants_js_1.Constants.EventTarget.EVENT_TARGET) {
+        if (eventTarget === TooltipConstants_js_1.TooltipConstants.EventTarget.EVENT_TARGET) {
             this.hideTooltipsByBehaviours([
-                Constants_js_1.Constants.TooltipHideBehaviour.HIDE_WHEN_CLICK__ANYWHERE,
-                Constants_js_1.Constants.TooltipHideBehaviour.HIDE_AFTER_TIMEOUT__AND__WHEN_CLICK__ANYWHERE
+                TooltipConstants_js_1.TooltipConstants.TooltipHideBehaviour.HIDE_WHEN_CLICK__ANYWHERE,
+                TooltipConstants_js_1.TooltipConstants.TooltipHideBehaviour.HIDE_AFTER_TIMEOUT__AND__WHEN_CLICK__ANYWHERE
             ], null);
         }
-        else if (eventTarget === Constants_js_1.Constants.EventTarget.OTHER_THAN_EVENT_TARGET) {
+        else if (eventTarget === TooltipConstants_js_1.TooltipConstants.EventTarget.OTHER_THAN_EVENT_TARGET) {
             this.hideTooltipsByBehaviours([
-                Constants_js_1.Constants.TooltipHideBehaviour.HIDE_WHEN_CLICK__ANYWHERE,
-                Constants_js_1.Constants.TooltipHideBehaviour.HIDE_WHEN_CLICK__OTHER_THAN_EVENT_TARGET,
-                Constants_js_1.Constants.TooltipHideBehaviour.HIDE_AFTER_TIMEOUT__AND__WHEN_CLICK__ANYWHERE,
-                Constants_js_1.Constants.TooltipHideBehaviour.HIDE_AFTER_TIMEOUT__AND__WHEN_CLICK__OTHER_THAN_EVENT_TARGET
+                TooltipConstants_js_1.TooltipConstants.TooltipHideBehaviour.HIDE_WHEN_CLICK__ANYWHERE,
+                TooltipConstants_js_1.TooltipConstants.TooltipHideBehaviour.HIDE_WHEN_CLICK__OTHER_THAN_EVENT_TARGET,
+                TooltipConstants_js_1.TooltipConstants.TooltipHideBehaviour.HIDE_AFTER_TIMEOUT__AND__WHEN_CLICK__ANYWHERE,
+                TooltipConstants_js_1.TooltipConstants.TooltipHideBehaviour.HIDE_AFTER_TIMEOUT__AND__WHEN_CLICK__OTHER_THAN_EVENT_TARGET
             ], null);
         }
         // if .isShown has value 1, then the tooltip gets its css rule top and left values,
         // otherwise, if isShown is 0, then no need to recalculate the css rules for this,
         // since the tooltip is hidden.
-        if (toShow === Constants_js_1.Constants.ShowModes.SHOW) {
-            // this method calculates the css rules top and left of the eventTarget and the tooltip, 
+        if (toShow === TooltipConstants_js_1.TooltipConstants.ShowModes.SHOW) {
+            // this method calculates the css rules top and left of the eventTarget and the tooltip,
             // and sets top and left cass rules values in pixels to the tooltip html node.
             this.calculateTooltipHtmlNodeDimensions();
-            this.emitEvent(Constants_js_1.Constants.TooltipEventsNames.BEFORE_TOOLTIP_SHOWN, this);
+            this.emitEvent(TooltipConstants_js_1.TooltipConstants.TooltipEventsNames.BEFORE_TOOLTIP_SHOWN, this);
             // override this method to use for advanced visual effects.
             setTimeout(() => {
                 this._show(this.mainHtmlNode);
-                this.emitEvent(Constants_js_1.Constants.TooltipEventsNames.AFTER_TOOLTIP_SHOWN, this);
+                this.emitEvent(TooltipConstants_js_1.TooltipConstants.TooltipEventsNames.AFTER_TOOLTIP_SHOWN, this);
             }, 5);
             let timeoutHideId = null;
-            if (((this.tooltipHideBehaviour === Constants_js_1.Constants.TooltipHideBehaviour.HIDE_AFTER_TIMEOUT__AND__WHEN_CLICK__ANYWHERE) ||
-                (this.tooltipHideBehaviour === Constants_js_1.Constants.TooltipHideBehaviour.HIDE_AFTER_TIMEOUT__AND__WHEN_CLICK__EVENT_TARGET) ||
-                (this.tooltipHideBehaviour === Constants_js_1.Constants.TooltipHideBehaviour.HIDE_AFTER_TIMEOUT__AND__WHEN_CLICK__OTHER_THAN_EVENT_TARGET)) &&
+            if (((this.tooltipHideBehaviour === TooltipConstants_js_1.TooltipConstants.TooltipHideBehaviour.HIDE_AFTER_TIMEOUT__AND__WHEN_CLICK__ANYWHERE) ||
+                (this.tooltipHideBehaviour === TooltipConstants_js_1.TooltipConstants.TooltipHideBehaviour.HIDE_AFTER_TIMEOUT__AND__WHEN_CLICK__EVENT_TARGET) ||
+                (this.tooltipHideBehaviour === TooltipConstants_js_1.TooltipConstants.TooltipHideBehaviour.HIDE_AFTER_TIMEOUT__AND__WHEN_CLICK__OTHER_THAN_EVENT_TARGET)) &&
                 (this.timeoutToCloseMillis > 0)) {
-                timeoutHideId = setTimeout(() => this.showTooltip(Constants_js_1.Constants.ShowModes.HIDE, eventTarget), this.timeoutToCloseMillis);
+                timeoutHideId = setTimeout(() => this.showTooltip(TooltipConstants_js_1.TooltipConstants.ShowModes.HIDE, eventTarget), this.timeoutToCloseMillis);
                 this.timeoutToCloseId = timeoutHideId;
             }
             const theTooltipToRegister = new TooltipShownSettings_js_1.TooltipShownSettings(this.mainHtmlNodeId, this.tooltipHideBehaviour, timeoutHideId);
             // we need to store the tooltips shown
-            this.addToLocalStorageArray(Constants_js_1.Constants.BrowserStorageKeys.JAISOCX_TOOLTIPS_CURRENT, theTooltipToRegister);
+            this.addToLocalStorageArray(TooltipConstants_js_1.TooltipConstants.BrowserStorageKeys.JAISOCX_TOOLTIPS_CURRENT, theTooltipToRegister);
             // the tooltip hides now
         }
-        else if (toShow === Constants_js_1.Constants.ShowModes.HIDE) {
+        else if (toShow === TooltipConstants_js_1.TooltipConstants.ShowModes.HIDE) {
             // override this method to use for advanced visual effects.
             this._hide(this.mainHtmlNode);
-            this.emitEvent(Constants_js_1.Constants.TooltipEventsNames.AFTER_TOOLTIP_HIDDEN, this);
-            if (eventTarget === Constants_js_1.Constants.EventTarget.EVENT_TARGET) {
+            this.emitEvent(TooltipConstants_js_1.TooltipConstants.TooltipEventsNames.AFTER_TOOLTIP_HIDDEN, this);
+            if (eventTarget === TooltipConstants_js_1.TooltipConstants.EventTarget.EVENT_TARGET) {
                 // hiding this tooltip, _ANY were hidden all at the begin of this method already.
                 this.hideTooltipsByBehaviours([
-                    Constants_js_1.Constants.TooltipHideBehaviour.HIDE_WHEN_CLICK__EVENT_TARGET,
-                    Constants_js_1.Constants.TooltipHideBehaviour.HIDE_WHEN_CLICK__OTHER_THAN_EVENT_TARGET,
-                    Constants_js_1.Constants.TooltipHideBehaviour.HIDE_AFTER_TIMEOUT__AND__WHEN_CLICK__EVENT_TARGET,
-                    Constants_js_1.Constants.TooltipHideBehaviour.HIDE_AFTER_TIMEOUT__AND__WHEN_CLICK__OTHER_THAN_EVENT_TARGET
+                    TooltipConstants_js_1.TooltipConstants.TooltipHideBehaviour.HIDE_WHEN_CLICK__EVENT_TARGET,
+                    TooltipConstants_js_1.TooltipConstants.TooltipHideBehaviour.HIDE_WHEN_CLICK__OTHER_THAN_EVENT_TARGET,
+                    TooltipConstants_js_1.TooltipConstants.TooltipHideBehaviour.HIDE_AFTER_TIMEOUT__AND__WHEN_CLICK__EVENT_TARGET,
+                    TooltipConstants_js_1.TooltipConstants.TooltipHideBehaviour.HIDE_AFTER_TIMEOUT__AND__WHEN_CLICK__OTHER_THAN_EVENT_TARGET
                 ], this.mainHtmlNodeId);
             }
         }
         return this;
     }
     hideAllTooltips() {
-        this.hideTooltipsByBehaviours([...Constants_js_1.Constants.TooltipHideBehaviour], null);
+        this.hideTooltipsByBehaviours([...TooltipConstants_js_1.TooltipConstants.TooltipHideBehaviour], null);
     }
     // hides all registered shown tooltips,
     // due to hide behaviour prop.
@@ -495,10 +492,10 @@ class Tooltip extends event_emitter_1.EventEmitter {
     hideTooltipsByBehaviours(hideBehaviourArray, tooltipId) {
         // this local storage field is the json with the data on all tooltips shown at the moment,
         // however when these tooltips have tooltipHideBehaviour values one of these:
-        // Constants.TooltipHideBehaviour.HIDE_WHEN_CLICK__OTHER_THAN_EVENT_TARGET 
-        // Constants.TooltipHideBehaviour.HIDE_AFTER_TIMEOUT__AND__WHEN_CLICK__OTHER_THAN_EVENT_TARGET 
-        // since when ANYWHERE, then a single body.click event handler has to be able to hide all other tooltips, too. 
-        const tooltipsLocalStorageJson = localStorage.getItem(Constants_js_1.Constants.BrowserStorageKeys.JAISOCX_TOOLTIPS_CURRENT);
+        // TooltipConstants.TooltipHideBehaviour.HIDE_WHEN_CLICK__OTHER_THAN_EVENT_TARGET
+        // TooltipConstants.TooltipHideBehaviour.HIDE_AFTER_TIMEOUT__AND__WHEN_CLICK__OTHER_THAN_EVENT_TARGET
+        // since when ANYWHERE, then a single body.click event handler has to be able to hide all other tooltips, too.
+        const tooltipsLocalStorageJson = localStorage.getItem(TooltipConstants_js_1.TooltipConstants.BrowserStorageKeys.JAISOCX_TOOLTIPS_CURRENT);
         // there are no registered tooltips open,
         // we have no shown tooltips to hide now,
         // we are exiting this function now.
@@ -518,15 +515,15 @@ class Tooltip extends event_emitter_1.EventEmitter {
             }
         }
         let tooltipShownSettings = new TooltipShownSettings_js_1.TooltipShownSettings("", "", null);
-        let hideBehaviourConstantsRelevantToTimeout = [
-            Constants_js_1.Constants.TooltipHideBehaviour.HIDE_AFTER_TIMEOUT__AND__WHEN_CLICK__ANYWHERE,
-            Constants_js_1.Constants.TooltipHideBehaviour.HIDE_AFTER_TIMEOUT__AND__WHEN_CLICK__OTHER_THAN_EVENT_TARGET,
-            Constants_js_1.Constants.TooltipHideBehaviour.HIDE_AFTER_TIMEOUT__AND__WHEN_CLICK__EVENT_TARGET
+        let hideBehaviourTooltipConstantsRelevantToTimeout = [
+            TooltipConstants_js_1.TooltipConstants.TooltipHideBehaviour.HIDE_AFTER_TIMEOUT__AND__WHEN_CLICK__ANYWHERE,
+            TooltipConstants_js_1.TooltipConstants.TooltipHideBehaviour.HIDE_AFTER_TIMEOUT__AND__WHEN_CLICK__OTHER_THAN_EVENT_TARGET,
+            TooltipConstants_js_1.TooltipConstants.TooltipHideBehaviour.HIDE_AFTER_TIMEOUT__AND__WHEN_CLICK__EVENT_TARGET
         ];
         let hideBehaviourFound = "";
         for (tooltipShownSettings of registeredShownTooltips) {
-            for (let hideBehaviuorTimeoutVal of hideBehaviourConstantsRelevantToTimeout) {
-                // finds match in input arg array of hideBehabiourConstants to hide in this method call,
+            for (let hideBehaviuorTimeoutVal of hideBehaviourTooltipConstantsRelevantToTimeout) {
+                // finds match in input arg array of hideBehabiourTooltipConstants to hide in this method call,
                 // however we are interested in those, hiding at timout.
                 hideBehaviourFound = hideBehaviourArray
                     .find((hideBehaviour) => {
@@ -541,10 +538,10 @@ class Tooltip extends event_emitter_1.EventEmitter {
             if (this.debug) {
                 console.log(`click event hides JaisocxTooltip id="${tooltipShownSettings.tooltipHtmlNodeId}"`);
             }
-            // finds match in input arg array of hideBehabiourConstants to hide in this method call.
+            // finds match in input arg array of hideBehabiourTooltipConstants to hide in this method call.
             hideBehaviourFound = hideBehaviourArray
                 .find((hideBehaviour) => hideBehaviour === tooltipShownSettings.tooltipHideBehaviour);
-            // not found the matching hideBehabiourConstants to hide in this method call,
+            // not found the matching hideBehabiourTooltipConstants to hide in this method call,
             if (!hideBehaviourFound) {
                 // next iteration of a registered shown tooltip to hide
                 continue;
@@ -563,18 +560,20 @@ class Tooltip extends event_emitter_1.EventEmitter {
         // for TooltipShownSettings of registeredShownTooltips code block finished
         return;
     }
-    // calculateTooltipHtmlNodeDimensions: method applies the css rules values, 
+    // calculateTooltipHtmlNodeDimensions: method applies the css rules values,
     // to place the shown tooltip the right way near the event target
     calculateTooltipHtmlNodeDimensions() {
         let browserTabBorderSide = this.tooltipAlignDimensionOne;
         let arrowPixelSize = 0;
-        let arrowRectSideSize = 0;
+        // let arrowRectSideSize: number = 0;
         let eventTargetPaddingPixelSize = 0;
         let tooltipPaddingDimensionTwoPixelSize = 0;
         // we check whether the tooltip is set to be rendered with an arrow
         if (this.withArrow === 1) {
-            arrowPixelSize = this.lib.getJsOrCssSizeValue(this.arrowHtmlNode, Constants_js_1.Constants.CssVariablesNames.CSS_VARIABLE_NAME__ARROW_SIZE, this, "arrowSize", "arrowSizeDim");
-            arrowRectSideSize = this.lib.getRectSideSizeByMidTilConerLineSize(arrowPixelSize);
+            arrowPixelSize = this.lib.getJsOrCssSizeValue(this.arrowHtmlNode, TooltipConstants_js_1.TooltipConstants.CssVariablesNames.CSS_VARIABLE_NAME__ARROW_SIZE, this, "arrowSize", "arrowSizeDim");
+            // arrowRectSideSize = this.lib.getRectSideSizeByMidTilConerLineSize (
+            //   arrowPixelSize
+            // );
         }
         // in this cycle we get the first best available window edge side,
         // where the tooltip matches in the space til the browser's window edge
@@ -599,10 +598,10 @@ class Tooltip extends event_emitter_1.EventEmitter {
         // this.tooltipHtmlNodeDimensions = this.lib.adjustHeight (
         //   this.mainHtmlNode,
         //   mainHtmlNodeDimensions,
-        //   Constants.CssVariablesNames.CSS_VARIABLE_NAME__TOOLTIP_HEIGHT,
-        //   Constants.CssVariablesNames.CSS_VARIABLE_NAME__OVERFLOW_Y
+        //   TooltipConstants.CssVariablesNames.CSS_VARIABLE_NAME__TOOLTIP_HEIGHT,
+        //   TooltipConstants.CssVariablesNames.CSS_VARIABLE_NAME__OVERFLOW_Y
         // );
-        // this is the added number pixel value 
+        // this is the added number pixel value
         // to have the distance between the event target and the tooltip.
         eventTargetPaddingPixelSize = this.lib.translateToPixelValue(this.paddingEventTarget, this.paddingDimEventTarget);
         // this is the added number pixel value,
@@ -641,7 +640,7 @@ class Tooltip extends event_emitter_1.EventEmitter {
     }
     setStandardCssClassAndGetDimensions(htmlNode) {
         //const dim: Dimensions = new Dimensions();
-        const cssClassnameHiddenShownPrefix = Constants_js_1.Constants.CssClassNames.TOOLTIP_CLASSES_HIDDEN_SHOWN_PREFIX;
+        const cssClassnameHiddenShownPrefix = TooltipConstants_js_1.TooltipConstants.CssClassNames.TOOLTIP_CLASSES_HIDDEN_SHOWN_PREFIX;
         //@ts-ignore
         const classList = htmlNode.classList;
         //const classListEntries: ArrayIterator<any> = classList.entries();
@@ -657,7 +656,7 @@ class Tooltip extends event_emitter_1.EventEmitter {
         if (classNameHidden.length === 0) {
             throw new Error("something is wrong with hidden shown css class name!!!");
         }
-        else if (classNameHidden === Constants_js_1.Constants.CssClassNames.TOOLTIP_SHOWN_SIMPLE) {
+        else if (classNameHidden === TooltipConstants_js_1.TooltipConstants.CssClassNames.TOOLTIP_SHOWN_SIMPLE) {
             this._show(htmlNode);
             const htmlNodeDimensions = this.lib.getHtmlNodeDimensions(htmlNode);
             this._hide(htmlNode);
@@ -666,14 +665,14 @@ class Tooltip extends event_emitter_1.EventEmitter {
         else {
             classList.remove(classNameHidden);
         }
-        const cssClassWithTransitionSet = classList.contains(Constants_js_1.Constants.CssClassNames.TOOLTIP_CLASSES_HIDDEN_SHOWN_WITH_TRANSITION);
-        classList.remove(Constants_js_1.Constants.CssClassNames.TOOLTIP_CLASSES_HIDDEN_SHOWN_WITH_TRANSITION);
+        const cssClassWithTransitionSet = classList.contains(TooltipConstants_js_1.TooltipConstants.CssClassNames.TOOLTIP_CLASSES_HIDDEN_SHOWN_WITH_TRANSITION);
+        classList.remove(TooltipConstants_js_1.TooltipConstants.CssClassNames.TOOLTIP_CLASSES_HIDDEN_SHOWN_WITH_TRANSITION);
         const cssPositionValue = this.lib.getCssVariableForNode(htmlNode, "position");
         //@ts-ignore
         htmlNode.style.position = "absolute";
         //@ts-ignore
         htmlNode.style.left = "110vw";
-        classList.add(Constants_js_1.Constants.CssClassNames.TOOLTIP_SHOWN_SIMPLE);
+        classList.add(TooltipConstants_js_1.TooltipConstants.CssClassNames.TOOLTIP_SHOWN_SIMPLE);
         this._show(htmlNode);
         const htmlNodeDimensions = this.lib.getHtmlNodeDimensions(htmlNode);
         this._hide(htmlNode);
@@ -683,10 +682,10 @@ class Tooltip extends event_emitter_1.EventEmitter {
         //@ts-ignore
         htmlNode.style.left = "0";
         classList.add(classNameHidden);
-        classList.remove(Constants_js_1.Constants.CssClassNames.TOOLTIP_SHOWN_SIMPLE);
+        classList.remove(TooltipConstants_js_1.TooltipConstants.CssClassNames.TOOLTIP_SHOWN_SIMPLE);
         if (cssClassWithTransitionSet) {
             setTimeout(() => {
-                classList.add(Constants_js_1.Constants.CssClassNames.TOOLTIP_CLASSES_HIDDEN_SHOWN_WITH_TRANSITION);
+                classList.add(TooltipConstants_js_1.TooltipConstants.CssClassNames.TOOLTIP_CLASSES_HIDDEN_SHOWN_WITH_TRANSITION);
             }, 4);
         }
         return htmlNodeDimensions;

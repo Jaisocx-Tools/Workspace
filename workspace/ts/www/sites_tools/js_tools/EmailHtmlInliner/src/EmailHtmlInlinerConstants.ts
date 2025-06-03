@@ -8,16 +8,29 @@ export class EmailHtmlInlinerConstants {
   public allowedTags: string[];
   public renamedTags: string[];
 
-  
 
   constructor() {
-
     this.stylesPropsDefaults = {
-      "padding": [ "0", "0px", "0 0 0 0" ], // TODO: H1-H6 and other tags, having default padding and margin values not zero.
-      "padding-top": [ "0px", "0" ], // TODO: H1-H6 and other tags, having default padding and margin values not zero.
-      "padding-right": [ "0px", "0" ], // TODO: H1-H6 and other tags, having default padding and margin values not zero.
-      "padding-left": [ "0px", "0" ], // TODO: H1-H6 and other tags, having default padding and margin values not zero.
-      "padding-bottom": [ "0px", "0" ], // TODO: H1-H6 and other tags, having default padding and margin values not zero.
+      "padding": [ "0", "0px", "0 0 0 0" ],
+
+
+      // TODO: H1-H6 and other tags, having default padding and margin values not zero.
+      "padding-top": [ "0px", "0" ],
+
+
+      // TODO: H1-H6 and other tags, having default padding and margin values not zero.
+      "padding-right": [ "0px", "0" ],
+
+
+      // TODO: H1-H6 and other tags, having default padding and margin values not zero.
+      "padding-left": [ "0px", "0" ],
+
+
+      // TODO: H1-H6 and other tags, having default padding and margin values not zero.
+      "padding-bottom": [ "0px", "0" ],
+
+
+      // TODO: H1-H6 and other tags, having default padding and margin values not zero.
       "margin": [ "0", "0px", "0 0 0 0" ],
       "margin-top": [ "0px", "0" ],
       "margin-right": [ "0px", "0" ],
@@ -26,18 +39,19 @@ export class EmailHtmlInlinerConstants {
       "background": [ "transparent" ],
       "all": [ "unset" ]
     };
-  
+
     this.tagsStylesDefaults = {
-      "div": { 
-        "display": "block" 
+      "div": {
+        "display": "block"
       }
     };
+
 
     // styles, applicable, not stripped out by most webmail sites.
     this.stylesPropsToCheck = [
       "position",
       "display",
-      
+
       "box-sizing",
 
       "overflow",
@@ -98,21 +112,22 @@ export class EmailHtmlInlinerConstants {
       "line-break"
     ];
 
+
     // tags, You wish to add when the inline-styles html is produced, to send via email.
     this.allowedTags = [
-      "HTML", 
-      "BODY", 
-      "MAIN", 
-      "H1", 
-      "DIV", 
+      "HTML",
+      "BODY",
+      "MAIN",
+      "H1",
+      "DIV",
       "SPAN",
       "IMG"
     ];
 
     this.renamedTags = [
-      "HTML", 
-      "BODY",  
-      "MAIN"  
+      "HTML",
+      "BODY",
+      "MAIN"
     ];
 
     this.tagsNotZeroPadding = [

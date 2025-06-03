@@ -1,7 +1,8 @@
-import { Dimensions } from "./Types.js";
 import { TooltipMainTemplateData } from "./TooltipMainTemplateData.js";
 
-export class Constants {
+
+
+export class TooltipConstants {
 
   static EventsNames = class {
     static CLICK: any = "click";
@@ -26,10 +27,10 @@ export class Constants {
   };
 
   static EventsEmitted = [
-    Constants.EventsNames.RESIZE,
-    Constants.TooltipEventsNames.BEFORE_TOOLTIP_SHOWN,
-    Constants.TooltipEventsNames.AFTER_TOOLTIP_SHOWN,
-    Constants.TooltipEventsNames.AFTER_TOOLTIP_HIDDEN
+    TooltipConstants.EventsNames.RESIZE,
+    TooltipConstants.TooltipEventsNames.BEFORE_TOOLTIP_SHOWN,
+    TooltipConstants.TooltipEventsNames.AFTER_TOOLTIP_SHOWN,
+    TooltipConstants.TooltipEventsNames.AFTER_TOOLTIP_HIDDEN
   ];
 
   static BrowserStorageKeys = class {
@@ -82,7 +83,7 @@ export class Constants {
     static TOOLTIP_CLASSES_HIDDEN_SHOWN_PREFIX: any = "shown_";
     static TOOLTIP_CLASSES_HIDDEN_SHOWN_WITH_TRANSITION: any = "with-transition";
   };
-  
+
   static CssVariablesNames = class {
     static CSS_VARIABLE_NAME__ARROW_SIZE: any = "--tooltip_arrow__size";
     static CSS_VARIABLE_NAME__EVENT_TARGET_PADDING: any = "--tooltip_event_target_padding";
@@ -95,30 +96,30 @@ export class Constants {
   };
 
   static Defaults = class {
-    static tooltipAlignDimensionOne: number = Constants.AlignDimensionOne.BROWSER_TAB_BORDER_TOP;
-    static tooltipAlignDimensionTwo: number = Constants.AlignDimensionTwo.EVENT_TARGET_MID;
+    static tooltipAlignDimensionOne: number = TooltipConstants.AlignDimensionOne.BROWSER_TAB_BORDER_TOP;
+    static tooltipAlignDimensionTwo: number = TooltipConstants.AlignDimensionTwo.EVENT_TARGET_MID;
     static tooltipPaddingAlignDimensionTwo: number = 0;
-    static tooltipPaddingSizeDimAlignDimensionTwo: any = Constants.CssSizeDim.PIXELS;
+    static tooltipPaddingSizeDimAlignDimensionTwo: any = TooltipConstants.CssSizeDim.REM;
 
-    static tooltipHideBehaviour: any = Constants.TooltipHideBehaviour.HIDE_AFTER_TIMEOUT__AND__WHEN_CLICK__ANYWHERE;
+    static tooltipHideBehaviour: any = TooltipConstants.TooltipHideBehaviour.HIDE_AFTER_TIMEOUT__AND__WHEN_CLICK__ANYWHERE;
     static tooltipHideTimoutMilliseconds: number = 6000;
-  
+
     static alternativeTabBorderSides: any[] = [
-      Constants.AlignDimensionOne.BROWSER_TAB_BORDER_TOP,
-      Constants.AlignDimensionOne.BROWSER_TAB_BORDER_RIGHT,
-      Constants.AlignDimensionOne.BROWSER_TAB_BORDER_LEFT,
-      Constants.AlignDimensionOne.BROWSER_TAB_BORDER_BOTTOM
+      TooltipConstants.AlignDimensionOne.BROWSER_TAB_BORDER_TOP,
+      TooltipConstants.AlignDimensionOne.BROWSER_TAB_BORDER_RIGHT,
+      TooltipConstants.AlignDimensionOne.BROWSER_TAB_BORDER_LEFT,
+      TooltipConstants.AlignDimensionOne.BROWSER_TAB_BORDER_BOTTOM
     ];
 
     static withArrow: number = 1;
     static arrowSize: any = 0;
-    static arrowSizeDim: any = Constants.CssSizeDim.REM;
+    static arrowSizeDim: any = TooltipConstants.CssSizeDim.REM;
 
     static paddingEventTarget: number = 0;
-    static paddingDimEventTarget: any = Constants.CssSizeDim.REM;
-  
-    static cssClasses: any = Constants.CssClassNames.TOOLTIP_MAIN;
-  
+    static paddingDimEventTarget: any = TooltipConstants.CssSizeDim.REM;
+
+    static cssClasses: any = TooltipConstants.CssClassNames.TOOLTIP_MAIN;
+
     static templateTooltipContent: any = `
       {{ html }}
     `;
@@ -129,15 +130,15 @@ export class Constants {
   };
 
   static tooltipMainTemplate: any = `
-  <tooltip-main 
-    id="{{ id }}" 
+  <tooltip-main
+    id="{{ id }}"
     class="{{ cssClasses }}">
 
-      <tooltip-arrow 
+      <tooltip-arrow
           class="tooltip-arrow">
       </tooltip-arrow>
 
-      <tooltip-content 
+      <tooltip-content
           class="tooltip-content">
             {{ tooltipContent }}
       </tooltip-content>

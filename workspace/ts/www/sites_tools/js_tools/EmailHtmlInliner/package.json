@@ -1,9 +1,16 @@
 {
   "name": "@jaisocx/email-html-inliner",
-  "version": "1.3.6",
+  "version": "1.3.7",
+  "keywords": [
+    "inline",
+    "css",
+    "styles",
+    "html",
+    "email"
+  ],
+  "description": "",
   "author": "Jaisocx",
   "private": false,
-  "description": "",
   "type": "module",
   "main": "./transpiled/CommonJS/index.js",
   "types": "./transpiled/ESNext/index.d.ts",
@@ -28,18 +35,11 @@
     "README_WEBPACK.md",
     "LICENSE"
   ],
-  "keywords": [
-    "inline",
-    "css",
-    "styles",
-    "html",
-    "email"
-  ],
   "publishConfig": {
     "access": "public"
   },
   "optionalDependencies": {
-    "@jaisocx/text": "^1.2.1",
-    "@jaisocx/css-html": "^1.3.3"
+    "@jaisocx/text": "^1.2.2",
+    "@jaisocx/css-html": "^1.3.5"
   }
 }

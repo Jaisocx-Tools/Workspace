@@ -45,7 +45,7 @@ export class EmailHtmlInliner {
         let inlineStyledHtml = "";
         // Object, key: css prop name, value: css prop value
         let locInOutInheritedStyles = {};
-        // returns all css style rules and calculated css selectors weigths 
+        // returns all css style rules and calculated css selectors weigths
         let locRulesMatchingMedia = this.getRulesMatchingMedia();
         // 3rd arg RuleAndSpecifities[], matching css props in this.constants.stylesPropsToCheck: string[]
         let locInOutArrayRulesMatchingPropsAndMedia = new Array();
@@ -261,7 +261,7 @@ export class EmailHtmlInliner {
                 if (nodeStylesDefaultsSet === true) {
                     cssPropDefaultsValueMatches = ((cssPropDefaultsValueMatches === true) || (nodeStylesDefaults === styleValue));
                 }
-                // matches the default value 
+                // matches the default value
                 if (cssPropDefaultsValueMatches === true) {
                     // matches the default value
                     // skipping.
@@ -271,7 +271,7 @@ export class EmailHtmlInliner {
             // from here else: in other cases the default value did NOT match.
             // this css prop does not inherit the css prop value from the above DOM tree.
             if (this.constants.inheritingProps.includes(cssPropertyName) === false) {
-                // cssPropDefaultsValueMatches === false 
+                // cssPropDefaultsValueMatches === false
                 // does not inherit and defaut value for this css prop was not set.
                 //  then the css value has to be set.
                 newNode.style[cssPropertyName] = styleValue;
@@ -377,7 +377,8 @@ export class EmailHtmlInliner {
             matchedValue = values.join(" ");
         }
         else {
-            matchedValue = trimmedCssValueByRule; // Override previous if more recent in cascade
+            matchedValue = trimmedCssValueByRule;
+            // Override previous if more recent in cascade
         }
         return matchedValue;
     }
@@ -470,7 +471,9 @@ export class EmailHtmlInliner {
             cssStyleRule = objCssRuleAndSpecifity.rule;
             // obtaining css props available in a CSSStyleRule
             cssPropsAvailable = this.cssHtmlPackage.getCssPropertiesNames_ofCSSStyleRule(cssStyleRule);
-            isCssPropInRuleSet = (inStylesPropsToCheck.find((cssPropName) => { return cssPropsAvailable.includes(cssPropName); }) !== undefined);
+            isCssPropInRuleSet = (inStylesPropsToCheck.find((cssPropName) => {
+                return cssPropsAvailable.includes(cssPropName);
+            }) !== undefined);
             if (isCssPropInRuleSet === true) {
                 // rule added to the in out arg of this method.
                 // this is the return variable.
@@ -478,8 +481,8 @@ export class EmailHtmlInliner {
             }
         }
     }
-    // 3) 
-    // pre-build method for node 
+    // 3)
+    // pre-build method for node
     // filter by node.matches( cssSelector )
     /**
      *
@@ -532,7 +535,8 @@ export class EmailHtmlInliner {
         let logRecord = {
             "elem": node,
             "css": cssPropertyName,
-            "ruleAndSpecifity": ruleAndSpecifity, // objCssRuleAndSpecifityHigher,
+            "ruleAndSpecifity": ruleAndSpecifity,
+            // objCssRuleAndSpecifityHigher,
             "valueByBrowser": valueByBrowser,
             "valueByInliner": valueByInliner
         };

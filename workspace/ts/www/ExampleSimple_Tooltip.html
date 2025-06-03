@@ -18,7 +18,7 @@
 
     <script src="sites_tools/js_tools/Tooltip/transpiled/Simple/Types.js"></script>
     <script src="sites_tools/js_tools/Tooltip/transpiled/Simple/TooltipMainTemplateData.js"></script>
-    <script src="sites_tools/js_tools/Tooltip/transpiled/Simple/Constants.js"></script>
+    <script src="sites_tools/js_tools/Tooltip/transpiled/Simple/TooltipConstants.js"></script>
     <script src="sites_tools/js_tools/Tooltip/transpiled/Simple/TooltipLib.js"></script>
     <script src="sites_tools/js_tools/Tooltip/transpiled/Simple/TooltipShownSettings.js"></script>
     <script src="sites_tools/js_tools/Tooltip/transpiled/Simple/Tooltip.js"></script>
@@ -265,7 +265,7 @@
     <h3>Basic usage</h3>
     <p>
       <pre class="white">
-import { Tooltip, Constants } from "@jaisocx/tooltip";
+import { Tooltip, TooltipConstants } from "@jaisocx/tooltip";
 
 const tooltipDarkmode = new Tooltip();
 tooltipDarkmode
@@ -279,9 +279,9 @@ tooltipDarkmode
     <h3>With some fine tuning:</h3>
     <p>
       <pre class="white">
-import { Tooltip, Constants } from "@jaisocx/tooltip";
+import { Tooltip, TooltipConstants } from "@jaisocx/tooltip";
 
-const tooltipHideBehaviour = Constants.TooltipHideBehaviour.HIDE_AFTER_TIMEOUT__AND__WHEN_CLICK__ANYWHERE;
+const tooltipHideBehaviour = TooltipConstants.TooltipHideBehaviour.HIDE_AFTER_TIMEOUT__AND__WHEN_CLICK__ANYWHERE;
 const tooltipHideTimoutMilliseconds = 4000;
 
 const tooltipContext = new Tooltip();
@@ -306,16 +306,16 @@ tooltipContext
   )
   .setAlignDimensionOneValueOrder (
     [
-      Constants.AlignDimensionOne.BROWSER_TAB_BORDER_TOP,
-      Constants.AlignDimensionOne.BROWSER_TAB_BORDER_RIGHT,
-      Constants.AlignDimensionOne.BROWSER_TAB_BORDER_LEFT,
-      Constants.AlignDimensionOne.BROWSER_TAB_BORDER_BOTTOM,
+      TooltipConstants.AlignDimensionOne.BROWSER_TAB_BORDER_TOP,
+      TooltipConstants.AlignDimensionOne.BROWSER_TAB_BORDER_RIGHT,
+      TooltipConstants.AlignDimensionOne.BROWSER_TAB_BORDER_LEFT,
+      TooltipConstants.AlignDimensionOne.BROWSER_TAB_BORDER_BOTTOM,
     ]
   )
-  .setTooltipAlignDimensionTwo(Constants.AlignDimensionTwo.EVENT_TARGET_START)
+  .setTooltipAlignDimensionTwo(TooltipConstants.AlignDimensionTwo.EVENT_TARGET_START)
   .setTooltipPaddingAlignDimensionTwo (
     1,
-    Constants.CssSizeDim.REM
+    TooltipConstants.CssSizeDim.REM
   )
   .render();
       </pre>
@@ -330,23 +330,23 @@ tooltipContext
       document.addEventListener('DOMContentLoaded', () => {
 
         // 1. one tooltip shown.
-        //const tooltipHideBehaviour = Constants.TooltipHideBehaviour.HIDE_WHEN_CLICK__ANYWHERE;
+        //const tooltipHideBehaviour = TooltipConstants.TooltipHideBehaviour.HIDE_WHEN_CLICK__ANYWHERE;
 
         // 2. able to show all tooltips by clicking every,
         //    and able to hide all tooltips one click on somewhere else in this site inside the open browser's tab.
-        const tooltipHideBehaviour = Constants.TooltipHideBehaviour.HIDE_WHEN_CLICK__OTHER_THAN_EVENT_TARGET;
+        const tooltipHideBehaviour = TooltipConstants.TooltipHideBehaviour.HIDE_WHEN_CLICK__OTHER_THAN_EVENT_TARGET;
 
         // 3. all tooltips are shown, and in order to hide the event target has to be clicked.
-        //const tooltipHideBehaviour = Constants.TooltipHideBehaviour.HIDE_WHEN_CLICK__EVENT_TARGET;
+        //const tooltipHideBehaviour = TooltipConstants.TooltipHideBehaviour.HIDE_WHEN_CLICK__EVENT_TARGET;
 
         // 1. one tooltip shown, and hides on timeout, too.
-        //const tooltipHideBehaviour = Constants.TooltipHideBehaviour.HIDE_AFTER_TIMEOUT__AND__WHEN_CLICK__ANYWHERE;
+        //const tooltipHideBehaviour = TooltipConstants.TooltipHideBehaviour.HIDE_AFTER_TIMEOUT__AND__WHEN_CLICK__ANYWHERE;
 
         // 2. lke the 2. and with timeout feature
-        //const tooltipHideBehaviour = Constants.TooltipHideBehaviour.HIDE_AFTER_TIMEOUT__AND__WHEN_CLICK__OTHER_THAN_EVENT_TARGET;
+        //const tooltipHideBehaviour = TooltipConstants.TooltipHideBehaviour.HIDE_AFTER_TIMEOUT__AND__WHEN_CLICK__OTHER_THAN_EVENT_TARGET;
 
         // 3. like the 3. and with the timeout feature
-        //const tooltipHideBehaviour = Constants.TooltipHideBehaviour.HIDE_AFTER_TIMEOUT__AND__WHEN_CLICK__EVENT_TARGET;
+        //const tooltipHideBehaviour = TooltipConstants.TooltipHideBehaviour.HIDE_AFTER_TIMEOUT__AND__WHEN_CLICK__EVENT_TARGET;
 
         const tooltipHideTimoutMilliseconds = 3000;
 
@@ -381,16 +381,16 @@ tooltipContext
            )
           .setAlignDimensionOneValueOrder (
             [
-              Constants.AlignDimensionOne.BROWSER_TAB_BORDER_RIGHT,
-              Constants.AlignDimensionOne.BROWSER_TAB_BORDER_BOTTOM,
-              Constants.AlignDimensionOne.BROWSER_TAB_BORDER_LEFT,
-              Constants.AlignDimensionOne.BROWSER_TAB_BORDER_BOTTOM,
+              TooltipConstants.AlignDimensionOne.BROWSER_TAB_BORDER_RIGHT,
+              TooltipConstants.AlignDimensionOne.BROWSER_TAB_BORDER_BOTTOM,
+              TooltipConstants.AlignDimensionOne.BROWSER_TAB_BORDER_LEFT,
+              TooltipConstants.AlignDimensionOne.BROWSER_TAB_BORDER_BOTTOM,
             ]
           )
-          .setTooltipAlignDimensionTwo(Constants.AlignDimensionTwo.EVENT_TARGET_START)
+          .setTooltipAlignDimensionTwo(TooltipConstants.AlignDimensionTwo.EVENT_TARGET_START)
           .setTooltipPaddingAlignDimensionTwo (
             0.6,
-            Constants.CssSizeDim.REM
+            TooltipConstants.CssSizeDim.REM
           )
           .render();
 
@@ -405,16 +405,16 @@ tooltipContext
           .setHtml ( "Hello World!" )
           .setAlignDimensionOneValueOrder (
             [
-              //Constants.AlignDimensionOne.BROWSER_TAB_BORDER_RIGHT,
-              Constants.AlignDimensionOne.BROWSER_TAB_BORDER_TOP,
-              Constants.AlignDimensionOne.BROWSER_TAB_BORDER_LEFT,
+              //TooltipConstants.AlignDimensionOne.BROWSER_TAB_BORDER_RIGHT,
+              TooltipConstants.AlignDimensionOne.BROWSER_TAB_BORDER_TOP,
+              TooltipConstants.AlignDimensionOne.BROWSER_TAB_BORDER_LEFT,
             ]
           )
           .render();
 
 
 
-          const tooltip = new Tooltip();
+        const tooltip = new Tooltip();
         tooltip
           .setTooltipHideBehaviour( tooltipHideBehaviour )
           .setTimeoutToCloseMillis( tooltipHideTimoutMilliseconds )
@@ -432,15 +432,15 @@ tooltipContext
           )
           .setAlignDimensionOneValueOrder (
             [
-              Constants.AlignDimensionOne.BROWSER_TAB_BORDER_RIGHT,
-              Constants.AlignDimensionOne.BROWSER_TAB_BORDER_TOP,
-              Constants.AlignDimensionOne.BROWSER_TAB_BORDER_LEFT,
+              TooltipConstants.AlignDimensionOne.BROWSER_TAB_BORDER_RIGHT,
+              TooltipConstants.AlignDimensionOne.BROWSER_TAB_BORDER_TOP,
+              TooltipConstants.AlignDimensionOne.BROWSER_TAB_BORDER_LEFT,
             ]
           )
-          .setTooltipAlignDimensionTwo(Constants.AlignDimensionTwo.EVENT_TARGET_START)
+          .setTooltipAlignDimensionTwo(TooltipConstants.AlignDimensionTwo.EVENT_TARGET_START)
           .setTooltipPaddingAlignDimensionTwo (
             1.4,
-            Constants.CssSizeDim.REM
+            TooltipConstants.CssSizeDim.REM
           )
           .render();
 
