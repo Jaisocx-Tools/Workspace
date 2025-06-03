@@ -1,11 +1,8 @@
-import { Preloader } from "./Preloader.js";
-import { themesPreloads } from "./ThemesPreloadsCssTable.js";
-
 export { Preloader } from "./Preloader.js";
 export { themesPreloads as ThemesPreloadsCssTable } from "./ThemesPreloadsCssTable.js";
 
-
 import "@jaisocx-css-table-MediaAndStyles/clean-start-main-webpack.css";
+
 
 /* two example themes  */
 import "@jaisocx-css-table-MediaAndStyles/themes/theme-lightmode/clean-start-theme-lightmode-webpack.css";

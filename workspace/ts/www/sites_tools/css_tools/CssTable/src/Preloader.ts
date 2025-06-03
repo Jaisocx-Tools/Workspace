@@ -1,7 +1,7 @@
 export class Preloader {
-  
+
   themesPreloads: object = {};
-  
+
   webpackAlias: string = "";
   webpackAliasReplace: string = "";
 
@@ -10,11 +10,13 @@ export class Preloader {
     this.themesPreloads = {};
   }
 
+
   setThemesPreloads( preloads: object ) {
     this.themesPreloads = preloads;
 
     return this;
   }
+
 
   setWebpackAlias ( alias: string ) {
     this.webpackAlias = alias;
@@ -22,32 +24,38 @@ export class Preloader {
     return this;
   }
 
+
   setWebpackAliasReplace ( alias: string ) {
     this.webpackAliasReplace = alias;
 
     return this;
   }
 
+
   init () {
     this.addDocumentLoadedEventHandler();
   }
 
-  addDocumentLoadedEventHandler() {
 
+  addDocumentLoadedEventHandler() {
     const method: CallableFunction = this.htmlDocumentAppendPreloadingLinkTags.bind(this);
 
     if (document.readyState === "loading") {
       document.addEventListener(
-        "DOMContentLoaded", 
-        () => method(), 
-        { once: true });
+        "DOMContentLoaded",
+        () => method(),
+        { once: true }
+      );
     } else {
-      method(); // If already loaded, invoke immediately
+      method();
+
+
+      // If already loaded, invoke immediately
     }
   }
 
-  htmlDocumentAppendPreloadingLinkTags () {
 
+  htmlDocumentAppendPreloadingLinkTags () {
     let linkTagName: any = "link";
     let rel: any = "preload";
     let as: any = "font";
@@ -62,17 +70,20 @@ export class Preloader {
     const aliasReplace: string = this.webpackAliasReplace;
 
     for ( themeName in preloads ) {
+
       //@ts-ignore
       fontPathsArray = preloads[themeName];
 
       for ( fontPathWebpack of fontPathsArray ) {
         let link = document.createElement( linkTagName );
-        fontPath = fontPathWebpack.replace( 
-          alias, 
+        fontPath = fontPathWebpack.replace(
+          alias,
           aliasReplace );
         link.rel = rel;
         link.href = fontPath;
         link.as = as;
+
+
         // link.type = "font/woff2";
         link.crossOrigin = crossOrigin;
         document.head.appendChild( link );

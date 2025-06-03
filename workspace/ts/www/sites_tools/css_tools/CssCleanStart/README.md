@@ -18,9 +18,9 @@ several .css files will be loaded with size of very few KB.
 
 
 
-## The latest .tgz archive (v.1.3.21 30th of March 2025)
+## The latest .tgz archive (v.1.4.2 3th of June 2025)
 
-[https://sandbox.brightday.email/sites_tools/css_tools/CssCleanStart/jaisocx-css-clean-start-1.3.21.tgz](https://sandbox.brightday.email/sites_tools/css_tools/CssCleanStart/jaisocx-css-clean-start-1.3.21.tgz)
+[https://sandbox.brightday.email/sites_tools/css_tools/CssCleanStart/jaisocx-css-clean-start-1.4.2.tgz](https://sandbox.brightday.email/sites_tools/css_tools/CssCleanStart/jaisocx-css-clean-start-1.4.2.tgz)
 
 
 
@@ -31,10 +31,10 @@ several .css files will be loaded with size of very few KB.
 [https://sandbox.brightday.email/sites_tools/css_tools/CssCleanStart/index.template.html](https://sandbox.brightday.email/sites_tools/css_tools/CssCleanStart/index.template.html)
 
 
-[https://sandbox.brightday.email/sites_tools/css_tools/CssCleanStart/example-lightmode.html](https://sandbox.brightday.email/sites_tools/css_tools/CssCleanStart/example-lightmode.html)
+[https://sandbox.brightday.email/sites_tools/css_tools/CssCleanStart/lightmode.html](https://sandbox.brightday.email/sites_tools/css_tools/CssCleanStart/lightmode.html)
 
 
-[https://sandbox.brightday.email/sites_tools/css_tools/CssCleanStart/example-darkmode.html](https://sandbox.brightday.email/sites_tools/css_tools/CssCleanStart/example-darkmode.html)
+[https://sandbox.brightday.email/sites_tools/css_tools/CssCleanStart/darkmode.html](https://sandbox.brightday.email/sites_tools/css_tools/CssCleanStart/darkmode.html)
 
 
 

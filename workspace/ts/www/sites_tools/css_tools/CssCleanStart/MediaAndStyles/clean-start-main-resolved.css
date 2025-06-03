@@ -1,32 +1,33 @@
 
+
 .workspace {
 
- 
+  
   --clean-start__rem: 16px;
 
 
 
- 
- 
+  
+  
   --clean-start__tag_body__background: #f2f4f6;
 
- 
+  
   --clean-start__site__background: white;
 
 
- 
+  
   --clean-start__anchor__text-color: slateblue;
- 
+  
   --clean-start__anchor__text-color-hover: blue;
- 
+  
   --clean-start__anchor__text-color-visited: darkgrey;
- 
+  
 
- 
+  
 
 
 
- 
+  
   --clean-start__position: relative;
   --clean-start__box-sizing: border-box;
   --clean-start__margin: 0 0 0 0;
@@ -37,27 +38,27 @@
   --clean-start__custom-tags__display: var(--clean-start__block-tags__display);
 
 
- 
+  
   --clean-start__border-width: 0;
   --clean-start__border-style: solid;
   --clean-start__border-color: lime;
 
 
- 
+  
   --clean-start__font-family: "Franklin Gothic Medium", Verdana, sans-serif;
   --clean-start__font-family-pre: "Courier New", Courier, monospace;
   --clean-start__text-color: unset;
   --clean-start__text-color-h: unset;
 
- 
+  
   --clean-start__p__margin: 0.2rem 0 0.2rem 0;
 
 
 
 
- 
   
- 
+  
+  
   --clean-start__font-weight_h: 600;
 
 
@@ -79,7 +80,7 @@
 
 
 
- 
+  
   
   --clean-start__font-size__mobile__predefined: 1.2rem;
   --clean-start__line-height__mobile__predefined: 2.0rem;
@@ -156,11 +157,11 @@
   --clean-start__line-height__7xl_16k_vertical: var(--clean-start__line-height__predefined);
 
 
- 
+  
   --clean-start__font-size: var(--clean-start__font-size__mobile);
   --clean-start__line-height: var(--clean-start__line-height__mobile);
 
- 
+  
 
 
 
@@ -171,9 +172,9 @@
   
 
 
- 
+  
 
- 
+  
   --clean-start__tag_body__height: auto;
   --clean-start__tag_body__height_max: unset;
   --clean-start__tag_body__height_min: 100vh;
@@ -184,13 +185,13 @@
   
 
 
- 
+  
   --clean-start__tag_body__width__predefined: 100%;
   --clean-start__tag_body__max_width__predefined: 100%;
   --clean-start__tag_body__min_width__predefined: 100%;
 
    
- 
+  
 
   --clean-start__tag_body__width: 100%;
   --clean-start__tag_body__max_width: 100%;
@@ -299,20 +300,20 @@
 
 
 
- 
+  
 
   --clean-start__site__height: fit-content;
   --clean-start__site__height_max: fit-content;
   --clean-start__site__height_min: 100vh;
 
 
- 
+  
   --clean-start__site__width__predefined: 90%;
   --clean-start__site__max_width__predefined: 90%;
   --clean-start__site__min_width__predefined: 90%;
 
 
- 
+  
   --clean-start__site__width: var(--clean-start__site__width__predefined);
   --clean-start__site__max_width: var(--clean-start__site__max_width__predefined);
   --clean-start__site__min_width: var(--clean-start__site__min_width__predefined);
@@ -416,11 +417,11 @@
   --clean-start__site__max_width__xs_mobile_portrait: var(--clean-start__site__max_width__predefined);
   --clean-start__site__min_width__xs_mobile_portrait: var(--clean-start__site__min_width__predefined);
 
- 
+  
 
 
 
- 
+  
   --clean-start__site__overflow_y: hidden;
 
 
@@ -462,18 +463,18 @@
   
   --clean-start__site__overflow_x: var(--clean-start__site__overflow_x__s_mobile_portrait);
 
- 
+  
   
 
 
 
- 
+  
 
- 
+  
   --clean-start__site__margin: 0 auto;
 
 
- 
+  
   --clean-start__site__padding-top: 1rem;
   --clean-start__site__padding-right: 1rem;
   --clean-start__site__padding-left: 1rem;
@@ -481,9 +482,11 @@
 
   --clean-start__site__padding: var(--clean-start__site__padding-top) var(--clean-start__site__padding-right) var(--clean-start__site__padding-bottom) var(--clean-start__site__padding-left);
 
- 
+  
   
 }
+
+
 
 
 
@@ -508,6 +511,7 @@
 
 
 
+
 .workspace.long body {
   --clean-start__tag_body__height: auto;
   --clean-start__tag_body__height_max: unset;
@@ -523,6 +527,7 @@
 
   --clean-start__site__overflow_y: hidden;
 }
+
 
 
 
@@ -547,9 +552,12 @@
 
 
 
+
+
+
 @media (min-width: 90px) and (max-width: 568px) and (orientation: landscape) {
   .workspace main {
-   
+    
 
     --clean-start__tag_body__width: var(--clean-start__tag_body__width__xs_mobile_landscape);
     --clean-start__tag_body__max_width: var(--clean-start__tag_body__max_width__xs_mobile_landscape);
@@ -568,7 +576,7 @@
     --clean-start__line-height: var(--clean-start__line-height__mobile);
   }    
 
- 
+  
   .workspace.verify-responsive-rule-applies main h1::before {
     content: "xs mobile landscape" !important;
   }
@@ -577,7 +585,7 @@
 
 @media (min-width: 40px) and (max-width: 320px) and (orientation: portrait) {
   .workspace main {
-   
+    
 
     --clean-start__tag_body__width: var(--clean-start__tag_body__width__xs_mobile_portrait);
     --clean-start__tag_body__max_width: var(--clean-start__tag_body__max_width__xs_mobile_portrait);
@@ -596,16 +604,22 @@
     --clean-start__line-height: var(--clean-start__line-height__mobile);
   }    
 
- 
+  
   .workspace.verify-responsive-rule-applies main h1::before {
     content: "xs mobile portrait" !important;
   }
+
+  .workspace themebuttons {
+    grid-auto-flow: row;
+    row-gap: 1rem;
+  }
+
 }
 
 
 @media (min-width: 569px) and (max-width: 667px) and (orientation: landscape) {
   .workspace main {
-   
+    
 
     --clean-start__tag_body__width: var(--clean-start__tag_body__width__s_mobile_landscape);
     --clean-start__tag_body__max_width: var(--clean-start__tag_body__max_width__s_mobile_landscape);
@@ -626,7 +640,7 @@
     --clean-start__line-height: var(--clean-start__line-height__mobile);
   }    
 
- 
+  
   .workspace.verify-responsive-rule-applies main h1::before {
     content: "s mobile landscape" !important;
   }
@@ -635,7 +649,7 @@
 
 @media (min-width: 321px) and (max-width: 375px) and (orientation: portrait) {
   .workspace main {
-   
+    
 
     --clean-start__tag_body__width: var(--clean-start__tag_body__width__s_mobile_portrait);
     --clean-start__tag_body__max_width: var(--clean-start__tag_body__max_width__s_mobile_portrait);
@@ -655,9 +669,14 @@
     --clean-start__line-height: var(--clean-start__line-height__mobile);
   }
 
- 
+  
   .workspace.verify-responsive-rule-applies main h1::before {
     content: "s mobile portrait" !important;
+  }
+
+  .workspace themebuttons {
+    grid-auto-flow: row;
+    row-gap: 1rem;
   }
 
 }
@@ -665,7 +684,7 @@
 
 @media (min-width: 668px) and (max-width: 812px) and (orientation: landscape) {
   .workspace main {
-   
+    
 
     --clean-start__tag_body__width: var(--clean-start__tag_body__width__sm_mobile_landscape);
     --clean-start__tag_body__max_width: var(--clean-start__tag_body__max_width__sm_mobile_landscape);
@@ -686,7 +705,7 @@
     --clean-start__line-height: var(--clean-start__line-height__mobile);
   }    
 
- 
+  
   .workspace.verify-responsive-rule-applies main h1::before {
     content: "sm mobile landscape" !important;
   }
@@ -695,7 +714,7 @@
 
 @media (min-width: 376px) and (max-width: 480px) and (orientation: portrait) {
   .workspace main {
-   
+    
 
     --clean-start__tag_body__width: var(--clean-start__tag_body__width__sm_mobile_portrait);
     --clean-start__tag_body__max_width: var(--clean-start__tag_body__max_width__sm_mobile_portrait);
@@ -716,18 +735,22 @@
     --clean-start__line-height: var(--clean-start__line-height__mobile);
   }
 
- 
+  
   .workspace.verify-responsive-rule-applies main h1::before {
     content: "sm mobile portrait" !important;
   }
 
+  .workspace themebuttons {
+    grid-auto-flow: row;
+    row-gap: 1rem;
+  }
 }
 
 
 @media (min-width: 813px) and (max-width: 1024px) and (orientation: landscape) {
 
   .workspace main {
-   
+    
 
     --clean-start__tag_body__width: var(--clean-start__tag_body__width__md_tablet_landscape);
     --clean-start__tag_body__max_width: var(--clean-start__tag_body__max_width__md_tablet_landscape);
@@ -749,7 +772,7 @@
   }    
 
 
- 
+  
   .workspace.verify-responsive-rule-applies main h1::before {
     content: "md tablet landscape" !important;
   }
@@ -758,7 +781,7 @@
 
 @media (min-width: 481px) and (max-width: 768px) and (orientation: portrait) {
   .workspace main {
-   
+    
 
     --clean-start__tag_body__width: var(--clean-start__tag_body__width__md_tablet_portrait);
     --clean-start__tag_body__max_width: var(--clean-start__tag_body__max_width__md_tablet_portrait);
@@ -780,16 +803,21 @@
   }    
 
 
- 
+  
   .workspace.verify-responsive-rule-applies main h1::before {
     content: "md tablet portrait" !important;
+  }
+
+  .workspace themebuttons {
+    grid-auto-flow: row;
+    row-gap: 1rem;
   }
 }
 
 
 @media (min-width: 1025px) and (max-width: 1280px) and (orientation: landscape) {
   .workspace main {
-   
+    
 
     --clean-start__tag_body__width: var(--clean-start__tag_body__width__lg_laptop_horizontal);
     --clean-start__tag_body__max_width: var(--clean-start__tag_body__max_width__lg_laptop_horizontal);
@@ -803,15 +831,15 @@
 
 
 
-   
+    
     --clean-start__font-size: var(--clean-start__font-size__lg_laptop);
 
-   
+    
     --clean-start__line-height: var(--clean-start__line-height__lg_laptop);
   }    
 
 
- 
+  
   .workspace.verify-responsive-rule-applies main h1::before {
     content: "lg laptop landscape" !important;
   }
@@ -820,7 +848,7 @@
 
 @media (min-width: 769px) and (max-width: 1024px) and (orientation: portrait) {
   .workspace main {
-   
+    
 
     --clean-start__tag_body__width: var(--clean-start__tag_body__width__lg_laptop_vertical);
     --clean-start__tag_body__max_width: var(--clean-start__tag_body__max_width__lg_laptop_vertical);
@@ -839,7 +867,7 @@
   }    
 
 
- 
+  
   .workspace.verify-responsive-rule-applies main h1::before {
     content: "lg laptop vertical" !important;
   }
@@ -848,7 +876,7 @@
 
 @media (min-width: 1281px) and (max-width: 1600px) and (orientation: landscape) {
   .workspace main {
-   
+    
 
     --clean-start__tag_body__width: var(--clean-start__tag_body__width__xl_desktop_horizontal);
     --clean-start__tag_body__max_width: var(--clean-start__tag_body__max_width__xl_desktop_horizontal);
@@ -870,7 +898,7 @@
   }    
 
 
- 
+  
   .workspace.verify-responsive-rule-applies main h1::before {
     content: "xl desktop horizontal" !important;
   }
@@ -879,7 +907,7 @@
 
 @media (min-width: 1025px) and (max-width: 1280px) and (orientation: portrait) {
   .workspace main {
-   
+    
 
     --clean-start__tag_body__width: var(--clean-start__tag_body__width__xl_desktop_vertical);
     --clean-start__tag_body__max_width: var(--clean-start__tag_body__max_width__xl_desktop_vertical);
@@ -901,7 +929,7 @@
   }    
 
 
- 
+  
   .workspace.verify-responsive-rule-applies main h1::before {
     content: "xl desktop vertical" !important;
   }
@@ -910,7 +938,7 @@
 
 @media (min-width: 1601px) and (max-width: 1920px) and (orientation: landscape) {
   .workspace main {
-   
+    
 
     --clean-start__tag_body__width: var(--clean-start__tag_body__width__xxl_ultra_wide_horizontal);
     --clean-start__tag_body__max_width: var(--clean-start__tag_body__max_width__xxl_ultra_wide_horizontal);
@@ -929,7 +957,7 @@
   }    
 
 
- 
+  
   .workspace.verify-responsive-rule-applies main h1::before {
     content: "2xl ultra wide horizontal" !important;
   }
@@ -941,7 +969,7 @@
 
 @media (min-width: 1281px) and (max-width: 1600px) and (orientation: portrait) {
   .workspace main {
-   
+    
 
     --clean-start__tag_body__width: var(--clean-start__tag_body__width__xxl_ultra_wide_vertical);
     --clean-start__tag_body__max_width: var(--clean-start__tag_body__max_width__xxl_ultra_wide_vertical);
@@ -960,7 +988,7 @@
   }    
 
 
- 
+  
   .workspace.verify-responsive-rule-applies main h1::before {
     content: "2xl ultra wide vertical" !important;
   }
@@ -969,7 +997,7 @@
 
 @media (min-width: 1921px) and (max-width: 2560px) and (orientation: landscape) {
   .workspace main {
-   
+    
 
     --clean-start__tag_body__width: var(--clean-start__tag_body__width__3xl_hd_horizontal);
     --clean-start__tag_body__max_width: var(--clean-start__tag_body__max_width__3xl_hd_horizontal);
@@ -988,7 +1016,7 @@
   }    
 
 
- 
+  
   .workspace.verify-responsive-rule-applies main h1::before {
     content: "3xl hd horizontal" !important;
   }
@@ -997,7 +1025,7 @@
 
 @media (min-width: 1601px) and (max-width: 1920px) and (orientation: portrait) {
   .workspace main {
-   
+    
 
     --clean-start__tag_body__width: var(--clean-start__tag_body__width__3xl_hd_vertical);
     --clean-start__tag_body__max_width: var(--clean-start__tag_body__max_width__3xl_hd_vertical);
@@ -1016,7 +1044,7 @@
   }    
 
 
- 
+  
   .workspace.verify-responsive-rule-applies main h1::before {
     content: "3xl hd vertical" !important;
   }
@@ -1025,7 +1053,7 @@
 
 @media (min-width: 2561px) and (max-width: 3840px) and (orientation: landscape) {
   .workspace main {
-   
+    
 
     --clean-start__tag_body__width: var(--clean-start__tag_body__width__4xl_qhd_horizontal);
     --clean-start__tag_body__max_width: var(--clean-start__tag_body__max_width__4xl_qhd_horizontal);
@@ -1044,7 +1072,7 @@
   }    
 
 
- 
+  
   .workspace.verify-responsive-rule-applies main h1::before {
     content: "4xl qhd horizontal" !important;
   }
@@ -1053,7 +1081,7 @@
 
 @media (min-width: 1921px) and (max-width: 2160px) and (orientation: portrait) {
   .workspace main {
-   
+    
 
     --clean-start__tag_body__width: var(--clean-start__tag_body__width__4xl_qhd_vertical);
     --clean-start__tag_body__max_width: var(--clean-start__tag_body__max_width__4xl_qhd_vertical);
@@ -1072,7 +1100,7 @@
   }    
 
 
- 
+  
   .workspace.verify-responsive-rule-applies main h1::before {
     content: "4xl qhd vertical" !important;
   }
@@ -1081,7 +1109,7 @@
 
 @media (min-width: 3841px) and (max-width: 7680px) and (orientation: landscape) {
   .workspace main {
-   
+    
 
     --clean-start__tag_body__width: var(--clean-start__tag_body__width__5xl_4k_ultra_hd_horizontal);
     --clean-start__tag_body__max_width: var(--clean-start__tag_body__max_width__5xl_4k_ultra_hd_horizontal);
@@ -1100,7 +1128,7 @@
   }    
 
 
- 
+  
   .workspace.verify-responsive-rule-applies main h1::before {
     content: "5xl 4k_ultra_hd horizontal" !important;
   }
@@ -1109,7 +1137,7 @@
 
 @media (min-width: 2161px) and (max-width: 4320px) and (orientation: portrait) {
   .workspace main {
-   
+    
 
     --clean-start__tag_body__width: var(--clean-start__tag_body__width__5xl_4k_ultra_hd_vertical);
     --clean-start__tag_body__max_width: var(--clean-start__tag_body__max_width__5xl_4k_ultra_hd_vertical);
@@ -1128,7 +1156,7 @@
   }    
 
 
- 
+  
   .workspace.verify-responsive-rule-applies main h1::before {
     content: "5xl 4k_ultra_hd vertical" !important;
   }
@@ -1137,7 +1165,7 @@
 
 @media (min-width: 7681px) and (max-width: 15360px) and (orientation: landscape) {
   .workspace main {
-   
+    
 
     --clean-start__tag_body__width: var(--clean-start__tag_body__width__6xl_8k_horizontal);
     --clean-start__tag_body__max_width: var(--clean-start__tag_body__max_width__6xl_8k_horizontal);
@@ -1156,7 +1184,7 @@
   }    
 
 
- 
+  
   .workspace.verify-responsive-rule-applies main h1::before {
     content: "6xl 8k horizontal" !important;
   }
@@ -1165,7 +1193,7 @@
 
 @media (min-width: 4320px) and (max-width: 8640px) and (orientation: portrait) {
   .workspace main {
-   
+    
 
     --clean-start__tag_body__width: var(--clean-start__tag_body__width__6xl_8k_vertical);
     --clean-start__tag_body__max_width: var(--clean-start__tag_body__max_width__6xl_8k_vertical);
@@ -1184,7 +1212,7 @@
   }    
 
 
- 
+  
   .workspace.verify-responsive-rule-applies main h1::before {
     content: "6xl 8k vertical" !important;
   }
@@ -1194,7 +1222,7 @@
 @media (min-width: 15361px) and (orientation: landscape) {
 
   .workspace main {
-   
+    
 
     --clean-start__tag_body__width: var(--clean-start__tag_body__width__7xl_16k_horizontal);
     --clean-start__tag_body__max_width: var(--clean-start__tag_body__max_width__7xl_16k_horizontal);
@@ -1213,7 +1241,7 @@
   }    
 
 
- 
+  
   .workspace.verify-responsive-rule-applies main h1::before {
     content: "7xl 16k horizontal" !important;
   }
@@ -1225,7 +1253,7 @@
 
 @media (min-width: 8641px) and (orientation: portrait) {
   .workspace main {
-   
+    
 
     --clean-start__tag_body__width: var(--clean-start__tag_body__width__7xl_16k_vertical);
     --clean-start__tag_body__max_width: var(--clean-start__tag_body__max_width__7xl_16k_vertical);
@@ -1244,11 +1272,12 @@
   }    
 
 
- 
+  
   .workspace.verify-responsive-rule-applies main h1::before {
     content: "7xl 16k vertical" !important;
   }
 }
+
 
 html.workspace {
   font-size: var(--clean-start__rem);
@@ -1286,9 +1315,7 @@ html.workspace script {
 }
 
 .workspace, 
-.workspace *:not(ul),
-.workspace *:not(ol),
-.workspace *:not(li) {
+.workspace *:not(ul):not(ol):not(li) {
 
   margin: var(--clean-start__margin);
   padding: var(--clean-start__padding);
@@ -1307,13 +1334,7 @@ html.workspace script {
 }
 
 
-.workspace, 
-.workspace *:not(h1),
-.workspace *:not(h2),
-.workspace *:not(h3),
-.workspace *:not(h4),
-.workspace *:not(h5),
-.workspace *:not(h6)  {
+.workspace *:not(h1):not(h2):not(h3):not(h4):not(h5):not(h6) {
 
   font-size: var(--clean-start__font-size);
   line-height: var(--clean-start__line-height);
@@ -1371,7 +1392,7 @@ html.workspace {
 .workspace body {
   background: var(--clean-start__tag_body__background);
 
- 
+  
   height:     var(--clean-start__tag_body__height);
   max-height: var(--clean-start__tag_body__height_max);
   min-height: var(--clean-start__tag_body__height_min);
@@ -1389,7 +1410,7 @@ html.workspace {
   padding: var(--clean-start__site__padding) !important;
   background: var(--clean-start__site__background);
 
- 
+  
   height:     var(--clean-start__site__height);
   max-height: var(--clean-start__site__height_max);
   min-height: var(--clean-start__site__height_min);
@@ -1403,9 +1424,11 @@ html.workspace {
 
 
 
+
 .workspace p {
   margin: var(--clean-start__p__margin);
 }
+
 
 
 .workspace a {
@@ -1424,6 +1447,7 @@ html.workspace {
   color: var(--clean-start__anchor__text-color-visited-hover);
   text-decoration: underline;
 }
+
 
 
 
@@ -1451,16 +1475,20 @@ html.workspace {
 .workspace h6,
 .workspace header,
 .workspace hr,
+
 .workspace main,
 .workspace nav,
 .workspace noscript,
+
 .workspace output,
 .workspace p,
 .workspace pre,
 .workspace section,
+
 .workspace video {
   display: var(--clean-start__block-tags__display, block);
 }
+
 
 
 
@@ -1491,6 +1519,7 @@ html.workspace {
 .workspace var {
     display: var(--clean-start__inline-tags__display, inline-block);
 }
+
 
 
 .workspace table {
@@ -1532,6 +1561,7 @@ html.workspace {
 
 
 
+
 .workspace.ul-reset ul, 
 .workspace.ul-reset ol, 
 .workspace.ul-reset li, 
@@ -1557,6 +1587,8 @@ html.workspace {
   border-color: var(--clean-start__border-color);
 
 }
+
+
 
 
 

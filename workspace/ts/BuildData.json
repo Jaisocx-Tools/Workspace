@@ -189,8 +189,9 @@
     {
       "path": "sites_tools/css_tools/CssCleanStart",
       "name": "css-clean-start",
-      "build": false,
-      "build-simple-enable": true,
+      "update-published": "",
+      "build": true,
+      "build-simple-enable": false,
       "css-importer": {
         "build": true,
         "cssFilePath": "MediaAndStyles/clean-start-main-webpack.css",
@@ -217,7 +218,8 @@
     {
       "path": "sites_tools/css_tools/CssTable",
       "name": "css-table",
-      "build": false,
+      "update-published": "Tue Jun  3 01:01:52 GMT 2025",
+      "build": true,
       "build-simple-enable": true,
       "dependencies": [],
       "build-files": [

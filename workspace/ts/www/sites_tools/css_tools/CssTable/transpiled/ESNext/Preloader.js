@@ -26,7 +26,8 @@ export class Preloader {
             document.addEventListener("DOMContentLoaded", () => method(), { once: true });
         }
         else {
-            method(); // If already loaded, invoke immediately
+            method();
+            // If already loaded, invoke immediately
         }
     }
     htmlDocumentAppendPreloadingLinkTags() {
