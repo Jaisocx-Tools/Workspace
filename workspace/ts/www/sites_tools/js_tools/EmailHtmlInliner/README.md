@@ -11,9 +11,11 @@ Ready to use since the 06-th of May in the Year 2025.
 
 # Watch in Action
 
-[https://sandbox.brightday.email/CssTools/ImagesEmailed/EmailHtmlInliner_100width.html](https://sandbox.brightday.email/CssTools/ImagesEmailed/EmailHtmlInliner_100width.html)
+[https://sandbox.brightday.email/examples_html/ImagesEmailed/EmailHtmlInliner_100width.html](https://sandbox.brightday.email/examples_html/ImagesEmailed/EmailHtmlInliner_100width.html)
 
-[https://sandbox.brightday.email/Example_EmailHtmlInliner_Images.html](https://sandbox.brightday.email/Example_EmailHtmlInliner_Images.html)
+
+[https://sandbox.brightday.email/examples_html/ImagesEmailed/EmailHtmlInliner_Images.html](https://sandbox.brightday.email/examples_html/ImagesEmailed/EmailHtmlInliner_Images.html)
+
 
 
 
