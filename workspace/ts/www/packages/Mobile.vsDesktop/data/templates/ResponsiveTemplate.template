@@ -1,16 +1,16 @@
-/* Responsive rules for: {{ mediaName }} */
-{{ mediaRuleLine }} {
+/* Responsive rules */
+@media only screen and (min-width: {{ minWidth }}px) and (max-width: {{ maxWidth }}px) and (orientation: {{ orientation }}) {
+
   .workspace {
-    {{ mediaRuleConstanLine }}
+    {{ deviceSizeConstantLine }}
 
-    {{ mediaRuleVariable_WidthFrom }}
-    {{ mediaRuleVariable_WidthTil }}
-
-  }    
+    {{ deviceSizeConstant_minWidth }}
+    {{ deviceSizeConstant_maxWidth }}
+  }
 
   /* verifying responsive rules applies */
   .workspace.verify-responsive-rule-applies main h1::before {
-    content: var(--media_rule_name);
+    content: var(--device_size_name);
   }
 
 }

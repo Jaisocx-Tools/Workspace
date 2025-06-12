@@ -4,16 +4,13 @@ import { TextEncoder, TextDecoder } from "node:util";
 import { FileWriter } from "@jaisocx/file-writer";
 import { TemplateRenderer } from "@jaisocx/template-renderer";
 import { CssImporter } from "@jaisocx/css-importer";
-
-
-import { ResponsiveDatasetAutomationConstants } from "./ResponsiveDatasetAutomationConstants.js";
-import { ResponsiveDatasetAutomationInterface } from "./ResponsiveDatasetAutomationInterface.js";
+import { ResponsiveDatasetConstants } from "./ResponsiveDatasetConstants.js";
 
 
 
-export class ResponsiveDatasetAutomation implements ResponsiveDatasetAutomationInterface {
+export class ResponsiveDataset implements ResponsiveDatasetInterface {
 
-  automationConstants: ResponsiveDatasetAutomationConstants;
+  responsiveDatasetConstants: ResponsiveDatasetConstants;
   mediaAndStylesResponsiveFolderPath: string;
   datasetFilePath: string;
 
@@ -27,12 +24,12 @@ export class ResponsiveDatasetAutomation implements ResponsiveDatasetAutomationI
   templateRenderer: TemplateRenderer;
 
 
+
   constructor() {
     this.textEncoder = new TextEncoder();
     this.textDecoder = new TextDecoder();
 
-    this.automationConstants = new ResponsiveDatasetAutomationConstants();
-    this.automationConstants.textsToBitsbufs();
+    this.responsiveDatasetConstants = new ResponsiveDatasetConstants();
 
     this.mediaAndStylesResponsiveFolderPath = "";
     this.datasetFilePath = "";
@@ -49,6 +46,7 @@ export class ResponsiveDatasetAutomation implements ResponsiveDatasetAutomationI
       .setDebug( false );
 
   }
+
 
 
   async run (
@@ -70,7 +68,7 @@ export class ResponsiveDatasetAutomation implements ResponsiveDatasetAutomationI
     await this.produceMediaCssFilesSet( responsiveMediaQueriesFilesPrefix );
 
     let isWebpackAliased_true: boolean = true;
-    await this.produceMediaCssImportsCssFile ( 
+    await this.produceMediaCssImportsCssFile (
       "MediaCssImports_Webpack.css",
       subfolderName,
       mediaConstantsFileName,
@@ -79,7 +77,7 @@ export class ResponsiveDatasetAutomation implements ResponsiveDatasetAutomationI
     );
 
     let isWebpackAliased_false: boolean = false;
-    await this.produceMediaCssImportsCssFile ( 
+    await this.produceMediaCssImportsCssFile (
       "MediaCssImports.css",
       "",
       mediaConstantsFileName,
@@ -87,22 +85,22 @@ export class ResponsiveDatasetAutomation implements ResponsiveDatasetAutomationI
       isWebpackAliased_false
     );
 
-    
+
     await this.produceMediaRulesTypescriptFile( "MediaruleNamesNew" );
 
     let packagePath: string = path.resolve(
-      this.mediaAndStylesResponsiveFolderPath, 
+      this.mediaAndStylesResponsiveFolderPath,
       "../../");
 
 
     let cssImporter: CssImporter = new CssImporter();
     let cssImporterBuilt: number = await cssImporter
       .setPackagePath( packagePath )
-      .setCssFilePath( path.resolve( 
+      .setCssFilePath( path.resolve(
         packagePath,
         "MediaAndStyles",
         "clean-start-main-webpack.css" ) )
-      .setCssTargetFilePath( path.resolve( 
+      .setCssTargetFilePath( path.resolve(
         packagePath,
         "MediaAndStyles",
         "clean-start-main-pack.css" ) )
@@ -111,6 +109,36 @@ export class ResponsiveDatasetAutomation implements ResponsiveDatasetAutomationI
     return cssImporterBuilt;
   }
 
+
+
+  // NOT IMPLEMENTED
+  // sets the path to the new TypeScript SitesTool
+  // where the produced .css files will be placed.
+  setTemplateProjectPath( path: string ): ResponsiveDatasetAutomation {
+    return this;
+  }
+
+
+
+
+  /**
+   * @ready
+  */
+  setWebpackAliasName( alias: string ): ResponsiveDatasetAutomation {
+    this.webpackAliasName = alias;
+
+    return this;
+  }
+
+
+
+
+  // NOT IMPLEMENTED
+  // first to implement the class prop set method,
+  // later we know the resources we need on cdn for the css responsive feature of a SitesTool
+  setCdnUrl( cdnUrl: string ): ResponsiveDatasetAutomation {
+    return this;
+  }
 
 
 
@@ -128,14 +156,15 @@ export class ResponsiveDatasetAutomation implements ResponsiveDatasetAutomationI
   }
 
 
+
   // reads json with sizes
   /**
    * @ready
   */
   readDataset( inDatasetFileAbsolutePath: string ): ResponsiveDatasetAutomation {
     this.datasetFilePath = inDatasetFileAbsolutePath;
-    const json: string = fs.readFileSync( 
-      this.datasetFilePath, 
+    const json: string = fs.readFileSync(
+      this.datasetFilePath,
       "utf8" );
     this.dataset = JSON.parse( json );
 
@@ -164,35 +193,26 @@ export class ResponsiveDatasetAutomation implements ResponsiveDatasetAutomationI
   }
 
 
-  /**
-   * @ready
-  */
-  setWebpackAliasName( alias: string ): ResponsiveDatasetAutomation {
-    this.webpackAliasName = alias;
-
-    return this;
-  }
 
 
-
-  async produceMediaRulesTypescriptFile ( 
-    tsClassName: string 
+  async produceMediaRulesTypescriptFile (
+    tsClassName: string
   ): Promise<number> {
 
     // @ts-ignore
     let propNames: any = Object.keys( this.dataset.data );
     let responsiveDatasetPropName: string = "";
     let targetFileName: string = [ tsClassName, ".ts" ].join("");
-    
-    let packagePath: string = path.resolve ( 
-      this.mediaAndStylesResponsiveFolderPath, 
+
+    let packagePath: string = path.resolve (
+      this.mediaAndStylesResponsiveFolderPath,
       "../../"
     );
-    
-    let targetFilePath: string = path.resolve ( 
+
+    let targetFilePath: string = path.resolve (
       packagePath,
       "src/",
-      targetFileName 
+      targetFileName
     );
 
     let fileWriterRetval: number = await this.fileWriter.toAddToFileInLoop_CleanupFileAndGetNewFileHandle (
@@ -224,7 +244,7 @@ export class ResponsiveDatasetAutomation implements ResponsiveDatasetAutomationI
     let fieldLineMediaNamePos_1: number = 1;
     let fieldLineMediaNamePos_3: number = 4;
     let fieldLineBitsbufs: Uint8Array[] = new Array( fieldLine.length ) as Uint8Array[];
-    let len: number = this.automationConstants.textArrayToUnt8Arrays ( 
+    let len: number = this.responsiveDatasetConstants.textArrayToUnt8Arrays (
       // @ts-ignore
       fieldLine,
       fieldLineBitsbufs
@@ -240,7 +260,7 @@ export class ResponsiveDatasetAutomation implements ResponsiveDatasetAutomationI
       "  }\n\n"
     ];
     let methodBitsbufs: Uint8Array[] = new Array( method.length ) as Uint8Array[];
-    len = this.automationConstants.textArrayToUnt8Arrays ( 
+    len = this.responsiveDatasetConstants.textArrayToUnt8Arrays (
       // @ts-ignore
       method,
       methodBitsbufs
@@ -257,7 +277,7 @@ export class ResponsiveDatasetAutomation implements ResponsiveDatasetAutomationI
 
     // textBlocks.push( tsClassEndLine );
 
-    let orientationKeywords: string[] = this.automationConstants.getOrientationKeywords();
+    let orientationKeywords: string[] = this.responsiveDatasetConstants.getOrientationKeywords();
     let orientationKeywordId: number = 0;
     let propnameId: number = 0;
     let orientation: string = "";
@@ -275,7 +295,7 @@ export class ResponsiveDatasetAutomation implements ResponsiveDatasetAutomationI
       responsiveDatasetPropName = propNames[propnameId];
       orientation = orientationKeywords[orientationKeywordId];
 
-      mediaName = this.produceMediaName ( 
+      mediaName = this.produceMediaName (
         responsiveDatasetPropName,
         orientation
       );
@@ -318,6 +338,7 @@ export class ResponsiveDatasetAutomation implements ResponsiveDatasetAutomationI
   }
 
 
+
   /**
    * @ready
   */
@@ -327,12 +348,12 @@ export class ResponsiveDatasetAutomation implements ResponsiveDatasetAutomationI
   //   --screen-xs-mobile-portrait-from: 3px;
   //   --screen-xs-mobile-portrait-til: 320px;
   //
-  //   --screen-xs-mobile-landscape-til: 568px; 
-  //   --screen-xs-mobile-landscape-from: 569px; 
+  //   --screen-xs-mobile-landscape-til: 568px;
+  //   --screen-xs-mobile-landscape-from: 569px;
   //
   //
   //   Small Mobile (S)
-  //   --screen-s-mobile-portrait-from: 321px; 
+  //   --screen-s-mobile-portrait-from: 321px;
   //   ...
   async produceMediaConstantsCssFile( targetFileName: string ): Promise<number> {
     // @ts-ignore
@@ -341,8 +362,8 @@ export class ResponsiveDatasetAutomation implements ResponsiveDatasetAutomationI
     let mediaConstantLinesSet: Uint8Array[][] = new Array() as Uint8Array[][];
 
     await this.fileWriter.toAddToFileInLoop_CleanupFileAndGetNewFileHandle (
-      path.resolve( 
-        this.mediaAndStylesResponsiveFolderPath, 
+      path.resolve(
+        this.mediaAndStylesResponsiveFolderPath,
         targetFileName )
     );
 
@@ -376,12 +397,12 @@ export class ResponsiveDatasetAutomation implements ResponsiveDatasetAutomationI
     // @ts-ignore
     let propNames: any = Object.keys( this.dataset.data );
     let responsiveDatasetPropName: string = "";
-    let orientationKeywords: string[] = this.automationConstants.getOrientationKeywords();
+    let orientationKeywords: string[] = this.responsiveDatasetConstants.getOrientationKeywords();
     let orientation: string = "";
 
     let templateRendererDataRecordId: number = this.templateRenderer
       .setTemplate( this.templateMediaCssFileContent )
-      .setData ( 
+      .setData (
         {
           "mediaName": "",
           "mediaRuleLine": "",
@@ -417,9 +438,9 @@ export class ResponsiveDatasetAutomation implements ResponsiveDatasetAutomationI
   /**
    * @ready
    */
-  async produceMediaCssFile ( 
+  async produceMediaCssFile (
     filenamePrefix: string,
-    responsiveDatasetPropName: string, 
+    responsiveDatasetPropName: string,
     orientation: string
   ): Promise<number> {
 
@@ -428,10 +449,10 @@ export class ResponsiveDatasetAutomation implements ResponsiveDatasetAutomationI
       orientation
     );
 
-    let mediaRuleLinesArray: Uint8Array[] = this.produceMediaRule ( 
+    let mediaRuleLinesArray: Uint8Array[] = this.produceMediaRule (
       responsiveDatasetPropName,
       orientation,
-      this.automationConstants.getMediaRuleScreen()
+      this.responsiveDatasetConstants.getMediaRuleScreen()
     );
 
     let mediaRuleConstanLinesArray: Uint8Array[] = this.produceMediaConstantNameLine (
@@ -448,16 +469,16 @@ export class ResponsiveDatasetAutomation implements ResponsiveDatasetAutomationI
     // let mediaRuleLineText: string = this.textDecoder.decode ( this.fileWriter.concatUint8Arrays( mediaRuleLine ) );
     // let mediaRuleConstanLineText: string = this.textDecoder.decode ( this.fileWriter.concatUint8Arrays( mediaRuleConstanLine ) );
 
-    let postfix: Uint8Array = this.automationConstants.getBitsbufKeywordFrom();
-    let mediaRuleVariable_WidthFromArray: Uint8Array[] = this.automationConstants.getMediaRuleVariable_Width_Updated (
+    let postfix: Uint8Array = this.responsiveDatasetConstants.getBitsbufKeywordFrom();
+    let mediaRuleVariable_WidthFromArray: Uint8Array[] = this.responsiveDatasetConstants.getMediaRuleVariable_Width_Updated (
       mediaName,
       postfix
     );
     let mediaRuleVariable_WidthFrom: Uint8Array = this.fileWriter.concatUint8Arrays( mediaRuleVariable_WidthFromArray );
 
 
-    postfix = this.automationConstants.getBitsbufKeywordTil();
-    let mediaRuleVariable_WidthTilArray: Uint8Array[] = this.automationConstants.getMediaRuleVariable_Width_Updated (
+    postfix = this.responsiveDatasetConstants.getBitsbufKeywordTil();
+    let mediaRuleVariable_WidthTilArray: Uint8Array[] = this.responsiveDatasetConstants.getMediaRuleVariable_Width_Updated (
       mediaName,
       postfix
     );
@@ -481,26 +502,26 @@ export class ResponsiveDatasetAutomation implements ResponsiveDatasetAutomationI
 
     this.templateRenderer
       .setData( templateData );
-    
+
     let templateRendererDataRecordId: number = this.templateRenderer.getActiveDataRecordId();
 
-    let content: Uint8Array[] = this.templateRenderer.renderOptimizedDataBitsbufs ( 
+    let content: Uint8Array[] = this.templateRenderer.renderOptimizedDataBitsbufs (
       templateRendererDataRecordId,
       templateData
     );
-    
+
     // temp for debugging
     // @ts-ignore
-    // let contentText: string = this.templateRenderer.renderOptimizedToString ( 
+    // let contentText: string = this.templateRenderer.renderOptimizedToString (
     //   templateRendererDataRecordId,
     //   templateData
     // );
 
     let fileName: string = [filenamePrefix, mediaNameText, ".css"].join("");
 
-    let mediaCssFilePath: string = path.resolve ( 
+    let mediaCssFilePath: string = path.resolve (
       this.mediaAndStylesResponsiveFolderPath,
-      fileName 
+      fileName
     );
 
 
@@ -508,7 +529,7 @@ export class ResponsiveDatasetAutomation implements ResponsiveDatasetAutomationI
     retVal = await this.fileWriter.toAddToFileInLoop_CleanupFileAndGetNewFileHandle( mediaCssFilePath );
     retVal = await this.fileWriter.appendFlatArrayToFile( content );
     retVal = await this.fileWriter.filehandleClose();
-    
+
 
     return retVal;
   }
@@ -522,10 +543,10 @@ export class ResponsiveDatasetAutomation implements ResponsiveDatasetAutomationI
   // writes this file:
   // @import url("@jaisocx-css-clean-start-MediaAndStyles/responsive/clean-start-xs-mobile-landscape.css");
   // @import url("@jaisocx-css-clean-start-MediaAndStyles/responsive/clean-start-xs-mobile-portrait.css");
-  //   
+  //
   // @import url("@jaisocx-css-clean-start-MediaAndStyles/responsive/clean-start-s-mobile-landscape.css");
-  // ...  
-  async produceMediaCssImportsCssFile ( 
+  // ...
+  async produceMediaCssImportsCssFile (
     targetFileName: string,
     relativeImportedFilesFolderPath: string,
     mediaConstantsFileName: string,
@@ -536,8 +557,8 @@ export class ResponsiveDatasetAutomation implements ResponsiveDatasetAutomationI
     // @ts-ignore
     let data: any = this.dataset.data;
 
-    let targetFilePath: string = path.resolve ( 
-      this.mediaAndStylesResponsiveFolderPath, 
+    let targetFilePath: string = path.resolve (
+      this.mediaAndStylesResponsiveFolderPath,
       targetFileName );
 
     let fileWriterRetVal: number = await this.fileWriter.toAddToFileInLoop_CleanupFileAndGetNewFileHandle (
@@ -555,7 +576,7 @@ export class ResponsiveDatasetAutomation implements ResponsiveDatasetAutomationI
     }
 
     importedFileName = mediaConstantsFileName;
-  
+
     mediaCssImportLine = this.produceMediaCssImportLine (
       relativeImportedFilesFolderPath,
       importedFileName,
@@ -581,6 +602,7 @@ export class ResponsiveDatasetAutomation implements ResponsiveDatasetAutomationI
   }
 
 
+
   async loopMediaCssImportsCssFile(
     data: any,
     importedFilenamePrefix: string,
@@ -599,7 +621,7 @@ export class ResponsiveDatasetAutomation implements ResponsiveDatasetAutomationI
       webpackAliasName = ".";
     }
 
-    let orientationKeywords: string[] = this.automationConstants.getOrientationKeywords();
+    let orientationKeywords: string[] = this.responsiveDatasetConstants.getOrientationKeywords();
 
     let written: number = 0;
     for ( let responsiveDatasetPropName in data ) {
@@ -612,7 +634,7 @@ export class ResponsiveDatasetAutomation implements ResponsiveDatasetAutomationI
         );
 
         importedFileName = [importedFilenamePrefix, mediaName, ".css"].join("");
-  
+
         mediaCssImportLine = this.produceMediaCssImportLine (
           relativeImportedFilesFolderPath,
           importedFileName,
@@ -631,14 +653,15 @@ export class ResponsiveDatasetAutomation implements ResponsiveDatasetAutomationI
   }
 
 
+
   // @import url("@jaisocx-css-clean-start-MediaAndStyles/responsive/clean-start-s-mobile-landscape.css");
   /**
    * @ready
   */
-  produceMediaCssImportLine ( 
+  produceMediaCssImportLine (
     relativeImportedFilesFolderPath: string,
-    importedFileName: string, 
-    webpackAliasName: string 
+    importedFileName: string,
+    webpackAliasName: string
   ): string {
 
     let relativePath: string = "";
@@ -647,13 +670,13 @@ export class ResponsiveDatasetAutomation implements ResponsiveDatasetAutomationI
     }
 
     let words: string[] = [
-      this.automationConstants.getImportUrlStart(),
+      this.responsiveDatasetConstants.getImportUrlStart(),
       webpackAliasName,
       "/",
       relativePath,
       importedFileName,
-      this.automationConstants.getImportUrlEnd(),
-      this.automationConstants.getN()
+      this.responsiveDatasetConstants.getImportUrlEnd(),
+      this.responsiveDatasetConstants.getN()
     ];
 
     let importLine: string = words.join( "" );
@@ -662,10 +685,32 @@ export class ResponsiveDatasetAutomation implements ResponsiveDatasetAutomationI
   }
 
 
+
+  // --media_rule_name: s_56_16k_tv_horizontal;
   /**
    * @ready
    */
-  produceMediaName ( 
+  produceMediaConstantNameLine (
+    responsiveDatasetPropName: string,
+    orientation: any
+  ): Uint8Array[] {
+
+    const mediaName: string = this.produceMediaName (
+      responsiveDatasetPropName,
+      orientation
+    );
+
+    let mediaConstantNameLine: Uint8Array[] = this.responsiveDatasetConstants.getMediaConstantNameLineUpdated( mediaName );
+
+    return [...mediaConstantNameLine];
+  }
+
+
+
+  /**
+   * @ready
+   */
+  produceMediaName (
     responsiveDatasetPropName: string,
     orientation: any
   ): Uint8Array[] {
@@ -673,14 +718,14 @@ export class ResponsiveDatasetAutomation implements ResponsiveDatasetAutomationI
     let responsiveDatasetProp: any = this.dataset.data[ responsiveDatasetPropName ];
 
     const words: string[] = [
-      this.automationConstants.getMediaConstantNameStart(),
-      this.automationConstants.getUnderscore(),
+      this.responsiveDatasetConstants.getMediaConstantNameStart(),
+      this.responsiveDatasetConstants.getUnderscore(),
       responsiveDatasetProp["range_orderby_id"],
-      this.automationConstants.getUnderscore(),
+      this.responsiveDatasetConstants.getUnderscore(),
       responsiveDatasetProp["art"],
-      this.automationConstants.getUnderscore(),
+      this.responsiveDatasetConstants.getUnderscore(),
       responsiveDatasetProp["art_size"],
-      this.automationConstants.getUnderscore(),
+      this.responsiveDatasetConstants.getUnderscore(),
       orientation
     ];
 
@@ -690,46 +735,29 @@ export class ResponsiveDatasetAutomation implements ResponsiveDatasetAutomationI
   }
 
 
-  // --media_rule_name: s_56_16k_tv_horizontal;
-  /**
-   * @ready
-   */
-  produceMediaConstantNameLine ( 
-    responsiveDatasetPropName: string,
-    orientation: any
-  ): Uint8Array[] {
 
-    const mediaName: string = this.produceMediaName ( 
-      responsiveDatasetPropName,
-      orientation
-    );
-
-    let mediaConstantNameLine: Uint8Array[] = this.automationConstants.getMediaConstantNameLineUpdated( mediaName );
-
-    return [...mediaConstantNameLine];
-  }
 
 
   /**
    * @ready
    */
   // @media only screen and (min-width: 786px) and (max-width: 1023px) and (orientation: landscape)
-  produceMediaRule ( 
+  produceMediaRule (
     responsiveDatasetPropName: string,
     orientation: any,
     media: any // screen | print | all
   ): Uint8Array[] {
-    
-    let sizes: any = this.getSizesByOrientation ( 
-      responsiveDatasetPropName, 
-      orientation 
+
+    let sizes: any = this.getSizesByOrientation (
+      responsiveDatasetPropName,
+      orientation
     );
 
-    let minWidth: string = (new Number(sizes[this.automationConstants.getKeywordFrom()])).toString();
-    let maxWidth: string = (new Number(sizes[this.automationConstants.getKeywordTil()])).toString();
+    let minWidth: string = (new Number(sizes[this.responsiveDatasetConstants.getKeywordFrom()])).toString();
+    let maxWidth: string = (new Number(sizes[this.responsiveDatasetConstants.getKeywordTil()])).toString();
 
     //`"@media only ${media} and (min-width: ${minWidth}px) and (max-width: ${maxWidth}px) and (orientation: ${orientation})";`;
-    let mediaLine: Uint8Array[] = this.automationConstants.getMediaLineUpdated (
+    let mediaLine: Uint8Array[] = this.responsiveDatasetConstants.getMediaLineUpdated (
       media,
       minWidth,
       maxWidth,
@@ -740,100 +768,10 @@ export class ResponsiveDatasetAutomation implements ResponsiveDatasetAutomationI
   }
 
 
-  // --s_56_16k_tv_horizontal__media_rule: "@media only screen and (min-width: 786px) and (max-width: 1023px) and (orientation: landscape)";
-  /**
-   * @ready
-  */
-  produceMediaRuleConstantLine ( 
-    responsiveDatasetPropName: string,
-    orientation: any,
-    media: any // screen | print | all
-  ): (Uint8Array|Uint8Array[])[] {
-
-    const mediaName: string = this.produceMediaName ( 
-      responsiveDatasetPropName,
-      orientation
-    );
-
-    let sizes: any = this.getSizesByOrientation ( 
-      responsiveDatasetPropName, 
-      orientation 
-    );
-
-    let minWidth: string = sizes[this.automationConstants.getKeywordFrom()] as string;
-    let maxWidth: string = sizes[this.automationConstants.getKeywordTil()] as string;
-
-    //`"@media only ${media} and (min-width: ${minWidth}px) and (max-width: ${maxWidth}px) and (orientation: ${orientation})";`;
-    let mediaLine: Uint8Array[] = this.automationConstants.getMediaLineUpdated (
-      media,
-      minWidth,
-      maxWidth,
-      orientation
-    );
-
-    let mediaRuleConstantLine: (Uint8Array|Uint8Array[])[] = this.automationConstants.getMediaRuleConstantLineUpdated (
-      mediaName,
-      mediaLine
-    );
-
-    return [...mediaRuleConstantLine];
-  }
-
-
-  //
-  // --s_56_16k_tv_vertical__min_width: 8641px; /* 16k TV */
-  // --s_56_16k_tv_vertical__max_width: 9999px; /* 16k TV */
-  //
-  // --s_56_16k_tv_horizontal__min_width: 15361px; /* 16k TV */
-  // --s_56_16k_tv_horizontal__max_width: 25360px; /* 16k TV */
-  /**
-   * @ready
-  */
-  produceMediaConstantLinesSet ( responsiveDatasetPropName: string ): Uint8Array[][] {
-
-    let orientationValues: string[] = this.automationConstants.getOrientationKeywords();
-
-    let mediaLines: Uint8Array[][] = new Array(4) as Uint8Array[][];
-    let mediaLine: Uint8Array[] = new Array();
-    let newLine: Uint8Array = this.automationConstants.getBitsbufN();
-
-    let orientation: string = "";
-    let isStartValue: boolean = true;
-    
-    let mediaLinePos: number = 0;
-    for ( orientation of orientationValues ) {
-      
-      for ( let i = 1; i < 3; i++ ) {
-        isStartValue = ( i === 1 );
-        
-        mediaLine = this.produceMediaConstantLine ( 
-          responsiveDatasetPropName, 
-          orientation,
-          isStartValue
-        );
-        mediaLine.push(newLine);
-
-        if ( isStartValue === false ) {
-          mediaLine.push( newLine );
-        }
-
-        mediaLines[mediaLinePos] = mediaLine;
-
-        mediaLinePos++;
-        
-      }
-    }
-
-    mediaLines[3].push(newLine);
-    mediaLines[3].push(newLine);
-
-    return mediaLines;
-  }
-
 
   /**
    * @ready
-   * 
+   *
    * @retVal datatype { from: number, to: number }
   */
   getSizesByOrientation (
@@ -849,8 +787,8 @@ export class ResponsiveDatasetAutomation implements ResponsiveDatasetAutomationI
     if ( orientation === orientationStandard ) {
       sizes = responsiveDatasetProp["width"];
     } else if (
-      ( orientation === this.automationConstants.getMediaRuleOrientationLandscape() ) ||
-      ( orientation === this.automationConstants.getMediaRuleOrientationPortrait() )
+      ( orientation === this.responsiveDatasetConstants.getMediaRuleOrientationLandscape() ) ||
+      ( orientation === this.responsiveDatasetConstants.getMediaRuleOrientationPortrait() )
     ) {
       sizes = responsiveDatasetProp["height"];
     } else {
@@ -858,95 +796,6 @@ export class ResponsiveDatasetAutomation implements ResponsiveDatasetAutomationI
     }
 
     return sizes;
-  }
-
-
-
-  // --s_56_16k_tv_horizontal__max_width: 25360px; /* 16k TV */
-  /**
-   * @ready
-  */
-  produceMediaConstantLine ( 
-    responsiveDatasetPropName: string, 
-    orientation: string,
-    isStartValue: boolean
-  ): Uint8Array[] {
-
-    const mediaName: string = this.produceMediaName ( 
-      responsiveDatasetPropName,
-      orientation
-    );
-
-    let postfix: string = "";
-    if ( isStartValue === true ) { 
-      postfix = this.automationConstants.getKeywordFrom();
-    } else {
-      postfix = this.automationConstants.getKeywordTil();
-    }
-
-    let size: string = "";
-    let sizes: any = this.getSizesByOrientation ( 
-      responsiveDatasetPropName, 
-      orientation 
-    );
-
-    size = (new Number(sizes[postfix])).toString();
-
-
-    let mediaConstantLine: Uint8Array[] = this.automationConstants.getMediaConstantLineUpdated (
-      mediaName,
-      postfix,
-      size
-    );
-
-    //if ( this.debug === true ) {
-    let mediaConstantLineText: string = this.textDecoder.decode( this.fileWriter.concatUint8Arrays(mediaConstantLine) );
-    console.info( mediaConstantLineText );
-    //}
-
-    return [...mediaConstantLine];
-  }
-
-
-  produceMediaConstantName ( 
-    responsiveDatasetPropName: string, 
-    orientation: string,
-    isStartValue: boolean
-  ): Uint8Array[] {
-
-    const mediaName: string = this.produceMediaName ( 
-      responsiveDatasetPropName,
-      orientation
-    );
-
-    let postfix: string = "";
-    if ( isStartValue === true ) { 
-      postfix = this.automationConstants.getKeywordFrom();
-    } else {
-      postfix = this.automationConstants.getKeywordTil();
-    }
-
-    let size: string = "";
-    let sizes: any = this.getSizesByOrientation ( 
-      responsiveDatasetPropName, 
-      orientation 
-    );
-
-    size = (new Number(sizes[postfix])).toString();
-
-
-    let mediaConstantLine: Uint8Array[] = this.automationConstants.getMediaConstantNameUpdated (
-      mediaName,
-      postfix,
-      size
-    );
-
-    //if ( this.debug === true ) {
-    let mediaConstantLineText: string = this.textDecoder.decode( this.fileWriter.concatUint8Arrays(mediaConstantLine) );
-    console.info( mediaConstantLineText );
-    //}
-
-    return [...mediaConstantLine];
   }
 
 
@@ -964,6 +813,189 @@ export class ResponsiveDatasetAutomation implements ResponsiveDatasetAutomationI
   */
   getDatasetFilePath(): string {
     return this.datasetFilePath;
+  }
+
+
+
+  // --s_56_16k_tv_horizontal__media_rule: "@media only screen and (min-width: 786px) and (max-width: 1023px) and (orientation: landscape)";
+  /**
+   * @ready
+  */
+  produceMediaRuleConstantLine (
+    responsiveDatasetPropName: string,
+    orientation: any,
+    media: any // screen | print | all
+  ): (Uint8Array|Uint8Array[])[] {
+
+    const mediaName: string = this.produceMediaName (
+      responsiveDatasetPropName,
+      orientation
+    );
+
+    let sizes: any = this.getSizesByOrientation (
+      responsiveDatasetPropName,
+      orientation
+    );
+
+    let minWidth: string = sizes[this.responsiveDatasetConstants.getKeywordFrom()] as string;
+    let maxWidth: string = sizes[this.responsiveDatasetConstants.getKeywordTil()] as string;
+
+    //`"@media only ${media} and (min-width: ${minWidth}px) and (max-width: ${maxWidth}px) and (orientation: ${orientation})";`;
+    let mediaLine: Uint8Array[] = this.responsiveDatasetConstants.getMediaLineUpdated (
+      media,
+      minWidth,
+      maxWidth,
+      orientation
+    );
+
+    let mediaRuleConstantLine: (Uint8Array|Uint8Array[])[] = this.responsiveDatasetConstants.getMediaRuleConstantLineUpdated (
+      mediaName,
+      mediaLine
+    );
+
+    return [...mediaRuleConstantLine];
+  }
+
+
+
+  //
+  // --s_56_16k_tv_vertical__min_width: 8641px; /* 16k TV */
+  // --s_56_16k_tv_vertical__max_width: 9999px; /* 16k TV */
+  //
+  // --s_56_16k_tv_horizontal__min_width: 15361px; /* 16k TV */
+  // --s_56_16k_tv_horizontal__max_width: 25360px; /* 16k TV */
+  /**
+   * @ready
+  */
+  produceMediaConstantLinesSet ( responsiveDatasetPropName: string ): Uint8Array[][] {
+
+    let orientationValues: string[] = this.responsiveDatasetConstants.getOrientationKeywords();
+
+    let mediaLines: Uint8Array[][] = new Array(4) as Uint8Array[][];
+    let mediaLine: Uint8Array[] = new Array();
+    let newLine: Uint8Array = this.responsiveDatasetConstants.getBitsbufN();
+
+    let orientation: string = "";
+    let isStartValue: boolean = true;
+
+    let mediaLinePos: number = 0;
+    for ( orientation of orientationValues ) {
+
+      for ( let i = 1; i < 3; i++ ) {
+        isStartValue = ( i === 1 );
+
+        mediaLine = this.produceMediaConstantLine (
+          responsiveDatasetPropName,
+          orientation,
+          isStartValue
+        );
+        mediaLine.push(newLine);
+
+        if ( isStartValue === false ) {
+          mediaLine.push( newLine );
+        }
+
+        mediaLines[mediaLinePos] = mediaLine;
+
+        mediaLinePos++;
+
+      }
+    }
+
+    mediaLines[3].push(newLine);
+    mediaLines[3].push(newLine);
+
+    return mediaLines;
+  }
+
+
+
+  // --s_56_16k_tv_horizontal__max_width: 25360px; /* 16k TV */
+  /**
+   * @ready
+  */
+  produceMediaConstantLine (
+    responsiveDatasetPropName: string,
+    orientation: string,
+    isStartValue: boolean
+  ): Uint8Array[] {
+
+    const mediaName: string = this.produceMediaName (
+      responsiveDatasetPropName,
+      orientation
+    );
+
+    let postfix: string = "";
+    if ( isStartValue === true ) {
+      postfix = this.responsiveDatasetConstants.getKeywordFrom();
+    } else {
+      postfix = this.responsiveDatasetConstants.getKeywordTil();
+    }
+
+    let size: string = "";
+    let sizes: any = this.getSizesByOrientation (
+      responsiveDatasetPropName,
+      orientation
+    );
+
+    size = (new Number(sizes[postfix])).toString();
+
+
+    let mediaConstantLine: Uint8Array[] = this.responsiveDatasetConstants.getMediaConstantLineUpdated (
+      mediaName,
+      postfix,
+      size
+    );
+
+    //if ( this.debug === true ) {
+    let mediaConstantLineText: string = this.textDecoder.decode( this.fileWriter.concatUint8Arrays(mediaConstantLine) );
+    console.info( mediaConstantLineText );
+    //}
+
+    return [...mediaConstantLine];
+  }
+
+
+
+  produceMediaConstantName (
+    responsiveDatasetPropName: string,
+    orientation: string,
+    isStartValue: boolean
+  ): Uint8Array[] {
+
+    const mediaName: string = this.produceMediaName (
+      responsiveDatasetPropName,
+      orientation
+    );
+
+    let postfix: string = "";
+    if ( isStartValue === true ) {
+      postfix = this.responsiveDatasetConstants.getKeywordFrom();
+    } else {
+      postfix = this.responsiveDatasetConstants.getKeywordTil();
+    }
+
+    let size: string = "";
+    let sizes: any = this.getSizesByOrientation (
+      responsiveDatasetPropName,
+      orientation
+    );
+
+    size = (new Number(sizes[postfix])).toString();
+
+
+    let mediaConstantLine: Uint8Array[] = this.responsiveDatasetConstants.getMediaConstantNameUpdated (
+      mediaName,
+      postfix,
+      size
+    );
+
+    //if ( this.debug === true ) {
+    let mediaConstantLineText: string = this.textDecoder.decode( this.fileWriter.concatUint8Arrays(mediaConstantLine) );
+    console.info( mediaConstantLineText );
+    //}
+
+    return [...mediaConstantLine];
   }
 
 }

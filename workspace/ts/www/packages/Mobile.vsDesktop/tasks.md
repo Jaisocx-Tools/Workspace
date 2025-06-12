@@ -9,16 +9,6 @@
 
 
 
-### 2. renamings: 
-
-1. I don't like today "rule" and "media" in one property name.
-. to write the keywords for responsive styles:
-    . media query
-    . css 
-    . style(s)
-    . doc
-    . 
-
 
 
 ### 2. to refine the architecture
@@ -73,7 +63,7 @@ constructor() {
 
 
 getPrefixPlaceholderOne(): Uint8Array {
-  this.#prefixPlaceholderOne: Uint8Array = this.mergeBitbufs ( 
+  this.#prefixPlaceholderOne: Uint8Array = this.mergeBitbufs (
     [
       this.#keywordOne,
       this.#keywordTwo,
@@ -87,12 +77,11 @@ getPrefixPlaceholderOne(): Uint8Array {
 ```
 
 
+entsorgung@schmidt-transporte.ch
 
 
 
-
-
-
+044 850 14 80
 
 
 

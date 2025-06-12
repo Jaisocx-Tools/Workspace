@@ -1,0 +1,37 @@
+import { ResponsiveCssFile } from "./ResponsiveCssFile.js";
+
+
+
+export interface ResponsiveCssFileInterface {
+
+  // Mobile.vsDesktop/data/templates/ResponsiveTemplate.template
+  // in this package, just one art of .css files is produced with the template.
+  // the .css files with media query for one size like "mobile_xs": Mobile.vsDesktop/MediaAndStyles/responsive/style_e02_mobile_xs_portrait.css.
+  readTemplateMediaCssFile( inFileAbsolutePath: string ): ResponsiveCssFile;
+
+
+
+  // RENAMED produceMediaCssFilesSet
+  // produces .css files with media queries for sizes like this .css file:
+  // in the folder
+  // Mobile.vsDesktop/MediaAndStyles/responsive
+  //    style_e02_mobile_xs_portrait.css
+  //    style_e02_mobile_xs_landscape.css
+  //    style_e02_mobile_s_portrait.css
+  // ...
+  produceResponsiveCssFilesSet (): Promise<number>;
+
+
+
+  // RENAMED produceMediaCssFile
+  // this method produces one of the .css files for the method above
+  // in the folder
+  // Mobile.vsDesktop/MediaAndStyles/responsive
+  //    style_e02_mobile_xs_portrait.css
+  produceOneResponsiveCssFile (
+    responsiveDatasetPropName: string,
+    orientation: string
+  ): Promise<number>;
+
+}
+

@@ -24,17 +24,6 @@
   <link rel="stylesheet" href="sites_tools/css_tools/CssCleanStart/MediaAndStyles/themes/theme-lightmode/clean-start-theme-lightmode-relative.css">
   <link rel="stylesheet" href="sites_tools/css_tools/CssCleanStart/MediaAndStyles/clean-start-main-relative.css">
 
-  <!-- FOR THE CSS TABLE YOU NeD ALWAYS TO SET IN THIS FILE THE WIDTH OF COLUMNS
-  AND THIS .css FILE HAS TO BE ALWAYS REFERRED IN HTML DOC OR OTHER IMPORTS. -->
-  <link rel="stylesheet" href="sites_tools/css_tools/CssTable/MediaAndStyles/themes/columns/columns.css">
-
-
-  <link rel="stylesheet" href="sites_tools/css_tools/CssTable/MediaAndStyles/themes/theme-emailed-thin/css-table-theme-emailed-thin.css">
-  <!-- <link rel="stylesheet" href="sites_tools/css_tools/CssTable/MediaAndStyles/themes/theme-lightmode/css-table-theme-lightmode-relative.css">
-  <link rel="stylesheet" href="sites_tools/css_tools/CssTable/MediaAndStyles/themes/theme-darkmode/css-table-theme-darkmode-relative.css"> -->
-  <link rel="stylesheet" href="sites_tools/css_tools/CssTable/MediaAndStyles/css-table-main-relative.css">
-
-
   <!-- CssCodeSnippet -->
   <link rel="stylesheet" href="sites_tools/css_tools/CssCodeSnippet/MediaAndStyles/themes/csstool-codesnippet-theme-colour-rosa.css">
   <link rel="stylesheet" href="sites_tools/css_tools/CssCodeSnippet/MediaAndStyles/themes/csstool-codesnippet-theme-colour-blue.css">
@@ -61,15 +50,16 @@
 
 
       --clean-start__text-color: inherit;
-      --clean-start__text-color-h: #339955;
+      --clean-start__text-color-h: #555;
       --clean-start__font-size_h1: 1.9rem;
+      --clean-start__line-height_h1: 2.2rem;
 
       --main-width: 100%;
       --imageholder-width: 100%;
       --imageholder-height: 100%;
       --main-background-color: inherit;
-      --img-width: 320px;
-      --img-height: 234px;
+      --img-width: 220px;
+      --img-height: auto;
     }
 
     .workspace.theme-emailed-thin.long.browser-width-when-portrait,
@@ -117,6 +107,73 @@
       --clean-start__site__overflow_y: visible;
     }
 
+
+    .workspace.theme-emailed-thin.long.browser-width-when-portrait h1 {
+      margin: 2rem 0;
+    }
+
+    .workspace.theme-emailed-thin.long.browser-width-when-portrait .email_address {
+      margin: 1.6rem 0;
+    }
+
+    .workspace.theme-emailed-thin.long.browser-width-when-portrait .text,
+    .workspace.theme-emailed-thin.long.browser-width-when-portrait .text .paragraph {
+      width: 100%;
+      max-width: 100%;
+      line-break: normal;
+      text-align: justify;
+    }
+
+    .workspace.theme-emailed-thin.long.browser-width-when-portrait .text .paragraph {
+      margin: 1.4rem 0;
+    }
+
+    .workspace.theme-emailed-thin.long.browser-width-when-portrait .text .paragraph.attachments {
+      text-align: left;
+      padding: 0.4rem;
+      border: 1px solid #99dd99;
+      background: #fafffa;
+      line-height: 1.4rem;
+    }
+
+    .workspace.theme-emailed-thin.long.browser-width-when-portrait .text .paragraph .inline {
+      display: inline-block;
+      text-align: justify;
+      font-size: 1.05rem;
+      line-height: 1.56rem;
+      color: #555;
+      margin: 0 0.2rem 0 0;
+    }
+
+
+    .workspace.theme-emailed-thin.long.browser-width-when-portrait .text .paragraph.attachments .inline {
+      font-size: 0.8rem;
+      line-height: 1.4rem;
+    }
+
+    .workspace.theme-emailed-thin.long.browser-width-when-portrait .text .paragraph.attachments .inline.filename {
+      background: #eeffee;
+      border: 1px solid #55bb55;
+      border-radius: 0.68rem;
+      padding: 0 0.67rem;
+      font-size: 0.74rem;
+      line-height: 1.09rem;
+    }
+
+    .workspace.theme-emailed-thin.long.browser-width-when-portrait .text .line {
+      display: block;
+      margin: 0;
+    }
+    .workspace.theme-emailed-thin.long.browser-width-when-portrait .text .line:first-of-type {
+      margin: 1.9rem 0 0 0;
+    }
+    .workspace.theme-emailed-thin.long.browser-width-when-portrait .text .line:last-of-type {
+      margin: 0 0 1.9rem 0;
+    }
+
+
+
+
     .workspace.theme-emailed-thin.long.browser-width-when-portrait .images {
       display: block;
 
@@ -150,12 +207,13 @@
       overflow-x: hidden;
       overflow-y: visible;
 
-      margin: 0 0.6rem 0.6rem 0;
+      margin: 0 0.3rem 0.6rem 0;
       overflow: hidden;
+      line-height: 0;
 
-      /* background: #f2fff2; */
-      background: black;
-      border: 1px solid lime;
+      background: white;
+      /* background: black; */
+      border: 1px solid #ddd;
     }
 
     .workspace.theme-emailed-thin.long.browser-width-when-portrait .images .cell .image-holder {
@@ -166,13 +224,14 @@
       min-width: 100%;
 
       height: auto;
+      line-height: 0;
       min-height: fit-content;
       max-height: unset;
 
       overflow-x: hidden;
       overflow-y: visible;
 
-      padding: 0.8rem;
+      padding: 0.10rem;
       margin: 0 0 0 0 !important;
       /* background: #ffffff; */
       background: inherit;
@@ -181,6 +240,7 @@
 
     .workspace.theme-emailed-thin.long.browser-width-when-portrait .images > .cell > .image-holder > img {
       display: inline-block;
+      line-height: 0;
 
       width: auto;
       max-width: 100%;
@@ -189,33 +249,6 @@
       max-height: 100%;
 
       overflow: hidden;
-    }
-
-
-    .workspace.theme-emailed-thin.long.browser-width-when-portrait .email_address {
-      margin: 1.6rem 0;
-    }
-
-    .workspace.theme-emailed-thin.long.browser-width-when-portrait .text,
-    .workspace.theme-emailed-thin.long.browser-width-when-portrait .text .paragraph {
-      width: 100%;
-      max-width: 100%;
-      line-break: normal;
-    }
-
-    .workspace.theme-emailed-thin.long.browser-width-when-portrait .text .paragraph {
-      margin: 1.4rem 0;
-    }
-
-    .workspace.theme-emailed-thin.long.browser-width-when-portrait .text .line {
-      display: block;
-      margin: 0;
-    }
-    .workspace.theme-emailed-thin.long.browser-width-when-portrait .text .line:first-of-type {
-      margin: 1.9rem 0 0 0;
-    }
-    .workspace.theme-emailed-thin.long.browser-width-when-portrait .text .line:last-of-type {
-      margin: 0 0 1.9rem 0;
     }
 
   </style>
@@ -346,85 +379,91 @@
 
   <main class="level_second">
 
-    <h1>Good day</h1>
+    <h1>Bonjour Corinne, thank You a lot for the friendly talk.</h1>
 
     <div class="images">
       <div class="cell">
         <div class="image-holder">
-          <img src="./../../../cdn/www/media/images/html_inliner_example/matthew-stephenson-X5nWClg-dY4-unsplash.jpg" alt="Image Airport" descrption="example of rendered image by cid." />
-        </div>
-      </div>
-      <div class="cell">
-        <div class="image-holder">
-          <img src="./../../../cdn/www/media/images/html_inliner_example/Desktop_1280.jpg" alt="Image Desktop" descrption="example of rendered image by cid." />
-        </div>
-      </div>
-      <div class="cell">
-        <div class="image-holder">
-          <img src="./../../../cdn/www/media/images/html_inliner_example/Laptop_1280.jpg" alt="Image Laptop" descrption="example of rendered image by cid." />
-        </div>
-      </div>
-      <div class="cell">
-        <div class="image-holder">
-          <img src="./../../../cdn/www/media/images/html_inliner_example/InCar-7740670_1280.jpg" alt="Image In the Car" descrption="example of rendered image by cid." />
-        </div>
-      </div>
-      <div class="cell">
-        <div class="image-holder">
-          <img src="./../../../cdn/www/media/images/html_inliner_example/WorkTools-1924174_1280.jpg" alt="Image WorkTools" descrption="example of rendered image by cid." />
-        </div>
-      </div>
-      <div class="cell">
-        <div class="image-holder">
-          <img src="./../../../cdn/www/media/images/html_inliner_example/PhotoCamera-6835351_1280.jpg" alt="Image Photo Camera" descrption="example of rendered image by cid." />
-        </div>
-      </div>
-      <div class="cell">
-        <div class="image-holder">
-          <img src="./../../../cdn/www/media/images/html_inliner_example/Work_1280.jpg" alt="Image Work" descrption="example of rendered image by cid." />
+          <img src="./../../../cdn/www/media/images/html_inliner_example/EliasGreyPullover.jpg" alt="EliasGreyPullover" descrption="rendered image with cid." />
         </div>
       </div>
     </div>
 
-  <div class="workspace-css-table-holder example-table-columns-4 thin-styles-applied bright-styles-applied">
-  <!-- <div class="workspace-css-table-holder example-table-columns-4"> -->
-    <div class="workspace-css-table">
-      <div class="row desktop-columns-labels-holder">
-        <div class="cell column-1"><span class="column-label">attribute</span></div>
-        <div class="cell column-2"><span class="column-label">type</span></div>
-        <div class="cell column-3"><span class="column-label">values</span></div>
-        <div class="cell column-4"><span class="column-label">description</span></div>
-      </div>
-      <div class="row">
-        <div class="cell column-1"><span class="column-label">attribute</span><span class="cell-value">
-            port</span></div>
-        <div class="cell column-2"><span class="column-label">type</span><span class="cell-value">number</span></div>
-        <div class="cell column-3"><span class="column-label">values</span><span class="cell-value">443</span></div>
-        <div class="cell column-4"><span class="column-label">description</span><span class="cell-value">
-  the port number for the server
-  to accept browsers' connections
-        </span>
+    <div class="text">
+      <div class="paragraph">
+        <div class="inline">
+Bonjour Corinne
         </div>
       </div>
-      <div class="row">
-        <div class="cell column-1"><span class="column-label">attribute</span><span class="cell-value">
-            alternative-port</span></div>
-        <div class="cell column-2"><span class="column-label">type</span><span class="cell-value">number</span></div>
-        <div class="cell column-3"><span class="column-label">description</span><span class="cell-value">for development and testing purposes
-          only. if default port is busy,
-          then the server starts listening on the alternative port.</span></div>
-        <div class="cell column-4"><span class="column-label">values</span><span class="cell-value">8443</span></div>
+      <div class="paragraph">
+        <div class="inline">
+Thank You a lot for the friendly talk via mobile 20 minutes ago.
+        </div>
       </div>
-      <div class="row">
-        <div class="cell column-1"><span class="column-label">attribute</span><span class="cell-value">secure</span></div>
-        <div class="cell column-2"><span class="column-label">type</span><span class="cell-value">boolean</span></div>
-        <div class="cell column-3"><span class="column-label">values</span><span class="cell-value">true | false</span></div>
-        <div class="cell column-4"><span class="column-label">description</span><span class="cell-value">please specify, where to use HTTPS
-            secured connection with TLS or not.</span>
+      <div class="paragraph">
+        <div class="inline">
+          In this email like the example of my newer TypeScript lib for emails
+          You see the example of an image inlined in this email text in .eml format
+          and 4 attached docs in well known protable docs format.
+        </div>
+      </div>
+      <div class="paragraph attachments">
+        <div class="inline">Attached files: </div>
+        <div class="inline filename">LetterOfStudent.pdf</div>
+        <div class="inline filename">LetterOfKitty.pdf</div>
+        <div class="inline filename">LetterOfBee.pdf</div>
+      </div>
+      <div class="paragraph">
+        <div class="inline">
+I've asked to sign with me the contract of GCore Company for my newer Databank Software, my DNS Software upgrade and several interesting libs and packages.
+        </div>
+      </div>
+      <div class="paragraph">
+        <div class="inline">
+About the new Databank Software: on the repos for php composer and node npm, I've published already interesting new package @jaisocx/objdata and have breaking through programming ideas and algorythms.
+        </div>
+      </div>
+      <div class="paragraph">
+        <div class="inline">
+The further idea of this one of simple packages is to extend for the very fast being parsed and SAX-art queried all arts of objects and classes instances and data records serialized bitbufs native storage datafiles.
+        </div>
+      </div>
+      <div class="paragraph">
+        <div class="inline">
+The one interesting idea is for the security feature to relay on normal keys and ecryption patterns implemented since long ago, and never in my packages on the-complicated-to-understand-neither-implement algorythms. Never do, since can't neither later and no co-worker genious later never has the desire to cooperate)).
+        </div>
+      </div>
+      <div class="paragraph">
+        <div class="inline">
+Also the very ease and transparent idea and know how of newer algo for fast order by and fast filtering.
+        </div>
+      </div>
+      <div class="paragraph">
+        <div class="inline">
+With my Jaicocx.com web server I'll be able to fine tune the caching feature in the field of clever caching deamon and caching trigger via events emitted by the objdata native storage API model.
+        </div>
+      </div>
+      <div class="paragraph">
+        <div class="inline">
+I'm in the moment developing the front end tools to build and publish the opensource themeable sites for admin panels when managing later the very detailed fine tuned cache politics of the RestAPI and other data endpoints served with https 1.1/2/3. Already since several months the Jaisocx.com caching feature tells one from another the caches by jwt auth, post, get and post json requests payload data.
+        </div>
+      </div>
+      <div class="paragraph">
+        <div class="inline">
+The idea to keep in caches the pre-built h2 packets bitsbufs arrays has shown the very high level of efficiency. I shall publish many implemented algos on the opensource code endpoints later too.
+        </div>
+      </div>
+      <div class="paragraph">
+        <div class="inline">
+        Friendly Greetings,
+        </div>
+      </div>
+      <div class="paragraph">
+        <div class="inline">
+        Elias
         </div>
       </div>
     </div>
-  </div>
 
   </main>
 

@@ -1,21 +1,24 @@
-import { MediaruleNames } from "./MediaruleNames.js"; 
+import { MobileVsDesktop_DevicesSizesNames } from "./Mobile.vsDesktop_DevicesSizesNames.js";
+import { MobileVsDesktopInterface } from "./Mobile.vsDesktopInterface.js";
 
-export class MobileVsDesktopPack {
+
+
+export class MobileVsDesktop implements MobileVsDesktopInterface {
 
   #KEYWORDS_ORIENTATION_PORTRAIT: string[];
   #KEYWORDS_ORIENTATION_LANDSCAPE: string[];
 
   #KEYWORD_MOBILE: string;
   #KEYWORD_TABLET: string;
-  
+
   #CSS_VARIABLE_NAME__MEDIA_RULE: string;
   #CSS_VARIABLE_NAME__WIDTH_FROM: string;
   #CSS_VARIABLE_NAME__WIDTH_TIL: string;
 
-  protected _mediaruleNamesInstance: MediaruleNames;
-  protected _mediaRuleName: string; 
-  protected _mediaRuleSizes: object;
-  protected _mediaruleJson: object;
+  protected _devicesSizesNamesInstance: MobileVsDesktop_DevicesSizesNames;
+  protected _deviceSizeName: string;
+  protected _deviceSizes: object;
+  protected _deviceSizesJson: object;
 
   constructor() {
     this.#KEYWORD_MOBILE = "_mobile_";
@@ -35,17 +38,17 @@ export class MobileVsDesktopPack {
       "_horizontal"
     ];
 
-    this._mediaruleNamesInstance = new MediaruleNames();
-    this._mediaRuleName = "";
-    this._mediaRuleSizes = new Object();
-    this._mediaruleJson = new Object();
+    this._devicesSizesNamesInstance = new MobileVsDesktop_DevicesSizesNames();
+    this._deviceSizeName = "";
+    this._deviceSizes = new Object();
+    this._deviceSizesJson = new Object();
   }
 
   public getCssVariableName_MediaRule(): string {
     return this.#CSS_VARIABLE_NAME__MEDIA_RULE;
   }
 
-  public getCssValueByHtmlNode ( 
+  public getCssValueByHtmlNode (
     htmlNode: HTMLElement,
     cssVariableName: string
   ): string {
@@ -57,7 +60,7 @@ export class MobileVsDesktopPack {
     return cssValue;
   }
 
-  public getCssValueBySelector ( 
+  public getCssValueBySelector (
     htmlNodeSelector: string,
     cssVariableName: string
   ): string {
@@ -68,34 +71,34 @@ export class MobileVsDesktopPack {
       throw new Error( "HTML node not found" );
     }
 
-    let cssValue: string = this.getCssValueByHtmlNode( 
-      htmlNode, 
+    let cssValue: string = this.getCssValueByHtmlNode(
+      htmlNode,
       cssVariableName );
 
     return cssValue;
   }
 
-  public getMediaruleName( force: boolean ): string {
-    if ( !force && this._mediaRuleName.length != 0 ) {
-      return this._mediaRuleName;
+  public getdeviceSizeName( force: boolean ): string {
+    if ( !force && this._deviceSizeName.length != 0 ) {
+      return this._deviceSizeName;
     }
 
     let cssVariableName: string = this.getCssVariableName_MediaRule();
-    let mediaRuleName: string = this.getCssValueBySelector (
+    let deviceSizeName: string = this.getCssValueBySelector (
       "html.workspace",
       cssVariableName
     );
 
-    this._mediaRuleName = mediaRuleName;
+    this._deviceSizeName = deviceSizeName;
 
-    return this._mediaRuleName;
+    return this._deviceSizeName;
   }
 
-  public getMediaruleSizes( force: boolean ): object {
-    let mediaRuleSizesKeys: any = Object.keys( this._mediaRuleSizes );
+  public getdeviceSizes( force: boolean ): object {
+    let deviceSizesKeys: any = Object.keys( this._deviceSizes );
 
-    if ( !force && mediaRuleSizesKeys && mediaRuleSizesKeys.length === 2 ) {
-      return this._mediaRuleSizes;
+    if ( !force && deviceSizesKeys && deviceSizesKeys.length === 2 ) {
+      return this._deviceSizes;
     }
 
     let cssVariable_WidthFrom: string = this.getCssValueBySelector (
@@ -108,32 +111,32 @@ export class MobileVsDesktopPack {
     );
 
     // @ts-ignore
-    this._mediaRuleSizes["minWidth"] = cssVariable_WidthFrom;
+    this._deviceSizes["minWidth"] = cssVariable_WidthFrom;
 
     // @ts-ignore
-    this._mediaRuleSizes["maxWidth"] = cssVariable_WidthTil;
+    this._deviceSizes["maxWidth"] = cssVariable_WidthTil;
 
-    return this._mediaRuleSizes;
+    return this._deviceSizes;
   }
 
   public isMobile( force: boolean ): boolean {
-    let mediaruleName = this.getMediaruleName( force );
+    let deviceSizeName = this.getdeviceSizeName( force );
 
-    let mediaruleNameMatches: boolean = mediaruleName.includes( this.#KEYWORD_MOBILE );
+    let deviceSizeNameMatches: boolean = deviceSizeName.includes( this.#KEYWORD_MOBILE );
 
-    return mediaruleNameMatches;
+    return deviceSizeNameMatches;
   }
 
   public isTablet( force: boolean ): boolean {
-    let mediaruleName = this.getMediaruleName( force );
+    let deviceSizeName = this.getdeviceSizeName( force );
 
-    let mediaruleNameMatches: boolean = mediaruleName.includes( this.#KEYWORD_TABLET );
+    let deviceSizeNameMatches: boolean = deviceSizeName.includes( this.#KEYWORD_TABLET );
 
-    return mediaruleNameMatches;
+    return deviceSizeNameMatches;
   }
 
   public isDesktop( force: boolean ): boolean {
-    let mediaruleName = this.getMediaruleName( force );
+    let deviceSizeName = this.getdeviceSizeName( force );
 
     let keywordsDesktopNotMatching: string[] = [
       this.#KEYWORD_MOBILE,
@@ -143,54 +146,54 @@ export class MobileVsDesktopPack {
     // if one of keywords has matched, then this variable has value of datatype string. not undefined.
     let matchMobileOrTabletFound: string|undefined = keywordsDesktopNotMatching
       .find( ( keyword: string ) => {
-        return mediaruleName.includes( keyword );
+        return deviceSizeName.includes( keyword );
       });
 
     // if matchMobileOrTabletFound not undefined, then one of the keywords "mobile" or "tablet" has matched.
-    let mediaruleNameMatches: boolean = ( matchMobileOrTabletFound !== undefined );
+    let deviceSizeNameMatches: boolean = ( matchMobileOrTabletFound !== undefined );
 
-    // if mediaruleNameMatches === false, means did not match "mobile" or "tablet", then it is a desktop.
-    let isMediaruleDesktop: boolean = ( mediaruleNameMatches === false );
+    // if deviceSizeNameMatches === false, means did not match "mobile" or "tablet", then it is a desktop.
+    let isMediaruleDesktop: boolean = ( deviceSizeNameMatches === false );
 
     return isMediaruleDesktop;
   }
 
-  public matchOrientation ( 
-    keywords: string[], 
+  public matchOrientation (
+    keywords: string[],
     force: boolean ): boolean {
-    let mediaruleName = this.getMediaruleName( force );
+    let deviceSizeName = this.getdeviceSizeName( force );
     let matchFound: string|undefined = keywords
       .find( ( keyword: string ) => {
-        return mediaruleName.endsWith( keyword );
+        return deviceSizeName.endsWith( keyword );
       });
-    let mediaruleNameMatches: boolean = ( matchFound !== undefined );
+    let deviceSizeNameMatches: boolean = ( matchFound !== undefined );
 
-    return mediaruleNameMatches;
-  } 
+    return deviceSizeNameMatches;
+  }
 
   public isOrientationPortrait( force: boolean ): boolean {
-    let mediaruleNameMatches: boolean = this.matchOrientation( 
-      this.#KEYWORDS_ORIENTATION_PORTRAIT, 
+    let deviceSizeNameMatches: boolean = this.matchOrientation(
+      this.#KEYWORDS_ORIENTATION_PORTRAIT,
       force );
 
-    return mediaruleNameMatches;
+    return deviceSizeNameMatches;
   }
 
   public isOrientationLandscape( force: boolean ): boolean {
-    let mediaruleNameMatches: boolean = this.matchOrientation( 
-      this.#KEYWORDS_ORIENTATION_LANDSCAPE, 
+    let deviceSizeNameMatches: boolean = this.matchOrientation(
+      this.#KEYWORDS_ORIENTATION_LANDSCAPE,
       force );
 
-    return mediaruleNameMatches;
+    return deviceSizeNameMatches;
   }
 
   public toJson( force: boolean ): any {
-    let mediaruleName: string = this.getMediaruleName( force );
-    let mediaruleSizes: object = this.getMediaruleSizes( force );
+    let deviceSizeName: string = this.getdeviceSizeName( force );
+    let deviceSizes: object = this.getdeviceSizes( force );
 
-    let mediaruleJsonKeys: string[] = Object.keys(this._mediaruleJson);
-    if ( !force && mediaruleJsonKeys && mediaruleJsonKeys.length !== 0 ) {
-      return this._mediaruleJson;
+    let deviceSizesJsonKeys: string[] = Object.keys(this._deviceSizesJson);
+    if ( !force && deviceSizesJsonKeys && deviceSizesJsonKeys.length !== 0 ) {
+      return this._deviceSizesJson;
     }
 
     let notToUpdate: boolean = false;
@@ -205,30 +208,30 @@ export class MobileVsDesktopPack {
     let labelIsDesktop: string = "isDesktop";
 
     let isMobilePortrait: boolean = ( isMobile && isOrientationPortrait);
-    let labelMediaruleName: string = isMobilePortrait ? "media" : "mediaQueryName";
-    let labelMediaruleSizes: string = isMobilePortrait ? "width" : "mediaQueryWidth";
+    let labeldeviceSizeName: string = isMobilePortrait ? "media" : "mediaQueryName";
+    let labeldeviceSizes: string = isMobilePortrait ? "width" : "mediaQueryWidth";
     let labelIsOrientationPortrait: string = isMobilePortrait ? "portrait" : "isOrientationPortrait";
     let labelIsOrientationLandscape: string = isMobilePortrait ? "landscape" : "isOrientationLandscape";
 
-    this._mediaruleJson = {
-      [labelMediaruleName]: mediaruleName,
-      [labelMediaruleSizes]: mediaruleSizes,
+    this._deviceSizesJson = {
+      [labeldeviceSizeName]: deviceSizeName,
+      [labeldeviceSizes]: deviceSizes,
       [labelIsMobile]: isMobile,
       [labelIsTablet]: isTablet,
       [labelIsDesktop]: isDesktop,
       [labelIsOrientationPortrait]: isOrientationPortrait,
       [labelIsOrientationLandscape]: isOrientationLandscape
     };
-    
-    return this._mediaruleJson;
+
+    return this._deviceSizesJson;
   }
 
   public toString(): string {
     let force: boolean = true;
-    let mediaruleJson: any = this.toJson( force );
-    let jsonString: string = JSON.stringify( 
-      mediaruleJson, 
-      null, 
+    let deviceSizesJson: any = this.toJson( force );
+    let jsonString: string = JSON.stringify(
+      deviceSizesJson,
+      null,
       2 );
 
     return jsonString;
