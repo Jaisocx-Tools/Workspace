@@ -13,7 +13,7 @@ var __classPrivateFieldGet = (this && this.__classPrivateFieldGet) || function (
 var _MobileVsDesktopPack_KEYWORDS_ORIENTATION_PORTRAIT, _MobileVsDesktopPack_KEYWORDS_ORIENTATION_LANDSCAPE, _MobileVsDesktopPack_KEYWORD_MOBILE, _MobileVsDesktopPack_KEYWORD_TABLET, _MobileVsDesktopPack_CSS_VARIABLE_NAME__MEDIA_RULE, _MobileVsDesktopPack_CSS_VARIABLE_NAME__WIDTH_FROM, _MobileVsDesktopPack_CSS_VARIABLE_NAME__WIDTH_TIL;
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.MobileVsDesktopPack = void 0;
-const MediaruleNames_js_1 = require("./MediaruleNames.js");
+const ResponsiveSizeNames_js_1 = require("./ResponsiveSizeNames.js");
 class MobileVsDesktopPack {
     constructor() {
         _MobileVsDesktopPack_KEYWORDS_ORIENTATION_PORTRAIT.set(this, void 0);
@@ -36,12 +36,12 @@ class MobileVsDesktopPack {
             "_landscape",
             "_horizontal"
         ], "f");
-        this._mediaruleNamesInstance = new MediaruleNames_js_1.MediaruleNames();
-        this._mediaRuleName = "";
-        this._mediaRuleSizes = new Object();
-        this._mediaruleJson = new Object();
+        this._responsiveSizeNamesInstance = new ResponsiveSizeNames_js_1.ResponsiveSizeNames();
+        this._responsiveSizeName = "";
+        this._responsiveSizes = new Object();
+        this._responsiveSizeJson = new Object();
     }
-    getCssVariableName_MediaRule() {
+    getCssVariableName_ResponsiveSize() {
         return __classPrivateFieldGet(this, _MobileVsDesktopPack_CSS_VARIABLE_NAME__MEDIA_RULE, "f");
     }
     getCssValueByHtmlNode(htmlNode, cssVariableName) {
@@ -58,40 +58,40 @@ class MobileVsDesktopPack {
         let cssValue = this.getCssValueByHtmlNode(htmlNode, cssVariableName);
         return cssValue;
     }
-    getMediaruleName(force) {
-        if (!force && this._mediaRuleName.length != 0) {
-            return this._mediaRuleName;
+    getResponsiveSizeName(force) {
+        if (!force && this._responsiveSizeName.length != 0) {
+            return this._responsiveSizeName;
         }
-        let cssVariableName = this.getCssVariableName_MediaRule();
-        let mediaRuleName = this.getCssValueBySelector("html.workspace", cssVariableName);
-        this._mediaRuleName = mediaRuleName;
-        return this._mediaRuleName;
+        let cssVariableName = this.getCssVariableName_ResponsiveSize();
+        let responsiveSizeName = this.getCssValueBySelector("html.workspace", cssVariableName);
+        this._responsiveSizeName = responsiveSizeName;
+        return this._responsiveSizeName;
     }
-    getMediaruleSizes(force) {
-        let mediaRuleSizesKeys = Object.keys(this._mediaRuleSizes);
-        if (!force && mediaRuleSizesKeys && mediaRuleSizesKeys.length === 2) {
-            return this._mediaRuleSizes;
+    getResponsiveSizes(force) {
+        let responsiveSizesKeys = Object.keys(this._responsiveSizes);
+        if (!force && responsiveSizesKeys && responsiveSizesKeys.length === 2) {
+            return this._responsiveSizes;
         }
         let cssVariable_WidthFrom = this.getCssValueBySelector("html.workspace", __classPrivateFieldGet(this, _MobileVsDesktopPack_CSS_VARIABLE_NAME__WIDTH_FROM, "f"));
         let cssVariable_WidthTil = this.getCssValueBySelector("html.workspace", __classPrivateFieldGet(this, _MobileVsDesktopPack_CSS_VARIABLE_NAME__WIDTH_TIL, "f"));
         // @ts-ignore
-        this._mediaRuleSizes["minWidth"] = cssVariable_WidthFrom;
+        this._responsiveSizes["minWidth"] = cssVariable_WidthFrom;
         // @ts-ignore
-        this._mediaRuleSizes["maxWidth"] = cssVariable_WidthTil;
-        return this._mediaRuleSizes;
+        this._responsiveSizes["maxWidth"] = cssVariable_WidthTil;
+        return this._responsiveSizes;
     }
     isMobile(force) {
-        let mediaruleName = this.getMediaruleName(force);
-        let mediaruleNameMatches = mediaruleName.includes(__classPrivateFieldGet(this, _MobileVsDesktopPack_KEYWORD_MOBILE, "f"));
-        return mediaruleNameMatches;
+        let responsiveSizeName = this.getResponsiveSizeName(force);
+        let responsiveSizeNameMatches = responsiveSizeName.includes(__classPrivateFieldGet(this, _MobileVsDesktopPack_KEYWORD_MOBILE, "f"));
+        return responsiveSizeNameMatches;
     }
     isTablet(force) {
-        let mediaruleName = this.getMediaruleName(force);
-        let mediaruleNameMatches = mediaruleName.includes(__classPrivateFieldGet(this, _MobileVsDesktopPack_KEYWORD_TABLET, "f"));
-        return mediaruleNameMatches;
+        let responsiveSizeName = this.getResponsiveSizeName(force);
+        let responsiveSizeNameMatches = responsiveSizeName.includes(__classPrivateFieldGet(this, _MobileVsDesktopPack_KEYWORD_TABLET, "f"));
+        return responsiveSizeNameMatches;
     }
     isDesktop(force) {
-        let mediaruleName = this.getMediaruleName(force);
+        let responsiveSizeName = this.getResponsiveSizeName(force);
         let keywordsDesktopNotMatching = [
             __classPrivateFieldGet(this, _MobileVsDesktopPack_KEYWORD_MOBILE, "f"),
             __classPrivateFieldGet(this, _MobileVsDesktopPack_KEYWORD_TABLET, "f")
@@ -99,37 +99,37 @@ class MobileVsDesktopPack {
         // if one of keywords has matched, then this variable has value of datatype string. not undefined.
         let matchMobileOrTabletFound = keywordsDesktopNotMatching
             .find((keyword) => {
-            return mediaruleName.includes(keyword);
+            return responsiveSizeName.includes(keyword);
         });
         // if matchMobileOrTabletFound not undefined, then one of the keywords "mobile" or "tablet" has matched.
-        let mediaruleNameMatches = (matchMobileOrTabletFound !== undefined);
-        // if mediaruleNameMatches === false, means did not match "mobile" or "tablet", then it is a desktop.
-        let isMediaruleDesktop = (mediaruleNameMatches === false);
-        return isMediaruleDesktop;
+        let responsiveSizeNameMatches = (matchMobileOrTabletFound !== undefined);
+        // if responsiveSizeNameMatches === false, means did not match "mobile" or "tablet", then it is a desktop.
+        let isResponsiveSizeDesktop = (responsiveSizeNameMatches === false);
+        return isResponsiveSizeDesktop;
     }
     matchOrientation(keywords, force) {
-        let mediaruleName = this.getMediaruleName(force);
+        let responsiveSizeName = this.getResponsiveSizeName(force);
         let matchFound = keywords
             .find((keyword) => {
-            return mediaruleName.endsWith(keyword);
+            return responsiveSizeName.endsWith(keyword);
         });
-        let mediaruleNameMatches = (matchFound !== undefined);
-        return mediaruleNameMatches;
+        let responsiveSizeNameMatches = (matchFound !== undefined);
+        return responsiveSizeNameMatches;
     }
     isOrientationPortrait(force) {
-        let mediaruleNameMatches = this.matchOrientation(__classPrivateFieldGet(this, _MobileVsDesktopPack_KEYWORDS_ORIENTATION_PORTRAIT, "f"), force);
-        return mediaruleNameMatches;
+        let responsiveSizeNameMatches = this.matchOrientation(__classPrivateFieldGet(this, _MobileVsDesktopPack_KEYWORDS_ORIENTATION_PORTRAIT, "f"), force);
+        return responsiveSizeNameMatches;
     }
     isOrientationLandscape(force) {
-        let mediaruleNameMatches = this.matchOrientation(__classPrivateFieldGet(this, _MobileVsDesktopPack_KEYWORDS_ORIENTATION_LANDSCAPE, "f"), force);
-        return mediaruleNameMatches;
+        let responsiveSizeNameMatches = this.matchOrientation(__classPrivateFieldGet(this, _MobileVsDesktopPack_KEYWORDS_ORIENTATION_LANDSCAPE, "f"), force);
+        return responsiveSizeNameMatches;
     }
     toJson(force) {
-        let mediaruleName = this.getMediaruleName(force);
-        let mediaruleSizes = this.getMediaruleSizes(force);
-        let mediaruleJsonKeys = Object.keys(this._mediaruleJson);
-        if (!force && mediaruleJsonKeys && mediaruleJsonKeys.length !== 0) {
-            return this._mediaruleJson;
+        let responsiveSizeName = this.getResponsiveSizeName(force);
+        let responsiveSizes = this.getResponsiveSizes(force);
+        let responsiveSizeJsonKeys = Object.keys(this._responsiveSizeJson);
+        if (!force && responsiveSizeJsonKeys && responsiveSizeJsonKeys.length !== 0) {
+            return this._responsiveSizeJson;
         }
         let notToUpdate = false;
         let isMobile = this.isMobile(notToUpdate);
@@ -141,25 +141,25 @@ class MobileVsDesktopPack {
         let labelIsTablet = "isTablet";
         let labelIsDesktop = "isDesktop";
         let isMobilePortrait = (isMobile && isOrientationPortrait);
-        let labelMediaruleName = isMobilePortrait ? "media" : "mediaQueryName";
-        let labelMediaruleSizes = isMobilePortrait ? "width" : "mediaQueryWidth";
+        let labelResponsiveSizeName = isMobilePortrait ? "media" : "mediaQueryName";
+        let labelResponsiveSizes = isMobilePortrait ? "width" : "mediaQueryWidth";
         let labelIsOrientationPortrait = isMobilePortrait ? "portrait" : "isOrientationPortrait";
         let labelIsOrientationLandscape = isMobilePortrait ? "landscape" : "isOrientationLandscape";
-        this._mediaruleJson = {
-            [labelMediaruleName]: mediaruleName,
-            [labelMediaruleSizes]: mediaruleSizes,
+        this._responsiveSizeJson = {
+            [labelResponsiveSizeName]: responsiveSizeName,
+            [labelResponsiveSizes]: responsiveSizes,
             [labelIsMobile]: isMobile,
             [labelIsTablet]: isTablet,
             [labelIsDesktop]: isDesktop,
             [labelIsOrientationPortrait]: isOrientationPortrait,
             [labelIsOrientationLandscape]: isOrientationLandscape
         };
-        return this._mediaruleJson;
+        return this._responsiveSizeJson;
     }
     toString() {
         let force = true;
-        let mediaruleJson = this.toJson(force);
-        let jsonString = JSON.stringify(mediaruleJson, null, 2);
+        let responsiveSizeJson = this.toJson(force);
+        let jsonString = JSON.stringify(responsiveSizeJson, null, 2);
         return jsonString;
     }
     getBrowserTabDimensions() {

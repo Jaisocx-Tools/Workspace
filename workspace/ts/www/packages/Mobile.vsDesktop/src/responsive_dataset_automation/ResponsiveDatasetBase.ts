@@ -90,7 +90,7 @@ export class ResponsiveDatasetBase implements ResponsiveDatasetBaseInterface {
     );
 
 
-    await this.produceMediaRulesTypescriptFile( "MediaruleNamesNew" );
+    await this.produceResponsiveSizesTypescriptFile( "ResponsiveSizeNamesNew" );
 
     let packagePath: string = path.resolve(
       this.mediaAndStylesResponsiveFolderPath,

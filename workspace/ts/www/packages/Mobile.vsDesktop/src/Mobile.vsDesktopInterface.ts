@@ -1,6 +1,6 @@
 export interface MobileVsDesktopInterface {
 
-  getCssVariableName_MediaRule (): string;
+  getResponsiveSizeConstantName (): string;
 
   getCssValueByHtmlNode (
     htmlNode: HTMLElement,
@@ -12,24 +12,24 @@ export interface MobileVsDesktopInterface {
     cssVariableName: string
   ): string;
 
-  getMediaruleName( force: boolean ): string;
+  getResponsiveSizeName( force: boolean ): string;
 
-  getMediaruleSizes( force: boolean ): object;
+  getResponsiveSizes( force: boolean ): object;
 
-  isMobile( force: boolean ): boolean;
+  mobile( force: boolean ): boolean;
 
-  isTablet( force: boolean ): boolean;
+  tablet( force: boolean ): boolean;
 
-  isDesktop( force: boolean ): boolean;
+  desktop( force: boolean ): boolean;
 
   matchOrientation (
     keywords: string[],
     force: boolean
   ): boolean;
 
-  isOrientationPortrait( force: boolean ): boolean;
+  orientationPortrait( force: boolean ): boolean;
 
-  isOrientationLandscape( force: boolean ): boolean;
+  orientationLandscape( force: boolean ): boolean;
 
   toJson( force: boolean ): any;
 

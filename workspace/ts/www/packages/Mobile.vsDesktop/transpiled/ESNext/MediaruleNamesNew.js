@@ -1,4 +1,4 @@
-export class MediaruleNamesNew {
+export class ResponsiveSizeNamesNew {
     #style_e02_mobile_xs_portrait = "style_e02_mobile_xs_portrait";
     #style_e02_mobile_xs_landscape = "style_e02_mobile_xs_landscape";
     #style_e04_mobile_s_portrait = "style_e04_mobile_s_portrait";
@@ -120,4 +120,4 @@ export class MediaruleNamesNew {
         return this.#style_t16_tv_16k_landscape;
     }
 }
-//# sourceMappingURL=MediaruleNamesNew.js.map
+//# sourceMappingURL=ResponsiveSizeNamesNew.js.map

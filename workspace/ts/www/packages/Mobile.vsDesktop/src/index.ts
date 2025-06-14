@@ -1,4 +1,4 @@
-// these imports of styles enable these styles and themes via import atatement of this package in another .js file, 
+// these imports of styles enable these styles and themes via import atatement of this package in another .js file,
 // when built with webpack and using the webpackAliases of this package.
 
 // import "@jaisocx-css-clean-start-MediaAndStyles/clean-start-main-webpack.css";
@@ -7,9 +7,9 @@
 // import "@jaisocx-css-clean-start-MediaAndStyles/themes/theme-lightmode/clean-start-theme-lightmode-webpack.css";
 // import "@jaisocx-css-clean-start-MediaAndStyles/themes/theme-darkmode/clean-start-theme-darkmode-webpack.css";
 
-import { MediaruleNames } from "./MediaruleNames.js"; 
-export { MediaruleNames } from "./MediaruleNames.js"; 
+import { ResponsiveSizeNames } from "./ResponsiveSizeNames.js";
+export { ResponsiveSizeNames } from "./ResponsiveSizeNames.js";
 
-(Window as any).MediaruleNames = MediaruleNames; // for debugging in browser console
+(Window as any).ResponsiveSizeNames = ResponsiveSizeNames; // for debugging in browser console
 
 

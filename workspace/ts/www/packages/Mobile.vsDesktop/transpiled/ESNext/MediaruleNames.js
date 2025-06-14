@@ -1,4 +1,4 @@
-export class MediaruleNames {
+export class ResponsiveSizeNames {
     #MEDIA_2xl_ultra_wide_horizontal = "media_2xl_ultra_wide_horizontal";
     #MEDIA_2xl_ultra_wide_vertical = "media_2xl_ultra_wide_vertical";
     #MEDIA_3xl_hd_horizontal = "media_3xl_hd_horizontal";
@@ -96,4 +96,4 @@ export class MediaruleNames {
         return this.#MEDIA_xs_mobile_portrait;
     }
 }
-//# sourceMappingURL=MediaruleNames.js.map
+//# sourceMappingURL=ResponsiveSizeNames.js.map

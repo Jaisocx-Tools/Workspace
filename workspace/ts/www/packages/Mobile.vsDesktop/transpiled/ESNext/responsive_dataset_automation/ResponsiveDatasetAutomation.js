@@ -45,7 +45,7 @@ export class ResponsiveDatasetAutomation {
         await this.produceMediaCssImportsCssFile("MediaCssImports_Webpack.css", subfolderName, mediaConstantsFileName, responsiveMediaQueriesFilesPrefix, isWebpackAliased_true);
         let isWebpackAliased_false = false;
         await this.produceMediaCssImportsCssFile("MediaCssImports.css", "", mediaConstantsFileName, responsiveMediaQueriesFilesPrefix, isWebpackAliased_false);
-        await this.produceMediaRulesTypescriptFile("MediaruleNamesNew");
+        await this.produceResponsiveSizesTypescriptFile("ResponsiveSizeNamesNew");
         let packagePath = path.resolve(this.mediaAndStylesResponsiveFolderPath, "../../");
         let cssImporter = new CssImporter();
         let cssImporterBuilt = await cssImporter
@@ -97,7 +97,7 @@ export class ResponsiveDatasetAutomation {
         this.webpackAliasName = alias;
         return this;
     }
-    async produceMediaRulesTypescriptFile(tsClassName) {
+    async produceResponsiveSizesTypescriptFile(tsClassName) {
         // @ts-ignore
         let propNames = Object.keys(this.dataset.data);
         let responsiveDatasetPropName = "";
@@ -199,12 +199,12 @@ export class ResponsiveDatasetAutomation {
     //   --screen-xs-mobile-portrait-from: 3px;
     //   --screen-xs-mobile-portrait-til: 320px;
     //
-    //   --screen-xs-mobile-landscape-til: 568px; 
-    //   --screen-xs-mobile-landscape-from: 569px; 
+    //   --screen-xs-mobile-landscape-til: 568px;
+    //   --screen-xs-mobile-landscape-from: 569px;
     //
     //
     //   Small Mobile (S)
-    //   --screen-s-mobile-portrait-from: 321px; 
+    //   --screen-s-mobile-portrait-from: 321px;
     //   ...
     async produceMediaConstantsCssFile(targetFileName) {
         // @ts-ignore
@@ -239,10 +239,10 @@ export class ResponsiveDatasetAutomation {
             .setTemplate(this.templateMediaCssFileContent)
             .setData({
             "mediaName": "",
-            "mediaRuleLine": "",
-            "mediaRuleConstanLine": "",
-            "mediaRuleVariable_WidthFrom": "",
-            "mediaRuleVariable_WidthTil": ""
+            "responsiveSizeLine": "",
+            "responsiveSizeConstanLine": "",
+            "responsiveSizeVariable_WidthFrom": "",
+            "responsiveSizeVariable_WidthTil": ""
         })
             .getActiveDataRecordId();
         this.templateRenderer.optimize(templateRendererDataRecordId);
@@ -259,32 +259,32 @@ export class ResponsiveDatasetAutomation {
      */
     async produceMediaCssFile(filenamePrefix, responsiveDatasetPropName, orientation) {
         let mediaNameText = this.produceMediaName(responsiveDatasetPropName, orientation);
-        let mediaRuleLinesArray = this.produceMediaRule(responsiveDatasetPropName, orientation, this.automationConstants.getMediaRuleScreen());
-        let mediaRuleConstanLinesArray = this.produceMediaConstantNameLine(responsiveDatasetPropName, orientation);
+        let responsiveSizeLinesArray = this.produceResponsiveSize(responsiveDatasetPropName, orientation, this.automationConstants.getResponsiveSizeScreen());
+        let responsiveSizeConstanLinesArray = this.produceMediaConstantNameLine(responsiveDatasetPropName, orientation);
         let mediaName = this.textEncoder.encode(mediaNameText);
-        let mediaRuleLine = this.fileWriter.concatUint8Arrays(mediaRuleLinesArray);
-        let mediaRuleConstanLine = this.fileWriter.concatUint8Arrays(mediaRuleConstanLinesArray);
+        let responsiveSizeLine = this.fileWriter.concatUint8Arrays(responsiveSizeLinesArray);
+        let responsiveSizeConstanLine = this.fileWriter.concatUint8Arrays(responsiveSizeConstanLinesArray);
         // temp for debugging
-        // let mediaRuleLineText: string = this.textDecoder.decode ( this.fileWriter.concatUint8Arrays( mediaRuleLine ) );
-        // let mediaRuleConstanLineText: string = this.textDecoder.decode ( this.fileWriter.concatUint8Arrays( mediaRuleConstanLine ) );
+        // let responsiveSizeLineText: string = this.textDecoder.decode ( this.fileWriter.concatUint8Arrays( responsiveSizeLine ) );
+        // let responsiveSizeConstanLineText: string = this.textDecoder.decode ( this.fileWriter.concatUint8Arrays( responsiveSizeConstanLine ) );
         let postfix = this.automationConstants.getBitsbufKeywordFrom();
-        let mediaRuleVariable_WidthFromArray = this.automationConstants.getMediaRuleVariable_Width_Updated(mediaName, postfix);
-        let mediaRuleVariable_WidthFrom = this.fileWriter.concatUint8Arrays(mediaRuleVariable_WidthFromArray);
+        let responsiveSizeVariable_WidthFromArray = this.automationConstants.getResponsiveSizeVariable_Width_Updated(mediaName, postfix);
+        let responsiveSizeVariable_WidthFrom = this.fileWriter.concatUint8Arrays(responsiveSizeVariable_WidthFromArray);
         postfix = this.automationConstants.getBitsbufKeywordTil();
-        let mediaRuleVariable_WidthTilArray = this.automationConstants.getMediaRuleVariable_Width_Updated(mediaName, postfix);
-        let mediaRuleVariable_WidthTil = this.fileWriter.concatUint8Arrays(mediaRuleVariable_WidthTilArray);
+        let responsiveSizeVariable_WidthTilArray = this.automationConstants.getResponsiveSizeVariable_Width_Updated(mediaName, postfix);
+        let responsiveSizeVariable_WidthTil = this.fileWriter.concatUint8Arrays(responsiveSizeVariable_WidthTilArray);
         let templateData = {
             "mediaName": mediaName,
-            "mediaRuleLine": mediaRuleLine,
-            "mediaRuleConstanLine": mediaRuleConstanLine,
-            "mediaRuleVariable_WidthFrom": mediaRuleVariable_WidthFrom,
-            "mediaRuleVariable_WidthTil": mediaRuleVariable_WidthTil
+            "responsiveSizeLine": responsiveSizeLine,
+            "responsiveSizeConstanLine": responsiveSizeConstanLine,
+            "responsiveSizeVariable_WidthFrom": responsiveSizeVariable_WidthFrom,
+            "responsiveSizeVariable_WidthTil": responsiveSizeVariable_WidthTil
         };
         // temp for debugging
         // let templateData: any = {
         //   "mediaName": mediaNameText,
-        //   "mediaRuleLine": mediaRuleLineText,
-        //   "mediaRuleConstanLine": mediaRuleConstanLineText
+        //   "responsiveSizeLine": responsiveSizeLineText,
+        //   "responsiveSizeConstanLine": responsiveSizeConstanLineText
         // };
         this.templateRenderer
             .setData(templateData);
@@ -292,7 +292,7 @@ export class ResponsiveDatasetAutomation {
         let content = this.templateRenderer.renderOptimizedDataBitsbufs(templateRendererDataRecordId, templateData);
         // temp for debugging
         // @ts-ignore
-        // let contentText: string = this.templateRenderer.renderOptimizedToString ( 
+        // let contentText: string = this.templateRenderer.renderOptimizedToString (
         //   templateRendererDataRecordId,
         //   templateData
         // );
@@ -310,9 +310,9 @@ export class ResponsiveDatasetAutomation {
     // writes this file:
     // @import url("@jaisocx-css-clean-start-MediaAndStyles/responsive/clean-start-xs-mobile-landscape.css");
     // @import url("@jaisocx-css-clean-start-MediaAndStyles/responsive/clean-start-xs-mobile-portrait.css");
-    //   
+    //
     // @import url("@jaisocx-css-clean-start-MediaAndStyles/responsive/clean-start-s-mobile-landscape.css");
-    // ...  
+    // ...
     async produceMediaCssImportsCssFile(targetFileName, relativeImportedFilesFolderPath, mediaConstantsFileName, importedFilenamePrefix, webpackAliased) {
         // @ts-ignore
         let data = this.dataset.data;
@@ -412,7 +412,7 @@ export class ResponsiveDatasetAutomation {
      * @ready
      */
     // @media only screen and (min-width: 786px) and (max-width: 1023px) and (orientation: landscape)
-    produceMediaRule(responsiveDatasetPropName, orientation, media // screen | print | all
+    produceResponsiveSize(responsiveDatasetPropName, orientation, media // screen | print | all
     ) {
         let sizes = this.getSizesByOrientation(responsiveDatasetPropName, orientation);
         let minWidth = (new Number(sizes[this.automationConstants.getKeywordFrom()])).toString();
@@ -425,7 +425,7 @@ export class ResponsiveDatasetAutomation {
     /**
      * @ready
     */
-    produceMediaRuleConstantLine(responsiveDatasetPropName, orientation, media // screen | print | all
+    produceResponsiveSizeConstantLine(responsiveDatasetPropName, orientation, media // screen | print | all
     ) {
         const mediaName = this.produceMediaName(responsiveDatasetPropName, orientation);
         let sizes = this.getSizesByOrientation(responsiveDatasetPropName, orientation);
@@ -433,8 +433,8 @@ export class ResponsiveDatasetAutomation {
         let maxWidth = sizes[this.automationConstants.getKeywordTil()];
         //`"@media only ${media} and (min-width: ${minWidth}px) and (max-width: ${maxWidth}px) and (orientation: ${orientation})";`;
         let mediaLine = this.automationConstants.getMediaLineUpdated(media, minWidth, maxWidth, orientation);
-        let mediaRuleConstantLine = this.automationConstants.getMediaRuleConstantLineUpdated(mediaName, mediaLine);
-        return [...mediaRuleConstantLine];
+        let responsiveSizeConstantLine = this.automationConstants.getResponsiveSizeConstantLineUpdated(mediaName, mediaLine);
+        return [...responsiveSizeConstantLine];
     }
     //
     // --s_56_16k_tv_vertical__min_width: 8641px; /* 16k TV */
@@ -482,8 +482,8 @@ export class ResponsiveDatasetAutomation {
         if (orientation === orientationStandard) {
             sizes = responsiveDatasetProp["width"];
         }
-        else if ((orientation === this.automationConstants.getMediaRuleOrientationLandscape()) ||
-            (orientation === this.automationConstants.getMediaRuleOrientationPortrait())) {
+        else if ((orientation === this.automationConstants.getResponsiveSizeOrientationLandscape()) ||
+            (orientation === this.automationConstants.getResponsiveSizeOrientationPortrait())) {
             sizes = responsiveDatasetProp["height"];
         }
         else {

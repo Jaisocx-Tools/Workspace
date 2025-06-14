@@ -26,8 +26,8 @@ export class ResponsiveTsFile_ResponsiveSizesNames implements ResponsiveTsFile_R
 
 
 
-  // RENAMED: produceMediaRulesTypescriptFile
-  // Mobile.vsDesktop/src/MediaruleNamesNew.ts
+  // RENAMED: produceResponsiveSizesTypescriptFile
+  // Mobile.vsDesktop/src/ResponsiveSizeNamesNew.ts
   // the .ts class with constants names for media queries.
   // these names are unique for .css files names and css variables for width and height px sizes.
   // class prop: readonly #style_e02_mobile_xs_portrait: string = "style_e02_mobile_xs_portrait";

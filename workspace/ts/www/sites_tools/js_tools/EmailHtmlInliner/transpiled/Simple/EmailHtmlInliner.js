@@ -599,8 +599,8 @@ class EmailHtmlInliner {
     // END BLOCK MAIN METHODS
     // START BLOCK  METHODS TO PRE-BUILD DATA SETS TO AVOID AMBIGOUS METHODS CALLS ON SAME CSSRULES MANY TIMES.
     // 1) first invoked line 79
-    // filters out CSSMediaRule by media query to current device monitor size
-    // all MediaRule types are recursively set as CSSStyleRule
+    // filters out CSSResponsiveSize by media query to current device monitor size
+    // all ResponsiveSize types are recursively set as CSSStyleRule
     // relays on subcall to the next recursive method calculateSpecifitiesForAllRules()
     getRulesMatchingMedia() {
 
@@ -621,8 +621,8 @@ class EmailHtmlInliner {
     }
 
 
-    // filters out CSSMediaRule by media query to current device monitor size
-    // all MediaRule types are recursively set as CSSStyleRule to the 2nd in arg inOutRulesMatching
+    // filters out CSSResponsiveSize by media query to current device monitor size
+    // all ResponsiveSize types are recursively set as CSSStyleRule to the 2nd in arg inOutRulesMatching
     // pre-build subcall of 1) method of getRulesMatchingMedia() to add all rules matching current media
     calculateSpecifitiesForAllRules(cssRules, inOutRulesMatching) {
         let nestedCssRules;
@@ -644,7 +644,7 @@ class EmailHtmlInliner {
                 inOutRulesMatching.push(objectPushed);
                 continue;
             }
-            else if (rule instanceof CSSMediaRule) {
+            else if (rule instanceof CSSResponsiveSize) {
 
                 if (window.matchMedia(rule.conditionText).matches === false) {
 

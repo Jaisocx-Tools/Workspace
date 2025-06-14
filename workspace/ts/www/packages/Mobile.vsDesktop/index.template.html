@@ -50,7 +50,7 @@
   </style>
 
 
-  <script src="transpiled/Simple/MediaruleNames.js"></script>
+  <script src="transpiled/Simple/ResponsiveSizeNames.js"></script>
   <script src="transpiled/Simple/Mobile.vsDesktopPack.js"></script>
 
 </head>
@@ -76,7 +76,7 @@
 
     function addOnSite( html ) {
       let output = document.getElementById('output');
-      
+
       let locHtml = html + "\n\n";
 
       output.insertAdjacentHTML( 'beforeEnd', locHtml );
@@ -84,16 +84,16 @@
 
     function setOnSite( html ) {
       let output = document.getElementById('output');
-      
+
       output.innerHTML = html;
     }
 
 
-    function mediaruleNameTest( force ) {
+    function responsiveSizeNameTest( force ) {
 
       let mobileVsDesktopPack = new MobileVsDesktopPack();
 
-      let mediaruleName = mobileVsDesktopPack.getMediaruleName( force );
+      let responsiveSizeName = mobileVsDesktopPack.getResponsiveSizeName( force );
 
       let isMobile = mobileVsDesktopPack.isMobile( false );
       let isTablet = mobileVsDesktopPack.isTablet( false );
@@ -106,12 +106,12 @@
       let labelIsDesktop = "isDesktop";
 
       let isMobilePortrait = ( isMobile && isOrientationPortrait);
-      let labelMediaruleName = isMobilePortrait ? "media" : "mediaruleName";
+      let labelResponsiveSizeName = isMobilePortrait ? "media" : "responsiveSizeName";
       let labelIsOrientationPortrait = isMobilePortrait ? "portrait" : "isOrientationPortrait";
       let labelIsOrientationLandscape = isMobilePortrait ? "landscape" : "isOrientationLandscape";
 
       let lines = {
-        [labelMediaruleName]: mediaruleName,
+        [labelResponsiveSizeName]: responsiveSizeName,
         [labelIsMobile]: isMobile,
         [labelIsTablet]: isTablet,
         [labelIsDesktop]: isDesktop,
@@ -121,37 +121,37 @@
 
       let locHtml = JSON.stringify(lines, null, 2);
 
-      setOnSite( mediaruleName + "\n\n" );
+      setOnSite( responsiveSizeName + "\n\n" );
 
       addOnSite( locHtml );
     }
 
-    function mediaruleNameTestJson() {
+    function responsiveSizeNameTestJson() {
       let mobileVsDesktopPack = new MobileVsDesktopPack();
-      let mediaruleJsonText = mobileVsDesktopPack.toString();
-      setOnSite( mediaruleJsonText );
+      let responsiveSizeJsonText = mobileVsDesktopPack.toString();
+      setOnSite( responsiveSizeJsonText );
     }
 
-    function allMediarulesShow() {
+    function allResponsiveSizesShow() {
 
-      let mediaruleNames = new MediaruleNames();
+      let responsiveSizeNames = new ResponsiveSizeNames();
 
-      const methods = Object.getOwnPropertyNames(Object.getPrototypeOf(mediaruleNames))
+      const methods = Object.getOwnPropertyNames(Object.getPrototypeOf(responsiveSizeNames))
         .filter( propName => propName.startsWith("getM" ) );
 
       const methodType = "function";
 
       let allRules = [];
-      let cssVarName = mediaruleNames.getCssVariableName();
+      let cssVarName = responsiveSizeNames.getCssVariableName();
       let propName = "";
       let propValue = "";
       let propvalueType = "";
-      let mediaRule = "";
+      let responsiveSize = "";
       let line = "";
 
       for ( propName of methods ) {
 
-        propValue = mediaruleNames[propName];
+        propValue = responsiveSizeNames[propName];
         if ( !propValue ) {
           continue;
         }
@@ -159,20 +159,20 @@
         propvalueType = typeof propValue;
 
         if ( propvalueType === methodType ) {
-          mediaRule = propValue.call(mediaruleNames);
-          line = `${cssVarName}: ${mediaRule};`;
+          responsiveSize = propValue.call(responsiveSizeNames);
+          line = `${cssVarName}: ${responsiveSize};`;
           allRules.push( line );
         }
       }
 
       let retval = allRules.join("\n")
       addOnSite( retval );
-      
+
     }
 
     function loadRemoteData( inUrl ) {
 
-      fetch( 
+      fetch(
         inUrl,
         {
           method: 'GET',
@@ -201,7 +201,7 @@
 
     function addResizeEventHandler() {
       window.addEventListener('resize', () => {
-        mediaruleNameTestJson();
+        responsiveSizeNameTestJson();
       });
     }
 
@@ -216,7 +216,7 @@
         }
 
         btn_LoadData.addEventListener(
-          'click', 
+          'click',
           () => {
             let locUrl = document.getElementById("inp_url").value;
             loadRemoteData( locUrl );
@@ -233,18 +233,18 @@
     function assignEventsHandlers() {
       addResizeEventHandler();
       // addClickButtonLoadDataEventHandler();
-    } 
-    
+    }
+
     // Call the function to load remote data when the DOM is fully loaded
     // This ensures that the function is called after the HTML content is loaded
     // and the DOM is ready for manipulation
     document.addEventListener('DOMContentLoaded', () => {
       assignEventsHandlers();
 
-      // mediaruleNameTest();
-      mediaruleNameTestJson();
+      // responsiveSizeNameTest();
+      responsiveSizeNameTestJson();
 
-      //allMediarulesShow();  
+      //allResponsiveSizesShow();
     });
   </script>
 

@@ -178,7 +178,7 @@
         }
       ],
       "build-files": [
-        "MediaruleNames.js",
+        "ResponsiveSizeNames.js",
         "Mobile.vsDesktopPack.js",
         "index.js",
         "webpackAliases.js",

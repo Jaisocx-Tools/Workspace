@@ -36,7 +36,7 @@ export declare class ResponsiveDatasetAutomation implements ResponsiveDatasetAut
      * @ready
     */
     setWebpackAliasName(alias: string): ResponsiveDatasetAutomation;
-    produceMediaRulesTypescriptFile(tsClassName: string): Promise<number>;
+    produceResponsiveSizesTypescriptFile(tsClassName: string): Promise<number>;
     /**
      * @ready
     */
@@ -69,11 +69,11 @@ export declare class ResponsiveDatasetAutomation implements ResponsiveDatasetAut
     /**
      * @ready
      */
-    produceMediaRule(responsiveDatasetPropName: string, orientation: any, media: any): Uint8Array[];
+    produceResponsiveSize(responsiveDatasetPropName: string, orientation: any, media: any): Uint8Array[];
     /**
      * @ready
     */
-    produceMediaRuleConstantLine(responsiveDatasetPropName: string, orientation: any, media: any): (Uint8Array | Uint8Array[])[];
+    produceResponsiveSizeConstantLine(responsiveDatasetPropName: string, orientation: any, media: any): (Uint8Array | Uint8Array[])[];
     /**
      * @ready
     */

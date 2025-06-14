@@ -1,4 +1,4 @@
-export declare class MediaruleNamesNew {
+export declare class ResponsiveSizeNamesNew {
     #private;
     getstyle_e02_mobile_xs_portrait(): string;
     getstyle_e02_mobile_xs_landscape(): string;
@@ -31,4 +31,4 @@ export declare class MediaruleNamesNew {
     getstyle_t16_tv_16k_portrait(): string;
     getstyle_t16_tv_16k_landscape(): string;
 }
-//# sourceMappingURL=MediaruleNamesNew.d.ts.map
+//# sourceMappingURL=ResponsiveSizeNamesNew.d.ts.map

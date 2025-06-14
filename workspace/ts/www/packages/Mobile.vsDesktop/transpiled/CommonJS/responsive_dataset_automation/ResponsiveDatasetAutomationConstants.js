@@ -150,9 +150,9 @@ class ResponsiveDatasetAutomationConstants {
             "mediaName",
             "mediaLine",
             "mediaConstantNameLine",
-            "mediaRuleConstantLine",
+            "responsiveSizeConstantLine",
             "mediaConstantLine",
-            "mediaRuleVariable_Width"
+            "responsiveSizeVariable_Width"
         ];
         let textBlocks = new Array();
         let bitsbufsTextBlocks = new Array();
@@ -189,34 +189,34 @@ class ResponsiveDatasetAutomationConstants {
         }
         return textBlocksLen;
     }
-    getKeywordMediarule() {
+    getKeywordResponsiveSize() {
         return this.;
     }
-    getMediaRuleName() {
+    getResponsiveSizeName() {
         return this.;
     }
     getMediaConstantNameStart() {
         return this.;
     }
-    getMediaRule() {
+    getResponsiveSize() {
         return this.;
     }
-    getMediaRuleScreen() {
+    getResponsiveSizeScreen() {
         return this.;
     }
-    getMediaRulePrint() {
+    getResponsiveSizePrint() {
         return this.;
     }
-    getMediaRuleOrientation() {
+    getResponsiveSizeOrientation() {
         return this.;
     }
-    getMediaRuleOrientationLandscape() {
+    getResponsiveSizeOrientationLandscape() {
         return this.;
     }
-    getMediaRuleOrientationPortrait() {
+    getResponsiveSizeOrientationPortrait() {
         return this.;
     }
-    getMediaRuleAnd() {
+    getResponsiveSizeAnd() {
         return this.;
     }
     getBraceRoundStart() {
@@ -297,13 +297,13 @@ class ResponsiveDatasetAutomationConstants {
     getMediaConstantNameLine() {
         return this.;
     }
-    getMediaRuleConstantLine() {
+    getResponsiveSizeConstantLine() {
         return this.;
     }
     getMediaConstantLine() {
         return this.;
     }
-    getMediaRuleVariable_Width() {
+    getResponsiveSizeVariable_Width() {
         return this.;
     }
     getBitbufsMediaLine() {
@@ -312,13 +312,13 @@ class ResponsiveDatasetAutomationConstants {
     getBitbufsMediaConstantNameLine() {
         return this.;
     }
-    getBitbufsMediaRuleConstantLine() {
+    getBitbufsResponsiveSizeConstantLine() {
         return this.;
     }
     getBitbufsMediaConstantLine() {
         return this.;
     }
-    getBitbufsMediaRuleVariable_Width() {
+    getBitbufsResponsiveSizeVariable_Width() {
         return this.;
     }
     getBitsbufKeywordFrom() {
@@ -354,7 +354,7 @@ class ResponsiveDatasetAutomationConstants {
         this.[mediaNamePos] = this.textEncoder.encode(mediaName);
         return this.;
     }
-    getMediaRuleConstantLineUpdated(mediaName, mediaLine) {
+    getResponsiveSizeConstantLineUpdated(mediaName, mediaLine) {
         const mediaNamePos = 5;
         const mediaLinePos = 11;
         this.[mediaNamePos] = this.textEncoder.encode(mediaName);
@@ -370,7 +370,7 @@ class ResponsiveDatasetAutomationConstants {
         // this.#bitbufsMediaConstantLine[sizePos] = this.textEncoder.encode( size );
         return this.;
     }
-    getMediaRuleVariable_Width_Updated(mediaName, postfix) {
+    getResponsiveSizeVariable_Width_Updated(mediaName, postfix) {
         const postfixPos_1 = 1;
         const mediaNamePos = 3;
         const postfixPos_2 = 5;

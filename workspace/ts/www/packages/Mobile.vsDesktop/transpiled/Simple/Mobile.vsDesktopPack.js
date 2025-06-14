@@ -3,8 +3,8 @@ class MobileVsDesktopPack {
   #KEYWORDS_ORIENTATION_LANDSCAPE;
   #KEYWORD_MOBILE;
   #KEYWORD_TABLET;
-  _mediaruleNamesInstance;
-  _mediaRuleName;
+  _responsiveSizeNamesInstance;
+  _responsiveSizeName;
 
   constructor() {
     this.#KEYWORD_MOBILE = "_mobile_";
@@ -17,8 +17,8 @@ class MobileVsDesktopPack {
       "_landscape",
       "_horizontal"
     ];
-    this._mediaruleNamesInstance = new MediaruleNames();
-    this._mediaRuleName = "";
+    this._responsiveSizeNamesInstance = new ResponsiveSizeNames();
+    this._responsiveSizeName = "";
   }
 
   getCssValueByHtmlNode(htmlNode, cssVariableName) {
@@ -30,7 +30,7 @@ class MobileVsDesktopPack {
   }
 
   getCssValueBySelector(
-    htmlNodeSelector, 
+    htmlNodeSelector,
     cssVariableName) {
     let htmlNode = document.querySelector(htmlNodeSelector);
 
@@ -43,36 +43,36 @@ class MobileVsDesktopPack {
     return cssValue;
   }
 
-  getMediaruleName(force) {
-    if (!force && this._mediaRuleName.length != 0) {
-      return this._mediaRuleName;
+  getResponsiveSizeName(force) {
+    if (!force && this._responsiveSizeName.length != 0) {
+      return this._responsiveSizeName;
     }
 
-    let cssVariableName = this._mediaruleNamesInstance.getCssVariableName();
-    let mediaRuleName = this.getCssValueBySelector(
-      "html.workspace", 
+    let cssVariableName = this._responsiveSizeNamesInstance.getCssVariableName();
+    let responsiveSizeName = this.getCssValueBySelector(
+      "html.workspace",
       cssVariableName);
-    this._mediaRuleName = mediaRuleName;
+    this._responsiveSizeName = responsiveSizeName;
 
-    return this._mediaRuleName;
+    return this._responsiveSizeName;
   }
 
   isMobile(force) {
-    let mediaruleName = this.getMediaruleName(force);
-    let mediaruleNameMatches = mediaruleName.includes(this.#KEYWORD_MOBILE);
+    let responsiveSizeName = this.getResponsiveSizeName(force);
+    let responsiveSizeNameMatches = responsiveSizeName.includes(this.#KEYWORD_MOBILE);
 
-    return mediaruleNameMatches;
+    return responsiveSizeNameMatches;
   }
 
   isTablet(force) {
-    let mediaruleName = this.getMediaruleName(force);
-    let mediaruleNameMatches = mediaruleName.includes(this.#KEYWORD_TABLET);
+    let responsiveSizeName = this.getResponsiveSizeName(force);
+    let responsiveSizeNameMatches = responsiveSizeName.includes(this.#KEYWORD_TABLET);
 
-    return mediaruleNameMatches;
+    return responsiveSizeNameMatches;
   }
 
   isDesktop(force) {
-    let mediaruleName = this.getMediaruleName(force);
+    let responsiveSizeName = this.getResponsiveSizeName(force);
     let keywordsDesktopNotMatching = [
       this.#KEYWORD_MOBILE,
       this.#KEYWORD_TABLET
@@ -80,45 +80,45 @@ class MobileVsDesktopPack {
     // if one of keywords has matched, then this variable has value of datatype string. not undefined.
     let matchMobileOrTabletFound = keywordsDesktopNotMatching
       .find((keyword) => {
-        return mediaruleName.includes(keyword);
+        return responsiveSizeName.includes(keyword);
       });
     // if matchMobileOrTabletFound not undefined, then one of the keywords "mobile" or "tablet" has matched.
-    let mediaruleNameMatches = (matchMobileOrTabletFound !== undefined);
-    // if mediaruleNameMatches === false, means did not match "mobile" or "tablet", then it is a desktop.
-    let isMediaruleDesktop = (mediaruleNameMatches === false);
+    let responsiveSizeNameMatches = (matchMobileOrTabletFound !== undefined);
+    // if responsiveSizeNameMatches === false, means did not match "mobile" or "tablet", then it is a desktop.
+    let isResponsiveSizeDesktop = (responsiveSizeNameMatches === false);
 
-    return isMediaruleDesktop;
+    return isResponsiveSizeDesktop;
   }
 
   matchOrientation(keywords, force) {
-    let mediaruleName = this.getMediaruleName(force);
+    let responsiveSizeName = this.getResponsiveSizeName(force);
     let matchFound = keywords
       .find((keyword) => {
-        return mediaruleName.endsWith(keyword);
+        return responsiveSizeName.endsWith(keyword);
       });
-    let mediaruleNameMatches = (matchFound !== undefined);
+    let responsiveSizeNameMatches = (matchFound !== undefined);
 
-    return mediaruleNameMatches;
+    return responsiveSizeNameMatches;
   }
 
   isOrientationPortrait(force) {
-    let mediaruleNameMatches = this.matchOrientation(
-      this.#KEYWORDS_ORIENTATION_PORTRAIT, 
+    let responsiveSizeNameMatches = this.matchOrientation(
+      this.#KEYWORDS_ORIENTATION_PORTRAIT,
       force);
 
-    return mediaruleNameMatches;
+    return responsiveSizeNameMatches;
   }
 
   isOrientationLandscape(force) {
-    let mediaruleNameMatches = this.matchOrientation(
-      this.#KEYWORDS_ORIENTATION_LANDSCAPE, 
+    let responsiveSizeNameMatches = this.matchOrientation(
+      this.#KEYWORDS_ORIENTATION_LANDSCAPE,
       force);
 
-    return mediaruleNameMatches;
+    return responsiveSizeNameMatches;
   }
 
   toJson(force) {
-    let mediaruleName = this.getMediaruleName(force);
+    let responsiveSizeName = this.getResponsiveSizeName(force);
     let notToUpdate = false;
     let isMobile = this.isMobile(notToUpdate);
     let isTablet = this.isTablet(notToUpdate);
@@ -129,11 +129,11 @@ class MobileVsDesktopPack {
     let labelIsTablet = "isTablet";
     let labelIsDesktop = "isDesktop";
     let isMobilePortrait = (isMobile && isOrientationPortrait);
-    let labelMediaruleName = isMobilePortrait ? "media" : "mediaruleName";
+    let labelResponsiveSizeName = isMobilePortrait ? "media" : "responsiveSizeName";
     let labelIsOrientationPortrait = isMobilePortrait ? "portrait" : "isOrientationPortrait";
     let labelIsOrientationLandscape = isMobilePortrait ? "landscape" : "isOrientationLandscape";
-    let mediaruleJson = {
-      [labelMediaruleName]: mediaruleName,
+    let responsiveSizeJson = {
+      [labelResponsiveSizeName]: responsiveSizeName,
       [labelIsMobile]: isMobile,
       [labelIsTablet]: isTablet,
       [labelIsDesktop]: isDesktop,
@@ -141,13 +141,13 @@ class MobileVsDesktopPack {
       [labelIsOrientationLandscape]: isOrientationLandscape
     };
 
-    return mediaruleJson;
+    return responsiveSizeJson;
   }
 
   toString() {
     let force = true;
-    let mediaruleJson = this.toJson(force);
-    let jsonString = JSON.stringify(mediaruleJson, null, 2);
+    let responsiveSizeJson = this.toJson(force);
+    let jsonString = JSON.stringify(responsiveSizeJson, null, 2);
 
     return jsonString;
   }
@@ -156,6 +156,6 @@ class MobileVsDesktopPack {
     throw new Error("Not implemented");
     // return "Not implemented";
   }
-} 
+}
 
 

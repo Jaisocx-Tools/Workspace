@@ -1,9 +1,9 @@
 export interface MobileVsDesktopPackInterface {
-    getCssVariableName_MediaRule(): string;
+    getCssVariableName_ResponsiveSize(): string;
     getCssValueByHtmlNode(htmlNode: HTMLElement, cssVariableName: string): string;
     getCssValueBySelector(htmlNodeSelector: string, cssVariableName: string): string;
-    getMediaruleName(force: boolean): string;
-    getMediaruleSizes(force: boolean): object;
+    getResponsiveSizeName(force: boolean): string;
+    getResponsiveSizes(force: boolean): object;
     isMobile(force: boolean): boolean;
     isTablet(force: boolean): boolean;
     isDesktop(force: boolean): boolean;

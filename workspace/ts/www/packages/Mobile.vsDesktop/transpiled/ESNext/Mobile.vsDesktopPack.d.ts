@@ -1,16 +1,16 @@
-import { MediaruleNames } from "./MediaruleNames.js";
+import { ResponsiveSizeNames } from "./ResponsiveSizeNames.js";
 export declare class MobileVsDesktopPack {
     #private;
-    protected _mediaruleNamesInstance: MediaruleNames;
-    protected _mediaRuleName: string;
-    protected _mediaRuleSizes: object;
-    protected _mediaruleJson: object;
+    protected _responsiveSizeNamesInstance: ResponsiveSizeNames;
+    protected _responsiveSizeName: string;
+    protected _responsiveSizes: object;
+    protected _responsiveSizeJson: object;
     constructor();
-    getCssVariableName_MediaRule(): string;
+    getCssVariableName_ResponsiveSize(): string;
     getCssValueByHtmlNode(htmlNode: HTMLElement, cssVariableName: string): string;
     getCssValueBySelector(htmlNodeSelector: string, cssVariableName: string): string;
-    getMediaruleName(force: boolean): string;
-    getMediaruleSizes(force: boolean): object;
+    getResponsiveSizeName(force: boolean): string;
+    getResponsiveSizes(force: boolean): object;
     isMobile(force: boolean): boolean;
     isTablet(force: boolean): boolean;
     isDesktop(force: boolean): boolean;

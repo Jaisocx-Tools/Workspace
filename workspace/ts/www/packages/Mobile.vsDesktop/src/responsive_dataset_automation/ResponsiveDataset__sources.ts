@@ -86,7 +86,7 @@ export class ResponsiveDataset implements ResponsiveDatasetInterface {
     );
 
 
-    await this.produceMediaRulesTypescriptFile( "MediaruleNamesNew" );
+    await this.produceResponsiveSizesTypescriptFile( "ResponsiveSizeNamesNew" );
 
     let packagePath: string = path.resolve(
       this.mediaAndStylesResponsiveFolderPath,
@@ -195,7 +195,7 @@ export class ResponsiveDataset implements ResponsiveDatasetInterface {
 
 
 
-  async produceMediaRulesTypescriptFile (
+  async produceResponsiveSizesTypescriptFile (
     tsClassName: string
   ): Promise<number> {
 
@@ -405,10 +405,10 @@ export class ResponsiveDataset implements ResponsiveDatasetInterface {
       .setData (
         {
           "mediaName": "",
-          "mediaRuleLine": "",
-          "mediaRuleConstanLine": "",
-          "mediaRuleVariable_WidthFrom": "",
-          "mediaRuleVariable_WidthTil": ""
+          "responsiveSizeLine": "",
+          "responsiveSizeConstanLine": "",
+          "responsiveSizeVariable_WidthFrom": "",
+          "responsiveSizeVariable_WidthTil": ""
         }
       )
       .getActiveDataRecordId();
@@ -449,55 +449,55 @@ export class ResponsiveDataset implements ResponsiveDatasetInterface {
       orientation
     );
 
-    let mediaRuleLinesArray: Uint8Array[] = this.produceMediaRule (
+    let responsiveSizeLinesArray: Uint8Array[] = this.produceResponsiveSize (
       responsiveDatasetPropName,
       orientation,
-      this.responsiveDatasetConstants.getMediaRuleScreen()
+      this.responsiveDatasetConstants.getResponsiveSizeScreen()
     );
 
-    let mediaRuleConstanLinesArray: Uint8Array[] = this.produceMediaConstantNameLine (
+    let responsiveSizeConstanLinesArray: Uint8Array[] = this.produceMediaConstantNameLine (
       responsiveDatasetPropName,
       orientation
     );
 
 
     let mediaName: Uint8Array = this.textEncoder.encode( mediaNameText );
-    let mediaRuleLine: Uint8Array = this.fileWriter.concatUint8Arrays( mediaRuleLinesArray );
-    let mediaRuleConstanLine: Uint8Array = this.fileWriter.concatUint8Arrays( mediaRuleConstanLinesArray );
+    let responsiveSizeLine: Uint8Array = this.fileWriter.concatUint8Arrays( responsiveSizeLinesArray );
+    let responsiveSizeConstanLine: Uint8Array = this.fileWriter.concatUint8Arrays( responsiveSizeConstanLinesArray );
 
     // temp for debugging
-    // let mediaRuleLineText: string = this.textDecoder.decode ( this.fileWriter.concatUint8Arrays( mediaRuleLine ) );
-    // let mediaRuleConstanLineText: string = this.textDecoder.decode ( this.fileWriter.concatUint8Arrays( mediaRuleConstanLine ) );
+    // let responsiveSizeLineText: string = this.textDecoder.decode ( this.fileWriter.concatUint8Arrays( responsiveSizeLine ) );
+    // let responsiveSizeConstanLineText: string = this.textDecoder.decode ( this.fileWriter.concatUint8Arrays( responsiveSizeConstanLine ) );
 
     let postfix: Uint8Array = this.responsiveDatasetConstants.getBitsbufKeywordFrom();
-    let mediaRuleVariable_WidthFromArray: Uint8Array[] = this.responsiveDatasetConstants.getMediaRuleVariable_Width_Updated (
+    let responsiveSizeVariable_WidthFromArray: Uint8Array[] = this.responsiveDatasetConstants.getResponsiveSizeVariable_Width_Updated (
       mediaName,
       postfix
     );
-    let mediaRuleVariable_WidthFrom: Uint8Array = this.fileWriter.concatUint8Arrays( mediaRuleVariable_WidthFromArray );
+    let responsiveSizeVariable_WidthFrom: Uint8Array = this.fileWriter.concatUint8Arrays( responsiveSizeVariable_WidthFromArray );
 
 
     postfix = this.responsiveDatasetConstants.getBitsbufKeywordTil();
-    let mediaRuleVariable_WidthTilArray: Uint8Array[] = this.responsiveDatasetConstants.getMediaRuleVariable_Width_Updated (
+    let responsiveSizeVariable_WidthTilArray: Uint8Array[] = this.responsiveDatasetConstants.getResponsiveSizeVariable_Width_Updated (
       mediaName,
       postfix
     );
-    let mediaRuleVariable_WidthTil: Uint8Array = this.fileWriter.concatUint8Arrays( mediaRuleVariable_WidthTilArray );
+    let responsiveSizeVariable_WidthTil: Uint8Array = this.fileWriter.concatUint8Arrays( responsiveSizeVariable_WidthTilArray );
 
 
     let templateData: any = {
       "mediaName": mediaName,
-      "mediaRuleLine": mediaRuleLine,
-      "mediaRuleConstanLine": mediaRuleConstanLine,
-      "mediaRuleVariable_WidthFrom": mediaRuleVariable_WidthFrom,
-      "mediaRuleVariable_WidthTil": mediaRuleVariable_WidthTil
+      "responsiveSizeLine": responsiveSizeLine,
+      "responsiveSizeConstanLine": responsiveSizeConstanLine,
+      "responsiveSizeVariable_WidthFrom": responsiveSizeVariable_WidthFrom,
+      "responsiveSizeVariable_WidthTil": responsiveSizeVariable_WidthTil
     };
 
     // temp for debugging
     // let templateData: any = {
     //   "mediaName": mediaNameText,
-    //   "mediaRuleLine": mediaRuleLineText,
-    //   "mediaRuleConstanLine": mediaRuleConstanLineText
+    //   "responsiveSizeLine": responsiveSizeLineText,
+    //   "responsiveSizeConstanLine": responsiveSizeConstanLineText
     // };
 
     this.templateRenderer
@@ -742,7 +742,7 @@ export class ResponsiveDataset implements ResponsiveDatasetInterface {
    * @ready
    */
   // @media only screen and (min-width: 786px) and (max-width: 1023px) and (orientation: landscape)
-  produceMediaRule (
+  produceResponsiveSize (
     responsiveDatasetPropName: string,
     orientation: any,
     media: any // screen | print | all
@@ -787,8 +787,8 @@ export class ResponsiveDataset implements ResponsiveDatasetInterface {
     if ( orientation === orientationStandard ) {
       sizes = responsiveDatasetProp["width"];
     } else if (
-      ( orientation === this.responsiveDatasetConstants.getMediaRuleOrientationLandscape() ) ||
-      ( orientation === this.responsiveDatasetConstants.getMediaRuleOrientationPortrait() )
+      ( orientation === this.responsiveDatasetConstants.getResponsiveSizeOrientationLandscape() ) ||
+      ( orientation === this.responsiveDatasetConstants.getResponsiveSizeOrientationPortrait() )
     ) {
       sizes = responsiveDatasetProp["height"];
     } else {
@@ -821,7 +821,7 @@ export class ResponsiveDataset implements ResponsiveDatasetInterface {
   /**
    * @ready
   */
-  produceMediaRuleConstantLine (
+  produceResponsiveSizeConstantLine (
     responsiveDatasetPropName: string,
     orientation: any,
     media: any // screen | print | all
@@ -848,12 +848,12 @@ export class ResponsiveDataset implements ResponsiveDatasetInterface {
       orientation
     );
 
-    let mediaRuleConstantLine: (Uint8Array|Uint8Array[])[] = this.responsiveDatasetConstants.getMediaRuleConstantLineUpdated (
+    let responsiveSizeConstantLine: (Uint8Array|Uint8Array[])[] = this.responsiveDatasetConstants.getResponsiveSizeConstantLineUpdated (
       mediaName,
       mediaLine
     );
 
-    return [...mediaRuleConstantLine];
+    return [...responsiveSizeConstantLine];
   }
 
 

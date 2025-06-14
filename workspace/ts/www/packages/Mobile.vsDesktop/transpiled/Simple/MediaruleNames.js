@@ -1,4 +1,4 @@
-class MediaruleNames {
+class ResponsiveSizeNames {
   #CSS_VARIABLE_NAME = "--media-rule";
   #MEDIA_2xl_ultra_wide_horizontal = "media_2xl_ultra_wide_horizontal";
   #MEDIA_2xl_ultra_wide_vertical = "media_2xl_ultra_wide_vertical";
@@ -124,6 +124,6 @@ class MediaruleNames {
   getMEDIA_xs_mobile_portrait() {
     return this.#MEDIA_xs_mobile_portrait;
   }
-} 
+}
 
 
