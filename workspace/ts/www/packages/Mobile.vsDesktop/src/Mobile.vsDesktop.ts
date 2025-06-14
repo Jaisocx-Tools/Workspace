@@ -1,4 +1,4 @@
-import { MobileVsDesktop_DevicesSizesNames } from "./Mobile.vsDesktop_DevicesSizesNames.js";
+import { MobileVsDesktop_ResponsiveSizesNames } from "./Mobile.vsDesktop_ResponsiveSizesNames.js";
 import { MobileVsDesktopInterface } from "./Mobile.vsDesktopInterface.js";
 
 
@@ -15,10 +15,10 @@ export class MobileVsDesktop implements MobileVsDesktopInterface {
   #CSS_VARIABLE_NAME__WIDTH_FROM: string;
   #CSS_VARIABLE_NAME__WIDTH_TIL: string;
 
-  protected _devicesSizesNamesInstance: MobileVsDesktop_DevicesSizesNames;
-  protected _deviceSizeName: string;
-  protected _deviceSizes: object;
-  protected _deviceSizesJson: object;
+  protected _responsiveSizesNamesInstance: MobileVsDesktop_ResponsiveSizesNames;
+  protected _responsiveSizeName: string;
+  protected _responsiveSizes: object;
+  protected _responsiveSizesJson: object;
 
   constructor() {
     this.#KEYWORD_MOBILE = "_mobile_";
@@ -38,10 +38,10 @@ export class MobileVsDesktop implements MobileVsDesktopInterface {
       "_horizontal"
     ];
 
-    this._devicesSizesNamesInstance = new MobileVsDesktop_DevicesSizesNames();
-    this._deviceSizeName = "";
-    this._deviceSizes = new Object();
-    this._deviceSizesJson = new Object();
+    this._responsiveSizesNamesInstance = new MobileVsDesktop_ResponsiveSizesNames();
+    this._responsiveSizeName = "";
+    this._responsiveSizes = new Object();
+    this._responsiveSizesJson = new Object();
   }
 
   public getCssVariableName_MediaRule(): string {
@@ -78,27 +78,27 @@ export class MobileVsDesktop implements MobileVsDesktopInterface {
     return cssValue;
   }
 
-  public getdeviceSizeName( force: boolean ): string {
-    if ( !force && this._deviceSizeName.length != 0 ) {
-      return this._deviceSizeName;
+  public getresponsiveSizeName( force: boolean ): string {
+    if ( !force && this._responsiveSizeName.length != 0 ) {
+      return this._responsiveSizeName;
     }
 
     let cssVariableName: string = this.getCssVariableName_MediaRule();
-    let deviceSizeName: string = this.getCssValueBySelector (
+    let responsiveSizeName: string = this.getCssValueBySelector (
       "html.workspace",
       cssVariableName
     );
 
-    this._deviceSizeName = deviceSizeName;
+    this._responsiveSizeName = responsiveSizeName;
 
-    return this._deviceSizeName;
+    return this._responsiveSizeName;
   }
 
-  public getdeviceSizes( force: boolean ): object {
-    let deviceSizesKeys: any = Object.keys( this._deviceSizes );
+  public getresponsiveSizes( force: boolean ): object {
+    let responsiveSizesKeys: any = Object.keys( this._responsiveSizes );
 
-    if ( !force && deviceSizesKeys && deviceSizesKeys.length === 2 ) {
-      return this._deviceSizes;
+    if ( !force && responsiveSizesKeys && responsiveSizesKeys.length === 2 ) {
+      return this._responsiveSizes;
     }
 
     let cssVariable_WidthFrom: string = this.getCssValueBySelector (
@@ -111,32 +111,32 @@ export class MobileVsDesktop implements MobileVsDesktopInterface {
     );
 
     // @ts-ignore
-    this._deviceSizes["minWidth"] = cssVariable_WidthFrom;
+    this._responsiveSizes["minWidth"] = cssVariable_WidthFrom;
 
     // @ts-ignore
-    this._deviceSizes["maxWidth"] = cssVariable_WidthTil;
+    this._responsiveSizes["maxWidth"] = cssVariable_WidthTil;
 
-    return this._deviceSizes;
+    return this._responsiveSizes;
   }
 
   public isMobile( force: boolean ): boolean {
-    let deviceSizeName = this.getdeviceSizeName( force );
+    let responsiveSizeName = this.getresponsiveSizeName( force );
 
-    let deviceSizeNameMatches: boolean = deviceSizeName.includes( this.#KEYWORD_MOBILE );
+    let responsiveSizeNameMatches: boolean = responsiveSizeName.includes( this.#KEYWORD_MOBILE );
 
-    return deviceSizeNameMatches;
+    return responsiveSizeNameMatches;
   }
 
   public isTablet( force: boolean ): boolean {
-    let deviceSizeName = this.getdeviceSizeName( force );
+    let responsiveSizeName = this.getresponsiveSizeName( force );
 
-    let deviceSizeNameMatches: boolean = deviceSizeName.includes( this.#KEYWORD_TABLET );
+    let responsiveSizeNameMatches: boolean = responsiveSizeName.includes( this.#KEYWORD_TABLET );
 
-    return deviceSizeNameMatches;
+    return responsiveSizeNameMatches;
   }
 
   public isDesktop( force: boolean ): boolean {
-    let deviceSizeName = this.getdeviceSizeName( force );
+    let responsiveSizeName = this.getresponsiveSizeName( force );
 
     let keywordsDesktopNotMatching: string[] = [
       this.#KEYWORD_MOBILE,
@@ -146,14 +146,14 @@ export class MobileVsDesktop implements MobileVsDesktopInterface {
     // if one of keywords has matched, then this variable has value of datatype string. not undefined.
     let matchMobileOrTabletFound: string|undefined = keywordsDesktopNotMatching
       .find( ( keyword: string ) => {
-        return deviceSizeName.includes( keyword );
+        return responsiveSizeName.includes( keyword );
       });
 
     // if matchMobileOrTabletFound not undefined, then one of the keywords "mobile" or "tablet" has matched.
-    let deviceSizeNameMatches: boolean = ( matchMobileOrTabletFound !== undefined );
+    let responsiveSizeNameMatches: boolean = ( matchMobileOrTabletFound !== undefined );
 
-    // if deviceSizeNameMatches === false, means did not match "mobile" or "tablet", then it is a desktop.
-    let isMediaruleDesktop: boolean = ( deviceSizeNameMatches === false );
+    // if responsiveSizeNameMatches === false, means did not match "mobile" or "tablet", then it is a desktop.
+    let isMediaruleDesktop: boolean = ( responsiveSizeNameMatches === false );
 
     return isMediaruleDesktop;
   }
@@ -161,39 +161,39 @@ export class MobileVsDesktop implements MobileVsDesktopInterface {
   public matchOrientation (
     keywords: string[],
     force: boolean ): boolean {
-    let deviceSizeName = this.getdeviceSizeName( force );
+    let responsiveSizeName = this.getresponsiveSizeName( force );
     let matchFound: string|undefined = keywords
       .find( ( keyword: string ) => {
-        return deviceSizeName.endsWith( keyword );
+        return responsiveSizeName.endsWith( keyword );
       });
-    let deviceSizeNameMatches: boolean = ( matchFound !== undefined );
+    let responsiveSizeNameMatches: boolean = ( matchFound !== undefined );
 
-    return deviceSizeNameMatches;
+    return responsiveSizeNameMatches;
   }
 
   public isOrientationPortrait( force: boolean ): boolean {
-    let deviceSizeNameMatches: boolean = this.matchOrientation(
+    let responsiveSizeNameMatches: boolean = this.matchOrientation(
       this.#KEYWORDS_ORIENTATION_PORTRAIT,
       force );
 
-    return deviceSizeNameMatches;
+    return responsiveSizeNameMatches;
   }
 
   public isOrientationLandscape( force: boolean ): boolean {
-    let deviceSizeNameMatches: boolean = this.matchOrientation(
+    let responsiveSizeNameMatches: boolean = this.matchOrientation(
       this.#KEYWORDS_ORIENTATION_LANDSCAPE,
       force );
 
-    return deviceSizeNameMatches;
+    return responsiveSizeNameMatches;
   }
 
   public toJson( force: boolean ): any {
-    let deviceSizeName: string = this.getdeviceSizeName( force );
-    let deviceSizes: object = this.getdeviceSizes( force );
+    let responsiveSizeName: string = this.getresponsiveSizeName( force );
+    let responsiveSizes: object = this.getresponsiveSizes( force );
 
-    let deviceSizesJsonKeys: string[] = Object.keys(this._deviceSizesJson);
-    if ( !force && deviceSizesJsonKeys && deviceSizesJsonKeys.length !== 0 ) {
-      return this._deviceSizesJson;
+    let responsiveSizesJsonKeys: string[] = Object.keys(this._responsiveSizesJson);
+    if ( !force && responsiveSizesJsonKeys && responsiveSizesJsonKeys.length !== 0 ) {
+      return this._responsiveSizesJson;
     }
 
     let notToUpdate: boolean = false;
@@ -208,14 +208,14 @@ export class MobileVsDesktop implements MobileVsDesktopInterface {
     let labelIsDesktop: string = "isDesktop";
 
     let isMobilePortrait: boolean = ( isMobile && isOrientationPortrait);
-    let labeldeviceSizeName: string = isMobilePortrait ? "media" : "mediaQueryName";
-    let labeldeviceSizes: string = isMobilePortrait ? "width" : "mediaQueryWidth";
+    let labelresponsiveSizeName: string = isMobilePortrait ? "media" : "mediaQueryName";
+    let labelresponsiveSizes: string = isMobilePortrait ? "width" : "mediaQueryWidth";
     let labelIsOrientationPortrait: string = isMobilePortrait ? "portrait" : "isOrientationPortrait";
     let labelIsOrientationLandscape: string = isMobilePortrait ? "landscape" : "isOrientationLandscape";
 
-    this._deviceSizesJson = {
-      [labeldeviceSizeName]: deviceSizeName,
-      [labeldeviceSizes]: deviceSizes,
+    this._responsiveSizesJson = {
+      [labelresponsiveSizeName]: responsiveSizeName,
+      [labelresponsiveSizes]: responsiveSizes,
       [labelIsMobile]: isMobile,
       [labelIsTablet]: isTablet,
       [labelIsDesktop]: isDesktop,
@@ -223,14 +223,14 @@ export class MobileVsDesktop implements MobileVsDesktopInterface {
       [labelIsOrientationLandscape]: isOrientationLandscape
     };
 
-    return this._deviceSizesJson;
+    return this._responsiveSizesJson;
   }
 
   public toString(): string {
     let force: boolean = true;
-    let deviceSizesJson: any = this.toJson( force );
+    let responsiveSizesJson: any = this.toJson( force );
     let jsonString: string = JSON.stringify(
-      deviceSizesJson,
+      responsiveSizesJson,
       null,
       2 );
 

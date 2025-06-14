@@ -1,4 +1,4 @@
-export interface ResponsiveCssFileWithDevicesSizesInterface {
+export interface ResponsiveCssFileWithResponsiveSizesInterface {
 
   // RENAMED produceMediaConstantsCssFile( targetFileName: string ): Promise<number>;
   // Mobile.vsDesktop/MediaAndStyles/responsive/MediaConstants.css
@@ -10,7 +10,7 @@ export interface ResponsiveCssFileWithDevicesSizesInterface {
   //     --style_e02_mobile_xs_landscape__width__max_width: 500px;
   //
   //   ...
-  produceCssFileWithDevicesSizesConstants ( targetFileName: string ): Promise<number>;
+  produceCssFileWithResponsiveSizesConstants ( targetFileName: string ): Promise<number>;
 
 
 
@@ -22,7 +22,7 @@ export interface ResponsiveCssFileWithDevicesSizesInterface {
   //
   // --s_56_16k_tv_horizontal__min_width: 15361px; /* 16k TV */
   // --s_56_16k_tv_horizontal__max_width: 25360px; /* 16k TV */
-  produceDevicesSizesConstantsLinesSet( responsiveDatasetPropName: string ): Uint8Array[][];
+  produceResponsiveSizesConstantsLinesSet( responsiveDatasetPropName: string ): Uint8Array[][];
 
 }
 

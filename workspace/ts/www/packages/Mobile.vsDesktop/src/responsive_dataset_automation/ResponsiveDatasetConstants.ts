@@ -8,7 +8,7 @@ export class ResponsiveDatasetConstants implements ResponsiveDatasetConstantsInt
   textEncoder: TextEncoder;
   fileWriter: FileWriter;
 
-  #keywordDeviceSize: string;
+  #keywordResponsiveSize: string;
   #keywordName: string;
 
   #keywordMediaOnly: string;
@@ -51,7 +51,7 @@ export class ResponsiveDatasetConstants implements ResponsiveDatasetConstantsInt
 
 
 
-  #bitsbufKeywordDeviceSize: Uint8Array;
+  #bitsbufKeywordResponsiveSize: Uint8Array;
   #bitsbufKeywordName: Uint8Array;
 
   #bitsbufKeywordMediaOnly: Uint8Array;
@@ -93,11 +93,11 @@ export class ResponsiveDatasetConstants implements ResponsiveDatasetConstantsInt
   #orientationKeywords: string[];
   #orientationBitsbufKeywordsArray: Uint8Array[];
 
-  #deviceSizeNameOrientedBitsbufsArray: (Uint8Array|string)[];
+  #responsiveSizeNameOrientedBitsbufsArray: (Uint8Array|string)[];
 
   #importLineBitsbufsArray: (Uint8Array|string)[];
-  #deviceSizeConstantLineBitsbufsArray: (Uint8Array|string)[];
-  #deviceSizeConstantLine_size_BitsbufsArray: (Uint8Array|string)[];
+  #responsiveSizeConstantLineBitsbufsArray: (Uint8Array|string)[];
+  #responsiveSizeConstantLine_size_BitsbufsArray: (Uint8Array|string)[];
 
 
 // --device_size_name: style_e02_mobile_xs_portrait;
@@ -105,15 +105,15 @@ export class ResponsiveDatasetConstants implements ResponsiveDatasetConstantsInt
 
 
 
-// DevicesSizesNames
-// DevicesSizesConstants
+// ResponsiveSizesNames
+// ResponsiveSizesConstants
 
 
 
   constructor() {
     this.textEncoder = new TextEncoder();
 
-    this.#keywordDeviceSize = "device_size";
+    this.#keywordResponsiveSize = "device_size";
     this.#keywordName = "name";
 
     this.#keywordMediaOnly = "@media only ";
@@ -154,7 +154,7 @@ export class ResponsiveDatasetConstants implements ResponsiveDatasetConstantsInt
 
 
 
-    this.#bitsbufKeywordDeviceSize = this.textEncoder.encode( this.#keywordDeviceSize );
+    this.#bitsbufKeywordResponsiveSize = this.textEncoder.encode( this.#keywordResponsiveSize );
     this.#bitsbufKeywordName = this.textEncoder.encode( this.#keywordName );
 
     this.#bitsbufKeywordMediaOnly = this.textEncoder.encode( this.#keywordMediaOnly );
@@ -207,7 +207,7 @@ export class ResponsiveDatasetConstants implements ResponsiveDatasetConstantsInt
 
 
 
-    this.#deviceSizeNameOrientedBitsbufsArray = [
+    this.#responsiveSizeNameOrientedBitsbufsArray = [
       "sites_tool_name",
       this.#bitsbufSymbolUnderscore,
       "range_orderby_id",
@@ -234,20 +234,20 @@ export class ResponsiveDatasetConstants implements ResponsiveDatasetConstantsInt
 
 
 
-    this.#deviceSizeConstantLineBitsbufsArray = [
+    this.#responsiveSizeConstantLineBitsbufsArray = [
       this.#bitsbufCssVariableStart,
-      this.#bitsbufKeywordDeviceSize,
+      this.#bitsbufKeywordResponsiveSize,
       this.#bitsbufKeywordName,
       this.#bitsbufCssVariableNameValueDelimiter,
-      "deviceSizeNameOriented",
+      "responsiveSizeNameOriented",
       this.#bitsbufCssExpressionEnd
     ];
 
 
 
-    this.#deviceSizeConstantLine_size_BitsbufsArray = [
+    this.#responsiveSizeConstantLine_size_BitsbufsArray = [
       this.#bitsbufCssVariableStart,
-      this.#bitsbufKeywordDeviceSize,
+      this.#bitsbufKeywordResponsiveSize,
       this.#bitsbufKeywordName,
       this.#bitsbufSymbolUnderscore,
       this.#bitsbufSymbolUnderscore,
@@ -255,7 +255,7 @@ export class ResponsiveDatasetConstants implements ResponsiveDatasetConstantsInt
       this.#bitsbufSymbolUnderscore,
       this.#bitsbufKeywordWidth,
       this.#bitsbufCssVariableNameValueDelimiter,
-      "deviceSizeNameOriented",
+      "responsiveSizeNameOriented",
       this.#bitsbufSymbolUnderscore,
       this.#bitsbufSymbolUnderscore,
       "max_or_min",
@@ -300,7 +300,7 @@ export class ResponsiveDatasetConstants implements ResponsiveDatasetConstantsInt
   }
 
 
-  getDeviceSizeNameBitsbufsArrayByBitsbufs (
+  getResponsiveSizeNameBitsbufsArrayByBitsbufs (
     sitesToolName: Uint8Array,
     rangeOrderbyId: Uint8Array,
     art: Uint8Array,
@@ -311,43 +311,43 @@ export class ResponsiveDatasetConstants implements ResponsiveDatasetConstantsInt
     let artPos: number = 4;
     let artSizePos: number = 6;
 
-    this.#deviceSizeNameOrientedBitsbufsArray[sitesToolNamePos] = sitesToolName;
-    this.#deviceSizeNameOrientedBitsbufsArray[rangeOrderbyIdPos] = rangeOrderbyId;
-    this.#deviceSizeNameOrientedBitsbufsArray[artPos] = art;
-    this.#deviceSizeNameOrientedBitsbufsArray[artSizePos] = artSize;
+    this.#responsiveSizeNameOrientedBitsbufsArray[sitesToolNamePos] = sitesToolName;
+    this.#responsiveSizeNameOrientedBitsbufsArray[rangeOrderbyIdPos] = rangeOrderbyId;
+    this.#responsiveSizeNameOrientedBitsbufsArray[artPos] = art;
+    this.#responsiveSizeNameOrientedBitsbufsArray[artSizePos] = artSize;
 
-    let devicesSizesNamesMultiArray: Uint8Array[] = ( this.#deviceSizeNameOrientedBitsbufsArray as Uint8Array[] ).slice( 0, 6);
-    let devicesSizesNamesArray: Uint8Array = this.fileWriter.concatUint8Arrays( devicesSizesNamesMultiArray );
+    let responsiveSizesNamesMultiArray: Uint8Array[] = ( this.#responsiveSizeNameOrientedBitsbufsArray as Uint8Array[] ).slice( 0, 6);
+    let responsiveSizesNamesArray: Uint8Array = this.fileWriter.concatUint8Arrays( responsiveSizesNamesMultiArray );
 
-    return devicesSizesNamesArray;
+    return responsiveSizesNamesArray;
   }
 
 
-  getDeviceSizeNameBitsbufsOrientedArrayByBitsbufs (
-    deviceSizeName: Uint8Array,
+  getResponsiveSizeNameBitsbufsOrientedArrayByBitsbufs (
+    responsiveSizeName: Uint8Array,
     orientation: Uint8Array
   ): Uint8Array {
 
-    let deviceSizeNameOrientedArray: Uint8Array[] = [
-      deviceSizeName,
+    let responsiveSizeNameOrientedArray: Uint8Array[] = [
+      responsiveSizeName,
       this.#bitsbufSymbolUnderscore,
       orientation
     ];
 
-    let deviceSizeNameOriented: Uint8Array = this.fileWriter.concatUint8Arrays( deviceSizeNameOrientedArray );
+    let responsiveSizeNameOriented: Uint8Array = this.fileWriter.concatUint8Arrays( responsiveSizeNameOrientedArray );
 
-    return deviceSizeNameOriented;
+    return responsiveSizeNameOriented;
   }
 
 
 
-  getDeviceSizeNameBitsbufsArray (
+  getResponsiveSizeNameBitsbufsArray (
     sitesToolName: string,
     rangeOrderbyId: string,
     art: string,
     artSize: string
   ): Uint8Array[] {
-    return this.getDeviceSizeNameOrientedBitsbufsArray (
+    return this.getResponsiveSizeNameOrientedBitsbufsArray (
       sitesToolName,
       rangeOrderbyId,
       art,
@@ -358,7 +358,7 @@ export class ResponsiveDatasetConstants implements ResponsiveDatasetConstantsInt
 
 
 
-  getDeviceSizeNameOrientedBitsbufsArray (
+  getResponsiveSizeNameOrientedBitsbufsArray (
     sitesToolName: string,
     rangeOrderbyId: string,
     art: string,
@@ -372,29 +372,29 @@ export class ResponsiveDatasetConstants implements ResponsiveDatasetConstantsInt
     let artSizePos: number = 6;
     let orientationPos: number = 8;
 
-    this.#deviceSizeNameOrientedBitsbufsArray[sitesToolNamePos] = this.textEncoder.encode( sitesToolName );
-    this.#deviceSizeNameOrientedBitsbufsArray[rangeOrderbyIdPos] = this.textEncoder.encode( rangeOrderbyId );
-    this.#deviceSizeNameOrientedBitsbufsArray[artPos] = this.textEncoder.encode( art );
-    this.#deviceSizeNameOrientedBitsbufsArray[artSizePos] = this.textEncoder.encode( artSize );
+    this.#responsiveSizeNameOrientedBitsbufsArray[sitesToolNamePos] = this.textEncoder.encode( sitesToolName );
+    this.#responsiveSizeNameOrientedBitsbufsArray[rangeOrderbyIdPos] = this.textEncoder.encode( rangeOrderbyId );
+    this.#responsiveSizeNameOrientedBitsbufsArray[artPos] = this.textEncoder.encode( art );
+    this.#responsiveSizeNameOrientedBitsbufsArray[artSizePos] = this.textEncoder.encode( artSize );
 
     if ( orientation.length !== 0 ) {
-      this.#deviceSizeNameOrientedBitsbufsArray[orientationPos] = this.textEncoder.encode( orientation );
+      this.#responsiveSizeNameOrientedBitsbufsArray[orientationPos] = this.textEncoder.encode( orientation );
     }
 
-    return this.#deviceSizeNameOrientedBitsbufsArray as Uint8Array[];
+    return this.#responsiveSizeNameOrientedBitsbufsArray as Uint8Array[];
   }
 
 
 
   getImportLineBitsbufsArray (
     urlStart: string,
-    deviceSizeNameOriented: string
+    responsiveSizeNameOriented: string
   ): Uint8Array[] {
     let urlStartPos: number = 1;
-    let deviceSizeNamePos: number = 3;
+    let responsiveSizeNamePos: number = 3;
 
     this.#importLineBitsbufsArray[urlStartPos] = this.textEncoder.encode( urlStart );
-    this.#importLineBitsbufsArray[deviceSizeNamePos] = this.textEncoder.encode( deviceSizeNameOriented );
+    this.#importLineBitsbufsArray[responsiveSizeNamePos] = this.textEncoder.encode( responsiveSizeNameOriented );
 
     return this.#importLineBitsbufsArray as Uint8Array[];
   }
@@ -403,58 +403,58 @@ export class ResponsiveDatasetConstants implements ResponsiveDatasetConstantsInt
 
   getImportLineBitsbufsArrayByBitsbufs (
     urlStart: Uint8Array,
-    deviceSizeNameOriented: Uint8Array
+    responsiveSizeNameOriented: Uint8Array
   ): Uint8Array[] {
     let urlStartPos: number = 1;
-    let deviceSizeNamePos: number = 3;
+    let responsiveSizeNamePos: number = 3;
 
     this.#importLineBitsbufsArray[urlStartPos] = urlStart;
-    this.#importLineBitsbufsArray[deviceSizeNamePos] = deviceSizeNameOriented;
+    this.#importLineBitsbufsArray[responsiveSizeNamePos] = responsiveSizeNameOriented;
 
     return this.#importLineBitsbufsArray as Uint8Array[];
   }
 
 
 
-  getDeviceSizeConstantLineBitsbufsArrayByBitsbufs (
-    deviceSizeNameOriented: Uint8Array
+  getResponsiveSizeConstantLineBitsbufsArrayByBitsbufs (
+    responsiveSizeNameOriented: Uint8Array
   ): Uint8Array[] {
-    let deviceSizeNamePos: number = 4;
+    let responsiveSizeNamePos: number = 4;
 
-    this.#deviceSizeConstantLineBitsbufsArray[deviceSizeNamePos] = ( deviceSizeNameOriented );
+    this.#responsiveSizeConstantLineBitsbufsArray[responsiveSizeNamePos] = ( responsiveSizeNameOriented );
 
-    return this.#deviceSizeConstantLineBitsbufsArray as Uint8Array[];
+    return this.#responsiveSizeConstantLineBitsbufsArray as Uint8Array[];
   }
 
 
 
-  getDeviceSizeConstantLineBitsbufsArray (
-    deviceSizeNameOriented: string
+  getResponsiveSizeConstantLineBitsbufsArray (
+    responsiveSizeNameOriented: string
   ): Uint8Array[] {
-    let deviceSizeNamePos: number = 4;
+    let responsiveSizeNamePos: number = 4;
 
-    this.#deviceSizeConstantLineBitsbufsArray[deviceSizeNamePos] = this.textEncoder.encode( deviceSizeNameOriented );
+    this.#responsiveSizeConstantLineBitsbufsArray[responsiveSizeNamePos] = this.textEncoder.encode( responsiveSizeNameOriented );
 
-    return this.#deviceSizeConstantLineBitsbufsArray as Uint8Array[];
+    return this.#responsiveSizeConstantLineBitsbufsArray as Uint8Array[];
   }
 
 
 
-  getDeviceSizeConstantLine_size_BitsbufsArrayByBitsbufs (
-    deviceSizeNameOriented: Uint8Array,
+  getResponsiveSizeConstantLine_size_BitsbufsArrayByBitsbufs (
+    responsiveSizeNameOriented: Uint8Array,
     maxOrMin: Uint8Array
   ): Uint8Array[] {
 
     let maxOrMinPos: number = 5;
-    let deviceSizeNamePos: number = 9;
+    let responsiveSizeNamePos: number = 9;
 
-    this.#deviceSizeConstantLine_size_BitsbufsArray[maxOrMinPos] = maxOrMin;
-    this.#deviceSizeConstantLine_size_BitsbufsArray[deviceSizeNamePos] = deviceSizeNameOriented;
+    this.#responsiveSizeConstantLine_size_BitsbufsArray[maxOrMinPos] = maxOrMin;
+    this.#responsiveSizeConstantLine_size_BitsbufsArray[responsiveSizeNamePos] = responsiveSizeNameOriented;
 
     maxOrMinPos = 12;
-    this.#deviceSizeConstantLine_size_BitsbufsArray[maxOrMinPos] = maxOrMin;
+    this.#responsiveSizeConstantLine_size_BitsbufsArray[maxOrMinPos] = maxOrMin;
 
-    return this.#deviceSizeConstantLine_size_BitsbufsArray as Uint8Array[];
+    return this.#responsiveSizeConstantLine_size_BitsbufsArray as Uint8Array[];
   }
 
 }

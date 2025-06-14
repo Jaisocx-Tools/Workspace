@@ -1,4 +1,4 @@
-export interface ResponsiveTsFile_DevicesSizesNames_Interface {
+export interface ResponsiveTsFile_ResponsiveSizesNames_Interface {
 
   // RENAMED: produceMediaRulesTypescriptFile
   // Mobile.vsDesktop/src/MediaruleNamesNew.ts
@@ -9,7 +9,7 @@ export interface ResponsiveTsFile_DevicesSizesNames_Interface {
   // name of the .css file: MediaAndStyles/responsive/style_e02_mobile_xs_portrait.css
   // in this .css file, css variable: --media_rule_name: style_e02_mobile_xs_portrait;
   //                                  --media_rule__min_width: var(--style_e02_mobile_xs_portrait__min_width);
-  produceTsFileWithDevicesSizesNames (
+  produceTsFileWithResponsiveSizesNames (
     tsClassName: string
   ): Promise<number>;
 

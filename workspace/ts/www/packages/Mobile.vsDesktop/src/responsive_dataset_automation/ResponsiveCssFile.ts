@@ -68,9 +68,9 @@ export class ResponsiveCssFile implements ResponsiveCssFileInterface {
           "sizeFrom": "",
           "sizeTil": "",
           "orientation": "",
-          "deviceSizeNameConstantLine": "",
-          "deviceSizeConstant_sizeFrom": "",
-          "deviceSizeConstant_sizeTil": ""
+          "responsiveSizeNameConstantLine": "",
+          "responsiveSizeConstant_sizeFrom": "",
+          "responsiveSizeConstant_sizeTil": ""
         }
       )
       .getActiveDataRecordId();
@@ -116,41 +116,41 @@ export class ResponsiveCssFile implements ResponsiveCssFileInterface {
       sizesByBitsbufs_true
     );
 
-    let deviceSizeName: Uint8Array = data["deviceSizeName"];
+    let responsiveSizeName: Uint8Array = data["responsiveSizeName"];
 
-    let deviceSizeNameConstantLineArray: Uint8Array[] = this.responsiveDatasetConstants
-        .getDeviceSizeConstantLineBitsbufsArrayByBitsbufs (
-          deviceSizeName
+    let responsiveSizeNameConstantLineArray: Uint8Array[] = this.responsiveDatasetConstants
+        .getResponsiveSizeConstantLineBitsbufsArrayByBitsbufs (
+          responsiveSizeName
         );
 
-    let deviceSizeNameConstantLine: Uint8Array = this.responsiveDatasetBase.fileWriter.concatUint8Arrays( deviceSizeNameConstantLineArray );
+    let responsiveSizeNameConstantLine: Uint8Array = this.responsiveDatasetBase.fileWriter.concatUint8Arrays( responsiveSizeNameConstantLineArray );
 
     let keywordMin: Uint8Array = this.responsiveDatasetConstants.getKeywordMin();
-    let deviceSizeConstantLine_size: Uint8Array[] = this.responsiveDatasetConstants
-        .getDeviceSizeConstantLine_size_BitsbufsArrayByBitsbufs (
-          deviceSizeName,
+    let responsiveSizeConstantLine_size: Uint8Array[] = this.responsiveDatasetConstants
+        .getResponsiveSizeConstantLine_size_BitsbufsArrayByBitsbufs (
+          responsiveSizeName,
           keywordMin
         );
 
 
-    let deviceSizeConstant_SizeFrom: Uint8Array = this.responsiveDatasetBase.fileWriter.concatUint8Arrays( deviceSizeConstantLine_size );
+    let responsiveSizeConstant_SizeFrom: Uint8Array = this.responsiveDatasetBase.fileWriter.concatUint8Arrays( responsiveSizeConstantLine_size );
 
     let keywordMax: Uint8Array = this.responsiveDatasetConstants.getKeywordMax();
-    deviceSizeConstantLine_size = this.responsiveDatasetConstants
-        .getDeviceSizeConstantLine_size_BitsbufsArrayByBitsbufs (
-          deviceSizeName,
+    responsiveSizeConstantLine_size = this.responsiveDatasetConstants
+        .getResponsiveSizeConstantLine_size_BitsbufsArrayByBitsbufs (
+          responsiveSizeName,
           keywordMax
         );
-    let deviceSizeConstant_SizeTil: Uint8Array = this.responsiveDatasetBase.fileWriter.concatUint8Arrays( deviceSizeConstantLine_size );
+    let responsiveSizeConstant_SizeTil: Uint8Array = this.responsiveDatasetBase.fileWriter.concatUint8Arrays( responsiveSizeConstantLine_size );
 
 
     let templateData: any = {
       "sizeFrom": sizes["from"],
       "sizeTil": sizes["to"],
       "orientation": this.responsiveDatasetBase.textEncoder.encode( orientation ),
-      "deviceSizeNameConstantLine": deviceSizeNameConstantLine,
-      "deviceSizeConstant_sizeFrom": deviceSizeConstant_SizeFrom,
-      "deviceSizeConstant_sizeTil": deviceSizeConstant_SizeTil
+      "responsiveSizeNameConstantLine": responsiveSizeNameConstantLine,
+      "responsiveSizeConstant_sizeFrom": responsiveSizeConstant_SizeFrom,
+      "responsiveSizeConstant_sizeTil": responsiveSizeConstant_SizeTil
     };
 
 
@@ -176,8 +176,8 @@ export class ResponsiveCssFile implements ResponsiveCssFileInterface {
 
 
 
-    let deviceSizeNameString: string = this.responsiveDatasetBase.textDecoder.decode( deviceSizeName );
-    let fileName: string = [ deviceSizeNameString, ".css" ].join("");
+    let responsiveSizeNameString: string = this.responsiveDatasetBase.textDecoder.decode( responsiveSizeName );
+    let fileName: string = [ responsiveSizeNameString, ".css" ].join("");
 
     let mediaCssFilePath: string = path.resolve (
       this.responsiveDatasetBase.mediaAndStylesResponsiveFolderPath,

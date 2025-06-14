@@ -1,4 +1,4 @@
-export class MobileVsDesktop_DevicesSizesNames {
+export class MobileVsDesktop_ResponsiveSizesNames {
 
   readonly #style_e02_mobile_xs_portrait: string = "style_e02_mobile_xs_portrait";
   readonly #style_e02_mobile_xs_landscape: string = "style_e02_mobile_xs_landscape";

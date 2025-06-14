@@ -1,6 +1,6 @@
 export interface ResponsiveDatasetConstantsInterface {
 
-  getDeviceSizeNameBitsbufsArrayByBitsbufs (
+  getResponsiveSizeNameBitsbufsArrayByBitsbufs (
     sitesToolName: Uint8Array,
     rangeOrderbyId: Uint8Array,
     art: Uint8Array,
@@ -9,7 +9,7 @@ export interface ResponsiveDatasetConstantsInterface {
 
 
 
-  getDeviceSizeNameBitsbufsArray (
+  getResponsiveSizeNameBitsbufsArray (
     sitesToolName: string,
     rangeOrderbyId: string,
     art: string,
@@ -18,7 +18,7 @@ export interface ResponsiveDatasetConstantsInterface {
 
 
 
-  getDeviceSizeNameOrientedBitsbufsArray (
+  getResponsiveSizeNameOrientedBitsbufsArray (
     sitesToolName: string,
     rangeOrderbyId: string,
     art: string,
@@ -30,19 +30,19 @@ export interface ResponsiveDatasetConstantsInterface {
 
   getImportLineBitsbufsArray (
     urlStart: string,
-    deviceSizeName: string
+    responsiveSizeName: string
   ): Uint8Array[];
 
 
 
-  getDeviceSizeConstantLineBitsbufsArrayByBitsbufs (
-    deviceSizeNameOriented: Uint8Array
+  getResponsiveSizeConstantLineBitsbufsArrayByBitsbufs (
+    responsiveSizeNameOriented: Uint8Array
   ): Uint8Array[];
 
 
 
-  getDeviceSizeConstantLineBitsbufsArray (
-    deviceSizeNameOriented: string
+  getResponsiveSizeConstantLineBitsbufsArray (
+    responsiveSizeNameOriented: string
   ): Uint8Array[];
 
 }

@@ -2,10 +2,10 @@
 @media only screen and (min-width: {{ minWidth }}px) and (max-width: {{ maxWidth }}px) and (orientation: {{ orientation }}) {
 
   .workspace {
-    {{ deviceSizeConstantLine }}
+    {{ responsiveSizeConstantLine }}
 
-    {{ deviceSizeConstant_minWidth }}
-    {{ deviceSizeConstant_maxWidth }}
+    {{ responsiveSizeConstant_minWidth }}
+    {{ responsiveSizeConstant_maxWidth }}
   }
 
   /* verifying responsive rules applies */

@@ -115,7 +115,7 @@ export class ResponsiveImports implements ResponsiveImportsInterface {
     let importedFileName: string = "";
     let urlStart: string = "";
     let urlStartBitsbuf: Uint8Array = new Uint8Array();
-    let deviceSizeNameOriented: Uint8Array = new Uint8Array();
+    let responsiveSizeNameOriented: Uint8Array = new Uint8Array();
     let cssImportLine: Uint8Array[] = new Array();
 
     if ( webpackAliased === true ) {
@@ -134,17 +134,17 @@ export class ResponsiveImports implements ResponsiveImportsInterface {
 
       for ( orientation of orientationKeywords ) {
 
-        deviceSizeNameOriented = this.responsiveDatasetConstants
-            .getDeviceSizeNameBitsbufsOrientedArrayByBitsbufs (
-              data[responsiveDatasetPropName]["deviceSizeName"],
+        responsiveSizeNameOriented = this.responsiveDatasetConstants
+            .getResponsiveSizeNameBitsbufsOrientedArrayByBitsbufs (
+              data[responsiveDatasetPropName]["responsiveSizeName"],
               orientation
             );
 
-        importedFileName = [deviceSizeNameOriented, ".css"].join("");
+        importedFileName = [responsiveSizeNameOriented, ".css"].join("");
 
         cssImportLine = this.responsiveDatasetConstants.getImportLineBitsbufsArrayByBitsbufs (
           urlStartBitsbuf,
-          deviceSizeNameOriented
+          responsiveSizeNameOriented
         );
 
         written = await this.responsiveDatasetBase.fileWriter.appendFlatArrayToFile (
@@ -162,11 +162,11 @@ export class ResponsiveImports implements ResponsiveImportsInterface {
 
   getImportLineBitsbufsArray (
     urlStart: string,
-    deviceSizeName: string
+    responsiveSizeName: string
   ): Uint8Array[] {
     return this.responsiveDatasetConstants.getImportLineBitsbufsArray (
       urlStart,
-      deviceSizeName
+      responsiveSizeName
     );
   }
 

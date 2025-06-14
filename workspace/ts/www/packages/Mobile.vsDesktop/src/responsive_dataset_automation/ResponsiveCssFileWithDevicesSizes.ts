@@ -3,11 +3,11 @@ import * as path from "node:path";
 
 import { ResponsiveDatasetConstants } from "./ResponsiveDatasetConstants.js";
 import { ResponsiveDatasetBase } from "./ResponsiveDatasetBase.js";
-import { ResponsiveCssFileWithDevicesSizesInterface } from "./ResponsiveCssFileWithDevicesSizesInterface.js";
+import { ResponsiveCssFileWithResponsiveSizesInterface } from "./ResponsiveCssFileWithResponsiveSizesInterface.js";
 
 
 
-export class ResponsiveCssFileWithDevicesSizes implements ResponsiveCssFileWithDevicesSizesInterface {
+export class ResponsiveCssFileWithResponsiveSizes implements ResponsiveCssFileWithResponsiveSizesInterface {
 
   responsiveDatasetConstants: ResponsiveDatasetConstants;
   responsiveDatasetBase: ResponsiveDatasetBase;
@@ -31,7 +31,7 @@ export class ResponsiveCssFileWithDevicesSizes implements ResponsiveCssFileWithD
   //     --style_e02_mobile_xs_landscape__width__max_width: 500px;
   //
   //   ...
-  async produceCssFileWithDevicesSizesConstants( targetFileName: string ): Promise<number> {
+  async produceCssFileWithResponsiveSizesConstants( targetFileName: string ): Promise<number> {
     // @ts-ignore
     let propNames: any = Object.keys( this.dataset.data );
     let responsiveDatasetPropName: string = "";
@@ -50,7 +50,7 @@ export class ResponsiveCssFileWithDevicesSizes implements ResponsiveCssFileWithD
     let propsNumber: number = propNames.length;
     for ( i = 0; i < propsNumber; i++ ) {
       responsiveDatasetPropName = propNames[i];
-      mediaConstantLinesSet = this.produceDevicesSizesConstantsLinesSet( responsiveDatasetPropName );
+      mediaConstantLinesSet = this.produceResponsiveSizesConstantsLinesSet( responsiveDatasetPropName );
       await this.responsiveDatasetBase.fileWriter.appendMixedArrayToFile ( mediaConstantLinesSet );
     }
 
@@ -72,14 +72,14 @@ export class ResponsiveCssFileWithDevicesSizes implements ResponsiveCssFileWithD
   //
   // --s_56_16k_tv_horizontal__min_width: 15361px; /* 16k TV */
   // --s_56_16k_tv_horizontal__max_width: 25360px; /* 16k TV */
-  produceDevicesSizesConstantsLinesSet ( responsiveDatasetPropName: string ): Uint8Array[][] {
+  produceResponsiveSizesConstantsLinesSet ( responsiveDatasetPropName: string ): Uint8Array[][] {
 
-    let devicesSizesConstantLinesArray: Uint8Array[][] = new Array(4) as Uint8Array[][];
-    let devicesSizesConstantLine: Uint8Array[] = new Array();
+    let responsiveSizesConstantLinesArray: Uint8Array[][] = new Array(4) as Uint8Array[][];
+    let responsiveSizesConstantLine: Uint8Array[] = new Array();
     let newLine: Uint8Array = this.responsiveDatasetConstants.getNewLineBitsbuf();
 
-    let deviceSizeNameOriented: Uint8Array = this.responsiveDatasetBase
-        .datasetBitsbufs[responsiveDatasetPropName]["deviceSizeName"];
+    let responsiveSizeNameOriented: Uint8Array = this.responsiveDatasetBase
+        .datasetBitsbufs[responsiveDatasetPropName]["responsiveSizeName"];
 
     let orientationValues: Uint8Array[] = this.responsiveDatasetConstants.getOrientationKeywordsBitsbufs();
     let orientation: Uint8Array = new Uint8Array();
@@ -91,28 +91,28 @@ export class ResponsiveCssFileWithDevicesSizes implements ResponsiveCssFileWithD
       for ( let i = 1; i < 3; i++ ) {
         isStartValue = ( i === 1 );
 
-        devicesSizesConstantLine = this.responsiveDatasetConstants
-            .getDeviceSizeConstantLine_size_BitsbufsArrayByBitsbufs (
-              deviceSizeNameOriented,
+        responsiveSizesConstantLine = this.responsiveDatasetConstants
+            .getResponsiveSizeConstantLine_size_BitsbufsArrayByBitsbufs (
+              responsiveSizeNameOriented,
               orientation
             );
-        devicesSizesConstantLine.push(newLine);
+        responsiveSizesConstantLine.push(newLine);
 
         if ( isStartValue === false ) {
-          devicesSizesConstantLine.push( newLine );
+          responsiveSizesConstantLine.push( newLine );
         }
 
-        devicesSizesConstantLinesArray[mediaLinePos] = devicesSizesConstantLine;
+        responsiveSizesConstantLinesArray[mediaLinePos] = responsiveSizesConstantLine;
 
         mediaLinePos++;
 
       }
     }
 
-    devicesSizesConstantLinesArray[3].push( newLine );
-    devicesSizesConstantLinesArray[3].push( newLine );
+    responsiveSizesConstantLinesArray[3].push( newLine );
+    responsiveSizesConstantLinesArray[3].push( newLine );
 
-    return devicesSizesConstantLinesArray;
+    return responsiveSizesConstantLinesArray;
   }
 
 }

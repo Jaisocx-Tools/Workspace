@@ -221,17 +221,17 @@ export class ResponsiveDatasetBase implements ResponsiveDatasetBaseInterface {
       dataBitsbufs["art"] = this.textEncoder.encode( dataProp["art"] );
       dataBitsbufs["art_size"] = this.textEncoder.encode( dataProp["art_size"] );
 
-      let deviceSizeName: Uint8Array = this.responsiveDatasetConstants.getDeviceSizeNameBitsbufsArrayByBitsbufs (
+      let responsiveSizeName: Uint8Array = this.responsiveDatasetConstants.getResponsiveSizeNameBitsbufsArrayByBitsbufs (
         sitesToolBitsbuf,
         dataBitsbufs["range_orderby_id"],
         dataBitsbufs["art"],
         dataBitsbufs["art_size"]
       );
 
-      dataBitsbufs["deviceSizeName"] = deviceSizeName;
+      dataBitsbufs["responsiveSizeName"] = responsiveSizeName;
 
-      let deviceSizeNameString: string = this.textDecoder.decode( deviceSizeName );
-      dataBitsbufs["deviceSizeNameString"] = deviceSizeNameString;
+      let responsiveSizeNameString: string = this.textDecoder.decode( responsiveSizeName );
+      dataBitsbufs["responsiveSizeNameString"] = responsiveSizeNameString;
 
     }
 
@@ -294,13 +294,13 @@ export class ResponsiveDatasetBase implements ResponsiveDatasetBaseInterface {
 
 
 
-  getDeviceSizeNameBitsbufsArray (
+  getResponsiveSizeNameBitsbufsArray (
     sitesToolName: string,
     rangeOrderbyId: string,
     art: string,
     artSize: string
   ): Uint8Array[] {
-    return this.responsiveDatasetConstants.getDeviceSizeNameBitsbufsArray (
+    return this.responsiveDatasetConstants.getResponsiveSizeNameBitsbufsArray (
       sitesToolName,
       rangeOrderbyId,
       art,
@@ -310,14 +310,14 @@ export class ResponsiveDatasetBase implements ResponsiveDatasetBaseInterface {
 
 
 
-  getDeviceSizeNameOrientedBitsbufsArray (
+  getResponsiveSizeNameOrientedBitsbufsArray (
     sitesToolName: string,
     rangeOrderbyId: string,
     art: string,
     artSize: string,
     orientation: string
   ): Uint8Array[] {
-    return this.responsiveDatasetConstants.getDeviceSizeNameOrientedBitsbufsArray (
+    return this.responsiveDatasetConstants.getResponsiveSizeNameOrientedBitsbufsArray (
       sitesToolName,
       rangeOrderbyId,
       art,
@@ -328,11 +328,11 @@ export class ResponsiveDatasetBase implements ResponsiveDatasetBaseInterface {
 
 
 
-  getDeviceSizeConstantLineBitsbufsArray (
-    deviceSizeName: string
+  getResponsiveSizeConstantLineBitsbufsArray (
+    responsiveSizeName: string
   ): Uint8Array[] {
-    return this.responsiveDatasetConstants.getDeviceSizeConstantLineBitsbufsArray (
-      deviceSizeName
+    return this.responsiveDatasetConstants.getResponsiveSizeConstantLineBitsbufsArray (
+      responsiveSizeName
     );
   }
 

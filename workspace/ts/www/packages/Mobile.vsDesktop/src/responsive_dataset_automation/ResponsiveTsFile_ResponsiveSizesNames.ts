@@ -9,11 +9,11 @@ import { CssImporter } from "@jaisocx/css-importer";
 
 import { ResponsiveDatasetConstants } from "./ResponsiveDatasetConstants.js";
 import { ResponsiveDatasetBase } from "./ResponsiveDatasetBase.js";
-import { ResponsiveTsFile_DevicesSizesNames_Interface } from "./ResponsiveTsFile_DevicesSizesNames_Interface.js";
+import { ResponsiveTsFile_ResponsiveSizesNames_Interface } from "./ResponsiveTsFile_ResponsiveSizesNames_Interface.js";
 
 
 
-export class ResponsiveTsFile_DevicesSizesNames implements ResponsiveTsFile_DevicesSizesNames_Interface {
+export class ResponsiveTsFile_ResponsiveSizesNames implements ResponsiveTsFile_ResponsiveSizesNames_Interface {
 
   responsiveDatasetConstants: ResponsiveDatasetConstants;
   responsiveDatasetBase: ResponsiveDatasetBase;
@@ -35,7 +35,7 @@ export class ResponsiveTsFile_DevicesSizesNames implements ResponsiveTsFile_Devi
   // name of the .css file: MediaAndStyles/responsive/style_e02_mobile_xs_portrait.css
   // in this .css file, css variable: --media_rule_name: style_e02_mobile_xs_portrait;
   //                                  --media_rule__min_width: var(--style_e02_mobile_xs_portrait__min_width);
-  async produceTsFileWithDevicesSizesNames (
+  async produceTsFileWithResponsiveSizesNames (
     tsClassName: string
   ): Promise<number> {
 
