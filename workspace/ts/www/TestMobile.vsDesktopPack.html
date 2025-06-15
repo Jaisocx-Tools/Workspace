@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <!-- <html lang="en" class="workspace"> -->
 <!-- <html lang="en" class="workspace long theme-lightmode"> -->
-<html lang="en" class="mobile-vs-desktop workspace long theme-darkmode">
+<html lang="en" class="site-tool-automation workspace long theme-darkmode">
 <!-- <html lang="en" class="workspace small theme-lightmode"> -->
 <!-- <html lang="en" class="workspace small theme-darkmode"> -->
 
@@ -26,7 +26,7 @@
 
 
   <style>
-.mobile-vs-desktop.workspace.long.theme-darkmode {
+.site-tool-automation.workspace.long.theme-darkmode {
   --clean-start__font-family: Tahoma;
   --clean-start__font-size_h1: 1.6rem;
   --clean-start__font-size_h2: 1.285rem;
@@ -34,8 +34,8 @@
   --clean-start__line-height_h2: 2.5rem;
 }
 
-.mobile-vs-desktop.workspace.long.theme-darkmode button,
-.mobile-vs-desktop.workspace.long.theme-darkmode input {
+.site-tool-automation.workspace.long.theme-darkmode button,
+.site-tool-automation.workspace.long.theme-darkmode input {
 
   outline: 1px solid limegreen;
 
@@ -51,7 +51,7 @@
 
 
   <script src="packages/Mobile.vsDeskop/transpiled/Simple/ResponsiveSizeNames.js"></script>
-  <script src="packages/Mobile.vsDeskop/transpiled/Simple/Mobile.vsDesktopPack.js"></script>
+  <script src="packages/Mobile.vsDeskop/transpiled/Simple/SiteToolAutomationPack.js"></script>
 
 </head>
 <body>
@@ -90,7 +90,7 @@
 
 
     function responsiveSizeNameTest( force ) {
-      let mobileVsDesktopPack = new MobileVsDesktopPack();
+      let mobileVsDesktopPack = new SiteToolAutomationPack();
 
       let responsiveSizeName = mobileVsDesktopPack.getResponsiveSizeName( force );
 
@@ -116,7 +116,7 @@
     }
 
     function responsiveSizeNameTestJson() {
-      let mobileVsDesktopPack = new MobileVsDesktopPack();
+      let mobileVsDesktopPack = new SiteToolAutomationPack();
       let responsiveSizeJsonText = mobileVsDesktopPack.toString();
       setOnSite( responsiveSizeJsonText );
     }

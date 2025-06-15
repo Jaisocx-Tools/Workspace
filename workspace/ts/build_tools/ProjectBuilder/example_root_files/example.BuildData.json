@@ -132,8 +132,8 @@
       ]
     },
     {
-      "path": "packages/Mobile.vsDesktop",
-      "name": "mobile-vs-desktop",
+      "path": "packages/SiteToolAutomation",
+      "name": "site-tool-automation",
       "build": false,
       "build-simple-enable": true,
       "css-importer": {
@@ -157,7 +157,7 @@
       ],
       "build-files": [
         "ResponsiveSizeNames.js",
-        "Mobile.vsDesktopPack.js",
+        "SiteToolAutomationPack.js",
         "index.js",
         "webpackAliases.js",
         "webpack.aliases.mjs",
