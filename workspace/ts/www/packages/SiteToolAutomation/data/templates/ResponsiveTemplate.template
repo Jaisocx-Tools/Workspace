@@ -1,16 +1,18 @@
 /* Responsive rules */
-@media only screen and (min-width: {{ minWidth }}px) and (max-width: {{ maxWidth }}px) and (orientation: {{ orientation }}) {
+@media only screen and (min-width: {{ min-width }}px) and (max-width: {{ max-width }}px) and (orientation: {{ orientation }}) {
 
   .workspace {
-    {{ responsiveSizeConstantLine }}
+    {{ responsiveSizeConstantName }}: {{ responsiveSizeName }};
 
-    {{ responsiveSizeConstant_minWidth }}
-    {{ responsiveSizeConstant_maxWidth }}
-  }
+    {{ responsiveSizeConstantName }}__min-width: {{ min-width }}px;
+    {{ responsiveSizeConstantName }}__max-width: {{ max-width }}px;
 
-  /* verifying responsive rules applies */
-  .workspace.verify-responsive-rule-applies main h1::before {
-    content: var(--device_size_name);
+
+
+    {{ responsiveSizeConstantName }}_{{ SitesToolName }}: {{ responsiveSizeName }}_{{ SitesToolName }};
+
+    {{ responsiveSizeConstantName }}_{{ SitesToolName }}__min-width: {{ min-width }}px;
+    {{ responsiveSizeConstantName }}_{{ SitesToolName }}__max-width: {{ max-width }}px;
   }
 
 }

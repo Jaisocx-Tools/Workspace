@@ -1,7 +1,7 @@
 import fs from "node:fs";
 import { Stats } from "node:fs";
 import { FileHandle } from "node:fs/promises";
-import { TextEncoder, TextDecoder } from "node:util";
+import { TextEncoder, TextDecoder } from "util";
 
 import { FileWriterConstants } from "./FileWriterConstants.js";
 
@@ -24,7 +24,7 @@ export class FileWriter {
     this.offsetInFile = 0;
     this.fileHandle = null;
     this.filePath = "";
-    this.textDecoder = new TextDecoder();
+    this.textDecoder = new TextDecoder("utf-8");
     this.textEncoder = new TextEncoder();
   }
 
@@ -384,20 +384,20 @@ export class FileWriter {
   concatUint8Arrays(arrays: Uint8Array[]): Uint8Array {
     const totalLength: number = arrays.reduce(
       (sum: number, arr: Uint8Array) => {
-        return ( sum + arr.byteLength );
+        return ( sum + arr.length );
       },
       0
     );
 
 
     // ret value
-    const result: Uint8Array = new Uint8Array(totalLength);
+    let result: Uint8Array = new Uint8Array( totalLength );
 
     let arr: Uint8Array = new Uint8Array();
     let offset: number = 0;
 
     for ( arr of arrays ) {
-      result.set(arr, offset);
+      result.set([...arr], offset);
       offset += arr.length;
     }
 

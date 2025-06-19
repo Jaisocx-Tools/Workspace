@@ -1,7 +1,7 @@
 import * as fs from "node:fs";
 import * as path from "node:path";
 
-import { FileWriter } from "@jaisocx/file-writer";
+// import { FileWriter } from "@jaisocx/file-writer";
 import { TemplateRenderer } from "@jaisocx/template-renderer";
 
 import { ResponsiveDatasetConstants } from "../constants/ResponsiveDatasetConstants.js";
@@ -12,23 +12,23 @@ import { ResponsiveCssFileInterface } from "./ResponsiveCssFileInterface.js";
 
 export class ResponsiveCssFile implements ResponsiveCssFileInterface {
 
+  // fileWriter: FileWriter;
+  templateRenderer: TemplateRenderer;
+
   responsiveDatasetConstants: ResponsiveDatasetConstants;
   responsiveDatasetBase: ResponsiveDatasetBase;
 
-  templateMediaCssFileContent: string;
-  templateRenderer: TemplateRenderer;
+  mediaQueryCssFileContent: string;
 
 
-  constructor() {
-    this.responsiveDatasetConstants = new ResponsiveDatasetConstants();
-    this.responsiveDatasetBase = new ResponsiveDatasetBase();
-
-    this.templateMediaCssFileContent = "";
-
+  constructor( base: ResponsiveDatasetBase, constants: ResponsiveDatasetConstants ) {
+    // this.fileWriter = new FileWriter();
     this.templateRenderer = new TemplateRenderer();
-    this.templateRenderer
-      .setDebug( false );
 
+    this.responsiveDatasetConstants = constants;
+    this.responsiveDatasetBase = base;
+
+    this.mediaQueryCssFileContent = "";
   }
 
 
@@ -36,9 +36,9 @@ export class ResponsiveCssFile implements ResponsiveCssFileInterface {
   // SiteToolAutomation/data/templates/ResponsiveTemplate.template
   // in this package, just one art of .css files is produced with the template.
   // the .css files with media query for one size like "mobile_xs": SiteToolAutomation/MediaAndStyles/responsive/style_e02_mobile_xs_portrait.css.
-  readTemplateMediaCssFile( inFileAbsolutePath: string ): ResponsiveCssFile {
-    const templatePath = inFileAbsolutePath;
-    this.templateMediaCssFileContent = fs.readFileSync( templatePath, "utf8" );
+  readTemplateMediaCssFile( mediaQueryCssFileTemplatePath: string ): ResponsiveCssFile {
+    const templatePath = mediaQueryCssFileTemplatePath;
+    this.mediaQueryCssFileContent = fs.readFileSync( templatePath, "utf8" );
 
     return this;
   }
@@ -56,35 +56,48 @@ export class ResponsiveCssFile implements ResponsiveCssFileInterface {
   async produceResponsiveCssFilesSet (): Promise<number> {
 
     // @ts-ignore
-    let propNames: any = Object.keys( this.dataset.data );
+    let propNames: any = Object.keys( this.responsiveDatasetBase.dataset.data );
     let responsiveDatasetPropName: string = "";
     let orientationKeywords: string[] = this.responsiveDatasetConstants.getOrientationKeywords();
+    let orientationKeywordsBitsbufs: Uint8Array[] = this.responsiveDatasetConstants.getOrientationKeywordsBitsbufs();
     let orientation: string = "";
+    let orientationBitsbuf: Uint8Array = new Uint8Array();
+    let sitesToolBitsbuf: Uint8Array = this.responsiveDatasetBase.fileWriter.textEncoder
+        .encode( this.responsiveDatasetBase.sitesToolName );
 
+
+
+    //@ts-ignore
     let templateRendererDataRecordId: number = this.templateRenderer
-      .setTemplate( this.templateMediaCssFileContent )
+      .setTemplate( this.mediaQueryCssFileContent )
       .setData (
         {
-          "sizeFrom": "",
-          "sizeTil": "",
+          "SitesToolName": "",
+          "responsiveSizeConstantName": "",
+          "responsiveSizeName": "",
           "orientation": "",
-          "responsiveSizeNameConstantLine": "",
-          "responsiveSizeConstant_sizeFrom": "",
-          "responsiveSizeConstant_sizeTil": ""
+          "min-width": "",
+          "max-width": "",
         }
       )
       .getActiveDataRecordId();
 
+
     this.templateRenderer.optimize( templateRendererDataRecordId );
 
     let mediaRetVal: number = 0;
+    let orientationId: number = 0;
     for ( responsiveDatasetPropName of propNames ) {
 
-      for ( orientation of orientationKeywords ) {
+      for ( orientationId = 0; orientationId < 2; orientationId++ ) {
+        orientation = orientationKeywords[orientationId];
+        orientationBitsbuf = orientationKeywordsBitsbufs[orientationId];
 
         mediaRetVal = await this.produceOneResponsiveCssFile (
+          sitesToolBitsbuf,
           responsiveDatasetPropName,
-          orientation
+          orientation,
+          orientationBitsbuf
         );
 
       }
@@ -103,10 +116,15 @@ export class ResponsiveCssFile implements ResponsiveCssFileInterface {
   // SiteToolAutomation/MediaAndStyles/responsive
   //    style_e02_mobile_xs_portrait.css
   async produceOneResponsiveCssFile (
+    sitesToolBitsbuf: Uint8Array,
     responsiveDatasetPropName: string,
-    orientation: string
+    orientation: string,
+    orientationBitsbuf: Uint8Array
   ): Promise<number> {
+    let responsiveSizeConstantName: Uint8Array = this.responsiveDatasetConstants
+        .getResponsiveSizeConstantNameBitsbuf();
 
+    //@ts-ignore
     let data = this.responsiveDatasetBase.datasetBitsbufs[responsiveDatasetPropName]
 
     let sizesByBitsbufs_true: boolean = true;
@@ -116,78 +134,65 @@ export class ResponsiveCssFile implements ResponsiveCssFileInterface {
       sizesByBitsbufs_true
     );
 
-    let responsiveSizeName: Uint8Array = data["responsiveSizeName"];
-
-    let responsiveSizeNameConstantLineArray: Uint8Array[] = this.responsiveDatasetConstants
-        .getResponsiveSizeConstantLineBitsbufsArrayByBitsbufs (
-          responsiveSizeName
-        );
-
-    let responsiveSizeNameConstantLine: Uint8Array = this.responsiveDatasetBase.fileWriter.concatUint8Arrays( responsiveSizeNameConstantLineArray );
-
-    let keywordMin: Uint8Array = this.responsiveDatasetConstants.getKeywordMin();
-    let responsiveSizeConstantLine_size: Uint8Array[] = this.responsiveDatasetConstants
-        .getResponsiveSizeConstantLine_size_BitsbufsArrayByBitsbufs (
-          responsiveSizeName,
-          keywordMin
-        );
+    let responsiveSizeName_withSitesToolName_Array: Uint8Array[] = this.responsiveDatasetConstants
+      .getResponsiveSizeName_withSitesToolName_ByBitsbufs (
+        data["range_orderby_id"],
+        data["art"],
+        data["art_size"],
+        orientationBitsbuf,
+        sitesToolBitsbuf
+      );
 
 
-    let responsiveSizeConstant_SizeFrom: Uint8Array = this.responsiveDatasetBase.fileWriter.concatUint8Arrays( responsiveSizeConstantLine_size );
+    let responsiveSizeNameOrientedArray: Uint8Array[] = responsiveSizeName_withSitesToolName_Array.slice( 0, 9 );
 
-    let keywordMax: Uint8Array = this.responsiveDatasetConstants.getKeywordMax();
-    responsiveSizeConstantLine_size = this.responsiveDatasetConstants
-        .getResponsiveSizeConstantLine_size_BitsbufsArrayByBitsbufs (
-          responsiveSizeName,
-          keywordMax
-        );
-    let responsiveSizeConstant_SizeTil: Uint8Array = this.responsiveDatasetBase.fileWriter.concatUint8Arrays( responsiveSizeConstantLine_size );
+    let responsiveSizeName_withSitesToolName: Uint8Array = this.responsiveDatasetBase.fileWriter
+        .concatUint8Arrays( responsiveSizeName_withSitesToolName_Array );
+
+    let responsiveSizeNameOriented: Uint8Array = this.responsiveDatasetBase.fileWriter
+        .concatUint8Arrays( responsiveSizeNameOrientedArray );
 
 
     let templateData: any = {
-      "sizeFrom": sizes["from"],
-      "sizeTil": sizes["to"],
-      "orientation": this.responsiveDatasetBase.textEncoder.encode( orientation ),
-      "responsiveSizeNameConstantLine": responsiveSizeNameConstantLine,
-      "responsiveSizeConstant_sizeFrom": responsiveSizeConstant_SizeFrom,
-      "responsiveSizeConstant_sizeTil": responsiveSizeConstant_SizeTil
+      "SitesToolName": sitesToolBitsbuf,
+      "responsiveSizeConstantName": responsiveSizeConstantName,
+      "responsiveSizeName": responsiveSizeNameOriented,
+      "orientation": orientationBitsbuf,
+      "min-width": sizes["from"],
+      "max-width": sizes["to"],
     };
+    // console.log( templateData );
 
 
+    let templateRendererDataRecordId: number = this.templateRenderer.getActiveDataRecordId();
 
     this.templateRenderer
       .setData( templateData );
 
-    let templateRendererDataRecordId: number = this.templateRenderer.getActiveDataRecordId();
 
-    let content: Uint8Array[] = this.templateRenderer.renderOptimizedDataBitsbufs (
+    let responsiveCssFile_Content: Uint8Array[] = this.templateRenderer.renderOptimizedDataBitsbufs (
       templateRendererDataRecordId,
       templateData
     );
 
+    let responsiveSizeName_withSitesToolName_string: string = this.responsiveDatasetBase.fileWriter
+      .textDecoder.decode( responsiveSizeName_withSitesToolName );
+
+    let responsiveCssFile_Name: string = [
+      responsiveSizeName_withSitesToolName_string,
+      ".css"
+    ].join("");
 
 
-    // temp for debugging
-    // @ts-ignore
-    // let contentText: string = this.templateRenderer.renderOptimizedToString (
-    //   templateRendererDataRecordId,
-    //   templateData
-    // );
-
-
-
-    let responsiveSizeNameString: string = this.responsiveDatasetBase.textDecoder.decode( responsiveSizeName );
-    let fileName: string = [ responsiveSizeNameString, ".css" ].join("");
-
-    let mediaCssFilePath: string = path.resolve (
+    let responsiveCssFile_Path: string = path.resolve (
       this.responsiveDatasetBase.mediaAndStylesResponsiveFolderPath,
-      fileName
+      responsiveCssFile_Name
     );
 
 
     let retVal: number = 0;
-    retVal = await this.responsiveDatasetBase.fileWriter.toAddToFileInLoop_CleanupFileAndGetNewFileHandle( mediaCssFilePath );
-    retVal = await this.responsiveDatasetBase.fileWriter.appendFlatArrayToFile( content );
+    retVal = await this.responsiveDatasetBase.fileWriter.toAddToFileInLoop_CleanupFileAndGetNewFileHandle( responsiveCssFile_Path );
+    retVal = await this.responsiveDatasetBase.fileWriter.appendFlatArrayToFile( responsiveCssFile_Content );
     retVal = await this.responsiveDatasetBase.fileWriter.filehandleClose();
 
 
@@ -195,4 +200,6 @@ export class ResponsiveCssFile implements ResponsiveCssFileInterface {
   }
 
 }
+
+
 

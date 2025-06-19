@@ -1,9 +1,7 @@
 import * as fs from "node:fs";
 import * as path from "node:path";
-import { TextEncoder, TextDecoder } from "node:util";
 import { FileWriter } from "@jaisocx/file-writer";
 import { TemplateRenderer } from "@jaisocx/template-renderer";
-import { CssImporter } from "@jaisocx/css-importer";
 import { ResponsiveDatasetConstants } from "../constants/ResponsiveDatasetConstants.js";
 import { ResponsiveDatasetBaseInterface } from "./ResponsiveDatasetBaseInterface.js";
 
@@ -11,35 +9,32 @@ import { ResponsiveDatasetBaseInterface } from "./ResponsiveDatasetBaseInterface
 
 export class ResponsiveDatasetBase implements ResponsiveDatasetBaseInterface {
 
+  // textEncoder: TextEncoder;
+  // textDecoder: TextDecoder;
   responsiveDatasetConstants: ResponsiveDatasetConstants;
+  fileWriter: FileWriter;
+  templateRenderer: TemplateRenderer;
+
   mediaAndStylesResponsiveFolderPath: string;
   datasetFilePath: string;
+  mediaQueryCssFileTemplatePath: string;
 
-  dataset: object;
-  datasetBitsbufs: object;
+  dataset: any;
+  datasetBitsbufs: any;
   templateMediaCssFileContent: string;
   webpackAliasName: string;
-  fileWriter: FileWriter;
+  templateProjectPath: string;
 
-  textEncoder: TextEncoder;
-  textDecoder: TextDecoder;
-  templateRenderer: TemplateRenderer;
+  sitesToolName: string;
 
 
 
   constructor() {
-    this.textEncoder = new TextEncoder();
-    this.textDecoder = new TextDecoder();
+    // this.textEncoder = new TextEncoder();
+    // this.textDecoder = new TextDecoder();
 
     this.responsiveDatasetConstants = new ResponsiveDatasetConstants();
 
-    this.mediaAndStylesResponsiveFolderPath = "";
-    this.datasetFilePath = "";
-
-    this.dataset = new Object();
-    this.datasetBitsbufs = new Object();
-    this.templateMediaCssFileContent = "";
-    this.webpackAliasName = "";
     this.fileWriter = new FileWriter();
     this.fileWriter
       .setDebug( false );
@@ -48,69 +43,20 @@ export class ResponsiveDatasetBase implements ResponsiveDatasetBaseInterface {
     this.templateRenderer
       .setDebug( false );
 
-  }
 
 
+    this.mediaAndStylesResponsiveFolderPath = "";
+    this.datasetFilePath = "";
+    this.mediaQueryCssFileTemplatePath = "";
 
-  async run (
-    pathToJsonDatasetForResponsiveSizes: string,
-    responsiveTemplateFilePath: string,
-    subfolderName: string,
-    responsiveMediaQueriesFilesPrefix: string,
-    mediaConstantsFileName: string,
-    webpackAliasName: string
-  ): Promise<number> {
+    this.dataset = new Object();
+    this.datasetBitsbufs = new Object();
+    this.templateMediaCssFileContent = "";
+    this.webpackAliasName = "";
+    this.templateProjectPath = "";
 
-    this
-      .readDataset( pathToJsonDatasetForResponsiveSizes )
-      .datasetPropsToBitsbufs()
-      .readTemplateMediaCssFile( responsiveTemplateFilePath )
-      .setWebpackAliasName( webpackAliasName )
-      .setMediaAndStylesResponsiveFolderPath( [ "MediaAndStyles", "/", subfolderName ].join("") );
+    this.sitesToolName = "";
 
-    await this.produceMediaConstantsCssFile( mediaConstantsFileName );
-    await this.produceMediaCssFilesSet( responsiveMediaQueriesFilesPrefix );
-
-    let isWebpackAliased_true: boolean = true;
-    await this.produceMediaCssImportsCssFile (
-      "MediaCssImports_Webpack.css",
-      subfolderName,
-      mediaConstantsFileName,
-      responsiveMediaQueriesFilesPrefix,
-      isWebpackAliased_true
-    );
-
-    let isWebpackAliased_false: boolean = false;
-    await this.produceMediaCssImportsCssFile (
-      "MediaCssImports.css",
-      "",
-      mediaConstantsFileName,
-      responsiveMediaQueriesFilesPrefix,
-      isWebpackAliased_false
-    );
-
-
-    await this.produceResponsiveSizesTypescriptFile( "ResponsiveSizeNamesNew" );
-
-    let packagePath: string = path.resolve(
-      this.mediaAndStylesResponsiveFolderPath,
-      "../../");
-
-
-    let cssImporter: CssImporter = new CssImporter();
-    let cssImporterBuilt: number = await cssImporter
-      .setPackagePath( packagePath )
-      .setCssFilePath( path.resolve(
-        packagePath,
-        "MediaAndStyles",
-        "clean-start-main-webpack.css" ) )
-      .setCssTargetFilePath( path.resolve(
-        packagePath,
-        "MediaAndStyles",
-        "clean-start-main-pack.css" ) )
-      .build();
-
-    return cssImporterBuilt;
   }
 
 
@@ -119,7 +65,13 @@ export class ResponsiveDatasetBase implements ResponsiveDatasetBaseInterface {
   // sets the path to the new TypeScript SitesTool
   // where the produced .css files will be placed.
   setTemplateProjectPath( path: string ): ResponsiveDatasetBase {
+    this.templateProjectPath = path;
+
     return this;
+  }
+
+  getTemplateProjectPath(): string {
+    return this.templateProjectPath;
   }
 
 
@@ -134,13 +86,18 @@ export class ResponsiveDatasetBase implements ResponsiveDatasetBaseInterface {
     return this;
   }
 
+  getWebpackAliasName(): string {
+    return this.webpackAliasName;
+  }
 
 
 
   // NOT IMPLEMENTED
   // first to implement the class prop set method,
   // later we know the resources we need on cdn for the css responsive feature of a SitesTool
-  setCdnUrl( cdnUrl: string ): ResponsiveDatasetBase {
+  setCdnUrl( _cdnUrl: string ): ResponsiveDatasetBase {
+    throw new Error( "Method setCdnUrl() was not implemented" );
+
     return this;
   }
 
@@ -150,15 +107,31 @@ export class ResponsiveDatasetBase implements ResponsiveDatasetBaseInterface {
    * @ready
   */
   setMediaAndStylesResponsiveFolderPath( inFolderRelativePath: string ): ResponsiveDatasetBase {
-    this.mediaAndStylesResponsiveFolderPath = inFolderRelativePath;
+    this.mediaAndStylesResponsiveFolderPath = path.resolve( this.templateProjectPath, inFolderRelativePath );
 
-    if ( fs.existsSync( inFolderRelativePath ) === false ) {
-      fs.mkdirSync( inFolderRelativePath );
+    if ( fs.existsSync( this.mediaAndStylesResponsiveFolderPath ) === false ) {
+      fs.mkdirSync( this.mediaAndStylesResponsiveFolderPath, { recursive: true } );
     }
 
     return this;
   }
 
+
+  getMediaAndStylesResponsiveFolderPath(): string {
+    return this.mediaAndStylesResponsiveFolderPath;
+  }
+
+
+  setMediaQueryCssFileTemplatePath( path: string ): ResponsiveDatasetBase {
+    this.mediaQueryCssFileTemplatePath = path;
+
+    return this;
+  }
+
+
+  getMediaQueryCssFileTemplatePath(): string {
+    return this.mediaQueryCssFileTemplatePath;
+  }
 
 
   // reads json with sizes
@@ -187,13 +160,20 @@ export class ResponsiveDatasetBase implements ResponsiveDatasetBaseInterface {
   }
 
 
+  setSitesToolName( name: string ): ResponsiveDatasetBase {
+    this.sitesToolName = name;
+
+    return this;
+  }
+
 
   datasetPropsToBitsbufs (
     sitesTool: string
   ): ResponsiveDatasetBase {
+    let te: TextEncoder = this.fileWriter.textEncoder;
+    let sitesToolBitsbuf: Uint8Array = te.encode( sitesTool );
 
-    let sitesToolBitsbuf: Uint8Array = this.textEncoder.encode( sitesTool );
-
+    //@ts-ignore
     let data: any = this.dataset["data"];
 
     let datasetKeys: string[] = Object.keys( data );
@@ -202,37 +182,45 @@ export class ResponsiveDatasetBase implements ResponsiveDatasetBaseInterface {
 
     for ( datasetPropname of datasetKeys ) {
       dataProp = data[datasetPropname];
+
+      //@ts-ignore
       this.datasetBitsbufs[datasetPropname] = new Object();
-      let dataBitsbufs: object = this.datasetBitsbufs[datasetPropname];
 
-      dataBitsbufs["range_orderby_id"] = this.textEncoder.encode( dataProp["range_orderby_id"] );
+      //@ts-ignore
+      let dataBitsbufs: any = this.datasetBitsbufs[datasetPropname];
 
-      let dataPropWidth: object = dataProp["width"];
-      let dataPropHeight: object = dataProp["height"];
+      dataBitsbufs["range_orderby_id"] = te.encode( dataProp["range_orderby_id"] );
+
+      let dataPropWidth: any = dataProp["width"];
+      let dataPropHeight: any = dataProp["height"];
 
       dataBitsbufs["width"] = new Object();
-      dataBitsbufs["width"]["from"] = this.textEncoder.encode( "" + dataPropWidth["from"] );
-      dataBitsbufs["width"]["til"] = this.textEncoder.encode( "" + dataPropWidth["til"] );
+      dataBitsbufs["width"]["from"] = te.encode( "" + dataPropWidth["from"] );
+      dataBitsbufs["width"]["to"] = te.encode( "" + dataPropWidth["to"] );
 
       dataBitsbufs["height"] = new Object();
-      dataBitsbufs["height"]["from"] = this.textEncoder.encode( "" + dataPropHeight["from"] );
-      dataBitsbufs["height"]["til"] = this.textEncoder.encode( "" + dataPropHeight["til"] );
+      dataBitsbufs["height"]["from"] = te.encode( "" + dataPropHeight["from"] );
+      dataBitsbufs["height"]["to"] = te.encode( "" + dataPropHeight["to"] );
 
-      dataBitsbufs["art"] = this.textEncoder.encode( dataProp["art"] );
-      dataBitsbufs["art_size"] = this.textEncoder.encode( dataProp["art_size"] );
+      dataBitsbufs["art"] = te.encode( dataProp["art"] );
+      dataBitsbufs["art_size"] = te.encode( dataProp["art_size"] );
 
-      let responsiveSizeName: Uint8Array = this.responsiveDatasetConstants.getResponsiveSizeNameBitsbufsArrayByBitsbufs (
+      let responsiveSizeName: Uint8Array[] = this.responsiveDatasetConstants.getResponsiveSizeNameArrayByBitsbufs (
         sitesToolBitsbuf,
         dataBitsbufs["range_orderby_id"],
         dataBitsbufs["art"],
-        dataBitsbufs["art_size"]
+        dataBitsbufs["art_size"],
+        false
       );
 
-      dataBitsbufs["responsiveSizeName"] = responsiveSizeName;
+      // console.log( responsiveSizeName );
 
-      let responsiveSizeNameString: string = this.textDecoder.decode( responsiveSizeName );
+      dataBitsbufs["responsiveSizeName"] = this.fileWriter.concatUint8Arrays( responsiveSizeName );
+
+      let responsiveSizeNameString: string = this.fileWriter.textDecoder.decode( dataBitsbufs["responsiveSizeName"] );
       dataBitsbufs["responsiveSizeNameString"] = responsiveSizeNameString;
 
+      // console.log( responsiveSizeNameString );
     }
 
     return this;
@@ -266,17 +254,19 @@ export class ResponsiveDatasetBase implements ResponsiveDatasetBaseInterface {
     orientation: string,
     byBitsbufs: boolean
   ): object {
-    let sizes: object = {};
+
+    let sizes: any = new Object();
 
     // @ts-ignore
+    let data: any = this.dataset["data"][responsiveDatasetPropName];
     let responsiveDatasetProp: any = new Object();
     if ( byBitsbufs === true ) {
       responsiveDatasetProp = this.datasetBitsbufs[responsiveDatasetPropName];
     } else {
-      responsiveDatasetProp = this.dataset["data"][responsiveDatasetPropName];
+      responsiveDatasetProp = data;
     }
 
-    let orientationStandard: string = responsiveDatasetProp["orientation_standard"];
+    let orientationStandard: string = data["orientation_standard"];
 
     if ( orientation === orientationStandard ) {
       sizes = responsiveDatasetProp["width"];
@@ -323,6 +313,18 @@ export class ResponsiveDatasetBase implements ResponsiveDatasetBaseInterface {
       art,
       artSize,
       orientation
+    );
+  }
+
+
+
+  getImportLineBitsbufsArray (
+    urlStart: string,
+    responsiveSizeName: string
+  ): Uint8Array[] {
+   return this.responsiveDatasetConstants.getImportLineBitsbufsArray (
+      urlStart,
+      responsiveSizeName
     );
   }
 

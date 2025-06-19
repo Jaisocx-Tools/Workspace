@@ -1,14 +1,14 @@
-import * as fs from "node:fs";
-import * as path from "node:path";
-import { TextEncoder, TextDecoder } from "node:util";
-import { FileWriter } from "@jaisocx/file-writer";
-import { TemplateRenderer } from "@jaisocx/template-renderer";
-import { CssImporter } from "@jaisocx/css-importer";
+// import * as fs from "node:fs";
+// import * as path from "node:path";
+// import { TextEncoder, TextDecoder } from "node:util";
+// import { FileWriter } from "@jaisocx/file-writer";
+// import { TemplateRenderer } from "@jaisocx/template-renderer";
+// import { CssImporter } from "@jaisocx/css-importer";
 
 
 
-import { ResponsiveDatasetConstants } from "./ResponsiveDatasetConstants.js";
-import { ResponsiveDatasetBase } from "./ResponsiveDatasetBase.js";
+import { ResponsiveDatasetConstants } from "../constants/ResponsiveDatasetConstants.js";
+import { ResponsiveDatasetBase } from "../automation_base_class/ResponsiveDatasetBase.js";
 import { ResponsiveTsFile_ResponsiveSizesNames_Interface } from "./ResponsiveTsFile_ResponsiveSizesNames_Interface.js";
 
 
@@ -36,7 +36,7 @@ export class ResponsiveTsFile_ResponsiveSizesNames implements ResponsiveTsFile_R
   // in this .css file, css variable: --media_rule_name: style_e02_mobile_xs_portrait;
   //                                  --media_rule__min_width: var(--style_e02_mobile_xs_portrait__min_width);
   async produceTsFileWithResponsiveSizesNames (
-    tsClassName: string
+    _tsClassName: string
   ): Promise<number> {
 
       // // @ts-ignore

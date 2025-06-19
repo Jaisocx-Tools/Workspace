@@ -1,5 +1,61 @@
 # TASKS
 
+## Status of .ts dir
+
+. automation_base_class:      ready, built, tested
+. constants:                  ready, built, tested
+. css_file_with_sizes_names:  ready, built, tested, encommented
+. css_imports_file:           ready, built, tested, encommented
+. main:                       ready, built, tested
+. responsive_files_set:       in development, not built, not tested
+. ts_file_with_sizes_names:   encommented, not built, not tested
+
+
+## Bugs encounrered
+
+### imports relative
+
+. import constants first line, wrong file name
+
+. imported files don't have the SitesTool name in the file name
+
+### imports webpack
+
+  the same bugs as in the imports relative
+
+### Constants file
+
+#### Status
+
+the css constants file has the constants names, these are not with tool name, and this is the right thing.
+
+Bugfix: the csss constants file name doesn't have to contain in the file name the SitesTool name,
+and just the one css constants file name is needed,
+since the responsive sizes are never just for one SitesTool,
+however for the project and all sites, like a documentation lookup css doc.
+and therefore can be moved to a cdn.
+
+
+### Responsive Css files set with media queries
+
+#### Status
+
+. file contents: norm
+
+. file name: nearly norm
+
+    . the css file with media query for portrait preceeds normally the word landscape. Maybe to adjust later the alphabetic filename keyword as the _e02_ in the filename responsive_size_e02_mobile_xs_landscape_CssToolTemplate.css
+
+
+
+
+
+
+
+
+
+
+
 ## Workarounds
 
 ### 1. joining bitbufs arrays by reference

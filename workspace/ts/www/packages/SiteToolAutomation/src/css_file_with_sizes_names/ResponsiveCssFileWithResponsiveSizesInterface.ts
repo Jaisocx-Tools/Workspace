@@ -1,4 +1,11 @@
+import { ResponsiveDatasetBase } from "../automation_base_class/ResponsiveDatasetBase.js";
+import { ResponsiveCssFileWithResponsiveSizes } from "./ResponsiveCssFileWithResponsiveSizes.js";
+
+
+
 export interface ResponsiveCssFileWithResponsiveSizesInterface {
+
+  setResponsiveDatasetBase( base: ResponsiveDatasetBase ): ResponsiveCssFileWithResponsiveSizes;
 
   // RENAMED produceMediaConstantsCssFile( targetFileName: string ): Promise<number>;
   // SiteToolAutomation/MediaAndStyles/responsive/MediaConstants.css
@@ -10,7 +17,7 @@ export interface ResponsiveCssFileWithResponsiveSizesInterface {
   //     --style_e02_mobile_xs_landscape__width__max_width: 500px;
   //
   //   ...
-  produceCssFileWithResponsiveSizesConstants ( targetFileName: string ): Promise<number>;
+  produceCssFileWithResponsiveSizesConstants ( targetFileName: string, newLinesAmount: number, padding: number ): Promise<number>;
 
 
 
@@ -22,7 +29,10 @@ export interface ResponsiveCssFileWithResponsiveSizesInterface {
   //
   // --s_56_16k_tv_horizontal__min_width: 15361px; /* 16k TV */
   // --s_56_16k_tv_horizontal__max_width: 25360px; /* 16k TV */
-  produceResponsiveSizesConstantsLinesSet( responsiveDatasetPropName: string ): Uint8Array[][];
+  produceResponsiveSizesConstantsLinesSet (
+    responsiveDatasetPropName: string,
+    paddingBitsbuf: Uint8Array
+  ): Uint8Array[];
 
 }
 

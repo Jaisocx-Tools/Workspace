@@ -29,9 +29,13 @@ export interface ResponsiveCssFileInterface {
   // SiteToolAutomation/MediaAndStyles/responsive
   //    style_e02_mobile_xs_portrait.css
   produceOneResponsiveCssFile (
+    sitesToolBitsbuf: Uint8Array,
     responsiveDatasetPropName: string,
-    orientation: string
+    orientation: string,
+    orientationBitsbuf: Uint8Array
   ): Promise<number>;
 
 }
+
+
 

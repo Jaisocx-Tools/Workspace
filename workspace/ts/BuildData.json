@@ -153,16 +153,11 @@
       ]
     },
     {
-      "ready-to-use": false,
       "path": "packages/SiteToolAutomation",
       "name": "site-tool-automation",
+      "update-published": "Mon Jun 16 08:07:24 CEST 2025",
       "build": false,
-      "build-simple-enable": true,
-      "css-importer": {
-        "build": false,
-        "cssFilePath": "MediaAndStyles/clean-start-main-webpack.css",
-        "cssTargetFilePath": "MediaAndStyles/clean-start-main-pack.css"
-      },
+      "build-simple-enable": false,
       "dependencies": [
         {
           "name": "@jaisocx/file-writer",
@@ -171,29 +166,18 @@
         {
           "name": "@jaisocx/template-renderer",
           "path": "packages/TemplateRenderer"
-        },
-        {
-          "name": "@jaisocx/css-importer",
-          "path": "packages/CssImporter"
         }
       ],
-      "build-files": [
-        "ResponsiveSizeNames.js",
-        "SiteToolAutomationPack.js",
-        "index.js",
-        "webpackAliases.js",
-        "webpack.aliases.mjs",
-        "webpack.aliases.cjs"
-      ]
+      "build-files": []
     },
     {
       "path": "sites_tools/css_tools/CssCleanStart",
       "name": "css-clean-start",
       "update-published": "Tue Jun  3 01:13:57 GMT 2025",
-      "build": true,
+      "build": false,
       "build-simple-enable": false,
       "css-importer": {
-        "build": true,
+        "build":false,
         "cssFilePath": "MediaAndStyles/clean-start-main-webpack.css",
         "cssTargetFilePath": "MediaAndStyles/clean-start-main-resolved.css"
       },
@@ -219,7 +203,7 @@
       "path": "sites_tools/css_tools/CssTable",
       "name": "css-table",
       "update-published": "Tue Jun  3 01:01:52 GMT 2025",
-      "build": true,
+      "build":false,
       "build-simple-enable": true,
       "dependencies": [],
       "build-files": [
@@ -536,6 +520,38 @@
         "index.js",
         "EmailHtmlInliner.js",
         "EmailHtmlInlinerConstants.js",
+        "webpackAliases.js",
+        "webpack.aliases.mjs",
+        "webpack.aliases.cjs"
+      ]
+    },
+    {
+      "path": "packages/ResponsiveSizes",
+      "name": "responsive-sizes",
+      "update-published": "Mon Jun 16 02:02:01 GMT 2025",
+      "build": false,
+      "build-simple-enable": true,
+      "dependencies": [],
+      "build-files": [
+        "ResponsiveSizesConstants.js",
+        "ResponsiveSizesConstantsCssCleanStart.js",
+        "ResponsiveSizes.js"
+      ]
+    },
+    {
+      "path": "sites_tools/css_tools/CssToolTemplate",
+      "name": "css-tool-template",
+      "update-published": "Mon Jun 16 02:02:01 GMT 2025",
+      "build": false,
+      "build-simple-enable": false,
+      "css-importer": {
+        "build": true,
+        "cssFilePath": "MediaAndStyles/clean-start-main-webpack.css",
+        "cssTargetFilePath": "MediaAndStyles/clean-start-main-resolved.css"
+      },
+      "dependencies": [],
+      "build-files": [
+        "index.js",
         "webpackAliases.js",
         "webpack.aliases.mjs",
         "webpack.aliases.cjs"

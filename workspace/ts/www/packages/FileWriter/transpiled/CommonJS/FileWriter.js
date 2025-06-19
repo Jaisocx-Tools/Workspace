@@ -5,7 +5,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.FileWriter = void 0;
 const node_fs_1 = __importDefault(require("node:fs"));
-const node_util_1 = require("node:util");
+const util_1 = require("util");
 const FileWriterConstants_js_1 = require("./FileWriterConstants.js");
 class FileWriter {
     constructor() {
@@ -14,8 +14,8 @@ class FileWriter {
         this.offsetInFile = 0;
         this.fileHandle = null;
         this.filePath = "";
-        this.textDecoder = new node_util_1.TextDecoder();
-        this.textEncoder = new node_util_1.TextEncoder();
+        this.textDecoder = new util_1.TextDecoder("utf-8");
+        this.textEncoder = new util_1.TextEncoder();
     }
     setDebug(inDebug) {
         this.debug = inDebug;
@@ -199,14 +199,14 @@ class FileWriter {
     }
     concatUint8Arrays(arrays) {
         const totalLength = arrays.reduce((sum, arr) => {
-            return (sum + arr.byteLength);
+            return (sum + arr.length);
         }, 0);
         // ret value
-        const result = new Uint8Array(totalLength);
+        let result = new Uint8Array(totalLength);
         let arr = new Uint8Array();
         let offset = 0;
         for (arr of arrays) {
-            result.set(arr, offset);
+            result.set([...arr], offset);
             offset += arr.length;
         }
         return result;

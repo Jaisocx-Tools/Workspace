@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en" class="workspace">
+<head>
+  <meta charset="utf-8">
+  <title>Responsive Sizes</title>
+
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <!-- DEV MODE -->
+  <!--
+    IN THE DEV CONSOLE YOU SEE
+    39 CSS FILES,
+      css-clean-start and the responsive css files set
+    easier to review one css file, for example with one media query.
+    Best in development mode.
+  -->
+  <link rel="stylesheet" href="sites_tools/css_tools/CssToolTemplate/MediaAndStyles/clean-start-main-relative.css">
+
+
+
+  <!-- PROD MODE -->
+  <!--
+    ALTERNATIVELY,
+    ONE .CSS FILE (1615 lines of size 46.7 KB),
+      PACKED WITH CSS IMPORTER CSS FILES OF THE RESPONSIVE CSS FILES SET,
+      SAME TRAFFIC, HOWEVER IN THE DEV CONSOLE JUST ONE CSS FILE IS SEEN.
+  -->
+  <!-- <link rel="stylesheet" href="sites_tools/css_tools/CssToolTemplate/MediaAndStyles/clean-start-main-resolved.css"> -->
+
+
+  <script src="packages/ResponsiveSizes/transpiled/Simple/ResponsiveSizesConstants.js"></script>
+  <script src="packages/ResponsiveSizes/transpiled/Simple/ResponsiveSizes.js"></script>
+
+</head>
+<body>
+
+  <main>
+
+
+    <h1>Responsive Sizes</h1>
+
+
+    <h2 id="responsive_sizes">Tests</h2>
+
+    <pre id="info" style="width: auto; max-width: 100%; height: auto; overflow-y: visible; overflow-x: scroll; padding: 2rem; background-color: darkturquoise; color: white;"></pre>
+
+  </main>
+
+  <script>
+    let responsiveSizesConstants = new Object();
+    let responsiveSizesInstance = new Object();
+
+    function addOnSite( html ) {
+      let info = document.getElementById('info');
+
+      let locHtml = html + "\n\n";
+
+      info.insertAdjacentHTML( 'beforeEnd', locHtml );
+    }
+
+    function setOnSite( html ) {
+      let info = document.getElementById('info');
+
+      info.innerHTML = html;
+    }
+
+    function applySizesInfo( force ) {
+
+      let foreceUpdateSizesInfo_false = false;
+
+      let html_size1 = responsiveSizesInstance.mobile( force ) ? "mobile" : "";
+      let html_size2 = responsiveSizesInstance.tablet( foreceUpdateSizesInfo_false ) ? "tablet" : "";
+      let html_size3 = responsiveSizesInstance.desktop( foreceUpdateSizesInfo_false ) ? "desktop" : "";
+
+      let size = responsiveSizesInstance.getCssVariableArray()[4];
+
+      let html_orientation1 = responsiveSizesInstance.orientationPortrait( foreceUpdateSizesInfo_false ) ? "portrait" : "";
+      let html_orientation2 = responsiveSizesInstance.orientationLandscape( foreceUpdateSizesInfo_false ) ? "landscape" : "";
+
+      let html_array = [
+        html_size1,
+        html_size2,
+        html_size3,
+        " ",
+        size,
+        " ",
+        html_orientation1,
+        html_orientation2,
+      ];
+
+      let html = html_array.join( "" );
+
+      let info = document.getElementById('responsive_sizes');
+
+      info.innerHTML = html;
+    }
+
+
+    function responsiveSizesTest( force ) {
+      // responsiveSizesInstance = new ResponsiveSizes();
+
+      let responsiveSizeName = responsiveSizesInstance.getResponsiveSizeName( force );
+
+      let foreceUpdateSizesInfo_false = false;
+      let mobile = responsiveSizesInstance.mobile( foreceUpdateSizesInfo_false );
+      let tablet = responsiveSizesInstance.tablet( foreceUpdateSizesInfo_false );
+      let desktop = responsiveSizesInstance.desktop( foreceUpdateSizesInfo_false );
+      let orientationPortrait = responsiveSizesInstance.orientationPortrait( foreceUpdateSizesInfo_false );
+      let orientationLandscape = responsiveSizesInstance.orientationLandscape( foreceUpdateSizesInfo_false );
+
+      let lines = {
+        "responsiveSizeName": responsiveSizeName,
+        "mobile": mobile,
+        "tablet": tablet,
+        "desktop": desktop,
+        "orientationPortrait": orientationPortrait,
+        "orientationLandscape": orientationLandscape
+      };
+      let locHtml = JSON.stringify(lines, null, 2);
+
+      addOnSite( responsiveSizeName );
+
+      addOnSite( locHtml );
+    }
+
+    function responsiveSizeNameTestJson() {
+      // responsiveSizesInstance = new ResponsiveSizes();
+      let responsiveSizeJsonText = responsiveSizesInstance.toString();
+      setOnSite( responsiveSizeJsonText );
+    }
+
+    function addResizeEventHandler() {
+      window.addEventListener('resize', () => {
+        applySizesInfo( true );
+        responsiveSizeNameTestJson( false );
+      });
+    }
+
+    function assignEventsHandlers() {
+      addResizeEventHandler();
+    }
+
+    // Call the function to load remote data when the DOM is fully loaded
+    // This ensures that the function is called after the HTML content is loaded
+    // and the DOM is ready for manipulation
+    document.addEventListener('DOMContentLoaded', () => {
+      responsiveSizesConstants = new ResponsiveSizesConstants();
+      responsiveSizesInstance = new ResponsiveSizes();
+
+      assignEventsHandlers();
+
+      applySizesInfo( true );
+      responsiveSizeNameTestJson( false );
+      // responsiveSizesTest( false );
+    });
+  </script>
+
+</body>
+</html>
+

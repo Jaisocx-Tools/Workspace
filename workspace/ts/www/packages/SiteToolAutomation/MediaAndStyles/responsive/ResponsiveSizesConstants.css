@@ -1,0 +1,125 @@
+.workspace {
+
+    --style_e02_mobile_xs_portrait__min_width: 240px;
+    --style_e02_mobile_xs_portrait__max_width: 320px;
+
+    --style_e02_mobile_xs_landscape__min_width: 320px;
+    --style_e02_mobile_xs_landscape__max_width: 500px;
+
+
+
+    --style_e04_mobile_s_portrait__min_width: 321px;
+    --style_e04_mobile_s_portrait__max_width: 374px;
+
+    --style_e04_mobile_s_landscape__min_width: 501px;
+    --style_e04_mobile_s_landscape__max_width: 667px;
+
+
+
+    --style_e06_mobile_sm_portrait__min_width: 375px;
+    --style_e06_mobile_sm_portrait__max_width: 430px;
+
+    --style_e06_mobile_sm_landscape__min_width: 668px;
+    --style_e06_mobile_sm_landscape__max_width: 736px;
+
+
+
+    --style_e08_mobile_md_portrait__min_width: 431px;
+    --style_e08_mobile_md_portrait__max_width: 480px;
+
+    --style_e08_mobile_md_landscape__min_width: 737px;
+    --style_e08_mobile_md_landscape__max_width: 812px;
+
+
+
+    --style_h03_tablet_sm_portrait__min_width: 481px;
+    --style_h03_tablet_sm_portrait__max_width: 767px;
+
+    --style_h03_tablet_sm_landscape__min_width: 813px;
+    --style_h03_tablet_sm_landscape__max_width: 960px;
+
+
+
+    --style_h05_tablet_md_portrait__min_width: 768px;
+    --style_h05_tablet_md_portrait__max_width: 1024px;
+
+    --style_h05_tablet_md_landscape__min_width: 961px;
+    --style_h05_tablet_md_landscape__max_width: 1024px;
+
+
+
+    --style_l03_laptop_sm_portrait__min_width: 1025px;
+    --style_l03_laptop_sm_portrait__max_width: 1080px;
+
+    --style_l03_laptop_sm_landscape__min_width: 1025px;
+    --style_l03_laptop_sm_landscape__max_width: 1279px;
+
+
+
+    --style_l05_laptop_md_portrait__min_width: 1081px;
+    --style_l05_laptop_md_portrait__max_width: 1200px;
+
+    --style_l05_laptop_md_landscape__min_width: 1280px;
+    --style_l05_laptop_md_landscape__max_width: 1439px;
+
+
+
+    --style_l07_laptop_lg_portrait__min_width: 1201px;
+    --style_l07_laptop_lg_portrait__max_width: 1440px;
+
+    --style_l07_laptop_lg_landscape__min_width: 1440px;
+    --style_l07_laptop_lg_landscape__max_width: 1600px;
+
+
+
+    --style_s02_desktop_xl_portrait__min_width: 1441px;
+    --style_s02_desktop_xl_portrait__max_width: 1600px;
+
+    --style_s02_desktop_xl_landscape__min_width: 1601px;
+    --style_s02_desktop_xl_landscape__max_width: 1920px;
+
+
+
+    --style_s04_desktop_xxl_portrait__min_width: 1601px;
+    --style_s04_desktop_xxl_portrait__max_width: 2160px;
+
+    --style_s04_desktop_xxl_landscape__min_width: 1921px;
+    --style_s04_desktop_xxl_landscape__max_width: 2560px;
+
+
+
+    --style_s08_display_qhd_portrait__min_width: 2161px;
+    --style_s08_display_qhd_portrait__max_width: 2160px;
+
+    --style_s08_display_qhd_landscape__min_width: 2561px;
+    --style_s08_display_qhd_landscape__max_width: 3840px;
+
+
+
+    --style_t04_tv_4k_portrait__min_width: 2161px;
+    --style_t04_tv_4k_portrait__max_width: 4320px;
+
+    --style_t04_tv_4k_landscape__min_width: 3841px;
+    --style_t04_tv_4k_landscape__max_width: 7680px;
+
+
+
+    --style_t08_tv_8k_portrait__min_width: 4321px;
+    --style_t08_tv_8k_portrait__max_width: 8640px;
+
+    --style_t08_tv_8k_landscape__min_width: 7681px;
+    --style_t08_tv_8k_landscape__max_width: 15360px;
+
+
+
+    --style_t16_tv_16k_portrait__min_width: 8641px;
+    --style_t16_tv_16k_portrait__max_width: 9999px;
+
+    --style_t16_tv_16k_landscape__min_width: 15361px;
+    --style_t16_tv_16k_landscape__max_width: 25360px;
+
+}
+
+
+
+

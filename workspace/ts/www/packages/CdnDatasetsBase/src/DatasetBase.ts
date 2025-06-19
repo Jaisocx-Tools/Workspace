@@ -1,4 +1,4 @@
-import { JsonWriter } from "./JsonWriter.js";
+import { JsonWriter } from "@jaisocx/file-writer";
 import { JPath } from "@jaisocx/jpath";
 
 

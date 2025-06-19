@@ -1,0 +1,11 @@
+/* css variables */
+@import url("@CssToolTemplate_MediaAndStyles/themes/theme_base/CssToolTemplate_a01_Theme_Base.css");
+
+
+/* responsive */
+@import url("@CssToolTemplate_MediaAndStyles/themes/theme_base/responsive_size_a03_CssImports_CssToolTemplate_Webpack.css");
+
+
+/* main css file, css logics with rules set via variables in the theme .css files imported above */
+@import url("@CssToolTemplate_MediaAndStyles/clean-start-main.css");
+

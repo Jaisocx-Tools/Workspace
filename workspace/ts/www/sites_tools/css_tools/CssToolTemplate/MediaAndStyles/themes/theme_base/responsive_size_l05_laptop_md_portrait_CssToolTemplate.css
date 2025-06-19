@@ -1,0 +1,19 @@
+/* Responsive rules */
+@media only screen and (min-width: 1081px) and (max-width: 1200px) and (orientation: portrait) {
+
+  .workspace {
+    --responsive_size: responsive_size_l05_laptop_md_portrait;
+
+    --responsive_size__min-width: 1081px;
+    --responsive_size__max-width: 1200px;
+
+
+
+    --responsive_size_CssToolTemplate: responsive_size_l05_laptop_md_portrait_CssToolTemplate;
+
+    --responsive_size_CssToolTemplate__min-width: 1081px;
+    --responsive_size_CssToolTemplate__max-width: 1200px;
+  }
+
+}
+

@@ -17,12 +17,12 @@ export interface ResponsiveImportsInterface {
   //    ...
   //    ...
   produceImportsCssFileWithResponsiveCssFilesSet
-   (
+  (
     targetFileName: string,
     relativeImportedFilesFolderPath: string,
-    mediaConstantsFileName: string,
-    importedFilenamePrefix: string,
-    webpackAliased: boolean
+    cssFileWithSizesNames_FileBaseName: string,
+    webpackAliased: boolean,
+    withConstantsImportLine: boolean
   ): Promise<number>;
 
 
@@ -42,17 +42,8 @@ export interface ResponsiveImportsInterface {
   //    @import url("https://cdn.brightday.email/Media.vsDesktop/responsive/style_e02_mobile_xs_portrait.css");
   produceImportsLinesSet_ForResponsiveCssFilesSet (
     data: any,
-    webpackAliased: boolean
+    bitsbufUrlStart: Uint8Array
   ): Promise<number>;
-
-
-
-  // the subcall for the method above, the loopMediaCssImportsCssFile()
-  // ret val: @import url("./style_e02_mobile_xs_portrait.css");
-  getImportLineBitsbufsArray (
-    urlStart: string,
-    responsiveSizeName: string
-  ): Uint8Array[];
 
 }
 

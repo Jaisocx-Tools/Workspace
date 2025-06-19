@@ -4,18 +4,6 @@ import { ResponsiveDatasetBase } from "./ResponsiveDatasetBase.js";
 
 export interface ResponsiveDatasetBaseInterface {
 
-  // the central main method to produce .css files and for them the datasets, texts and names and .css files names.
-  run (
-    pathToJsonDatasetForResponsiveSizes: string,
-    responsiveTemplateFilePath: string,
-    subfolderName: string,
-    responsiveMediaQueriesFilesPrefix: string,
-    mediaConstantsFileName: string,
-    webpackAliasName: string
-  ): Promise<number>;
-
-
-
   // NOT IMPLEMENTED
   // sets the path to the new TypeScript SitesTool
   // where the produced .css files will be placed.
@@ -41,6 +29,11 @@ export interface ResponsiveDatasetBaseInterface {
   //    when the MediaAndStyles/responsive folder is not there, then this folder will be created.
   setMediaAndStylesResponsiveFolderPath( inFolderRelativePath: string ): ResponsiveDatasetBase;
 
+
+  setMediaQueryCssFileTemplatePath( path: string ): ResponsiveDatasetBase;
+
+
+  getMediaQueryCssFileTemplatePath(): string;
 
 
   // the fest path in this npm package: SiteToolAutomation/data/ResponsiveSizes/ResponsiveSizes.json

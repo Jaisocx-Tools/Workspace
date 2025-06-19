@@ -205,9 +205,17 @@ export class CssHtml {
 
   }
 
+
+  // browser tab width and height not including scrollbars width and height
+  getBrowserTabDimensions(): { width: number; height: number } {
+    let dimensions: any = {
+      width: window.innerWidth,
+      height: window.innerHeight
+    };
+
+    return dimensions;
+  }
+
 }
-
-
-
 
 

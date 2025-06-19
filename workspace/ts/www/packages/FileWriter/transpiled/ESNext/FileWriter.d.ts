@@ -1,5 +1,5 @@
 import { FileHandle } from "node:fs/promises";
-import { TextEncoder, TextDecoder } from "node:util";
+import { TextEncoder, TextDecoder } from "util";
 import { FileWriterConstants } from "./FileWriterConstants.js";
 export declare class FileWriter {
     debug: boolean;
