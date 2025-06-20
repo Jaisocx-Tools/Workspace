@@ -108,7 +108,13 @@ class ProjectBuilder {
             throw new Error("no packages array set in BuildData.json");
         }
         const packages = [
-            ...dataJson.packages.filter((packageJson) => (true === packageJson.build))
+            ...dataJson.packages.filter((packageJson) => {
+                let cssImporterConf = packageJson["css-importer"];
+                let filterBy = (packageJson.build === true) ||
+                    ((cssImporterConf !== undefined) &&
+                        (cssImporterConf.build === true));
+                return filterBy;
+            })
         ];
         if (!packages || 0 === packages.length) {
             throw new Error("no packages marked to build in the BuildData.json");
@@ -123,6 +129,17 @@ class ProjectBuilder {
         console.log(`${timeStamp} MODULE ${packageJson.name}`);
         console.log("===============================\n");
         let packagePath = path.resolve(this.absolutePathFromRootWww, packageJson.path);
+        let cssImporterConf = packageJson["css-importer"];
+        let withCssImporter = ((cssImporterConf !== undefined) && (cssImporterConf.build === true));
+        let justWithCssImporter = ((packageJson.build === false) || (withCssImporter === true));
+        if (withCssImporter === true) {
+            timeStamp = (new Date()).toISOString();
+            console.log(`${timeStamp} Package [ ${packageJson.name} ]: packing css`);
+            this.cssImporterRun(cssImporterConf, packagePath);
+        }
+        if (justWithCssImporter === true) {
+            return 3;
+        }
         // install or link npm dependencies
         timeStamp = (new Date()).toISOString();
         console.log(`${timeStamp} Package [ ${packageJson.name} ]: Calling npm dependencies install`);
@@ -158,13 +175,7 @@ class ProjectBuilder {
             console.log(`${timeStamp} Package [ ${packageJson.name} ]: building simple .js for usage in .html in script tag as src`);
             this.buildSimple(packageJson, packagePath);
         }
-        // resolve @import url(@alias/style.css) in .css
-        const confNodeCss = packageJson["css-importer"];
-        if (confNodeCss !== undefined && confNodeCss.build === true) {
-            timeStamp = (new Date()).toISOString();
-            console.log(`${timeStamp} Package [ ${packageJson.name} ]: packing css`);
-            this.cssImporterRun(confNodeCss, packagePath);
-        }
+        return 2;
     }
     installPackageDependencies(packageJson, packagePath) {
         let dependencyCatalogPath = "";

@@ -36,7 +36,8 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const fs = __importStar(require("node:fs"));
 const path = __importStar(require("node:path"));
 const ProjectBuilder_js_1 = require("../lib/ProjectBuilder.js");
-const argv = process.argv.slice(2); // Get command-line arguments starting from index 2
+const argv = process.argv.slice(2);
+// Get command-line arguments starting from index 2
 const commandArgs = {
     ProjectRoot: "",
     BuildData: "",
@@ -45,7 +46,8 @@ const commandArgs = {
 argv.forEach((arg) => {
     let [key, value] = arg.split("=");
     key = key.replace("--", "");
-    commandArgs[key] = value ? value.replace(/(^"|"$)/g, "") : ""; // Remove quotes if any
+    commandArgs[key] = value ? value.replace(/(^"|"$)/g, "") : "";
+    // Remove quotes if any
 });
 console.log("commandArgs", commandArgs);
 const buildDataPath = path.resolve(commandArgs.ProjectRoot, commandArgs.BuildData);

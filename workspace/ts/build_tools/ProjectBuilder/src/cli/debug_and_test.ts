@@ -6,7 +6,10 @@ import { CssImporter } from "@jaisocx/css-importer";
 
 
 
-const argv = process.argv.slice(2); // Get command-line arguments starting from index 2
+const argv = process.argv.slice(2);
+
+
+// Get command-line arguments starting from index 2
 const commandArgs: any = {
   ProjectRoot: "",
   BuildData: "",
@@ -20,7 +23,10 @@ argv.forEach( ( arg ) => {
   commandArgs[key] = value ? value.replace(
     /(^"|"$)/g,
     ""
-  ) : ""; // Remove quotes if any
+  ) : "";
+
+
+  // Remove quotes if any
 });
 
 console.log(
@@ -32,6 +38,7 @@ const buildDataPath: any = path.resolve(
   commandArgs.ProjectRoot,
   commandArgs.BuildData
 );
+
 if (false === fs.existsSync( buildDataPath ) ) {
   throw new Error(`BuildData.json not available at path: ${buildDataPath}`);
 }
@@ -41,6 +48,7 @@ const packagesPath: any = path.resolve(
   commandArgs.ProjectRoot,
   commandArgs.PackagesPath
 );
+
 if (false === fs.existsSync( packagesPath ) ) {
   throw new Error(`modulesPath not available at path: ${packagesPath}`);
 }
@@ -50,6 +58,7 @@ const cssCleanStartPath: any = path.resolve(
   commandArgs.ProjectRoot,
   "www/sites_tools/css_tools/CssCleanStart"
 );
+
 if (false === fs.existsSync( cssCleanStartPath ) ) {
   throw new Error(`cssCleanStartPath not available at path: ${cssCleanStartPath}`);
 }
@@ -63,6 +72,7 @@ const webpackAliasesPath: any = path.resolve(
   cssCleanStartPath,
   "webpack.aliases.json"
 );
+
 if (false === fs.existsSync( webpackAliasesPath ) ) {
   throw new Error(`webpackAliasesPath not available at path: ${webpackAliasesPath}`);
 }
@@ -76,6 +86,7 @@ const cssFilePath: any = path.resolve(
   cssCleanStartPath,
   "MediaAndStyles/clean-start-main-webpack.css"
 );
+
 if (false === fs.existsSync( cssFilePath ) ) {
   throw new Error(`cssFilePath not available at path: ${cssFilePath}`);
 }
@@ -89,6 +100,7 @@ const cssTargetFilePath: any = path.resolve(
   cssCleanStartPath,
   "MediaAndStyles/clean-start-main-packaged.css"
 );
+
 if (true === fs.existsSync( cssTargetFilePath ) ) {
   fs.unlinkSync( cssTargetFilePath );
   console.log(

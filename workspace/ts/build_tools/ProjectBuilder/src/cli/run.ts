@@ -3,7 +3,10 @@ import * as path from "node:path";
 
 import { ProjectBuilder } from "../lib/ProjectBuilder.js";
 
-const argv = process.argv.slice(2); // Get command-line arguments starting from index 2
+const argv = process.argv.slice(2);
+
+
+// Get command-line arguments starting from index 2
 const commandArgs: any = {
   ProjectRoot: "",
   BuildData: "",
@@ -17,7 +20,10 @@ argv.forEach( ( arg ) => {
   commandArgs[key] = value ? value.replace(
     /(^"|"$)/g,
     ""
-  ) : ""; // Remove quotes if any
+  ) : "";
+
+
+  // Remove quotes if any
 });
 
 console.log(
@@ -29,6 +35,7 @@ const buildDataPath: any = path.resolve(
   commandArgs.ProjectRoot,
   commandArgs.BuildData
 );
+
 if (false === fs.existsSync( buildDataPath ) ) {
   throw new Error(`BuildData.json not available at path: ${buildDataPath}`);
 }
@@ -37,6 +44,7 @@ const packagesPath: any = path.resolve(
   commandArgs.ProjectRoot,
   commandArgs.PackagesPath
 );
+
 if (false === fs.existsSync( packagesPath ) ) {
   throw new Error(`modulesPath not available at path: ${packagesPath}`);
 }

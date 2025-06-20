@@ -153,10 +153,10 @@
       ]
     },
     {
-      "path": "packages/SiteToolAutomation",
+      "path": "packages/SitesToolAutomation",
       "name": "site-tool-automation",
       "update-published": "Mon Jun 16 08:07:24 CEST 2025",
-      "build": false,
+      "build": true,
       "build-simple-enable": false,
       "dependencies": [
         {
@@ -545,7 +545,7 @@
       "build": false,
       "build-simple-enable": false,
       "css-importer": {
-        "build": true,
+        "build": false,
         "cssFilePath": "MediaAndStyles/clean-start-main-webpack.css",
         "cssTargetFilePath": "MediaAndStyles/clean-start-main-resolved.css"
       },

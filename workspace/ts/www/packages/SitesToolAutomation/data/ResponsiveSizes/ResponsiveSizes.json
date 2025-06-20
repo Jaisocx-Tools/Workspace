@@ -149,7 +149,7 @@
       "orientation_standard": "landscape",
       "is_orientation_standard_nearly_always": true
     },
-    "desktop_xl": {
+    "display_xl": {
       "range_orderby_id": "s02",
       "width": {
         "from": 1601,
@@ -159,12 +159,12 @@
         "from": 1441,
         "to": 1600
       },
-      "art": "desktop",
+      "art": "display",
       "art_size": "xl",
       "orientation_standard": "landscape",
       "is_orientation_standard_nearly_always": true
     },
-    "desktop_xxl": {
+    "display_xxl": {
       "range_orderby_id": "s04",
       "width": {
         "from": 1921,
@@ -174,12 +174,12 @@
         "from": 1601,
         "to": 2160
       },
-      "art": "desktop",
+      "art": "display",
       "art_size": "xxl",
       "orientation_standard": "landscape",
       "is_orientation_standard_nearly_always": true
     },
-    "desktop_qhd": {
+    "display_qhd": {
       "range_orderby_id": "s08",
       "width": {
         "from": 2561,

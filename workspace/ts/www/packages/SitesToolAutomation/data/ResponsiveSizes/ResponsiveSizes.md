@@ -34,8 +34,8 @@
 
 | Type           | Width Range    | Orientation |
 |----------------|----------------|-------------|
-| desktop_xl     | 1601–1920px    | landscape   |
-| desktop_xxl    | 1921–2560px    | landscape   |
+| display_xl     | 1601–1920px    | landscape   |
+| display_xxl    | 1921–2560px    | landscape   |
 | display_qhd    | 2561–3840px    | landscape   |
 | display_4k     | 3841–7680px    | landscape   |
 | display_8k     | 7681–15360px   | landscape   |
@@ -58,8 +58,8 @@
 | laptop_sm      | 1025–1080px    |
 | laptop_md      | 1081–1200px    |
 | laptop_lg      | 1201–1440px    |
-| desktop_xl     | 1441–1600px    |
-| desktop_xxl    | 1601–2160px    |
+| display_xl     | 1441–1600px    |
+| display_xxl    | 1601–2160px    |
 | display_qhd    | 2161–2160px    |
 | display_4k     | 2161–4320px    |
 | display_8k     | 4321–8640px    |

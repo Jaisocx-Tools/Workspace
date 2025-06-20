@@ -1,5 +1,5 @@
 {
-  "name": "@jaisocx/site-tool-automation",
+  "name": "@jaisocx/sites-tool-automation",
   "version": "1.2.2",
   "author": "Jaisocx",
   "private": false,
@@ -23,7 +23,7 @@
     "responsive",
     "js",
     "mobile",
-    "desktop",
+    "display",
     "css",
     "styles",
     "ui"

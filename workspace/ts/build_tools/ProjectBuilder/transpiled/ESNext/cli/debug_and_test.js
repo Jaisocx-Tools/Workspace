@@ -1,7 +1,8 @@
 import * as path from "node:path";
 import * as fs from "node:fs";
 import { CssImporter } from "@jaisocx/css-importer";
-const argv = process.argv.slice(2); // Get command-line arguments starting from index 2
+const argv = process.argv.slice(2);
+// Get command-line arguments starting from index 2
 const commandArgs = {
     ProjectRoot: "",
     BuildData: "",
@@ -10,7 +11,8 @@ const commandArgs = {
 argv.forEach((arg) => {
     let [key, value] = arg.split("=");
     key = key.replace("--", "");
-    commandArgs[key] = value ? value.replace(/(^"|"$)/g, "") : ""; // Remove quotes if any
+    commandArgs[key] = value ? value.replace(/(^"|"$)/g, "") : "";
+    // Remove quotes if any
 });
 console.log("commandArgs", commandArgs);
 const buildDataPath = path.resolve(commandArgs.ProjectRoot, commandArgs.BuildData);
