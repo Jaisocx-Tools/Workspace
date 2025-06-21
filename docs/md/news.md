@@ -18,10 +18,6 @@ then the same mobile when turned, very oft not the `mobile s`, can be tablet sm 
 
 Please, regard these sizes names for the site quality improves and bugfixes to know the @media query name and .css file, and not the mobile device size. Displays may be same thin, however longer.
 
-The nice idea of an advice now, is not to adjust the sizes in several .json files variants, but to keep for good on a cdn of me and Yours, to have the standard doc to relay later on. This .json dataset was asked in Chat GPT site, and the most infos used by the Chat, are the gathered standards infos in the internet, published since longer ago.
-
-
-
 
 
 `workspace/ts/www/packages/ResponsiveSizes`
@@ -30,7 +26,23 @@ The nice idea of an advice now, is not to adjust the sizes in several .json file
 
 
 
+
+The nice idea of an advice now, is not to adjust the sizes of `SitesToolAutomation` in several .json files variants, but to keep for good on a cdn of me and Yours, to have the standard doc to relay later on. This .json dataset was asked in Chat GPT site, and the most infos used by the Chat, are the gathered standards infos in the internet, published since longer ago.
+
+
+[https://sandbox.brightday.email/packages/SitesToolAutomation/responsive_sizes_user_friendly_view.html](https://sandbox.brightday.email/packages/SitesToolAutomation/responsive_sizes_user_friendly_view.html)
+
+
+
+
 ### SitesToolAutomation
+
+#### Very easy to gen new .css files set for a sites tool responsive feature quality assurance and fine tuning.
+
+```bash
+./genSiteToolTemplate.sh --sitesToolName=CssCleanStart --cssOrJsTool=css --template="data/templates/ResponsiveTemplate.template" --withCssConstantsFile=true --withConstantsImportLine=true
+```
+
 
 the new package `workspace/ts/www/packages/SitesToolAutomation` produces .css file set, similar to CssCleanStart, however the responsive sizes are set in a .json file.
 
@@ -42,11 +54,12 @@ The CssCleanStart will be bugfixed, rebuilt and updated soon.
 
 
 
+
 ### CssToolTemplate
 
 the first try to produce the new project template for a css sites tool with the new *SitesToolAutomation*.
 
-ready to us, however the SitesToolAutomation will gen later normally the new css sites tool with all files:
+ready to use, however the SitesToolAutomation will gen later normally the new css sites tool with all files:
 
 . package.json
 
