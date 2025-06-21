@@ -1,5 +1,18 @@
 # JAISOCX TYPESCRIPT TOOLS BUILDER
 
+## STATUS OF THE PROJECT
+
+In development
+
+
+
+## News
+
+**Updated**: Satturday, the 21st of June 2025
+
+
+[docs/md/news.md](./docs/md/news.md)
+
 
 ### WARNING renamed folders
 
