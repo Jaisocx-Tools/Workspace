@@ -1,0 +1,43 @@
+/* Responsive rules */
+@media only screen and (min-width: {{ min-width }}px) and (max-width: {{ max-width }}px) and (orientation: {{ orientation }}) {
+
+  .workspace {
+    {{ responsiveSizeConstantName }}: {{ responsiveSizeName }};
+
+    {{ responsiveSizeConstantName }}__min-width: {{ min-width }}px;
+    {{ responsiveSizeConstantName }}__max-width: {{ max-width }}px;
+
+
+
+    {{ responsiveSizeConstantName }}_{{ SitesToolName }}: {{ responsiveSizeName }}_{{ SitesToolName }};
+
+    {{ responsiveSizeConstantName }}_{{ SitesToolName }}__min-width: {{ min-width }}px;
+    {{ responsiveSizeConstantName }}_{{ SitesToolName }}__max-width: {{ max-width }}px;
+
+
+
+    /** Clean Start Css Constants */
+    --clean-start__tag_body__width: var(--clean-start__tag_body__width__s_mobile_landscape);
+    --clean-start__tag_body__max_width: var(--clean-start__tag_body__max_width__s_mobile_landscape);
+    --clean-start__tag_body__min_width: var(--clean-start__tag_body__min_width__s_mobile_landscape);
+
+    --clean-start__site__width: var(--clean-start__site__width__s_mobile_landscape);
+    --clean-start__site__max_width: var(--clean-start__site__max_width__s_mobile_landscape);
+    --clean-start__site__min_width: var(--clean-start__site__min_width__s_mobile_landscape);
+
+    --clean-start__site__overflow_x: var(--clean-start__site__overflow_x__s_mobile_landscape);
+
+
+
+    --clean-start__font-size__mobile: var(--clean-start__font-size__mobile_landscape);
+    --clean-start__font-size: var(--clean-start__font-size__mobile);
+
+    --clean-start__line-height__mobile: var(--clean-start__line-height__mobile_landscape);
+    --clean-start__line-height: var(--clean-start__line-height__mobile);
+
+  }
+
+}
+
+
+

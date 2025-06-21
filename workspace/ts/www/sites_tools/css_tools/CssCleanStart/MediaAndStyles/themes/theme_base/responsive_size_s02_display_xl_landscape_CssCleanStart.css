@@ -1,0 +1,19 @@
+/* Responsive rules */
+@media only screen and (min-width: 1601px) and (max-width: 1920px) and (orientation: landscape) {
+
+  .workspace {
+    --responsive_size: responsive_size_s02_display_xl_landscape;
+
+    --responsive_size__min-width: 1601px;
+    --responsive_size__max-width: 1920px;
+
+
+
+    --responsive_size_CssCleanStart: responsive_size_s02_display_xl_landscape_CssCleanStart;
+
+    --responsive_size_CssCleanStart__min-width: 1601px;
+    --responsive_size_CssCleanStart__max-width: 1920px;
+  }
+
+}
+

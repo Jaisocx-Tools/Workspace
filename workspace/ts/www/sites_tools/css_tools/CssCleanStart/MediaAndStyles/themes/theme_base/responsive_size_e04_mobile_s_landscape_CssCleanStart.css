@@ -1,0 +1,41 @@
+/* Responsive rules */
+@media only screen and (min-width: 501px) and (max-width: 667px) and (orientation: landscape) {
+
+  .workspace {
+    --responsive_size: responsive_size_e04_mobile_s_landscape;
+
+    --responsive_size__min-width: 501px;
+    --responsive_size__max-width: 667px;
+
+
+
+    --responsive_size_CssCleanStart: responsive_size_e04_mobile_s_landscape_CssCleanStart;
+
+    --responsive_size_CssCleanStart__min-width: 501px;
+    --responsive_size_CssCleanStart__max-width: 667px;
+
+
+
+    /** Clean Start Css Constants */
+    --clean-start__tag_body__width: var(--clean-start__tag_body__width__s_mobile_landscape);
+    --clean-start__tag_body__max_width: var(--clean-start__tag_body__max_width__s_mobile_landscape);
+    --clean-start__tag_body__min_width: var(--clean-start__tag_body__min_width__s_mobile_landscape);
+
+    --clean-start__site__width: var(--clean-start__site__width__s_mobile_landscape);
+    --clean-start__site__max_width: var(--clean-start__site__max_width__s_mobile_landscape);
+    --clean-start__site__min_width: var(--clean-start__site__min_width__s_mobile_landscape);
+
+    --clean-start__site__overflow_x: var(--clean-start__site__overflow_x__s_mobile_landscape);
+
+
+
+    --clean-start__font-size__mobile: var(--clean-start__font-size__mobile_landscape);
+    --clean-start__font-size: var(--clean-start__font-size__mobile);
+
+    --clean-start__line-height__mobile: var(--clean-start__line-height__mobile_landscape);
+    --clean-start__line-height: var(--clean-start__line-height__mobile);
+
+  }
+
+}
+

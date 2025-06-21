@@ -6,13 +6,12 @@ import { ResponsiveDatasetBase } from "../automation_base_class/ResponsiveDatase
 export declare class Main {
     #private;
     pathToJsonDatasetForResponsiveSizes: string;
-    mediaQueryCssFileTemplatePath: string;
     responsiveDatasetConstants: ResponsiveDatasetConstants;
     responsiveDatasetBase: ResponsiveDatasetBase;
     responsiveCssFile: ResponsiveCssFile;
     responsiveCssFileWithResponsiveSizes: ResponsiveCssFileWithResponsiveSizes;
     responsiveImports: ResponsiveImports;
     constructor();
-    run(sitesToolName: string, cssOrJsTool: string, withCssConstantsFile: boolean, withConstantsImportLine: boolean): Promise<number>;
+    run(sitesToolName: string, cssOrJsTool: string, mediaQueryCssFileTemplatePath: string, withCssConstantsFile: boolean, withConstantsImportLine: boolean): Promise<number>;
 }
 //# sourceMappingURL=Main.d.ts.map

@@ -3,6 +3,70 @@
 [README.md HOME](./../../README.md)
 
 
+
+
+
+## News: 21th of June 2025
+
+### ResponsiveSizes updated
+
+#### Notice
+
+The example html site shows when a `mobile s` portrait,
+
+then the same mobile when turned, very oft not the `mobile s`, can be tablet sm landscape or other.
+
+Please, regard these sizes names for the site quality improves and bugfixes to know the @media query name and .css file, and not the mobile device size. Displays may be same thin, however longer.
+
+The nice idea of an advice now, is not to adjust the sizes in several .json files variants, but to keep for good on a cdn of me and Yours, to have the standard doc to relay later on. This .json dataset was asked in Chat GPT site, and the most infos used by the Chat, are the gathered standards infos in the internet, published since longer ago.
+
+
+
+
+
+`workspace/ts/www/packages/ResponsiveSizes`
+
+[https://sandbox.brightday.email/ExampleSimple_ResponsiveSizes.html](https://sandbox.brightday.email/ExampleSimple_ResponsiveSizes.html)
+
+
+
+### SitesToolAutomation
+
+the new package `workspace/ts/www/packages/SitesToolAutomation` produces .css file set, similar to CssCleanStart, however the responsive sizes are set in a .json file.
+
+[https://sandbox.brightday.email/packages/SitesToolAutomation/responsive_sizes_user_friendly_view.html](https://sandbox.brightday.email/packages/SitesToolAutomation/responsive_sizes_user_friendly_view.html)
+
+The CssCleanStart will be bugfixed, rebuilt and updated soon.
+
+
+
+
+
+### CssToolTemplate
+
+the first try to produce the new project template for a css sites tool with the new *SitesToolAutomation*.
+
+ready to us, however the SitesToolAutomation will gen later normally the new css sites tool with all files:
+
+. package.json
+
+. entry in BuildData.json
+
+. webpack infrastructure files and webpack.alias.json
+
+. MediaAndStyles base theme and responsive .css files set
+
+. src/index.ts with styles imported
+
+. .css resolved styles built with CssImporter
+
+
+
+
+
+
+
+
 ## News: 13th of May 2025
 
 #### 1. To apply new npm tools:
@@ -22,6 +86,8 @@ docker compose exec ts bash
 cd /var/www/workspace/ts
 npm install
 ```
+
+
 
 #### 2. Vite Framework applied in this project
 
@@ -50,7 +116,8 @@ npx vite build --config www/templates/ViteWithSassAndLess/vite.config.ts
 navigate to <https://sandbox.brightday.email/templates/ViteWithSassAndLess/dist/>
 
 
-#### 2. Vitest Testing Framework applied in this project.
+
+#### 3. Vitest Testing Framework applied in this project.
 
 *The very very nice user experience at the first site. Installed via npm like a charm, first test written ran at once, no need no project rebuild. Found the bug thanks to the Vitest test ran, and bugfixed then. The very very nice testing framework.*
 

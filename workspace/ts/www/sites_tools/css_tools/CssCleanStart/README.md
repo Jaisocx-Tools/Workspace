@@ -1,6 +1,16 @@
 # CSS Clean Start
 
+
+## Status of the Project
+
+. the new .css files set for the responsive feature, produced by the *SitesToolAutomation* is in the `MediaAndStyles/themes/theme_base`, however not ready.
+
+
+
+
+
 ## The aim of the setup
+
 All front end devs use some normalizing styles for their new projects from scratch.
 
 When You start fresh project from scratch, You have at once the index.html with responsive markup,

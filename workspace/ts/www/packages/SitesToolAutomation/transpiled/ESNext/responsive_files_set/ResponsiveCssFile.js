@@ -74,25 +74,17 @@ export class ResponsiveCssFile {
         let responsiveSizeConstantName = this.responsiveDatasetConstants
             .getResponsiveSizeConstantNameBitsbuf();
         //@ts-ignore
-        let data = this.responsiveDatasetBase.datasetBitsbufs[responsiveDatasetPropName];
+        let responsiveData = this.responsiveDatasetBase.datasetBitsbufs[responsiveDatasetPropName];
         let sizesByBitsbufs_true = true;
         let sizes = this.responsiveDatasetBase.getSizesByOrientation(responsiveDatasetPropName, orientation, sizesByBitsbufs_true);
         let responsiveSizeName_withSitesToolName_Array = this.responsiveDatasetConstants
-            .getResponsiveSizeName_withSitesToolName_ByBitsbufs(data["range_orderby_id"], data["art"], data["art_size"], orientationBitsbuf, sitesToolBitsbuf);
+            .getResponsiveSizeName_withSitesToolName_ByBitsbufs(responsiveData["range_orderby_id"], responsiveData["art"], responsiveData["art_size"], orientationBitsbuf, sitesToolBitsbuf);
         let responsiveSizeNameOrientedArray = responsiveSizeName_withSitesToolName_Array.slice(0, 9);
         let responsiveSizeName_withSitesToolName = this.responsiveDatasetBase.fileWriter
             .concatUint8Arrays(responsiveSizeName_withSitesToolName_Array);
         let responsiveSizeNameOriented = this.responsiveDatasetBase.fileWriter
             .concatUint8Arrays(responsiveSizeNameOrientedArray);
-        let templateData = {
-            "SitesToolName": sitesToolBitsbuf,
-            "responsiveSizeConstantName": responsiveSizeConstantName,
-            "responsiveSizeName": responsiveSizeNameOriented,
-            "orientation": orientationBitsbuf,
-            "min-width": sizes["from"],
-            "max-width": sizes["to"],
-        };
-        // console.log( templateData );
+        let templateData = this.getTemplateData(sitesToolBitsbuf, responsiveDatasetPropName, orientation, orientationBitsbuf, responsiveSizeConstantName, responsiveData, sizes, responsiveSizeName_withSitesToolName_Array, responsiveSizeNameOriented);
         let templateRendererDataRecordId = this.templateRenderer.getActiveDataRecordId();
         this.templateRenderer
             .setData(templateData);
@@ -109,6 +101,18 @@ export class ResponsiveCssFile {
         retVal = await this.responsiveDatasetBase.fileWriter.appendFlatArrayToFile(responsiveCssFile_Content);
         retVal = await this.responsiveDatasetBase.fileWriter.filehandleClose();
         return retVal;
+    }
+    getTemplateData(sitesToolBitsbuf, _responsiveDatasetPropName, _orientation, orientationBitsbuf, responsiveSizeConstantName, _responsiveData, sizes, _responsiveSizeName_withSitesToolName_Array, responsiveSizeNameOriented) {
+        let templateData = {
+            "SitesToolName": sitesToolBitsbuf,
+            "responsiveSizeConstantName": responsiveSizeConstantName,
+            "responsiveSizeName": responsiveSizeNameOriented,
+            "orientation": orientationBitsbuf,
+            "min-width": sizes["from"],
+            "max-width": sizes["to"],
+        };
+        // console.log( templateData );
+        return templateData;
     }
 }
 //# sourceMappingURL=ResponsiveCssFile.js.map

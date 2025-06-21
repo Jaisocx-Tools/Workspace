@@ -125,7 +125,7 @@ export class ResponsiveCssFile implements ResponsiveCssFileInterface {
         .getResponsiveSizeConstantNameBitsbuf();
 
     //@ts-ignore
-    let data = this.responsiveDatasetBase.datasetBitsbufs[responsiveDatasetPropName]
+    let responsiveData = this.responsiveDatasetBase.datasetBitsbufs[responsiveDatasetPropName]
 
     let sizesByBitsbufs_true: boolean = true;
     let sizes: any = this.responsiveDatasetBase.getSizesByOrientation (
@@ -136,9 +136,9 @@ export class ResponsiveCssFile implements ResponsiveCssFileInterface {
 
     let responsiveSizeName_withSitesToolName_Array: Uint8Array[] = this.responsiveDatasetConstants
       .getResponsiveSizeName_withSitesToolName_ByBitsbufs (
-        data["range_orderby_id"],
-        data["art"],
-        data["art_size"],
+        responsiveData["range_orderby_id"],
+        responsiveData["art"],
+        responsiveData["art_size"],
         orientationBitsbuf,
         sitesToolBitsbuf
       );
@@ -152,17 +152,17 @@ export class ResponsiveCssFile implements ResponsiveCssFileInterface {
     let responsiveSizeNameOriented: Uint8Array = this.responsiveDatasetBase.fileWriter
         .concatUint8Arrays( responsiveSizeNameOrientedArray );
 
-
-    let templateData: any = {
-      "SitesToolName": sitesToolBitsbuf,
-      "responsiveSizeConstantName": responsiveSizeConstantName,
-      "responsiveSizeName": responsiveSizeNameOriented,
-      "orientation": orientationBitsbuf,
-      "min-width": sizes["from"],
-      "max-width": sizes["to"],
-    };
-    // console.log( templateData );
-
+    let templateData: any = this.getTemplateData(
+      sitesToolBitsbuf,
+      responsiveDatasetPropName,
+      orientation,
+      orientationBitsbuf,
+      responsiveSizeConstantName,
+      responsiveData,
+      sizes,
+      responsiveSizeName_withSitesToolName_Array,
+      responsiveSizeNameOriented
+    );
 
     let templateRendererDataRecordId: number = this.templateRenderer.getActiveDataRecordId();
 
@@ -197,6 +197,32 @@ export class ResponsiveCssFile implements ResponsiveCssFileInterface {
 
 
     return retVal;
+  }
+
+
+  getTemplateData (
+    sitesToolBitsbuf: Uint8Array,
+    _responsiveDatasetPropName: string,
+    _orientation: string,
+    orientationBitsbuf: Uint8Array,
+    responsiveSizeConstantName: Uint8Array,
+    _responsiveData: any,
+    sizes: any,
+    _responsiveSizeName_withSitesToolName_Array: Uint8Array[],
+    responsiveSizeNameOriented: Uint8Array
+  ): any {
+
+    let templateData: any = {
+      "SitesToolName": sitesToolBitsbuf,
+      "responsiveSizeConstantName": responsiveSizeConstantName,
+      "responsiveSizeName": responsiveSizeNameOriented,
+      "orientation": orientationBitsbuf,
+      "min-width": sizes["from"],
+      "max-width": sizes["to"],
+    };
+    // console.log( templateData );
+
+    return templateData;
   }
 
 }

@@ -1,0 +1,36 @@
+/* Responsive rules */
+@media only screen and (min-width: 1440px) and (max-width: 1600px) and (orientation: landscape) {
+
+  .workspace {
+    --responsive_size: responsive_size_l07_laptop_lg_landscape;
+
+    --responsive_size__min-width: 1440px;
+    --responsive_size__max-width: 1600px;
+
+
+
+    --responsive_size_CssCleanStart: responsive_size_l07_laptop_lg_landscape_CssCleanStart;
+
+    --responsive_size_CssCleanStart__min-width: 1440px;
+    --responsive_size_CssCleanStart__max-width: 1600px;
+
+
+
+    /** Clean Start Css Constants */
+    --clean-start__tag_body__width: var(--clean-start__tag_body__width__lg_laptop_horizontal);
+    --clean-start__tag_body__max_width: var(--clean-start__tag_body__max_width__lg_laptop_horizontal);
+    --clean-start__tag_body__min_width: var(--clean-start__tag_body__min_width__lg_laptop_horizontal);
+
+    --clean-start__site__width: var(--clean-start__site__width__lg_laptop_horizontal);
+    --clean-start__site__max_width: var(--clean-start__site__max_width__lg_laptop_horizontal);
+    --clean-start__site__min_width: var(--clean-start__site__min_width__lg_laptop_horizontal);
+
+    --clean-start__site__overflow_x: var(--clean-start__site__overflow_x__lg_laptop_horizontal);
+
+
+    --clean-start__font-size: var(--clean-start__font-size__lg_laptop);
+    --clean-start__line-height: var(--clean-start__line-height__lg_laptop);
+  }
+
+}
+

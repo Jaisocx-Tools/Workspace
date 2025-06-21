@@ -4,12 +4,10 @@ import { Main } from "./Main.js";
 
 export async function genSiteToolTemplate(): Promise<number> {
 
-  // console.log( process.argv );
-
-
   const terminalInpArgsObject: any = {
     sitesToolName: "",
     cssOrJsTool: "",
+    template: "",
     withCssConstantsFile: "",
     withConstantsImportLine: ""
   };
@@ -24,7 +22,7 @@ export async function genSiteToolTemplate(): Promise<number> {
     key = key.replace(
       "--",
       "");
-    terminalInpArgsObject[key] = value ? value.replace(
+    terminalInpArgsObject[key] = value ? value.replace (
       /(^"|"$)/g,
       ""
     ) : ""; // Remove quotes if any
@@ -49,6 +47,7 @@ export async function genSiteToolTemplate(): Promise<number> {
     .run (
       terminalInpArgsObject.sitesToolName,
       terminalInpArgsObject.cssOrJsTool,
+      terminalInpArgsObject.template,
       withCssConstantsFile,
       withConstantsImportLine
     );

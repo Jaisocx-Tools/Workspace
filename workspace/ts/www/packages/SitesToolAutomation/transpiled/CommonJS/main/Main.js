@@ -61,7 +61,6 @@ class Main {
         _Main_fileBaseName_responsiveSizesConstants.set(this, void 0);
         _Main_fileBaseName_CssImports.set(this, void 0);
         this.pathToJsonDatasetForResponsiveSizes = "data/ResponsiveSizes/ResponsiveSizes.json";
-        this.mediaQueryCssFileTemplatePath = "data/templates/ResponsiveTemplate.template";
         __classPrivateFieldSet(this, _Main_keywordResponsiveSize, "responsive_size", "f");
         __classPrivateFieldSet(this, _Main_fileBaseName_responsiveSizesConstants, "Constants", "f");
         __classPrivateFieldSet(this, _Main_fileBaseName_CssImports, "CssImports", "f");
@@ -74,7 +73,7 @@ class Main {
     }
     // the central main method to produce .css files and for them the datasets, texts and names and .css files names.
     // cssOrJsTool: "css" | "js"
-    async run(sitesToolName, cssOrJsTool, withCssConstantsFile, withConstantsImportLine) {
+    async run(sitesToolName, cssOrJsTool, mediaQueryCssFileTemplatePath, withCssConstantsFile, withConstantsImportLine) {
         this.responsiveDatasetBase.setSitesToolName(sitesToolName);
         if (this.responsiveDatasetBase.templateProjectPath.length === 0) {
             this.responsiveDatasetBase.templateProjectPath = path.resolve("../../", "sites_tools", (cssOrJsTool + "_tools"), sitesToolName);
@@ -89,7 +88,7 @@ class Main {
             .readDataset(this.pathToJsonDatasetForResponsiveSizes)
             .datasetPropsToBitsbufs(sitesToolName)
             .setMediaAndStylesResponsiveFolderPath(["MediaAndStyles", "/", "themes", "/", "theme_base"].join(""))
-            .setMediaQueryCssFileTemplatePath(this.mediaQueryCssFileTemplatePath);
+            .setMediaQueryCssFileTemplatePath(mediaQueryCssFileTemplatePath);
         // console.log( this.responsiveDatasetBase.dataset );
         let retVal = 0;
         let newLinesAmount = 3;

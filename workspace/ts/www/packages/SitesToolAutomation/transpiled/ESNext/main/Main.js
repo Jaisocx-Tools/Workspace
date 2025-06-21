@@ -8,7 +8,6 @@ import { ResponsiveImports } from "../css_imports_file/ResponsiveImports.js";
 import { ResponsiveDatasetBase } from "../automation_base_class/ResponsiveDatasetBase.js";
 export class Main {
     pathToJsonDatasetForResponsiveSizes;
-    mediaQueryCssFileTemplatePath;
     #keywordResponsiveSize = "";
     #fileBaseName_responsiveSizesConstants;
     #fileBaseName_CssImports;
@@ -20,7 +19,6 @@ export class Main {
     // responsiveTsFile_ResponsiveSizesNames: ResponsiveTsFile_ResponsiveSizesNames;
     constructor() {
         this.pathToJsonDatasetForResponsiveSizes = "data/ResponsiveSizes/ResponsiveSizes.json";
-        this.mediaQueryCssFileTemplatePath = "data/templates/ResponsiveTemplate.template";
         this.#keywordResponsiveSize = "responsive_size";
         this.#fileBaseName_responsiveSizesConstants = "Constants";
         this.#fileBaseName_CssImports = "CssImports";
@@ -33,7 +31,7 @@ export class Main {
     }
     // the central main method to produce .css files and for them the datasets, texts and names and .css files names.
     // cssOrJsTool: "css" | "js"
-    async run(sitesToolName, cssOrJsTool, withCssConstantsFile, withConstantsImportLine) {
+    async run(sitesToolName, cssOrJsTool, mediaQueryCssFileTemplatePath, withCssConstantsFile, withConstantsImportLine) {
         this.responsiveDatasetBase.setSitesToolName(sitesToolName);
         if (this.responsiveDatasetBase.templateProjectPath.length === 0) {
             this.responsiveDatasetBase.templateProjectPath = path.resolve("../../", "sites_tools", (cssOrJsTool + "_tools"), sitesToolName);
@@ -48,7 +46,7 @@ export class Main {
             .readDataset(this.pathToJsonDatasetForResponsiveSizes)
             .datasetPropsToBitsbufs(sitesToolName)
             .setMediaAndStylesResponsiveFolderPath(["MediaAndStyles", "/", "themes", "/", "theme_base"].join(""))
-            .setMediaQueryCssFileTemplatePath(this.mediaQueryCssFileTemplatePath);
+            .setMediaQueryCssFileTemplatePath(mediaQueryCssFileTemplatePath);
         // console.log( this.responsiveDatasetBase.dataset );
         let retVal = 0;
         let newLinesAmount = 3;

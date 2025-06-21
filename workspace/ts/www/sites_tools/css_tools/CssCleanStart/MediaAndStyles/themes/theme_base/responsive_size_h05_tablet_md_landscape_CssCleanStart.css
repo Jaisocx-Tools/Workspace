@@ -1,0 +1,40 @@
+/* Responsive rules */
+@media only screen and (min-width: 961px) and (max-width: 1024px) and (orientation: landscape) {
+
+  .workspace {
+    --responsive_size: responsive_size_h05_tablet_md_landscape;
+
+    --responsive_size__min-width: 961px;
+    --responsive_size__max-width: 1024px;
+
+
+
+    --responsive_size_CssCleanStart: responsive_size_h05_tablet_md_landscape_CssCleanStart;
+
+    --responsive_size_CssCleanStart__min-width: 961px;
+    --responsive_size_CssCleanStart__max-width: 1024px;
+
+
+
+    /** Clean Start Css Constants */
+    --clean-start__tag_body__width: var(--clean-start__tag_body__width__md_tablet_landscape);
+    --clean-start__tag_body__max_width: var(--clean-start__tag_body__max_width__md_tablet_landscape);
+    --clean-start__tag_body__min_width: var(--clean-start__tag_body__min_width__md_tablet_landscape);
+
+    --clean-start__site__width: var(--clean-start__site__width__md_tablet_landscape);
+    --clean-start__site__max_width: var(--clean-start__site__max_width__md_tablet_landscape);
+    --clean-start__site__min_width: var(--clean-start__site__min_width__md_tablet_landscape);
+
+    --clean-start__site__overflow_x: var(--clean-start__site__overflow_x__md_tablet_landscape);
+
+
+
+    --clean-start__font-size__tablet: var(--clean-start__font-size__tablet_landscape);
+    --clean-start__font-size: var(--clean-start__font-size__tablet);
+
+    --clean-start__line-height__tablet: var(--clean-start__line-height__tablet_landscape);
+    --clean-start__line-height: var(--clean-start__line-height__tablet);
+  }
+
+}
+

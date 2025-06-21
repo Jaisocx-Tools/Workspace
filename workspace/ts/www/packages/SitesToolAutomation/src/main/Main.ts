@@ -12,7 +12,6 @@ import { ResponsiveDatasetBase } from "../automation_base_class/ResponsiveDatase
 
 export class Main {
   pathToJsonDatasetForResponsiveSizes: string;
-  mediaQueryCssFileTemplatePath: string;
 
   #keywordResponsiveSize: string = "";
   #fileBaseName_responsiveSizesConstants: string;
@@ -28,7 +27,6 @@ export class Main {
 
   constructor() {
     this.pathToJsonDatasetForResponsiveSizes = "data/ResponsiveSizes/ResponsiveSizes.json";
-    this.mediaQueryCssFileTemplatePath = "data/templates/ResponsiveTemplate.template";
 
     this.#keywordResponsiveSize = "responsive_size";
     this.#fileBaseName_responsiveSizesConstants = "Constants";
@@ -48,6 +46,7 @@ export class Main {
   async run (
     sitesToolName: string,
     cssOrJsTool: string,
+    mediaQueryCssFileTemplatePath: string,
     withCssConstantsFile: boolean,
     withConstantsImportLine: boolean
   ): Promise<number> {
@@ -70,7 +69,7 @@ export class Main {
       .readDataset( this.pathToJsonDatasetForResponsiveSizes )
       .datasetPropsToBitsbufs( sitesToolName )
       .setMediaAndStylesResponsiveFolderPath( [ "MediaAndStyles", "/", "themes", "/", "theme_base" ].join("") )
-      .setMediaQueryCssFileTemplatePath( this.mediaQueryCssFileTemplatePath );
+      .setMediaQueryCssFileTemplatePath( mediaQueryCssFileTemplatePath );
 
     // console.log( this.responsiveDatasetBase.dataset );
 
@@ -165,4 +164,7 @@ export class Main {
   }
 
 }
+
+
+
 

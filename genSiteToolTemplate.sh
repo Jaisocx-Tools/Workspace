@@ -24,7 +24,7 @@ if [ -e "${pathToEnv}" ]; then
   source "${pathToEnv}"
 
   argv="$@"
-  docker compose exec ts bash -c "cd ${tsServicePathInDockerVolume}/www/packages/SiteToolAutomation && ./bash/produce.sh $argv"
+  docker compose exec ts bash -c "cd ${tsServicePathInDockerVolume}/www/packages/SitesToolAutomation && ./bash/produce.sh $argv"
 
 else
   # when no .env is in the Project,

@@ -1,9 +1,9 @@
 import { Main } from "./Main.js";
 export async function genSiteToolTemplate() {
-    // console.log( process.argv );
     const terminalInpArgsObject = {
         sitesToolName: "",
         cssOrJsTool: "",
+        template: "",
         withCssConstantsFile: "",
         withConstantsImportLine: ""
     };
@@ -24,7 +24,7 @@ export async function genSiteToolTemplate() {
     let withConstantsImportLine = (terminalInpArgsObject.withConstantsImportLine.length === 0) ? true : (!!terminalInpArgsObject.withConstantsImportLine);
     // let themeName: string = "theme-day-mode";
     let retVal = await mainClassInstance
-        .run(terminalInpArgsObject.sitesToolName, terminalInpArgsObject.cssOrJsTool, withCssConstantsFile, withConstantsImportLine);
+        .run(terminalInpArgsObject.sitesToolName, terminalInpArgsObject.cssOrJsTool, terminalInpArgsObject.template, withCssConstantsFile, withConstantsImportLine);
     return retVal;
 }
 genSiteToolTemplate()
