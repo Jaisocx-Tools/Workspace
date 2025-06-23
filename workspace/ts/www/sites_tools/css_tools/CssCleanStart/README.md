@@ -12,6 +12,32 @@ ready
 
 ### 23th of June 2025
 
+#### Notice
+
+The size of the `css_clean_start_main_resolved.css` built by the css-importer can be reduced when in the file
+`MediaAndStyles/themes/theme_base/responsive_size_a03_CssImports_CssCleanStart_Webpack.css` the imports are encommented,
+and then buildPackages.sh script is invoked, when in BuildData.json the field *css-importer.build* set *true*.
+
+```json
+...
+"css-importer": {
+  "build": true,
+  ...
+}
+...
+```
+
+
+
+```css
+/* MediaAndStyles/themes/theme_base/responsive_size_a03_CssImports_CssCleanStart_Webpack.css */
+
+/* tv 16k */
+/* @import url("@CssCleanStart_MediaAndStyles/themes/theme_base/responsive_size_t16_tv_16k_portrait_CssCleanStart.css"); */
+/* @import url("@CssCleanStart_MediaAndStyles/themes/theme_base/responsive_size_t16_tv_16k_landscape_CssCleanStart.css"); */
+```
+
+
 
 **1. Responsive .css files set improved and aligned**
 
@@ -55,6 +81,7 @@ The new script genCleanStart.sh produces .css files set for the responsive featu
 
 
 
+
 ## The aim of the setup
 
 All front end devs use some normalizing styles for their new projects from scratch.
@@ -74,9 +101,9 @@ several .css files will be loaded with size of very few KB.
 
 
 
-## The latest .tgz archive (v.1.5.3 23th of June 2025)
+## The latest .tgz archive (v.1.5.6 23th of June 2025)
 
-[https://sandbox.brightday.email/sites_tools/css_tools/CssCleanStart/jaisocx-css-clean-start-1.5.3.tgz](https://sandbox.brightday.email/sites_tools/css_tools/CssCleanStart/jaisocx-css-clean-start-1.5.3.tgz)
+[https://sandbox.brightday.email/sites_tools/css_tools/CssCleanStart/jaisocx-css-clean-start-1.5.6.tgz](https://sandbox.brightday.email/sites_tools/css_tools/CssCleanStart/jaisocx-css-clean-start-1.5.6.tgz)
 
 
 

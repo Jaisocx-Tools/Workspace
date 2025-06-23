@@ -175,7 +175,7 @@
       "name": "css-clean-start",
       "update-published": "Tue Jun  3 01:13:57 GMT 2025",
       "build": false,
-      "build-simple-enable": false,
+      "build-simple-enable": true,
       "css-importer": {
         "build": true,
         "cssFilePath": "MediaAndStyles/css_clean_start_main_webpack.css",

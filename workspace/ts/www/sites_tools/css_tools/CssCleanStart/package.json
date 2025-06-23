@@ -1,6 +1,6 @@
 {
   "name": "@jaisocx/css-clean-start",
-  "version": "1.5.3",
+  "version": "1.5.6",
   "private": false,
   "description": "",
   "type": "module",
@@ -27,7 +27,7 @@
     "transpiled/webpack",
     "MediaAndStyles/themes/",
     "MediaAndStyles/responsive/",
-    "MediaAndStyles/fonts/",
+    "MediaAndStyles/fonts/*.css",
     "MediaAndStyles/*.css",
     "webpack.aliases.json",
     "webpack.config.cjs",
