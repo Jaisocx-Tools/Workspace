@@ -1,4 +1,16 @@
-/* Responsive rules */
+/*
+
+Responsive rules
+
+These styles for a display size in this primary template for a site from scratch,
+  I guess, need first the adjustments for sizes,
+  when tested on several displays for higher quality of a site shown in a browser on a display.
+
+That is why in the CssCleanStart just the css constants relevant for sizes are set in this template.
+
+*/
+
+
 @media only screen and (min-width: 8641px) and (max-width: 9999px) and (orientation: portrait) {
 
   .workspace {
@@ -13,7 +25,48 @@
 
     --responsive_size_CssCleanStart__min-width: 8641px;
     --responsive_size_CssCleanStart__max-width: 9999px;
+
+
+
+
+
+    /** Clean Start Css Constants */
+    /*
+    --clean-start__tag_body__width:     var(--clean-start__tag_body__width__tv_16k_portrait);
+    --clean-start__tag_body__max_width: var(--clean-start__tag_body__max_width__tv_16k_portrait);
+    --clean-start__tag_body__min_width: var(--clean-start__tag_body__min_width__tv_16k_portrait);
+    */
+
+
+
+    /*
+    --clean-start__site__width:         var(--clean-start__site__width__tv_16k_portrait);
+    --clean-start__site__max_width:     var(--clean-start__site__max_width__tv_16k_portrait);
+    --clean-start__site__min_width:     var(--clean-start__site__min_width__tv_16k_portrait);
+    */
+
+
+
+
+    --clean-start__site__overflow_x:    hidden;
+    /* --clean-start__site__overflow_y:    var(--clean-start__site__overflow_y__tv_16k_portrait); */
+
+
+
+
+    /*
+    --clean-start__font-size:           var(--clean-start__font-size__tv_16k_portrait);
+    --clean-start__line-height:         var(--clean-start__line-height__tv_16k_portrait);
+    */
+
+
+    /** h1 font size and h1 line height, font family for the mobile or tv for example similar font arts like Arial Narrow or Verdana */
+
+
+
   }
 
 }
+
+
 

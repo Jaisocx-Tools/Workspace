@@ -1,7 +1,10 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-require("@jaisocx-css-clean-start-MediaAndStyles/clean-start-main-webpack.css");
+require("@CssCleanStart_MediaAndStyles/css_clean_start_main_webpack.css");
 /* two example themes  */
-require("@jaisocx-css-clean-start-MediaAndStyles/themes/theme-lightmode/clean-start-theme-lightmode-webpack.css");
-require("@jaisocx-css-clean-start-MediaAndStyles/themes/theme-darkmode/clean-start-theme-darkmode-webpack.css");
+/* these css imports are just the try to add to the webpack bundle.js the themes,
+    and then to test, whether in html a class name will apply the theme,
+    when just the webpack bundle.js is referenced in the html site script tag. */
+require("@CssCleanStart_MediaAndStyles/themes/theme-lightmode/clean-start-theme-lightmode-webpack.css");
+require("@CssCleanStart_MediaAndStyles/themes/theme-darkmode/clean-start-theme-darkmode-webpack.css");
 //# sourceMappingURL=index.js.map

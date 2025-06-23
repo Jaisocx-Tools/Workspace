@@ -1,4 +1,16 @@
-/* Responsive rules */
+/*
+
+Responsive rules
+
+These styles for a display size in this primary template for a site from scratch,
+  I guess, need first the adjustments for sizes,
+  when tested on several displays for higher quality of a site shown in a browser on a display.
+
+That is why in the CssCleanStart just the css constants relevant for sizes are set in this template.
+
+*/
+
+
 @media only screen and (min-width: 668px) and (max-width: 736px) and (orientation: landscape) {
 
   .workspace {
@@ -16,26 +28,41 @@
 
 
 
+
+
     /** Clean Start Css Constants */
-    --clean-start__tag_body__width: var(--clean-start__tag_body__width__s_mobile_landscape);
-    --clean-start__tag_body__max_width: var(--clean-start__tag_body__max_width__s_mobile_landscape);
-    --clean-start__tag_body__min_width: var(--clean-start__tag_body__min_width__s_mobile_landscape);
-
-    --clean-start__site__width: var(--clean-start__site__width__s_mobile_landscape);
-    --clean-start__site__max_width: var(--clean-start__site__max_width__s_mobile_landscape);
-    --clean-start__site__min_width: var(--clean-start__site__min_width__s_mobile_landscape);
-
-    --clean-start__site__overflow_x: var(--clean-start__site__overflow_x__s_mobile_landscape);
+    /*
+    --clean-start__tag_body__width:     var(--clean-start__tag_body__width__mobile_sm_landscape);
+    --clean-start__tag_body__max_width: var(--clean-start__tag_body__max_width__mobile_sm_landscape);
+    --clean-start__tag_body__min_width: var(--clean-start__tag_body__min_width__mobile_sm_landscape);
+    */
 
 
 
-    --clean-start__font-size__mobile: var(--clean-start__font-size__mobile_landscape);
-    --clean-start__font-size: var(--clean-start__font-size__mobile);
+    --clean-start__site__width:         100%;
+    --clean-start__site__max_width:     100%;
+    --clean-start__site__min_width:     100%;
 
-    --clean-start__line-height__mobile: var(--clean-start__line-height__mobile_landscape);
-    --clean-start__line-height: var(--clean-start__line-height__mobile);
+
+
+
+    --clean-start__site__overflow_x:    auto;
+    /* --clean-start__site__overflow_y:    var(--clean-start__site__overflow_y__mobile_sm_landscape); */
+
+
+
+
+    --clean-start__font-size:           1.2rem;
+    --clean-start__line-height:         2.0rem;
+
+
+    /** h1 font size and h1 line height, font family for the mobile or tv for example similar font arts like Arial Narrow or Verdana */
+
+
 
   }
 
 }
+
+
 

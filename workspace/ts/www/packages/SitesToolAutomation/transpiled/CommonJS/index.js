@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.genSiteToolTemplate = exports.Main = exports.ResponsiveTsFile_ResponsiveSizesNames = exports.ResponsiveCssFile = exports.ResponsiveImports = exports.ResponsiveCssFileWithResponsiveSizes = exports.ResponsiveDatasetConstants = exports.ResponsiveDatasetBase = void 0;
+exports.genCleanStart = exports.genSiteToolTemplate = exports.Main = exports.ResponsiveTsFile_ResponsiveSizesNames = exports.ResponsiveCssFile = exports.ResponsiveImports = exports.ResponsiveCssFileWithResponsiveSizes = exports.ResponsiveDatasetConstants = exports.ResponsiveDatasetBase = void 0;
 var ResponsiveDatasetBase_js_1 = require("./automation_base_class/ResponsiveDatasetBase.js");
 Object.defineProperty(exports, "ResponsiveDatasetBase", { enumerable: true, get: function () { return ResponsiveDatasetBase_js_1.ResponsiveDatasetBase; } });
 var ResponsiveDatasetConstants_js_1 = require("./constants/ResponsiveDatasetConstants.js");
@@ -17,4 +17,6 @@ var Main_js_1 = require("./main/Main.js");
 Object.defineProperty(exports, "Main", { enumerable: true, get: function () { return Main_js_1.Main; } });
 var genSiteToolTemplate_js_1 = require("./main/genSiteToolTemplate.js");
 Object.defineProperty(exports, "genSiteToolTemplate", { enumerable: true, get: function () { return genSiteToolTemplate_js_1.genSiteToolTemplate; } });
+var genCleanStart_js_1 = require("./main/genCleanStart.js");
+Object.defineProperty(exports, "genCleanStart", { enumerable: true, get: function () { return genCleanStart_js_1.genCleanStart; } });
 //# sourceMappingURL=index.js.map

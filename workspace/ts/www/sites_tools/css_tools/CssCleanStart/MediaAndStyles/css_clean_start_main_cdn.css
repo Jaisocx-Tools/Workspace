@@ -1,0 +1,22 @@
+/* usage with cdn example.
+    Example, since Your cdn endpoint will for sure have other name, and the one of the brightday.email moves later, too.
+    I think cdn.brightday.email or very other, when I have the idea of the domain name for this project.
+*/
+/* https://sandbox.brightday.email/cdn/jaisocx-tools/css-clean-start/MediaAndStyles/ */
+
+
+/* css variables */
+@import url("https://sandbox.brightday.email/cdn/jaisocx-tools/css-clean-start/MediaAndStyles/themes/theme_base/css_clean_start_theme_base.css");
+
+
+
+/* responsive */
+@import url("https://sandbox.brightday.email/cdn/jaisocx-tools/css-clean-start/MediaAndStyles/themes/theme_base/responsive_size_a02_Constants.css");
+@import url("https://sandbox.brightday.email/cdn/jaisocx-tools/css-clean-start/MediaAndStyles/themes/theme_base/responsive_size_a03_CssImports_CssCleanStart_Relative.css");
+
+
+
+@import url("https://sandbox.brightday.email/cdn/jaisocx-tools/css-clean-start/MediaAndStyles/css_clean_start_main.css");
+
+
+

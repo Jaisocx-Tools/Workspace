@@ -156,7 +156,7 @@
       "path": "packages/SitesToolAutomation",
       "name": "site-tool-automation",
       "update-published": "Mon Jun 16 08:07:24 CEST 2025",
-      "build": true,
+      "build": false,
       "build-simple-enable": false,
       "dependencies": [
         {
@@ -177,9 +177,9 @@
       "build": false,
       "build-simple-enable": false,
       "css-importer": {
-        "build":false,
-        "cssFilePath": "MediaAndStyles/clean-start-main-webpack.css",
-        "cssTargetFilePath": "MediaAndStyles/clean-start-main-resolved.css"
+        "build": true,
+        "cssFilePath": "MediaAndStyles/css_clean_start_main_webpack.css",
+        "cssTargetFilePath": "MediaAndStyles/css_clean_start_main_resolved.css"
       },
       "dependencies": [],
       "build-files": [
@@ -203,7 +203,7 @@
       "path": "sites_tools/css_tools/CssTable",
       "name": "css-table",
       "update-published": "Tue Jun  3 01:01:52 GMT 2025",
-      "build":false,
+      "build": false,
       "build-simple-enable": true,
       "dependencies": [],
       "build-files": [

@@ -194,7 +194,7 @@ export class ProjectBuilder {
 
     let cssImporterConf: any = packageJson["css-importer"];
     let withCssImporter: boolean = ( ( cssImporterConf !== undefined ) && ( cssImporterConf.build === true ) );
-    let justWithCssImporter: boolean = ( ( packageJson.build === false ) || ( withCssImporter === true ) );
+    let justWithCssImporter: boolean = ( ( packageJson.build === false ) && ( withCssImporter === true ) );
 
     if ( withCssImporter === true ) {
       timeStamp = (new Date()).toISOString();

@@ -3,13 +3,14 @@
 # EXAMPLE
 
 # ./genSiteToolTemplate.sh \
-#     --sitesToolName=CssCleanStart2 \
+#     --sitesToolName=CssCleanStart \
 #     --cssOrJsTool=css \
+#     --template="data/templates/ResponsiveTemplate_CssCleanStart.template" \
 #     --withCssConstantsFile=true \
 #     --withConstantsImportLine=true
 
 
-# ./genSiteToolTemplate.sh --sitesToolName=CssCleanStart2 --cssOrJsTool=css --withCssConstantsFile=true --withConstantsImportLine=true
+# ./genSiteToolTemplate.sh --sitesToolName=SitesToolTemplate3 --cssOrJsTool=css --template="data/templates/ResponsiveTemplate.template" --withCssConstantsFile=true --withConstantsImportLine=true
 
 
 

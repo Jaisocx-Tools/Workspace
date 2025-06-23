@@ -6,4 +6,5 @@ export { ResponsiveCssFile } from "./responsive_files_set/ResponsiveCssFile.js";
 export { ResponsiveTsFile_ResponsiveSizesNames } from "./ts_file_with_sizes_names/ResponsiveTsFile_ResponsiveSizesNames.js";
 export { Main } from "./main/Main.js";
 export { genSiteToolTemplate } from "./main/genSiteToolTemplate.js";
+export { genCleanStart } from "./main/genCleanStart.js";
 //# sourceMappingURL=index.js.map

@@ -131,7 +131,7 @@ class ProjectBuilder {
         let packagePath = path.resolve(this.absolutePathFromRootWww, packageJson.path);
         let cssImporterConf = packageJson["css-importer"];
         let withCssImporter = ((cssImporterConf !== undefined) && (cssImporterConf.build === true));
-        let justWithCssImporter = ((packageJson.build === false) || (withCssImporter === true));
+        let justWithCssImporter = ((packageJson.build === false) && (withCssImporter === true));
         if (withCssImporter === true) {
             timeStamp = (new Date()).toISOString();
             console.log(`${timeStamp} Package [ ${packageJson.name} ]: packing css`);
