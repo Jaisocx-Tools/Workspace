@@ -3,7 +3,53 @@
 
 ## Status of the Project
 
-. the new .css files set for the responsive feature, produced by the *SitesToolAutomation* is in the `MediaAndStyles/themes/theme_base`, however not ready.
+ready
+
+
+
+
+## News
+
+### 23th of June 2025
+
+
+**1. Responsive .css files set improved and aligned**
+
+The new script genCleanStart.sh produces .css files set for the responsive feature, in the new package `SitesToolAutomation`.
+
+
+**2. theme_base main .css file reduced**
+
+*A lot of css variables were deleted*, since they were first set in order to test the css variables inheritance and to keep all css variables for responsive feature closer in one .css file. The newer .css files set for the css variables for every responsive size seemed to me easier to modify. However, still several css variables to use in the responsive .css file may be set like this:
+
+```css
+/* You may adjust Your version of the SitesAutomationTool to produce .css files with one css style property for every responsive size. For example, css property font-size
+*/
+
+/* sites_tools/css_tools/CssCleanStart/MediaAndStyles/themes/theme_base/css_clean_start_theme_base.css */
+--clean-start__font-size__mobile_s_portrait: 1.2rem;
+--clean-start__font-size__mobile_s_landscape: 1.2rem;
+--clean-start__font-size__mobile_sm_portrait: 1.2rem;
+--clean-start__font-size__mobile_sm_landscape: 1.2rem;
+--clean-start__font-size__mobile_md_portrait: 1.2rem;
+--clean-start__font-size__mobile_md_landscape: 1.2rem;
+```
+
+
+
+```css
+/* themes/theme_base/responsive_size_e04_mobile_s_portrait_CssCleanStart.css */
+
+--clean-start__font-size: var(--clean-start__font-size__mobile_s_portrait);
+```
+
+
+
+```css
+/* themes/theme_base/responsive_size_e06_mobile_sm_portrait_CssCleanStart.css */
+
+--clean-start__font-size: var(--clean-start__font-size__mobile_sm_portrait);
+```
 
 
 
@@ -28,9 +74,9 @@ several .css files will be loaded with size of very few KB.
 
 
 
-## The latest .tgz archive (v.1.4.2 3th of June 2025)
+## The latest .tgz archive (v.1.5.3 23th of June 2025)
 
-[https://sandbox.brightday.email/sites_tools/css_tools/CssCleanStart/jaisocx-css-clean-start-1.4.2.tgz](https://sandbox.brightday.email/sites_tools/css_tools/CssCleanStart/jaisocx-css-clean-start-1.4.2.tgz)
+[https://sandbox.brightday.email/sites_tools/css_tools/CssCleanStart/jaisocx-css-clean-start-1.5.3.tgz](https://sandbox.brightday.email/sites_tools/css_tools/CssCleanStart/jaisocx-css-clean-start-1.5.3.tgz)
 
 
 
