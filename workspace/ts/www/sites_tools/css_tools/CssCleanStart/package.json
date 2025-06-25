@@ -23,10 +23,8 @@
   "files": [
     "transpiled/CommonJS",
     "transpiled/ESNext",
-    "transpiled/Simple",
     "transpiled/webpack",
     "MediaAndStyles/themes/",
-    "MediaAndStyles/responsive/",
     "MediaAndStyles/fonts/*.css",
     "MediaAndStyles/*.css",
     "webpack.aliases.json",

@@ -14,7 +14,7 @@ html.workspace script {
 }
 
 
-.workspace,
+.workspace, 
 .workspace * {
 
   position: var(--clean-start__position);
@@ -33,7 +33,7 @@ html.workspace script {
 
 }
 
-.workspace,
+.workspace, 
 .workspace *:not(ul):not(ol):not(li) {
 
   margin: var(--clean-start__margin);
@@ -43,7 +43,7 @@ html.workspace script {
 
 
 
-.workspace,
+.workspace, 
 .workspace *:not(pre) {
   font-family: var(--clean-start__font-family);
 }
@@ -273,7 +273,7 @@ html.workspace {
   display: table-row;
 }
 
-.workspace th,
+.workspace th, 
 .workspace td {
   display: table-cell;
 }
@@ -281,14 +281,14 @@ html.workspace {
 
 
 /* UL and OL tags reset */
-.workspace.ul-reset ul,
-.workspace.ul-reset ol,
-.workspace.ul-reset li,
-.workspace .ul-reset ul,
-.workspace .ul-reset ol,
+.workspace.ul-reset ul, 
+.workspace.ul-reset ol, 
+.workspace.ul-reset li, 
+.workspace .ul-reset ul, 
+.workspace .ul-reset ol, 
 .workspace .ul-reset li,
 .workspace ul.ul-reset,
-.workspace ol.ul-reset,
+.workspace ol.ul-reset, 
 .workspace ul.ul-reset li,
 .workspace ol.ul-reset li {
 
@@ -306,11 +306,6 @@ html.workspace {
   border-color: var(--clean-start__border-color);
 
 }
-
-  /* verifying responsive rules applies *
-  .workspace.verify-responsive-rule-applies main h1::before {
-    content: var(--responsive_size);
-  } */
 
 
 

@@ -173,11 +173,11 @@
     {
       "path": "sites_tools/css_tools/CssCleanStart",
       "name": "css-clean-start",
-      "update-published": "Tue Jun  3 01:13:57 GMT 2025",
+      "update-published": "Mon Jun 23 06:01:02 GMT 2025",
       "build": false,
-      "build-simple-enable": true,
+      "build-simple-enable": false,
       "css-importer": {
-        "build": true,
+        "build": false,
         "cssFilePath": "MediaAndStyles/css_clean_start_main_webpack.css",
         "cssTargetFilePath": "MediaAndStyles/css_clean_start_main_resolved.css"
       },
