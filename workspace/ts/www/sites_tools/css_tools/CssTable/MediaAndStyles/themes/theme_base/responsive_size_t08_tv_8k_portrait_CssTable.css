@@ -1,0 +1,19 @@
+/* Responsive rules */
+@media only screen and (min-width: 4321px) and (max-width: 8640px) and (orientation: portrait) {
+
+  .workspace {
+    --responsive_size: responsive_size_t08_tv_8k_portrait;
+
+    --responsive_size__min-width: 4321px;
+    --responsive_size__max-width: 8640px;
+
+
+
+    --responsive_size_CssTable: responsive_size_t08_tv_8k_portrait_CssTable;
+
+    --responsive_size_CssTable__min-width: 4321px;
+    --responsive_size_CssTable__max-width: 8640px;
+  }
+
+}
+

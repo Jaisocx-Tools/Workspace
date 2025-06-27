@@ -203,7 +203,7 @@
       "path": "sites_tools/css_tools/CssTable",
       "name": "css-table",
       "update-published": "Tue Jun  3 01:01:52 GMT 2025",
-      "build": false,
+      "build": true,
       "build-simple-enable": true,
       "dependencies": [],
       "build-files": [

@@ -1,0 +1,19 @@
+/* Responsive rules */
+@media only screen and (min-width: 431px) and (max-width: 480px) and (orientation: portrait) {
+
+  .workspace {
+    --responsive_size: responsive_size_e08_mobile_md_portrait;
+
+    --responsive_size__min-width: 431px;
+    --responsive_size__max-width: 480px;
+
+
+
+    --responsive_size_CssTable: responsive_size_e08_mobile_md_portrait_CssTable;
+
+    --responsive_size_CssTable__min-width: 431px;
+    --responsive_size_CssTable__max-width: 480px;
+  }
+
+}
+

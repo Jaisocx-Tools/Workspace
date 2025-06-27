@@ -1,0 +1,19 @@
+/* Responsive rules */
+@media only screen and (min-width: 1440px) and (max-width: 1600px) and (orientation: landscape) {
+
+  .workspace {
+    --responsive_size: responsive_size_l07_laptop_lg_landscape;
+
+    --responsive_size__min-width: 1440px;
+    --responsive_size__max-width: 1600px;
+
+
+
+    --responsive_size_CssTable: responsive_size_l07_laptop_lg_landscape_CssTable;
+
+    --responsive_size_CssTable__min-width: 1440px;
+    --responsive_size_CssTable__max-width: 1600px;
+  }
+
+}
+

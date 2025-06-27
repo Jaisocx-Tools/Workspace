@@ -3,9 +3,9 @@
 ## The aim of the setup
 
 
-## The latest .tgz archive (v.1.3.2. 03.04.2025)
+## The latest .tgz archive (v.1.3.6 26.06.2025)
 
-[sandbox.brightday.email/sites_tools/css_tools/CssTable/jaisocx-css-table-1.3.2.tgz](https://sandbox.brightday.email/sites_tools/css_tools/CssTable/jaisocx-css-table-1.3.2.tgz)
+[sandbox.brightday.email/sites_tools/css_tools/CssTable/jaisocx-css-table-1.3.6.tgz](https://sandbox.brightday.email/sites_tools/css_tools/CssTable/jaisocx-css-table-1.3.6.tgz)
 
 
 

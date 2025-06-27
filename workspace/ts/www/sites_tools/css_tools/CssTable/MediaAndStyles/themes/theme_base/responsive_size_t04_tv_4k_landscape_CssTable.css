@@ -1,0 +1,19 @@
+/* Responsive rules */
+@media only screen and (min-width: 3841px) and (max-width: 7680px) and (orientation: landscape) {
+
+  .workspace {
+    --responsive_size: responsive_size_t04_tv_4k_landscape;
+
+    --responsive_size__min-width: 3841px;
+    --responsive_size__max-width: 7680px;
+
+
+
+    --responsive_size_CssTable: responsive_size_t04_tv_4k_landscape_CssTable;
+
+    --responsive_size_CssTable__min-width: 3841px;
+    --responsive_size_CssTable__max-width: 7680px;
+  }
+
+}
+
