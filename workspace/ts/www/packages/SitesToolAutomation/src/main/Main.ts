@@ -2,9 +2,11 @@ import * as fs from "node:fs";
 import * as path from "node:path";
 
 import { ResponsiveDatasetConstants } from "../constants/ResponsiveDatasetConstants.js";
-import { ResponsiveCssFileWithResponsiveSizes } from "../css_file_with_sizes_names/ResponsiveCssFileWithResponsiveSizes.js";
-import { ResponsiveCssFile } from "../responsive_files_set/ResponsiveCssFile.js";
-import { ResponsiveImports } from "../css_imports_file/ResponsiveImports.js";
+import { ResponsiveSizesNames } from "../responsive_sizes_names/ResponsiveSizesNames.js";
+import { ResponsiveFilesSet } from "../responsive_files_set/ResponsiveFilesSet.js";
+import { ResponsiveImports } from "../responsive_imports/ResponsiveImports.js";
+
+
 // import { ResponsiveTsFile_ResponsiveSizesNames } from "../ts_file_with_sizes_names/ResponsiveTsFile_ResponsiveSizesNames.js";
 import { ResponsiveDatasetBase } from "../automation_base_class/ResponsiveDatasetBase.js";
 
@@ -19,12 +21,12 @@ export class Main {
 
   responsiveDatasetConstants: ResponsiveDatasetConstants;
   responsiveDatasetBase: ResponsiveDatasetBase;
-  responsiveCssFile: ResponsiveCssFile;
-  responsiveCssFileWithResponsiveSizes: ResponsiveCssFileWithResponsiveSizes;
+  responsiveCssFile: ResponsiveFilesSet;
+  responsiveCssFileWithResponsiveSizes: ResponsiveSizesNames;
   responsiveImports: ResponsiveImports;
+
+
   // responsiveTsFile_ResponsiveSizesNames: ResponsiveTsFile_ResponsiveSizesNames;
-
-
   constructor() {
     this.pathToJsonDatasetForResponsiveSizes = "data/ResponsiveSizes/ResponsiveSizes.json";
 
@@ -34,9 +36,11 @@ export class Main {
 
     this.responsiveDatasetConstants = new ResponsiveDatasetConstants();
     this.responsiveDatasetBase = new ResponsiveDatasetBase();
-    this.responsiveCssFile = new ResponsiveCssFile( this.responsiveDatasetBase, this.responsiveDatasetConstants );
-    this.responsiveCssFileWithResponsiveSizes = new ResponsiveCssFileWithResponsiveSizes( this.responsiveDatasetBase, this.responsiveDatasetConstants );
+    this.responsiveCssFile = new ResponsiveFilesSet( this.responsiveDatasetBase, this.responsiveDatasetConstants );
+    this.responsiveCssFileWithResponsiveSizes = new ResponsiveSizesNames( this.responsiveDatasetBase, this.responsiveDatasetConstants );
     this.responsiveImports = new ResponsiveImports( this.responsiveDatasetBase, this.responsiveDatasetConstants );
+
+
     // this.responsiveTsFile_ResponsiveSizesNames = new ResponsiveTsFile_ResponsiveSizesNames();
   }
 
@@ -47,18 +51,25 @@ export class Main {
     sitesToolName: string,
     cssOrJsTool: string,
     mediaQueryCssFileTemplatePath: string,
-    withCssConstantsFile: boolean,
+    withSizesCssConstants: boolean,
     withConstantsImportLine: boolean
   ): Promise<number> {
-
     this.responsiveDatasetBase.setSitesToolName( sitesToolName );
 
     if ( this.responsiveDatasetBase.templateProjectPath.length === 0 ) {
-      this.responsiveDatasetBase.templateProjectPath = path.resolve( "../../", "sites_tools", ( cssOrJsTool + "_tools" ), sitesToolName );
+      this.responsiveDatasetBase.templateProjectPath = path.resolve(
+        "../../",
+        "sites_tools", (
+          cssOrJsTool + "_tools" ),
+        sitesToolName
+      );
     }
 
     if ( fs.existsSync( this.responsiveDatasetBase.templateProjectPath ) === false ) {
-      fs.mkdirSync( this.responsiveDatasetBase.templateProjectPath, { recursive: true } );
+      fs.mkdirSync(
+        this.responsiveDatasetBase.templateProjectPath,
+        { recursive: true }
+      );
     }
 
     if ( this.responsiveDatasetBase.webpackAliasName.length === 0 ) {
@@ -71,30 +82,30 @@ export class Main {
       .setMediaAndStylesResponsiveFolderPath( [ "MediaAndStyles", "/", "themes", "/", "theme_base" ].join("") )
       .setMediaQueryCssFileTemplatePath( mediaQueryCssFileTemplatePath );
 
-    // console.log( this.responsiveDatasetBase.dataset );
 
+    // console.log( this.responsiveDatasetBase.dataset );
     let retVal: number = 0;
     let newLinesAmount: number = 3;
     let padding: number = 2;
 
 
-
     // CSS FILES SET, MEDIA QUERIES
     // ---------------------------------------------
     this.responsiveCssFile.readTemplateMediaCssFile( this.responsiveDatasetBase.mediaQueryCssFileTemplatePath );
-    retVal = await this.responsiveCssFile.produceResponsiveCssFilesSet();
-
+    retVal = await this.responsiveCssFile.produceResponsiveFilesSetsSet();
 
 
     // CSS FILE WITH CONSTANTS OF RESPONSIVE SIZES
     // ---------------------------------------------
     let fileBaseName_responsiveSizesConstants: string = "";
-    if ( withCssConstantsFile === true ) {
+
+    if ( withSizesCssConstants === true ) {
       fileBaseName_responsiveSizesConstants = [
         this.#keywordResponsiveSize,
         "_a02_",
         this.#fileBaseName_responsiveSizesConstants
       ].join( "" );
+
 
       //@ts-ignore
       retVal = await this.responsiveCssFileWithResponsiveSizes.produceCssFileWithResponsiveSizesConstants (
@@ -105,10 +116,9 @@ export class Main {
     }
 
 
-
     // CSS IMPORTS
     // ---------------------------------------------
-    withConstantsImportLine = ( withCssConstantsFile && withConstantsImportLine );
+    withConstantsImportLine = ( withSizesCssConstants && withConstantsImportLine );
     let isWebpackAliased_true: boolean = true;
     let filename: string = [
       this.#keywordResponsiveSize,
@@ -121,7 +131,9 @@ export class Main {
       ".css"
     ].join( "" );
 
-    retVal = await this.responsiveImports.produceImportsCssFileWithResponsiveCssFilesSet (
+    retVal = await this.responsiveImports.produceImportsCssFileWithResponsiveFilesSetsSet (
+
+
       // ResponsiveSizesCssImports_Webpack.css
       filename,
       this.responsiveDatasetBase.mediaAndStylesResponsiveFolderPath,
@@ -142,7 +154,9 @@ export class Main {
       ".css"
     ].join( "" );
 
-    retVal = await this.responsiveImports.produceImportsCssFileWithResponsiveCssFilesSet (
+    retVal = await this.responsiveImports.produceImportsCssFileWithResponsiveFilesSetsSet (
+
+
       // ResponsiveSizesCssImports_Relative.css
       filename,
       this.responsiveDatasetBase.mediaAndStylesResponsiveFolderPath,
@@ -151,16 +165,13 @@ export class Main {
       withConstantsImportLine
     );
 
-
     return retVal;
-
 
 
     // TS CLASS
     // ---------------------------------------------
     // retVal = await this.responsiveTsFile_ResponsiveSizesNames
     //   .produceTsFileWithResponsiveSizesNames( "ResponsiveSizesConstants" );
-
   }
 
 }

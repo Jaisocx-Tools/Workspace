@@ -24,14 +24,25 @@
     "noUnusedParameters": true
   },
   "include": [
+    "src/*.ts",
+    "src/*.tsx",
     "src/**/*.ts",  // Include TypeScript files from the source directory
     "src/**/*.tsx",  // Include React JSX files if necessary
-    "typings/**/*.d.ts"  // Optionally include any additional declaration files
+    "typings/**/*.d.ts",  // Optionally include any additional declaration files
+    "www/**/src/*.ts",
+    "www/**/src/*.tsx",
+    "www/**/src/**/*.ts",
+    "www/**/src/**/*.tsx",
+    "build_tools/**/src/*.ts",
+    "build_tools/**/src/*.tsx",
+    "build_tools/**/src/**/*.ts",
+    "build_tools/**/src/**/*.tsx"
   ],
   "exclude": [
     "node_modules",  // Exclude dependencies from being compiled
     "transpiled",  // Exclude the output directory from compilation
     "**/*.spec.ts",  // Exclude test files from compilation (if applicable)
-    "**/*.test.ts"
+    "**/*.test.ts",
+    "**/*.md"
   ]
 }

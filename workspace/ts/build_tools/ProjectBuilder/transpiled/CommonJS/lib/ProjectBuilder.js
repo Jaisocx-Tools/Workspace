@@ -149,7 +149,7 @@ class ProjectBuilder {
         if (dataJson["prettify-typescript"] === true) {
             timeStamp = (new Date()).toISOString();
             console.log(`${timeStamp} Package [ ${packageJson.name} ]: Prettifying with Eslint TypeScript code in ${packagePath}`);
-            this.prettifyWithEslint(packagePath, `${packagePath}/src/*`);
+            this.prettifyWithEslint(packagePath, `${packagePath}/src/**/*.ts`);
         }
         timeStamp = (new Date()).toISOString();
         console.log(`${timeStamp} Package [ ${packageJson.name} ]: ESNext Transpiling TypeScript code in ${packagePath}`);
@@ -283,8 +283,15 @@ class ProjectBuilder {
             return null;
         }
         const filesList = filesAndCatalogsList.filter((filePath) => {
+            let extensionStart = filePath.lastIndexOf(".") + 1;
+            let extension = filePath.substring(extensionStart);
+            let isTypescript = ((extension === "ts") || (extension === "tsx"));
+            if (isTypescript === false) {
+                return isTypescript;
+            }
             const absPath = `${packagePath}/src/${filePath}`;
-            return fs.lstatSync(absPath).isFile();
+            let isFiltered = fs.lstatSync(absPath).isFile();
+            return isFiltered;
         });
         // const packagePathRelative = packagePath.replace(
         //   `${this.absolutePathToProjectRoot}/`,

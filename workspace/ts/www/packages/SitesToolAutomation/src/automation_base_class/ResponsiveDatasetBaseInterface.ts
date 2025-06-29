@@ -10,19 +10,16 @@ export interface ResponsiveDatasetBaseInterface {
   setTemplateProjectPath( path: string ): ResponsiveDatasetBase;
 
 
-
   // for the .css file for the webpack feature,
   // the webpackAlias will be applied, set in this method:
   // SiteToolAutomation/webpack.aliases.json
   setWebpackAliasName( alias: string ): ResponsiveDatasetBase;
 
 
-
   // NOT IMPLEMENTED
   // first to implement the class prop set method,
   // later we know the resources we need on cdn for the css responsive feature of a SitesTool
   setCdnUrl( cdnUrl: string ): ResponsiveDatasetBase;
-
 
 
   // for example, workspace/ts/www/packages/SiteToolAutomation/MediaAndStyles/responsive
@@ -56,7 +53,6 @@ export interface ResponsiveDatasetBaseInterface {
   readDataset( inDatasetFileAbsolutePath: string ): ResponsiveDatasetBase;
 
 
-
   // this methods sets the json dataset as JavaScript object to this.data prop of this class.
   // the faster method than read Dataset(), since redDataset() sets the path, reads the .json file and parses .json file content.
   setDataset( inDataset: object ): ResponsiveDatasetBase;
@@ -72,13 +68,11 @@ export interface ResponsiveDatasetBaseInterface {
   getDatasetFilePath(): string;
 
 
-
   // json with sizes
   /**
    * @ready
   */
   getDataset(): object;
-
 
 
   /**
@@ -91,7 +85,6 @@ export interface ResponsiveDatasetBaseInterface {
     orientation: string,
     byBitsbufs: boolean
   ): object;
-
 
 
   // from ResponsiveDatasetConstantsInterface

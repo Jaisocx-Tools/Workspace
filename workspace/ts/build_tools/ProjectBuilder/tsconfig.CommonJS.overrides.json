@@ -13,6 +13,7 @@
     "node_modules",  // Exclude dependencies from being compiled
     "transpiled",  // Exclude the output directory from compilation
     "**/*.spec.ts",  // Exclude test files from compilation (if applicable)
-    "**/*.test.ts"
+    "**/*.test.ts",
+    "**/*.md"
   ]
 }

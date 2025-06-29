@@ -154,7 +154,7 @@
     },
     {
       "path": "packages/SitesToolAutomation",
-      "name": "site-tool-automation",
+      "name": "sites-tool-automation",
       "update-published": "Mon Jun 16 08:07:24 CEST 2025",
       "build": false,
       "build-simple-enable": false,
@@ -203,8 +203,13 @@
       "path": "sites_tools/css_tools/CssTable",
       "name": "css-table",
       "update-published": "Tue Jun  3 01:01:52 GMT 2025",
-      "build": true,
+      "build": false,
       "build-simple-enable": true,
+      "css-importer": {
+        "build": false,
+        "cssFilePath": "MediaAndStyles/css-table-main-webpack.css",
+        "cssTargetFilePath": "MediaAndStyles/css_clean_start_main_resolved.css"
+      },
       "dependencies": [],
       "build-files": [
         "Preloader.js",

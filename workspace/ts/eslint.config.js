@@ -30,7 +30,7 @@ export default [
     }
   },
   {
-    "files": ["*.json"],
+    "files": ["data/**/*.json"],
     "rules": {
       "quote-props": ["error", "always"],
       "quotes": ["error", "double"],
@@ -47,7 +47,7 @@ export default [
     }
   },
   {
-    "files": ["src/**/*.ts", "www/**/src/**/*.ts"],
+    "files": ["**/src/**/*.ts"],
     "plugins": {
       "@typescript-eslint": typescriptEslintPlugin,
       "jaisocx": jaisocxPlugin
@@ -109,7 +109,7 @@ export default [
     }
   },
   {
-    "files": ["transpiled/Simple/**/*.js", "www/**/transpiled/Simple/**/*.js"],
+    "files": ["transpiled/Simple/**/*.js"],
     "plugins": {
       "jaisocx": jaisocxPlugin
     },

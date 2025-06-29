@@ -81,21 +81,21 @@
 
 
 
-  /* desktop xl */
-  --responsive_size_s02_desktop_xl_portrait_min_width: 1441px;
-  --responsive_size_s02_desktop_xl_portrait_max_width: 1600px;
+  /* display xl */
+  --responsive_size_s02_display_xl_portrait_min_width: 1441px;
+  --responsive_size_s02_display_xl_portrait_max_width: 1600px;
 
-  --responsive_size_s02_desktop_xl_landscape_min_width: 1601px;
-  --responsive_size_s02_desktop_xl_landscape_max_width: 1920px;
+  --responsive_size_s02_display_xl_landscape_min_width: 1601px;
+  --responsive_size_s02_display_xl_landscape_max_width: 1920px;
 
 
 
-  /* desktop xxl */
-  --responsive_size_s04_desktop_xxl_portrait_min_width: 1601px;
-  --responsive_size_s04_desktop_xxl_portrait_max_width: 2160px;
+  /* display xxl */
+  --responsive_size_s04_display_xxl_portrait_min_width: 1601px;
+  --responsive_size_s04_display_xxl_portrait_max_width: 2160px;
 
-  --responsive_size_s04_desktop_xxl_landscape_min_width: 1921px;
-  --responsive_size_s04_desktop_xxl_landscape_max_width: 2560px;
+  --responsive_size_s04_display_xxl_landscape_min_width: 1921px;
+  --responsive_size_s04_display_xxl_landscape_max_width: 2560px;
 
 
 

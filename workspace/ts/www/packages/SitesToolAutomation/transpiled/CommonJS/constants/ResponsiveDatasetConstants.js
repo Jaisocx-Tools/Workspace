@@ -186,11 +186,11 @@ class ResponsiveDatasetConstants {
         ], "f");
         __classPrivateFieldSet(this, _ResponsiveDatasetConstants_orientationKeywords, [
             __classPrivateFieldGet(this, _ResponsiveDatasetConstants_keywordOrientationPortrait, "f"),
-            __classPrivateFieldGet(this, _ResponsiveDatasetConstants_keywordOrientationLandscape, "f"),
+            __classPrivateFieldGet(this, _ResponsiveDatasetConstants_keywordOrientationLandscape, "f")
         ], "f");
         __classPrivateFieldSet(this, _ResponsiveDatasetConstants_orientationBitsbufKeywordsArray, [
             __classPrivateFieldGet(this, _ResponsiveDatasetConstants_bitsbufKeywordOrientationPortrait, "f"),
-            __classPrivateFieldGet(this, _ResponsiveDatasetConstants_bitsbufKeywordOrientationLandscape, "f"),
+            __classPrivateFieldGet(this, _ResponsiveDatasetConstants_bitsbufKeywordOrientationLandscape, "f")
         ], "f");
         __classPrivateFieldSet(this, _ResponsiveDatasetConstants_maxOrMinArray, [
             __classPrivateFieldGet(this, _ResponsiveDatasetConstants_bitsbufKeywordMin, "f"),
@@ -207,7 +207,7 @@ class ResponsiveDatasetConstants {
             __classPrivateFieldGet(this, _ResponsiveDatasetConstants_bitsbufSymbolUnderscore, "f"),
             "orientation",
             __classPrivateFieldGet(this, _ResponsiveDatasetConstants_bitsbufSymbolUnderscore, "f"),
-            "sites_tool_name",
+            "sites_tool_name"
         ], "f");
         // @import url("./style_e02_mobile_xs_portrait.css");
         __classPrivateFieldSet(this, _ResponsiveDatasetConstants_importLineBitsbufsArray, [

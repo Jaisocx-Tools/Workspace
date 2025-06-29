@@ -1,6 +1,6 @@
 import { FileWriter } from "@jaisocx/file-writer";
 
-import { ResponsiveDatasetConstantsInterface } from "./ResponsiveDatasetConstantsInterface.js"
+import { ResponsiveDatasetConstantsInterface } from "./ResponsiveDatasetConstantsInterface.js";
 
 
 
@@ -11,12 +11,14 @@ export class ResponsiveDatasetConstants implements ResponsiveDatasetConstantsInt
   #keywordResponsiveSize: string;
   #keywordName: string;
 
+
   // #keywordMediaOnly: string;
   // #keywordScreen: string;
   // #keywordPrint: string;
   // #keywordOrientation: string;
   #keywordOrientationLandscape: string;
   #keywordOrientationPortrait: string;
+
 
   // #keywordAnd: string;
 
@@ -27,14 +29,19 @@ export class ResponsiveDatasetConstants implements ResponsiveDatasetConstantsInt
   #keywordMin: string;
   #keywordMax: string;
   #keywordCssFileExtension: string;
+
+
   // #keywordTsFileExtension: string;
 
   #unitPx: string;
 
   #cssVariablePrefix: string;
   #cssVariableNameValueDelimiter: string;
+
+
   // #cssVariableReferenceKeyword_Var: string;
   #cssExpressionEnd: string;
+
 
   // #symbolBraceRoundStart: string;
   // #symbolBraceRoundEnd: string;
@@ -46,6 +53,8 @@ export class ResponsiveDatasetConstants implements ResponsiveDatasetConstantsInt
   #symbolBackgroundSpace: string;
   #symbolNewLine: string;
   #symbolUnderscore: string;
+
+
   // #symbolMinus: string;
   #symbolDot: string;
   #symbolSlash: string;
@@ -55,17 +64,22 @@ export class ResponsiveDatasetConstants implements ResponsiveDatasetConstantsInt
   #bitsbufKeywordResponsiveSize: Uint8Array;
   #bitsbufKeywordName: Uint8Array;
 
+
   // #bitsbufKeywordMediaOnly: Uint8Array;
   // #bitsbufKeywordScreen: Uint8Array;
   // #bitsbufKeywordPrint: Uint8Array;
   // #bitsbufKeywordOrientation: Uint8Array;
   #bitsbufKeywordOrientationLandscape: Uint8Array;
   #bitsbufKeywordOrientationPortrait: Uint8Array;
+
+
   // #bitsbufKeywordAnd: Uint8Array;
   #bitsbufKeywordWidth: Uint8Array;
   #bitsbufKeywordMin: Uint8Array;
   #bitsbufKeywordMax: Uint8Array;
   #bitsbufKeywordCssFileExtension: Uint8Array;
+
+
   // #bitsbufKeywordTsFileExtension: Uint8Array;
 
   #bitsbufImportUrlStart: Uint8Array;
@@ -75,8 +89,11 @@ export class ResponsiveDatasetConstants implements ResponsiveDatasetConstantsInt
 
   #bitsbufCssVariableStart: Uint8Array;
   #bitsbufCssVariableNameValueDelimiter: Uint8Array;
+
+
   // #bitsbufCssVariableReferenceKeyword_Var: Uint8Array;
   #bitsbufCssExpressionEnd: Uint8Array;
+
 
   // #bitsbufSymbolBraceRoundStart: Uint8Array;
   // #bitsbufSymbolBraceRoundEnd: Uint8Array;
@@ -88,6 +105,8 @@ export class ResponsiveDatasetConstants implements ResponsiveDatasetConstantsInt
   #bitsbufSymbolBackgroundSpace: Uint8Array;
   #bitsbufSymbolNewLine: Uint8Array;
   #bitsbufSymbolUnderscore: Uint8Array;
+
+
   // #bitsbufSymbolMinus: Uint8Array;
   #bitsbufSymbolDot: Uint8Array;
   #bitsbufSymbolSlash: Uint8Array;
@@ -109,7 +128,6 @@ export class ResponsiveDatasetConstants implements ResponsiveDatasetConstantsInt
   #responsiveSizeConstantLine_size_BitsbufsArray: (Uint8Array|string)[];
 
 
-
   constructor() {
     this.fileWriter = new FileWriter();
     this.textEncoder = new TextEncoder();
@@ -117,19 +135,23 @@ export class ResponsiveDatasetConstants implements ResponsiveDatasetConstantsInt
     this.#keywordResponsiveSize = "responsive_size";
     this.#keywordName = "name";
 
+
     // this.#keywordMediaOnly = "@media only ";
     // this.#keywordScreen = "screen";
     // this.#keywordPrint = "print";
     // this.#keywordOrientation = "orientation";
     this.#keywordOrientationLandscape = "landscape";
     this.#keywordOrientationPortrait = "portrait";
+
+
     // this.#keywordAnd = " and ";
     this.#keywordWidth = "width";
     this.#keywordMin = "min";
     this.#keywordMax = "max";
     this.#keywordCssFileExtension = "css";
-    // this.#keywordTsFileExtension = "ts";
 
+
+    // this.#keywordTsFileExtension = "ts";
     this.#importUrlStart = "@import url(\"";
     this.#importUrlEnd = "\");";
 
@@ -137,8 +159,11 @@ export class ResponsiveDatasetConstants implements ResponsiveDatasetConstantsInt
 
     this.#cssVariablePrefix = "--";
     this.#cssVariableNameValueDelimiter = ": ";
+
+
     // this.#cssVariableReferenceKeyword_Var = "var";
     this.#cssExpressionEnd = ";";
+
 
     // this.#symbolBraceRoundStart = "(";
     // this.#symbolBraceRoundEnd = ")";
@@ -150,14 +175,16 @@ export class ResponsiveDatasetConstants implements ResponsiveDatasetConstantsInt
     this.#symbolBackgroundSpace = " ";
     this.#symbolNewLine = "\n";
     this.#symbolUnderscore = "_";
+
+
     // this.#symbolMinus = "-";
     this.#symbolDot = ".";
     this.#symbolSlash = "/";
 
 
-
     this.#bitsbufKeywordResponsiveSize = this.textEncoder.encode( this.#keywordResponsiveSize );
     this.#bitsbufKeywordName = this.textEncoder.encode( this.#keywordName );
+
 
     // this.#bitsbufKeywordMediaOnly = this.textEncoder.encode( this.#keywordMediaOnly );
     // this.#bitsbufKeywordScreen = this.textEncoder.encode( this.#keywordScreen );
@@ -165,13 +192,16 @@ export class ResponsiveDatasetConstants implements ResponsiveDatasetConstantsInt
     // this.#bitsbufKeywordOrientation = this.textEncoder.encode( this.#keywordOrientation );
     this.#bitsbufKeywordOrientationLandscape = this.textEncoder.encode( this.#keywordOrientationLandscape );
     this.#bitsbufKeywordOrientationPortrait = this.textEncoder.encode( this.#keywordOrientationPortrait );
+
+
     // this.#bitsbufKeywordAnd = this.textEncoder.encode( this.#keywordAnd );
     this.#bitsbufKeywordWidth = this.textEncoder.encode( this.#keywordWidth );
     this.#bitsbufKeywordMin = this.textEncoder.encode( this.#keywordMin );
     this.#bitsbufKeywordMax = this.textEncoder.encode( this.#keywordMax );
     this.#bitsbufKeywordCssFileExtension = this.textEncoder.encode( this.#keywordCssFileExtension );
-    // this.#bitsbufKeywordTsFileExtension = this.textEncoder.encode( this.#keywordTsFileExtension );
 
+
+    // this.#bitsbufKeywordTsFileExtension = this.textEncoder.encode( this.#keywordTsFileExtension );
     this.#bitsbufImportUrlStart = this.textEncoder.encode( this.#importUrlStart );
     this.#bitsbufImportUrlEnd = this.textEncoder.encode( this.#importUrlEnd );
 
@@ -179,8 +209,11 @@ export class ResponsiveDatasetConstants implements ResponsiveDatasetConstantsInt
 
     this.#bitsbufCssVariableStart = this.textEncoder.encode( this.#cssVariablePrefix );
     this.#bitsbufCssVariableNameValueDelimiter = this.textEncoder.encode( this.#cssVariableNameValueDelimiter );
+
+
     // this.#bitsbufCssVariableReferenceKeyword_Var = this.textEncoder.encode( this.#cssVariableReferenceKeyword_Var );
     this.#bitsbufCssExpressionEnd = this.textEncoder.encode( this.#cssExpressionEnd );
+
 
     // this.#bitsbufSymbolBraceRoundStart = this.textEncoder.encode( this.#symbolBraceRoundStart );
     // this.#bitsbufSymbolBraceRoundEnd = this.textEncoder.encode( this.#symbolBraceRoundEnd );
@@ -192,43 +225,44 @@ export class ResponsiveDatasetConstants implements ResponsiveDatasetConstantsInt
     this.#bitsbufSymbolBackgroundSpace = this.textEncoder.encode( this.#symbolBackgroundSpace );
     this.#bitsbufSymbolNewLine = this.textEncoder.encode( this.#symbolNewLine );
     this.#bitsbufSymbolUnderscore = this.textEncoder.encode( this.#symbolUnderscore );
+
+
     // this.#bitsbufSymbolMinus = this.textEncoder.encode( this.#symbolMinus );
     this.#bitsbufSymbolDot = this.textEncoder.encode( this.#symbolDot );
     this.#bitsbufSymbolSlash = this.textEncoder.encode( this.#symbolSlash );
 
 
-
     this.#labelLineArray = [
-        this.#bitsbufSymbolCommentStart,
-        this.#bitsbufSymbolBackgroundSpace,
-        "art",
-        this.#bitsbufSymbolBackgroundSpace,
-        "art_size",
-        this.#bitsbufSymbolBackgroundSpace,
-        this.#bitsbufSymbolCommentEnd,
-        this.#bitsbufSymbolNewLine
+      this.#bitsbufSymbolCommentStart,
+      this.#bitsbufSymbolBackgroundSpace,
+      "art",
+      this.#bitsbufSymbolBackgroundSpace,
+      "art_size",
+      this.#bitsbufSymbolBackgroundSpace,
+      this.#bitsbufSymbolCommentEnd,
+      this.#bitsbufSymbolNewLine
     ];
 
 
     this.#cssEncommentedLine = [
-        this.#bitsbufSymbolCommentStart,
-        this.#bitsbufSymbolBackgroundSpace,
-        "comment",
-        this.#bitsbufSymbolBackgroundSpace,
-        this.#bitsbufSymbolCommentEnd,
-        this.#bitsbufSymbolNewLine
+      this.#bitsbufSymbolCommentStart,
+      this.#bitsbufSymbolBackgroundSpace,
+      "comment",
+      this.#bitsbufSymbolBackgroundSpace,
+      this.#bitsbufSymbolCommentEnd,
+      this.#bitsbufSymbolNewLine
     ];
 
 
     this.#orientationKeywords = [
       this.#keywordOrientationPortrait,
-      this.#keywordOrientationLandscape,
+      this.#keywordOrientationLandscape
     ];
 
 
     this.#orientationBitsbufKeywordsArray = [
       this.#bitsbufKeywordOrientationPortrait,
-      this.#bitsbufKeywordOrientationLandscape,
+      this.#bitsbufKeywordOrientationLandscape
     ];
 
 
@@ -249,9 +283,8 @@ export class ResponsiveDatasetConstants implements ResponsiveDatasetConstantsInt
       this.#bitsbufSymbolUnderscore,
       "orientation",
       this.#bitsbufSymbolUnderscore,
-      "sites_tool_name",
+      "sites_tool_name"
     ];
-
 
 
     // @import url("./style_e02_mobile_xs_portrait.css");
@@ -275,7 +308,6 @@ export class ResponsiveDatasetConstants implements ResponsiveDatasetConstantsInt
       .concatUint8Arrays( this.#responsiveSizeConstantNameBitsbufsArray as Uint8Array[] );
 
 
-
     this.#responsiveSizeConstantLineMaxOrMinBitsbufsArray = [
       this.#bitsbufCssVariableStart,
       this.#bitsbufKeywordResponsiveSize,
@@ -290,7 +322,6 @@ export class ResponsiveDatasetConstants implements ResponsiveDatasetConstantsInt
     ];
 
 
-
     this.#responsiveSizeConstantLineBitsbufsArray = [
       this.#bitsbufCssVariableStart,
       this.#bitsbufKeywordResponsiveSize,
@@ -302,7 +333,6 @@ export class ResponsiveDatasetConstants implements ResponsiveDatasetConstantsInt
       "responsiveSizeNameOriented",
       this.#bitsbufCssExpressionEnd
     ];
-
 
 
     this.#responsiveSizeConstantLine_size_BitsbufsArray = [
@@ -360,21 +390,26 @@ export class ResponsiveDatasetConstants implements ResponsiveDatasetConstantsInt
     return this.#bitsbufSymbolNewLine;
   }
 
+
   getBitsbufSymbolCommentStart(): Uint8Array {
     return this.#bitsbufSymbolCommentStart;
   }
+
 
   getBitsbufSymbolCommentEnd(): Uint8Array {
     return this.#bitsbufSymbolCommentEnd;
   }
 
+
   getBitsbufSymbolBackgroundSpace(): Uint8Array {
     return this.#bitsbufSymbolBackgroundSpace;
   }
 
+
   getResponsiveSizeConstantNameBitsbuf(): Uint8Array {
     return this.#responsiveSizeConstantNameBitsbuf;
   }
+
 
   getResponsiveSizeConstantLineMaxOrMinBitsbufsArray (
     size: Uint8Array,
@@ -389,6 +424,7 @@ export class ResponsiveDatasetConstants implements ResponsiveDatasetConstantsInt
     return this.#responsiveSizeConstantLineMaxOrMinBitsbufsArray as Uint8Array[];
   }
 
+
   getResponsiveSizeConstantLineMaxOrMinBitsbufsArray_SitesTool (
     size: Uint8Array,
     isMax: boolean
@@ -401,6 +437,7 @@ export class ResponsiveDatasetConstants implements ResponsiveDatasetConstantsInt
 
     return this.#responsiveSizeConstantLineMaxOrMinBitsbufsArray as Uint8Array[];
   }
+
 
   getLabelLineArrayByBitsbufs (
     art: Uint8Array,
@@ -415,6 +452,7 @@ export class ResponsiveDatasetConstants implements ResponsiveDatasetConstantsInt
     return this.#labelLineArray as Uint8Array[];
   }
 
+
   getCssEncommentedLineByBitsbufs (
     comment: Uint8Array
   ): Uint8Array[] {
@@ -424,6 +462,7 @@ export class ResponsiveDatasetConstants implements ResponsiveDatasetConstantsInt
 
     return this.#cssEncommentedLine as Uint8Array[];
   }
+
 
   getResponsiveSizeName_withSitesToolName_ByBitsbufs (
     rangeOrderbyId: Uint8Array,
@@ -445,7 +484,6 @@ export class ResponsiveDatasetConstants implements ResponsiveDatasetConstantsInt
     this.#responsiveSizeNameOrientedBitsbufsArray[orientationPos] = orientation;
     this.#responsiveSizeNameOrientedBitsbufsArray[sitesToolNamePos] = sitesToolName;
 
-
     return this.#responsiveSizeNameOrientedBitsbufsArray as Uint8Array[];
   }
 
@@ -463,6 +501,7 @@ export class ResponsiveDatasetConstants implements ResponsiveDatasetConstantsInt
     let sitesToolNamePos: number = 10;
 
     let filteringNumber: number = 11;
+
     if ( withSitesToolName ) {
       filteringNumber = 9;
     }
@@ -476,7 +515,7 @@ export class ResponsiveDatasetConstants implements ResponsiveDatasetConstantsInt
       .filter(
         (_value: any, index: number) => {
           return ( ( index < 7 ) || ( index > filteringNumber ) );
-      }) as Uint8Array[];
+        }) as Uint8Array[];
 
     return responsiveSizesNamesMultiArray;
   }
@@ -496,7 +535,6 @@ export class ResponsiveDatasetConstants implements ResponsiveDatasetConstantsInt
   }
 
 
-
   getResponsiveSizeNameBitsbufsArray (
     sitesToolName: string,
     rangeOrderbyId: string,
@@ -510,11 +548,10 @@ export class ResponsiveDatasetConstants implements ResponsiveDatasetConstantsInt
       artSize,
       ""
     ).filter(
-        (_value: any, index: number) => {
-          return ( ( index < 7 ) || ( index > 9 ) );
-    }) as Uint8Array[];
+      (_value: any, index: number) => {
+        return ( ( index < 7 ) || ( index > 9 ) );
+      }) as Uint8Array[];
   }
-
 
 
   getResponsiveSizeNameOrientedBitsbufsArray (
@@ -545,7 +582,6 @@ export class ResponsiveDatasetConstants implements ResponsiveDatasetConstantsInt
   }
 
 
-
   getImportLineBitsbufsArray (
     urlStart: string,
     responsiveSizeNameOriented: string
@@ -558,7 +594,6 @@ export class ResponsiveDatasetConstants implements ResponsiveDatasetConstantsInt
 
     return this.#importLineBitsbufsArray as Uint8Array[];
   }
-
 
 
   getImportLineBitsbufsArrayByBitsbufs (
@@ -575,7 +610,6 @@ export class ResponsiveDatasetConstants implements ResponsiveDatasetConstantsInt
   }
 
 
-
   getResponsiveSizeConstantLineBitsbufsArrayByBitsbufs (
     responsiveSizeNameOriented: Uint8Array
   ): Uint8Array[] {
@@ -587,7 +621,6 @@ export class ResponsiveDatasetConstants implements ResponsiveDatasetConstantsInt
   }
 
 
-
   getResponsiveSizeConstantLineBitsbufsArray (
     responsiveSizeNameOriented: string
   ): Uint8Array[] {
@@ -597,7 +630,6 @@ export class ResponsiveDatasetConstants implements ResponsiveDatasetConstantsInt
 
     return this.#responsiveSizeConstantLineBitsbufsArray as Uint8Array[];
   }
-
 
 
   getResponsiveSizeConstantLine_size_ByBitsbufs (

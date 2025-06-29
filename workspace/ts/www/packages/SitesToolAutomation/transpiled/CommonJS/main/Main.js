@@ -49,9 +49,9 @@ exports.Main = void 0;
 const fs = __importStar(require("node:fs"));
 const path = __importStar(require("node:path"));
 const ResponsiveDatasetConstants_js_1 = require("../constants/ResponsiveDatasetConstants.js");
-const ResponsiveCssFileWithResponsiveSizes_js_1 = require("../css_file_with_sizes_names/ResponsiveCssFileWithResponsiveSizes.js");
-const ResponsiveCssFile_js_1 = require("../responsive_files_set/ResponsiveCssFile.js");
-const ResponsiveImports_js_1 = require("../css_imports_file/ResponsiveImports.js");
+const ResponsiveSizesNames_js_1 = require("../responsive_sizes_names/ResponsiveSizesNames.js");
+const ResponsiveFilesSet_js_1 = require("../responsive_files_set/ResponsiveFilesSet.js");
+const ResponsiveImports_js_1 = require("../responsive_imports/ResponsiveImports.js");
 // import { ResponsiveTsFile_ResponsiveSizesNames } from "../ts_file_with_sizes_names/ResponsiveTsFile_ResponsiveSizesNames.js";
 const ResponsiveDatasetBase_js_1 = require("../automation_base_class/ResponsiveDatasetBase.js");
 class Main {
@@ -66,14 +66,14 @@ class Main {
         __classPrivateFieldSet(this, _Main_fileBaseName_CssImports, "CssImports", "f");
         this.responsiveDatasetConstants = new ResponsiveDatasetConstants_js_1.ResponsiveDatasetConstants();
         this.responsiveDatasetBase = new ResponsiveDatasetBase_js_1.ResponsiveDatasetBase();
-        this.responsiveCssFile = new ResponsiveCssFile_js_1.ResponsiveCssFile(this.responsiveDatasetBase, this.responsiveDatasetConstants);
-        this.responsiveCssFileWithResponsiveSizes = new ResponsiveCssFileWithResponsiveSizes_js_1.ResponsiveCssFileWithResponsiveSizes(this.responsiveDatasetBase, this.responsiveDatasetConstants);
+        this.responsiveCssFile = new ResponsiveFilesSet_js_1.ResponsiveFilesSet(this.responsiveDatasetBase, this.responsiveDatasetConstants);
+        this.responsiveCssFileWithResponsiveSizes = new ResponsiveSizesNames_js_1.ResponsiveSizesNames(this.responsiveDatasetBase, this.responsiveDatasetConstants);
         this.responsiveImports = new ResponsiveImports_js_1.ResponsiveImports(this.responsiveDatasetBase, this.responsiveDatasetConstants);
         // this.responsiveTsFile_ResponsiveSizesNames = new ResponsiveTsFile_ResponsiveSizesNames();
     }
     // the central main method to produce .css files and for them the datasets, texts and names and .css files names.
     // cssOrJsTool: "css" | "js"
-    async run(sitesToolName, cssOrJsTool, mediaQueryCssFileTemplatePath, withCssConstantsFile, withConstantsImportLine) {
+    async run(sitesToolName, cssOrJsTool, mediaQueryCssFileTemplatePath, withSizesCssConstants, withConstantsImportLine) {
         this.responsiveDatasetBase.setSitesToolName(sitesToolName);
         if (this.responsiveDatasetBase.templateProjectPath.length === 0) {
             this.responsiveDatasetBase.templateProjectPath = path.resolve("../../", "sites_tools", (cssOrJsTool + "_tools"), sitesToolName);
@@ -96,11 +96,11 @@ class Main {
         // CSS FILES SET, MEDIA QUERIES
         // ---------------------------------------------
         this.responsiveCssFile.readTemplateMediaCssFile(this.responsiveDatasetBase.mediaQueryCssFileTemplatePath);
-        retVal = await this.responsiveCssFile.produceResponsiveCssFilesSet();
+        retVal = await this.responsiveCssFile.produceResponsiveFilesSetsSet();
         // CSS FILE WITH CONSTANTS OF RESPONSIVE SIZES
         // ---------------------------------------------
         let fileBaseName_responsiveSizesConstants = "";
-        if (withCssConstantsFile === true) {
+        if (withSizesCssConstants === true) {
             fileBaseName_responsiveSizesConstants = [
                 __classPrivateFieldGet(this, _Main_keywordResponsiveSize, "f"),
                 "_a02_",
@@ -111,7 +111,7 @@ class Main {
         }
         // CSS IMPORTS
         // ---------------------------------------------
-        withConstantsImportLine = (withCssConstantsFile && withConstantsImportLine);
+        withConstantsImportLine = (withSizesCssConstants && withConstantsImportLine);
         let isWebpackAliased_true = true;
         let filename = [
             __classPrivateFieldGet(this, _Main_keywordResponsiveSize, "f"),
@@ -123,7 +123,7 @@ class Main {
             "Webpack",
             ".css"
         ].join("");
-        retVal = await this.responsiveImports.produceImportsCssFileWithResponsiveCssFilesSet(
+        retVal = await this.responsiveImports.produceImportsCssFileWithResponsiveFilesSetsSet(
         // ResponsiveSizesCssImports_Webpack.css
         filename, this.responsiveDatasetBase.mediaAndStylesResponsiveFolderPath, fileBaseName_responsiveSizesConstants, isWebpackAliased_true, withConstantsImportLine);
         let isWebpackAliased_false = false;
@@ -137,7 +137,7 @@ class Main {
             "Relative",
             ".css"
         ].join("");
-        retVal = await this.responsiveImports.produceImportsCssFileWithResponsiveCssFilesSet(
+        retVal = await this.responsiveImports.produceImportsCssFileWithResponsiveFilesSetsSet(
         // ResponsiveSizesCssImports_Relative.css
         filename, this.responsiveDatasetBase.mediaAndStylesResponsiveFolderPath, fileBaseName_responsiveSizesConstants, isWebpackAliased_false, withConstantsImportLine);
         return retVal;

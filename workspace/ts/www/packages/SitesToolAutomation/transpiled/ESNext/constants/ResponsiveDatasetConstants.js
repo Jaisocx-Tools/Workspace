@@ -173,11 +173,11 @@ export class ResponsiveDatasetConstants {
         ];
         this.#orientationKeywords = [
             this.#keywordOrientationPortrait,
-            this.#keywordOrientationLandscape,
+            this.#keywordOrientationLandscape
         ];
         this.#orientationBitsbufKeywordsArray = [
             this.#bitsbufKeywordOrientationPortrait,
-            this.#bitsbufKeywordOrientationLandscape,
+            this.#bitsbufKeywordOrientationLandscape
         ];
         this.#maxOrMinArray = [
             this.#bitsbufKeywordMin,
@@ -194,7 +194,7 @@ export class ResponsiveDatasetConstants {
             this.#bitsbufSymbolUnderscore,
             "orientation",
             this.#bitsbufSymbolUnderscore,
-            "sites_tool_name",
+            "sites_tool_name"
         ];
         // @import url("./style_e02_mobile_xs_portrait.css");
         this.#importLineBitsbufsArray = [

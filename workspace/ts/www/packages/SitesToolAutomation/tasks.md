@@ -8,7 +8,7 @@
 
 . css_file_with_sizes_names:  ready, built, tested
 
-. css_imports_file:           ready, built, tested
+. responsive_imports:           ready, built, tested
 
 . main:                       ready, built, tested
 

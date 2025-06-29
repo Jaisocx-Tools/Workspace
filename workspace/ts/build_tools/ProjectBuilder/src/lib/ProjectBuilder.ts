@@ -73,7 +73,6 @@ export class ProjectBuilder {
     propertyName: any,
     relativePath: any
   ): ProjectBuilder {
-
     if (!this.absolutePathToProjectRoot) {
       throw new Error("The Absolute Path to Project root is not specified!!!");
     }
@@ -143,7 +142,6 @@ export class ProjectBuilder {
 
 
   build(dataJson: any): any {
-
     if (!dataJson.packages || 0 === dataJson.packages.length) {
       throw new Error("no packages array set in BuildData.json");
     }
@@ -230,7 +228,7 @@ export class ProjectBuilder {
       console.log(`${timeStamp} Package [ ${packageJson.name} ]: Prettifying with Eslint TypeScript code in ${packagePath}`);
       this.prettifyWithEslint(
         packagePath,
-        `${packagePath}/src/*`
+        `${packagePath}/src/**/*.ts`
       );
     }
 
@@ -455,7 +453,7 @@ export class ProjectBuilder {
   }
 
 
-  transpileTypescriptSourcesWithPath(
+  transpileTypescriptSourcesWithPath (
     packagePath: any,
     tsconfigPath: any
   ): any {
@@ -483,9 +481,19 @@ export class ProjectBuilder {
     }
 
     const filesList: any[] = filesAndCatalogsList.filter((filePath) => {
-      const absPath: any = `${packagePath}/src/${filePath}`;
+      let extensionStart: number = filePath.lastIndexOf( "." ) + 1;
+      let extension: string = filePath.substring( extensionStart );
 
-      return fs.lstatSync(absPath).isFile();
+      let isTypescript: boolean = ( ( extension === "ts" ) || ( extension === "tsx" ) );
+
+      if ( isTypescript === false ) {
+        return isTypescript;
+      }
+
+      const absPath: any = `${packagePath}/src/${filePath}`;
+      let isFiltered: boolean = fs.lstatSync(absPath).isFile();
+
+      return isFiltered;
     });
 
 

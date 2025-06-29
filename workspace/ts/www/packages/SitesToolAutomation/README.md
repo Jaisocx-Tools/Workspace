@@ -6,7 +6,7 @@
 in the Terminal, in the Root of the Project
 
 ```bash
-./genSiteToolTemplate.sh --sitesToolName=CssCleanStart --cssOrJsTool=css --template="data/templates/ResponsiveTemplate.template" --withCssConstantsFile=true --withConstantsImportLine=true
+./produceSitesToolTemplate.sh --sitesToolName=CssCleanStart --cssOrJsTool=css --template="data/templates/ResponsiveTemplate.template" --withSizesCssConstants=true --withConstantsImportLine=true
 ```
 
 

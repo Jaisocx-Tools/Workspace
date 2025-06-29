@@ -1,4 +1,4 @@
-let themesPreloads = {
+export let themesPreloads = {
     "theme-lightmode": [
         "@jaisocx-css-table-cdn-fonts/Niconne/Niconne-Regular.ttf"
     ],

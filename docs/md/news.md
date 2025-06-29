@@ -40,7 +40,7 @@ The nice idea of an advice now, is not to adjust the sizes of `SitesToolAutomati
 #### Very easy to gen new .css files set for a sites tool responsive feature quality assurance and fine tuning.
 
 ```bash
-./genSiteToolTemplate.sh --sitesToolName=CssCleanStart --cssOrJsTool=css --template="data/templates/ResponsiveTemplate.template" --withCssConstantsFile=true --withConstantsImportLine=true
+./genSiteToolTemplate.sh --sitesToolName=CssCleanStart --cssOrJsTool=css --template="data/templates/ResponsiveTemplate.template" --withSizesCssConstants=true --withConstantsImportLine=true
 ```
 
 
