@@ -1,6 +1,7 @@
 /* css variables */
 @import url("themes/theme_base/css_table_theme_base.css");
-
+@import url("columns/columns.css");
+@import url("presets/css-table-presets.css");
 
 
 /* responsive */

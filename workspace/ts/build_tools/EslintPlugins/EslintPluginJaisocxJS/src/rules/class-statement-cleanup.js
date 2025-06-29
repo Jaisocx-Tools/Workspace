@@ -10,7 +10,7 @@ export const ClassStatementCleanup = {
     fixable: "code",
     schema: [] // no options
   },
-  create(context) {    
+  create(context) {
     function cleanupBeforeClassStart(node) {
       context.report({
         node,
@@ -29,7 +29,7 @@ export const ClassStatementCleanup = {
         }
       });
     }
-    
+
     // Helper to check if there’s exactly one line space before and after a node
     function checkClassStart(node) {
       if (node.start > 1) {
@@ -50,7 +50,7 @@ export const ClassStatementCleanup = {
       let lastChar = tokens[lastTokenId].end;
 
       if ( lastChar > classEnd) {
-        range = [classEnd, lastChar]; 
+        range = [classEnd, lastChar];
         cleanupAfterClassEnd(node, range);
       }
     }

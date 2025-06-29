@@ -484,7 +484,7 @@ export class ProjectBuilder {
       let extensionStart: number = filePath.lastIndexOf( "." ) + 1;
       let extension: string = filePath.substring( extensionStart );
 
-      let isTypescript: boolean = ( ( extension === "ts" ) || ( extension === "tsx" ) );
+      let isTypescript: boolean = ( ( extension === "ts" ) || ( extension === "tsx" ) || ( extension === "js" ) || ( extension === "mjs" ) || ( extension === "cjs" ) );
 
       if ( isTypescript === false ) {
         return isTypescript;

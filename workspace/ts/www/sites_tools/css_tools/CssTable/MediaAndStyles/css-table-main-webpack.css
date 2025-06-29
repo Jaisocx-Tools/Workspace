@@ -1,15 +1,14 @@
-/* webpack alias: @jaisocx-css-table-MediaAndStyles/ */
+/* webpack alias: @CssTable_MediaAndStyles/ */
+@import url("@CssTable_MediaAndStyles/columns/columns.css");
+@import url("@CssTable_MediaAndStyles/presets/css-table-presets.css");
+@import url("@CssTable_MediaAndStyles/themes/theme_base/css_table_theme_base.css");
 
 
-/* all variables */
-@import url("@jaisocx-css-table-MediaAndStyles/responsive/responsive-dimensions-docs.css");
-@import url("@jaisocx-css-table-MediaAndStyles/responsive/css-table--responsive-imports-relative.css");
 
-@import url("@jaisocx-css-table-MediaAndStyles/themes/theme-base/css-table-theme-base.css");
-@import url("@jaisocx-css-table-MediaAndStyles/presets/css-table-presets.css");
+/* responsive */
+@import url("@CssTable_MediaAndStyles/themes/theme_base/responsive_size_a03_CssImports_CssTable_Webpack.css");
 
 
-/* main .css file */
-@import url("@jaisocx-css-table-MediaAndStyles/css-table-main.css");
 
+@import url("@CssTable_MediaAndStyles/css-table-main.css");
 

@@ -78,7 +78,7 @@ const builder = new ProjectBuilder();
 builder
   .setIsLocalDevelopment(1)
   .setAbsolutePathToProjectRoot(commandArgs.ProjectRoot)
-  .setRelativePathFromRootTsConfigCatalogPath("build_tools")
+  .setRelativePathFromRootTsConfigCatalogPath("/var/www/workspace/ts")
   .setRelativePathFromRootLintCatalog(".")
   .setRelativePathFromRootWww("www")
   .setBuildCjsCatalogName("transpiled/CommonJS")

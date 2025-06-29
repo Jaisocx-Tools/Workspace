@@ -285,7 +285,7 @@ class ProjectBuilder {
         const filesList = filesAndCatalogsList.filter((filePath) => {
             let extensionStart = filePath.lastIndexOf(".") + 1;
             let extension = filePath.substring(extensionStart);
-            let isTypescript = ((extension === "ts") || (extension === "tsx"));
+            let isTypescript = ((extension === "ts") || (extension === "tsx") || (extension === "js") || (extension === "mjs") || (extension === "cjs"));
             if (isTypescript === false) {
                 return isTypescript;
             }

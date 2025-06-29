@@ -1,5 +1,5 @@
 {
-  "@jaisocx-css-table-MediaAndStyles": "${packageRoot}/MediaAndStyles",
-  "@jaisocx-css-table-cdn-fonts": "https://sandbox.brightday.email/cdn/www/fonts"
+  "@CssTable_MediaAndStyles": "${packageRoot}/MediaAndStyles/",
+  "@SandboxCdn_Fonts": "https://sandbox.brightday.email/cdn/www/fonts"
 }
 
