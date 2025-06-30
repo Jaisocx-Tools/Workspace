@@ -1454,20 +1454,47 @@
 }
 
 
-.jaisocx-folder-list.workspace .workspace-css-table {
+.jaisocx-folder-list.workspace .workspace-css-table-holder.bright-styles-applied .workspace-css-table {
 
+  
   --workspace-table-thin--cell--column-label--width: 14rem;
   --workspace-table-bright--grid-template-columns: 5rem 34rem 19rem 12rem 14rem 64rem;
 
 
 
+
+  
+  --workspace-table-bright--cell--cell-value--font-size: 0.85rem;
+  --workspace-table-bright--cell--column-label--font-size: 0.95rem;
+
+
+
+  --workspace-table--cell--column-label--line-height: var(--workspace-table-bright--cell--column-label--font-size);
+  --workspace-table-bright--cell--column-label--line-height: var(--workspace-table-bright--cell--column-label--font-size);
+
+  --workspace-table--cell--cell-value--line-height: var(--workspace-table-bright--cell--cell-value--font-size);
+  --workspace-table-bright--cell--cell-value--line-height: var(--workspace-table-bright--cell--cell-value--font-size);
+
+
+
+  
+  --clean-start__font-size: var(--workspace-table-bright--cell--cell-value--font-size);
+  --clean-start__line-height: var(--clean-start__font-size);
+
+
+  
+  --workspace-table-bright--cell--padding: 0 0 0 0;
+  --workspace-table-bright--cell--cell-value--padding: 0.43rem 0.6rem 0.43rem 0.6rem;
+
+
+  
   --clean-start__anchor__text-color: #227022;
   --clean-start__anchor__text-color-hover: #44aa44;
   --clean-start__anchor__text-color-visited: #70aac0;
 }
 
 
-.jaisocx-folder-list.workspace .workspace-css-table .row.folder .cell.name .cell-value {
+.jaisocx-folder-list.workspace .workspace-css-table-holder.bright-styles-applied .workspace-css-table .row.folder .cell.name .cell-value {
   font-weight: 600;
 }
 
