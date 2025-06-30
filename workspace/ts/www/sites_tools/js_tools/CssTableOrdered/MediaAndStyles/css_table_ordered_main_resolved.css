@@ -1435,11 +1435,39 @@
 
 }
 
-.workspace-css-table {
-  --workspace-table-thin--cell--column-label--width: 14rem;
+.jaisocx-folder-list.workspace {
+
+  --clean-start__site__padding-top: 0;
+  --clean-start__h__margin: 1rem 0 1rem 0;
+
+
+  --clean-start__text-color-h: green;
+  --clean-start__font-weight_h: 900;
+  --clean-start__font-size_h1: 1.09rem;
+  --clean-start__line-height_h1: 1.25rem;
+
 }
 
-.workspace-css-table .row.folder .cell.name .cell-value {
+
+.jaisocx-folder-list.workspace h1 {
+  margin: var(--clean-start__h__margin);
+}
+
+
+.jaisocx-folder-list.workspace .workspace-css-table {
+
+  --workspace-table-thin--cell--column-label--width: 14rem;
+  --workspace-table-bright--grid-template-columns: 5rem 34rem 19rem 12rem 14rem 64rem;
+
+
+
+  --clean-start__anchor__text-color: #227022;
+  --clean-start__anchor__text-color-hover: #44aa44;
+  --clean-start__anchor__text-color-visited: #70aac0;
+}
+
+
+.jaisocx-folder-list.workspace .workspace-css-table .row.folder .cell.name .cell-value {
   font-weight: 600;
 }
 
