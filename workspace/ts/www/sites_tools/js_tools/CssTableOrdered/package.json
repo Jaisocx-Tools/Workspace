@@ -1,15 +1,9 @@
 {
-  "name": "@jaisocx/css-table",
-  "version": "1.3.8",
-  "keywords": [
-    "table",
-    "css",
-    "styles",
-    "ui"
-  ],
-  "description": "",
+  "name": "@jaisocx/css-table-ordered",
   "author": "Jaisocx",
+  "version": "1.2.1",
   "private": false,
+  "description": "",
   "type": "module",
   "main": "./transpiled/CommonJS/index.js",
   "types": "./transpiled/ESNext/index.d.ts",
@@ -28,16 +22,25 @@
     "transpiled/CommonJS",
     "transpiled/ESNext",
     "transpiled/Simple",
+    "MediaAndStyles/themes/",
+    "MediaAndStyles/fonts/",
     "MediaAndStyles/*.css",
-    "MediaAndStyles/**/*.css",
     "webpack.aliases.json",
-    "README.md",
-    "table_example.html"
+    "table_example.html",
+    "README.md"
+  ],
+  "keywords": [
+    "table",
+    "css",
+    "styles",
+    "ui"
   ],
   "publishConfig": {
     "access": "public"
   },
-  "license": "ISC"
+  "optionalDependencies": {
+    "@jaisoc/css-table": "^1.3.8"
+  }
 }
 
 

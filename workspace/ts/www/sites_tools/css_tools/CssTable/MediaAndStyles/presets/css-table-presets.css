@@ -1,25 +1,4 @@
 
-/* CLASS TO USE WITH CSS TABLE. WHEN MOBILE PORTRAIT, 100% AND NO BACKGROUND SPACE ON SIDES */
-.workspace.browser-width-when-portrait,
-.workspace.browser-width-when-portrait.long {
-  --clean-start__site__max_width__xs_mobile_portrait: 100%;
-  --clean-start__site__width__xs_mobile_portrait: 100%;
-  --clean-start__site__min_width__xs_mobile_portrait: 100%;
-  
-  --clean-start__site__max_width__s_mobile_portrait: 100%;
-  --clean-start__site__width__s_mobile_portrait: 100%;
-  --clean-start__site__min_width__s_mobile_portrait: 100%;
-
-  --clean-start__site__max_width__sm_mobile_portrait: 100%;
-  --clean-start__site__width__sm_mobile_portrait: 100%;
-  --clean-start__site__min_width__sm_mobile_portrait: 100%;
-
-  --clean-start__site__max_width__md_tablet_portrait: 83%;
-  --clean-start__site__width__md_tablet_portrait: 83%;
-  --clean-start__site__min_width__md_tablet_portrait: 83%;
-}
-
-
 .workspace-css-table-holder .cell.example .cell-value {
   /* TASK: TO WRITE AN EXAMPLE CSS CLASS WITH EXTENDED TEXT PROPS, TO DOCUMENT THE CSS SELECTORS. */
 
@@ -50,8 +29,8 @@
 }
 
 .workspace-css-table-holder .cell.keep-line .cell-value {
-  /* it didn't work to keep cell width by long word in a cell, 
-      since grid is for the markup with cells one level without enbracing row tags. 
+  /* it didn't work to keep cell width by long word in a cell,
+      since grid is for the markup with cells one level without enbracing row tags.
       the grid markup suits for instance when showing products in online store. */
   /* this prop allows to keep the text one line nowrapped. however the overflow will apply. */
   white-space: nowrap;
@@ -117,10 +96,10 @@ overflow-wrap: Specify whether or not the browser may break lines within words i
 writing-mode: Define whether lines of text are laid out horizontally or vertically and the direction in which subsequent lines flow.
 */
 
-/* . text-decoraion: none | underline | overline | line-through; 
+/* . text-decoraion: none | underline | overline | line-through;
   . text-decoraion-line: none | underline | overline | line-through | grammar-error | spelling-error;
   . text-decoraion-style: solid | double | dotted | dashed | wavy;
   . text-decoraion-color: grey;
-  . text-underline-position: 0; 
+  . text-underline-position: 0;
 */
 

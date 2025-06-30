@@ -21,3 +21,8 @@
   --workspace-table-bright--grid-template-columns:   9rem 8rem 24rem 24rem 24rem 8rem 24rem 20rem 8rem 8rem 8rem minmax( 24rem, 1fr );
 }
 
+.workspace-css-table-holder.table-folderListing-columns {
+  --workspace-table-bright--grid-template-columns: 5rem 28rem 19rem 8rem 10rem 6rem 12rem 6rem 6rem 28rem 50rem;
+}
+
+

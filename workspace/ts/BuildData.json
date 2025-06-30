@@ -203,10 +203,10 @@
       "path": "sites_tools/css_tools/CssTable",
       "name": "css-table",
       "update-published": "Tue Jun  3 01:01:52 GMT 2025",
-      "build": true,
+      "build": false,
       "build-simple-enable": true,
       "css-importer": {
-        "build": true,
+        "build": false,
         "cssFilePath": "MediaAndStyles/css-table-main-webpack.css",
         "cssTargetFilePath": "MediaAndStyles/css_table_main_resolved.css"
       },
@@ -378,6 +378,31 @@
         "webpackAliases.js",
         "webpack.aliases.mjs",
         "webpack.aliases.cjs"
+      ]
+    },
+    {
+      "path": "sites_tools/js_tools/CssTableOrdered",
+      "name": "css-table-ordered",
+      "update-published": "Tue Jun  3 01:01:52 GMT 2025",
+      "build": true,
+      "build-simple-enable": true,
+      "css-importer": {
+        "build": true,
+        "cssFilePath": "MediaAndStyles/css_table_ordered_main_webpack.css",
+        "cssTargetFilePath": "MediaAndStyles/css_table_ordered_main_resolved.css"
+      },
+      "dependencies": [
+        {
+          "name": "@jaisocx/css-table",
+          "path": "sites_tools/css_tools/CssTable"
+        }
+      ],
+      "build-files": [
+        "index.js",
+        "webpackAliases.js",
+        "webpack.aliases.mjs",
+        "webpack.aliases.cjs",
+        "CssTableOrderby.js"
       ]
     },
     {

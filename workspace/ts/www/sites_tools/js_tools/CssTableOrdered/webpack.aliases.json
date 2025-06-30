@@ -1,0 +1,5 @@
+{
+  "@CssTableOrdered_MediaAndStyles": "${packageRoot}/MediaAndStyles/",
+  "@CssTable_MediaAndStyles": "${packageRoot}/node_modules/@jaisocx/css-table/MediaAndStyles/"
+}
+
