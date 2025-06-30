@@ -2,4 +2,5 @@
 // when built with webpack and using the webpackAliases of this package.
 import "@jaisocx/css-table";
 import "@CssTableOrdered_MediaAndStyles/css_table_ordered_main_webpack.css";
+export { CssTableOrderby } from "./CssTableOrderby.js";
 //# sourceMappingURL=index.js.map

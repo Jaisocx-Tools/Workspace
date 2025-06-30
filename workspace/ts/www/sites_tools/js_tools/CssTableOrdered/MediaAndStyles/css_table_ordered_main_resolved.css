@@ -1,911 +1,5 @@
 
 
-.workspace-css-table-holder.example-table-columns-4 {
-  --workspace-table-bright--grid-template-columns:   12rem 8rem 24rem minmax( 20rem, 1fr );
-}
-
-.workspace-css-table-holder .column-1 {
-  --workspace-table-bright--column-width: 12rem;
-}
-.workspace-css-table-holder .column-2 {
-  --workspace-table-bright--column-width: 8rem;
-}
-.workspace-css-table-holder .column-3 {
-  --workspace-table-bright--column-width: 24rem;
-}
-.workspace-css-table-holder .column-4 {
-  --workspace-table-bright--column-width: minmax( 20rem, 1fr );
-}
-
-
-.workspace-css-table-holder.example-table-columns-12 {
-  --workspace-table-bright--grid-template-columns:   9rem 8rem 24rem 24rem 24rem 8rem 24rem 20rem 8rem 8rem 8rem minmax( 24rem, 1fr );
-}
-
-.workspace-css-table-holder.table-folderListing-columns {
-  --workspace-table-bright--grid-template-columns: 5rem 28rem 19rem 8rem 10rem 6rem 12rem 6rem 6rem 28rem 50rem;
-}
-
-
-
-.workspace-css-table-holder .cell.example .cell-value {
-  
-
-  word-spacing: 0.9rem;
-  letter-spacing: 0.1rem;
-
-  
-  text-transform: capitalize;
-
-  
-  font-variant-caps: titling-caps;
-
-  font-variant: no-common-ligatures tabular-nums;
-
-  text-decoration: underline;
-  text-decoration-style: dotted;
-  text-decoration-color: lime;
-  text-underline-position: under; 
-
-  font-variant-alternates: historical-forms;
-}
-
-
-.workspace-css-table-holder .cell.keep-like-in-text-editor span.cell-value {
-  white-space:  preserve nowrap !important;
-  word-break: keep-all !important;
-  display: block !important;
-}
-
-.workspace-css-table-holder .cell.keep-line .cell-value {
-  
-  
-  white-space: nowrap;
-}
-
-.workspace-css-table-holder .cell.number .cell-value {
-  
-  text-align:             right;
-  font-family:            monospace;
-
-  font-variant: no-common-ligatures tabular-nums;
-  
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-.workspace-css-table-holder {
-
-  --workspace-table--cell--font-family: "Arial";
-
-  --workspace-table--cell--column-label--font-family: var(--workspace-table--cell--font-family);
-  --workspace-table--cell--cell-value--font-family: var(--workspace-table--cell--font-family);
-
-
-  
-  --workspace-table-thin--cell--column-label--font-family: var(--workspace-table--cell--column-label--font-family);
-  --workspace-table-thin--cell--cell-value--font-family: var(--workspace-table--cell--cell-value--font-family);
-
-  --workspace-table-bright--cell--column-label--font-family: var(--workspace-table--cell--column-label--font-family);
-  --workspace-table-bright--cell--cell-value--font-family: var(--workspace-table--cell--cell-value--font-family);
-
-
-  
-  --workspace-table--cell--text-align: left;
-
-  --workspace-table-thin--cell--text-align: var(--workspace-table--cell--text-align);
-  --workspace-table-bright--cell--text-align: var(--workspace-table--cell--text-align);
-
-
-
-  --workspace-table--cell--padding: 16px 12px 16px 12px;
-  
-  --workspace-table-thin--cell--padding: 5px 12px 5px 12px;
-  --workspace-table-bright--cell--padding: 16px 12px 16px 12px;
-
-
-  
-  --workspace-table-thin--record--padding-top: 1.4rem;
-  --workspace-table-thin--record--padding-bottom: 1.4rem;
-
-
-
-  
-  
-  --workspace-table--cell--cell-value--font-weight: 400;
-
-
-
-
-  --workspace-table-thin--cell--column-label--width: 8rem;
-  --workspace-table-thin--cell--column-label--font-weight: 600;
-  --workspace-table-thin--cell--column-label--font-size: 1.085rem;
-  --workspace-table-thin--cell--column-label--line-height: 1.3rem;
-  --workspace-table-thin--cell--column-label--letter-spacing: 0;
-  --workspace-table-thin--cell--column-label--text-align: var(--workspace-table-thin--cell--text-align);
-  --workspace-table-thin--cell--column-label--padding: var(--workspace-table-thin--cell--padding);
-
-  --workspace-table-thin--cell--cell-value--font-weight: var(--workspace-table--cell--cell-value--font-weight);
-  --workspace-table-thin--cell--cell-value--font-size: 1.05rem;
-  --workspace-table-thin--cell--cell-value--line-height: 1.3rem;
-  --workspace-table-thin--cell--cell-value--letter-spacing: 0;
-  --workspace-table-thin--cell--cell-value--text-align: var(--workspace-table-thin--cell--text-align);
-  --workspace-table-thin--cell--cell-value--padding: var(--workspace-table-thin--cell--padding);
-
-
-
-  --workspace-table-bright--cell--column-label--font-weight: 600;
-  --workspace-table-bright--cell--column-label--font-size: 1.2rem;
-  --workspace-table-bright--cell--column-label--line-height: 1.5rem;
-  --workspace-table-bright--cell--column-label--letter-spacing: 0;
-  --workspace-table-bright--cell--column-label--text-align: var(--workspace-table-bright--cell--text-align);
-  --workspace-table-bright--cell--column-label--padding: var(--workspace-table-bright--cell--padding);
-
-  --workspace-table-bright--cell--cell-value--font-weight: var(--workspace-table--cell--cell-value--font-weight);
-  --workspace-table-bright--cell--cell-value--font-size: 1.0rem;
-  --workspace-table-bright--cell--cell-value--line-height: 1.28rem;
-  --workspace-table-bright--cell--cell-value--letter-spacing: 0;
-  --workspace-table-bright--cell--cell-value--text-align: var(--workspace-table-bright--cell--text-align);
-  --workspace-table-bright--cell--cell-value--padding: var(--workspace-table-bright--cell--padding);
-
-
-
-
- 
-
-
-
-
-
-
-
-  --workspace-table--cell--text-color:                            #339933;
-
-  --workspace-table--cell--background-color:                      #fbfefc;
-
-  --workspace-table--cell--background-image:                        none;
-  --workspace-table--cell--background-position:                     0 0;
-  --workspace-table--cell--background-size:                         contain;
-  --workspace-table--cell--background-repeat:                       no-repeat;
-  --workspace-table--cell--background-origin:                       border-box;
-  --workspace-table--cell--background-clip:                         border-box;
-  --workspace-table--cell--background-attachment:                   scroll;
-
-
-
-  
-  --workspace-table--cell--column-label--text-color:              #339933;
-
-  
-  --workspace-table--cell--column-label--background-color:        #f2fff2;
-
-  --workspace-table--cell--column-label--background-image:          var(--workspace-table--cell--background-image);
-  --workspace-table--cell--column-label--background-position:       0 0;
-  --workspace-table--cell--column-label--background-size:           contain;
-  --workspace-table--cell--column-label--background-repeat:         no-repeat;
-  --workspace-table--cell--column-label--background-origin:         border-box;
-  --workspace-table--cell--column-label--background-clip:           border-box;
-  --workspace-table--cell--column-label--background-attachment:     scroll;
-
-
-
-  
-  --workspace-table--cell--cell-value--text-color:                #333;
-
-  
-  --workspace-table--cell--cell-value--background-color:          #fbfefc;
-
-  --workspace-table--cell--cell-value--background-image:            var(--workspace-table--cell--background-image);
-  --workspace-table--cell--cell-value--background-position:         0 0;
-  --workspace-table--cell--cell-value--background-size:             contain;
-  --workspace-table--cell--cell-value--background-repeat:           no-repeat;
-  --workspace-table--cell--cell-value--background-origin:           border-box;
-  --workspace-table--cell--cell-value--background-clip:             border-box;
-  --workspace-table--cell--cell-value--background-attachment:       scroll;
-
-
-  
-
-  
-  --workspace-table-thin--cell--column-label--text-color:          #339933;
-
-  
-  --workspace-table-thin--cell--column-label--background-color:    #f2fff2;
-
-  --workspace-table-thin--cell--column-label--background-image:      unset; 
-  --workspace-table-thin--cell--column-label--background-position:   0 0;
-  --workspace-table-thin--cell--column-label--background-size:       contain;
-  --workspace-table-thin--cell--column-label--background-repeat:     no-repeat;
-  --workspace-table-thin--cell--column-label--background-origin:     border-box;
-  --workspace-table-thin--cell--column-label--background-clip:       border-box;
-  --workspace-table-thin--cell--column-label--background-attachment: scroll;
-
-
-  
-  --workspace-table-thin--cell--cell-value--text-color:             #333;
-
-  
-  --workspace-table-thin--cell--cell-value--background-color:       #fbfefc;
-
-  --workspace-table-thin--cell--cell-value--background-image:         unset; 
-  --workspace-table-thin--cell--cell-value--background-position:      0 0;
-  --workspace-table-thin--cell--cell-value--background-size:          contain;
-  --workspace-table-thin--cell--cell-value--background-repeat:        no-repeat;
-  --workspace-table-thin--cell--cell-value--background-origin:        border-box;
-  --workspace-table-thin--cell--cell-value--background-clip:          border-box;
-  --workspace-table-thin--cell--cell-value--background-attachment:    scroll;
-
-
-
-  
-
-  
-  --workspace-table-bright--cell--column-label--text-color:         #339933;
-
-
-  
-  --workspace-table-bright--cell--column-label--background-color:    #e2f4e2;
-
-  --workspace-table-bright--cell--column-label--background-image:      unset; 
-  --workspace-table-bright--cell--column-label--background-position:   0 0;
-  --workspace-table-bright--cell--column-label--background-size:       contain;
-  --workspace-table-bright--cell--column-label--background-repeat:     no-repeat;
-  --workspace-table-bright--cell--column-label--background-origin:     border-box;
-  --workspace-table-bright--cell--column-label--background-clip:       border-box;
-  --workspace-table-bright--cell--column-label--background-attachment: scroll;
-
-
-  
-  --workspace-table-bright--cell--cell-value--text-color:            #333;
-
-
-  
-  --workspace-table-bright--cell--cell-value--background-color:      #fafafa;
-
-  --workspace-table-bright--cell--cell-value--background-image:        unset; 
-  --workspace-table-bright--cell--cell-value--background-position:     0 0;
-  --workspace-table-bright--cell--cell-value--background-size:         contain;
-  --workspace-table-bright--cell--cell-value--background-repeat:       no-repeat;
-  --workspace-table-bright--cell--cell-value--background-origin:       border-box;
-  --workspace-table-bright--cell--cell-value--background-clip:         border-box;
-  --workspace-table-bright--cell--cell-value--background-attachment:   scroll;
-
-
-
-
-
-  
-  --workspace-table--border-width: 1px;
-  --workspace-table--border-style: solid;
-  --workspace-table--border-color: #D2DCE4;
-
-  --workspace-table--main--border-color: var(--workspace-table--border-color);
-  --workspace-table--main--border: var(--workspace-table--border-width) var(--workspace-table--border-style) var(--workspace-table--main--border-color);
-  --workspace-table--main--border-radius: 1rem;
-
-  --workspace-table--row--border: var(--workspace-table--border-width) var(--workspace-table--border-style) var(--workspace-table--border-color);
-  --workspace-table--cell--border: var(--workspace-table--border-width) var(--workspace-table--border-style) var(--workspace-table--border-color);
-
-
-
-  
-  --workspace-table-holder--width: 100%;
-  --workspace-table-holder--width-max: 100%;
-  --workspace-table-holder--width-min: 100%;
-
-  --workspace-table-holder--overflow-y: hidden;
-  --workspace-table-holder--overflow-x: hidden;
-
-
-  --workspace-table--main--width: 100%;
-  --workspace-table--main--width-max: 100%;
-  --workspace-table--main--width-min: 100%;
-
-  --workspace-table--main--overflow-y: visible;
-  --workspace-table--main--overflow-x: auto;
-
-}
-
-
-
-
-
-
-
-@media only screen and (min-width: 240px) and (max-width: 320px) and (orientation: portrait) {
-
-  .workspace {
-    --responsive_size: responsive_size_e02_mobile_xs_portrait;
-
-    --responsive_size__min-width: 240px;
-    --responsive_size__max-width: 320px;
-
-
-
-    --responsive_size_CssTable: responsive_size_e02_mobile_xs_portrait_CssTable;
-
-    --responsive_size_CssTable__min-width: 240px;
-    --responsive_size_CssTable__max-width: 320px;
-  }
-
-}
-
-
-@media only screen and (min-width: 320px) and (max-width: 500px) and (orientation: landscape) {
-
-  .workspace {
-    --responsive_size: responsive_size_e02_mobile_xs_landscape;
-
-    --responsive_size__min-width: 320px;
-    --responsive_size__max-width: 500px;
-
-
-
-    --responsive_size_CssTable: responsive_size_e02_mobile_xs_landscape_CssTable;
-
-    --responsive_size_CssTable__min-width: 320px;
-    --responsive_size_CssTable__max-width: 500px;
-  }
-
-}
-
-
-
-@media only screen and (min-width: 321px) and (max-width: 374px) and (orientation: portrait) {
-
-  .workspace {
-    --responsive_size: responsive_size_e04_mobile_s_portrait;
-
-    --responsive_size__min-width: 321px;
-    --responsive_size__max-width: 374px;
-
-
-
-    --responsive_size_CssTable: responsive_size_e04_mobile_s_portrait_CssTable;
-
-    --responsive_size_CssTable__min-width: 321px;
-    --responsive_size_CssTable__max-width: 374px;
-  }
-
-}
-
-
-@media only screen and (min-width: 501px) and (max-width: 667px) and (orientation: landscape) {
-
-  .workspace {
-    --responsive_size: responsive_size_e04_mobile_s_landscape;
-
-    --responsive_size__min-width: 501px;
-    --responsive_size__max-width: 667px;
-
-
-
-    --responsive_size_CssTable: responsive_size_e04_mobile_s_landscape_CssTable;
-
-    --responsive_size_CssTable__min-width: 501px;
-    --responsive_size_CssTable__max-width: 667px;
-  }
-
-}
-
-
-
-@media only screen and (min-width: 375px) and (max-width: 430px) and (orientation: portrait) {
-
-  .workspace {
-    --responsive_size: responsive_size_e06_mobile_sm_portrait;
-
-    --responsive_size__min-width: 375px;
-    --responsive_size__max-width: 430px;
-
-
-
-    --responsive_size_CssTable: responsive_size_e06_mobile_sm_portrait_CssTable;
-
-    --responsive_size_CssTable__min-width: 375px;
-    --responsive_size_CssTable__max-width: 430px;
-  }
-
-}
-
-
-@media only screen and (min-width: 668px) and (max-width: 736px) and (orientation: landscape) {
-
-  .workspace {
-    --responsive_size: responsive_size_e06_mobile_sm_landscape;
-
-    --responsive_size__min-width: 668px;
-    --responsive_size__max-width: 736px;
-
-
-
-    --responsive_size_CssTable: responsive_size_e06_mobile_sm_landscape_CssTable;
-
-    --responsive_size_CssTable__min-width: 668px;
-    --responsive_size_CssTable__max-width: 736px;
-  }
-
-}
-
-
-
-@media only screen and (min-width: 431px) and (max-width: 480px) and (orientation: portrait) {
-
-  .workspace {
-    --responsive_size: responsive_size_e08_mobile_md_portrait;
-
-    --responsive_size__min-width: 431px;
-    --responsive_size__max-width: 480px;
-
-
-
-    --responsive_size_CssTable: responsive_size_e08_mobile_md_portrait_CssTable;
-
-    --responsive_size_CssTable__min-width: 431px;
-    --responsive_size_CssTable__max-width: 480px;
-  }
-
-}
-
-
-@media only screen and (min-width: 737px) and (max-width: 812px) and (orientation: landscape) {
-
-  .workspace {
-    --responsive_size: responsive_size_e08_mobile_md_landscape;
-
-    --responsive_size__min-width: 737px;
-    --responsive_size__max-width: 812px;
-
-
-
-    --responsive_size_CssTable: responsive_size_e08_mobile_md_landscape_CssTable;
-
-    --responsive_size_CssTable__min-width: 737px;
-    --responsive_size_CssTable__max-width: 812px;
-  }
-
-}
-
-
-
-@media only screen and (min-width: 481px) and (max-width: 767px) and (orientation: portrait) {
-
-  .workspace {
-    --responsive_size: responsive_size_h03_tablet_sm_portrait;
-
-    --responsive_size__min-width: 481px;
-    --responsive_size__max-width: 767px;
-
-
-
-    --responsive_size_CssTable: responsive_size_h03_tablet_sm_portrait_CssTable;
-
-    --responsive_size_CssTable__min-width: 481px;
-    --responsive_size_CssTable__max-width: 767px;
-  }
-
-}
-
-
-@media only screen and (min-width: 813px) and (max-width: 960px) and (orientation: landscape) {
-
-  .workspace {
-    --responsive_size: responsive_size_h03_tablet_sm_landscape;
-
-    --responsive_size__min-width: 813px;
-    --responsive_size__max-width: 960px;
-
-
-
-    --responsive_size_CssTable: responsive_size_h03_tablet_sm_landscape_CssTable;
-
-    --responsive_size_CssTable__min-width: 813px;
-    --responsive_size_CssTable__max-width: 960px;
-  }
-
-}
-
-
-
-@media only screen and (min-width: 768px) and (max-width: 1024px) and (orientation: portrait) {
-
-  .workspace {
-    --responsive_size: responsive_size_h05_tablet_md_portrait;
-
-    --responsive_size__min-width: 768px;
-    --responsive_size__max-width: 1024px;
-
-
-
-    --responsive_size_CssTable: responsive_size_h05_tablet_md_portrait_CssTable;
-
-    --responsive_size_CssTable__min-width: 768px;
-    --responsive_size_CssTable__max-width: 1024px;
-  }
-
-}
-
-
-@media only screen and (min-width: 961px) and (max-width: 1024px) and (orientation: landscape) {
-
-  .workspace {
-    --responsive_size: responsive_size_h05_tablet_md_landscape;
-
-    --responsive_size__min-width: 961px;
-    --responsive_size__max-width: 1024px;
-
-
-
-    --responsive_size_CssTable: responsive_size_h05_tablet_md_landscape_CssTable;
-
-    --responsive_size_CssTable__min-width: 961px;
-    --responsive_size_CssTable__max-width: 1024px;
-  }
-
-}
-
-
-
-@media only screen and (min-width: 1025px) and (max-width: 1080px) and (orientation: portrait) {
-
-  .workspace {
-    --responsive_size: responsive_size_l03_laptop_sm_portrait;
-
-    --responsive_size__min-width: 1025px;
-    --responsive_size__max-width: 1080px;
-
-
-
-    --responsive_size_CssTable: responsive_size_l03_laptop_sm_portrait_CssTable;
-
-    --responsive_size_CssTable__min-width: 1025px;
-    --responsive_size_CssTable__max-width: 1080px;
-  }
-
-}
-
-
-@media only screen and (min-width: 1025px) and (max-width: 1279px) and (orientation: landscape) {
-
-  .workspace {
-    --responsive_size: responsive_size_l03_laptop_sm_landscape;
-
-    --responsive_size__min-width: 1025px;
-    --responsive_size__max-width: 1279px;
-
-
-
-    --responsive_size_CssTable: responsive_size_l03_laptop_sm_landscape_CssTable;
-
-    --responsive_size_CssTable__min-width: 1025px;
-    --responsive_size_CssTable__max-width: 1279px;
-  }
-
-}
-
-
-
-@media only screen and (min-width: 1081px) and (max-width: 1200px) and (orientation: portrait) {
-
-  .workspace {
-    --responsive_size: responsive_size_l05_laptop_md_portrait;
-
-    --responsive_size__min-width: 1081px;
-    --responsive_size__max-width: 1200px;
-
-
-
-    --responsive_size_CssTable: responsive_size_l05_laptop_md_portrait_CssTable;
-
-    --responsive_size_CssTable__min-width: 1081px;
-    --responsive_size_CssTable__max-width: 1200px;
-  }
-
-}
-
-
-@media only screen and (min-width: 1280px) and (max-width: 1439px) and (orientation: landscape) {
-
-  .workspace {
-    --responsive_size: responsive_size_l05_laptop_md_landscape;
-
-    --responsive_size__min-width: 1280px;
-    --responsive_size__max-width: 1439px;
-
-
-
-    --responsive_size_CssTable: responsive_size_l05_laptop_md_landscape_CssTable;
-
-    --responsive_size_CssTable__min-width: 1280px;
-    --responsive_size_CssTable__max-width: 1439px;
-  }
-
-}
-
-
-
-@media only screen and (min-width: 1201px) and (max-width: 1440px) and (orientation: portrait) {
-
-  .workspace {
-    --responsive_size: responsive_size_l07_laptop_lg_portrait;
-
-    --responsive_size__min-width: 1201px;
-    --responsive_size__max-width: 1440px;
-
-
-
-    --responsive_size_CssTable: responsive_size_l07_laptop_lg_portrait_CssTable;
-
-    --responsive_size_CssTable__min-width: 1201px;
-    --responsive_size_CssTable__max-width: 1440px;
-  }
-
-}
-
-
-@media only screen and (min-width: 1440px) and (max-width: 1600px) and (orientation: landscape) {
-
-  .workspace {
-    --responsive_size: responsive_size_l07_laptop_lg_landscape;
-
-    --responsive_size__min-width: 1440px;
-    --responsive_size__max-width: 1600px;
-
-
-
-    --responsive_size_CssTable: responsive_size_l07_laptop_lg_landscape_CssTable;
-
-    --responsive_size_CssTable__min-width: 1440px;
-    --responsive_size_CssTable__max-width: 1600px;
-  }
-
-}
-
-
-
-@media only screen and (min-width: 1441px) and (max-width: 1600px) and (orientation: portrait) {
-
-  .workspace {
-    --responsive_size: responsive_size_s02_display_xl_portrait;
-
-    --responsive_size__min-width: 1441px;
-    --responsive_size__max-width: 1600px;
-
-
-
-    --responsive_size_CssTable: responsive_size_s02_display_xl_portrait_CssTable;
-
-    --responsive_size_CssTable__min-width: 1441px;
-    --responsive_size_CssTable__max-width: 1600px;
-  }
-
-}
-
-
-@media only screen and (min-width: 1601px) and (max-width: 1920px) and (orientation: landscape) {
-
-  .workspace {
-    --responsive_size: responsive_size_s02_display_xl_landscape;
-
-    --responsive_size__min-width: 1601px;
-    --responsive_size__max-width: 1920px;
-
-
-
-    --responsive_size_CssTable: responsive_size_s02_display_xl_landscape_CssTable;
-
-    --responsive_size_CssTable__min-width: 1601px;
-    --responsive_size_CssTable__max-width: 1920px;
-  }
-
-}
-
-
-
-@media only screen and (min-width: 1601px) and (max-width: 2160px) and (orientation: portrait) {
-
-  .workspace {
-    --responsive_size: responsive_size_s04_display_xxl_portrait;
-
-    --responsive_size__min-width: 1601px;
-    --responsive_size__max-width: 2160px;
-
-
-
-    --responsive_size_CssTable: responsive_size_s04_display_xxl_portrait_CssTable;
-
-    --responsive_size_CssTable__min-width: 1601px;
-    --responsive_size_CssTable__max-width: 2160px;
-  }
-
-}
-
-
-@media only screen and (min-width: 1921px) and (max-width: 2560px) and (orientation: landscape) {
-
-  .workspace {
-    --responsive_size: responsive_size_s04_display_xxl_landscape;
-
-    --responsive_size__min-width: 1921px;
-    --responsive_size__max-width: 2560px;
-
-
-
-    --responsive_size_CssTable: responsive_size_s04_display_xxl_landscape_CssTable;
-
-    --responsive_size_CssTable__min-width: 1921px;
-    --responsive_size_CssTable__max-width: 2560px;
-  }
-
-}
-
-
-
-@media only screen and (min-width: 2161px) and (max-width: 2160px) and (orientation: portrait) {
-
-  .workspace {
-    --responsive_size: responsive_size_s08_display_qhd_portrait;
-
-    --responsive_size__min-width: 2161px;
-    --responsive_size__max-width: 2160px;
-
-
-
-    --responsive_size_CssTable: responsive_size_s08_display_qhd_portrait_CssTable;
-
-    --responsive_size_CssTable__min-width: 2161px;
-    --responsive_size_CssTable__max-width: 2160px;
-  }
-
-}
-
-
-@media only screen and (min-width: 2561px) and (max-width: 3840px) and (orientation: landscape) {
-
-  .workspace {
-    --responsive_size: responsive_size_s08_display_qhd_landscape;
-
-    --responsive_size__min-width: 2561px;
-    --responsive_size__max-width: 3840px;
-
-
-
-    --responsive_size_CssTable: responsive_size_s08_display_qhd_landscape_CssTable;
-
-    --responsive_size_CssTable__min-width: 2561px;
-    --responsive_size_CssTable__max-width: 3840px;
-  }
-
-}
-
-
-
-@media only screen and (min-width: 2161px) and (max-width: 4320px) and (orientation: portrait) {
-
-  .workspace {
-    --responsive_size: responsive_size_t04_tv_4k_portrait;
-
-    --responsive_size__min-width: 2161px;
-    --responsive_size__max-width: 4320px;
-
-
-
-    --responsive_size_CssTable: responsive_size_t04_tv_4k_portrait_CssTable;
-
-    --responsive_size_CssTable__min-width: 2161px;
-    --responsive_size_CssTable__max-width: 4320px;
-  }
-
-}
-
-
-@media only screen and (min-width: 3841px) and (max-width: 7680px) and (orientation: landscape) {
-
-  .workspace {
-    --responsive_size: responsive_size_t04_tv_4k_landscape;
-
-    --responsive_size__min-width: 3841px;
-    --responsive_size__max-width: 7680px;
-
-
-
-    --responsive_size_CssTable: responsive_size_t04_tv_4k_landscape_CssTable;
-
-    --responsive_size_CssTable__min-width: 3841px;
-    --responsive_size_CssTable__max-width: 7680px;
-  }
-
-}
-
-
-
-@media only screen and (min-width: 4321px) and (max-width: 8640px) and (orientation: portrait) {
-
-  .workspace {
-    --responsive_size: responsive_size_t08_tv_8k_portrait;
-
-    --responsive_size__min-width: 4321px;
-    --responsive_size__max-width: 8640px;
-
-
-
-    --responsive_size_CssTable: responsive_size_t08_tv_8k_portrait_CssTable;
-
-    --responsive_size_CssTable__min-width: 4321px;
-    --responsive_size_CssTable__max-width: 8640px;
-  }
-
-}
-
-
-@media only screen and (min-width: 7681px) and (max-width: 15360px) and (orientation: landscape) {
-
-  .workspace {
-    --responsive_size: responsive_size_t08_tv_8k_landscape;
-
-    --responsive_size__min-width: 7681px;
-    --responsive_size__max-width: 15360px;
-
-
-
-    --responsive_size_CssTable: responsive_size_t08_tv_8k_landscape_CssTable;
-
-    --responsive_size_CssTable__min-width: 7681px;
-    --responsive_size_CssTable__max-width: 15360px;
-  }
-
-}
-
-
-
-@media only screen and (min-width: 8641px) and (max-width: 9999px) and (orientation: portrait) {
-
-  .workspace {
-    --responsive_size: responsive_size_t16_tv_16k_portrait;
-
-    --responsive_size__min-width: 8641px;
-    --responsive_size__max-width: 9999px;
-
-
-
-    --responsive_size_CssTable: responsive_size_t16_tv_16k_portrait_CssTable;
-
-    --responsive_size_CssTable__min-width: 8641px;
-    --responsive_size_CssTable__max-width: 9999px;
-  }
-
-}
-
-
-@media only screen and (min-width: 15361px) and (max-width: 25360px) and (orientation: landscape) {
-
-  .workspace {
-    --responsive_size: responsive_size_t16_tv_16k_landscape;
-
-    --responsive_size__min-width: 15361px;
-    --responsive_size__max-width: 25360px;
-
-
-
-    --responsive_size_CssTable: responsive_size_t16_tv_16k_landscape_CssTable;
-
-    --responsive_size_CssTable__min-width: 15361px;
-    --responsive_size_CssTable__max-width: 25360px;
-  }
-
-}
-
-
 
 .workspace-css-table-holder.example-table-columns-4 {
   --workspace-table-bright--grid-template-columns:   12rem 8rem 24rem minmax( 20rem, 1fr );
@@ -2144,4 +1238,208 @@
 
 
 
+
+
+
+
+@media only screen and (min-width: 240px) and (max-width: 320px) and (orientation: portrait) {
+
+  .workspace {
+    --responsive_size: responsive_size_e02_mobile_xs_portrait;
+
+    --responsive_size__min-width: 240px;
+    --responsive_size__max-width: 320px;
+
+
+
+    --responsive_size_CssTableOrdered: responsive_size_e02_mobile_xs_portrait_CssTableOrdered;
+
+    --responsive_size_CssTableOrdered__min-width: 240px;
+    --responsive_size_CssTableOrdered__max-width: 320px;
+  }
+
+  .workspace-css-table .row .cell.table-thin-field-hide {
+    display: none;
+  }
+
+  .workspace-css-table .row .cell .column-label {
+    display: none;
+  }
+
+}
+
+
+
+
+
+
+@media only screen and (min-width: 321px) and (max-width: 374px) and (orientation: portrait) {
+
+  .workspace {
+    --responsive_size: responsive_size_e04_mobile_s_portrait;
+
+    --responsive_size__min-width: 321px;
+    --responsive_size__max-width: 374px;
+
+
+
+    --responsive_size_CssTableOrdered: responsive_size_e04_mobile_s_portrait_CssTableOrdered;
+
+    --responsive_size_CssTableOrdered__min-width: 321px;
+    --responsive_size_CssTableOrdered__max-width: 374px;
+  }
+
+  .workspace-css-table .row .cell.table-thin-field-hide {
+    display: none;
+  }
+
+  .workspace-css-table .row .cell .column-label {
+    display: none;
+  }
+
+}
+
+
+
+
+
+
+@media only screen and (min-width: 375px) and (max-width: 430px) and (orientation: portrait) {
+
+  .workspace {
+    --responsive_size: responsive_size_e06_mobile_sm_portrait;
+
+    --responsive_size__min-width: 375px;
+    --responsive_size__max-width: 430px;
+
+
+
+    --responsive_size_CssTableOrdered: responsive_size_e06_mobile_sm_portrait_CssTableOrdered;
+
+    --responsive_size_CssTableOrdered__min-width: 375px;
+    --responsive_size_CssTableOrdered__max-width: 430px;
+  }
+
+  .workspace-css-table .row .cell.table-thin-field-hide {
+    display: none;
+  }
+
+  .workspace-css-table .row .cell .column-label {
+    display: none;
+  }
+
+}
+
+
+
+
+
+
+@media only screen and (min-width: 431px) and (max-width: 480px) and (orientation: portrait) {
+
+  .workspace {
+    --responsive_size: responsive_size_e08_mobile_md_portrait;
+
+    --responsive_size__min-width: 431px;
+    --responsive_size__max-width: 480px;
+
+
+
+    --responsive_size_CssTableOrdered: responsive_size_e08_mobile_md_portrait_CssTableOrdered;
+
+    --responsive_size_CssTableOrdered__min-width: 431px;
+    --responsive_size_CssTableOrdered__max-width: 480px;
+  }
+
+  .workspace-css-table .row .cell.table-thin-field-hide {
+    display: none;
+  }
+
+  .workspace-css-table .row .cell .column-label {
+    display: none;
+  }
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@media only screen and (min-width: 15361px) and (max-width: 25360px) and (orientation: landscape) {
+
+  .workspace {
+    --responsive_size: responsive_size_t16_tv_16k_landscape;
+
+    --responsive_size__min-width: 15361px;
+    --responsive_size__max-width: 25360px;
+
+
+
+    --responsive_size_CssTableOrdered: responsive_size_t16_tv_16k_landscape_CssTableOrdered;
+
+    --responsive_size_CssTableOrdered__min-width: 15361px;
+    --responsive_size_CssTableOrdered__max-width: 25360px;
+  }
+
+}
+
+.workspace-css-table {
+  --workspace-table-thin--cell--column-label--width: 14rem;
+}
+
+.workspace-css-table .row.folder .cell.name .cell-value {
+  font-weight: 600;
+}
 

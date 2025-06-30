@@ -1,4 +1,6 @@
-
+.workspace-css-table {
+  --workspace-table-thin--cell--column-label--width: 14rem;
+}
 
 .workspace-css-table .row.folder .cell.name .cell-value {
   font-weight: 600;

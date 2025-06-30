@@ -23,7 +23,7 @@ const packagesPath = path.resolve(commandArgs.ProjectRoot, commandArgs.PackagesP
 if (false === fs.existsSync(packagesPath)) {
     throw new Error(`modulesPath not available at path: ${packagesPath}`);
 }
-const cssCleanStartPath = path.resolve(commandArgs.ProjectRoot, "www/sites_tools/css_tools/CssCleanStart");
+const cssCleanStartPath = path.resolve(commandArgs.ProjectRoot, "www/sites_tools/js_tools/CssTableOrdered");
 if (false === fs.existsSync(cssCleanStartPath)) {
     throw new Error(`cssCleanStartPath not available at path: ${cssCleanStartPath}`);
 }
@@ -33,12 +33,12 @@ if (false === fs.existsSync(webpackAliasesPath)) {
     throw new Error(`webpackAliasesPath not available at path: ${webpackAliasesPath}`);
 }
 console.log("webpackAliasesPath", webpackAliasesPath);
-const cssFilePath = path.resolve(cssCleanStartPath, "MediaAndStyles/clean-start-main-webpack.css");
+const cssFilePath = path.resolve(cssCleanStartPath, "MediaAndStyles/css_table_ordered_main_webpack.css");
 if (false === fs.existsSync(cssFilePath)) {
     throw new Error(`cssFilePath not available at path: ${cssFilePath}`);
 }
 console.log("cssFilePath", cssFilePath);
-const cssTargetFilePath = path.resolve(cssCleanStartPath, "MediaAndStyles/clean-start-main-packaged.css");
+const cssTargetFilePath = path.resolve(cssCleanStartPath, "MediaAndStyles/css_table_ordered_main_resolved2.css");
 if (true === fs.existsSync(cssTargetFilePath)) {
     fs.unlinkSync(cssTargetFilePath);
     console.log("cssTargetFilePath deleted", cssTargetFilePath);

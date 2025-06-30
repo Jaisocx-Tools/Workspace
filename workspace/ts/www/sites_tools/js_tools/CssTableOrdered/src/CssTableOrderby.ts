@@ -1,4 +1,10 @@
-export class CssTableOrderby {
+import { CssTableOrderbyInterface } from "./CssTableOrderbyInterface";
+
+
+
+export class CssTableOrderby implements CssTableOrderbyInterface {
+
+  public COLUMN_NOT_ORDERED: number;
 
   protected _columnIdSorted: number;
   protected _cachedRowsStart: any[];
@@ -6,9 +12,9 @@ export class CssTableOrderby {
   protected _cachedRowsFiles: any[];
 
 
-
   constructor() {
-    this._columnIdSorted = (-3);
+    this.COLUMN_NOT_ORDERED = (-3);
+    this._columnIdSorted = this.COLUMN_NOT_ORDERED;
 
 
     this._cachedRowsStart = new Array();
@@ -16,12 +22,10 @@ export class CssTableOrderby {
     this._cachedRowsFiles = new Array();
   }
 
+
   public getColumnIdSorted(): number {
     return this._columnIdSorted;
   }
-
-
-
 
 
   addOrderbyEventHandler(): number {
@@ -31,15 +35,49 @@ export class CssTableOrderby {
     let label: Element = new Object() as HTMLElement;
     let columnsNumber: number = tableColumns.length;
     let labelId: number = 0;
+
     for ( labelId = 0; labelId < columnsNumber; labelId++ ) {
       label = tableColumns[labelId];
       label.addEventListener (
         "click",
         ( evt: Event ) => {
-          this.orderby( evt );
-          this.addOrderbyEventHandler();
+
+          //@ts-ignore
+          let orderbyRetval: number = this.orderby( evt );
+
+
+          //@ts-ignore
+          let eventHandlerRetval: number = this.addOrderbyEventHandler();
         }
       );
+    }
+
+    return 1;
+  }
+
+
+  cloneRows (
+    rows: NodeListOf<Element>
+  ): number {
+    let rowsNumber: number = rows.length;
+    let row: HTMLElement = new Object() as HTMLElement;
+    let rowClone: HTMLElement = new Object() as HTMLElement;
+    let rowId: number = 0;
+    let rowOuterHTML: string = "";
+
+    for ( rowId = 0; rowId < rowsNumber; rowId++ ) {
+      row = rows[rowId] as HTMLElement;
+      rowOuterHTML = row.outerHTML;
+      rowClone = document.createElement( row.tagName );
+      rowClone.innerHTML = rowOuterHTML;
+
+        if ( rowId < 2 ) {
+        this._cachedRowsStart.push( rowClone );
+      } else if ( row.classList.contains( "folder" ) ) {
+        this._cachedRowsFolders.push( rowClone );
+      } else {
+        this._cachedRowsFiles.push( rowClone );
+      }
     }
 
     return 1;
@@ -51,19 +89,20 @@ export class CssTableOrderby {
     datatype: string,
     inCellNumber: number
   ): any {
-      let cells: NodeListOf<Element> = row.querySelectorAll(".cell .cell-value");
-      let cell: HTMLElement = cells[inCellNumber] as HTMLElement;
-      let retVal: any = "";
-      let value: string = cell.innerText;
+    let cells: NodeListOf<Element> = row.querySelectorAll(".cell .cell-value");
+    let cell: HTMLElement = cells[inCellNumber] as HTMLElement;
+    let retVal: any = "";
+    let value: string = cell.innerText;
 
       if ( datatype === "number" ) {
-        retVal = parseInt( value, 10 );
-      } else {
-        retVal = value;
-      }
+      retVal = parseInt( value, 10 );
+    } else {
+      retVal = value;
+    }
 
-      return retVal;
+    return retVal;
   }
+
 
   cachedRowsOrderby (
     rows: HTMLElement[],
@@ -78,6 +117,7 @@ export class CssTableOrderby {
         let cellB: any = this.getCellValue( rowB, datatype, inCellNumber );
 
         let orderbyShift: number = 0;
+
         if ( inCellNumber === this._columnIdSorted ) {
           orderbyShift = 2;
         }
@@ -93,37 +133,6 @@ export class CssTableOrderby {
     );
 
     return orderedRows;
-  }
-
-
-  cloneRows(
-    rows: NodeListOf<Element>
-  ): number {
-    let rowsNumber: number = rows.length;
-    let row: HTMLElement = new Object() as HTMLElement;
-    let rowClone: HTMLElement = new Object() as HTMLElement;
-    let rowId: number = 0;
-    let rowIdCloned: number = 0;
-    let rowOuterHTML: string = "";
-
-    for ( rowId = 0; rowId < rowsNumber; rowId++ ) {
-        rowIdCloned = ( rowId - 2 );
-        row = rows[rowId] as HTMLElement;
-        rowOuterHTML = row.outerHTML;
-        rowClone = document.createElement( row.tagName );
-        rowClone.innerHTML = rowOuterHTML;
-
-        if ( rowId < 2 ) {
-          this._cachedRowsStart.push( rowClone );
-        } else if ( row.classList.contains( "folder" ) ) {
-          this._cachedRowsFolders.push( rowClone );
-        } else {
-          this._cachedRowsFiles.push( rowClone );
-        }
-    }
-
-
-    return 1;
   }
 
 
@@ -150,11 +159,14 @@ export class CssTableOrderby {
 
 
   orderby( evt: Event ): number {
+
     //@ts-ignore
     let label: HTMLElement = evt.target.closest( ".cell" ) as HTMLElement;
 
+
     //@ts-ignore
     let datatype: string = label.dataset.datatype;
+
 
     //@ts-ignore
     let cellNumber: number = +label.dataset.id;
@@ -166,44 +178,43 @@ export class CssTableOrderby {
 
     let cachedRowsEmpty: boolean = ( this._cachedRowsStart.length === 0 );
 
-
-
-
     if ( cachedRowsEmpty === true ) {
       this.cloneRows( rows );
     }
 
-    let cachedRowsFoldersOrdered = this.cachedRowsOrderby(
+    let cachedRowsFoldersOrdered: HTMLElement[] = this.cachedRowsOrderby(
       this._cachedRowsFolders,
       datatype,
       cellNumber
     );
 
-    let cachedRowsFilesOrdered = this.cachedRowsOrderby(
+    let cachedRowsFilesOrdered: HTMLElement[] = this.cachedRowsOrderby(
       this._cachedRowsFiles,
       datatype,
       cellNumber
     );
 
 
-
     let tableRowsHtmlArray: string[] = new Array(rowsNumber);
     let rowOffset: number = 0;
+    let rowOffsetAfterAdded: number = 0;
 
-    rowOffset = this.addOrderedRowsHtml (
+    rowOffsetAfterAdded = this.addOrderedRowsHtml (
       this._cachedRowsStart,
       rowOffset,
       tableRowsHtmlArray
     );
 
-    rowOffset = this.addOrderedRowsHtml (
-      this._cachedRowsFolders,
+    rowOffset = rowOffsetAfterAdded;
+    rowOffsetAfterAdded = this.addOrderedRowsHtml (
+      cachedRowsFoldersOrdered,
       rowOffset,
       tableRowsHtmlArray
     );
 
-    rowOffset = this.addOrderedRowsHtml (
-      this._cachedRowsFiles,
+    rowOffset = rowOffsetAfterAdded;
+    rowOffsetAfterAdded = this.addOrderedRowsHtml (
+      cachedRowsFilesOrdered,
       rowOffset,
       tableRowsHtmlArray
     );
@@ -217,13 +228,11 @@ export class CssTableOrderby {
     table.innerHTML = "";
     table.innerHTML = tableRowsHtml;
 
-
     if ( cellNumber === this._columnIdSorted ) {
-      this._columnIdSorted = (-3);
+      this._columnIdSorted = this.COLUMN_NOT_ORDERED;
     } else {
       this._columnIdSorted = cellNumber;
     }
-
 
     return 1;
   }

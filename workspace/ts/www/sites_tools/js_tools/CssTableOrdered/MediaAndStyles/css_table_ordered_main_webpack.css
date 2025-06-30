@@ -1,15 +1,8 @@
 /* webpack alias: @CssTable_MediaAndStyles/ */
-@import url("@CssTable_MediaAndStyles/columns/columns.css");
-@import url("@CssTable_MediaAndStyles/presets/css-table-presets.css");
-@import url("@CssTable_MediaAndStyles/themes/theme_base/css_table_theme_base.css");
-
-/* responsive */
-@import url("@CssTable_MediaAndStyles/themes/theme_base/responsive_size_a03_CssImports_CssTable_Webpack.css");
-
 @import url("@CssTable_MediaAndStyles/css-table-main-webpack.css");
 
 
-
-
-
+@import url("@CssTableOrdered_MediaAndStyles/themes/theme_base/responsive_size_a03_CssImports_CssTableOrdered_Webpack.css");
 @import url("@CssTableOrdered_MediaAndStyles/css_table_ordered_main.css");
+
+

@@ -56,7 +56,7 @@ if (false === fs.existsSync( packagesPath ) ) {
 
 const cssCleanStartPath: any = path.resolve(
   commandArgs.ProjectRoot,
-  "www/sites_tools/css_tools/CssCleanStart"
+  "www/sites_tools/js_tools/CssTableOrdered"
 );
 
 if (false === fs.existsSync( cssCleanStartPath ) ) {
@@ -84,7 +84,7 @@ console.log(
 
 const cssFilePath: any = path.resolve(
   cssCleanStartPath,
-  "MediaAndStyles/clean-start-main-webpack.css"
+  "MediaAndStyles/css_table_ordered_main_webpack.css"
 );
 
 if (false === fs.existsSync( cssFilePath ) ) {
@@ -98,7 +98,7 @@ console.log(
 
 const cssTargetFilePath: any = path.resolve(
   cssCleanStartPath,
-  "MediaAndStyles/clean-start-main-packaged.css"
+  "MediaAndStyles/css_table_ordered_main_resolved2.css"
 );
 
 if (true === fs.existsSync( cssTargetFilePath ) ) {

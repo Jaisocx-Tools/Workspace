@@ -65,6 +65,9 @@
    */
   --clean-start__p__margin: 0.2rem 0 0.2rem 0;
 
+  --clean-start__h__margin: var(--clean-start__margin);
+  --clean-start__h__padding: var(--clean-start__padding);
+
 
 
 

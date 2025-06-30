@@ -1,8 +1,6 @@
 /* Relative urls css imports */
 
 
-@import url("./responsive_size_a02_Constants.css");
-
 /* mobile xs */
 @import url("./responsive_size_e02_mobile_xs_portrait_CssTableOrdered.css");
 @import url("./responsive_size_e02_mobile_xs_landscape_CssTableOrdered.css");
