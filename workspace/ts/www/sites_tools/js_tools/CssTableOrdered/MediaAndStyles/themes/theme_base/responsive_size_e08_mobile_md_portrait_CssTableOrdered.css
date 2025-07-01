@@ -15,7 +15,7 @@
     --responsive_size_CssTableOrdered__max-width: 480px;
   }
 
-  .workspace-css-table .row .cell.table-thin-field-hide {
+  .workspace-css-table .row .cell.table-thin-field-hide-mobile {
     display: none;
   }
 

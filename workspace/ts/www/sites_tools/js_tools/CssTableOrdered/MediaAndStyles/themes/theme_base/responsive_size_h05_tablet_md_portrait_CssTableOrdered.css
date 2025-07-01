@@ -15,5 +15,18 @@
     --responsive_size_CssTableOrdered__max-width: 1024px;
   }
 
+  .workspace .workspace-css-table-holder .workspace-css-table .cell.number .cell-value {
+    text-align: left;
+  }
+
+  .workspace-css-table .row .cell.table-thin-field-hide-tablet {
+    display: none;
+  }
+
+  .workspace-css-table .row {
+    padding: 1rem 0;
+    background-color: var(--workspace-table--cell--background-color);
+  }
+
 }
 

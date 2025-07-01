@@ -1,6 +1,10 @@
 /* Webpack build css imports */
 
 
+/* theme base .css import */
+@import url("@CssTableOrdered_MediaAndStyles/themes/theme_base/CssTableOrdered_theme_base.css");
+
+
 /* mobile xs */
 @import url("@CssTableOrdered_MediaAndStyles/themes/theme_base/responsive_size_e02_mobile_xs_portrait_CssTableOrdered.css");
 /* @import url("@CssTableOrdered_MediaAndStyles/themes/theme_base/responsive_size_e02_mobile_xs_landscape_CssTableOrdered.css"); */

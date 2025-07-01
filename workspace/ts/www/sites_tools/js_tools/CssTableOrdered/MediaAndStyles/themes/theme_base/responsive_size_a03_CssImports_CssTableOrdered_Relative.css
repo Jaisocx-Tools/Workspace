@@ -1,6 +1,10 @@
 /* Relative urls css imports */
 
 
+/* theme base .css import */
+@import url("./CssTableOrdered_theme_base.css");
+
+
 /* mobile xs */
 @import url("./responsive_size_e02_mobile_xs_portrait_CssTableOrdered.css");
 @import url("./responsive_size_e02_mobile_xs_landscape_CssTableOrdered.css");

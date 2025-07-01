@@ -1242,6 +1242,72 @@
 
 
 
+
+
+
+
+
+
+
+.css-table-ordered.workspace {
+
+  --clean-start__site__padding-top: 0;
+  --clean-start__h__margin: 1rem 0 1rem 0;
+
+
+  --clean-start__text-color-h: green;
+  --clean-start__font-weight_h: 900;
+  --clean-start__font-size_h1: 1.09rem;
+  --clean-start__line-height_h1: 1.25rem;
+
+  --css-table-ordered--column-name--font-weight: 800;
+}
+
+
+
+.css-table-ordered.workspace .workspace-css-table-holder.bright-styles-applied .workspace-css-table {
+
+  
+  --workspace-table-thin--cell--column-label--width: 10rem;
+  --workspace-table-bright--grid-template-columns: 5rem 34rem 12rem 6rem 18rem 100rem;
+
+
+
+
+  
+  --workspace-table-bright--cell--cell-value--font-size: 0.85rem;
+  --workspace-table-bright--cell--column-label--font-size: 0.95rem;
+
+
+
+  --workspace-table--cell--column-label--line-height: var(--workspace-table-bright--cell--column-label--font-size);
+  --workspace-table-bright--cell--column-label--line-height: var(--workspace-table-bright--cell--column-label--font-size);
+
+  --workspace-table--cell--cell-value--line-height: var(--workspace-table-bright--cell--cell-value--font-size);
+  --workspace-table-bright--cell--cell-value--line-height: var(--workspace-table-bright--cell--cell-value--font-size);
+
+
+
+  
+  --clean-start__font-size: var(--workspace-table-bright--cell--cell-value--font-size);
+  --clean-start__line-height: var(--clean-start__font-size);
+
+
+  
+  --workspace-table-bright--cell--padding: 0 0 0 0;
+  --workspace-table-bright--cell--cell-value--padding: 0.43rem 0.6rem 0.43rem 0.6rem;
+
+
+  
+  --clean-start__anchor__text-color: #227022;
+  --clean-start__anchor__text-color-hover: #44aa44;
+  --clean-start__anchor__text-color-visited: #7a8a6a;
+}
+
+
+
+
+
 @media only screen and (min-width: 240px) and (max-width: 320px) and (orientation: portrait) {
 
   .workspace {
@@ -1258,7 +1324,7 @@
     --responsive_size_CssTableOrdered__max-width: 320px;
   }
 
-  .workspace-css-table .row .cell.table-thin-field-hide {
+  .workspace-css-table .row .cell.table-thin-field-hide-mobile {
     display: none;
   }
 
@@ -1289,7 +1355,7 @@
     --responsive_size_CssTableOrdered__max-width: 374px;
   }
 
-  .workspace-css-table .row .cell.table-thin-field-hide {
+  .workspace-css-table .row .cell.table-thin-field-hide-mobile {
     display: none;
   }
 
@@ -1320,7 +1386,7 @@
     --responsive_size_CssTableOrdered__max-width: 430px;
   }
 
-  .workspace-css-table .row .cell.table-thin-field-hide {
+  .workspace-css-table .row .cell.table-thin-field-hide-mobile {
     display: none;
   }
 
@@ -1351,7 +1417,7 @@
     --responsive_size_CssTableOrdered__max-width: 480px;
   }
 
-  .workspace-css-table .row .cell.table-thin-field-hide {
+  .workspace-css-table .row .cell.table-thin-field-hide-mobile {
     display: none;
   }
 
@@ -1435,66 +1501,17 @@
 
 }
 
-.jaisocx-folder-list.workspace {
-
-  --clean-start__site__padding-top: 0;
-  --clean-start__h__margin: 1rem 0 1rem 0;
 
 
-  --clean-start__text-color-h: green;
-  --clean-start__font-weight_h: 900;
-  --clean-start__font-size_h1: 1.09rem;
-  --clean-start__line-height_h1: 1.25rem;
 
-}
-
-
-.jaisocx-folder-list.workspace h1 {
+.css-table-ordered.workspace h1 {
   margin: var(--clean-start__h__margin);
 }
 
 
-.jaisocx-folder-list.workspace .workspace-css-table-holder.bright-styles-applied .workspace-css-table {
 
-  
-  --workspace-table-thin--cell--column-label--width: 14rem;
-  --workspace-table-bright--grid-template-columns: 5rem 34rem 19rem 12rem 14rem 64rem;
-
-
-
-
-  
-  --workspace-table-bright--cell--cell-value--font-size: 0.85rem;
-  --workspace-table-bright--cell--column-label--font-size: 0.95rem;
-
-
-
-  --workspace-table--cell--column-label--line-height: var(--workspace-table-bright--cell--column-label--font-size);
-  --workspace-table-bright--cell--column-label--line-height: var(--workspace-table-bright--cell--column-label--font-size);
-
-  --workspace-table--cell--cell-value--line-height: var(--workspace-table-bright--cell--cell-value--font-size);
-  --workspace-table-bright--cell--cell-value--line-height: var(--workspace-table-bright--cell--cell-value--font-size);
-
-
-
-  
-  --clean-start__font-size: var(--workspace-table-bright--cell--cell-value--font-size);
-  --clean-start__line-height: var(--clean-start__font-size);
-
-
-  
-  --workspace-table-bright--cell--padding: 0 0 0 0;
-  --workspace-table-bright--cell--cell-value--padding: 0.43rem 0.6rem 0.43rem 0.6rem;
-
-
-  
-  --clean-start__anchor__text-color: #227022;
-  --clean-start__anchor__text-color-hover: #44aa44;
-  --clean-start__anchor__text-color-visited: #7a8a6a;
+.css-table-ordered.workspace .workspace-css-table-holder.bright-styles-applied .workspace-css-table .row.folder .cell.name .cell-value {
+  font-weight: var(--css-table-ordered--column-name--font-weight);
 }
 
-
-.jaisocx-folder-list.workspace .workspace-css-table-holder.bright-styles-applied .workspace-css-table .row.folder .cell.name .cell-value {
-  font-weight: 600;
-}
 
