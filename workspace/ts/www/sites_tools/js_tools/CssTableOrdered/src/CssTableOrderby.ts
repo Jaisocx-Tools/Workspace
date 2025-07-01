@@ -1,20 +1,25 @@
-import { CssTableOrderbyInterface } from "./CssTableOrderbyInterface";
+import { CssTableOrderbyInterface } from "./CssTableOrderbyInterface.js";
 
 
 
 export class CssTableOrderby implements CssTableOrderbyInterface {
 
-  public COLUMN_NOT_ORDERED: number;
+  public COLUMN_ID_NOT_ORDERED: number;
+  public ROWS_NUMBER_NOT_ORDERED: number;
 
-  protected _columnIdSorted: number;
+  protected _columnIdOrdered: number;
+  protected _rowsNumberNotOrdered: number;
   protected _cachedRowsStart: any[];
   protected _cachedRowsFolders: any[];
   protected _cachedRowsFiles: any[];
 
 
   constructor() {
-    this.COLUMN_NOT_ORDERED = (-3);
-    this._columnIdSorted = this.COLUMN_NOT_ORDERED;
+    this.COLUMN_ID_NOT_ORDERED = (-3);
+    this._columnIdOrdered = this.COLUMN_ID_NOT_ORDERED;
+
+    this.ROWS_NUMBER_NOT_ORDERED = 1;
+    this._rowsNumberNotOrdered = this.ROWS_NUMBER_NOT_ORDERED;
 
 
     this._cachedRowsStart = new Array();
@@ -24,7 +29,19 @@ export class CssTableOrderby implements CssTableOrderbyInterface {
 
 
   public getColumnIdSorted(): number {
-    return this._columnIdSorted;
+    return this._columnIdOrdered;
+  }
+
+
+  public setRowsNumberNotOrdered( rowsNum: number ): CssTableOrderby {
+    this._rowsNumberNotOrdered = rowsNum;
+
+    return this;
+  }
+
+
+  public getRowsNumberNotOrdered(): number {
+    return this._rowsNumberNotOrdered;
   }
 
 
@@ -71,7 +88,7 @@ export class CssTableOrderby implements CssTableOrderbyInterface {
       rowClone = document.createElement( row.tagName );
       rowClone.innerHTML = rowOuterHTML;
 
-        if ( rowId < 2 ) {
+        if ( rowId < this._rowsNumberNotOrdered ) {
         this._cachedRowsStart.push( rowClone );
       } else if ( row.classList.contains( "folder" ) ) {
         this._cachedRowsFolders.push( rowClone );
@@ -118,7 +135,7 @@ export class CssTableOrderby implements CssTableOrderbyInterface {
 
         let orderbyShift: number = 0;
 
-        if ( inCellNumber === this._columnIdSorted ) {
+        if ( inCellNumber === this._columnIdOrdered ) {
           orderbyShift = 2;
         }
 
@@ -228,10 +245,10 @@ export class CssTableOrderby implements CssTableOrderbyInterface {
     table.innerHTML = "";
     table.innerHTML = tableRowsHtml;
 
-    if ( cellNumber === this._columnIdSorted ) {
-      this._columnIdSorted = this.COLUMN_NOT_ORDERED;
+    if ( cellNumber === this._columnIdOrdered ) {
+      this._columnIdOrdered = this.COLUMN_ID_NOT_ORDERED;
     } else {
-      this._columnIdSorted = cellNumber;
+      this._columnIdOrdered = cellNumber;
     }
 
     return 1;

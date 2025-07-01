@@ -3,14 +3,23 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.CssTableOrderby = void 0;
 class CssTableOrderby {
     constructor() {
-        this.COLUMN_NOT_ORDERED = (-3);
-        this._columnIdSorted = this.COLUMN_NOT_ORDERED;
+        this.COLUMN_ID_NOT_ORDERED = (-3);
+        this._columnIdOrdered = this.COLUMN_ID_NOT_ORDERED;
+        this.ROWS_NUMBER_NOT_ORDERED = 1;
+        this._rowsNumberNotOrdered = this.ROWS_NUMBER_NOT_ORDERED;
         this._cachedRowsStart = new Array();
         this._cachedRowsFolders = new Array();
         this._cachedRowsFiles = new Array();
     }
     getColumnIdSorted() {
-        return this._columnIdSorted;
+        return this._columnIdOrdered;
+    }
+    setRowsNumberNotOrdered(rowsNum) {
+        this._rowsNumberNotOrdered = rowsNum;
+        return this;
+    }
+    getRowsNumberNotOrdered() {
+        return this._rowsNumberNotOrdered;
     }
     addOrderbyEventHandler() {
         let selector = ".workspace-css-table .row.desktop-columns-labels-holder .cell .column-label";
@@ -40,7 +49,7 @@ class CssTableOrderby {
             rowOuterHTML = row.outerHTML;
             rowClone = document.createElement(row.tagName);
             rowClone.innerHTML = rowOuterHTML;
-            if (rowId < 2) {
+            if (rowId < this._rowsNumberNotOrdered) {
                 this._cachedRowsStart.push(rowClone);
             }
             else if (row.classList.contains("folder")) {
@@ -71,7 +80,7 @@ class CssTableOrderby {
             let cellA = this.getCellValue(rowA, datatype, inCellNumber);
             let cellB = this.getCellValue(rowB, datatype, inCellNumber);
             let orderbyShift = 0;
-            if (inCellNumber === this._columnIdSorted) {
+            if (inCellNumber === this._columnIdOrdered) {
                 orderbyShift = 2;
             }
             if (cellA > cellB) {
@@ -126,11 +135,11 @@ class CssTableOrderby {
         let tableRowsHtml = tableRowsHtmlArray.join("\n    ");
         table.innerHTML = "";
         table.innerHTML = tableRowsHtml;
-        if (cellNumber === this._columnIdSorted) {
-            this._columnIdSorted = this.COLUMN_NOT_ORDERED;
+        if (cellNumber === this._columnIdOrdered) {
+            this._columnIdOrdered = this.COLUMN_ID_NOT_ORDERED;
         }
         else {
-            this._columnIdSorted = cellNumber;
+            this._columnIdOrdered = cellNumber;
         }
         return 1;
     }

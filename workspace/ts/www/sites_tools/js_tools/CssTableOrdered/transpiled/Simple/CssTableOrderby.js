@@ -1,14 +1,18 @@
 class CssTableOrderby {
-    COLUMN_NOT_ORDERED;
-    _columnIdSorted;
+    COLUMN_ID_NOT_ORDERED;
+    ROWS_NUMBER_NOT_ORDERED;
+    _columnIdOrdered;
+    _rowsNumberNotOrdered;
     _cachedRowsStart;
     _cachedRowsFolders;
     _cachedRowsFiles;
 
 
     constructor() {
-        this.COLUMN_NOT_ORDERED = (-3);
-        this._columnIdSorted = this.COLUMN_NOT_ORDERED;
+        this.COLUMN_ID_NOT_ORDERED = (-3);
+        this._columnIdOrdered = this.COLUMN_ID_NOT_ORDERED;
+        this.ROWS_NUMBER_NOT_ORDERED = 1;
+        this._rowsNumberNotOrdered = this.ROWS_NUMBER_NOT_ORDERED;
         this._cachedRowsStart = new Array();
         this._cachedRowsFolders = new Array();
         this._cachedRowsFiles = new Array();
@@ -16,7 +20,19 @@ class CssTableOrderby {
 
 
     getColumnIdSorted() {
-        return this._columnIdSorted;
+        return this._columnIdOrdered;
+    }
+
+
+    setRowsNumberNotOrdered(rowsNum) {
+        this._rowsNumberNotOrdered = rowsNum;
+
+        return this;
+    }
+
+
+    getRowsNumberNotOrdered() {
+        return this._rowsNumberNotOrdered;
     }
 
 
@@ -60,7 +76,7 @@ class CssTableOrderby {
             rowClone = document.createElement(row.tagName);
             rowClone.innerHTML = rowOuterHTML;
 
-            if (rowId < 2) {
+            if (rowId < this._rowsNumberNotOrdered) {
                 this._cachedRowsStart.push(rowClone);
             }
             else if (row.classList.contains("folder")) {
@@ -99,7 +115,7 @@ class CssTableOrderby {
             let cellB = this.getCellValue(rowB, datatype, inCellNumber);
             let orderbyShift = 0;
 
-            if (inCellNumber === this._columnIdSorted) {
+            if (inCellNumber === this._columnIdOrdered) {
                 orderbyShift = 2;
             }
 
@@ -194,11 +210,11 @@ class CssTableOrderby {
         table.innerHTML = "";
         table.innerHTML = tableRowsHtml;
 
-        if (cellNumber === this._columnIdSorted) {
-            this._columnIdSorted = this.COLUMN_NOT_ORDERED;
+        if (cellNumber === this._columnIdOrdered) {
+            this._columnIdOrdered = this.COLUMN_ID_NOT_ORDERED;
         }
         else {
-            this._columnIdSorted = cellNumber;
+            this._columnIdOrdered = cellNumber;
         }
 
         return 1;
