@@ -1,0 +1,164 @@
+/* css table ordered theme base */
+
+
+
+/*
+
+# top css theme class
+.jaisocx-folders-listing
+
+
+# top css classes in @jaisocx/css-table-ordered
+.css-table-ordered
+
+
+# inherited from @jaisocx/css-clean-start
+.workspace
+
+
+# inherited from @jaisocx/css-table
+.workspace-css-table-holder.thin-styles-applied .workspace-css-table
+.workspace-css-table-holder.bright-styles-applied .workspace-css-table
+
+*/
+
+
+.workspace.css-table-ordered.jaisocx-folders-listing {
+
+  --css-table-ordered--a--font-family: inherit;
+  --css-table-ordered--a--font-size: inherit;
+
+}
+
+
+.workspace.css-table-ordered.jaisocx-folders-listing .workspace-css-table-holder .workspace-css-table .row .cell.name {
+
+  /* cell padding */
+  --workspace-table-thin--cell--padding: 1.4rem 0.4rem 0.8rem 0.4rem;
+  --workspace-table-thin--cell--cell-value--padding: 0 0 0 0;
+
+}
+
+
+.workspace.css-table-ordered.jaisocx-folders-listing .workspace-css-table-holder.table-folderListing-columns .workspace-css-table {
+
+  /* columns sizes */
+  --workspace-table-thin--cell--column-label--width: 10rem;
+  --workspace-table-bright--grid-template-columns: 5rem 34rem 12rem 6rem 18rem 100rem;
+
+}
+
+
+
+/* css-clean-start rewrites for this new theme */
+.workspace.css-table-ordered.jaisocx-folders-listing {
+
+  --clean-start__site__padding-top: 0;
+  --clean-start__h__margin: 1rem 0 1rem 0;
+
+
+  --clean-start__text-color-h: green;
+  --clean-start__font-weight_h: 600;
+  --clean-start__font-size_h1: 1.09rem;
+  --clean-start__line-height_h1: 1.25rem;
+
+  --css-table-ordered--column-name--font-weight: 600;
+
+  --clean-start__font-size: 0.85rem;
+  --clean-start__line-height: 1.2rem;
+}
+
+
+.workspace.css-table-ordered.jaisocx-folders-listing .workspace-css-table-holder .workspace-css-table .row.desktop-columns-labels-holder .column-label {
+  /* cell padding */
+  --workspace-table-bright--cell--padding: 0.9rem 0.6rem 0.9rem 0.6rem;
+  --workspace-table-bright--cell--cell-value--padding: 0 0 0 0;
+}
+
+
+
+.workspace.css-table-ordered.jaisocx-folders-listing .workspace-css-table-holder .workspace-css-table {
+
+  /* Css Clean Start for other html nodes equal line height and font size */
+  --clean-start__line-height: var(--clean-start__font-size);
+
+
+
+  --workspace-table--cell--column-label--font-weight: 600;
+
+
+  /* line height and font size */
+  --workspace-table-thin--cell--column-label--font-size: var(--clean-start__font-size);
+  --workspace-table-thin--cell--cell-value--font-size: var(--clean-start__font-size);
+
+  --workspace-table-bright--cell--column-label--font-size: var(--clean-start__font-size);
+  --workspace-table-bright--cell--cell-value--font-size: var(--clean-start__font-size);
+
+
+
+
+  /* cell padding */
+  --workspace-table-thin--cell--padding: 0.3rem 0.4rem 0.3rem 0.4rem;
+  --workspace-table-thin--cell--cell-value--padding: 0 0 0 0;
+
+  --workspace-table-bright--cell--padding: 0.43rem 0.6rem 0.43rem 0.6rem;
+  --workspace-table-bright--cell--cell-value--padding: 0 0 0 0;
+
+
+
+  /* hyperlinks colors */
+  --clean-start__anchor__text-color: #227022;
+  --clean-start__anchor__text-color-hover: #44aa44;
+  --clean-start__anchor__text-color-visited: #7a8a6a;
+}
+
+
+
+/* THIN */
+.workspace.css-table-ordered.jaisocx-folders-listing .workspace-css-table-holder.thin-styles-applied .workspace-css-table {
+
+  --workspace-table-thin--cell--column-label--font-size: 0.95rem;
+  --workspace-table-thin--cell--cell-value--font-size: 0.85rem;
+
+
+
+  --workspace-table--cell--column-label--line-height: var(--workspace-table-thin--cell--column-label--font-size);
+  --workspace-table-thin--cell--column-label--line-height: var(--workspace-table-thin--cell--column-label--font-size);
+
+  --workspace-table--cell--cell-value--line-height: var(--workspace-table-thin--cell--cell-value--font-size);
+  --workspace-table-thin--cell--cell-value--line-height: var(--workspace-table-thin--cell--cell-value--font-size);
+
+
+
+  /* cell padding */
+  --workspace-table-thin--cell--padding: 0 0 0 0;
+  --workspace-table-thin--cell--cell-value--padding: 0.43rem 0.6rem 0.43rem 0.6rem;
+}
+
+
+
+/* BRIGHT */
+.workspace.css-table-ordered.jaisocx-folders-listing .workspace-css-table-holder.bright-styles-applied .workspace-css-table {
+
+  --workspace-table-bright--cell--column-label--font-size: 0.95rem;
+  --workspace-table-bright--cell--cell-value--font-size: 0.85rem;
+
+
+
+  --workspace-table--cell--column-label--line-height: var(--workspace-table-bright--cell--column-label--font-size);
+  --workspace-table-bright--cell--column-label--line-height: var(--workspace-table-bright--cell--column-label--font-size);
+
+  --workspace-table--cell--cell-value--line-height: var(--workspace-table-bright--cell--cell-value--font-size);
+  --workspace-table-bright--cell--cell-value--line-height: var(--workspace-table-bright--cell--cell-value--font-size);
+
+
+
+  /* cell padding */
+  --workspace-table-bright--cell--padding: 0 0 0 0;
+  --workspace-table-bright--cell--cell-value--padding: 0.43rem 0.6rem 0.43rem 0.6rem;
+
+}
+
+
+
+

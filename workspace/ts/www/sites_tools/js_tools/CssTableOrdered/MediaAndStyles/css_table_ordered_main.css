@@ -7,8 +7,11 @@
 
 
 
-.css-table-ordered.workspace .workspace-css-table-holder.bright-styles-applied .workspace-css-table .row.folder .cell.name .cell-value {
+.css-table-ordered.workspace .workspace-css-table-holder .workspace-css-table .row.folder .cell.name .cell-value {
   font-weight: var(--css-table-ordered--column-name--font-weight);
 }
 
-
+.css-table-ordered.workspace .workspace-css-table-holder .workspace-css-table .row .cell-value a {
+  font-family: var(--css-table-ordered--a--font-family);
+  font-size: var(--css-table-ordered--a--font-size);
+}

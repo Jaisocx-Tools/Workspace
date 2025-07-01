@@ -1,7 +1,7 @@
 {
   "name": "@jaisocx/css-table-ordered",
   "author": "Jaisocx",
-  "version": "1.2.8",
+  "version": "1.2.9",
   "private": false,
   "description": "",
   "type": "module",
@@ -27,10 +27,12 @@
     "MediaAndStyles/*.css",
     "webpack.aliases.json",
     "table_example.html",
+    "table_example_folder_listing.html",
     "README.md"
   ],
   "keywords": [
     "table",
+    "order_by",
     "css",
     "styles",
     "ui"
