@@ -1249,60 +1249,29 @@
 
 
 
-.css-table-ordered.workspace {
 
-  --clean-start__site__padding-top: 0;
-  --clean-start__h__margin: 1rem 0 1rem 0;
+.workspace.css-table-ordered {
 
-
-  --clean-start__text-color-h: green;
-  --clean-start__font-weight_h: 900;
-  --clean-start__font-size_h1: 1.09rem;
-  --clean-start__line-height_h1: 1.25rem;
-
-  --css-table-ordered--column-name--font-weight: 800;
 }
 
 
 
-.css-table-ordered.workspace .workspace-css-table-holder.bright-styles-applied .workspace-css-table {
+.workspace.css-table-ordered .workspace-css-table-holder .workspace-css-table {
 
-  
-  --workspace-table-thin--cell--column-label--width: 10rem;
-  --workspace-table-bright--grid-template-columns: 5rem 34rem 12rem 6rem 18rem 100rem;
-
-
-
-
-  
-  --workspace-table-bright--cell--cell-value--font-size: 0.85rem;
-  --workspace-table-bright--cell--column-label--font-size: 0.95rem;
-
-
-
-  --workspace-table--cell--column-label--line-height: var(--workspace-table-bright--cell--column-label--font-size);
-  --workspace-table-bright--cell--column-label--line-height: var(--workspace-table-bright--cell--column-label--font-size);
-
-  --workspace-table--cell--cell-value--line-height: var(--workspace-table-bright--cell--cell-value--font-size);
-  --workspace-table-bright--cell--cell-value--line-height: var(--workspace-table-bright--cell--cell-value--font-size);
-
-
-
-  
-  --clean-start__font-size: var(--workspace-table-bright--cell--cell-value--font-size);
-  --clean-start__line-height: var(--clean-start__font-size);
-
-
-  
-  --workspace-table-bright--cell--padding: 0 0 0 0;
-  --workspace-table-bright--cell--cell-value--padding: 0.43rem 0.6rem 0.43rem 0.6rem;
-
-
-  
-  --clean-start__anchor__text-color: #227022;
-  --clean-start__anchor__text-color-hover: #44aa44;
-  --clean-start__anchor__text-color-visited: #7a8a6a;
 }
+
+
+
+.workspace.css-table-ordered .workspace-css-table-holder.thin-styles-applied .workspace-css-table {
+
+}
+
+
+
+.workspace.css-table-ordered .workspace-css-table-holder.bright-styles-applied .workspace-css-table {
+
+}
+
 
 
 
@@ -1437,6 +1406,651 @@
 
 
 
+@media only screen and (min-width: 768px) and (max-width: 1024px) and (orientation: portrait) {
+
+  .workspace {
+    --responsive_size: responsive_size_h05_tablet_md_portrait;
+
+    --responsive_size__min-width: 768px;
+    --responsive_size__max-width: 1024px;
+
+
+
+    --responsive_size_CssTableOrdered: responsive_size_h05_tablet_md_portrait_CssTableOrdered;
+
+    --responsive_size_CssTableOrdered__min-width: 768px;
+    --responsive_size_CssTableOrdered__max-width: 1024px;
+  }
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@media only screen and (min-width: 15361px) and (max-width: 25360px) and (orientation: landscape) {
+
+  .workspace {
+    --responsive_size: responsive_size_t16_tv_16k_landscape;
+
+    --responsive_size__min-width: 15361px;
+    --responsive_size__max-width: 25360px;
+
+
+
+    --responsive_size_CssTableOrdered: responsive_size_t16_tv_16k_landscape_CssTableOrdered;
+
+    --responsive_size_CssTableOrdered__min-width: 15361px;
+    --responsive_size_CssTableOrdered__max-width: 25360px;
+  }
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+.workspace.css-table-ordered.jaisocx-folders-listing {
+
+  --css-table-ordered--a--font-family: inherit;
+  --css-table-ordered--a--font-size: inherit;
+
+}
+
+
+.workspace.css-table-ordered.jaisocx-folders-listing .workspace-css-table-holder .workspace-css-table .row .cell.name {
+
+  
+  --workspace-table-thin--cell--padding: 1.4rem 0.4rem 0.8rem 0.4rem;
+  --workspace-table-thin--cell--cell-value--padding: 0 0 0 0;
+
+}
+
+
+.workspace.css-table-ordered.jaisocx-folders-listing .workspace-css-table-holder.table-folderListing-columns .workspace-css-table {
+
+  
+  --workspace-table-thin--cell--column-label--width: 10rem;
+  --workspace-table-bright--grid-template-columns: 5rem 34rem 12rem 6rem 18rem 100rem;
+
+}
+
+
+
+
+.workspace.css-table-ordered.jaisocx-folders-listing {
+
+  --clean-start__site__padding-top: 0;
+  --clean-start__h__margin: 1rem 0 1rem 0;
+
+
+  --clean-start__text-color-h: green;
+  --clean-start__font-weight_h: 600;
+  --clean-start__font-size_h1: 1.09rem;
+  --clean-start__line-height_h1: 1.25rem;
+
+  --css-table-ordered--column-name--font-weight: 600;
+
+  --clean-start__font-size: 0.85rem;
+  --clean-start__line-height: 1.2rem;
+}
+
+
+.workspace.css-table-ordered.jaisocx-folders-listing .workspace-css-table-holder .workspace-css-table .row.desktop-columns-labels-holder .column-label {
+  
+  --workspace-table-bright--cell--padding: 0.9rem 0.6rem 0.9rem 0.6rem;
+  --workspace-table-bright--cell--cell-value--padding: 0 0 0 0;
+}
+
+
+
+.workspace.css-table-ordered.jaisocx-folders-listing .workspace-css-table-holder .workspace-css-table {
+
+  
+  --clean-start__line-height: var(--clean-start__font-size);
+
+
+
+  --workspace-table--cell--column-label--font-weight: 600;
+
+
+  
+  --workspace-table-thin--cell--column-label--font-size: var(--clean-start__font-size);
+  --workspace-table-thin--cell--cell-value--font-size: var(--clean-start__font-size);
+
+  --workspace-table-bright--cell--column-label--font-size: var(--clean-start__font-size);
+  --workspace-table-bright--cell--cell-value--font-size: var(--clean-start__font-size);
+
+
+
+
+  
+  --workspace-table-thin--cell--padding: 0.3rem 0.4rem 0.3rem 0.4rem;
+  --workspace-table-thin--cell--cell-value--padding: 0 0 0 0;
+
+  --workspace-table-bright--cell--padding: 0.43rem 0.6rem 0.43rem 0.6rem;
+  --workspace-table-bright--cell--cell-value--padding: 0 0 0 0;
+
+
+
+  
+  --clean-start__anchor__text-color: #227022;
+  --clean-start__anchor__text-color-hover: #44aa44;
+  --clean-start__anchor__text-color-visited: #7a8a6a;
+}
+
+
+
+
+.workspace.css-table-ordered.jaisocx-folders-listing .workspace-css-table-holder.thin-styles-applied .workspace-css-table {
+
+  --workspace-table-thin--cell--column-label--font-size: 0.95rem;
+  --workspace-table-thin--cell--cell-value--font-size: 0.85rem;
+
+
+
+  --workspace-table--cell--column-label--line-height: var(--workspace-table-thin--cell--column-label--font-size);
+  --workspace-table-thin--cell--column-label--line-height: var(--workspace-table-thin--cell--column-label--font-size);
+
+  --workspace-table--cell--cell-value--line-height: var(--workspace-table-thin--cell--cell-value--font-size);
+  --workspace-table-thin--cell--cell-value--line-height: var(--workspace-table-thin--cell--cell-value--font-size);
+
+
+
+  
+  --workspace-table-thin--cell--padding: 0 0 0 0;
+  --workspace-table-thin--cell--cell-value--padding: 0.43rem 0.6rem 0.43rem 0.6rem;
+}
+
+
+
+
+.workspace.css-table-ordered.jaisocx-folders-listing .workspace-css-table-holder.bright-styles-applied .workspace-css-table {
+
+  --workspace-table-bright--cell--column-label--font-size: 0.95rem;
+  --workspace-table-bright--cell--cell-value--font-size: 0.85rem;
+
+
+
+  --workspace-table--cell--column-label--line-height: var(--workspace-table-bright--cell--column-label--font-size);
+  --workspace-table-bright--cell--column-label--line-height: var(--workspace-table-bright--cell--column-label--font-size);
+
+  --workspace-table--cell--cell-value--line-height: var(--workspace-table-bright--cell--cell-value--font-size);
+  --workspace-table-bright--cell--cell-value--line-height: var(--workspace-table-bright--cell--cell-value--font-size);
+
+
+
+  
+  --workspace-table-bright--cell--padding: 0 0 0 0;
+  --workspace-table-bright--cell--cell-value--padding: 0.43rem 0.6rem 0.43rem 0.6rem;
+
+}
+
+
+
+
+
+
+@media only screen and (min-width: 240px) and (max-width: 320px) and (orientation: portrait) {
+
+  .workspace {
+    --responsive_size: responsive_size_e02_mobile_xs_portrait;
+
+    --responsive_size__min-width: 240px;
+    --responsive_size__max-width: 320px;
+
+
+
+    --responsive_size_CssTableOrdered: responsive_size_e02_mobile_xs_portrait_CssTableOrdered;
+
+    --responsive_size_CssTableOrdered__min-width: 240px;
+    --responsive_size_CssTableOrdered__max-width: 320px;
+  }
+
+  .workspace-css-table .row .cell.table-thin-field-hide-mobile {
+    display: none;
+  }
+
+  .workspace-css-table .row .cell .column-label {
+    display: none;
+  }
+
+
+
+
+
+
+  
+  .workspace.css-table-ordered.jaisocx-folders-listing {
+
+    --clean-start__site__padding-top: 0;
+    --clean-start__h__margin: 1.9rem 0 1.9rem 0;
+
+
+    
+    --clean-start__font-weight_h: 600;
+
+    --clean-start__font-size_h1: 1rem;
+    --clean-start__line-height_h1: 1.32rem;
+
+    --css-table-ordered--column-name--font-weight: 600;
+  }
+
+
+
+  .workspace.css-table-ordered.jaisocx-folders-listing .workspace-css-table-holder .workspace-css-table {
+
+    
+    --clean-start__font-size: 1rem;
+    --clean-start__line-height: 1.32rem;
+
+
+
+    
+    --workspace-table-thin--cell--cell-value--font-size: var(--clean-start__font-size);
+
+
+
+    
+
+    --workspace-table--cell--cell-value--line-height: var(--clean-start__line-height);
+    --workspace-table-thin--cell--cell-value--line-height: var(--clean-start__line-height);
+
+
+
+
+    
+    --workspace-table-thin--cell--padding: 0.9rem 0.4rem 0.9rem 0.4rem;
+    --workspace-table-thin--cell--cell-value--padding: 0 0 0 0;
+
+  }
+
+}
+
+
+
+
+
+
+@media only screen and (min-width: 321px) and (max-width: 374px) and (orientation: portrait) {
+
+  .workspace {
+    --responsive_size: responsive_size_e04_mobile_s_portrait;
+
+    --responsive_size__min-width: 321px;
+    --responsive_size__max-width: 374px;
+
+
+
+    --responsive_size_CssTableOrdered: responsive_size_e04_mobile_s_portrait_CssTableOrdered;
+
+    --responsive_size_CssTableOrdered__min-width: 321px;
+    --responsive_size_CssTableOrdered__max-width: 374px;
+  }
+
+  .workspace-css-table .row .cell.table-thin-field-hide-mobile {
+    display: none;
+  }
+
+  .workspace-css-table .row .cell .column-label {
+    display: none;
+  }
+
+
+
+
+
+
+  
+  .workspace.css-table-ordered.jaisocx-folders-listing {
+
+    --clean-start__site__padding-top: 0;
+    --clean-start__h__margin: 1.9rem 0 1.9rem 0;
+
+
+    
+    --clean-start__font-weight_h: 600;
+
+    --clean-start__font-size_h1: 1rem;
+    --clean-start__line-height_h1: 1.32rem;
+
+    --css-table-ordered--column-name--font-weight: 600;
+  }
+
+
+
+  .workspace.css-table-ordered.jaisocx-folders-listing .workspace-css-table-holder .workspace-css-table {
+
+    
+    --clean-start__font-size: 1rem;
+    --clean-start__line-height: 1.32rem;
+
+
+
+    
+    --workspace-table-thin--cell--cell-value--font-size: var(--clean-start__font-size);
+
+
+
+    
+
+    --workspace-table--cell--cell-value--line-height: var(--clean-start__line-height);
+    --workspace-table-thin--cell--cell-value--line-height: var(--clean-start__line-height);
+
+
+
+
+    
+    --workspace-table-thin--cell--padding: 0.9rem 0.4rem 0.9rem 0.4rem;
+    --workspace-table-thin--cell--cell-value--padding: 0 0 0 0;
+
+  }
+
+}
+
+
+
+
+
+
+@media only screen and (min-width: 375px) and (max-width: 430px) and (orientation: portrait) {
+
+  .workspace {
+    --responsive_size: responsive_size_e06_mobile_sm_portrait;
+
+    --responsive_size__min-width: 375px;
+    --responsive_size__max-width: 430px;
+
+
+
+    --responsive_size_CssTableOrdered: responsive_size_e06_mobile_sm_portrait_CssTableOrdered;
+
+    --responsive_size_CssTableOrdered__min-width: 375px;
+    --responsive_size_CssTableOrdered__max-width: 430px;
+  }
+
+  .workspace-css-table .row .cell.table-thin-field-hide-mobile {
+    display: none;
+  }
+
+  .workspace-css-table .row .cell .column-label {
+    display: none;
+  }
+
+
+
+
+
+
+
+  
+  .workspace.css-table-ordered.jaisocx-folders-listing {
+
+    --clean-start__site__padding-top: 0;
+    --clean-start__h__margin: 1.9rem 0 1.9rem 0;
+
+
+    
+    --clean-start__font-weight_h: 600;
+
+    --clean-start__font-size_h1: 1rem;
+    --clean-start__line-height_h1: 1.32rem;
+
+    --css-table-ordered--column-name--font-weight: 600;
+  }
+
+
+
+  .workspace.css-table-ordered.jaisocx-folders-listing .workspace-css-table-holder .workspace-css-table {
+
+    
+    --clean-start__font-size: 1rem;
+    --clean-start__line-height: 1.32rem;
+
+
+
+    
+    --workspace-table-thin--cell--cell-value--font-size: var(--clean-start__font-size);
+
+
+
+    
+
+    --workspace-table--cell--cell-value--line-height: var(--clean-start__line-height);
+    --workspace-table-thin--cell--cell-value--line-height: var(--clean-start__line-height);
+
+
+
+
+    
+    --workspace-table-thin--cell--padding: 0.9rem 0.4rem 0.9rem 0.4rem;
+    --workspace-table-thin--cell--cell-value--padding: 0 0 0 0;
+
+  }
+
+}
+
+
+
+
+
+
+@media only screen and (min-width: 431px) and (max-width: 480px) and (orientation: portrait) {
+
+  .workspace {
+    --responsive_size: responsive_size_e08_mobile_md_portrait;
+
+    --responsive_size__min-width: 431px;
+    --responsive_size__max-width: 480px;
+
+
+
+    --responsive_size_CssTableOrdered: responsive_size_e08_mobile_md_portrait_CssTableOrdered;
+
+    --responsive_size_CssTableOrdered__min-width: 431px;
+    --responsive_size_CssTableOrdered__max-width: 480px;
+  }
+
+  .workspace-css-table .row .cell.table-thin-field-hide-mobile {
+    display: none;
+  }
+
+  .workspace-css-table .row .cell .column-label {
+    display: none;
+  }
+
+
+
+
+
+
+  
+  .workspace.css-table-ordered.jaisocx-folders-listing {
+
+    --clean-start__site__padding-top: 0;
+    --clean-start__h__margin: 1.9rem 0 1.9rem 0;
+
+
+    
+    --clean-start__font-weight_h: 600;
+
+    --clean-start__font-size_h1: 1rem;
+    --clean-start__line-height_h1: 1.32rem;
+
+    --css-table-ordered--column-name--font-weight: 600;
+  }
+
+
+
+  .workspace.css-table-ordered.jaisocx-folders-listing .workspace-css-table-holder .workspace-css-table {
+
+    
+    --clean-start__font-size: 1rem;
+    --clean-start__line-height: 1.32rem;
+
+
+
+    
+    --workspace-table-thin--cell--cell-value--font-size: var(--clean-start__font-size);
+
+
+
+    
+
+    --workspace-table--cell--cell-value--line-height: var(--clean-start__line-height);
+    --workspace-table-thin--cell--cell-value--line-height: var(--clean-start__line-height);
+
+
+
+
+    
+    --workspace-table-thin--cell--padding: 0.9rem 0.4rem 0.9rem 0.4rem;
+    --workspace-table-thin--cell--cell-value--padding: 0 0 0 0;
+
+  }
+
+}
+
+
+
+
+
+
+@media only screen and (min-width: 481px) and (max-width: 767px) and (orientation: portrait) {
+
+  .workspace {
+    --responsive_size: responsive_size_h03_tablet_sm_portrait;
+
+    --responsive_size__min-width: 481px;
+    --responsive_size__max-width: 767px;
+
+
+
+    --responsive_size_CssTableOrdered: responsive_size_h03_tablet_sm_portrait_CssTableOrdered;
+
+    --responsive_size_CssTableOrdered__min-width: 481px;
+    --responsive_size_CssTableOrdered__max-width: 767px;
+  }
+
+  .workspace .workspace-css-table-holder .workspace-css-table .cell.number .cell-value {
+    text-align: left;
+  }
+
+  .workspace-css-table .row .cell.table-thin-field-hide-tablet {
+    display: none;
+  }
+
+  .workspace-css-table .row {
+    padding: 0.01rem 0;
+    background-color: var(--workspace-table--cell--background-color);
+  }
+
+
+
+  .workspace.css-table-ordered.jaisocx-folders-listing {
+
+    --css-table-ordered--a--font-family: inherit;
+    --css-table-ordered--a--font-size: 0.95rem;
+
+  }
+
+}
+
+
+
+
+
+
+@media only screen and (min-width: 768px) and (max-width: 1024px) and (orientation: portrait) {
+
+  .workspace {
+    --responsive_size: responsive_size_h05_tablet_md_portrait;
+
+    --responsive_size__min-width: 768px;
+    --responsive_size__max-width: 1024px;
+
+
+
+    --responsive_size_CssTableOrdered: responsive_size_h05_tablet_md_portrait_CssTableOrdered;
+
+    --responsive_size_CssTableOrdered__min-width: 768px;
+    --responsive_size_CssTableOrdered__max-width: 1024px;
+  }
+
+  .workspace .workspace-css-table-holder .workspace-css-table .cell.number .cell-value {
+    text-align: left;
+  }
+
+  .workspace-css-table .row .cell.table-thin-field-hide-tablet {
+    display: none;
+  }
+
+  .workspace-css-table .row {
+    padding: 0.01rem 0;
+    background-color: var(--workspace-table--cell--background-color);
+  }
+
+
+
+  .workspace.css-table-ordered.jaisocx-folders-listing {
+
+    --css-table-ordered--a--font-family: inherit;
+    --css-table-ordered--a--font-size: 0.95rem;
+
+  }
+
+}
+
 
 
 
@@ -1510,8 +2124,11 @@
 
 
 
-.css-table-ordered.workspace .workspace-css-table-holder.bright-styles-applied .workspace-css-table .row.folder .cell.name .cell-value {
+.css-table-ordered.workspace .workspace-css-table-holder .workspace-css-table .row.folder .cell.name .cell-value {
   font-weight: var(--css-table-ordered--column-name--font-weight);
 }
 
-
+.css-table-ordered.workspace .workspace-css-table-holder .workspace-css-table .row .cell-value a {
+  font-family: var(--css-table-ordered--a--font-family);
+  font-size: var(--css-table-ordered--a--font-size);
+}

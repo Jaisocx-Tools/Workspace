@@ -2,7 +2,16 @@
 @import url("@CssTable_MediaAndStyles/css-table-main-webpack.css");
 
 
+
+/* base theme, just a try to extend styles of a css tool. there no styles, just the responsive sizes constants
+indeed, the normal way would be to write a theme at once in the css-table css sites tool.
+this sites tool is just for one ts class to perform ordering on css-table's columns.
+*/
 @import url("@CssTableOrdered_MediaAndStyles/themes/theme_base/responsive_size_a03_CssImports_CssTableOrdered_Webpack.css");
+
+/* theme for the Jaisocx sites Server tmplate for folders listing */
+@import url("@CssTableOrdered_MediaAndStyles/themes/theme_jaisocx_folders_listing/responsive_size_a03_CssImports_CssTableOrdered_Webpack.css");
+
 @import url("@CssTableOrdered_MediaAndStyles/css_table_ordered_main.css");
 
 
