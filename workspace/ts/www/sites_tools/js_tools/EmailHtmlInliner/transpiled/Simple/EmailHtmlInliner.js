@@ -133,6 +133,22 @@ class EmailHtmlInliner {
         }
 
         if (mainNode.tagName.toLowerCase() === "html") {
+            node = this.htmlDocument.querySelector("head");
+            newNodeApplied = docElem.querySelector("head");
+            newNodeApplied.style.display = "none";
+            let base = this.htmlDocument.querySelector("base");
+
+            if (base) {
+                let newBaseElem = newDoc.createElement("base");
+                newBaseElem.setAttribute(
+                    "href", (
+                        base.getAttribute("href") || ""
+                    ));
+                newNodeApplied.append(newBaseElem);
+            }
+        }
+
+        if (mainNode.tagName.toLowerCase() === "html") {
             node = this.htmlDocument.querySelector("body");
             newNodeApplied = docElem.querySelector("body");
 
@@ -180,6 +196,18 @@ class EmailHtmlInliner {
                 "; ", (
                     ";\n" + backgroundSpacesStyle
                 ));
+
+        for (let tagName of this.constants.renamedTags) {
+            inlineStyledHtml = inlineStyledHtml
+                .replaceAll((
+                    "<" + tagName.toLowerCase()),
+                "<div"
+                )
+                .replaceAll((
+                    "</" + tagName.toLowerCase() + ">"),
+                "</div>"
+                );
+        }
 
         return inlineStyledHtml;
     }
@@ -250,16 +278,27 @@ class EmailHtmlInliner {
             if (this.debug === true) {
                 newNode.className = node.className;
             }
+            let aName = "";
+            let aValue = "";
 
-            if (node.nodeName.toLowerCase() === "img") {
-                let imageSrc = node.getAttribute("src");
 
-                if (imageSrc) {
-                    let imageSrcReplaced = imageSrc.replace(
+            // temporary, includes when later other tags will be copied with href or src.
+            if (["a"].includes(node.nodeName.toLowerCase())) {
+                aName = "href";
+            }
+            else if (["img"].includes(node.nodeName.toLowerCase())) {
+                aName = "src";
+            }
+
+            if (aName.length !== 0) {
+                aValue = node.getAttribute(aName) || "";
+
+                if (aValue) {
+                    let aValueReplaced = aValue.replace(
                         inBaseUrlToReplace,
                         inBaseUrlReplacedWith
                     );
-                    newNode.setAttribute("src", imageSrcReplaced);
+                    newNode.setAttribute(aName, aValueReplaced);
                 }
             }
             this.copyAllStyles(
@@ -599,7 +638,7 @@ class EmailHtmlInliner {
     // END BLOCK MAIN METHODS
     // START BLOCK  METHODS TO PRE-BUILD DATA SETS TO AVOID AMBIGOUS METHODS CALLS ON SAME CSSRULES MANY TIMES.
     // 1) first invoked line 79
-    // filters out CSSResponsiveSize by media query to current device monitor size
+    // filters out CSSMediaRule by media query to current device monitor size
     // all ResponsiveSize types are recursively set as CSSStyleRule
     // relays on subcall to the next recursive method calculateSpecifitiesForAllRules()
     getRulesMatchingMedia() {
@@ -621,7 +660,7 @@ class EmailHtmlInliner {
     }
 
 
-    // filters out CSSResponsiveSize by media query to current device monitor size
+    // filters out CSSMediaRule by media query to current device monitor size
     // all ResponsiveSize types are recursively set as CSSStyleRule to the 2nd in arg inOutRulesMatching
     // pre-build subcall of 1) method of getRulesMatchingMedia() to add all rules matching current media
     calculateSpecifitiesForAllRules(cssRules, inOutRulesMatching) {
@@ -644,7 +683,7 @@ class EmailHtmlInliner {
                 inOutRulesMatching.push(objectPushed);
                 continue;
             }
-            else if (rule instanceof CSSResponsiveSize) {
+            else if (rule instanceof CSSMediaRule) {
 
                 if (window.matchMedia(rule.conditionText).matches === false) {
 

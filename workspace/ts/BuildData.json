@@ -387,7 +387,7 @@
       "build": false,
       "build-simple-enable": true,
       "css-importer": {
-        "build": true,
+        "build": false,
         "cssFilePath": "MediaAndStyles/css_table_ordered_main_webpack.css",
         "cssTargetFilePath": "MediaAndStyles/css_table_ordered_main_resolved.css"
       },
@@ -534,7 +534,7 @@
       "path": "sites_tools/js_tools/EmailHtmlInliner",
       "name": "email-html-inliner",
       "update-published": "Tue Jun  3 00:36:34 GMT 2025",
-      "build": false,
+      "build": true,
       "build-simple-enable": true,
       "dependencies": [
         {

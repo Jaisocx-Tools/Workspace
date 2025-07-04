@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="en" class="workspace long theme-emailed-thin">
+<!-- <html> -->
+<head>
+
+  <title>Application to Job</title>
+
+  <base href="./../../../..">
+
+  <meta charset="UTF-8">
+
+
+
+  <link rel="stylesheet" href="sites_tools/js_tools/EmailHtmlInliner/letter_example/css/fonts.css">
+  <link rel="stylesheet" href="sites_tools/js_tools/EmailHtmlInliner/letter_example/css/main.css">
+
+
+
+  <script src="packages/Text/transpiled/Simple/Trimmer.js"></script>
+  <script src="packages/CssHtml/transpiled/Simple/CssHtml.js"></script>
+  <script src="packages/CssHtml/transpiled/Simple/CssSelectorWeight.js"></script>
+
+  <script src="sites_tools/js_tools/EmailHtmlInliner/transpiled/Simple/EmailHtmlInlinerConstants.js"></script>
+  <script src="sites_tools/js_tools/EmailHtmlInliner/transpiled/Simple/EmailHtmlInliner.js"></script>
+
+
+
+
+  <link rel="stylesheet" href="sites_tools/css_tools/CssCleanStart/MediaAndStyles/themes/theme_base/css_clean_start_theme_base.css">
+  <link rel="stylesheet" href="sites_tools/css_tools/CssCleanStart/MediaAndStyles/css_clean_start_main.css">
+
+
+
+
+
+  <!-- CssCodeSnippet -->
+  <link rel="stylesheet" href="sites_tools/css_tools/CssCodeSnippet/MediaAndStyles/themes/csstool-codesnippet-theme-colour-rosa.css">
+  <link rel="stylesheet" href="sites_tools/css_tools/CssCodeSnippet/MediaAndStyles/themes/csstool-codesnippet-theme-colour-blue.css">
+  <link rel="stylesheet" href="sites_tools/css_tools/CssCodeSnippet/MediaAndStyles/themes/csstool-codesnippet-theme-colour-salad.css">
+  <link rel="stylesheet" href="sites_tools/css_tools/CssCodeSnippet/MediaAndStyles/themes/csstool-codesnippet-theme-size-little.css">
+  <link rel="stylesheet" href="sites_tools/css_tools/CssCodeSnippet/MediaAndStyles/themes/csstool-codesnippet-theme-size-large.css">
+  <link rel="stylesheet" href="sites_tools/css_tools/CssCodeSnippet/MediaAndStyles/themes/csstool-codesnippet-theme-base.css">
+  <link rel="stylesheet" href="sites_tools/css_tools/CssCodeSnippet/MediaAndStyles/csstool-codesnippet-theme-styles-main.css">
+  <link rel="stylesheet" href="sites_tools/css_tools/CssCodeSnippet/MediaAndStyles/lines-numbers-variables/code-snippet-lines-numbers-300.css">
+  <!-- <link rel="stylesheet" href="sites_tools/js_tools/EmailHtmlInliner/MediaAndStyles/CssCodeSnippet/code-snippet-lines-numbers-999.css"> -->
+  <!-- <link rel="stylesheet" href="sites_tools/js_tools/EmailHtmlInliner/MediaAndStyles/CssCodeSnippet/code-snippet-lines-numbers-2999.css"> -->
+
+
+
+
+  <style>
+
+    :root {
+      --main-width: 100%;
+      --imageholder-width: 100%;
+      --imageholder-height: 100%;
+      --main-background-color: inherit;
+      --img-width: 320px;
+      --img-height: 234px;
+    }
+
+  </style>
+
+
+
+<style name="inliner-ui-tool">
+
+  .workspace.long.theme-emailed-thin .CodeSnippetHolder#code-snippet-inlinetext {
+    --lines-numbers--content: var(--lines-numbers--content--300);
+    --lines-number: 300;
+
+    --code-snippet-tool--width: 29rem;
+    --code-snippet-tool--height: 32rem;
+    --overflow-y: auto;
+    --overflow-x: auto;
+  }
+
+  .workspace.long.theme-emailed-thin s {
+    text-decoration: none;
+
+    display: block;
+    position: static;
+
+  }
+
+  #inlinertoolarea {
+    position: fixed;
+
+    top: 2rem;
+    right: 1rem;
+
+    height: auto;
+    width: auto;
+
+    overflow: visible;
+    z-index: 1000;
+  }
+
+  #inlinerbuttonarea {
+    display: block;
+    z-index: 1002;
+  }
+
+  #btn-show-inline-text {
+    display: block;
+    position: static;
+    z-index: 1008;
+
+    background-color: steelblue;
+    color: aliceblue;
+    border: 1px solid #66ddff;
+    border-radius: 0.2rem;
+    padding: 0.4rem 0.8rem;
+  }
+
+  #inlinertextarea {
+    /* height: var(--code-snippet-tool--height);
+    width: var(--code-snippet-tool--width);
+    max-width: var(--code-snippet-tool--width); */
+
+    position: absolute;
+    top: 4rem;
+    right: 0;
+
+    overflow: visible;
+  }
+
+  #inlinertextarea nav {
+    display: flex;
+    flex-direction: row;
+    align-items: baseline;
+    justify-content: flex-start;
+  }
+
+  #inlinertextarea nav button {
+    width: auto;
+    height: auto;
+    overflow: visible;
+
+    padding: 0.16rem 0.9rem 0.16rem 0.9rem;
+    margin: 0 0.3rem 0.16rem 0;
+
+    background-color: #f2f9ff;
+    color: #000;
+    border: 1px solid #44ddff;
+    border-radius: 0.6rem;
+
+    font-size: 0.674rem;
+    line-height: 0.674rem;
+
+    letter-spacing: 1px;
+  }
+
+  #inlinertextarea nav button:hover {
+    background-color: #a5d7ff;
+    color: #049;
+    border: 1px solid #1166ff;
+  }
+
+  #inlinertextarea nav button:focus {
+    background-color: #c5e9ff;
+    color: #fff;
+    border: 1px solid #2288ff;
+  }
+
+</style>
+
+
+</head>
+<body class="level_first">
+
+  <s id="inlinertoolarea" style="display: block;">
+    <s id="inlinerbuttonarea">
+      <button id="btn-show-inline-text">Show Inliner</button>
+    </s>
+
+    <s id="inlinertextarea" style="display: none;">
+      <nav>
+        <button id="btn-inline-html">Produce Inline HTML</button>
+        <button id="btn-copy-inline-text">Copy To Clipboard</button>
+        <button id="btn-inline-text-in-new-tab">Show In New Tab</button>
+      </nav>
+
+      <CodeSnippetHolder id="code-snippet-inlinetext" class="CodeSnippetHolder little blue">
+        <pre class="CodeSnippetArea" id="inlinetext"></pre>
+      </CodeSnippetHolder>
+
+    </s>
+  </s>
+
+
+    <main>
+
+      <div class="in_main">
+        <div class="header">
+          <div class="address-col address-col-first">
+              <div class="company recipient">
+                  <div class="logo">
+                      <img src="sites_tools/js_tools/EmailHtmlInliner/letter_example/images/company/logoipsum-344.png" />
+                  </div>
+                  <div class="companyName">Logo Impsum</div>
+              </div>
+              <div class="contactPerson">
+                  to: Logo Impsum Recruiters Team
+              </div>
+              <div class="postal-address">
+                  <div class="postal-address-line">
+                      <span class="street">CompanyStreet 1</span>
+                  </div>
+                  <div class="postal-address-line">
+                      <span class="zip">345678</span>
+                      <span class="town">Town</span>
+                  </div>
+                  <div class="postal-address-line">
+                      <span class="land">Land</span>
+                  </div>
+              </div>
+              <div class="email"><a href="mailto:">jobs@logo_impsum_company.com</a></div>
+          </div>
+          <div class="address-col address-col-second">
+              <!--<div class="adress-col-second-margin"></div>-->
+              <div class="company sender">
+                  <div class="logo">
+                      <img src="sites_tools/js_tools/EmailHtmlInliner/letter_example/images/applicant/student.png" />
+                  </div>
+                  <div class="companyName">&lt;Your Name&gt;</div>
+              </div>
+              <div class="contactPerson">
+                  &lt;Your Name&gt;
+              </div>
+              <div class="postal-address">
+                  <div class="postal-address-line">
+                      <span class="street">StreeetInTown 1</span>
+                  </div>
+                  <div class="postal-address-line">
+                      <span class="zip">12378745</span>
+                      <span class="town">Town</span>
+                  </div>
+                  <div class="postal-address-line">
+                      <span class="land">Country</span>
+                  </div>
+              </div>
+              <div class="email">
+                  <a href="mailto:&lt;Your Name&gt;@gmail.com">&lt;Your Name&gt;@gmail.com</a>
+              </div>
+          </div>
+        </div>
+
+
+        <div class="date-and-place">
+            <span>
+                <b>Date:</b>
+                <span>The 04th of July 2025</span>
+                <span>06:34 CET</span>
+            </span>
+            <span>
+                <b>Place:</b>
+                <span>City, Country</span>
+            </span>
+
+        </div>
+
+
+        <div class="paragraph theme">Application for Job: "The best Job since ever))"</div>
+        <div class="text">
+            <span class="paragraph">
+                Good day, dear Company Recruiters Team,
+            </span>
+            <span class="paragraph">
+                The custom application cover letter text.
+            </span>
+            <span class="paragraph">
+                The custom application cover letter text 2.
+            </span>
+            <span class="paragraph">
+                The custom application cover letter text 3.
+            </span>
+        </div>
+
+
+        <span class="line regards">Friendly Greeting,</span>
+        <span class="line name">&lt;Your Name&gt;</span>
+
+      </div>
+
+    </main>
+
+  <script>
+
+  let globBaseUrlToReplace = "";
+  let globBaseUrlReplacedWith = "";
+  // globBaseUrlToReplace = "sites_tools/js_tools/EmailHtmlInliner/letter_example/images/";
+  // globBaseUrlReplacedWith = "images/";
+
+
+
+  let debug = true;
+
+  function showHide_InlinerButton( e, withCtrl, withShift, keyCode ) {
+
+    let ctrl = withCtrl ? e.ctrlKey : true;
+    let shift = withShift ? e.shift : true;
+
+    if ( ctrl && shift && e.code === keyCode ) {
+      let inlinerToolArea = document.getElementById( "inlinertoolarea" );
+
+      let shownStyleValue = ( inlinerToolArea.style.display === "none" ) ? "block" : "none";
+
+      inlinerToolArea.style.display = shownStyleValue;
+
+      if ( shownStyleValue === "none" ) {
+        let textArea = document.getElementById("inlinertextarea");
+        textArea.style.display = shownStyleValue;
+      }
+    }
+  }
+
+
+  function showInlineText( e ) {
+    let textArea = document.getElementById("inlinertextarea");
+    let shownStyleValue = ( textArea.style.display === "none" ) ? "block" : "none";
+    textArea.style.display = shownStyleValue;
+  }
+
+
+
+  function inlineText( e, baseUrlToReplace, baseUrlReplacedWith ) {
+    let inliner = new EmailHtmlInliner();
+    inliner
+      .setDebug( true )
+      .setNumberBackgroundSpacesBefore_tagStart( 0 )
+      .setNumberBackgroundSpacesBefore_attrStart( 2 )
+      .setNumberBackgroundSpacesBefore_styleStart( 4 );
+
+
+    let cssHtmlPackage = inliner.cssHtmlPackage;
+
+    let inlineText = inliner.inline (
+      document,
+      "html",
+      inliner.constants.stylesPropsToCheck,
+      baseUrlToReplace,
+      baseUrlReplacedWith
+    );
+
+    let textHtmlNode = document.getElementById("inlinetext");
+    textHtmlNode.innerHTML = cssHtmlPackage.escapeHTML( inlineText );
+  }
+
+
+  async function copyInlineText( e ) {
+    let cssHtmlPackage = new CssHtml();
+    let textHtmlNode = document.getElementById("inlinetext");
+    let inlineText = cssHtmlPackage.unescapeHTML( textHtmlNode.innerHTML );
+
+    await navigator.clipboard.writeText( inlineText );
+
+    return 1;
+  }
+
+
+  function inlineTextInNewTab( e ) {
+    let cssHtmlPackage = new CssHtml();
+    let textHtmlNode = document.getElementById("inlinetext");
+    let inlineText = cssHtmlPackage.unescapeHTML( textHtmlNode.innerHTML );
+
+    const newWin = window.open();
+    newWin.document.write( inlineText );
+    newWin.document.close(); // Important!
+  }
+
+
+
+  function assignEventHandler_ShowHide_InlinerButton( withCtrl, withShift, keyCode ) {
+    document.addEventListener( "keypress", function (e) {
+      showHide_InlinerButton( e, withCtrl, withShift, keyCode );
+    });
+  }
+
+  function assignEventHandler_BtnShowInlineText( buttonId, eventName ) {
+    let eventTriggeringHtmlElem = document.getElementById( buttonId );
+
+    eventTriggeringHtmlElem.addEventListener ( eventName, function(e){ showInlineText( e ); } );
+  }
+
+  function assignEventHandler_BtnInlineText( buttonId, eventName, baseUrlToReplace, baseUrlReplacedWith ) {
+    let eventTriggeringHtmlElem = document.getElementById( buttonId );
+
+    eventTriggeringHtmlElem.addEventListener ( eventName, function(e){ inlineText( e, baseUrlToReplace, baseUrlReplacedWith ); } );
+  }
+
+  function assignEventHandler_BtnCopyInlineText( buttonId, eventName ) {
+    let eventTriggeringHtmlElem = document.getElementById( buttonId );
+
+    eventTriggeringHtmlElem.addEventListener ( eventName, function(e){ copyInlineText( e ); } );
+  }
+
+  function assignEventHandler_BtnInlineTextInNewTab( buttonId, eventName ) {
+    let eventTriggeringHtmlElem = document.getElementById( buttonId );
+
+    eventTriggeringHtmlElem.addEventListener ( eventName, function(e){ inlineTextInNewTab( e ); } );
+  }
+
+
+  function assignEventsHandlers() {
+    assignEventHandler_ShowHide_InlinerButton( true, false, "KeyQ" );
+    assignEventHandler_BtnShowInlineText( "btn-show-inline-text", "click" );
+    assignEventHandler_BtnInlineText( "btn-inline-html", "click", globBaseUrlToReplace, globBaseUrlReplacedWith );
+    assignEventHandler_BtnCopyInlineText( "btn-copy-inline-text", "click" );
+    assignEventHandler_BtnInlineTextInNewTab( "btn-inline-text-in-new-tab", "click" );
+  }
+
+  document.addEventListener( "DOMContentLoaded", () => { assignEventsHandlers(); } );
+
+  </script>
+
+</body>
+</html>
+
+
+
+
+

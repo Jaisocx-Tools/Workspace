@@ -103,12 +103,15 @@ class EmailHtmlInlinerConstants {
         // tags, You wish to add when the inline-styles html is produced, to send via email.
         this.allowedTags = [
             "HTML",
+            "HEAD",
+            "BASE",
             "BODY",
             "MAIN",
             "H1",
             "DIV",
             "SPAN",
-            "IMG"
+            "IMG",
+            "A"
         ];
         this.renamedTags = [
             "HTML",

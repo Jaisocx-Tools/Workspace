@@ -153,6 +153,23 @@ export class EmailHtmlInliner implements EmailHtmlInlinerInterface {
     }
 
     if ( mainNode.tagName.toLowerCase() === "html" ) {
+      node = this.htmlDocument.querySelector("head") as HTMLElement;
+      newNodeApplied = docElem.querySelector("head") as HTMLElement;
+      newNodeApplied.style.display = "none";
+
+      let base: HTMLElement|null = this.htmlDocument.querySelector("base");
+
+      if ( base ) {
+        let newBaseElem: HTMLElement = newDoc.createElement( "base" );
+        newBaseElem.setAttribute(
+          "href", (
+            base.getAttribute( "href" ) || ""
+          ) );
+        newNodeApplied.append( newBaseElem );
+      }
+    }
+
+    if ( mainNode.tagName.toLowerCase() === "html" ) {
       node = this.htmlDocument.querySelector("body") as HTMLElement;
       newNodeApplied = docElem.querySelector("body") as HTMLElement;
 
@@ -204,6 +221,18 @@ export class EmailHtmlInliner implements EmailHtmlInlinerInterface {
         "; ",  (
           ";\n" + backgroundSpacesStyle
         ) );
+
+    for ( let tagName of this.constants.renamedTags ) {
+      inlineStyledHtml = inlineStyledHtml
+        .replaceAll( (
+          "<" + tagName.toLowerCase() ),
+        "<div"
+        )
+        .replaceAll( (
+          "</" + tagName.toLowerCase() + ">" ),
+        "</div>"
+        );
+    }
 
     return inlineStyledHtml;
   }
@@ -261,6 +290,7 @@ export class EmailHtmlInliner implements EmailHtmlInlinerInterface {
       if ( node.nodeType === 1 && !this.constants.allowedTags.includes(node.nodeName) ) {
         continue;
       } else if ( node.nodeType === 3 ) {
+
         if ( !node.nodeValue || node.nodeValue.trim().length === 0 ) {
           continue;
         }
@@ -279,15 +309,26 @@ export class EmailHtmlInliner implements EmailHtmlInlinerInterface {
         newNode.className = node.className;
       }
 
-      if ( node.nodeName.toLowerCase() === "img" ) {
-        let imageSrc: string|null = node.getAttribute( "src" );
+      let aName: string = "";
+      let aValue: string|null = "";
 
-        if ( imageSrc ) {
-          let imageSrcReplaced: string = imageSrc.replace(
+
+      // temporary, includes when later other tags will be copied with href or src.
+      if ( ["a"].includes( node.nodeName.toLowerCase() ) ) {
+        aName = "href";
+      } else if ( ["img"].includes( node.nodeName.toLowerCase() ) ) {
+        aName = "src";
+      }
+
+      if ( aName.length !== 0 ) {
+        aValue = node.getAttribute( aName ) || "";
+
+        if ( aValue ) {
+          let aValueReplaced: string = aValue.replace(
             inBaseUrlToReplace,
             inBaseUrlReplacedWith
           );
-          newNode.setAttribute( "src", imageSrcReplaced );
+          newNode.setAttribute( aName, aValueReplaced );
         }
       }
 
@@ -319,7 +360,6 @@ export class EmailHtmlInliner implements EmailHtmlInlinerInterface {
         continue;
 
       } else if ( node.nodeType === 3 ) {
-
         if ( node.nodeValue && node.nodeValue.trim().length !== 0 ) {
           newNodeNumber++;
         }
@@ -671,7 +711,7 @@ export class EmailHtmlInliner implements EmailHtmlInlinerInterface {
   // END BLOCK MAIN METHODS
   // START BLOCK  METHODS TO PRE-BUILD DATA SETS TO AVOID AMBIGOUS METHODS CALLS ON SAME CSSRULES MANY TIMES.
   // 1) first invoked line 79
-  // filters out CSSResponsiveSize by media query to current device monitor size
+  // filters out CSSMediaRule by media query to current device monitor size
   // all ResponsiveSize types are recursively set as CSSStyleRule
   // relays on subcall to the next recursive method calculateSpecifitiesForAllRules()
   getRulesMatchingMedia(): RuleAndSpecifities[] {
@@ -696,7 +736,7 @@ export class EmailHtmlInliner implements EmailHtmlInlinerInterface {
   }
 
 
-  // filters out CSSResponsiveSize by media query to current device monitor size
+  // filters out CSSMediaRule by media query to current device monitor size
   // all ResponsiveSize types are recursively set as CSSStyleRule to the 2nd in arg inOutRulesMatching
   // pre-build subcall of 1) method of getRulesMatchingMedia() to add all rules matching current media
   calculateSpecifitiesForAllRules (
@@ -726,9 +766,9 @@ export class EmailHtmlInliner implements EmailHtmlInlinerInterface {
 
         continue;
 
-      } else if (rule instanceof CSSResponsiveSize ) {
-
+      } else if (rule instanceof CSSMediaRule ) {
         if ( window.matchMedia(rule.conditionText).matches === false ) {
+
           if ( this.debug === true ) {
             console.warn(
               "Did not match @media query:",
@@ -754,7 +794,6 @@ export class EmailHtmlInliner implements EmailHtmlInlinerInterface {
         continue;
 
       } else if (rule instanceof CSSImportRule) {
-
         if ( this.debug === true ) {
           console.info ( "Imported rule:", rule );
         }
@@ -773,6 +812,7 @@ export class EmailHtmlInliner implements EmailHtmlInlinerInterface {
         continue;
 
       } else {
+
         if ( this.debug === true ) {
           console.warn(
             "Unprocessed, other rule type",
@@ -886,7 +926,6 @@ export class EmailHtmlInliner implements EmailHtmlInlinerInterface {
     valueByBrowser: string,
     valueByInliner: string
   ): undefined {
-
     if ( valueByBrowser.includes("px") === true ) {
       let vals = valueByBrowser.split( " " );
       let rounded = vals.map(
@@ -924,6 +963,7 @@ export class EmailHtmlInliner implements EmailHtmlInlinerInterface {
     };
 
     if ( ( valueByInliner.length !== 0 ) && ( valueByInliner !== valueByBrowser ) ) {
+
       if (
         !(
           ( valueByInliner === "inherit" ) ||
