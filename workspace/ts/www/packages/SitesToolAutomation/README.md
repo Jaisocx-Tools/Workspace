@@ -5,9 +5,38 @@
 
 in the Terminal, in the Root of the Project
 
+## Produce theme responsive .css fresh fileset for the CssCleanStart
+
 ```bash
-./produceSitesToolTemplate.sh --sitesToolName=CssCleanStart --cssOrJsTool=css --template="data/templates/ResponsiveTemplate.template" --withSizesCssConstants=true --withConstantsImportLine=true
+./produceCleanStart.sh --sitesTool_ThemeName=theme_example --sitesToolName=CssCleanStart2 --cssOrJsTool=css --template="data/templates/responsive_size__CssCleanStart.css.template" --withSizesCssConstants=true --withConstantsImportLine=true
 ```
+
+
+
+## for a sites tool, css or js
+
+```bash
+./produceSitesToolTemplate.sh --sitesTool_ThemeName=theme_example --sitesToolName=ACssSitesTool3 --cssOrJsTool=css --template="data/templates/responsive_size.css.template"
+```
+
+
+## the responsive .css filest with minimal .css files of size 6 (six) text lines and 419 bytes.
+
+```
+./produceCleanStart.sh --sitesTool_ThemeName=theme_example --sitesToolName=ACssSitesTool4 --cssOrJsTool=css --template="data/templates/responsive_size__mini.css.template"
+```
+
+
+
+## for a sites tool by a custom template
+
+```
+./produceCleanStart.sh --sitesTool_ThemeName=theme_example --sitesToolName=ACssSitesTool4 --cssOrJsTool=css --template="data/templates/responsive_size__mini.css.template"
+```
+
+
+
+
 
 
 
@@ -45,6 +74,80 @@ in the Terminal, in the Root of the Project
 
 
 
+## Program flow
+
+### 1. command line args
+
+in terminal:
+
+./example_produce_CssTable_themeExample_MediaAndStyles.sh ( args )
+
+calls base bash scipt:
+
+produceSitesTool_MediaAndStyles_base.sh ( args )
+
+in docker:
+
+/var/www/workspace/ts/www/packages/SitesToolAutomation/bash/produceSitesToolTemplate.sh ( args )
+
+node in dockerized ts service:
+
+/var/www/workspace/ts/www/packages/SitesToolAutomation/src/main/produceSitesTool_byExtendedPropsForTemplate.ts ( args )
+
+args mapped to js object:
+
+```
+  const terminalInpArgsObject: any = {
+    sitesTool_ThemeName: "theme_base",
+    sitesToolName: "",
+    cssOrJsTool: "",
+    template: "",
+    withSizesCssConstants: "",
+    withConstantsImportLine: ""
+  };
+```
+
+line 55: overrides method mainClassInstance.responsiveCssFile.getTemplateDataOverridden.
+
+in the overriding method You may implement assignemnt of custom values passed to template.
 
 
 
+this method gets 2 args:
+
+1. responsiveDatasetPropName: id of the json object in dataset
+2. templateDataBase: custom js object, this will be returned from this method to use in the templates.
+
+
+
+The overriding method args explained
+
+1. responsiveDatasetPropName: id of the json object in dataset at path
+
+`workspace/ts/www/packages/SitesToolAutomation/data/ResponsiveSizes/ResponsiveSizes.json`
+
+available for You on url
+
+[https://sandbox.brightday.emal/packages/SitesToolAutomation/data/ResponsiveSizes/ResponsiveSizes.json](https://sandbox.brightday.emal/packages/SitesToolAutomation/data/ResponsiveSizes/ResponsiveSizes.json)
+
+
+Example of value for responsiveDatasetPropName: **mobile_xs**
+
+```json
+{
+  ...
+  ...
+  "data": {
+    "mobile_xs": {
+      "range_orderby_id": "e02",
+      "width": {
+        "from": 240,
+        "to": 320
+      },
+      "height": {
+        "from": 320,
+  ...
+  ...
+```
+
+2. templateDataBase

@@ -10,8 +10,11 @@ export { ResponsiveFilesSet } from "./responsive_files_set/ResponsiveFilesSet.js
 export { ResponsiveFilesSetInterface } from "./responsive_files_set/ResponsiveFilesSetInterface.js";
 export { TsFile_ResponsiveSizesNames } from "./ts_file_responsive_sizes_names/TsFile_ResponsiveSizesNames.js";
 export { TsFile_ResponsiveSizesNames_Interface } from "./ts_file_responsive_sizes_names/TsFile_ResponsiveSizesNames_Interface.js";
+
+export { CommandLineArgsInterface } from "./command_line/CommandLineArgsInterface.js";
+export { CommandLineArgs } from "./command_line/CommandLineArgs.js";
+
 export { Main } from "./main/Main.js";
-export { produceSitesToolTemplate } from "./main/produceSitesToolTemplate.js";
-export { produceCleanStart } from "./main/produceCleanStart.js";
+export { produceSitesTool_MediaAndStyles } from "./main/produceSitesTool_MediaAndStyles.js";
 
 

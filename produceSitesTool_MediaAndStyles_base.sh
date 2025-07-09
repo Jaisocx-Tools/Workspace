@@ -1,16 +1,15 @@
 #!/usr/bin/env bash
 
-# EXAMPLE
+## CssTable2 .theme_example
 
-# ./genSiteToolTemplate.sh \
-#     --sitesToolName=CssCleanStart \
+# ./produceSitesTool_MediaAndStyles_base.sh \
+#     --sitesTool_ThemeName=theme_example \
+#     --sitesToolName=CssTable2 \
 #     --cssOrJsTool=css \
-#     --template="packages/SitesToolAutomation/data/templates/ResponsiveTemplate_CssCleanStart.template" \
+#     --template="data/templates/responsive_size__mini.css.template" \
 #     --withSizesCssConstants=true \
 #     --withConstantsImportLine=true
 
-
-# ./genSiteToolTemplate.sh --sitesToolName=SitesToolTemplate --cssOrJsTool=css --template="packages/SitesToolAutomation/data/templates/ResponsiveTemplate.template" --withSizesCssConstants=true --withConstantsImportLine=true
 
 
 
@@ -25,7 +24,7 @@ if [ -e "${pathToEnv}" ]; then
   source "${pathToEnv}"
 
   argv="$@"
-  docker compose exec ts bash -c "cd ${tsServicePathInDockerVolume}/www/packages/SitesToolAutomation && ./bash/genCleanStart.sh $argv"
+  docker compose exec ts bash -c "cd ${tsServicePathInDockerVolume}/www/packages/SitesToolAutomation && ./bash/produceSitesTool_MediaAnsStyles.sh $argv"
 
 else
   # when no .env is in the Project,

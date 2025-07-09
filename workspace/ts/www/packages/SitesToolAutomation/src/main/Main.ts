@@ -48,20 +48,24 @@ export class Main {
   // the central main method to produce .css files and for them the datasets, texts and names and .css files names.
   // cssOrJsTool: "css" | "js"
   async run (
-    sitesToolName: string,
-    cssOrJsTool: string,
-    mediaQueryCssFileTemplatePath: string,
-    withSizesCssConstants: boolean,
-    withConstantsImportLine: boolean
+    commandLineArgs: any
   ): Promise<number> {
-    this.responsiveDatasetBase.setSitesToolName( sitesToolName );
+    this.responsiveDatasetBase.setCommandLineArgs( commandLineArgs );
+
+    this.responsiveDatasetBase.setSitesTool_ThemeName( commandLineArgs["sitesTool_ThemeName"] );
+    this.responsiveDatasetBase.setSitesToolName( commandLineArgs["sitesToolName"] );
+
+    commandLineArgs["withSizesCssConstants"] = ( commandLineArgs["withSizesCssConstants"] === "true" );
+    commandLineArgs["withConstantsImportLine"] = ( commandLineArgs["withConstantsImportLine"] === "true" );
+
+
 
     if ( this.responsiveDatasetBase.templateProjectPath.length === 0 ) {
       this.responsiveDatasetBase.templateProjectPath = path.resolve(
         "../../",
         "sites_tools", (
-          cssOrJsTool + "_tools" ),
-        sitesToolName
+          commandLineArgs["cssOrJsTool"] + "_tools" ),
+        commandLineArgs["sitesToolName"]
       );
     }
 
@@ -73,14 +77,14 @@ export class Main {
     }
 
     if ( this.responsiveDatasetBase.webpackAliasName.length === 0 ) {
-      this.responsiveDatasetBase.webpackAliasName = [ "@", sitesToolName, "_", "MediaAndStyles" ].join( "" );
+      this.responsiveDatasetBase.webpackAliasName = [ "@", commandLineArgs["sitesToolName"], "_", "MediaAndStyles" ].join( "" );
     }
 
     this.responsiveDatasetBase
       .readDataset( this.pathToJsonDatasetForResponsiveSizes )
-      .datasetPropsToBitsbufs( sitesToolName )
-      .setMediaAndStylesResponsiveFolderPath( [ "MediaAndStyles", "/", "themes", "/", "theme_base" ].join("") )
-      .setMediaQueryCssFileTemplatePath( mediaQueryCssFileTemplatePath );
+      .datasetPropsToBitsbufs( commandLineArgs["sitesToolName"] )
+      .setMediaAndStylesResponsiveFolderPath( [ "MediaAndStyles", "/", "themes", "/", commandLineArgs["sitesTool_ThemeName"] ].join("") )
+      .setMediaQueryCssFileTemplatePath( commandLineArgs["mediaQueryCssFileTemplatePath"] );
 
 
     // console.log( this.responsiveDatasetBase.dataset );
@@ -99,7 +103,9 @@ export class Main {
     // ---------------------------------------------
     let fileBaseName_responsiveSizesConstants: string = "";
 
-    if ( withSizesCssConstants === true ) {
+
+
+    if ( commandLineArgs["withSizesCssConstants"] === true ) {
       fileBaseName_responsiveSizesConstants = [
         this.#keywordResponsiveSize,
         "_a02_",
@@ -118,14 +124,15 @@ export class Main {
 
     // CSS IMPORTS
     // ---------------------------------------------
-    withConstantsImportLine = ( withSizesCssConstants && withConstantsImportLine );
+    let withConstantsImportLine: boolean = ( commandLineArgs["withSizesCssConstants"] && commandLineArgs["withConstantsImportLine"] );
+
     let isWebpackAliased_true: boolean = true;
     let filename: string = [
       this.#keywordResponsiveSize,
       "_a03_",
       this.#fileBaseName_CssImports,
       "_",
-      sitesToolName,
+      commandLineArgs["sitesToolName"],
       "_",
       "Webpack",
       ".css"
@@ -148,7 +155,7 @@ export class Main {
       "_a03_",
       this.#fileBaseName_CssImports,
       "_",
-      sitesToolName,
+      commandLineArgs["sitesToolName"],
       "_",
       "Relative",
       ".css"

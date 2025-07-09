@@ -14,7 +14,8 @@ html.workspace script {
 }
 
 
-.workspace,
+
+/* .workspace,
 .workspace * {
 
   position: var(--clean-start__position);
@@ -39,25 +40,59 @@ html.workspace script {
   margin: var(--clean-start__margin);
   padding: var(--clean-start__padding);
 
-}
+} */
 
 
 
-.workspace,
-.workspace *:not(pre) {
+
+.workspace {
+
+  position: var(--clean-start__position);
+  display: var(--clean-start__custom-tags__display);
+  box-sizing: var(--clean-start__box-sizing);
+
+  line-break: strict;
+  word-wrap: normal;
+  word-break: normal;
+
+  color: var(--clean-start__text-color);
+
+  border-width: var(--clean-start__border-width);
+  border-style: var(--clean-start__border-style);
+  border-color: var(--clean-start__border-color);
+
+  margin: var(--clean-start__margin);
+  padding: var(--clean-start__padding);
+
   font-family: var(--clean-start__font-family);
+  font-size: var(--clean-start__font-size);
+  line-height: var(--clean-start__line-height);
+
 }
 
-.workspace pre {
-  font-family: var(--clean-start__font-family-pre, "Courier New", Courier, monospace);
-}
 
 
+/*
 .workspace *:not(h1):not(h2):not(h3):not(h4):not(h5):not(h6) {
 
   font-size: var(--clean-start__font-size);
   line-height: var(--clean-start__line-height);
 
+} */
+
+
+/* .workspace,
+.workspace *:not(pre) {
+  font-family: var(--clean-start__font-family);
+} */
+
+/* .workspace pre {
+  font-family: var(--clean-start__font-family-pre, "Courier New", Courier, monospace);
+} */
+
+
+.workspace pre {
+  font-family: var(--clean-start__font-family-pre, "Courier New", Courier, monospace);
 }
 
 
@@ -146,9 +181,21 @@ html.workspace {
 
 
 /* Paragraph html tag <p> */
+/*
+why not just .workspace p {}
+the css style margin overrides here the margin in the rule,
+set above: .workspace *:not(h1):not(h2):not(h3):not(h4):not(h5):not(h6) {}
+
+for the css stylels for tag P, other than in
+*/
+/* .workspace *:not(h1):not(h2):not(h3):not(h4):not(h5):not(h6) p {
+  margin: var(--clean-start__p__margin);
+} */
+
 .workspace p {
   margin: var(--clean-start__p__margin);
 }
+
 
 
 /* Hyperlink html tag <a> (anchor) */

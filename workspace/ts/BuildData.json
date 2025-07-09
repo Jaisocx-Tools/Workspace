@@ -156,7 +156,7 @@
       "path": "packages/SitesToolAutomation",
       "name": "sites-tool-automation",
       "update-published": "Mon Jun 16 08:07:24 CEST 2025",
-      "build": false,
+      "build": true,
       "build-simple-enable": false,
       "dependencies": [
         {

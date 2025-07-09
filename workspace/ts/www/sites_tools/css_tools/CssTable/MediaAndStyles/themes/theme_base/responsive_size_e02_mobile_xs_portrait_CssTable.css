@@ -15,5 +15,9 @@
     --responsive_size_CssTable__max-width: 320px;
   }
 
+  .workspace-css-table .row .cell.table-thin-field-hide-mobile {
+    display: none;
+  }
+
 }
 

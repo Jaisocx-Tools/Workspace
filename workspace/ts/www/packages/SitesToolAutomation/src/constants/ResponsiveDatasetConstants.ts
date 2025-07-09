@@ -283,7 +283,9 @@ export class ResponsiveDatasetConstants implements ResponsiveDatasetConstantsInt
       this.#bitsbufSymbolUnderscore,
       "orientation",
       this.#bitsbufSymbolUnderscore,
-      "sites_tool_name"
+      "sites_tool_name",
+      this.#bitsbufSymbolUnderscore,
+      "sites_tool_theme_name",
     ];
 
 
@@ -469,13 +471,15 @@ export class ResponsiveDatasetConstants implements ResponsiveDatasetConstantsInt
     art: Uint8Array,
     artSize: Uint8Array,
     orientation: Uint8Array,
-    sitesToolName: Uint8Array
+    sitesToolName: Uint8Array,
+    sitesTool_ThemeName: Uint8Array
   ): Uint8Array[] {
     let rangeOrderbyIdPos: number = 2;
     let artPos: number = 4;
     let artSizePos: number = 6;
     let orientationPos: number = 8;
     let sitesToolNamePos: number = 10;
+    let sitesTool_ThemeNamePos: number = 12;
 
 
     this.#responsiveSizeNameOrientedBitsbufsArray[rangeOrderbyIdPos] = rangeOrderbyId;
@@ -483,6 +487,7 @@ export class ResponsiveDatasetConstants implements ResponsiveDatasetConstantsInt
     this.#responsiveSizeNameOrientedBitsbufsArray[artSizePos] = artSize;
     this.#responsiveSizeNameOrientedBitsbufsArray[orientationPos] = orientation;
     this.#responsiveSizeNameOrientedBitsbufsArray[sitesToolNamePos] = sitesToolName;
+    this.#responsiveSizeNameOrientedBitsbufsArray[sitesTool_ThemeNamePos] = sitesTool_ThemeName;
 
     return this.#responsiveSizeNameOrientedBitsbufsArray as Uint8Array[];
   }

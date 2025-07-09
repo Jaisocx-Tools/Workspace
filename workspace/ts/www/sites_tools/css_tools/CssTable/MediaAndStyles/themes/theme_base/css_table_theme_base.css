@@ -7,7 +7,7 @@
   --workspace-table--cell--cell-value--font-family: var(--workspace-table--cell--font-family);
 
 
-  
+
   --workspace-table-thin--cell--column-label--font-family: var(--workspace-table--cell--column-label--font-family);
   --workspace-table-thin--cell--cell-value--font-family: var(--workspace-table--cell--cell-value--font-family);
 
@@ -15,7 +15,7 @@
   --workspace-table-bright--cell--cell-value--font-family: var(--workspace-table--cell--cell-value--font-family);
 
 
-  
+
   --workspace-table--cell--text-align: left;
 
   --workspace-table-thin--cell--text-align: var(--workspace-table--cell--text-align);
@@ -24,7 +24,7 @@
 
 
   --workspace-table--cell--padding: 16px 12px 16px 12px;
-  
+
   --workspace-table-thin--cell--padding: 5px 12px 5px 12px;
   --workspace-table-bright--cell--padding: 16px 12px 16px 12px;
 
@@ -35,9 +35,27 @@
 
 
 
-  
+
   /* TASKS: ALL THESE PROPS, TOO, AS ABOVE */
   --workspace-table--cell--cell-value--font-weight: 400;
+
+
+
+
+  --workspace--cell--column-label--font-weight: 600;
+  --workspace--cell--column-label--font-size: 2rem;
+  --workspace--cell--column-label--line-height: 1.5rem;
+  --workspace--cell--column-label--letter-spacing: 0;
+  --workspace--cell--column-label--text-align: var(--workspace--cell--text-align);
+  --workspace--cell--column-label--padding: var(--workspace--cell--padding);
+
+  --workspace--cell--cell-value--font-weight: var(--workspace-table--cell--cell-value--font-weight);
+  --workspace--cell--cell-value--font-size: 1.0rem;
+  --workspace--cell--cell-value--line-height: 1.28rem;
+  --workspace--cell--cell-value--letter-spacing: 0;
+  --workspace--cell--cell-value--text-align: var(--workspace--cell--text-align);
+  --workspace--cell--cell-value--padding: var(--workspace--cell--padding);
+
 
 
 
@@ -59,6 +77,8 @@
 
 
 
+
+
   --workspace-table-bright--cell--column-label--font-weight: 600;
   --workspace-table-bright--cell--column-label--font-size: 1.2rem;
   --workspace-table-bright--cell--column-label--line-height: 1.5rem;
@@ -76,7 +96,7 @@
 
 
 
- 
+
 
 
 

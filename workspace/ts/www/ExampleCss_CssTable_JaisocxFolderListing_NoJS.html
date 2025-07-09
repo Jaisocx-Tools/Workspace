@@ -1,106 +1,52 @@
 <!DOCTYPE html>
-<html lang="en" class="workspace css-table-ordered jaisocx-folders-listing">
+<html>
+<head class="workspace">
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <head>
-
-    <title>/CorsAndCustomHeaders/</title>
-
-    <meta content="width=device-width, initial-scale=1.0" name="viewport">
-    <meta charset="utf-8">
-
-    <base href="../../" />
+  <title>Under construction: Css Table</title>
 
 
 
-    <!--info: theme styles for lightmode of the @jaisocx/css-clean-start npm package-->
-    <!--<link rel="stylesheet"
-      href="css_tools/CssCleanStart/MediaAndStyles/themes/theme-lightmode/clean-start-theme-lightmode-relative.css">-->
+  <!-- 1. to save up ssd on the sever machine, we use cdn to keep centrally media and font files,
+  used by multiple projects, so not to copy they many times.
+  2. for the fine grained site performance when turning on a theme,
+  we use to preload the fonts files and mini images at once on page load in the browser tab.
+  3. so that the fonts files and other media
+  are not loaded many times when showing multiple instances of a css or js tool on a page,
+  these media files and fonts are referenced by same unique url on the cdn.
+  4. I tested with the css-table-main-cdn.css,
+  loaded the Preloader for this purpose,
+  and the fonts files were loaded just once,
+  "Niconne" and 2 files of "Baloo Paaji 2" font, Regular and Semi Bold.
+  When enabled the Day Mode theme-lightmode and Night Mode theme-darkmode,
+  the fonts have applied immediately and themes choice performance have looked well.
+  5. During local development, You may erase these 2 <script> tags.
+    Otherwise, You may rebuild Your css-table-main-relative.css to reference there fonts files via Your cdn.  -->
 
-
-    <!--info: theme styles for darkmode of the @jaisocx/css-clean-start npm package-->
-    <!-- <link rel="stylesheet"
-      href="css_tools/CssCleanStart/MediaAndStyles/themes/theme-darkmode/clean-start-theme-darkmode-relative.css"> -->
-
-
-
-    <!--info: styles of the @jaisocx/css-clean-start npm package-->
-    <link rel="stylesheet"
-      href="css_tools/CssCleanStart/MediaAndStyles/css_clean_start_main_relative.css">
-    <!-- <link rel="stylesheet"
-      href="css_tools/CssCleanStart/MediaAndStyles/css_clean_start_main_resolved.css"> -->
-
-
-
-    <!--info: styles of the @jaisocx/css-table-ordered npm package-->
-    <!--info: used when css-table-ordered _relative.css-->
-    <link rel="stylesheet"
-      href="css_tools/CssTable/MediaAndStyles/css-table-main-relative.css">
-    <!-- <link rel="stylesheet"
-      href="css_tools/CssTable/MediaAndStyles/css_table_main_resolved.css"> -->
+  <!-- <script src="sites_tools/css_tools/CssTable/transpiled/Simple/Preloader.js"></script> -->
+  <!-- <script src="sites_tools/css_tools/CssTable/transpiled/Simple/ThemesPreloadsCssTable.js"></script> -->
 
 
 
-    <!--styles of the @jaisocx/css-table-ordered npm package-->
-    <!-- <link rel="stylesheet"
-      href="js_tools/CssTableOrdered/MediaAndStyles/css_table_ordered_main_relative.css"> -->
-    <!-- <link rel="stylesheet"
-      href="js_tools/CssTableOrdered/MediaAndStyles/css_table_ordered_main_resolved.css"> -->
-
-
-    <style>
-      .workspace.css-table-ordered.jaisocx-folders-listing {
-        --clean-start__p__margin: 0.5rem 0 0.5rem 0 !important;
-      }
-    </style>
-  </head>
-  <body>
-    <main>
-
-<p>
-Notice: The urls are not real
-and the links are not working here.
-This example of a server-side rendered
-@jaisocx/css-table-ordered html
-was produced in another library,
-not available in the moment in this project.
-</p>
-<p>
-New html node in this markup
-for placing mini-images for every record.
-</p>
-<p>
-In html, the css class names
-applied to tell the
-field id, data type, mime type,
-and css class names
-whether to show when mobile
-and tablet in thin mode
-</p>
-      <pre>
-
-Notice: The urls are not real
-and the links are not working here.
-This example of a server-side rendered
-@jaisocx/css-table-ordered html
-was produced in another library,
-not available in the moment in this project.
-
-New html node in this markup
-for placing mini-images for every record.
-
-In html, the css class names
-applied to tell the
-field id, data type, mime type,
-and css class names
-whether to show when mobile
-and tablet in thin mode
-      </pre>
-
-      <h1>http://update-listing.jaisocx.com:80/CorsAndCustomHeaders/</h1>
+  <!-- importing styles of @jaisocx/css-clean-start -->
+  <link rel="stylesheet" href="sites_tools/css_tools/CssCleanStart/MediaAndStyles/css_clean_start_main_relative.css">
 
 
 
+  <!-- importing styles for table columns -->
+  <link rel="stylesheet" href="sites_tools/css_tools/CssTable/MediaAndStyles/themes/columns/columns.css">
 
+  <!-- importing styles of @jaisocx/css-table installable like this: npm install @jaisocx/css-table -->
+  <!-- <link rel="stylesheet" href="sites_tools/css_tools/CssTable/MediaAndStyles/themes/theme-lightmode/css-table-theme-lightmode-relative.css"> -->
+  <link rel="stylesheet" href="sites_tools/css_tools/CssTable/MediaAndStyles/css-table-main-relative.css">
+
+</head>
+<body>
+
+  <main>
+
+    <h1 style="font-family: Verdana;">Css Table Jaisocx folder listing markup, no js orderby</h1>
 
 
 
@@ -1268,33 +1214,35 @@ and tablet in thin mode
       <!--@jaisocx/css-table-ordered markup finished-->
 
 
-    </main>
-  </body>
 
 
 
-  <script src="js_tools/CssTableOrdered/transpiled/Simple/CssTableOrderby.js"></script>
+  </main>
 
   <script>
 
-    let orderbyClassInstance = new Object();
+    // DOCUMENT ONLOAD, INVOKES THE FUNCTION TO PRELOAD THEME FONTS
 
+    // document.addEventListener('DOMContentLoaded', () => {
 
-    function addOrderbyEventHandler() {
-      orderbyClassInstance = new CssTableOrderby();
-        orderbyClassInstance.setRowsNumberNotOrdered( 2 );
-      let eventHandlerRetval = orderbyClassInstance.addOrderbyEventHandler();
-    }
+    //   const preloader = new Preloader();
+    //     preloader
+    //       .setThemesPreloads( themesPreloads )
+    //       .setWebpackAlias( "@jaisocx-css-table-cdn-fonts" )
+    //       .setWebpackAliasReplace( "https://sandbox.brightday.email/cdn/www/fonts" )
+    //       .init();
 
-
-    // DOCUMENT ONLOAD, INVOKES THE FUNCTION TO RENDER TOOLTIP ON SITE OPENED IN BROWSER.
-    document.addEventListener('DOMContentLoaded', () => {
-
-      addOrderbyEventHandler();
-
-    });
+    // });
 
   </script>
 
+
+</body>
 </html>
+
+
+
+
+
+
 

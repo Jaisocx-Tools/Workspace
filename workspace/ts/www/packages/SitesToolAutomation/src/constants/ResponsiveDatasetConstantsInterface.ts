@@ -14,7 +14,8 @@ export interface ResponsiveDatasetConstantsInterface {
     art: Uint8Array,
     artSize: Uint8Array,
     orientation: Uint8Array,
-    sitesToolName: Uint8Array
+    sitesToolName: Uint8Array,
+    sitesTool_ThemeName: Uint8Array
   ): Uint8Array[];
 
   getResponsiveSizeNameArrayByBitsbufs (

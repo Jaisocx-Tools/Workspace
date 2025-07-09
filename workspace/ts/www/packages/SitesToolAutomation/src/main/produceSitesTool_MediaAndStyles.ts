@@ -1,11 +1,14 @@
+export { CommandLineArgs } from "../command_line/CommandLineArgs.js";
+
 import { ResponsiveFilesSet } from "../responsive_files_set/ResponsiveFilesSet.js";
 import { Main } from "./Main.js";
 
 
 
-export async function produceCleanStart(): Promise<number> {
+export async function produceSitesTool_MediaAndStyles(): Promise<number> {
 
-  const terminalInpArgsObject: any = {
+  type CommandArgsObject = {
+    sitesTool_ThemeName: "theme_base",
     sitesToolName: "",
     cssOrJsTool: "",
     template: "",
@@ -14,26 +17,12 @@ export async function produceCleanStart(): Promise<number> {
   };
 
 
-  // THE REUSABLE CODE BLOCK MOVES LATER TO A JS PACKAGE
-  const terminalInpArgs: string[] = process.argv.slice(2);
+  let commandLineArgsInstance: CommandLineArgs = new CommandLineArgs();
+  commandLineArgsInstance
+    .readCommandLineArgs()
+    .transformCommandLineArgs();
 
-
-  // Get command-line arguments starting from index 2
-
-  terminalInpArgs.forEach( ( arg ) => {
-    let [key, value] = arg.split("=");
-    key = key.replace(
-      "--",
-      "");
-    terminalInpArgsObject[key] = value ? value.replace (
-      /(^"|"$)/g,
-      ""
-    ) : "";
-
-
-    // Remove quotes if any
-  });
-
+  let terminalInpArgsObject: CommandArgsObject = commandLineArgsInstance.getCommandLineArgs() as CommandArgsObject;
 
   // console.log(
   //   "terminalInpArgsObject",
@@ -45,8 +34,6 @@ export async function produceCleanStart(): Promise<number> {
 
   const mainClassInstance: Main = new Main();
 
-  let withSizesCssConstants: boolean = ( terminalInpArgsObject.withSizesCssConstants.length === 0 ) ? true : (!!terminalInpArgsObject.withSizesCssConstants);
-  let withConstantsImportLine: boolean = ( terminalInpArgsObject.withConstantsImportLine.length === 0 ) ? true : (!!terminalInpArgsObject.withConstantsImportLine);
 
 
   // let themeName: string = "theme-day-mode";
@@ -70,11 +57,12 @@ export async function produceCleanStart(): Promise<number> {
         responsiveData["art"],
         responsiveData["art_size"],
         templateDataBase["orientation"],
-        templateDataBase["SitesToolName"]
+        templateDataBase["SitesToolName"],
+        templateDataBase["SitesTool_ThemeName"]
       );
 
 
-    let responsiveSizeArray: Uint8Array[] = responsiveSizeName_withSitesToolName_Array.slice( 4, 9 );
+    let responsiveSizeArray: Uint8Array[] = responsiveSizeName_withSitesToolName_Array.slice( 4, 11 );
 
 
     //@ts-ignore
@@ -91,14 +79,9 @@ export async function produceCleanStart(): Promise<number> {
   mainClassInstance.responsiveCssFile.getTemplateDataOverridden = responsiveCssFile.getTemplateDataOverridden.bind( responsiveCssFile );
 
 
+
   let retVal: number = await mainClassInstance
-    .run (
-      terminalInpArgsObject.sitesToolName,
-      terminalInpArgsObject.cssOrJsTool,
-      terminalInpArgsObject.template,
-      withSizesCssConstants,
-      withConstantsImportLine
-    );
+    .run ( terminalInpArgsObject );
 
   return retVal;
 
@@ -106,10 +89,10 @@ export async function produceCleanStart(): Promise<number> {
 
 
 
-produceCleanStart()
+produceSitesTool_MediaAndStyles()
   .then (
-    ( retVal: number) => {
-      console.info(
+    ( retVal: number ) => {
+      console.info (
         "Sites Tool Template has been produced",
         retVal
       );

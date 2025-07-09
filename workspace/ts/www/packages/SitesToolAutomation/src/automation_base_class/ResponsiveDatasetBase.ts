@@ -26,6 +26,10 @@ export class ResponsiveDatasetBase implements ResponsiveDatasetBaseInterface {
   templateProjectPath: string;
 
   sitesToolName: string;
+  sitesTool_ThemeName: string;
+
+  commandLineArgs: object;
+
 
 
   constructor() {
@@ -54,6 +58,9 @@ export class ResponsiveDatasetBase implements ResponsiveDatasetBaseInterface {
     this.templateProjectPath = "";
 
     this.sitesToolName = "";
+    this.sitesTool_ThemeName = "";
+
+    this.commandLineArgs = new Object();
 
   }
 
@@ -175,6 +182,20 @@ export class ResponsiveDatasetBase implements ResponsiveDatasetBaseInterface {
   }
 
 
+  setSitesTool_ThemeName( themeName: string ): ResponsiveDatasetBase {
+    this.sitesTool_ThemeName = themeName;
+
+    return this;
+  }
+
+
+  setCommandLineArgs( args: object ): ResponsiveDatasetBase {
+    this.commandLineArgs = args;
+
+    return this;
+  }
+
+
   datasetPropsToBitsbufs (
     sitesTool: string
   ): ResponsiveDatasetBase {
@@ -200,6 +221,12 @@ export class ResponsiveDatasetBase implements ResponsiveDatasetBaseInterface {
       //@ts-ignore
       let dataBitsbufs: any = this.datasetBitsbufs[datasetPropname];
 
+      dataBitsbufs["SitesToolName"] = te.encode( dataProp["SitesToolName"] );
+      dataBitsbufs["SitesTool_ThemeName"] = te.encode( dataProp["SitesTool_ThemeName"] );
+
+
+
+      dataBitsbufs["range_orderby_id"] = te.encode( dataProp["range_orderby_id"] );
       dataBitsbufs["range_orderby_id"] = te.encode( dataProp["range_orderby_id"] );
 
       let dataPropWidth: any = dataProp["width"];
