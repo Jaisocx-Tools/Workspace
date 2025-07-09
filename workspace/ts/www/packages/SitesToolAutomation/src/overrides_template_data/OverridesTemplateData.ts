@@ -2,19 +2,23 @@ export class OverridesTemplateData {
 
   protected _prop: any;
 
+
   constructor() {
     this._prop = "";
   }
 
+
   public getProp(): any {
     return this._prop;
   }
+
 
   public setProp( inPropValue: any ): OverridesTemplateData {
     this._prop = inPropValue;
 
     return this;
   }
+
 
   public getUnchanged (
     _responsiveDatasetPropName: string,
@@ -47,19 +51,20 @@ export class OverridesTemplateData {
       ...
     */
 
+
     // Example use of _responsiveDatasetPropName:
     // //@ts-ignore
     // let responsiveData = this.responsiveDatasetBase.datasetBitsbufs[_responsiveDatasetPropName];
-
     return templateDataBase;
   }
 
-  public getTemplateDataOverridden (
-      _responsiveDatasetPropName: string,
-      templateDataBase: any
-    ): any {
 
+  public getTemplateDataOverridden (
+    _responsiveDatasetPropName: string,
+    templateDataBase: any
+  ): any {
     templateDataBase["msg"] = "Hello World!";
+
 
     //@ts-ignore
     let responsiveData = this.responsiveDatasetBase.datasetBitsbufs[_responsiveDatasetPropName];

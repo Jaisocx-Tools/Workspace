@@ -1,5 +1,10 @@
+//@ts-ignore
 import * as fs from "node:fs";
+
+
+//@ts-ignore
 import * as path from "node:path";
+
 
 import { ResponsiveDatasetConstants } from "../constants/ResponsiveDatasetConstants.js";
 import { ResponsiveSizesNames } from "../responsive_sizes_names/ResponsiveSizesNames.js";
@@ -50,15 +55,18 @@ export class Main {
   async run (
     commandLineArgs: any
   ): Promise<number> {
-    this.responsiveDatasetBase.setCommandLineArgs( commandLineArgs );
-
-    this.responsiveDatasetBase.setSitesTool_ThemeName( commandLineArgs["sitesTool_ThemeName"] );
-    this.responsiveDatasetBase.setSitesToolName( commandLineArgs["sitesToolName"] );
-
     commandLineArgs["withSizesCssConstants"] = ( commandLineArgs["withSizesCssConstants"] === "true" );
     commandLineArgs["withConstantsImportLine"] = ( commandLineArgs["withConstantsImportLine"] === "true" );
 
 
+    this.#keywordResponsiveSize = commandLineArgs["keywordResponsiveSize"];
+    this.responsiveDatasetConstants.setKeywordResponsiveSize( this.#keywordResponsiveSize );
+    this.responsiveDatasetConstants.initBitbufsArrays();
+
+
+    this.responsiveDatasetBase.setCommandLineArgs( commandLineArgs );
+    this.responsiveDatasetBase.setSitesTool_ThemeName( commandLineArgs["sitesTool_ThemeName"] );
+    this.responsiveDatasetBase.setSitesToolName( commandLineArgs["sitesToolName"] );
 
     if ( this.responsiveDatasetBase.templateProjectPath.length === 0 ) {
       this.responsiveDatasetBase.templateProjectPath = path.resolve(
@@ -84,7 +92,7 @@ export class Main {
       .readDataset( this.pathToJsonDatasetForResponsiveSizes )
       .datasetPropsToBitsbufs( commandLineArgs["sitesToolName"] )
       .setMediaAndStylesResponsiveFolderPath( [ "MediaAndStyles", "/", "themes", "/", commandLineArgs["sitesTool_ThemeName"] ].join("") )
-      .setMediaQueryCssFileTemplatePath( commandLineArgs["mediaQueryCssFileTemplatePath"] );
+      .setMediaQueryCssFileTemplatePath( commandLineArgs["templatePath"] );
 
 
     // console.log( this.responsiveDatasetBase.dataset );
@@ -102,8 +110,6 @@ export class Main {
     // CSS FILE WITH CONSTANTS OF RESPONSIVE SIZES
     // ---------------------------------------------
     let fileBaseName_responsiveSizesConstants: string = "";
-
-
 
     if ( commandLineArgs["withSizesCssConstants"] === true ) {
       fileBaseName_responsiveSizesConstants = [

@@ -10,7 +10,7 @@ export declare class ResponsiveFilesSet implements ResponsiveFilesSetInterface {
     constructor(base: ResponsiveDatasetBase, constants: ResponsiveDatasetConstants);
     readTemplateMediaCssFile(mediaQueryCssFileTemplatePath: string): ResponsiveFilesSet;
     produceResponsiveFilesSetsSet(): Promise<number>;
-    produceOneResponsiveFilesSet(sitesToolBitsbuf: Uint8Array, responsiveDatasetPropName: string, orientation: string, orientationBitsbuf: Uint8Array): Promise<number>;
+    produceOneResponsiveFilesSet(themeNameBitsbuf: Uint8Array, sitesToolBitsbuf: Uint8Array, responsiveDatasetPropName: string, orientation: string, orientationBitsbuf: Uint8Array): Promise<number>;
     getTemplateDataOverridden(responsiveDatasetPropName: string, templateDataBase: any): any;
 }
 //# sourceMappingURL=ResponsiveFilesSet.d.ts.map

@@ -5,6 +5,10 @@ export declare class ResponsiveDatasetConstants implements ResponsiveDatasetCons
     fileWriter: FileWriter;
     textEncoder: TextEncoder;
     constructor();
+    initBitbufsArrays(): ResponsiveDatasetConstants;
+    setKeywordResponsiveSize(keyword: string): ResponsiveDatasetConstants;
+    getKeywordResponsiveSize(): string;
+    getBitsbufKeywordResponsiveSize(): Uint8Array;
     getOrientationKeywords(): string[];
     getOrientationKeywordsBitsbufs(): Uint8Array[];
     getMaxOrMinArray(): Uint8Array[];
@@ -21,7 +25,7 @@ export declare class ResponsiveDatasetConstants implements ResponsiveDatasetCons
     getResponsiveSizeConstantLineMaxOrMinBitsbufsArray_SitesTool(size: Uint8Array, isMax: boolean): Uint8Array[];
     getLabelLineArrayByBitsbufs(art: Uint8Array, artSize: Uint8Array): Uint8Array[];
     getCssEncommentedLineByBitsbufs(comment: Uint8Array): Uint8Array[];
-    getResponsiveSizeName_withSitesToolName_ByBitsbufs(rangeOrderbyId: Uint8Array, art: Uint8Array, artSize: Uint8Array, orientation: Uint8Array, sitesToolName: Uint8Array): Uint8Array[];
+    getResponsiveSizeName_withSitesToolName_ByBitsbufs(rangeOrderbyId: Uint8Array, art: Uint8Array, artSize: Uint8Array, orientation: Uint8Array, sitesToolName: Uint8Array, sitesTool_ThemeName: Uint8Array): Uint8Array[];
     getResponsiveSizeNameArrayByBitsbufs(sitesToolName: Uint8Array, rangeOrderbyId: Uint8Array, art: Uint8Array, artSize: Uint8Array, withSitesToolName: boolean): Uint8Array[];
     getResponsiveSizeNameOrientedArrayByBitsbufs(responsiveSizeName: Uint8Array, orientation: Uint8Array): Uint8Array[];
     getResponsiveSizeNameBitsbufsArray(sitesToolName: string, rangeOrderbyId: string, art: string, artSize: string): Uint8Array[];

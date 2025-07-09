@@ -1,7 +1,5 @@
 import { CommandLineArgs } from "../command_line/CommandLineArgs.js";
 import { OverridesTemplateData } from "../overrides_template_data/OverridesTemplateData.js";
-
-import { ResponsiveFilesSet } from "../responsive_files_set/ResponsiveFilesSet.js";
 import { Main } from "./Main.js";
 
 
@@ -10,8 +8,9 @@ export type CommandArgsObject = {
   sitesTool_ThemeName: "theme_base",
   sitesToolName: "",
   cssOrJsTool: "",
-  template: "",
+  templatePath: "",
   templateDataMethodName: "",
+  keywordResponsiveSize: "",
   withSizesCssConstants: "",
   withConstantsImportLine: ""
 };
@@ -26,19 +25,19 @@ export async function produceSitesTool_MediaAndStyles(): Promise<number> {
     .transformCommandLineArgs()
     .getCommandLineArgs() as CommandArgsObject;
 
-  // console.log(
-  //   "terminalInpArgsObject",
-  //   terminalInpArgsObject
-  // );
-  // END OF THE REUSABLE CODE BLOCK
+
+  console.log(
+    "cliArgs",
+    cliArgs
+  );
 
 
 
   const mainClassInstance: Main = new Main();
 
+
   // let themeName: string = "theme-day-mode";
   let overridesTemplateDataInstance: OverridesTemplateData = new OverridesTemplateData();
-
 
 
   //--------------------------------------------------------------------------------------------------------
@@ -54,15 +53,19 @@ export async function produceSitesTool_MediaAndStyles(): Promise<number> {
   //    You may find source code in ${SitesToolAutomation}/src/overrides_template_data/OverridesTemplateData.ts
 
   let templateDataMethodName: string = cliArgs["templateDataMethodName"];
+
   if ( ( !templateDataMethodName ) || ( templateDataMethodName.length === 0 ) ) {
     templateDataMethodName = "getUnchanged";
   }
 
-  mainClassInstance
-    .responsiveCssFile
-    .getTemplateDataOverridden = overridesTemplateDataInstance[templateDataMethodName].bind (
-        mainClassInstance.responsiveCssFile
+
+  //@ts-ignore
+  mainClassInstance.responsiveCssFile.getTemplateDataOverridden = overridesTemplateDataInstance[templateDataMethodName]
+    .bind (
+      mainClassInstance.responsiveCssFile
     );
+
+
   //----------------------------------------------------
 
 

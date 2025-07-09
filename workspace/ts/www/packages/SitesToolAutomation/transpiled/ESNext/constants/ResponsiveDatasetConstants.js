@@ -153,6 +153,23 @@ export class ResponsiveDatasetConstants {
         // this.#bitsbufSymbolMinus = this.textEncoder.encode( this.#symbolMinus );
         this.#bitsbufSymbolDot = this.textEncoder.encode(this.#symbolDot);
         this.#bitsbufSymbolSlash = this.textEncoder.encode(this.#symbolSlash);
+        // Arrays
+        this.#labelLineArray = [];
+        this.#cssEncommentedLine = [];
+        this.#orientationKeywords = [];
+        this.#orientationBitsbufKeywordsArray = [];
+        this.#maxOrMinArray = [];
+        this.#responsiveSizeNameOrientedBitsbufsArray = [];
+        // @import url("./style_e02_mobile_xs_portrait.css");
+        this.#importLineBitsbufsArray = [];
+        this.#responsiveSizeConstantNameBitsbufsArray = [];
+        this.#responsiveSizeConstantNameBitsbuf = new Uint8Array(1);
+        this.#responsiveSizeConstantLineMaxOrMinBitsbufsArray = [];
+        this.#responsiveSizeConstantLineBitsbufsArray = [];
+        this.#responsiveSizeConstantLine_size_BitsbufsArray = [];
+        this.initBitbufsArrays();
+    }
+    initBitbufsArrays() {
         this.#labelLineArray = [
             this.#bitsbufSymbolCommentStart,
             this.#bitsbufSymbolBackgroundSpace,
@@ -194,7 +211,9 @@ export class ResponsiveDatasetConstants {
             this.#bitsbufSymbolUnderscore,
             "orientation",
             this.#bitsbufSymbolUnderscore,
-            "sites_tool_name"
+            "sites_tool_name",
+            this.#bitsbufSymbolUnderscore,
+            "sites_tool_theme_name"
         ];
         // @import url("./style_e02_mobile_xs_portrait.css");
         this.#importLineBitsbufsArray = [
@@ -247,6 +266,18 @@ export class ResponsiveDatasetConstants {
             this.#bitsbufUnitPx,
             this.#bitsbufCssExpressionEnd
         ];
+        return this;
+    }
+    setKeywordResponsiveSize(keyword) {
+        this.#keywordResponsiveSize = keyword;
+        this.#bitsbufKeywordResponsiveSize = this.textEncoder.encode(this.#keywordResponsiveSize);
+        return this;
+    }
+    getKeywordResponsiveSize() {
+        return this.#keywordResponsiveSize;
+    }
+    getBitsbufKeywordResponsiveSize() {
+        return this.#bitsbufKeywordResponsiveSize;
     }
     getOrientationKeywords() {
         return this.#orientationKeywords;
@@ -310,17 +341,19 @@ export class ResponsiveDatasetConstants {
         this.#cssEncommentedLine[commentPos] = comment;
         return this.#cssEncommentedLine;
     }
-    getResponsiveSizeName_withSitesToolName_ByBitsbufs(rangeOrderbyId, art, artSize, orientation, sitesToolName) {
+    getResponsiveSizeName_withSitesToolName_ByBitsbufs(rangeOrderbyId, art, artSize, orientation, sitesToolName, sitesTool_ThemeName) {
         let rangeOrderbyIdPos = 2;
         let artPos = 4;
         let artSizePos = 6;
         let orientationPos = 8;
         let sitesToolNamePos = 10;
+        let sitesTool_ThemeNamePos = 12;
         this.#responsiveSizeNameOrientedBitsbufsArray[rangeOrderbyIdPos] = rangeOrderbyId;
         this.#responsiveSizeNameOrientedBitsbufsArray[artPos] = art;
         this.#responsiveSizeNameOrientedBitsbufsArray[artSizePos] = artSize;
         this.#responsiveSizeNameOrientedBitsbufsArray[orientationPos] = orientation;
         this.#responsiveSizeNameOrientedBitsbufsArray[sitesToolNamePos] = sitesToolName;
+        this.#responsiveSizeNameOrientedBitsbufsArray[sitesTool_ThemeNamePos] = sitesTool_ThemeName;
         return this.#responsiveSizeNameOrientedBitsbufsArray;
     }
     getResponsiveSizeNameArrayByBitsbufs(sitesToolName, rangeOrderbyId, art, artSize, withSitesToolName) {

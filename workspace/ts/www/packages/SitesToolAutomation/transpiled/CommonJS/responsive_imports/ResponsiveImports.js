@@ -34,6 +34,7 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.ResponsiveImports = void 0;
+//@ts-ignore
 const path = __importStar(require("node:path"));
 class ResponsiveImports {
     constructor(base, constants) {
@@ -118,6 +119,8 @@ class ResponsiveImports {
         let fw = this.responsiveDatasetBase.fileWriter;
         let sitesToolName = this.responsiveDatasetBase.sitesToolName;
         let sitesToolNameBitsbuf = fw.textEncoder.encode(sitesToolName);
+        let sitesTool_ThemeName = this.responsiveDatasetBase.sitesTool_ThemeName;
+        let sitesTool_ThemeNameBitsbuf = fw.textEncoder.encode(sitesTool_ThemeName);
         let newLineBitsbuf = this.responsiveDatasetConstants.getNewLineBitsbuf();
         let responsiveSizeName_withSitesToolName_Array = new Array();
         let responsiveSizeName_withSitesToolName = new Uint8Array();
@@ -147,7 +150,7 @@ class ResponsiveImports {
             for (orientationKeywordId = 0; orientationKeywordId < 2; orientationKeywordId++) {
                 orientationBitsbuf = orientationKeywords[orientationKeywordId];
                 responsiveSizeName_withSitesToolName_Array = this.responsiveDatasetConstants
-                    .getResponsiveSizeName_withSitesToolName_ByBitsbufs(responsiveSizeData["range_orderby_id"], responsiveSizeData["art"], responsiveSizeData["art_size"], orientationBitsbuf, sitesToolNameBitsbuf);
+                    .getResponsiveSizeName_withSitesToolName_ByBitsbufs(responsiveSizeData["range_orderby_id"], responsiveSizeData["art"], responsiveSizeData["art_size"], orientationBitsbuf, sitesToolNameBitsbuf, sitesTool_ThemeNameBitsbuf);
                 responsiveSizeName_withSitesToolName = this.responsiveDatasetBase
                     .fileWriter.concatUint8Arrays(responsiveSizeName_withSitesToolName_Array);
                 cssImportLine = this.responsiveDatasetConstants.getImportLineBitsbufsArrayByBitsbufs(bitsbufUrlStart, responsiveSizeName_withSitesToolName);

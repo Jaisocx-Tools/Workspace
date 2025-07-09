@@ -46,7 +46,9 @@ var __classPrivateFieldGet = (this && this.__classPrivateFieldGet) || function (
 var _Main_keywordResponsiveSize, _Main_fileBaseName_responsiveSizesConstants, _Main_fileBaseName_CssImports;
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Main = void 0;
+//@ts-ignore
 const fs = __importStar(require("node:fs"));
+//@ts-ignore
 const path = __importStar(require("node:path"));
 const ResponsiveDatasetConstants_js_1 = require("../constants/ResponsiveDatasetConstants.js");
 const ResponsiveSizesNames_js_1 = require("../responsive_sizes_names/ResponsiveSizesNames.js");
@@ -73,22 +75,29 @@ class Main {
     }
     // the central main method to produce .css files and for them the datasets, texts and names and .css files names.
     // cssOrJsTool: "css" | "js"
-    async run(sitesToolName, cssOrJsTool, mediaQueryCssFileTemplatePath, withSizesCssConstants, withConstantsImportLine) {
-        this.responsiveDatasetBase.setSitesToolName(sitesToolName);
+    async run(commandLineArgs) {
+        commandLineArgs["withSizesCssConstants"] = (commandLineArgs["withSizesCssConstants"] === "true");
+        commandLineArgs["withConstantsImportLine"] = (commandLineArgs["withConstantsImportLine"] === "true");
+        __classPrivateFieldSet(this, _Main_keywordResponsiveSize, commandLineArgs["keywordResponsiveSize"], "f");
+        this.responsiveDatasetConstants.setKeywordResponsiveSize(__classPrivateFieldGet(this, _Main_keywordResponsiveSize, "f"));
+        this.responsiveDatasetConstants.initBitbufsArrays();
+        this.responsiveDatasetBase.setCommandLineArgs(commandLineArgs);
+        this.responsiveDatasetBase.setSitesTool_ThemeName(commandLineArgs["sitesTool_ThemeName"]);
+        this.responsiveDatasetBase.setSitesToolName(commandLineArgs["sitesToolName"]);
         if (this.responsiveDatasetBase.templateProjectPath.length === 0) {
-            this.responsiveDatasetBase.templateProjectPath = path.resolve("../../", "sites_tools", (cssOrJsTool + "_tools"), sitesToolName);
+            this.responsiveDatasetBase.templateProjectPath = path.resolve("../../", "sites_tools", (commandLineArgs["cssOrJsTool"] + "_tools"), commandLineArgs["sitesToolName"]);
         }
         if (fs.existsSync(this.responsiveDatasetBase.templateProjectPath) === false) {
             fs.mkdirSync(this.responsiveDatasetBase.templateProjectPath, { recursive: true });
         }
         if (this.responsiveDatasetBase.webpackAliasName.length === 0) {
-            this.responsiveDatasetBase.webpackAliasName = ["@", sitesToolName, "_", "MediaAndStyles"].join("");
+            this.responsiveDatasetBase.webpackAliasName = ["@", commandLineArgs["sitesToolName"], "_", "MediaAndStyles"].join("");
         }
         this.responsiveDatasetBase
             .readDataset(this.pathToJsonDatasetForResponsiveSizes)
-            .datasetPropsToBitsbufs(sitesToolName)
-            .setMediaAndStylesResponsiveFolderPath(["MediaAndStyles", "/", "themes", "/", "theme_base"].join(""))
-            .setMediaQueryCssFileTemplatePath(mediaQueryCssFileTemplatePath);
+            .datasetPropsToBitsbufs(commandLineArgs["sitesToolName"])
+            .setMediaAndStylesResponsiveFolderPath(["MediaAndStyles", "/", "themes", "/", commandLineArgs["sitesTool_ThemeName"]].join(""))
+            .setMediaQueryCssFileTemplatePath(commandLineArgs["templatePath"]);
         // console.log( this.responsiveDatasetBase.dataset );
         let retVal = 0;
         let newLinesAmount = 3;
@@ -100,7 +109,7 @@ class Main {
         // CSS FILE WITH CONSTANTS OF RESPONSIVE SIZES
         // ---------------------------------------------
         let fileBaseName_responsiveSizesConstants = "";
-        if (withSizesCssConstants === true) {
+        if (commandLineArgs["withSizesCssConstants"] === true) {
             fileBaseName_responsiveSizesConstants = [
                 __classPrivateFieldGet(this, _Main_keywordResponsiveSize, "f"),
                 "_a02_",
@@ -111,14 +120,14 @@ class Main {
         }
         // CSS IMPORTS
         // ---------------------------------------------
-        withConstantsImportLine = (withSizesCssConstants && withConstantsImportLine);
+        let withConstantsImportLine = (commandLineArgs["withSizesCssConstants"] && commandLineArgs["withConstantsImportLine"]);
         let isWebpackAliased_true = true;
         let filename = [
             __classPrivateFieldGet(this, _Main_keywordResponsiveSize, "f"),
             "_a03_",
             __classPrivateFieldGet(this, _Main_fileBaseName_CssImports, "f"),
             "_",
-            sitesToolName,
+            commandLineArgs["sitesToolName"],
             "_",
             "Webpack",
             ".css"
@@ -132,7 +141,7 @@ class Main {
             "_a03_",
             __classPrivateFieldGet(this, _Main_fileBaseName_CssImports, "f"),
             "_",
-            sitesToolName,
+            commandLineArgs["sitesToolName"],
             "_",
             "Relative",
             ".css"

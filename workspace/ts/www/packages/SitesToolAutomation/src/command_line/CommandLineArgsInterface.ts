@@ -8,7 +8,6 @@ export interface CommandLineArgsInterface {
   readCommandLineArgs(): CommandLineArgs;
 
 
-
   /*
     @purpose: --sitesTool_ThemeName="theme_example" --sitesToolName="CssCleanStart"
     =>

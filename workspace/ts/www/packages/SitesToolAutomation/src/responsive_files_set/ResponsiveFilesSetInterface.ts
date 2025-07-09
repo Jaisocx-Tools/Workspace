@@ -27,6 +27,7 @@ export interface ResponsiveFilesSetInterface {
   // SiteToolAutomation/MediaAndStyles/responsive
   //    style_e02_mobile_xs_portrait.css
   produceOneResponsiveFilesSet (
+    themeNameBitsbuf: Uint8Array,
     sitesToolBitsbuf: Uint8Array,
     responsiveDatasetPropName: string,
     orientation: string,

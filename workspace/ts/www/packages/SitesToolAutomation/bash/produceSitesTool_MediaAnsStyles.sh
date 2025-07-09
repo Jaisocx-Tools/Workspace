@@ -4,5 +4,5 @@
 # packagePath="$(dirname "$(realpath "${thisPath}/../")")"
 
 argv="$@"
-node "transpiled/ESNext/main/produceSitesToolTemplate.js" $argv
+node "transpiled/ESNext/main/produceSitesTool_MediaAndStyles.js" $argv
 

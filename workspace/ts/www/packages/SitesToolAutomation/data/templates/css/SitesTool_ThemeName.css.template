@@ -1,0 +1,13 @@
+/* Sites tool: {{ SitesToolName }}, theme: {{ SitesTool_ThemeName }} */
+.workspace .{{ SitesToolName }}{{ SitesTool_ThemeName }} {
+
+  /* base theme css var assignment example */
+  --{{ SitesToolName }}--toolHtmlElement--font-size: 1rem;
+
+
+  /* same, but assigned value of css-clean-start */
+  --{{ SitesToolName }}--toolHtmlElement--font-size: var(--css-clean-start--font-size);
+
+}
+
+

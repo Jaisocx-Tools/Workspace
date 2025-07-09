@@ -1,3 +1,4 @@
+//@ts-ignore
 import * as path from "node:path";
 
 import { ResponsiveDatasetConstants } from "../constants/ResponsiveDatasetConstants.js";
@@ -151,6 +152,9 @@ export class ResponsiveImports implements ResponsiveImportsInterface {
     let sitesToolName: string = this.responsiveDatasetBase.sitesToolName;
     let sitesToolNameBitsbuf: Uint8Array = fw.textEncoder.encode ( sitesToolName );
 
+    let sitesTool_ThemeName: string = this.responsiveDatasetBase.sitesTool_ThemeName;
+    let sitesTool_ThemeNameBitsbuf: Uint8Array = fw.textEncoder.encode ( sitesTool_ThemeName );
+
     let newLineBitsbuf: Uint8Array = this.responsiveDatasetConstants.getNewLineBitsbuf();
 
     let responsiveSizeName_withSitesToolName_Array: Uint8Array[] = new Array() as Uint8Array[];
@@ -202,7 +206,8 @@ export class ResponsiveImports implements ResponsiveImportsInterface {
             responsiveSizeData["art"],
             responsiveSizeData["art_size"],
             orientationBitsbuf,
-            sitesToolNameBitsbuf
+            sitesToolNameBitsbuf,
+            sitesTool_ThemeNameBitsbuf
           );
 
         responsiveSizeName_withSitesToolName = this.responsiveDatasetBase

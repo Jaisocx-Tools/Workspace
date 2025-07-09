@@ -1,4 +1,6 @@
+//@ts-ignore
 import * as fs from "node:fs";
+//@ts-ignore
 import * as path from "node:path";
 import { ResponsiveDatasetConstants } from "../constants/ResponsiveDatasetConstants.js";
 import { ResponsiveSizesNames } from "../responsive_sizes_names/ResponsiveSizesNames.js";
@@ -31,22 +33,29 @@ export class Main {
     }
     // the central main method to produce .css files and for them the datasets, texts and names and .css files names.
     // cssOrJsTool: "css" | "js"
-    async run(sitesToolName, cssOrJsTool, mediaQueryCssFileTemplatePath, withSizesCssConstants, withConstantsImportLine) {
-        this.responsiveDatasetBase.setSitesToolName(sitesToolName);
+    async run(commandLineArgs) {
+        commandLineArgs["withSizesCssConstants"] = (commandLineArgs["withSizesCssConstants"] === "true");
+        commandLineArgs["withConstantsImportLine"] = (commandLineArgs["withConstantsImportLine"] === "true");
+        this.#keywordResponsiveSize = commandLineArgs["keywordResponsiveSize"];
+        this.responsiveDatasetConstants.setKeywordResponsiveSize(this.#keywordResponsiveSize);
+        this.responsiveDatasetConstants.initBitbufsArrays();
+        this.responsiveDatasetBase.setCommandLineArgs(commandLineArgs);
+        this.responsiveDatasetBase.setSitesTool_ThemeName(commandLineArgs["sitesTool_ThemeName"]);
+        this.responsiveDatasetBase.setSitesToolName(commandLineArgs["sitesToolName"]);
         if (this.responsiveDatasetBase.templateProjectPath.length === 0) {
-            this.responsiveDatasetBase.templateProjectPath = path.resolve("../../", "sites_tools", (cssOrJsTool + "_tools"), sitesToolName);
+            this.responsiveDatasetBase.templateProjectPath = path.resolve("../../", "sites_tools", (commandLineArgs["cssOrJsTool"] + "_tools"), commandLineArgs["sitesToolName"]);
         }
         if (fs.existsSync(this.responsiveDatasetBase.templateProjectPath) === false) {
             fs.mkdirSync(this.responsiveDatasetBase.templateProjectPath, { recursive: true });
         }
         if (this.responsiveDatasetBase.webpackAliasName.length === 0) {
-            this.responsiveDatasetBase.webpackAliasName = ["@", sitesToolName, "_", "MediaAndStyles"].join("");
+            this.responsiveDatasetBase.webpackAliasName = ["@", commandLineArgs["sitesToolName"], "_", "MediaAndStyles"].join("");
         }
         this.responsiveDatasetBase
             .readDataset(this.pathToJsonDatasetForResponsiveSizes)
-            .datasetPropsToBitsbufs(sitesToolName)
-            .setMediaAndStylesResponsiveFolderPath(["MediaAndStyles", "/", "themes", "/", "theme_base"].join(""))
-            .setMediaQueryCssFileTemplatePath(mediaQueryCssFileTemplatePath);
+            .datasetPropsToBitsbufs(commandLineArgs["sitesToolName"])
+            .setMediaAndStylesResponsiveFolderPath(["MediaAndStyles", "/", "themes", "/", commandLineArgs["sitesTool_ThemeName"]].join(""))
+            .setMediaQueryCssFileTemplatePath(commandLineArgs["templatePath"]);
         // console.log( this.responsiveDatasetBase.dataset );
         let retVal = 0;
         let newLinesAmount = 3;
@@ -58,7 +67,7 @@ export class Main {
         // CSS FILE WITH CONSTANTS OF RESPONSIVE SIZES
         // ---------------------------------------------
         let fileBaseName_responsiveSizesConstants = "";
-        if (withSizesCssConstants === true) {
+        if (commandLineArgs["withSizesCssConstants"] === true) {
             fileBaseName_responsiveSizesConstants = [
                 this.#keywordResponsiveSize,
                 "_a02_",
@@ -69,14 +78,14 @@ export class Main {
         }
         // CSS IMPORTS
         // ---------------------------------------------
-        withConstantsImportLine = (withSizesCssConstants && withConstantsImportLine);
+        let withConstantsImportLine = (commandLineArgs["withSizesCssConstants"] && commandLineArgs["withConstantsImportLine"]);
         let isWebpackAliased_true = true;
         let filename = [
             this.#keywordResponsiveSize,
             "_a03_",
             this.#fileBaseName_CssImports,
             "_",
-            sitesToolName,
+            commandLineArgs["sitesToolName"],
             "_",
             "Webpack",
             ".css"
@@ -90,7 +99,7 @@ export class Main {
             "_a03_",
             this.#fileBaseName_CssImports,
             "_",
-            sitesToolName,
+            commandLineArgs["sitesToolName"],
             "_",
             "Relative",
             ".css"

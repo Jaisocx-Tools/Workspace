@@ -15,6 +15,8 @@ export declare class ResponsiveDatasetBase implements ResponsiveDatasetBaseInter
     webpackAliasName: string;
     templateProjectPath: string;
     sitesToolName: string;
+    sitesTool_ThemeName: string;
+    commandLineArgs: object;
     constructor();
     setTemplateProjectPath(path: string): ResponsiveDatasetBase;
     getTemplateProjectPath(): string;
@@ -40,6 +42,8 @@ export declare class ResponsiveDatasetBase implements ResponsiveDatasetBaseInter
     */
     setDataset(inDataset: object): ResponsiveDatasetBase;
     setSitesToolName(name: string): ResponsiveDatasetBase;
+    setSitesTool_ThemeName(themeName: string): ResponsiveDatasetBase;
+    setCommandLineArgs(args: object): ResponsiveDatasetBase;
     datasetPropsToBitsbufs(sitesTool: string): ResponsiveDatasetBase;
     getDatasetFilePath(): string;
     /**

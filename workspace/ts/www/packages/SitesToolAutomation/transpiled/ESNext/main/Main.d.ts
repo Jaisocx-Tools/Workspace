@@ -12,6 +12,6 @@ export declare class Main {
     responsiveCssFileWithResponsiveSizes: ResponsiveSizesNames;
     responsiveImports: ResponsiveImports;
     constructor();
-    run(sitesToolName: string, cssOrJsTool: string, mediaQueryCssFileTemplatePath: string, withSizesCssConstants: boolean, withConstantsImportLine: boolean): Promise<number>;
+    run(commandLineArgs: any): Promise<number>;
 }
 //# sourceMappingURL=Main.d.ts.map

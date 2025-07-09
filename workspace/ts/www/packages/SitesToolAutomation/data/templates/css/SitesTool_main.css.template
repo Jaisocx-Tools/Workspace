@@ -1,0 +1,15 @@
+/* Sites tool: {{ SitesToolName }}, theme: {{ SitesTool_ThemeName }} */
+.workspace .{{ SitesToolName }}{{ SitesTool_ThemeName }} {
+
+}
+
+.workspace .{{ SitesToolName }}{{ SitesTool_ThemeName }} .class1 {
+  font-size: var(--{{ SitesToolName }}--toolHtmlElement--font-size);
+}
+
+.workspace .{{ SitesToolName }}{{ SitesTool_ThemeName }} .class2 {
+
+}
+
+
+

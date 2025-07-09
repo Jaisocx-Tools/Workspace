@@ -232,6 +232,29 @@ export class ResponsiveDatasetConstants implements ResponsiveDatasetConstantsInt
     this.#bitsbufSymbolSlash = this.textEncoder.encode( this.#symbolSlash );
 
 
+    // Arrays
+    this.#labelLineArray = [];
+    this.#cssEncommentedLine = [];
+    this.#orientationKeywords = [];
+    this.#orientationBitsbufKeywordsArray = [];
+    this.#maxOrMinArray = [];
+    this.#responsiveSizeNameOrientedBitsbufsArray = [];
+
+
+    // @import url("./style_e02_mobile_xs_portrait.css");
+    this.#importLineBitsbufsArray = [];
+    this.#responsiveSizeConstantNameBitsbufsArray = [];
+    this.#responsiveSizeConstantNameBitsbuf = new Uint8Array(1);
+    this.#responsiveSizeConstantLineMaxOrMinBitsbufsArray = [];
+    this.#responsiveSizeConstantLineBitsbufsArray = [];
+    this.#responsiveSizeConstantLine_size_BitsbufsArray = [];
+
+
+    this.initBitbufsArrays();
+  }
+
+
+  initBitbufsArrays(): ResponsiveDatasetConstants {
     this.#labelLineArray = [
       this.#bitsbufSymbolCommentStart,
       this.#bitsbufSymbolBackgroundSpace,
@@ -285,7 +308,7 @@ export class ResponsiveDatasetConstants implements ResponsiveDatasetConstantsInt
       this.#bitsbufSymbolUnderscore,
       "sites_tool_name",
       this.#bitsbufSymbolUnderscore,
-      "sites_tool_theme_name",
+      "sites_tool_theme_name"
     ];
 
 
@@ -350,6 +373,25 @@ export class ResponsiveDatasetConstants implements ResponsiveDatasetConstantsInt
       this.#bitsbufCssExpressionEnd
     ];
 
+    return this;
+  }
+
+
+  setKeywordResponsiveSize( keyword: string ): ResponsiveDatasetConstants {
+    this.#keywordResponsiveSize = keyword;
+    this.#bitsbufKeywordResponsiveSize = this.textEncoder.encode( this.#keywordResponsiveSize );
+
+    return this;
+  }
+
+
+  getKeywordResponsiveSize(): string {
+    return this.#keywordResponsiveSize;
+  }
+
+
+  getBitsbufKeywordResponsiveSize(): Uint8Array {
+    return this.#bitsbufKeywordResponsiveSize;
   }
 
 

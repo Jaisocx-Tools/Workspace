@@ -1,0 +1,4 @@
+{
+  "@{{ SitesToolName }}_MediaAndStyles": "${packageRoot}/MediaAndStyles/"
+}
+

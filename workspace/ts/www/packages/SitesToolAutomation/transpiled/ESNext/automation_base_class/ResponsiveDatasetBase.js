@@ -18,6 +18,8 @@ export class ResponsiveDatasetBase {
     webpackAliasName;
     templateProjectPath;
     sitesToolName;
+    sitesTool_ThemeName;
+    commandLineArgs;
     constructor() {
         // this.textEncoder = new TextEncoder();
         // this.textDecoder = new TextDecoder();
@@ -37,6 +39,8 @@ export class ResponsiveDatasetBase {
         this.webpackAliasName = "";
         this.templateProjectPath = "";
         this.sitesToolName = "";
+        this.sitesTool_ThemeName = "";
+        this.commandLineArgs = new Object();
     }
     // NOT IMPLEMENTED
     // sets the path to the new TypeScript SitesTool
@@ -106,6 +110,14 @@ export class ResponsiveDatasetBase {
         this.sitesToolName = name;
         return this;
     }
+    setSitesTool_ThemeName(themeName) {
+        this.sitesTool_ThemeName = themeName;
+        return this;
+    }
+    setCommandLineArgs(args) {
+        this.commandLineArgs = args;
+        return this;
+    }
     datasetPropsToBitsbufs(sitesTool) {
         let te = this.fileWriter.textEncoder;
         let sitesToolBitsbuf = te.encode(sitesTool);
@@ -120,6 +132,9 @@ export class ResponsiveDatasetBase {
             this.datasetBitsbufs[datasetPropname] = new Object();
             //@ts-ignore
             let dataBitsbufs = this.datasetBitsbufs[datasetPropname];
+            dataBitsbufs["SitesToolName"] = te.encode(dataProp["SitesToolName"]);
+            dataBitsbufs["SitesTool_ThemeName"] = te.encode(dataProp["SitesTool_ThemeName"]);
+            dataBitsbufs["range_orderby_id"] = te.encode(dataProp["range_orderby_id"]);
             dataBitsbufs["range_orderby_id"] = te.encode(dataProp["range_orderby_id"]);
             let dataPropWidth = dataProp["width"];
             let dataPropHeight = dataProp["height"];

@@ -34,7 +34,9 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.ResponsiveFilesSet = void 0;
+//@ts-ignore
 const fs = __importStar(require("node:fs"));
+//@ts-ignore
 const path = __importStar(require("node:path"));
 // import { FileWriter } from "@jaisocx/file-writer";
 const template_renderer_1 = require("@jaisocx/template-renderer");
@@ -70,9 +72,12 @@ class ResponsiveFilesSet {
         let orientationKeywordsBitsbufs = this.responsiveDatasetConstants.getOrientationKeywordsBitsbufs();
         let orientation = "";
         let orientationBitsbuf = new Uint8Array();
+        let sitesTool_ThemeNameBitsbuf = this.responsiveDatasetBase.fileWriter.textEncoder
+            .encode(this.responsiveDatasetBase.sitesTool_ThemeName);
         let sitesToolBitsbuf = this.responsiveDatasetBase.fileWriter.textEncoder
             .encode(this.responsiveDatasetBase.sitesToolName);
         let templateDataBase = {
+            "SitesTool_ThemeName": "",
             "SitesToolName": "",
             "responsiveSizeConstantName": "",
             "responsiveSizeName": "",
@@ -94,7 +99,7 @@ class ResponsiveFilesSet {
             for (orientationId = 0; orientationId < 2; orientationId++) {
                 orientation = orientationKeywords[orientationId];
                 orientationBitsbuf = orientationKeywordsBitsbufs[orientationId];
-                mediaRetVal = await this.produceOneResponsiveFilesSet(sitesToolBitsbuf, responsiveDatasetPropName, orientation, orientationBitsbuf);
+                mediaRetVal = await this.produceOneResponsiveFilesSet(sitesTool_ThemeNameBitsbuf, sitesToolBitsbuf, responsiveDatasetPropName, orientation, orientationBitsbuf);
             }
         }
         return mediaRetVal;
@@ -104,7 +109,7 @@ class ResponsiveFilesSet {
     // in the folder
     // SiteToolAutomation/MediaAndStyles/responsive
     //    style_e02_mobile_xs_portrait.css
-    async produceOneResponsiveFilesSet(sitesToolBitsbuf, responsiveDatasetPropName, orientation, orientationBitsbuf) {
+    async produceOneResponsiveFilesSet(themeNameBitsbuf, sitesToolBitsbuf, responsiveDatasetPropName, orientation, orientationBitsbuf) {
         let responsiveSizeConstantName = this.responsiveDatasetConstants
             .getResponsiveSizeConstantNameBitsbuf();
         //@ts-ignore
@@ -112,13 +117,14 @@ class ResponsiveFilesSet {
         let sizesByBitsbufs_true = true;
         let sizes = this.responsiveDatasetBase.getSizesByOrientation(responsiveDatasetPropName, orientation, sizesByBitsbufs_true);
         let responsiveSizeName_withSitesToolName_Array = this.responsiveDatasetConstants
-            .getResponsiveSizeName_withSitesToolName_ByBitsbufs(responsiveData["range_orderby_id"], responsiveData["art"], responsiveData["art_size"], orientationBitsbuf, sitesToolBitsbuf);
+            .getResponsiveSizeName_withSitesToolName_ByBitsbufs(responsiveData["range_orderby_id"], responsiveData["art"], responsiveData["art_size"], orientationBitsbuf, sitesToolBitsbuf, themeNameBitsbuf);
         let responsiveSizeNameOrientedArray = responsiveSizeName_withSitesToolName_Array.slice(0, 9);
         let responsiveSizeName_withSitesToolName = this.responsiveDatasetBase.fileWriter
             .concatUint8Arrays(responsiveSizeName_withSitesToolName_Array);
         let responsiveSizeNameOriented = this.responsiveDatasetBase.fileWriter
             .concatUint8Arrays(responsiveSizeNameOrientedArray);
         let templateDataBase = {
+            "SitesTool_ThemeName": themeNameBitsbuf,
             "SitesToolName": sitesToolBitsbuf,
             "responsiveSizeConstantName": responsiveSizeConstantName,
             "responsiveSizeName": responsiveSizeNameOriented,

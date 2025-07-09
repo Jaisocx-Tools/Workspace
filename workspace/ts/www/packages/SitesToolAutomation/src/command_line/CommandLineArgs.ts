@@ -7,23 +7,27 @@ export class CommandLineArgs implements CommandLineArgsInterface {
   protected _commandLineArgs_source: string[];
   protected _commandLineArgs: object;
 
+
   constructor() {
     this._commandLineArgs_source = new Array() as string[];
     this._commandLineArgs = new Object();
   }
 
+
   public getCommandLineArgs(): object {
     return this._commandLineArgs;
   }
 
+
   public readCommandLineArgs(): CommandLineArgs {
+
     // Get command-line arguments
     // and set to protected property of this ts class.
-    this._commandLineArgs_source = process.argv;
+    //@ts-ignore
+    this._commandLineArgs_source = [...process.argv.slice(1)];
 
     return this;
   }
-
 
 
   /*
@@ -37,21 +41,20 @@ export class CommandLineArgs implements CommandLineArgsInterface {
     }
 
   */
-  public transformCommandLineArgs(): CommandLineArgs {
 
+
+  public transformCommandLineArgs(): CommandLineArgs {
     this._commandLineArgs = new Object();
 
-    // @action: command-line arguments starting from index 2
-    let locComandLineArgs = [...this._commandLineArgs_source].slice(2);
 
+    // @action: command-line arguments starting from index 2
+    let locComandLineArgs = [...this._commandLineArgs_source].slice(1);
 
 
     locComandLineArgs.forEach( ( inForCommandLineArg: string ) => {
 
       // inForCommandLineArg example: --sitesToolName="CssCleanStart"
-
       let [ key, value ]: string[] = [ "", "" ];
-
 
 
       // @purpose: --sitesToolName="CssCleanStart" =>
@@ -61,11 +64,9 @@ export class CommandLineArgs implements CommandLineArgsInterface {
       let [key_source, value_source]: string[] = inForCommandLineArg.split("=");
 
 
-
       // @purpose: "--sitesToolName" => "sitesToolName"
       // @action: removing -- from start of the command line arg key
       key = key_source.replace ( "--", "" );
-
 
 
       // @purpose: "\"CssCleanStart\"" => "CssCleanStart"
@@ -75,12 +76,10 @@ export class CommandLineArgs implements CommandLineArgsInterface {
       }
 
 
-
+      //@ts-ignore
       this._commandLineArgs[key] = value;
 
     });
-
-
 
     return this;
   }

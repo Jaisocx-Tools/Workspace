@@ -1,4 +1,8 @@
+//@ts-ignore
 import * as fs from "node:fs";
+
+
+//@ts-ignore
 import * as path from "node:path";
 
 
@@ -65,10 +69,13 @@ export class ResponsiveFilesSet implements ResponsiveFilesSetInterface {
     let orientationKeywordsBitsbufs: Uint8Array[] = this.responsiveDatasetConstants.getOrientationKeywordsBitsbufs();
     let orientation: string = "";
     let orientationBitsbuf: Uint8Array = new Uint8Array();
+    let sitesTool_ThemeNameBitsbuf: Uint8Array = this.responsiveDatasetBase.fileWriter.textEncoder
+      .encode( this.responsiveDatasetBase.sitesTool_ThemeName );
     let sitesToolBitsbuf: Uint8Array = this.responsiveDatasetBase.fileWriter.textEncoder
       .encode( this.responsiveDatasetBase.sitesToolName );
 
     let templateDataBase: any = {
+      "SitesTool_ThemeName": "",
       "SitesToolName": "",
       "responsiveSizeConstantName": "",
       "responsiveSizeName": "",
@@ -97,11 +104,13 @@ export class ResponsiveFilesSet implements ResponsiveFilesSetInterface {
     let orientationId: number = 0;
 
     for ( responsiveDatasetPropName of propNames ) {
+
       for ( orientationId = 0; orientationId < 2; orientationId++ ) {
         orientation = orientationKeywords[orientationId];
         orientationBitsbuf = orientationKeywordsBitsbufs[orientationId];
 
         mediaRetVal = await this.produceOneResponsiveFilesSet (
+          sitesTool_ThemeNameBitsbuf,
           sitesToolBitsbuf,
           responsiveDatasetPropName,
           orientation,
@@ -122,6 +131,7 @@ export class ResponsiveFilesSet implements ResponsiveFilesSetInterface {
   // SiteToolAutomation/MediaAndStyles/responsive
   //    style_e02_mobile_xs_portrait.css
   async produceOneResponsiveFilesSet (
+    themeNameBitsbuf: Uint8Array,
     sitesToolBitsbuf: Uint8Array,
     responsiveDatasetPropName: string,
     orientation: string,
@@ -147,7 +157,8 @@ export class ResponsiveFilesSet implements ResponsiveFilesSetInterface {
         responsiveData["art"],
         responsiveData["art_size"],
         orientationBitsbuf,
-        sitesToolBitsbuf
+        sitesToolBitsbuf,
+        themeNameBitsbuf
       );
 
 
@@ -160,6 +171,7 @@ export class ResponsiveFilesSet implements ResponsiveFilesSetInterface {
       .concatUint8Arrays( responsiveSizeNameOrientedArray );
 
     let templateDataBase: any = {
+      "SitesTool_ThemeName": themeNameBitsbuf,
       "SitesToolName": sitesToolBitsbuf,
       "responsiveSizeConstantName": responsiveSizeConstantName,
       "responsiveSizeName": responsiveSizeNameOriented,

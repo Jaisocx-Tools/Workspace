@@ -534,7 +534,7 @@
       "path": "sites_tools/js_tools/EmailHtmlInliner",
       "name": "email-html-inliner",
       "update-published": "Tue Jun  3 00:36:34 GMT 2025",
-      "build": true,
+      "build": false,
       "build-simple-enable": true,
       "dependencies": [
         {

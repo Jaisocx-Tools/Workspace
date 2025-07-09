@@ -166,6 +166,23 @@ class ResponsiveDatasetConstants {
         // this.#bitsbufSymbolMinus = this.textEncoder.encode( this.#symbolMinus );
         __classPrivateFieldSet(this, _ResponsiveDatasetConstants_bitsbufSymbolDot, this.textEncoder.encode(__classPrivateFieldGet(this, _ResponsiveDatasetConstants_symbolDot, "f")), "f");
         __classPrivateFieldSet(this, _ResponsiveDatasetConstants_bitsbufSymbolSlash, this.textEncoder.encode(__classPrivateFieldGet(this, _ResponsiveDatasetConstants_symbolSlash, "f")), "f");
+        // Arrays
+        __classPrivateFieldSet(this, _ResponsiveDatasetConstants_labelLineArray, [], "f");
+        __classPrivateFieldSet(this, _ResponsiveDatasetConstants_cssEncommentedLine, [], "f");
+        __classPrivateFieldSet(this, _ResponsiveDatasetConstants_orientationKeywords, [], "f");
+        __classPrivateFieldSet(this, _ResponsiveDatasetConstants_orientationBitsbufKeywordsArray, [], "f");
+        __classPrivateFieldSet(this, _ResponsiveDatasetConstants_maxOrMinArray, [], "f");
+        __classPrivateFieldSet(this, _ResponsiveDatasetConstants_responsiveSizeNameOrientedBitsbufsArray, [], "f");
+        // @import url("./style_e02_mobile_xs_portrait.css");
+        __classPrivateFieldSet(this, _ResponsiveDatasetConstants_importLineBitsbufsArray, [], "f");
+        __classPrivateFieldSet(this, _ResponsiveDatasetConstants_responsiveSizeConstantNameBitsbufsArray, [], "f");
+        __classPrivateFieldSet(this, _ResponsiveDatasetConstants_responsiveSizeConstantNameBitsbuf, new Uint8Array(1), "f");
+        __classPrivateFieldSet(this, _ResponsiveDatasetConstants_responsiveSizeConstantLineMaxOrMinBitsbufsArray, [], "f");
+        __classPrivateFieldSet(this, _ResponsiveDatasetConstants_responsiveSizeConstantLineBitsbufsArray, [], "f");
+        __classPrivateFieldSet(this, _ResponsiveDatasetConstants_responsiveSizeConstantLine_size_BitsbufsArray, [], "f");
+        this.initBitbufsArrays();
+    }
+    initBitbufsArrays() {
         __classPrivateFieldSet(this, _ResponsiveDatasetConstants_labelLineArray, [
             __classPrivateFieldGet(this, _ResponsiveDatasetConstants_bitsbufSymbolCommentStart, "f"),
             __classPrivateFieldGet(this, _ResponsiveDatasetConstants_bitsbufSymbolBackgroundSpace, "f"),
@@ -207,7 +224,9 @@ class ResponsiveDatasetConstants {
             __classPrivateFieldGet(this, _ResponsiveDatasetConstants_bitsbufSymbolUnderscore, "f"),
             "orientation",
             __classPrivateFieldGet(this, _ResponsiveDatasetConstants_bitsbufSymbolUnderscore, "f"),
-            "sites_tool_name"
+            "sites_tool_name",
+            __classPrivateFieldGet(this, _ResponsiveDatasetConstants_bitsbufSymbolUnderscore, "f"),
+            "sites_tool_theme_name"
         ], "f");
         // @import url("./style_e02_mobile_xs_portrait.css");
         __classPrivateFieldSet(this, _ResponsiveDatasetConstants_importLineBitsbufsArray, [
@@ -260,6 +279,18 @@ class ResponsiveDatasetConstants {
             __classPrivateFieldGet(this, _ResponsiveDatasetConstants_bitsbufUnitPx, "f"),
             __classPrivateFieldGet(this, _ResponsiveDatasetConstants_bitsbufCssExpressionEnd, "f")
         ], "f");
+        return this;
+    }
+    setKeywordResponsiveSize(keyword) {
+        __classPrivateFieldSet(this, _ResponsiveDatasetConstants_keywordResponsiveSize, keyword, "f");
+        __classPrivateFieldSet(this, _ResponsiveDatasetConstants_bitsbufKeywordResponsiveSize, this.textEncoder.encode(__classPrivateFieldGet(this, _ResponsiveDatasetConstants_keywordResponsiveSize, "f")), "f");
+        return this;
+    }
+    getKeywordResponsiveSize() {
+        return __classPrivateFieldGet(this, _ResponsiveDatasetConstants_keywordResponsiveSize, "f");
+    }
+    getBitsbufKeywordResponsiveSize() {
+        return __classPrivateFieldGet(this, _ResponsiveDatasetConstants_bitsbufKeywordResponsiveSize, "f");
     }
     getOrientationKeywords() {
         return __classPrivateFieldGet(this, _ResponsiveDatasetConstants_orientationKeywords, "f");
@@ -323,17 +354,19 @@ class ResponsiveDatasetConstants {
         __classPrivateFieldGet(this, _ResponsiveDatasetConstants_cssEncommentedLine, "f")[commentPos] = comment;
         return __classPrivateFieldGet(this, _ResponsiveDatasetConstants_cssEncommentedLine, "f");
     }
-    getResponsiveSizeName_withSitesToolName_ByBitsbufs(rangeOrderbyId, art, artSize, orientation, sitesToolName) {
+    getResponsiveSizeName_withSitesToolName_ByBitsbufs(rangeOrderbyId, art, artSize, orientation, sitesToolName, sitesTool_ThemeName) {
         let rangeOrderbyIdPos = 2;
         let artPos = 4;
         let artSizePos = 6;
         let orientationPos = 8;
         let sitesToolNamePos = 10;
+        let sitesTool_ThemeNamePos = 12;
         __classPrivateFieldGet(this, _ResponsiveDatasetConstants_responsiveSizeNameOrientedBitsbufsArray, "f")[rangeOrderbyIdPos] = rangeOrderbyId;
         __classPrivateFieldGet(this, _ResponsiveDatasetConstants_responsiveSizeNameOrientedBitsbufsArray, "f")[artPos] = art;
         __classPrivateFieldGet(this, _ResponsiveDatasetConstants_responsiveSizeNameOrientedBitsbufsArray, "f")[artSizePos] = artSize;
         __classPrivateFieldGet(this, _ResponsiveDatasetConstants_responsiveSizeNameOrientedBitsbufsArray, "f")[orientationPos] = orientation;
         __classPrivateFieldGet(this, _ResponsiveDatasetConstants_responsiveSizeNameOrientedBitsbufsArray, "f")[sitesToolNamePos] = sitesToolName;
+        __classPrivateFieldGet(this, _ResponsiveDatasetConstants_responsiveSizeNameOrientedBitsbufsArray, "f")[sitesTool_ThemeNamePos] = sitesTool_ThemeName;
         return __classPrivateFieldGet(this, _ResponsiveDatasetConstants_responsiveSizeNameOrientedBitsbufsArray, "f");
     }
     getResponsiveSizeNameArrayByBitsbufs(sitesToolName, rangeOrderbyId, art, artSize, withSitesToolName) {

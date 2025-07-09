@@ -31,7 +31,6 @@ export class ResponsiveDatasetBase implements ResponsiveDatasetBaseInterface {
   commandLineArgs: object;
 
 
-
   constructor() {
 
     // this.textEncoder = new TextEncoder();
@@ -223,7 +222,6 @@ export class ResponsiveDatasetBase implements ResponsiveDatasetBaseInterface {
 
       dataBitsbufs["SitesToolName"] = te.encode( dataProp["SitesToolName"] );
       dataBitsbufs["SitesTool_ThemeName"] = te.encode( dataProp["SitesTool_ThemeName"] );
-
 
 
       dataBitsbufs["range_orderby_id"] = te.encode( dataProp["range_orderby_id"] );
