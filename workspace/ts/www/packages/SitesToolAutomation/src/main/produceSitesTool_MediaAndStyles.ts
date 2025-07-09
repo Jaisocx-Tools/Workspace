@@ -1,28 +1,30 @@
-export { CommandLineArgs } from "../command_line/CommandLineArgs.js";
+import { CommandLineArgs } from "../command_line/CommandLineArgs.js";
+import { OverridesTemplateData } from "../overrides_template_data/OverridesTemplateData.js";
 
 import { ResponsiveFilesSet } from "../responsive_files_set/ResponsiveFilesSet.js";
 import { Main } from "./Main.js";
 
 
 
+export type CommandArgsObject = {
+  sitesTool_ThemeName: "theme_base",
+  sitesToolName: "",
+  cssOrJsTool: "",
+  template: "",
+  templateDataMethodName: "",
+  withSizesCssConstants: "",
+  withConstantsImportLine: ""
+};
+
+
+
 export async function produceSitesTool_MediaAndStyles(): Promise<number> {
 
-  type CommandArgsObject = {
-    sitesTool_ThemeName: "theme_base",
-    sitesToolName: "",
-    cssOrJsTool: "",
-    template: "",
-    withSizesCssConstants: "",
-    withConstantsImportLine: ""
-  };
-
-
   let commandLineArgsInstance: CommandLineArgs = new CommandLineArgs();
-  commandLineArgsInstance
+  let cliArgs: CommandArgsObject = commandLineArgsInstance
     .readCommandLineArgs()
-    .transformCommandLineArgs();
-
-  let terminalInpArgsObject: CommandArgsObject = commandLineArgsInstance.getCommandLineArgs() as CommandArgsObject;
+    .transformCommandLineArgs()
+    .getCommandLineArgs() as CommandArgsObject;
 
   // console.log(
   //   "terminalInpArgsObject",
@@ -34,54 +36,39 @@ export async function produceSitesTool_MediaAndStyles(): Promise<number> {
 
   const mainClassInstance: Main = new Main();
 
-
-
   // let themeName: string = "theme-day-mode";
-
-  mainClassInstance.responsiveCssFile.getTemplateDataOverridden = function (
-
-
-    //@ts-ignore
-    responsiveDatasetPropName: string,
-    templateDataBase: any
-  ): any {
-
-    //@ts-ignore
-    let responsiveData = this.responsiveDatasetBase.datasetBitsbufs[responsiveDatasetPropName];
+  let overridesTemplateDataInstance: OverridesTemplateData = new OverridesTemplateData();
 
 
-    //@ts-ignore
-    let responsiveSizeName_withSitesToolName_Array: Uint8Array[] = this.responsiveDatasetConstants
-      .getResponsiveSizeName_withSitesToolName_ByBitsbufs (
-        responsiveData["range_orderby_id"],
-        responsiveData["art"],
-        responsiveData["art_size"],
-        templateDataBase["orientation"],
-        templateDataBase["SitesToolName"],
-        templateDataBase["SitesTool_ThemeName"]
-      );
 
+  //--------------------------------------------------------------------------------------------------------
+  // TEMPLATE DATA
+  //    Example of data for 2 template placeholders: { "SitesToolName": "CssCleanStart3", "SitesTool_ThemeName": "theme_nightmode", ... }
+  //    used in placeholders in ${SitesToolAutomation}/data/templates/responsive_size.css.template
+  //    Line 22:     --theme_name__{{ SitesToolName }}: {{ SitesTool_ThemeName }};
+  //--------------------------------------------------------------------------------------------------------
+  // You may set here another method,
+  //    this You have implemented in ts class OverridesTemplateData,
+  //    or in another ts class,
+  //    overriding the calculations of data for responsive_size__.css template.
+  //    You may find source code in ${SitesToolAutomation}/src/overrides_template_data/OverridesTemplateData.ts
 
-    let responsiveSizeArray: Uint8Array[] = responsiveSizeName_withSitesToolName_Array.slice( 4, 11 );
+  let templateDataMethodName: string = cliArgs["templateDataMethodName"];
+  if ( ( !templateDataMethodName ) || ( templateDataMethodName.length === 0 ) ) {
+    templateDataMethodName = "getUnchanged";
+  }
 
-
-    //@ts-ignore
-    let responsiveSize: Uint8Array = this.responsiveDatasetBase.fileWriter
-      .concatUint8Arrays( responsiveSizeArray );
-
-
-    templateDataBase["responsiveSize"] = responsiveSize;
-
-    return templateDataBase;
-  };
-
-  let responsiveCssFile: ResponsiveFilesSet = mainClassInstance.responsiveCssFile;
-  mainClassInstance.responsiveCssFile.getTemplateDataOverridden = responsiveCssFile.getTemplateDataOverridden.bind( responsiveCssFile );
+  mainClassInstance
+    .responsiveCssFile
+    .getTemplateDataOverridden = overridesTemplateDataInstance[templateDataMethodName].bind (
+        mainClassInstance.responsiveCssFile
+    );
+  //----------------------------------------------------
 
 
 
   let retVal: number = await mainClassInstance
-    .run ( terminalInpArgsObject );
+    .run ( cliArgs );
 
   return retVal;
 
