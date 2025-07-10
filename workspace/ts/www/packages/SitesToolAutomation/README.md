@@ -156,17 +156,17 @@ Example of value for responsiveDatasetPropName: **mobile_xs**
 
 ## Tasks
 
-### 1. keyword CssImports => Imports
+### . 1. keyword CssImports => Imports
 
 both relative and webpack remain in `theme/themename` folder
 
 
 
-### 2. Constants .css file moves to MediaAndStyles folder
+### . 2. Constants .css file moves to MediaAndStyles folder
 
 
 
-### 3. responsive_sizes .css fileset moves to subfolder
+### . 3. responsive_sizes .css fileset moves to subfolder
  `MediaAndStyles/theme/themename/responsive`
 
 

@@ -255,7 +255,63 @@ export class ResponsiveDatasetConstants implements ResponsiveDatasetConstantsInt
 
 
   initBitbufsArrays(): ResponsiveDatasetConstants {
+
+    // DATASETS
+    //-------------------------------------
+    // dataset: string[] = [ "portrait", "landscape" ]
+    // num = 2
+    this.#orientationKeywords = [
+      this.#keywordOrientationPortrait,
+      this.#keywordOrientationLandscape
+    ];
+
+
+    // dataset: Uint8Array[] = [ "portrait", "landscape" ]
+    // num = 2
+    this.#orientationBitsbufKeywordsArray = [
+      this.#bitsbufKeywordOrientationPortrait,
+      this.#bitsbufKeywordOrientationLandscape
+    ];
+
+
+    // dataset: Uint8Array[] = [ "min", "max" ]
+    // num = 2
+    this.#maxOrMinArray = [
+      this.#bitsbufKeywordMin,
+      this.#bitsbufKeywordMax
+    ];
+
+
+    // TEXTS CONCATENATIONS
+    //-------------------------------------
+    // --responsive_size
+    // array of bitsbuffers Uint8Array[]
+    // num = 2
+    this.#responsiveSizeConstantNameBitsbufsArray = [
+      this.#bitsbufCssVariableStart,
+      this.#bitsbufKeywordResponsiveSize
+    ];
+
+
+    // --responsive_size
+    // bitsbuffer Uint8Array
+    // num over 3 octets
+    this.#responsiveSizeConstantNameBitsbuf = this.fileWriter
+      .concatUint8Arrays( this.#responsiveSizeConstantNameBitsbufsArray as Uint8Array[] );
+
+
+    // "    /* mobile s */\n"
+    // Uint8Array[]
+    // num = 9
+    /*
+      {
+        padding: 0,
+        art: 3,
+        art_size: 5
+      }
+    */
     this.#labelLineArray = [
+      "padding",
       this.#bitsbufSymbolCommentStart,
       this.#bitsbufSymbolBackgroundSpace,
       "art",
@@ -267,6 +323,14 @@ export class ResponsiveDatasetConstants implements ResponsiveDatasetConstantsInt
     ];
 
 
+    // /* <comment> */\n
+    // Uint8Array[]
+    // num = 6
+    /*
+      {
+        comment: 2
+      }
+    */
     this.#cssEncommentedLine = [
       this.#bitsbufSymbolCommentStart,
       this.#bitsbufSymbolBackgroundSpace,
@@ -277,24 +341,19 @@ export class ResponsiveDatasetConstants implements ResponsiveDatasetConstantsInt
     ];
 
 
-    this.#orientationKeywords = [
-      this.#keywordOrientationPortrait,
-      this.#keywordOrientationLandscape
-    ];
-
-
-    this.#orientationBitsbufKeywordsArray = [
-      this.#bitsbufKeywordOrientationPortrait,
-      this.#bitsbufKeywordOrientationLandscape
-    ];
-
-
-    this.#maxOrMinArray = [
-      this.#bitsbufKeywordMin,
-      this.#bitsbufKeywordMax
-    ];
-
-
+    // responsive_size_h03_tablet_sm_portrait_CssCleanStart_theme_base
+    // Uint8Array[]
+    // num = 13
+    /*
+      {
+        range_orderby_id: 2,
+        art: 4,
+        art_size: 6,
+        orientation: 8,
+        sites_tool_name: 10,
+        sites_tool_theme_name: 12
+      }
+    */
     this.#responsiveSizeNameOrientedBitsbufsArray = [
       this.#bitsbufKeywordResponsiveSize,
       this.#bitsbufSymbolUnderscore,
@@ -312,7 +371,15 @@ export class ResponsiveDatasetConstants implements ResponsiveDatasetConstantsInt
     ];
 
 
-    // @import url("./style_e02_mobile_xs_portrait.css");
+    // @import url("./d_e02_mobile_xs_portrait_CssTable2_theme_example9.css");
+    // Uint8Array[]
+    // num = 7
+    /*
+      {
+        url_start: 1,
+        device_size_name: 3
+      }
+    */
     this.#importLineBitsbufsArray = [
       this.#bitsbufImportUrlStart,
       "url_start",
@@ -324,15 +391,15 @@ export class ResponsiveDatasetConstants implements ResponsiveDatasetConstantsInt
     ];
 
 
-    this.#responsiveSizeConstantNameBitsbufsArray = [
-      this.#bitsbufCssVariableStart,
-      this.#bitsbufKeywordResponsiveSize
-    ];
-
-    this.#responsiveSizeConstantNameBitsbuf = this.fileWriter
-      .concatUint8Arrays( this.#responsiveSizeConstantNameBitsbufsArray as Uint8Array[] );
-
-
+    // --responsive_size_max_width: 320px;
+    // Uint8Array[]
+    // num = 10
+    /*
+      {
+        maxOrMin: 3,
+        size: 7
+      }
+    */
     this.#responsiveSizeConstantLineMaxOrMinBitsbufsArray = [
       this.#bitsbufCssVariableStart,
       this.#bitsbufKeywordResponsiveSize,
@@ -347,6 +414,16 @@ export class ResponsiveDatasetConstants implements ResponsiveDatasetConstantsInt
     ];
 
 
+    // --responsive_size_name_CssCleanStart: d_e02_mobile_xs_portrait;
+    // --d_CssTable2_theme_example9: d_e04_mobile_s_portrait_CssTable2_theme_example9;
+    // Uint8Array[]
+    // num = 9
+    /*
+      {
+        siteToolName: 5,
+        responsiveSizeNameOriented: 7
+      }
+    */
     this.#responsiveSizeConstantLineBitsbufsArray = [
       this.#bitsbufCssVariableStart,
       this.#bitsbufKeywordResponsiveSize,
@@ -360,7 +437,19 @@ export class ResponsiveDatasetConstants implements ResponsiveDatasetConstantsInt
     ];
 
 
+    // "    --d_e04_mobile_s_portrait_max_width: 320px;"
+    // Uint8Array[]
+    // num = 11
+    /* not ready
+      {
+        padding: 0,
+        responsiveSizeNameOriented: 2,
+        max_or_min: 4,
+        size: 8
+      }
+    */
     this.#responsiveSizeConstantLine_size_BitsbufsArray = [
+      "padding",
       this.#bitsbufCssVariableStart,
       "responsiveSizeNameOriented",
       this.#bitsbufSymbolUnderscore,
@@ -373,10 +462,13 @@ export class ResponsiveDatasetConstants implements ResponsiveDatasetConstantsInt
       this.#bitsbufCssExpressionEnd
     ];
 
+
+    // method finish
     return this;
   }
 
 
+  // responsive_size
   setKeywordResponsiveSize( keyword: string ): ResponsiveDatasetConstants {
     this.#keywordResponsiveSize = keyword;
     this.#bitsbufKeywordResponsiveSize = this.textEncoder.encode( this.#keywordResponsiveSize );
@@ -385,74 +477,267 @@ export class ResponsiveDatasetConstants implements ResponsiveDatasetConstantsInt
   }
 
 
+  // responsive_size
   getKeywordResponsiveSize(): string {
     return this.#keywordResponsiveSize;
   }
 
 
+  // responsive_size
   getBitsbufKeywordResponsiveSize(): Uint8Array {
     return this.#bitsbufKeywordResponsiveSize;
   }
 
 
+  // array of strings string[]
+  // num = 2
   getOrientationKeywords(): string[] {
     return this.#orientationKeywords;
   }
 
 
+  // array of bitsbuffers Uint8Array[]
+  // num = 2
   getOrientationKeywordsBitsbufs(): Uint8Array[] {
     return this.#orientationBitsbufKeywordsArray;
   }
 
 
+  // array of bitsbuffers Uint8Array[]
+  // num = 2
   getMaxOrMinArray(): Uint8Array[] {
     return this.#maxOrMinArray;
   }
 
 
+  // portrait
   getKeywordOrientationPortrait(): string {
     return this.#keywordOrientationPortrait;
   }
 
 
+  // landscape
   getKeywordOrientationLandscape(): string {
     return this.#keywordOrientationLandscape;
   }
 
 
+  // min
   getKeywordMin(): Uint8Array {
     return this.#bitsbufKeywordMin;
   }
 
 
+  // max
   getKeywordMax(): Uint8Array {
     return this.#bitsbufKeywordMax;
   }
 
 
+  // "\n"
   getNewLineBitsbuf(): Uint8Array {
     return this.#bitsbufSymbolNewLine;
   }
 
 
+  // "/*"
   getBitsbufSymbolCommentStart(): Uint8Array {
     return this.#bitsbufSymbolCommentStart;
   }
 
 
+  // "*/"
   getBitsbufSymbolCommentEnd(): Uint8Array {
     return this.#bitsbufSymbolCommentEnd;
   }
 
 
+  // " "
   getBitsbufSymbolBackgroundSpace(): Uint8Array {
     return this.#bitsbufSymbolBackgroundSpace;
   }
 
 
+  // --responsive_size
+  // array of bitsbuffers Uint8Array[]
+  // num = 2
+  getResponsiveSizeConstantNameBitsbufsArray(): Uint8Array[] {
+    return this.#responsiveSizeConstantNameBitsbufsArray as Uint8Array[];
+  }
+
+
+  // --responsive_size
+  // bitsbuffer Uint8Array
+  // num over 3 octets
   getResponsiveSizeConstantNameBitsbuf(): Uint8Array {
     return this.#responsiveSizeConstantNameBitsbuf;
   }
+
+
+  // "    /* mobile s */\n"
+  // Uint8Array[]
+  // num = 9
+  /*
+    {
+      padding: 0,
+      art: 3,
+      art_size: 5
+    }
+  */
+
+
+  getLabelLineArray (
+    padding: Uint8Array,
+    art: Uint8Array,
+    art_size: Uint8Array
+  ): Uint8Array[] {
+    let paddingPos: number = 0;
+    let artPos: number = 3;
+    let art_sizePos: number = 5;
+
+    this.#labelLineArray[paddingPos] = padding;
+    this.#labelLineArray[artPos] = art;
+    this.#labelLineArray[art_sizePos] = art_size;
+
+    return this.#labelLineArray as Uint8Array[];
+  }
+
+
+  // /* <comment> */\n
+  // Uint8Array[]
+  // num = 6
+  /*
+    {
+      comment: 2
+    }
+  */
+
+
+  getCssEncommentedLine (
+    comment: Uint8Array
+  ): Uint8Array[] {
+    let commentPos: number = 2;
+
+    this.#cssEncommentedLine[commentPos] = comment;
+
+    return this.#cssEncommentedLine as Uint8Array[];
+  }
+
+
+  // responsive_size_h03_tablet_sm_portrait_CssCleanStart_theme_base
+  // Uint8Array[]
+  // num = 13
+  /*
+    {
+      range_orderby_id: 2,
+      art: 4,
+      art_size: 6,
+      orientation: 8,
+      sites_tool_name: 10,
+      sites_tool_theme_name: 12
+    }
+  */
+
+
+  getResponsiveSizeNameOrientedBitsbufsArray (
+    range_orderby_id: Uint8Array,
+    art: Uint8Array,
+    art_size: Uint8Array,
+    orientation: Uint8Array,
+    sites_tool_name: Uint8Array,
+    sites_tool_theme_name: Uint8Array
+  ): Uint8Array[] {
+    let range_orderby_idPos: number = 2;
+    let artPos: number = 4;
+    let art_sizePos: number = 6;
+    let orientationPos: number = 8;
+    let sites_tool_namePos: number = 10;
+    let sites_tool_theme_namePos: number = 12;
+
+    this.#responsiveSizeNameOrientedBitsbufsArray[range_orderby_idPos] = range_orderby_id;
+    this.#responsiveSizeNameOrientedBitsbufsArray[artPos] = art;
+    this.#responsiveSizeNameOrientedBitsbufsArray[art_sizePos] = art_size;
+    this.#responsiveSizeNameOrientedBitsbufsArray[orientationPos] = orientation;
+    this.#responsiveSizeNameOrientedBitsbufsArray[sites_tool_namePos] = sites_tool_name;
+    this.#responsiveSizeNameOrientedBitsbufsArray[sites_tool_theme_namePos] = sites_tool_theme_name;
+
+    return this.#responsiveSizeNameOrientedBitsbufsArray as Uint8Array[];
+  }
+
+
+  // arg returned by method getResponsiveSizeNameOrientedBitsbufsArray( ... )
+  getResponsiveSizeName( responsiveSizeNameOriented: Uint8Array[] ): Uint8Array[] {
+    return responsiveSizeNameOriented.slice( 0, 6 ) as Uint8Array[];
+  }
+
+
+  // arg returned by method getResponsiveSizeNameOrientedBitsbufsArray( ... )
+  getResponsiveSizeNameOriented( responsiveSizeNameOriented: Uint8Array[] ): Uint8Array[] {
+    return responsiveSizeNameOriented.slice( 0, 8 ) as Uint8Array[];
+  }
+
+
+  responsiveSizeName_setOrientation( orientation: Uint8Array ): ResponsiveDatasetConstants {
+    let orientationPos: number = 8;
+
+    this.#responsiveSizeNameOrientedBitsbufsArray[orientationPos] = orientation;
+
+    return this;
+  }
+
+
+  responsiveSizeName_setSitesToolName( sites_tool_name: Uint8Array ): ResponsiveDatasetConstants {
+    let sites_tool_namePos: number = 10;
+
+    this.#responsiveSizeNameOrientedBitsbufsArray[sites_tool_namePos] = sites_tool_name;
+
+    return this;
+  }
+
+
+  responsiveSizeName_setSitesTool_ThemeName( sites_tool_theme_name: Uint8Array ): ResponsiveDatasetConstants {
+    let sites_tool_theme_namePos: number = 12;
+
+    this.#responsiveSizeNameOrientedBitsbufsArray[sites_tool_theme_namePos] = sites_tool_theme_name;
+
+    return this;
+  }
+
+
+  // @import url("./d_e02_mobile_xs_portrait_CssTable2_theme_example9.css");
+  // Uint8Array[]
+  // num = 7
+  /*
+    {
+      url_start: 1,
+      device_size_name: 3
+    }
+  */
+
+
+  getImportLineBitsbufsArray (
+    url_start: Uint8Array,
+    device_size_name: Uint8Array
+  ): Uint8Array[] {
+    let url_startPos: number = 1;
+    let device_size_namePos: number = 3;
+
+    this.#importLineBitsbufsArray[url_startPos] = url_start;
+    this.#importLineBitsbufsArray[device_size_namePos] = device_size_name;
+
+    return this.#importLineBitsbufsArray as Uint8Array[];
+  }
+
+
+  // --responsive_size_max_width: 320px;
+  // Uint8Array[]
+  // num = 10
+  /*
+    {
+      maxOrMin: 3,
+      size: 7
+    }
+  */
 
 
   getResponsiveSizeConstantLineMaxOrMinBitsbufsArray (
@@ -469,232 +754,78 @@ export class ResponsiveDatasetConstants implements ResponsiveDatasetConstantsInt
   }
 
 
-  getResponsiveSizeConstantLineMaxOrMinBitsbufsArray_SitesTool (
-    size: Uint8Array,
-    isMax: boolean
-  ): Uint8Array[] {
-    let maxOrMinPos: number = 3;
-    let sizePos: number = 7;
-
-    this.#responsiveSizeConstantLineMaxOrMinBitsbufsArray[maxOrMinPos] = isMax ? this.#bitsbufKeywordMax : this.#bitsbufKeywordMin;
-    this.#responsiveSizeConstantLineMaxOrMinBitsbufsArray[sizePos] = size;
-
-    return this.#responsiveSizeConstantLineMaxOrMinBitsbufsArray as Uint8Array[];
-  }
-
-
-  getLabelLineArrayByBitsbufs (
-    art: Uint8Array,
-    artSize: Uint8Array
-  ): Uint8Array[] {
-    let artPos: number = 2;
-    let artSizePos: number = 4;
-
-    this.#labelLineArray[artPos] = art;
-    this.#labelLineArray[artSizePos] = artSize;
-
-    return this.#labelLineArray as Uint8Array[];
-  }
-
-
-  getCssEncommentedLineByBitsbufs (
-    comment: Uint8Array
-  ): Uint8Array[] {
-    let commentPos: number = 2;
-
-    this.#cssEncommentedLine[commentPos] = comment;
-
-    return this.#cssEncommentedLine as Uint8Array[];
-  }
-
-
-  getResponsiveSizeName_withSitesToolName_ByBitsbufs (
-    rangeOrderbyId: Uint8Array,
-    art: Uint8Array,
-    artSize: Uint8Array,
-    orientation: Uint8Array,
-    sitesToolName: Uint8Array,
-    sitesTool_ThemeName: Uint8Array
-  ): Uint8Array[] {
-    let rangeOrderbyIdPos: number = 2;
-    let artPos: number = 4;
-    let artSizePos: number = 6;
-    let orientationPos: number = 8;
-    let sitesToolNamePos: number = 10;
-    let sitesTool_ThemeNamePos: number = 12;
-
-
-    this.#responsiveSizeNameOrientedBitsbufsArray[rangeOrderbyIdPos] = rangeOrderbyId;
-    this.#responsiveSizeNameOrientedBitsbufsArray[artPos] = art;
-    this.#responsiveSizeNameOrientedBitsbufsArray[artSizePos] = artSize;
-    this.#responsiveSizeNameOrientedBitsbufsArray[orientationPos] = orientation;
-    this.#responsiveSizeNameOrientedBitsbufsArray[sitesToolNamePos] = sitesToolName;
-    this.#responsiveSizeNameOrientedBitsbufsArray[sitesTool_ThemeNamePos] = sitesTool_ThemeName;
-
-    return this.#responsiveSizeNameOrientedBitsbufsArray as Uint8Array[];
-  }
-
-
-  getResponsiveSizeNameArrayByBitsbufs (
-    sitesToolName: Uint8Array,
-    rangeOrderbyId: Uint8Array,
-    art: Uint8Array,
-    artSize: Uint8Array,
-    withSitesToolName: boolean
-  ): Uint8Array[] {
-    let rangeOrderbyIdPos: number = 2;
-    let artPos: number = 4;
-    let artSizePos: number = 6;
-    let sitesToolNamePos: number = 10;
-
-    let filteringNumber: number = 11;
-
-    if ( withSitesToolName ) {
-      filteringNumber = 9;
+  // getResponsiveSizeConstantLineMaxOrMinBitsbufsArray_SitesTool (
+  //   size: Uint8Array,
+  //   isMax: boolean
+  // ): Uint8Array[] {
+  //   let maxOrMinPos: number = 3;
+  //   let sizePos: number = 7;
+  //   this.#responsiveSizeConstantLineMaxOrMinBitsbufsArray[maxOrMinPos] = isMax ? this.#bitsbufKeywordMax : this.#bitsbufKeywordMin;
+  //   this.#responsiveSizeConstantLineMaxOrMinBitsbufsArray[sizePos] = size;
+  //   return this.#responsiveSizeConstantLineMaxOrMinBitsbufsArray as Uint8Array[];
+  // }
+  // --responsive_size_name_CssCleanStart: d_e02_mobile_xs_portrait;
+  // --d_CssTable2_theme_example9: d_e04_mobile_s_portrait_CssTable2_theme_example9;
+  // Uint8Array[]
+  // num = 9
+  /*
+    {
+      siteToolName: 5,
+      responsiveSizeNameOriented: 7
     }
-
-    this.#responsiveSizeNameOrientedBitsbufsArray[rangeOrderbyIdPos] = rangeOrderbyId;
-    this.#responsiveSizeNameOrientedBitsbufsArray[artPos] = art;
-    this.#responsiveSizeNameOrientedBitsbufsArray[artSizePos] = artSize;
-    this.#responsiveSizeNameOrientedBitsbufsArray[sitesToolNamePos] = sitesToolName;
-
-    let responsiveSizesNamesMultiArray: Uint8Array[] = this.#responsiveSizeNameOrientedBitsbufsArray
-      .filter(
-        (_value: any, index: number) => {
-          return ( ( index < 7 ) || ( index > filteringNumber ) );
-        }) as Uint8Array[];
-
-    return responsiveSizesNamesMultiArray;
-  }
-
-
-  getResponsiveSizeNameOrientedArrayByBitsbufs (
-    responsiveSizeName: Uint8Array,
-    orientation: Uint8Array
-  ): Uint8Array[] {
-    let responsiveSizeNameOrientedArray: Uint8Array[] = [
-      responsiveSizeName,
-      this.#bitsbufSymbolUnderscore,
-      orientation
-    ];
-
-    return responsiveSizeNameOrientedArray;
-  }
-
-
-  getResponsiveSizeNameBitsbufsArray (
-    sitesToolName: string,
-    rangeOrderbyId: string,
-    art: string,
-    artSize: string
-  ): Uint8Array[] {
-    return this.getResponsiveSizeNameOrientedBitsbufsArray (
-      sitesToolName,
-      rangeOrderbyId,
-      art,
-      artSize,
-      ""
-    ).filter(
-      (_value: any, index: number) => {
-        return ( ( index < 7 ) || ( index > 9 ) );
-      }) as Uint8Array[];
-  }
-
-
-  getResponsiveSizeNameOrientedBitsbufsArray (
-    sitesToolName: string,
-    rangeOrderbyId: string,
-    art: string,
-    artSize: string,
-    orientation: string
-  ): Uint8Array[] {
-    let rangeOrderbyIdPos: number = 2;
-    let artPos: number = 4;
-    let artSizePos: number = 6;
-    let orientationPos: number = 8;
-    let sitesToolNamePos: number = 10;
-
-    this.#responsiveSizeNameOrientedBitsbufsArray[rangeOrderbyIdPos] = this.textEncoder.encode( rangeOrderbyId );
-    this.#responsiveSizeNameOrientedBitsbufsArray[artPos] = this.textEncoder.encode( art );
-    this.#responsiveSizeNameOrientedBitsbufsArray[artSizePos] = this.textEncoder.encode( artSize );
-    this.#responsiveSizeNameOrientedBitsbufsArray[sitesToolNamePos] = this.textEncoder.encode( sitesToolName );
-
-    if ( orientation.length === 0 ) {
-      this.#responsiveSizeNameOrientedBitsbufsArray[orientationPos] = new Uint8Array(0);
-    } else {
-      this.#responsiveSizeNameOrientedBitsbufsArray[orientationPos] = this.textEncoder.encode( orientation );
-    }
-
-    return this.#responsiveSizeNameOrientedBitsbufsArray as Uint8Array[];
-  }
-
-
-  getImportLineBitsbufsArray (
-    urlStart: string,
-    responsiveSizeNameOriented: string
-  ): Uint8Array[] {
-    let urlStartPos: number = 1;
-    let responsiveSizeNamePos: number = 3;
-
-    this.#importLineBitsbufsArray[urlStartPos] = this.textEncoder.encode( urlStart );
-    this.#importLineBitsbufsArray[responsiveSizeNamePos] = this.textEncoder.encode( responsiveSizeNameOriented );
-
-    return this.#importLineBitsbufsArray as Uint8Array[];
-  }
-
-
-  getImportLineBitsbufsArrayByBitsbufs (
-    urlStart: Uint8Array,
-    responsiveSizeNameOriented: Uint8Array
-  ): Uint8Array[] {
-    let urlStartPos: number = 1;
-    let responsiveSizeNamePos: number = 3;
-
-    this.#importLineBitsbufsArray[urlStartPos] = urlStart;
-    this.#importLineBitsbufsArray[responsiveSizeNamePos] = responsiveSizeNameOriented;
-
-    return this.#importLineBitsbufsArray as Uint8Array[];
-  }
-
-
-  getResponsiveSizeConstantLineBitsbufsArrayByBitsbufs (
-    responsiveSizeNameOriented: Uint8Array
-  ): Uint8Array[] {
-    let responsiveSizeNamePos: number = 5;
-
-    this.#responsiveSizeConstantLineBitsbufsArray[responsiveSizeNamePos] = ( responsiveSizeNameOriented );
-
-    return this.#responsiveSizeConstantLineBitsbufsArray as Uint8Array[];
-  }
+  */
 
 
   getResponsiveSizeConstantLineBitsbufsArray (
-    responsiveSizeNameOriented: string
+    siteToolName: Uint8Array,
+    responsiveSizeNameOriented: Uint8Array
   ): Uint8Array[] {
-    let responsiveSizeNamePos: number = 4;
+    let siteToolNamePos: number = 5;
+    let responsiveSizeNameOrientedPos: number = 7;
 
-    this.#responsiveSizeConstantLineBitsbufsArray[responsiveSizeNamePos] = this.textEncoder.encode( responsiveSizeNameOriented );
+    this.#responsiveSizeConstantLineBitsbufsArray[siteToolNamePos] = siteToolName;
+    this.#responsiveSizeConstantLineBitsbufsArray[responsiveSizeNameOrientedPos] = responsiveSizeNameOriented;
 
     return this.#responsiveSizeConstantLineBitsbufsArray as Uint8Array[];
   }
 
 
-  getResponsiveSizeConstantLine_size_ByBitsbufs (
+  // "    --d_e04_mobile_s_portrait_max_width: 320px;"
+  // Uint8Array[]
+  // num = 11
+  /*
+    {
+      padding: 0,
+      responsiveSizeNameOriented: 2,
+      max_or_min: 4,
+      size: 8
+    }
+  */
+
+
+  getResponsiveSizeConstantLine_size_BitsbufsArray (
+    padding: Uint8Array,
     responsiveSizeNameOriented: Uint8Array,
-    maxOrMin: Uint8Array,
+    max_or_min: Uint8Array,
     size: Uint8Array
   ): Uint8Array[] {
-    let responsiveSizeNamePos: number = 1;
-    let maxOrMinPos: number = 3;
-    let sizePos: number = 7;
+    let paddingPos: number = 0;
+    let responsiveSizeNameOrientedPos: number = 2;
+    let max_or_minPos: number = 4;
+    let sizePos: number = 8;
 
-    this.#responsiveSizeConstantLine_size_BitsbufsArray[responsiveSizeNamePos] = responsiveSizeNameOriented;
-    this.#responsiveSizeConstantLine_size_BitsbufsArray[maxOrMinPos] = maxOrMin;
+    this.#responsiveSizeConstantLine_size_BitsbufsArray[paddingPos] = padding;
+    this.#responsiveSizeConstantLine_size_BitsbufsArray[responsiveSizeNameOrientedPos] = responsiveSizeNameOriented;
+    this.#responsiveSizeConstantLine_size_BitsbufsArray[max_or_minPos] = max_or_min;
     this.#responsiveSizeConstantLine_size_BitsbufsArray[sizePos] = size;
 
     return this.#responsiveSizeConstantLine_size_BitsbufsArray as Uint8Array[];
   }
 
 }
+
+
+
+
 
 

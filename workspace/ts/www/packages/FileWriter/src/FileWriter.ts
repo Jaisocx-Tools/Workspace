@@ -1,7 +1,16 @@
+//@ts-ignore
 import fs from "node:fs";
+
+//@ts-ignore
 import { Stats } from "node:fs";
+
+//@ts-ignore
 import { FileHandle } from "node:fs/promises";
+
+//@ts-ignore
 import { TextEncoder, TextDecoder } from "util";
+
+
 
 import { FileWriterConstants } from "./FileWriterConstants.js";
 

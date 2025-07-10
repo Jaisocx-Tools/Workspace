@@ -20,7 +20,6 @@ export interface ResponsiveImportsInterface {
   (
     targetFileName: string,
     relativeImportedFilesFolderPath: string,
-    cssFileWithSizesNames_FileBaseName: string,
     webpackAliased: boolean,
     withConstantsImportLine: boolean
   ): Promise<number>;

@@ -11,6 +11,6 @@ export declare class ResponsiveFilesSet implements ResponsiveFilesSetInterface {
     readTemplateMediaCssFile(mediaQueryCssFileTemplatePath: string): ResponsiveFilesSet;
     produceResponsiveFilesSetsSet(): Promise<number>;
     produceOneResponsiveFilesSet(themeNameBitsbuf: Uint8Array, sitesToolBitsbuf: Uint8Array, responsiveDatasetPropName: string, orientation: string, orientationBitsbuf: Uint8Array): Promise<number>;
-    getTemplateDataOverridden(responsiveDatasetPropName: string, templateDataBase: any): any;
+    getTemplateDataOverridden(_responsiveDatasetPropName: string, templateDataBase: any): any;
 }
 //# sourceMappingURL=ResponsiveFilesSet.d.ts.map

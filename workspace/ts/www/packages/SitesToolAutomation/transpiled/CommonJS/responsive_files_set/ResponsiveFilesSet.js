@@ -117,7 +117,7 @@ class ResponsiveFilesSet {
         let sizesByBitsbufs_true = true;
         let sizes = this.responsiveDatasetBase.getSizesByOrientation(responsiveDatasetPropName, orientation, sizesByBitsbufs_true);
         let responsiveSizeName_withSitesToolName_Array = this.responsiveDatasetConstants
-            .getResponsiveSizeName_withSitesToolName_ByBitsbufs(responsiveData["range_orderby_id"], responsiveData["art"], responsiveData["art_size"], orientationBitsbuf, sitesToolBitsbuf, themeNameBitsbuf);
+            .getResponsiveSizeNameOrientedBitsbufsArray(responsiveData["range_orderby_id"], responsiveData["art"], responsiveData["art_size"], orientationBitsbuf, sitesToolBitsbuf, themeNameBitsbuf);
         let responsiveSizeNameOrientedArray = responsiveSizeName_withSitesToolName_Array.slice(0, 9);
         let responsiveSizeName_withSitesToolName = this.responsiveDatasetBase.fileWriter
             .concatUint8Arrays(responsiveSizeName_withSitesToolName_Array);
@@ -151,9 +151,7 @@ class ResponsiveFilesSet {
         retVal = await this.responsiveDatasetBase.fileWriter.filehandleClose();
         return retVal;
     }
-    getTemplateDataOverridden(
-    //@ts-ignore
-    responsiveDatasetPropName, templateDataBase) {
+    getTemplateDataOverridden(_responsiveDatasetPropName, templateDataBase) {
         // console.info( templateDataBase );
         return templateDataBase;
     }

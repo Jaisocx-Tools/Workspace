@@ -6,15 +6,18 @@
   "version": "0.2.0",
   "configurations": [
     {
-      "name": "Debug Javascript",
+      "name": "Workspace Node",
       "type": "node",
-      "request": "attach",
+      "request": "launch",
+      "address": "0.0.0.0",
       "port": 9229,
-      "address": "localhost",
       "localRoot": "${workspaceFolder}/workspace/ts",
       "remoteRoot": "/var/www/workspace/ts",
-      "restart": false,
-      "skipFiles": ["<node_internals>/**"]
+      "skipFiles": [
+        "<node_internals>/**"
+      ],
+      "stopOnEntry": true,
+      "externalConsole": true
     },
     {
       "name": "Debug Site",

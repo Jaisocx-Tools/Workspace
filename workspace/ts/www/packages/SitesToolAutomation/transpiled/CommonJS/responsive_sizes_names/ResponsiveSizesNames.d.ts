@@ -6,7 +6,7 @@ export declare class ResponsiveSizesNames implements ResponsiveSizesNamesInterfa
     responsiveDatasetBase: ResponsiveDatasetBase;
     constructor(base: ResponsiveDatasetBase, constants: ResponsiveDatasetConstants);
     setResponsiveDatasetBase(base: ResponsiveDatasetBase): ResponsiveSizesNames;
-    produceCssFileWithResponsiveSizesConstants(targetFileBaseName: string, newLinesAmount: number, padding: number): Promise<number>;
+    produceCssFileWithResponsiveSizesConstants(fileBaseName: string, newLinesAmount: number, padding: number): Promise<number>;
     produceResponsiveSizesConstantsLinesSet(responsiveDatasetPropName: string, paddingBitsbuf: Uint8Array): Uint8Array[];
 }
 //# sourceMappingURL=ResponsiveSizesNames.d.ts.map

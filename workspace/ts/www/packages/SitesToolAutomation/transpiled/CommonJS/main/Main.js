@@ -43,7 +43,7 @@ var __classPrivateFieldGet = (this && this.__classPrivateFieldGet) || function (
     if (typeof state === "function" ? receiver !== state || !f : !state.has(receiver)) throw new TypeError("Cannot read private member from an object whose class did not declare it");
     return kind === "m" ? f : kind === "a" ? f.call(receiver) : f ? f.value : state.get(receiver);
 };
-var _Main_keywordResponsiveSize, _Main_fileBaseName_responsiveSizesConstants, _Main_fileBaseName_CssImports;
+var _Main_keywordResponsiveSize, _Main_fileBaseName_responsiveSizesConstants, _Main_fileBaseName_Imports;
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Main = void 0;
 //@ts-ignore
@@ -61,11 +61,11 @@ class Main {
     constructor() {
         _Main_keywordResponsiveSize.set(this, "");
         _Main_fileBaseName_responsiveSizesConstants.set(this, void 0);
-        _Main_fileBaseName_CssImports.set(this, void 0);
-        this.pathToJsonDatasetForResponsiveSizes = "data/ResponsiveSizes/ResponsiveSizes.json";
+        _Main_fileBaseName_Imports.set(this, void 0);
+        this.pathToJsonDatasetForResponsiveSizes = "data/responsive_sizes/ResponsiveSizes.json";
         __classPrivateFieldSet(this, _Main_keywordResponsiveSize, "responsive_size", "f");
         __classPrivateFieldSet(this, _Main_fileBaseName_responsiveSizesConstants, "Constants", "f");
-        __classPrivateFieldSet(this, _Main_fileBaseName_CssImports, "CssImports", "f");
+        __classPrivateFieldSet(this, _Main_fileBaseName_Imports, "Imports", "f");
         this.responsiveDatasetConstants = new ResponsiveDatasetConstants_js_1.ResponsiveDatasetConstants();
         this.responsiveDatasetBase = new ResponsiveDatasetBase_js_1.ResponsiveDatasetBase();
         this.responsiveCssFile = new ResponsiveFilesSet_js_1.ResponsiveFilesSet(this.responsiveDatasetBase, this.responsiveDatasetConstants);
@@ -93,10 +93,15 @@ class Main {
         if (this.responsiveDatasetBase.webpackAliasName.length === 0) {
             this.responsiveDatasetBase.webpackAliasName = ["@", commandLineArgs["sitesToolName"], "_", "MediaAndStyles"].join("");
         }
+        // ${SitesTool}/MediaAndStyles/themes/${ThemeName}
+        let mediaAndStyles_themePath = path.resolve("MediaAndStyles", "themes", commandLineArgs["sitesTool_ThemeName"], "responsive");
+        // ${SitesTool}/MediaAndStyles/themes/${ThemeName}/responsive
+        let mediaAndStyles_responsivePath = path.resolve(mediaAndStyles_themePath, "responsive");
         this.responsiveDatasetBase
             .readDataset(this.pathToJsonDatasetForResponsiveSizes)
-            .datasetPropsToBitsbufs(commandLineArgs["sitesToolName"])
-            .setMediaAndStylesResponsiveFolderPath(["MediaAndStyles", "/", "themes", "/", commandLineArgs["sitesTool_ThemeName"]].join(""))
+            .datasetPropsToBitsbufs(commandLineArgs["sitesToolName"], commandLineArgs["sitesTool_ThemeName"])
+            .setMediaAndStylesThemeFolderPath(mediaAndStyles_themePath)
+            .setMediaAndStylesResponsiveFolderPath(mediaAndStyles_responsivePath)
             .setMediaQueryCssFileTemplatePath(commandLineArgs["templatePath"]);
         // console.log( this.responsiveDatasetBase.dataset );
         let retVal = 0;
@@ -116,39 +121,39 @@ class Main {
                 __classPrivateFieldGet(this, _Main_fileBaseName_responsiveSizesConstants, "f")
             ].join("");
             //@ts-ignore
-            retVal = await this.responsiveCssFileWithResponsiveSizes.produceCssFileWithResponsiveSizesConstants(fileBaseName_responsiveSizesConstants, newLinesAmount, padding);
+            retVal = await this.responsiveCssFileWithResponsiveSizes
+                .produceCssFileWithResponsiveSizesConstants(fileBaseName_responsiveSizesConstants, newLinesAmount, padding);
         }
         // CSS IMPORTS
         // ---------------------------------------------
         let withConstantsImportLine = (commandLineArgs["withSizesCssConstants"] && commandLineArgs["withConstantsImportLine"]);
         let isWebpackAliased_true = true;
-        let filename = [
-            __classPrivateFieldGet(this, _Main_keywordResponsiveSize, "f"),
-            "_a03_",
-            __classPrivateFieldGet(this, _Main_fileBaseName_CssImports, "f"),
-            "_",
-            commandLineArgs["sitesToolName"],
-            "_",
-            "Webpack",
-            ".css"
-        ].join("");
-        retVal = await this.responsiveImports.produceImportsCssFileWithResponsiveFilesSetsSet(
         // ResponsiveSizesCssImports_Webpack.css
-        filename, this.responsiveDatasetBase.mediaAndStylesResponsiveFolderPath, fileBaseName_responsiveSizesConstants, isWebpackAliased_true, withConstantsImportLine);
-        let isWebpackAliased_false = false;
-        filename = [
+        let filenameArray = [
             __classPrivateFieldGet(this, _Main_keywordResponsiveSize, "f"),
             "_a03_",
-            __classPrivateFieldGet(this, _Main_fileBaseName_CssImports, "f"),
+            __classPrivateFieldGet(this, _Main_fileBaseName_Imports, "f"),
             "_",
             commandLineArgs["sitesToolName"],
             "_",
-            "Relative",
+            "relativeOrWebpackKeyword",
             ".css"
-        ].join("");
-        retVal = await this.responsiveImports.produceImportsCssFileWithResponsiveFilesSetsSet(
-        // ResponsiveSizesCssImports_Relative.css
-        filename, this.responsiveDatasetBase.mediaAndStylesResponsiveFolderPath, fileBaseName_responsiveSizesConstants, isWebpackAliased_false, withConstantsImportLine);
+        ];
+        let relativeOrWebpackKeywordPos = (filenameArray.length - 2);
+        filenameArray[relativeOrWebpackKeywordPos] = "Webpack";
+        retVal = await this.responsiveImports.produceImportsCssFileWithResponsiveFilesSetsSet(filenameArray.join(""), this.responsiveDatasetBase.mediaAndStylesThemeFolderPath, isWebpackAliased_true, withConstantsImportLine);
+        let isWebpackAliased_false = false;
+        filenameArray[relativeOrWebpackKeywordPos] = "Relative";
+        retVal = await this.responsiveImports.produceImportsCssFileWithResponsiveFilesSetsSet(filenameArray.join(""), this.responsiveDatasetBase.mediaAndStylesResponsiveFolderPath, isWebpackAliased_false, withConstantsImportLine);
+        // let webpackAliasTemplateFilePath: string = path.resolve(
+        //   this.responsiveDatasetBase.templateProjectPath,
+        //   "data",
+        //   "webpack.aliases.json.template"
+        // );
+        // let webpackAliasTemplateContents: string = fs.readFileSync (
+        //   webpackAliasTemplateFilePath,
+        //   "utf8" );
+        // this.responsiveDatasetBase.templateRenderer.setTemplate( webpackAliasTemplateContents );
         return retVal;
         // TS CLASS
         // ---------------------------------------------
@@ -157,5 +162,5 @@ class Main {
     }
 }
 exports.Main = Main;
-_Main_keywordResponsiveSize = new WeakMap(), _Main_fileBaseName_responsiveSizesConstants = new WeakMap(), _Main_fileBaseName_CssImports = new WeakMap();
+_Main_keywordResponsiveSize = new WeakMap(), _Main_fileBaseName_responsiveSizesConstants = new WeakMap(), _Main_fileBaseName_Imports = new WeakMap();
 //# sourceMappingURL=Main.js.map

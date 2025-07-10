@@ -21,7 +21,7 @@ export interface ResponsiveDatasetBaseInterface {
     */
     readDataset(inDatasetFileAbsolutePath: string): ResponsiveDatasetBase;
     setDataset(inDataset: object): ResponsiveDatasetBase;
-    datasetPropsToBitsbufs(sitesTool: string): ResponsiveDatasetBase;
+    datasetPropsToBitsbufs(sitesTool: string, sitesTool_ThemeName: string): ResponsiveDatasetBase;
     getDatasetFilePath(): string;
     /**
      * @ready
@@ -33,9 +33,5 @@ export interface ResponsiveDatasetBaseInterface {
      * @retVal datatype { from: number, to: number }
     */
     getSizesByOrientation(responsiveDatasetPropName: string, orientation: string, byBitsbufs: boolean): object;
-    getResponsiveSizeNameBitsbufsArray(sitesToolName: string, rangeOrderbyId: string, art: string, artSize: string): Uint8Array[];
-    getResponsiveSizeNameOrientedBitsbufsArray(sitesToolName: string, rangeOrderbyId: string, art: string, artSize: string, orientation: string): Uint8Array[];
-    getImportLineBitsbufsArray(urlStart: string, responsiveSizeName: string): Uint8Array[];
-    getResponsiveSizeConstantLineBitsbufsArray(responsiveSizeName: string): Uint8Array[];
 }
 //# sourceMappingURL=ResponsiveDatasetBaseInterface.d.ts.map

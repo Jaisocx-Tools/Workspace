@@ -1,4 +1,6 @@
+//@ts-ignore
 import * as fs from "node:fs";
+//@ts-ignore
 import * as path from "node:path";
 import { FileWriter } from "@jaisocx/file-writer";
 import { TemplateRenderer } from "@jaisocx/template-renderer";
@@ -9,6 +11,7 @@ export class ResponsiveDatasetBase {
     responsiveDatasetConstants;
     fileWriter;
     templateRenderer;
+    mediaAndStylesThemeFolderPath;
     mediaAndStylesResponsiveFolderPath;
     datasetFilePath;
     mediaQueryCssFileTemplatePath;
@@ -20,6 +23,8 @@ export class ResponsiveDatasetBase {
     sitesToolName;
     sitesTool_ThemeName;
     commandLineArgs;
+    bitsbufSitesToolName;
+    bitsbufSitesTool_ThemeName;
     constructor() {
         // this.textEncoder = new TextEncoder();
         // this.textDecoder = new TextDecoder();
@@ -30,6 +35,7 @@ export class ResponsiveDatasetBase {
         this.templateRenderer = new TemplateRenderer();
         this.templateRenderer
             .setDebug(false);
+        this.mediaAndStylesThemeFolderPath = "";
         this.mediaAndStylesResponsiveFolderPath = "";
         this.datasetFilePath = "";
         this.mediaQueryCssFileTemplatePath = "";
@@ -41,6 +47,8 @@ export class ResponsiveDatasetBase {
         this.sitesToolName = "";
         this.sitesTool_ThemeName = "";
         this.commandLineArgs = new Object();
+        this.bitsbufSitesToolName = new Uint8Array();
+        this.bitsbufSitesTool_ThemeName = new Uint8Array();
     }
     // NOT IMPLEMENTED
     // sets the path to the new TypeScript SitesTool
@@ -72,6 +80,16 @@ export class ResponsiveDatasetBase {
     /**
      * @ready
     */
+    setMediaAndStylesThemeFolderPath(inFolderRelativePath) {
+        this.mediaAndStylesThemeFolderPath = path.resolve(this.templateProjectPath, inFolderRelativePath);
+        if (fs.existsSync(this.mediaAndStylesThemeFolderPath) === false) {
+            fs.mkdirSync(this.mediaAndStylesThemeFolderPath, { recursive: true });
+        }
+        return this;
+    }
+    getMediaAndStylesThemeFolderPath() {
+        return this.mediaAndStylesThemeFolderPath;
+    }
     setMediaAndStylesResponsiveFolderPath(inFolderRelativePath) {
         this.mediaAndStylesResponsiveFolderPath = path.resolve(this.templateProjectPath, inFolderRelativePath);
         if (fs.existsSync(this.mediaAndStylesResponsiveFolderPath) === false) {
@@ -108,19 +126,25 @@ export class ResponsiveDatasetBase {
     }
     setSitesToolName(name) {
         this.sitesToolName = name;
+        let te = this.fileWriter.textEncoder;
+        this.bitsbufSitesToolName = te.encode(this.sitesToolName);
         return this;
     }
     setSitesTool_ThemeName(themeName) {
         this.sitesTool_ThemeName = themeName;
+        let te = this.fileWriter.textEncoder;
+        this.bitsbufSitesTool_ThemeName = te.encode(this.sitesTool_ThemeName);
         return this;
     }
     setCommandLineArgs(args) {
         this.commandLineArgs = args;
         return this;
     }
-    datasetPropsToBitsbufs(sitesTool) {
+    datasetPropsToBitsbufs(sitesTool, sitesTool_ThemeName) {
         let te = this.fileWriter.textEncoder;
-        let sitesToolBitsbuf = te.encode(sitesTool);
+        let zeroLenBitsbuf = new Uint8Array();
+        this.setSitesToolName(sitesTool);
+        this.setSitesTool_ThemeName(sitesTool_ThemeName);
         //@ts-ignore
         let data = this.dataset["data"];
         let datasetKeys = Object.keys(data);
@@ -132,9 +156,8 @@ export class ResponsiveDatasetBase {
             this.datasetBitsbufs[datasetPropname] = new Object();
             //@ts-ignore
             let dataBitsbufs = this.datasetBitsbufs[datasetPropname];
-            dataBitsbufs["SitesToolName"] = te.encode(dataProp["SitesToolName"]);
-            dataBitsbufs["SitesTool_ThemeName"] = te.encode(dataProp["SitesTool_ThemeName"]);
-            dataBitsbufs["range_orderby_id"] = te.encode(dataProp["range_orderby_id"]);
+            dataBitsbufs["SitesToolName"] = this.bitsbufSitesToolName;
+            dataBitsbufs["SitesTool_ThemeName"] = this.bitsbufSitesTool_ThemeName;
             dataBitsbufs["range_orderby_id"] = te.encode(dataProp["range_orderby_id"]);
             let dataPropWidth = dataProp["width"];
             let dataPropHeight = dataProp["height"];
@@ -146,7 +169,10 @@ export class ResponsiveDatasetBase {
             dataBitsbufs["height"]["to"] = te.encode("" + dataPropHeight["to"]);
             dataBitsbufs["art"] = te.encode(dataProp["art"]);
             dataBitsbufs["art_size"] = te.encode(dataProp["art_size"]);
-            let responsiveSizeName = this.responsiveDatasetConstants.getResponsiveSizeNameArrayByBitsbufs(sitesToolBitsbuf, dataBitsbufs["range_orderby_id"], dataBitsbufs["art"], dataBitsbufs["art_size"], false);
+            let responsiveSizeName_Oriented = this.responsiveDatasetConstants
+                .getResponsiveSizeNameOrientedBitsbufsArray(dataBitsbufs["range_orderby_id"], dataBitsbufs["art"], dataBitsbufs["art_size"], zeroLenBitsbuf, this.bitsbufSitesToolName, this.bitsbufSitesTool_ThemeName);
+            let responsiveSizeName = this.responsiveDatasetConstants
+                .getResponsiveSizeName(responsiveSizeName_Oriented);
             // console.log( responsiveSizeName );
             dataBitsbufs["responsiveSizeName"] = this.fileWriter.concatUint8Arrays(responsiveSizeName);
             let responsiveSizeNameString = this.fileWriter.textDecoder.decode(dataBitsbufs["responsiveSizeName"]);
@@ -193,18 +219,6 @@ export class ResponsiveDatasetBase {
             throw new Error(`Orientation value supported is "landscape" | "portrait". Was set ${orientation}`);
         }
         return sizes;
-    }
-    getResponsiveSizeNameBitsbufsArray(sitesToolName, rangeOrderbyId, art, artSize) {
-        return this.responsiveDatasetConstants.getResponsiveSizeNameBitsbufsArray(sitesToolName, rangeOrderbyId, art, artSize);
-    }
-    getResponsiveSizeNameOrientedBitsbufsArray(sitesToolName, rangeOrderbyId, art, artSize, orientation) {
-        return this.responsiveDatasetConstants.getResponsiveSizeNameOrientedBitsbufsArray(sitesToolName, rangeOrderbyId, art, artSize, orientation);
-    }
-    getImportLineBitsbufsArray(urlStart, responsiveSizeName) {
-        return this.responsiveDatasetConstants.getImportLineBitsbufsArray(urlStart, responsiveSizeName);
-    }
-    getResponsiveSizeConstantLineBitsbufsArray(responsiveSizeName) {
-        return this.responsiveDatasetConstants.getResponsiveSizeConstantLineBitsbufsArray(responsiveSizeName);
     }
 }
 //# sourceMappingURL=ResponsiveDatasetBase.js.map

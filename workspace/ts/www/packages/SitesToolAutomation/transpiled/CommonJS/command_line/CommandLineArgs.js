@@ -13,7 +13,7 @@ class CommandLineArgs {
         // Get command-line arguments
         // and set to protected property of this ts class.
         //@ts-ignore
-        this._commandLineArgs_source = [...process.argv.slice(1)];
+        this._commandLineArgs_source = [...process.argv];
         return this;
     }
     /*
@@ -30,7 +30,7 @@ class CommandLineArgs {
     transformCommandLineArgs() {
         this._commandLineArgs = new Object();
         // @action: command-line arguments starting from index 2
-        let locComandLineArgs = [...this._commandLineArgs_source].slice(1);
+        let locComandLineArgs = [...this._commandLineArgs_source].slice(2);
         locComandLineArgs.forEach((inForCommandLineArg) => {
             // inForCommandLineArg example: --sitesToolName="CssCleanStart"
             let [key, value] = ["", ""];

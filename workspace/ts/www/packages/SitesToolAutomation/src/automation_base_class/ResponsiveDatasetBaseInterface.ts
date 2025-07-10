@@ -60,7 +60,8 @@ export interface ResponsiveDatasetBaseInterface {
 
 
   datasetPropsToBitsbufs (
-    sitesTool: string
+    sitesTool: string,
+    sitesTool_ThemeName: string
   ): ResponsiveDatasetBase;
 
 
@@ -85,39 +86,6 @@ export interface ResponsiveDatasetBaseInterface {
     orientation: string,
     byBitsbufs: boolean
   ): object;
-
-
-  // from ResponsiveDatasetConstantsInterface
-
-  getResponsiveSizeNameBitsbufsArray (
-    sitesToolName: string,
-    rangeOrderbyId: string,
-    art: string,
-    artSize: string
-  ): Uint8Array[];
-
-
-
-  getResponsiveSizeNameOrientedBitsbufsArray (
-    sitesToolName: string,
-    rangeOrderbyId: string,
-    art: string,
-    artSize: string,
-    orientation: string
-  ): Uint8Array[];
-
-
-
-  getImportLineBitsbufsArray (
-    urlStart: string,
-    responsiveSizeName: string
-  ): Uint8Array[];
-
-
-
-  getResponsiveSizeConstantLineBitsbufsArray (
-    responsiveSizeName: string
-  ): Uint8Array[];
 
 }
 

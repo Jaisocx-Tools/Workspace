@@ -20,20 +20,19 @@ export declare class ResponsiveDatasetConstants implements ResponsiveDatasetCons
     getBitsbufSymbolCommentStart(): Uint8Array;
     getBitsbufSymbolCommentEnd(): Uint8Array;
     getBitsbufSymbolBackgroundSpace(): Uint8Array;
+    getResponsiveSizeConstantNameBitsbufsArray(): Uint8Array[];
     getResponsiveSizeConstantNameBitsbuf(): Uint8Array;
+    getLabelLineArray(padding: Uint8Array, art: Uint8Array, art_size: Uint8Array): Uint8Array[];
+    getCssEncommentedLine(comment: Uint8Array): Uint8Array[];
+    getResponsiveSizeNameOrientedBitsbufsArray(range_orderby_id: Uint8Array, art: Uint8Array, art_size: Uint8Array, orientation: Uint8Array, sites_tool_name: Uint8Array, sites_tool_theme_name: Uint8Array): Uint8Array[];
+    getResponsiveSizeName(responsiveSizeNameOriented: Uint8Array[]): Uint8Array[];
+    getResponsiveSizeNameOriented(responsiveSizeNameOriented: Uint8Array[]): Uint8Array[];
+    responsiveSizeName_setOrientation(orientation: Uint8Array): ResponsiveDatasetConstants;
+    responsiveSizeName_setSitesToolName(sites_tool_name: Uint8Array): ResponsiveDatasetConstants;
+    responsiveSizeName_setSitesTool_ThemeName(sites_tool_theme_name: Uint8Array): ResponsiveDatasetConstants;
+    getImportLineBitsbufsArray(url_start: Uint8Array, device_size_name: Uint8Array): Uint8Array[];
     getResponsiveSizeConstantLineMaxOrMinBitsbufsArray(size: Uint8Array, isMax: boolean): Uint8Array[];
-    getResponsiveSizeConstantLineMaxOrMinBitsbufsArray_SitesTool(size: Uint8Array, isMax: boolean): Uint8Array[];
-    getLabelLineArrayByBitsbufs(art: Uint8Array, artSize: Uint8Array): Uint8Array[];
-    getCssEncommentedLineByBitsbufs(comment: Uint8Array): Uint8Array[];
-    getResponsiveSizeName_withSitesToolName_ByBitsbufs(rangeOrderbyId: Uint8Array, art: Uint8Array, artSize: Uint8Array, orientation: Uint8Array, sitesToolName: Uint8Array, sitesTool_ThemeName: Uint8Array): Uint8Array[];
-    getResponsiveSizeNameArrayByBitsbufs(sitesToolName: Uint8Array, rangeOrderbyId: Uint8Array, art: Uint8Array, artSize: Uint8Array, withSitesToolName: boolean): Uint8Array[];
-    getResponsiveSizeNameOrientedArrayByBitsbufs(responsiveSizeName: Uint8Array, orientation: Uint8Array): Uint8Array[];
-    getResponsiveSizeNameBitsbufsArray(sitesToolName: string, rangeOrderbyId: string, art: string, artSize: string): Uint8Array[];
-    getResponsiveSizeNameOrientedBitsbufsArray(sitesToolName: string, rangeOrderbyId: string, art: string, artSize: string, orientation: string): Uint8Array[];
-    getImportLineBitsbufsArray(urlStart: string, responsiveSizeNameOriented: string): Uint8Array[];
-    getImportLineBitsbufsArrayByBitsbufs(urlStart: Uint8Array, responsiveSizeNameOriented: Uint8Array): Uint8Array[];
-    getResponsiveSizeConstantLineBitsbufsArrayByBitsbufs(responsiveSizeNameOriented: Uint8Array): Uint8Array[];
-    getResponsiveSizeConstantLineBitsbufsArray(responsiveSizeNameOriented: string): Uint8Array[];
-    getResponsiveSizeConstantLine_size_ByBitsbufs(responsiveSizeNameOriented: Uint8Array, maxOrMin: Uint8Array, size: Uint8Array): Uint8Array[];
+    getResponsiveSizeConstantLineBitsbufsArray(siteToolName: Uint8Array, responsiveSizeNameOriented: Uint8Array): Uint8Array[];
+    getResponsiveSizeConstantLine_size_BitsbufsArray(padding: Uint8Array, responsiveSizeNameOriented: Uint8Array, max_or_min: Uint8Array, size: Uint8Array): Uint8Array[];
 }
 //# sourceMappingURL=ResponsiveDatasetConstants.d.ts.map

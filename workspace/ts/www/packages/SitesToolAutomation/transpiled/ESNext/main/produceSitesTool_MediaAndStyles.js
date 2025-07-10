@@ -12,6 +12,7 @@ export async function produceSitesTool_MediaAndStyles() {
     // let themeName: string = "theme-day-mode";
     let overridesTemplateDataInstance = new OverridesTemplateData();
     //--------------------------------------------------------------------------------------------------------
+    // start block
     // TEMPLATE DATA
     //    Example of data for 2 template placeholders: { "SitesToolName": "CssCleanStart3", "SitesTool_ThemeName": "theme_nightmode", ... }
     //    used in placeholders in ${SitesToolAutomation}/data/templates/responsive_size.css.template
@@ -20,7 +21,7 @@ export async function produceSitesTool_MediaAndStyles() {
     // You may set here another method,
     //    this You have implemented in ts class OverridesTemplateData,
     //    or in another ts class,
-    //    overriding the calculations of data for responsive_size__.css template.
+    //    overriding the calculations of data for responsive_size__.css templates.
     //    You may find source code in ${SitesToolAutomation}/src/overrides_template_data/OverridesTemplateData.ts
     let templateDataMethodName = cliArgs["templateDataMethodName"];
     if ((!templateDataMethodName) || (templateDataMethodName.length === 0)) {
@@ -29,9 +30,10 @@ export async function produceSitesTool_MediaAndStyles() {
     //@ts-ignore
     mainClassInstance.responsiveCssFile.getTemplateDataOverridden = overridesTemplateDataInstance[templateDataMethodName]
         .bind(mainClassInstance.responsiveCssFile);
+    // end block
+    // TEMPLATE DATA
     //----------------------------------------------------
-    let retVal = await mainClassInstance
-        .run(cliArgs);
+    let retVal = await mainClassInstance.run(cliArgs);
     return retVal;
 }
 produceSitesTool_MediaAndStyles()

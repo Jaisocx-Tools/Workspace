@@ -6,6 +6,7 @@ export declare class ResponsiveDatasetBase implements ResponsiveDatasetBaseInter
     responsiveDatasetConstants: ResponsiveDatasetConstants;
     fileWriter: FileWriter;
     templateRenderer: TemplateRenderer;
+    mediaAndStylesThemeFolderPath: string;
     mediaAndStylesResponsiveFolderPath: string;
     datasetFilePath: string;
     mediaQueryCssFileTemplatePath: string;
@@ -17,6 +18,8 @@ export declare class ResponsiveDatasetBase implements ResponsiveDatasetBaseInter
     sitesToolName: string;
     sitesTool_ThemeName: string;
     commandLineArgs: object;
+    bitsbufSitesToolName: Uint8Array;
+    bitsbufSitesTool_ThemeName: Uint8Array;
     constructor();
     setTemplateProjectPath(path: string): ResponsiveDatasetBase;
     getTemplateProjectPath(): string;
@@ -29,6 +32,8 @@ export declare class ResponsiveDatasetBase implements ResponsiveDatasetBaseInter
     /**
      * @ready
     */
+    setMediaAndStylesThemeFolderPath(inFolderRelativePath: string): ResponsiveDatasetBase;
+    getMediaAndStylesThemeFolderPath(): string;
     setMediaAndStylesResponsiveFolderPath(inFolderRelativePath: string): ResponsiveDatasetBase;
     getMediaAndStylesResponsiveFolderPath(): string;
     setMediaQueryCssFileTemplatePath(path: string): ResponsiveDatasetBase;
@@ -44,7 +49,7 @@ export declare class ResponsiveDatasetBase implements ResponsiveDatasetBaseInter
     setSitesToolName(name: string): ResponsiveDatasetBase;
     setSitesTool_ThemeName(themeName: string): ResponsiveDatasetBase;
     setCommandLineArgs(args: object): ResponsiveDatasetBase;
-    datasetPropsToBitsbufs(sitesTool: string): ResponsiveDatasetBase;
+    datasetPropsToBitsbufs(sitesTool: string, sitesTool_ThemeName: string): ResponsiveDatasetBase;
     getDatasetFilePath(): string;
     /**
      * @ready
@@ -56,9 +61,5 @@ export declare class ResponsiveDatasetBase implements ResponsiveDatasetBaseInter
      * @retVal datatype { from: number, to: number }
     */
     getSizesByOrientation(responsiveDatasetPropName: string, orientation: string, byBitsbufs: boolean): object;
-    getResponsiveSizeNameBitsbufsArray(sitesToolName: string, rangeOrderbyId: string, art: string, artSize: string): Uint8Array[];
-    getResponsiveSizeNameOrientedBitsbufsArray(sitesToolName: string, rangeOrderbyId: string, art: string, artSize: string, orientation: string): Uint8Array[];
-    getImportLineBitsbufsArray(urlStart: string, responsiveSizeName: string): Uint8Array[];
-    getResponsiveSizeConstantLineBitsbufsArray(responsiveSizeName: string): Uint8Array[];
 }
 //# sourceMappingURL=ResponsiveDatasetBase.d.ts.map

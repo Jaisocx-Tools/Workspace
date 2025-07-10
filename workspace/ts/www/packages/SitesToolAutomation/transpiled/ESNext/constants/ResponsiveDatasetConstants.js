@@ -170,7 +170,52 @@ export class ResponsiveDatasetConstants {
         this.initBitbufsArrays();
     }
     initBitbufsArrays() {
+        // DATASETS
+        //-------------------------------------
+        // dataset: string[] = [ "portrait", "landscape" ]
+        // num = 2
+        this.#orientationKeywords = [
+            this.#keywordOrientationPortrait,
+            this.#keywordOrientationLandscape
+        ];
+        // dataset: Uint8Array[] = [ "portrait", "landscape" ]
+        // num = 2
+        this.#orientationBitsbufKeywordsArray = [
+            this.#bitsbufKeywordOrientationPortrait,
+            this.#bitsbufKeywordOrientationLandscape
+        ];
+        // dataset: Uint8Array[] = [ "min", "max" ]
+        // num = 2
+        this.#maxOrMinArray = [
+            this.#bitsbufKeywordMin,
+            this.#bitsbufKeywordMax
+        ];
+        // TEXTS CONCATENATIONS
+        //-------------------------------------
+        // --responsive_size
+        // array of bitsbuffers Uint8Array[]
+        // num = 2
+        this.#responsiveSizeConstantNameBitsbufsArray = [
+            this.#bitsbufCssVariableStart,
+            this.#bitsbufKeywordResponsiveSize
+        ];
+        // --responsive_size
+        // bitsbuffer Uint8Array
+        // num over 3 octets
+        this.#responsiveSizeConstantNameBitsbuf = this.fileWriter
+            .concatUint8Arrays(this.#responsiveSizeConstantNameBitsbufsArray);
+        // "    /* mobile s */\n"
+        // Uint8Array[]
+        // num = 9
+        /*
+          {
+            padding: 0,
+            art: 3,
+            art_size: 5
+          }
+        */
         this.#labelLineArray = [
+            "padding",
             this.#bitsbufSymbolCommentStart,
             this.#bitsbufSymbolBackgroundSpace,
             "art",
@@ -180,6 +225,14 @@ export class ResponsiveDatasetConstants {
             this.#bitsbufSymbolCommentEnd,
             this.#bitsbufSymbolNewLine
         ];
+        // /* <comment> */\n
+        // Uint8Array[]
+        // num = 6
+        /*
+          {
+            comment: 2
+          }
+        */
         this.#cssEncommentedLine = [
             this.#bitsbufSymbolCommentStart,
             this.#bitsbufSymbolBackgroundSpace,
@@ -188,18 +241,19 @@ export class ResponsiveDatasetConstants {
             this.#bitsbufSymbolCommentEnd,
             this.#bitsbufSymbolNewLine
         ];
-        this.#orientationKeywords = [
-            this.#keywordOrientationPortrait,
-            this.#keywordOrientationLandscape
-        ];
-        this.#orientationBitsbufKeywordsArray = [
-            this.#bitsbufKeywordOrientationPortrait,
-            this.#bitsbufKeywordOrientationLandscape
-        ];
-        this.#maxOrMinArray = [
-            this.#bitsbufKeywordMin,
-            this.#bitsbufKeywordMax
-        ];
+        // responsive_size_h03_tablet_sm_portrait_CssCleanStart_theme_base
+        // Uint8Array[]
+        // num = 13
+        /*
+          {
+            range_orderby_id: 2,
+            art: 4,
+            art_size: 6,
+            orientation: 8,
+            sites_tool_name: 10,
+            sites_tool_theme_name: 12
+          }
+        */
         this.#responsiveSizeNameOrientedBitsbufsArray = [
             this.#bitsbufKeywordResponsiveSize,
             this.#bitsbufSymbolUnderscore,
@@ -215,7 +269,15 @@ export class ResponsiveDatasetConstants {
             this.#bitsbufSymbolUnderscore,
             "sites_tool_theme_name"
         ];
-        // @import url("./style_e02_mobile_xs_portrait.css");
+        // @import url("./d_e02_mobile_xs_portrait_CssTable2_theme_example9.css");
+        // Uint8Array[]
+        // num = 7
+        /*
+          {
+            url_start: 1,
+            device_size_name: 3
+          }
+        */
         this.#importLineBitsbufsArray = [
             this.#bitsbufImportUrlStart,
             "url_start",
@@ -225,12 +287,15 @@ export class ResponsiveDatasetConstants {
             this.#bitsbufKeywordCssFileExtension,
             this.#bitsbufImportUrlEnd
         ];
-        this.#responsiveSizeConstantNameBitsbufsArray = [
-            this.#bitsbufCssVariableStart,
-            this.#bitsbufKeywordResponsiveSize
-        ];
-        this.#responsiveSizeConstantNameBitsbuf = this.fileWriter
-            .concatUint8Arrays(this.#responsiveSizeConstantNameBitsbufsArray);
+        // --responsive_size_max_width: 320px;
+        // Uint8Array[]
+        // num = 10
+        /*
+          {
+            maxOrMin: 3,
+            size: 7
+          }
+        */
         this.#responsiveSizeConstantLineMaxOrMinBitsbufsArray = [
             this.#bitsbufCssVariableStart,
             this.#bitsbufKeywordResponsiveSize,
@@ -243,6 +308,16 @@ export class ResponsiveDatasetConstants {
             this.#bitsbufUnitPx,
             this.#bitsbufCssExpressionEnd
         ];
+        // --responsive_size_name_CssCleanStart: d_e02_mobile_xs_portrait;
+        // --d_CssTable2_theme_example9: d_e04_mobile_s_portrait_CssTable2_theme_example9;
+        // Uint8Array[]
+        // num = 9
+        /*
+          {
+            siteToolName: 5,
+            responsiveSizeNameOriented: 7
+          }
+        */
         this.#responsiveSizeConstantLineBitsbufsArray = [
             this.#bitsbufCssVariableStart,
             this.#bitsbufKeywordResponsiveSize,
@@ -254,7 +329,19 @@ export class ResponsiveDatasetConstants {
             "responsiveSizeNameOriented",
             this.#bitsbufCssExpressionEnd
         ];
+        // "    --d_e04_mobile_s_portrait_max_width: 320px;"
+        // Uint8Array[]
+        // num = 11
+        /* not ready
+          {
+            padding: 0,
+            responsiveSizeNameOriented: 2,
+            max_or_min: 4,
+            size: 8
+          }
+        */
         this.#responsiveSizeConstantLine_size_BitsbufsArray = [
+            "padding",
             this.#bitsbufCssVariableStart,
             "responsiveSizeNameOriented",
             this.#bitsbufSymbolUnderscore,
@@ -266,55 +353,190 @@ export class ResponsiveDatasetConstants {
             this.#bitsbufUnitPx,
             this.#bitsbufCssExpressionEnd
         ];
+        // method finish
         return this;
     }
+    // responsive_size
     setKeywordResponsiveSize(keyword) {
         this.#keywordResponsiveSize = keyword;
         this.#bitsbufKeywordResponsiveSize = this.textEncoder.encode(this.#keywordResponsiveSize);
         return this;
     }
+    // responsive_size
     getKeywordResponsiveSize() {
         return this.#keywordResponsiveSize;
     }
+    // responsive_size
     getBitsbufKeywordResponsiveSize() {
         return this.#bitsbufKeywordResponsiveSize;
     }
+    // array of strings string[]
+    // num = 2
     getOrientationKeywords() {
         return this.#orientationKeywords;
     }
+    // array of bitsbuffers Uint8Array[]
+    // num = 2
     getOrientationKeywordsBitsbufs() {
         return this.#orientationBitsbufKeywordsArray;
     }
+    // array of bitsbuffers Uint8Array[]
+    // num = 2
     getMaxOrMinArray() {
         return this.#maxOrMinArray;
     }
+    // portrait
     getKeywordOrientationPortrait() {
         return this.#keywordOrientationPortrait;
     }
+    // landscape
     getKeywordOrientationLandscape() {
         return this.#keywordOrientationLandscape;
     }
+    // min
     getKeywordMin() {
         return this.#bitsbufKeywordMin;
     }
+    // max
     getKeywordMax() {
         return this.#bitsbufKeywordMax;
     }
+    // "\n"
     getNewLineBitsbuf() {
         return this.#bitsbufSymbolNewLine;
     }
+    // "/*"
     getBitsbufSymbolCommentStart() {
         return this.#bitsbufSymbolCommentStart;
     }
+    // "*/"
     getBitsbufSymbolCommentEnd() {
         return this.#bitsbufSymbolCommentEnd;
     }
+    // " "
     getBitsbufSymbolBackgroundSpace() {
         return this.#bitsbufSymbolBackgroundSpace;
     }
+    // --responsive_size
+    // array of bitsbuffers Uint8Array[]
+    // num = 2
+    getResponsiveSizeConstantNameBitsbufsArray() {
+        return this.#responsiveSizeConstantNameBitsbufsArray;
+    }
+    // --responsive_size
+    // bitsbuffer Uint8Array
+    // num over 3 octets
     getResponsiveSizeConstantNameBitsbuf() {
         return this.#responsiveSizeConstantNameBitsbuf;
     }
+    // "    /* mobile s */\n"
+    // Uint8Array[]
+    // num = 9
+    /*
+      {
+        padding: 0,
+        art: 3,
+        art_size: 5
+      }
+    */
+    getLabelLineArray(padding, art, art_size) {
+        let paddingPos = 0;
+        let artPos = 3;
+        let art_sizePos = 5;
+        this.#labelLineArray[paddingPos] = padding;
+        this.#labelLineArray[artPos] = art;
+        this.#labelLineArray[art_sizePos] = art_size;
+        return this.#labelLineArray;
+    }
+    // /* <comment> */\n
+    // Uint8Array[]
+    // num = 6
+    /*
+      {
+        comment: 2
+      }
+    */
+    getCssEncommentedLine(comment) {
+        let commentPos = 2;
+        this.#cssEncommentedLine[commentPos] = comment;
+        return this.#cssEncommentedLine;
+    }
+    // responsive_size_h03_tablet_sm_portrait_CssCleanStart_theme_base
+    // Uint8Array[]
+    // num = 13
+    /*
+      {
+        range_orderby_id: 2,
+        art: 4,
+        art_size: 6,
+        orientation: 8,
+        sites_tool_name: 10,
+        sites_tool_theme_name: 12
+      }
+    */
+    getResponsiveSizeNameOrientedBitsbufsArray(range_orderby_id, art, art_size, orientation, sites_tool_name, sites_tool_theme_name) {
+        let range_orderby_idPos = 2;
+        let artPos = 4;
+        let art_sizePos = 6;
+        let orientationPos = 8;
+        let sites_tool_namePos = 10;
+        let sites_tool_theme_namePos = 12;
+        this.#responsiveSizeNameOrientedBitsbufsArray[range_orderby_idPos] = range_orderby_id;
+        this.#responsiveSizeNameOrientedBitsbufsArray[artPos] = art;
+        this.#responsiveSizeNameOrientedBitsbufsArray[art_sizePos] = art_size;
+        this.#responsiveSizeNameOrientedBitsbufsArray[orientationPos] = orientation;
+        this.#responsiveSizeNameOrientedBitsbufsArray[sites_tool_namePos] = sites_tool_name;
+        this.#responsiveSizeNameOrientedBitsbufsArray[sites_tool_theme_namePos] = sites_tool_theme_name;
+        return this.#responsiveSizeNameOrientedBitsbufsArray;
+    }
+    // arg returned by method getResponsiveSizeNameOrientedBitsbufsArray( ... )
+    getResponsiveSizeName(responsiveSizeNameOriented) {
+        return responsiveSizeNameOriented.slice(0, 6);
+    }
+    // arg returned by method getResponsiveSizeNameOrientedBitsbufsArray( ... )
+    getResponsiveSizeNameOriented(responsiveSizeNameOriented) {
+        return responsiveSizeNameOriented.slice(0, 8);
+    }
+    responsiveSizeName_setOrientation(orientation) {
+        let orientationPos = 8;
+        this.#responsiveSizeNameOrientedBitsbufsArray[orientationPos] = orientation;
+        return this;
+    }
+    responsiveSizeName_setSitesToolName(sites_tool_name) {
+        let sites_tool_namePos = 10;
+        this.#responsiveSizeNameOrientedBitsbufsArray[sites_tool_namePos] = sites_tool_name;
+        return this;
+    }
+    responsiveSizeName_setSitesTool_ThemeName(sites_tool_theme_name) {
+        let sites_tool_theme_namePos = 12;
+        this.#responsiveSizeNameOrientedBitsbufsArray[sites_tool_theme_namePos] = sites_tool_theme_name;
+        return this;
+    }
+    // @import url("./d_e02_mobile_xs_portrait_CssTable2_theme_example9.css");
+    // Uint8Array[]
+    // num = 7
+    /*
+      {
+        url_start: 1,
+        device_size_name: 3
+      }
+    */
+    getImportLineBitsbufsArray(url_start, device_size_name) {
+        let url_startPos = 1;
+        let device_size_namePos = 3;
+        this.#importLineBitsbufsArray[url_startPos] = url_start;
+        this.#importLineBitsbufsArray[device_size_namePos] = device_size_name;
+        return this.#importLineBitsbufsArray;
+    }
+    // --responsive_size_max_width: 320px;
+    // Uint8Array[]
+    // num = 10
+    /*
+      {
+        maxOrMin: 3,
+        size: 7
+      }
+    */
     getResponsiveSizeConstantLineMaxOrMinBitsbufsArray(size, isMax) {
         let maxOrMinPos = 3;
         let sizePos = 7;
@@ -322,120 +544,52 @@ export class ResponsiveDatasetConstants {
         this.#responsiveSizeConstantLineMaxOrMinBitsbufsArray[sizePos] = size;
         return this.#responsiveSizeConstantLineMaxOrMinBitsbufsArray;
     }
-    getResponsiveSizeConstantLineMaxOrMinBitsbufsArray_SitesTool(size, isMax) {
-        let maxOrMinPos = 3;
-        let sizePos = 7;
-        this.#responsiveSizeConstantLineMaxOrMinBitsbufsArray[maxOrMinPos] = isMax ? this.#bitsbufKeywordMax : this.#bitsbufKeywordMin;
-        this.#responsiveSizeConstantLineMaxOrMinBitsbufsArray[sizePos] = size;
-        return this.#responsiveSizeConstantLineMaxOrMinBitsbufsArray;
-    }
-    getLabelLineArrayByBitsbufs(art, artSize) {
-        let artPos = 2;
-        let artSizePos = 4;
-        this.#labelLineArray[artPos] = art;
-        this.#labelLineArray[artSizePos] = artSize;
-        return this.#labelLineArray;
-    }
-    getCssEncommentedLineByBitsbufs(comment) {
-        let commentPos = 2;
-        this.#cssEncommentedLine[commentPos] = comment;
-        return this.#cssEncommentedLine;
-    }
-    getResponsiveSizeName_withSitesToolName_ByBitsbufs(rangeOrderbyId, art, artSize, orientation, sitesToolName, sitesTool_ThemeName) {
-        let rangeOrderbyIdPos = 2;
-        let artPos = 4;
-        let artSizePos = 6;
-        let orientationPos = 8;
-        let sitesToolNamePos = 10;
-        let sitesTool_ThemeNamePos = 12;
-        this.#responsiveSizeNameOrientedBitsbufsArray[rangeOrderbyIdPos] = rangeOrderbyId;
-        this.#responsiveSizeNameOrientedBitsbufsArray[artPos] = art;
-        this.#responsiveSizeNameOrientedBitsbufsArray[artSizePos] = artSize;
-        this.#responsiveSizeNameOrientedBitsbufsArray[orientationPos] = orientation;
-        this.#responsiveSizeNameOrientedBitsbufsArray[sitesToolNamePos] = sitesToolName;
-        this.#responsiveSizeNameOrientedBitsbufsArray[sitesTool_ThemeNamePos] = sitesTool_ThemeName;
-        return this.#responsiveSizeNameOrientedBitsbufsArray;
-    }
-    getResponsiveSizeNameArrayByBitsbufs(sitesToolName, rangeOrderbyId, art, artSize, withSitesToolName) {
-        let rangeOrderbyIdPos = 2;
-        let artPos = 4;
-        let artSizePos = 6;
-        let sitesToolNamePos = 10;
-        let filteringNumber = 11;
-        if (withSitesToolName) {
-            filteringNumber = 9;
-        }
-        this.#responsiveSizeNameOrientedBitsbufsArray[rangeOrderbyIdPos] = rangeOrderbyId;
-        this.#responsiveSizeNameOrientedBitsbufsArray[artPos] = art;
-        this.#responsiveSizeNameOrientedBitsbufsArray[artSizePos] = artSize;
-        this.#responsiveSizeNameOrientedBitsbufsArray[sitesToolNamePos] = sitesToolName;
-        let responsiveSizesNamesMultiArray = this.#responsiveSizeNameOrientedBitsbufsArray
-            .filter((_value, index) => {
-            return ((index < 7) || (index > filteringNumber));
-        });
-        return responsiveSizesNamesMultiArray;
-    }
-    getResponsiveSizeNameOrientedArrayByBitsbufs(responsiveSizeName, orientation) {
-        let responsiveSizeNameOrientedArray = [
-            responsiveSizeName,
-            this.#bitsbufSymbolUnderscore,
-            orientation
-        ];
-        return responsiveSizeNameOrientedArray;
-    }
-    getResponsiveSizeNameBitsbufsArray(sitesToolName, rangeOrderbyId, art, artSize) {
-        return this.getResponsiveSizeNameOrientedBitsbufsArray(sitesToolName, rangeOrderbyId, art, artSize, "").filter((_value, index) => {
-            return ((index < 7) || (index > 9));
-        });
-    }
-    getResponsiveSizeNameOrientedBitsbufsArray(sitesToolName, rangeOrderbyId, art, artSize, orientation) {
-        let rangeOrderbyIdPos = 2;
-        let artPos = 4;
-        let artSizePos = 6;
-        let orientationPos = 8;
-        let sitesToolNamePos = 10;
-        this.#responsiveSizeNameOrientedBitsbufsArray[rangeOrderbyIdPos] = this.textEncoder.encode(rangeOrderbyId);
-        this.#responsiveSizeNameOrientedBitsbufsArray[artPos] = this.textEncoder.encode(art);
-        this.#responsiveSizeNameOrientedBitsbufsArray[artSizePos] = this.textEncoder.encode(artSize);
-        this.#responsiveSizeNameOrientedBitsbufsArray[sitesToolNamePos] = this.textEncoder.encode(sitesToolName);
-        if (orientation.length === 0) {
-            this.#responsiveSizeNameOrientedBitsbufsArray[orientationPos] = new Uint8Array(0);
-        }
-        else {
-            this.#responsiveSizeNameOrientedBitsbufsArray[orientationPos] = this.textEncoder.encode(orientation);
-        }
-        return this.#responsiveSizeNameOrientedBitsbufsArray;
-    }
-    getImportLineBitsbufsArray(urlStart, responsiveSizeNameOriented) {
-        let urlStartPos = 1;
-        let responsiveSizeNamePos = 3;
-        this.#importLineBitsbufsArray[urlStartPos] = this.textEncoder.encode(urlStart);
-        this.#importLineBitsbufsArray[responsiveSizeNamePos] = this.textEncoder.encode(responsiveSizeNameOriented);
-        return this.#importLineBitsbufsArray;
-    }
-    getImportLineBitsbufsArrayByBitsbufs(urlStart, responsiveSizeNameOriented) {
-        let urlStartPos = 1;
-        let responsiveSizeNamePos = 3;
-        this.#importLineBitsbufsArray[urlStartPos] = urlStart;
-        this.#importLineBitsbufsArray[responsiveSizeNamePos] = responsiveSizeNameOriented;
-        return this.#importLineBitsbufsArray;
-    }
-    getResponsiveSizeConstantLineBitsbufsArrayByBitsbufs(responsiveSizeNameOriented) {
-        let responsiveSizeNamePos = 5;
-        this.#responsiveSizeConstantLineBitsbufsArray[responsiveSizeNamePos] = (responsiveSizeNameOriented);
+    // getResponsiveSizeConstantLineMaxOrMinBitsbufsArray_SitesTool (
+    //   size: Uint8Array,
+    //   isMax: boolean
+    // ): Uint8Array[] {
+    //   let maxOrMinPos: number = 3;
+    //   let sizePos: number = 7;
+    //   this.#responsiveSizeConstantLineMaxOrMinBitsbufsArray[maxOrMinPos] = isMax ? this.#bitsbufKeywordMax : this.#bitsbufKeywordMin;
+    //   this.#responsiveSizeConstantLineMaxOrMinBitsbufsArray[sizePos] = size;
+    //   return this.#responsiveSizeConstantLineMaxOrMinBitsbufsArray as Uint8Array[];
+    // }
+    // --responsive_size_name_CssCleanStart: d_e02_mobile_xs_portrait;
+    // --d_CssTable2_theme_example9: d_e04_mobile_s_portrait_CssTable2_theme_example9;
+    // Uint8Array[]
+    // num = 9
+    /*
+      {
+        siteToolName: 5,
+        responsiveSizeNameOriented: 7
+      }
+    */
+    getResponsiveSizeConstantLineBitsbufsArray(siteToolName, responsiveSizeNameOriented) {
+        let siteToolNamePos = 5;
+        let responsiveSizeNameOrientedPos = 7;
+        this.#responsiveSizeConstantLineBitsbufsArray[siteToolNamePos] = siteToolName;
+        this.#responsiveSizeConstantLineBitsbufsArray[responsiveSizeNameOrientedPos] = responsiveSizeNameOriented;
         return this.#responsiveSizeConstantLineBitsbufsArray;
     }
-    getResponsiveSizeConstantLineBitsbufsArray(responsiveSizeNameOriented) {
-        let responsiveSizeNamePos = 4;
-        this.#responsiveSizeConstantLineBitsbufsArray[responsiveSizeNamePos] = this.textEncoder.encode(responsiveSizeNameOriented);
-        return this.#responsiveSizeConstantLineBitsbufsArray;
-    }
-    getResponsiveSizeConstantLine_size_ByBitsbufs(responsiveSizeNameOriented, maxOrMin, size) {
-        let responsiveSizeNamePos = 1;
-        let maxOrMinPos = 3;
-        let sizePos = 7;
-        this.#responsiveSizeConstantLine_size_BitsbufsArray[responsiveSizeNamePos] = responsiveSizeNameOriented;
-        this.#responsiveSizeConstantLine_size_BitsbufsArray[maxOrMinPos] = maxOrMin;
+    // "    --d_e04_mobile_s_portrait_max_width: 320px;"
+    // Uint8Array[]
+    // num = 11
+    /*
+      {
+        padding: 0,
+        responsiveSizeNameOriented: 2,
+        max_or_min: 4,
+        size: 8
+      }
+    */
+    getResponsiveSizeConstantLine_size_BitsbufsArray(padding, responsiveSizeNameOriented, max_or_min, size) {
+        let paddingPos = 0;
+        let responsiveSizeNameOrientedPos = 2;
+        let max_or_minPos = 4;
+        let sizePos = 8;
+        this.#responsiveSizeConstantLine_size_BitsbufsArray[paddingPos] = padding;
+        this.#responsiveSizeConstantLine_size_BitsbufsArray[responsiveSizeNameOrientedPos] = responsiveSizeNameOriented;
+        this.#responsiveSizeConstantLine_size_BitsbufsArray[max_or_minPos] = max_or_min;
         this.#responsiveSizeConstantLine_size_BitsbufsArray[sizePos] = size;
         return this.#responsiveSizeConstantLine_size_BitsbufsArray;
     }

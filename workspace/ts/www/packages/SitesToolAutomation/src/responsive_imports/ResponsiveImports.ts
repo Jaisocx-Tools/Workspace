@@ -42,7 +42,6 @@ export class ResponsiveImports implements ResponsiveImportsInterface {
   async produceImportsCssFileWithResponsiveFilesSetsSet (
     targetFileName: string,
     relativeImportedFilesFolderPath: string,
-    importedCssFileWithSizesNames_FileBaseName: string,
     webpackAliased: boolean,
     withConstantsImportLine: boolean
   ): Promise<number> {
@@ -52,6 +51,7 @@ export class ResponsiveImports implements ResponsiveImportsInterface {
 
     // @ts-ignore
     let data: any = this.responsiveDatasetBase.datasetBitsbufs;
+    let responsiveSizeName = data["responsiveSizeName"];
 
     let targetFilePath: string = path.resolve (
       relativeImportedFilesFolderPath,
@@ -85,7 +85,8 @@ export class ResponsiveImports implements ResponsiveImportsInterface {
 
     // the first line is written in the imports css file
     let commentBitsbuf: Uint8Array = te.encode( commentText );
-    let firstLineEncommentedArray: Uint8Array[] = this.responsiveDatasetConstants.getCssEncommentedLineByBitsbufs( commentBitsbuf );
+    let firstLineEncommentedArray: Uint8Array[] = this.responsiveDatasetConstants
+      .getCssEncommentedLine( commentBitsbuf );
     let firstLineEncommentedArray_Clone: Uint8Array[] = [...firstLineEncommentedArray];
     firstLineEncommentedArray_Clone.push( linesDelimiter );
     let firstLineEncommented: Uint8Array = fw.concatUint8Arrays ( firstLineEncommentedArray_Clone );
@@ -95,14 +96,15 @@ export class ResponsiveImports implements ResponsiveImportsInterface {
     let bitsbufUrlStart: Uint8Array = te.encode( urlStart );
 
     if ( withConstantsImportLine === true ) {
-      let bitsbufImportedCssFileWithSizesNames_FileBaseName: Uint8Array = te.encode( importedCssFileWithSizesNames_FileBaseName );
 
-
+      // let bitsbufImportedCssFileWithSizesNames_FileBaseName: Uint8Array = te
+      //   .encode( importedCssFileWithSizesNames_FileBaseName );
       // gets the bitsbuf of the first import line with css file with responsive sizes names
-      let cssImportLine_fileWithSizesNames: Uint8Array[] = this.responsiveDatasetConstants.getImportLineBitsbufsArrayByBitsbufs (
-        bitsbufUrlStart,
-        bitsbufImportedCssFileWithSizesNames_FileBaseName
-      );
+      let cssImportLine_fileWithSizesNames: Uint8Array[] = this.responsiveDatasetConstants
+        .getImportLineBitsbufsArray (
+          bitsbufUrlStart,
+          responsiveSizeName
+        );
 
 
       // adds 4 new line chars linesDelimiter bitsbuf to the import line array of bitsbufs.
@@ -184,15 +186,28 @@ export class ResponsiveImports implements ResponsiveImportsInterface {
     let responsiveSizeDataLastId: number = ( responsiveDatasetLength - 1 );
     let responsiveDatasetPropName: string = "";
     let responsiveSizeData: any = new Object();
+    let paddingBuf: Uint8Array = new Uint8Array(0);
 
     for ( responsiveSizeDataId = 0; responsiveSizeDataId < responsiveDatasetLength; responsiveSizeDataId++ ) {
       responsiveDatasetPropName = responsiveSizeDataNames[responsiveSizeDataId];
       responsiveSizeData = data[responsiveDatasetPropName];
 
-      labelLineArray = this.responsiveDatasetConstants.getLabelLineArrayByBitsbufs (
-        responsiveSizeData["art"],
-        responsiveSizeData["art_size"]
-      );
+      responsiveSizeName_withSitesToolName_Array = this.responsiveDatasetConstants
+        .getResponsiveSizeNameOrientedBitsbufsArray (
+          responsiveSizeData["range_orderby_id"],
+          responsiveSizeData["art"],
+          responsiveSizeData["art_size"],
+          orientationBitsbuf,
+          sitesToolNameBitsbuf,
+          sitesTool_ThemeNameBitsbuf
+        );
+
+      labelLineArray = this.responsiveDatasetConstants
+        .getLabelLineArray (
+          paddingBuf,
+          responsiveSizeData["art"],
+          responsiveSizeData["art_size"]
+        );
 
       labelLine = fw.concatUint8Arrays( labelLineArray );
       written = await fw.appendBitsbufToFile ( labelLine );
@@ -200,23 +215,17 @@ export class ResponsiveImports implements ResponsiveImportsInterface {
       for ( orientationKeywordId = 0; orientationKeywordId < 2; orientationKeywordId++ ) {
         orientationBitsbuf = orientationKeywords[orientationKeywordId];
 
-        responsiveSizeName_withSitesToolName_Array = this.responsiveDatasetConstants
-          .getResponsiveSizeName_withSitesToolName_ByBitsbufs (
-            responsiveSizeData["range_orderby_id"],
-            responsiveSizeData["art"],
-            responsiveSizeData["art_size"],
-            orientationBitsbuf,
-            sitesToolNameBitsbuf,
-            sitesTool_ThemeNameBitsbuf
-          );
+        this.responsiveDatasetConstants
+          .responsiveSizeName_setOrientation( orientationBitsbuf );
 
         responsiveSizeName_withSitesToolName = this.responsiveDatasetBase
           .fileWriter.concatUint8Arrays ( responsiveSizeName_withSitesToolName_Array );
 
-        cssImportLine = this.responsiveDatasetConstants.getImportLineBitsbufsArrayByBitsbufs (
-          bitsbufUrlStart,
-          responsiveSizeName_withSitesToolName
-        );
+        cssImportLine = this.responsiveDatasetConstants
+          .getImportLineBitsbufsArray (
+            bitsbufUrlStart,
+            responsiveSizeName_withSitesToolName
+          );
 
         cssImportLineClone = [...cssImportLine];
 
@@ -228,7 +237,7 @@ export class ResponsiveImports implements ResponsiveImportsInterface {
           cssImportLineClone.push( newLineBitsbuf );
         }
 
-        bitsbufCssImportLine = fw.concatUint8Arrays( cssImportLineClone );
+        bitsbufCssImportLine = fw.concatUint8Arrays ( cssImportLineClone );
         written = await fw.appendBitsbufToFile (
           bitsbufCssImportLine
         );
@@ -241,6 +250,5 @@ export class ResponsiveImports implements ResponsiveImportsInterface {
   }
 
 }
-
 
 

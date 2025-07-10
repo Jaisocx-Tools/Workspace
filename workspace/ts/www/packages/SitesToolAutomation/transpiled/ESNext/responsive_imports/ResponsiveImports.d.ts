@@ -5,7 +5,7 @@ export declare class ResponsiveImports implements ResponsiveImportsInterface {
     responsiveDatasetConstants: ResponsiveDatasetConstants;
     responsiveDatasetBase: ResponsiveDatasetBase;
     constructor(base: ResponsiveDatasetBase, constants: ResponsiveDatasetConstants);
-    produceImportsCssFileWithResponsiveFilesSetsSet(targetFileName: string, relativeImportedFilesFolderPath: string, importedCssFileWithSizesNames_FileBaseName: string, webpackAliased: boolean, withConstantsImportLine: boolean): Promise<number>;
+    produceImportsCssFileWithResponsiveFilesSetsSet(targetFileName: string, relativeImportedFilesFolderPath: string, webpackAliased: boolean, withConstantsImportLine: boolean): Promise<number>;
     produceImportsLinesSet_ForResponsiveFilesSetsSet(data: any, bitsbufUrlStart: Uint8Array): Promise<number>;
 }
 //# sourceMappingURL=ResponsiveImports.d.ts.map

@@ -1,5 +1,14 @@
+//@ts-ignore
+import * as fs from "node:fs";
+
+
+//@ts-ignore
 import * as path from "node:path";
+
+
+//@ts-ignore
 import { TextEncoder } from "node:util";
+
 
 import { ResponsiveDatasetConstants } from "../constants/ResponsiveDatasetConstants.js";
 import { ResponsiveDatasetBase } from "../automation_base_class/ResponsiveDatasetBase.js";
@@ -30,7 +39,7 @@ export class ResponsiveSizesNames implements ResponsiveSizesNamesInterface {
   }
 
 
-  // RENAMED produceMediaConstantsCssFile( targetFileName: string ): Promise<number>;
+  // RENAMED produceMediaConstantsCssFile( fileName: string ): Promise<number>;
   // SiteToolAutomation/MediaAndStyles/responsive/MediaConstants.css
   // .workspace {
   //     --style_e02_mobile_xs_portrait__width__min_width: 240px;
@@ -41,7 +50,7 @@ export class ResponsiveSizesNames implements ResponsiveSizesNamesInterface {
   //
   //   ...
   async produceCssFileWithResponsiveSizesConstants(
-    targetFileBaseName: string,
+    fileBaseName: string,
     newLinesAmount: number,
     padding: number
   ): Promise<number> {
@@ -49,7 +58,16 @@ export class ResponsiveSizesNames implements ResponsiveSizesNamesInterface {
     let fw: FileWriter = this.responsiveDatasetBase.fileWriter;
     let te: TextEncoder = this.responsiveDatasetBase.fileWriter.textEncoder;
 
-    let targetFileName: string = [ targetFileBaseName, ".css" ].join( "" );
+
+    let fileFolderPath: string = path.resolve (
+      this.responsiveDatasetBase.templateProjectPath,
+      "MediaAndStyles"
+    );
+    let fileName: string = [ fileBaseName, ".css" ].join( "" );
+    let filePath: string = path.resolve (
+      fileFolderPath,
+      fileName
+    );
 
 
     // @ts-ignore
@@ -60,7 +78,6 @@ export class ResponsiveSizesNames implements ResponsiveSizesNamesInterface {
     let mediaConstantLinesSet_Clone: Uint8Array[] = new Array() as Uint8Array[];
     let mediaConstantLinesSet_bitsbuf: Uint8Array = new Uint8Array();
     let labelLineArray: Uint8Array[] = new Array() as Uint8Array[];
-    let labelLineArray2: Uint8Array[] = new Array() as Uint8Array[];
     let labelLine: Uint8Array = new Uint8Array();
     let newLine: Uint8Array = this.responsiveDatasetConstants.getNewLineBitsbuf();
 
@@ -78,13 +95,16 @@ export class ResponsiveSizesNames implements ResponsiveSizesNamesInterface {
     let paddingBitsbuf: Uint8Array = new Uint8Array(padding);
     paddingBitsbuf.fill( backgroundSpace[0], 0, padding );
 
+    if ( !fs.existsSync( fileFolderPath ) ) {
 
-    retVal = await fw.toAddToFileInLoop_CleanupFileAndGetNewFileHandle (
-      path.resolve (
-        this.responsiveDatasetBase.mediaAndStylesResponsiveFolderPath,
-        targetFileName
-      )
-    );
+      //@ts-ignore
+      let mkdirRetVal: string|undefined = fs.mkdirSync(
+        fileFolderPath,
+        { recursive: true }
+      );
+    }
+
+    retVal = await fw.toAddToFileInLoop_CleanupFileAndGetNewFileHandle ( filePath );
 
     let cssClassStartLine: Uint8Array = te.encode( ".workspace {\n\n" );
     retVal = await fw.appendBitsbufToFile ( cssClassStartLine );
@@ -98,16 +118,16 @@ export class ResponsiveSizesNames implements ResponsiveSizesNamesInterface {
       responsiveDatasetPropName = propNames[iterationId];
       data = this.responsiveDatasetBase.datasetBitsbufs[responsiveDatasetPropName];
 
-      labelLineArray = this.responsiveDatasetConstants.getLabelLineArrayByBitsbufs (
+      labelLineArray = this.responsiveDatasetConstants.getLabelLineArray (
+        paddingBitsbuf,
         data["art"],
         data["art_size"]
       );
-      labelLineArray2 = [ paddingBitsbuf, ...labelLineArray ];
 
-      labelLine = fw.concatUint8Arrays( labelLineArray2 );
+      labelLine = fw.concatUint8Arrays( labelLineArray );
       retVal = await fw.appendBitsbufToFile ( labelLine );
 
-      mediaConstantLinesSet = this.produceResponsiveSizesConstantsLinesSet(
+      mediaConstantLinesSet = this.produceResponsiveSizesConstantsLinesSet (
         responsiveDatasetPropName,
         paddingBitsbuf
       );
@@ -144,9 +164,10 @@ export class ResponsiveSizesNames implements ResponsiveSizesNamesInterface {
     responsiveDatasetPropName: string,
     paddingBitsbuf: Uint8Array
   ): Uint8Array[] {
+    let zeroLenBitsbuf: Uint8Array = new Uint8Array(0);
+
     let responsiveSizesConstantLinesArray: Uint8Array[] = new Array() as Uint8Array[];
     let responsiveSizesConstantLine: Uint8Array[] = new Array();
-    let responsiveSizesConstantLine_Clone: Uint8Array[] = new Array();
     let responsiveSizesConstantLine_bitsbuf: Uint8Array = new Uint8Array();
 
 
@@ -158,12 +179,21 @@ export class ResponsiveSizesNames implements ResponsiveSizesNamesInterface {
 
 
     //@ts-ignore
-    let responsiveSizeName: Uint8Array = data["responsiveSizeName"];
-
+    // let responsiveSizeName: Uint8Array = data["responsiveSizeName"];
     let maxOrMinArray: Uint8Array[] = this.responsiveDatasetConstants.getMaxOrMinArray();
     let maxOrMin: Uint8Array = new Uint8Array();
 
-    let responsiveSizeNameOrientedArray: Uint8Array[] = new Array() as Uint8Array[];
+    let long_responsiveSizeNameOriented_BitsbufsArray: Uint8Array[] = this.responsiveDatasetConstants
+      .getResponsiveSizeNameOrientedBitsbufsArray (
+        data["range_orderby_id"],
+        data["art"],
+        data["art_size"],
+        zeroLenBitsbuf,
+        this.responsiveDatasetBase.bitsbufSitesToolName,
+        this.responsiveDatasetBase.bitsbufSitesTool_ThemeName
+      );
+    let responsiveSizeNameOriented_BitsbufsArray: Uint8Array[] = new Array() as Uint8Array[];
+
     let responsiveSizeNameOriented: Uint8Array = new Uint8Array();
 
     let orientationValues: Uint8Array[] = this.responsiveDatasetConstants.getOrientationKeywordsBitsbufs();
@@ -194,14 +224,15 @@ export class ResponsiveSizesNames implements ResponsiveSizesNamesInterface {
         sizesAsBitsbufs_true
       );
 
-      responsiveSizeNameOrientedArray = this.responsiveDatasetConstants
-        .getResponsiveSizeNameOrientedArrayByBitsbufs (
-          responsiveSizeName,
-          orientationBitsbuf
-        );
+      this.responsiveDatasetConstants
+        .responsiveSizeName_setOrientation( orientationBitsbuf );
+
+      responsiveSizeNameOriented_BitsbufsArray = this.responsiveDatasetConstants
+        .getResponsiveSizeNameOriented ( long_responsiveSizeNameOriented_BitsbufsArray );
+
 
       responsiveSizeNameOriented = this.responsiveDatasetBase
-        .fileWriter.concatUint8Arrays ( responsiveSizeNameOrientedArray );
+        .fileWriter.concatUint8Arrays ( responsiveSizeNameOriented_BitsbufsArray );
 
       for ( maxOrMinId = 0; maxOrMinId < 2; maxOrMinId++ ) {
         if ( maxOrMinId === 0 ) {
@@ -212,25 +243,29 @@ export class ResponsiveSizesNames implements ResponsiveSizesNamesInterface {
 
         maxOrMin = maxOrMinArray[maxOrMinId];
 
+
+        // "    --d_e04_mobile_s_portrait_max_width: 320px;"
         responsiveSizesConstantLine = this.responsiveDatasetConstants
-          .getResponsiveSizeConstantLine_size_ByBitsbufs(
+          .getResponsiveSizeConstantLine_size_BitsbufsArray (
+            paddingBitsbuf,
             responsiveSizeNameOriented,
             maxOrMin,
             size
           );
-        responsiveSizesConstantLine_Clone = [ paddingBitsbuf, ...responsiveSizesConstantLine ];
+        let lastElemPos: number = ( responsiveSizesConstantLine.length - 1);
 
 
         // the several new lines are set after first two lines,
         // in the middle of group of 4 lines
         if ( ( orientationId === 0 ) && ( maxOrMinId === 1 ) ) {
-          responsiveSizesConstantLine_Clone.push( linesDelimiter );
+          responsiveSizesConstantLine[lastElemPos] = linesDelimiter;
         } else {
-          responsiveSizesConstantLine_Clone.push( newLine );
+          responsiveSizesConstantLine[lastElemPos] = newLine;
         }
 
+
         responsiveSizesConstantLine_bitsbuf = this.responsiveDatasetBase.fileWriter
-          .concatUint8Arrays( responsiveSizesConstantLine_Clone );
+          .concatUint8Arrays( responsiveSizesConstantLine );
         responsiveSizesConstantLinesArray.push( responsiveSizesConstantLine_bitsbuf );
 
         mediaLinePos++;

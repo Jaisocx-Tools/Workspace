@@ -152,7 +152,7 @@ export class ResponsiveFilesSet implements ResponsiveFilesSetInterface {
     );
 
     let responsiveSizeName_withSitesToolName_Array: Uint8Array[] = this.responsiveDatasetConstants
-      .getResponsiveSizeName_withSitesToolName_ByBitsbufs (
+      .getResponsiveSizeNameOrientedBitsbufsArray (
         responsiveData["range_orderby_id"],
         responsiveData["art"],
         responsiveData["art_size"],
@@ -223,10 +223,7 @@ export class ResponsiveFilesSet implements ResponsiveFilesSetInterface {
 
 
   getTemplateDataOverridden (
-
-
-    //@ts-ignore
-    responsiveDatasetPropName: string,
+    _responsiveDatasetPropName: string,
     templateDataBase: any
   ): any {
 

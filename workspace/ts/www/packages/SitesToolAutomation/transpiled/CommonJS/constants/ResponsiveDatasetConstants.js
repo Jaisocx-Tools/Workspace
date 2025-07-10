@@ -183,7 +183,52 @@ class ResponsiveDatasetConstants {
         this.initBitbufsArrays();
     }
     initBitbufsArrays() {
+        // DATASETS
+        //-------------------------------------
+        // dataset: string[] = [ "portrait", "landscape" ]
+        // num = 2
+        __classPrivateFieldSet(this, _ResponsiveDatasetConstants_orientationKeywords, [
+            __classPrivateFieldGet(this, _ResponsiveDatasetConstants_keywordOrientationPortrait, "f"),
+            __classPrivateFieldGet(this, _ResponsiveDatasetConstants_keywordOrientationLandscape, "f")
+        ], "f");
+        // dataset: Uint8Array[] = [ "portrait", "landscape" ]
+        // num = 2
+        __classPrivateFieldSet(this, _ResponsiveDatasetConstants_orientationBitsbufKeywordsArray, [
+            __classPrivateFieldGet(this, _ResponsiveDatasetConstants_bitsbufKeywordOrientationPortrait, "f"),
+            __classPrivateFieldGet(this, _ResponsiveDatasetConstants_bitsbufKeywordOrientationLandscape, "f")
+        ], "f");
+        // dataset: Uint8Array[] = [ "min", "max" ]
+        // num = 2
+        __classPrivateFieldSet(this, _ResponsiveDatasetConstants_maxOrMinArray, [
+            __classPrivateFieldGet(this, _ResponsiveDatasetConstants_bitsbufKeywordMin, "f"),
+            __classPrivateFieldGet(this, _ResponsiveDatasetConstants_bitsbufKeywordMax, "f")
+        ], "f");
+        // TEXTS CONCATENATIONS
+        //-------------------------------------
+        // --responsive_size
+        // array of bitsbuffers Uint8Array[]
+        // num = 2
+        __classPrivateFieldSet(this, _ResponsiveDatasetConstants_responsiveSizeConstantNameBitsbufsArray, [
+            __classPrivateFieldGet(this, _ResponsiveDatasetConstants_bitsbufCssVariableStart, "f"),
+            __classPrivateFieldGet(this, _ResponsiveDatasetConstants_bitsbufKeywordResponsiveSize, "f")
+        ], "f");
+        // --responsive_size
+        // bitsbuffer Uint8Array
+        // num over 3 octets
+        __classPrivateFieldSet(this, _ResponsiveDatasetConstants_responsiveSizeConstantNameBitsbuf, this.fileWriter
+            .concatUint8Arrays(__classPrivateFieldGet(this, _ResponsiveDatasetConstants_responsiveSizeConstantNameBitsbufsArray, "f")), "f");
+        // "    /* mobile s */\n"
+        // Uint8Array[]
+        // num = 9
+        /*
+          {
+            padding: 0,
+            art: 3,
+            art_size: 5
+          }
+        */
         __classPrivateFieldSet(this, _ResponsiveDatasetConstants_labelLineArray, [
+            "padding",
             __classPrivateFieldGet(this, _ResponsiveDatasetConstants_bitsbufSymbolCommentStart, "f"),
             __classPrivateFieldGet(this, _ResponsiveDatasetConstants_bitsbufSymbolBackgroundSpace, "f"),
             "art",
@@ -193,6 +238,14 @@ class ResponsiveDatasetConstants {
             __classPrivateFieldGet(this, _ResponsiveDatasetConstants_bitsbufSymbolCommentEnd, "f"),
             __classPrivateFieldGet(this, _ResponsiveDatasetConstants_bitsbufSymbolNewLine, "f")
         ], "f");
+        // /* <comment> */\n
+        // Uint8Array[]
+        // num = 6
+        /*
+          {
+            comment: 2
+          }
+        */
         __classPrivateFieldSet(this, _ResponsiveDatasetConstants_cssEncommentedLine, [
             __classPrivateFieldGet(this, _ResponsiveDatasetConstants_bitsbufSymbolCommentStart, "f"),
             __classPrivateFieldGet(this, _ResponsiveDatasetConstants_bitsbufSymbolBackgroundSpace, "f"),
@@ -201,18 +254,19 @@ class ResponsiveDatasetConstants {
             __classPrivateFieldGet(this, _ResponsiveDatasetConstants_bitsbufSymbolCommentEnd, "f"),
             __classPrivateFieldGet(this, _ResponsiveDatasetConstants_bitsbufSymbolNewLine, "f")
         ], "f");
-        __classPrivateFieldSet(this, _ResponsiveDatasetConstants_orientationKeywords, [
-            __classPrivateFieldGet(this, _ResponsiveDatasetConstants_keywordOrientationPortrait, "f"),
-            __classPrivateFieldGet(this, _ResponsiveDatasetConstants_keywordOrientationLandscape, "f")
-        ], "f");
-        __classPrivateFieldSet(this, _ResponsiveDatasetConstants_orientationBitsbufKeywordsArray, [
-            __classPrivateFieldGet(this, _ResponsiveDatasetConstants_bitsbufKeywordOrientationPortrait, "f"),
-            __classPrivateFieldGet(this, _ResponsiveDatasetConstants_bitsbufKeywordOrientationLandscape, "f")
-        ], "f");
-        __classPrivateFieldSet(this, _ResponsiveDatasetConstants_maxOrMinArray, [
-            __classPrivateFieldGet(this, _ResponsiveDatasetConstants_bitsbufKeywordMin, "f"),
-            __classPrivateFieldGet(this, _ResponsiveDatasetConstants_bitsbufKeywordMax, "f")
-        ], "f");
+        // responsive_size_h03_tablet_sm_portrait_CssCleanStart_theme_base
+        // Uint8Array[]
+        // num = 13
+        /*
+          {
+            range_orderby_id: 2,
+            art: 4,
+            art_size: 6,
+            orientation: 8,
+            sites_tool_name: 10,
+            sites_tool_theme_name: 12
+          }
+        */
         __classPrivateFieldSet(this, _ResponsiveDatasetConstants_responsiveSizeNameOrientedBitsbufsArray, [
             __classPrivateFieldGet(this, _ResponsiveDatasetConstants_bitsbufKeywordResponsiveSize, "f"),
             __classPrivateFieldGet(this, _ResponsiveDatasetConstants_bitsbufSymbolUnderscore, "f"),
@@ -228,7 +282,15 @@ class ResponsiveDatasetConstants {
             __classPrivateFieldGet(this, _ResponsiveDatasetConstants_bitsbufSymbolUnderscore, "f"),
             "sites_tool_theme_name"
         ], "f");
-        // @import url("./style_e02_mobile_xs_portrait.css");
+        // @import url("./d_e02_mobile_xs_portrait_CssTable2_theme_example9.css");
+        // Uint8Array[]
+        // num = 7
+        /*
+          {
+            url_start: 1,
+            device_size_name: 3
+          }
+        */
         __classPrivateFieldSet(this, _ResponsiveDatasetConstants_importLineBitsbufsArray, [
             __classPrivateFieldGet(this, _ResponsiveDatasetConstants_bitsbufImportUrlStart, "f"),
             "url_start",
@@ -238,12 +300,15 @@ class ResponsiveDatasetConstants {
             __classPrivateFieldGet(this, _ResponsiveDatasetConstants_bitsbufKeywordCssFileExtension, "f"),
             __classPrivateFieldGet(this, _ResponsiveDatasetConstants_bitsbufImportUrlEnd, "f")
         ], "f");
-        __classPrivateFieldSet(this, _ResponsiveDatasetConstants_responsiveSizeConstantNameBitsbufsArray, [
-            __classPrivateFieldGet(this, _ResponsiveDatasetConstants_bitsbufCssVariableStart, "f"),
-            __classPrivateFieldGet(this, _ResponsiveDatasetConstants_bitsbufKeywordResponsiveSize, "f")
-        ], "f");
-        __classPrivateFieldSet(this, _ResponsiveDatasetConstants_responsiveSizeConstantNameBitsbuf, this.fileWriter
-            .concatUint8Arrays(__classPrivateFieldGet(this, _ResponsiveDatasetConstants_responsiveSizeConstantNameBitsbufsArray, "f")), "f");
+        // --responsive_size_max_width: 320px;
+        // Uint8Array[]
+        // num = 10
+        /*
+          {
+            maxOrMin: 3,
+            size: 7
+          }
+        */
         __classPrivateFieldSet(this, _ResponsiveDatasetConstants_responsiveSizeConstantLineMaxOrMinBitsbufsArray, [
             __classPrivateFieldGet(this, _ResponsiveDatasetConstants_bitsbufCssVariableStart, "f"),
             __classPrivateFieldGet(this, _ResponsiveDatasetConstants_bitsbufKeywordResponsiveSize, "f"),
@@ -256,6 +321,16 @@ class ResponsiveDatasetConstants {
             __classPrivateFieldGet(this, _ResponsiveDatasetConstants_bitsbufUnitPx, "f"),
             __classPrivateFieldGet(this, _ResponsiveDatasetConstants_bitsbufCssExpressionEnd, "f")
         ], "f");
+        // --responsive_size_name_CssCleanStart: d_e02_mobile_xs_portrait;
+        // --d_CssTable2_theme_example9: d_e04_mobile_s_portrait_CssTable2_theme_example9;
+        // Uint8Array[]
+        // num = 9
+        /*
+          {
+            siteToolName: 5,
+            responsiveSizeNameOriented: 7
+          }
+        */
         __classPrivateFieldSet(this, _ResponsiveDatasetConstants_responsiveSizeConstantLineBitsbufsArray, [
             __classPrivateFieldGet(this, _ResponsiveDatasetConstants_bitsbufCssVariableStart, "f"),
             __classPrivateFieldGet(this, _ResponsiveDatasetConstants_bitsbufKeywordResponsiveSize, "f"),
@@ -267,7 +342,19 @@ class ResponsiveDatasetConstants {
             "responsiveSizeNameOriented",
             __classPrivateFieldGet(this, _ResponsiveDatasetConstants_bitsbufCssExpressionEnd, "f")
         ], "f");
+        // "    --d_e04_mobile_s_portrait_max_width: 320px;"
+        // Uint8Array[]
+        // num = 11
+        /* not ready
+          {
+            padding: 0,
+            responsiveSizeNameOriented: 2,
+            max_or_min: 4,
+            size: 8
+          }
+        */
         __classPrivateFieldSet(this, _ResponsiveDatasetConstants_responsiveSizeConstantLine_size_BitsbufsArray, [
+            "padding",
             __classPrivateFieldGet(this, _ResponsiveDatasetConstants_bitsbufCssVariableStart, "f"),
             "responsiveSizeNameOriented",
             __classPrivateFieldGet(this, _ResponsiveDatasetConstants_bitsbufSymbolUnderscore, "f"),
@@ -279,55 +366,190 @@ class ResponsiveDatasetConstants {
             __classPrivateFieldGet(this, _ResponsiveDatasetConstants_bitsbufUnitPx, "f"),
             __classPrivateFieldGet(this, _ResponsiveDatasetConstants_bitsbufCssExpressionEnd, "f")
         ], "f");
+        // method finish
         return this;
     }
+    // responsive_size
     setKeywordResponsiveSize(keyword) {
         __classPrivateFieldSet(this, _ResponsiveDatasetConstants_keywordResponsiveSize, keyword, "f");
         __classPrivateFieldSet(this, _ResponsiveDatasetConstants_bitsbufKeywordResponsiveSize, this.textEncoder.encode(__classPrivateFieldGet(this, _ResponsiveDatasetConstants_keywordResponsiveSize, "f")), "f");
         return this;
     }
+    // responsive_size
     getKeywordResponsiveSize() {
         return __classPrivateFieldGet(this, _ResponsiveDatasetConstants_keywordResponsiveSize, "f");
     }
+    // responsive_size
     getBitsbufKeywordResponsiveSize() {
         return __classPrivateFieldGet(this, _ResponsiveDatasetConstants_bitsbufKeywordResponsiveSize, "f");
     }
+    // array of strings string[]
+    // num = 2
     getOrientationKeywords() {
         return __classPrivateFieldGet(this, _ResponsiveDatasetConstants_orientationKeywords, "f");
     }
+    // array of bitsbuffers Uint8Array[]
+    // num = 2
     getOrientationKeywordsBitsbufs() {
         return __classPrivateFieldGet(this, _ResponsiveDatasetConstants_orientationBitsbufKeywordsArray, "f");
     }
+    // array of bitsbuffers Uint8Array[]
+    // num = 2
     getMaxOrMinArray() {
         return __classPrivateFieldGet(this, _ResponsiveDatasetConstants_maxOrMinArray, "f");
     }
+    // portrait
     getKeywordOrientationPortrait() {
         return __classPrivateFieldGet(this, _ResponsiveDatasetConstants_keywordOrientationPortrait, "f");
     }
+    // landscape
     getKeywordOrientationLandscape() {
         return __classPrivateFieldGet(this, _ResponsiveDatasetConstants_keywordOrientationLandscape, "f");
     }
+    // min
     getKeywordMin() {
         return __classPrivateFieldGet(this, _ResponsiveDatasetConstants_bitsbufKeywordMin, "f");
     }
+    // max
     getKeywordMax() {
         return __classPrivateFieldGet(this, _ResponsiveDatasetConstants_bitsbufKeywordMax, "f");
     }
+    // "\n"
     getNewLineBitsbuf() {
         return __classPrivateFieldGet(this, _ResponsiveDatasetConstants_bitsbufSymbolNewLine, "f");
     }
+    // "/*"
     getBitsbufSymbolCommentStart() {
         return __classPrivateFieldGet(this, _ResponsiveDatasetConstants_bitsbufSymbolCommentStart, "f");
     }
+    // "*/"
     getBitsbufSymbolCommentEnd() {
         return __classPrivateFieldGet(this, _ResponsiveDatasetConstants_bitsbufSymbolCommentEnd, "f");
     }
+    // " "
     getBitsbufSymbolBackgroundSpace() {
         return __classPrivateFieldGet(this, _ResponsiveDatasetConstants_bitsbufSymbolBackgroundSpace, "f");
     }
+    // --responsive_size
+    // array of bitsbuffers Uint8Array[]
+    // num = 2
+    getResponsiveSizeConstantNameBitsbufsArray() {
+        return __classPrivateFieldGet(this, _ResponsiveDatasetConstants_responsiveSizeConstantNameBitsbufsArray, "f");
+    }
+    // --responsive_size
+    // bitsbuffer Uint8Array
+    // num over 3 octets
     getResponsiveSizeConstantNameBitsbuf() {
         return __classPrivateFieldGet(this, _ResponsiveDatasetConstants_responsiveSizeConstantNameBitsbuf, "f");
     }
+    // "    /* mobile s */\n"
+    // Uint8Array[]
+    // num = 9
+    /*
+      {
+        padding: 0,
+        art: 3,
+        art_size: 5
+      }
+    */
+    getLabelLineArray(padding, art, art_size) {
+        let paddingPos = 0;
+        let artPos = 3;
+        let art_sizePos = 5;
+        __classPrivateFieldGet(this, _ResponsiveDatasetConstants_labelLineArray, "f")[paddingPos] = padding;
+        __classPrivateFieldGet(this, _ResponsiveDatasetConstants_labelLineArray, "f")[artPos] = art;
+        __classPrivateFieldGet(this, _ResponsiveDatasetConstants_labelLineArray, "f")[art_sizePos] = art_size;
+        return __classPrivateFieldGet(this, _ResponsiveDatasetConstants_labelLineArray, "f");
+    }
+    // /* <comment> */\n
+    // Uint8Array[]
+    // num = 6
+    /*
+      {
+        comment: 2
+      }
+    */
+    getCssEncommentedLine(comment) {
+        let commentPos = 2;
+        __classPrivateFieldGet(this, _ResponsiveDatasetConstants_cssEncommentedLine, "f")[commentPos] = comment;
+        return __classPrivateFieldGet(this, _ResponsiveDatasetConstants_cssEncommentedLine, "f");
+    }
+    // responsive_size_h03_tablet_sm_portrait_CssCleanStart_theme_base
+    // Uint8Array[]
+    // num = 13
+    /*
+      {
+        range_orderby_id: 2,
+        art: 4,
+        art_size: 6,
+        orientation: 8,
+        sites_tool_name: 10,
+        sites_tool_theme_name: 12
+      }
+    */
+    getResponsiveSizeNameOrientedBitsbufsArray(range_orderby_id, art, art_size, orientation, sites_tool_name, sites_tool_theme_name) {
+        let range_orderby_idPos = 2;
+        let artPos = 4;
+        let art_sizePos = 6;
+        let orientationPos = 8;
+        let sites_tool_namePos = 10;
+        let sites_tool_theme_namePos = 12;
+        __classPrivateFieldGet(this, _ResponsiveDatasetConstants_responsiveSizeNameOrientedBitsbufsArray, "f")[range_orderby_idPos] = range_orderby_id;
+        __classPrivateFieldGet(this, _ResponsiveDatasetConstants_responsiveSizeNameOrientedBitsbufsArray, "f")[artPos] = art;
+        __classPrivateFieldGet(this, _ResponsiveDatasetConstants_responsiveSizeNameOrientedBitsbufsArray, "f")[art_sizePos] = art_size;
+        __classPrivateFieldGet(this, _ResponsiveDatasetConstants_responsiveSizeNameOrientedBitsbufsArray, "f")[orientationPos] = orientation;
+        __classPrivateFieldGet(this, _ResponsiveDatasetConstants_responsiveSizeNameOrientedBitsbufsArray, "f")[sites_tool_namePos] = sites_tool_name;
+        __classPrivateFieldGet(this, _ResponsiveDatasetConstants_responsiveSizeNameOrientedBitsbufsArray, "f")[sites_tool_theme_namePos] = sites_tool_theme_name;
+        return __classPrivateFieldGet(this, _ResponsiveDatasetConstants_responsiveSizeNameOrientedBitsbufsArray, "f");
+    }
+    // arg returned by method getResponsiveSizeNameOrientedBitsbufsArray( ... )
+    getResponsiveSizeName(responsiveSizeNameOriented) {
+        return responsiveSizeNameOriented.slice(0, 6);
+    }
+    // arg returned by method getResponsiveSizeNameOrientedBitsbufsArray( ... )
+    getResponsiveSizeNameOriented(responsiveSizeNameOriented) {
+        return responsiveSizeNameOriented.slice(0, 8);
+    }
+    responsiveSizeName_setOrientation(orientation) {
+        let orientationPos = 8;
+        __classPrivateFieldGet(this, _ResponsiveDatasetConstants_responsiveSizeNameOrientedBitsbufsArray, "f")[orientationPos] = orientation;
+        return this;
+    }
+    responsiveSizeName_setSitesToolName(sites_tool_name) {
+        let sites_tool_namePos = 10;
+        __classPrivateFieldGet(this, _ResponsiveDatasetConstants_responsiveSizeNameOrientedBitsbufsArray, "f")[sites_tool_namePos] = sites_tool_name;
+        return this;
+    }
+    responsiveSizeName_setSitesTool_ThemeName(sites_tool_theme_name) {
+        let sites_tool_theme_namePos = 12;
+        __classPrivateFieldGet(this, _ResponsiveDatasetConstants_responsiveSizeNameOrientedBitsbufsArray, "f")[sites_tool_theme_namePos] = sites_tool_theme_name;
+        return this;
+    }
+    // @import url("./d_e02_mobile_xs_portrait_CssTable2_theme_example9.css");
+    // Uint8Array[]
+    // num = 7
+    /*
+      {
+        url_start: 1,
+        device_size_name: 3
+      }
+    */
+    getImportLineBitsbufsArray(url_start, device_size_name) {
+        let url_startPos = 1;
+        let device_size_namePos = 3;
+        __classPrivateFieldGet(this, _ResponsiveDatasetConstants_importLineBitsbufsArray, "f")[url_startPos] = url_start;
+        __classPrivateFieldGet(this, _ResponsiveDatasetConstants_importLineBitsbufsArray, "f")[device_size_namePos] = device_size_name;
+        return __classPrivateFieldGet(this, _ResponsiveDatasetConstants_importLineBitsbufsArray, "f");
+    }
+    // --responsive_size_max_width: 320px;
+    // Uint8Array[]
+    // num = 10
+    /*
+      {
+        maxOrMin: 3,
+        size: 7
+      }
+    */
     getResponsiveSizeConstantLineMaxOrMinBitsbufsArray(size, isMax) {
         let maxOrMinPos = 3;
         let sizePos = 7;
@@ -335,120 +557,52 @@ class ResponsiveDatasetConstants {
         __classPrivateFieldGet(this, _ResponsiveDatasetConstants_responsiveSizeConstantLineMaxOrMinBitsbufsArray, "f")[sizePos] = size;
         return __classPrivateFieldGet(this, _ResponsiveDatasetConstants_responsiveSizeConstantLineMaxOrMinBitsbufsArray, "f");
     }
-    getResponsiveSizeConstantLineMaxOrMinBitsbufsArray_SitesTool(size, isMax) {
-        let maxOrMinPos = 3;
-        let sizePos = 7;
-        __classPrivateFieldGet(this, _ResponsiveDatasetConstants_responsiveSizeConstantLineMaxOrMinBitsbufsArray, "f")[maxOrMinPos] = isMax ? __classPrivateFieldGet(this, _ResponsiveDatasetConstants_bitsbufKeywordMax, "f") : __classPrivateFieldGet(this, _ResponsiveDatasetConstants_bitsbufKeywordMin, "f");
-        __classPrivateFieldGet(this, _ResponsiveDatasetConstants_responsiveSizeConstantLineMaxOrMinBitsbufsArray, "f")[sizePos] = size;
-        return __classPrivateFieldGet(this, _ResponsiveDatasetConstants_responsiveSizeConstantLineMaxOrMinBitsbufsArray, "f");
-    }
-    getLabelLineArrayByBitsbufs(art, artSize) {
-        let artPos = 2;
-        let artSizePos = 4;
-        __classPrivateFieldGet(this, _ResponsiveDatasetConstants_labelLineArray, "f")[artPos] = art;
-        __classPrivateFieldGet(this, _ResponsiveDatasetConstants_labelLineArray, "f")[artSizePos] = artSize;
-        return __classPrivateFieldGet(this, _ResponsiveDatasetConstants_labelLineArray, "f");
-    }
-    getCssEncommentedLineByBitsbufs(comment) {
-        let commentPos = 2;
-        __classPrivateFieldGet(this, _ResponsiveDatasetConstants_cssEncommentedLine, "f")[commentPos] = comment;
-        return __classPrivateFieldGet(this, _ResponsiveDatasetConstants_cssEncommentedLine, "f");
-    }
-    getResponsiveSizeName_withSitesToolName_ByBitsbufs(rangeOrderbyId, art, artSize, orientation, sitesToolName, sitesTool_ThemeName) {
-        let rangeOrderbyIdPos = 2;
-        let artPos = 4;
-        let artSizePos = 6;
-        let orientationPos = 8;
-        let sitesToolNamePos = 10;
-        let sitesTool_ThemeNamePos = 12;
-        __classPrivateFieldGet(this, _ResponsiveDatasetConstants_responsiveSizeNameOrientedBitsbufsArray, "f")[rangeOrderbyIdPos] = rangeOrderbyId;
-        __classPrivateFieldGet(this, _ResponsiveDatasetConstants_responsiveSizeNameOrientedBitsbufsArray, "f")[artPos] = art;
-        __classPrivateFieldGet(this, _ResponsiveDatasetConstants_responsiveSizeNameOrientedBitsbufsArray, "f")[artSizePos] = artSize;
-        __classPrivateFieldGet(this, _ResponsiveDatasetConstants_responsiveSizeNameOrientedBitsbufsArray, "f")[orientationPos] = orientation;
-        __classPrivateFieldGet(this, _ResponsiveDatasetConstants_responsiveSizeNameOrientedBitsbufsArray, "f")[sitesToolNamePos] = sitesToolName;
-        __classPrivateFieldGet(this, _ResponsiveDatasetConstants_responsiveSizeNameOrientedBitsbufsArray, "f")[sitesTool_ThemeNamePos] = sitesTool_ThemeName;
-        return __classPrivateFieldGet(this, _ResponsiveDatasetConstants_responsiveSizeNameOrientedBitsbufsArray, "f");
-    }
-    getResponsiveSizeNameArrayByBitsbufs(sitesToolName, rangeOrderbyId, art, artSize, withSitesToolName) {
-        let rangeOrderbyIdPos = 2;
-        let artPos = 4;
-        let artSizePos = 6;
-        let sitesToolNamePos = 10;
-        let filteringNumber = 11;
-        if (withSitesToolName) {
-            filteringNumber = 9;
-        }
-        __classPrivateFieldGet(this, _ResponsiveDatasetConstants_responsiveSizeNameOrientedBitsbufsArray, "f")[rangeOrderbyIdPos] = rangeOrderbyId;
-        __classPrivateFieldGet(this, _ResponsiveDatasetConstants_responsiveSizeNameOrientedBitsbufsArray, "f")[artPos] = art;
-        __classPrivateFieldGet(this, _ResponsiveDatasetConstants_responsiveSizeNameOrientedBitsbufsArray, "f")[artSizePos] = artSize;
-        __classPrivateFieldGet(this, _ResponsiveDatasetConstants_responsiveSizeNameOrientedBitsbufsArray, "f")[sitesToolNamePos] = sitesToolName;
-        let responsiveSizesNamesMultiArray = __classPrivateFieldGet(this, _ResponsiveDatasetConstants_responsiveSizeNameOrientedBitsbufsArray, "f")
-            .filter((_value, index) => {
-            return ((index < 7) || (index > filteringNumber));
-        });
-        return responsiveSizesNamesMultiArray;
-    }
-    getResponsiveSizeNameOrientedArrayByBitsbufs(responsiveSizeName, orientation) {
-        let responsiveSizeNameOrientedArray = [
-            responsiveSizeName,
-            __classPrivateFieldGet(this, _ResponsiveDatasetConstants_bitsbufSymbolUnderscore, "f"),
-            orientation
-        ];
-        return responsiveSizeNameOrientedArray;
-    }
-    getResponsiveSizeNameBitsbufsArray(sitesToolName, rangeOrderbyId, art, artSize) {
-        return this.getResponsiveSizeNameOrientedBitsbufsArray(sitesToolName, rangeOrderbyId, art, artSize, "").filter((_value, index) => {
-            return ((index < 7) || (index > 9));
-        });
-    }
-    getResponsiveSizeNameOrientedBitsbufsArray(sitesToolName, rangeOrderbyId, art, artSize, orientation) {
-        let rangeOrderbyIdPos = 2;
-        let artPos = 4;
-        let artSizePos = 6;
-        let orientationPos = 8;
-        let sitesToolNamePos = 10;
-        __classPrivateFieldGet(this, _ResponsiveDatasetConstants_responsiveSizeNameOrientedBitsbufsArray, "f")[rangeOrderbyIdPos] = this.textEncoder.encode(rangeOrderbyId);
-        __classPrivateFieldGet(this, _ResponsiveDatasetConstants_responsiveSizeNameOrientedBitsbufsArray, "f")[artPos] = this.textEncoder.encode(art);
-        __classPrivateFieldGet(this, _ResponsiveDatasetConstants_responsiveSizeNameOrientedBitsbufsArray, "f")[artSizePos] = this.textEncoder.encode(artSize);
-        __classPrivateFieldGet(this, _ResponsiveDatasetConstants_responsiveSizeNameOrientedBitsbufsArray, "f")[sitesToolNamePos] = this.textEncoder.encode(sitesToolName);
-        if (orientation.length === 0) {
-            __classPrivateFieldGet(this, _ResponsiveDatasetConstants_responsiveSizeNameOrientedBitsbufsArray, "f")[orientationPos] = new Uint8Array(0);
-        }
-        else {
-            __classPrivateFieldGet(this, _ResponsiveDatasetConstants_responsiveSizeNameOrientedBitsbufsArray, "f")[orientationPos] = this.textEncoder.encode(orientation);
-        }
-        return __classPrivateFieldGet(this, _ResponsiveDatasetConstants_responsiveSizeNameOrientedBitsbufsArray, "f");
-    }
-    getImportLineBitsbufsArray(urlStart, responsiveSizeNameOriented) {
-        let urlStartPos = 1;
-        let responsiveSizeNamePos = 3;
-        __classPrivateFieldGet(this, _ResponsiveDatasetConstants_importLineBitsbufsArray, "f")[urlStartPos] = this.textEncoder.encode(urlStart);
-        __classPrivateFieldGet(this, _ResponsiveDatasetConstants_importLineBitsbufsArray, "f")[responsiveSizeNamePos] = this.textEncoder.encode(responsiveSizeNameOriented);
-        return __classPrivateFieldGet(this, _ResponsiveDatasetConstants_importLineBitsbufsArray, "f");
-    }
-    getImportLineBitsbufsArrayByBitsbufs(urlStart, responsiveSizeNameOriented) {
-        let urlStartPos = 1;
-        let responsiveSizeNamePos = 3;
-        __classPrivateFieldGet(this, _ResponsiveDatasetConstants_importLineBitsbufsArray, "f")[urlStartPos] = urlStart;
-        __classPrivateFieldGet(this, _ResponsiveDatasetConstants_importLineBitsbufsArray, "f")[responsiveSizeNamePos] = responsiveSizeNameOriented;
-        return __classPrivateFieldGet(this, _ResponsiveDatasetConstants_importLineBitsbufsArray, "f");
-    }
-    getResponsiveSizeConstantLineBitsbufsArrayByBitsbufs(responsiveSizeNameOriented) {
-        let responsiveSizeNamePos = 5;
-        __classPrivateFieldGet(this, _ResponsiveDatasetConstants_responsiveSizeConstantLineBitsbufsArray, "f")[responsiveSizeNamePos] = (responsiveSizeNameOriented);
+    // getResponsiveSizeConstantLineMaxOrMinBitsbufsArray_SitesTool (
+    //   size: Uint8Array,
+    //   isMax: boolean
+    // ): Uint8Array[] {
+    //   let maxOrMinPos: number = 3;
+    //   let sizePos: number = 7;
+    //   this.#responsiveSizeConstantLineMaxOrMinBitsbufsArray[maxOrMinPos] = isMax ? this.#bitsbufKeywordMax : this.#bitsbufKeywordMin;
+    //   this.#responsiveSizeConstantLineMaxOrMinBitsbufsArray[sizePos] = size;
+    //   return this.#responsiveSizeConstantLineMaxOrMinBitsbufsArray as Uint8Array[];
+    // }
+    // --responsive_size_name_CssCleanStart: d_e02_mobile_xs_portrait;
+    // --d_CssTable2_theme_example9: d_e04_mobile_s_portrait_CssTable2_theme_example9;
+    // Uint8Array[]
+    // num = 9
+    /*
+      {
+        siteToolName: 5,
+        responsiveSizeNameOriented: 7
+      }
+    */
+    getResponsiveSizeConstantLineBitsbufsArray(siteToolName, responsiveSizeNameOriented) {
+        let siteToolNamePos = 5;
+        let responsiveSizeNameOrientedPos = 7;
+        __classPrivateFieldGet(this, _ResponsiveDatasetConstants_responsiveSizeConstantLineBitsbufsArray, "f")[siteToolNamePos] = siteToolName;
+        __classPrivateFieldGet(this, _ResponsiveDatasetConstants_responsiveSizeConstantLineBitsbufsArray, "f")[responsiveSizeNameOrientedPos] = responsiveSizeNameOriented;
         return __classPrivateFieldGet(this, _ResponsiveDatasetConstants_responsiveSizeConstantLineBitsbufsArray, "f");
     }
-    getResponsiveSizeConstantLineBitsbufsArray(responsiveSizeNameOriented) {
-        let responsiveSizeNamePos = 4;
-        __classPrivateFieldGet(this, _ResponsiveDatasetConstants_responsiveSizeConstantLineBitsbufsArray, "f")[responsiveSizeNamePos] = this.textEncoder.encode(responsiveSizeNameOriented);
-        return __classPrivateFieldGet(this, _ResponsiveDatasetConstants_responsiveSizeConstantLineBitsbufsArray, "f");
-    }
-    getResponsiveSizeConstantLine_size_ByBitsbufs(responsiveSizeNameOriented, maxOrMin, size) {
-        let responsiveSizeNamePos = 1;
-        let maxOrMinPos = 3;
-        let sizePos = 7;
-        __classPrivateFieldGet(this, _ResponsiveDatasetConstants_responsiveSizeConstantLine_size_BitsbufsArray, "f")[responsiveSizeNamePos] = responsiveSizeNameOriented;
-        __classPrivateFieldGet(this, _ResponsiveDatasetConstants_responsiveSizeConstantLine_size_BitsbufsArray, "f")[maxOrMinPos] = maxOrMin;
+    // "    --d_e04_mobile_s_portrait_max_width: 320px;"
+    // Uint8Array[]
+    // num = 11
+    /*
+      {
+        padding: 0,
+        responsiveSizeNameOriented: 2,
+        max_or_min: 4,
+        size: 8
+      }
+    */
+    getResponsiveSizeConstantLine_size_BitsbufsArray(padding, responsiveSizeNameOriented, max_or_min, size) {
+        let paddingPos = 0;
+        let responsiveSizeNameOrientedPos = 2;
+        let max_or_minPos = 4;
+        let sizePos = 8;
+        __classPrivateFieldGet(this, _ResponsiveDatasetConstants_responsiveSizeConstantLine_size_BitsbufsArray, "f")[paddingPos] = padding;
+        __classPrivateFieldGet(this, _ResponsiveDatasetConstants_responsiveSizeConstantLine_size_BitsbufsArray, "f")[responsiveSizeNameOrientedPos] = responsiveSizeNameOriented;
+        __classPrivateFieldGet(this, _ResponsiveDatasetConstants_responsiveSizeConstantLine_size_BitsbufsArray, "f")[max_or_minPos] = max_or_min;
         __classPrivateFieldGet(this, _ResponsiveDatasetConstants_responsiveSizeConstantLine_size_BitsbufsArray, "f")[sizePos] = size;
         return __classPrivateFieldGet(this, _ResponsiveDatasetConstants_responsiveSizeConstantLine_size_BitsbufsArray, "f");
     }

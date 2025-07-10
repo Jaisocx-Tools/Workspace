@@ -1,0 +1,7 @@
+@media only screen and (min-width: 240px) and (max-width: 320px) and (orientation: portrait) {
+  .workspace .CssTable2theme_example9 {
+    --theme_name__CssTable2: theme_example9;
+    --d_CssTable2_theme_example9: d_e02_mobile_xs_portrait_CssTable2_theme_example9;
+  }
+}
+
