@@ -11,7 +11,7 @@
       "protocol": "inspector",
       "address": "127.0.0.1",
       "port": 9229,
-      "name": "Workspace Node",
+      "name": "Debug Workspace js server side",
       "localRoot": "${workspaceFolder}/workspace/ts",
       "remoteRoot": "/var/www/workspace/ts",
       "skipFiles": [
