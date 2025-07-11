@@ -1,0 +1,137 @@
+.workspace {
+
+  /* mobile xs */
+  --k_e02_mobile_xs__min_width: 240px
+  --k_e02_mobile_xs__max_width: 320px
+
+  --k_e02_mobile_xs__min_width: 320px
+  --k_e02_mobile_xs__max_width: 500px
+
+
+
+  /* mobile s */
+  --k_e04_mobile_s__min_width: 321px
+  --k_e04_mobile_s__max_width: 374px
+
+  --k_e04_mobile_s__min_width: 501px
+  --k_e04_mobile_s__max_width: 667px
+
+
+
+  /* mobile sm */
+  --k_e06_mobile_sm__min_width: 375px
+  --k_e06_mobile_sm__max_width: 430px
+
+  --k_e06_mobile_sm__min_width: 668px
+  --k_e06_mobile_sm__max_width: 736px
+
+
+
+  /* mobile md */
+  --k_e08_mobile_md__min_width: 431px
+  --k_e08_mobile_md__max_width: 480px
+
+  --k_e08_mobile_md__min_width: 737px
+  --k_e08_mobile_md__max_width: 812px
+
+
+
+  /* tablet sm */
+  --k_h03_tablet_sm__min_width: 481px
+  --k_h03_tablet_sm__max_width: 767px
+
+  --k_h03_tablet_sm__min_width: 813px
+  --k_h03_tablet_sm__max_width: 960px
+
+
+
+  /* tablet md */
+  --k_h05_tablet_md__min_width: 768px
+  --k_h05_tablet_md__max_width: 1024px
+
+  --k_h05_tablet_md__min_width: 961px
+  --k_h05_tablet_md__max_width: 1024px
+
+
+
+  /* laptop sm */
+  --k_l03_laptop_sm__min_width: 1025px
+  --k_l03_laptop_sm__max_width: 1080px
+
+  --k_l03_laptop_sm__min_width: 1025px
+  --k_l03_laptop_sm__max_width: 1279px
+
+
+
+  /* laptop md */
+  --k_l05_laptop_md__min_width: 1081px
+  --k_l05_laptop_md__max_width: 1200px
+
+  --k_l05_laptop_md__min_width: 1280px
+  --k_l05_laptop_md__max_width: 1439px
+
+
+
+  /* laptop lg */
+  --k_l07_laptop_lg__min_width: 1201px
+  --k_l07_laptop_lg__max_width: 1440px
+
+  --k_l07_laptop_lg__min_width: 1440px
+  --k_l07_laptop_lg__max_width: 1600px
+
+
+
+  /* display xl */
+  --k_s02_display_xl__min_width: 1441px
+  --k_s02_display_xl__max_width: 1600px
+
+  --k_s02_display_xl__min_width: 1601px
+  --k_s02_display_xl__max_width: 1920px
+
+
+
+  /* display xxl */
+  --k_s04_display_xxl__min_width: 1601px
+  --k_s04_display_xxl__max_width: 2160px
+
+  --k_s04_display_xxl__min_width: 1921px
+  --k_s04_display_xxl__max_width: 2560px
+
+
+
+  /* display qhd */
+  --k_s08_display_qhd__min_width: 2161px
+  --k_s08_display_qhd__max_width: 2160px
+
+  --k_s08_display_qhd__min_width: 2561px
+  --k_s08_display_qhd__max_width: 3840px
+
+
+
+  /* tv 4k */
+  --k_t04_tv_4k__min_width: 2161px
+  --k_t04_tv_4k__max_width: 4320px
+
+  --k_t04_tv_4k__min_width: 3841px
+  --k_t04_tv_4k__max_width: 7680px
+
+
+
+  /* tv 8k */
+  --k_t08_tv_8k__min_width: 4321px
+  --k_t08_tv_8k__max_width: 8640px
+
+  --k_t08_tv_8k__min_width: 7681px
+  --k_t08_tv_8k__max_width: 15360px
+
+
+
+  /* tv 16k */
+  --k_t16_tv_16k__min_width: 8641px
+  --k_t16_tv_16k__max_width: 9999px
+
+  --k_t16_tv_16k__min_width: 15361px
+  --k_t16_tv_16k__max_width: 25360px
+
+}
+

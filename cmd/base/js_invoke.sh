@@ -45,7 +45,7 @@ fi
 
 
 commandLineArgs="$@"
-argsLines="$(echo "${commandLineArgs}" | tr " " "\n")"
+argsLines="$(echo "$@" | tr " " "\n")"
 
 debug="$(echo "${argsLines}" | grep "debug")"
 packagePath="$(echo "${argsLines}" | grep "packagePath" | cut -d'=' -f2)"
@@ -75,7 +75,7 @@ echo "Script Path in docker ts: ${dockerScriptPath}"
 
 
 cd "${projectPath}"
-docker compose exec ts bash -c "${commandToRun}" $commandLineArgs
+docker compose exec ts bash -c "${commandToRun} $commandLineArgs"
 
 
 

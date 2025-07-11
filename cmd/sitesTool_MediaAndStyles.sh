@@ -14,6 +14,8 @@
 ## start block
 ## checks and validations
 
+commandLineArgs="$@"
+
 thisPath="$(dirname "$(realpath "$0")")"
 fodlerName="$(basename "$thisPath")"
 
@@ -47,17 +49,16 @@ fi
 
 
 
-
-"${jsInvokePath}" "$@" \
+"${jsInvokePath}" "$commandLineArgs" \
   --packagePath="www/packages/SitesToolAutomation" \
   --script="main/produceSitesTool_MediaAndStyles.js" \
-    --sitesTool_ThemeName="theme_example15" \
-    --sitesToolName="CssTable2" \
-    --cssOrJsTool="css" \
-    --keywordResponsiveSize="k" \
-    --templatePath="data/templates/css/responsive/responsive_size__mini.css.template" \
-    --withSizesCssConstants="true" \
-    --withConstantsImportLine="true"
+  --sitesTool_ThemeName="theme_example15" \
+  --sitesToolName="CssTable2" \
+  --cssOrJsTool="css" \
+  --keywordResponsiveSize="k" \
+  --templatePath="data/templates/css/responsive/responsive_size__mini.css.template" \
+  --withSizesCssConstants="true" \
+  --withConstantsImportLine="true"
 
 
 
