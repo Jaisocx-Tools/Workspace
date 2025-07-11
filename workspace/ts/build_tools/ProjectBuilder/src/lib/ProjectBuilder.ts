@@ -519,7 +519,7 @@ export class ProjectBuilder {
     packagePath: any,
     pathToPrettify: any
   ): any {
-    const consoleCommand: any = `cd "${packagePath}" && npx eslint "${pathToPrettify}" --fix`;
+    const consoleCommand: any = `cd "${packagePath}" && npx eslint --fix "${pathToPrettify}"`;
 
     return this.runCommandLine(
       packagePath,

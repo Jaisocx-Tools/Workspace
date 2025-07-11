@@ -105,14 +105,33 @@ export const LineDelimiters = {
 
     const TSC_OUTPUT_INDENTATION_SIZE = 4; // Matches tsc indent rule fixed value, tsc cannot be configured
     const ESLINT_CONFIG_INDENTATION_SIZE = 2; // Matches tsc indent rule fixed value, tsc cannot be configured
-    const sourceCode = context.getSourceCode();
 
-    const keywordPunctuator = "Punctuator";
-    const keywordKeyword = "Keyword";
-    const keywordExport = "export";
-    const keywordColon = ":";
-    const keywordBlockStart = "{";
-    const keywordBlockEnd = "}";
+    const optionsDefaults = {
+      "class": {
+        "lines_before": 3,
+        "lines_before_on_block_start": 0
+      },
+      "methods": {
+        "lines_before": 3,
+        "lines_before_on_block_start": 1
+      },
+      "comments": {
+        "lines_before": 3,
+        "lines_before_on_block_start": 1
+      },
+      "blocks": {
+        "lines_before": 1,
+        "lines_before_on_block_start": 1
+      },
+      "code_lines": {
+        "lines_before": 2,
+        "lines_before_on_block_start": 0
+      },
+      "return": {
+        "lines_before": 3,
+        "lines_before_on_block_start": 0
+      }
+    };
 
     const labeledBlocksNames = [
       "WhileStatement",
@@ -121,6 +140,27 @@ export const LineDelimiters = {
       "ForOfStatement"
     ];
 
+    const handledTokensNames = [
+      "ClassDeclaration",
+      "MethodDefinition",
+      "FunctionDeclaration",
+      "IfStatement",
+      "WhileStatement",
+      "ForStatement",
+      "ForInStatement",
+      "ForOfStatement",
+      "ReturnStatement",
+    ];
+
+    const keywordPunctuator = "Punctuator";
+    const keywordKeyword = "Keyword";
+    const keywordExport = "export";
+    const keywordColon = ":";
+    const keywordBlockStart = "{";
+    const keywordBlockEnd = "}";
+
+
+
 
     // here we get eslintrc.js config rules
     const indentRuleConfig = (context && context.settings && context.settings.indent) || ["error", ESLINT_CONFIG_INDENTATION_SIZE];
@@ -128,40 +168,12 @@ export const LineDelimiters = {
 
 
 
-    function checkBlockSpacing(
+    function checkBlockSpacing (
       node,
       spacingType
     ) {
-      // console.log(node.type);
-
-      const optionsDefaults = {
-        "class": {
-          "lines_before": 3,
-          "lines_before_on_block_start": 0
-        },
-        "methods": {
-          "lines_before": 3,
-          "lines_before_on_block_start": 1
-        },
-        "comments": {
-          "lines_before": 3,
-          "lines_before_on_block_start": 1
-        },
-        "blocks": {
-          "lines_before": 1,
-          "lines_before_on_block_start": 1
-        },
-        "code_lines": {
-          "lines_before": 2,
-          "lines_before_on_block_start": 0
-        },
-        "return": {
-          "lines_before": 3,
-          "lines_before_on_block_start": 0
-        }
-      };
-
       const options = context.options[0] || {};
+      const sourceCode = context.getSourceCode();
 
       let isJsSimple = options.isJsSimple;
 
@@ -267,7 +279,6 @@ export const LineDelimiters = {
         toSetLinesNumber = ( isElseIfToken === false );
 
       } else if (locSpacingType === "code_lines") {
-        // toSetLinesNumber = ((lineDiff.before > 0) && (lineDiff.before !== linesRequired));
         toSetLinesNumber = (lineDiff.before > linesRequired);
 
       } else if (locSpacingType === "comments") {
@@ -281,6 +292,11 @@ export const LineDelimiters = {
 
       }
 
+      toSetLinesNumber = ( toSetLinesNumber && ( linesRequired !== lineDiff.before ) );
+
+      if ( toSetLinesNumber === false ) {
+        return;
+      }
 
 
       let rangeStart = 0;
@@ -289,22 +305,21 @@ export const LineDelimiters = {
       let whiteSpacesNumber = 0;
       let linesReplacement = "";
 
-      if (toSetLinesNumber === true) {
-        // console.log(lineStartTokenBefore?.type, lineStartToken.type, node.type, linesRequired);
+      if ( toSetLinesNumber === true ) {
 
         rangeStart = lineStartTokenBefore ? lineStartTokenBefore.range[1] : 0;
         rangeEnd = lineStartToken.range[0];
 
         whiteSpacesNumber = lineStartToken.loc.start.column;
 
-
-        if (rangeStart && rangeEnd ) {
-
+        if ( rangeStart && rangeEnd ) {
           linesReplacement = (newLineCharsNumber !== 0 ? "\n".repeat(newLineCharsNumber) : "") + (whiteSpacesNumber !== 0 ? " ".repeat(whiteSpacesNumber) : "");
+        }
+
+        if ( linesReplacement.length !== 0 ) {
+
           range = [rangeStart, rangeEnd];
           mode = "before";
-          // let text = `Expected ${linesRequired} empty line${linesRequired > 1 ? "s" : ""} found ${lineDiff.before} ${mode} block.`;
-          // console.log(text);
 
           context.report({
             node,
@@ -335,20 +350,9 @@ export const LineDelimiters = {
       node,
       spacingType
     ) {
-
       // console.log(node.type);
 
-      let handledTokensNames = [
-        "ClassDeclaration",
-        "MethodDefinition",
-        "FunctionDeclaration",
-        "IfStatement",
-        "WhileStatement",
-        "ForStatement",
-        "ForInStatement",
-        "ForOfStatement",
-        "ReturnStatement",
-      ];
+      const sourceCode = context.getSourceCode();
 
       let allTokens = sourceCode.getTokens(node).filter(
         (token) => {
@@ -390,6 +394,12 @@ export const LineDelimiters = {
           "code_lines"
         );
       },
+      FunctionDeclaration: function (node) {
+        checkBlockSpacingAllTokens(
+          node,
+          "code_lines"
+        );
+      },
       IfStatement: function (node) {
         checkBlockSpacing(
           node,
@@ -421,6 +431,7 @@ export const LineDelimiters = {
         );
       },
       Program() {
+        const sourceCode = context.getSourceCode();
         const allComments = sourceCode.getAllComments();
 
         allComments.forEach((comment) => {

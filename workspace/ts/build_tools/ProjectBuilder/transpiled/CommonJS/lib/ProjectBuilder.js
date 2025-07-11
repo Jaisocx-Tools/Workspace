@@ -304,7 +304,7 @@ class ProjectBuilder {
         return this.runCommandLine(`${packagePath}`, transpileCommand);
     }
     prettifyWithEslint(packagePath, pathToPrettify) {
-        const consoleCommand = `cd "${packagePath}" && npx eslint "${pathToPrettify}" --fix`;
+        const consoleCommand = `cd "${packagePath}" && npx eslint --fix "${pathToPrettify}"`;
         return this.runCommandLine(packagePath, consoleCommand);
     }
     runCommandLine(configCatalogPath, consoleCommand) {

@@ -109,7 +109,7 @@ export default [
     }
   },
   {
-    "files": ["www/**/transpiled/Simple/**/*.js"],
+    "files": ["www/**/transpiled/**/*.js"],
     "plugins": {
       "jaisocx": jaisocxPlugin
     },

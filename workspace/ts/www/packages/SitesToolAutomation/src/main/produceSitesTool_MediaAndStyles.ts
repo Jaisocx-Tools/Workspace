@@ -16,20 +16,18 @@ export type CommandArgsObject = {
 };
 
 
-
 export async function produceSitesTool_MediaAndStyles(): Promise<number> {
-
   let commandLineArgsInstance: CommandLineArgs = new CommandLineArgs();
   let cliArgs: CommandArgsObject = commandLineArgsInstance
     .readCommandLineArgs()
     .transformCommandLineArgs()
     .getCommandLineArgs() as CommandArgsObject;
 
+
   console.log(
     "cliArgs",
     cliArgs
   );
-
 
 
   const mainClassInstance: Main = new Main();
@@ -51,7 +49,6 @@ export async function produceSitesTool_MediaAndStyles(): Promise<number> {
   //    or in another ts class,
   //    overriding the calculations of data for responsive_size__.css templates.
   //    You may find source code in ${SitesToolAutomation}/src/overrides_template_data/OverridesTemplateData.ts
-
   let templateDataMethodName: string = cliArgs["templateDataMethodName"];
 
   if ( ( !templateDataMethodName ) || ( templateDataMethodName.length === 0 ) ) {
@@ -69,9 +66,6 @@ export async function produceSitesTool_MediaAndStyles(): Promise<number> {
   // end block
   // TEMPLATE DATA
   //----------------------------------------------------
-
-
-
   let retVal: number = await mainClassInstance.run ( cliArgs );
 
   return retVal;
