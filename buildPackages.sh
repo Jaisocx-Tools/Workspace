@@ -17,6 +17,7 @@ pathToEnv="${thisPath}/.env"
 # when there is the .env
 if [ -e "${pathToEnv}" ]; then
   # Obtaining the Project's settings from the .env
+  set -a
   source "${pathToEnv}"
 
 

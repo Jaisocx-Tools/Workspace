@@ -73,7 +73,6 @@ export async function produceSitesTool_MediaAndStyles(): Promise<number> {
 }
 
 
-
 produceSitesTool_MediaAndStyles()
   .then (
     ( retVal: number ) => {
@@ -83,7 +82,5 @@ produceSitesTool_MediaAndStyles()
       );
     }
   );
-
-
 
 

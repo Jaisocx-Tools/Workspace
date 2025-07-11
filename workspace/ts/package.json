@@ -29,7 +29,6 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@hediet/delorean-debug-transformer": "^0.1.0",
     "@jaisocx/css-clean-start": "^1.3.21",
     "http-server": "^14.1.1"
   },

@@ -14,27 +14,21 @@
 
 # CssTable2 .theme_3example, data method: ${SitesToolAutomation}/transpiled/ESNext/overrides_template_data/OverridesTemplateData.js:getTemplateDataOverridden();
 
-# ./base_produceSitesTool_MediaAndStyles.sh \
-#   --sitesTool_ThemeName="theme_3example" \
-#   --sitesToolName="CssTable2" \
-#   --cssOrJsTool="css" \
-#   --keywordResponsiveSize="a" \
 #   --templatePath="data/templates/css/responsive/responsive_size__mini_example_overrides_data.css.template" \
 #   --templateDataMethodName="getTemplateDataOverridden" \
-#   --withSizesCssConstants="true" \
-#   --withConstantsImportLine="true"
+#   --templateDataMethodName="getUnchanged" \
 
 
-
-./base_produceSitesTool_MediaAndStyles.sh \
-  --sitesTool_ThemeName="theme_example10" \
-  --sitesToolName="CssTable2" \
-  --cssOrJsTool="css" \
-  --keywordResponsiveSize="g" \
-  --templatePath="data/templates/css/responsive/responsive_size__mini.css.template" \
-  --templateDataMethodName="getUnchanged" \
-  --withSizesCssConstants="true" \
-  --withConstantsImportLine="true"
+./js_invoke.sh "$@" \
+  --packagePath="www/packages/SitesToolAutomation" \
+  --script="main/produceSitesTool_MediaAndStyles.js" \
+    --sitesTool_ThemeName="theme_example14" \
+    --sitesToolName="CssTable2" \
+    --cssOrJsTool="css" \
+    --keywordResponsiveSize="j" \
+    --templatePath="data/templates/css/responsive/responsive_size__mini.css.template" \
+    --withSizesCssConstants="true" \
+    --withConstantsImportLine="true"
 
 
 

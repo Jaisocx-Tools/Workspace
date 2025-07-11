@@ -20,8 +20,7 @@
     "jsx": "react",  // If using React, else change to "react-jsx" or omit this if you're not using React
     "skipDefaultLibCheck": true,  // Skip checking the default lib files
     "noUnusedLocals": true,
-    "noUnusedParameters": true,
-    "plugins": [{ "transform": "@hediet/delorean-debug-transformer" }], // debugs node .ts with VSCode extension "DeLorean JS Debug"
+    "noUnusedParameters": true
   },
   "include": [
     "**/src/*.ts",

@@ -28,7 +28,13 @@
 #
 export NODE_OPTIONS="--no-warnings"
 commandLineArgs="$@"
-node --inspect=0.0.0.0:9229 "transpiled/ESNext/main/produceSitesTool_MediaAndStyles.js" $commandLineArgs
+argsToGrep="$(echo "${commandLineArgs}" | tr ' ' '\n' )"
+debug="$(echo "${argsToGrep}" | grep "debug" )"
 
+if [[ "$debug" == "--debug" ]]; then
+  node --inspect-brk=0.0.0.0:9229 "transpiled/ESNext/main/produceSitesTool_MediaAndStyles.js" $commandLineArgs
+else
+  node "transpiled/ESNext/main/produceSitesTool_MediaAndStyles.js" $commandLineArgs
+fi
 
 
