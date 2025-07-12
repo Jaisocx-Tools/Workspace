@@ -8,15 +8,18 @@ export class CommandLineArgs implements CommandLineArgsInterface {
   protected _commandLineArgs: object;
 
 
+
   constructor() {
     this._commandLineArgs_source = new Array() as string[];
     this._commandLineArgs = new Object();
   }
 
 
+
   public getCommandLineArgs(): object {
     return this._commandLineArgs;
   }
+
 
 
   public readCommandLineArgs(): CommandLineArgs {
@@ -25,6 +28,7 @@ export class CommandLineArgs implements CommandLineArgsInterface {
     // and set to protected property of this ts class.
     //@ts-ignore
     this._commandLineArgs_source = [...process.argv];
+
 
     return this;
   }
@@ -41,6 +45,7 @@ export class CommandLineArgs implements CommandLineArgsInterface {
     }
 
   */
+
 
 
   public transformCommandLineArgs(): CommandLineArgs {
@@ -80,6 +85,7 @@ export class CommandLineArgs implements CommandLineArgsInterface {
       this._commandLineArgs[key] = value;
 
     });
+
 
     return this;
   }

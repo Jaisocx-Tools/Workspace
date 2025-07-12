@@ -364,7 +364,8 @@ class ResponsiveDatasetConstants {
             __classPrivateFieldGet(this, _ResponsiveDatasetConstants_bitsbufCssVariableNameValueDelimiter, "f"),
             "size",
             __classPrivateFieldGet(this, _ResponsiveDatasetConstants_bitsbufUnitPx, "f"),
-            __classPrivateFieldGet(this, _ResponsiveDatasetConstants_bitsbufCssExpressionEnd, "f")
+            __classPrivateFieldGet(this, _ResponsiveDatasetConstants_bitsbufCssExpressionEnd, "f"),
+            "new_line"
         ], "f");
         // method finish
         return this;
@@ -504,11 +505,11 @@ class ResponsiveDatasetConstants {
     }
     // arg returned by method getResponsiveSizeNameOrientedBitsbufsArray( ... )
     getResponsiveSizeName(responsiveSizeNameOriented) {
-        return responsiveSizeNameOriented.slice(0, 6);
+        return responsiveSizeNameOriented.slice(0, 7);
     }
     // arg returned by method getResponsiveSizeNameOrientedBitsbufsArray( ... )
     getResponsiveSizeNameOriented(responsiveSizeNameOriented) {
-        return responsiveSizeNameOriented.slice(0, 8);
+        return responsiveSizeNameOriented.slice(0, 9);
     }
     responsiveSizeName_setOrientation(orientation) {
         let orientationPos = 8;

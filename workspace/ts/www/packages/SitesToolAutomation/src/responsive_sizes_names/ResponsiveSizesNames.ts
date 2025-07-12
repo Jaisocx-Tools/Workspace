@@ -23,6 +23,7 @@ export class ResponsiveSizesNames implements ResponsiveSizesNamesInterface {
   responsiveDatasetBase: ResponsiveDatasetBase;
 
 
+
   constructor(
     base: ResponsiveDatasetBase,
     constants: ResponsiveDatasetConstants
@@ -32,8 +33,10 @@ export class ResponsiveSizesNames implements ResponsiveSizesNamesInterface {
   }
 
 
+
   setResponsiveDatasetBase( base: ResponsiveDatasetBase ): ResponsiveSizesNames {
     this.responsiveDatasetBase = base;
+
 
     return this;
   }
@@ -148,6 +151,7 @@ export class ResponsiveSizesNames implements ResponsiveSizesNamesInterface {
 
     retVal = await fw.filehandleClose();
 
+
     return retVal;
   }
 
@@ -235,6 +239,7 @@ export class ResponsiveSizesNames implements ResponsiveSizesNamesInterface {
         .fileWriter.concatUint8Arrays ( responsiveSizeNameOriented_BitsbufsArray );
 
       for ( maxOrMinId = 0; maxOrMinId < 2; maxOrMinId++ ) {
+
         if ( maxOrMinId === 0 ) {
           size = dimensions["from"];
         } else {
@@ -271,6 +276,7 @@ export class ResponsiveSizesNames implements ResponsiveSizesNamesInterface {
         mediaLinePos++;
       }
     }
+
 
     return responsiveSizesConstantLinesArray;
   }

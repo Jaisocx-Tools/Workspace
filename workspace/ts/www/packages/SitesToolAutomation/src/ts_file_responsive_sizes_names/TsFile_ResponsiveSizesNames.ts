@@ -19,6 +19,7 @@ export class TsFile_ResponsiveSizesNames implements TsFile_ResponsiveSizesNames_
   responsiveDatasetBase: ResponsiveDatasetBase;
 
 
+
   constructor() {
     this.responsiveDatasetConstants = new ResponsiveDatasetConstants();
     this.responsiveDatasetBase = new ResponsiveDatasetBase();
@@ -147,6 +148,7 @@ export class TsFile_ResponsiveSizesNames implements TsFile_ResponsiveSizesNames_
     // tsClassContentBitsbufs = new Array() as Uint8Array[];
     // fileWriterRetval = await this.responsiveDatasetBase.fileWriter.filehandleClose();
     let fileWriterRetval: number = 1;
+
 
     return fileWriterRetval;
   }

@@ -3,9 +3,11 @@ export class OverridesTemplateData {
   protected _prop: any;
 
 
+
   constructor() {
     this._prop = "";
   }
+
 
 
   public getProp(): any {
@@ -13,11 +15,14 @@ export class OverridesTemplateData {
   }
 
 
+
   public setProp( inPropValue: any ): OverridesTemplateData {
     this._prop = inPropValue;
 
+
     return this;
   }
+
 
 
   public getUnchanged (
@@ -59,6 +64,7 @@ export class OverridesTemplateData {
   }
 
 
+
   public getTemplateDataOverridden (
     _responsiveDatasetPropName: string,
     templateDataBase: any
@@ -91,6 +97,7 @@ export class OverridesTemplateData {
 
 
     templateDataBase["responsiveSize"] = responsiveSize;
+
 
     return templateDataBase;
 

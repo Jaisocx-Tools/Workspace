@@ -19,7 +19,7 @@ commandLineArgs="$@"
 thisPath="$(dirname "$(realpath "$0")")"
 fodlerName="$(basename "$thisPath")"
 
-echo "fodlerName: ${fodlerName}"
+# echo "fodlerName: ${fodlerName}"
 
 projectPath=""
 
@@ -29,13 +29,13 @@ else
   projectPath="$(realpath "${thisPath}")"
 fi
 
-echo "projectPath: ${projectPath}"
+# echo "projectPath: ${projectPath}"
 
 
 
 jsInvokePath="${projectPath}/cmd/base/js_invoke.sh"
 
-echo "jsInvokePath: ${jsInvokePath}"
+# echo "jsInvokePath: ${jsInvokePath}"
 
 if [[ ! -e "${jsInvokePath}" ]]; then
   echo "Error: call this script in the root of this project or in the folder command."
@@ -52,13 +52,13 @@ fi
 "${jsInvokePath}" "$commandLineArgs" \
   --packagePath="www/packages/SitesToolAutomation" \
   --script="main/produceSitesTool_MediaAndStyles.js" \
-  --sitesTool_ThemeName="theme_example15" \
-  --sitesToolName="CssTable2" \
-  --cssOrJsTool="css" \
-  --keywordResponsiveSize="k" \
-  --templatePath="data/templates/css/responsive/responsive_size__mini.css.template" \
-  --withSizesCssConstants="true" \
-  --withConstantsImportLine="true"
+      --sitesTool_ThemeName="theme_example18" \
+      --sitesToolName="CssTable4" \
+      --cssOrJsTool="css" \
+      --keywordResponsiveSize="o" \
+      --templatePath="data/templates/css/responsive/responsive_size__mini.css.template" \
+      --withSizesCssConstants="true" \
+      --withConstantsImportLine="true"
 
 
 

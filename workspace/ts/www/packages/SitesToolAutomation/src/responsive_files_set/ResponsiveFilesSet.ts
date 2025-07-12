@@ -26,6 +26,7 @@ export class ResponsiveFilesSet implements ResponsiveFilesSetInterface {
   mediaQueryCssFileContent: string;
 
 
+
   constructor(
     base: ResponsiveDatasetBase,
     constants: ResponsiveDatasetConstants
@@ -47,6 +48,7 @@ export class ResponsiveFilesSet implements ResponsiveFilesSetInterface {
   readTemplateMediaCssFile( mediaQueryCssFileTemplatePath: string ): ResponsiveFilesSet {
     const templatePath = mediaQueryCssFileTemplatePath;
     this.mediaQueryCssFileContent = fs.readFileSync( templatePath, "utf8" );
+
 
     return this;
   }
@@ -104,7 +106,6 @@ export class ResponsiveFilesSet implements ResponsiveFilesSetInterface {
     let orientationId: number = 0;
 
     for ( responsiveDatasetPropName of propNames ) {
-
       for ( orientationId = 0; orientationId < 2; orientationId++ ) {
         orientation = orientationKeywords[orientationId];
         orientationBitsbuf = orientationKeywordsBitsbufs[orientationId];
@@ -120,6 +121,7 @@ export class ResponsiveFilesSet implements ResponsiveFilesSetInterface {
       }
 
     }
+
 
     return mediaRetVal;
   }
@@ -218,8 +220,10 @@ export class ResponsiveFilesSet implements ResponsiveFilesSetInterface {
     retVal = await this.responsiveDatasetBase.fileWriter.appendFlatArrayToFile( responsiveCssFile_Content );
     retVal = await this.responsiveDatasetBase.fileWriter.filehandleClose();
 
+
     return retVal;
   }
+
 
 
   getTemplateDataOverridden (

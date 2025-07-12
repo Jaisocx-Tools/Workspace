@@ -14,6 +14,7 @@ export class ResponsiveImports implements ResponsiveImportsInterface {
   responsiveDatasetBase: ResponsiveDatasetBase;
 
 
+
   constructor(
     base: ResponsiveDatasetBase,
     constants: ResponsiveDatasetConstants
@@ -128,6 +129,7 @@ export class ResponsiveImports implements ResponsiveImportsInterface {
 
     // file writer closes the css imports file
     fileWriterRetVal = await fw.filehandleClose();
+
 
     return fileWriterRetVal;
   }
@@ -245,6 +247,7 @@ export class ResponsiveImports implements ResponsiveImportsInterface {
       }
 
     }
+
 
     return written;
   }

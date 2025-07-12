@@ -94,9 +94,15 @@ class Main {
             this.responsiveDatasetBase.webpackAliasName = ["@", commandLineArgs["sitesToolName"], "_", "MediaAndStyles"].join("");
         }
         // ${SitesTool}/MediaAndStyles/themes/${ThemeName}
-        let mediaAndStyles_themePath = path.resolve("MediaAndStyles", "themes", commandLineArgs["sitesTool_ThemeName"], "responsive");
+        let mediaAndStyles_themePath = path.resolve(this.responsiveDatasetBase.templateProjectPath, "MediaAndStyles", "themes", commandLineArgs["sitesTool_ThemeName"]);
+        if (fs.existsSync(mediaAndStyles_themePath) === false) {
+            fs.mkdirSync(mediaAndStyles_themePath, { recursive: true });
+        }
         // ${SitesTool}/MediaAndStyles/themes/${ThemeName}/responsive
         let mediaAndStyles_responsivePath = path.resolve(mediaAndStyles_themePath, "responsive");
+        if (fs.existsSync(mediaAndStyles_responsivePath) === false) {
+            fs.mkdirSync(mediaAndStyles_responsivePath, { recursive: true });
+        }
         this.responsiveDatasetBase
             .readDataset(this.pathToJsonDatasetForResponsiveSizes)
             .datasetPropsToBitsbufs(commandLineArgs["sitesToolName"], commandLineArgs["sitesTool_ThemeName"])
@@ -117,7 +123,6 @@ class Main {
         if (commandLineArgs["withSizesCssConstants"] === true) {
             fileBaseName_responsiveSizesConstants = [
                 __classPrivateFieldGet(this, _Main_keywordResponsiveSize, "f"),
-                "_a02_",
                 __classPrivateFieldGet(this, _Main_fileBaseName_responsiveSizesConstants, "f")
             ].join("");
             //@ts-ignore
@@ -131,10 +136,12 @@ class Main {
         // ResponsiveSizesCssImports_Webpack.css
         let filenameArray = [
             __classPrivateFieldGet(this, _Main_keywordResponsiveSize, "f"),
-            "_a03_",
+            "_",
             __classPrivateFieldGet(this, _Main_fileBaseName_Imports, "f"),
             "_",
             commandLineArgs["sitesToolName"],
+            "_",
+            commandLineArgs["sitesTool_ThemeName"],
             "_",
             "relativeOrWebpackKeyword",
             ".css"

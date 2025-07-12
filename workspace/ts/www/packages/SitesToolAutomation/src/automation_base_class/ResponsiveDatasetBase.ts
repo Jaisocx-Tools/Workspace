@@ -41,6 +41,7 @@ export class ResponsiveDatasetBase implements ResponsiveDatasetBaseInterface {
   bitsbufSitesTool_ThemeName: Uint8Array;
 
 
+
   constructor() {
 
     // this.textEncoder = new TextEncoder();
@@ -83,8 +84,10 @@ export class ResponsiveDatasetBase implements ResponsiveDatasetBaseInterface {
   setTemplateProjectPath( path: string ): ResponsiveDatasetBase {
     this.templateProjectPath = path;
 
+
     return this;
   }
+
 
 
   getTemplateProjectPath(): string {
@@ -97,11 +100,14 @@ export class ResponsiveDatasetBase implements ResponsiveDatasetBaseInterface {
   */
 
 
+
   setWebpackAliasName( alias: string ): ResponsiveDatasetBase {
     this.webpackAliasName = alias;
 
+
     return this;
   }
+
 
 
   getWebpackAliasName(): string {
@@ -115,6 +121,7 @@ export class ResponsiveDatasetBase implements ResponsiveDatasetBaseInterface {
   setCdnUrl( _cdnUrl: string ): ResponsiveDatasetBase {
     throw new Error( "Method setCdnUrl() was not implemented" );
 
+
     return this;
   }
 
@@ -122,6 +129,7 @@ export class ResponsiveDatasetBase implements ResponsiveDatasetBaseInterface {
   /**
    * @ready
   */
+
 
 
   setMediaAndStylesThemeFolderPath( inFolderRelativePath: string ): ResponsiveDatasetBase {
@@ -137,13 +145,16 @@ export class ResponsiveDatasetBase implements ResponsiveDatasetBaseInterface {
       );
     }
 
+
     return this;
   }
+
 
 
   getMediaAndStylesThemeFolderPath(): string {
     return this.mediaAndStylesThemeFolderPath;
   }
+
 
 
   setMediaAndStylesResponsiveFolderPath( inFolderRelativePath: string ): ResponsiveDatasetBase {
@@ -159,8 +170,10 @@ export class ResponsiveDatasetBase implements ResponsiveDatasetBaseInterface {
       );
     }
 
+
     return this;
   }
+
 
 
   getMediaAndStylesResponsiveFolderPath(): string {
@@ -168,11 +181,14 @@ export class ResponsiveDatasetBase implements ResponsiveDatasetBaseInterface {
   }
 
 
+
   setMediaQueryCssFileTemplatePath( path: string ): ResponsiveDatasetBase {
     this.mediaQueryCssFileTemplatePath = path;
 
+
     return this;
   }
+
 
 
   getMediaQueryCssFileTemplatePath(): string {
@@ -186,12 +202,14 @@ export class ResponsiveDatasetBase implements ResponsiveDatasetBaseInterface {
   */
 
 
+
   readDataset( inDatasetFileAbsolutePath: string ): ResponsiveDatasetBase {
     this.datasetFilePath = inDatasetFileAbsolutePath;
     const json: string = fs.readFileSync(
       this.datasetFilePath,
       "utf8" );
     this.dataset = JSON.parse( json );
+
 
     return this;
   }
@@ -202,11 +220,14 @@ export class ResponsiveDatasetBase implements ResponsiveDatasetBaseInterface {
   */
 
 
+
   setDataset( inDataset: object ): ResponsiveDatasetBase {
     this.dataset = inDataset;
 
+
     return this;
   }
+
 
 
   setSitesToolName( name: string ): ResponsiveDatasetBase {
@@ -215,8 +236,10 @@ export class ResponsiveDatasetBase implements ResponsiveDatasetBaseInterface {
     let te: TextEncoder = this.fileWriter.textEncoder;
     this.bitsbufSitesToolName = te.encode( this.sitesToolName );
 
+
     return this;
   }
+
 
 
   setSitesTool_ThemeName( themeName: string ): ResponsiveDatasetBase {
@@ -225,15 +248,19 @@ export class ResponsiveDatasetBase implements ResponsiveDatasetBaseInterface {
     let te: TextEncoder = this.fileWriter.textEncoder;
     this.bitsbufSitesTool_ThemeName = te.encode( this.sitesTool_ThemeName );
 
+
     return this;
   }
+
 
 
   setCommandLineArgs( args: object ): ResponsiveDatasetBase {
     this.commandLineArgs = args;
 
+
     return this;
   }
+
 
 
   datasetPropsToBitsbufs (
@@ -308,8 +335,10 @@ export class ResponsiveDatasetBase implements ResponsiveDatasetBaseInterface {
       // console.log( responsiveSizeNameString );
     }
 
+
     return this;
   }
+
 
 
   getDatasetFilePath(): string {
@@ -323,6 +352,7 @@ export class ResponsiveDatasetBase implements ResponsiveDatasetBaseInterface {
   */
 
 
+
   getDataset(): object {
     return this.dataset;
   }
@@ -333,6 +363,7 @@ export class ResponsiveDatasetBase implements ResponsiveDatasetBaseInterface {
    *
    * @retVal datatype { from: number, to: number }
   */
+
 
 
   getSizesByOrientation (
@@ -365,6 +396,7 @@ export class ResponsiveDatasetBase implements ResponsiveDatasetBaseInterface {
     } else {
       throw new Error( `Orientation value supported is "landscape" | "portrait". Was set ${orientation}` );
     }
+
 
     return sizes;
   }

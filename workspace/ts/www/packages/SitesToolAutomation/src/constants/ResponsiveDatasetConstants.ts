@@ -128,6 +128,7 @@ export class ResponsiveDatasetConstants implements ResponsiveDatasetConstantsInt
   #responsiveSizeConstantLine_size_BitsbufsArray: (Uint8Array|string)[];
 
 
+
   constructor() {
     this.fileWriter = new FileWriter();
     this.textEncoder = new TextEncoder();
@@ -252,6 +253,7 @@ export class ResponsiveDatasetConstants implements ResponsiveDatasetConstantsInt
 
     this.initBitbufsArrays();
   }
+
 
 
   initBitbufsArrays(): ResponsiveDatasetConstants {
@@ -459,7 +461,8 @@ export class ResponsiveDatasetConstants implements ResponsiveDatasetConstantsInt
       this.#bitsbufCssVariableNameValueDelimiter,
       "size",
       this.#bitsbufUnitPx,
-      this.#bitsbufCssExpressionEnd
+      this.#bitsbufCssExpressionEnd,
+      "new_line"
     ];
 
 
@@ -472,6 +475,7 @@ export class ResponsiveDatasetConstants implements ResponsiveDatasetConstantsInt
   setKeywordResponsiveSize( keyword: string ): ResponsiveDatasetConstants {
     this.#keywordResponsiveSize = keyword;
     this.#bitsbufKeywordResponsiveSize = this.textEncoder.encode( this.#keywordResponsiveSize );
+
 
     return this;
   }
@@ -586,6 +590,7 @@ export class ResponsiveDatasetConstants implements ResponsiveDatasetConstantsInt
   */
 
 
+
   getLabelLineArray (
     padding: Uint8Array,
     art: Uint8Array,
@@ -598,6 +603,7 @@ export class ResponsiveDatasetConstants implements ResponsiveDatasetConstantsInt
     this.#labelLineArray[paddingPos] = padding;
     this.#labelLineArray[artPos] = art;
     this.#labelLineArray[art_sizePos] = art_size;
+
 
     return this.#labelLineArray as Uint8Array[];
   }
@@ -613,12 +619,14 @@ export class ResponsiveDatasetConstants implements ResponsiveDatasetConstantsInt
   */
 
 
+
   getCssEncommentedLine (
     comment: Uint8Array
   ): Uint8Array[] {
     let commentPos: number = 2;
 
     this.#cssEncommentedLine[commentPos] = comment;
+
 
     return this.#cssEncommentedLine as Uint8Array[];
   }
@@ -637,6 +645,7 @@ export class ResponsiveDatasetConstants implements ResponsiveDatasetConstantsInt
       sites_tool_theme_name: 12
     }
   */
+
 
 
   getResponsiveSizeNameOrientedBitsbufsArray (
@@ -661,20 +670,22 @@ export class ResponsiveDatasetConstants implements ResponsiveDatasetConstantsInt
     this.#responsiveSizeNameOrientedBitsbufsArray[sites_tool_namePos] = sites_tool_name;
     this.#responsiveSizeNameOrientedBitsbufsArray[sites_tool_theme_namePos] = sites_tool_theme_name;
 
+
     return this.#responsiveSizeNameOrientedBitsbufsArray as Uint8Array[];
   }
 
 
   // arg returned by method getResponsiveSizeNameOrientedBitsbufsArray( ... )
   getResponsiveSizeName( responsiveSizeNameOriented: Uint8Array[] ): Uint8Array[] {
-    return responsiveSizeNameOriented.slice( 0, 6 ) as Uint8Array[];
+    return responsiveSizeNameOriented.slice( 0, 7 ) as Uint8Array[];
   }
 
 
   // arg returned by method getResponsiveSizeNameOrientedBitsbufsArray( ... )
   getResponsiveSizeNameOriented( responsiveSizeNameOriented: Uint8Array[] ): Uint8Array[] {
-    return responsiveSizeNameOriented.slice( 0, 8 ) as Uint8Array[];
+    return responsiveSizeNameOriented.slice( 0, 9 ) as Uint8Array[];
   }
+
 
 
   responsiveSizeName_setOrientation( orientation: Uint8Array ): ResponsiveDatasetConstants {
@@ -682,8 +693,10 @@ export class ResponsiveDatasetConstants implements ResponsiveDatasetConstantsInt
 
     this.#responsiveSizeNameOrientedBitsbufsArray[orientationPos] = orientation;
 
+
     return this;
   }
+
 
 
   responsiveSizeName_setSitesToolName( sites_tool_name: Uint8Array ): ResponsiveDatasetConstants {
@@ -691,14 +704,17 @@ export class ResponsiveDatasetConstants implements ResponsiveDatasetConstantsInt
 
     this.#responsiveSizeNameOrientedBitsbufsArray[sites_tool_namePos] = sites_tool_name;
 
+
     return this;
   }
+
 
 
   responsiveSizeName_setSitesTool_ThemeName( sites_tool_theme_name: Uint8Array ): ResponsiveDatasetConstants {
     let sites_tool_theme_namePos: number = 12;
 
     this.#responsiveSizeNameOrientedBitsbufsArray[sites_tool_theme_namePos] = sites_tool_theme_name;
+
 
     return this;
   }
@@ -715,6 +731,7 @@ export class ResponsiveDatasetConstants implements ResponsiveDatasetConstantsInt
   */
 
 
+
   getImportLineBitsbufsArray (
     url_start: Uint8Array,
     device_size_name: Uint8Array
@@ -724,6 +741,7 @@ export class ResponsiveDatasetConstants implements ResponsiveDatasetConstantsInt
 
     this.#importLineBitsbufsArray[url_startPos] = url_start;
     this.#importLineBitsbufsArray[device_size_namePos] = device_size_name;
+
 
     return this.#importLineBitsbufsArray as Uint8Array[];
   }
@@ -740,6 +758,7 @@ export class ResponsiveDatasetConstants implements ResponsiveDatasetConstantsInt
   */
 
 
+
   getResponsiveSizeConstantLineMaxOrMinBitsbufsArray (
     size: Uint8Array,
     isMax: boolean
@@ -749,6 +768,7 @@ export class ResponsiveDatasetConstants implements ResponsiveDatasetConstantsInt
 
     this.#responsiveSizeConstantLineMaxOrMinBitsbufsArray[maxOrMinPos] = isMax ? this.#bitsbufKeywordMax : this.#bitsbufKeywordMin;
     this.#responsiveSizeConstantLineMaxOrMinBitsbufsArray[sizePos] = size;
+
 
     return this.#responsiveSizeConstantLineMaxOrMinBitsbufsArray as Uint8Array[];
   }
@@ -776,6 +796,7 @@ export class ResponsiveDatasetConstants implements ResponsiveDatasetConstantsInt
   */
 
 
+
   getResponsiveSizeConstantLineBitsbufsArray (
     siteToolName: Uint8Array,
     responsiveSizeNameOriented: Uint8Array
@@ -785,6 +806,7 @@ export class ResponsiveDatasetConstants implements ResponsiveDatasetConstantsInt
 
     this.#responsiveSizeConstantLineBitsbufsArray[siteToolNamePos] = siteToolName;
     this.#responsiveSizeConstantLineBitsbufsArray[responsiveSizeNameOrientedPos] = responsiveSizeNameOriented;
+
 
     return this.#responsiveSizeConstantLineBitsbufsArray as Uint8Array[];
   }
@@ -803,6 +825,7 @@ export class ResponsiveDatasetConstants implements ResponsiveDatasetConstantsInt
   */
 
 
+
   getResponsiveSizeConstantLine_size_BitsbufsArray (
     padding: Uint8Array,
     responsiveSizeNameOriented: Uint8Array,
@@ -818,6 +841,7 @@ export class ResponsiveDatasetConstants implements ResponsiveDatasetConstantsInt
     this.#responsiveSizeConstantLine_size_BitsbufsArray[responsiveSizeNameOrientedPos] = responsiveSizeNameOriented;
     this.#responsiveSizeConstantLine_size_BitsbufsArray[max_or_minPos] = max_or_min;
     this.#responsiveSizeConstantLine_size_BitsbufsArray[sizePos] = size;
+
 
     return this.#responsiveSizeConstantLine_size_BitsbufsArray as Uint8Array[];
   }

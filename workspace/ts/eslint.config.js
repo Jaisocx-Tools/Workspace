@@ -73,7 +73,7 @@ export default [
             "lines_before_on_block_start": 0
           },
           "methods": {
-            "lines_before": 2,
+            "lines_before": 3,
             "lines_before_on_block_start": 1
           },
           "comments": {
@@ -85,11 +85,11 @@ export default [
             "lines_before_on_block_start": 1
           },
           "code_lines": {
-            "lines_before": 2,
+            "lines_before": 3,
             "lines_before_on_block_start": 0
           },
           "return": {
-            "lines_before": 1,
+            "lines_before": 2,
             "lines_before_on_block_start": 0
           }
         }
@@ -127,7 +127,7 @@ export default [
             "lines_before_on_block_start": 0
           },
           "methods": {
-            "lines_before": 2,
+            "lines_before": 3,
             "lines_before_on_block_start": 1
           },
           "comments": {
@@ -139,11 +139,11 @@ export default [
             "lines_before_on_block_start": 1
           },
           "code_lines": {
-            "lines_before": 2,
+            "lines_before": 3,
             "lines_before_on_block_start": 0
           },
           "return": {
-            "lines_before": 1,
+            "lines_before": 2,
             "lines_before_on_block_start": 0
           }
         }

@@ -52,9 +52,15 @@ export class Main {
             this.responsiveDatasetBase.webpackAliasName = ["@", commandLineArgs["sitesToolName"], "_", "MediaAndStyles"].join("");
         }
         // ${SitesTool}/MediaAndStyles/themes/${ThemeName}
-        let mediaAndStyles_themePath = path.resolve("MediaAndStyles", "themes", commandLineArgs["sitesTool_ThemeName"], "responsive");
+        let mediaAndStyles_themePath = path.resolve(this.responsiveDatasetBase.templateProjectPath, "MediaAndStyles", "themes", commandLineArgs["sitesTool_ThemeName"]);
+        if (fs.existsSync(mediaAndStyles_themePath) === false) {
+            fs.mkdirSync(mediaAndStyles_themePath, { recursive: true });
+        }
         // ${SitesTool}/MediaAndStyles/themes/${ThemeName}/responsive
         let mediaAndStyles_responsivePath = path.resolve(mediaAndStyles_themePath, "responsive");
+        if (fs.existsSync(mediaAndStyles_responsivePath) === false) {
+            fs.mkdirSync(mediaAndStyles_responsivePath, { recursive: true });
+        }
         this.responsiveDatasetBase
             .readDataset(this.pathToJsonDatasetForResponsiveSizes)
             .datasetPropsToBitsbufs(commandLineArgs["sitesToolName"], commandLineArgs["sitesTool_ThemeName"])
@@ -75,7 +81,6 @@ export class Main {
         if (commandLineArgs["withSizesCssConstants"] === true) {
             fileBaseName_responsiveSizesConstants = [
                 this.#keywordResponsiveSize,
-                "_a02_",
                 this.#fileBaseName_responsiveSizesConstants
             ].join("");
             //@ts-ignore
@@ -89,10 +94,12 @@ export class Main {
         // ResponsiveSizesCssImports_Webpack.css
         let filenameArray = [
             this.#keywordResponsiveSize,
-            "_a03_",
+            "_",
             this.#fileBaseName_Imports,
             "_",
             commandLineArgs["sitesToolName"],
+            "_",
+            commandLineArgs["sitesTool_ThemeName"],
             "_",
             "relativeOrWebpackKeyword",
             ".css"

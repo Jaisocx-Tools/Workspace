@@ -351,7 +351,8 @@ export class ResponsiveDatasetConstants {
             this.#bitsbufCssVariableNameValueDelimiter,
             "size",
             this.#bitsbufUnitPx,
-            this.#bitsbufCssExpressionEnd
+            this.#bitsbufCssExpressionEnd,
+            "new_line"
         ];
         // method finish
         return this;
@@ -491,11 +492,11 @@ export class ResponsiveDatasetConstants {
     }
     // arg returned by method getResponsiveSizeNameOrientedBitsbufsArray( ... )
     getResponsiveSizeName(responsiveSizeNameOriented) {
-        return responsiveSizeNameOriented.slice(0, 6);
+        return responsiveSizeNameOriented.slice(0, 7);
     }
     // arg returned by method getResponsiveSizeNameOrientedBitsbufsArray( ... )
     getResponsiveSizeNameOriented(responsiveSizeNameOriented) {
-        return responsiveSizeNameOriented.slice(0, 8);
+        return responsiveSizeNameOriented.slice(0, 9);
     }
     responsiveSizeName_setOrientation(orientation) {
         let orientationPos = 8;

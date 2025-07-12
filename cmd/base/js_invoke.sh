@@ -13,7 +13,7 @@ echo "running js_invoke.sh ..."
 thisPath="$(dirname "$(realpath "$0")")"
 fodlerName="$(basename "$thisPath")"
 
-echo "fodlerName: ${fodlerName}"
+# echo "fodlerName: ${fodlerName}"
 
 projectPath=""
 
@@ -23,7 +23,7 @@ elif [[ "${fodlerName}" == "cmd" ]]; then
   projectPath="$(realpath "${thisPath}/..")"
 fi
 
-echo "projectPath: ${projectPath}"
+# echo "projectPath: ${projectPath}"
 
 
 
