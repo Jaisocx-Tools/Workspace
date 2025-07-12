@@ -56,7 +56,6 @@ export class Main {
     commandLineArgs: any
   ): Promise<number> {
     commandLineArgs["withSizesCssConstants"] = ( commandLineArgs["withSizesCssConstants"] === "true" );
-    commandLineArgs["withConstantsImportLine"] = ( commandLineArgs["withConstantsImportLine"] === "true" );
 
 
     this.#keywordResponsiveSize = commandLineArgs["keywordResponsiveSize"];
@@ -150,6 +149,7 @@ export class Main {
     if ( commandLineArgs["withSizesCssConstants"] === true ) {
       fileBaseName_responsiveSizesConstants = [
         this.#keywordResponsiveSize,
+        "_",
         this.#fileBaseName_responsiveSizesConstants
       ].join( "" );
 
@@ -166,8 +166,6 @@ export class Main {
 
     // CSS IMPORTS
     // ---------------------------------------------
-    let withConstantsImportLine: boolean = ( commandLineArgs["withSizesCssConstants"] && commandLineArgs["withConstantsImportLine"] );
-
     let isWebpackAliased_true: boolean = true;
 
 
@@ -191,18 +189,25 @@ export class Main {
     retVal = await this.responsiveImports.produceImportsCssFileWithResponsiveFilesSetsSet (
       filenameArray.join( "" ),
       this.responsiveDatasetBase.mediaAndStylesThemeFolderPath,
-      isWebpackAliased_true,
-      withConstantsImportLine
+      isWebpackAliased_true
     );
+
+    filenameArray[relativeOrWebpackKeywordPos] = "Webpack_min";
+    retVal = await this.responsiveImports.produceImportsCssFileWithResponsiveFilesSetsSet (
+      filenameArray.join( "" ),
+      this.responsiveDatasetBase.mediaAndStylesThemeFolderPath,
+      isWebpackAliased_true
+    );
+
+
 
     let isWebpackAliased_false: boolean = false;
 
     filenameArray[relativeOrWebpackKeywordPos] = "Relative";
     retVal = await this.responsiveImports.produceImportsCssFileWithResponsiveFilesSetsSet (
       filenameArray.join( "" ),
-      this.responsiveDatasetBase.mediaAndStylesResponsiveFolderPath,
-      isWebpackAliased_false,
-      withConstantsImportLine
+      this.responsiveDatasetBase.mediaAndStylesThemeFolderPath,
+      isWebpackAliased_false
     );
 
 

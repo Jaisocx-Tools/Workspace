@@ -6,7 +6,6 @@ export type CommandArgsObject = {
     templateDataMethodName: "";
     keywordResponsiveSize: "";
     withSizesCssConstants: "";
-    withConstantsImportLine: "";
 };
 export declare function produceSitesTool_MediaAndStyles(): Promise<number>;
 //# sourceMappingURL=produceSitesTool_MediaAndStyles.d.ts.map

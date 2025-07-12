@@ -142,7 +142,7 @@ export class ResponsiveDatasetBase {
     }
     datasetPropsToBitsbufs(sitesTool, sitesTool_ThemeName) {
         let te = this.fileWriter.textEncoder;
-        let zeroLenBitsbuf = new Uint8Array();
+        let zeroLenBitsbuf = new Uint8Array(0);
         this.setSitesToolName(sitesTool);
         this.setSitesTool_ThemeName(sitesTool_ThemeName);
         //@ts-ignore

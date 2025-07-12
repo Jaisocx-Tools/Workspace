@@ -35,7 +35,6 @@ export class Main {
     // cssOrJsTool: "css" | "js"
     async run(commandLineArgs) {
         commandLineArgs["withSizesCssConstants"] = (commandLineArgs["withSizesCssConstants"] === "true");
-        commandLineArgs["withConstantsImportLine"] = (commandLineArgs["withConstantsImportLine"] === "true");
         this.#keywordResponsiveSize = commandLineArgs["keywordResponsiveSize"];
         this.responsiveDatasetConstants.setKeywordResponsiveSize(this.#keywordResponsiveSize);
         this.responsiveDatasetConstants.initBitbufsArrays();
@@ -81,6 +80,7 @@ export class Main {
         if (commandLineArgs["withSizesCssConstants"] === true) {
             fileBaseName_responsiveSizesConstants = [
                 this.#keywordResponsiveSize,
+                "_",
                 this.#fileBaseName_responsiveSizesConstants
             ].join("");
             //@ts-ignore
@@ -89,7 +89,6 @@ export class Main {
         }
         // CSS IMPORTS
         // ---------------------------------------------
-        let withConstantsImportLine = (commandLineArgs["withSizesCssConstants"] && commandLineArgs["withConstantsImportLine"]);
         let isWebpackAliased_true = true;
         // ResponsiveSizesCssImports_Webpack.css
         let filenameArray = [
@@ -106,10 +105,12 @@ export class Main {
         ];
         let relativeOrWebpackKeywordPos = (filenameArray.length - 2);
         filenameArray[relativeOrWebpackKeywordPos] = "Webpack";
-        retVal = await this.responsiveImports.produceImportsCssFileWithResponsiveFilesSetsSet(filenameArray.join(""), this.responsiveDatasetBase.mediaAndStylesThemeFolderPath, isWebpackAliased_true, withConstantsImportLine);
+        retVal = await this.responsiveImports.produceImportsCssFileWithResponsiveFilesSetsSet(filenameArray.join(""), this.responsiveDatasetBase.mediaAndStylesThemeFolderPath, isWebpackAliased_true);
+        filenameArray[relativeOrWebpackKeywordPos] = "Webpack_min";
+        retVal = await this.responsiveImports.produceImportsCssFileWithResponsiveFilesSetsSet(filenameArray.join(""), this.responsiveDatasetBase.mediaAndStylesThemeFolderPath, isWebpackAliased_true);
         let isWebpackAliased_false = false;
         filenameArray[relativeOrWebpackKeywordPos] = "Relative";
-        retVal = await this.responsiveImports.produceImportsCssFileWithResponsiveFilesSetsSet(filenameArray.join(""), this.responsiveDatasetBase.mediaAndStylesResponsiveFolderPath, isWebpackAliased_false, withConstantsImportLine);
+        retVal = await this.responsiveImports.produceImportsCssFileWithResponsiveFilesSetsSet(filenameArray.join(""), this.responsiveDatasetBase.mediaAndStylesThemeFolderPath, isWebpackAliased_false);
         // let webpackAliasTemplateFilePath: string = path.resolve(
         //   this.responsiveDatasetBase.templateProjectPath,
         //   "data",

@@ -20,10 +20,10 @@ That is why in the CssCleanStart just the css constants relevant for sizes are s
 
 
     --theme_name__{{ SitesToolName }}: {{ SitesTool_ThemeName }};
-    {{ responsiveSizeConstantName }}_{{ SitesToolName }}_{{ SitesTool_ThemeName }}: {{ responsiveSizeName }}_{{ SitesToolName }}_{{ SitesTool_ThemeName }};
+    {{ responsiveSizeConstantName }}__{{ SitesToolName }}__{{ SitesTool_ThemeName }}: {{ responsiveSizeName }}__{{ SitesToolName }}__{{ SitesTool_ThemeName }};
 
-    {{ responsiveSizeConstantName }}_{{ SitesToolName }}_{{ SitesTool_ThemeName }}__min-width: {{ min-width }}px;
-    {{ responsiveSizeConstantName }}_{{ SitesToolName }}_{{ SitesTool_ThemeName }}__max-width: {{ max-width }}px;
+    {{ responsiveSizeConstantName }}__{{ SitesToolName }}__{{ SitesTool_ThemeName }}__min-width: {{ min-width }}px;
+    {{ responsiveSizeConstantName }}__{{ SitesToolName }}__{{ SitesTool_ThemeName }}__max-width: {{ max-width }}px;
 
 
 

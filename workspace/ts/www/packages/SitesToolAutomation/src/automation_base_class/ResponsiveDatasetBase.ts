@@ -268,7 +268,7 @@ export class ResponsiveDatasetBase implements ResponsiveDatasetBaseInterface {
     sitesTool_ThemeName: string
   ): ResponsiveDatasetBase {
     let te: TextEncoder = this.fileWriter.textEncoder;
-    let zeroLenBitsbuf: Uint8Array = new Uint8Array();
+    let zeroLenBitsbuf: Uint8Array = new Uint8Array(0);
 
     this.setSitesToolName( sitesTool );
     this.setSitesTool_ThemeName( sitesTool_ThemeName );

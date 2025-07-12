@@ -8,7 +8,6 @@ import * as path from "node:path";
 
 // import { FileWriter } from "@jaisocx/file-writer";
 import { TemplateRenderer } from "@jaisocx/template-renderer";
-
 import { ResponsiveDatasetConstants } from "../constants/ResponsiveDatasetConstants.js";
 import { ResponsiveDatasetBase } from "../automation_base_class/ResponsiveDatasetBase.js";
 import { ResponsiveFilesSetInterface } from "./ResponsiveFilesSetInterface.js";
@@ -76,8 +75,11 @@ export class ResponsiveFilesSet implements ResponsiveFilesSetInterface {
     let sitesToolBitsbuf: Uint8Array = this.responsiveDatasetBase.fileWriter.textEncoder
       .encode( this.responsiveDatasetBase.sitesToolName );
 
+
+
     let templateDataBase: any = {
       "SitesTool_ThemeName": "",
+      "SitesTool_ThemeCssClassName": "",
       "SitesToolName": "",
       "responsiveSizeConstantName": "",
       "responsiveSizeName": "",
@@ -142,6 +144,10 @@ export class ResponsiveFilesSet implements ResponsiveFilesSetInterface {
     let responsiveSizeConstantName: Uint8Array = this.responsiveDatasetConstants
       .getResponsiveSizeConstantNameBitsbuf();
 
+    let sitesTool_ThemeCssClassName: string = ( this.responsiveDatasetBase.sitesTool_ThemeName === "theme_base" ) ? "" : ( "." + this.responsiveDatasetBase.sitesTool_ThemeName );
+    let sitesTool_ThemeCssClassNameBitsbuf: Uint8Array = this.responsiveDatasetBase.fileWriter.textEncoder
+      .encode( sitesTool_ThemeCssClassName );
+
 
     //@ts-ignore
     let responsiveData = this.responsiveDatasetBase.datasetBitsbufs[responsiveDatasetPropName];
@@ -174,6 +180,7 @@ export class ResponsiveFilesSet implements ResponsiveFilesSetInterface {
 
     let templateDataBase: any = {
       "SitesTool_ThemeName": themeNameBitsbuf,
+      "SitesTool_ThemeCssClassName": sitesTool_ThemeCssClassNameBitsbuf,
       "SitesToolName": sitesToolBitsbuf,
       "responsiveSizeConstantName": responsiveSizeConstantName,
       "responsiveSizeName": responsiveSizeNameOriented,

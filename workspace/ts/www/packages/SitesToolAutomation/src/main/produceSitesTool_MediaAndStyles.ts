@@ -11,8 +11,7 @@ export type CommandArgsObject = {
   templatePath: "",
   templateDataMethodName: "",
   keywordResponsiveSize: "",
-  withSizesCssConstants: "",
-  withConstantsImportLine: ""
+  withSizesCssConstants: ""
 };
 
 

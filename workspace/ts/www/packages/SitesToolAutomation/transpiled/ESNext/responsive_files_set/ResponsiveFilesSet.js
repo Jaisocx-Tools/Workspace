@@ -47,6 +47,7 @@ export class ResponsiveFilesSet {
             .encode(this.responsiveDatasetBase.sitesToolName);
         let templateDataBase = {
             "SitesTool_ThemeName": "",
+            "SitesTool_ThemeCssClassName": "",
             "SitesToolName": "",
             "responsiveSizeConstantName": "",
             "responsiveSizeName": "",
@@ -81,6 +82,9 @@ export class ResponsiveFilesSet {
     async produceOneResponsiveFilesSet(themeNameBitsbuf, sitesToolBitsbuf, responsiveDatasetPropName, orientation, orientationBitsbuf) {
         let responsiveSizeConstantName = this.responsiveDatasetConstants
             .getResponsiveSizeConstantNameBitsbuf();
+        let sitesTool_ThemeCssClassName = (this.responsiveDatasetBase.sitesTool_ThemeName === "theme_base") ? "" : ("." + this.responsiveDatasetBase.sitesTool_ThemeName);
+        let sitesTool_ThemeCssClassNameBitsbuf = this.responsiveDatasetBase.fileWriter.textEncoder
+            .encode(sitesTool_ThemeCssClassName);
         //@ts-ignore
         let responsiveData = this.responsiveDatasetBase.datasetBitsbufs[responsiveDatasetPropName];
         let sizesByBitsbufs_true = true;
@@ -94,6 +98,7 @@ export class ResponsiveFilesSet {
             .concatUint8Arrays(responsiveSizeNameOrientedArray);
         let templateDataBase = {
             "SitesTool_ThemeName": themeNameBitsbuf,
+            "SitesTool_ThemeCssClassName": sitesTool_ThemeCssClassNameBitsbuf,
             "SitesToolName": sitesToolBitsbuf,
             "responsiveSizeConstantName": responsiveSizeConstantName,
             "responsiveSizeName": responsiveSizeNameOriented,

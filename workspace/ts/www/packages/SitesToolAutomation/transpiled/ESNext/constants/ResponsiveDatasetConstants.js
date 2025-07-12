@@ -265,7 +265,9 @@ export class ResponsiveDatasetConstants {
             this.#bitsbufSymbolUnderscore,
             "orientation",
             this.#bitsbufSymbolUnderscore,
+            this.#bitsbufSymbolUnderscore,
             "sites_tool_name",
+            this.#bitsbufSymbolUnderscore,
             this.#bitsbufSymbolUnderscore,
             "sites_tool_theme_name"
         ];
@@ -285,7 +287,8 @@ export class ResponsiveDatasetConstants {
             "device_size_name",
             this.#bitsbufSymbolDot,
             this.#bitsbufKeywordCssFileExtension,
-            this.#bitsbufImportUrlEnd
+            this.#bitsbufImportUrlEnd,
+            "new_line(s)"
         ];
         // --responsive_size_max_width: 320px;
         // Uint8Array[]
@@ -480,8 +483,8 @@ export class ResponsiveDatasetConstants {
         let artPos = 4;
         let art_sizePos = 6;
         let orientationPos = 8;
-        let sites_tool_namePos = 10;
-        let sites_tool_theme_namePos = 12;
+        let sites_tool_namePos = 11;
+        let sites_tool_theme_namePos = 14;
         this.#responsiveSizeNameOrientedBitsbufsArray[range_orderby_idPos] = range_orderby_id;
         this.#responsiveSizeNameOrientedBitsbufsArray[artPos] = art;
         this.#responsiveSizeNameOrientedBitsbufsArray[art_sizePos] = art_size;
@@ -515,19 +518,27 @@ export class ResponsiveDatasetConstants {
     }
     // @import url("./d_e02_mobile_xs_portrait_CssTable2_theme_example9.css");
     // Uint8Array[]
-    // num = 7
+    // num = 8
     /*
       {
         url_start: 1,
-        device_size_name: 3
+        device_size_name: 3,
+        newLineBitsbuf: 7
       }
     */
-    getImportLineBitsbufsArray(url_start, device_size_name) {
+    getImportLineBitsbufsArray(url_start, device_size_name, newLineBitsbuf) {
         let url_startPos = 1;
         let device_size_namePos = 3;
+        let newLineBitsbufPos = 7;
         this.#importLineBitsbufsArray[url_startPos] = url_start;
         this.#importLineBitsbufsArray[device_size_namePos] = device_size_name;
+        this.#importLineBitsbufsArray[newLineBitsbufPos] = newLineBitsbuf;
         return this.#importLineBitsbufsArray;
+    }
+    importLine_setNewlineBitsbuf(newLineBitsbuf) {
+        let newLineBitsbufPos = (this.#importLineBitsbufsArray.length - 1);
+        this.#importLineBitsbufsArray[newLineBitsbufPos] = newLineBitsbuf;
+        return this;
     }
     // --responsive_size_max_width: 320px;
     // Uint8Array[]

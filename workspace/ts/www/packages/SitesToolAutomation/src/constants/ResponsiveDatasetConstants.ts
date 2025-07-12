@@ -367,7 +367,9 @@ export class ResponsiveDatasetConstants implements ResponsiveDatasetConstantsInt
       this.#bitsbufSymbolUnderscore,
       "orientation",
       this.#bitsbufSymbolUnderscore,
+      this.#bitsbufSymbolUnderscore,
       "sites_tool_name",
+      this.#bitsbufSymbolUnderscore,
       this.#bitsbufSymbolUnderscore,
       "sites_tool_theme_name"
     ];
@@ -389,7 +391,8 @@ export class ResponsiveDatasetConstants implements ResponsiveDatasetConstantsInt
       "device_size_name",
       this.#bitsbufSymbolDot,
       this.#bitsbufKeywordCssFileExtension,
-      this.#bitsbufImportUrlEnd
+      this.#bitsbufImportUrlEnd,
+      "new_line(s)"
     ];
 
 
@@ -660,8 +663,8 @@ export class ResponsiveDatasetConstants implements ResponsiveDatasetConstantsInt
     let artPos: number = 4;
     let art_sizePos: number = 6;
     let orientationPos: number = 8;
-    let sites_tool_namePos: number = 10;
-    let sites_tool_theme_namePos: number = 12;
+    let sites_tool_namePos: number = 11;
+    let sites_tool_theme_namePos: number = 14;
 
     this.#responsiveSizeNameOrientedBitsbufsArray[range_orderby_idPos] = range_orderby_id;
     this.#responsiveSizeNameOrientedBitsbufsArray[artPos] = art;
@@ -722,11 +725,12 @@ export class ResponsiveDatasetConstants implements ResponsiveDatasetConstantsInt
 
   // @import url("./d_e02_mobile_xs_portrait_CssTable2_theme_example9.css");
   // Uint8Array[]
-  // num = 7
+  // num = 8
   /*
     {
       url_start: 1,
-      device_size_name: 3
+      device_size_name: 3,
+      newLineBitsbuf: 7
     }
   */
 
@@ -734,16 +738,29 @@ export class ResponsiveDatasetConstants implements ResponsiveDatasetConstantsInt
 
   getImportLineBitsbufsArray (
     url_start: Uint8Array,
-    device_size_name: Uint8Array
+    device_size_name: Uint8Array,
+    newLineBitsbuf: Uint8Array
   ): Uint8Array[] {
     let url_startPos: number = 1;
     let device_size_namePos: number = 3;
+    let newLineBitsbufPos: number = 7;
 
     this.#importLineBitsbufsArray[url_startPos] = url_start;
     this.#importLineBitsbufsArray[device_size_namePos] = device_size_name;
+    this.#importLineBitsbufsArray[newLineBitsbufPos] = newLineBitsbuf;
 
 
     return this.#importLineBitsbufsArray as Uint8Array[];
+  }
+
+
+
+  importLine_setNewlineBitsbuf( newLineBitsbuf: Uint8Array ): ResponsiveDatasetConstants {
+    let newLineBitsbufPos = ( this.#importLineBitsbufsArray.length - 1 );
+    this.#importLineBitsbufsArray[newLineBitsbufPos] = newLineBitsbuf;
+
+
+    return this;
   }
 
 

@@ -150,8 +150,12 @@ export interface ResponsiveDatasetConstantsInterface {
   */
   getImportLineBitsbufsArray (
       url_start: Uint8Array,
-      device_size_name: Uint8Array
+      device_size_name: Uint8Array,
+      newLineBitsbuf: Uint8Array
   ): Uint8Array[];
+
+
+  importLine_setNewlineBitsbuf( newLineBitsbuf: Uint8Array ): ResponsiveDatasetConstants;
 
 
   // --responsive_size_max_width: 320px;

@@ -8,7 +8,7 @@ in the Terminal, in the Root of the Project
 ## Produce theme responsive .css fresh fileset for the CssCleanStart
 
 ```bash
-./produceCleanStart.sh --sitesTool_ThemeName=theme_example --sitesToolName=CssCleanStart2 --cssOrJsTool=css --template="data/templates/responsive_size__CssCleanStart.css.template" --withSizesCssConstants=true --withConstantsImportLine=true
+./produceCleanStart.sh --sitesTool_ThemeName=theme_example --sitesToolName=CssCleanStart2 --cssOrJsTool=css --template="data/templates/responsive_size__CssCleanStart.css.template" --withSizesCssConstants=true
 ```
 
 
@@ -102,8 +102,7 @@ args mapped to js object:
     sitesToolName: "",
     cssOrJsTool: "",
     template: "",
-    withSizesCssConstants: "",
-    withConstantsImportLine: ""
+    withSizesCssConstants: ""
   };
 ```
 

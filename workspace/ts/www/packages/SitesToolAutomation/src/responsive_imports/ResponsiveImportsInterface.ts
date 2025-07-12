@@ -20,8 +20,7 @@ export interface ResponsiveImportsInterface {
   (
     targetFileName: string,
     relativeImportedFilesFolderPath: string,
-    webpackAliased: boolean,
-    withConstantsImportLine: boolean
+    webpackAliased: boolean
   ): Promise<number>;
 
 

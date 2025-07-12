@@ -21,8 +21,7 @@
 #   --keywordResponsiveSize="a" \
 #   --templatePath="data/templates/css/responsive/responsive_size__mini_example_overrides_data.css.template" \
 #   --templateDataMethodName="getTemplateDataOverridden" \
-#   --withSizesCssConstants="true" \
-#   --withConstantsImportLine="true"
+#   --withSizesCssConstants="true"
 
 
 
@@ -33,8 +32,7 @@ bash -c ./bash/produceSitesTool_MediaAnsStyles.sh \
   --keywordResponsiveSize="h" \
   --templatePath="data/templates/css/responsive/responsive_size__mini.css.template" \
   --templateDataMethodName="getUnchanged" \
-  --withSizesCssConstants="true" \
-  --withConstantsImportLine="true"
+  --withSizesCssConstants="true"
 
 
 
