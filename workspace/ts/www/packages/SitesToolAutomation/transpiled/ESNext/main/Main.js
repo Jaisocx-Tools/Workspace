@@ -8,6 +8,7 @@ import { ResponsiveFilesSet } from "../responsive_files_set/ResponsiveFilesSet.j
 import { ResponsiveImports } from "../responsive_imports/ResponsiveImports.js";
 // import { ResponsiveTsFile_ResponsiveSizesNames } from "../ts_file_with_sizes_names/ResponsiveTsFile_ResponsiveSizesNames.js";
 import { ResponsiveDatasetBase } from "../automation_base_class/ResponsiveDatasetBase.js";
+import { FileProducerByTemplate } from "@jaisocx/file-producer-by-template";
 export class Main {
     pathToJsonDatasetForResponsiveSizes;
     #keywordResponsiveSize = "";
@@ -70,6 +71,89 @@ export class Main {
         let retVal = 0;
         let newLinesAmount = 3;
         let padding = 2;
+        let fileProducerByTemplate = new FileProducerByTemplate();
+        let sitesTool_ThemeCssClassName = (this.responsiveDatasetBase.sitesTool_ThemeName === "theme_base") ? "" : [".", this.responsiveDatasetBase.sitesTool_ThemeName].join("");
+        let templatesData = {
+            "SitesToolName": this.responsiveDatasetBase.sitesToolName,
+            "SitesTool_ThemeName": this.responsiveDatasetBase.sitesTool_ThemeName,
+            "SitesTool_ThemeCssClassName": sitesTool_ThemeCssClassName
+        };
+        let filePath = "";
+        //@ts-ignore
+        let fileProducedResult = 0;
+        filePath = path.resolve(this.responsiveDatasetBase.templateProjectPath, "BuildData.example.json");
+        fileProducedResult = fileProducerByTemplate
+            .readTemplateFile("data/templates/BuildData.json.template")
+            .setTemplateData(templatesData)
+            .setFilePath(filePath)
+            .produce();
+        filePath = path.resolve(this.responsiveDatasetBase.templateProjectPath, "index.example.html");
+        fileProducedResult = fileProducerByTemplate
+            .readTemplateFile("data/templates/index.example.html.template")
+            .setTemplateData(templatesData)
+            .setFilePath(filePath)
+            .produce();
+        filePath = path.resolve(this.responsiveDatasetBase.templateProjectPath, "webpack.alias.json");
+        fileProducedResult = fileProducerByTemplate
+            .readTemplateFile("data/templates/webpack.aliases.json.template")
+            .setTemplateData(templatesData)
+            .setFilePath(filePath)
+            .produce();
+        filePath = path.resolve(this.responsiveDatasetBase.templateProjectPath, "src", "index.ts");
+        fileProducedResult = fileProducerByTemplate
+            .readTemplateFile("data/templates/src/index.ts.template")
+            .setTemplateData(templatesData)
+            .setFilePath(filePath)
+            .produce();
+        filePath = path.resolve(this.responsiveDatasetBase.templateProjectPath, "MediaAndStyles", (this.responsiveDatasetBase.sitesToolName + "_main.css"));
+        fileProducedResult = fileProducerByTemplate
+            .readTemplateFile("data/templates/css/SitesTool_main.css.template")
+            .setTemplateData(templatesData)
+            .setFilePath(filePath)
+            .produce();
+        filePath = path.resolve(this.responsiveDatasetBase.templateProjectPath, "MediaAndStyles", (this.responsiveDatasetBase.sitesToolName + "_main_Webpack.css"));
+        fileProducedResult = fileProducerByTemplate
+            .readTemplateFile("data/templates/css/SitesTool_main_Webpack.css.template")
+            .setTemplateData(templatesData)
+            .setFilePath(filePath)
+            .produce();
+        filePath = path.resolve(this.responsiveDatasetBase.templateProjectPath, "MediaAndStyles", (this.responsiveDatasetBase.sitesToolName + "_main_relative.css"));
+        fileProducedResult = fileProducerByTemplate
+            .readTemplateFile("data/templates/css/SitesTool_main_relative.css.template")
+            .setTemplateData(templatesData)
+            .setFilePath(filePath)
+            .produce();
+        filePath = path.resolve(this.responsiveDatasetBase.templateProjectPath, "MediaAndStyles", "themes", this.responsiveDatasetBase.sitesTool_ThemeName, [
+            this.responsiveDatasetBase.sitesToolName,
+            this.responsiveDatasetBase.sitesTool_ThemeName,
+            "main.css"
+        ].join("_"));
+        fileProducedResult = fileProducerByTemplate
+            .readTemplateFile("data/templates/css/SitesTool_ThemeName.css.template")
+            .setTemplateData(templatesData)
+            .setFilePath(filePath)
+            .produce();
+        let fileContentsToCopy = "";
+        filePath = path.resolve(this.responsiveDatasetBase.templateProjectPath, "package.json");
+        fileContentsToCopy = fs.readFileSync("data/templates/package.json.copy", { encoding: "utf8",
+            flag: "r" });
+        fs.writeFileSync(filePath, fileContentsToCopy, { encoding: "utf8",
+            mode: 0o755 });
+        filePath = path.resolve(this.responsiveDatasetBase.templateProjectPath, "src", "webpack.aliases.mjs");
+        fileContentsToCopy = fs.readFileSync("data/templates/src/webpack.aliases.mjs.copy", { encoding: "utf8",
+            flag: "r" });
+        fs.writeFileSync(filePath, fileContentsToCopy, { encoding: "utf8",
+            mode: 0o755 });
+        filePath = path.resolve(this.responsiveDatasetBase.templateProjectPath, "src", "webpack.aliases.cjs");
+        fileContentsToCopy = fs.readFileSync("data/templates/src/webpack.aliases.cjs.copy", { encoding: "utf8",
+            flag: "r" });
+        fs.writeFileSync(filePath, fileContentsToCopy, { encoding: "utf8",
+            mode: 0o755 });
+        filePath = path.resolve(this.responsiveDatasetBase.templateProjectPath, "src", "webpackAliases.ts");
+        fileContentsToCopy = fs.readFileSync("data/templates/src/webpackAliases.ts.copy", { encoding: "utf8",
+            flag: "r" });
+        fs.writeFileSync(filePath, fileContentsToCopy, { encoding: "utf8",
+            mode: 0o755 });
         // CSS FILES SET, MEDIA QUERIES
         // ---------------------------------------------
         this.responsiveCssFile.readTemplateMediaCssFile(this.responsiveDatasetBase.mediaQueryCssFileTemplatePath);

@@ -1,2 +1,2 @@
-import "@{{ SitesToolName }}_MediaAndStyles/{{ SitesToolName }}_main_webpack.css";
+import "@{{ SitesToolName }}_MediaAndStyles/{{ SitesToolName }}_main_Webpack.css";
 

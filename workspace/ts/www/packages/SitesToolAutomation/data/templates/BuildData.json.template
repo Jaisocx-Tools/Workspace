@@ -1,0 +1,14 @@
+    {
+      "path": "sites_tools/css_tools/{{ SitesToolName }}",
+      "name": "<Your-package-name-here>",
+      "update-published": "",
+      "build": false,
+      "build-simple-enable": false,
+      "css-importer": {
+        "build": false,
+        "cssFilePath": "MediaAndStyles/{{ SitesToolName }}_main_Webpack.css",
+        "cssTargetFilePath": "MediaAndStyles/{{ SitesToolName }}_main_resolved.css"
+      },
+      "dependencies": [],
+      "build-files": []
+    }

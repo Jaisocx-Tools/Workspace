@@ -153,24 +153,6 @@
       ]
     },
     {
-      "path": "packages/SitesToolAutomation",
-      "name": "sites-tool-automation",
-      "update-published": "Mon Jun 16 08:07:24 CEST 2025",
-      "build": true,
-      "build-simple-enable": false,
-      "dependencies": [
-        {
-          "name": "@jaisocx/file-writer",
-          "path": "packages/FileWriter"
-        },
-        {
-          "name": "@jaisocx/template-renderer",
-          "path": "packages/TemplateRenderer"
-        }
-      ],
-      "build-files": []
-    },
-    {
       "path": "sites_tools/css_tools/CssCleanStart",
       "name": "css-clean-start",
       "update-published": "Mon Jun 23 06:01:02 GMT 2025",
@@ -239,6 +221,46 @@
       "build-files": [
         "TemplateRenderer.js"
       ]
+    },
+    {
+      "path": "packages/FileProducerByTemplate",
+      "name": "template-renderer",
+      "update-published": "file-producer-by-template",
+      "build": false,
+      "build-simple-enable": false,
+      "dependencies": [
+        {
+          "name": "@jaisocx/template-renderer",
+          "path": "packages/TemplateRenderer"
+        },
+        {
+          "name": "@jaisocx/file-writer",
+          "path": "packages/FileWriter"
+        }
+      ],
+      "build-files": []
+    },
+    {
+      "path": "packages/SitesToolAutomation",
+      "name": "sites-tool-automation",
+      "update-published": "Mon Jun 16 08:07:24 CEST 2025",
+      "build": false,
+      "build-simple-enable": false,
+      "dependencies": [
+        {
+          "name": "@jaisocx/file-writer",
+          "path": "packages/FileWriter"
+        },
+        {
+          "name": "@jaisocx/template-renderer",
+          "path": "packages/TemplateRenderer"
+        },
+        {
+          "name": "@jaisocx/file-producer-by-template",
+          "path": "packages/FileProducerByTemplate"
+        }
+      ],
+      "build-files": []
     },
     {
       "ready-to-use": false,

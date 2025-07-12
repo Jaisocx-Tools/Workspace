@@ -1,14 +1,15 @@
-/* css variables */
-@import url("themes/theme_base/CssToolTemplate_a01_Theme_Base.css");
+
+/* @import url("./responsive_size_Constants.css"); */
 
 
 
-/* responsive */
-@import url("themes/theme_base/responsive_size_a02_Constants.css");
-@import url("themes/theme_base/responsive_size_a03_CssImports_CssToolTemplate_Relative.css");
+/* base theme: constants and @media queries */
+@import url("./themes/theme_base/CssToolTemplate_theme_base_main.css");
+@import url("./themes/theme_base/responsive_size_Imports_CssToolTemplate_theme_base_Relative.css");
 
 
 
-@import url("CssToolTemplate_main.css");
+/* main css file, css logics with rules set via variables in the theme .css files imported above */
+@import url("./CssToolTemplate_main.css");
 
 

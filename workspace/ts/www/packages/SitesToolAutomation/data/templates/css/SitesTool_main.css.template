@@ -1,13 +1,14 @@
-/* Sites tool: {{ SitesToolName }}, theme: {{ SitesTool_ThemeName }} */
-.workspace .{{ SitesToolName }}{{ SitesTool_ThemeName }} {
-
+/* Main .css file for the sites tool: {{ SitesToolName }} */
+.workspace .{{ SitesToolName }} {
+  background-color: var(--{{ SitesToolName }}--main--background-color);
+  color: var(--{{ SitesToolName }}--main--color);
 }
 
-.workspace .{{ SitesToolName }}{{ SitesTool_ThemeName }} .class1 {
+.workspace .{{ SitesToolName }} .class1 {
   font-size: var(--{{ SitesToolName }}--toolHtmlElement--font-size);
 }
 
-.workspace .{{ SitesToolName }}{{ SitesTool_ThemeName }} .class2 {
+.workspace .{{ SitesToolName }} .class2 {
 
 }
 

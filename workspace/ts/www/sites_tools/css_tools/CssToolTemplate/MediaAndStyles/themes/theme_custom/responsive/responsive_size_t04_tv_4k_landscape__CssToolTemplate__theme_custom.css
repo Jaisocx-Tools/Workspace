@@ -1,7 +1,0 @@
-@media only screen and (min-width: 3841px) and (max-width: 7680px) and (orientation: landscape) {
-  .workspace .CssToolTemplate.theme_custom {
-    --theme_name__CssToolTemplate: theme_custom;
-    --responsive_size__CssToolTemplate__theme_custom: responsive_size_t04_tv_4k_landscape__CssToolTemplate__theme_custom;
-  }
-}
-

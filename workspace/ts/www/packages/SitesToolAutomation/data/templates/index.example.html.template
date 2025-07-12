@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en" class="workspace">
+
+  <head>
+
+    <title>{{ SitesToolName }}</title>
+
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta charset="utf-8">
+
+    <base href=".">
+
+
+
+    <!-- start referencing styles from package.json dependency css-clean-start -->
+
+    <link rel="stylesheet"
+      href="node_modules/@jaisocx/css-clean-start/MediaAndStyles/themes/theme-lightmode/clean-start-theme-lightmode-relative.css">
+
+    <link rel="stylesheet"
+      href="node_modules/@jaisocx/css-clean-start/MediaAndStyles/themes/theme-darkmode/clean-start-theme-darkmode-relative.css">
+
+
+    <link rel="stylesheet"
+      href="node_modules/@jaisocx/css-clean-start/MediaAndStyles/css_clean_start_main_resolved.css">
+
+    <!-- finish referencing styles from package.json dependency css-clean-start -->
+
+
+
+    <link rel="stylesheet" href="MediaAndStyles/{{ SitesToolName }}_main_relative.css">
+
+
+
+    <style>
+      .workspace {
+
+      }
+
+      .workspace .{{ SitesToolName }} {
+
+      }
+    </style>
+
+  <head>
+  <body>
+
+    <main>
+
+      <h1>{{ SitesToolName }}</h1>
+
+      <p>The default styles are aligned with @jaisocx/css-clean-start available on npm or yarn.</p>
+
+      <div class="{{ SitesToolName }}">
+        Hello World!
+      </div>
+
+    </main>
+
+  </body>
+
+</html>
+
+
+
+

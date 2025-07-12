@@ -11,12 +11,13 @@ That is why in the CssCleanStart just the css constants relevant for sizes are s
 */
 @media only screen and (min-width: {{ min-width }}px) and (max-width: {{ max-width }}px) and (orientation: {{ orientation }}) {
 
-  .workspace .{{ SitesToolName }}{{ SitesTool_ThemeCssClassName }} {
+  :root {
     --theme_name__{{ SitesToolName }}: {{ SitesTool_ThemeName }};
-
     {{ responsiveSizeConstantName }}__{{ SitesToolName }}__{{ SitesTool_ThemeName }}: {{ responsiveSizeName }}__{{ SitesToolName }}__{{ SitesTool_ThemeName }};
+  }
 
 
+  .workspace .{{ SitesToolName }}{{ SitesTool_ThemeCssClassName }} {
 
     /* HERE GO MODIFIED RESPONSIVE STYLES FOR YOUR SITES TOOL */
     /*

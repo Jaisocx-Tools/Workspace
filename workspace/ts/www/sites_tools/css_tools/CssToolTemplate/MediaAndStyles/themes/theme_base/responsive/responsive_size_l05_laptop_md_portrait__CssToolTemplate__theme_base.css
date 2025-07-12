@@ -11,12 +11,13 @@ That is why in the CssCleanStart just the css constants relevant for sizes are s
 */
 @media only screen and (min-width: 1081px) and (max-width: 1200px) and (orientation: portrait) {
 
-  .workspace .CssToolTemplate {
+  :root {
     --theme_name__CssToolTemplate: theme_base;
-
     --responsive_size__CssToolTemplate__theme_base: responsive_size_l05_laptop_md_portrait__CssToolTemplate__theme_base;
+  }
 
 
+  .workspace .CssToolTemplate {
 
     /* HERE GO MODIFIED RESPONSIVE STYLES FOR YOUR SITES TOOL */
     /*

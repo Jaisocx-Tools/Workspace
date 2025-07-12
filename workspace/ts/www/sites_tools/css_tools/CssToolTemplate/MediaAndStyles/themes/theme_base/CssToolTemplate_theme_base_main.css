@@ -1,0 +1,16 @@
+/* Sites tool: CssToolTemplate, theme: theme_base */
+.workspace .CssToolTemplate {
+
+  /* base theme css var assignment example */
+  --CssToolTemplate--toolHtmlElement--font-size: 1rem;
+
+
+  /* same, but assigned value of css-clean-start */
+  --CssToolTemplate--toolHtmlElement--font-size: var(--css-clean-start--font-size);
+
+
+  --CssToolTemplate--main--background-color: darkgreen;
+  --CssToolTemplate--main--color: white;
+}
+
+

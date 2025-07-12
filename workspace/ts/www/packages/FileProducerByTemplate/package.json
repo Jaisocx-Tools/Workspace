@@ -1,0 +1,31 @@
+{
+  "name": "@jaisocx/file-producer-by-template",
+  "version": "1.2.1",
+  "author": "Jaisocx",
+  "keywords": [],
+  "private": false,
+  "description": "",
+  "type": "module",
+  "main": "./transpiled/CommonJS/index.js",
+  "types": "./transpiled/ESNext/index.d.ts",
+  "module": "./transpiled/ESNext/index.js",
+  "exports": {
+    "require": "./transpiled/CommonJS/index.js",
+    "import": "./transpiled/ESNext/index.js"
+  },
+  "files": [
+    "transpiled/CommonJS",
+    "transpiled/ESNext",
+    "transpiled/Simple",
+    "README.md"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "optionalDependencies": {
+    "@jaisocx/template-renderer": "~1.5.8",
+    "@jaisocx/file-writer": "~1.2.4"
+  }
+}
+
+

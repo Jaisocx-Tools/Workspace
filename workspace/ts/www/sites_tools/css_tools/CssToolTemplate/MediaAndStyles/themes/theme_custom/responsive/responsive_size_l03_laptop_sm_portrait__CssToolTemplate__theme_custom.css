@@ -1,7 +1,0 @@
-@media only screen and (min-width: 1025px) and (max-width: 1080px) and (orientation: portrait) {
-  .workspace .CssToolTemplate.theme_custom {
-    --theme_name__CssToolTemplate: theme_custom;
-    --responsive_size__CssToolTemplate__theme_custom: responsive_size_l03_laptop_sm_portrait__CssToolTemplate__theme_custom;
-  }
-}
-
