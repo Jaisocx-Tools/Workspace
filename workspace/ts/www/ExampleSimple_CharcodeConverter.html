@@ -1,6 +1,13 @@
-<html>
+<!DOCTYPE html>
+<html lang="en" class="workspace">
   <head>
     <title>CharcodeConverter Example</title>
+
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+
+    <link rel="stylesheet" href="sites_tools/css_tools/CssCleanStart/MediaAndStyles/css_clean_start_main_resolved.css" />
   </head>
   <body>
 
@@ -25,7 +32,7 @@
         const timestamp2 = getMcTimestamp();
 
         console.log(
-          "CharcodeConverter.getInstance() time mc", 
+          "CharcodeConverter.getInstance() time mc",
           ( timestamp2 - timestamp1 )
         );
 
@@ -34,12 +41,12 @@
         const timestamp33 = getMcTimestamp();
 
         console.log (
-          "China. charcodeConverter.loadCharset(); time mc", 
+          "China. charcodeConverter.loadCharset(); time mc",
           ( timestamp33 - timestamp32 )
         );
 
 
-        const text1 = `除了做好“土特产”文章，培育新产业新业态，各地农村还发挥当地独特优势，加强农业文化遗产保护和利用转化，因地制宜发展农文旅融合新业态，拓展农业多种功能，实现乡村多元价值。`; 
+        const text1 = `除了做好“土特产”文章，培育新产业新业态，各地农村还发挥当地独特优势，加强农业文化遗产保护和利用转化，因地制宜发展农文旅融合新业态，拓展农业多种功能，实现乡村多元价值。`;
         const text = ' Hello World! ';
 
         const AUTOLOAD_TRUE = 1;
@@ -50,19 +57,19 @@
         const timestamp5 = getMcTimestamp();
 
         console.log(
-          "stringToArray time mc", 
+          "stringToArray time mc",
           ( timestamp5 - timestamp4 )
         );
 
         charcodeConverter.log( buf );
-        
+
 
         const timestamp7 = getMcTimestamp();
         const textDecoded = charcodeConverter.join( { bufs: buf } );
         const timestamp8 = getMcTimestamp();
 
         console.log(
-          "arrayToString time mc", 
+          "arrayToString time mc",
           ( timestamp8 - timestamp7 )
         );
 
@@ -74,7 +81,7 @@
         const timestamp17 = getMcTimestamp();
 
         console.log(
-          "CharcodeConverter.getInstance() time mc", 
+          "CharcodeConverter.getInstance() time mc",
           ( timestamp17 - timestamp16 )
         );
 
@@ -82,7 +89,7 @@
         console.log(
           "texts equal: ",
           JSON.stringify( text1 == textDecoded )
-        );        
+        );
 
       });
     </script>

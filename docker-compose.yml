@@ -21,6 +21,20 @@ services:
     extra_hosts:
       - "host.docker.internal:host-gateway"
 
+  cypress:
+    build:
+      context: ./docker/cypress
+    volumes:
+      - ./workspace/ts/www/:/var/www/workspace/ts/www/
+      - "./cdn/:${tsServicePathCdn}/"
+      - "./cypress/:/var/cypress/"
+    environment:
+      - CYPRESS_baseUrl=https://sandbox.brightday.email/
+    networks:
+      - workspace_network
+    extra_hosts:
+      - "sandbox.brightday.email:host-gateway"
+
   # the dockerized php-fpm service for server side scripts,
   # e.g. in this project to produce json data from database.
   # json data became normal for obtaining data from server

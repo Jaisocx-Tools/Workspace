@@ -1,7 +1,13 @@
 <!DOCTYPE html>
-<html>
+<html lang="en" class="workspace">
   <head>
-    <title>ObjData Example</title>
+    <title>@jaisocx/objdata Example</title>
+
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+
+    <link rel="stylesheet" href="sites_tools/css_tools/CssCleanStart/MediaAndStyles/css_clean_start_main_resolved.css" />
 
 
     <script src="packages/ObjData/transpiled/Simple/ObjDataConstants.js"></script>
@@ -96,7 +102,7 @@
         "url": "https://jaisocx.com/img/logo-skyblue-little.jpg",
         "height": 206,
         "width": 300
-      }  
+      }
     },
     {
       "@context": "https://schema.org",
@@ -115,7 +121,7 @@
         "url": "https://jaisocx.com/img/logo-skyblue-little.jpg",
         "height": 206,
         "width": 300
-      }  
+      }
     }
   ];
 
@@ -125,7 +131,7 @@
   }
 
   document.addEventListener('DOMContentLoaded', async () => {
- 
+
     const response = await fetch('/webpack_builds/ExampleTree/json/big_test_data.json');
     const jsonText = await response.text();
 
@@ -159,20 +165,20 @@
     console.log( jsObjectOriginal, jsObjectByObjDataParser );
 
     console.log(
-      "parsing time ns JSON", 
+      "parsing time ns JSON",
       ( timestamp2 - timestamp1 )
     );
 
     console.log(
-      "parsing time ns ObjData by buteBuf ObjData format", 
+      "parsing time ns ObjData by buteBuf ObjData format",
       ( timestamp4 - timestamp3 )
     );
 
     console.log(
-      "parsing time ns JSON", 
+      "parsing time ns JSON",
       ( timestamp6 - timestamp5 )
     );
-    
+
 
   });
     </script>
