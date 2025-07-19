@@ -45,17 +45,7 @@ in the Terminal, in the Root of the Project
 
 ### Done
 
-. responsive files set is generated good, with base template, to the project CssToolTemplate
-
-
-
-### Not ready
-
-. the method to override the template and template data is not done, in development for now.
-
-. CssCleanStart gen of the responsive feature is not done. First the way to override the base template will be written, then the CssCleanStart will be refined.
-
-
+19th of July 2025
 
 
 
@@ -150,40 +140,6 @@ Example of value for responsiveDatasetPropName: **mobile_xs**
 ```
 
 2. templateDataBase
-
-
-
-## Tasks
-
-### . 1. keyword CssImports => Imports
-
-both relative and webpack remain in `theme/themename` folder
-
-
-
-### . 2. Constants .css file moves to MediaAndStyles folder
-
-
-
-### . 3. responsive_sizes .css fileset moves to subfolder
- `MediaAndStyles/theme/themename/responsive`
-
-
-
-### 4. Produce by templates other files
-
-1. SitesTool_main.css
-
-2. SitesTool_ThemeName_main.css
-
-3. SitesTool_main_webpack.css
-
-4. SitesTool_main_relative.css
-
-5. index.ts
-
-6. webpack.aliases.json
-
 
 
 

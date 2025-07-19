@@ -5,7 +5,7 @@
 
 /* base theme: constants and @media queries */
 @import url("@{{ SitesToolName }}_MediaAndStyles/themes/theme_base/{{ SitesToolName }}_theme_base_main.css");
-@import url("@{{ SitesToolName }}_MediaAndStyles/themes/theme_base/responsive_size_Imports_{{ SitesToolName }}_theme_base_Relative.css");
+@import url("@{{ SitesToolName }}_MediaAndStyles/themes/theme_base/responsive_size_Imports_{{ SitesToolName }}_theme_base_Webpack{{ min }}.css");
 
 
 

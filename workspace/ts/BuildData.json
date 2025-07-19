@@ -263,6 +263,20 @@
       "build-files": []
     },
     {
+      "path": "sites_tools/css_tools/CssCleanStart_2",
+      "name": "css-clean-start_2",
+      "update-published": "",
+      "build": false,
+      "build-simple-enable": false,
+      "css-importer": {
+        "build": true,
+        "cssFilePath": "MediaAndStyles/CssCleanStart_2_main_Webpack.css",
+        "cssTargetFilePath": "MediaAndStyles/CssCleanStart_2_main_resolved.css"
+      },
+      "dependencies": [],
+      "build-files": []
+    },
+    {
       "ready-to-use": false,
       "path": "packages/WorkspaceTreeWalker",
       "name": "workspace-tree-walker",
@@ -581,7 +595,7 @@
       "path": "packages/ResponsiveSizes",
       "name": "responsive-sizes",
       "update-published": "Mon Jun 16 02:02:01 GMT 2025",
-      "build": false,
+      "build": true,
       "build-simple-enable": true,
       "dependencies": [],
       "build-files": [

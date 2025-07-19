@@ -1,0 +1,137 @@
+.jsx {
+
+  /* mobile xs */
+  --responsive_size_e02_mobile_xs_portrait_min_width: 240px;
+  --responsive_size_e02_mobile_xs_portrait_max_width: 320px;
+
+  --responsive_size_e02_mobile_xs_landscape_min_width: 320px;
+  --responsive_size_e02_mobile_xs_landscape_max_width: 500px;
+
+
+
+  /* mobile s */
+  --responsive_size_e04_mobile_s_portrait_min_width: 321px;
+  --responsive_size_e04_mobile_s_portrait_max_width: 374px;
+
+  --responsive_size_e04_mobile_s_landscape_min_width: 501px;
+  --responsive_size_e04_mobile_s_landscape_max_width: 667px;
+
+
+
+  /* mobile sm */
+  --responsive_size_e06_mobile_sm_portrait_min_width: 375px;
+  --responsive_size_e06_mobile_sm_portrait_max_width: 430px;
+
+  --responsive_size_e06_mobile_sm_landscape_min_width: 668px;
+  --responsive_size_e06_mobile_sm_landscape_max_width: 736px;
+
+
+
+  /* mobile md */
+  --responsive_size_e08_mobile_md_portrait_min_width: 431px;
+  --responsive_size_e08_mobile_md_portrait_max_width: 480px;
+
+  --responsive_size_e08_mobile_md_landscape_min_width: 737px;
+  --responsive_size_e08_mobile_md_landscape_max_width: 812px;
+
+
+
+  /* tablet sm */
+  --responsive_size_h03_tablet_sm_portrait_min_width: 481px;
+  --responsive_size_h03_tablet_sm_portrait_max_width: 767px;
+
+  --responsive_size_h03_tablet_sm_landscape_min_width: 813px;
+  --responsive_size_h03_tablet_sm_landscape_max_width: 960px;
+
+
+
+  /* tablet md */
+  --responsive_size_h05_tablet_md_portrait_min_width: 768px;
+  --responsive_size_h05_tablet_md_portrait_max_width: 1024px;
+
+  --responsive_size_h05_tablet_md_landscape_min_width: 961px;
+  --responsive_size_h05_tablet_md_landscape_max_width: 1024px;
+
+
+
+  /* laptop sm */
+  --responsive_size_l03_laptop_sm_portrait_min_width: 1025px;
+  --responsive_size_l03_laptop_sm_portrait_max_width: 1080px;
+
+  --responsive_size_l03_laptop_sm_landscape_min_width: 1025px;
+  --responsive_size_l03_laptop_sm_landscape_max_width: 1279px;
+
+
+
+  /* laptop md */
+  --responsive_size_l05_laptop_md_portrait_min_width: 1081px;
+  --responsive_size_l05_laptop_md_portrait_max_width: 1200px;
+
+  --responsive_size_l05_laptop_md_landscape_min_width: 1280px;
+  --responsive_size_l05_laptop_md_landscape_max_width: 1439px;
+
+
+
+  /* laptop lg */
+  --responsive_size_l07_laptop_lg_portrait_min_width: 1201px;
+  --responsive_size_l07_laptop_lg_portrait_max_width: 1440px;
+
+  --responsive_size_l07_laptop_lg_landscape_min_width: 1440px;
+  --responsive_size_l07_laptop_lg_landscape_max_width: 1600px;
+
+
+
+  /* display xl */
+  --responsive_size_s02_display_xl_portrait_min_width: 1441px;
+  --responsive_size_s02_display_xl_portrait_max_width: 1600px;
+
+  --responsive_size_s02_display_xl_landscape_min_width: 1601px;
+  --responsive_size_s02_display_xl_landscape_max_width: 1920px;
+
+
+
+  /* display xxl */
+  --responsive_size_s04_display_xxl_portrait_min_width: 1601px;
+  --responsive_size_s04_display_xxl_portrait_max_width: 2160px;
+
+  --responsive_size_s04_display_xxl_landscape_min_width: 1921px;
+  --responsive_size_s04_display_xxl_landscape_max_width: 2560px;
+
+
+
+  /* display qhd */
+  --responsive_size_s08_display_qhd_portrait_min_width: 2161px;
+  --responsive_size_s08_display_qhd_portrait_max_width: 2160px;
+
+  --responsive_size_s08_display_qhd_landscape_min_width: 2561px;
+  --responsive_size_s08_display_qhd_landscape_max_width: 3840px;
+
+
+
+  /* tv 4k */
+  --responsive_size_t04_tv_4k_portrait_min_width: 2161px;
+  --responsive_size_t04_tv_4k_portrait_max_width: 4320px;
+
+  --responsive_size_t04_tv_4k_landscape_min_width: 3841px;
+  --responsive_size_t04_tv_4k_landscape_max_width: 7680px;
+
+
+
+  /* tv 8k */
+  --responsive_size_t08_tv_8k_portrait_min_width: 4321px;
+  --responsive_size_t08_tv_8k_portrait_max_width: 8640px;
+
+  --responsive_size_t08_tv_8k_landscape_min_width: 7681px;
+  --responsive_size_t08_tv_8k_landscape_max_width: 15360px;
+
+
+
+  /* tv 16k */
+  --responsive_size_t16_tv_16k_portrait_min_width: 8641px;
+  --responsive_size_t16_tv_16k_portrait_max_width: 9999px;
+
+  --responsive_size_t16_tv_16k_landscape_min_width: 15361px;
+  --responsive_size_t16_tv_16k_landscape_max_width: 25360px;
+
+}
+

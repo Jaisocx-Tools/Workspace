@@ -93,7 +93,7 @@ export class Main {
             .setTemplateData(templatesData)
             .setFilePath(filePath)
             .produce();
-        filePath = path.resolve(this.responsiveDatasetBase.templateProjectPath, "webpack.alias.json");
+        filePath = path.resolve(this.responsiveDatasetBase.templateProjectPath, "webpack.aliases.json");
         fileProducedResult = fileProducerByTemplate
             .readTemplateFile("data/templates/webpack.aliases.json.template")
             .setTemplateData(templatesData)
@@ -112,11 +112,23 @@ export class Main {
             .setFilePath(filePath)
             .produce();
         filePath = path.resolve(this.responsiveDatasetBase.templateProjectPath, "MediaAndStyles", (this.responsiveDatasetBase.sitesToolName + "_main_Webpack.css"));
+        //@ts-ignore
+        templatesData["min"] = "";
         fileProducedResult = fileProducerByTemplate
             .readTemplateFile("data/templates/css/SitesTool_main_Webpack.css.template")
             .setTemplateData(templatesData)
             .setFilePath(filePath)
             .produce();
+        filePath = path.resolve(this.responsiveDatasetBase.templateProjectPath, "MediaAndStyles", (this.responsiveDatasetBase.sitesToolName + "_main_Webpack_min.css"));
+        //@ts-ignore
+        templatesData["min"] = "_min";
+        fileProducedResult = fileProducerByTemplate
+            .readTemplateFile("data/templates/css/SitesTool_main_Webpack.css.template")
+            .setTemplateData(templatesData)
+            .setFilePath(filePath)
+            .produce();
+        //@ts-ignore
+        delete templatesData["min"];
         filePath = path.resolve(this.responsiveDatasetBase.templateProjectPath, "MediaAndStyles", (this.responsiveDatasetBase.sitesToolName + "_main_relative.css"));
         fileProducedResult = fileProducerByTemplate
             .readTemplateFile("data/templates/css/SitesTool_main_relative.css.template")

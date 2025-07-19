@@ -69,7 +69,7 @@ export class OverridesTemplateData {
     _responsiveDatasetPropName: string,
     templateDataBase: any
   ): any {
-    templateDataBase["msg"] = "Hello World!";
+    templateDataBase["custom-css"] = "Hello World!";
 
 
     //@ts-ignore

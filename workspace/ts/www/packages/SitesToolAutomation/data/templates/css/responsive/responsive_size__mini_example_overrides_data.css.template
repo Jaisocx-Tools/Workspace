@@ -1,14 +1,11 @@
 @media only screen and (min-width: {{ min-width }}px) and (max-width: {{ max-width }}px) and (orientation: {{ orientation }}) {
-  :root {
-    --theme_name__{{ SitesToolName }}: {{ SitesTool_ThemeName }};
-    {{ responsiveSizeConstantName }}__{{ SitesToolName }}__{{ SitesTool_ThemeName }}: {{ responsiveSizeName }}__{{ SitesToolName }}__{{ SitesTool_ThemeName }};
-  }
-
   .workspace .{{ SitesToolName }}{{ SitesTool_ThemeCssClassName }} {
+    --theme_name__{{ SitesToolName }}: {{ SitesTool_ThemeName }};
+    {{ responsiveSizeConstantName }}: {{ responsiveSizeName }};
+    {{ responsiveSizeConstantName }}__{{ SitesToolName }}__{{ SitesTool_ThemeName }}: {{ responsiveSizeName }}__{{ SitesToolName }}__{{ SitesTool_ThemeName }};
 
     /* method overriding data for template sets prop with key "msg" */
-    --custom-css: "{{ msg }}";
-
+    --custom-css: "{{ custom-css }}";
   }
 }
 

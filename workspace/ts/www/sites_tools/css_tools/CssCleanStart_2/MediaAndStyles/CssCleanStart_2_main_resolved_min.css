@@ -1,0 +1,625 @@
+
+
+.jsx {
+
+
+  --responsive_size_e02_mobile_xs_portrait_min_width: 240px;
+  --responsive_size_e02_mobile_xs_portrait_max_width: 320px;
+
+  --responsive_size_e02_mobile_xs_landscape_min_width: 320px;
+  --responsive_size_e02_mobile_xs_landscape_max_width: 500px;
+
+
+
+
+  --responsive_size_e04_mobile_s_portrait_min_width: 321px;
+  --responsive_size_e04_mobile_s_portrait_max_width: 374px;
+
+  --responsive_size_e04_mobile_s_landscape_min_width: 501px;
+  --responsive_size_e04_mobile_s_landscape_max_width: 667px;
+
+
+
+
+  --responsive_size_e06_mobile_sm_portrait_min_width: 375px;
+  --responsive_size_e06_mobile_sm_portrait_max_width: 430px;
+
+  --responsive_size_e06_mobile_sm_landscape_min_width: 668px;
+  --responsive_size_e06_mobile_sm_landscape_max_width: 736px;
+
+
+
+
+  --responsive_size_e08_mobile_md_portrait_min_width: 431px;
+  --responsive_size_e08_mobile_md_portrait_max_width: 480px;
+
+  --responsive_size_e08_mobile_md_landscape_min_width: 737px;
+  --responsive_size_e08_mobile_md_landscape_max_width: 812px;
+
+
+
+
+  --responsive_size_h03_tablet_sm_portrait_min_width: 481px;
+  --responsive_size_h03_tablet_sm_portrait_max_width: 767px;
+
+  --responsive_size_h03_tablet_sm_landscape_min_width: 813px;
+  --responsive_size_h03_tablet_sm_landscape_max_width: 960px;
+
+
+
+
+  --responsive_size_h05_tablet_md_portrait_min_width: 768px;
+  --responsive_size_h05_tablet_md_portrait_max_width: 1024px;
+
+  --responsive_size_h05_tablet_md_landscape_min_width: 961px;
+  --responsive_size_h05_tablet_md_landscape_max_width: 1024px;
+
+
+
+
+  --responsive_size_l03_laptop_sm_portrait_min_width: 1025px;
+  --responsive_size_l03_laptop_sm_portrait_max_width: 1080px;
+
+  --responsive_size_l03_laptop_sm_landscape_min_width: 1025px;
+  --responsive_size_l03_laptop_sm_landscape_max_width: 1279px;
+
+
+
+
+  --responsive_size_l05_laptop_md_portrait_min_width: 1081px;
+  --responsive_size_l05_laptop_md_portrait_max_width: 1200px;
+
+  --responsive_size_l05_laptop_md_landscape_min_width: 1280px;
+  --responsive_size_l05_laptop_md_landscape_max_width: 1439px;
+
+
+
+
+  --responsive_size_l07_laptop_lg_portrait_min_width: 1201px;
+  --responsive_size_l07_laptop_lg_portrait_max_width: 1440px;
+
+  --responsive_size_l07_laptop_lg_landscape_min_width: 1440px;
+  --responsive_size_l07_laptop_lg_landscape_max_width: 1600px;
+
+
+
+
+  --responsive_size_s02_display_xl_portrait_min_width: 1441px;
+  --responsive_size_s02_display_xl_portrait_max_width: 1600px;
+
+  --responsive_size_s02_display_xl_landscape_min_width: 1601px;
+  --responsive_size_s02_display_xl_landscape_max_width: 1920px;
+
+
+
+
+  --responsive_size_s04_display_xxl_portrait_min_width: 1601px;
+  --responsive_size_s04_display_xxl_portrait_max_width: 2160px;
+
+  --responsive_size_s04_display_xxl_landscape_min_width: 1921px;
+  --responsive_size_s04_display_xxl_landscape_max_width: 2560px;
+
+
+
+
+  --responsive_size_s08_display_qhd_portrait_min_width: 2161px;
+  --responsive_size_s08_display_qhd_portrait_max_width: 2160px;
+
+  --responsive_size_s08_display_qhd_landscape_min_width: 2561px;
+  --responsive_size_s08_display_qhd_landscape_max_width: 3840px;
+
+
+
+
+  --responsive_size_t04_tv_4k_portrait_min_width: 2161px;
+  --responsive_size_t04_tv_4k_portrait_max_width: 4320px;
+
+  --responsive_size_t04_tv_4k_landscape_min_width: 3841px;
+  --responsive_size_t04_tv_4k_landscape_max_width: 7680px;
+
+
+
+
+  --responsive_size_t08_tv_8k_portrait_min_width: 4321px;
+  --responsive_size_t08_tv_8k_portrait_max_width: 8640px;
+
+  --responsive_size_t08_tv_8k_landscape_min_width: 7681px;
+  --responsive_size_t08_tv_8k_landscape_max_width: 15360px;
+
+
+
+
+  --responsive_size_t16_tv_16k_portrait_min_width: 8641px;
+  --responsive_size_t16_tv_16k_portrait_max_width: 9999px;
+
+  --responsive_size_t16_tv_16k_landscape_min_width: 15361px;
+  --responsive_size_t16_tv_16k_landscape_max_width: 25360px;
+
+}
+
+
+.jsx {
+
+  --jsx--css-clean-start-2--rem: 16px;
+
+
+
+  --jsx--css-clean-start-2--body-tag--background: #eee;
+  --jsx--css-clean-start-2--site--background: #fff;
+
+
+
+
+  --jsx--css-clean-start-2--body-tag--width: 100%;
+  --jsx--css-clean-start-2--body-tag--max-width: 100%;
+  --jsx--css-clean-start-2--body-tag--min-width: 100%;
+
+  --jsx--css-clean-start-2--body-tag--height: auto;
+  --jsx--css-clean-start-2--body-tag--max-height: unset;
+  --jsx--css-clean-start-2--body-tag--min-height: 100vh;
+
+
+
+
+  --jsx--css-clean-start-2--site--height: fit-content;
+  --jsx--css-clean-start-2--site--max-height: fit-content;
+  --jsx--css-clean-start-2--site--min-height: 100vh;
+
+  --jsx--css-clean-start-2--site--width: 70%;
+  --jsx--css-clean-start-2--site--max-width: 100%;
+  --jsx--css-clean-start-2--site--min-width: 70%;
+
+
+
+
+  --jsx--css-clean-start-2--site--margin: 0 auto 0 auto;
+
+  --jsx--css-clean-start-2--site--padding-top: 1rem;
+  --jsx--css-clean-start-2--site--padding-left: 1rem;
+  --jsx--css-clean-start-2--site--padding-right: 1rem;
+  --jsx--css-clean-start-2--site--padding-bottom: 1rem;
+  --jsx--css-clean-start-2--site--padding: var(--jsx--css-clean-start-2--site--padding-top) var(--jsx--css-clean-start-2--site--padding-left) var(--jsx--css-clean-start-2--site--padding-bottom) var(--jsx--css-clean-start-2--site--padding-right);
+
+
+
+  --jsx--css-clean-start-2--body-tag--overflow-x: hidden;
+  --jsx--css-clean-start-2--site--overflow-y: visible;
+
+
+
+
+  --jsx--css-clean-start-2--all-tags--position: relative;
+  --jsx--css-clean-start-2--all-tags--box-sizing: border-box;
+
+  --jsx--css-clean-start-2--inline-tags--display: inline-block;
+  --jsx--css-clean-start-2--block-tags--display: block;
+  --jsx--css-clean-start-2--custom-tags--display: var(--jsx--css-clean-start-2--block-tags--display);
+
+  --jsx--css-clean-start-2--all-tags--padding: 0 0 0 0;
+  --jsx--css-clean-start-2--h--padding: 0 0 0 0;
+
+  --jsx--css-clean-start-2--all-tags--margin: 0 0 0 0;
+  --jsx--css-clean-start-2--h--margin: 0 0 0 0;
+  --jsx--css-clean-start-2--p--margin: 0.2rem 0 0.2rem 0;
+
+  --jsx--css-clean-start-2--all-tags--color: black;
+
+  --jsx--css-clean-start-2--all-tags--font-family: "Franklin Gothic Medium", Verdana, sans-serif;
+  --jsx--css-clean-start-2--pre--font-family: "Courier New", Courier, monospace;
+
+  --jsx--css-clean-start-2--all-tags--font-size: 0.85rem;
+  --jsx--css-clean-start-2--all-tags--line-height: 1rem;
+
+  --jsx--css-clean-start-2--all-tags--border-color: green;
+  --jsx--css-clean-start-2--all-tags--border-style: dotted;
+  --jsx--css-clean-start-2--all-tags--border-width: 0;
+
+
+
+
+  --jsx--css-clean-start-2--h--color: #555;
+  --jsx--css-clean-start-2--h--font-weight: 800;
+
+  --jsx--css-clean-start-2--h1--font-size: 2.6rem;
+  --jsx--css-clean-start-2--h1--line-height: 3rem;
+
+  --jsx--css-clean-start-2--h2--font-size: 2.1rem;
+  --jsx--css-clean-start-2--h2--line-height: 2.5rem;
+
+  --jsx--css-clean-start-2--h3--font-size: 1.8rem;
+  --jsx--css-clean-start-2--h3--line-height: 2.2rem;
+
+  --jsx--css-clean-start-2--h4--font-size: 1.6rem;
+  --jsx--css-clean-start-2--h4--line-height: 2rem;
+
+  --jsx--css-clean-start-2--h5--font-size: 1.33rem;
+  --jsx--css-clean-start-2--h5--line-height: 1.67rem;
+
+  --jsx--css-clean-start-2--h6--font-size: 1rem;
+  --jsx--css-clean-start-2--h6--line-height: 1.6rem;
+
+
+
+
+  --jsx--css-clean-start-2--anchor--color: navy;
+  --jsx--css-clean-start-2--anchor-hover--color: blue;
+  --jsx--css-clean-start-2--anchor-visited--color: grey;
+  --jsx--css-clean-start-2--anchor-visited-hover--color: grey;
+  --jsx--css-clean-start-2--anchor-active--color: darkblue;
+  --jsx--css-clean-start-2--anchor-active-hover--color: blue;
+
+}
+
+
+
+
+
+
+
+
+.jsx.small {
+  --jsx--css-clean-start-2--body-tag--height: 100vh;
+  --jsx--css-clean-start-2--body-tag--max-height: unset;
+  --jsx--css-clean-start-2--body-tag--min-height: 100vh;
+
+  --jsx--css-clean-start-2--site--height: fit-content;
+  --jsx--css-clean-start-2--site--max-height: fit-content;
+  --jsx--css-clean-start-2--site--min-height: fit-content;
+}
+
+
+
+
+.jsx.browser-width {
+
+  --jsx--css-clean-start-2--body-tag--width: 100%;
+  --jsx--css-clean-start-2--body-tag--max-width: 100%;
+  --jsx--css-clean-start-2--body-tag--min-width: 100%;
+
+  --jsx--css-clean-start-2--body-tag--overflow-x: hidden;
+
+
+
+  --jsx--css-clean-start-2--site--width: 100%;
+  --jsx--css-clean-start-2--site--max-width: 100%;
+  --jsx--css-clean-start-2--site--min-width: 100%;
+
+  --jsx--css-clean-start-2--site--overflow-x: hidden;
+}
+
+
+
+
+
+.jsx {
+
+  position:     var(--jsx--css-clean-start-2--all-tags--position);
+  display:      var(--jsx--css-clean-start-2--custom-tags--display);
+  box-sizing:   var(--jsx--css-clean-start-2--all-tags--box-sizing);
+
+  line-break:   strict;
+  word-wrap:    normal;
+  word-break:   normal;
+
+  color:        var(--jsx--css-clean-start-2--all-tags--color);
+
+  border-width: var(--jsx--css-clean-start-2--all-tags--border-width);
+  border-style: var(--jsx--css-clean-start-2--all-tags--border-style);
+  border-color: var(--jsx--css-clean-start-2--all-tags--border-color);
+
+  margin:       var(--jsx--css-clean-start-2--all-tags--margin);
+  padding:      var(--jsx--css-clean-start-2--all-tags--padding);
+
+  font-family:  var(--jsx--css-clean-start-2--all-tags--font-family);
+  line-height:  var(--jsx--css-clean-start-2--all-tags--line-height);
+
+}
+
+
+
+
+html.jsx {
+  font-size:    var(--jsx--css-clean-start-2--rem);
+}
+
+
+
+html.jsx {
+  position: static;
+  padding: 0 0 0 0;
+  margin:  0 0 0 0;
+  box-sizing: border-box;
+  top:          0;
+
+  width:        var(--jsx--css-clean-start-2--body-tag--width);
+  max-width:    var(--jsx--css-clean-start-2--body-tag--max-width);
+  min-width:    var(--jsx--css-clean-start-2--body-tag--min-width);
+
+  overflow-x:   hidden;
+}
+
+
+
+
+html.jsx head,
+html.jsx head *,
+html.jsx style,
+html.jsx script {
+  visibility: hidden;
+  max-height: 0;
+  max-width:  0;
+  overflow-y: hidden;
+  overflow-x: hidden;
+}
+
+
+
+.jsx body {
+  background: var(--jsx--css-clean-start-2--body-tag--background);
+
+
+  height:     var(--jsx--css-clean-start-2--body-tag--height);
+  max-height: var(--jsx--css-clean-start-2--body-tag--max-height);
+  min-height: var(--jsx--css-clean-start-2--body-tag--min-height);
+
+  width:      var(--jsx--css-clean-start-2--body-tag--width);
+  max-width:  var(--jsx--css-clean-start-2--body-tag--max-width);
+  min-width:  var(--jsx--css-clean-start-2--body-tag--min-width);
+
+  overflow-y: visible;
+  overflow-x: var(--jsx--css-clean-start-2--body-tag--overflow-x);
+
+  font-size:  var(--jsx--css-clean-start-2--all-tags--font-size);
+}
+
+
+
+.jsx main {
+  margin:     var(--jsx--css-clean-start-2--site--margin);
+  padding:    var(--jsx--css-clean-start-2--site--padding);
+
+  background: var(--jsx--css-clean-start-2--site--background);
+
+
+  height:     var(--jsx--css-clean-start-2--site--height);
+  max-height: var(--jsx--css-clean-start-2--site--max-height);
+  min-height: var(--jsx--css-clean-start-2--site--min-height);
+
+  width:      var(--jsx--css-clean-start-2--site--width);
+  max-width:  var(--jsx--css-clean-start-2--site--max-width);
+  min-width:  var(--jsx--css-clean-start-2--site--min-width);
+
+  overflow:   var(--jsx--css-clean-start-2--site--overflow-x) var(--jsx--css-clean-start-2--site--overflow-y);
+
+  font-size:  var(--jsx--css-clean-start-2--all-tags--font-size);
+}
+
+
+
+.jsx body h1,
+.jsx body h2,
+.jsx body h3,
+.jsx body h4,
+.jsx body h5,
+.jsx body h6 {
+  font-weight: var(--jsx--css-clean-start-2--h--font-weight);
+  color:       var(--jsx--css-clean-start-2--h--color);
+  margin:      var(--jsx--css-clean-start-2--h--margin);
+  padding:     var(--jsx--css-clean-start-2--h--padding);
+}
+
+.jsx body h1 {
+  font-size:   var(--jsx--css-clean-start-2--h1--font-size);
+  line-height: var(--jsx--css-clean-start-2--h1--line-height);
+}
+.jsx body h2 {
+  font-size:   var(--jsx--css-clean-start-2--h2--font-size);
+  line-height: var(--jsx--css-clean-start-2--h2--line-height);
+}
+.jsx body h3 {
+  font-size:   var(--jsx--css-clean-start-2--h3--font-size);
+  line-height: var(--jsx--css-clean-start-2--h3--line-height);
+}
+.jsx body h4 {
+  font-size:   var(--jsx--css-clean-start-2--h4--font-size);
+  line-height: var(--jsx--css-clean-start-2--h4--line-height);
+}
+.jsx body h5 {
+  font-size:   var(--jsx--css-clean-start-2--h5--font-size);
+  line-height: var(--jsx--css-clean-start-2--h5--line-height);
+}
+.jsx body h6 {
+  font-size:   var(--jsx--css-clean-start-2--h6--font-size);
+  line-height: var(--jsx--css-clean-start-2--h6--line-height);
+}
+
+
+
+
+.jsx body p {
+  margin:      var(--jsx--css-clean-start-2--p--margin);
+  font-size:   var(--jsx--css-clean-start-2--all-tags--font-size);
+}
+
+
+
+
+.jsx body a {
+  color:           var(--jsx--css-clean-start-2--anchor--color);
+  text-decoration: var(--jsx--css-clean-start-2--anchor--text-decoration);
+  font-size:       var(--jsx--css-clean-start-2--all-tags--font-size);
+}
+.jsx body a:hover {
+  color:           var(--jsx--css-clean-start-2--anchor-hover--color);
+  text-decoration: var(--jsx--css-clean-start-2--anchor-hover--text-decoration);
+}
+.jsx body a:visited {
+  color:           var(--jsx--css-clean-start-2--anchor-visited--color);
+  text-decoration: var(--jsx--css-clean-start-2--anchor-visited--text-decoration);
+}
+.jsx body a:visited:hover {
+  color:           var(--jsx--css-clean-start-2--anchor-visited-hover--color);
+  text-decoration: var(--jsx--css-clean-start-2--anchor-visited-hover--text-decoration);
+}
+.jsx body a:active {
+  color:           var(--jsx--css-clean-start-2--anchor-active--color);
+  text-decoration: var(--jsx--css-clean-start-2--anchor-active--text-decoration);
+}
+.jsx body a:active:hover {
+  color:           var(--jsx--css-clean-start-2--anchor-active-hover--color);
+  text-decoration: var(--jsx--css-clean-start-2--anchor-active-hover--text-decoration);
+}
+
+
+
+.jsx body pre {
+  font-family: var(--jsx--css-clean-start-2--pre--font-family, "Courier New", Courier, monospace);
+  font-size:   var(--jsx--css-clean-start-2--all-tags--font-size);
+}
+
+
+
+
+.jsx address,
+.jsx article,
+.jsx aside,
+.jsx blockquote,
+.jsx body,
+.jsx canvas,
+.jsx dd,
+.jsx div,
+.jsx dl,
+.jsx dt,
+.jsx fieldset,
+.jsx figcaption,
+.jsx figure,
+.jsx footer,
+.jsx form,
+.jsx h1,
+.jsx h2,
+.jsx h3,
+.jsx h4,
+.jsx h5,
+.jsx h6,
+.jsx header,
+.jsx hr,
+
+.jsx main,
+.jsx nav,
+.jsx noscript,
+
+.jsx output,
+.jsx p,
+.jsx pre,
+.jsx section,
+
+.jsx video {
+  display:   var(--jsx--css-clean-start-2--block-tags--display, block);
+  font-size: var(--jsx--css-clean-start-2--all-tags--font-size);
+}
+
+
+
+
+.jsx span,
+.jsx a,
+.jsx b,
+.jsx big,
+.jsx br,
+.jsx cite,
+.jsx code,
+.jsx del,
+.jsx em,
+.jsx i,
+.jsx img,
+.jsx ins,
+.jsx label,
+.jsx map,
+.jsx mark,
+.jsx q,
+.jsx s,
+.jsx samp,
+.jsx small,
+.jsx strong,
+.jsx sub,
+.jsx sup,
+.jsx time,
+.jsx u,
+.jsx var {
+  display:   var(--jsx--css-clean-start-2--inline-tags--display, inline-block);
+  font-size: var(--jsx--css-clean-start-2--all-tags--font-size);
+}
+
+
+
+.jsx table {
+  display: table;
+}
+
+.jsx table caption {
+  display: 	table-caption;
+  font-size: var(--jsx--css-clean-start-2--all-tags--font-size);
+}
+
+.jsx colgroup {
+  display: table-column-group;
+}
+
+.jsx col {
+  display: table-column;
+}
+
+.jsx thead {
+  display: table-header-group;
+}
+
+.jsx tbody {
+  display: table-row-group;
+}
+
+.jsx tfoot {
+  display: table-footer-group;
+}
+
+.jsx tr {
+  display: table-row;
+}
+
+.jsx th,
+.jsx td {
+  display: table-cell;
+  font-size: var(--jsx--css-clean-start-2--all-tags--font-size);
+}
+
+
+
+
+.jsx.ul-reset ul,
+.jsx.ul-reset ol,
+.jsx.ul-reset li,
+.jsx .ul-reset ul,
+.jsx .ul-reset ol,
+.jsx .ul-reset li,
+.jsx ul.ul-reset,
+.jsx ol.ul-reset,
+.jsx ul.ul-reset li,
+.jsx ol.ul-reset li {
+
+  font-size:    var(--jsx--css-clean-start-2--all-tags--font-size);
+
+  list-style-type: none;
+
+  position:     var(--jsx--css-clean-start-2--all-tags--position);
+  display:      var(--jsx--css-clean-start-2--inline-tags--display, inline-block);
+  box-sizing:   var(--jsx--css-clean-start-2--all-tags--box-sizing);
+
+  margin:       var(--jsx--css-clean-start-2--all-tags--margin);
+  padding:      var(--jsx--css-clean-start-2--all-tags--padding);
+
+  border-width: var(--jsx--css-clean-start-2--all-tags--border-width);
+  border-style: var(--jsx--css-clean-start-2--all-tags--border-style);
+  border-color: var(--jsx--css-clean-start-2--all-tags--border-color);
+
+}
+
+

@@ -10,7 +10,7 @@ var __classPrivateFieldGet = (this && this.__classPrivateFieldGet) || function (
     if (typeof state === "function" ? receiver !== state || !f : !state.has(receiver)) throw new TypeError("Cannot read private member from an object whose class did not declare it");
     return kind === "m" ? f : kind === "a" ? f.call(receiver) : f ? f.value : state.get(receiver);
 };
-var _ResponsiveSizes_KEYWORDS_ORIENTATION_PORTRAIT, _ResponsiveSizes_KEYWORDS_ORIENTATION_LANDSCAPE, _ResponsiveSizes_KEYWORD_MOBILE, _ResponsiveSizes_KEYWORD_TABLET, _ResponsiveSizes_KEYWORD_DESKTOP, _ResponsiveSizes_CSS_VARIABLE_NAME, _ResponsiveSizes_CSS_VARIABLE_NAME__SIZE_FROM, _ResponsiveSizes_CSS_VARIABLE_NAME__SIZE_TIL;
+var _ResponsiveSizes_KEYWORDS_ORIENTATION_PORTRAIT, _ResponsiveSizes_KEYWORDS_ORIENTATION_LANDSCAPE, _ResponsiveSizes_KEYWORD_MOBILE, _ResponsiveSizes_KEYWORD_TABLET, _ResponsiveSizes_KEYWORD_DESKTOP, _ResponsiveSizes_CSS_VARIABLE_NAME, _ResponsiveSizes_CSS_VARIABLE_NAME__SIZE_FROM, _ResponsiveSizes_CSS_VARIABLE_NAME__SIZE_TIL, _ResponsiveSizes_SELECTOR;
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.ResponsiveSizes = void 0;
 const ResponsiveSizesConstants_js_1 = require("./ResponsiveSizesConstants.js");
@@ -24,12 +24,14 @@ class ResponsiveSizes {
         _ResponsiveSizes_CSS_VARIABLE_NAME.set(this, void 0);
         _ResponsiveSizes_CSS_VARIABLE_NAME__SIZE_FROM.set(this, void 0);
         _ResponsiveSizes_CSS_VARIABLE_NAME__SIZE_TIL.set(this, void 0);
+        _ResponsiveSizes_SELECTOR.set(this, void 0);
         __classPrivateFieldSet(this, _ResponsiveSizes_KEYWORD_MOBILE, "mobile", "f");
         __classPrivateFieldSet(this, _ResponsiveSizes_KEYWORD_TABLET, "tablet", "f");
         __classPrivateFieldSet(this, _ResponsiveSizes_KEYWORD_DESKTOP, "desktop", "f");
         __classPrivateFieldSet(this, _ResponsiveSizes_CSS_VARIABLE_NAME, "--responsive_size", "f");
         __classPrivateFieldSet(this, _ResponsiveSizes_CSS_VARIABLE_NAME__SIZE_FROM, "--responsive_size__min-width", "f");
         __classPrivateFieldSet(this, _ResponsiveSizes_CSS_VARIABLE_NAME__SIZE_TIL, "--responsive_size__max-width", "f");
+        __classPrivateFieldSet(this, _ResponsiveSizes_SELECTOR, "html.workspace", "f");
         __classPrivateFieldSet(this, _ResponsiveSizes_KEYWORDS_ORIENTATION_PORTRAIT, [
             "_portrait",
             "_vertical"
@@ -39,6 +41,8 @@ class ResponsiveSizes {
             "_horizontal"
         ], "f");
         this._responsiveSizesConstants = new ResponsiveSizesConstants_js_1.ResponsiveSizesConstants();
+        this._responsiveSizeConstantName = __classPrivateFieldGet(this, _ResponsiveSizes_CSS_VARIABLE_NAME, "f");
+        this._responsiveSizeSelector = __classPrivateFieldGet(this, _ResponsiveSizes_SELECTOR, "f");
         this._responsiveSizeName = "";
         this._responsive_sizes = new Object();
         this._responsiveSizesJson = new Object();
@@ -48,7 +52,18 @@ class ResponsiveSizes {
         // from the class SiteToolAutomation_ResponsiveSizesNames
         // in the automatique produced class SiteToolAutomation_ResponsiveSizesNames
         //   this variable has to be there too. for now not.
-        return __classPrivateFieldGet(this, _ResponsiveSizes_CSS_VARIABLE_NAME, "f");
+        return this._responsiveSizeConstantName;
+    }
+    setResponsiveSizeConstantName(name) {
+        this._responsiveSizeConstantName = name;
+        return this;
+    }
+    getResponsiveSizeSelector() {
+        return this._responsiveSizeSelector;
+    }
+    setResponsiveSizeSelector(selector) {
+        this._responsiveSizeSelector = selector;
+        return this;
     }
     getCssValueByHtmlNode(htmlNode, cssVariableName) {
         let cssValue = window
@@ -69,7 +84,7 @@ class ResponsiveSizes {
             return this._responsiveSizeName;
         }
         let cssVariableName = this.getResponsiveSizeConstantName();
-        let responsiveSizeName = this.getCssValueBySelector("html.workspace", cssVariableName);
+        let responsiveSizeName = this.getCssValueBySelector(this._responsiveSizeSelector, cssVariableName);
         this._responsiveSizeName = responsiveSizeName;
         this._cssVariableArray = responsiveSizeName.split("_");
         return this._responsiveSizeName;
@@ -85,8 +100,8 @@ class ResponsiveSizes {
         if (!force && responsiveSizesKeys && responsiveSizesKeys.length === 2) {
             return this._responsive_sizes;
         }
-        let cssVariable_SizeFrom = this.getCssValueBySelector("html.workspace", __classPrivateFieldGet(this, _ResponsiveSizes_CSS_VARIABLE_NAME__SIZE_FROM, "f"));
-        let cssVariable_SizeTil = this.getCssValueBySelector("html.workspace", __classPrivateFieldGet(this, _ResponsiveSizes_CSS_VARIABLE_NAME__SIZE_TIL, "f"));
+        let cssVariable_SizeFrom = this.getCssValueBySelector(this._responsiveSizeSelector, __classPrivateFieldGet(this, _ResponsiveSizes_CSS_VARIABLE_NAME__SIZE_FROM, "f"));
+        let cssVariable_SizeTil = this.getCssValueBySelector(this._responsiveSizeSelector, __classPrivateFieldGet(this, _ResponsiveSizes_CSS_VARIABLE_NAME__SIZE_TIL, "f"));
         // @ts-ignore
         this._responsive_sizes["min-width"] = cssVariable_SizeFrom;
         // @ts-ignore
@@ -186,5 +201,5 @@ class ResponsiveSizes {
     }
 }
 exports.ResponsiveSizes = ResponsiveSizes;
-_ResponsiveSizes_KEYWORDS_ORIENTATION_PORTRAIT = new WeakMap(), _ResponsiveSizes_KEYWORDS_ORIENTATION_LANDSCAPE = new WeakMap(), _ResponsiveSizes_KEYWORD_MOBILE = new WeakMap(), _ResponsiveSizes_KEYWORD_TABLET = new WeakMap(), _ResponsiveSizes_KEYWORD_DESKTOP = new WeakMap(), _ResponsiveSizes_CSS_VARIABLE_NAME = new WeakMap(), _ResponsiveSizes_CSS_VARIABLE_NAME__SIZE_FROM = new WeakMap(), _ResponsiveSizes_CSS_VARIABLE_NAME__SIZE_TIL = new WeakMap();
+_ResponsiveSizes_KEYWORDS_ORIENTATION_PORTRAIT = new WeakMap(), _ResponsiveSizes_KEYWORDS_ORIENTATION_LANDSCAPE = new WeakMap(), _ResponsiveSizes_KEYWORD_MOBILE = new WeakMap(), _ResponsiveSizes_KEYWORD_TABLET = new WeakMap(), _ResponsiveSizes_KEYWORD_DESKTOP = new WeakMap(), _ResponsiveSizes_CSS_VARIABLE_NAME = new WeakMap(), _ResponsiveSizes_CSS_VARIABLE_NAME__SIZE_FROM = new WeakMap(), _ResponsiveSizes_CSS_VARIABLE_NAME__SIZE_TIL = new WeakMap(), _ResponsiveSizes_SELECTOR = new WeakMap();
 //# sourceMappingURL=ResponsiveSizes.js.map

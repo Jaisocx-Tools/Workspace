@@ -1,0 +1,14 @@
+    {
+      "path": "sites_tools/css_tools/CssCleanStart_2",
+      "name": "css-clean-start-2",
+      "update-published": "",
+      "build": false,
+      "build-simple-enable": false,
+      "css-importer": {
+        "build": false,
+        "cssFilePath": "MediaAndStyles/CssCleanStart_2_main_Webpack.css",
+        "cssTargetFilePath": "MediaAndStyles/CssCleanStart_2_main_resolved.css"
+      },
+      "dependencies": [],
+      "build-files": []
+    }

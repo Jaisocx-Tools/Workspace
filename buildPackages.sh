@@ -9,7 +9,10 @@
 # the npm dependencies (javascript libraries) supported, are already of another their versions,
 # and then could be not doing.
 
+commandLineArgs="$@"
 thisPath="$(dirname "$(realpath "$0")")"
+fodlerName="$(basename "$thisPath")"
+projectPath="$(realpath "${thisPath}")"
 pathToEnv="${thisPath}/.env"
 
 
@@ -32,7 +35,45 @@ if [ -e "${pathToEnv}" ]; then
   # FROM node:23-alpine3.19
   # this line invokes the .sh command to call the ProjectBuilder.ts the desired way.
 
-  docker compose exec ts bash -c "${tsServicePathInDockerVolume}/build_tools/command/buildPackages.sh "${tsconfigVersion}" "${tsServicePathInDockerVolume}""
+
+
+  ###------------------------------------------
+  ## start block
+  ## checks and validations
+
+
+projectPath=""
+
+  if [[ "${fodlerName}" == "cmd" ]]; then
+    projectPath="$(realpath "${thisPath}/..")"
+  else
+    projectPath="$(realpath "${thisPath}")"
+  fi
+
+  jsInvokePath="${projectPath}/cmd/base/js_invoke.sh"
+
+
+
+  "${tsconfigVersion}" "${tsServicePathInDockerVolume}"
+
+  # echo "jsInvokePath: ${jsInvokePath}"
+
+  if [[ ! -e "${jsInvokePath}" ]]; then
+    echo "Error: call this script in the root of this project or in the folder command."
+    exit 2;
+  fi
+
+  ## finish block
+  ## checks and validations
+  ###------------------------------------------
+
+
+  "${jsInvokePath}" "$commandLineArgs" \
+    --packagePath="build_tools/ProjectBuilder" \
+    --script="cli/run.js" \
+    --ProjectRoot="${tsServicePathInDockerVolume}" \
+    --BuildData="${tsServicePathInDockerVolume}/BuildData.json" \
+    --PackagesPath="${tsServicePathInDockerVolume}/www/"
 
 else
   # when no .env is in the Project,
@@ -48,7 +89,6 @@ else
   echo -e "${exceptionNoticeLines[$'\052']}"
 
 fi;
-
 
 
 

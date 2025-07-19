@@ -8,7 +8,10 @@ export class ResponsiveSizes {
     #CSS_VARIABLE_NAME;
     #CSS_VARIABLE_NAME__SIZE_FROM;
     #CSS_VARIABLE_NAME__SIZE_TIL;
+    #SELECTOR;
     _responsiveSizesConstants;
+    _responsiveSizeConstantName;
+    _responsiveSizeSelector;
     _responsiveSizeName;
     _responsive_sizes;
     _responsiveSizesJson;
@@ -20,6 +23,7 @@ export class ResponsiveSizes {
         this.#CSS_VARIABLE_NAME = "--responsive_size";
         this.#CSS_VARIABLE_NAME__SIZE_FROM = "--responsive_size__min-width";
         this.#CSS_VARIABLE_NAME__SIZE_TIL = "--responsive_size__max-width";
+        this.#SELECTOR = "html.workspace";
         this.#KEYWORDS_ORIENTATION_PORTRAIT = [
             "_portrait",
             "_vertical"
@@ -29,6 +33,8 @@ export class ResponsiveSizes {
             "_horizontal"
         ];
         this._responsiveSizesConstants = new ResponsiveSizesConstants();
+        this._responsiveSizeConstantName = this.#CSS_VARIABLE_NAME;
+        this._responsiveSizeSelector = this.#SELECTOR;
         this._responsiveSizeName = "";
         this._responsive_sizes = new Object();
         this._responsiveSizesJson = new Object();
@@ -38,7 +44,18 @@ export class ResponsiveSizes {
         // from the class SiteToolAutomation_ResponsiveSizesNames
         // in the automatique produced class SiteToolAutomation_ResponsiveSizesNames
         //   this variable has to be there too. for now not.
-        return this.#CSS_VARIABLE_NAME;
+        return this._responsiveSizeConstantName;
+    }
+    setResponsiveSizeConstantName(name) {
+        this._responsiveSizeConstantName = name;
+        return this;
+    }
+    getResponsiveSizeSelector() {
+        return this._responsiveSizeSelector;
+    }
+    setResponsiveSizeSelector(selector) {
+        this._responsiveSizeSelector = selector;
+        return this;
     }
     getCssValueByHtmlNode(htmlNode, cssVariableName) {
         let cssValue = window
@@ -59,7 +76,7 @@ export class ResponsiveSizes {
             return this._responsiveSizeName;
         }
         let cssVariableName = this.getResponsiveSizeConstantName();
-        let responsiveSizeName = this.getCssValueBySelector("html.workspace", cssVariableName);
+        let responsiveSizeName = this.getCssValueBySelector(this._responsiveSizeSelector, cssVariableName);
         this._responsiveSizeName = responsiveSizeName;
         this._cssVariableArray = responsiveSizeName.split("_");
         return this._responsiveSizeName;
@@ -75,8 +92,8 @@ export class ResponsiveSizes {
         if (!force && responsiveSizesKeys && responsiveSizesKeys.length === 2) {
             return this._responsive_sizes;
         }
-        let cssVariable_SizeFrom = this.getCssValueBySelector("html.workspace", this.#CSS_VARIABLE_NAME__SIZE_FROM);
-        let cssVariable_SizeTil = this.getCssValueBySelector("html.workspace", this.#CSS_VARIABLE_NAME__SIZE_TIL);
+        let cssVariable_SizeFrom = this.getCssValueBySelector(this._responsiveSizeSelector, this.#CSS_VARIABLE_NAME__SIZE_FROM);
+        let cssVariable_SizeTil = this.getCssValueBySelector(this._responsiveSizeSelector, this.#CSS_VARIABLE_NAME__SIZE_TIL);
         // @ts-ignore
         this._responsive_sizes["min-width"] = cssVariable_SizeFrom;
         // @ts-ignore

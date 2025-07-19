@@ -1,6 +1,10 @@
 export interface ResponsiveSizesInterface {
 
   getResponsiveSizeConstantName (): string;
+  setResponsiveSizeConstantName (name: string): ResponsiveSizesInterface;
+
+  getResponsiveSizeSelector (): string;
+  setResponsiveSizeSelector (selector: string): ResponsiveSizesInterface;
 
   getCssValueByHtmlNode (
     htmlNode: HTMLElement,

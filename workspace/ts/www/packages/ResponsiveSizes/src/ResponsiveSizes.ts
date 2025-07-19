@@ -16,11 +16,16 @@ export class ResponsiveSizes implements ResponsiveSizesInterface {
   #CSS_VARIABLE_NAME__SIZE_FROM : string;
   #CSS_VARIABLE_NAME__SIZE_TIL  : string;
 
+  #SELECTOR: string;
+
   protected _responsiveSizesConstants: ResponsiveSizesConstants;
+  protected _responsiveSizeConstantName: string;
+  protected _responsiveSizeSelector: string;
   protected _responsiveSizeName: string;
   protected _responsive_sizes: object;
   protected _responsiveSizesJson: object;
   protected _cssVariableArray: string[];
+
 
 
   constructor() {
@@ -31,6 +36,8 @@ export class ResponsiveSizes implements ResponsiveSizesInterface {
     this.#CSS_VARIABLE_NAME = "--responsive_size";
     this.#CSS_VARIABLE_NAME__SIZE_FROM = "--responsive_size__min-width";
     this.#CSS_VARIABLE_NAME__SIZE_TIL  = "--responsive_size__max-width";
+
+    this.#SELECTOR = "html.workspace";
 
 
     this.#KEYWORDS_ORIENTATION_PORTRAIT = [
@@ -44,6 +51,8 @@ export class ResponsiveSizes implements ResponsiveSizesInterface {
     ];
 
     this._responsiveSizesConstants = new ResponsiveSizesConstants();
+    this._responsiveSizeConstantName = this.#CSS_VARIABLE_NAME;
+    this._responsiveSizeSelector = this.#SELECTOR;
     this._responsiveSizeName = "";
     this._responsive_sizes = new Object();
     this._responsiveSizesJson = new Object();
@@ -51,13 +60,39 @@ export class ResponsiveSizes implements ResponsiveSizesInterface {
   }
 
 
+
   public getResponsiveSizeConstantName(): string {
 
     // from the class SiteToolAutomation_ResponsiveSizesNames
     // in the automatique produced class SiteToolAutomation_ResponsiveSizesNames
     //   this variable has to be there too. for now not.
-    return this.#CSS_VARIABLE_NAME;
+    return this._responsiveSizeConstantName;
   }
+
+
+
+  public setResponsiveSizeConstantName(name: string ): ResponsiveSizesInterface {
+    this._responsiveSizeConstantName = name;
+
+
+    return this;
+  }
+
+
+
+  getResponsiveSizeSelector (): string {
+    return this._responsiveSizeSelector;
+  }
+
+
+
+  setResponsiveSizeSelector (selector: string): ResponsiveSizesInterface {
+    this._responsiveSizeSelector = selector;
+
+
+    return this;
+  }
+
 
 
   public getCssValueByHtmlNode (
@@ -68,8 +103,10 @@ export class ResponsiveSizes implements ResponsiveSizesInterface {
       .getComputedStyle( htmlNode )
       .getPropertyValue( cssVariableName );
 
+
     return cssValue;
   }
+
 
 
   public getCssValueBySelector (
@@ -86,37 +123,41 @@ export class ResponsiveSizes implements ResponsiveSizesInterface {
       htmlNode,
       cssVariableName );
 
+
     return cssValue;
   }
 
 
-  public getResponsiveSizeName( force: boolean ): string {
 
+  public getResponsiveSizeName( force: boolean ): string {
     if ( !force && this._responsiveSizeName.length != 0 ) {
       return this._responsiveSizeName;
     }
 
     let cssVariableName: string = this.getResponsiveSizeConstantName();
     let responsiveSizeName: string = this.getCssValueBySelector (
-      "html.workspace",
+      this._responsiveSizeSelector,
       cssVariableName
     );
 
     this._responsiveSizeName = responsiveSizeName;
     this._cssVariableArray = responsiveSizeName.split( "_" );
 
+
     return this._responsiveSizeName;
   }
 
 
-  public getCssVariableArray( force: boolean ): string[] {
 
+  public getCssVariableArray( force: boolean ): string[] {
     if ( force ) {
       this.getResponsiveSizeName( force );
     }
 
+
     return this._cssVariableArray;
   }
+
 
 
   public getResponsiveSizes( force: boolean ): object {
@@ -127,11 +168,11 @@ export class ResponsiveSizes implements ResponsiveSizesInterface {
     }
 
     let cssVariable_SizeFrom: string = this.getCssValueBySelector (
-      "html.workspace",
+      this._responsiveSizeSelector,
       this.#CSS_VARIABLE_NAME__SIZE_FROM
     );
     let cssVariable_SizeTil: string = this.getCssValueBySelector (
-      "html.workspace",
+      this._responsiveSizeSelector,
       this.#CSS_VARIABLE_NAME__SIZE_TIL
     );
 
@@ -142,6 +183,7 @@ export class ResponsiveSizes implements ResponsiveSizesInterface {
 
     // @ts-ignore
     this._responsive_sizes["max-width"] = cssVariable_SizeTil;
+
 
     return this._responsive_sizes;
   }
@@ -156,8 +198,10 @@ export class ResponsiveSizes implements ResponsiveSizesInterface {
 
     let mobileAndPortrait: boolean = ( mobile && orientationPortrait );
 
+
     return mobileAndPortrait;
   }
+
 
 
   public mobile( force: boolean ): boolean {
@@ -165,8 +209,10 @@ export class ResponsiveSizes implements ResponsiveSizesInterface {
 
     let responsiveSizeNameMatches: boolean = responsiveSizeName.includes( this.#KEYWORD_MOBILE );
 
+
     return responsiveSizeNameMatches;
   }
+
 
 
   public tablet( force: boolean ): boolean {
@@ -174,8 +220,10 @@ export class ResponsiveSizes implements ResponsiveSizesInterface {
 
     let responsiveSizeNameMatches: boolean = responsiveSizeName.includes( this.#KEYWORD_TABLET );
 
+
     return responsiveSizeNameMatches;
   }
+
 
 
   public desktop( force: boolean ): boolean {
@@ -201,8 +249,10 @@ export class ResponsiveSizes implements ResponsiveSizesInterface {
     // if responsiveSizeNameMatches === false, means did not match "mobile" or "tablet", then it is a desktop.
     let isResponsiveSizeDesktop: boolean = ( responsiveSizeNameMatches === false );
 
+
     return isResponsiveSizeDesktop;
   }
+
 
 
   public matchOrientation (
@@ -216,8 +266,10 @@ export class ResponsiveSizes implements ResponsiveSizesInterface {
       });
     let responsiveSizeNameMatches: boolean = ( matchFound !== undefined );
 
+
     return responsiveSizeNameMatches;
   }
+
 
 
   public orientationPortrait( force: boolean ): boolean {
@@ -226,8 +278,10 @@ export class ResponsiveSizes implements ResponsiveSizesInterface {
       force
     );
 
+
     return responsiveSizeNameMatches;
   }
+
 
 
   public orientationLandscape( force: boolean ): boolean {
@@ -236,8 +290,10 @@ export class ResponsiveSizes implements ResponsiveSizesInterface {
       force
     );
 
+
     return responsiveSizeNameMatches;
   }
+
 
 
   public toJson( force: boolean ): any {
@@ -281,14 +337,17 @@ export class ResponsiveSizes implements ResponsiveSizesInterface {
       [labelOrientationLandscape]: orientationLandscape
     };
 
+
     return this._responsiveSizesJson;
   }
+
 
 
   public toString(): string {
     let force: boolean = true;
     let responsiveSizesJson: any = this.toJson( force );
     let jsonString: string = JSON.stringify( responsiveSizesJson, null, 2 );
+
 
     return jsonString;
   }

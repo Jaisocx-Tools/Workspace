@@ -44,7 +44,7 @@ class OverridesTemplateData {
         return templateDataBase;
     }
     getTemplateDataOverridden(_responsiveDatasetPropName, templateDataBase) {
-        templateDataBase["msg"] = "Hello World!";
+        templateDataBase["custom-css"] = "Hello World!";
         //@ts-ignore
         let responsiveData = this.responsiveDatasetBase.datasetBitsbufs[_responsiveDatasetPropName];
         //@ts-ignore
