@@ -8,32 +8,30 @@ in the Terminal, in the Root of the Project
 ## Produce theme responsive .css fresh fileset for the CssCleanStart
 
 ```bash
-./produceCleanStart.sh --sitesTool_ThemeName=theme_example --sitesToolName=CssCleanStart2 --cssOrJsTool=css --template="data/templates/responsive_size__CssCleanStart.css.template" --withSizesCssConstants=true
+./cmd/CssCleanStart_3_MediaAndStyle.sh
 ```
+
+
+### with debug option
+
+```bash
+./cmd/CssCleanStart_3_MediaAndStyle.sh --debug
+```
+
 
 
 
 ## for a sites tool, css or js
 
 ```bash
-./produceSitesToolTemplate.sh --sitesTool_ThemeName=theme_example --sitesToolName=ACssSitesTool3 --cssOrJsTool=css --template="data/templates/responsive_size.css.template"
+./cmd/sitesTool_MediaAndStyles.sh
 ```
 
+### with debug option
 
-## the responsive .css filest with minimal .css files of size 6 (six) text lines and 419 bytes.
-
+```bash
+./cmd/sitesTool_MediaAndStyles.sh --debug
 ```
-./produceCleanStart.sh --sitesTool_ThemeName=theme_example --sitesToolName=ACssSitesTool4 --cssOrJsTool=css --template="data/templates/responsive_size__mini.css.template"
-```
-
-
-
-## for a sites tool by a custom template
-
-```
-./produceCleanStart.sh --sitesTool_ThemeName=theme_example --sitesToolName=ACssSitesTool4 --cssOrJsTool=css --template="data/templates/responsive_size__mini.css.template"
-```
-
 
 
 
@@ -43,9 +41,37 @@ in the Terminal, in the Root of the Project
 
 ## Status of the Project
 
-### Done
+### Done, however known a bug
 
 19th of July 2025
+
+I hope I shall bugfix this in several days.
+
+
+
+#### Bugfix encountered:
+
+when producing a fileset for the best seeing site on all devices,
+the SitesToolAutomation does well.
+
+However, when producing new responsive filest just for a new theme,
+unfortunately all .css files are rewritten again, and the previous css code goes lost.
+
+
+
+
+
+#### Workaround:
+
+1. rename Your current sites tool
+
+2. produce the fileset with the original name of the sites tool, and the new theme name
+
+3. hardcopy the folder from ${freshGeneratedSitesTool}/MediaAndStyles/themes/new_theme/responsive to Your original renamed sites tool: ${temporaryRenamedSitesTool}/MediaAndStyles/themes/new_theme/responsive
+
+4. delete folder ${freshGeneratedSitesTool}
+
+5. rename ${temporaryRenamedSitesTool} to sites tool' original name.
 
 
 
