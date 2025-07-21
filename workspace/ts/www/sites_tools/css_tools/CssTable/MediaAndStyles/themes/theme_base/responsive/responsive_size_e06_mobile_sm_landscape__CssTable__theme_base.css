@@ -1,6 +1,6 @@
 @media only screen and (min-width: 376px) and (max-width: 99999px) and (min-height: 376px) and (max-height: 430px) and (orientation: landscape) {
 
-  .jsx {
+  .jsx-css-table-holder {
     --theme_name: CssTable__theme_base;
     --theme_name__CssTable: theme_base;
     --responsive_size: responsive_size_e06_mobile_sm_landscape;

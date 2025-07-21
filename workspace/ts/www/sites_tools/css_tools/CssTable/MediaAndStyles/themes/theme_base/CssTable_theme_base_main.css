@@ -1,5 +1,5 @@
 /* Sites tool: CssTable, theme: theme_base */
-.jsx .jsx-css-table-holder {
+.jsx-css-table-holder {
 
 
   /* BORDERS */
@@ -7,9 +7,11 @@
   --jsx--CssTable--border-style: solid;
   --jsx--CssTable--border-color: #D2DCE4;
 
+  --jsx--CssTable--holder--border:  var(--jsx--CssTable--border-width) var(--jsx--CssTable--border-style) var(--jsx--CssTable--main--border-color);
+  --jsx--CssTable--holder--border-radius: 1rem;
+
   --jsx--CssTable--main--border-color: var(--jsx--CssTable--border-color);
-  --jsx--CssTable--main--border: var(--jsx--CssTable--border-width) var(--jsx--CssTable--border-style) var(--jsx--CssTable--main--border-color);
-  --jsx--CssTable--main--border-radius: 1rem;
+  --jsx--CssTable--main--border: 0 none var(--jsx--CssTable--main--border-color);
 
   --jsx--CssTable--row--border: var(--jsx--CssTable--border-width) var(--jsx--CssTable--border-style) var(--jsx--CssTable--border-color);
   --jsx--CssTable--cell--border: var(--jsx--CssTable--border-width) var(--jsx--CssTable--border-style) var(--jsx--CssTable--border-color);
@@ -96,8 +98,8 @@
   --jsx--CssTable--holder--width-max: 100%;
   --jsx--CssTable--holder--width-min: 100%;
 
-  --jsx--CssTable--holder--overflow-y: hidden;
-  --jsx--CssTable--holder--overflow-x: hidden;
+  --jsx--CssTable--holder--overflow-y: auto;
+  --jsx--CssTable--holder--overflow-x: auto;
 
 
   --jsx--CssTable--main--width: 100%;
@@ -105,7 +107,7 @@
   --jsx--CssTable--main--width-min: 100%;
 
   --jsx--CssTable--main--overflow-y: visible;
-  --jsx--CssTable--main--overflow-x: auto;
+  --jsx--CssTable--main--overflow-x: visible;
 
 }
 

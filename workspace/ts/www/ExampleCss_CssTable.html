@@ -9,13 +9,37 @@
 
 
 
+
+  <!-- 1. to save up ssd on the sever machine, we use cdn to keep centrally media and font files,
+  used by multiple projects, so not to copy they many times.
+  2. for the fine grained site performance when turning on a theme,
+  we use to preload the fonts files and mini images at once on page load in the browser tab.
+  3. so that the fonts files and other media
+  are not loaded many times when showing multiple instances of a css or js tool on a page,
+  these media files and fonts are referenced by same unique url on the cdn.
+  4. I tested with the css-table-main-cdn.css,
+  loaded the Preloader for this purpose,
+  and the fonts files were loaded just once,
+  "Niconne" and 2 files of "Baloo Paaji 2" font, Regular and Semi Bold.
+  When enabled the Day Mode theme-lightmode and Night Mode theme-darkmode,
+  the fonts have applied immediately and themes choice performance have looked well.
+  5. During local development, You may erase these 2 <script> tags.
+    Otherwise, You may rebuild Your css-table-main-relative.css to reference there fonts files via Your cdn.  -->
+
+  <!-- <script src="sites_tools/css_tools/CssTable/transpiled/Simple/Preloader.js"></script> -->
+  <!-- <script src="sites_tools/css_tools/CssTable/transpiled/Simple/ThemesPreloadsCssTable.js"></script> -->
+
+
+
+
+
+
   <!-- importing styles of @jaisocx/css-clean-start -->
   <!-- <link rel="stylesheet" href="sites_tools/css_tools/CssCleanStart_2/MediaAndStyles/CssCleanStart_2_main_resolved_min.css"> -->
 
 
 
   <!-- importing styles of @jaisocx/css-table installable like this: npm install @jaisocx/css-table -->
-  <!-- <link rel="stylesheet" href="sites_tools/css_tools/CssTable/MediaAndStyles/themes/theme-lightmode/css-table-theme-lightmode-relative.css"> -->
   <link rel="stylesheet" href="sites_tools/css_tools/CssTable/MediaAndStyles/CssTable_main_relative.css">
 
   <style>
@@ -71,7 +95,7 @@
 
     <content>
 
-      <h1>Css Table 4 columns</h1>
+      <h1>Css Table 4 fields</h1>
 
       <h5>@jaisocx/css-clean-start was not enabled</h5>
 
@@ -87,13 +111,17 @@
 
 
     <div class="jsx-css-table-holder example-table-columns-4">
-      <div class="jsx-css-table">
-        <div class="row desktop-columns-labels-holder">
+
+      <div class="jsx-css-table desktop-columns-labels-holder">
+        <div class="row">
           <div class="cell"><span class="column-label">attribute</span></div>
           <div class="cell"><span class="column-label">type</span></div>
           <div class="cell"><span class="column-label">values</span></div>
           <div class="cell"><span class="column-label">description</span></div>
         </div>
+      </div>
+
+      <div class="jsx-css-table">
         <div class="row">
           <div class="cell"><span class="column-label">attribute</span><span class="cell-value">
               port</span></div>

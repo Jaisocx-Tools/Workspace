@@ -2,12 +2,12 @@
 
 
 /* MEDIA RULE FOR SMALL DEVICESS, IN THIS TABLE LAYOUT FIELDS IN A RECORD ARE PLACED VERTICALLY, NOT IN ONE LINE. */
-@media only screen and (min-width: 10px) and (max-width: 767px) {
+/* @media only screen and (min-width: 10px) and (max-width: 1024px) {
 
-  .jsx .jsx-css-table-holder.jaisocx-folder-listing .cell.name .column-label {
+  .jsx-css-table-holder.jaisocx-folder-listing {
     display: none;
   }
 
-}
+} */
 
 

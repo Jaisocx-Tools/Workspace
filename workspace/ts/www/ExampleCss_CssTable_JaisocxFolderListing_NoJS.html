@@ -1,31 +1,11 @@
 <!DOCTYPE html>
-<html lang="en" class="jsx">
+<html lang="en" class="jsx jaisocx-folder-listing">
 <head>
 
   <title>Under construction: Css Table</title>
 
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
-
-
-  <!-- 1. to save up ssd on the sever machine, we use cdn to keep centrally media and font files,
-  used by multiple projects, so not to copy they many times.
-  2. for the fine grained site performance when turning on a theme,
-  we use to preload the fonts files and mini images at once on page load in the browser tab.
-  3. so that the fonts files and other media
-  are not loaded many times when showing multiple instances of a css or js tool on a page,
-  these media files and fonts are referenced by same unique url on the cdn.
-  4. I tested with the css-table-main-cdn.css,
-  loaded the Preloader for this purpose,
-  and the fonts files were loaded just once,
-  "Niconne" and 2 files of "Baloo Paaji 2" font, Regular and Semi Bold.
-  When enabled the Day Mode theme-lightmode and Night Mode theme-darkmode,
-  the fonts have applied immediately and themes choice performance have looked well.
-  5. During local development, You may erase these 2 <script> tags.
-    Otherwise, You may rebuild Your css-table-main-relative.css to reference there fonts files via Your cdn.  -->
-
-  <!-- <script src="sites_tools/css_tools/CssTable/transpiled/Simple/Preloader.js"></script> -->
-  <!-- <script src="sites_tools/css_tools/CssTable/transpiled/Simple/ThemesPreloadsCssTable.js"></script> -->
 
 
 
@@ -35,25 +15,63 @@
 
 
   <!-- importing styles of @jaisocx/css-table installable like this: npm install @jaisocx/css-table -->
-  <link rel="stylesheet" href="sites_tools/css_tools/CssTable/MediaAndStyles/themes/theme-jaisocx-folder-listing/CssTable_theme_jaisocx_folder_listing_thin.css">
+  <link rel="stylesheet" href="sites_tools/css_tools/CssTable/MediaAndStyles/themes/theme_jaisocx_folder_listing/CssTable_theme_jaisocx_folder_listing_Relative.css">
   <link rel="stylesheet" href="sites_tools/css_tools/CssTable/MediaAndStyles/CssTable_main_relative.css">
+
+
+  <script>
+
+  function onTableScroll( inEvent ) {
+
+    let tableRowsHolder = inEvent.target;
+
+    let tableRowsHolder_scrollLeft = tableRowsHolder.scrollLeft;
+
+    let tableRecordsLabelsRow = tableRowsHolder.closest(".jsx-css-table-holder").querySelector( ".jsx-css-table.desktop-columns-labels-holder" );
+    tableRecordsLabelsRow.scrollLeft = tableRowsHolder_scrollLeft;
+
+  }
+
+
+
+  function addScrollEventHandlers() {
+    let tableRowsHolder = document.querySelectorAll(".jsx-css-table-holder .jsx-css-table");
+
+    for ( let i = 0; i < tableRowsHolder.length; i++ ) {
+      let tb = tableRowsHolder[i];
+      if ( tb.classList.contains( "desktop-columns-labels-holder" ) ) {
+        continue;
+      }
+
+      tb.addEventListener (
+        "scroll",
+        ( evt ) => {
+          onTableScroll( evt );
+        }
+      );
+    }
+  }
+
+  </script>
 
 </head>
 <body>
 
   <main>
 
-    <h1 style="font-family: Verdana;">Css Table Jaisocx folder listing markup, no js orderby</h1>
+    <h1>Jaisocx folder listing markup, no js orderby</h1>
+    <h2>this theme moves to @jaisocx/css-table-ordered</h1>
 
 
 
         <!--starts markup of the table styled by @jaisocx/css-table-ordered npm package-->
         <!--@jaisocx/css-table-ordered extends @jaisocx/css-table having one js class to orderby records in the table, onevent click label of the table column-->
-        <div class="jsx-css-table-holder j3aisocx-folder-listing">
-          <div class="jsx-css-table">
+        <div class="jsx-css-table-holder jaisocx-folder-listing">
 
-            <!--the first table record with the names of the table columns, shown in the table bright mode-->
-            <div class="row desktop-columns-labels-holder">
+          <!--the first table record with the names of the table columns, shown in the table bright mode-->
+          <div class="jsx-css-table desktop-columns-labels-holder">
+
+            <div class="row">
 
               <div class="cell" data-datatype="number" data-id="0"><span class="column-label">num.</span></div>
 
@@ -69,6 +87,11 @@
 
             </div>
 
+          </div>
+
+
+
+          <div class="jsx-css-table">
 
             <!--table record with props of one file in the current folder-->
             <div class="row folder">
@@ -1220,16 +1243,20 @@
 
     // DOCUMENT ONLOAD, INVOKES THE FUNCTION TO PRELOAD THEME FONTS
 
-    // document.addEventListener('DOMContentLoaded', () => {
+    document.addEventListener('DOMContentLoaded', () => {
 
-    //   const preloader = new Preloader();
-    //     preloader
-    //       .setThemesPreloads( themesPreloads )
-    //       .setWebpackAlias( "@jaisocx-css-table-cdn-fonts" )
-    //       .setWebpackAliasReplace( "https://sandbox.brightday.email/cdn/www/fonts" )
-    //       .init();
+      // const preloader = new Preloader();
+      //   preloader
+      //     .setThemesPreloads( themesPreloads )
+      //     .setWebpackAlias( "@jaisocx-css-table-cdn-fonts" )
+      //     .setWebpackAliasReplace( "https://sandbox.brightday.email/cdn/www/fonts" )
+      //     .init();
 
-    // });
+
+
+      addScrollEventHandlers();
+
+    });
 
   </script>
 

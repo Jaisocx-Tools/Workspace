@@ -1,6 +1,6 @@
 /* YOU CAN SET HERE YOUR OWN VARIABLE FOR GRID WIDTHS OF COLUMNS */
 
-.jsx .jsx-css-table-holder.jaisocx-folder-listing {
+.jsx-css-table-holder.jaisocx-folder-listing {
   /* --jsx--CssTable--bright--grid-template-columns: 5rem 28rem 19rem 8rem 10rem 6rem 12rem 6rem 6rem 28rem 50rem; */
   --jsx--CssTable--bright--grid-template-columns: 5rem 34rem 12rem 6rem 18rem 100rem;
 }
@@ -8,12 +8,12 @@
 
 
 
-.jsx .jsx-css-table-holder.example-table-columns-4 {
+.jsx-css-table-holder.example-table-columns-4 {
   --jsx--CssTable--bright--grid-template-columns:   12rem 8rem 24rem minmax( 20rem, 1fr );
 }
 
 
-.jsx .jsx-css-table-holder.example-table-columns-12 {
+.jsx-css-table-holder.example-table-columns-12 {
   --jsx--CssTable--bright--grid-template-columns:   9rem 8rem 24rem 24rem 24rem 8rem 24rem 20rem 8rem 8rem 8rem minmax( 24rem, 1fr );
 }
 
@@ -21,16 +21,16 @@
 
 
 
-.jsx .jsx-css-table-holder .column-1 {
+.jsx-css-table-holder .column-1 {
   --jsx--CssTable--bright--column-width: 12rem;
 }
-.jsx .jsx-css-table-holder .column-2 {
+.jsx-css-table-holder .column-2 {
   --jsx--CssTable--bright--column-width: 8rem;
 }
-.jsx .jsx-css-table-holder .column-3 {
+.jsx-css-table-holder .column-3 {
   --jsx--CssTable--bright--column-width: 24rem;
 }
-.jsx .jsx-css-table-holder .column-4 {
+.jsx-css-table-holder .column-4 {
   --jsx--CssTable--bright--column-width: minmax( 20rem, 1fr );
 }
 

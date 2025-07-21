@@ -2,7 +2,7 @@
 
 
 /* MEDIA RULE FOR SMALL DEVICESS, IN THIS TABLE LAYOUT FIELDS IN A RECORD ARE PLACED VERTICALLY, NOT IN ONE LINE. */
-@media only screen and (min-width: 10px) and (max-width: 767px) {
+@media only screen and (min-width: 10px) and (max-width: 1024px) {
 
   .jsx-css-table-holder .jsx-css-table {
     display:                    flex;
@@ -24,7 +24,7 @@
 
 
   /* TABLE'S COLUMNS LABELS IN THE DESKTOP VIEW, ABOVE THE TABLE, HIDES IN MOBILE HERE */
-  .jsx-css-table-holder .row.desktop-columns-labels-holder {
+  .jsx-css-table-holder .jsx-css-table.desktop-columns-labels-holder .row {
     display:                    none;
   }
 

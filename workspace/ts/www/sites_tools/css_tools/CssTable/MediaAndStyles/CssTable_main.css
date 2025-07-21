@@ -11,6 +11,11 @@
   min-width:               var(--jsx--CssTable--holder--width-min);
 
   overflow:                var(--jsx--CssTable--holder--overflow-x) var(--jsx--CssTable--holder--overflow-y);
+
+
+  border:                  var(--jsx--CssTable--holder--border);
+  border-radius:           var(--jsx--CssTable--holder--border-radius);
+
 }
 
 
@@ -23,7 +28,6 @@
   overflow-y:              var(--jsx--CssTable--main--overflow-y);
   overflow-x:              var(--jsx--CssTable--main--overflow-x);
 
-  border-radius:           var(--jsx--CssTable--main--border-radius);
   border:                  var(--jsx--CssTable--main--border);
 }
 
@@ -120,6 +124,5 @@
   align-items:             stretch;
   justify-content:         flex-start;
 }
-
 
 

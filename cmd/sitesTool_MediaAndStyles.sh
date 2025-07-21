@@ -54,11 +54,11 @@ fi
   --script="main/produceSitesTool_MediaAndStyles.js" \
       --cssOrJsTool="css" \
       --sitesToolName="CssTable" \
-      --sitesTool_ThemeName="theme_jaisocx_folder_listing" \
+      --sitesTool_ThemeName="theme_j2aisocx_folder_listing" \
       --templatePath="data/templates/css/responsive/responsive_size__mini.css.template" \
       --withSizesCssConstants="no" \
       --justTheme="yes" \
-      --justThemeResponsiveDataset="no"
+      --justThemeResponsiveDataset="yes"
 
 
 
