@@ -52,15 +52,12 @@ fi
 "${jsInvokePath}" "$commandLineArgs" \
   --packagePath="www/packages/SitesToolAutomation" \
   --script="main/produceSitesTool_MediaAndStyles.js" \
-      --sitesTool_ThemeName="theme_base" \
-      --sitesToolName="CssCleanStart_2" \
       --cssOrJsTool="css" \
-      --keywordResponsiveSize="responsive_size" \
+      --sitesToolName="CssCleanStart" \
+      --sitesTool_ThemeName="theme_example" \
       --templatePath="data/templates/css/responsive/responsive_size__CssCleanStart.css.template" \
-      --withSizesCssConstants="true"
-
-
-
-
+      --withSizesCssConstants="yes" \
+      --justTheme="yes" \
+      --justThemeResponsiveDataset="yes"
 
 

@@ -2,7 +2,7 @@
 
 .jsx {
 
-
+  
   --responsive_size_e02_mobile_xs_portrait_min_width: 240px;
   --responsive_size_e02_mobile_xs_portrait_max_width: 320px;
 
@@ -11,7 +11,7 @@
 
 
 
-
+  
   --responsive_size_e04_mobile_s_portrait_min_width: 321px;
   --responsive_size_e04_mobile_s_portrait_max_width: 374px;
 
@@ -20,7 +20,7 @@
 
 
 
-
+  
   --responsive_size_e06_mobile_sm_portrait_min_width: 375px;
   --responsive_size_e06_mobile_sm_portrait_max_width: 430px;
 
@@ -29,7 +29,7 @@
 
 
 
-
+  
   --responsive_size_e08_mobile_md_portrait_min_width: 431px;
   --responsive_size_e08_mobile_md_portrait_max_width: 480px;
 
@@ -38,7 +38,7 @@
 
 
 
-
+  
   --responsive_size_h03_tablet_sm_portrait_min_width: 481px;
   --responsive_size_h03_tablet_sm_portrait_max_width: 767px;
 
@@ -47,7 +47,7 @@
 
 
 
-
+  
   --responsive_size_h05_tablet_md_portrait_min_width: 768px;
   --responsive_size_h05_tablet_md_portrait_max_width: 1024px;
 
@@ -56,7 +56,7 @@
 
 
 
-
+  
   --responsive_size_l03_laptop_sm_portrait_min_width: 1025px;
   --responsive_size_l03_laptop_sm_portrait_max_width: 1080px;
 
@@ -65,7 +65,7 @@
 
 
 
-
+  
   --responsive_size_l05_laptop_md_portrait_min_width: 1081px;
   --responsive_size_l05_laptop_md_portrait_max_width: 1200px;
 
@@ -74,7 +74,7 @@
 
 
 
-
+  
   --responsive_size_l07_laptop_lg_portrait_min_width: 1201px;
   --responsive_size_l07_laptop_lg_portrait_max_width: 1440px;
 
@@ -83,7 +83,7 @@
 
 
 
-
+  
   --responsive_size_s02_display_xl_portrait_min_width: 1441px;
   --responsive_size_s02_display_xl_portrait_max_width: 1600px;
 
@@ -92,7 +92,7 @@
 
 
 
-
+  
   --responsive_size_s04_display_xxl_portrait_min_width: 1601px;
   --responsive_size_s04_display_xxl_portrait_max_width: 2160px;
 
@@ -101,7 +101,7 @@
 
 
 
-
+  
   --responsive_size_s08_display_qhd_portrait_min_width: 2161px;
   --responsive_size_s08_display_qhd_portrait_max_width: 2160px;
 
@@ -110,7 +110,7 @@
 
 
 
-
+  
   --responsive_size_t04_tv_4k_portrait_min_width: 2161px;
   --responsive_size_t04_tv_4k_portrait_max_width: 4320px;
 
@@ -119,7 +119,7 @@
 
 
 
-
+  
   --responsive_size_t08_tv_8k_portrait_min_width: 4321px;
   --responsive_size_t08_tv_8k_portrait_max_width: 8640px;
 
@@ -128,7 +128,7 @@
 
 
 
-
+  
   --responsive_size_t16_tv_16k_portrait_min_width: 8641px;
   --responsive_size_t16_tv_16k_portrait_max_width: 9999px;
 
@@ -139,17 +139,17 @@
 
 
 .jsx {
-
+  
   --jsx--css-clean-start-2--rem: 16px;
 
 
-
+  
   --jsx--css-clean-start-2--body-tag--background: #eee;
   --jsx--css-clean-start-2--site--background: #fff;
 
 
 
-
+  
   --jsx--css-clean-start-2--body-tag--width: 100%;
   --jsx--css-clean-start-2--body-tag--max-width: 100%;
   --jsx--css-clean-start-2--body-tag--min-width: 100%;
@@ -158,12 +158,18 @@
   --jsx--css-clean-start-2--body-tag--max-height: unset;
   --jsx--css-clean-start-2--body-tag--min-height: 100vh;
 
+  --jsx--css-clean-start-2--body-tag--overflow-x: auto;
+  --jsx--css-clean-start-2--body-tag--overflow-y: auto;
 
 
 
+  
   --jsx--css-clean-start-2--site--height: fit-content;
   --jsx--css-clean-start-2--site--max-height: fit-content;
   --jsx--css-clean-start-2--site--min-height: 100vh;
+
+  --jsx--css-clean-start-2--site--overflow-x: hidden;
+  --jsx--css-clean-start-2--site--overflow-y: visible;
 
   --jsx--css-clean-start-2--site--width: 70%;
   --jsx--css-clean-start-2--site--max-width: 100%;
@@ -171,7 +177,7 @@
 
 
 
-
+  
   --jsx--css-clean-start-2--site--margin: 0 auto 0 auto;
 
   --jsx--css-clean-start-2--site--padding-top: 1rem;
@@ -181,13 +187,13 @@
   --jsx--css-clean-start-2--site--padding: var(--jsx--css-clean-start-2--site--padding-top) var(--jsx--css-clean-start-2--site--padding-left) var(--jsx--css-clean-start-2--site--padding-bottom) var(--jsx--css-clean-start-2--site--padding-right);
 
 
-
+  
   --jsx--css-clean-start-2--body-tag--overflow-x: hidden;
   --jsx--css-clean-start-2--site--overflow-y: visible;
 
 
 
-
+  
   --jsx--css-clean-start-2--all-tags--position: relative;
   --jsx--css-clean-start-2--all-tags--box-sizing: border-box;
 
@@ -200,7 +206,7 @@
 
   --jsx--css-clean-start-2--all-tags--margin: 0 0 0 0;
   --jsx--css-clean-start-2--h--margin: 0 0 0 0;
-  --jsx--css-clean-start-2--p--margin: 0.2rem 0 0.2rem 0;
+  --jsx--css-clean-start-2--p--margin: 0.9rem 0 0.9rem 0;
 
   --jsx--css-clean-start-2--all-tags--color: black;
 
@@ -216,15 +222,19 @@
 
 
 
+  
+  --jsx--css-clean-start-2--h--font-weight: 600;
+  --jsx--css-clean-start-2--h--color:       #626262;
+  --jsx--css-clean-start-2--h--margin:      0 0 0 0;
+  --jsx--css-clean-start-2--h--padding:     0 0 0 0;
 
-  --jsx--css-clean-start-2--h--color: #555;
-  --jsx--css-clean-start-2--h--font-weight: 800;
 
-  --jsx--css-clean-start-2--h1--font-size: 2.6rem;
-  --jsx--css-clean-start-2--h1--line-height: 3rem;
+
+  --jsx--css-clean-start-2--h1--font-size: 2.3rem;
+  --jsx--css-clean-start-2--h1--line-height: 2.45rem;
 
   --jsx--css-clean-start-2--h2--font-size: 2.1rem;
-  --jsx--css-clean-start-2--h2--line-height: 2.5rem;
+  --jsx--css-clean-start-2--h2--line-height: 2.34rem;
 
   --jsx--css-clean-start-2--h3--font-size: 1.8rem;
   --jsx--css-clean-start-2--h3--line-height: 2.2rem;
@@ -240,17 +250,3823 @@
 
 
 
+  --jsx--css-clean-start-2--h1--font-weight: var(--jsx--css-clean-start-2--h--font-weight);
+  --jsx--css-clean-start-2--h1--color:       var(--jsx--css-clean-start-2--h--color);
+  --jsx--css-clean-start-2--h1--margin:      var(--jsx--css-clean-start-2--h--margin);
+  --jsx--css-clean-start-2--h1--padding:     var(--jsx--css-clean-start-2--h--padding);
 
+  --jsx--css-clean-start-2--h2--font-weight: var(--jsx--css-clean-start-2--h--font-weight);
+  --jsx--css-clean-start-2--h2--color:       var(--jsx--css-clean-start-2--h--color);
+  --jsx--css-clean-start-2--h2--margin:      var(--jsx--css-clean-start-2--h--margin);
+  --jsx--css-clean-start-2--h2--padding:     var(--jsx--css-clean-start-2--h--padding);
+
+  --jsx--css-clean-start-2--h3--font-weight: var(--jsx--css-clean-start-2--h--font-weight);
+  --jsx--css-clean-start-2--h3--color:       var(--jsx--css-clean-start-2--h--color);
+  --jsx--css-clean-start-2--h3--margin:      var(--jsx--css-clean-start-2--h--margin);
+  --jsx--css-clean-start-2--h3--padding:     var(--jsx--css-clean-start-2--h--padding);
+
+  --jsx--css-clean-start-2--h4--font-weight: var(--jsx--css-clean-start-2--h--font-weight);
+  --jsx--css-clean-start-2--h4--color:       var(--jsx--css-clean-start-2--h--color);
+  --jsx--css-clean-start-2--h4--margin:      var(--jsx--css-clean-start-2--h--margin);
+  --jsx--css-clean-start-2--h4--padding:     var(--jsx--css-clean-start-2--h--padding);
+
+  --jsx--css-clean-start-2--h5--font-weight: var(--jsx--css-clean-start-2--h--font-weight);
+  --jsx--css-clean-start-2--h5--color:       var(--jsx--css-clean-start-2--h--color);
+  --jsx--css-clean-start-2--h5--margin:      var(--jsx--css-clean-start-2--h--margin);
+  --jsx--css-clean-start-2--h5--padding:     var(--jsx--css-clean-start-2--h--padding);
+
+  --jsx--css-clean-start-2--h6--font-weight: var(--jsx--css-clean-start-2--h--font-weight);
+  --jsx--css-clean-start-2--h6--color:       var(--jsx--css-clean-start-2--h--color);
+  --jsx--css-clean-start-2--h6--margin:      var(--jsx--css-clean-start-2--h--margin);
+  --jsx--css-clean-start-2--h6--padding:     var(--jsx--css-clean-start-2--h--padding);
+
+
+
+  
   --jsx--css-clean-start-2--anchor--color: navy;
   --jsx--css-clean-start-2--anchor-hover--color: blue;
+
   --jsx--css-clean-start-2--anchor-visited--color: grey;
   --jsx--css-clean-start-2--anchor-visited-hover--color: grey;
+
   --jsx--css-clean-start-2--anchor-active--color: darkblue;
   --jsx--css-clean-start-2--anchor-active-hover--color: blue;
+
+
+
+  
+  --jsx--css-clean-start-2--anchor--text-decoration: none;
+  --jsx--css-clean-start-2--anchor-hover--text-decoration: underline;
+
+  --jsx--css-clean-start-2--anchor-visited--text-decoration: none;
+  --jsx--css-clean-start-2--anchor-visited-hover--text-decoration: underline;
+
+  --jsx--css-clean-start-2--anchor-active--text-decoration: underline;
+  --jsx--css-clean-start-2--anchor-active-hover--text-decoration: underline;
+
+
+
+  --jsx--css-clean-start-2--thead--background-color: ghostwhite;
+  --jsx--css-clean-start-2--tfoot--background-color: honeydew;
 
 }
 
 
+
+
+
+
+@media only screen and (min-width: 2px) and (max-width: 239px) and (min-height: 2px) and (max-height: 99999px) and (orientation: portrait) {
+
+  .jsx {
+    --theme_name: CssCleanStart_2__theme_base;
+    --theme_name__CssCleanStart_2: theme_base;
+
+    --responsive_size: responsive_size_d05_very_small_xxs_portrait;
+
+    --responsive_size__min-width: 2px;
+    --responsive_size__max-width: 239px;
+
+    --responsive_size__min-height: 2px;
+    --responsive_size__max-height: 99999px;
+
+
+
+    --responsive_size__CssCleanStart_2__theme_base: responsive_size_d05_very_small_xxs_portrait__CssCleanStart_2__theme_base;
+
+    --responsive_size__CssCleanStart_2__theme_base__min-width: 2px;
+    --responsive_size__CssCleanStart_2__theme_base__max-width: 239px;
+
+    --responsive_size__CssCleanStart_2__theme_base__min-height: 2px;
+    --responsive_size__CssCleanStart_2__theme_base__max-height: 99999px;
+
+
+
+
+
+    
+    
+    
+
+
+    
+    
+    
+
+
+
+    
+    
+    
+    
+
+    
+    
+    
+
+    
+    
+
+
+
+    
+    
+    
+    
+
+    
+    
+
+    --jsx--css-clean-start-2--site--width: 100%;
+    
+    --jsx--css-clean-start-2--site--min-width: 100%;
+
+
+
+    
+    
+
+    
+    
+    
+    
+    
+
+
+    
+    
+    
+
+
+
+    
+    
+    
+
+    
+    
+    
+
+    
+    
+
+    
+    
+    
+
+    
+
+    
+    
+
+    --jsx--css-clean-start-2--all-tags--font-size: 1rem;
+    --jsx--css-clean-start-2--all-tags--line-height: 1.29rem;
+
+    
+    
+    
+
+
+
+    
+    
+    
+    
+    
+
+
+
+    
+    
+
+    
+    
+
+    
+    
+
+    
+    
+
+    
+    
+
+    
+    
+
+
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+
+
+    
+    
+    
+
+    
+    
+
+    
+    
+
+
+
+    
+    
+    
+
+    
+    
+
+    
+    
+
+
+
+    
+    
+
+  }
+
+}
+
+
+
+@media only screen and (min-width: 2px) and (max-width: 99999px) and (min-height: 2px) and (max-height: 239px) and (orientation: landscape) {
+
+  .jsx {
+    --theme_name: CssCleanStart_2__theme_base;
+    --theme_name__CssCleanStart_2: theme_base;
+
+    --responsive_size: responsive_size_d05_very_small_xxs_landscape;
+
+    --responsive_size__min-width: 2px;
+    --responsive_size__max-width: 99999px;
+
+    --responsive_size__min-height: 2px;
+    --responsive_size__max-height: 239px;
+
+
+
+    --responsive_size__CssCleanStart_2__theme_base: responsive_size_d05_very_small_xxs_landscape__CssCleanStart_2__theme_base;
+
+    --responsive_size__CssCleanStart_2__theme_base__min-width: 2px;
+    --responsive_size__CssCleanStart_2__theme_base__max-width: 99999px;
+
+    --responsive_size__CssCleanStart_2__theme_base__min-height: 2px;
+    --responsive_size__CssCleanStart_2__theme_base__max-height: 239px;
+
+
+
+
+
+    
+    
+    
+
+
+    
+    
+    
+
+
+
+    
+    
+    
+    
+
+    
+    
+    
+
+    
+    
+
+
+
+    
+    
+    
+    
+
+    
+    
+
+    --jsx--css-clean-start-2--site--width: 100%;
+    
+    --jsx--css-clean-start-2--site--min-width: 100%;
+
+
+
+    
+    
+
+    
+    
+    
+    
+    
+
+
+    
+    
+    
+
+
+
+    
+    
+    
+
+    
+    
+    
+
+    
+    
+
+    
+    
+    
+
+    
+
+    
+    
+
+    --jsx--css-clean-start-2--all-tags--font-size: 1rem;
+    --jsx--css-clean-start-2--all-tags--line-height: 1.2rem;
+
+    
+    
+    
+
+
+
+    
+    
+    
+    
+    
+
+
+
+    
+    
+
+    
+    
+
+    
+    
+
+    
+    
+
+    
+    
+
+    
+    
+
+
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+
+
+    
+    
+    
+
+    
+    
+
+    
+    
+
+
+
+    
+    
+    
+
+    
+    
+
+    
+    
+
+
+
+    
+    
+
+  }
+
+}
+
+
+
+
+@media only screen and (min-width: 240px) and (max-width: 320px) and (min-height: 240px) and (max-height: 99999px) and (orientation: portrait) {
+
+  .jsx {
+    --theme_name: CssCleanStart_2__theme_base;
+    --theme_name__CssCleanStart_2: theme_base;
+
+    --responsive_size: responsive_size_e02_mobile_xs_portrait;
+
+    --responsive_size__min-width: 240px;
+    --responsive_size__max-width: 320px;
+
+    --responsive_size__min-height: 240px;
+    --responsive_size__max-height: 99999px;
+
+
+
+    --responsive_size__CssCleanStart_2__theme_base: responsive_size_e02_mobile_xs_portrait__CssCleanStart_2__theme_base;
+
+    --responsive_size__CssCleanStart_2__theme_base__min-width: 240px;
+    --responsive_size__CssCleanStart_2__theme_base__max-width: 320px;
+
+    --responsive_size__CssCleanStart_2__theme_base__min-height: 240px;
+    --responsive_size__CssCleanStart_2__theme_base__max-height: 99999px;
+
+
+
+
+
+    
+    
+    
+
+
+    
+    
+    
+
+
+
+    
+    
+    
+    
+
+    
+    
+    
+
+    
+    
+
+
+
+    
+    
+    
+    
+
+    
+    
+
+    --jsx--css-clean-start-2--site--width: 100%;
+   
+    --jsx--css-clean-start-2--site--min-width: 100%;
+
+
+
+    
+    
+
+    
+    
+    
+    
+    
+
+
+    
+    
+    
+
+
+
+    
+    
+    
+
+    
+    
+    
+
+    
+    
+
+    
+    
+    
+
+    
+
+    
+    
+
+    --jsx--css-clean-start-2--all-tags--font-size: 1rem;
+    --jsx--css-clean-start-2--all-tags--line-height: 1.2rem;
+
+    
+    
+    
+
+
+
+    
+    
+    
+    
+    
+
+
+
+    
+    
+
+    
+    
+
+    
+    
+
+    
+    
+
+    
+    
+
+    
+    
+
+
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+
+
+    
+    
+    
+
+    
+    
+
+    
+    
+
+
+
+    
+    
+    
+
+    
+    
+
+    
+    
+
+
+
+    
+    
+
+  }
+
+}
+
+
+
+@media only screen and (min-width: 240px) and (max-width: 99999px) and (min-height: 240px) and (max-height: 320px) and (orientation: landscape) {
+
+  .jsx {
+    --theme_name: CssCleanStart_2__theme_base;
+    --theme_name__CssCleanStart_2: theme_base;
+
+    --responsive_size: responsive_size_e02_mobile_xs_landscape;
+
+    --responsive_size__min-width: 240px;
+    --responsive_size__max-width: 99999px;
+
+    --responsive_size__min-height: 240px;
+    --responsive_size__max-height: 320px;
+
+
+
+    --responsive_size__CssCleanStart_2__theme_base: responsive_size_e02_mobile_xs_landscape__CssCleanStart_2__theme_base;
+
+    --responsive_size__CssCleanStart_2__theme_base__min-width: 240px;
+    --responsive_size__CssCleanStart_2__theme_base__max-width: 99999px;
+
+    --responsive_size__CssCleanStart_2__theme_base__min-height: 240px;
+    --responsive_size__CssCleanStart_2__theme_base__max-height: 320px;
+
+
+
+
+
+    
+    
+    
+
+
+    
+    
+    
+
+
+
+    
+    
+    
+    
+
+    
+    
+    
+
+    
+    
+
+
+
+    
+    
+    
+    
+
+    
+    
+
+    
+    
+    
+
+
+
+    
+    
+
+    
+    
+    
+    
+    
+
+
+    
+    
+    
+
+
+
+    
+    
+    
+
+    
+    
+    
+
+    
+    
+
+    
+    
+    
+
+    
+
+    
+    
+
+    --jsx--css-clean-start-2--all-tags--font-size: 1rem;
+    --jsx--css-clean-start-2--all-tags--line-height: 1.2rem;
+
+    
+    
+    
+
+
+
+    
+    
+    
+    
+    
+
+
+
+    
+    
+
+    
+    
+
+    
+    
+
+    
+    
+
+    
+    
+
+    
+    
+
+
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+
+
+    
+    
+    
+
+    
+    
+
+    
+    
+
+
+
+    
+    
+    
+
+    
+    
+
+    
+    
+
+
+
+    
+    
+
+  }
+
+}
+
+
+
+
+@media only screen and (min-width: 321px) and (max-width: 375px) and (min-height: 321px) and (max-height: 99999px) and (orientation: portrait) {
+
+  .jsx {
+    --theme_name: CssCleanStart_2__theme_base;
+    --theme_name__CssCleanStart_2: theme_base;
+
+    --responsive_size: responsive_size_e04_mobile_s_portrait;
+
+    --responsive_size__min-width: 321px;
+    --responsive_size__max-width: 375px;
+
+    --responsive_size__min-height: 321px;
+    --responsive_size__max-height: 99999px;
+
+
+
+    --responsive_size__CssCleanStart_2__theme_base: responsive_size_e04_mobile_s_portrait__CssCleanStart_2__theme_base;
+
+    --responsive_size__CssCleanStart_2__theme_base__min-width: 321px;
+    --responsive_size__CssCleanStart_2__theme_base__max-width: 375px;
+
+    --responsive_size__CssCleanStart_2__theme_base__min-height: 321px;
+    --responsive_size__CssCleanStart_2__theme_base__max-height: 99999px;
+
+
+
+
+
+    
+    
+    
+
+
+    
+    
+    
+
+
+
+    
+    
+    
+    
+
+    
+    
+    
+
+    
+    
+
+
+
+    
+    
+    
+    
+
+    
+    
+
+    --jsx--css-clean-start-2--site--width: 100%;
+    
+    --jsx--css-clean-start-2--site--min-width: 100%;
+
+
+
+    
+    
+
+    
+    
+    
+    
+    
+
+
+    
+    
+    
+
+
+
+    
+    
+    
+
+    
+    
+    
+
+    
+    
+
+    
+    
+    
+
+    
+
+    
+    
+
+    --jsx--css-clean-start-2--all-tags--font-size: 1rem;
+    --jsx--css-clean-start-2--all-tags--line-height: 1.2rem;
+
+    
+    
+    
+
+
+
+    
+    
+    
+    
+    
+
+
+
+    
+    
+
+    
+    
+
+    
+    
+
+    
+    
+
+    
+    
+
+    
+    
+
+
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+
+
+    
+    
+    
+
+    
+    
+
+    
+    
+
+
+
+    
+    
+    
+
+    
+    
+
+    
+    
+
+
+
+    
+    
+
+  }
+
+}
+
+
+
+@media only screen and (min-width: 321px) and (max-width: 99999px) and (min-height: 321px) and (max-height: 375px) and (orientation: landscape) {
+
+  .jsx {
+    --theme_name: CssCleanStart_2__theme_base;
+    --theme_name__CssCleanStart_2: theme_base;
+
+    --responsive_size: responsive_size_e04_mobile_s_landscape;
+
+    --responsive_size__min-width: 321px;
+    --responsive_size__max-width: 99999px;
+
+    --responsive_size__min-height: 321px;
+    --responsive_size__max-height: 375px;
+
+
+
+    --responsive_size__CssCleanStart_2__theme_base: responsive_size_e04_mobile_s_landscape__CssCleanStart_2__theme_base;
+
+    --responsive_size__CssCleanStart_2__theme_base__min-width: 321px;
+    --responsive_size__CssCleanStart_2__theme_base__max-width: 99999px;
+
+    --responsive_size__CssCleanStart_2__theme_base__min-height: 321px;
+    --responsive_size__CssCleanStart_2__theme_base__max-height: 375px;
+
+
+
+
+
+    
+    
+    
+
+
+    
+    
+    
+
+
+
+    
+    
+    
+    
+
+    
+    
+    
+
+    
+    
+
+
+
+    
+    
+    
+    
+
+    
+    
+
+    
+    
+    
+
+
+
+    
+    
+
+    
+    
+    
+    
+    
+
+
+    
+    
+    
+
+
+
+    
+    
+    
+
+    
+    
+    
+
+    
+    
+
+    
+    
+    
+
+    
+
+    
+    
+
+    --jsx--css-clean-start-2--all-tags--font-size: 1rem;
+    --jsx--css-clean-start-2--all-tags--line-height: 1.2rem;
+
+    
+    
+    
+
+
+
+    
+    
+    
+    
+    
+
+
+
+    
+    
+
+    
+    
+
+    
+    
+
+    
+    
+
+    
+    
+
+    
+    
+
+
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+
+
+    
+    
+    
+
+    
+    
+
+    
+    
+
+
+
+    
+    
+    
+
+    
+    
+
+    
+    
+
+
+
+    
+    
+
+  }
+
+}
+
+
+
+
+@media only screen and (min-width: 376px) and (max-width: 430px) and (min-height: 376px) and (max-height: 99999px) and (orientation: portrait) {
+
+  .jsx {
+    --theme_name: CssCleanStart_2__theme_base;
+    --theme_name__CssCleanStart_2: theme_base;
+
+    --responsive_size: responsive_size_e06_mobile_sm_portrait;
+
+    --responsive_size__min-width: 376px;
+    --responsive_size__max-width: 430px;
+
+    --responsive_size__min-height: 376px;
+    --responsive_size__max-height: 99999px;
+
+
+
+    --responsive_size__CssCleanStart_2__theme_base: responsive_size_e06_mobile_sm_portrait__CssCleanStart_2__theme_base;
+
+    --responsive_size__CssCleanStart_2__theme_base__min-width: 376px;
+    --responsive_size__CssCleanStart_2__theme_base__max-width: 430px;
+
+    --responsive_size__CssCleanStart_2__theme_base__min-height: 376px;
+    --responsive_size__CssCleanStart_2__theme_base__max-height: 99999px;
+
+
+
+
+
+    
+    
+    
+
+
+    
+    
+    
+
+
+
+    
+    
+    
+    
+
+    
+    
+    
+
+    
+    
+
+
+
+    
+    
+    
+    
+
+    
+    
+
+    --jsx--css-clean-start-2--site--width: 100%;
+    
+    --jsx--css-clean-start-2--site--min-width: 100%;
+
+
+
+    
+    
+
+    
+    
+    
+    
+    
+
+
+    
+    
+    
+
+
+
+    
+    
+    
+
+    
+    
+    
+
+    
+    
+
+    
+    
+    
+
+    
+
+    
+    
+
+    --jsx--css-clean-start-2--all-tags--font-size: 1rem;
+    --jsx--css-clean-start-2--all-tags--line-height: 1.2rem;
+
+    
+    
+    
+
+
+
+    
+    
+    
+    
+    
+
+
+
+    
+    
+
+    
+    
+
+    
+    
+
+    
+    
+
+    
+    
+
+    
+    
+
+
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+
+
+    
+    
+    
+
+    
+    
+
+    
+    
+
+
+
+    
+    
+    
+
+    
+    
+
+    
+    
+
+
+
+    
+    
+
+  }
+
+}
+
+
+
+@media only screen and (min-width: 376px) and (max-width: 99999px) and (min-height: 376px) and (max-height: 430px) and (orientation: landscape) {
+
+  .jsx {
+    --theme_name: CssCleanStart_2__theme_base;
+    --theme_name__CssCleanStart_2: theme_base;
+
+    --responsive_size: responsive_size_e06_mobile_sm_landscape;
+
+    --responsive_size__min-width: 376px;
+    --responsive_size__max-width: 99999px;
+
+    --responsive_size__min-height: 376px;
+    --responsive_size__max-height: 430px;
+
+
+
+    --responsive_size__CssCleanStart_2__theme_base: responsive_size_e06_mobile_sm_landscape__CssCleanStart_2__theme_base;
+
+    --responsive_size__CssCleanStart_2__theme_base__min-width: 376px;
+    --responsive_size__CssCleanStart_2__theme_base__max-width: 99999px;
+
+    --responsive_size__CssCleanStart_2__theme_base__min-height: 376px;
+    --responsive_size__CssCleanStart_2__theme_base__max-height: 430px;
+
+
+
+
+
+    
+    
+    
+
+
+    
+    
+    
+
+
+
+    
+    
+    
+    
+
+    
+    
+    
+
+    
+    
+
+
+
+    
+    
+    
+    
+
+    
+    
+
+    
+    
+    
+
+
+
+    
+    
+
+    
+    
+    
+    
+    
+
+
+    
+    
+    
+
+
+
+    
+    
+    
+
+    
+    
+    
+
+    
+    
+
+    
+    
+    
+
+    
+
+    
+    
+
+    --jsx--css-clean-start-2--all-tags--font-size: 1rem;
+    --jsx--css-clean-start-2--all-tags--line-height: 1.2rem;
+
+    
+    
+    
+
+
+
+    
+    
+    
+    
+    
+
+
+
+    
+    
+
+    
+    
+
+    
+    
+
+    
+    
+
+    
+    
+
+    
+    
+
+
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+
+
+    
+    
+    
+
+    
+    
+
+    
+    
+
+
+
+    
+    
+    
+
+    
+    
+
+    
+    
+
+
+
+    
+    
+
+  }
+
+}
+
+
+
+
+@media only screen and (min-width: 431px) and (max-width: 480px) and (min-height: 431px) and (max-height: 99999px) and (orientation: portrait) {
+
+  .jsx {
+    --theme_name: CssCleanStart_2__theme_base;
+    --theme_name__CssCleanStart_2: theme_base;
+
+    --responsive_size: responsive_size_e08_mobile_md_portrait;
+
+    --responsive_size__min-width: 431px;
+    --responsive_size__max-width: 480px;
+
+    --responsive_size__min-height: 431px;
+    --responsive_size__max-height: 99999px;
+
+
+
+    --responsive_size__CssCleanStart_2__theme_base: responsive_size_e08_mobile_md_portrait__CssCleanStart_2__theme_base;
+
+    --responsive_size__CssCleanStart_2__theme_base__min-width: 431px;
+    --responsive_size__CssCleanStart_2__theme_base__max-width: 480px;
+
+    --responsive_size__CssCleanStart_2__theme_base__min-height: 431px;
+    --responsive_size__CssCleanStart_2__theme_base__max-height: 99999px;
+
+
+
+
+
+    
+    
+    
+
+
+    
+    
+    
+
+
+
+    
+    
+    
+    
+
+    
+    
+    
+
+    
+    
+
+
+
+    
+    
+    
+    
+
+    
+    
+
+    --jsx--css-clean-start-2--site--width: 100%;
+    
+    --jsx--css-clean-start-2--site--min-width: 100%;
+
+
+
+    
+    
+
+    
+    
+    
+    
+    
+
+
+    
+    
+    
+
+
+
+    
+    
+    
+
+    
+    
+    
+
+    
+    
+
+    
+    
+    
+
+    
+
+    
+    
+
+    --jsx--css-clean-start-2--all-tags--font-size: 1rem;
+    --jsx--css-clean-start-2--all-tags--line-height: 1.2rem;
+
+    
+    
+    
+
+
+
+    
+    
+    
+    
+    
+
+
+
+    
+    
+
+    
+    
+
+    
+    
+
+    
+    
+
+    
+    
+
+    
+    
+
+
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+
+
+    
+    
+    
+
+    
+    
+
+    
+    
+
+
+
+    
+    
+    
+
+    
+    
+
+    
+    
+
+
+
+    
+    
+
+  }
+
+}
+
+
+
+@media only screen and (min-width: 431px) and (max-width: 99999px) and (min-height: 431px) and (max-height: 480px) and (orientation: landscape) {
+
+  .jsx {
+    --theme_name: CssCleanStart_2__theme_base;
+    --theme_name__CssCleanStart_2: theme_base;
+
+    --responsive_size: responsive_size_e08_mobile_md_landscape;
+
+    --responsive_size__min-width: 431px;
+    --responsive_size__max-width: 99999px;
+
+    --responsive_size__min-height: 431px;
+    --responsive_size__max-height: 480px;
+
+
+
+    --responsive_size__CssCleanStart_2__theme_base: responsive_size_e08_mobile_md_landscape__CssCleanStart_2__theme_base;
+
+    --responsive_size__CssCleanStart_2__theme_base__min-width: 431px;
+    --responsive_size__CssCleanStart_2__theme_base__max-width: 99999px;
+
+    --responsive_size__CssCleanStart_2__theme_base__min-height: 431px;
+    --responsive_size__CssCleanStart_2__theme_base__max-height: 480px;
+
+
+
+
+
+    
+    
+    
+
+
+    
+    
+    
+
+
+
+    
+    
+    
+    
+
+    
+    
+    
+
+    
+    
+
+
+
+    
+    
+    
+    
+
+    
+    
+
+    
+    
+    
+
+
+
+    
+    
+
+    
+    
+    
+    
+    
+
+
+    
+    
+    
+
+
+
+    
+    
+    
+
+    
+    
+    
+
+    
+    
+
+    
+    
+    
+
+    
+
+    
+    
+
+    --jsx--css-clean-start-2--all-tags--font-size: 1rem;
+    --jsx--css-clean-start-2--all-tags--line-height: 1.2rem;
+
+    
+    
+    
+
+
+
+    
+    
+    
+    
+    
+
+
+
+    
+    
+
+    
+    
+
+    
+    
+
+    
+    
+
+    
+    
+
+    
+    
+
+
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+
+
+    
+    
+    
+
+    
+    
+
+    
+    
+
+
+
+    
+    
+    
+
+    
+    
+
+    
+    
+
+
+
+    
+    
+
+  }
+
+}
+
+
+
+
+@media only screen and (min-width: 481px) and (max-width: 767px) and (min-height: 481px) and (max-height: 99999px) and (orientation: portrait) {
+
+  .jsx {
+    --theme_name: CssCleanStart_2__theme_base;
+    --theme_name__CssCleanStart_2: theme_base;
+
+    --responsive_size: responsive_size_h03_tablet_s_portrait;
+
+    --responsive_size__min-width: 481px;
+    --responsive_size__max-width: 767px;
+
+    --responsive_size__min-height: 481px;
+    --responsive_size__max-height: 99999px;
+
+
+
+    --responsive_size__CssCleanStart_2__theme_base: responsive_size_h03_tablet_s_portrait__CssCleanStart_2__theme_base;
+
+    --responsive_size__CssCleanStart_2__theme_base__min-width: 481px;
+    --responsive_size__CssCleanStart_2__theme_base__max-width: 767px;
+
+    --responsive_size__CssCleanStart_2__theme_base__min-height: 481px;
+    --responsive_size__CssCleanStart_2__theme_base__max-height: 99999px;
+
+
+
+
+
+    
+    
+    
+
+
+    
+    
+    
+
+
+
+    
+    
+    
+    
+
+    
+    
+    
+
+    
+    
+
+
+
+    
+    
+    
+    
+
+    
+    
+
+    --jsx--css-clean-start-2--site--width: 100%;
+   
+    --jsx--css-clean-start-2--site--min-width: 100%;
+
+
+
+    
+    
+
+    
+    
+    
+    
+    
+
+
+    
+    
+    
+
+
+
+    
+    
+    
+
+    
+    
+    
+
+    
+    
+
+    
+    
+    
+
+    
+
+    
+    
+
+    --jsx--css-clean-start-2--all-tags--font-size: 1rem;
+    --jsx--css-clean-start-2--all-tags--line-height: 1.2rem;
+
+    
+    
+    
+
+
+
+    
+    
+    
+    
+    
+
+
+
+    
+    
+
+    
+    
+
+    
+    
+
+    
+    
+
+    
+    
+
+    
+    
+
+
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+
+
+    
+    
+    
+
+    
+    
+
+    
+    
+
+
+
+    
+    
+    
+
+    
+    
+
+    
+    
+
+
+
+    
+    
+
+  }
+
+}
+
+
+
+
+
+
+
+@media only screen and (min-width: 768px) and (max-width: 1024px) and (min-height: 768px) and (max-height: 1024px) and (orientation: portrait) {
+
+  .jsx {
+    --theme_name: CssCleanStart_2__theme_base;
+    --theme_name__CssCleanStart_2: theme_base;
+
+    --responsive_size: responsive_size_h05_tablet_sm_portrait;
+
+    --responsive_size__min-width: 768px;
+    --responsive_size__max-width: 1024px;
+
+    --responsive_size__min-height: 768px;
+    --responsive_size__max-height: 1024px;
+
+
+
+    --responsive_size__CssCleanStart_2__theme_base: responsive_size_h05_tablet_sm_portrait__CssCleanStart_2__theme_base;
+
+    --responsive_size__CssCleanStart_2__theme_base__min-width: 768px;
+    --responsive_size__CssCleanStart_2__theme_base__max-width: 1024px;
+
+    --responsive_size__CssCleanStart_2__theme_base__min-height: 768px;
+    --responsive_size__CssCleanStart_2__theme_base__max-height: 1024px;
+
+
+
+
+
+    
+    
+    
+
+
+    
+    
+    
+
+
+
+    
+    
+    
+    
+
+    
+    
+    
+
+    
+    
+
+
+
+    
+    
+    
+    
+
+    
+    
+
+    --jsx--css-clean-start-2--site--width: 100%;
+    
+    --jsx--css-clean-start-2--site--min-width: 100%;
+
+
+
+    
+    
+
+    
+    
+    
+    
+    
+
+
+    
+    
+    
+
+
+
+    
+    
+    
+
+    
+    
+    
+
+    
+    
+
+    
+    
+    
+
+    
+
+    
+    
+
+    --jsx--css-clean-start-2--all-tags--font-size: 1rem;
+    --jsx--css-clean-start-2--all-tags--line-height: 1.2rem;
+
+    
+    
+    
+
+
+
+    
+    
+    
+    
+    
+
+
+
+    
+    
+
+    
+    
+
+    
+    
+
+    
+    
+
+    
+    
+
+    
+    
+
+
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+
+
+    
+    
+    
+
+    
+    
+
+    
+    
+
+
+
+    
+    
+    
+
+    
+    
+
+    
+    
+
+
+
+    
+    
+
+  }
+
+}
+
+
+
+
+
+
+
+@media only screen and (min-width: 768px) and (max-width: 1024px) and (min-height: 1025px) and (max-height: 1194px) and (orientation: portrait) {
+
+  .jsx {
+    --theme_name: CssCleanStart_2__theme_base;
+    --theme_name__CssCleanStart_2: theme_base;
+
+    --responsive_size: responsive_size_h07_tablet_md_portrait;
+
+    --responsive_size__min-width: 768px;
+    --responsive_size__max-width: 1024px;
+
+    --responsive_size__min-height: 1025px;
+    --responsive_size__max-height: 1194px;
+
+
+
+    --responsive_size__CssCleanStart_2__theme_base: responsive_size_h07_tablet_md_portrait__CssCleanStart_2__theme_base;
+
+    --responsive_size__CssCleanStart_2__theme_base__min-width: 768px;
+    --responsive_size__CssCleanStart_2__theme_base__max-width: 1024px;
+
+    --responsive_size__CssCleanStart_2__theme_base__min-height: 1025px;
+    --responsive_size__CssCleanStart_2__theme_base__max-height: 1194px;
+
+
+
+
+
+    
+    
+    
+
+
+    
+    
+    
+
+
+
+    
+    
+    
+    
+
+    
+    
+    
+
+    
+    
+
+
+
+    
+    
+    
+    
+
+    
+    
+
+    --jsx--css-clean-start-2--site--width: 100%;
+    
+    --jsx--css-clean-start-2--site--min-width: 100%;
+
+
+
+    
+    
+
+    
+    
+    
+    
+    
+
+
+    
+    
+    
+
+
+
+    
+    
+    
+
+    
+    
+    
+
+    
+    
+
+    
+    
+    
+
+    
+
+    
+    
+
+    --jsx--css-clean-start-2--all-tags--font-size: 1rem;
+    --jsx--css-clean-start-2--all-tags--line-height: 1.2rem;
+
+    
+    
+    
+
+
+
+    
+    
+    
+    
+    
+
+
+
+    
+    
+
+    
+    
+
+    
+    
+
+    
+    
+
+    
+    
+
+    
+    
+
+
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+
+
+    
+    
+    
+
+    
+    
+
+    
+    
+
+
+
+    
+    
+    
+
+    
+    
+
+    
+    
+
+
+
+    
+    
+
+  }
+
+}
+
+
+
+
+
+
+
+@media only screen and (min-width: 768px) and (max-width: 1024px) and (min-height: 1195px) and (max-height: 99999px) and (orientation: portrait) {
+
+  .jsx {
+    --theme_name: CssCleanStart_2__theme_base;
+    --theme_name__CssCleanStart_2: theme_base;
+
+    --responsive_size: responsive_size_h09_tablet_lg_portrait;
+
+    --responsive_size__min-width: 768px;
+    --responsive_size__max-width: 1024px;
+
+    --responsive_size__min-height: 1195px;
+    --responsive_size__max-height: 99999px;
+
+
+
+    --responsive_size__CssCleanStart_2__theme_base: responsive_size_h09_tablet_lg_portrait__CssCleanStart_2__theme_base;
+
+    --responsive_size__CssCleanStart_2__theme_base__min-width: 768px;
+    --responsive_size__CssCleanStart_2__theme_base__max-width: 1024px;
+
+    --responsive_size__CssCleanStart_2__theme_base__min-height: 1195px;
+    --responsive_size__CssCleanStart_2__theme_base__max-height: 99999px;
+
+
+
+
+
+    
+    
+    
+
+
+    
+    
+    
+
+
+
+    
+    
+    
+    
+
+    
+    
+    
+
+    
+    
+
+
+
+    
+    
+    
+    
+
+    
+    
+
+    --jsx--css-clean-start-2--site--width: 100%;
+    
+    --jsx--css-clean-start-2--site--min-width: 100%;
+
+
+
+    
+    
+
+    
+    
+    
+    
+    
+
+
+    
+    
+    
+
+
+
+    
+    
+    
+
+    
+    
+    
+
+    
+    
+
+    
+    
+    
+
+    
+
+    
+    
+
+    --jsx--css-clean-start-2--all-tags--font-size:   1rem;
+    --jsx--css-clean-start-2--all-tags--line-height: 1.2rem;
+
+    
+    
+    
+
+
+
+    
+    
+    
+    
+    
+
+
+
+    
+    
+
+    
+    
+
+    
+    
+
+    
+    
+
+    
+    
+
+    
+    
+
+
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+
+
+    
+    
+    
+
+    
+    
+
+    
+    
+
+
+
+    
+    
+    
+
+    
+    
+
+    
+    
+
+
+
+    
+    
+
+  }
+
+}
+
+
+
+
+
+
+
+@media only screen and (min-width: 1025px) and (max-width: 1365px) and (min-height: 1025px) and (max-height: 1365px) and (orientation: portrait) {
+
+  .jsx {
+    --theme_name: CssCleanStart_2__theme_base;
+    --theme_name__CssCleanStart_2: theme_base;
+
+    --responsive_size: responsive_size_l02_laptop_sm_portrait;
+
+    --responsive_size__min-width: 1025px;
+    --responsive_size__max-width: 1365px;
+
+    --responsive_size__min-height: 1195px;
+    --responsive_size__max-height: 1365px;
+
+
+
+    --responsive_size__CssCleanStart_2__theme_base: responsive_size_l02_laptop_sm_portrait__CssCleanStart_2__theme_base;
+
+    --responsive_size__CssCleanStart_2__theme_base__min-width: 1025px;
+    --responsive_size__CssCleanStart_2__theme_base__max-width: 1365px;
+
+    --responsive_size__CssCleanStart_2__theme_base__min-height: 1195px;
+    --responsive_size__CssCleanStart_2__theme_base__max-height: 1365px;
+
+
+
+
+
+    
+    
+    
+
+
+    
+    
+    
+
+
+
+    
+    
+    
+    
+
+    
+    
+    
+
+    
+    
+
+
+
+    
+    
+    
+    
+
+    
+    
+
+    --jsx--css-clean-start-2--site--width: 100%;
+    
+    --jsx--css-clean-start-2--site--min-width: 100%;
+
+
+
+    
+    
+
+    
+    
+    
+    
+    
+
+
+    
+    
+    
+
+
+
+    
+    
+    
+
+    
+    
+    
+
+    
+    
+
+    
+    
+    
+
+    
+
+    
+    
+
+    
+    
+
+    
+    
+    
+
+
+
+    
+    
+    
+    
+    
+
+
+
+    
+    
+
+    
+    
+
+    
+    
+
+    
+    
+
+    
+    
+
+    
+    
+
+
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+
+
+    
+    
+    
+
+    
+    
+
+    
+    
+
+
+
+    
+    
+    
+
+    
+    
+
+    
+    
+
+
+
+    
+    
+
+  }
+
+}
+
+
+
+
+
+
+
+@media only screen and (min-width: 1025px) and (max-width: 1440px) and (min-height: 1366px) and (max-height: 1440px) and (orientation: portrait) {
+
+  .jsx {
+    --theme_name: CssCleanStart_2__theme_base;
+    --theme_name__CssCleanStart_2: theme_base;
+
+    --responsive_size: responsive_size_l03_laptop_md_portrait;
+
+    --responsive_size__min-width: 1025px;
+    --responsive_size__max-width: 1440px;
+
+    --responsive_size__min-height: 1366px;
+    --responsive_size__max-height: 1440px;
+
+
+
+    --responsive_size__CssCleanStart_2__theme_base: responsive_size_l03_laptop_md_portrait__CssCleanStart_2__theme_base;
+
+    --responsive_size__CssCleanStart_2__theme_base__min-width: 1025px;
+    --responsive_size__CssCleanStart_2__theme_base__max-width: 1440px;
+
+    --responsive_size__CssCleanStart_2__theme_base__min-height: 1366px;
+    --responsive_size__CssCleanStart_2__theme_base__max-height: 1440px;
+
+
+
+
+
+    
+    
+    
+
+
+    
+    
+    
+
+
+
+    
+    
+    
+    
+
+    
+    
+    
+
+    
+    
+
+
+
+    
+    
+    
+    
+
+    
+    
+
+    --jsx--css-clean-start-2--site--width: 100%;
+    
+    --jsx--css-clean-start-2--site--min-width: 100%;
+
+
+
+    
+    
+
+    
+    
+    
+    
+    
+
+
+    
+    
+    
+
+
+
+    
+    
+    
+
+    
+    
+    
+
+    
+    
+
+    
+    
+    
+
+    
+
+    
+    
+
+    
+    
+
+    
+    
+    
+
+
+
+    
+    
+    
+    
+    
+
+
+
+    
+    
+
+    
+    
+
+    
+    
+
+    
+    
+
+    
+    
+
+    
+    
+
+
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+
+
+    
+    
+    
+
+    
+    
+
+    
+    
+
+
+
+    
+    
+    
+
+    
+    
+
+    
+    
+
+
+
+    
+    
+
+  }
+
+}
+
+
+
+
+
+
+
+@media only screen and (min-width: 1025px) and (max-width: 1600px) and (min-height: 1441px) and (max-height: 1600px) and (orientation: portrait) {
+
+  .jsx {
+    --theme_name: CssCleanStart_2__theme_base;
+    --theme_name__CssCleanStart_2: theme_base;
+
+    --responsive_size: responsive_size_l07_laptop_lg_portrait;
+
+    --responsive_size__min-width: 1025px;
+    --responsive_size__max-width: 1600px;
+
+    --responsive_size__min-height: 1441px;
+    --responsive_size__max-height: 1600px;
+
+
+
+    --responsive_size__CssCleanStart_2__theme_base: responsive_size_l07_laptop_lg_portrait__CssCleanStart_2__theme_base;
+
+    --responsive_size__CssCleanStart_2__theme_base__min-width: 1025px;
+    --responsive_size__CssCleanStart_2__theme_base__max-width: 1600px;
+
+    --responsive_size__CssCleanStart_2__theme_base__min-height: 1441px;
+    --responsive_size__CssCleanStart_2__theme_base__max-height: 1600px;
+
+
+
+
+
+    
+    
+    
+
+
+    
+    
+    
+
+
+
+    
+    
+    
+    
+
+    
+    
+    
+
+    
+    
+
+
+
+    
+    
+    
+    
+
+    
+    
+
+    --jsx--css-clean-start-2--site--width: 100%;
+    
+    --jsx--css-clean-start-2--site--min-width: 100%;
+
+
+
+    
+    
+
+    
+    
+    
+    
+    
+
+
+    
+    
+    
+
+
+
+    
+    
+    
+
+    
+    
+    
+
+    
+    
+
+    
+    
+    
+
+    
+
+    
+    
+
+    
+    
+
+    
+    
+    
+
+
+
+    
+    
+    
+    
+    
+
+
+
+    
+    
+
+    
+    
+
+    
+    
+
+    
+    
+
+    
+    
+
+    
+    
+
+
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+
+
+    
+    
+    
+
+    
+    
+
+    
+    
+
+
+
+    
+    
+    
+
+    
+    
+
+    
+    
+
+
+
+    
+    
+
+  }
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@media only screen and (min-width: 25361px) and (max-width: 999999px) and (min-height: 1025px) and (max-height: 999999px) and (orientation: landscape) {
+
+  .jsx {
+    --theme_name: CssCleanStart_2__theme_base;
+    --theme_name__CssCleanStart_2: theme_base;
+
+    --responsive_size: responsive_size_t99_tv_xxxl_landscape;
+
+    --responsive_size__min-width: 25361px;
+    --responsive_size__max-width: 999999px;
+
+    --responsive_size__min-height: 1025px;
+    --responsive_size__max-height: 999999px;
+
+
+
+    --responsive_size__CssCleanStart_2__theme_base: responsive_size_t99_tv_xxxl_landscape__CssCleanStart_2__theme_base;
+
+    --responsive_size__CssCleanStart_2__theme_base__min-width: 25361px;
+    --responsive_size__CssCleanStart_2__theme_base__max-width: 999999px;
+
+    --responsive_size__CssCleanStart_2__theme_base__min-height: 1025px;
+    --responsive_size__CssCleanStart_2__theme_base__max-height: 999999px;
+
+
+
+
+
+    
+    
+    
+
+
+    
+    
+    
+
+
+
+    
+    
+    
+    
+
+    
+    
+    
+
+    
+    
+
+
+
+    
+    
+    
+    
+
+    
+    
+
+    
+    
+    
+
+
+
+    
+    
+
+    
+    
+    
+    
+    
+
+
+    
+    
+    
+
+
+
+    
+    
+    
+
+    
+    
+    
+
+    
+    
+
+    
+    
+    
+
+    
+
+    
+    
+
+    
+    
+
+    
+    
+    
+
+
+
+    
+    
+    
+    
+    
+
+
+
+    
+    
+
+    
+    
+
+    
+    
+
+    
+    
+
+    
+    
+
+    
+    
+
+
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+
+
+    
+    
+    
+
+    
+    
+
+    
+    
+
+
+
+    
+    
+    
+
+    
+    
+
+    
+    
+
+
+
+    
+    
+
+  }
+
+}
 
 
 
@@ -271,7 +4087,7 @@
 
 
 .jsx.browser-width {
-
+  
   --jsx--css-clean-start-2--body-tag--width: 100%;
   --jsx--css-clean-start-2--body-tag--max-width: 100%;
   --jsx--css-clean-start-2--body-tag--min-width: 100%;
@@ -291,7 +4107,7 @@
 
 
 
-.jsx {
+.jsx * {
 
   position:     var(--jsx--css-clean-start-2--all-tags--position);
   display:      var(--jsx--css-clean-start-2--custom-tags--display);
@@ -301,14 +4117,18 @@
   word-wrap:    normal;
   word-break:   normal;
 
+  width:        fit-content;
+  max-width:    100%;
+  min-width:    unset;
+
   color:        var(--jsx--css-clean-start-2--all-tags--color);
 
   border-width: var(--jsx--css-clean-start-2--all-tags--border-width);
   border-style: var(--jsx--css-clean-start-2--all-tags--border-style);
   border-color: var(--jsx--css-clean-start-2--all-tags--border-color);
 
-  margin:       var(--jsx--css-clean-start-2--all-tags--margin);
   padding:      var(--jsx--css-clean-start-2--all-tags--padding);
+  margin:       var(--jsx--css-clean-start-2--all-tags--margin);
 
   font-family:  var(--jsx--css-clean-start-2--all-tags--font-family);
   line-height:  var(--jsx--css-clean-start-2--all-tags--line-height);
@@ -354,10 +4174,17 @@ html.jsx script {
 
 
 
-.jsx body {
+html.jsx body {
+  position: relative;
+  top:          0;
+  padding: 0 0 0 0;
+  margin:  0 0 0 0;
+  display:      var(--jsx--css-clean-start-2--block-tags--display);
+  box-sizing:   var(--jsx--css-clean-start-2--all-tags--box-sizing);
+
   background: var(--jsx--css-clean-start-2--body-tag--background);
 
-
+  
   height:     var(--jsx--css-clean-start-2--body-tag--height);
   max-height: var(--jsx--css-clean-start-2--body-tag--max-height);
   min-height: var(--jsx--css-clean-start-2--body-tag--min-height);
@@ -366,21 +4193,22 @@ html.jsx script {
   max-width:  var(--jsx--css-clean-start-2--body-tag--max-width);
   min-width:  var(--jsx--css-clean-start-2--body-tag--min-width);
 
-  overflow-y: visible;
-  overflow-x: var(--jsx--css-clean-start-2--body-tag--overflow-x);
+  overflow:   var(--jsx--css-clean-start-2--body-tag--overflow-x) var(--jsx--css-clean-start-2--body-tag--overflow-y);
+
 
   font-size:  var(--jsx--css-clean-start-2--all-tags--font-size);
 }
 
 
 
-.jsx main {
-  margin:     var(--jsx--css-clean-start-2--site--margin);
-  padding:    var(--jsx--css-clean-start-2--site--padding);
+html.jsx body main {
+  
+  margin:       var(--jsx--css-clean-start-2--site--margin);
+  padding:      var(--jsx--css-clean-start-2--site--padding);
 
-  background: var(--jsx--css-clean-start-2--site--background);
+  background:   var(--jsx--css-clean-start-2--site--background);
 
-
+  
   height:     var(--jsx--css-clean-start-2--site--height);
   max-height: var(--jsx--css-clean-start-2--site--max-height);
   min-height: var(--jsx--css-clean-start-2--site--min-height);
@@ -396,85 +4224,117 @@ html.jsx script {
 
 
 
-.jsx body h1,
-.jsx body h2,
-.jsx body h3,
-.jsx body h4,
-.jsx body h5,
-.jsx body h6 {
+.jsx h1,
+.jsx h2,
+.jsx h3,
+.jsx h4,
+.jsx h5,
+.jsx h6 {
   font-weight: var(--jsx--css-clean-start-2--h--font-weight);
   color:       var(--jsx--css-clean-start-2--h--color);
   margin:      var(--jsx--css-clean-start-2--h--margin);
   padding:     var(--jsx--css-clean-start-2--h--padding);
 }
 
-.jsx body h1 {
+.jsx h1 {
   font-size:   var(--jsx--css-clean-start-2--h1--font-size);
   line-height: var(--jsx--css-clean-start-2--h1--line-height);
+
+  font-weight: var(--jsx--css-clean-start-2--h1--font-weight);
+  color:       var(--jsx--css-clean-start-2--h1--color);
+  margin:      var(--jsx--css-clean-start-2--h1--margin);
+  padding:     var(--jsx--css-clean-start-2--h1--padding);
 }
-.jsx body h2 {
+
+.jsx h2 {
   font-size:   var(--jsx--css-clean-start-2--h2--font-size);
   line-height: var(--jsx--css-clean-start-2--h2--line-height);
+
+  font-weight: var(--jsx--css-clean-start-2--h2--font-weight);
+  color:       var(--jsx--css-clean-start-2--h2--color);
+  margin:      var(--jsx--css-clean-start-2--h2--margin);
+  padding:     var(--jsx--css-clean-start-2--h2--padding);
 }
-.jsx body h3 {
+
+.jsx h3 {
   font-size:   var(--jsx--css-clean-start-2--h3--font-size);
   line-height: var(--jsx--css-clean-start-2--h3--line-height);
+
+  font-weight: var(--jsx--css-clean-start-2--h3--font-weight);
+  color:       var(--jsx--css-clean-start-2--h3--color);
+  margin:      var(--jsx--css-clean-start-2--h3--margin);
+  padding:     var(--jsx--css-clean-start-2--h3--padding);
 }
-.jsx body h4 {
+
+.jsx h4 {
   font-size:   var(--jsx--css-clean-start-2--h4--font-size);
   line-height: var(--jsx--css-clean-start-2--h4--line-height);
+
+  font-weight: var(--jsx--css-clean-start-2--h4--font-weight);
+  color:       var(--jsx--css-clean-start-2--h4--color);
+  margin:      var(--jsx--css-clean-start-2--h4--margin);
+  padding:     var(--jsx--css-clean-start-2--h4--padding);
 }
-.jsx body h5 {
+
+.jsx h5 {
   font-size:   var(--jsx--css-clean-start-2--h5--font-size);
   line-height: var(--jsx--css-clean-start-2--h5--line-height);
+
+  font-weight: var(--jsx--css-clean-start-2--h5--font-weight);
+  color:       var(--jsx--css-clean-start-2--h5--color);
+  margin:      var(--jsx--css-clean-start-2--h5--margin);
+  padding:     var(--jsx--css-clean-start-2--h5--padding);
 }
-.jsx body h6 {
+
+.jsx h6 {
   font-size:   var(--jsx--css-clean-start-2--h6--font-size);
   line-height: var(--jsx--css-clean-start-2--h6--line-height);
+
+  font-weight: var(--jsx--css-clean-start-2--h6--font-weight);
+  color:       var(--jsx--css-clean-start-2--h6--color);
+  margin:      var(--jsx--css-clean-start-2--h6--margin);
+  padding:     var(--jsx--css-clean-start-2--h6--padding);
 }
 
 
 
 
-.jsx body p {
+.jsx p {
   margin:      var(--jsx--css-clean-start-2--p--margin);
-  font-size:   var(--jsx--css-clean-start-2--all-tags--font-size);
 }
 
 
 
 
-.jsx body a {
+.jsx a {
   color:           var(--jsx--css-clean-start-2--anchor--color);
   text-decoration: var(--jsx--css-clean-start-2--anchor--text-decoration);
-  font-size:       var(--jsx--css-clean-start-2--all-tags--font-size);
 }
-.jsx body a:hover {
+.jsx a:hover {
   color:           var(--jsx--css-clean-start-2--anchor-hover--color);
   text-decoration: var(--jsx--css-clean-start-2--anchor-hover--text-decoration);
 }
-.jsx body a:visited {
+.jsx a:visited {
   color:           var(--jsx--css-clean-start-2--anchor-visited--color);
   text-decoration: var(--jsx--css-clean-start-2--anchor-visited--text-decoration);
 }
-.jsx body a:visited:hover {
+.jsx a:visited:hover {
   color:           var(--jsx--css-clean-start-2--anchor-visited-hover--color);
   text-decoration: var(--jsx--css-clean-start-2--anchor-visited-hover--text-decoration);
 }
-.jsx body a:active {
+.jsx a:active {
   color:           var(--jsx--css-clean-start-2--anchor-active--color);
   text-decoration: var(--jsx--css-clean-start-2--anchor-active--text-decoration);
 }
-.jsx body a:active:hover {
+.jsx a:active:hover {
   color:           var(--jsx--css-clean-start-2--anchor-active-hover--color);
   text-decoration: var(--jsx--css-clean-start-2--anchor-active-hover--text-decoration);
 }
 
 
 
-.jsx body pre {
+.jsx pre {
   font-family: var(--jsx--css-clean-start-2--pre--font-family, "Courier New", Courier, monospace);
-  font-size:   var(--jsx--css-clean-start-2--all-tags--font-size);
 }
 
 
@@ -484,7 +4344,7 @@ html.jsx script {
 .jsx article,
 .jsx aside,
 .jsx blockquote,
-.jsx body,
+
 .jsx canvas,
 .jsx dd,
 .jsx div,
@@ -504,18 +4364,17 @@ html.jsx script {
 .jsx header,
 .jsx hr,
 
-.jsx main,
+
 .jsx nav,
 .jsx noscript,
-
+.jsx ol,
 .jsx output,
 .jsx p,
 .jsx pre,
 .jsx section,
-
+.jsx ul,
 .jsx video {
   display:   var(--jsx--css-clean-start-2--block-tags--display, block);
-  font-size: var(--jsx--css-clean-start-2--all-tags--font-size);
 }
 
 
@@ -547,7 +4406,6 @@ html.jsx script {
 .jsx u,
 .jsx var {
   display:   var(--jsx--css-clean-start-2--inline-tags--display, inline-block);
-  font-size: var(--jsx--css-clean-start-2--all-tags--font-size);
 }
 
 
@@ -558,7 +4416,8 @@ html.jsx script {
 
 .jsx table caption {
   display: 	table-caption;
-  font-size: var(--jsx--css-clean-start-2--all-tags--font-size);
+  width: 100%;
+  text-align: center;
 }
 
 .jsx colgroup {
@@ -588,38 +4447,61 @@ html.jsx script {
 .jsx th,
 .jsx td {
   display: table-cell;
-  font-size: var(--jsx--css-clean-start-2--all-tags--font-size);
+  text-align: left;
+}
+
+.jsx thead th,
+.jsx thead td,
+.jsx tbody th,
+.jsx tfoot td {
+  font-weight: 600;
+}
+
+.jsx thead tr,
+.jsx thead th {
+  background-color: var(--jsx--css-clean-start-2--thead--background-color);
+}
+
+.jsx tfoot tr,
+.jsx tfoot th {
+  background-color: var(--jsx--css-clean-start-2--tfoot--background-color);
+}
+
+
+
+.jsx ul {
+  list-style: disc inside;
+}
+
+.jsx ol {
+  list-style: decimal inside;
+}
+
+
+
+.jsx ul li,
+.jsx ol li {
+  display:         list-item;
 }
 
 
 
 
 .jsx.ul-reset ul,
-.jsx.ul-reset ol,
-.jsx.ul-reset li,
+.jsx.ul-reset ol
 .jsx .ul-reset ul,
-.jsx .ul-reset ol,
-.jsx .ul-reset li,
+.jsx .ul-reset ol
 .jsx ul.ul-reset,
-.jsx ol.ul-reset,
-.jsx ul.ul-reset li,
-.jsx ol.ul-reset li {
-
-  font-size:    var(--jsx--css-clean-start-2--all-tags--font-size);
+.jsx ol.ul-reset {
 
   list-style-type: none;
+  display:         var(--jsx--css-clean-start-2--block-tags--display, block);
 
-  position:     var(--jsx--css-clean-start-2--all-tags--position);
-  display:      var(--jsx--css-clean-start-2--inline-tags--display, inline-block);
-  box-sizing:   var(--jsx--css-clean-start-2--all-tags--box-sizing);
+}
 
-  margin:       var(--jsx--css-clean-start-2--all-tags--margin);
-  padding:      var(--jsx--css-clean-start-2--all-tags--padding);
-
-  border-width: var(--jsx--css-clean-start-2--all-tags--border-width);
-  border-style: var(--jsx--css-clean-start-2--all-tags--border-style);
-  border-color: var(--jsx--css-clean-start-2--all-tags--border-color);
-
+.jsx.ul-reset li,
+.jsx .ul-reset li {
+  display:         var(--jsx--css-clean-start-2--inline-tags--display, inline-block);
 }
 
 

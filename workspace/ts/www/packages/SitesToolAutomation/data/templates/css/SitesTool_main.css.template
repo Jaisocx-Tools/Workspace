@@ -1,14 +1,14 @@
 /* Main .css file for the sites tool: {{ SitesToolName }} */
-.workspace .{{ SitesToolName }} {
+.jsx .{{ SitesToolName }} {
   background-color: var(--{{ SitesToolName }}--main--background-color);
   color: var(--{{ SitesToolName }}--main--color);
 }
 
-.workspace .{{ SitesToolName }} .class1 {
+.jsx .{{ SitesToolName }} .class1 {
   font-size: var(--{{ SitesToolName }}--toolHtmlElement--font-size);
 }
 
-.workspace .{{ SitesToolName }} .class2 {
+.jsx .{{ SitesToolName }} .class2 {
 
 }
 

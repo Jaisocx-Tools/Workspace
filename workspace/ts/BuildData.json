@@ -243,7 +243,7 @@
     {
       "path": "packages/SitesToolAutomation",
       "name": "sites-tool-automation",
-      "update-published": "Mon Jun 16 08:07:24 CEST 2025",
+      "update-published": "Mon Jul 21 02:23:49 CEST 2025",
       "build": false,
       "build-simple-enable": false,
       "dependencies": [
@@ -270,8 +270,8 @@
       "build-simple-enable": false,
       "css-importer": {
         "build": true,
-        "cssFilePath": "MediaAndStyles/CssCleanStart_2_main_Webpack.css",
-        "cssTargetFilePath": "MediaAndStyles/CssCleanStart_2_main_resolved.css"
+        "cssFilePath": "MediaAndStyles/CssCleanStart_2_main_Webpack_min.css",
+        "cssTargetFilePath": "MediaAndStyles/CssCleanStart_2_main_resolved_min.css"
       },
       "dependencies": [],
       "build-files": []
@@ -595,7 +595,7 @@
       "path": "packages/ResponsiveSizes",
       "name": "responsive-sizes",
       "update-published": "Mon Jun 16 02:02:01 GMT 2025",
-      "build": true,
+      "build": false,
       "build-simple-enable": true,
       "dependencies": [],
       "build-files": [

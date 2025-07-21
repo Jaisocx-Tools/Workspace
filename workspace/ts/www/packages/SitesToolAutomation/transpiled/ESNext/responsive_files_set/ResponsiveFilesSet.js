@@ -53,7 +53,9 @@ export class ResponsiveFilesSet {
             "responsiveSizeName": "",
             "orientation": "",
             "min-width": "",
-            "max-width": ""
+            "max-width": "",
+            "min-height": "",
+            "max-height": ""
         };
         responsiveDatasetPropName = propNames[0];
         let templateDataOverridden = this.getTemplateDataOverridden(responsiveDatasetPropName, templateDataBase);
@@ -104,7 +106,9 @@ export class ResponsiveFilesSet {
             "responsiveSizeName": responsiveSizeNameOriented,
             "orientation": orientationBitsbuf,
             "min-width": sizes["from"],
-            "max-width": sizes["to"]
+            "max-width": sizes["to"],
+            "min-height": sizes["min-height"],
+            "max-height": sizes["max-height"]
         };
         let templateDataOverridden = this.getTemplateDataOverridden(responsiveDatasetPropName, templateDataBase);
         // console.info( templateDataOverridden );

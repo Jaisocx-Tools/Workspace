@@ -15,7 +15,7 @@ Example:
 /* Responsive rules */
 @media only screen and (min-width: 321px) and (max-width: 374px) and (orientation: portrait) {
 
-  .workspace {
+  .jsx {
     --responsive_size: responsive_size_e04_mobile_s_portrait;
 
     --responsive_size__min-width: 321px;
@@ -60,22 +60,29 @@ That is why in the CssCleanStart just the css constants relevant for sizes are s
 */
 
 
-@media only screen and (min-width: {{ min-width }}px) and (max-width: {{ max-width }}px) and (orientation: {{ orientation }}) {
+@media only screen and (min-width: {{ min-width }}px) and (max-width: {{ max-width }}px) and (min-height: {{ min-height }}px) and (max-height: {{ max-height }}px) and (orientation: {{ orientation }}) {
 
-  .workspace {
+  .jsx {
+    --theme_name: {{ SitesToolName }}__{{ SitesTool_ThemeName }};
+    --theme_name__{{ SitesToolName }}: {{ SitesTool_ThemeName }};
+
     {{ responsiveSizeConstantName }}: {{ responsiveSizeName }};
 
     {{ responsiveSizeConstantName }}__min-width: {{ min-width }}px;
     {{ responsiveSizeConstantName }}__max-width: {{ max-width }}px;
 
+    {{ responsiveSizeConstantName }}__min-height: {{ min-height }}px;
+    {{ responsiveSizeConstantName }}__max-height: {{ max-height }}px;
 
 
-    {{ responsiveSizeConstantName }}_{{ SitesToolName }}: {{ responsiveSizeName }}_{{ SitesToolName }};
 
-    {{ responsiveSizeConstantName }}_{{ SitesToolName }}__min-width: {{ min-width }}px;
-    {{ responsiveSizeConstantName }}_{{ SitesToolName }}__max-width: {{ max-width }}px;
+    {{ responsiveSizeConstantName }}__{{ SitesToolName }}__{{ SitesTool_ThemeName }}: {{ responsiveSizeName }}__{{ SitesToolName }}__{{ SitesTool_ThemeName }};
 
+    {{ responsiveSizeConstantName }}__{{ SitesToolName }}__{{ SitesTool_ThemeName }}__min-width: {{ min-width }}px;
+    {{ responsiveSizeConstantName }}__{{ SitesToolName }}__{{ SitesTool_ThemeName }}__max-width: {{ max-width }}px;
 
+    {{ responsiveSizeConstantName }}__{{ SitesToolName }}__{{ SitesTool_ThemeName }}__min-height: {{ min-height }}px;
+    {{ responsiveSizeConstantName }}__{{ SitesToolName }}__{{ SitesTool_ThemeName }}__max-height: {{ max-height }}px;
 
 
 

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" class="workspace">
+<html lang="en" class="jsx">
 
   <head>
 
@@ -33,11 +33,11 @@
 
 
     <style>
-      .workspace {
+      .jsx {
 
       }
 
-      .workspace .{{ SitesToolName }} {
+      .jsx .{{ SitesToolName }} {
 
       }
     </style>

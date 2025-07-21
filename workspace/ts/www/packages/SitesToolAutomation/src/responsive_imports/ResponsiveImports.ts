@@ -223,7 +223,7 @@ export class ResponsiveImports implements ResponsiveImportsInterface {
           this.responsiveDatasetConstants.importLine_setNewlineBitsbuf( linesDelimiter );
 
         } else {
-          this.responsiveDatasetConstants.importLine_setNewlineBitsbuf( linesDelimiter );
+          this.responsiveDatasetConstants.importLine_setNewlineBitsbuf( newLineBitsbuf );
 
         }
 

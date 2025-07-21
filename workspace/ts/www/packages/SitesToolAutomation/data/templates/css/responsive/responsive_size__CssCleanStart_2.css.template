@@ -9,25 +9,29 @@ These styles for a display size in this primary template for a site from scratch
 That is why in the CssCleanStart just the css constants relevant for sizes are set in this template.
 
 */
-@media only screen and (min-width: {{ min-width }}px) and (max-width: {{ max-width }}px) and (orientation: {{ orientation }}) {
+@media only screen and (min-width: {{ min-width }}px) and (max-width: {{ max-width }}px) and (min-height: {{ min-height }}px) and (max-height: {{ max-height }}px) and (orientation: {{ orientation }}) {
 
   .jsx {
+    --theme_name: {{ SitesToolName }}__{{ SitesTool_ThemeName }};
     --theme_name__{{ SitesToolName }}: {{ SitesTool_ThemeName }};
-    {{ responsiveSizeConstantName }}: {{ responsiveSizeName }};
-    {{ responsiveSizeConstantName }}__{{ SitesToolName }}__{{ SitesTool_ThemeName }}: {{ responsiveSizeName }}__{{ SitesToolName }}__{{ SitesTool_ThemeName }};
 
     {{ responsiveSizeConstantName }}: {{ responsiveSizeName }};
 
     {{ responsiveSizeConstantName }}__min-width: {{ min-width }}px;
     {{ responsiveSizeConstantName }}__max-width: {{ max-width }}px;
 
+    {{ responsiveSizeConstantName }}__min-height: {{ min-height }}px;
+    {{ responsiveSizeConstantName }}__max-height: {{ max-height }}px;
 
 
-    --theme_name__{{ SitesToolName }}: {{ SitesTool_ThemeName }};
+
     {{ responsiveSizeConstantName }}__{{ SitesToolName }}__{{ SitesTool_ThemeName }}: {{ responsiveSizeName }}__{{ SitesToolName }}__{{ SitesTool_ThemeName }};
 
     {{ responsiveSizeConstantName }}__{{ SitesToolName }}__{{ SitesTool_ThemeName }}__min-width: {{ min-width }}px;
     {{ responsiveSizeConstantName }}__{{ SitesToolName }}__{{ SitesTool_ThemeName }}__max-width: {{ max-width }}px;
+
+    {{ responsiveSizeConstantName }}__{{ SitesToolName }}__{{ SitesTool_ThemeName }}__min-height: {{ min-height }}px;
+    {{ responsiveSizeConstantName }}__{{ SitesToolName }}__{{ SitesTool_ThemeName }}__max-height: {{ max-height }}px;
 
 
 

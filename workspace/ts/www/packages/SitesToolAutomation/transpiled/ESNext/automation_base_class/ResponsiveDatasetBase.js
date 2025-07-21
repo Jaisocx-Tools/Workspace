@@ -198,6 +198,7 @@ export class ResponsiveDatasetBase {
     */
     getSizesByOrientation(responsiveDatasetPropName, orientation, byBitsbufs) {
         let sizes = new Object();
+        let heights = new Object();
         // @ts-ignore
         let data = this.dataset["data"][responsiveDatasetPropName];
         let responsiveDatasetProp = new Object();
@@ -209,15 +210,19 @@ export class ResponsiveDatasetBase {
         }
         let orientationStandard = data["orientation_standard"];
         if (orientation === orientationStandard) {
-            sizes = responsiveDatasetProp["width"];
+            sizes = { ...responsiveDatasetProp["width"] };
+            heights = responsiveDatasetProp["height"];
         }
         else if ((orientation === this.responsiveDatasetConstants.getKeywordOrientationLandscape()) ||
             (orientation === this.responsiveDatasetConstants.getKeywordOrientationPortrait())) {
-            sizes = responsiveDatasetProp["height"];
+            sizes = { ...responsiveDatasetProp["height"] };
+            heights = responsiveDatasetProp["width"];
         }
         else {
             throw new Error(`Orientation value supported is "landscape" | "portrait". Was set ${orientation}`);
         }
+        sizes["min-height"] = heights["from"];
+        sizes["max-height"] = heights["to"];
         return sizes;
     }
 }

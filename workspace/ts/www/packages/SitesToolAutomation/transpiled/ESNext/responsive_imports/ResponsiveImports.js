@@ -131,7 +131,7 @@ export class ResponsiveImports {
                     this.responsiveDatasetConstants.importLine_setNewlineBitsbuf(linesDelimiter);
                 }
                 else {
-                    this.responsiveDatasetConstants.importLine_setNewlineBitsbuf(linesDelimiter);
+                    this.responsiveDatasetConstants.importLine_setNewlineBitsbuf(newLineBitsbuf);
                 }
                 bitsbufCssImportLine = fw.concatUint8Arrays(cssImportLine);
                 written = await fw.appendBitsbufToFile(bitsbufCssImportLine);

@@ -52,12 +52,13 @@ fi
 "${jsInvokePath}" "$commandLineArgs" \
   --packagePath="www/packages/SitesToolAutomation" \
   --script="main/produceSitesTool_MediaAndStyles.js" \
-      --sitesTool_ThemeName="theme_base" \
-      --sitesToolName="CssToolTemplate" \
       --cssOrJsTool="css" \
-      --keywordResponsiveSize="responsive_size" \
-      --templatePath="data/templates/css/responsive/responsive_size__mini_documented.css.template" \
-      --withSizesCssConstants="true"
+      --sitesToolName="CssToolTemplate_5" \
+      --sitesTool_ThemeName="theme_base" \
+      --templatePath="data/templates/css/responsive/responsive_size__mini.css.template" \
+      --withSizesCssConstants="yes" \
+      --justTheme="no" \
+      --justThemeResponsiveDataset="no"
 
 
 

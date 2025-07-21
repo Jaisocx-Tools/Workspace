@@ -1,16 +1,16 @@
 /* Sites tool: {{ SitesToolName }}, theme: {{ SitesTool_ThemeName }} */
-.workspace .{{ SitesToolName }}{{ SitesTool_ThemeCssClassName }} {
+.jsx .{{ SitesToolName }}{{ SitesTool_ThemeCssClassName }} {
 
   /* base theme css var assignment example */
-  --{{ SitesToolName }}--toolHtmlElement--font-size: 1rem;
+  --jsx--{{ SitesToolName }}--toolHtmlElement--font-size: 1rem;
 
 
   /* same, but assigned value of css-clean-start */
-  --{{ SitesToolName }}--toolHtmlElement--font-size: var(--css-clean-start--font-size);
+  --jsx--{{ SitesToolName }}--toolHtmlElement--font-size: var(--jsx--css-clean-start-2--all-tags--font-size);
 
 
-  --{{ SitesToolName }}--main--background-color: darkgreen;
-  --{{ SitesToolName }}--main--color: white;
+  --jsx--{{ SitesToolName }}--main--background-color: darkgreen;
+  --jsx--{{ SitesToolName }}--main--color: white;
 }
 
 

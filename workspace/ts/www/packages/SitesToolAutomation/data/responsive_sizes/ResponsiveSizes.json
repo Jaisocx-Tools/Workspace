@@ -14,16 +14,19 @@
   },
   "sizeUnit": "px",
   "data": {
+    "very_small": {
+      "range_orderby_id": "d05",
+      "width": { "from": 2, "to": 239 },
+      "height": { "from": 2, "to": 99999 },
+      "art": "very_small",
+      "art_size": "xxs",
+      "orientation_standard": "portrait",
+      "is_orientation_standard_nearly_always": false
+    },
     "mobile_xs": {
       "range_orderby_id": "e02",
-      "width": {
-        "from": 240,
-        "to": 320
-      },
-      "height": {
-        "from": 320,
-        "to": 500
-      },
+      "width": { "from": 240, "to": 320 },
+      "height": { "from": 240, "to": 99999 },
       "art": "mobile",
       "art_size": "xs",
       "orientation_standard": "portrait",
@@ -31,14 +34,8 @@
     },
     "mobile_s": {
       "range_orderby_id": "e04",
-      "width": {
-        "from": 321,
-        "to": 374
-      },
-      "height": {
-        "from": 501,
-        "to": 667
-      },
+      "width": { "from": 321, "to": 375 },
+      "height": { "from": 321, "to": 99999 },
       "art": "mobile",
       "art_size": "s",
       "orientation_standard": "portrait",
@@ -46,14 +43,8 @@
     },
     "mobile_sm": {
       "range_orderby_id": "e06",
-      "width": {
-        "from": 375,
-        "to": 430
-      },
-      "height": {
-        "from": 668,
-        "to": 736
-      },
+      "width": { "from": 376, "to": 430 },
+      "height": { "from": 376, "to": 99999 },
       "art": "mobile",
       "art_size": "sm",
       "orientation_standard": "portrait",
@@ -61,74 +52,62 @@
     },
     "mobile_md": {
       "range_orderby_id": "e08",
-      "width": {
-        "from": 431,
-        "to": 480
-      },
-      "height": {
-        "from": 737,
-        "to": 812
-      },
+      "width": { "from": 431, "to": 480 },
+      "height": { "from": 431, "to": 99999 },
       "art": "mobile",
       "art_size": "md",
       "orientation_standard": "portrait",
       "is_orientation_standard_nearly_always": false
     },
-    "tablet_sm": {
+    "tablet_s": {
       "range_orderby_id": "h03",
-      "width": {
-        "from": 481,
-        "to": 767
-      },
-      "height": {
-        "from": 813,
-        "to": 960
-      },
+      "width": { "from": 481, "to": 767 },
+      "height": { "from": 481, "to": 99999 },
+      "art": "tablet",
+      "art_size": "s",
+      "orientation_standard": "portrait",
+      "is_orientation_standard_nearly_always": false
+    },
+    "tablet_sm": {
+      "range_orderby_id": "h05",
+      "width": { "from": 768, "to": 1024 },
+      "height": { "from": 768, "to": 1024 },
       "art": "tablet",
       "art_size": "sm",
       "orientation_standard": "portrait",
       "is_orientation_standard_nearly_always": false
     },
     "tablet_md": {
-      "range_orderby_id": "h05",
-      "width": {
-        "from": 768,
-        "to": 1024
-      },
-      "height": {
-        "from": 961,
-        "to": 1024
-      },
+      "range_orderby_id": "h07",
+      "width": { "from": 768, "to": 1024 },
+      "height": { "from": 1025, "to": 1194 },
       "art": "tablet",
       "art_size": "md",
       "orientation_standard": "portrait",
       "is_orientation_standard_nearly_always": false
     },
+    "tablet_lg": {
+      "range_orderby_id": "h09",
+      "width": { "from": 768, "to": 1024 },
+      "height": { "from": 1195, "to": 99999 },
+      "art": "tablet",
+      "art_size": "lg",
+      "orientation_standard": "portrait",
+      "is_orientation_standard_nearly_always": false
+    },
     "laptop_sm": {
-      "range_orderby_id": "l03",
-      "width": {
-        "from": 1025,
-        "to": 1279
-      },
-      "height": {
-        "from": 1025,
-        "to": 1080
-      },
+      "range_orderby_id": "l02",
+      "width": { "from": 1025, "to": 1365 },
+      "height": { "from": 1025, "to": 1365 },
       "art": "laptop",
       "art_size": "sm",
       "orientation_standard": "landscape",
       "is_orientation_standard_nearly_always": true
     },
     "laptop_md": {
-      "range_orderby_id": "l05",
-      "width": {
-        "from": 1280,
-        "to": 1439
-      },
-      "height": {
-        "from": 1081,
-        "to": 1200
-      },
+      "range_orderby_id": "l03",
+      "width": { "from": 1366, "to": 1440 },
+      "height": { "from": 1025, "to": 1440 },
       "art": "laptop",
       "art_size": "md",
       "orientation_standard": "landscape",
@@ -136,14 +115,8 @@
     },
     "laptop_lg": {
       "range_orderby_id": "l07",
-      "width": {
-        "from": 1440,
-        "to": 1600
-      },
-      "height": {
-        "from": 1201,
-        "to": 1440
-      },
+      "width": { "from": 1441, "to": 1600 },
+      "height": { "from": 1025, "to": 1600 },
       "art": "laptop",
       "art_size": "lg",
       "orientation_standard": "landscape",
@@ -151,14 +124,8 @@
     },
     "display_xl": {
       "range_orderby_id": "s02",
-      "width": {
-        "from": 1601,
-        "to": 1920
-      },
-      "height": {
-        "from": 1441,
-        "to": 1600
-      },
+      "width": { "from": 1601, "to": 1920 },
+      "height": { "from": 1025, "to": 1920 },
       "art": "display",
       "art_size": "xl",
       "orientation_standard": "landscape",
@@ -166,14 +133,8 @@
     },
     "display_xxl": {
       "range_orderby_id": "s04",
-      "width": {
-        "from": 1921,
-        "to": 2560
-      },
-      "height": {
-        "from": 1601,
-        "to": 2160
-      },
+      "width": { "from": 1921, "to": 2560 },
+      "height": { "from": 1025, "to": 2560 },
       "art": "display",
       "art_size": "xxl",
       "orientation_standard": "landscape",
@@ -181,14 +142,8 @@
     },
     "display_qhd": {
       "range_orderby_id": "s08",
-      "width": {
-        "from": 2561,
-        "to": 3840
-      },
-      "height": {
-        "from": 2161,
-        "to": 2160
-      },
+      "width": { "from": 2561, "to": 3840 },
+      "height": { "from": 1025, "to": 3840 },
       "art": "display",
       "art_size": "qhd",
       "orientation_standard": "landscape",
@@ -196,14 +151,8 @@
     },
     "tv_4k": {
       "range_orderby_id": "t04",
-      "width": {
-        "from": 3841,
-        "to": 7680
-      },
-      "height": {
-        "from": 2161,
-        "to": 4320
-      },
+      "width": { "from": 3841, "to": 7680 },
+      "height": { "from": 1025, "to": 7680 },
       "art": "tv",
       "art_size": "4k",
       "orientation_standard": "landscape",
@@ -211,14 +160,8 @@
     },
     "tv_8k": {
       "range_orderby_id": "t08",
-      "width": {
-        "from": 7681,
-        "to": 15360
-      },
-      "height": {
-        "from": 4321,
-        "to": 8640
-      },
+      "width": { "from": 7681, "to": 15360 },
+      "height": { "from": 1025, "to": 15360 },
       "art": "tv",
       "art_size": "8k",
       "orientation_standard": "landscape",
@@ -226,16 +169,19 @@
     },
     "tv_16k": {
       "range_orderby_id": "t16",
-      "width": {
-        "from": 15361,
-        "to": 25360
-      },
-      "height": {
-        "from": 8641,
-        "to": 9999
-      },
+      "width": { "from": 15361, "to": 25360 },
+      "height": { "from": 1025, "to": 25360 },
       "art": "tv",
       "art_size": "16k",
+      "orientation_standard": "landscape",
+      "is_orientation_standard_nearly_always": true
+    },
+    "tv_xxxl": {
+      "range_orderby_id": "t99",
+      "width": { "from": 25361, "to": 999999 },
+      "height": { "from": 1025, "to": 999999 },
+      "art": "tv",
+      "art_size": "xxxl",
       "orientation_standard": "landscape",
       "is_orientation_standard_nearly_always": true
     }

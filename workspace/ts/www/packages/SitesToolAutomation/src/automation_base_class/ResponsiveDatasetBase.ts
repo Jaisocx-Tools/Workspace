@@ -372,6 +372,7 @@ export class ResponsiveDatasetBase implements ResponsiveDatasetBaseInterface {
     byBitsbufs: boolean
   ): object {
     let sizes: any = new Object();
+    let heights: any = new Object();
 
 
     // @ts-ignore
@@ -387,15 +388,20 @@ export class ResponsiveDatasetBase implements ResponsiveDatasetBaseInterface {
     let orientationStandard: string = data["orientation_standard"];
 
     if ( orientation === orientationStandard ) {
-      sizes = responsiveDatasetProp["width"];
+      sizes = {...responsiveDatasetProp["width"]};
+      heights = responsiveDatasetProp["height"];
     } else if (
       ( orientation === this.responsiveDatasetConstants.getKeywordOrientationLandscape() ) ||
       ( orientation === this.responsiveDatasetConstants.getKeywordOrientationPortrait() )
     ) {
-      sizes = responsiveDatasetProp["height"];
+      sizes = {...responsiveDatasetProp["height"]};
+      heights = responsiveDatasetProp["width"];
     } else {
       throw new Error( `Orientation value supported is "landscape" | "portrait". Was set ${orientation}` );
     }
+
+    sizes["min-height"] = heights["from"];
+    sizes["max-height"] = heights["to"];
 
 
     return sizes;
