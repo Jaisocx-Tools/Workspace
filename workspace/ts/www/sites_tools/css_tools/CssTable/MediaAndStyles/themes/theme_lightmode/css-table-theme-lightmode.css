@@ -1,0 +1,40 @@
+/* theme-lightmode */
+.theme_lightmode .jsx-css-table-holder *,
+.theme_lightmode.jsx-css-table-holder * {
+
+  --jsx--CssTable--cell--font-family: var(--clean-start__font-family, "Baloo Paaji 2"), "Arial";
+
+  --jsx--CssTable--cell--column-label--font-family: var(--clean-start__font-family, "Baloo Paaji 2"), "Arial";
+  --jsx--CssTable--cell--cell-value--font-family: var(--clean-start__font-family, "Baloo Paaji 2"), "Arial";
+
+  --jsx--CssTable--thin--cell--column-label--font-family: var(--clean-start__font-family, "Baloo Paaji 2"), "Arial";
+  --jsx--CssTable--thin--cell--cell-value--font-family: var(--clean-start__font-family, "Baloo Paaji 2"), "Arial";
+
+  --jsx--CssTable--bright--cell--column-label--font-family: var(--clean-start__font-family, "Baloo Paaji 2"), "Arial";
+  --jsx--CssTable--bright--cell--cell-value--font-family: var(--clean-start__font-family, "Baloo Paaji 2"), "Arial";
+
+
+
+  --jsx--CssTable--cell--column-label--text-color: #eaeaea;
+  --jsx--CssTable--cell--cell-value--text-color: var(--clean-start__text-color, #222a2e);
+
+  --jsx--CssTable--thin--cell--column-label--text-color: #eaeaea;
+  --jsx--CssTable--thin--cell--cell-value--text-color: var(--clean-start__text-color, #222a2e);
+
+  --jsx--CssTable--bright--cell--column-label--text-color: #eaeaea;
+  --jsx--CssTable--bright--cell--cell-value--text-color: var(--clean-start__text-color, #222a2e);
+
+
+  --jsx--CssTable--cell--column-label--background-color: var(--clean-start__tag_body__background, #59e);
+  --jsx--CssTable--cell--cell-value--background-color: var(--clean-start__site__background, #fff);
+
+  --jsx--CssTable--thin--cell--column-label--background-color: var(--clean-start__tag_body__background, #59e);
+  --jsx--CssTable--thin--cell--cell-value--background-color: var(--clean-start__site__background, #fff);
+
+  --jsx--CssTable--bright--cell--column-label--background-color: var(--clean-start__tag_body__background, #59e);
+  --jsx--CssTable--bright--cell--cell-value--background-color: var(--clean-start__site__background, #fff);
+
+}
+
+
+

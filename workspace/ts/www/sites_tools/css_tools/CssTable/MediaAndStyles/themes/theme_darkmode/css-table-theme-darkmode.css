@@ -1,0 +1,48 @@
+/* theme-darkmode */
+.theme_darkmode .jsx-css-table-holder *,
+.theme_darkmode.jsx-css-table-holder * {
+
+  /* --jsx--CssTable--cell--font-family: var(--clean-start__font-family, Niconne), "Arial"; */
+
+  /* --jsx--CssTable--cell--column-label--font-family: var(--clean-start__font-family, Niconne), "Arial"; */
+  /* --jsx--CssTable--cell--cell-value--font-family: var(--clean-start__font-family, Niconne), "Arial"; */
+
+
+
+  /* --jsx--CssTable--thin--cell--column-label--font-family: var(--clean-start__font-family, Niconne), "Arial"; */
+  /* --jsx--CssTable--thin--cell--cell-value--font-family: var(--clean-start__font-family, Niconne), "Arial"; */
+
+  /* --jsx--CssTable--bright--cell--column-label--font-family: var(--clean-start__font-family, Niconne), "Arial"; */
+  /* --jsx--CssTable--bright--cell--cell-value--font-family: var(--clean-start__font-family, Niconne), "Arial"; */
+
+
+
+  --jsx--CssTable--thin--cell--column-label--font-size: 1.2rem;
+  --jsx--CssTable--thin--cell--cell-value--font-size: 1.07rem;
+
+  --jsx--CssTable--bright--cell--column-label--font-size: 1.09rem;
+  --jsx--CssTable--bright--cell--cell-value--font-size: 0.95rem;
+
+
+
+  --jsx--CssTable--cell--column-label--text-color: #fff;
+  --jsx--CssTable--cell--cell-value--text-color: #acf;
+
+  --jsx--CssTable--thin--cell--column-label--text-color: #f2f2f2;
+  --jsx--CssTable--thin--cell--cell-value--text-color: #f9f9f9;
+
+  --jsx--CssTable--bright--cell--column-label--text-color: #fff;
+  --jsx--CssTable--bright--cell--cell-value--text-color: #acf;
+
+
+
+  --jsx--CssTable--cell--column-label--background-color: #42414d;
+  --jsx--CssTable--cell--cell-value--background-color: #32313d;
+
+  --jsx--CssTable--thin--cell--column-label--background-color: #42414d;
+  --jsx--CssTable--thin--cell--cell-value--background-color: #32313d;
+
+  --jsx--CssTable--bright--cell--column-label--background-color: #345;
+  --jsx--CssTable--bright--cell--cell-value--background-color: #32313d;
+}
+

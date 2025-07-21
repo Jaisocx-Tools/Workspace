@@ -39,6 +39,10 @@
 
 
 
+  <!-- importing themes of @jaisocx/css-table -->
+  <link rel="stylesheet" href="sites_tools/css_tools/CssTable/MediaAndStyles/themes/theme_lightmode/css-table-theme-lightmode-relative.css">
+  <link rel="stylesheet" href="sites_tools/css_tools/CssTable/MediaAndStyles/themes/theme_darkmode/css-table-theme-darkmode-relative.css">
+
   <!-- importing styles of @jaisocx/css-table installable like this: npm install @jaisocx/css-table -->
   <link rel="stylesheet" href="sites_tools/css_tools/CssTable/MediaAndStyles/CssTable_main_relative.css">
 
@@ -100,11 +104,11 @@
       <h5>@jaisocx/css-clean-start was not enabled</h5>
 
 
-      <!-- <ThemeButtons>
+      <ThemeButtons>
         <button id="button-turn-on-base-theme" data-theme="">Base Theme</button>
-        <button id="button-turn-on-daymode" data-theme="theme-lightmode">Day Mode</button>
-        <button id="button-turn-on-nightmode" data-theme="theme-darkmode">Night Mode</button>
-      </ThemeButtons> -->
+        <button id="button-turn-on-daymode" data-theme="theme_lightmode">Day Mode</button>
+        <button id="button-turn-on-nightmode" data-theme="theme_darkmode">Night Mode</button>
+      </ThemeButtons>
 
     </content>
 
@@ -214,19 +218,19 @@
 
     // DOCUMENT ONLOAD, INVOKES THE FUNCTION TO PRELOAD THEME FONTS
 
-    /* document.addEventListener('DOMContentLoaded', () => {
+    document.addEventListener('DOMContentLoaded', () => {
 
-      const preloader = new Preloader();
-        preloader
-          .setThemesPreloads( themesPreloads )
-          .setWebpackAlias( "@jaisocx-css-table-cdn-fonts" )
-          .setWebpackAliasReplace( "https://sandbox.brightday.email/cdn/www/fonts" )
-          .init();
+      // const preloader = new Preloader();
+      //   preloader
+      //     .setThemesPreloads( themesPreloads )
+      //     .setWebpackAlias( "@jaisocx-css-table-cdn-fonts" )
+      //     .setWebpackAliasReplace( "https://sandbox.brightday.email/cdn/www/fonts" )
+      //     .init();
 
       // adding to buttons the event handler to turn on the theme.
       addThemeButtonsEventHandlers();
 
-    }); */
+    });
 
   </script>
 
