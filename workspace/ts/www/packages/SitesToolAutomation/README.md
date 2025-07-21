@@ -41,37 +41,11 @@ in the Terminal, in the Root of the Project
 
 ## Status of the Project
 
-### Done, however known a bug
+### Done
 
-19th of July 2025
-
-I hope I shall bugfix this in several days.
+21th of July 2025
 
 
-
-#### Bugfix encountered:
-
-when producing a fileset for the best seeing site on all devices,
-the SitesToolAutomation does well.
-
-However, when producing new responsive filest just for a new theme,
-unfortunately all .css files are rewritten again, and the previous css code goes lost.
-
-
-
-
-
-#### Workaround:
-
-1. rename Your current sites tool
-
-2. produce the fileset with the original name of the sites tool, and the new theme name
-
-3. hardcopy the folder from ${freshGeneratedSitesTool}/MediaAndStyles/themes/new_theme/responsive to Your original renamed sites tool: ${temporaryRenamedSitesTool}/MediaAndStyles/themes/new_theme/responsive
-
-4. delete folder ${freshGeneratedSitesTool}
-
-5. rename ${temporaryRenamedSitesTool} to sites tool' original name.
 
 
 

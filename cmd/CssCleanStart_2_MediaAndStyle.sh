@@ -53,11 +53,11 @@ fi
   --packagePath="www/packages/SitesToolAutomation" \
   --script="main/produceSitesTool_MediaAndStyles.js" \
       --cssOrJsTool="css" \
-      --sitesToolName="CssCleanStart_2" \
+      --sitesToolName="CssCleanStart_3" \
       --sitesTool_ThemeName="theme_base" \
       --templatePath="data/templates/css/responsive/responsive_size__CssCleanStart_2.css.template" \
       --withSizesCssConstants="yes" \
-      --justTheme="yes" \
+      --justTheme="no" \
       --justThemeResponsiveDataset="no"
 
 
