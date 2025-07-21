@@ -243,7 +243,7 @@
     {
       "path": "packages/SitesToolAutomation",
       "name": "sites-tool-automation",
-      "update-published": "Mon Jul 21 02:23:49 CEST 2025",
+      "update-published": "Mon Jul 21 02:16:34 UTC 2025",
       "build": false,
       "build-simple-enable": false,
       "dependencies": [
