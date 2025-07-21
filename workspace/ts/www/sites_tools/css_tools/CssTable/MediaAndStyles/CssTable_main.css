@@ -1,0 +1,125 @@
+/* Main .css file for the sites tool: jsx-css-table-holder */
+
+.jsx-css-table-holder {
+  display:                 flex;
+  flex-direction:          column;
+  align-items:             flex-start;
+  justify-content:         flex-start;
+
+  width:                   var(--jsx--CssTable--holder--width);
+  max-width:               var(--jsx--CssTable--holder--width-max);
+  min-width:               var(--jsx--CssTable--holder--width-min);
+
+  overflow:                var(--jsx--CssTable--holder--overflow-x) var(--jsx--CssTable--holder--overflow-y);
+}
+
+
+
+.jsx-css-table-holder .jsx-css-table {
+  width:                   var(--jsx--CssTable--main--width);
+  max-width:               var(--jsx--CssTable--main--width-max);
+  min-width:               var(--jsx--CssTable--main--width-min);
+
+  overflow-y:              var(--jsx--CssTable--main--overflow-y);
+  overflow-x:              var(--jsx--CssTable--main--overflow-x);
+
+  border-radius:           var(--jsx--CssTable--main--border-radius);
+  border:                  var(--jsx--CssTable--main--border);
+}
+
+
+
+.jsx-css-table-holder .row {
+  width:                   fit-content;
+  min-width:               100%;
+  max-width:               unset;
+
+  border-bottom:           var(--jsx--CssTable--row--border);
+}
+
+
+
+.jsx-css-table-holder .cell {
+  display:                 flex;
+  flex-direction:          row;
+  align-items:             stretch;
+  justify-content:         stretch;
+  height:                  auto;
+  overflow-x:              hidden;
+  overflow-y:              visible;
+
+  /* when a word ends, it breaks, when too long word oer one line full width, it breaks too */
+  word-break:              normal;
+  font-variant:            no-common-ligatures tabular-nums;
+
+  border-left:             var(--jsx--CssTable--cell--border);
+}
+
+
+
+/* CELL VALUE LOOK AND FEEL PRETTIFYING */
+.jsx-css-table-holder .cell span {
+  display:                 block;
+  overflow:                hidden;
+}
+
+
+
+.jsx-css-table-holder .jsx-css-table .column-label {
+  font-family:             var(--jsx--CssTable--cell--column-label--font-family);
+  font-weight:             var(--jsx--CssTable--cell--column-label--font-weight);
+  font-size:               var(--jsx--CssTable--cell--column-label--font-size);
+  line-height:             var(--jsx--CssTable--cell--column-label--line-height);
+  letter-spacing:          var(--jsx--CssTable--cell--column-label--letter-spacing);
+
+  color:                   var(--jsx--CssTable--cell--column-label--text-color);
+
+  background-color:        var(--jsx--CssTable--cell--column-label--background-color);
+
+  background-image:        var(--jsx--CssTable--cell--column-label--background-image);
+  background-position:     var(--jsx--CssTable--cell--column-label--background-position);
+  background-size:         var(--jsx--CssTable--cell--column-label--background-size);
+  background-repeat:       var(--jsx--CssTable--cell--column-label--background-repeat);
+  background-origin:       var(--jsx--CssTable--cell--column-label--background-origin);
+  background-clip:         var(--jsx--CssTable--cell--column-label--background-clip);
+  background-attachment:   var(--jsx--CssTable--cell--column-label--background-attachment);
+
+  display:                 flex;
+  flex-direction:          row;
+  align-items:             stretch;
+  justify-content:         flex-start;
+}
+
+
+
+.jsx-css-table-holder .jsx-css-table .cell-value {
+  font-family:             var(--jsx--CssTable--cell--cell-value--font-family);
+
+  line-break:              normal;
+  word-break:              break-word;
+
+  font-size:               var(--jsx--CssTable--cell--cell-value--font-size);
+  font-weight:             var(--jsx--CssTable--cell--cell-value--font-weight);
+  line-height:             var(--jsx--CssTable--cell--cell-value--line-height);
+  letter-spacing:          var(--jsx--CssTable--cell--cell-value--letter-spacing);
+
+  color:                   var(--jsx--CssTable--cell--cell-value--text-color);
+
+  background-color:        var(--jsx--CssTable--cell--cell-value--background-color);
+
+  background-image:        var(--jsx--CssTable--cell--cell-value--background-image);
+  background-position:     var(--jsx--CssTable--cell--cell-value--background-position);
+  background-size:         var(--jsx--CssTable--cell--cell-value--background-size);
+  background-repeat:       var(--jsx--CssTable--cell--cell-value--background-repeat);
+  background-origin:       var(--jsx--CssTable--cell--cell-value--background-origin);
+  background-clip:         var(--jsx--CssTable--cell--cell-value--background-clip);
+  background-attachment:   var(--jsx--CssTable--cell--cell-value--background-attachment);
+
+  display:                 flex;
+  flex-direction:          row;
+  align-items:             stretch;
+  justify-content:         flex-start;
+}
+
+
+

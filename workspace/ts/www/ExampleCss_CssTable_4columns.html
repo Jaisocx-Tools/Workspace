@@ -10,7 +10,7 @@
 
 
   <!-- importing styles of @jaisocx/css-clean-start -->
-  <!-- <link rel="stylesheet" href="sites_tools/css_tools/CssCleanStart_2/MediaAndStyles/CssCleanStart_2_main_resolved_min.css"> -->
+  <link rel="stylesheet" href="sites_tools/css_tools/CssCleanStart_2/MediaAndStyles/CssCleanStart_2_main_resolved_min.css">
 
 
 
@@ -73,9 +73,6 @@
 
       <h1>Css Table 4 columns</h1>
 
-      <h5>@jaisocx/css-clean-start was not enabled</h5>
-
-
       <!-- <ThemeButtons>
         <button id="button-turn-on-base-theme" data-theme="">Base Theme</button>
         <button id="button-turn-on-daymode" data-theme="theme-lightmode">Day Mode</button>
@@ -85,47 +82,52 @@
     </content>
 
 
-
-    <div class="jsx-css-table-holder example-table-columns-4">
-      <div class="jsx-css-table">
-        <div class="row desktop-columns-labels-holder">
-          <div class="cell"><span class="column-label">attribute</span></div>
-          <div class="cell"><span class="column-label">type</span></div>
-          <div class="cell"><span class="column-label">values</span></div>
-          <div class="cell"><span class="column-label">description</span></div>
+  <!-- <div class="jsx-css-table-holder example-table-columns-4 thin-styles-applied bright-styles-applied"> -->
+  <div class="jsx-css-table-holder example-table-columns-4">
+    <div class="jsx-css-table">
+      <div class="row desktop-columns-labels-holder">
+        <div class="cell"><span class="column-label">attribute</span></div>
+        <div class="cell"><span class="column-label">type</span></div>
+        <div class="cell"><span class="column-label">values</span></div>
+        <div class="cell"><span class="column-label">description</span></div>
+      </div>
+      <div class="row">
+        <div class="cell"><span class="column-label">attribute</span><span class="cell-value">
+            port</span></div>
+        <div class="cell"><span class="column-label">type</span><span class="cell-value">number</span></div>
+        <div class="cell"><span class="column-label">values</span><span class="cell-value">443</span></div>
+        <div class="cell"><span class="column-label">description</span><span class="cell-value">
+  the port number for the server
+  to accept browsers' connections
+        </span>
         </div>
-        <div class="row">
-          <div class="cell"><span class="column-label">attribute</span><span class="cell-value">
-              port</span></div>
-          <div class="cell"><span class="column-label">type</span><span class="cell-value">number</span></div>
-          <div class="cell"><span class="column-label">values</span><span class="cell-value">443</span></div>
-          <div class="cell"><span class="column-label">description</span><span class="cell-value">the port number for the server
-            to accept browsers' connections</span></div>
-        </div>
-        <div class="row">
-          <div class="cell"><span class="column-label">attribute</span><span class="cell-value">
-              alternative-port</span></div>
-          <div class="cell"><span class="column-label">type</span><span class="cell-value">number</span></div>
-          <div class="cell"><span class="column-label">description</span><span class="cell-value">for development and testing purposes
-            only. if default port is busy,
-            then the server starts listening on the alternative port.</span></div>
-          <div class="cell"><span class="column-label">values</span><span class="cell-value">8443</span></div>
-        </div>
-        <div class="row">
-          <div class="cell"><span class="column-label">attribute</span><span class="cell-value">secure</span></div>
-          <div class="cell"><span class="column-label">type</span><span class="cell-value">boolean</span></div>
-          <div class="cell"><span class="column-label">values</span><span class="cell-value">true | false</span></div>
-          <div class="cell"><span class="column-label">description</span><span class="cell-value">please specify, where to use HTTPS
-              secured connection with TLS or not.</span>
-          </div>
+      </div>
+      <div class="row">
+        <div class="cell"><span class="column-label">attribute</span><span class="cell-value">
+            alternative-port</span></div>
+        <div class="cell"><span class="column-label">type</span><span class="cell-value">number</span></div>
+        <div class="cell"><span class="column-label">description</span><span class="cell-value">for development and testing purposes
+          only. if default port is busy,
+          then the server starts listening on the alternative port.</span></div>
+        <div class="cell"><span class="column-label">values</span><span class="cell-value">8443</span></div>
+      </div>
+      <div class="row">
+        <div class="cell"><span class="column-label">attribute</span><span class="cell-value">secure</span></div>
+        <div class="cell"><span class="column-label">type</span><span class="cell-value">boolean</span></div>
+        <div class="cell"><span class="column-label">values</span><span class="cell-value">true | false</span></div>
+        <div class="cell"><span class="column-label">description</span><span class="cell-value">please specify, where to use HTTPS
+            secured connection with TLS or not.</span>
         </div>
       </div>
     </div>
+  </div>
+
 
   </main>
 
-  <script>
 
+
+  <script>
 
     currentButtonNodeClicked = null;
 
@@ -183,9 +185,7 @@
     }
 
 
-
     // DOCUMENT ONLOAD, INVOKES THE FUNCTION TO PRELOAD THEME FONTS
-
     /* document.addEventListener('DOMContentLoaded', () => {
 
       const preloader = new Preloader();

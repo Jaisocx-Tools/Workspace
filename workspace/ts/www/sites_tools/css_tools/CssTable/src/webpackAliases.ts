@@ -1,3 +1,5 @@
+// the hardcoded copy of .ts file
+
 import * as path from "node:path";
 import * as fs from "node:fs";
 
@@ -10,14 +12,13 @@ export function getWebpackAliases( packageRoot: any ): any {
   const CHAR_ZERO_LEN: any = "";
 
   const webpackAliasesJsonPath: any = path.resolve(
-    packageRoot,
+    packageRoot, 
     WEBPACK_ALIASES_JSON__FILENAME
   );
 
-
   // Read and parse the JSON file
   const json: any = fs.readFileSync(
-    webpackAliasesJsonPath,
+    webpackAliasesJsonPath, 
     WEBPACK_ALIASES_JSON__CHARSET
   );
 
@@ -32,12 +33,12 @@ export function getWebpackAliases( packageRoot: any ): any {
     const aliasPath: any = aliases[propName];
 
     const pathReplaced: any = aliasPath.replace(
-      PROJECT_ROOT_PLACEHOLDER,
+      PROJECT_ROOT_PLACEHOLDER, 
       CHAR_ZERO_LEN
     );
 
     const pathResolved: any = path.resolve(
-      packageRoot,
+      packageRoot, 
       pathReplaced
     );
 
@@ -45,12 +46,12 @@ export function getWebpackAliases( packageRoot: any ): any {
 
   }
 
-
   // let webpackAliases = {
   //   resolve: {
   //     alias: { ...webpackAliasesResolved },
   //   },
   // };
+
   return webpackAliasesResolved;
 
 }

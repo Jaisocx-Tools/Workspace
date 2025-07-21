@@ -1,5 +1,4 @@
 {
-  "@CssTable_MediaAndStyles": "${packageRoot}/MediaAndStyles/",
-  "@SandboxCdn_Fonts": "https://sandbox.brightday.email/cdn/www/fonts"
+  "@CssTable_MediaAndStyles": "${packageRoot}/MediaAndStyles/"
 }
 

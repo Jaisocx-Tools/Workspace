@@ -53,11 +53,11 @@ fi
   --packagePath="www/packages/SitesToolAutomation" \
   --script="main/produceSitesTool_MediaAndStyles.js" \
       --cssOrJsTool="css" \
-      --sitesToolName="CssToolTemplate_5" \
-      --sitesTool_ThemeName="theme_base" \
+      --sitesToolName="CssTable" \
+      --sitesTool_ThemeName="theme_jaisocx_folder_listing" \
       --templatePath="data/templates/css/responsive/responsive_size__mini.css.template" \
-      --withSizesCssConstants="yes" \
-      --justTheme="no" \
+      --withSizesCssConstants="no" \
+      --justTheme="yes" \
       --justThemeResponsiveDataset="no"
 
 

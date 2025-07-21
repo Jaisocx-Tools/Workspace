@@ -1,0 +1,111 @@
+/* Sites tool: CssTable, theme: theme_base */
+.jsx .jsx-css-table-holder {
+
+
+  /* BORDERS */
+  --jsx--CssTable--border-width: 1px;
+  --jsx--CssTable--border-style: solid;
+  --jsx--CssTable--border-color: #D2DCE4;
+
+  --jsx--CssTable--main--border-color: var(--jsx--CssTable--border-color);
+  --jsx--CssTable--main--border: var(--jsx--CssTable--border-width) var(--jsx--CssTable--border-style) var(--jsx--CssTable--main--border-color);
+  --jsx--CssTable--main--border-radius: 1rem;
+
+  --jsx--CssTable--row--border: var(--jsx--CssTable--border-width) var(--jsx--CssTable--border-style) var(--jsx--CssTable--border-color);
+  --jsx--CssTable--cell--border: var(--jsx--CssTable--border-width) var(--jsx--CssTable--border-style) var(--jsx--CssTable--border-color);
+
+
+
+
+
+/* TESTED CSS PROPS WITH EXTENSIBILITY FEATURE. EXTENSIBILTY DOESNT DO WITH BACKGROUND PROPS */
+
+/* CELL */
+  --jsx--CssTable--cell--font-family: "Arial";
+  --jsx--CssTable--cell--text-align: left;
+  --jsx--CssTable--cell--padding: 16px 12px 16px 12px;
+
+  --jsx--CssTable--cell--text-color:                            #339933;
+
+  --jsx--CssTable--cell--background-color:                      #fbfefc;
+
+  --jsx--CssTable--cell--background-image:                        none;
+  --jsx--CssTable--cell--background-position:                     0 0;
+  --jsx--CssTable--cell--background-size:                         contain;
+  --jsx--CssTable--cell--background-repeat:                       no-repeat;
+  --jsx--CssTable--cell--background-origin:                       border-box;
+  --jsx--CssTable--cell--background-clip:                         border-box;
+  --jsx--CssTable--cell--background-attachment:                   scroll;
+
+
+
+
+  /* COLUMN LABELS */
+  --jsx--CssTable--cell--column-label--font-family: var(--jsx--CssTable--cell--font-family);
+  --jsx--CssTable--cell--column-label--font-weight: 600;
+  --jsx--CssTable--cell--column-label--font-size: 1rem;
+  --jsx--CssTable--cell--column-label--line-height: 1.2rem;
+  --jsx--CssTable--cell--column-label--letter-spacing: 0;
+  --jsx--CssTable--cell--column-label--text-align: var(--jsx--CssTable--cell--text-align);
+  --jsx--CssTable--cell--column-label--padding: var(--jsx--CssTable--cell--padding);
+
+  /* --jsx--CssTable--cell--column-label--text-color: var(--jsx--CssTable--cell--text-color); */
+  --jsx--CssTable--cell--column-label--text-color:              #339933;
+
+  /* --jsx--CssTable--cell--column-label--background-color: var(--jsx--CssTable--cell--background-color); */
+  --jsx--CssTable--cell--column-label--background-color:        #f2fff2;
+
+  --jsx--CssTable--cell--column-label--background-image:          none; /* var(--jsx--CssTable--cell--background-image); */
+  --jsx--CssTable--cell--column-label--background-position:       0 0;
+  --jsx--CssTable--cell--column-label--background-size:           contain;
+  --jsx--CssTable--cell--column-label--background-repeat:         no-repeat;
+  --jsx--CssTable--cell--column-label--background-origin:         border-box;
+  --jsx--CssTable--cell--column-label--background-clip:           border-box;
+  --jsx--CssTable--cell--column-label--background-attachment:     scroll;
+
+
+
+
+  /* CELL VALUES */
+  --jsx--CssTable--cell--cell-value--font-family: var(--jsx--CssTable--cell--font-family);
+  --jsx--CssTable--cell--cell-value--font-weight: 400;
+  --jsx--CssTable--cell--cell-value--font-size: 1.0rem;
+  --jsx--CssTable--cell--cell-value--line-height: 1.28rem;
+  --jsx--CssTable--cell--cell-value--letter-spacing: 0;
+  --jsx--CssTable--cell--cell-value--text-align: var(--jsx--CssTable--cell--text-align);
+  --jsx--CssTable--cell--cell-value--padding: var(--jsx--CssTable--cell--padding);
+
+  /* --jsx--CssTable--cell--cell-value--text-color: var(--jsx--CssTable--cell--text-color); */
+  --jsx--CssTable--cell--cell-value--text-color:                #333;
+
+  /* --jsx--CssTable--cell--cell-value--background-color: var(--jsx--CssTable--cell--background-color); */
+  --jsx--CssTable--cell--cell-value--background-color:          #fbfefc;
+
+  --jsx--CssTable--cell--cell-value--background-image:            none; /* var(--jsx--CssTable--cell--background-image); */
+  --jsx--CssTable--cell--cell-value--background-position:         0 0;
+  --jsx--CssTable--cell--cell-value--background-size:             contain;
+  --jsx--CssTable--cell--cell-value--background-repeat:           no-repeat;
+  --jsx--CssTable--cell--cell-value--background-origin:           border-box;
+  --jsx--CssTable--cell--cell-value--background-clip:             border-box;
+  --jsx--CssTable--cell--cell-value--background-attachment:       scroll;
+
+
+
+  /* CSS TABLE WIDTH AND OVERFLOW */
+  --jsx--CssTable--holder--width: 100%;
+  --jsx--CssTable--holder--width-max: 100%;
+  --jsx--CssTable--holder--width-min: 100%;
+
+  --jsx--CssTable--holder--overflow-y: hidden;
+  --jsx--CssTable--holder--overflow-x: hidden;
+
+
+  --jsx--CssTable--main--width: 100%;
+  --jsx--CssTable--main--width-max: 100%;
+  --jsx--CssTable--main--width-min: 100%;
+
+  --jsx--CssTable--main--overflow-y: visible;
+  --jsx--CssTable--main--overflow-x: auto;
+
+}
+

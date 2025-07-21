@@ -1,0 +1,14 @@
+    {
+      "path": "sites_tools/css_tools/CssTable",
+      "name": "<Your-package-name-here>",
+      "update-published": "",
+      "build": false,
+      "build-simple-enable": false,
+      "css-importer": {
+        "build": false,
+        "cssFilePath": "MediaAndStyles/CssTable_main_Webpack.css",
+        "cssTargetFilePath": "MediaAndStyles/CssTable_main_resolved.css"
+      },
+      "dependencies": [],
+      "build-files": []
+    }

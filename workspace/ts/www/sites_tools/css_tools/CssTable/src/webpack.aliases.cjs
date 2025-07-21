@@ -1,3 +1,5 @@
+// the hardcoded copy of .cjs file
+
 const fs = require("node:fs");
 const path = require("node:path");
 const getWebpackAliases = require("./webpackAliases.js");

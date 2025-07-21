@@ -1,48 +1,34 @@
 <!DOCTYPE html>
-<html class="workspace">
+<html lang="en" class="jsx">
 <head>
 
   <title>Under construction: Css Table</title>
-
 
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
 
-  <!-- CSS CLEAN START THE WEBPACK BUILT BUNDLE.JS FILE -->
-  <script src="webpack_builds/ExampleCssCleanStartWebpack/transpiled/webpack/example-css-clean-start-bundle.js"></script>
 
-  <script src="sites_tools/css_tools/CssTable/transpiled/Simple/Preloader.js"></script>
-  <script src="sites_tools/css_tools/CssTable/transpiled/Simple/ThemesPreloadsCssTable.js"></script>
-
-  <!-- FOR THE CSS TABLE YOU NEED ALWAYS TO SET IN THIS FILE THE WIDTH OF COLUMNS
-  AND THIS .css FILE HAS TO BE ALWAYS REFERRED IN HTML DOC OR OTHER IMPORTS. -->
-  <link rel="stylesheet" href="sites_tools/css_tools/CssTable/MediaAndStyles/columns/columns.css">
+  <!-- importing styles of @jaisocx/css-clean-start -->
+  <link rel="stylesheet" href="sites_tools/css_tools/CssCleanStart_2/MediaAndStyles/CssCleanStart_2_main_resolved_min.css">
 
 
 
-  <link rel="stylesheet" href="sites_tools/css_tools/CssTable/MediaAndStyles/themes/theme-lightmode/css-table-theme-lightmode-cdn.css">
-  <link rel="stylesheet" href="sites_tools/css_tools/CssTable/MediaAndStyles/themes/theme-darkmode/css-table-theme-darkmode-cdn.css">
-
-  <link rel="stylesheet" href="sites_tools/css_tools/CssTable/MediaAndStyles/css-table-main-cdn.css">
-
-
-  <link rel="stylesheet" href="sites_tools/css_tools/CssTable/MediaAndStyles/themes/theme-lightmode/css-table-theme-lightmode-relative.css">
-  <link rel="stylesheet" href="sites_tools/css_tools/CssTable/MediaAndStyles/themes/theme-darkmode/css-table-theme-darkmode-relative.css">
-  <link rel="stylesheet" href="sites_tools/css_tools/CssTable/MediaAndStyles/css-table-main-relative.css">
-
+  <!-- importing styles of @jaisocx/css-table installable like this: npm install @jaisocx/css-table -->
+  <!-- <link rel="stylesheet" href="sites_tools/css_tools/CssTable/MediaAndStyles/themes/theme-lightmode/css-table-theme-lightmode-relative.css"> -->
+  <link rel="stylesheet" href="sites_tools/css_tools/CssTable/MediaAndStyles/CssTable_main_relative.css">
 
   <style>
 
-    .workspace {
+    .jsx {
       --button-width: fit-content;
     }
 
-    .workspace main content {
+    .jsx main content {
       /* padding: 1rem 1rem 1rem 1rem; */
     }
 
-    .workspace themebuttons {
+    .jsx themebuttons {
       width: fit-content;
       display: grid;
       grid-auto-flow: column;
@@ -50,7 +36,7 @@
       margin: 0.9rem 0 6rem 0;
     }
 
-    .workspace themebuttons button {
+    .jsx themebuttons button {
       width: var(--button-width);
     }
 
@@ -68,7 +54,7 @@
       border-bottom-color: var(--clean-start__text-color);
     }
 
-    .workspace button {
+    .jsx button {
       background-color: transparent;
       text-align: left;
     }
@@ -85,62 +71,22 @@
 
     <content>
 
-      <h1>Css Table</h1>
+      <h1>Css Table 12 columns</h1>
 
-      <ThemeButtons>
+      <!-- <ThemeButtons>
         <button id="button-turn-on-base-theme" data-theme="">Base Theme</button>
         <button id="button-turn-on-daymode" data-theme="theme-lightmode">Day Mode</button>
         <button id="button-turn-on-nightmode" data-theme="theme-darkmode">Night Mode</button>
       </ThemeButtons>
-
+ -->
     </content>
 
 
-  <!-- <div class="workspace-css-table-holder example-table-columns-4 thin-styles-applied bright-styles-applied"> -->
-  <div class="workspace-css-table-holder example-table-columns-4">
-    <div class="workspace-css-table">
-      <div class="row desktop-columns-labels-holder">
-        <div class="cell"><span class="column-label">attribute</span></div>
-        <div class="cell"><span class="column-label">type</span></div>
-        <div class="cell"><span class="column-label">values</span></div>
-        <div class="cell"><span class="column-label">description</span></div>
-      </div>
-      <div class="row">
-        <div class="cell"><span class="column-label">attribute</span><span class="cell-value">
-            port</span></div>
-        <div class="cell"><span class="column-label">type</span><span class="cell-value">number</span></div>
-        <div class="cell"><span class="column-label">values</span><span class="cell-value">443</span></div>
-        <div class="cell"><span class="column-label">description</span><span class="cell-value">
-  the port number for the server
-  to accept browsers' connections
-        </span>
-        </div>
-      </div>
-      <div class="row">
-        <div class="cell"><span class="column-label">attribute</span><span class="cell-value">
-            alternative-port</span></div>
-        <div class="cell"><span class="column-label">type</span><span class="cell-value">number</span></div>
-        <div class="cell"><span class="column-label">description</span><span class="cell-value">for development and testing purposes
-          only. if default port is busy,
-          then the server starts listening on the alternative port.</span></div>
-        <div class="cell"><span class="column-label">values</span><span class="cell-value">8443</span></div>
-      </div>
-      <div class="row">
-        <div class="cell"><span class="column-label">attribute</span><span class="cell-value">secure</span></div>
-        <div class="cell"><span class="column-label">type</span><span class="cell-value">boolean</span></div>
-        <div class="cell"><span class="column-label">values</span><span class="cell-value">true | false</span></div>
-        <div class="cell"><span class="column-label">description</span><span class="cell-value">please specify, where to use HTTPS
-            secured connection with TLS or not.</span>
-        </div>
-      </div>
-    </div>
-  </div>
-
 
   <!-- THE WORKAROUND TO BREAK URLS AFTER THE SLASH SYMBOL: THE ZERO LENGTH WHITESPACE SPECIAL CHAR: &#8203; -->
-  <!--
-  <div class="workspace-css-table-holder example-table-columns-12">
-    <div class="workspace-css-table">
+
+  <div class="jsx-css-table-holder example-table-columns-12">
+    <div class="jsx-css-table">
       <div class="row desktop-columns-labels-holder">
         <div class="cell"><span class="column-label">attribute</span></div>
         <div class="cell"><span class="column-label">type</span></div>
@@ -214,7 +160,7 @@
         </div>
       </div>
     </div>
-  </div> -->
+  </div>
 
   </main>
 
@@ -251,6 +197,7 @@
 
     }
 
+
     // declaring the function, this adds to buttons the event handler to turn on the theme.
     // this function is invoked when the site loads in the browser,
     // in the event handler for the event DOMContentLoaded
@@ -279,7 +226,7 @@
 
 
     // DOCUMENT ONLOAD, INVOKES THE FUNCTION TO PRELOAD THEME FONTS
-    document.addEventListener('DOMContentLoaded', () => {
+    /* document.addEventListener('DOMContentLoaded', () => {
 
       const preloader = new Preloader();
         preloader
@@ -291,67 +238,10 @@
       // adding to buttons the event handler to turn on the theme.
       addThemeButtonsEventHandlers();
 
-    });
+    }); */
 
   </script>
 
-
-  <script>
-
-  const stylesProps = [
-    "fontFamily",
-    "fontSize",
-    "color",
-    "backgroundColor",
-    "width",
-    "lineHeight",
-    "padding",
-    "display"
-  ];
-
-  function inlineStyleAllNodes(root) {
-
-    let node = root;
-    let computedStyles = getComputedStyle( node );
-    let propName = "";
-    for ( propName of stylesProps ) {
-      node.style[propName] = computedStyles[propName];
-    }
-
-    root.childNodes.forEach( node => {
-
-      if ( node.nodeType !== 1 ) {
-        return;
-      }
-
-      computedStyles = getComputedStyle( node );
-
-      let propName = "";
-      for ( propName of stylesProps ) {
-        node.style[propName] = computedStyles[propName];
-      }
-
-      inlineStyleAllNodes( node ); // Recursively get all children
-    });
-  }
-
-
-  function inlineTable() {
-    let inlineStyledHtml = "";
-
-    let node = document.querySelector(".workspace-css-table-holder");
-
-    inlineStyleAllNodes( node );
-
-    inlineStyledHtml = node.outerHTML;
-
-    console.log( inlineStyledHtml );
-  }
-
-
-  document.addEventListener( "DOMContentLoaded", () => { inlineTable(); } );
-
-  </script>
 
 </body>
 </html>

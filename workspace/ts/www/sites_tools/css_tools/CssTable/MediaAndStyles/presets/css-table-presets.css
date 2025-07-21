@@ -1,5 +1,5 @@
 
-.workspace-css-table-holder .cell.example .cell-value {
+.jsx-css-table-holder .cell.example .cell-value {
   /* TASK: TO WRITE AN EXAMPLE CSS CLASS WITH EXTENDED TEXT PROPS, TO DOCUMENT THE CSS SELECTORS. */
 
   word-spacing: 0.9rem;
@@ -22,13 +22,13 @@
 }
 
 
-.workspace-css-table-holder .cell.keep-like-in-text-editor span.cell-value {
+.jsx-css-table-holder .cell.keep-like-in-text-editor span.cell-value {
   white-space:  preserve nowrap !important;
   word-break: keep-all !important;
   display: block !important;
 }
 
-.workspace-css-table-holder .cell.keep-line .cell-value {
+.jsx-css-table-holder .cell.keep-line .cell-value {
   /* it didn't work to keep cell width by long word in a cell,
       since grid is for the markup with cells one level without enbracing row tags.
       the grid markup suits for instance when showing products in online store. */
@@ -36,7 +36,7 @@
   white-space: nowrap;
 }
 
-.workspace-css-table-holder .cell.number .cell-value {
+.jsx-css-table-holder .cell.number .cell-value {
   /* font-variant-numeric:   oldstyle-nums !important; */
   text-align:             right;
   font-family:            monospace;
