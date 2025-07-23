@@ -1,16 +1,28 @@
 
-/* @import url("@CssTable_MediaAndStyles/responsive_size_Constants.css"); */
+@import url("@CssTable_MediaAndStyles/columns/columns.css");
+@import url("@CssTable_MediaAndStyles/presets/css-table-presets.css");
 
 
 
 /* base theme: constants and @media queries */
+/* @import url("@CssTable_MediaAndStyles/themes/theme_base/responsive_size_Imports_CssTable_theme_base_Webpack_min.css"); */
+
+@import url("@CssTable_MediaAndStyles/themes/theme_base/CssTable_theme_base_thin.css");
+@import url("@CssTable_MediaAndStyles/themes/theme_base/CssTable_theme_base_bright.css");
 @import url("@CssTable_MediaAndStyles/themes/theme_base/CssTable_theme_base_main.css");
-@import url("@CssTable_MediaAndStyles/themes/theme_base/responsive_size_Imports_CssTable_theme_base_Webpack_min.css");
+
+
+
+@import url("@CssTable_MediaAndStyles/themes/theme-emailed-thin/css-table-theme-emailed-thin.css");
+@import url("@CssTable_MediaAndStyles/themes/theme_lightmode/css-table-theme-lightmode.css");
+@import url("@CssTable_MediaAndStyles/themes/theme_darkmode/css-table-theme-darkmode.css");
 
 
 
 /* main css file, css logics with rules set via variables in the theme .css files imported above */
-@import url("@CssTable_MediaAndStyles/CssTable_main.css");
+@import url("@CssTable_MediaAndStyles/CssTable_thin.css");
+@import url("@CssTable_MediaAndStyles/CssTable_bright.css");
 
+@import url("@CssTable_MediaAndStyles/CssTable_main.css");
 
 

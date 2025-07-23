@@ -36,31 +36,33 @@
 
 
   /* STYLES FOR ALL SPAN TAGS IN THE TABLE CELL, FIELD LABEL AND THE SPAN WITH THE VALUE */
-  .jsx-css-table-holder .column-label,
-  .jsx-css-table-holder .cell-value {
-    padding:                    var(--jsx--CssTable--thin--cell--padding);
+  .jsx-css-table-holder .cell .column-label,
+  .jsx-css-table-holder .cell .cell-value {
     display: inline-block;
   }
 
 
   /* THE COLUMN LABEL, SHOWN IN MOBILE VIEW ON THE LEFT SIDE */
-  .jsx-css-table-holder .column-label {
+  .jsx-css-table-holder .cell .column-label {
     width:                      var(--jsx--CssTable--thin--cell--column-label--width);
     max-width:                  var(--jsx--CssTable--thin--cell--column-label--width);
     min-width:                  var(--jsx--CssTable--thin--cell--column-label--width);
   }
 
 
-  .jsx-css-table-holder .cell-value {
+  .jsx-css-table-holder .cell .cell-value {
     flex-grow:                  1;
   }
 
 
   /* when mobile, every record, displayed as column, obtains on te top and at the bottom the padding for finer look and feel */
-  .jsx-css-table-holder .cell:first-of-type span {
+  .jsx-css-table-holder .cell:first-of-type .column-label,
+  .jsx-css-table-holder .cell:first-of-type .cell-value {
     padding-top:                var(--jsx--CssTable--thin--record--padding-top);
   }
-  .jsx-css-table-holder .cell:last-of-type span {
+
+  .jsx-css-table-holder .cell:last-of-type .column-label,
+  .jsx-css-table-holder .cell:last-of-type .cell-value {
     padding-bottom:             var(--jsx--CssTable--thin--record--padding-bottom);
   }
 
@@ -68,18 +70,20 @@
 
   /* with css class "thin-styles-applied",
       column labels have another look and feel */
-  .jsx-css-table-holder .column-label {
+  .jsx-css-table-holder .cell .column-label {
     font-family:                var(--jsx--CssTable--thin--cell--column-label--font-family);
     font-size:                  var(--jsx--CssTable--thin--cell--column-label--font-size);
     font-weight:                var(--jsx--CssTable--thin--cell--column-label--font-weight);
     line-height:                var(--jsx--CssTable--thin--cell--column-label--line-height);
     letter-spacing:             var(--jsx--CssTable--thin--cell--column-label--letter-spacing);
+    text-align:                 var(--jsx--CssTable--thin--cell--column-label--text-align);
+
     padding:                    var(--jsx--CssTable--thin--cell--column-label--padding);
 
-    color:                      var(--jsx--CssTable--thin--cell--column-label--text-color);
-
+    color:                      var(--jsx--CssTable--thin--cell--column-label--color);
     background-color:           var(--jsx--CssTable--thin--cell--column-label--background-color);
 
+    /*
     background-image:           var(--jsx--CssTable--thin--cell--column-label--background-image);
     background-position:        var(--jsx--CssTable--thin--cell--column-label--background-position);
     background-size:            var(--jsx--CssTable--thin--cell--column-label--background-size);
@@ -87,23 +91,30 @@
     background-origin:          var(--jsx--CssTable--thin--cell--column-label--background-origin);
     background-clip:            var(--jsx--CssTable--thin--cell--column-label--background-clip);
     background-attachment:      var(--jsx--CssTable--thin--cell--column-label--background-attachment);
+    */
+
+    line-break:                 var(--jsx--CssTable--thin--cell--column-label--line-break);
+    word-break:                 var(--jsx--CssTable--thin--cell--column-label--word-break);
+
   }
 
 
   /* with css class "thin-styles-applied",
       cell values have another look and feel */
-  .jsx-css-table-holder .cell-value {
+  .jsx-css-table-holder .cell .cell-value {
     font-family:                var(--jsx--CssTable--thin--cell--cell-value--font-family);
     font-size:                  var(--jsx--CssTable--thin--cell--cell-value--font-size);
     font-weight:                var(--jsx--CssTable--thin--cell--cell-value--font-weight);
     line-height:                var(--jsx--CssTable--thin--cell--cell-value--line-height);
     letter-spacing:             var(--jsx--CssTable--thin--cell--cell-value--letter-spacing);
+    text-align:                 var(--jsx--CssTable--thin--cell--cell-value--text-align);
+
     padding:                    var(--jsx--CssTable--thin--cell--cell-value--padding);
 
-    color:                      var(--jsx--CssTable--thin--cell--cell-value--text-color);
-
+    color:                      var(--jsx--CssTable--thin--cell--cell-value--color);
     background-color:           var(--jsx--CssTable--thin--cell--cell-value--background-color);
 
+    /*
     background-image:           var(--jsx--CssTable--thin--cell--cell-value--background-image);
     background-position:        var(--jsx--CssTable--thin--cell--cell-value--background-position);
     background-size:            var(--jsx--CssTable--thin--cell--cell-value--background-size);
@@ -111,6 +122,11 @@
     background-origin:          var(--jsx--CssTable--thin--cell--cell-value--background-origin);
     background-clip:            var(--jsx--CssTable--thin--cell--cell-value--background-clip);
     background-attachment:      var(--jsx--CssTable--thin--cell--cell-value--background-attachment);
+    */
+
+    line-break:                 var(--jsx--CssTable--thin--cell--cell-value--line-break);
+    word-break:                 var(--jsx--CssTable--thin--cell--cell-value--word-break);
+
   }
 
 }

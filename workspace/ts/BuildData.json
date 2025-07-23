@@ -188,9 +188,9 @@
       "build": false,
       "build-simple-enable": true,
       "css-importer": {
-        "build": false,
-        "cssFilePath": "MediaAndStyles/css-table-main-webpack.css",
-        "cssTargetFilePath": "MediaAndStyles/css_table_main_resolved.css"
+        "build": true,
+        "cssFilePath": "MediaAndStyles/CssTable_main_Webpack.css",
+        "cssTargetFilePath": "MediaAndStyles/CssTable_main_resolved.css"
       },
       "dependencies": [],
       "build-files": [

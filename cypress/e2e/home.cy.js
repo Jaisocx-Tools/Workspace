@@ -49,10 +49,19 @@ describe('ExampleCss_CssTable_JaisocxFolderListing_NoJS', () => {
 
 
 
-describe('ExampleCss_CssTable_withCssCleanStart', () => {
+describe('ExampleCss_CssTable_4fields', () => {
   it('loads and contains expected text', () => {
-    cy.visit('/ExampleCss_CssTable_withCssCleanStart.html');
+    cy.visit('/ExampleCss_CssTable_4fields.html');
     cy.contains("description");
+  });
+});
+
+
+
+describe('ExampleCss_CssTable_12fields', () => {
+  it('loads and contains expected text', () => {
+    cy.visit('/ExampleCss_CssTable_12fields.html');
+    cy.contains("CssCleanStart");
   });
 });
 
@@ -67,12 +76,6 @@ describe('ExampleCss_CssTable', () => {
 
 
 
-describe('ExampleCss_CssTable2_withCssCleanStart', () => {
-  it('loads and contains expected text', () => {
-    cy.visit('/ExampleCss_CssTable2_withCssCleanStart.html');
-    cy.contains("CssCleanStart");
-  });
-});
 
 
 

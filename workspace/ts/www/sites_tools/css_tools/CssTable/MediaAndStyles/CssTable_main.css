@@ -7,14 +7,14 @@
   justify-content:         flex-start;
 
   width:                   var(--jsx--CssTable--holder--width);
-  max-width:               var(--jsx--CssTable--holder--width-max);
-  min-width:               var(--jsx--CssTable--holder--width-min);
+  max-width:               var(--jsx--CssTable--holder--max-width);
+  min-width:               var(--jsx--CssTable--holder--min-width);
 
   overflow:                var(--jsx--CssTable--holder--overflow-x) var(--jsx--CssTable--holder--overflow-y);
 
 
-  border:                  var(--jsx--CssTable--holder--border);
   border-radius:           var(--jsx--CssTable--holder--border-radius);
+  border:                  var(--jsx--CssTable--holder--border);
 
 }
 
@@ -22,8 +22,8 @@
 
 .jsx-css-table-holder .jsx-css-table {
   width:                   var(--jsx--CssTable--main--width);
-  max-width:               var(--jsx--CssTable--main--width-max);
-  min-width:               var(--jsx--CssTable--main--width-min);
+  max-width:               var(--jsx--CssTable--main--max-width);
+  min-width:               var(--jsx--CssTable--main--min-width);
 
   overflow-y:              var(--jsx--CssTable--main--overflow-y);
   overflow-x:              var(--jsx--CssTable--main--overflow-x);
@@ -69,17 +69,17 @@
 
 
 
-.jsx-css-table-holder .jsx-css-table .column-label {
+.jsx-css-table-holder .cell .column-label {
   font-family:             var(--jsx--CssTable--cell--column-label--font-family);
-  font-weight:             var(--jsx--CssTable--cell--column-label--font-weight);
+  /* font-weight:             var(--jsx--CssTable--cell--column-label--font-weight);
   font-size:               var(--jsx--CssTable--cell--column-label--font-size);
   line-height:             var(--jsx--CssTable--cell--column-label--line-height);
-  letter-spacing:          var(--jsx--CssTable--cell--column-label--letter-spacing);
+  letter-spacing:          var(--jsx--CssTable--cell--column-label--letter-spacing); */
 
-  color:                   var(--jsx--CssTable--cell--column-label--text-color);
-
+  color:                   var(--jsx--CssTable--cell--column-label--color);
   background-color:        var(--jsx--CssTable--cell--column-label--background-color);
 
+  /*
   background-image:        var(--jsx--CssTable--cell--column-label--background-image);
   background-position:     var(--jsx--CssTable--cell--column-label--background-position);
   background-size:         var(--jsx--CssTable--cell--column-label--background-size);
@@ -87,30 +87,31 @@
   background-origin:       var(--jsx--CssTable--cell--column-label--background-origin);
   background-clip:         var(--jsx--CssTable--cell--column-label--background-clip);
   background-attachment:   var(--jsx--CssTable--cell--column-label--background-attachment);
+  */
 
   display:                 flex;
   flex-direction:          row;
   align-items:             stretch;
   justify-content:         flex-start;
+
+  /* line-break:              var(--jsx--CssTable--cell--column-label--line-break);
+  word-break:              var(--jsx--CssTable--cell--column-label--word-break); */
+
 }
 
 
 
-.jsx-css-table-holder .jsx-css-table .cell-value {
+.jsx-css-table-holder .cell .cell-value {
   font-family:             var(--jsx--CssTable--cell--cell-value--font-family);
-
-  line-break:              normal;
-  word-break:              break-word;
-
-  font-size:               var(--jsx--CssTable--cell--cell-value--font-size);
+  /* font-size:               var(--jsx--CssTable--cell--cell-value--font-size);
   font-weight:             var(--jsx--CssTable--cell--cell-value--font-weight);
   line-height:             var(--jsx--CssTable--cell--cell-value--line-height);
-  letter-spacing:          var(--jsx--CssTable--cell--cell-value--letter-spacing);
+  letter-spacing:          var(--jsx--CssTable--cell--cell-value--letter-spacing); */
 
-  color:                   var(--jsx--CssTable--cell--cell-value--text-color);
-
+  color:                   var(--jsx--CssTable--cell--cell-value--color);
   background-color:        var(--jsx--CssTable--cell--cell-value--background-color);
 
+  /*
   background-image:        var(--jsx--CssTable--cell--cell-value--background-image);
   background-position:     var(--jsx--CssTable--cell--cell-value--background-position);
   background-size:         var(--jsx--CssTable--cell--cell-value--background-size);
@@ -118,11 +119,16 @@
   background-origin:       var(--jsx--CssTable--cell--cell-value--background-origin);
   background-clip:         var(--jsx--CssTable--cell--cell-value--background-clip);
   background-attachment:   var(--jsx--CssTable--cell--cell-value--background-attachment);
+  */
 
   display:                 flex;
   flex-direction:          row;
   align-items:             stretch;
   justify-content:         flex-start;
+
+  /* line-break:              var(--jsx--CssTable--cell--cell-value--line-break);
+  word-break:              var(--jsx--CssTable--cell--cell-value--word-break); */
+
 }
 
 

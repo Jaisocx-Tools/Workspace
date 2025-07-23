@@ -4,35 +4,44 @@ class Preloader {
     webpackAliasReplace = "";
 
 
+
     constructor() {
         this.themesPreloads = {};
     }
 
 
+
     setThemesPreloads(preloads) {
         this.themesPreloads = preloads;
 
+
         return this;
     }
+
 
 
     setWebpackAlias(alias) {
         this.webpackAlias = alias;
 
+
         return this;
     }
+
 
 
     setWebpackAliasReplace(alias) {
         this.webpackAliasReplace = alias;
 
+
         return this;
     }
+
 
 
     init() {
         this.addDocumentLoadedEventHandler();
     }
+
 
 
     addDocumentLoadedEventHandler() {
@@ -52,6 +61,7 @@ class Preloader {
             // If already loaded, invoke immediately
         }
     }
+
 
 
     htmlDocumentAppendPreloadingLinkTags() {

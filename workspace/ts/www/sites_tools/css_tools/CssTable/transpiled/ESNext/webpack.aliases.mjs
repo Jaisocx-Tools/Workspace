@@ -1,3 +1,4 @@
+// the hardcoded copy of .mjs file
 import * as path from "node:path";
 import { fileURLToPath } from "node:url";
 import { getWebpackAliases } from "./webpackAliases.js";

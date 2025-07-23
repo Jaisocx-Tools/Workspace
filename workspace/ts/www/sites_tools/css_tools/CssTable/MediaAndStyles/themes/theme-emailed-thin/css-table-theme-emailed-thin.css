@@ -1,6 +1,6 @@
 /* theme-emailed-thin */
-.workspace.theme-emailed-thin .jsx-css-table-holder {
-  --column-label-width: 9rem;
+.jsx.theme-emailed-thin .jsx-css-table-holder {
+  --jsx--CssTable--thin--cell--column-label--width: 9rem;
 
   --jsx--CssTable--thin--cell--column-label--font-size: 0.98rem;
   --jsx--CssTable--thin--cell--column-label--line-height: 1.095rem;
@@ -10,19 +10,19 @@
 
 }
 
-.workspace.theme-emailed-thin .jsx-css-table-holder,
-.workspace.theme-emailed-thin .jsx-css-table-holder .jsx-css-table,
-.workspace.theme-emailed-thin .jsx-css-table-holder .jsx-css-table .row:not(.desktop-columns-labels-holder) {
+.jsx.theme-emailed-thin .jsx-css-table-holder,
+.jsx.theme-emailed-thin .jsx-css-table-holder .jsx-css-table,
+.jsx.theme-emailed-thin .jsx-css-table-holder .jsx-css-table:not(.desktop-columns-labels-holder) .row {
   display: block;
   flex-direction: unset;
 }
 
 
 
-.workspace.theme-emailed-thin .jsx-css-table-holder,
-.workspace.theme-emailed-thin .jsx-css-table-holder .jsx-css-table,
-.workspace.theme-emailed-thin .jsx-css-table-holder .jsx-css-table .row,
-.workspace.theme-emailed-thin .jsx-css-table-holder .jsx-css-table .row .cell {
+.jsx.theme-emailed-thin .jsx-css-table-holder,
+.jsx.theme-emailed-thin .jsx-css-table-holder .jsx-css-table,
+.jsx.theme-emailed-thin .jsx-css-table-holder .jsx-css-table .row,
+.jsx.theme-emailed-thin .jsx-css-table-holder .jsx-css-table .row .cell {
 
   width:                   100%;
   min-width:               100%;
@@ -37,14 +37,14 @@
 }
 
 
-.workspace.theme-emailed-thin .jsx-css-table-holder .row.desktop-columns-labels-holder {
+.jsx.theme-emailed-thin .jsx-css-table-holder .row.desktop-columns-labels-holder {
   display: none;
 }
 
 
-.workspace.theme-emailed-thin .jsx-css-table-holder,
-.workspace.theme-emailed-thin .jsx-css-table-holder .jsx-css-table,
-.workspace.theme-emailed-thin .jsx-css-table-holder .jsx-css-table .row:not(.desktop-columns-labels-holder) {
+.jsx.theme-emailed-thin .jsx-css-table-holder,
+.jsx.theme-emailed-thin .jsx-css-table-holder .jsx-css-table,
+.jsx.theme-emailed-thin .jsx-css-table-holder .jsx-css-table:not(.desktop-columns-labels-holder) .row {
   display: block;
 }
 
@@ -54,13 +54,13 @@
 } */
 
 
-.workspace.theme-emailed-thin .jsx-css-table-holder .jsx-css-table .row .cell {
+.jsx.theme-emailed-thin .jsx-css-table-holder .jsx-css-table .row .cell {
   display: flex;
 }
 
 
-.workspace.theme-emailed-thin .jsx-css-table-holder .jsx-css-table .row .cell .column-label,
-.workspace.theme-emailed-thin .jsx-css-table-holder .jsx-css-table .row .cell .cell-value {
+.jsx.theme-emailed-thin .jsx-css-table-holder .jsx-css-table .row .cell .column-label,
+.jsx.theme-emailed-thin .jsx-css-table-holder .jsx-css-table .row .cell .cell-value {
   overflow-x:              hidden;
   overflow-y:              visible;
 
@@ -69,15 +69,15 @@
   max-height:              unset;
 }
 
-.workspace.theme-emailed-thin .jsx-css-table-holder .jsx-css-table .row .cell .column-label {
-  width:                   var(--column-label-width);
-  min-width:               var(--column-label-width);
-  max-width:               var(--column-label-width);
+.jsx.theme-emailed-thin .jsx-css-table-holder .jsx-css-table .row .cell .column-label {
+  width:                   var(--jsx--CssTable--thin--cell--column-label--width);
+  min-width:               var(--jsx--CssTable--thin--cell--column-label--width);
+  max-width:               var(--jsx--CssTable--thin--cell--column-label--width);
 
   background:              var(--jsx--CssTable--thin--cell--column-label--background-color);
 }
 
-.workspace.theme-emailed-thin .jsx-css-table-holder .jsx-css-table .row .cell .cell-value {
+.jsx.theme-emailed-thin .jsx-css-table-holder .jsx-css-table .row .cell .cell-value {
   flex-grow:               1;
 
   width:                   unset;

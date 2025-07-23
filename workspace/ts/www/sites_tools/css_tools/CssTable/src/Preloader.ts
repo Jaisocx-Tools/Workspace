@@ -6,35 +6,44 @@ export class Preloader {
   webpackAliasReplace: string = "";
 
 
+
   constructor() {
     this.themesPreloads = {};
   }
 
 
+
   setThemesPreloads( preloads: object ) {
     this.themesPreloads = preloads;
 
+
     return this;
   }
+
 
 
   setWebpackAlias ( alias: string ) {
     this.webpackAlias = alias;
 
+
     return this;
   }
+
 
 
   setWebpackAliasReplace ( alias: string ) {
     this.webpackAliasReplace = alias;
 
+
     return this;
   }
+
 
 
   init () {
     this.addDocumentLoadedEventHandler();
   }
+
 
 
   addDocumentLoadedEventHandler() {
@@ -53,6 +62,7 @@ export class Preloader {
       // If already loaded, invoke immediately
     }
   }
+
 
 
   htmlDocumentAppendPreloadingLinkTags () {

@@ -1,2 +1,2 @@
-import "@CssTable_MediaAndStyles/CssTable_main_Webpack.css";
+import "@CssTable_MediaAndStyles/CssTable_main_Webpack_min.css";
 

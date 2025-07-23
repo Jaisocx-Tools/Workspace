@@ -1,76 +1,68 @@
 /* Sites tool: CssTable, theme: theme_base */
+
 .jsx-css-table-holder {
 
-  --jsx--CssTable--thin--cell--padding: 0.3rem 0.5rem;
-  --jsx--CssTable--thin--cell--column-label--width: auto;
-  --jsx--CssTable--thin--record--padding-top: 0.2rem;
-  --jsx--CssTable--thin--record--padding-bottom: 0.2rem;
+  --jsx--CssTable--thin--cell--column-label--width:                    9rem;
+
+
+
+/* padding */
+  /* --jsx--CssTable--thin--cell--padding:                                0.9rem 0.7rem; */
+  --jsx--CssTable--thin--cell--padding-y:                              0.7rem;
+
+  --jsx--CssTable--thin--record--padding-top:                          2.4rem;
+  --jsx--CssTable--thin--record--padding-bottom:                       2.4rem;
 
 
 
 
-  --jsx--CssTable--thin--cell--column-label--font-family: var(--jsx--CssTable--cell--column-label--font-family);
-  --jsx--CssTable--thin--cell--cell-value--font-family: var(--jsx--CssTable--cell--cell-value--font-family);
-
-  --jsx--CssTable--thin--cell--text-align: var(--jsx--CssTable--cell--text-align);
-
-  --jsx--CssTable--thin--cell--padding: 5px 12px 5px 12px;
 
 
 
-  /* THIN RECORD PADDING TOP AND BOTTOM, THE FIRST AND THE LAST CELLS OF A TABLE ROW */
-  --jsx--CssTable--thin--record--padding-top: 1.4rem;
-  --jsx--CssTable--thin--record--padding-bottom: 1.4rem;
+/* column label padding */
+  --jsx--CssTable--thin--cell--column-label--padding:                  var(--jsx--CssTable--thin--cell--padding-y) 0.7rem;
+
+/* column label colors */
+  --jsx--CssTable--thin--cell--column-label--color:                    var(--jsx--CssTable--cell--column-label--color);
+  --jsx--CssTable--thin--cell--column-label--background-color:         var(--jsx--CssTable--cell--column-label--background-color);
+
+/* column label font */
+  --jsx--CssTable--thin--cell--column-label--font-family:              var(--jsx--CssTable--cell--column-label--font-family);
+
+  --jsx--CssTable--thin--cell--column-label--font-weight:              600;
+  --jsx--CssTable--thin--cell--column-label--font-size:                0.9rem;
+  --jsx--CssTable--thin--cell--column-label--line-height:              1.5rem;
+  --jsx--CssTable--thin--cell--column-label--letter-spacing:           0;
+  --jsx--CssTable--thin--cell--column-label--text-align:               left;
+
+  --jsx--CssTable--thin--cell--column-label--line-break:               normal;
+  --jsx--CssTable--thin--cell--column-label--word-break:               break-word;
 
 
 
-  --jsx--CssTable--thin--cell--column-label--width: 8rem;
-  --jsx--CssTable--thin--cell--column-label--font-weight: 600;
-  --jsx--CssTable--thin--cell--column-label--font-size: 1.085rem;
-  --jsx--CssTable--thin--cell--column-label--line-height: 1.3rem;
-  --jsx--CssTable--thin--cell--column-label--letter-spacing: 0;
-  --jsx--CssTable--thin--cell--column-label--text-align: var(--jsx--CssTable--thin--cell--text-align);
-  --jsx--CssTable--thin--cell--column-label--padding: var(--jsx--CssTable--thin--cell--padding);
-
-  --jsx--CssTable--thin--cell--cell-value--font-weight: var(--jsx--CssTable--cell--cell-value--font-weight);
-  --jsx--CssTable--thin--cell--cell-value--font-size: 1.05rem;
-  --jsx--CssTable--thin--cell--cell-value--line-height: 1.3rem;
-  --jsx--CssTable--thin--cell--cell-value--letter-spacing: 0;
-  --jsx--CssTable--thin--cell--cell-value--text-align: var(--jsx--CssTable--thin--cell--text-align);
-  --jsx--CssTable--thin--cell--cell-value--padding: var(--jsx--CssTable--thin--cell--padding);
 
 
-  /* mobile thin layout */
+/* cell value padding */
+  --jsx--CssTable--thin--cell--cell-value--padding:                    var(--jsx--CssTable--thin--cell--padding-y) 0.82rem;
 
-  /* --jsx--CssTable--thin--cell--column-label--text-color: var(--jsx--CssTable--cell--column-label--text-color); */
-  --jsx--CssTable--thin--cell--column-label--text-color:          #339933;
+/* cell value colors */
+  --jsx--CssTable--thin--cell--cell-value--color:                      var(--jsx--CssTable--cell--cell-value--color);
+  --jsx--CssTable--thin--cell--cell-value--background-color:           var(--jsx--CssTable--cell--cell-value--background-color);
 
-  /* --jsx--CssTable--thin--cell--column-label--background-color: var(--jsx--CssTable--cell--column-label--background-color); */
-  --jsx--CssTable--thin--cell--column-label--background-color:    #f2fff2;
+/* cell value font */
+  --jsx--CssTable--thin--cell--cell-value--font-family:                var(--jsx--CssTable--cell--cell-value--font-family);
 
-  --jsx--CssTable--thin--cell--column-label--background-image:      unset; /* url("https://sandbox.brightday.email/cdn/jaisocx-tools/tree/MediaAndStyles/themes/theme-funny/mini-images/data-types/house.png"); */
-  --jsx--CssTable--thin--cell--column-label--background-position:   0 0;
-  --jsx--CssTable--thin--cell--column-label--background-size:       contain;
-  --jsx--CssTable--thin--cell--column-label--background-repeat:     no-repeat;
-  --jsx--CssTable--thin--cell--column-label--background-origin:     border-box;
-  --jsx--CssTable--thin--cell--column-label--background-clip:       border-box;
-  --jsx--CssTable--thin--cell--column-label--background-attachment: scroll;
+  --jsx--CssTable--thin--cell--cell-value--font-weight:                400;
+  --jsx--CssTable--thin--cell--cell-value--font-size:                  1.05rem;
+  --jsx--CssTable--thin--cell--cell-value--line-height:                1.8rem;
+  --jsx--CssTable--thin--cell--cell-value--letter-spacing:             0;
+  --jsx--CssTable--thin--cell--cell-value--text-align:                 left;
 
-
-  /* --jsx--CssTable--thin--cell--cell-value--text-color: var(--jsx--CssTable--cell--cell-value--text-color); */
-  --jsx--CssTable--thin--cell--cell-value--text-color:             #333;
-
-  /* --jsx--CssTable--thin--cell--cell-value--background-color: var(--jsx--CssTable--cell--cell-value--background-color); */
-  --jsx--CssTable--thin--cell--cell-value--background-color:       #fbfefc;
-
-  --jsx--CssTable--thin--cell--cell-value--background-image:         unset; /* url("https://sandbox.brightday.email/cdn/jaisocx-tools/tree/MediaAndStyles/themes/theme-funny/mini-images/data-types/money-transfer.png"); */
-  --jsx--CssTable--thin--cell--cell-value--background-position:      0 0;
-  --jsx--CssTable--thin--cell--cell-value--background-size:          contain;
-  --jsx--CssTable--thin--cell--cell-value--background-repeat:        no-repeat;
-  --jsx--CssTable--thin--cell--cell-value--background-origin:        border-box;
-  --jsx--CssTable--thin--cell--cell-value--background-clip:          border-box;
-  --jsx--CssTable--thin--cell--cell-value--background-attachment:    scroll;
-
+  --jsx--CssTable--thin--cell--cell-value--line-break:                 normal;
+  --jsx--CssTable--thin--cell--cell-value--word-break:                 break-word;
 
 }
+
+
+
 
