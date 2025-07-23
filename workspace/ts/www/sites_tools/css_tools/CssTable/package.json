@@ -1,18 +1,17 @@
 {
-  "name": "@jaisocx/your-package-name",
-  "version": "1.0.0",
+  "name": "@jaisocx/css-table",
+  "version": "2.0.1",
   "description": "",
-  "author": "<Your Name>",
+  "author": "Jaisocx",
   "keywords": [
     "css",
     "styles"
   ],
   "files": [
-    "index.example.html",
+    "index.html",
 
     "MediaAndStyles/*.css",
     "MediaAndStyles/themes/",
-    "MediaAndStyles/fonts/",
 
     "transpiled/CommonJS",
     "transpiled/ESNext",
@@ -40,8 +39,8 @@
       "require": "./transpiled/CommonJS/webpack.aliases.cjs"
     }
   },
-  "dependencies": {
-    "@jaisocx/css-clean-start": "~1.5.6"
+  "optionalDependencies": {
+    "@jaisocx/css-clean-start-2": "~1.0.1"
   }
 }
 
