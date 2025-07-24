@@ -1,0 +1,1271 @@
+<!DOCTYPE html>
+<html lang="en" class="jsx jaisocx-folder-listing">
+<head>
+
+  <title>Under construction: Css Table</title>
+
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+
+
+  <!-- <link rel="stylesheet" href="sites_tools/css_tools/CssCleanStart_2/MediaAndStyles/themes/theme_lightmode/CssCleanStart_2_theme_lightmode_main.css">
+  <link rel="stylesheet" href="sites_tools/css_tools/CssCleanStart_2/MediaAndStyles/themes/theme_darkmode/CssCleanStart_2_theme_darkmode_main.css"> -->
+
+  <!-- importing styles of @jaisocx/css-clean-start -->
+  <link rel="stylesheet" href="node_modules/@jaisocx/css-clean-start-2/MediaAndStyles/CssCleanStart_2_main_resolved_min.css">
+
+
+
+  <link rel="stylesheet" href="node_modules/@jaisocx/css-table/MediaAndStyles/themes/theme_jaisocx_folder_listing/CssTable_theme_jaisocx_folder_listing_Relative.css">
+
+  <!-- importing styles of @jaisocx/css-table installable like this: npm install @jaisocx/css-table -->
+  <link rel="stylesheet" href="node_modules/@jaisocx/css-table/MediaAndStyles/CssTable_main_resolved_min.css">
+
+</head>
+<body>
+
+  <main>
+
+    <h1>js orderby and sticky scroll</h1>
+    <h2>@jaisocx/css-table-ordered</h1>
+
+
+
+        <!--starts markup of the table styled by @jaisocx/css-table-ordered npm package-->
+        <!--@jaisocx/css-table-ordered extends @jaisocx/css-table having one js class to orderby records in the table, onevent click label of the table column-->
+        <div class="jsx-css-table-holder jaisocx-folder-listing">
+
+          <!--the first table record with the names of the table columns, shown in the table bright mode-->
+          <div class="jsx-css-table desktop-columns-labels-holder">
+
+            <div class="row">
+
+              <div class="cell" data-datatype="number" data-id="0"><span class="column-label">num.</span></div>
+
+              <div class="cell" data-datatype="string" data-id="1"><span class="column-label">Name</span></div>
+
+              <div class="cell" data-datatype="string" data-id="2"><span class="column-label">mime</span></div>
+
+              <div class="cell" data-datatype="number" data-id="3"><span class="column-label">size</span></div>
+
+              <div class="cell" data-datatype="string" data-id="4"><span class="column-label">last modified</span></div>
+
+              <div class="cell" data-datatype="string" data-id="5"><span class="column-label">url relative</span></div>
+
+            </div>
+
+          </div>
+
+
+
+          <div class="jsx-css-table records">
+
+            <!--table record with props of one file in the current folder-->
+            <div class="row folder">
+
+              <div class="cell ix number folder table-thin-field-hide-mobile table-thin-field-hide-tablet">
+                <span class="column-label">num.</span>
+                <span class="cell-mini-image"><span class="in-cell-mini-image"></span></span>
+                <span class="cell-value">0</span>
+              </div>
+
+              <div class="cell name string folder  ">
+                <span class="column-label">Name</span>
+                <span class="cell-mini-image"><span class="in-cell-mini-image"></span></span>
+                <span class="cell-value"><a href="http://update-listing.jaisocx.com:80/">..</a></span>
+              </div>
+
+              <div class="cell mimeType string folder table-thin-field-hide-mobile ">
+                <span class="column-label">mime</span>
+                <span class="cell-mini-image"><span class="in-cell-mini-image"></span></span>
+                <span class="cell-value">folder</span>
+              </div>
+
+              <div class="cell size number folder table-thin-field-hide-mobile ">
+                <span class="column-label">size</span>
+                <span class="cell-mini-image"><span class="in-cell-mini-image"></span></span>
+                <span class="cell-value">0</span>
+              </div>
+
+              <div class="cell fileLastModifiedTimestampFormatted string folder table-thin-field-hide-mobile ">
+                <span class="column-label">last modified</span>
+                <span class="cell-mini-image"><span class="in-cell-mini-image"></span></span>
+                <span class="cell-value">Sun 06 Jul 2025 01:39:23.621 GMT</span>
+              </div>
+
+              <div class="cell fileUrlRelative string folder table-thin-field-hide-mobile table-thin-field-hide-tablet">
+                <span class="column-label">url relative</span>
+                <span class="cell-mini-image"><span class="in-cell-mini-image"></span></span>
+                <span class="cell-value"><a href="http://update-listing.jaisocx.com:80/">/</a></span>
+              </div>
+
+            </div>
+
+
+            <!--table record with props of one file in the current folder-->
+            <div class="row folder">
+
+              <div class="cell ix number folder table-thin-field-hide-mobile table-thin-field-hide-tablet">
+                <span class="column-label">num.</span>
+                <span class="cell-mini-image"><span class="in-cell-mini-image"></span></span>
+                <span class="cell-value">1</span>
+              </div>
+
+              <div class="cell name string folder  ">
+                <span class="column-label">Name</span>
+                <span class="cell-mini-image"><span class="in-cell-mini-image"></span></span>
+                <span class="cell-value"><a href="http://update-listing.jaisocx.com:80/CorsAndCustomHeaders/assets/">assets</a></span>
+              </div>
+
+              <div class="cell mimeType string folder table-thin-field-hide-mobile ">
+                <span class="column-label">mime</span>
+                <span class="cell-mini-image"><span class="in-cell-mini-image"></span></span>
+                <span class="cell-value">folder</span>
+              </div>
+
+              <div class="cell size number folder table-thin-field-hide-mobile ">
+                <span class="column-label">size</span>
+                <span class="cell-mini-image"><span class="in-cell-mini-image"></span></span>
+                <span class="cell-value">0</span>
+              </div>
+
+              <div class="cell fileLastModifiedTimestampFormatted string folder table-thin-field-hide-mobile ">
+                <span class="column-label">last modified</span>
+                <span class="cell-mini-image"><span class="in-cell-mini-image"></span></span>
+                <span class="cell-value">Wed 04 Jun 2025 23:24:24.096 GMT</span>
+              </div>
+
+              <div class="cell fileUrlRelative string folder table-thin-field-hide-mobile table-thin-field-hide-tablet">
+                <span class="column-label">url relative</span>
+                <span class="cell-mini-image"><span class="in-cell-mini-image"></span></span>
+                <span class="cell-value"><a href="http://update-listing.jaisocx.com:80/CorsAndCustomHeaders/assets/">/CorsAndCustomHeaders/assets/</a></span>
+              </div>
+
+            </div>
+
+
+            <!--table record with props of one file in the current folder-->
+            <div class="row folder">
+
+              <div class="cell ix number folder table-thin-field-hide-mobile table-thin-field-hide-tablet">
+                <span class="column-label">num.</span>
+                <span class="cell-mini-image"><span class="in-cell-mini-image"></span></span>
+                <span class="cell-value">2</span>
+              </div>
+
+              <div class="cell name string folder  ">
+                <span class="column-label">Name</span>
+                <span class="cell-mini-image"><span class="in-cell-mini-image"></span></span>
+                <span class="cell-value"><a href="http://update-listing.jaisocx.com:80/CorsAndCustomHeaders/build/">build</a></span>
+              </div>
+
+              <div class="cell mimeType string folder table-thin-field-hide-mobile ">
+                <span class="column-label">mime</span>
+                <span class="cell-mini-image"><span class="in-cell-mini-image"></span></span>
+                <span class="cell-value">folder</span>
+              </div>
+
+              <div class="cell size number folder table-thin-field-hide-mobile ">
+                <span class="column-label">size</span>
+                <span class="cell-mini-image"><span class="in-cell-mini-image"></span></span>
+                <span class="cell-value">0</span>
+              </div>
+
+              <div class="cell fileLastModifiedTimestampFormatted string folder table-thin-field-hide-mobile ">
+                <span class="column-label">last modified</span>
+                <span class="cell-mini-image"><span class="in-cell-mini-image"></span></span>
+                <span class="cell-value">Wed 04 Jun 2025 23:24:24.098 GMT</span>
+              </div>
+
+              <div class="cell fileUrlRelative string folder table-thin-field-hide-mobile table-thin-field-hide-tablet">
+                <span class="column-label">url relative</span>
+                <span class="cell-mini-image"><span class="in-cell-mini-image"></span></span>
+                <span class="cell-value"><a href="http://update-listing.jaisocx.com:80/CorsAndCustomHeaders/build/">/CorsAndCustomHeaders/build/</a></span>
+              </div>
+
+            </div>
+
+
+            <!--table record with props of one file in the current folder-->
+            <div class="row folder">
+
+              <div class="cell ix number folder table-thin-field-hide-mobile table-thin-field-hide-tablet">
+                <span class="column-label">num.</span>
+                <span class="cell-mini-image"><span class="in-cell-mini-image"></span></span>
+                <span class="cell-value">3</span>
+              </div>
+
+              <div class="cell name string folder  ">
+                <span class="column-label">Name</span>
+                <span class="cell-mini-image"><span class="in-cell-mini-image"></span></span>
+                <span class="cell-value"><a href="http://update-listing.jaisocx.com:80/CorsAndCustomHeaders/data/">data</a></span>
+              </div>
+
+              <div class="cell mimeType string folder table-thin-field-hide-mobile ">
+                <span class="column-label">mime</span>
+                <span class="cell-mini-image"><span class="in-cell-mini-image"></span></span>
+                <span class="cell-value">folder</span>
+              </div>
+
+              <div class="cell size number folder table-thin-field-hide-mobile ">
+                <span class="column-label">size</span>
+                <span class="cell-mini-image"><span class="in-cell-mini-image"></span></span>
+                <span class="cell-value">0</span>
+              </div>
+
+              <div class="cell fileLastModifiedTimestampFormatted string folder table-thin-field-hide-mobile ">
+                <span class="column-label">last modified</span>
+                <span class="cell-mini-image"><span class="in-cell-mini-image"></span></span>
+                <span class="cell-value">Wed 04 Jun 2025 23:24:24.098 GMT</span>
+              </div>
+
+              <div class="cell fileUrlRelative string folder table-thin-field-hide-mobile table-thin-field-hide-tablet">
+                <span class="column-label">url relative</span>
+                <span class="cell-mini-image"><span class="in-cell-mini-image"></span></span>
+                <span class="cell-value"><a href="http://update-listing.jaisocx.com:80/CorsAndCustomHeaders/data/">/CorsAndCustomHeaders/data/</a></span>
+              </div>
+
+            </div>
+
+
+            <!--table record with props of one file in the current folder-->
+            <div class="row folder">
+
+              <div class="cell ix number folder table-thin-field-hide-mobile table-thin-field-hide-tablet">
+                <span class="column-label">num.</span>
+                <span class="cell-mini-image"><span class="in-cell-mini-image"></span></span>
+                <span class="cell-value">4</span>
+              </div>
+
+              <div class="cell name string folder  ">
+                <span class="column-label">Name</span>
+                <span class="cell-mini-image"><span class="in-cell-mini-image"></span></span>
+                <span class="cell-value"><a href="http://update-listing.jaisocx.com:80/CorsAndCustomHeaders/src/">src</a></span>
+              </div>
+
+              <div class="cell mimeType string folder table-thin-field-hide-mobile ">
+                <span class="column-label">mime</span>
+                <span class="cell-mini-image"><span class="in-cell-mini-image"></span></span>
+                <span class="cell-value">folder</span>
+              </div>
+
+              <div class="cell size number folder table-thin-field-hide-mobile ">
+                <span class="column-label">size</span>
+                <span class="cell-mini-image"><span class="in-cell-mini-image"></span></span>
+                <span class="cell-value">0</span>
+              </div>
+
+              <div class="cell fileLastModifiedTimestampFormatted string folder table-thin-field-hide-mobile ">
+                <span class="column-label">last modified</span>
+                <span class="cell-mini-image"><span class="in-cell-mini-image"></span></span>
+                <span class="cell-value">Wed 04 Jun 2025 23:24:24.102 GMT</span>
+              </div>
+
+              <div class="cell fileUrlRelative string folder table-thin-field-hide-mobile table-thin-field-hide-tablet">
+                <span class="column-label">url relative</span>
+                <span class="cell-mini-image"><span class="in-cell-mini-image"></span></span>
+                <span class="cell-value"><a href="http://update-listing.jaisocx.com:80/CorsAndCustomHeaders/src/">/CorsAndCustomHeaders/src/</a></span>
+              </div>
+
+            </div>
+
+
+            <!--table record with props of one file in the current folder-->
+            <div class="row ">
+
+              <div class="cell ix number text_html table-thin-field-hide-mobile table-thin-field-hide-tablet">
+                <span class="column-label">num.</span>
+                <span class="cell-mini-image"><span class="in-cell-mini-image"></span></span>
+                <span class="cell-value">5</span>
+              </div>
+
+              <div class="cell name string text_html  ">
+                <span class="column-label">Name</span>
+                <span class="cell-mini-image"><span class="in-cell-mini-image"></span></span>
+                <span class="cell-value"><a href="http://update-listing.jaisocx.com:80/CorsAndCustomHeaders/example-darkmode-browser-width-small.html">example-darkmode-browser-width-small.html</a></span>
+              </div>
+
+              <div class="cell mimeType string text_html table-thin-field-hide-mobile ">
+                <span class="column-label">mime</span>
+                <span class="cell-mini-image"><span class="in-cell-mini-image"></span></span>
+                <span class="cell-value">text/html</span>
+              </div>
+
+              <div class="cell size number text_html table-thin-field-hide-mobile ">
+                <span class="column-label">size</span>
+                <span class="cell-mini-image"><span class="in-cell-mini-image"></span></span>
+                <span class="cell-value">4180</span>
+              </div>
+
+              <div class="cell fileLastModifiedTimestampFormatted string text_html table-thin-field-hide-mobile ">
+                <span class="column-label">last modified</span>
+                <span class="cell-mini-image"><span class="in-cell-mini-image"></span></span>
+                <span class="cell-value">Wed 04 Jun 2025 23:24:24.098 GMT</span>
+              </div>
+
+              <div class="cell fileUrlRelative string text_html table-thin-field-hide-mobile table-thin-field-hide-tablet">
+                <span class="column-label">url relative</span>
+                <span class="cell-mini-image"><span class="in-cell-mini-image"></span></span>
+                <span class="cell-value"><a href="http://update-listing.jaisocx.com:80/CorsAndCustomHeaders/example-darkmode-browser-width-small.html">/CorsAndCustomHeaders/example-darkmode-browser-width-small.html</a></span>
+              </div>
+
+            </div>
+
+
+            <!--table record with props of one file in the current folder-->
+            <div class="row ">
+
+              <div class="cell ix number text_html table-thin-field-hide-mobile table-thin-field-hide-tablet">
+                <span class="column-label">num.</span>
+                <span class="cell-mini-image"><span class="in-cell-mini-image"></span></span>
+                <span class="cell-value">6</span>
+              </div>
+
+              <div class="cell name string text_html  ">
+                <span class="column-label">Name</span>
+                <span class="cell-mini-image"><span class="in-cell-mini-image"></span></span>
+                <span class="cell-value"><a href="http://update-listing.jaisocx.com:80/CorsAndCustomHeaders/example-darkmode-browser-width.html">example-darkmode-browser-width.html</a></span>
+              </div>
+
+              <div class="cell mimeType string text_html table-thin-field-hide-mobile ">
+                <span class="column-label">mime</span>
+                <span class="cell-mini-image"><span class="in-cell-mini-image"></span></span>
+                <span class="cell-value">text/html</span>
+              </div>
+
+              <div class="cell size number text_html table-thin-field-hide-mobile ">
+                <span class="column-label">size</span>
+                <span class="cell-mini-image"><span class="in-cell-mini-image"></span></span>
+                <span class="cell-value">4176</span>
+              </div>
+
+              <div class="cell fileLastModifiedTimestampFormatted string text_html table-thin-field-hide-mobile ">
+                <span class="column-label">last modified</span>
+                <span class="cell-mini-image"><span class="in-cell-mini-image"></span></span>
+                <span class="cell-value">Wed 04 Jun 2025 23:24:24.099 GMT</span>
+              </div>
+
+              <div class="cell fileUrlRelative string text_html table-thin-field-hide-mobile table-thin-field-hide-tablet">
+                <span class="column-label">url relative</span>
+                <span class="cell-mini-image"><span class="in-cell-mini-image"></span></span>
+                <span class="cell-value"><a href="http://update-listing.jaisocx.com:80/CorsAndCustomHeaders/example-darkmode-browser-width.html">/CorsAndCustomHeaders/example-darkmode-browser-width.html</a></span>
+              </div>
+
+            </div>
+
+
+            <!--table record with props of one file in the current folder-->
+            <div class="row ">
+
+              <div class="cell ix number text_html table-thin-field-hide-mobile table-thin-field-hide-tablet">
+                <span class="column-label">num.</span>
+                <span class="cell-mini-image"><span class="in-cell-mini-image"></span></span>
+                <span class="cell-value">7</span>
+              </div>
+
+              <div class="cell name string text_html  ">
+                <span class="column-label">Name</span>
+                <span class="cell-mini-image"><span class="in-cell-mini-image"></span></span>
+                <span class="cell-value"><a href="http://update-listing.jaisocx.com:80/CorsAndCustomHeaders/example-darkmode-long.html">example-darkmode-long.html</a></span>
+              </div>
+
+              <div class="cell mimeType string text_html table-thin-field-hide-mobile ">
+                <span class="column-label">mime</span>
+                <span class="cell-mini-image"><span class="in-cell-mini-image"></span></span>
+                <span class="cell-value">text/html</span>
+              </div>
+
+              <div class="cell size number text_html table-thin-field-hide-mobile ">
+                <span class="column-label">size</span>
+                <span class="cell-mini-image"><span class="in-cell-mini-image"></span></span>
+                <span class="cell-value">10892</span>
+              </div>
+
+              <div class="cell fileLastModifiedTimestampFormatted string text_html table-thin-field-hide-mobile ">
+                <span class="column-label">last modified</span>
+                <span class="cell-mini-image"><span class="in-cell-mini-image"></span></span>
+                <span class="cell-value">Wed 04 Jun 2025 23:24:24.099 GMT</span>
+              </div>
+
+              <div class="cell fileUrlRelative string text_html table-thin-field-hide-mobile table-thin-field-hide-tablet">
+                <span class="column-label">url relative</span>
+                <span class="cell-mini-image"><span class="in-cell-mini-image"></span></span>
+                <span class="cell-value"><a href="http://update-listing.jaisocx.com:80/CorsAndCustomHeaders/example-darkmode-long.html">/CorsAndCustomHeaders/example-darkmode-long.html</a></span>
+              </div>
+
+            </div>
+
+
+            <!--table record with props of one file in the current folder-->
+            <div class="row ">
+
+              <div class="cell ix number text_html table-thin-field-hide-mobile table-thin-field-hide-tablet">
+                <span class="column-label">num.</span>
+                <span class="cell-mini-image"><span class="in-cell-mini-image"></span></span>
+                <span class="cell-value">8</span>
+              </div>
+
+              <div class="cell name string text_html  ">
+                <span class="column-label">Name</span>
+                <span class="cell-mini-image"><span class="in-cell-mini-image"></span></span>
+                <span class="cell-value"><a href="http://update-listing.jaisocx.com:80/CorsAndCustomHeaders/example-darkmode-small.html">example-darkmode-small.html</a></span>
+              </div>
+
+              <div class="cell mimeType string text_html table-thin-field-hide-mobile ">
+                <span class="column-label">mime</span>
+                <span class="cell-mini-image"><span class="in-cell-mini-image"></span></span>
+                <span class="cell-value">text/html</span>
+              </div>
+
+              <div class="cell size number text_html table-thin-field-hide-mobile ">
+                <span class="column-label">size</span>
+                <span class="cell-mini-image"><span class="in-cell-mini-image"></span></span>
+                <span class="cell-value">4163</span>
+              </div>
+
+              <div class="cell fileLastModifiedTimestampFormatted string text_html table-thin-field-hide-mobile ">
+                <span class="column-label">last modified</span>
+                <span class="cell-mini-image"><span class="in-cell-mini-image"></span></span>
+                <span class="cell-value">Wed 04 Jun 2025 23:24:24.099 GMT</span>
+              </div>
+
+              <div class="cell fileUrlRelative string text_html table-thin-field-hide-mobile table-thin-field-hide-tablet">
+                <span class="column-label">url relative</span>
+                <span class="cell-mini-image"><span class="in-cell-mini-image"></span></span>
+                <span class="cell-value"><a href="http://update-listing.jaisocx.com:80/CorsAndCustomHeaders/example-darkmode-small.html">/CorsAndCustomHeaders/example-darkmode-small.html</a></span>
+              </div>
+
+            </div>
+
+
+            <!--table record with props of one file in the current folder-->
+            <div class="row ">
+
+              <div class="cell ix number text_html table-thin-field-hide-mobile table-thin-field-hide-tablet">
+                <span class="column-label">num.</span>
+                <span class="cell-mini-image"><span class="in-cell-mini-image"></span></span>
+                <span class="cell-value">9</span>
+              </div>
+
+              <div class="cell name string text_html  ">
+                <span class="column-label">Name</span>
+                <span class="cell-mini-image"><span class="in-cell-mini-image"></span></span>
+                <span class="cell-value"><a href="http://update-listing.jaisocx.com:80/CorsAndCustomHeaders/example-darkmode.html">example-darkmode.html</a></span>
+              </div>
+
+              <div class="cell mimeType string text_html table-thin-field-hide-mobile ">
+                <span class="column-label">mime</span>
+                <span class="cell-mini-image"><span class="in-cell-mini-image"></span></span>
+                <span class="cell-value">text/html</span>
+              </div>
+
+              <div class="cell size number text_html table-thin-field-hide-mobile ">
+                <span class="column-label">size</span>
+                <span class="cell-mini-image"><span class="in-cell-mini-image"></span></span>
+                <span class="cell-value">4147</span>
+              </div>
+
+              <div class="cell fileLastModifiedTimestampFormatted string text_html table-thin-field-hide-mobile ">
+                <span class="column-label">last modified</span>
+                <span class="cell-mini-image"><span class="in-cell-mini-image"></span></span>
+                <span class="cell-value">Wed 04 Jun 2025 23:24:24.099 GMT</span>
+              </div>
+
+              <div class="cell fileUrlRelative string text_html table-thin-field-hide-mobile table-thin-field-hide-tablet">
+                <span class="column-label">url relative</span>
+                <span class="cell-mini-image"><span class="in-cell-mini-image"></span></span>
+                <span class="cell-value"><a href="http://update-listing.jaisocx.com:80/CorsAndCustomHeaders/example-darkmode.html">/CorsAndCustomHeaders/example-darkmode.html</a></span>
+              </div>
+
+            </div>
+
+
+            <!--table record with props of one file in the current folder-->
+            <div class="row ">
+
+              <div class="cell ix number text_html table-thin-field-hide-mobile table-thin-field-hide-tablet">
+                <span class="column-label">num.</span>
+                <span class="cell-mini-image"><span class="in-cell-mini-image"></span></span>
+                <span class="cell-value">10</span>
+              </div>
+
+              <div class="cell name string text_html  ">
+                <span class="column-label">Name</span>
+                <span class="cell-mini-image"><span class="in-cell-mini-image"></span></span>
+                <span class="cell-value"><a href="http://update-listing.jaisocx.com:80/CorsAndCustomHeaders/example-lightmode-browser-width-small.html">example-lightmode-browser-width-small.html</a></span>
+              </div>
+
+              <div class="cell mimeType string text_html table-thin-field-hide-mobile ">
+                <span class="column-label">mime</span>
+                <span class="cell-mini-image"><span class="in-cell-mini-image"></span></span>
+                <span class="cell-value">text/html</span>
+              </div>
+
+              <div class="cell size number text_html table-thin-field-hide-mobile ">
+                <span class="column-label">size</span>
+                <span class="cell-mini-image"><span class="in-cell-mini-image"></span></span>
+                <span class="cell-value">4190</span>
+              </div>
+
+              <div class="cell fileLastModifiedTimestampFormatted string text_html table-thin-field-hide-mobile ">
+                <span class="column-label">last modified</span>
+                <span class="cell-mini-image"><span class="in-cell-mini-image"></span></span>
+                <span class="cell-value">Wed 04 Jun 2025 23:24:24.100 GMT</span>
+              </div>
+
+              <div class="cell fileUrlRelative string text_html table-thin-field-hide-mobile table-thin-field-hide-tablet">
+                <span class="column-label">url relative</span>
+                <span class="cell-mini-image"><span class="in-cell-mini-image"></span></span>
+                <span class="cell-value"><a href="http://update-listing.jaisocx.com:80/CorsAndCustomHeaders/example-lightmode-browser-width-small.html">/CorsAndCustomHeaders/example-lightmode-browser-width-small.html</a></span>
+              </div>
+
+            </div>
+
+
+            <!--table record with props of one file in the current folder-->
+            <div class="row ">
+
+              <div class="cell ix number text_html table-thin-field-hide-mobile table-thin-field-hide-tablet">
+                <span class="column-label">num.</span>
+                <span class="cell-mini-image"><span class="in-cell-mini-image"></span></span>
+                <span class="cell-value">11</span>
+              </div>
+
+              <div class="cell name string text_html  ">
+                <span class="column-label">Name</span>
+                <span class="cell-mini-image"><span class="in-cell-mini-image"></span></span>
+                <span class="cell-value"><a href="http://update-listing.jaisocx.com:80/CorsAndCustomHeaders/example-lightmode-browser-width.html">example-lightmode-browser-width.html</a></span>
+              </div>
+
+              <div class="cell mimeType string text_html table-thin-field-hide-mobile ">
+                <span class="column-label">mime</span>
+                <span class="cell-mini-image"><span class="in-cell-mini-image"></span></span>
+                <span class="cell-value">text/html</span>
+              </div>
+
+              <div class="cell size number text_html table-thin-field-hide-mobile ">
+                <span class="column-label">size</span>
+                <span class="cell-mini-image"><span class="in-cell-mini-image"></span></span>
+                <span class="cell-value">4178</span>
+              </div>
+
+              <div class="cell fileLastModifiedTimestampFormatted string text_html table-thin-field-hide-mobile ">
+                <span class="column-label">last modified</span>
+                <span class="cell-mini-image"><span class="in-cell-mini-image"></span></span>
+                <span class="cell-value">Wed 04 Jun 2025 23:24:24.100 GMT</span>
+              </div>
+
+              <div class="cell fileUrlRelative string text_html table-thin-field-hide-mobile table-thin-field-hide-tablet">
+                <span class="column-label">url relative</span>
+                <span class="cell-mini-image"><span class="in-cell-mini-image"></span></span>
+                <span class="cell-value"><a href="http://update-listing.jaisocx.com:80/CorsAndCustomHeaders/example-lightmode-browser-width.html">/CorsAndCustomHeaders/example-lightmode-browser-width.html</a></span>
+              </div>
+
+            </div>
+
+
+            <!--table record with props of one file in the current folder-->
+            <div class="row ">
+
+              <div class="cell ix number text_html table-thin-field-hide-mobile table-thin-field-hide-tablet">
+                <span class="column-label">num.</span>
+                <span class="cell-mini-image"><span class="in-cell-mini-image"></span></span>
+                <span class="cell-value">12</span>
+              </div>
+
+              <div class="cell name string text_html  ">
+                <span class="column-label">Name</span>
+                <span class="cell-mini-image"><span class="in-cell-mini-image"></span></span>
+                <span class="cell-value"><a href="http://update-listing.jaisocx.com:80/CorsAndCustomHeaders/example-lightmode-long.html">example-lightmode-long.html</a></span>
+              </div>
+
+              <div class="cell mimeType string text_html table-thin-field-hide-mobile ">
+                <span class="column-label">mime</span>
+                <span class="cell-mini-image"><span class="in-cell-mini-image"></span></span>
+                <span class="cell-value">text/html</span>
+              </div>
+
+              <div class="cell size number text_html table-thin-field-hide-mobile ">
+                <span class="column-label">size</span>
+                <span class="cell-mini-image"><span class="in-cell-mini-image"></span></span>
+                <span class="cell-value">10892</span>
+              </div>
+
+              <div class="cell fileLastModifiedTimestampFormatted string text_html table-thin-field-hide-mobile ">
+                <span class="column-label">last modified</span>
+                <span class="cell-mini-image"><span class="in-cell-mini-image"></span></span>
+                <span class="cell-value">Wed 04 Jun 2025 23:24:24.100 GMT</span>
+              </div>
+
+              <div class="cell fileUrlRelative string text_html table-thin-field-hide-mobile table-thin-field-hide-tablet">
+                <span class="column-label">url relative</span>
+                <span class="cell-mini-image"><span class="in-cell-mini-image"></span></span>
+                <span class="cell-value"><a href="http://update-listing.jaisocx.com:80/CorsAndCustomHeaders/example-lightmode-long.html">/CorsAndCustomHeaders/example-lightmode-long.html</a></span>
+              </div>
+
+            </div>
+
+
+            <!--table record with props of one file in the current folder-->
+            <div class="row ">
+
+              <div class="cell ix number text_html table-thin-field-hide-mobile table-thin-field-hide-tablet">
+                <span class="column-label">num.</span>
+                <span class="cell-mini-image"><span class="in-cell-mini-image"></span></span>
+                <span class="cell-value">13</span>
+              </div>
+
+              <div class="cell name string text_html  ">
+                <span class="column-label">Name</span>
+                <span class="cell-mini-image"><span class="in-cell-mini-image"></span></span>
+                <span class="cell-value"><a href="http://update-listing.jaisocx.com:80/CorsAndCustomHeaders/example-lightmode-small.html">example-lightmode-small.html</a></span>
+              </div>
+
+              <div class="cell mimeType string text_html table-thin-field-hide-mobile ">
+                <span class="column-label">mime</span>
+                <span class="cell-mini-image"><span class="in-cell-mini-image"></span></span>
+                <span class="cell-value">text/html</span>
+              </div>
+
+              <div class="cell size number text_html table-thin-field-hide-mobile ">
+                <span class="column-label">size</span>
+                <span class="cell-mini-image"><span class="in-cell-mini-image"></span></span>
+                <span class="cell-value">4161</span>
+              </div>
+
+              <div class="cell fileLastModifiedTimestampFormatted string text_html table-thin-field-hide-mobile ">
+                <span class="column-label">last modified</span>
+                <span class="cell-mini-image"><span class="in-cell-mini-image"></span></span>
+                <span class="cell-value">Wed 04 Jun 2025 23:24:24.100 GMT</span>
+              </div>
+
+              <div class="cell fileUrlRelative string text_html table-thin-field-hide-mobile table-thin-field-hide-tablet">
+                <span class="column-label">url relative</span>
+                <span class="cell-mini-image"><span class="in-cell-mini-image"></span></span>
+                <span class="cell-value"><a href="http://update-listing.jaisocx.com:80/CorsAndCustomHeaders/example-lightmode-small.html">/CorsAndCustomHeaders/example-lightmode-small.html</a></span>
+              </div>
+
+            </div>
+
+
+            <!--table record with props of one file in the current folder-->
+            <div class="row ">
+
+              <div class="cell ix number text_html table-thin-field-hide-mobile table-thin-field-hide-tablet">
+                <span class="column-label">num.</span>
+                <span class="cell-mini-image"><span class="in-cell-mini-image"></span></span>
+                <span class="cell-value">14</span>
+              </div>
+
+              <div class="cell name string text_html  ">
+                <span class="column-label">Name</span>
+                <span class="cell-mini-image"><span class="in-cell-mini-image"></span></span>
+                <span class="cell-value"><a href="http://update-listing.jaisocx.com:80/CorsAndCustomHeaders/example-lightmode.html">example-lightmode.html</a></span>
+              </div>
+
+              <div class="cell mimeType string text_html table-thin-field-hide-mobile ">
+                <span class="column-label">mime</span>
+                <span class="cell-mini-image"><span class="in-cell-mini-image"></span></span>
+                <span class="cell-value">text/html</span>
+              </div>
+
+              <div class="cell size number text_html table-thin-field-hide-mobile ">
+                <span class="column-label">size</span>
+                <span class="cell-mini-image"><span class="in-cell-mini-image"></span></span>
+                <span class="cell-value">4145</span>
+              </div>
+
+              <div class="cell fileLastModifiedTimestampFormatted string text_html table-thin-field-hide-mobile ">
+                <span class="column-label">last modified</span>
+                <span class="cell-mini-image"><span class="in-cell-mini-image"></span></span>
+                <span class="cell-value">Wed 04 Jun 2025 23:24:24.100 GMT</span>
+              </div>
+
+              <div class="cell fileUrlRelative string text_html table-thin-field-hide-mobile table-thin-field-hide-tablet">
+                <span class="column-label">url relative</span>
+                <span class="cell-mini-image"><span class="in-cell-mini-image"></span></span>
+                <span class="cell-value"><a href="http://update-listing.jaisocx.com:80/CorsAndCustomHeaders/example-lightmode.html">/CorsAndCustomHeaders/example-lightmode.html</a></span>
+              </div>
+
+            </div>
+
+
+            <!--table record with props of one file in the current folder-->
+            <div class="row ">
+
+              <div class="cell ix number text_html table-thin-field-hide-mobile table-thin-field-hide-tablet">
+                <span class="column-label">num.</span>
+                <span class="cell-mini-image"><span class="in-cell-mini-image"></span></span>
+                <span class="cell-value">15</span>
+              </div>
+
+              <div class="cell name string text_html  ">
+                <span class="column-label">Name</span>
+                <span class="cell-mini-image"><span class="in-cell-mini-image"></span></span>
+                <span class="cell-value"><a href="http://update-listing.jaisocx.com:80/CorsAndCustomHeaders/example-theme-basic-browser-width-small.html">example-theme-basic-browser-width-small.html</a></span>
+              </div>
+
+              <div class="cell mimeType string text_html table-thin-field-hide-mobile ">
+                <span class="column-label">mime</span>
+                <span class="cell-mini-image"><span class="in-cell-mini-image"></span></span>
+                <span class="cell-value">text/html</span>
+              </div>
+
+              <div class="cell size number text_html table-thin-field-hide-mobile ">
+                <span class="column-label">size</span>
+                <span class="cell-mini-image"><span class="in-cell-mini-image"></span></span>
+                <span class="cell-value">4062</span>
+              </div>
+
+              <div class="cell fileLastModifiedTimestampFormatted string text_html table-thin-field-hide-mobile ">
+                <span class="column-label">last modified</span>
+                <span class="cell-mini-image"><span class="in-cell-mini-image"></span></span>
+                <span class="cell-value">Wed 04 Jun 2025 23:24:24.101 GMT</span>
+              </div>
+
+              <div class="cell fileUrlRelative string text_html table-thin-field-hide-mobile table-thin-field-hide-tablet">
+                <span class="column-label">url relative</span>
+                <span class="cell-mini-image"><span class="in-cell-mini-image"></span></span>
+                <span class="cell-value"><a href="http://update-listing.jaisocx.com:80/CorsAndCustomHeaders/example-theme-basic-browser-width-small.html">/CorsAndCustomHeaders/example-theme-basic-browser-width-small.html</a></span>
+              </div>
+
+            </div>
+
+
+            <!--table record with props of one file in the current folder-->
+            <div class="row ">
+
+              <div class="cell ix number text_html table-thin-field-hide-mobile table-thin-field-hide-tablet">
+                <span class="column-label">num.</span>
+                <span class="cell-mini-image"><span class="in-cell-mini-image"></span></span>
+                <span class="cell-value">16</span>
+              </div>
+
+              <div class="cell name string text_html  ">
+                <span class="column-label">Name</span>
+                <span class="cell-mini-image"><span class="in-cell-mini-image"></span></span>
+                <span class="cell-value"><a href="http://update-listing.jaisocx.com:80/CorsAndCustomHeaders/example-theme-basic-browser-width.html">example-theme-basic-browser-width.html</a></span>
+              </div>
+
+              <div class="cell mimeType string text_html table-thin-field-hide-mobile ">
+                <span class="column-label">mime</span>
+                <span class="cell-mini-image"><span class="in-cell-mini-image"></span></span>
+                <span class="cell-value">text/html</span>
+              </div>
+
+              <div class="cell size number text_html table-thin-field-hide-mobile ">
+                <span class="column-label">size</span>
+                <span class="cell-mini-image"><span class="in-cell-mini-image"></span></span>
+                <span class="cell-value">4055</span>
+              </div>
+
+              <div class="cell fileLastModifiedTimestampFormatted string text_html table-thin-field-hide-mobile ">
+                <span class="column-label">last modified</span>
+                <span class="cell-mini-image"><span class="in-cell-mini-image"></span></span>
+                <span class="cell-value">Wed 04 Jun 2025 23:24:24.101 GMT</span>
+              </div>
+
+              <div class="cell fileUrlRelative string text_html table-thin-field-hide-mobile table-thin-field-hide-tablet">
+                <span class="column-label">url relative</span>
+                <span class="cell-mini-image"><span class="in-cell-mini-image"></span></span>
+                <span class="cell-value"><a href="http://update-listing.jaisocx.com:80/CorsAndCustomHeaders/example-theme-basic-browser-width.html">/CorsAndCustomHeaders/example-theme-basic-browser-width.html</a></span>
+              </div>
+
+            </div>
+
+
+            <!--table record with props of one file in the current folder-->
+            <div class="row ">
+
+              <div class="cell ix number text_html table-thin-field-hide-mobile table-thin-field-hide-tablet">
+                <span class="column-label">num.</span>
+                <span class="cell-mini-image"><span class="in-cell-mini-image"></span></span>
+                <span class="cell-value">17</span>
+              </div>
+
+              <div class="cell name string text_html  ">
+                <span class="column-label">Name</span>
+                <span class="cell-mini-image"><span class="in-cell-mini-image"></span></span>
+                <span class="cell-value"><a href="http://update-listing.jaisocx.com:80/CorsAndCustomHeaders/example-theme-basic-long.html">example-theme-basic-long.html</a></span>
+              </div>
+
+              <div class="cell mimeType string text_html table-thin-field-hide-mobile ">
+                <span class="column-label">mime</span>
+                <span class="cell-mini-image"><span class="in-cell-mini-image"></span></span>
+                <span class="cell-value">text/html</span>
+              </div>
+
+              <div class="cell size number text_html table-thin-field-hide-mobile ">
+                <span class="column-label">size</span>
+                <span class="cell-mini-image"><span class="in-cell-mini-image"></span></span>
+                <span class="cell-value">10765</span>
+              </div>
+
+              <div class="cell fileLastModifiedTimestampFormatted string text_html table-thin-field-hide-mobile ">
+                <span class="column-label">last modified</span>
+                <span class="cell-mini-image"><span class="in-cell-mini-image"></span></span>
+                <span class="cell-value">Wed 04 Jun 2025 23:24:24.101 GMT</span>
+              </div>
+
+              <div class="cell fileUrlRelative string text_html table-thin-field-hide-mobile table-thin-field-hide-tablet">
+                <span class="column-label">url relative</span>
+                <span class="cell-mini-image"><span class="in-cell-mini-image"></span></span>
+                <span class="cell-value"><a href="http://update-listing.jaisocx.com:80/CorsAndCustomHeaders/example-theme-basic-long.html">/CorsAndCustomHeaders/example-theme-basic-long.html</a></span>
+              </div>
+
+            </div>
+
+
+            <!--table record with props of one file in the current folder-->
+            <div class="row ">
+
+              <div class="cell ix number text_html table-thin-field-hide-mobile table-thin-field-hide-tablet">
+                <span class="column-label">num.</span>
+                <span class="cell-mini-image"><span class="in-cell-mini-image"></span></span>
+                <span class="cell-value">18</span>
+              </div>
+
+              <div class="cell name string text_html  ">
+                <span class="column-label">Name</span>
+                <span class="cell-mini-image"><span class="in-cell-mini-image"></span></span>
+                <span class="cell-value"><a href="http://update-listing.jaisocx.com:80/CorsAndCustomHeaders/example-theme-basic-small.html">example-theme-basic-small.html</a></span>
+              </div>
+
+              <div class="cell mimeType string text_html table-thin-field-hide-mobile ">
+                <span class="column-label">mime</span>
+                <span class="cell-mini-image"><span class="in-cell-mini-image"></span></span>
+                <span class="cell-value">text/html</span>
+              </div>
+
+              <div class="cell size number text_html table-thin-field-hide-mobile ">
+                <span class="column-label">size</span>
+                <span class="cell-mini-image"><span class="in-cell-mini-image"></span></span>
+                <span class="cell-value">4033</span>
+              </div>
+
+              <div class="cell fileLastModifiedTimestampFormatted string text_html table-thin-field-hide-mobile ">
+                <span class="column-label">last modified</span>
+                <span class="cell-mini-image"><span class="in-cell-mini-image"></span></span>
+                <span class="cell-value">Wed 04 Jun 2025 23:24:24.101 GMT</span>
+              </div>
+
+              <div class="cell fileUrlRelative string text_html table-thin-field-hide-mobile table-thin-field-hide-tablet">
+                <span class="column-label">url relative</span>
+                <span class="cell-mini-image"><span class="in-cell-mini-image"></span></span>
+                <span class="cell-value"><a href="http://update-listing.jaisocx.com:80/CorsAndCustomHeaders/example-theme-basic-small.html">/CorsAndCustomHeaders/example-theme-basic-small.html</a></span>
+              </div>
+
+            </div>
+
+
+            <!--table record with props of one file in the current folder-->
+            <div class="row ">
+
+              <div class="cell ix number text_html table-thin-field-hide-mobile table-thin-field-hide-tablet">
+                <span class="column-label">num.</span>
+                <span class="cell-mini-image"><span class="in-cell-mini-image"></span></span>
+                <span class="cell-value">19</span>
+              </div>
+
+              <div class="cell name string text_html  ">
+                <span class="column-label">Name</span>
+                <span class="cell-mini-image"><span class="in-cell-mini-image"></span></span>
+                <span class="cell-value"><a href="http://update-listing.jaisocx.com:80/CorsAndCustomHeaders/index.template.html">index.template.html</a></span>
+              </div>
+
+              <div class="cell mimeType string text_html table-thin-field-hide-mobile ">
+                <span class="column-label">mime</span>
+                <span class="cell-mini-image"><span class="in-cell-mini-image"></span></span>
+                <span class="cell-value">text/html</span>
+              </div>
+
+              <div class="cell size number text_html table-thin-field-hide-mobile ">
+                <span class="column-label">size</span>
+                <span class="cell-mini-image"><span class="in-cell-mini-image"></span></span>
+                <span class="cell-value">3348</span>
+              </div>
+
+              <div class="cell fileLastModifiedTimestampFormatted string text_html table-thin-field-hide-mobile ">
+                <span class="column-label">last modified</span>
+                <span class="cell-mini-image"><span class="in-cell-mini-image"></span></span>
+                <span class="cell-value">Wed 04 Jun 2025 23:24:24.102 GMT</span>
+              </div>
+
+              <div class="cell fileUrlRelative string text_html table-thin-field-hide-mobile table-thin-field-hide-tablet">
+                <span class="column-label">url relative</span>
+                <span class="cell-mini-image"><span class="in-cell-mini-image"></span></span>
+                <span class="cell-value"><a href="http://update-listing.jaisocx.com:80/CorsAndCustomHeaders/index.template.html">/CorsAndCustomHeaders/index.template.html</a></span>
+              </div>
+
+            </div>
+
+
+            <!--table record with props of one file in the current folder-->
+            <div class="row ">
+
+              <div class="cell ix number null table-thin-field-hide-mobile table-thin-field-hide-tablet">
+                <span class="column-label">num.</span>
+                <span class="cell-mini-image"><span class="in-cell-mini-image"></span></span>
+                <span class="cell-value">20</span>
+              </div>
+
+              <div class="cell name string null  ">
+                <span class="column-label">Name</span>
+                <span class="cell-mini-image"><span class="in-cell-mini-image"></span></span>
+                <span class="cell-value"><a href="http://update-listing.jaisocx.com:80/CorsAndCustomHeaders/jaisocx-css-clean-start-1.2.14-with-fonts.tgz">jaisocx-css-clean-start-1.2.14-with-fonts.tgz</a></span>
+              </div>
+
+              <div class="cell mimeType string null table-thin-field-hide-mobile ">
+                <span class="column-label">mime</span>
+                <span class="cell-mini-image"><span class="in-cell-mini-image"></span></span>
+                <span class="cell-value">null</span>
+              </div>
+
+              <div class="cell size number null table-thin-field-hide-mobile ">
+                <span class="column-label">size</span>
+                <span class="cell-mini-image"><span class="in-cell-mini-image"></span></span>
+                <span class="cell-value">519310</span>
+              </div>
+
+              <div class="cell fileLastModifiedTimestampFormatted string null table-thin-field-hide-mobile ">
+                <span class="column-label">last modified</span>
+                <span class="cell-mini-image"><span class="in-cell-mini-image"></span></span>
+                <span class="cell-value">Mon 24 Mar 2025 23:55:00.535 GMT</span>
+              </div>
+
+              <div class="cell fileUrlRelative string null table-thin-field-hide-mobile table-thin-field-hide-tablet">
+                <span class="column-label">url relative</span>
+                <span class="cell-mini-image"><span class="in-cell-mini-image"></span></span>
+                <span class="cell-value"><a href="http://update-listing.jaisocx.com:80/CorsAndCustomHeaders/jaisocx-css-clean-start-1.2.14-with-fonts.tgz">/CorsAndCustomHeaders/jaisocx-css-clean-start-1.2.14-with-fonts.tgz</a></span>
+              </div>
+
+            </div>
+
+
+            <!--table record with props of one file in the current folder-->
+            <div class="row ">
+
+              <div class="cell ix number null table-thin-field-hide-mobile table-thin-field-hide-tablet">
+                <span class="column-label">num.</span>
+                <span class="cell-mini-image"><span class="in-cell-mini-image"></span></span>
+                <span class="cell-value">21</span>
+              </div>
+
+              <div class="cell name string null  ">
+                <span class="column-label">Name</span>
+                <span class="cell-mini-image"><span class="in-cell-mini-image"></span></span>
+                <span class="cell-value"><a href="http://update-listing.jaisocx.com:80/CorsAndCustomHeaders/jaisocx-css-clean-start-1.2.14.tgz">jaisocx-css-clean-start-1.2.14.tgz</a></span>
+              </div>
+
+              <div class="cell mimeType string null table-thin-field-hide-mobile ">
+                <span class="column-label">mime</span>
+                <span class="cell-mini-image"><span class="in-cell-mini-image"></span></span>
+                <span class="cell-value">null</span>
+              </div>
+
+              <div class="cell size number null table-thin-field-hide-mobile ">
+                <span class="column-label">size</span>
+                <span class="cell-mini-image"><span class="in-cell-mini-image"></span></span>
+                <span class="cell-value">7803</span>
+              </div>
+
+              <div class="cell fileLastModifiedTimestampFormatted string null table-thin-field-hide-mobile ">
+                <span class="column-label">last modified</span>
+                <span class="cell-mini-image"><span class="in-cell-mini-image"></span></span>
+                <span class="cell-value">Mon 24 Mar 2025 23:55:00.535 GMT</span>
+              </div>
+
+              <div class="cell fileUrlRelative string null table-thin-field-hide-mobile table-thin-field-hide-tablet">
+                <span class="column-label">url relative</span>
+                <span class="cell-mini-image"><span class="in-cell-mini-image"></span></span>
+                <span class="cell-value"><a href="http://update-listing.jaisocx.com:80/CorsAndCustomHeaders/jaisocx-css-clean-start-1.2.14.tgz">/CorsAndCustomHeaders/jaisocx-css-clean-start-1.2.14.tgz</a></span>
+              </div>
+
+            </div>
+
+
+            <!--table record with props of one file in the current folder-->
+            <div class="row ">
+
+              <div class="cell ix number null table-thin-field-hide-mobile table-thin-field-hide-tablet">
+                <span class="column-label">num.</span>
+                <span class="cell-mini-image"><span class="in-cell-mini-image"></span></span>
+                <span class="cell-value">22</span>
+              </div>
+
+              <div class="cell name string null  ">
+                <span class="column-label">Name</span>
+                <span class="cell-mini-image"><span class="in-cell-mini-image"></span></span>
+                <span class="cell-value"><a href="http://update-listing.jaisocx.com:80/CorsAndCustomHeaders/jaisocx-css-clean-start-1.2.7-with-fonts-files.tgz">jaisocx-css-clean-start-1.2.7-with-fonts-files.tgz</a></span>
+              </div>
+
+              <div class="cell mimeType string null table-thin-field-hide-mobile ">
+                <span class="column-label">mime</span>
+                <span class="cell-mini-image"><span class="in-cell-mini-image"></span></span>
+                <span class="cell-value">null</span>
+              </div>
+
+              <div class="cell size number null table-thin-field-hide-mobile ">
+                <span class="column-label">size</span>
+                <span class="cell-mini-image"><span class="in-cell-mini-image"></span></span>
+                <span class="cell-value">516583</span>
+              </div>
+
+              <div class="cell fileLastModifiedTimestampFormatted string null table-thin-field-hide-mobile ">
+                <span class="column-label">last modified</span>
+                <span class="cell-mini-image"><span class="in-cell-mini-image"></span></span>
+                <span class="cell-value">Mon 24 Mar 2025 23:55:00.537 GMT</span>
+              </div>
+
+              <div class="cell fileUrlRelative string null table-thin-field-hide-mobile table-thin-field-hide-tablet">
+                <span class="column-label">url relative</span>
+                <span class="cell-mini-image"><span class="in-cell-mini-image"></span></span>
+                <span class="cell-value"><a href="http://update-listing.jaisocx.com:80/CorsAndCustomHeaders/jaisocx-css-clean-start-1.2.7-with-fonts-files.tgz">/CorsAndCustomHeaders/jaisocx-css-clean-start-1.2.7-with-fonts-files.tgz</a></span>
+              </div>
+
+            </div>
+
+
+            <!--table record with props of one file in the current folder-->
+            <div class="row ">
+
+              <div class="cell ix number null table-thin-field-hide-mobile table-thin-field-hide-tablet">
+                <span class="column-label">num.</span>
+                <span class="cell-mini-image"><span class="in-cell-mini-image"></span></span>
+                <span class="cell-value">23</span>
+              </div>
+
+              <div class="cell name string null  ">
+                <span class="column-label">Name</span>
+                <span class="cell-mini-image"><span class="in-cell-mini-image"></span></span>
+                <span class="cell-value"><a href="http://update-listing.jaisocx.com:80/CorsAndCustomHeaders/jaisocx-css-clean-start-1.2.8.tgz">jaisocx-css-clean-start-1.2.8.tgz</a></span>
+              </div>
+
+              <div class="cell mimeType string null table-thin-field-hide-mobile ">
+                <span class="column-label">mime</span>
+                <span class="cell-mini-image"><span class="in-cell-mini-image"></span></span>
+                <span class="cell-value">null</span>
+              </div>
+
+              <div class="cell size number null table-thin-field-hide-mobile ">
+                <span class="column-label">size</span>
+                <span class="cell-mini-image"><span class="in-cell-mini-image"></span></span>
+                <span class="cell-value">4463</span>
+              </div>
+
+              <div class="cell fileLastModifiedTimestampFormatted string null table-thin-field-hide-mobile ">
+                <span class="column-label">last modified</span>
+                <span class="cell-mini-image"><span class="in-cell-mini-image"></span></span>
+                <span class="cell-value">Mon 24 Mar 2025 23:55:00.538 GMT</span>
+              </div>
+
+              <div class="cell fileUrlRelative string null table-thin-field-hide-mobile table-thin-field-hide-tablet">
+                <span class="column-label">url relative</span>
+                <span class="cell-mini-image"><span class="in-cell-mini-image"></span></span>
+                <span class="cell-value"><a href="http://update-listing.jaisocx.com:80/CorsAndCustomHeaders/jaisocx-css-clean-start-1.2.8.tgz">/CorsAndCustomHeaders/jaisocx-css-clean-start-1.2.8.tgz</a></span>
+              </div>
+
+            </div>
+
+
+            <!--table record with props of one file in the current folder-->
+            <div class="row ">
+
+              <div class="cell ix number application_json table-thin-field-hide-mobile table-thin-field-hide-tablet">
+                <span class="column-label">num.</span>
+                <span class="cell-mini-image"><span class="in-cell-mini-image"></span></span>
+                <span class="cell-value">24</span>
+              </div>
+
+              <div class="cell name string application_json  ">
+                <span class="column-label">Name</span>
+                <span class="cell-mini-image"><span class="in-cell-mini-image"></span></span>
+                <span class="cell-value"><a href="http://update-listing.jaisocx.com:80/CorsAndCustomHeaders/package-lock.json">package-lock.json</a></span>
+              </div>
+
+              <div class="cell mimeType string application_json table-thin-field-hide-mobile ">
+                <span class="column-label">mime</span>
+                <span class="cell-mini-image"><span class="in-cell-mini-image"></span></span>
+                <span class="cell-value">application/json</span>
+              </div>
+
+              <div class="cell size number application_json table-thin-field-hide-mobile ">
+                <span class="column-label">size</span>
+                <span class="cell-mini-image"><span class="in-cell-mini-image"></span></span>
+                <span class="cell-value">237</span>
+              </div>
+
+              <div class="cell fileLastModifiedTimestampFormatted string application_json table-thin-field-hide-mobile ">
+                <span class="column-label">last modified</span>
+                <span class="cell-mini-image"><span class="in-cell-mini-image"></span></span>
+                <span class="cell-value">Wed 04 Jun 2025 23:24:24.102 GMT</span>
+              </div>
+
+              <div class="cell fileUrlRelative string application_json table-thin-field-hide-mobile table-thin-field-hide-tablet">
+                <span class="column-label">url relative</span>
+                <span class="cell-mini-image"><span class="in-cell-mini-image"></span></span>
+                <span class="cell-value"><a href="http://update-listing.jaisocx.com:80/CorsAndCustomHeaders/package-lock.json">/CorsAndCustomHeaders/package-lock.json</a></span>
+              </div>
+
+            </div>
+
+
+            <!--table record with props of one file in the current folder-->
+            <div class="row ">
+
+              <div class="cell ix number application_json table-thin-field-hide-mobile table-thin-field-hide-tablet">
+                <span class="column-label">num.</span>
+                <span class="cell-mini-image"><span class="in-cell-mini-image"></span></span>
+                <span class="cell-value">25</span>
+              </div>
+
+              <div class="cell name string application_json  ">
+                <span class="column-label">Name</span>
+                <span class="cell-mini-image"><span class="in-cell-mini-image"></span></span>
+                <span class="cell-value"><a href="http://update-listing.jaisocx.com:80/CorsAndCustomHeaders/package.json">package.json</a></span>
+              </div>
+
+              <div class="cell mimeType string application_json table-thin-field-hide-mobile ">
+                <span class="column-label">mime</span>
+                <span class="cell-mini-image"><span class="in-cell-mini-image"></span></span>
+                <span class="cell-value">application/json</span>
+              </div>
+
+              <div class="cell size number application_json table-thin-field-hide-mobile ">
+                <span class="column-label">size</span>
+                <span class="cell-mini-image"><span class="in-cell-mini-image"></span></span>
+                <span class="cell-value">755</span>
+              </div>
+
+              <div class="cell fileLastModifiedTimestampFormatted string application_json table-thin-field-hide-mobile ">
+                <span class="column-label">last modified</span>
+                <span class="cell-mini-image"><span class="in-cell-mini-image"></span></span>
+                <span class="cell-value">Wed 04 Jun 2025 23:24:24.102 GMT</span>
+              </div>
+
+              <div class="cell fileUrlRelative string application_json table-thin-field-hide-mobile table-thin-field-hide-tablet">
+                <span class="column-label">url relative</span>
+                <span class="cell-mini-image"><span class="in-cell-mini-image"></span></span>
+                <span class="cell-value"><a href="http://update-listing.jaisocx.com:80/CorsAndCustomHeaders/package.json">/CorsAndCustomHeaders/package.json</a></span>
+              </div>
+
+            </div>
+
+
+            <!--table record with props of one file in the current folder-->
+            <div class="row ">
+
+              <div class="cell ix number text_markdown table-thin-field-hide-mobile table-thin-field-hide-tablet">
+                <span class="column-label">num.</span>
+                <span class="cell-mini-image"><span class="in-cell-mini-image"></span></span>
+                <span class="cell-value">26</span>
+              </div>
+
+              <div class="cell name string text_markdown  ">
+                <span class="column-label">Name</span>
+                <span class="cell-mini-image"><span class="in-cell-mini-image"></span></span>
+                <span class="cell-value"><a href="http://update-listing.jaisocx.com:80/CorsAndCustomHeaders/README.md">README.md</a></span>
+              </div>
+
+              <div class="cell mimeType string text_markdown table-thin-field-hide-mobile ">
+                <span class="column-label">mime</span>
+                <span class="cell-mini-image"><span class="in-cell-mini-image"></span></span>
+                <span class="cell-value">text/markdown</span>
+              </div>
+
+              <div class="cell size number text_markdown table-thin-field-hide-mobile ">
+                <span class="column-label">size</span>
+                <span class="cell-mini-image"><span class="in-cell-mini-image"></span></span>
+                <span class="cell-value">3063</span>
+              </div>
+
+              <div class="cell fileLastModifiedTimestampFormatted string text_markdown table-thin-field-hide-mobile ">
+                <span class="column-label">last modified</span>
+                <span class="cell-mini-image"><span class="in-cell-mini-image"></span></span>
+                <span class="cell-value">Wed 04 Jun 2025 23:24:24.090 GMT</span>
+              </div>
+
+              <div class="cell fileUrlRelative string text_markdown table-thin-field-hide-mobile table-thin-field-hide-tablet">
+                <span class="column-label">url relative</span>
+                <span class="cell-mini-image"><span class="in-cell-mini-image"></span></span>
+                <span class="cell-value"><a href="http://update-listing.jaisocx.com:80/CorsAndCustomHeaders/README.md">/CorsAndCustomHeaders/README.md</a></span>
+              </div>
+
+            </div>
+
+
+        <!--table records finished-->
+
+        </div>
+      </div>
+      <!--@jaisocx/css-table-ordered markup finished-->
+
+
+  </main>
+
+  </body>
+
+
+
+
+
+  <script src="transpiled/Simple/CssTableOrderby.js"></script>
+
+  <script>
+
+    let orderbyClassInstance = new Object();
+
+
+    function addOrderbyEventHandler() {
+      orderbyClassInstance = new CssTableOrderby();
+        orderbyClassInstance.setRowsNumberNotOrdered( 1 );
+      let eventHandlerRetval = orderbyClassInstance.addOrderbyEventHandler();
+    }
+
+
+
+
+    function onTableScroll( inEvent ) {
+
+      let tableRowsHolder = inEvent.target;
+      let tableRowsHolder_scrollLeft = tableRowsHolder.scrollLeft;
+
+      let tableRecordsLabelsRow = tableRowsHolder.closest(".jsx-css-table-holder").querySelector( ".jsx-css-table.desktop-columns-labels-holder" );
+      tableRecordsLabelsRow.scrollLeft = tableRowsHolder_scrollLeft;
+
+    }
+
+    function addScrollEventHandlers() {
+      let tableRowsHolder = document.querySelectorAll(".jsx-css-table-holder .jsx-css-table");
+
+      for ( let i = 0; i < tableRowsHolder.length; i++ ) {
+        let tb = tableRowsHolder[i];
+        if ( tb.classList.contains( "desktop-columns-labels-holder" ) ) {
+          continue;
+        }
+
+        tb.addEventListener (
+          "scroll",
+          ( evt ) => {
+            onTableScroll( evt );
+          }
+        );
+      }
+    }
+
+
+
+    // DOCUMENT ONLOAD
+    document.addEventListener('DOMContentLoaded', () => {
+
+      addScrollEventHandlers();
+
+      addOrderbyEventHandler();
+
+    });
+
+  </script>
+
+</html>
+

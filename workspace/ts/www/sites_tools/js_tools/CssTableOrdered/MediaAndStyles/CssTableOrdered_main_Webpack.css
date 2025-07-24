@@ -1,0 +1,16 @@
+
+/* @import url("@CssTableOrdered_MediaAndStyles/responsive_size_Constants.css"); */
+
+
+
+/* base theme: constants and @media queries */
+@import url("@CssTableOrdered_MediaAndStyles/themes/theme_base/CssTableOrdered_theme_base_main.css");
+@import url("@CssTableOrdered_MediaAndStyles/themes/theme_base/responsive_size_Imports_CssTableOrdered_theme_base_Webpack.css");
+
+
+
+/* main css file, css logics with rules set via variables in the theme .css files imported above */
+@import url("@CssTableOrdered_MediaAndStyles/CssTableOrdered_main.css");
+
+
+

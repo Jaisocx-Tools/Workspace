@@ -1,0 +1,16 @@
+/* Sites tool: CssTableOrdered, theme: theme_base */
+.jsx .CssTableOrdered {
+
+  /* base theme css var assignment example */
+  --jsx--CssTableOrdered--toolHtmlElement--font-size: 1rem;
+
+
+  /* same, but assigned value of css-clean-start */
+  --jsx--CssTableOrdered--toolHtmlElement--font-size: var(--jsx--css-clean-start-2--all-tags--font-size);
+
+
+  --jsx--CssTableOrdered--main--background-color: darkgreen;
+  --jsx--CssTableOrdered--main--color: white;
+}
+
+

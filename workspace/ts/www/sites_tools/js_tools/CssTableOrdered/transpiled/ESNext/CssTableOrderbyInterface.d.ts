@@ -1,7 +1,8 @@
-import { CssTableOrderby } from "./CssTableOrderby.js";
 export interface CssTableOrderbyInterface {
+    setColumnLabelSelector(selector: string): CssTableOrderbyInterface;
+    getColumnLabelSelector(): string;
     getColumnIdSorted(): number;
-    setRowsNumberNotOrdered(rowsNum: number): CssTableOrderby;
+    setRowsNumberNotOrdered(rowsNum: number): CssTableOrderbyInterface;
     getRowsNumberNotOrdered(): number;
     addOrderbyEventHandler(): number;
     cloneRows(rows: NodeListOf<Element>): number;

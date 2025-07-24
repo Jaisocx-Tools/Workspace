@@ -5,11 +5,20 @@ class CssTableOrderby {
     constructor() {
         this.COLUMN_ID_NOT_ORDERED = (-3);
         this._columnIdOrdered = this.COLUMN_ID_NOT_ORDERED;
+        this.COLUMN_LABEL_SELECTOR = ".jsx-css-table.desktop-columns-labels-holder .row .column-label";
+        this._columnLabelSelector = this.COLUMN_LABEL_SELECTOR;
         this.ROWS_NUMBER_NOT_ORDERED = 1;
         this._rowsNumberNotOrdered = this.ROWS_NUMBER_NOT_ORDERED;
         this._cachedRowsStart = new Array();
         this._cachedRowsFolders = new Array();
         this._cachedRowsFiles = new Array();
+    }
+    setColumnLabelSelector(selector) {
+        this._columnLabelSelector = selector;
+        return this;
+    }
+    getColumnLabelSelector() {
+        return this._columnLabelSelector;
     }
     getColumnIdSorted() {
         return this._columnIdOrdered;
@@ -22,8 +31,7 @@ class CssTableOrderby {
         return this._rowsNumberNotOrdered;
     }
     addOrderbyEventHandler() {
-        let selector = ".workspace-css-table .row.desktop-columns-labels-holder .cell .column-label";
-        let tableColumns = document.querySelectorAll(selector);
+        let tableColumns = document.querySelectorAll(this._columnLabelSelector);
         let label = new Object();
         let columnsNumber = tableColumns.length;
         let labelId = 0;
@@ -33,7 +41,7 @@ class CssTableOrderby {
                 //@ts-ignore
                 let orderbyRetval = this.orderby(evt);
                 //@ts-ignore
-                let eventHandlerRetval = this.addOrderbyEventHandler();
+                // let eventHandlerRetval: number = this.addOrderbyEventHandler();
             });
         }
         return 1;
@@ -75,14 +83,14 @@ class CssTableOrderby {
         return retVal;
     }
     cachedRowsOrderby(rows, datatype, inCellNumber) {
+        let orderbyShift = 0;
+        if (inCellNumber === this._columnIdOrdered) {
+            orderbyShift = 2;
+        }
         let orderedRows = rows.sort((rowA, rowB) => {
             let retVal = 0;
             let cellA = this.getCellValue(rowA, datatype, inCellNumber);
             let cellB = this.getCellValue(rowB, datatype, inCellNumber);
-            let orderbyShift = 0;
-            if (inCellNumber === this._columnIdOrdered) {
-                orderbyShift = 2;
-            }
             if (cellA > cellB) {
                 retVal = (1 - orderbyShift);
             }
@@ -113,7 +121,7 @@ class CssTableOrderby {
         let datatype = label.dataset.datatype;
         //@ts-ignore
         let cellNumber = +label.dataset.id;
-        let selectorRows = ".workspace-css-table .row";
+        let selectorRows = ".jsx-css-table.records .row";
         let rows = document.querySelectorAll(selectorRows);
         let rowsNumber = rows.length;
         let cachedRowsEmpty = (this._cachedRowsStart.length === 0);
@@ -130,8 +138,11 @@ class CssTableOrderby {
         rowOffsetAfterAdded = this.addOrderedRowsHtml(cachedRowsFoldersOrdered, rowOffset, tableRowsHtmlArray);
         rowOffset = rowOffsetAfterAdded;
         rowOffsetAfterAdded = this.addOrderedRowsHtml(cachedRowsFilesOrdered, rowOffset, tableRowsHtmlArray);
-        let tableSelector = ".workspace-css-table";
-        let table = label.closest(tableSelector);
+        // let tableSelector: string = ".jsx-css-table.records";
+        let tableHolderSelector = ".jsx-css-table-holder";
+        let tableSelector = ".jsx-css-table.records";
+        let tableHolder = label.closest(tableHolderSelector);
+        let table = tableHolder.querySelector(tableSelector);
         let tableRowsHtml = tableRowsHtmlArray.join("\n    ");
         table.innerHTML = "";
         table.innerHTML = tableRowsHtml;

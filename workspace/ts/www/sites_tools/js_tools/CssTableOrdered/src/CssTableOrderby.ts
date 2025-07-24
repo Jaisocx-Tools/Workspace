@@ -6,7 +6,9 @@ export class CssTableOrderby implements CssTableOrderbyInterface {
 
   public COLUMN_ID_NOT_ORDERED: number;
   public ROWS_NUMBER_NOT_ORDERED: number;
+  public COLUMN_LABEL_SELECTOR: string;
 
+  protected _columnLabelSelector: string;
   protected _columnIdOrdered: number;
   protected _rowsNumberNotOrdered: number;
   protected _cachedRowsStart: any[];
@@ -14,12 +16,17 @@ export class CssTableOrderby implements CssTableOrderbyInterface {
   protected _cachedRowsFiles: any[];
 
 
+
   constructor() {
     this.COLUMN_ID_NOT_ORDERED = (-3);
     this._columnIdOrdered = this.COLUMN_ID_NOT_ORDERED;
 
+    this.COLUMN_LABEL_SELECTOR = ".jsx-css-table.desktop-columns-labels-holder .row .column-label";
+    this._columnLabelSelector = this.COLUMN_LABEL_SELECTOR;
+
     this.ROWS_NUMBER_NOT_ORDERED = 1;
     this._rowsNumberNotOrdered = this.ROWS_NUMBER_NOT_ORDERED;
+
 
 
     this._cachedRowsStart = new Array();
@@ -28,16 +35,35 @@ export class CssTableOrderby implements CssTableOrderbyInterface {
   }
 
 
+
+  public setColumnLabelSelector( selector: string ): CssTableOrderbyInterface {
+    this._columnLabelSelector = selector;
+
+
+    return this;
+  }
+
+
+
+  public getColumnLabelSelector(): string {
+    return this._columnLabelSelector;
+  }
+
+
+
   public getColumnIdSorted(): number {
     return this._columnIdOrdered;
   }
 
 
-  public setRowsNumberNotOrdered( rowsNum: number ): CssTableOrderby {
+
+  public setRowsNumberNotOrdered( rowsNum: number ): CssTableOrderbyInterface {
     this._rowsNumberNotOrdered = rowsNum;
+
 
     return this;
   }
+
 
 
   public getRowsNumberNotOrdered(): number {
@@ -45,9 +71,9 @@ export class CssTableOrderby implements CssTableOrderbyInterface {
   }
 
 
+
   addOrderbyEventHandler(): number {
-    let selector: string = ".workspace-css-table .row.desktop-columns-labels-holder .cell .column-label";
-    let tableColumns: NodeListOf<Element> = document.querySelectorAll( selector );
+    let tableColumns: NodeListOf<Element> = document.querySelectorAll( this._columnLabelSelector );
 
     let label: Element = new Object() as HTMLElement;
     let columnsNumber: number = tableColumns.length;
@@ -64,13 +90,15 @@ export class CssTableOrderby implements CssTableOrderbyInterface {
 
 
           //@ts-ignore
-          let eventHandlerRetval: number = this.addOrderbyEventHandler();
+          // let eventHandlerRetval: number = this.addOrderbyEventHandler();
         }
       );
     }
 
+
     return 1;
   }
+
 
 
   cloneRows (
@@ -88,7 +116,7 @@ export class CssTableOrderby implements CssTableOrderbyInterface {
       rowClone = document.createElement( row.tagName );
       rowClone.innerHTML = rowOuterHTML;
 
-        if ( rowId < this._rowsNumberNotOrdered ) {
+      if ( rowId < this._rowsNumberNotOrdered ) {
         this._cachedRowsStart.push( rowClone );
       } else if ( row.classList.contains( "folder" ) ) {
         this._cachedRowsFolders.push( rowClone );
@@ -97,8 +125,10 @@ export class CssTableOrderby implements CssTableOrderbyInterface {
       }
     }
 
+
     return 1;
   }
+
 
 
   getCellValue (
@@ -111,14 +141,16 @@ export class CssTableOrderby implements CssTableOrderbyInterface {
     let retVal: any = "";
     let value: string = cell.innerText;
 
-      if ( datatype === "number" ) {
+    if ( datatype === "number" ) {
       retVal = parseInt( value, 10 );
     } else {
       retVal = value;
     }
 
+
     return retVal;
   }
+
 
 
   cachedRowsOrderby (
@@ -126,6 +158,12 @@ export class CssTableOrderby implements CssTableOrderbyInterface {
     datatype: string,
     inCellNumber: number
   ): HTMLElement[] {
+    let orderbyShift: number = 0;
+
+    if ( inCellNumber === this._columnIdOrdered ) {
+      orderbyShift = 2;
+    }
+
     let orderedRows: HTMLElement[] = rows.sort (
       ( rowA: HTMLElement, rowB: HTMLElement ): number => {
         let retVal: number = 0;
@@ -133,24 +171,21 @@ export class CssTableOrderby implements CssTableOrderbyInterface {
         let cellA: any = this.getCellValue( rowA, datatype, inCellNumber );
         let cellB: any = this.getCellValue( rowB, datatype, inCellNumber );
 
-        let orderbyShift: number = 0;
-
-        if ( inCellNumber === this._columnIdOrdered ) {
-          orderbyShift = 2;
-        }
-
         if ( cellA > cellB ) {
           retVal = ( 1 - orderbyShift );
         } else if ( cellA < cellB ) {
           retVal = ( (-1) + orderbyShift );
         }
 
+
         return retVal;
       }
     );
 
+
     return orderedRows;
   }
+
 
 
   addOrderedRowsHtml(
@@ -171,8 +206,10 @@ export class CssTableOrderby implements CssTableOrderbyInterface {
       rowOffset++;
     }
 
+
     return rowOffset;
   }
+
 
 
   orderby( evt: Event ): number {
@@ -189,7 +226,7 @@ export class CssTableOrderby implements CssTableOrderbyInterface {
     let cellNumber: number = +label.dataset.id;
 
 
-    let selectorRows: string = ".workspace-css-table .row";
+    let selectorRows: string = ".jsx-css-table.records .row";
     let rows: NodeListOf<Element> = document.querySelectorAll( selectorRows );
     let rowsNumber: number = rows.length;
 
@@ -237,8 +274,12 @@ export class CssTableOrderby implements CssTableOrderbyInterface {
     );
 
 
-    let tableSelector: string = ".workspace-css-table";
-    let table: HTMLElement = label.closest( tableSelector ) as HTMLElement;
+    // let tableSelector: string = ".jsx-css-table.records";
+    let tableHolderSelector: string = ".jsx-css-table-holder";
+    let tableSelector: string       = ".jsx-css-table.records";
+
+    let tableHolder: HTMLElement = label.closest( tableHolderSelector ) as HTMLElement;
+    let table: HTMLElement       = tableHolder.querySelector( tableSelector ) as HTMLElement;
 
     let tableRowsHtml: string = tableRowsHtmlArray.join( "\n    " );
 
@@ -250,6 +291,7 @@ export class CssTableOrderby implements CssTableOrderbyInterface {
     } else {
       this._columnIdOrdered = cellNumber;
     }
+
 
     return 1;
   }

@@ -1,5 +1,6 @@
 {
   "@CssTableOrdered_MediaAndStyles": "${packageRoot}/MediaAndStyles/",
-  "@CssTable_MediaAndStyles": "${packageRoot}/node_modules/@jaisocx/css-table/MediaAndStyles/"
+  "@CssTable_MediaAndStyles": "${packageRoot}/node_modules/@jaisocx/css-table/MediaAndStyles/",
+  "@CssCleanStart_2_MediaAndStyles": "${packageRoot}/node_modules/@jaisocx/css-clean-start-2/MediaAndStyles/"
 }
 

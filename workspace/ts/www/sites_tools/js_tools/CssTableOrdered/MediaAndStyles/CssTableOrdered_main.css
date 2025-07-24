@@ -1,0 +1,16 @@
+/* Main .css file for the sites tool: CssTableOrdered */
+.jsx .CssTableOrdered {
+  background-color: var(--CssTableOrdered--main--background-color);
+  color: var(--CssTableOrdered--main--color);
+}
+
+.jsx .CssTableOrdered .class1 {
+  font-size: var(--CssTableOrdered--toolHtmlElement--font-size);
+}
+
+.jsx .CssTableOrdered .class2 {
+
+}
+
+
+
