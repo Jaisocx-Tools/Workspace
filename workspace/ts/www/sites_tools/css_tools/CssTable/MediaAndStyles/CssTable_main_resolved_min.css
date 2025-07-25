@@ -299,8 +299,10 @@
 
   
 
-}
 
+  --jsx--CssTable--cell--cell-value--a--color:                    #226d22;
+  --jsx--CssTable--cell--cell-value--a-hover--color:              #22a022;
+}
 
 
 
@@ -409,6 +411,9 @@
   --jsx--CssTable--cell--cell-value--color:              #222a2e;
   --jsx--CssTable--cell--cell-value--background-color:   #fff;
 
+  --jsx--CssTable--cell--cell-value--a--color:           #2255dd;
+  --jsx--CssTable--cell--cell-value--a-hover--color:     #2299ff;
+
 }
 
 
@@ -435,6 +440,8 @@
   --jsx--CssTable--cell--cell-value--color:                  #e0f2ff;
   --jsx--CssTable--cell--cell-value--background-color:       #02102d;
 
+  --jsx--CssTable--cell--cell-value--a--color:               #a6e2ff;
+  --jsx--CssTable--cell--cell-value--a-hover--color:         #ace9ff;
 
 }
 
@@ -722,6 +729,23 @@
   overflow:                hidden;
 }
 
+.jsx .jsx-css-table-holder a {
+  --jsx--css-clean-start-2--a--color:  var(--jsx--CssTable--cell--cell-value--a--color);
+  --jsx--css-clean-start-2--a-hover--color:  var(--jsx--CssTable--cell--cell-value--a-hover--color);
+}
+
+
+
+.jsx-css-table-holder a {
+  line-height:    inherit;
+  color:          var(--jsx--CssTable--cell--cell-value--a--color);
+  font-size:      inherit;
+}
+
+.jsx-css-table-holder a:hover {
+  color:          var(--jsx--CssTable--cell--cell-value--a-hover--color);
+}
+
 
 
 .jsx-css-table-holder .cell .column-label {
@@ -761,5 +785,6 @@
   
 
 }
+
 
 

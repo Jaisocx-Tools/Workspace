@@ -12,6 +12,10 @@
 @import url("@CssCleanStart_2_MediaAndStyles/CssCleanStart_2_presets.css");
 
 
+@import url("@CssCleanStart_2_MediaAndStyles/themes/theme_lightmode/CssCleanStart_2_theme_lightmode_main.css");
+@import url("@CssCleanStart_2_MediaAndStyles/themes/theme_darkmode/CssCleanStart_2_theme_darkmode_main.css");
+
+
 /* main css file, css logics with rules set via variables in the theme .css files imported above */
 @import url("@CssCleanStart_2_MediaAndStyles/CssCleanStart_2_main.css");
 

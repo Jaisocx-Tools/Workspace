@@ -1,6 +1,6 @@
 {
   "name": "@jaisocx/css-table-ordered",
-  "version": "2.0.1",
+  "version": "2.0.2",
   "description": "",
   "author": "Jaisocx",
   "keywords": [
@@ -11,11 +11,10 @@
     "ui"
   ],
   "files": [
-    "index.html",
-    "table_example_folder_listing.html",
+    "index.example.html",
 
     "MediaAndStyles/*.css",
-    "MediaAndStyles/themes/",
+    "MediaAndStyles/themes",
 
     "transpiled/CommonJS",
     "transpiled/ESNext",
@@ -44,8 +43,8 @@
     }
   },
   "optionalDependencies": {
-    "@jaisocx/css-clean-start-2": "~1.0.1",
-    "@jaisocx/css-table": "~2.0.1"
+    "@jaisocx/css-clean-start-2": "~1.0.2",
+    "@jaisocx/css-table": "~2.0.2"
   }
 }
 

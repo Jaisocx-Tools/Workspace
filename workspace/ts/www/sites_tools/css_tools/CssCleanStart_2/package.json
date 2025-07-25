@@ -1,6 +1,6 @@
 {
   "name": "@jaisocx/css-clean-start-2",
-  "version": "1.0.1",
+  "version": "1.0.3",
   "description": "",
   "author": "Jaisocx",
   "keywords": [
@@ -8,16 +8,15 @@
     "styles"
   ],
   "files": [
-    "index.html",
+    "index.example.html",
     "responsive_sizes.html",
 
     "MediaAndStyles/*.css",
-    "MediaAndStyles/themes/",
-    "MediaAndStyles/fonts/",
+    "MediaAndStyles/themes",
+    "MediaAndStyles/fonts",
 
     "transpiled/CommonJS",
     "transpiled/ESNext",
-    "transpiled/Simple",
 
     "webpack.aliases.json",
 

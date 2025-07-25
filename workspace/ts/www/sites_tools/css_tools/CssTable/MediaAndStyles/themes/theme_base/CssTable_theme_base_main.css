@@ -111,7 +111,9 @@
   /* --jsx--CssTable--cell--cell-value--line-break:                  normal;
   --jsx--CssTable--cell--cell-value--word-break:                  break-word; */
 
-}
 
+  --jsx--CssTable--cell--cell-value--a--color:                    #226d22;
+  --jsx--CssTable--cell--cell-value--a-hover--color:              #22a022;
+}
 
 

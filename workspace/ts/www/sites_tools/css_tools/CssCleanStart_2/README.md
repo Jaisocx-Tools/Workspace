@@ -40,7 +40,7 @@ several .css files will be loaded with size of very few KB.
 
 ## Watch site in action
 
-[https://sandbox.brightday.email/sites_tools/css_tools/CssCleanStart_2/index.html](https://sandbox.brightday.email/sites_tools/css_tools/CssCleanStart_2/index.html)
+[https://sandbox.brightday.email/sites_tools/css_tools/CssCleanStart_2/index.example.html](https://sandbox.brightday.email/sites_tools/css_tools/CssCleanStart_2/index.example.html)
 
 
 

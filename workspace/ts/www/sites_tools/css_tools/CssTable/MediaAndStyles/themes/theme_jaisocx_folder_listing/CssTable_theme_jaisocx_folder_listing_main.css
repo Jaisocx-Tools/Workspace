@@ -121,14 +121,3 @@
   justify-content: flex-end;
 }
 
-.jsx-css-table-holder.jaisocx-folder-listing .cell .cell-value a {
-  line-height: inherit;
-  color: #226d22;
-  font-size: 0.9rem;
-}
-
-.jsx-css-table-holder.jaisocx-folder-listing .cell .cell-value a:hover {
-  color: #22a022;
-}
-
-

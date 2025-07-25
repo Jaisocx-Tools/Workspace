@@ -17,6 +17,9 @@
   --jsx--CssTable--cell--cell-value--color:              #222a2e;
   --jsx--CssTable--cell--cell-value--background-color:   #fff;
 
+  --jsx--CssTable--cell--cell-value--a--color:           #2255dd;
+  --jsx--CssTable--cell--cell-value--a-hover--color:     #2299ff;
+
 }
 
 

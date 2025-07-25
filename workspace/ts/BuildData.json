@@ -186,9 +186,9 @@
       "name": "css-table",
       "update-published": "Tue Jun  3 01:01:52 GMT 2025",
       "build": false,
-      "build-simple-enable": true,
+      "build-simple-enable": false,
       "css-importer": {
-        "build": false,
+        "build": true,
         "cssFilePath": "MediaAndStyles/CssTable_main_Webpack.css",
         "cssTargetFilePath": "MediaAndStyles/CssTable_main_resolved.css"
       },
@@ -270,8 +270,8 @@
       "build-simple-enable": false,
       "css-importer": {
         "build": true,
-        "cssFilePath": "MediaAndStyles/CssCleanStart_2_main_Webpack_min.css",
-        "cssTargetFilePath": "MediaAndStyles/CssCleanStart_2_main_resolved_min.css"
+        "cssFilePath": "MediaAndStyles/CssCleanStart_2_main_Webpack.css",
+        "cssTargetFilePath": "MediaAndStyles/CssCleanStart_2_main_resolved.css"
       },
       "dependencies": [],
       "build-files": []
@@ -420,12 +420,12 @@
       "path": "sites_tools/js_tools/CssTableOrdered",
       "name": "css-table-ordered",
       "update-published": "Tue Jul  1 14:21:27 UTC 2025",
-      "build": true,
+      "build": false,
       "build-simple-enable": true,
       "css-importer": {
-        "build": false,
-        "cssFilePath": "MediaAndStyles/css_table_ordered_main_webpack.css",
-        "cssTargetFilePath": "MediaAndStyles/css_table_ordered_main_resolved.css"
+        "build": true,
+        "cssFilePath": "MediaAndStyles/CssTableOrdered_main_Webpack.css",
+        "cssTargetFilePath": "MediaAndStyles/CssTableOrdered_main_resolved.css"
       },
       "dependencies": [
         {

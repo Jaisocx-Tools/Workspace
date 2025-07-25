@@ -8,6 +8,10 @@
 @import url("./themes/theme_base/responsive_size_Imports_CssCleanStart_2_theme_base_Relative.css");
 
 
+@import url("./themes/theme_lightmode/CssCleanStart_2_theme_lightmode_main.css");
+@import url("./themes/theme_darkmode/CssCleanStart_2_theme_darkmode_main.css");
+
+
 @import url("./CssCleanStart_2_presets.css");
 
 

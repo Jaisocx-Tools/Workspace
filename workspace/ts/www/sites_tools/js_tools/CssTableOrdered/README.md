@@ -15,18 +15,14 @@ The jaisocx templates for files listing, https exceptions as 404 and others will
 
 
 
-## The latest .tgz archive (v.1.2.10 1st of July 2025)
+## The latest .tgz archive (v.2.0.2 25st of July 2025)
 
-[https://sandbox.brightday.email/sites_tools/js_tools/CssTableOrdered/jaisocx-css-table-ordered-1.2.10.tgz](https://sandbox.brightday.email/sites_tools/js_tools/CssTableOrdered/jaisocx-css-table-ordered-1.2.10.tgz)
+[https://sandbox.brightday.email/sites_tools/js_tools/CssTableOrdered/jaisocx-css-table-ordered-2.0.2.tgz](https://sandbox.brightday.email/sites_tools/js_tools/CssTableOrdered/jaisocx-css-table-ordered-2.0.2.tgz)
 
 
 ## Watch site in action
 
-[https://sandbox.brightday.email/sites_tools/js_tools/CssTableOrdered/table_example_folder_listing.html](https://sandbox.brightday.email/sites_tools/js_tools/CssTableOrdered/table_example_folder_listing.html)
-
-
-
-[https://sandbox.brightday.email/sites_tools/js_tools/CssTableOrdered/table_example.html](https://sandbox.brightday.email/sites_tools/js_tools/CssTableOrdered/table_example.html)
+[https://sandbox.brightday.email/sites_tools/js_tools/CssTableOrdered/index.example.html](https://sandbox.brightday.email/sites_tools/js_tools/CssTableOrdered/index.example.html)
 
 
 

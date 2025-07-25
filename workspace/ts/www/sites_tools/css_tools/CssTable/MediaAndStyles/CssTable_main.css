@@ -67,6 +67,23 @@
   overflow:                hidden;
 }
 
+.jsx .jsx-css-table-holder a {
+  --jsx--css-clean-start-2--a--color:  var(--jsx--CssTable--cell--cell-value--a--color);
+  --jsx--css-clean-start-2--a-hover--color:  var(--jsx--CssTable--cell--cell-value--a-hover--color);
+}
+
+
+
+.jsx-css-table-holder a {
+  line-height:    inherit;
+  color:          var(--jsx--CssTable--cell--cell-value--a--color);
+  font-size:      inherit;
+}
+
+.jsx-css-table-holder a:hover {
+  color:          var(--jsx--CssTable--cell--cell-value--a-hover--color);
+}
+
 
 
 .jsx-css-table-holder .cell .column-label {
@@ -130,5 +147,6 @@
   word-break:              var(--jsx--CssTable--cell--cell-value--word-break); */
 
 }
+
 
 

@@ -20,7 +20,14 @@ npm install @jaisocx/css-table@2.0.1
 
 ## Watch site in action
 
+[sandbox.brightday.email/sites_tools/css_tools/CssTable/index.example.html](https://sandbox.brightday.email/sites_tools/css_tools/CssTable/index.example.html)
+
+[sandbox.brightday.email/ExampleCss_CssTable_4fields.html](https://sandbox.brightday.email/ExampleCss_CssTable_4fields.html)
+
 [sandbox.brightday.email/ExampleCss_CssTable_12fields.html](https://sandbox.brightday.email/ExampleCss_CssTable_12fields.html)
+
+[sandbox.brightday.email/ExampleCss_CssTable_JaisocxFolderListing_NoJS.html](https://sandbox.brightday.email/ExampleCss_CssTable_JaisocxFolderListing_NoJS.html)
+
 
 
 

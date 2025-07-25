@@ -20,6 +20,8 @@
   --jsx--CssTable--cell--cell-value--color:                  #e0f2ff;
   --jsx--CssTable--cell--cell-value--background-color:       #02102d;
 
+  --jsx--CssTable--cell--cell-value--a--color:               #a6e2ff;
+  --jsx--CssTable--cell--cell-value--a-hover--color:         #ace9ff;
 
 }
 
