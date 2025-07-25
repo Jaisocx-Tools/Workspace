@@ -6,15 +6,15 @@
 ## npm
 
 ```
-npm install @jaisocx/css-table@2.0.1
+npm install @jaisocx/css-table@2.0.3
 ```
 
 
 
 
-## The latest .tgz archive (v.2.0.1. 24.07.2025)
+## The latest .tgz archive (v.2.0.3. 25.07.2025)
 
-[sandbox.brightday.email/sites_tools/css_tools/CssTable/jaisocx-css-table-2.0.1.tgz](https://sandbox.brightday.email/sites_tools/css_tools/CssTable/jaisocx-css-table-2.0.1.tgz)
+[sandbox.brightday.email/sites_tools/css_tools/CssTable/jaisocx-css-table-2.0.3.tgz](https://sandbox.brightday.email/sites_tools/css_tools/CssTable/jaisocx-css-table-2.0.3.tgz)
 
 
 
@@ -53,7 +53,7 @@ In development since the 28-th of March 2025.
 
 ### example html doc
 
-[index.html](./index.html)
+[index.example.html](./index.example.html)
 
 
 
