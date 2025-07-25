@@ -19,6 +19,11 @@
 
 
 
+@import url("@CssTable_MediaAndStyles/themes/theme_imaged/responsive_size_Imports_CssTable_theme_imaged_Webpack_min.css");
+@import url("@CssTable_MediaAndStyles/themes/theme_imaged/CssTable_theme_imaged_main.css");
+
+
+
 /* main css file, css logics with rules set via variables in the theme .css files imported above */
 @import url("@CssTable_MediaAndStyles/CssTable_thin.css");
 @import url("@CssTable_MediaAndStyles/CssTable_bright.css");

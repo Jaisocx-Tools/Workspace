@@ -14,6 +14,7 @@
 
 
 @import url("@CssTable_MediaAndStyles/themes/theme-emailed-thin/css-table-theme-emailed-thin.css");
+@import url("@CssTable_MediaAndStyles/themes/theme_imaged/CssTable_theme_imaged_main.css");
 @import url("@CssTable_MediaAndStyles/themes/theme_lightmode/css-table-theme-lightmode.css");
 @import url("@CssTable_MediaAndStyles/themes/theme_darkmode/css-table-theme-darkmode.css");
 

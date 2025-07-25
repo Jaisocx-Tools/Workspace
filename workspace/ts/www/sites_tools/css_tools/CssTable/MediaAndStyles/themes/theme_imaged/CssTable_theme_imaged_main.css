@@ -1,0 +1,102 @@
+/* Sites tool: CssTable, theme: theme_imaged */
+
+.jsx-css-table-holder.theme_imaged .cell.name.folder .cell-mini-image .in-cell-mini-image {
+  background-image: url("https://cdn.brightday.email/media/images/mini-images/datatypes/tree_theme_base/icons8-3-100.png");
+}
+
+.jsx-css-table-holder.theme_imaged .cell.name.application_json .cell-mini-image .in-cell-mini-image {
+  background-image: url("https://cdn.brightday.email/media/images/mini-images/datatypes/tree_theme_base/icons8-json-96.png");
+}
+
+.jsx-css-table-holder.theme_imaged .cell.name.text_html .cell-mini-image .in-cell-mini-image {
+  background-image: url("https://cdn.brightday.email/media/images/mini-images/datatypes/tree_theme_base/icons8-font-style-formatting-96.png");
+}
+
+
+
+.jsx-css-table-holder.theme_imaged {
+
+/* exact inner size and padding */
+  /* --jsx--CssTable--cell--cell-value--name--background-image-holder--width:   auto;
+  --jsx--CssTable--cell--cell-value--name--background-image-holder--height:  auto;
+
+  --jsx--CssTable--cell--cell-value--name--background-image-holder--padding: 0.3rem;
+
+  --jsx--CssTable--cell--cell-value--name--background-image--width:          2.5rem;
+  --jsx--CssTable--cell--cell-value--name--background-image--height:         2.5rem; */
+
+
+
+/* exact outer size and padding */
+  --jsx--CssTable--cell--cell-value--name--background-image-holder--width:   2.0rem;
+  --jsx--CssTable--cell--cell-value--name--background-image-holder--height:  2.0rem;
+
+  --jsx--CssTable--cell--cell-value--name--background-image-holder--padding: 0 0 0 0;
+
+  --jsx--CssTable--cell--cell-value--name--background-image--width:          100%;
+  --jsx--CssTable--cell--cell-value--name--background-image--height:         100%;
+
+
+
+/* exact outer and inner sizes */
+  /* --jsx--CssTable--cell--cell-value--name--background-image-holder--width:   4rem;
+  --jsx--CssTable--cell--cell-value--name--background-image-holder--height:  4rem;
+
+  --jsx--CssTable--cell--cell-value--name--background-image-holder--padding: 0 0 0 0;
+
+  --jsx--CssTable--cell--cell-value--name--background-image--width:          2.5rem;
+  --jsx--CssTable--cell--cell-value--name--background-image--height:         2.5rem; */
+
+
+
+  /* --jsx--CssTable--cell--cell-value--name--background-image:            none; */
+  --jsx--CssTable--cell--cell-value--name--background-position:         0 0;
+  --jsx--CssTable--cell--cell-value--name--background-size:             contain;
+  --jsx--CssTable--cell--cell-value--name--background-repeat:           no-repeat;
+  --jsx--CssTable--cell--cell-value--name--background-origin:           border-box;
+  --jsx--CssTable--cell--cell-value--name--background-clip:             border-box;
+  --jsx--CssTable--cell--cell-value--name--background-attachment:       scroll;
+
+}
+
+
+
+.jsx-css-table-holder.theme_imaged .cell .cell-mini-image {
+  display: none;
+}
+
+.jsx-css-table-holder.theme_imaged .cell.name .cell-mini-image {
+  /* border: 1px solid red; */
+
+  display:                 flex;
+  flex-direction:          row;
+  align-items:             center;
+  align-self:              center;
+  justify-content:         center;
+
+  width:                   var(--jsx--CssTable--cell--cell-value--name--background-image-holder--width);
+  height:                  var(--jsx--CssTable--cell--cell-value--name--background-image-holder--height);
+
+  padding:                 var(--jsx--CssTable--cell--cell-value--name--background-image-holder--padding);
+
+}
+
+.jsx-css-table-holder.theme_imaged .cell.name .cell-mini-image .in-cell-mini-image {
+  /* border: 1px solid green; */
+
+  display:                 block;
+
+  width:                   var(--jsx--CssTable--cell--cell-value--name--background-image--width);
+  height:                  var(--jsx--CssTable--cell--cell-value--name--background-image--height);
+
+  background-image:        none;
+  background-position:     var(--jsx--CssTable--cell--cell-value--name--background-position);
+  background-size:         var(--jsx--CssTable--cell--cell-value--name--background-size);
+  background-repeat:       var(--jsx--CssTable--cell--cell-value--name--background-repeat);
+  background-origin:       var(--jsx--CssTable--cell--cell-value--name--background-origin);
+  background-clip:         var(--jsx--CssTable--cell--cell-value--name--background-clip);
+  background-attachment:   var(--jsx--CssTable--cell--cell-value--name--background-attachment);
+
+}
+
+

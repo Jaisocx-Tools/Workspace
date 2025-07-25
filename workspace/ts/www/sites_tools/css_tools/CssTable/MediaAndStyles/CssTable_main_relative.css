@@ -13,16 +13,22 @@
 
 
 
+@import url("./themes/theme_imaged/responsive_size_Imports_CssTable_theme_imaged_Relative.css");
+@import url("./themes/theme_imaged/CssTable_theme_imaged_main.css");
+
+
+
 @import url("./themes/theme-emailed-thin/css-table-theme-emailed-thin.css");
 @import url("./themes/theme_lightmode/css-table-theme-lightmode.css");
 @import url("./themes/theme_darkmode/css-table-theme-darkmode.css");
 
 
 
+@import url("./CssTable_main.css");
+
 /* main css file, css logics with rules set via variables in the theme .css files imported above */
 @import url("./CssTable_thin.css");
 @import url("./CssTable_bright.css");
 
-@import url("./CssTable_main.css");
 
 

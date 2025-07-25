@@ -16,6 +16,34 @@
                            path="https://sandbox.brightday.email/" />
               </domain>
               <domain
+                    name="cdn.brightday.email"
+                    jks-path="/usr/lib/jaisocx-http/ssl/brightday.email.jks"
+                    jks-alias="brightday.email"
+                    jks-passphrase="JW5MYPKHbdqetvr4yfshiFwwjvr4fakE43qJUtgh7A2hNEW"
+                    publish-charset="UTF-8" src-charset="UTF-8">
+                    <alias comment="typescript code"
+                           art="folder"
+                           url="/"
+                           path="/var/www/cdn/www/"
+                           cache="update"
+                           list="true"
+                           each-folder-content-file-name="root.html" />
+              </domain>
+              <domain
+                    name="cdn.sandbox.brightday.email"
+                    jks-path="/usr/lib/jaisocx-http/ssl/brightday.email.jks"
+                    jks-alias="brightday.email"
+                    jks-passphrase="JW5MYPKHbdqetvr4yfshiFwwjvr4fakE43qJUtgh7A2hNEW"
+                    publish-charset="UTF-8" src-charset="UTF-8">
+                    <alias comment="typescript code"
+                           art="folder"
+                           url="/"
+                           path="/var/www/cdn/www/"
+                           cache="update"
+                           list="true"
+                           each-folder-content-file-name="root.html" />
+              </domain>
+              <domain
                     name="sandbox.brightday.email"
                     jks-path="/usr/lib/jaisocx-http/ssl/brightday.email.jks"
                     jks-alias="brightday.email"

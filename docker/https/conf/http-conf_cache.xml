@@ -16,6 +16,34 @@
                            path="https://sandbox.brightday.email/" />
               </domain>
               <domain
+                    name="cdn.brightday.email"
+                    jks-path="/usr/lib/jaisocx-http/ssl/brightday.email.jks"
+                    jks-alias="brightday.email"
+                    jks-passphrase="JW5MYPKHbdqetvr4yfshiFwwjvr4fakE43qJUtgh7A2hNEW"
+                    publish-charset="UTF-8" src-charset="UTF-8">
+                    <alias comment="typescript code"
+                           art="folder"
+                           url="/"
+                           path="/var/www/cdn/www/"
+                           cache="cache"
+                           list="true"
+                           each-folder-content-file-name="root.html" />
+              </domain>
+              <domain
+                    name="cdn.sandbox.brightday.email"
+                    jks-path="/usr/lib/jaisocx-http/ssl/brightday.email.jks"
+                    jks-alias="brightday.email"
+                    jks-passphrase="JW5MYPKHbdqetvr4yfshiFwwjvr4fakE43qJUtgh7A2hNEW"
+                    publish-charset="UTF-8" src-charset="UTF-8">
+                    <alias comment="typescript code"
+                           art="folder"
+                           url="/"
+                           path="/var/www/cdn/www/"
+                           cache="cache"
+                           list="true"
+                           each-folder-content-file-name="root.html" />
+              </domain>
+              <domain
                     name="sandbox.brightday.email"
                     jks-path="/usr/lib/jaisocx-http/ssl/brightday.email.jks"
                     jks-alias="brightday.email"
@@ -26,14 +54,14 @@
                            art="folder"
                            url="/"
                            path="/var/www/workspace/ts/www/"
-                           cache="cached"
+                           cache="cache"
                            list="true"
                            each-folder-content-file-name="root.html" />
                     <alias comment="php code"
                            art="folder"
                            url="/php/"
                            path="/var/www/workspace/php/"
-                           cache="cached"
+                           cache="cache"
                            cache-except="php"
                            list="true"
                            each-folder-content-file-name="index.php" />
@@ -43,7 +71,7 @@
                            art="folder"
                            url="/cdn/www/"
                            path="/var/www/cdn/www/"
-                           cache="cached"
+                           cache="cache"
                            list="true"
                            each-folder-content-file-name="root.html" />
                     <alias comment="cdn for data, secured with basic auth. On demand, You can set auth JWT"
@@ -51,7 +79,7 @@
                            url="/cdn/data_secured/"
                            path="/var/www/cdn/data_secured/"
                            authorization="basic"
-                           cache="cached"
+                           cache="cache"
                            list="true"
                            each-folder-content-file-name="root.html" />
 
@@ -59,7 +87,7 @@
                            art="folder"
                            url="/cdn/jaisocx-tools-all/"
                            path="/var/www/cdn/SitesTools/node_modules/@jaisocx/"
-                           cache="cached"
+                           cache="cache"
                            list="true"
                            each-folder-content-file-name="root.html" />
 
@@ -67,35 +95,35 @@
                            art="folder"
                            url="/cdn/jaisocx-tools/css-clean-start/MediaAndStyles/"
                            path="/var/www/cdn/SitesTools/node_modules/@jaisocx/css-clean-start/MediaAndStyles"
-                           cache="cached"
+                           cache="cache"
                            list="true"
                            each-folder-content-file-name="root.html" />
                     <alias comment="preferred cdn url for one node_modules/MediaAndStyles subfolder of one tool, where are @jaisocx/ site js and css tool .css files and .css themes and mini-images"
                            art="folder"
                            url="/cdn/jaisocx-tools/css-code-snippet/MediaAndStyles/"
                            path="/var/www/cdn/SitesTools/node_modules/@jaisocx/css-code-snippet/MediaAndStyles"
-                           cache="cached"
+                           cache="cache"
                            list="true"
                            each-folder-content-file-name="root.html" />
                      <alias comment="preferred cdn url for one node_modules/MediaAndStyles subfolder of one tool, where are @jaisocx/ site js and css tool .css files and .css themes and mini-images"
                            art="folder"
                            url="/cdn/jaisocx-tools/css-table/MediaAndStyles/"
                            path="/var/www/cdn/SitesTools/node_modules/@jaisocx/css-table/MediaAndStyles"
-                           cache="cached"
+                           cache="cache"
                            list="true"
                            each-folder-content-file-name="root.html" />
                     <alias comment="preferred cdn url for one node_modules/MediaAndStyles subfolder of one tool, where are @jaisocx/ site js and css tool .css files and .css themes and mini-images"
                            art="folder"
                            url="/cdn/jaisocx-tools/tooltip/MediaAndStyles/"
                            path="/var/www/cdn/SitesTools/node_modules/@jaisocx/tooltip/MediaAndStyles"
-                           cache="cached"
+                           cache="cache"
                            list="true"
                            each-folder-content-file-name="root.html" />
                     <alias comment="preferred cdn url for one node_modules/MediaAndStyles subfolder of one tool, where are @jaisocx/ site js and css tool .css files and .css themes and mini-images"
                            art="folder"
                            url="/cdn/jaisocx-tools/tree/MediaAndStyles/"
                            path="/var/www/cdn/SitesTools/node_modules/@jaisocx/tree/MediaAndStyles"
-                           cache="cached"
+                           cache="cache"
                            list="true"
                            each-folder-content-file-name="root.html" />
 

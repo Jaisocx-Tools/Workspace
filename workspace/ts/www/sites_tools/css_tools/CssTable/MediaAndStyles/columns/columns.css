@@ -1,6 +1,6 @@
 /* YOU CAN SET HERE YOUR OWN VARIABLE FOR GRID WIDTHS OF COLUMNS */
 
-.jsx-css-table-holder.jaisocx-folder-listing {
+.jsx-css-table-holder.jaisocx-folder-listing-columns {
   /* --jsx--CssTable--bright--grid-template-columns: 5rem 28rem 19rem 8rem 10rem 6rem 12rem 6rem 6rem 28rem 50rem; */
   --jsx--CssTable--bright--grid-template-columns: 5rem 34rem 12rem 6rem 18rem 100rem;
 }
