@@ -1,0 +1,25 @@
+
+.jsx.jaisocx-folder-listing {
+
+  --jsx--css-clean-start-2--site--width: 88%;
+  --jsx--css-clean-start-2--site--padding: 1rem 1rem 3rem 1rem;
+
+
+
+  --jsx--css-clean-start-2--h1--font-size: 1.2rem;
+  --jsx--css-clean-start-2--h1--line-height: 1.43rem;
+  --jsx--css-clean-start-2--h1--padding: 1.25rem 0;
+
+  --jsx--css-clean-start-2--h2--font-size: 0.9rem;
+  --jsx--css-clean-start-2--h2--line-height: 1.09rem;
+
+}
+
+.jsx.jaisocx-folder-listing .jsx-css-table-holder .row.folder .cell.name .cell-value a {
+  font-weight: 600;
+}
+
+.jsx.jaisocx-folder-listing .jsx-css-table-holder .cell.number .cell-value {
+  justify-content: flex-end;
+}
+

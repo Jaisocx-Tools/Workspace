@@ -52,6 +52,9 @@
   overflow-x:              hidden;
   overflow-y:              visible;
 
+  color:                   var(--jsx--CssTable--cell--cell-value--color);
+  background-color:        var(--jsx--CssTable--cell--cell-value--background-color);
+
   /* when a word ends, it breaks, when too long word oer one line full width, it breaks too */
   word-break:              normal;
   font-variant:            no-common-ligatures tabular-nums;

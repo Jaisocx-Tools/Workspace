@@ -1,7 +1,7 @@
 
 
 
-.jsx-css-table-holder.jaisocx-folder-listing {
+.jsx-css-table-holder.jaisocx-folder-listing-columns {
   
   --jsx--CssTable--bright--grid-template-columns: 5rem 34rem 12rem 6rem 18rem 100rem;
 }
@@ -80,7 +80,6 @@
 
   
 }
-
 
 
 
@@ -793,6 +792,108 @@
 }
 
 
+
+.jsx-css-table-holder.theme_imaged .cell.name.folder .cell-mini-image .in-cell-mini-image {
+  background-image: url("https://cdn.brightday.email/media/images/mini-images/datatypes/tree_theme_base/icons8-3-100.png");
+}
+
+.jsx-css-table-holder.theme_imaged .cell.name.application_json .cell-mini-image .in-cell-mini-image {
+  background-image: url("https://cdn.brightday.email/media/images/mini-images/datatypes/tree_theme_base/icons8-json-96.png");
+}
+
+.jsx-css-table-holder.theme_imaged .cell.name.text_html .cell-mini-image .in-cell-mini-image {
+  background-image: url("https://cdn.brightday.email/media/images/mini-images/datatypes/tree_theme_base/icons8-font-style-formatting-96.png");
+}
+
+
+
+.jsx-css-table-holder.theme_imaged {
+
+
+  
+
+
+
+
+  --jsx--CssTable--cell--cell-value--name--background-image-holder--width:   1.4rem;
+  --jsx--CssTable--cell--cell-value--name--background-image-holder--height:  1.4rem;
+
+  --jsx--CssTable--cell--cell-value--name--background-image-holder--padding: 0 0 0 0;
+  --jsx--CssTable--cell--cell-value--name--background-image-holder--margin:  0 0 0 0.6rem;
+
+  --jsx--CssTable--cell--cell-value--name--background-image--width:          100%;
+  --jsx--CssTable--cell--cell-value--name--background-image--height:         100%;
+
+
+
+
+  
+
+
+
+  
+  --jsx--CssTable--cell--cell-value--name--background-position:         0 0;
+  --jsx--CssTable--cell--cell-value--name--background-size:             contain;
+  --jsx--CssTable--cell--cell-value--name--background-repeat:           no-repeat;
+  --jsx--CssTable--cell--cell-value--name--background-origin:           border-box;
+  --jsx--CssTable--cell--cell-value--name--background-clip:             border-box;
+  --jsx--CssTable--cell--cell-value--name--background-attachment:       scroll;
+
+}
+
+
+
+.jsx-css-table-holder.theme_imaged .cell .cell-mini-image {
+  display: none;
+}
+
+.jsx-css-table-holder.theme_imaged .cell.name .cell-mini-image {
+  
+
+  display:                 flex;
+  flex-direction:          row;
+  align-items:             center;
+  align-self:              center;
+  justify-content:         center;
+
+  width:                   var(--jsx--CssTable--cell--cell-value--name--background-image-holder--width);
+  max-width:               var(--jsx--CssTable--cell--cell-value--name--background-image-holder--width);
+  min-width:               var(--jsx--CssTable--cell--cell-value--name--background-image-holder--width);
+
+  height:                  var(--jsx--CssTable--cell--cell-value--name--background-image-holder--height);
+  max-height:              var(--jsx--CssTable--cell--cell-value--name--background-image-holder--height);
+  min-height:              var(--jsx--CssTable--cell--cell-value--name--background-image-holder--height);
+
+  padding:                 var(--jsx--CssTable--cell--cell-value--name--background-image-holder--padding);
+  margin:                  var(--jsx--CssTable--cell--cell-value--name--background-image-holder--margin);
+
+}
+
+.jsx-css-table-holder.theme_imaged .cell.name .cell-mini-image .in-cell-mini-image {
+  
+
+  display:                 block;
+
+  width:                   var(--jsx--CssTable--cell--cell-value--name--background-image--width);
+  max-width:               var(--jsx--CssTable--cell--cell-value--name--background-image--width);
+  min-width:               var(--jsx--CssTable--cell--cell-value--name--background-image--width);
+
+  height:                  var(--jsx--CssTable--cell--cell-value--name--background-image--height);
+  max-height:              var(--jsx--CssTable--cell--cell-value--name--background-image--height);
+  min-height:              var(--jsx--CssTable--cell--cell-value--name--background-image--height);
+
+  background-image:        none;
+  background-position:     var(--jsx--CssTable--cell--cell-value--name--background-position);
+  background-size:         var(--jsx--CssTable--cell--cell-value--name--background-size);
+  background-repeat:       var(--jsx--CssTable--cell--cell-value--name--background-repeat);
+  background-origin:       var(--jsx--CssTable--cell--cell-value--name--background-origin);
+  background-clip:         var(--jsx--CssTable--cell--cell-value--name--background-clip);
+  background-attachment:   var(--jsx--CssTable--cell--cell-value--name--background-attachment);
+
+}
+
+
+
 .jsx.theme_lightmode .jsx-css-table-holder,
 .jsx .theme_lightmode.jsx-css-table-holder {
 
@@ -871,7 +972,6 @@
   }
 
 
-
   
   .jsx-css-table-holder .jsx-css-table.desktop-columns-labels-holder .row {
     display:                    none;
@@ -881,14 +981,16 @@
     width: 100%;
     max-width: 100%;
     min-width: 100%;
+
+    display: flex;
+    flex-direction: row;
+    align-items: stretch;
+    justify-content: stretch;
   }
 
 
   
-  .jsx-css-table-holder .cell .column-label,
-  .jsx-css-table-holder .cell .cell-value {
-    display: inline-block;
-  }
+  
 
 
   
@@ -901,6 +1003,17 @@
 
   .jsx-css-table-holder .cell .cell-value {
     flex-grow:                  1;
+    overflow-x:                 hidden;
+  }
+
+  .jsx-css-table-holder .cell .cell-value a {
+
+    width:                      fit-content;
+    min-width:                  unset;
+    max-width:                  fit-content;
+
+    overflow-x:                 hidden;
+    overflow-wrap:              anywhere;
   }
 
 
@@ -1113,6 +1226,9 @@
   height:                  auto;
   overflow-x:              hidden;
   overflow-y:              visible;
+
+  color:                   var(--jsx--CssTable--cell--cell-value--color);
+  background-color:        var(--jsx--CssTable--cell--cell-value--background-color);
 
   
   word-break:              normal;

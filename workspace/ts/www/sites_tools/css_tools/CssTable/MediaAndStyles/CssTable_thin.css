@@ -22,7 +22,6 @@
   }
 
 
-
   /* TABLE'S COLUMNS LABELS IN THE DESKTOP VIEW, ABOVE THE TABLE, HIDES IN MOBILE HERE */
   .jsx-css-table-holder .jsx-css-table.desktop-columns-labels-holder .row {
     display:                    none;
@@ -32,14 +31,19 @@
     width: 100%;
     max-width: 100%;
     min-width: 100%;
+
+    display: flex;
+    flex-direction: row;
+    align-items: stretch;
+    justify-content: stretch;
   }
 
 
   /* STYLES FOR ALL SPAN TAGS IN THE TABLE CELL, FIELD LABEL AND THE SPAN WITH THE VALUE */
-  .jsx-css-table-holder .cell .column-label,
+  /* .jsx-css-table-holder .cell .column-label,
   .jsx-css-table-holder .cell .cell-value {
     display: inline-block;
-  }
+  } */
 
 
   /* THE COLUMN LABEL, SHOWN IN MOBILE VIEW ON THE LEFT SIDE */
@@ -52,6 +56,17 @@
 
   .jsx-css-table-holder .cell .cell-value {
     flex-grow:                  1;
+    overflow-x:                 hidden;
+  }
+
+  .jsx-css-table-holder .cell .cell-value a {
+
+    width:                      fit-content;
+    min-width:                  unset;
+    max-width:                  fit-content;
+
+    overflow-x:                 hidden;
+    overflow-wrap:              anywhere;
   }
 
 

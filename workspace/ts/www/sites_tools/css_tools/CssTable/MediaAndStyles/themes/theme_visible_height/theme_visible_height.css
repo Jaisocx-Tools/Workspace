@@ -1,0 +1,14 @@
+/* a layout theme of css clean start 2 */
+
+.jsx.theme_visible_height main.jsx-css-table-holder {
+
+  flex-grow: 1;
+
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+
+}
+
+

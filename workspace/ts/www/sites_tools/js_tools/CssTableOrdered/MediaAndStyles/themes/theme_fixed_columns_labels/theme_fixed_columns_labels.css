@@ -1,0 +1,52 @@
+/* a layout theme */
+
+.jsx-css-table-holder.theme_fixed_columns_labels {
+
+  --jsx--CssTable--holder--overflow-x: hidden;
+  --jsx--CssTable--holder--overflow-y: hidden;
+
+
+  --jsx--CssTable--main--overflow-x: auto;
+  --jsx--CssTable--main--overflow-y: auto;
+
+}
+
+
+
+.jsx-css-table-holder.theme_fixed_columns_labels .jsx-css-table.desktop-columns-labels-holder {
+
+  flex-grow: 0;
+
+
+  width: 100%;
+  min-width: 100%;
+
+  height: fit-content;
+  min-height: fit-content;
+
+  overflow: hidden visible;
+
+}
+
+
+
+.jsx-css-table-holder.theme_fixed_columns_labels .jsx-css-table.desktop-columns-labels-holder .row {
+
+  width: fit-content;
+  min-width: 100%;
+
+  height: fit-content;
+  min-height: fit-content;
+
+  overflow: visible visible;
+
+}
+
+
+
+.jsx-css-table-holder.theme_fixed_columns_labels .jsx-css-table {
+
+  flex-grow: 1;
+
+}
+

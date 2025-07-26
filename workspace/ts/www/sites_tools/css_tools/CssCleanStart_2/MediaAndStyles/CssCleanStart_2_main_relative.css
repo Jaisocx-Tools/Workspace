@@ -8,14 +8,24 @@
 @import url("./themes/theme_base/responsive_size_Imports_CssCleanStart_2_theme_base_Relative.css");
 
 
+
+/* color themes */
 @import url("./themes/theme_lightmode/CssCleanStart_2_theme_lightmode_main.css");
 @import url("./themes/theme_darkmode/CssCleanStart_2_theme_darkmode_main.css");
 
 
+
+/* layout theme */
+@import url("./themes/theme_visible_height/theme_visible_height.css");
+
+
+
+/* example css code blocks */
 @import url("./CssCleanStart_2_presets.css");
 
 
-/* main css file, css logics with rules set via variables in the theme .css files imported above */
+
+/* the main css file, css logics with rules set via variables in the theme .css files imported above */
 @import url("./CssCleanStart_2_main.css");
 
 

@@ -32,6 +32,7 @@
   --jsx--CssTable--cell--cell-value--name--background-image-holder--height:  1.4rem;
 
   --jsx--CssTable--cell--cell-value--name--background-image-holder--padding: 0 0 0 0;
+  --jsx--CssTable--cell--cell-value--name--background-image-holder--margin:  0 0 0 0.6rem;
 
   --jsx--CssTable--cell--cell-value--name--background-image--width:          100%;
   --jsx--CssTable--cell--cell-value--name--background-image--height:         100%;
@@ -75,9 +76,15 @@
   justify-content:         center;
 
   width:                   var(--jsx--CssTable--cell--cell-value--name--background-image-holder--width);
+  max-width:               var(--jsx--CssTable--cell--cell-value--name--background-image-holder--width);
+  min-width:               var(--jsx--CssTable--cell--cell-value--name--background-image-holder--width);
+
   height:                  var(--jsx--CssTable--cell--cell-value--name--background-image-holder--height);
+  max-height:              var(--jsx--CssTable--cell--cell-value--name--background-image-holder--height);
+  min-height:              var(--jsx--CssTable--cell--cell-value--name--background-image-holder--height);
 
   padding:                 var(--jsx--CssTable--cell--cell-value--name--background-image-holder--padding);
+  margin:                  var(--jsx--CssTable--cell--cell-value--name--background-image-holder--margin);
 
 }
 
@@ -87,7 +94,12 @@
   display:                 block;
 
   width:                   var(--jsx--CssTable--cell--cell-value--name--background-image--width);
+  max-width:               var(--jsx--CssTable--cell--cell-value--name--background-image--width);
+  min-width:               var(--jsx--CssTable--cell--cell-value--name--background-image--width);
+
   height:                  var(--jsx--CssTable--cell--cell-value--name--background-image--height);
+  max-height:              var(--jsx--CssTable--cell--cell-value--name--background-image--height);
+  min-height:              var(--jsx--CssTable--cell--cell-value--name--background-image--height);
 
   background-image:        none;
   background-position:     var(--jsx--CssTable--cell--cell-value--name--background-position);

@@ -4072,6 +4072,46 @@
 
 
 
+.jsx.theme_visible_height {
+
+  --jsx--css-clean-start-2--body-tag--height: 100vh;
+  --jsx--css-clean-start-2--body-tag--max-height: 100vh;
+  --jsx--css-clean-start-2--body-tag--min-height: 100vh;
+
+  --jsx--css-clean-start-2--body-tag--overflow-y: hidden;
+
+
+
+  --jsx--css-clean-start-2--site--height: 100%;
+  --jsx--css-clean-start-2--site--max-height: 100%;
+  --jsx--css-clean-start-2--site--min-height: 100%;
+
+  --jsx--css-clean-start-2--site--overflow-y: hidden;
+
+}
+
+
+
+.jsx.theme_visible_height body main {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: stretch;
+}
+
+
+
+
+.jsx.theme_visible_height main.a-tag-in-main-tag {
+
+  flex-grow: 1;
+
+}
+
+
+
+
+
 
 .jsx.small {
   --jsx--css-clean-start-2--body-tag--height: 100vh;

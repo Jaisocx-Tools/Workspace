@@ -18,6 +18,7 @@
 
 
 
+@import url("./themes/theme_visible_height/theme_visible_height.css");
 @import url("./themes/theme-emailed-thin/css-table-theme-emailed-thin.css");
 @import url("./themes/theme_lightmode/css-table-theme-lightmode.css");
 @import url("./themes/theme_darkmode/css-table-theme-darkmode.css");
