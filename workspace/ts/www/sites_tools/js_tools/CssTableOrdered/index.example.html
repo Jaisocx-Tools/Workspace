@@ -20,12 +20,8 @@
 
 
 
-
-
-
-
-  <!-- temporary link, this theme moves to this package, the css-table-ordered, since works with js, and this package is in th js tools. -->
-  <link rel="stylesheet" href="MediaAndStyles/themes/theme_jaisocx_folder_listing/CssTable_theme_jaisocx_folder_listing_Relative.css">
+  <link rel="stylesheet" href="/sites_tools/js_tools/CssTableOrdered/MediaAndStyles/themes/theme_fixed_columns_labels/theme_fixed_columns_labels.css" />
+  <link rel="stylesheet" href="/sites_tools/js_tools/CssTableOrdered/MediaAndStyles/themes/theme_jaisocx_folder_listing/CssTable_theme_jaisocx_folder_listing_Relative.css" />
 
 
 
@@ -115,7 +111,7 @@
 
         <!--starts markup of the table styled by @jaisocx/css-table-ordered npm package-->
         <!--@jaisocx/css-table-ordered extends @jaisocx/css-table having one js class to orderby records in the table, onevent click label of the table column-->
-        <div class="jsx-css-table-holder jaisocx-folder-listing-columns theme_imaged">
+        <div class="jsx-css-table-holder jaisocx-folder-listing-columns theme_fixed_columns_labels theme_imaged">
 
           <!--the first table record with the names of the table columns, shown in the table bright mode-->
           <div class="jsx-css-table desktop-columns-labels-holder">
@@ -1297,6 +1293,7 @@
   <script>
 
     currentButtonNodeClicked = null;
+
 
     let cssClassesNames = [
       "jsx",
