@@ -1298,6 +1298,14 @@
 
     currentButtonNodeClicked = null;
 
+    let cssClassesNames = [
+      "jsx",
+      "theme_visible_height",
+      "jaisocx-folder-listing"
+    ];
+
+
+
     // declaring the function, this is used in the event handler of the theme turning button when clicked on this button.
     function turnOnTheme ( buttonNodeClicked ) {
 
@@ -1312,6 +1320,10 @@
 
       htmlNodeClassList.forEach (
         (cssClassName) => {
+          if ( cssClassesNames.includes( cssClassName ) ) {
+            return;
+          }
+
           if ( cssClassName.startsWith( themeCssClassPrefix ) === true ) {
             htmlNodeClassList.remove( cssClassName );
           }
