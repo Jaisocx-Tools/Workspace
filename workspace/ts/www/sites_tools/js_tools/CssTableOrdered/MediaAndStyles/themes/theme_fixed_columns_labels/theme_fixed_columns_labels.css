@@ -9,6 +9,7 @@
   --jsx--CssTable--main--overflow-x: auto;
   --jsx--CssTable--main--overflow-y: auto;
 
+  display: flex;
 }
 
 
