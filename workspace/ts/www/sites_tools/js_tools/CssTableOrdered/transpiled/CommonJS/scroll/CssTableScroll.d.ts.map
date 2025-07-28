@@ -1,0 +1,1 @@
+{"version":3,"file":"CssTableScroll.d.ts","sourceRoot":"","sources":["../../../src/scroll/CssTableScroll.ts"],"names":[],"mappings":"AAAA,OAAO,EAAE,uBAAuB,EAAE,MAAM,8BAA8B,CAAC;AAIvE,qBAAa,cAAe,YAAW,uBAAuB;;IAK5D,2BAA2B,EAAE,MAAM,CAAC;IACpC,8BAA8B,EAAE,MAAM,CAAC;;IAcvC,aAAa,CAAE,OAAO,EAAE,KAAK,GAAI,IAAI;IAgBrC,sBAAsB,IAAI,IAAI;CAwB/B"}

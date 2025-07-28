@@ -1261,7 +1261,8 @@
 
 
 
-  <script src="transpiled/Simple/CssTableOrderby.js"></script>
+  <script src="transpiled/Simple/scroll/CssTableScroll.js"></script>
+  <script src="transpiled/Simple/orderby/CssTableOrderby.js"></script>
 
 
   <script>
@@ -1357,42 +1358,15 @@
 
     let orderbyClassInstance = new Object();
 
+    function addScrollEventHandlers() {
+      cssTableScrollInstance = new CssTableScroll();
+      cssTableScrollInstance.addScrollEventHandlers();
+    }
 
     function addOrderbyEventHandler() {
       orderbyClassInstance = new CssTableOrderby();
         orderbyClassInstance.setRowsNumberNotOrdered( 1 );
       let eventHandlerRetval = orderbyClassInstance.addOrderbyEventHandler();
-    }
-
-
-
-
-    function onTableScroll( inEvent ) {
-
-      let tableRowsHolder = inEvent.target;
-      let tableRowsHolder_scrollLeft = tableRowsHolder.scrollLeft;
-
-      let tableRecordsLabelsRow = tableRowsHolder.closest(".jsx-css-table-holder").querySelector( ".jsx-css-table.desktop-columns-labels-holder" );
-      tableRecordsLabelsRow.scrollLeft = tableRowsHolder_scrollLeft;
-
-    }
-
-    function addScrollEventHandlers() {
-      let tableRowsHolder = document.querySelectorAll(".jsx-css-table-holder .jsx-css-table");
-
-      for ( let i = 0; i < tableRowsHolder.length; i++ ) {
-        let tb = tableRowsHolder[i];
-        if ( tb.classList.contains( "desktop-columns-labels-holder" ) ) {
-          continue;
-        }
-
-        tb.addEventListener (
-          "scroll",
-          ( evt ) => {
-            onTableScroll( evt );
-          }
-        );
-      }
     }
 
 

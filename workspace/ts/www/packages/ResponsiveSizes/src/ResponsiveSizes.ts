@@ -5,14 +5,16 @@ import { ResponsiveSizesInterface } from "./ResponsiveSizesInterface.js";
 
 export class ResponsiveSizes implements ResponsiveSizesInterface {
 
-  #KEYWORDS_ORIENTATION_PORTRAIT: string[];
+  #KEYWORDS_ORIENTATION_PORTRAIT:  string[];
   #KEYWORDS_ORIENTATION_LANDSCAPE: string[];
 
-  #KEYWORD_MOBILE: string;
-  #KEYWORD_TABLET: string;
+  #KEYWORD_MOBILE:  string;
+  #KEYWORD_TABLET:  string;
   #KEYWORD_DESKTOP: string;
 
   #CSS_VARIABLE_NAME: string;
+  #CSS_VARIABLE_NAME__MIN_HEIGHT: string;
+  #CSS_VARIABLE_NAME__MAX_HEIGHT: string;
   #CSS_VARIABLE_NAME__SIZE_FROM : string;
   #CSS_VARIABLE_NAME__SIZE_TIL  : string;
 
@@ -33,9 +35,11 @@ export class ResponsiveSizes implements ResponsiveSizesInterface {
     this.#KEYWORD_TABLET  = "tablet";
     this.#KEYWORD_DESKTOP = "desktop";
 
-    this.#CSS_VARIABLE_NAME = "--responsive_size";
-    this.#CSS_VARIABLE_NAME__SIZE_FROM = "--responsive_size__min-width";
-    this.#CSS_VARIABLE_NAME__SIZE_TIL  = "--responsive_size__max-width";
+    this.#CSS_VARIABLE_NAME             = "--responsive_size";
+    this.#CSS_VARIABLE_NAME__MIN_HEIGHT = "--responsive_size__min-height";
+    this.#CSS_VARIABLE_NAME__MAX_HEIGHT = "--responsive_size__max-height";
+    this.#CSS_VARIABLE_NAME__SIZE_FROM  = "--responsive_size__min-width";
+    this.#CSS_VARIABLE_NAME__SIZE_TIL   = "--responsive_size__max-width";
 
     this.#SELECTOR = "html.workspace";
 
@@ -167,6 +171,17 @@ export class ResponsiveSizes implements ResponsiveSizesInterface {
       return this._responsive_sizes;
     }
 
+
+    let cssVariable_MinHeight: string = this.getCssValueBySelector (
+      this._responsiveSizeSelector,
+      this.#CSS_VARIABLE_NAME__MIN_HEIGHT
+    );
+
+    let cssVariable_MaxHeight: string = this.getCssValueBySelector (
+      this._responsiveSizeSelector,
+      this.#CSS_VARIABLE_NAME__MAX_HEIGHT
+    );
+
     let cssVariable_SizeFrom: string = this.getCssValueBySelector (
       this._responsiveSizeSelector,
       this.#CSS_VARIABLE_NAME__SIZE_FROM
@@ -175,6 +190,14 @@ export class ResponsiveSizes implements ResponsiveSizesInterface {
       this._responsiveSizeSelector,
       this.#CSS_VARIABLE_NAME__SIZE_TIL
     );
+
+
+    // @ts-ignore
+    this._responsive_sizes["min-height"] = cssVariable_MinHeight;
+
+
+    // @ts-ignore
+    this._responsive_sizes["max-height"] = cssVariable_MaxHeight;
 
 
     // @ts-ignore

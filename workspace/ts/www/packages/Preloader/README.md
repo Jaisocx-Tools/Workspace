@@ -9,13 +9,24 @@ fine tuning of look and feel themes turning on.
 
 1. Site's elems get positions, as defined and managed by the task authors, ux/ui designers and sites devs.
 
-2. Fonts on a site are loaded before they are shown on a site via js method call. You may check the timestamp of the font load in the browser's developer tools.
+2. Fonts on a site are loaded before they are shown on a site via js method call. You can see the timestamp of the font load in the browser's developer tools.
+
+
+### Watch In Action
+
+If lazy-load was enabled in Your browser, You notice in index.example.html when You've tapped theme button, the font is set after some timeout, not at once.
+
+[https://sandbox.brightday.email/packages/Preloader/index.example.html](https://sandbox.brightday.email/packages/Preloader/index.example.html)
+
+With Preloader, when You've tapped the theme butten, You notice in index.example.preloader.html the font is set at once.
+
+[https://sandbox.brightday.email/packages/Preloader/index.example.preloader.html](https://sandbox.brightday.email/packages/Preloader/index.example.preloader.html)
 
 
 
 ### The Solved Trouble Flow Description
 
-When styles were loaded, and no html elems on site use a font, referenced in styles, or an image, referenced in styles as `background-image` css prop, then these font and images are not loaded. this is the very nice optimization and saving up network traffic technology.
+When styles were loaded, and no html elems on site use a font, referenced in styles, or an image, referenced in styles as `background-image` css prop, then these font and image are not loaded. this is the very nice optimization and saving up network traffic technology.
 
 When turrning on other look and feel theme with browser's js event handler method,
 
@@ -44,7 +55,7 @@ In this example, the keys of the object `themesPreloads.font` are thought just t
 
 In order to adjust the site for the Preloader, that it works properly, You will need, that all styles, referencing a font, use the exact one url to this font on Your cdn. Otherwise, the font file may be loaded several times in browser, even on same site, even after the Preloader has loaded this font the first time from the url set in the object, passed as in arg to method `preloader.setThemesPreloads( themesPreloads )`, for example, `themesPreloads.font.theme_lightmode`.
 
-For the optimization, You may watch the font files loaded in browser's developer tools, if there are dynamic assignments of css classnames and link tags creation, when optimizing a site on a single url.
+For the optimization, You can watch the font files loaded in browser's developer tools, if there are dynamic assignments of css classnames and link tags creation, when optimizing a site on a certain url.
 
 
 
@@ -81,6 +92,32 @@ For the optimization, You may watch the font files loaded in browser's developer
   </script>
 ```
 
+
+### The Interface for the main class
+
+```ts
+export interface PreloaderInterface {
+
+  setThemesPreloads( preloads: object ): PreloaderInterface;
+
+  setWebpackAlias ( alias: string ): PreloaderInterface;
+
+  setWebpackAliasReplace ( alias: string ): PreloaderInterface;
+
+  init (): void;
+
+  addDocumentLoadedEventHandler(): void;
+
+  htmlDocumentAppendPreloadingLinkTags_Images(): void;
+
+  htmlDocumentAppendPreloadingLinkTags_Fonts(): void;
+
+  htmlDocumentAppendPreloadingLinkTags(
+    inDataType: string
+  ): void;
+
+}
+```
 
 #### inDataType
 

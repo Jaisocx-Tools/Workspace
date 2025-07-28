@@ -1,6 +1,6 @@
 {
   "name": "@jaisocx/preloader",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "author": "Jaisocx",
   "keywords": [],
   "private": false,
@@ -14,9 +14,13 @@
     "import": "./transpiled/ESNext/index.js"
   },
   "files": [
+    "index.example.preloader.html",
+    "index.example.html",
+
     "transpiled/CommonJS",
     "transpiled/ESNext",
     "transpiled/Simple",
+
     "README.md"
   ],
   "publishConfig": {

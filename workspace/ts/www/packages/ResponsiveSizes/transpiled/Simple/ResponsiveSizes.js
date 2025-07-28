@@ -5,6 +5,8 @@ class ResponsiveSizes {
     #KEYWORD_TABLET;
     #KEYWORD_DESKTOP;
     #CSS_VARIABLE_NAME;
+    #CSS_VARIABLE_NAME__MIN_HEIGHT;
+    #CSS_VARIABLE_NAME__MAX_HEIGHT;
     #CSS_VARIABLE_NAME__SIZE_FROM;
     #CSS_VARIABLE_NAME__SIZE_TIL;
     #SELECTOR;
@@ -23,6 +25,8 @@ class ResponsiveSizes {
         this.#KEYWORD_TABLET = "tablet";
         this.#KEYWORD_DESKTOP = "desktop";
         this.#CSS_VARIABLE_NAME = "--responsive_size";
+        this.#CSS_VARIABLE_NAME__MIN_HEIGHT = "--responsive_size__min-height";
+        this.#CSS_VARIABLE_NAME__MAX_HEIGHT = "--responsive_size__max-height";
         this.#CSS_VARIABLE_NAME__SIZE_FROM = "--responsive_size__min-width";
         this.#CSS_VARIABLE_NAME__SIZE_TIL = "--responsive_size__max-width";
         this.#SELECTOR = "html.workspace";
@@ -144,6 +148,14 @@ class ResponsiveSizes {
         if (!force && responsiveSizesKeys && responsiveSizesKeys.length === 2) {
             return this._responsive_sizes;
         }
+        let cssVariable_MinHeight = this.getCssValueBySelector(
+            this._responsiveSizeSelector,
+            this.#CSS_VARIABLE_NAME__MIN_HEIGHT
+        );
+        let cssVariable_MaxHeight = this.getCssValueBySelector(
+            this._responsiveSizeSelector,
+            this.#CSS_VARIABLE_NAME__MAX_HEIGHT
+        );
         let cssVariable_SizeFrom = this.getCssValueBySelector(
             this._responsiveSizeSelector,
             this.#CSS_VARIABLE_NAME__SIZE_FROM
@@ -152,6 +164,14 @@ class ResponsiveSizes {
             this._responsiveSizeSelector,
             this.#CSS_VARIABLE_NAME__SIZE_TIL
         );
+
+
+        // @ts-ignore
+        this._responsive_sizes["min-height"] = cssVariable_MinHeight;
+
+
+        // @ts-ignore
+        this._responsive_sizes["max-height"] = cssVariable_MaxHeight;
 
 
         // @ts-ignore

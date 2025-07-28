@@ -10,7 +10,7 @@ var __classPrivateFieldGet = (this && this.__classPrivateFieldGet) || function (
     if (typeof state === "function" ? receiver !== state || !f : !state.has(receiver)) throw new TypeError("Cannot read private member from an object whose class did not declare it");
     return kind === "m" ? f : kind === "a" ? f.call(receiver) : f ? f.value : state.get(receiver);
 };
-var _ResponsiveSizes_KEYWORDS_ORIENTATION_PORTRAIT, _ResponsiveSizes_KEYWORDS_ORIENTATION_LANDSCAPE, _ResponsiveSizes_KEYWORD_MOBILE, _ResponsiveSizes_KEYWORD_TABLET, _ResponsiveSizes_KEYWORD_DESKTOP, _ResponsiveSizes_CSS_VARIABLE_NAME, _ResponsiveSizes_CSS_VARIABLE_NAME__SIZE_FROM, _ResponsiveSizes_CSS_VARIABLE_NAME__SIZE_TIL, _ResponsiveSizes_SELECTOR;
+var _ResponsiveSizes_KEYWORDS_ORIENTATION_PORTRAIT, _ResponsiveSizes_KEYWORDS_ORIENTATION_LANDSCAPE, _ResponsiveSizes_KEYWORD_MOBILE, _ResponsiveSizes_KEYWORD_TABLET, _ResponsiveSizes_KEYWORD_DESKTOP, _ResponsiveSizes_CSS_VARIABLE_NAME, _ResponsiveSizes_CSS_VARIABLE_NAME__MIN_HEIGHT, _ResponsiveSizes_CSS_VARIABLE_NAME__MAX_HEIGHT, _ResponsiveSizes_CSS_VARIABLE_NAME__SIZE_FROM, _ResponsiveSizes_CSS_VARIABLE_NAME__SIZE_TIL, _ResponsiveSizes_SELECTOR;
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.ResponsiveSizes = void 0;
 const ResponsiveSizesConstants_js_1 = require("./ResponsiveSizesConstants.js");
@@ -22,6 +22,8 @@ class ResponsiveSizes {
         _ResponsiveSizes_KEYWORD_TABLET.set(this, void 0);
         _ResponsiveSizes_KEYWORD_DESKTOP.set(this, void 0);
         _ResponsiveSizes_CSS_VARIABLE_NAME.set(this, void 0);
+        _ResponsiveSizes_CSS_VARIABLE_NAME__MIN_HEIGHT.set(this, void 0);
+        _ResponsiveSizes_CSS_VARIABLE_NAME__MAX_HEIGHT.set(this, void 0);
         _ResponsiveSizes_CSS_VARIABLE_NAME__SIZE_FROM.set(this, void 0);
         _ResponsiveSizes_CSS_VARIABLE_NAME__SIZE_TIL.set(this, void 0);
         _ResponsiveSizes_SELECTOR.set(this, void 0);
@@ -29,6 +31,8 @@ class ResponsiveSizes {
         __classPrivateFieldSet(this, _ResponsiveSizes_KEYWORD_TABLET, "tablet", "f");
         __classPrivateFieldSet(this, _ResponsiveSizes_KEYWORD_DESKTOP, "desktop", "f");
         __classPrivateFieldSet(this, _ResponsiveSizes_CSS_VARIABLE_NAME, "--responsive_size", "f");
+        __classPrivateFieldSet(this, _ResponsiveSizes_CSS_VARIABLE_NAME__MIN_HEIGHT, "--responsive_size__min-height", "f");
+        __classPrivateFieldSet(this, _ResponsiveSizes_CSS_VARIABLE_NAME__MAX_HEIGHT, "--responsive_size__max-height", "f");
         __classPrivateFieldSet(this, _ResponsiveSizes_CSS_VARIABLE_NAME__SIZE_FROM, "--responsive_size__min-width", "f");
         __classPrivateFieldSet(this, _ResponsiveSizes_CSS_VARIABLE_NAME__SIZE_TIL, "--responsive_size__max-width", "f");
         __classPrivateFieldSet(this, _ResponsiveSizes_SELECTOR, "html.workspace", "f");
@@ -100,8 +104,14 @@ class ResponsiveSizes {
         if (!force && responsiveSizesKeys && responsiveSizesKeys.length === 2) {
             return this._responsive_sizes;
         }
+        let cssVariable_MinHeight = this.getCssValueBySelector(this._responsiveSizeSelector, __classPrivateFieldGet(this, _ResponsiveSizes_CSS_VARIABLE_NAME__MIN_HEIGHT, "f"));
+        let cssVariable_MaxHeight = this.getCssValueBySelector(this._responsiveSizeSelector, __classPrivateFieldGet(this, _ResponsiveSizes_CSS_VARIABLE_NAME__MAX_HEIGHT, "f"));
         let cssVariable_SizeFrom = this.getCssValueBySelector(this._responsiveSizeSelector, __classPrivateFieldGet(this, _ResponsiveSizes_CSS_VARIABLE_NAME__SIZE_FROM, "f"));
         let cssVariable_SizeTil = this.getCssValueBySelector(this._responsiveSizeSelector, __classPrivateFieldGet(this, _ResponsiveSizes_CSS_VARIABLE_NAME__SIZE_TIL, "f"));
+        // @ts-ignore
+        this._responsive_sizes["min-height"] = cssVariable_MinHeight;
+        // @ts-ignore
+        this._responsive_sizes["max-height"] = cssVariable_MaxHeight;
         // @ts-ignore
         this._responsive_sizes["min-width"] = cssVariable_SizeFrom;
         // @ts-ignore
@@ -201,5 +211,5 @@ class ResponsiveSizes {
     }
 }
 exports.ResponsiveSizes = ResponsiveSizes;
-_ResponsiveSizes_KEYWORDS_ORIENTATION_PORTRAIT = new WeakMap(), _ResponsiveSizes_KEYWORDS_ORIENTATION_LANDSCAPE = new WeakMap(), _ResponsiveSizes_KEYWORD_MOBILE = new WeakMap(), _ResponsiveSizes_KEYWORD_TABLET = new WeakMap(), _ResponsiveSizes_KEYWORD_DESKTOP = new WeakMap(), _ResponsiveSizes_CSS_VARIABLE_NAME = new WeakMap(), _ResponsiveSizes_CSS_VARIABLE_NAME__SIZE_FROM = new WeakMap(), _ResponsiveSizes_CSS_VARIABLE_NAME__SIZE_TIL = new WeakMap(), _ResponsiveSizes_SELECTOR = new WeakMap();
+_ResponsiveSizes_KEYWORDS_ORIENTATION_PORTRAIT = new WeakMap(), _ResponsiveSizes_KEYWORDS_ORIENTATION_LANDSCAPE = new WeakMap(), _ResponsiveSizes_KEYWORD_MOBILE = new WeakMap(), _ResponsiveSizes_KEYWORD_TABLET = new WeakMap(), _ResponsiveSizes_KEYWORD_DESKTOP = new WeakMap(), _ResponsiveSizes_CSS_VARIABLE_NAME = new WeakMap(), _ResponsiveSizes_CSS_VARIABLE_NAME__MIN_HEIGHT = new WeakMap(), _ResponsiveSizes_CSS_VARIABLE_NAME__MAX_HEIGHT = new WeakMap(), _ResponsiveSizes_CSS_VARIABLE_NAME__SIZE_FROM = new WeakMap(), _ResponsiveSizes_CSS_VARIABLE_NAME__SIZE_TIL = new WeakMap(), _ResponsiveSizes_SELECTOR = new WeakMap();
 //# sourceMappingURL=ResponsiveSizes.js.map

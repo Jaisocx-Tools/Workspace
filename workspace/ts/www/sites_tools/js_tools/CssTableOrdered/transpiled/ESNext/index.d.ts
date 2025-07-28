@@ -1,5 +1,7 @@
 import "@jaisocx/css-table";
-import "@CssTableOrdered_MediaAndStyles/CssTableOrdered_main_Webpack.css";
-export { CssTableOrderbyInterface } from "./CssTableOrderbyInterface";
-export { CssTableOrderby } from "./CssTableOrderby.js";
+import "@CssTableOrdered_MediaAndStyles/CssTableOrdered_main_Webpack_min.css";
+export { CssTableScrollInterface } from "./scroll/CssTableScrollInterface.js";
+export { CssTableScroll } from "./scroll/CssTableScroll.js";
+export { CssTableOrderbyInterface } from "./orderby/CssTableOrderbyInterface.js";
+export { CssTableOrderby } from "./orderby/CssTableOrderby.js";
 //# sourceMappingURL=index.d.ts.map

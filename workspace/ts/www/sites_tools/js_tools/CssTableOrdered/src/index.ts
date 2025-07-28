@@ -2,11 +2,14 @@
 // when built with webpack and using the webpackAliases of this package.
 
 import "@jaisocx/css-table";
-import "@CssTableOrdered_MediaAndStyles/CssTableOrdered_main_Webpack.css";
+import "@CssTableOrdered_MediaAndStyles/CssTableOrdered_main_Webpack_min.css";
 
 
 
-export { CssTableOrderbyInterface } from "./CssTableOrderbyInterface";
-export { CssTableOrderby } from "./CssTableOrderby.js";
+export { CssTableScrollInterface } from "./scroll/CssTableScrollInterface.js";
+export { CssTableScroll } from "./scroll/CssTableScroll.js";
+
+export { CssTableOrderbyInterface } from "./orderby/CssTableOrderbyInterface.js";
+export { CssTableOrderby } from "./orderby/CssTableOrderby.js";
 
 

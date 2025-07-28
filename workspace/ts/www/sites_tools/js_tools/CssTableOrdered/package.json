@@ -1,6 +1,6 @@
 {
   "name": "@jaisocx/css-table-ordered",
-  "version": "2.0.3",
+  "version": "2.1.1",
   "description": "",
   "author": "Jaisocx",
   "keywords": [
@@ -43,8 +43,8 @@
     }
   },
   "optionalDependencies": {
-    "@jaisocx/css-clean-start-2": "~1.0.3",
-    "@jaisocx/css-table": "~2.0.3"
+    "@jaisocx/css-clean-start-2": "~1.0.4",
+    "@jaisocx/css-table": "~3.1.2"
   }
 }
 
