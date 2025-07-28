@@ -1,0 +1,12 @@
+/* for example, Yur cdn has one url for fonts */
+/* https://sandbox.brightday.email/cdn/www/fonts/ */
+@font-face {
+  font-family: Niconne;
+
+  /* here to use the workaround with aliases for webpack build from @jaisocx/tree */
+  src: url("https://sandbox.brightday.email/cdn/www/fonts/Niconne/Niconne-Regular.ttf") format("truetype");
+
+  font-weight: 800; /* ExtraBold */
+  font-style: normal;
+}
+

@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en" class="jsx preloader_example theme_lightmode theme_font_Baloo_Paaji_2">
+<head>
+
+  <title>Font load example with the Preloader</title>
+
+  <meta charset="utf-8" />
+  <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+
+
+
+  <link rel="stylesheet" href="https://sandbox.brightday.email/cdn/www/fonts_css/font_Baloo_Paaji_2_cdn.css" />
+  <link rel="stylesheet" href="https://sandbox.brightday.email/cdn/www/fonts_css/font_LibreFranklin_cdn.css" />
+  <link rel="stylesheet" href="https://sandbox.brightday.email/cdn/www/fonts_css/font_Niconne_cdn.css" />
+
+
+  <!-- importing styles of @jaisocx/css-clean-start -->
+  <link rel="stylesheet" href="https://sandbox.brightday.email/sites_tools/css_tools/CssCleanStart_2/MediaAndStyles/CssCleanStart_2_main_resolved_min.css" />
+
+
+
+  <style>
+
+    .jsx.preloader_example {
+      --jsx--css-clean-start-2--h1--font-size: 1.8rem;
+      --jsx--css-clean-start-2--h2--font-size: 1rem;
+
+      --theme-button-width: fit-content;
+    }
+
+
+    .jsx.preloader_example.theme_font_Baloo_Paaji_2 {
+      --jsx--css-clean-start-2--all-tags--font-family: "Baloo Paaji 2";
+    }
+
+    .jsx.preloader_example.theme_font_LibreFranklin {
+      --jsx--css-clean-start-2--all-tags--font-family: LibreFranklin;
+    }
+
+    .jsx.preloader_example.theme_font_Niconne {
+      --jsx--css-clean-start-2--all-tags--font-family: Niconne;
+    }
+
+
+
+    .jsx themebuttons {
+      width: fit-content;
+      display: grid;
+      grid-auto-flow: column;
+      column-gap: 3rem;
+      margin: 0.9rem 0px 1.6rem 0px;
+    }
+
+    .jsx themebuttons button {
+      font-family: Arial;
+      background-color: transparent;
+      text-align: left;
+      width: var(--theme-button-width);
+    }
+
+    .jsx themebuttons button.current::after {
+      content: "";
+      position: absolute;
+      bottom: -0.3rem;
+      left: 0;
+      width: 100%;
+      height: 0;
+      max-height: 0;
+      overflow-y: hidden;
+      border-bottom-width: 0.14rem;
+      border-bottom-style: solid;
+      border-bottom-color: var(--clean-start__text-color);
+    }
+
+  </style>
+
+
+
+  <script src="transpiled/Simple/Preloader.js"></script>
+
+</head>
+<body>
+
+  <main>
+
+    <content>
+
+      <h1>Font load example</h1>
+      <h2>With the @jaisocx/preloader</h2>
+
+      <ThemeButtons>
+        <button id="button-turn-on-theme-font-Baloo_Paaji_2" data-theme="theme_lightmode theme_font_Baloo_Paaji_2">Baloo Paaji 2</button>
+        <button id="button-turn-on-theme-font-LibreFranklin" data-theme="theme_lightmode theme_font_LibreFranklin">LibreFranklin</button>
+        <button id="button-turn-on-theme-font-Niconne"       data-theme="theme_lightmode theme_font_Niconne">Niconne</button>
+      </ThemeButtons>
+
+    </content>
+
+
+    <div>
+      <p>Text line 1. Text line 1. Text line 1. Text line 1. Text line 1. Text line 1. Text line 1. Text line 1. Text line 1. </p>
+      <p>Text line 2. Text line 2. Text line 2. Text line 2. Text line 2. Text line 2. Text line 2. Text line 2. Text line 2. Text line 2. Text line 2. Text line 2. Text line 2. Text line 2. Text line 2. Text line 2. Text line 2. Text line 2. Text line 2. Text line 2. Text line 2. </p>
+    </div>
+
+  </main>
+
+
+
+  <script>
+
+    let themesPreloads = {
+      "image": null,
+      "font": {
+        "theme_font_Baloo_Paaji_2": [
+          "https://sandbox.brightday.email/cdn/www/fonts/Baloo_Paaji_2/static/BalooPaaji2-SemiBold.ttf",
+          "https://sandbox.brightday.email/cdn/www/fonts/Baloo_Paaji_2/static/BalooPaaji2-Regular.ttf",
+        ],
+        "theme_font_LibreFranklin": [
+          "https://sandbox.brightday.email/cdn/www/fonts/LibreFranklin/static/LibreFranklin-SemiBold.ttf",
+          "https://sandbox.brightday.email/cdn/www/fonts/LibreFranklin/static/LibreFranklin-Regular.ttf",
+        ],
+        "theme_font_Niconne": [
+          "https://sandbox.brightday.email/cdn/www/fonts/Niconne/Niconne-Regular.ttf",
+        ],
+      }
+    };
+
+
+
+    // DOCUMENT ONLOAD, INVOKES THE FUNCTION TO PRELOAD THEME FONTS
+    document.addEventListener('DOMContentLoaded', () => {
+
+      const preloader = new Preloader();
+        preloader
+          .setThemesPreloads( themesPreloads )
+          .setWebpackAlias( "" )
+          .setWebpackAliasReplace( "" )
+          .init();
+
+    });
+
+  </script>
+
+
+
+
+  <script>
+
+    let currentButtonNodeClicked = null;
+
+    let htmlCssClassnames = [
+      "jsx",
+      "preloader_example"
+    ];
+
+
+
+    // declaring the function, this is used in the event handler of the theme turning button when clicked on this button.
+    function turnOnTheme ( buttonNodeClicked ) {
+
+      if ( currentButtonNodeClicked !==  null ) {
+        currentButtonNodeClicked.classList.remove( "current" );
+      }
+
+      const htmlNode = document.getElementsByTagName("html")[0];
+      const htmlNodeClassList = htmlNode.classList;
+
+
+      //deletes temp css classnames from the top doc html elem <html>
+      Array.from( htmlNodeClassList.values() ).filter (
+        ( inFilterCssClassname ) => {
+          return ( false === htmlCssClassnames.includes( inFilterCssClassname ) );
+        }
+      ).forEach (
+        ( inForeachCssClassname ) => {
+          htmlNodeClassList.remove( inForeachCssClassname );
+        }
+      );
+
+
+
+      // exits, if the theme button data-theme doesn't have no css classes set.
+      const btnDataTheme = buttonNodeClicked.dataset.theme;
+      let themesArray = new Array(0);
+      if ( !btnDataTheme ) {
+        currentButtonNodeClicked = buttonNodeClicked;
+        currentButtonNodeClicked.classList.add( "current" );
+
+        return;
+      }
+
+
+
+      // exits, if the theme button data-theme doesn't have no css classes set.
+      themesArray = btnDataTheme.split(" ");
+      let themeName = "";
+      if ( themesArray.length === 1 ) {
+        themeName = themesArray[0];
+        htmlNodeClassList.add( themeName );
+
+      } else if ( themesArray.length > 1 ) {
+        themesArray.filter (
+          ( inFilterCssClassname ) => {
+            let locFilterCssClassNameTrimmed = inFilterCssClassname.trimStart();
+            return ( locFilterCssClassNameTrimmed.length !== 0 );
+          }
+        ).forEach (
+          ( inForeachCssClassname ) => {
+            let locFilterCssClassNameTrimmed = inForeachCssClassname.trim();
+            htmlNodeClassList.add( locFilterCssClassNameTrimmed );
+          }
+        );
+
+      }
+
+      currentButtonNodeClicked = buttonNodeClicked;
+      currentButtonNodeClicked.classList.add( "current" );
+
+    }
+
+
+
+    // declaring the function, this adds to buttons the event handler to turn on the theme.
+    // this function is invoked when the site loads in the browser,
+    // in the event handler for the event DOMContentLoaded
+    function addThemeButtonsEventHandlers() {
+
+      const buttonsIDs = [
+        "button-turn-on-theme-font-Baloo_Paaji_2",
+        "button-turn-on-theme-font-LibreFranklin",
+        "button-turn-on-theme-font-Niconne"
+      ];
+
+      for ( let buttonId of buttonsIDs ) {
+
+        let buttonNode = document.getElementById( buttonId );
+
+        buttonNode.addEventListener (
+          "click",
+          (evt) => {
+            let buttonNodeClicked = evt.target;
+            turnOnTheme ( buttonNodeClicked );
+          }
+        );
+
+      }
+    }
+
+
+    // DOCUMENT ONLOAD, INVOKES THE FUNCTION TO ADD EVENT HANDLERS TO THEMES TURNING BUTTONS
+    document.addEventListener('DOMContentLoaded', () => {
+
+      // adding to buttons the event handler to turn on the theme.
+      addThemeButtonsEventHandlers();
+
+    });
+
+  </script>
+
+
+
+</body>
+</html>
+
+
+
+
+
+
+
