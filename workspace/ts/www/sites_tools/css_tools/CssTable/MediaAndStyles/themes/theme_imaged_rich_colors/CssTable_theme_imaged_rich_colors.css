@@ -1,0 +1,95 @@
+/* Sites tool: CssTable, theme: theme_imaged & rich_colors */
+
+.jsx-css-table-holder.theme_imaged.rich_colors {
+
+/* exact outer size and padding */
+  --jsx--CssTable--cell--cell-value--name--background-image-holder--width:   2.9rem;
+  --jsx--CssTable--cell--cell-value--name--background-image-holder--height:  4.4rem;
+
+  --jsx--CssTable--cell--cell-value--name--background-image-holder--padding: 0 0 0 0;
+  --jsx--CssTable--cell--cell-value--name--background-image-holder--margin:  0 0 0 0.1rem;
+
+  --jsx--CssTable--cell--cell-value--name--background-image--width:          100%;
+  --jsx--CssTable--cell--cell-value--name--background-image--height:         100%;
+
+}
+
+/* =============== */
+
+
+
+.jsx-css-table-holder.theme_imaged.rich_colors .cell.name.folder .cell-mini-image .in-cell-mini-image {
+  background-image: url("https://cdn.brightday.email/media/images/mini-images/mimetype/tree_theme_base/icons8-3-100.png");
+}
+
+
+
+.jsx-css-table-holder.theme_imaged.rich_colors .cell.name.image_jpeg .cell-mini-image .in-cell-mini-image {
+  background-image: url("https://cdn.brightday.email/media/images/mini-images/mimetype/shutterstock_2447566655/Shutterstock_2447566655_image_jpg.png");
+}
+
+.jsx-css-table-holder.theme_imaged.rich_colors .cell.name.image_jpg .cell-mini-image .in-cell-mini-image {
+  background-image: url("https://cdn.brightday.email/media/images/mini-images/mimetype/shutterstock_2447566655/Shutterstock_2447566655_image_jpg.png");
+}
+
+.jsx-css-table-holder.theme_imaged.rich_colors .cell.name.image_png .cell-mini-image .in-cell-mini-image {
+  background-image: url("https://cdn.brightday.email/media/images/mini-images/mimetype/shutterstock_2447566655/Shutterstock_2447566655_image_png.png");
+}
+
+.jsx-css-table-holder.theme_imaged.rich_colors .cell.name.image_webp .cell-mini-image .in-cell-mini-image {
+  background-image: url("https://cdn.brightday.email/media/images/mini-images/mimetype/several_collections/mimetype_webp_image.jpg");
+}
+
+.jsx-css-table-holder.theme_imaged.rich_colors .cell.name.image_gif .cell-mini-image .in-cell-mini-image {
+  background-image: url("https://cdn.brightday.email/media/images/mini-images/mimetype/shutterstock_2447566655/Shutterstock_2447566655_image_gif.png");
+}
+
+.jsx-css-table-holder.theme_imaged.rich_colors .cell.name.image_svg .cell-mini-image .in-cell-mini-image {
+  background-image: url("https://cdn.brightday.email/media/images/mini-images/mimetype/shutterstock_2447566655/Shutterstock_2447566655_image_svg.png");
+}
+
+
+
+.jsx-css-table-holder.theme_imaged.rich_colors .cell.name.application_json .cell-mini-image .in-cell-mini-image {
+  background-image: url("https://cdn.brightday.email/media/images/mini-images/mimetype/several_collections/mimetype_json_silverngreengrey.jpeg");
+}
+
+.jsx-css-table-holder.theme_imaged.rich_colors .cell.name.application_objdata .cell-mini-image .in-cell-mini-image {
+  background-image: url("https://cdn.brightday.email/media/images/mini-images/mimetype/shutterstock_2447566655/Shutterstock_2447566655_raw.png");
+}
+
+.jsx-css-table-holder.theme_imaged.rich_colors .cell.name.null .cell-mini-image .in-cell-mini-image {
+  background-image: url("https://cdn.brightday.email/media/images/mini-images/mimetype/shutterstock_2447566655/Shutterstock_2447566655_raw.png");
+}
+
+
+
+.jsx-css-table-holder.theme_imaged.rich_colors .cell.name.text_html .cell-mini-image .in-cell-mini-image {
+  /* background-image: url("https://cdn.brightday.email/media/images/mini-images/mimetype/shutterstock_2447566655/Shutterstock_2447566655_text_html.png"); */
+  background-image: url("https://cdn.brightday.email/media/images/mini-images/mimetype/several_collections/mimetype_text.png");
+}
+
+.jsx-css-table-holder.theme_imaged.rich_colors .cell.name.text_xml .cell-mini-image .in-cell-mini-image {
+  background-image: url("https://cdn.brightday.email/media/images/mini-images/mimetype/shutterstock_2447566655/Shutterstock_2447566655_text_html.png");
+}
+
+.jsx-css-table-holder.theme_imaged.rich_colors .cell.name.text_plain .cell-mini-image .in-cell-mini-image {
+  background-image: url("https://cdn.brightday.email/media/images/mini-images/mimetype/shutterstock_2447566655/Shutterstock_2447566655_text.png");
+}
+
+.jsx-css-table-holder.theme_imaged.rich_colors .cell.name.text_css .cell-mini-image .in-cell-mini-image {
+  background-image: url("https://cdn.brightday.email/media/images/mini-images/mimetype/shutterstock_2447566655/Shutterstock_2447566655_text_css.png");
+}
+
+.jsx-css-table-holder.theme_imaged.rich_colors .cell.name.text_javascript .cell-mini-image .in-cell-mini-image {
+  background-image: url("https://cdn.brightday.email/media/images/mini-images/mimetype/shutterstock_2447566655/Shutterstock_2447566655_text_javascript.png");
+}
+
+.jsx-css-table-holder.theme_imaged.rich_colors .cell.name.text_typescript .cell-mini-image .in-cell-mini-image {
+  background-image: url("https://cdn.brightday.email/media/images/mini-images/mimetype/shutterstock_2447566655/Shutterstock_2447566655_text_javascript.png");
+}
+
+.jsx-css-table-holder.theme_imaged.rich_colors .cell.name.text_markdown .cell-mini-image .in-cell-mini-image {
+  background-image: url("https://cdn.brightday.email/media/images/mini-images/mimetype/several_collections/mimetype_text.png");
+}
+

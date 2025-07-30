@@ -2,7 +2,7 @@
 
 
 .jsx-css-table-holder.jaisocx-folder-listing-columns {
-  
+
   --jsx--CssTable--bright--grid-template-columns: 5rem 34rem 12rem 6rem 18rem 100rem;
 }
 
@@ -39,15 +39,15 @@
 
 
 .jsx-css-table-holder .cell.example .cell-value {
-  
+
 
   word-spacing: 0.9rem;
   letter-spacing: 0.1rem;
 
-  
+
   text-transform: capitalize;
 
-  
+
   font-variant-caps: titling-caps;
 
   font-variant: no-common-ligatures tabular-nums;
@@ -55,7 +55,7 @@
   text-decoration: underline;
   text-decoration-style: dotted;
   text-decoration-color: lime;
-  text-underline-position: under; 
+  text-underline-position: under;
 
   font-variant-alternates: historical-forms;
 }
@@ -68,17 +68,17 @@
 }
 
 .jsx-css-table-holder .cell.keep-line .cell-value {
-  
-  
+
+
   white-space: nowrap;
 }
 
 .jsx-css-table-holder .cell.number .cell-value {
-  
+
   text-align:             right;
   font-family:            monospace;
 
-  
+
 }
 
 
@@ -503,7 +503,7 @@
 
 
 
-  
+
   --jsx--CssTable--thin--cell--padding-y:                              0.7rem;
 
   --jsx--CssTable--thin--record--padding-top:                          2.4rem;
@@ -566,14 +566,14 @@
 .jsx-css-table-holder {
 
 
-  
+
   --jsx--CssTable--bright--cell--column-label--padding-x: 0.72rem;
 
 
 
 
 
-  
+
   --jsx--CssTable--bright--cell--column-label--padding:                  0.95rem var(--jsx--CssTable--bright--cell--column-label--padding-x);
 
 
@@ -597,7 +597,7 @@
 
 
 
-  
+
   --jsx--CssTable--bright--cell--cell-value--padding:                    0.9rem var(--jsx--CssTable--bright--cell--column-label--padding-x);
 
 
@@ -624,7 +624,7 @@
 
 .jsx-css-table-holder {
 
-  
+
 
   --jsx--CssTable--holder--width:         100%;
   --jsx--CssTable--holder--max-width:     100%;
@@ -636,8 +636,8 @@
 
 
 
-  
-  
+
+
 
   --jsx--CssTable--holder--overflow-x:    auto;
   --jsx--CssTable--holder--overflow-y:    auto;
@@ -647,7 +647,7 @@
 
 
 
-  
+
   --jsx--CssTable--holder--border-radius: 0.5rem;
 
   --jsx--CssTable--border-width:          1px;
@@ -663,40 +663,40 @@
 
 
 
-  
 
-  
+
+
   --jsx--CssTable--cell--font-family:                           "Franklin Gothic Medium", Verdana, sans-serif;
   --jsx--CssTable--cell--background-color:                      #fbfefc;
-  
 
 
 
-  
+
+
   --jsx--CssTable--cell--column-label--font-family:              var(--jsx--CssTable--cell--font-family);
-  
+
 
   --jsx--CssTable--cell--column-label--color:                    #339933;
   --jsx--CssTable--cell--column-label--background-color:         #f2fff2;
 
-  
-
-  
 
 
 
 
 
-  
+
+
+
+
   --jsx--CssTable--cell--cell-value--font-family:                 var(--jsx--CssTable--cell--font-family);
-  
+
 
   --jsx--CssTable--cell--cell-value--color:                       #333;
   --jsx--CssTable--cell--cell-value--background-color:            #fbfefc;
 
-  
 
-  
+
+
 
 
   --jsx--CssTable--cell--cell-value--a--color:                    #226d22;
@@ -1109,15 +1109,15 @@
 
 
 .jsx-css-table-holder.theme_imaged .cell.name.folder .cell-mini-image .in-cell-mini-image {
-  background-image: url("https://cdn.brightday.email/media/images/mini-images/datatypes/tree_theme_base/icons8-3-100.png");
+  background-image: url("https://cdn.brightday.email/media/images/mini-images/mimetype/tree_theme_base/icons8-3-100.png");
 }
 
 .jsx-css-table-holder.theme_imaged .cell.name.application_json .cell-mini-image .in-cell-mini-image {
-  background-image: url("https://cdn.brightday.email/media/images/mini-images/datatypes/tree_theme_base/icons8-json-96.png");
+  background-image: url("https://cdn.brightday.email/media/images/mini-images/mimetype/tree_theme_base/icons8-json-96.png");
 }
 
 .jsx-css-table-holder.theme_imaged .cell.name.text_html .cell-mini-image .in-cell-mini-image {
-  background-image: url("https://cdn.brightday.email/media/images/mini-images/datatypes/tree_theme_base/icons8-font-style-formatting-96.png");
+  background-image: url("https://cdn.brightday.email/media/images/mini-images/mimetype/tree_theme_base/icons8-font-style-formatting-96.png");
 }
 
 
@@ -1125,7 +1125,7 @@
 .jsx-css-table-holder.theme_imaged {
 
 
-  
+
 
 
 
@@ -1142,11 +1142,11 @@
 
 
 
-  
 
 
 
-  
+
+
   --jsx--CssTable--cell--cell-value--name--background-position:         0 0;
   --jsx--CssTable--cell--cell-value--name--background-size:             contain;
   --jsx--CssTable--cell--cell-value--name--background-repeat:           no-repeat;
@@ -1163,7 +1163,7 @@
 }
 
 .jsx-css-table-holder.theme_imaged .cell.name .cell-mini-image {
-  
+
 
   display:                 flex;
   flex-direction:          row;
@@ -1185,7 +1185,7 @@
 }
 
 .jsx-css-table-holder.theme_imaged .cell.name .cell-mini-image .in-cell-mini-image {
-  
+
 
   display:                 block;
 
@@ -1420,7 +1420,7 @@
   color:                   var(--jsx--CssTable--cell--cell-value--color);
   background-color:        var(--jsx--CssTable--cell--cell-value--background-color);
 
-  
+
   word-break:              normal;
   font-variant:            no-common-ligatures tabular-nums;
 
@@ -1456,19 +1456,19 @@
 
 .jsx-css-table-holder .cell .column-label {
   font-family:             var(--jsx--CssTable--cell--column-label--font-family);
-  
+
 
   color:                   var(--jsx--CssTable--cell--column-label--color);
   background-color:        var(--jsx--CssTable--cell--column-label--background-color);
 
-  
+
 
   display:                 flex;
   flex-direction:          row;
   align-items:             stretch;
   justify-content:         flex-start;
 
-  
+
 
 }
 
@@ -1476,19 +1476,19 @@
 
 .jsx-css-table-holder .cell .cell-value {
   font-family:             var(--jsx--CssTable--cell--cell-value--font-family);
-  
+
 
   color:                   var(--jsx--CssTable--cell--cell-value--color);
   background-color:        var(--jsx--CssTable--cell--cell-value--background-color);
 
-  
+
 
   display:                 flex;
   flex-direction:          row;
   align-items:             stretch;
   justify-content:         flex-start;
 
-  
+
 
 }
 
@@ -1519,7 +1519,7 @@
   }
 
 
-  
+
   .jsx-css-table-holder .jsx-css-table.desktop-columns-labels-holder .row {
     display:                    none;
   }
@@ -1536,11 +1536,11 @@
   }
 
 
-  
-  
 
 
-  
+
+
+
   .jsx-css-table-holder .cell .column-label {
     width:                      var(--jsx--CssTable--thin--cell--column-label--width);
     max-width:                  var(--jsx--CssTable--thin--cell--column-label--width);
@@ -1564,7 +1564,7 @@
   }
 
 
-  
+
   .jsx-css-table-holder .cell:first-of-type .column-label,
   .jsx-css-table-holder .cell:first-of-type .cell-value {
     padding-top:                var(--jsx--CssTable--thin--record--padding-top);
@@ -1577,7 +1577,7 @@
 
 
 
-  
+
   .jsx-css-table-holder .cell .column-label {
     font-family:                var(--jsx--CssTable--thin--cell--column-label--font-family);
     font-size:                  var(--jsx--CssTable--thin--cell--column-label--font-size);
@@ -1591,7 +1591,7 @@
     color:                      var(--jsx--CssTable--thin--cell--column-label--color);
     background-color:           var(--jsx--CssTable--thin--cell--column-label--background-color);
 
-    
+
 
     line-break:                 var(--jsx--CssTable--thin--cell--column-label--line-break);
     word-break:                 var(--jsx--CssTable--thin--cell--column-label--word-break);
@@ -1599,7 +1599,7 @@
   }
 
 
-  
+
   .jsx-css-table-holder .cell .cell-value {
     font-family:                var(--jsx--CssTable--thin--cell--cell-value--font-family);
     font-size:                  var(--jsx--CssTable--thin--cell--cell-value--font-size);
@@ -1613,7 +1613,7 @@
     color:                      var(--jsx--CssTable--thin--cell--cell-value--color);
     background-color:           var(--jsx--CssTable--thin--cell--cell-value--background-color);
 
-    
+
 
     line-break:                 var(--jsx--CssTable--thin--cell--cell-value--line-break);
     word-break:                 var(--jsx--CssTable--thin--cell--cell-value--word-break);
@@ -1637,15 +1637,15 @@
   .jsx-css-table-holder .row {
     display:                   grid;
     grid-template-columns:     var(--jsx--CssTable--bright--grid-template-columns);
-    gap:                       0; 
+    gap:                       0;
   }
 
-  
+
   .jsx-css-table-holder .jsx-css-table:not(.desktop-columns-labels-holder) .row .column-label {
     display:                   none;
   }
 
-  
+
 
   .jsx-css-table-holder .cell:first-of-type {
     border-left-width:         0;
@@ -1654,7 +1654,7 @@
     flex-grow:                 1;
   }
 
-  
+
   .jsx-css-table-holder .jsx-css-table.desktop-columns-labels-holder .row .cell,
   .jsx-css-table-holder .jsx-css-table.desktop-columns-labels-holder .row .cell .column-label {
     width:                    100%;
@@ -1674,7 +1674,7 @@
 
 
 
-  
+
   .jsx-css-table-holder .jsx-css-table.desktop-columns-labels-holder .row .cell .column-label {
     font-family:              var(--jsx--CssTable--bright--cell--column-label--font-family);
     font-size:                var(--jsx--CssTable--bright--cell--column-label--font-size);
@@ -1688,7 +1688,7 @@
     color:                    var(--jsx--CssTable--bright--cell--column-label--color);
     background-color:         var(--jsx--CssTable--bright--cell--column-label--background-color);
 
-    
+
 
     line-break:               var(--jsx--CssTable--bright--cell--column-label--line-break);
     word-break:               var(--jsx--CssTable--bright--cell--column-label--word-break);
@@ -1696,7 +1696,7 @@
   }
 
 
-  
+
   .jsx-css-table-holder .cell .cell-value {
     font-family:              var(--jsx--CssTable--bright--cell--cell-value--font-family);
     font-size:                var(--jsx--CssTable--bright--cell--cell-value--font-size);
@@ -1710,7 +1710,7 @@
     color:                    var(--jsx--CssTable--bright--cell--cell-value--color);
     background-color:         var(--jsx--CssTable--bright--cell--cell-value--background-color);
 
-    
+
 
     line-break:               var(--jsx--CssTable--bright--cell--cell-value--line-break);
     word-break:               var(--jsx--CssTable--bright--cell--cell-value--word-break);

@@ -1,15 +1,15 @@
 /* Sites tool: CssTable, theme: theme_imaged */
 
 .jsx-css-table-holder.theme_imaged .cell.name.folder .cell-mini-image .in-cell-mini-image {
-  background-image: url("https://cdn.brightday.email/media/images/mini-images/datatypes/tree_theme_base/icons8-3-100.png");
+  background-image: url("https://cdn.brightday.email/media/images/mini-images/mimetype/tree_theme_base/icons8-3-100.png");
 }
 
 .jsx-css-table-holder.theme_imaged .cell.name.application_json .cell-mini-image .in-cell-mini-image {
-  background-image: url("https://cdn.brightday.email/media/images/mini-images/datatypes/tree_theme_base/icons8-json-96.png");
+  background-image: url("https://cdn.brightday.email/media/images/mini-images/mimetype/tree_theme_base/icons8-json-96.png");
 }
 
 .jsx-css-table-holder.theme_imaged .cell.name.text_html .cell-mini-image .in-cell-mini-image {
-  background-image: url("https://cdn.brightday.email/media/images/mini-images/datatypes/tree_theme_base/icons8-font-style-formatting-96.png");
+  background-image: url("https://cdn.brightday.email/media/images/mini-images/mimetype/tree_theme_base/icons8-font-style-formatting-96.png");
 }
 
 
