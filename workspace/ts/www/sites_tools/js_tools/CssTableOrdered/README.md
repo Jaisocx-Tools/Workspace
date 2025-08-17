@@ -15,14 +15,26 @@ The jaisocx templates for files listing, https exceptions and others will be ava
 
 
 
-## The latest .tgz archive (v.2.1.6 17th of month August 2025)
+## The latest .tgz archive (v.2.1.7 17th of month August 2025)
 
-[https://sandbox.brightday.email/sites_tools/js_tools/CssTableOrdered/jaisocx-css-table-ordered-2.1.6.tgz](https://sandbox.brightday.email/sites_tools/js_tools/CssTableOrdered/jaisocx-css-table-ordered-2.1.6.tgz)
+[https://sandbox.brightday.email/sites_tools/js_tools/CssTableOrdered/jaisocx-css-table-ordered-2.1.7.tgz](https://sandbox.brightday.email/sites_tools/js_tools/CssTableOrdered/jaisocx-css-table-ordered-2.1.7.tgz)
+
+
+
 
 
 ## Watch site in action
 
+### With Orderby on laptops and larger displays.
 [https://sandbox.brightday.email/sites_tools/js_tools/CssTableOrdered/index.example.html](https://sandbox.brightday.email/sites_tools/js_tools/CssTableOrdered/index.example.html)
+
+
+### Same html with theme jaisocx folder listing
+
+The mobile portrait view was fine tuned for the folder listing in the Jaisocx Sites Server.
+
+
+[https://sandbox.brightday.email/sites_tools/js_tools/CssTableOrdered/jaisocx-folder-listing-preview.html](https://sandbox.brightday.email/sites_tools/js_tools/CssTableOrdered/jaisocx-folder-listing-preview.html)
 
 
 

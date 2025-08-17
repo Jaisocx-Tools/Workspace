@@ -1,5 +1,5 @@
 
-.jsx.jaisocx-folder-listing {
+.jsx .jsx-css-table-holder.jaisocx-folder-listing {
 
   --jsx--css-clean-start-2--site--width: 88%;
   --jsx--css-clean-start-2--site--padding: 1rem 1rem 3rem 1rem;
@@ -15,11 +15,11 @@
 
 }
 
-.jsx.jaisocx-folder-listing .jsx-css-table-holder .row.folder .cell.name .cell-value a {
+.jsx .jsx-css-table-holder.jaisocx-folder-listing  .row.folder .cell.name .cell-value a {
   font-weight: 600;
 }
 
-.jsx.jaisocx-folder-listing .jsx-css-table-holder .cell.number .cell-value {
+.jsx .jsx-css-table-holder.jaisocx-folder-listing .cell.number .cell-value {
   justify-content: flex-end;
 }
 

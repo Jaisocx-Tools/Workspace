@@ -1,6 +1,6 @@
 {
   "name": "@jaisocx/css-table-ordered",
-  "version": "2.1.6",
+  "version": "2.1.7",
   "description": "",
   "author": "Jaisocx",
   "keywords": [
@@ -11,6 +11,7 @@
     "ui"
   ],
   "files": [
+    "jaisocx-folder-listing-preview.html",
     "index.example.html",
 
     "MediaAndStyles/*.css",
