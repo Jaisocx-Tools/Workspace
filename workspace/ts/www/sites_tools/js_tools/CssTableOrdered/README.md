@@ -3,7 +3,7 @@
 
 ## Status
 
-In development
+Ready
 
 
 
@@ -11,13 +11,13 @@ In development
 
 For the Jaisocx Sits Server Files Listing server side rendered CssTable with JSP.
 
-The jaisocx templates for files listing, https exceptions as 404 and others will be available on public git service in several months.
+The jaisocx templates for files listing, https exceptions and others will be available on public git service in several months.
 
 
 
-## The latest .tgz archive (v.2.0.3 25st of July 2025)
+## The latest .tgz archive (v.2.1.4 17th of month August 2025)
 
-[https://sandbox.brightday.email/sites_tools/js_tools/CssTableOrdered/jaisocx-css-table-ordered-2.0.3.tgz](https://sandbox.brightday.email/sites_tools/js_tools/CssTableOrdered/jaisocx-css-table-ordered-2.0.3.tgz)
+[https://sandbox.brightday.email/sites_tools/js_tools/CssTableOrdered/jaisocx-css-table-ordered-2.1.4.tgz](https://sandbox.brightday.email/sites_tools/js_tools/CssTableOrdered/jaisocx-css-table-ordered-2.1.4.tgz)
 
 
 ## Watch site in action
@@ -27,41 +27,55 @@ The jaisocx templates for files listing, https exceptions as 404 and others will
 
 
 
-## Github
-
-[]()
-
-
-
 
 ### Tasks to do
 
+1. css themes npm package example to install on a Jaisocx server instance with @jaisocx/css-table-ordered
 
 
 
 ## Usage
 
 ```js
-  <script src="sites_tools/js_tools/CssTableOrdered/transpiled/Simple/CssTableOrderby.js"></script>
+  <link rel="stylesheet" href="/sites_tools/css_tools/CssCleanStart_2/MediaAndStyles/CssCleanStart_2_main_resolved_minimal.css" />
+  <link rel="stylesheet" href="/sites_tools/css_tools/CssTable/MediaAndStyles/CssTable_main_resolved_minimal.css" />
+
+
+
+  <link rel="stylesheet" href="/sites_tools/js_tools/CssTableOrdered/MediaAndStyles/themes/theme_fixed_columns_labels/theme_fixed_columns_labels.css" />
+
+
+
+  <script src="sites_tools/js_tools/CssTableOrdered/transpiled/Simple/scroll/CssTableScroll.js"></script>
+  <script src="sites_tools/js_tools/CssTableOrdered/transpiled/Simple/orderby/CssTableOrderby.js"></script>
+
+
 
   <script>
 
-      let orderbyClassInstance = new Object();
+    let orderbyClassInstance = new Object();
+
+    function addScrollEventHandlers() {
+      cssTableScrollInstance = new CssTableScroll();
+      cssTableScrollInstance.addScrollEventHandlers();
+    }
+
+    function addOrderbyEventHandler() {
+      orderbyClassInstance = new CssTableOrderby();
+        orderbyClassInstance.setRowsNumberNotOrdered( 1 );
+      let eventHandlerRetval = orderbyClassInstance.addOrderbyEventHandler();
+    }
 
 
-      function addOrderbyEventHandler() {
-        orderbyClassInstance = new CssTableOrderby();
-          // orderbyClassInstance.setRowsNumberNotOrdered( 2 ); // when, for example, in files listing the first row with two dots like this: ..
-        let eventHandlerRetval = orderbyClassInstance.addOrderbyEventHandler();
-      }
 
+    // DOCUMENT ONLOAD
+    document.addEventListener('DOMContentLoaded', () => {
 
-      // DOCUMENT ONLOAD, INVOKES THE FUNCTION TO RENDER TOOLTIP ON SITE OPENED IN BROWSER.
-      document.addEventListener('DOMContentLoaded', () => {
+      addScrollEventHandlers();
 
-        addOrderbyEventHandler();
+      addOrderbyEventHandler();
 
-      });
+    });
 
   </script>
 ```

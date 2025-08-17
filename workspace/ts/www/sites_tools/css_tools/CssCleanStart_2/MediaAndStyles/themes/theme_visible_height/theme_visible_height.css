@@ -30,7 +30,7 @@
 
 
 /* example when this theme css class is set in the root html tag */
-.jsx.theme_visible_height main.a-tag-in-main-tag {
+.jsx.theme_visible_height main .a-tag-in-main-tag {
 
   flex-grow: 1;
 

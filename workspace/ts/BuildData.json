@@ -155,7 +155,7 @@
     {
       "path": "sites_tools/css_tools/CssCleanStart",
       "name": "css-clean-start",
-      "update-published": "Mon Jun 23 06:01:02 GMT 2025",
+      "update-published": "Sun Aug 17 01:22:34 UTC 2025",
       "build": false,
       "build-simple-enable": false,
       "css-importer": {
@@ -195,18 +195,16 @@
     {
       "path": "sites_tools/css_tools/CssTable",
       "name": "css-table",
-      "update-published": "",
+      "update-published": "Sun Aug 17 03:09:57 UTC 2025",
       "build": false,
       "build-simple-enable": false,
       "css-importer": {
         "build": false,
-        "cssFilePath": "MediaAndStyles/CssTable_main_Webpack_min.css",
-        "cssTargetFilePath": "MediaAndStyles/CssTable_main_resolved_min.css"
+        "cssFilePath": "MediaAndStyles/CssTable_main_Webpack.css",
+        "cssTargetFilePath": "MediaAndStyles/CssTable_main_resolved.css"
       },
       "dependencies": [],
       "build-files": [
-        "Preloader.js",
-        "ThemesPreloadsCssTable.js",
         "index.js",
         "webpackAliases.js",
         "webpack.aliases.mjs",
@@ -281,8 +279,8 @@
       "build-simple-enable": false,
       "css-importer": {
         "build": false,
-        "cssFilePath": "MediaAndStyles/CssCleanStart_2_main_Webpack.css",
-        "cssTargetFilePath": "MediaAndStyles/CssCleanStart_2_main_resolved.css"
+        "cssFilePath": "MediaAndStyles/CssCleanStart_2_main_Webpack_min.css",
+        "cssTargetFilePath": "MediaAndStyles/CssCleanStart_2_main_resolved_minimal.css"
       },
       "dependencies": [],
       "build-files": []
@@ -430,13 +428,13 @@
     {
       "path": "sites_tools/js_tools/CssTableOrdered",
       "name": "css-table-ordered",
-      "update-published": "",
+      "update-published": "Sun Aug 17 03:19:18 UTC 2025",
       "build": true,
       "build-simple-enable": true,
       "css-importer": {
         "build": false,
-        "cssFilePath": "MediaAndStyles/CssTableOrdered_main_Webpack.css",
-        "cssTargetFilePath": "MediaAndStyles/CssTableOrdered_main_resolved.css"
+        "cssFilePath": "MediaAndStyles/CssTableOrdered_main_Webpack_minimal.css",
+        "cssTargetFilePath": "MediaAndStyles/CssTableOrdered_main_resolved_minimal.css"
       },
       "dependencies": [
         {
@@ -445,9 +443,6 @@
         }
       ],
       "build-files": [
-        "webpackAliases.js",
-        "webpack.aliases.mjs",
-        "webpack.aliases.cjs",
         "scroll/CssTableScroll.js",
         "orderby/CssTableOrderby.js"
       ]

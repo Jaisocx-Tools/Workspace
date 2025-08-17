@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en" class="jsx theme_lightmode">
+<head>
+
+  <title>mime types object data rendered</title>
+
+
+
+  <meta charset="utf-8" />
+  <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+
+  <link rel="stylesheet" href="/sites_tools/css_tools/CssCleanStart_2/MediaAndStyles/CssCleanStart_2_main_resolved_minimal.css" />
+
+
+
+  <style>
+
+    .jsx {
+      --jsx--css-clean-start-2--h1--font-size: 1.05rem;
+      --jsx--css-clean-start-2--h2--font-size: 0.9rem;
+
+      --theme-button-width: fit-content;
+    }
+
+    .jsx themebuttons {
+      width: fit-content;
+      display: grid;
+      grid-auto-flow: column;
+      column-gap: 3rem;
+      margin: 0.9rem 0px 1.6rem 0px;
+    }
+
+    .jsx themebuttons button {
+      width: var(--theme-button-width);
+    }
+
+    .current::after {
+      content: "";
+      position: absolute;
+      bottom: -0.3rem;
+      left: 0;
+      width: 100%;
+      height: 0;
+      max-height: 0;
+      overflow-y: hidden;
+      border-bottom-width: 0.14rem;
+      border-bottom-style: solid;
+      border-bottom-color: var(--clean-start__text-color);
+    }
+
+    .jsx button {
+      background-color: transparent;
+      text-align: left;
+    }
+
+    #tooltip-button {
+      font-family: fantasy;
+    }
+
+  </style>
+</head>
+<body>
+
+  <main>
+
+    <content>
+
+
+
+      <h1>mime types object data rendered</h1>
+
+      <ThemeButtons>
+        <button id="button-turn-on-base-theme" data-theme="">Base Theme</button>
+        <button id="button-turn-on-daymode" data-theme="theme_lightmode">Day Mode</button>
+        <button id="button-turn-on-nightmode" data-theme="theme_darkmode">Night Mode</button>
+      </ThemeButtons>
+
+    </content>
+
+
+
+    <div id="tree-holder" class="theme-base"></div>
+
+
+
+  </main>
+
+  </body>
+
+
+
+  <script>
+
+    currentButtonNodeClicked = null;
+
+
+    let cssClassesNames = [
+      "jsx",
+      "theme_visible_height"
+    ];
+
+
+
+    // declaring the function, this is used in the event handler of the theme turning button when clicked on this button.
+    function turnOnTheme ( buttonNodeClicked ) {
+
+      if ( currentButtonNodeClicked !==  null ) {
+        currentButtonNodeClicked.classList.remove( "current" );
+      }
+
+      const htmlNode = document.getElementsByTagName("html")[0];
+      const htmlNodeClassList = htmlNode.classList;
+
+      const themeCssClassPrefix = "theme";
+
+      htmlNodeClassList.forEach (
+        (cssClassName) => {
+          if ( cssClassesNames.includes( cssClassName ) ) {
+            return;
+          }
+
+          if ( cssClassName.startsWith( themeCssClassPrefix ) === true ) {
+            htmlNodeClassList.remove( cssClassName );
+          }
+        }
+      );
+
+      const themeName = buttonNodeClicked.dataset.theme;
+      htmlNode.classList.add( themeName );
+      currentButtonNodeClicked = buttonNodeClicked;
+      currentButtonNodeClicked.classList.add( "current" );
+
+    }
+
+    // declaring the function, this adds to buttons the event handler to turn on the theme.
+    // this function is invoked when the site loads in the browser,
+    // in the event handler for the event DOMContentLoaded
+    function addThemeButtonsEventHandlers() {
+
+      const buttonsIDs = [
+        "button-turn-on-base-theme",
+        "button-turn-on-daymode",
+        "button-turn-on-nightmode"
+      ];
+
+      for ( let buttonId of buttonsIDs ) {
+
+        let buttonNode = document.getElementById( buttonId );
+
+        buttonNode.addEventListener (
+          "click",
+          (evt) => {
+            let buttonNodeClicked = evt.target;
+            turnOnTheme ( buttonNodeClicked );
+          }
+        );
+
+      }
+    }
+
+
+    // DOCUMENT ONLOAD, INVOKES THE FUNCTION TO PRELOAD THEME FONTS
+    document.addEventListener('DOMContentLoaded', () => {
+
+      // adding to buttons the event handler to turn on the theme.
+      addThemeButtonsEventHandlers();
+
+    });
+
+  </script>
+
+
+
+  <script src="https://sandbox.brightday.email/cdn/jaisocx-tools-all/objdata/transpiled/Simple/ObjDataTypes.js"></script>
+  <script src="https://sandbox.brightday.email/cdn/jaisocx-tools-all/objdata/transpiled/Simple/ObjDataConstants.js"></script>
+  <script src="https://sandbox.brightday.email/cdn/jaisocx-tools-all/objdata/transpiled/Simple/ObjDataPackage.js"></script>
+  <script src="https://sandbox.brightday.email/cdn/jaisocx-tools-all/objdata/transpiled/Simple/ObjDataParser.js"></script>
+  <script src="https://sandbox.brightday.email/cdn/jaisocx-tools-all/objdata/transpiled/Simple/ObjDataSerializer.js"></script>
+  <script src="https://sandbox.brightday.email/cdn/jaisocx-tools-all/objdata/transpiled/Simple/ObjData.js"></script>
+
+
+
+  <link rel="stylesheet" href="https://sandbox.brightday.email/cdn/jaisocx-tools-all/tree/MediaAndStyles/tree-styles-main.css" />
+  <script src="https://sandbox.brightday.email/webpack_builds/ExampleTree/transpiled/webpack/example-tree-bundle.js"></script>
+
+
+
+  <script src="https://sandbox.brightday.email/cdn/jaisocx-tools-all/api/transpiled/Simple/Api.js"></script>
+
+
+
+  <script>
+
+    function downloadUint8Array ( uint8Array, filename ) {
+
+      // Create a Blob from the Uint8Array
+      const blob = new Blob([uint8Array], { type: "application/octet-stream" });
+
+
+
+      // Create a temporary link element
+      const link = document.createElement("a");
+      link.href = URL.createObjectURL(blob);
+      link.download = filename;
+
+
+
+      // Trigger the download
+      document.body.appendChild(link);
+      link.click();
+
+
+
+      // Cleanup
+      document.body.removeChild(link);
+      URL.revokeObjectURL(link.href);
+
+    }
+
+
+
+    function saveObjdata() {
+      let url = "https://sandbox.brightday.email/cdn/www/data_public/json/mime/mime_types.json";
+
+      fetch( url )
+        .then( response => response.json() )
+        .then( json => {
+          let od = ObjData.serialize( json );
+
+          downloadUint8Array( od, "mime_types.od" );
+        } )
+
+    }
+
+
+
+    async function renderMimeObjectData( treeHolderId, url ) {
+
+      let api = new Api();
+        api.setDebug( true );
+
+      let json = await api.fetchObjData ( url, "GET", [] );
+
+      const tree = new Tree();
+      tree
+        .setDebug( false )
+        .setMainHtmlNodeId( treeHolderId )
+        .setNodesOpenedMode( TreeConstants.NodesOpenedMode.ALL_HIDE )
+        .render( json );
+
+      return 100;
+    }
+
+
+
+    // DOCUMENT ONLOAD
+    document.addEventListener('DOMContentLoaded', () => {
+
+      // saveObjdata();
+
+      renderMimeObjectData( "tree-holder", "https://sandbox.brightday.email/cdn/www/data_public/objdata/mime/mime_types.od" )
+        .then( retval => void(0) );
+
+    });
+
+  </script>
+
+
+
+</html>
+
+
+
+

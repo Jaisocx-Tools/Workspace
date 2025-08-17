@@ -15,7 +15,8 @@
 
 @import url("./themes/theme_imaged/responsive_size_Imports_CssTable_theme_imaged_Relative.css");
 @import url("./themes/theme_imaged/CssTable_theme_imaged_main.css");
-@import url("./themes/theme_imaged_rich_colors/CssTable_theme_imaged_rich_colors.css");
+
+@import url("./themes/theme_imaged_base/CssTable_theme_imaged_base.css");
 
 
 @import url("./themes/theme_visible_height/theme_visible_height.css");

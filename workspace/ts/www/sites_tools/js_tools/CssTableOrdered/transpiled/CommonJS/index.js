@@ -4,7 +4,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.CssTableOrderby = exports.CssTableScroll = void 0;
 require("@jaisocx/css-table");
-require("@CssTableOrdered_MediaAndStyles/CssTableOrdered_main_Webpack_min.css");
+require("@CssTableOrdered_MediaAndStyles/CssTableOrdered_main_Webpack_minimal.css");
 var CssTableScroll_js_1 = require("./scroll/CssTableScroll.js");
 Object.defineProperty(exports, "CssTableScroll", { enumerable: true, get: function () { return CssTableScroll_js_1.CssTableScroll; } });
 var CssTableOrderby_js_1 = require("./orderby/CssTableOrderby.js");

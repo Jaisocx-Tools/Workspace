@@ -2,7 +2,7 @@
 // when built with webpack and using the webpackAliases of this package.
 
 import "@jaisocx/css-table";
-import "@CssTableOrdered_MediaAndStyles/CssTableOrdered_main_Webpack_min.css";
+import "@CssTableOrdered_MediaAndStyles/CssTableOrdered_main_Webpack_minimal.css";
 
 
 

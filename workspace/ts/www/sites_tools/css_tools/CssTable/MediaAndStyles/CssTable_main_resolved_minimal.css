@@ -2,7 +2,7 @@
 
 
 .jsx-css-table-holder.jaisocx-folder-listing-columns {
-
+  
   --jsx--CssTable--bright--grid-template-columns: 5rem 34rem 12rem 6rem 18rem 100rem;
 }
 
@@ -39,15 +39,15 @@
 
 
 .jsx-css-table-holder .cell.example .cell-value {
-
+  
 
   word-spacing: 0.9rem;
   letter-spacing: 0.1rem;
 
-
+  
   text-transform: capitalize;
 
-
+  
   font-variant-caps: titling-caps;
 
   font-variant: no-common-ligatures tabular-nums;
@@ -55,7 +55,7 @@
   text-decoration: underline;
   text-decoration-style: dotted;
   text-decoration-color: lime;
-  text-underline-position: under;
+  text-underline-position: under; 
 
   font-variant-alternates: historical-forms;
 }
@@ -68,17 +68,17 @@
 }
 
 .jsx-css-table-holder .cell.keep-line .cell-value {
-
-
+  
+  
   white-space: nowrap;
 }
 
 .jsx-css-table-holder .cell.number .cell-value {
-
+  
   text-align:             right;
   font-family:            monospace;
 
-
+  
 }
 
 
@@ -93,406 +93,6 @@
 
 
 
-
-
-
-@media only screen and (min-width: 2px) and (max-width: 239px) and (min-height: 2px) and (max-height: 99999px) and (orientation: portrait) {
-
-  .jsx-css-table-holder {
-    --theme_name: CssTable__theme_base;
-    --theme_name__CssTable: theme_base;
-    --responsive_size: responsive_size_d05_very_small_xxs_portrait;
-    --responsive_size__CssTable__theme_base: responsive_size_d05_very_small_xxs_portrait__CssTable__theme_base;
-  }
-}
-
-@media only screen and (min-width: 2px) and (max-width: 99999px) and (min-height: 2px) and (max-height: 239px) and (orientation: landscape) {
-
-  .jsx-css-table-holder {
-    --theme_name: CssTable__theme_base;
-    --theme_name__CssTable: theme_base;
-    --responsive_size: responsive_size_d05_very_small_xxs_landscape;
-    --responsive_size__CssTable__theme_base: responsive_size_d05_very_small_xxs_landscape__CssTable__theme_base;
-  }
-}
-
-
-@media only screen and (min-width: 240px) and (max-width: 320px) and (min-height: 240px) and (max-height: 99999px) and (orientation: portrait) {
-
-  .jsx-css-table-holder {
-    --theme_name: CssTable__theme_base;
-    --theme_name__CssTable: theme_base;
-    --responsive_size: responsive_size_e02_mobile_xs_portrait;
-    --responsive_size__CssTable__theme_base: responsive_size_e02_mobile_xs_portrait__CssTable__theme_base;
-  }
-}
-
-@media only screen and (min-width: 240px) and (max-width: 99999px) and (min-height: 240px) and (max-height: 320px) and (orientation: landscape) {
-
-  .jsx-css-table-holder {
-    --theme_name: CssTable__theme_base;
-    --theme_name__CssTable: theme_base;
-    --responsive_size: responsive_size_e02_mobile_xs_landscape;
-    --responsive_size__CssTable__theme_base: responsive_size_e02_mobile_xs_landscape__CssTable__theme_base;
-  }
-}
-
-
-@media only screen and (min-width: 321px) and (max-width: 375px) and (min-height: 321px) and (max-height: 99999px) and (orientation: portrait) {
-
-  .jsx-css-table-holder {
-    --theme_name: CssTable__theme_base;
-    --theme_name__CssTable: theme_base;
-    --responsive_size: responsive_size_e04_mobile_s_portrait;
-    --responsive_size__CssTable__theme_base: responsive_size_e04_mobile_s_portrait__CssTable__theme_base;
-  }
-}
-
-@media only screen and (min-width: 321px) and (max-width: 99999px) and (min-height: 321px) and (max-height: 375px) and (orientation: landscape) {
-
-  .jsx-css-table-holder {
-    --theme_name: CssTable__theme_base;
-    --theme_name__CssTable: theme_base;
-    --responsive_size: responsive_size_e04_mobile_s_landscape;
-    --responsive_size__CssTable__theme_base: responsive_size_e04_mobile_s_landscape__CssTable__theme_base;
-  }
-}
-
-
-@media only screen and (min-width: 376px) and (max-width: 430px) and (min-height: 376px) and (max-height: 99999px) and (orientation: portrait) {
-
-  .jsx-css-table-holder {
-    --theme_name: CssTable__theme_base;
-    --theme_name__CssTable: theme_base;
-    --responsive_size: responsive_size_e06_mobile_sm_portrait;
-    --responsive_size__CssTable__theme_base: responsive_size_e06_mobile_sm_portrait__CssTable__theme_base;
-  }
-}
-
-@media only screen and (min-width: 376px) and (max-width: 99999px) and (min-height: 376px) and (max-height: 430px) and (orientation: landscape) {
-
-  .jsx-css-table-holder {
-    --theme_name: CssTable__theme_base;
-    --theme_name__CssTable: theme_base;
-    --responsive_size: responsive_size_e06_mobile_sm_landscape;
-    --responsive_size__CssTable__theme_base: responsive_size_e06_mobile_sm_landscape__CssTable__theme_base;
-  }
-}
-
-
-@media only screen and (min-width: 431px) and (max-width: 480px) and (min-height: 431px) and (max-height: 99999px) and (orientation: portrait) {
-
-  .jsx-css-table-holder {
-    --theme_name: CssTable__theme_base;
-    --theme_name__CssTable: theme_base;
-    --responsive_size: responsive_size_e08_mobile_md_portrait;
-    --responsive_size__CssTable__theme_base: responsive_size_e08_mobile_md_portrait__CssTable__theme_base;
-  }
-}
-
-@media only screen and (min-width: 431px) and (max-width: 99999px) and (min-height: 431px) and (max-height: 480px) and (orientation: landscape) {
-
-  .jsx-css-table-holder {
-    --theme_name: CssTable__theme_base;
-    --theme_name__CssTable: theme_base;
-    --responsive_size: responsive_size_e08_mobile_md_landscape;
-    --responsive_size__CssTable__theme_base: responsive_size_e08_mobile_md_landscape__CssTable__theme_base;
-  }
-}
-
-
-@media only screen and (min-width: 481px) and (max-width: 767px) and (min-height: 481px) and (max-height: 99999px) and (orientation: portrait) {
-
-  .jsx-css-table-holder {
-    --theme_name: CssTable__theme_base;
-    --theme_name__CssTable: theme_base;
-    --responsive_size: responsive_size_h03_tablet_s_portrait;
-    --responsive_size__CssTable__theme_base: responsive_size_h03_tablet_s_portrait__CssTable__theme_base;
-  }
-}
-
-@media only screen and (min-width: 481px) and (max-width: 99999px) and (min-height: 481px) and (max-height: 767px) and (orientation: landscape) {
-
-  .jsx-css-table-holder {
-    --theme_name: CssTable__theme_base;
-    --theme_name__CssTable: theme_base;
-    --responsive_size: responsive_size_h03_tablet_s_landscape;
-    --responsive_size__CssTable__theme_base: responsive_size_h03_tablet_s_landscape__CssTable__theme_base;
-  }
-}
-
-
-@media only screen and (min-width: 768px) and (max-width: 1024px) and (min-height: 768px) and (max-height: 1024px) and (orientation: portrait) {
-
-  .jsx-css-table-holder {
-    --theme_name: CssTable__theme_base;
-    --theme_name__CssTable: theme_base;
-    --responsive_size: responsive_size_h05_tablet_sm_portrait;
-    --responsive_size__CssTable__theme_base: responsive_size_h05_tablet_sm_portrait__CssTable__theme_base;
-  }
-}
-
-@media only screen and (min-width: 768px) and (max-width: 1024px) and (min-height: 768px) and (max-height: 1024px) and (orientation: landscape) {
-
-  .jsx-css-table-holder {
-    --theme_name: CssTable__theme_base;
-    --theme_name__CssTable: theme_base;
-    --responsive_size: responsive_size_h05_tablet_sm_landscape;
-    --responsive_size__CssTable__theme_base: responsive_size_h05_tablet_sm_landscape__CssTable__theme_base;
-  }
-}
-
-
-@media only screen and (min-width: 768px) and (max-width: 1024px) and (min-height: 1025px) and (max-height: 1194px) and (orientation: portrait) {
-
-  .jsx-css-table-holder {
-    --theme_name: CssTable__theme_base;
-    --theme_name__CssTable: theme_base;
-    --responsive_size: responsive_size_h07_tablet_md_portrait;
-    --responsive_size__CssTable__theme_base: responsive_size_h07_tablet_md_portrait__CssTable__theme_base;
-  }
-}
-
-@media only screen and (min-width: 1025px) and (max-width: 1194px) and (min-height: 768px) and (max-height: 1024px) and (orientation: landscape) {
-
-  .jsx-css-table-holder {
-    --theme_name: CssTable__theme_base;
-    --theme_name__CssTable: theme_base;
-    --responsive_size: responsive_size_h07_tablet_md_landscape;
-    --responsive_size__CssTable__theme_base: responsive_size_h07_tablet_md_landscape__CssTable__theme_base;
-  }
-}
-
-
-@media only screen and (min-width: 768px) and (max-width: 1024px) and (min-height: 1195px) and (max-height: 99999px) and (orientation: portrait) {
-
-  .jsx-css-table-holder {
-    --theme_name: CssTable__theme_base;
-    --theme_name__CssTable: theme_base;
-    --responsive_size: responsive_size_h09_tablet_lg_portrait;
-    --responsive_size__CssTable__theme_base: responsive_size_h09_tablet_lg_portrait__CssTable__theme_base;
-  }
-}
-
-@media only screen and (min-width: 1195px) and (max-width: 99999px) and (min-height: 768px) and (max-height: 1024px) and (orientation: landscape) {
-
-  .jsx-css-table-holder {
-    --theme_name: CssTable__theme_base;
-    --theme_name__CssTable: theme_base;
-    --responsive_size: responsive_size_h09_tablet_lg_landscape;
-    --responsive_size__CssTable__theme_base: responsive_size_h09_tablet_lg_landscape__CssTable__theme_base;
-  }
-}
-
-
-@media only screen and (min-width: 1025px) and (max-width: 1365px) and (min-height: 1025px) and (max-height: 1365px) and (orientation: portrait) {
-
-  .jsx-css-table-holder {
-    --theme_name: CssTable__theme_base;
-    --theme_name__CssTable: theme_base;
-    --responsive_size: responsive_size_l02_laptop_sm_portrait;
-    --responsive_size__CssTable__theme_base: responsive_size_l02_laptop_sm_portrait__CssTable__theme_base;
-  }
-}
-
-@media only screen and (min-width: 1025px) and (max-width: 1365px) and (min-height: 1025px) and (max-height: 1365px) and (orientation: landscape) {
-
-  .jsx-css-table-holder {
-    --theme_name: CssTable__theme_base;
-    --theme_name__CssTable: theme_base;
-    --responsive_size: responsive_size_l02_laptop_sm_landscape;
-    --responsive_size__CssTable__theme_base: responsive_size_l02_laptop_sm_landscape__CssTable__theme_base;
-  }
-}
-
-
-@media only screen and (min-width: 1025px) and (max-width: 1440px) and (min-height: 1366px) and (max-height: 1440px) and (orientation: portrait) {
-
-  .jsx-css-table-holder {
-    --theme_name: CssTable__theme_base;
-    --theme_name__CssTable: theme_base;
-    --responsive_size: responsive_size_l03_laptop_md_portrait;
-    --responsive_size__CssTable__theme_base: responsive_size_l03_laptop_md_portrait__CssTable__theme_base;
-  }
-}
-
-@media only screen and (min-width: 1366px) and (max-width: 1440px) and (min-height: 1025px) and (max-height: 1440px) and (orientation: landscape) {
-
-  .jsx-css-table-holder {
-    --theme_name: CssTable__theme_base;
-    --theme_name__CssTable: theme_base;
-    --responsive_size: responsive_size_l03_laptop_md_landscape;
-    --responsive_size__CssTable__theme_base: responsive_size_l03_laptop_md_landscape__CssTable__theme_base;
-  }
-}
-
-
-@media only screen and (min-width: 1025px) and (max-width: 1600px) and (min-height: 1441px) and (max-height: 1600px) and (orientation: portrait) {
-
-  .jsx-css-table-holder {
-    --theme_name: CssTable__theme_base;
-    --theme_name__CssTable: theme_base;
-    --responsive_size: responsive_size_l07_laptop_lg_portrait;
-    --responsive_size__CssTable__theme_base: responsive_size_l07_laptop_lg_portrait__CssTable__theme_base;
-  }
-}
-
-@media only screen and (min-width: 1441px) and (max-width: 1600px) and (min-height: 1025px) and (max-height: 1600px) and (orientation: landscape) {
-
-  .jsx-css-table-holder {
-    --theme_name: CssTable__theme_base;
-    --theme_name__CssTable: theme_base;
-    --responsive_size: responsive_size_l07_laptop_lg_landscape;
-    --responsive_size__CssTable__theme_base: responsive_size_l07_laptop_lg_landscape__CssTable__theme_base;
-  }
-}
-
-
-@media only screen and (min-width: 1025px) and (max-width: 1920px) and (min-height: 1601px) and (max-height: 1920px) and (orientation: portrait) {
-
-  .jsx-css-table-holder {
-    --theme_name: CssTable__theme_base;
-    --theme_name__CssTable: theme_base;
-    --responsive_size: responsive_size_s02_display_xl_portrait;
-    --responsive_size__CssTable__theme_base: responsive_size_s02_display_xl_portrait__CssTable__theme_base;
-  }
-}
-
-@media only screen and (min-width: 1601px) and (max-width: 1920px) and (min-height: 1025px) and (max-height: 1920px) and (orientation: landscape) {
-
-  .jsx-css-table-holder {
-    --theme_name: CssTable__theme_base;
-    --theme_name__CssTable: theme_base;
-    --responsive_size: responsive_size_s02_display_xl_landscape;
-    --responsive_size__CssTable__theme_base: responsive_size_s02_display_xl_landscape__CssTable__theme_base;
-  }
-}
-
-
-@media only screen and (min-width: 1025px) and (max-width: 2560px) and (min-height: 1921px) and (max-height: 2560px) and (orientation: portrait) {
-
-  .jsx-css-table-holder {
-    --theme_name: CssTable__theme_base;
-    --theme_name__CssTable: theme_base;
-    --responsive_size: responsive_size_s04_display_xxl_portrait;
-    --responsive_size__CssTable__theme_base: responsive_size_s04_display_xxl_portrait__CssTable__theme_base;
-  }
-}
-
-@media only screen and (min-width: 1921px) and (max-width: 2560px) and (min-height: 1025px) and (max-height: 2560px) and (orientation: landscape) {
-
-  .jsx-css-table-holder {
-    --theme_name: CssTable__theme_base;
-    --theme_name__CssTable: theme_base;
-    --responsive_size: responsive_size_s04_display_xxl_landscape;
-    --responsive_size__CssTable__theme_base: responsive_size_s04_display_xxl_landscape__CssTable__theme_base;
-  }
-}
-
-
-@media only screen and (min-width: 1025px) and (max-width: 3840px) and (min-height: 2561px) and (max-height: 3840px) and (orientation: portrait) {
-
-  .jsx-css-table-holder {
-    --theme_name: CssTable__theme_base;
-    --theme_name__CssTable: theme_base;
-    --responsive_size: responsive_size_s08_display_qhd_portrait;
-    --responsive_size__CssTable__theme_base: responsive_size_s08_display_qhd_portrait__CssTable__theme_base;
-  }
-}
-
-@media only screen and (min-width: 2561px) and (max-width: 3840px) and (min-height: 1025px) and (max-height: 3840px) and (orientation: landscape) {
-
-  .jsx-css-table-holder {
-    --theme_name: CssTable__theme_base;
-    --theme_name__CssTable: theme_base;
-    --responsive_size: responsive_size_s08_display_qhd_landscape;
-    --responsive_size__CssTable__theme_base: responsive_size_s08_display_qhd_landscape__CssTable__theme_base;
-  }
-}
-
-
-@media only screen and (min-width: 1025px) and (max-width: 7680px) and (min-height: 3841px) and (max-height: 7680px) and (orientation: portrait) {
-
-  .jsx-css-table-holder {
-    --theme_name: CssTable__theme_base;
-    --theme_name__CssTable: theme_base;
-    --responsive_size: responsive_size_t04_tv_4k_portrait;
-    --responsive_size__CssTable__theme_base: responsive_size_t04_tv_4k_portrait__CssTable__theme_base;
-  }
-}
-
-@media only screen and (min-width: 3841px) and (max-width: 7680px) and (min-height: 1025px) and (max-height: 7680px) and (orientation: landscape) {
-
-  .jsx-css-table-holder {
-    --theme_name: CssTable__theme_base;
-    --theme_name__CssTable: theme_base;
-    --responsive_size: responsive_size_t04_tv_4k_landscape;
-    --responsive_size__CssTable__theme_base: responsive_size_t04_tv_4k_landscape__CssTable__theme_base;
-  }
-}
-
-
-@media only screen and (min-width: 1025px) and (max-width: 15360px) and (min-height: 7681px) and (max-height: 15360px) and (orientation: portrait) {
-
-  .jsx-css-table-holder {
-    --theme_name: CssTable__theme_base;
-    --theme_name__CssTable: theme_base;
-    --responsive_size: responsive_size_t08_tv_8k_portrait;
-    --responsive_size__CssTable__theme_base: responsive_size_t08_tv_8k_portrait__CssTable__theme_base;
-  }
-}
-
-@media only screen and (min-width: 7681px) and (max-width: 15360px) and (min-height: 1025px) and (max-height: 15360px) and (orientation: landscape) {
-
-  .jsx-css-table-holder {
-    --theme_name: CssTable__theme_base;
-    --theme_name__CssTable: theme_base;
-    --responsive_size: responsive_size_t08_tv_8k_landscape;
-    --responsive_size__CssTable__theme_base: responsive_size_t08_tv_8k_landscape__CssTable__theme_base;
-  }
-}
-
-
-@media only screen and (min-width: 1025px) and (max-width: 25360px) and (min-height: 15361px) and (max-height: 25360px) and (orientation: portrait) {
-
-  .jsx-css-table-holder {
-    --theme_name: CssTable__theme_base;
-    --theme_name__CssTable: theme_base;
-    --responsive_size: responsive_size_t16_tv_16k_portrait;
-    --responsive_size__CssTable__theme_base: responsive_size_t16_tv_16k_portrait__CssTable__theme_base;
-  }
-}
-
-@media only screen and (min-width: 15361px) and (max-width: 25360px) and (min-height: 1025px) and (max-height: 25360px) and (orientation: landscape) {
-
-  .jsx-css-table-holder {
-    --theme_name: CssTable__theme_base;
-    --theme_name__CssTable: theme_base;
-    --responsive_size: responsive_size_t16_tv_16k_landscape;
-    --responsive_size__CssTable__theme_base: responsive_size_t16_tv_16k_landscape__CssTable__theme_base;
-  }
-}
-
-
-@media only screen and (min-width: 1025px) and (max-width: 999999px) and (min-height: 25361px) and (max-height: 999999px) and (orientation: portrait) {
-
-  .jsx-css-table-holder {
-    --theme_name: CssTable__theme_base;
-    --theme_name__CssTable: theme_base;
-    --responsive_size: responsive_size_t99_tv_xxxl_portrait;
-    --responsive_size__CssTable__theme_base: responsive_size_t99_tv_xxxl_portrait__CssTable__theme_base;
-  }
-}
-
-@media only screen and (min-width: 25361px) and (max-width: 999999px) and (min-height: 1025px) and (max-height: 999999px) and (orientation: landscape) {
-
-  .jsx-css-table-holder {
-    --theme_name: CssTable__theme_base;
-    --theme_name__CssTable: theme_base;
-    --responsive_size: responsive_size_t99_tv_xxxl_landscape;
-    --responsive_size__CssTable__theme_base: responsive_size_t99_tv_xxxl_landscape__CssTable__theme_base;
-  }
-}
 
 
 
@@ -503,7 +103,7 @@
 
 
 
-
+  
   --jsx--CssTable--thin--cell--padding-y:                              0.7rem;
 
   --jsx--CssTable--thin--record--padding-top:                          2.4rem;
@@ -566,14 +166,14 @@
 .jsx-css-table-holder {
 
 
-
+  
   --jsx--CssTable--bright--cell--column-label--padding-x: 0.72rem;
 
 
 
 
 
-
+  
   --jsx--CssTable--bright--cell--column-label--padding:                  0.95rem var(--jsx--CssTable--bright--cell--column-label--padding-x);
 
 
@@ -597,7 +197,7 @@
 
 
 
-
+  
   --jsx--CssTable--bright--cell--cell-value--padding:                    0.9rem var(--jsx--CssTable--bright--cell--column-label--padding-x);
 
 
@@ -624,7 +224,7 @@
 
 .jsx-css-table-holder {
 
-
+  
 
   --jsx--CssTable--holder--width:         100%;
   --jsx--CssTable--holder--max-width:     100%;
@@ -636,8 +236,8 @@
 
 
 
-
-
+  
+  
 
   --jsx--CssTable--holder--overflow-x:    auto;
   --jsx--CssTable--holder--overflow-y:    auto;
@@ -647,7 +247,7 @@
 
 
 
-
+  
   --jsx--CssTable--holder--border-radius: 0.5rem;
 
   --jsx--CssTable--border-width:          1px;
@@ -663,40 +263,40 @@
 
 
 
+  
 
-
-
+  
   --jsx--CssTable--cell--font-family:                           "Franklin Gothic Medium", Verdana, sans-serif;
   --jsx--CssTable--cell--background-color:                      #fbfefc;
+  
 
 
 
-
-
+  
   --jsx--CssTable--cell--column-label--font-family:              var(--jsx--CssTable--cell--font-family);
-
+  
 
   --jsx--CssTable--cell--column-label--color:                    #339933;
   --jsx--CssTable--cell--column-label--background-color:         #f2fff2;
 
+  
+
+  
 
 
 
 
 
-
-
-
-
+  
   --jsx--CssTable--cell--cell-value--font-family:                 var(--jsx--CssTable--cell--font-family);
-
+  
 
   --jsx--CssTable--cell--cell-value--color:                       #333;
   --jsx--CssTable--cell--cell-value--background-color:            #fbfefc;
 
+  
 
-
-
+  
 
 
   --jsx--CssTable--cell--cell-value--a--color:                    #226d22;
@@ -1125,7 +725,7 @@
 .jsx-css-table-holder.theme_imaged {
 
 
-
+  
 
 
 
@@ -1142,11 +742,11 @@
 
 
 
+  
 
 
 
-
-
+  
   --jsx--CssTable--cell--cell-value--name--background-position:         0 0;
   --jsx--CssTable--cell--cell-value--name--background-size:             contain;
   --jsx--CssTable--cell--cell-value--name--background-repeat:           no-repeat;
@@ -1163,7 +763,7 @@
 }
 
 .jsx-css-table-holder.theme_imaged .cell.name .cell-mini-image {
-
+  
 
   display:                 flex;
   flex-direction:          row;
@@ -1185,7 +785,7 @@
 }
 
 .jsx-css-table-holder.theme_imaged .cell.name .cell-mini-image .in-cell-mini-image {
-
+  
 
   display:                 block;
 
@@ -1210,7 +810,179 @@
 
 
 
-.jsx.theme_visible_height main.jsx-css-table-holder {
+.jsx-css-table-holder.theme_imaged.theme_imaged_base {
+
+
+  --js-CssTable--cell--cell-value--name--background-image-holder--width:   1.4rem;
+  --js-CssTable--cell--cell-value--name--background-image-holder--height:  1.4rem;
+
+  --js-CssTable--cell--cell-value--name--background-image-holder--padding: 0 0 0 0;
+  --js-CssTable--cell--cell-value--name--background-image-holder--margin:  0 0 0 0.5rem;
+
+  --js-CssTable--cell--cell-value--name--background-image--width:          100%;
+  --js-CssTable--cell--cell-value--name--background-image--height:         100%;
+
+}
+
+
+
+.jsx-css-table-holder.theme_imaged.theme_imaged_base .cell.name .cell-mini-image .in-cell-mini-image {
+  background-image: url("https://cdn.brightday.email/media/images/mini-images/mimetype/Jaisocx/theme_imaged_base/mime_type_base.png");
+}
+
+
+
+
+.jsx-css-table-holder.theme_imaged.theme_imaged_base .cell.name.folder .cell-mini-image .in-cell-mini-image {
+  background-image: url("https://cdn.brightday.email/media/images/mini-images/mimetype/Jaisocx/theme_imaged_base/Folder.png");
+}
+
+
+.jsx-css-table-holder.theme_imaged.theme_imaged_base .cell.name.image_jpeg .cell-mini-image .in-cell-mini-image {
+  background-image: url("https://cdn.brightday.email/media/images/mini-images/mimetype/Jaisocx/theme_imaged_base/image_mime_type.png");
+}
+
+
+.jsx-css-table-holder.theme_imaged.theme_imaged_base .cell.name.image_jpg .cell-mini-image .in-cell-mini-image {
+  background-image: url("https://cdn.brightday.email/media/images/mini-images/mimetype/Jaisocx/theme_imaged_base/image_mime_type.png");
+}
+
+
+.jsx-css-table-holder.theme_imaged.theme_imaged_base .cell.name.image_png .cell-mini-image .in-cell-mini-image {
+  background-image: url("https://cdn.brightday.email/media/images/mini-images/mimetype/Jaisocx/theme_imaged_base/image_mime_type.png");
+}
+
+
+.jsx-css-table-holder.theme_imaged.theme_imaged_base .cell.name.image_icon .cell-mini-image .in-cell-mini-image {
+  background-image: url("https://cdn.brightday.email/media/images/mini-images/mimetype/Jaisocx/theme_imaged_base/image_mime_type.png");
+}
+
+
+.jsx-css-table-holder.theme_imaged.theme_imaged_base .cell.name.image_webp .cell-mini-image .in-cell-mini-image {
+  background-image: url("https://cdn.brightday.email/media/images/mini-images/mimetype/Jaisocx/theme_imaged_base/image_mime_type.png");
+}
+
+
+.jsx-css-table-holder.theme_imaged.theme_imaged_base .cell.name.image_gif .cell-mini-image .in-cell-mini-image {
+  background-image: url("https://cdn.brightday.email/media/images/mini-images/mimetype/Jaisocx/theme_imaged_base/image_mime_type.png");
+}
+
+
+.jsx-css-table-holder.theme_imaged.theme_imaged_base .cell.name.image_svg .cell-mini-image .in-cell-mini-image {
+  background-image: url("https://cdn.brightday.email/media/images/mini-images/mimetype/Jaisocx/theme_imaged_base/image_mime_type.png");
+}
+
+
+
+.jsx-css-table-holder.theme_imaged.theme_imaged_base .cell.name.application_json .cell-mini-image .in-cell-mini-image {
+  background-image: url("https://cdn.brightday.email/media/images/mini-images/mimetype/Jaisocx/theme_imaged_base/javascript_mime_type.png");
+}
+
+
+
+
+
+
+
+
+
+.jsx-css-table-holder.theme_imaged.theme_imaged_base .cell.name.text_html .cell-mini-image .in-cell-mini-image {
+  background-image: url("https://cdn.brightday.email/media/images/mini-images/mimetype/Jaisocx/theme_imaged_base/html_mime_type.png");
+}
+
+
+.jsx-css-table-holder.theme_imaged.theme_imaged_base .cell.name.text_xml .cell-mini-image .in-cell-mini-image {
+  background-image: url("https://cdn.brightday.email/media/images/mini-images/mimetype/Jaisocx/theme_imaged_base/html_mime_type.png");
+}
+
+
+.jsx-css-table-holder.theme_imaged.theme_imaged_base .cell.name.text_plain .cell-mini-image .in-cell-mini-image {
+  background-image: url("https://cdn.brightday.email/media/images/mini-images/mimetype/Jaisocx/theme_imaged_base/text_mime_type.png");
+}
+
+
+.jsx-css-table-holder.theme_imaged.theme_imaged_base .cell.name.text_scss .cell-mini-image .in-cell-mini-image {
+  background-image: url("https://cdn.brightday.email/media/images/mini-images/mimetype/Jaisocx/theme_imaged_base/Green2Css3.png");
+}
+
+
+.jsx-css-table-holder.theme_imaged.theme_imaged_base .cell.name.text_css .cell-mini-image .in-cell-mini-image {
+  background-image: url("https://cdn.brightday.email/media/images/mini-images/mimetype/Jaisocx/theme_imaged_base/Green2Css3.png");
+}
+
+
+.jsx-css-table-holder.theme_imaged.theme_imaged_base .cell.name.text_javascript .cell-mini-image .in-cell-mini-image {
+  background-image: url("https://cdn.brightday.email/media/images/mini-images/mimetype/Jaisocx/theme_imaged_base/javascript_mime_type.png");
+}
+
+
+.jsx-css-table-holder.theme_imaged.theme_imaged_base .cell.name.text_typescript .cell-mini-image .in-cell-mini-image {
+  background-image: url("https://cdn.brightday.email/media/images/mini-images/mimetype/Jaisocx/theme_imaged_base/javascript_mime_type.png");
+}
+
+
+.jsx-css-table-holder.theme_imaged.theme_imaged_base .cell.name.text_markdown .cell-mini-image .in-cell-mini-image {
+  background-image: url("https://cdn.brightday.email/media/images/mini-images/mimetype/Jaisocx/theme_imaged_base/text_mime_type.png");
+}
+
+
+.jsx-css-table-holder.theme_imaged.theme_imaged_base .cell.name.text_java_source .cell-mini-image .in-cell-mini-image {
+  background-image: url("https://cdn.brightday.email/media/images/mini-images/mimetype/Jaisocx/theme_imaged_base/text_mime_type.png");
+}
+
+
+.jsx-css-table-holder.theme_imaged.theme_imaged_base .cell.name.text_java_server_pages_source .cell-mini-image .in-cell-mini-image {
+  background-image: url("https://cdn.brightday.email/media/images/mini-images/mimetype/Jaisocx/theme_imaged_base/text_mime_type.png");
+}
+
+
+.jsx-css-table-holder.theme_imaged.theme_imaged_base .cell.name.application_httpd_php .cell-mini-image .in-cell-mini-image {
+  background-image: url("https://cdn.brightday.email/media/images/mini-images/mimetype/Jaisocx/theme_imaged_base/php_mime_type.png");
+}
+
+
+
+
+.jsx-css-table-holder.theme_imaged.theme_imaged_base .cell.name.video_mp4 .cell-mini-image .in-cell-mini-image {
+  background-image: url("https://cdn.brightday.email/media/images/mini-images/mimetype/Jaisocx/theme_imaged_base/audio_and_video_mime_type.png");
+}
+
+
+.jsx-css-table-holder.theme_imaged.theme_imaged_base .cell.name.video_mpeg .cell-mini-image .in-cell-mini-image {
+  background-image: url("https://cdn.brightday.email/media/images/mini-images/mimetype/Jaisocx/theme_imaged_base/audio_and_video_mime_type.png");
+}
+
+
+.jsx-css-table-holder.theme_imaged.theme_imaged_base .cell.name.video_ogg .cell-mini-image .in-cell-mini-image {
+  background-image: url("https://cdn.brightday.email/media/images/mini-images/mimetype/Jaisocx/theme_imaged_base/audio_and_video_mime_type.png");
+}
+
+
+
+
+.jsx-css-table-holder.theme_imaged.theme_imaged_base .cell.name.audio_mp3 .cell-mini-image .in-cell-mini-image {
+  background-image: url("https://cdn.brightday.email/media/images/mini-images/mimetype/Jaisocx/theme_imaged_base/audio_and_video_mime_type.png");
+}
+
+
+.jsx-css-table-holder.theme_imaged.theme_imaged_base .cell.name.audio_mpeg .cell-mini-image .in-cell-mini-image {
+  background-image: url("https://cdn.brightday.email/media/images/mini-images/mimetype/Jaisocx/theme_imaged_base/audio_and_video_mime_type.png");
+}
+
+
+.jsx-css-table-holder.theme_imaged.theme_imaged_base .cell.name.audio_ogg .cell-mini-image .in-cell-mini-image {
+  background-image: url("https://cdn.brightday.email/media/images/mini-images/mimetype/Jaisocx/theme_imaged_base/audio_and_video_mime_type.png");
+}
+
+
+
+
+
+
+
+
+
+.jsx.theme_visible_height main .jsx-css-table-holder {
 
   flex-grow: 1;
 
@@ -1420,7 +1192,7 @@
   color:                   var(--jsx--CssTable--cell--cell-value--color);
   background-color:        var(--jsx--CssTable--cell--cell-value--background-color);
 
-
+  
   word-break:              normal;
   font-variant:            no-common-ligatures tabular-nums;
 
@@ -1456,19 +1228,19 @@
 
 .jsx-css-table-holder .cell .column-label {
   font-family:             var(--jsx--CssTable--cell--column-label--font-family);
-
+  
 
   color:                   var(--jsx--CssTable--cell--column-label--color);
   background-color:        var(--jsx--CssTable--cell--column-label--background-color);
 
-
+  
 
   display:                 flex;
   flex-direction:          row;
   align-items:             stretch;
   justify-content:         flex-start;
 
-
+  
 
 }
 
@@ -1476,19 +1248,19 @@
 
 .jsx-css-table-holder .cell .cell-value {
   font-family:             var(--jsx--CssTable--cell--cell-value--font-family);
-
+  
 
   color:                   var(--jsx--CssTable--cell--cell-value--color);
   background-color:        var(--jsx--CssTable--cell--cell-value--background-color);
 
-
+  
 
   display:                 flex;
   flex-direction:          row;
   align-items:             stretch;
   justify-content:         flex-start;
 
-
+  
 
 }
 
@@ -1519,7 +1291,7 @@
   }
 
 
-
+  
   .jsx-css-table-holder .jsx-css-table.desktop-columns-labels-holder .row {
     display:                    none;
   }
@@ -1536,11 +1308,11 @@
   }
 
 
+  
+  
 
 
-
-
-
+  
   .jsx-css-table-holder .cell .column-label {
     width:                      var(--jsx--CssTable--thin--cell--column-label--width);
     max-width:                  var(--jsx--CssTable--thin--cell--column-label--width);
@@ -1564,7 +1336,7 @@
   }
 
 
-
+  
   .jsx-css-table-holder .cell:first-of-type .column-label,
   .jsx-css-table-holder .cell:first-of-type .cell-value {
     padding-top:                var(--jsx--CssTable--thin--record--padding-top);
@@ -1577,7 +1349,7 @@
 
 
 
-
+  
   .jsx-css-table-holder .cell .column-label {
     font-family:                var(--jsx--CssTable--thin--cell--column-label--font-family);
     font-size:                  var(--jsx--CssTable--thin--cell--column-label--font-size);
@@ -1591,7 +1363,7 @@
     color:                      var(--jsx--CssTable--thin--cell--column-label--color);
     background-color:           var(--jsx--CssTable--thin--cell--column-label--background-color);
 
-
+    
 
     line-break:                 var(--jsx--CssTable--thin--cell--column-label--line-break);
     word-break:                 var(--jsx--CssTable--thin--cell--column-label--word-break);
@@ -1599,7 +1371,7 @@
   }
 
 
-
+  
   .jsx-css-table-holder .cell .cell-value {
     font-family:                var(--jsx--CssTable--thin--cell--cell-value--font-family);
     font-size:                  var(--jsx--CssTable--thin--cell--cell-value--font-size);
@@ -1613,7 +1385,7 @@
     color:                      var(--jsx--CssTable--thin--cell--cell-value--color);
     background-color:           var(--jsx--CssTable--thin--cell--cell-value--background-color);
 
-
+    
 
     line-break:                 var(--jsx--CssTable--thin--cell--cell-value--line-break);
     word-break:                 var(--jsx--CssTable--thin--cell--cell-value--word-break);
@@ -1637,15 +1409,15 @@
   .jsx-css-table-holder .row {
     display:                   grid;
     grid-template-columns:     var(--jsx--CssTable--bright--grid-template-columns);
-    gap:                       0;
+    gap:                       0; 
   }
 
-
+  
   .jsx-css-table-holder .jsx-css-table:not(.desktop-columns-labels-holder) .row .column-label {
     display:                   none;
   }
 
-
+  
 
   .jsx-css-table-holder .cell:first-of-type {
     border-left-width:         0;
@@ -1654,7 +1426,7 @@
     flex-grow:                 1;
   }
 
-
+  
   .jsx-css-table-holder .jsx-css-table.desktop-columns-labels-holder .row .cell,
   .jsx-css-table-holder .jsx-css-table.desktop-columns-labels-holder .row .cell .column-label {
     width:                    100%;
@@ -1674,7 +1446,7 @@
 
 
 
-
+  
   .jsx-css-table-holder .jsx-css-table.desktop-columns-labels-holder .row .cell .column-label {
     font-family:              var(--jsx--CssTable--bright--cell--column-label--font-family);
     font-size:                var(--jsx--CssTable--bright--cell--column-label--font-size);
@@ -1688,7 +1460,7 @@
     color:                    var(--jsx--CssTable--bright--cell--column-label--color);
     background-color:         var(--jsx--CssTable--bright--cell--column-label--background-color);
 
-
+    
 
     line-break:               var(--jsx--CssTable--bright--cell--column-label--line-break);
     word-break:               var(--jsx--CssTable--bright--cell--column-label--word-break);
@@ -1696,7 +1468,7 @@
   }
 
 
-
+  
   .jsx-css-table-holder .cell .cell-value {
     font-family:              var(--jsx--CssTable--bright--cell--cell-value--font-family);
     font-size:                var(--jsx--CssTable--bright--cell--cell-value--font-size);
@@ -1710,7 +1482,7 @@
     color:                    var(--jsx--CssTable--bright--cell--cell-value--color);
     background-color:         var(--jsx--CssTable--bright--cell--cell-value--background-color);
 
-
+    
 
     line-break:               var(--jsx--CssTable--bright--cell--cell-value--line-break);
     word-break:               var(--jsx--CssTable--bright--cell--cell-value--word-break);

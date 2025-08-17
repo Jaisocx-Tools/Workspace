@@ -1,8 +1,8 @@
 {
-  "name": "@jaisocx/your-package-name",
-  "version": "1.0.0",
+  "name": "@jaisocx/css-clean-start",
+  "version": "1.5.7",
   "description": "",
-  "author": "<Your Name>",
+  "author": "Jaisocx",
   "keywords": [
     "css",
     "styles"
@@ -39,9 +39,6 @@
       "import": "./transpiled/ESNext/webpack.aliases.mjs",
       "require": "./transpiled/CommonJS/webpack.aliases.cjs"
     }
-  },
-  "dependencies": {
-    "@jaisocx/css-clean-start": "~1.5.6"
   }
 }
 
