@@ -429,7 +429,7 @@
       "path": "sites_tools/js_tools/CssTableOrdered",
       "name": "css-table-ordered",
       "update-published": "Sun Aug 17 03:19:18 UTC 2025",
-      "build": true,
+      "build": false,
       "build-simple-enable": true,
       "css-importer": {
         "build": false,
