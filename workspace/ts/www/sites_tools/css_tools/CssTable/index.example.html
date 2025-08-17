@@ -210,7 +210,10 @@
       );
 
       const themeName = buttonNodeClicked.dataset.theme;
-      htmlNode.classList.add( themeName );
+      if ( themeName && ( themeName.length !== 0 ) ) {
+        htmlNode.classList.add( themeName );
+      }
+
       currentButtonNodeClicked = buttonNodeClicked;
       currentButtonNodeClicked.classList.add( "current" );
 
@@ -244,15 +247,9 @@
     }
 
 
+
     // DOCUMENT ONLOAD, INVOKES THE FUNCTION TO PRELOAD THEME FONTS
     document.addEventListener('DOMContentLoaded', () => {
-
-      // const preloader = new Preloader();
-      //   preloader
-      //     .setThemesPreloads( themesPreloads )
-      //     .setWebpackAlias( "@jaisocx-css-table-cdn-fonts" )
-      //     .setWebpackAliasReplace( "https://sandbox.brightday.email/cdn/www/fonts" )
-      //     .init();
 
       // adding to buttons the event handler to turn on the theme.
       addThemeButtonsEventHandlers();

@@ -5,11 +5,13 @@
   <title>mime types object data rendered</title>
 
 
+  <base href="../../" />
+
 
   <meta charset="utf-8" />
   <meta content="width=device-width, initial-scale=1.0" name="viewport" />
 
-  <link rel="stylesheet" href="/sites_tools/css_tools/CssCleanStart_2/MediaAndStyles/CssCleanStart_2_main_resolved_minimal.css" />
+  <link rel="stylesheet" href="css_tools/CssCleanStart_2/MediaAndStyles/CssCleanStart_2_main_resolved_minimal.css" />
 
 
 
@@ -126,7 +128,10 @@
       );
 
       const themeName = buttonNodeClicked.dataset.theme;
-      htmlNode.classList.add( themeName );
+      if ( themeName && ( themeName.length !== 0 ) ) {
+        htmlNode.classList.add( themeName );
+      }
+
       currentButtonNodeClicked = buttonNodeClicked;
       currentButtonNodeClicked.classList.add( "current" );
 

@@ -1,9 +1,19 @@
 /* Sites tool: CssTable, theme: theme_base */
 .jsx-css-table-holder {
 
+  --jsx--CssTable--bright--grid--justify-content:                       start;
+  --jsx--CssTable--bright--grid--align-content:                         start;
+
+  --jsx--CssTable--bright--grid--row--gap:                              0;
+  --jsx--CssTable--bright--grid--row--justify-content:                  start;
+  --jsx--CssTable--bright--grid--row--align-content:                    start;
+
+
+
+
 /* padding */
   /* --jsx--CssTable--bright--cell--padding:                                0.3rem 0.9rem; */
-  --jsx--CssTable--bright--cell--column-label--padding-x: 0.72rem;
+  --jsx--CssTable--bright--cell--column-label--padding-x:                0.72rem;
 
 
 

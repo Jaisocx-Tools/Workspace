@@ -1,53 +1,103 @@
 /* a layout theme */
 
-.jsx-css-table-holder.theme_fixed_columns_labels {
+.jsx main .jsx-css-table-holder.theme_fixed_columns_labels {
 
-  --jsx--CssTable--holder--overflow-x: hidden;
+  --jsx--CssTable--holder--overflow-x: auto;
   --jsx--CssTable--holder--overflow-y: hidden;
 
 
-  --jsx--CssTable--main--overflow-x: auto;
-  --jsx--CssTable--main--overflow-y: auto;
+  --jsx--CssTable--main--overflow-x:   unset;
+  --jsx--CssTable--main--overflow-y:   unset;
 
-  display: flex;
+
+
+  display:          flex;
+  flex-direction:   column;
+  justify-content:  stretch;
+  align-items:      stretch;
+
 }
 
 
 
-.jsx-css-table-holder.theme_fixed_columns_labels .jsx-css-table.desktop-columns-labels-holder {
+.jsx main .jsx-css-table-holder.theme_fixed_columns_labels .jsx-css-table.desktop-columns-labels-holder {
 
-  flex-grow: 0;
-
-
-  width: 100%;
+  width:     100%;
   min-width: 100%;
+  max-width: unset;
 
-  height: fit-content;
+  height:     auto;
   min-height: fit-content;
+  max-height: fit-content;
 
-  overflow: hidden visible;
+  --jsx--CssTable--main--overflow-x: hidden;
+  --jsx--CssTable--main--overflow-y: visible;
 
 }
 
+.jsx main .jsx-css-table-holder.theme_fixed_columns_labels .jsx-css-table.desktop-columns-labels-holder .row {
 
-
-.jsx-css-table-holder.theme_fixed_columns_labels .jsx-css-table.desktop-columns-labels-holder .row {
-
-  width: fit-content;
+  width:     fit-content;
   min-width: 100%;
+  max-width: unset;
 
-  height: fit-content;
+  height:     auto;
   min-height: fit-content;
+  max-height: fit-content;
 
-  overflow: visible visible;
-
+  overflow-x: visible;
 }
 
 
 
-.jsx-css-table-holder.theme_fixed_columns_labels .jsx-css-table.records {
+.jsx main .jsx-css-table-holder.theme_fixed_columns_labels .jsx-css-table.desktop-columns-labels-holder,
+.jsx main .jsx-css-table-holder.theme_fixed_columns_labels .jsx-css-table.desktop-columns-labels-holder .row,
+.jsx main .jsx-css-table-holder.theme_fixed_columns_labels .jsx-css-table.desktop-columns-labels-holder .row .cell {
+
+  /* Hide scrollbar for IE, Edge and Firefox */
+  -ms-overflow-style: none;
+  scrollbar-width:    none;
+
+  overflow-y: visible;
+
+}
+
+.jsx main .jsx-css-table-holder.theme_fixed_columns_labels .jsx-css-table.desktop-columns-labels-holder::-webkit-scrollbar,
+.jsx main .jsx-css-table-holder.theme_fixed_columns_labels .jsx-css-table.desktop-columns-labels-holder .row::-webkit-scrollbar,
+.jsx main .jsx-css-table-holder.theme_fixed_columns_labels .jsx-css-table.desktop-columns-labels-holder .row .cell::-webkit-scrollbar {
+  display: none;
+}
+
+
+
+.jsx main .jsx-css-table-holder.theme_fixed_columns_labels .jsx-css-table.records {
 
   flex-grow: 1;
 
+  width:     100%;
+  min-width: 100%;
+  max-width: unset;
+
+
+/*
+  height:     auto;
+  min-height: fit-content;
+  max-height: fit-content; */
+
+
+  --jsx--CssTable--main--overflow-x: visible;
+  --jsx--CssTable--main--overflow-y: auto;
+
 }
+
+.jsx main .jsx-css-table-holder.theme_fixed_columns_labels .jsx-css-table.records .row {
+  width:     100%;
+  min-width: 100%;
+  max-width: unset;
+
+  overflow-x: visible;
+}
+
+
+
 

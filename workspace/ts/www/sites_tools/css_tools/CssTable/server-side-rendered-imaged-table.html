@@ -4,16 +4,17 @@
 
   <title>Server Side Rendered Imaged Table</title>
 
-  <meta charset="utf-8">
-  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <meta charset="utf-8" />
+  <meta content="width=device-width, initial-scale=1.0" name="viewport" />
 
-
+  <base href="../" />
 
   <!-- importing styles of @jaisocx/css-clean-start -->
-  <link rel="stylesheet" href="/sites_tools/css_tools/CssCleanStart_2/MediaAndStyles/CssCleanStart_2_main_resolved_minimal.css" />
+  <link rel="stylesheet" href="CssCleanStart_2/MediaAndStyles/CssCleanStart_2_main_resolved_minimal.css" />
 
   <!-- importing styles of @jaisocx/css-table installable like this: npm install @jaisocx/css-table -->
-  <link rel="stylesheet" href="/sites_tools/css_tools/CssTable/MediaAndStyles/CssTable_main_resolved_minimal.css" />
+  <!-- <link rel="stylesheet" href="/sites_tools/css_tools/CssTable/MediaAndStyles/CssTable_main_resolved_minimal.css" /> -->
+  <link rel="stylesheet" href="CssTable/MediaAndStyles/CssTable_main_Relative.css" />
 
 
 
@@ -1671,13 +1672,6 @@
   </body>
 
 
-
-
-
-  <script src="transpiled/Simple/scroll/CssTableScroll.js"></script>
-  <script src="transpiled/Simple/orderby/CssTableOrderby.js"></script>
-
-
   <script>
 
     currentButtonNodeClicked = null;
@@ -1715,7 +1709,10 @@
       );
 
       const themeName = buttonNodeClicked.dataset.theme;
-      htmlNode.classList.add( themeName );
+      if ( themeName && ( themeName.length !== 0 ) ) {
+        htmlNode.classList.add( themeName );
+      }
+
       currentButtonNodeClicked = buttonNodeClicked;
       currentButtonNodeClicked.classList.add( "current" );
 
@@ -1748,15 +1745,9 @@
     }
 
 
+
     // DOCUMENT ONLOAD, INVOKES THE FUNCTION TO PRELOAD THEME FONTS
     document.addEventListener('DOMContentLoaded', () => {
-
-      // const preloader = new Preloader();
-      //   preloader
-      //     .setThemesPreloads( themesPreloads )
-      //     .setWebpackAlias( "@jaisocx-css-table-cdn-fonts" )
-      //     .setWebpackAliasReplace( "https://sandbox.brightday.email/cdn/www/fonts" )
-      //     .init();
 
       // adding to buttons the event handler to turn on the theme.
       addThemeButtonsEventHandlers();
@@ -1765,34 +1756,5 @@
 
   </script>
 
-
-
-  <script>
-
-    let orderbyClassInstance = new Object();
-
-    function addScrollEventHandlers() {
-      cssTableScrollInstance = new CssTableScroll();
-      cssTableScrollInstance.addScrollEventHandlers();
-    }
-
-    function addOrderbyEventHandler() {
-      orderbyClassInstance = new CssTableOrderby();
-        orderbyClassInstance.setRowsNumberNotOrdered( 1 );
-      let eventHandlerRetval = orderbyClassInstance.addOrderbyEventHandler();
-    }
-
-
-
-    // DOCUMENT ONLOAD
-    document.addEventListener('DOMContentLoaded', () => {
-
-      addScrollEventHandlers();
-
-      addOrderbyEventHandler();
-
-    });
-
-  </script>
-
 </html>
+

@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="en" class="jsx theme_visible_height">
+<head>
+
+  <title>js orderby and sticky scroll</title>
+
+  <meta charset="utf-8" />
+  <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+
+
+
+  <base href="../../" />
+
+  <link rel="stylesheet" href="css_tools/CssCleanStart_2/MediaAndStyles/CssCleanStart_2_main_resolved_minimal.css" />
+  <link rel="stylesheet" href="css_tools/CssTable/MediaAndStyles/CssTable_main_relative.css" />
+
+
+
+  <link rel="stylesheet" href="js_tools/CssTableOrdered/MediaAndStyles/themes/theme_fixed_columns_labels/theme_fixed_columns_labels.css" />
+  <!-- <link rel="stylesheet" href="js_tools/CssTableOrdered/MediaAndStyles/themes/theme_jaisocx_folder_listing/CssTable_theme_jaisocx_folder_listing_Relative.css" /> -->
+
+
+
+  <style>
+
+    .jsx {
+      --jsx--css-clean-start-2--h1--font-size: 1.05rem;
+      --jsx--css-clean-start-2--h2--font-size: 0.9rem;
+
+      --theme-button-width: fit-content;
+    }
+
+    .jsx themebuttons {
+      width: fit-content;
+      display: grid;
+      grid-auto-flow: column;
+      column-gap: 3rem;
+      margin: 0.9rem 0px 1.6rem 0px;
+    }
+
+    .jsx themebuttons button {
+      width: var(--theme-button-width);
+    }
+
+    .current::after {
+      content: "";
+      position: absolute;
+      bottom: -0.3rem;
+      left: 0;
+      width: 100%;
+      height: 0;
+      max-height: 0;
+      overflow-y: hidden;
+      border-bottom-width: 0.14rem;
+      border-bottom-style: solid;
+      border-bottom-color: var(--clean-start__text-color);
+    }
+
+    .jsx button {
+      background-color: transparent;
+      text-align: left;
+    }
+
+    #tooltip-button {
+      font-family: fantasy;
+    }
+
+  </style>
+</head>
+<body>
+
+  <main>
+
+    <content>
+
+      <h1>js orderby and sticky scroll</h1>
+      <h2>@jaisocx/css-table-ordered</h1>
+
+      <ThemeButtons>
+        <button id="button-turn-on-base-theme" data-theme="">Base Theme</button>
+        <button id="button-turn-on-daymode" data-theme="theme_lightmode">Day Mode</button>
+        <button id="button-turn-on-nightmode" data-theme="theme_darkmode">Night Mode</button>
+      </ThemeButtons>
+
+    </content>
+
+
+        <!--starts markup of the table styled by @jaisocx/css-table-ordered npm package-->
+        <!--@jaisocx/css-table-ordered extends @jaisocx/css-table having one js class to orderby records in the table, onevent click label of the table column-->
+        <div class="jsx-css-table-holder jaisocx-folder-listing-columns theme_fixed_columns_labels theme_imaged theme_imaged_base">
+          <div class="jsx-css-table desktop-columns-labels-holder">
+
+            <!--the first table record with the names of the table columns, shown in the table bright mode-->
+            <div class="row">
+
+              <div class="cell" data-datatype="number" data-id="0"><span class="column-label">num.</span></div>
+
+              <div class="cell" data-datatype="string" data-id="1"><span class="column-label">Name</span></div>
+
+              <div class="cell" data-datatype="string" data-id="2"><span class="column-label">mime</span></div>
+
+              <div class="cell" data-datatype="number" data-id="3"><span class="column-label">size</span></div>
+
+              <div class="cell" data-datatype="string" data-id="4"><span class="column-label">last modified</span></div>
+
+              <div class="cell" data-datatype="string" data-id="5"><span class="column-label">url relative</span></div>
+
+            </div>
+          </div>
+          <div class="jsx-css-table records">
+
+
+            <!--table record with props of one file in the current folder-->
+            <div class="row folder">
+
+              <div class="cell ix number folder table-thin-field-hide-mobile table-thin-field-hide-tablet">
+                <span class="column-label">num.</span>
+                <span class="cell-mini-image"><span class="in-cell-mini-image"></span></span>
+                <span class="cell-value">0</span>
+              </div>
+
+              <div class="cell name string folder  ">
+                <span class="column-label">Name</span>
+                <span class="cell-mini-image"><span class="in-cell-mini-image"></span></span>
+                <span class="cell-value"><a href="https://update-listing-secure.brightday.email:443/">..</a></span>
+              </div>
+
+              <div class="cell mimeType string folder table-thin-field-hide-mobile ">
+                <span class="column-label">mime</span>
+                <span class="cell-mini-image"><span class="in-cell-mini-image"></span></span>
+                <span class="cell-value">folder</span>
+              </div>
+
+              <div class="cell size number folder table-thin-field-hide-mobile ">
+                <span class="column-label">size</span>
+                <span class="cell-mini-image"><span class="in-cell-mini-image"></span></span>
+                <span class="cell-value">0</span>
+              </div>
+
+              <div class="cell fileLastModifiedTimestampFormatted string folder table-thin-field-hide-mobile ">
+                <span class="column-label">last modified</span>
+                <span class="cell-mini-image"><span class="in-cell-mini-image"></span></span>
+                <span class="cell-value">Wed 30 Jul 2025 23:14:53.814 GMT</span>
+              </div>
+
+              <div class="cell fileUrlRelative string folder table-thin-field-hide-mobile table-thin-field-hide-tablet">
+                <span class="column-label">url relative</span>
+                <span class="cell-mini-image"><span class="in-cell-mini-image"></span></span>
+                <span class="cell-value"><a href="https://update-listing-secure.brightday.email:443/">/</a></span>
+              </div>
+
+            </div>
+
+
+            <!--table record with props of one file in the current folder-->
+            <div class="row folder">
+
+              <div class="cell ix number folder table-thin-field-hide-mobile table-thin-field-hide-tablet">
+                <span class="column-label">num.</span>
+                <span class="cell-mini-image"><span class="in-cell-mini-image"></span></span>
+                <span class="cell-value">1</span>
+              </div>
+
+              <div class="cell name string folder  ">
+                <span class="column-label">Name</span>
+                <span class="cell-mini-image"><span class="in-cell-mini-image"></span></span>
+                <span class="cell-value"><a href="https://update-listing-secure.brightday.email:443/several_mime_types/subfolder/">subfolder</a></span>
+              </div>
+
+              <div class="cell mimeType string folder table-thin-field-hide-mobile ">
+                <span class="column-label">mime</span>
+                <span class="cell-mini-image"><span class="in-cell-mini-image"></span></span>
+                <span class="cell-value">folder</span>
+              </div>
+
+              <div class="cell size number folder table-thin-field-hide-mobile ">
+                <span class="column-label">size</span>
+                <span class="cell-mini-image"><span class="in-cell-mini-image"></span></span>
+                <span class="cell-value">0</span>
+              </div>
+
+              <div class="cell fileLastModifiedTimestampFormatted string folder table-thin-field-hide-mobile ">
+                <span class="column-label">last modified</span>
+                <span class="cell-mini-image"><span class="in-cell-mini-image"></span></span>
+                <span class="cell-value">Wed 30 Jul 2025 23:29:30.264 GMT</span>
+              </div>
+
+              <div class="cell fileUrlRelative string folder table-thin-field-hide-mobile table-thin-field-hide-tablet">
+                <span class="column-label">url relative</span>
+                <span class="cell-mini-image"><span class="in-cell-mini-image"></span></span>
+                <span class="cell-value"><a href="https://update-listing-secure.brightday.email:443/several_mime_types/subfolder/">/several_mime_types/subfolder/</a></span>
+              </div>
+
+            </div>
+
+
+            <!--table record with props of one file in the current folder-->
+            <div class="row ">
+
+              <div class="cell ix number image_webp table-thin-field-hide-mobile table-thin-field-hide-tablet">
+                <span class="column-label">num.</span>
+                <span class="cell-mini-image"><span class="in-cell-mini-image"></span></span>
+                <span class="cell-value">2</span>
+              </div>
+
+              <div class="cell name string image_webp  ">
+                <span class="column-label">Name</span>
+                <span class="cell-mini-image"><span class="in-cell-mini-image"></span></span>
+                <span class="cell-value"><a href="https://update-listing-secure.brightday.email:443/several_mime_types/1.sm.webp">1.sm.webp</a></span>
+              </div>
+
+              <div class="cell mimeType string image_webp table-thin-field-hide-mobile ">
+                <span class="column-label">mime</span>
+                <span class="cell-mini-image"><span class="in-cell-mini-image"></span></span>
+                <span class="cell-value">image/webp</span>
+              </div>
+
+              <div class="cell size number image_webp table-thin-field-hide-mobile ">
+                <span class="column-label">size</span>
+                <span class="cell-mini-image"><span class="in-cell-mini-image"></span></span>
+                <span class="cell-value">10474</span>
+              </div>
+
+              <div class="cell fileLastModifiedTimestampFormatted string image_webp table-thin-field-hide-mobile ">
+                <span class="column-label">last modified</span>
+                <span class="cell-mini-image"><span class="in-cell-mini-image"></span></span>
+                <span class="cell-value">Wed 30 Jul 2025 23:26:54.792 GMT</span>
+              </div>
+
+              <div class="cell fileUrlRelative string image_webp table-thin-field-hide-mobile table-thin-field-hide-tablet">
+                <span class="column-label">url relative</span>
+                <span class="cell-mini-image"><span class="in-cell-mini-image"></span></span>
+                <span class="cell-value"><a href="https://update-listing-secure.brightday.email:443/several_mime_types/1.sm.webp">/several_mime_types/1.sm.webp</a></span>
+              </div>
+
+            </div>
+
+
+            <!--table record with props of one file in the current folder-->
+            <div class="row ">
+
+              <div class="cell ix number image_gif table-thin-field-hide-mobile table-thin-field-hide-tablet">
+                <span class="column-label">num.</span>
+                <span class="cell-mini-image"><span class="in-cell-mini-image"></span></span>
+                <span class="cell-value">3</span>
+              </div>
+
+              <div class="cell name string image_gif  ">
+                <span class="column-label">Name</span>
+                <span class="cell-mini-image"><span class="in-cell-mini-image"></span></span>
+                <span class="cell-value"><a href="https://update-listing-secure.brightday.email:443/several_mime_types/app-icon-16x16.gif">app-icon-16x16.gif</a></span>
+              </div>
+
+              <div class="cell mimeType string image_gif table-thin-field-hide-mobile ">
+                <span class="column-label">mime</span>
+                <span class="cell-mini-image"><span class="in-cell-mini-image"></span></span>
+                <span class="cell-value">image/gif</span>
+              </div>
+
+              <div class="cell size number image_gif table-thin-field-hide-mobile ">
+                <span class="column-label">size</span>
+                <span class="cell-mini-image"><span class="in-cell-mini-image"></span></span>
+                <span class="cell-value">1039</span>
+              </div>
+
+              <div class="cell fileLastModifiedTimestampFormatted string image_gif table-thin-field-hide-mobile ">
+                <span class="column-label">last modified</span>
+                <span class="cell-mini-image"><span class="in-cell-mini-image"></span></span>
+                <span class="cell-value">Wed 30 Jul 2025 23:41:37.270 GMT</span>
+              </div>
+
+              <div class="cell fileUrlRelative string image_gif table-thin-field-hide-mobile table-thin-field-hide-tablet">
+                <span class="column-label">url relative</span>
+                <span class="cell-mini-image"><span class="in-cell-mini-image"></span></span>
+                <span class="cell-value"><a href="https://update-listing-secure.brightday.email:443/several_mime_types/app-icon-16x16.gif">/several_mime_types/app-icon-16x16.gif</a></span>
+              </div>
+
+            </div>
+
+
+            <!--table record with props of one file in the current folder-->
+            <div class="row ">
+
+              <div class="cell ix number image_png table-thin-field-hide-mobile table-thin-field-hide-tablet">
+                <span class="column-label">num.</span>
+                <span class="cell-mini-image"><span class="in-cell-mini-image"></span></span>
+                <span class="cell-value">4</span>
+              </div>
+
+              <div class="cell name string image_png  ">
+                <span class="column-label">Name</span>
+                <span class="cell-mini-image"><span class="in-cell-mini-image"></span></span>
+                <span class="cell-value"><a href="https://update-listing-secure.brightday.email:443/several_mime_types/app-icon-16x16.png">app-icon-16x16.png</a></span>
+              </div>
+
+              <div class="cell mimeType string image_png table-thin-field-hide-mobile ">
+                <span class="column-label">mime</span>
+                <span class="cell-mini-image"><span class="in-cell-mini-image"></span></span>
+                <span class="cell-value">image/png</span>
+              </div>
+
+              <div class="cell size number image_png table-thin-field-hide-mobile ">
+                <span class="column-label">size</span>
+                <span class="cell-mini-image"><span class="in-cell-mini-image"></span></span>
+                <span class="cell-value">1255</span>
+              </div>
+
+              <div class="cell fileLastModifiedTimestampFormatted string image_png table-thin-field-hide-mobile ">
+                <span class="column-label">last modified</span>
+                <span class="cell-mini-image"><span class="in-cell-mini-image"></span></span>
+                <span class="cell-value">Wed 30 Jul 2025 23:41:37.273 GMT</span>
+              </div>
+
+              <div class="cell fileUrlRelative string image_png table-thin-field-hide-mobile table-thin-field-hide-tablet">
+                <span class="column-label">url relative</span>
+                <span class="cell-mini-image"><span class="in-cell-mini-image"></span></span>
+                <span class="cell-value"><a href="https://update-listing-secure.brightday.email:443/several_mime_types/app-icon-16x16.png">/several_mime_types/app-icon-16x16.png</a></span>
+              </div>
+
+            </div>
+
+          <!--table records finished-->
+
+          </div>
+        </div>
+        <!--@jaisocx/css-table-ordered markup finished-->
+
+
+  </main>
+
+  </body>
+
+
+
+
+
+  <script src="js_tools/CssTableOrdered/transpiled/Simple/scroll/CssTableScroll.js"></script>
+  <script src="js_tools/CssTableOrdered/transpiled/Simple/orderby/CssTableOrderby.js"></script>
+
+
+  <script>
+
+    currentButtonNodeClicked = null;
+
+
+    let cssClassesNames = [
+      "jsx",
+      "theme_visible_height"
+    ];
+
+
+
+    // declaring the function, this is used in the event handler of the theme turning button when clicked on this button.
+    function turnOnTheme ( buttonNodeClicked ) {
+
+      if ( currentButtonNodeClicked !==  null ) {
+        currentButtonNodeClicked.classList.remove( "current" );
+      }
+
+      const htmlNode = document.getElementsByTagName("html")[0];
+      const htmlNodeClassList = htmlNode.classList;
+
+      const themeCssClassPrefix = "theme";
+
+      htmlNodeClassList.forEach (
+        (cssClassName) => {
+          if ( cssClassesNames.includes( cssClassName ) ) {
+            return;
+          }
+
+          if ( cssClassName.startsWith( themeCssClassPrefix ) === true ) {
+            htmlNodeClassList.remove( cssClassName );
+          }
+        }
+      );
+
+      const themeName = buttonNodeClicked.dataset.theme;
+      if ( themeName && ( themeName.length !== 0 ) ) {
+        htmlNode.classList.add( themeName );
+      }
+
+      currentButtonNodeClicked = buttonNodeClicked;
+      currentButtonNodeClicked.classList.add( "current" );
+
+    }
+
+    // declaring the function, this adds to buttons the event handler to turn on the theme.
+    // this function is invoked when the site loads in the browser,
+    // in the event handler for the event DOMContentLoaded
+    function addThemeButtonsEventHandlers() {
+
+      const buttonsIDs = [
+        "button-turn-on-base-theme",
+        "button-turn-on-daymode",
+        "button-turn-on-nightmode"
+      ];
+
+      for ( let buttonId of buttonsIDs ) {
+
+        let buttonNode = document.getElementById( buttonId );
+
+        buttonNode.addEventListener (
+          "click",
+          (evt) => {
+            let buttonNodeClicked = evt.target;
+            turnOnTheme ( buttonNodeClicked );
+          }
+        );
+
+      }
+    }
+
+
+    // DOCUMENT ONLOAD, INVOKES THE FUNCTION TO PRELOAD THEME FONTS
+    document.addEventListener('DOMContentLoaded', () => {
+
+      // adding to buttons the event handler to turn on the theme.
+      addThemeButtonsEventHandlers();
+
+    });
+
+  </script>
+
+
+
+  <script>
+
+    let orderbyClassInstance = new Object();
+
+    function addScrollEventHandlers() {
+      cssTableScrollInstance = new CssTableScroll();
+      cssTableScrollInstance.addScrollEventHandlers();
+    }
+
+    function addOrderbyEventHandler() {
+      orderbyClassInstance = new CssTableOrderby();
+        orderbyClassInstance.setRowsNumberNotOrdered( 1 );
+      let eventHandlerRetval = orderbyClassInstance.addOrderbyEventHandler();
+    }
+
+
+
+    // DOCUMENT ONLOAD
+    document.addEventListener('DOMContentLoaded', () => {
+
+      addScrollEventHandlers();
+
+      addOrderbyEventHandler();
+
+    });
+
+  </script>
+
+</html>

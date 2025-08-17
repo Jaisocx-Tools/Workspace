@@ -10,8 +10,8 @@
   max-width:               var(--jsx--CssTable--holder--max-width);
   min-width:               var(--jsx--CssTable--holder--min-width);
 
-  overflow:                var(--jsx--CssTable--holder--overflow-x) var(--jsx--CssTable--holder--overflow-y);
-
+  overflow-x:              var(--jsx--CssTable--holder--overflow-x);
+  overflow-y:              var(--jsx--CssTable--holder--overflow-y);
 
   border-radius:           var(--jsx--CssTable--holder--border-radius);
   border:                  var(--jsx--CssTable--holder--border);
@@ -25,8 +25,8 @@
   max-width:               var(--jsx--CssTable--main--max-width);
   min-width:               var(--jsx--CssTable--main--min-width);
 
-  overflow-y:              var(--jsx--CssTable--main--overflow-y);
   overflow-x:              var(--jsx--CssTable--main--overflow-x);
+  overflow-y:              var(--jsx--CssTable--main--overflow-y);
 
   border:                  var(--jsx--CssTable--main--border);
 }
@@ -67,7 +67,8 @@
 /* CELL VALUE LOOK AND FEEL PRETTIFYING */
 .jsx-css-table-holder .cell span {
   display:                 block;
-  overflow:                hidden;
+  overflow-x:              hidden;
+  overflow-y:              hidden;
 }
 
 .jsx .jsx-css-table-holder a {

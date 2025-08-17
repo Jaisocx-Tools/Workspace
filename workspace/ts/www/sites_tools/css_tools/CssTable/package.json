@@ -1,6 +1,6 @@
 {
   "name": "@jaisocx/css-table",
-  "version": "3.2.2",
+  "version": "3.2.4",
   "description": "",
   "author": "Jaisocx",
   "keywords": [
@@ -12,6 +12,8 @@
     "server-side-rendered-imaged-table.html",
 
     "MediaAndStyles/*.css",
+    "MediaAndStyles/presets",
+    "MediaAndStyles/columns",
     "MediaAndStyles/themes",
 
     "transpiled/CommonJS",

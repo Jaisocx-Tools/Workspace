@@ -165,9 +165,19 @@
 
 .jsx-css-table-holder {
 
+  --jsx--CssTable--bright--grid--justify-content:                       start;
+  --jsx--CssTable--bright--grid--align-content:                         start;
+
+  --jsx--CssTable--bright--grid--row--gap:                              0;
+  --jsx--CssTable--bright--grid--row--justify-content:                  start;
+  --jsx--CssTable--bright--grid--row--align-content:                    start;
+
+
+
+
 
   
-  --jsx--CssTable--bright--cell--column-label--padding-x: 0.72rem;
+  --jsx--CssTable--bright--cell--column-label--padding-x:                0.72rem;
 
 
 
@@ -1404,12 +1414,16 @@
   .jsx-css-table-holder .jsx-css-table {
     display:                   grid;
     grid-template-columns:     100%;
+    justify-content:           var(--jsx--CssTable--bright--grid--justify-content);
+    align-content:             var(--jsx--CssTable--bright--grid--align-content);
   }
 
   .jsx-css-table-holder .row {
     display:                   grid;
     grid-template-columns:     var(--jsx--CssTable--bright--grid-template-columns);
-    gap:                       0; 
+    gap:                       var(--jsx--CssTable--bright--grid--row--gap);
+    justify-content:           var(--jsx--CssTable--bright--grid--row--justify-content);
+    align-content:             var(--jsx--CssTable--bright--grid--row--align-content);
   }
 
   

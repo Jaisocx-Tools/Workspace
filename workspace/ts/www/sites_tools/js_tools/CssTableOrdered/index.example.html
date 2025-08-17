@@ -9,13 +9,15 @@
 
 
 
-  <link rel="stylesheet" href="/sites_tools/css_tools/CssCleanStart_2/MediaAndStyles/CssCleanStart_2_main_resolved_minimal.css" />
-  <link rel="stylesheet" href="/sites_tools/css_tools/CssTable/MediaAndStyles/CssTable_main_resolved_minimal.css" />
+  <base href="../../" />
+
+  <link rel="stylesheet" href="css_tools/CssCleanStart_2/MediaAndStyles/CssCleanStart_2_main_resolved_minimal.css" />
+  <link rel="stylesheet" href="css_tools/CssTable/MediaAndStyles/CssTable_main_relative.css" />
 
 
 
-  <link rel="stylesheet" href="/sites_tools/js_tools/CssTableOrdered/MediaAndStyles/themes/theme_fixed_columns_labels/theme_fixed_columns_labels.css" />
-  <!-- <link rel="stylesheet" href="/sites_tools/js_tools/CssTableOrdered/MediaAndStyles/themes/theme_jaisocx_folder_listing/CssTable_theme_jaisocx_folder_listing_Relative.css" /> -->
+  <link rel="stylesheet" href="js_tools/CssTableOrdered/MediaAndStyles/themes/theme_fixed_columns_labels/theme_fixed_columns_labels.css" />
+  <!-- <link rel="stylesheet" href="js_tools/CssTableOrdered/MediaAndStyles/themes/theme_jaisocx_folder_listing/CssTable_theme_jaisocx_folder_listing_Relative.css" /> -->
 
 
 
@@ -1677,8 +1679,8 @@
 
 
 
-  <script src="transpiled/Simple/scroll/CssTableScroll.js"></script>
-  <script src="transpiled/Simple/orderby/CssTableOrderby.js"></script>
+  <script src="js_tools/CssTableOrdered/transpiled/Simple/scroll/CssTableScroll.js"></script>
+  <script src="js_tools/CssTableOrdered/transpiled/Simple/orderby/CssTableOrderby.js"></script>
 
 
   <script>
@@ -1718,7 +1720,10 @@
       );
 
       const themeName = buttonNodeClicked.dataset.theme;
-      htmlNode.classList.add( themeName );
+      if ( themeName && ( themeName.length !== 0 ) ) {
+        htmlNode.classList.add( themeName );
+      }
+
       currentButtonNodeClicked = buttonNodeClicked;
       currentButtonNodeClicked.classList.add( "current" );
 
@@ -1753,13 +1758,6 @@
 
     // DOCUMENT ONLOAD, INVOKES THE FUNCTION TO PRELOAD THEME FONTS
     document.addEventListener('DOMContentLoaded', () => {
-
-      // const preloader = new Preloader();
-      //   preloader
-      //     .setThemesPreloads( themesPreloads )
-      //     .setWebpackAlias( "@jaisocx-css-table-cdn-fonts" )
-      //     .setWebpackAliasReplace( "https://sandbox.brightday.email/cdn/www/fonts" )
-      //     .init();
 
       // adding to buttons the event handler to turn on the theme.
       addThemeButtonsEventHandlers();

@@ -15,9 +15,9 @@ The jaisocx templates for files listing, https exceptions and others will be ava
 
 
 
-## The latest .tgz archive (v.2.1.7 17th of month August 2025)
+## The latest .tgz archive (v.2.1.8 17th of month August 2025)
 
-[https://sandbox.brightday.email/sites_tools/js_tools/CssTableOrdered/jaisocx-css-table-ordered-2.1.7.tgz](https://sandbox.brightday.email/sites_tools/js_tools/CssTableOrdered/jaisocx-css-table-ordered-2.1.7.tgz)
+[https://sandbox.brightday.email/sites_tools/js_tools/CssTableOrdered/jaisocx-css-table-ordered-2.1.8.tgz](https://sandbox.brightday.email/sites_tools/js_tools/CssTableOrdered/jaisocx-css-table-ordered-2.1.8.tgz)
 
 
 
