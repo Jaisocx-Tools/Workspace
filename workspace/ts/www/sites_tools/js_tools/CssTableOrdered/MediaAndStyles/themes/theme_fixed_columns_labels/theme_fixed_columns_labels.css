@@ -2,54 +2,90 @@
 
 .jsx main .jsx-css-table-holder.theme_fixed_columns_labels {
 
-  --jsx--CssTable--holder--overflow-x: auto;
+  --jsx--CssTable--holder--overflow-x: hidden;
   --jsx--CssTable--holder--overflow-y: hidden;
 
+  --jsx--CssTable--main--overflow-x:   auto;
+  --jsx--CssTable--main--overflow-y:   auto;
 
-  --jsx--CssTable--main--overflow-x:   unset;
-  --jsx--CssTable--main--overflow-y:   unset;
+
+
+  --jsx--CssTable--bright--grid--row--justify-content: stretch;
+  --jsx--CssTable--bright--grid--row--align-content:   stretch;
 
 
 
   display:          flex;
   flex-direction:   column;
-  justify-content:  stretch;
+
+  /* inner elems, table line with columns names and table records are automatique aligned due to flex-grow and flex-shrink */
+  flex-basis:       auto;
+
+  /* css prop value stretch allows to set flex-grow prop. */
   align-items:      stretch;
+  justify-content:  stretch;
 
 }
 
 
 
+/* the first line of the table with labels for columns names */
 .jsx main .jsx-css-table-holder.theme_fixed_columns_labels .jsx-css-table.desktop-columns-labels-holder {
+
+  overflow-x: hidden;
+  overflow-y: hidden;
+
+
+
+  /* the auto size according to the holding elem elem with display: flex row; justify-columns: stretch,
+      in order not to shrink when the table records block with flex-grow: 1 needs more place with overflow: auto; */
+  flex-shrink: 0;
+
+
 
   width:     100%;
   min-width: 100%;
   max-width: unset;
 
-  height:     auto;
-  min-height: fit-content;
-  max-height: fit-content;
 
-  --jsx--CssTable--main--overflow-x: hidden;
-  --jsx--CssTable--main--overflow-y: visible;
+  height:     fit-content;
+  min-height: fit-content;
+  max-height: unset;
 
 }
 
 .jsx main .jsx-css-table-holder.theme_fixed_columns_labels .jsx-css-table.desktop-columns-labels-holder .row {
 
+  overflow-x: hidden;
+  overflow-y: visible;
+
+
+
   width:     fit-content;
   min-width: 100%;
   max-width: unset;
 
-  height:     auto;
+  height:     fit-content;
   min-height: fit-content;
-  max-height: fit-content;
+  max-height: unset;
 
-  overflow-x: visible;
 }
 
 
 
+.jsx main .jsx-css-table-holder.theme_fixed_columns_labels .jsx-css-table.desktop-columns-labels-holder .row .cell {
+
+  height:     auto;
+  min-height: fit-content;
+  max-height: unset;
+
+  overflow-x: hidden;
+  overflow-y: visible;
+}
+
+
+
+/* hides scrollbars, they may appear in some browsers in the first line of the html table. */
 .jsx main .jsx-css-table-holder.theme_fixed_columns_labels .jsx-css-table.desktop-columns-labels-holder,
 .jsx main .jsx-css-table-holder.theme_fixed_columns_labels .jsx-css-table.desktop-columns-labels-holder .row,
 .jsx main .jsx-css-table-holder.theme_fixed_columns_labels .jsx-css-table.desktop-columns-labels-holder .row .cell {
@@ -57,9 +93,6 @@
   /* Hide scrollbar for IE, Edge and Firefox */
   -ms-overflow-style: none;
   scrollbar-width:    none;
-
-  overflow-y: visible;
-
 }
 
 .jsx main .jsx-css-table-holder.theme_fixed_columns_labels .jsx-css-table.desktop-columns-labels-holder::-webkit-scrollbar,
@@ -70,23 +103,22 @@
 
 
 
+
+
+/* the records of the html table */
 .jsx main .jsx-css-table-holder.theme_fixed_columns_labels .jsx-css-table.records {
 
+  --jsx--CssTable--main--overflow-x: auto;
+  --jsx--CssTable--main--overflow-y: auto;
+
+
+
   flex-grow: 1;
+  flex-shrink: 1;
 
   width:     100%;
   min-width: 100%;
   max-width: unset;
-
-
-/*
-  height:     auto;
-  min-height: fit-content;
-  max-height: fit-content; */
-
-
-  --jsx--CssTable--main--overflow-x: visible;
-  --jsx--CssTable--main--overflow-y: auto;
 
 }
 
@@ -97,7 +129,6 @@
 
   overflow-x: visible;
 }
-
 
 
 

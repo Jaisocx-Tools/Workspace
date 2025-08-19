@@ -994,12 +994,10 @@
 
 .jsx.theme_visible_height main .jsx-css-table-holder {
 
-  flex-grow: 1;
+  --jsx--CssTable--holder--overflow-y: hidden;
 
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  justify-content: flex-start;
+  flex-grow: 1;
+  flex-shrink: 1;
 
 }
 
@@ -1157,8 +1155,8 @@
   max-width:               var(--jsx--CssTable--holder--max-width);
   min-width:               var(--jsx--CssTable--holder--min-width);
 
-  overflow:                var(--jsx--CssTable--holder--overflow-x) var(--jsx--CssTable--holder--overflow-y);
-
+  overflow-x:              var(--jsx--CssTable--holder--overflow-x);
+  overflow-y:              var(--jsx--CssTable--holder--overflow-y);
 
   border-radius:           var(--jsx--CssTable--holder--border-radius);
   border:                  var(--jsx--CssTable--holder--border);
@@ -1172,8 +1170,8 @@
   max-width:               var(--jsx--CssTable--main--max-width);
   min-width:               var(--jsx--CssTable--main--min-width);
 
-  overflow-y:              var(--jsx--CssTable--main--overflow-y);
   overflow-x:              var(--jsx--CssTable--main--overflow-x);
+  overflow-y:              var(--jsx--CssTable--main--overflow-y);
 
   border:                  var(--jsx--CssTable--main--border);
 }
@@ -1214,7 +1212,8 @@
 
 .jsx-css-table-holder .cell span {
   display:                 block;
-  overflow:                hidden;
+  overflow-x:              hidden;
+  overflow-y:              hidden;
 }
 
 .jsx .jsx-css-table-holder a {
@@ -1418,6 +1417,15 @@
     align-content:             var(--jsx--CssTable--bright--grid--align-content);
   }
 
+
+  
+
+  
+  .jsx-css-table-holder .jsx-css-table.records .row .column-label {
+    display:                   none;
+  }
+
+
   .jsx-css-table-holder .row {
     display:                   grid;
     grid-template-columns:     var(--jsx--CssTable--bright--grid-template-columns);
@@ -1425,13 +1433,6 @@
     justify-content:           var(--jsx--CssTable--bright--grid--row--justify-content);
     align-content:             var(--jsx--CssTable--bright--grid--row--align-content);
   }
-
-  
-  .jsx-css-table-holder .jsx-css-table:not(.desktop-columns-labels-holder) .row .column-label {
-    display:                   none;
-  }
-
-  
 
   .jsx-css-table-holder .cell:first-of-type {
     border-left-width:         0;

@@ -6,7 +6,7 @@
 
 /* base theme: constants and @media queries */
 @import url("@CssCleanStart_2_MediaAndStyles/themes/theme_base/CssCleanStart_2_theme_base_main.css");
-@import url("@CssCleanStart_2_MediaAndStyles/themes/theme_base/responsive_size_Imports_CssCleanStart_2_theme_base_Webpack_min.css");
+@import url("@CssCleanStart_2_MediaAndStyles/themes/theme_base/responsive_size_Imports_CssCleanStart_2_theme_base_Webpack_minimal.css");
 
 
 /* layout theme */

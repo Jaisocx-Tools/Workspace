@@ -23,8 +23,18 @@
 .jsx.theme_visible_height body main {
   display: flex;
   flex-direction: column;
+
+  flex-basis: auto;
+
   align-items: stretch;
   justify-content: stretch;
+}
+
+
+
+.jsx.theme_visible_height body main > * {
+  flex-shrink: 0;
+  flex-grow: 0;
 }
 
 
