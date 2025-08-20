@@ -3,7 +3,7 @@
 ## npm
 
 ```
-npm install @jaisocx/css-table@3.2.2
+npm install @jaisocx/css-table@3.2.5
 ```
 
 ## Themes in the .css files, webpack and resolved
@@ -55,9 +55,9 @@ the theme .css file with css variables to use the @jaisocx/css-table in an email
 
 
 
-## The latest .tgz archive (v.3.2.4 17th of August 2025)
+## The latest .tgz archive (v.3.2.5 17th of August 2025)
 
-[sandbox.brightday.email/sites_tools/css_tools/CssTable/jaisocx-css-table-3.2.4.tgz](https://sandbox.brightday.email/sites_tools/css_tools/CssTable/jaisocx-css-table-3.2.4.tgz)
+[sandbox.brightday.email/sites_tools/css_tools/CssTable/jaisocx-css-table-3.2.5.tgz](https://sandbox.brightday.email/sites_tools/css_tools/CssTable/jaisocx-css-table-3.2.5.tgz)
 
 
 

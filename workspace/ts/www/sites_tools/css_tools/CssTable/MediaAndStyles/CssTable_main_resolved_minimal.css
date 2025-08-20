@@ -994,7 +994,8 @@
 
 .jsx.theme_visible_height main .jsx-css-table-holder {
 
-  --jsx--CssTable--holder--overflow-y: hidden;
+  --jsx--CssTable--holder--overflow-x: auto;
+  --jsx--CssTable--holder--overflow-y: auto;
 
   flex-grow: 1;
   flex-shrink: 1;

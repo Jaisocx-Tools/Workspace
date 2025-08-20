@@ -1,6 +1,6 @@
 {
   "name": "@jaisocx/css-table-ordered",
-  "version": "2.2.0",
+  "version": "2.2.1",
   "description": "",
   "author": "Jaisocx",
   "keywords": [
@@ -14,16 +14,12 @@
     "jaisocx-folder-listing-preview.html",
     "index.example.html",
     "index.example_3_records.html",
-
     "MediaAndStyles/*.css",
     "MediaAndStyles/themes",
-
     "transpiled/CommonJS",
     "transpiled/ESNext",
     "transpiled/Simple",
-
     "webpack.aliases.json",
-
     "README.md"
   ],
   "private": false,
@@ -46,6 +42,6 @@
   },
   "optionalDependencies": {
     "@jaisocx/css-clean-start-2": "~1.1.2",
-    "@jaisocx/css-table": "^3.2.5"
+    "@jaisocx/css-table": "~3.2.6"
   }
 }
