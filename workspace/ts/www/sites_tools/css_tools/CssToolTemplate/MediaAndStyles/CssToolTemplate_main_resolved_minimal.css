@@ -1,0 +1,91 @@
+
+
+
+
+
+
+.jsx .CssToolTemplate {
+
+  --jsx--css-clean-start-2--all-tags--font-family: LibreFranklin, "Franklin Gothic Medium", Tahoma, Verdana;
+
+
+
+  
+  
+
+
+  
+  
+}
+
+
+
+
+
+
+.jsx .CssToolTemplate.theme_layout_example {
+
+  
+
+
+
+  
+  --jsx--CssToolTemplate--toolHtmlElement--font-size: 1rem;
+
+
+  
+  
+
+
+
+  --jsx--CssToolTemplate--toolHtmlElement--margin: 1rem 0 1rem 0;
+
+  --jsx--CssToolTemplate--toolHtmlElement--padding: 1rem 0 1rem 0;
+  --jsx--CssToolTemplate--toolHtmlElement--class1--padding: 1rem;
+
+  --jsx--CssToolTemplate--toolHtmlElement--class1--font-size: 1.2rem;
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.jsx .CssToolTemplate {
+  background-color: var(--jsx--CssToolTemplate--main--background-color);
+  color:            var(--jsx--CssToolTemplate--main--color);
+
+  padding:          var(--jsx--CssToolTemplate--toolHtmlElement--padding);
+  margin:           var(--jsx--CssToolTemplate--toolHtmlElement--margin);
+  width:            var(--jsx--CssToolTemplate--toolHtmlElement--width);
+}
+
+
+
+.jsx .CssToolTemplate .toolHtmlElement.class1 {
+
+  font-size: var(--jsx--CssToolTemplate--toolHtmlElement--class1--font-size);
+  padding:   var(--jsx--CssToolTemplate--toolHtmlElement--class1--padding);
+
+
+
+  background-color: var(--jsx--CssToolTemplate--toolHtmlElement--class1--background-color);
+  color:            var(--jsx--CssToolTemplate--toolHtmlElement--class1--color);
+
+}
+
+.jsx .CssToolTemplate .toolHtmlElement.class2 {
+
+}
+
+
+

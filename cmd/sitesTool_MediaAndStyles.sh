@@ -53,8 +53,8 @@ fi
   --packagePath="www/packages/SitesToolAutomation" \
   --script="main/produceSitesTool_MediaAndStyles.js" \
       --cssOrJsTool="css" \
-      --sitesToolName="CssTable" \
-      --sitesTool_ThemeName="theme_imaged" \
+      --sitesToolName="CssToolTemplate" \
+      --sitesTool_ThemeName="theme_layout_example" \
       --templatePath="data/templates/css/responsive/responsive_size__mini.css.template" \
       --withSizesCssConstants="no" \
       --justTheme="yes" \

@@ -1,0 +1,29 @@
+/* Sites tool: CssToolTemplate, theme: theme_layout_example */
+.jsx .CssToolTemplate.theme_layout_example {
+
+  /* --jsx--css-clean-start-2--all-tags--font-family: LibreFranklin, "Franklin Gothic Medium"; */
+
+
+
+  /* base theme css var assignment example */
+  --jsx--CssToolTemplate--toolHtmlElement--font-size: 1rem;
+
+
+  /* same, but assigned value of css-clean-start */
+  /* --jsx--CssToolTemplate--toolHtmlElement--font-size: var(--jsx--css-clean-start-2--all-tags--font-size); */
+
+
+
+  --jsx--CssToolTemplate--toolHtmlElement--margin: 1rem 0 1rem 0;
+
+  --jsx--CssToolTemplate--toolHtmlElement--padding: 1rem 0 1rem 0;
+  --jsx--CssToolTemplate--toolHtmlElement--class1--padding: 1rem;
+
+  --jsx--CssToolTemplate--toolHtmlElement--class1--font-size: 1.2rem;
+
+}
+
+
+
+
+

@@ -1,6 +1,10 @@
 /* Sites tool: {{ SitesToolName }}, theme: {{ SitesTool_ThemeName }} */
 .jsx .{{ SitesToolName }}{{ SitesTool_ThemeCssClassName }} {
 
+  --jsx--css-clean-start-2--all-tags--font-family: LibreFranklin, "Franklin Gothic Medium";
+
+
+
   /* base theme css var assignment example */
   --jsx--{{ SitesToolName }}--toolHtmlElement--font-size: 1rem;
 

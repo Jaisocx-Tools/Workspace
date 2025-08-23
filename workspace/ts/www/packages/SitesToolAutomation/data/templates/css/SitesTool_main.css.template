@@ -1,11 +1,11 @@
 /* Main .css file for the sites tool: {{ SitesToolName }} */
 .jsx .{{ SitesToolName }} {
-  background-color: var(--{{ SitesToolName }}--main--background-color);
-  color: var(--{{ SitesToolName }}--main--color);
+  background-color: var(--jsx--{{ SitesToolName }}--main--background-color);
+  color: var(--jsx--{{ SitesToolName }}--main--color);
 }
 
 .jsx .{{ SitesToolName }} .class1 {
-  font-size: var(--{{ SitesToolName }}--toolHtmlElement--font-size);
+  font-size: var(--jsx--{{ SitesToolName }}--toolHtmlElement--font-size);
 }
 
 .jsx .{{ SitesToolName }} .class2 {

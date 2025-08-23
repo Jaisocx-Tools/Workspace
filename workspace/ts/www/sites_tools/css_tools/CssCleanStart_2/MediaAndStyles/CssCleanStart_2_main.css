@@ -392,11 +392,18 @@ html.jsx body main {
   list-style: decimal inside;
 }
 
+.jsx ul ul,
+.jsx ul ol,
+.jsx ol ul,
+.jsx ol ol {
+  margin-left: var(--jsx--css-clean-start-2--ul--margin-left);
+}
+
 
 
 .jsx ul li,
 .jsx ol li {
-  display:         list-item;
+  display:   list-item;
 }
 
 
@@ -419,6 +426,7 @@ html.jsx body main {
 
   list-style-type: none;
   display:         var(--jsx--css-clean-start-2--block-tags--display, block);
+  margin-left:     var(--jsx--css-clean-start-2--all-tags--margin);
 
 }
 

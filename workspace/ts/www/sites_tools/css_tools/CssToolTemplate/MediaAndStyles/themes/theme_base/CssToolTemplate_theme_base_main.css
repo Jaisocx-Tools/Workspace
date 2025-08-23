@@ -1,16 +1,16 @@
 /* Sites tool: CssToolTemplate, theme: theme_base */
-.workspace .CssToolTemplate {
+.jsx .CssToolTemplate {
+
+  --jsx--css-clean-start-2--all-tags--font-family: LibreFranklin, "Franklin Gothic Medium", Tahoma, Verdana;
+
+
 
   /* base theme css var assignment example */
-  --CssToolTemplate--toolHtmlElement--font-size: 1rem;
+  /* --jsx--CssToolTemplate--toolHtmlElement--font-size: 1rem; */
 
 
   /* same, but assigned value of css-clean-start */
-  --CssToolTemplate--toolHtmlElement--font-size: var(--css-clean-start--font-size);
-
-
-  --CssToolTemplate--main--background-color: darkgreen;
-  --CssToolTemplate--main--color: white;
+  /* --jsx--CssToolTemplate--toolHtmlElement--font-size: var(--jsx--css-clean-start-2--all-tags--font-size); */
 }
 
 

@@ -1,0 +1,10 @@
+@media only screen and (min-width: 25361px) and (max-width: 999999px) and (min-height: 1025px) and (max-height: 999999px) and (orientation: landscape) {
+
+  .jsx .CssToolTemplate.theme_layout_example {
+    --theme_name: CssToolTemplate__theme_layout_example;
+    --theme_name__CssToolTemplate: theme_layout_example;
+    --responsive_size: responsive_size_t99_tv_xxxl_landscape;
+    --responsive_size__CssToolTemplate__theme_layout_example: responsive_size_t99_tv_xxxl_landscape__CssToolTemplate__theme_layout_example;
+  }
+}
+

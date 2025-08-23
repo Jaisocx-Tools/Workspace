@@ -9,18 +9,104 @@
 
 
 
+    <!-- <link
+      rel="icon"
+      type="image/x-icon"
+      referrerpolicy="no-referrer"
+      href="https://sandbox.brightday.email/cdn/www/media/images/favicon/Icon_Jaisocx.ico"
+      href-fallback="favicon/Icon_Jaisocx.ico"
+      onerror="javascript: ( () => { console.log( this ); this.onerror = null; this.href = this.getAttribute( 'href-fallback' ); } )();"
+    /> -->
 
-  <!-- <link rel="stylesheet" href="node_modules/@jaisocx/css-clean-start-2/MediaAndStyles/CssCleanStart_2_main_relative.css" /> -->
-  <link rel="stylesheet" href="node_modules/@jaisocx/css-clean-start-2/MediaAndStyles/CssCleanStart_2_main_resolved_minimal.css" />
+    <link
+      rel="icon"
+      type="image/x-icon"
+      referrerpolicy="no-referrer"
+      href="https://sandbox.brightday.email/cdn/www/media/images/favicon/Icon_Sandbox_Brightday.ico"
+      href-fallback="favicon/Icon_Sandbox_Brightday.ico"
+      onerror="javascript: ( () => { console.log( this ); this.onerror = null; this.href = this.getAttribute( 'href-fallback' ); } )();"
+    />
 
 
-  <!-- <link rel="stylesheet" href="node_modules/@jaisocx/css-table/MediaAndStyles/CssTable_main_relative.css" /> -->
-  <link rel="stylesheet" href="node_modules/@jaisocx/css-table/MediaAndStyles/CssTable_main_resolved_minimal.css" />
+
+    <!--# CSS CLEAN START 2: html & css WHEN STARTING A SITE FROM SCRATCH -->
+
+    <!--# importing @jaisocx/css-clean-start-2 IN DEV MODE, TO RESEARCH THE .css STYLES IN BROWSER'S DEV TOOLS IN NETWORKS TAB  -->
+    <!-- <link
+      rel="stylesheet"
+      type="text/css"
+      charset="utf-8"
+      referrerpolicy="no-referrer"
+      href="../css-clean-start-2/MediaAndStyles/CssCleanStart_2_main_relative.css"
+      href-fallback="node_modules/@jaisocx/css-clean-start-2/MediaAndStyles/CssCleanStart_2_main_relative.css"
+      onerror="javascript: ( () => { console.log( this ); this.onerror = null; this.href = this.getAttribute( 'href-fallback' ); } )();"
+    /> -->
+
+    <!--# THE SAME importing @jaisocx/css-clean-start-2 IN PROD MODE, PACKED BY @jaisocx/css-importer TOOL  -->
+    <link
+      rel="stylesheet"
+      type="text/css"
+      charset="utf-8"
+      referrerpolicy="no-referrer"
+      href="../css-clean-start-2/MediaAndStyles/CssCleanStart_2_main_resolved_minimal.css"
+      href-fallback="node_modules/@jaisocx/css-clean-start-2/MediaAndStyles/CssCleanStart_2_main_resolved_minimal.css"
+      onerror="javascript: ( () => { console.log( this ); this.onerror = null; this.href = this.getAttribute( 'href-fallback' ); } )();"
+    />
 
 
 
-  <link rel="stylesheet" href="MediaAndStyles/themes/theme_fixed_columns_labels/theme_fixed_columns_labels.css" />
-  <!-- <link rel="stylesheet" href="MediaAndStyles/themes/theme_jaisocx_folder_listing/CssTable_theme_jaisocx_folder_listing_Relative.css" /> -->
+
+
+    <!--# CSS TABLE: css FOR THE SERVER SIDE PRODUCED TABLE MARKUP -->
+
+    <!--# importing @jaisocx/css-table IN DEV MODE, TO RESEARCH THE .css STYLES IN BROWSER'S DEV TOOLS IN NETWORKS TAB -->
+    <!-- <link
+      rel="stylesheet"
+      type="text/css"
+      charset="utf-8"
+      referrerpolicy="no-referrer"
+      href="../css-table/MediaAndStyles/CssTable_main_relative.css"
+      href-fallback="node_modules/@jaisocx/css-table/MediaAndStyles/CssTable_main_relative.css"
+      onerror="javascript: ( () => { console.log( this ); this.onerror = null; this.href = this.getAttribute( 'href-fallback' ); } )();"
+    /> -->
+
+    <!--# THE SAME importing @jaisocx/css-table IN PROD MODE, PACKED BY @jaisocx/css-importer TOOL  -->
+    <link
+      rel="stylesheet"
+      type="text/css"
+      charset="utf-8"
+      referrerpolicy="no-referrer"
+      href="../css-table/MediaAndStyles/CssTable_main_resolved_minimal.css"
+      href-fallback="node_modules/@jaisocx/css-table/MediaAndStyles/CssTable_main_resolved_minimal.css"
+      onerror="javascript: ( () => { console.log( this ); this.onerror = null; this.href = this.getAttribute( 'href-fallback' ); } )();"
+    />
+
+
+
+
+
+    <!--# CSS TABLE STICKY SCROLL-->
+    <!--# importing theme  in this @jaisocx/css-table-ordered npm package for the table first line columns labels sticky scroll -->
+    <link
+      rel="stylesheet"
+      type="text/css"
+      charset="utf-8"
+      referrerpolicy="no-referrer"
+      href="MediaAndStyles/themes/theme_fixed_columns_labels/theme_fixed_columns_labels.css"
+    />
+
+
+
+    <!--# CSS TABLE MOBILE PORTRAIT FOLDER LISTING -->
+    <!--# importing theme in this @jaisocx/css-table-ordered npm package where mobile portrait fine-tuned for the folder listing view served by the Jaisocx Sites Server -->
+    <!-- <link
+      rel="stylesheet"
+      type="text/css"
+      charset="utf-8"
+      referrerpolicy="no-referrer"
+      href="MediaAndStyles/themes/theme_jaisocx_folder_listing/CssTable_theme_jaisocx_folder_listing_Relative.css"
+    /> -->
+
 
 
 
@@ -1688,8 +1774,7 @@
 
   <script>
 
-    currentButtonNodeClicked = null;
-
+    let currentButtonNodeClicked = null;
 
     let cssClassesNames = [
       "jsx",
@@ -1773,7 +1858,10 @@
 
   <script>
 
-    let orderbyClassInstance = new Object();
+    let cssTableScrollInstance = new Object();
+    let orderbyClassInstance   = new Object();
+
+
 
     function addScrollEventHandlers() {
       cssTableScrollInstance = new CssTableScroll();

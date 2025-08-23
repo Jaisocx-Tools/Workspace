@@ -1,0 +1,25 @@
+
+/* @import url("@CssToolTemplate_MediaAndStyles/responsive_size_Constants.css"); */
+
+
+/* base theme: constants and @media queries */
+@import url("@CssToolTemplate_MediaAndStyles/themes/theme_base/CssToolTemplate_theme_base_main.css");
+/* @import url("@CssToolTemplate_MediaAndStyles/themes/theme_base/responsive_size_Imports_CssToolTemplate_theme_base_Webpack_minimal.css"); */
+
+
+@import url("@CssToolTemplate_MediaAndStyles/themes/theme_layout_example/CssToolTemplate_theme_layout_example_main.css");
+/* @import url("@CssToolTemplate_MediaAndStyles/themes/theme_layout_example/responsive_size_Imports_CssToolTemplate_theme_layout_example_Webpack_minimal.css"); */
+
+/* @import url("@CssToolTemplate_MediaAndStyles/themes/color_themes/color_theme_navy/color_theme_navy.css"); */
+
+/* @import url("@CssToolTemplate_MediaAndStyles/themes/color_themes/color_theme_green_grey/color_theme_green_grey.css"); */
+
+
+/* main css file, css logics with rules set via variables in the theme .css files imported above */
+@import url("@CssToolTemplate_MediaAndStyles/CssToolTemplate_main.css");
+
+
+
+
+
+

@@ -1,0 +1,17 @@
+
+.jsx .CssToolTemplate.color_theme_green_grey {
+
+  --jsx--css-clean-start-2--all-tags--color: white;
+
+
+
+  --jsx--CssToolTemplate--main--background-color: darkgreen;
+  --jsx--CssToolTemplate--main--color: white;
+
+  --jsx--CssToolTemplate--toolHtmlElement--class1--background-color: green;
+  --jsx--CssToolTemplate--toolHtmlElement--class1--color: lime;
+
+}
+
+
+

@@ -1,0 +1,17 @@
+
+.jsx .CssToolTemplate.color_theme_navy {
+
+  --jsx--css-clean-start-2--all-tags--color: white;
+
+
+
+  --jsx--CssToolTemplate--main--background-color: navy;
+  --jsx--CssToolTemplate--main--color: white;
+
+  --jsx--CssToolTemplate--toolHtmlElement--class1--background-color: steelblue;
+  --jsx--CssToolTemplate--toolHtmlElement--class1--color: aqua;
+
+}
+
+
+

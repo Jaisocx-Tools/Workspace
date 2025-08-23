@@ -3,126 +3,126 @@
 
 @font-face {
   font-family: LibreFranklin;
-  src: url("https://sandbox.brightday.email/cdn/www/fonts/LibreFranklin/static/LibreFranklin-Black.ttf") format("truetype");
+  src: url("https://sandbox.brightday.email/cdn/www/fonts/LibreFranklin/static/LibreFranklin-Black.ttf") format("font/ttf");
   font-weight: 900;
   font-style: normal;
 }
 
 @font-face {
   font-family: LibreFranklin;
-  src: url("https://sandbox.brightday.email/cdn/www/fonts/LibreFranklin/static/LibreFranklin-BlackItalic.ttf") format("truetype");
+  src: url("https://sandbox.brightday.email/cdn/www/fonts/LibreFranklin/static/LibreFranklin-BlackItalic.ttf") format("font/ttf");
   font-weight: 900;
   font-style: italic;
 }
 
 @font-face {
   font-family: LibreFranklin;
-  src: url("https://sandbox.brightday.email/cdn/www/fonts/LibreFranklin/static/LibreFranklin-Bold.ttf") format("truetype");
+  src: url("https://sandbox.brightday.email/cdn/www/fonts/LibreFranklin/static/LibreFranklin-Bold.ttf") format("font/ttf");
   font-weight: 700;
   font-style: normal;
 }
 
 @font-face {
   font-family: LibreFranklin;
-  src: url("https://sandbox.brightday.email/cdn/www/fonts/LibreFranklin/static/LibreFranklin-BoldItalic.ttf") format("truetype");
+  src: url("https://sandbox.brightday.email/cdn/www/fonts/LibreFranklin/static/LibreFranklin-BoldItalic.ttf") format("font/ttf");
   font-weight: 700;
   font-style: italic;
 }
 
 @font-face {
   font-family: LibreFranklin;
-  src: url("https://sandbox.brightday.email/cdn/www/fonts/LibreFranklin/static/LibreFranklin-ExtraBold.ttf") format("truetype");
+  src: url("https://sandbox.brightday.email/cdn/www/fonts/LibreFranklin/static/LibreFranklin-ExtraBold.ttf") format("font/ttf");
   font-weight: 800;
   font-style: normal;
 }
 
 @font-face {
   font-family: LibreFranklin;
-  src: url("https://sandbox.brightday.email/cdn/www/fonts/LibreFranklin/static/LibreFranklin-ExtraBoldItalic.ttf") format("truetype");
+  src: url("https://sandbox.brightday.email/cdn/www/fonts/LibreFranklin/static/LibreFranklin-ExtraBoldItalic.ttf") format("font/ttf");
   font-weight: 800;
   font-style: italic;
 }
 
 @font-face {
   font-family: LibreFranklin;
-  src: url("https://sandbox.brightday.email/cdn/www/fonts/LibreFranklin/static/LibreFranklin-ExtraLight.ttf") format("truetype");
+  src: url("https://sandbox.brightday.email/cdn/www/fonts/LibreFranklin/static/LibreFranklin-ExtraLight.ttf") format("font/ttf");
   font-weight: 200;
   font-style: normal;
 }
 
 @font-face {
   font-family: LibreFranklin;
-  src: url("https://sandbox.brightday.email/cdn/www/fonts/LibreFranklin/static/LibreFranklin-ExtraLightItalic.ttf") format("truetype");
+  src: url("https://sandbox.brightday.email/cdn/www/fonts/LibreFranklin/static/LibreFranklin-ExtraLightItalic.ttf") format("font/ttf");
   font-weight: 200;
   font-style: italic;
 }
 
 @font-face {
   font-family: LibreFranklin;
-  src: url("https://sandbox.brightday.email/cdn/www/fonts/LibreFranklin/static/LibreFranklin-Italic.ttf") format("truetype");
+  src: url("https://sandbox.brightday.email/cdn/www/fonts/LibreFranklin/static/LibreFranklin-Italic.ttf") format("font/ttf");
   font-weight: 400;
   font-style: italic;
 }
 
 @font-face {
   font-family: LibreFranklin;
-  src: url("https://sandbox.brightday.email/cdn/www/fonts/LibreFranklin/static/LibreFranklin-Light.ttf") format("truetype");
+  src: url("https://sandbox.brightday.email/cdn/www/fonts/LibreFranklin/static/LibreFranklin-Light.ttf") format("font/ttf");
   font-weight: 300;
   font-style: normal;
 }
 
 @font-face {
   font-family: LibreFranklin;
-  src: url("https://sandbox.brightday.email/cdn/www/fonts/LibreFranklin/static/LibreFranklin-LightItalic.ttf") format("truetype");
+  src: url("https://sandbox.brightday.email/cdn/www/fonts/LibreFranklin/static/LibreFranklin-LightItalic.ttf") format("font/ttf");
   font-weight: 300;
   font-style: italic;
 }
 
 @font-face {
   font-family: LibreFranklin;
-  src: url("https://sandbox.brightday.email/cdn/www/fonts/LibreFranklin/static/LibreFranklin-Medium.ttf") format("truetype");
+  src: url("https://sandbox.brightday.email/cdn/www/fonts/LibreFranklin/static/LibreFranklin-Medium.ttf") format("font/ttf");
   font-weight: 500;
   font-style: normal;
 }
 
 @font-face {
   font-family: LibreFranklin;
-  src: url("https://sandbox.brightday.email/cdn/www/fonts/LibreFranklin/static/LibreFranklin-MediumItalic.ttf") format("truetype");
+  src: url("https://sandbox.brightday.email/cdn/www/fonts/LibreFranklin/static/LibreFranklin-MediumItalic.ttf") format("font/ttf");
   font-weight: 500;
   font-style: italic;
 }
 
 @font-face {
   font-family: LibreFranklin;
-  src: url("https://sandbox.brightday.email/cdn/www/fonts/LibreFranklin/static/LibreFranklin-Regular.ttf") format("truetype");
+  src: url("https://sandbox.brightday.email/cdn/www/fonts/LibreFranklin/static/LibreFranklin-Regular.ttf") format("font/ttf");
   font-weight: 400;
   font-style: normal;
 }
 
 @font-face {
   font-family: LibreFranklin;
-  src: url("https://sandbox.brightday.email/cdn/www/fonts/LibreFranklin/static/LibreFranklin-SemiBold.ttf") format("truetype");
+  src: url("https://sandbox.brightday.email/cdn/www/fonts/LibreFranklin/static/LibreFranklin-SemiBold.ttf") format("font/ttf");
   font-weight: 600;
   font-style: normal;
 }
 
 @font-face {
   font-family: LibreFranklin;
-  src: url("https://sandbox.brightday.email/cdn/www/fonts/LibreFranklin/static/LibreFranklin-SemiBoldItalic.ttf") format("truetype");
+  src: url("https://sandbox.brightday.email/cdn/www/fonts/LibreFranklin/static/LibreFranklin-SemiBoldItalic.ttf") format("font/ttf");
   font-weight: 600;
   font-style: italic;
 }
 
 @font-face {
   font-family: LibreFranklin;
-  src: url("https://sandbox.brightday.email/cdn/www/fonts/LibreFranklin/static/LibreFranklin-Thin.ttf") format("truetype");
+  src: url("https://sandbox.brightday.email/cdn/www/fonts/LibreFranklin/static/LibreFranklin-Thin.ttf") format("font/ttf");
   font-weight: 100;
   font-style: normal;
 }
 
 @font-face {
   font-family: LibreFranklin;
-  src: url("https://sandbox.brightday.email/cdn/www/fonts/LibreFranklin/static/LibreFranklin-ThinItalic.ttf") format("truetype");
+  src: url("https://sandbox.brightday.email/cdn/www/fonts/LibreFranklin/static/LibreFranklin-ThinItalic.ttf") format("font/ttf");
   font-weight: 100;
   font-style: italic;
 }

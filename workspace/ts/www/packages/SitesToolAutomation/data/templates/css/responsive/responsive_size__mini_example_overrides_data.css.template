@@ -1,6 +1,6 @@
 @media only screen and (min-width: {{ min-width }}px) and (max-width: {{ max-width }}px) and (min-height: {{ min-height }}px) and (max-height: {{ max-height }}px) and (orientation: {{ orientation }}) {
 
-  .jsx {
+  .jsx .{{ SitesToolName }}{{ SitesTool_ThemeCssClassName }} {
     --theme_name: {{ SitesToolName }}__{{ SitesTool_ThemeName }};
     --theme_name__{{ SitesToolName }}: {{ SitesTool_ThemeName }};
     {{ responsiveSizeConstantName }}: {{ responsiveSizeName }};

@@ -6,7 +6,28 @@
 
 
 
-## News: 21th of June 2025
+## News: 21st of August 2025
+
+### 1. new bash script to install with npm and preview in browser a sites tool's index.example.html
+
+#### Read docs
+
+[Docs are here: install_sites_tool_with_preview.md](./install_sites_tool_with_preview.md)
+
+
+#### Try
+
+You need to change the path where to install a sites tool, the last arg `"/home/user/projects/preview"`
+
+```bash
+./cmd/install_and_view_sites_tool.sh "@jaisocx/css-table-ordered" "latest" "/home/user/projects/preview"
+```
+
+
+
+
+
+## News: 21st of June 2025
 
 ### ResponsiveSizes updated
 

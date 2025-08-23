@@ -1,6 +1,6 @@
 {
   "name": "@jaisocx/css-table",
-  "version": "3.2.7",
+  "version": "3.2.9",
   "description": "",
   "author": "Jaisocx",
   "keywords": [
@@ -42,7 +42,7 @@
     }
   },
   "optionalDependencies": {
-    "@jaisocx/css-clean-start-2": "~1.1.2"
+    "@jaisocx/css-clean-start-2": "~1.1.4"
   }
 }
 

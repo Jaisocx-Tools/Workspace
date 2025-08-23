@@ -1,14 +1,28 @@
 /* Main .css file for the sites tool: CssToolTemplate */
-.workspace .CssToolTemplate {
-  background-color: var(--CssToolTemplate--main--background-color);
-  color: var(--CssToolTemplate--main--color);
+.jsx .CssToolTemplate {
+  background-color: var(--jsx--CssToolTemplate--main--background-color);
+  color:            var(--jsx--CssToolTemplate--main--color);
+
+  padding:          var(--jsx--CssToolTemplate--toolHtmlElement--padding);
+  margin:           var(--jsx--CssToolTemplate--toolHtmlElement--margin);
+  width:            var(--jsx--CssToolTemplate--toolHtmlElement--width);
 }
 
-.workspace .CssToolTemplate .class1 {
-  font-size: var(--CssToolTemplate--toolHtmlElement--font-size);
+
+
+.jsx .CssToolTemplate .toolHtmlElement.class1 {
+
+  font-size: var(--jsx--CssToolTemplate--toolHtmlElement--class1--font-size);
+  padding:   var(--jsx--CssToolTemplate--toolHtmlElement--class1--padding);
+
+
+
+  background-color: var(--jsx--CssToolTemplate--toolHtmlElement--class1--background-color);
+  color:            var(--jsx--CssToolTemplate--toolHtmlElement--class1--color);
+
 }
 
-.workspace .CssToolTemplate .class2 {
+.jsx .CssToolTemplate .toolHtmlElement.class2 {
 
 }
 

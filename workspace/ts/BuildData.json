@@ -286,6 +286,20 @@
       "build-files": []
     },
     {
+      "path": "sites_tools/css_tools/CssToolTemplate",
+      "name": "css-tool-template",
+      "update-published": "",
+      "build": false,
+      "build-simple-enable": false,
+      "css-importer": {
+        "build": false,
+        "cssFilePath": "MediaAndStyles/CssToolTemplate_main_Webpack.css",
+        "cssTargetFilePath": "MediaAndStyles/CssToolTemplate_main_resolved.css"
+      },
+      "dependencies": [],
+      "build-files": []
+    },
+    {
       "ready-to-use": false,
       "path": "packages/WorkspaceTreeWalker",
       "name": "workspace-tree-walker",
