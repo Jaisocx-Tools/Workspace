@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en" class="jsc">
+<head>
+
+  <title>Css Code Snippet</title>
+
+  <base href="./">
+
+  <meta charset="utf-8" />
+  <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+
+
+
+    <!--# FAVICON -->
+    <!-- <link
+      rel="icon"
+      type="image/x-icon"
+      href="https://sandbox.brightday.email/cdn/www/media/images/favicon/Icon_Jaisocx.ico"
+      href-fallback="favicon/Icon_Jaisocx.ico"
+      onerror="javascript: ( () => { console.log( this ); this.onerror = null; this.href = this.getAttribute( 'href-fallback' ); } )();"
+    /> -->
+
+    <link
+      rel="icon"
+      type="image/x-icon"
+      href="https://sandbox.brightday.email/cdn/www/media/images/favicon/Icon_Sandbox_Brightday.ico"
+      href-fallback="favicon/Icon_Sandbox_Brightday.ico"
+      onerror="javascript: ( () => { console.log( this ); this.onerror = null; this.href = this.getAttribute( 'href-fallback' ); } )();"
+    />
+
+
+
+    <!--# FONTS PRELOAD WITHOUT JAVASCRIPT CALL -->
+    <link
+      fetchpriority="high"
+      rel="preload"
+      as="font"
+      type="font/ttf"
+      href="https://sandbox.brightday.email/cdn/www/fonts/LibreFranklin/static/LibreFranklin-SemiBold.ttf"
+    />
+
+    <link
+      fetchpriority="high"
+      rel="preload"
+      as="font"
+      type="font/ttf"
+      href="https://sandbox.brightday.email/cdn/www/fonts/LibreFranklin/static/LibreFranklin-Regular.ttf"
+    />
+
+    <!--# CSS FOR FONTS -->
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://sandbox.brightday.email/cdn/www/fonts_css/font_LibreFranklin_cdn.css"
+    />
+
+
+
+    <!--# CSS CLEAN START 2: html & css WHEN STARTING A SITE FROM SCRATCH -->
+
+    <!--# importing @jaisocx/css-clean-start-2 IN DEV MODE, TO RESEARCH THE .css STYLES IN BROWSER'S DEV TOOLS IN NETWORKS TAB  -->
+    <!-- <link
+      rel="stylesheet"
+      type="text/css"
+      charset="utf-8"
+      href="../css-clean-start-2/MediaAndStyles/CssCleanStart_2_main_relative.css"
+      href-fallback="node_modules/@jaisocx/css-clean-start-2/MediaAndStyles/CssCleanStart_2_main_relative.css"
+      onerror="javascript: ( () => { console.log( this ); this.onerror = null; this.href = this.getAttribute( 'href-fallback' ); } )();"
+    /> -->
+
+    <!--# THE SAME importing @jaisocx/css-clean-start-2 IN PROD MODE, PACKED BY @jaisocx/css-importer TOOL  -->
+    <link
+      rel="stylesheet"
+      type="text/css"
+      charset="utf-8"
+      href="../css-clean-start-2/MediaAndStyles/CssCleanStart_2_main_resolved_minimal.css"
+      href-fallback="node_modules/@jaisocx/css-clean-start-2/MediaAndStyles/CssCleanStart_2_main_resolved_minimal.css"
+      onerror="javascript: ( () => { console.log( this ); this.onerror = null; this.href = this.getAttribute( 'href-fallback' ); } )();"
+    />
+
+
+
+
+
+    <!-- <style>
+      /* .jsc {
+
+      }
+
+      .jsc .CssToolTemplate {
+
+      }
+
+      .jsc .CssToolTemplate.theme_layout_example {
+
+      } */
+
+    </style> -->
+
+
+
+  <link rel="stylesheet" href="MediaAndStyles/themes/csstool-codesnippet-theme-colour-rosa.css">
+  <link rel="stylesheet" href="MediaAndStyles/themes/csstool-codesnippet-theme-colour-salad.css">
+  <link rel="stylesheet" href="MediaAndStyles/themes/csstool-codesnippet-theme-colour-blue.css">
+
+
+  <link rel="stylesheet" href="MediaAndStyles/themes/csstool-codesnippet-theme-size-large.css">
+  <link rel="stylesheet" href="MediaAndStyles/themes/csstool-codesnippet-theme-size-little.css">
+
+
+  <link rel="stylesheet" href="MediaAndStyles/themes/csstool-codesnippet-theme-base.css">
+  <link rel="stylesheet" href="MediaAndStyles/csstool-codesnippet-theme-styles-main.css">
+
+  <link rel="stylesheet" href="MediaAndStyles/lines-numbers-variables/code-snippet-lines-numbers-99.css">
+
+
+  <script src="transpiled/Simple/CssCodeSnippetHelpers.js"></script>
+
+
+  <style>
+
+.CodeSnippetHolder#code-snippet-example,
+.CodeSnippetHolder#code-snippet-example-thin {
+  --lines-number: 29;
+}
+
+.CodeSnippetHolder#code-snippet-example {
+  --code-snippet-tool--width: max-content;
+  --code-snippet-tool--height: auto;
+  --overflow-y: visible;
+}
+
+.CodeSnippetHolder#code-snippet-example-thin {
+  --code-snippet-tool--width: 28rem;
+  --code-snippet-tool--height: 22rem;
+  --overflow-y: auto;
+}
+
+  </style>
+
+
+<style>
+  * {
+  margin: 0;
+  padding: 0;
+}
+html {
+  font-size: 16px;
+}
+
+body {
+  width: 100vw;
+  background-color: steelblue;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+main {
+  width: 80rem;
+  height: 100vh;
+  margin: 0 auto;
+  background-color: aliceblue;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+h1 {
+  font-size: 3rem;
+  line-height: 3.8rem;
+  margin: 2rem 0;
+  text-align: center;
+}
+
+@media (max-width: 440px) {
+  main {
+    width: 100vw;
+    max-width: 100vw;
+  }
+}
+</style>
+
+  <style>
+
+    nav ul {
+      display: flex !important;
+    }
+    nav ul li {
+      list-style-type:upper-roman;
+      color: #246;
+      margin: 0 0.9rem;
+    }
+    nav ul li a {
+      text-decoration: none;
+      color: grey;
+    }
+    nav ul li a:hover {
+      color: #09f;
+      text-decoration: underline;
+    }
+  </style>
+  <script>
+    let glob_LinesNumbersToProduce_Amount = 3;
+    // glob_LinesNumbersToProduce_Amount = 2999;
+
+
+    function applyIdAndTheme(themeNames, codeSnippetId) {
+
+      const h3 = document.querySelector('h3');
+      h3.innerHTML = `Theme name: ${themeNames}, &lt;CodeSnippetHolder id="${codeSnippetId}"`;
+
+      const codeSnippet = document.querySelector('CodeSnippetHolder');
+      codeSnippet.className = `CodeSnippetHolder ${themeNames}`;
+      codeSnippet.id = codeSnippetId;
+    }
+
+    function applyH3innerHTML(themeName, codeSnippetId) {
+      const h3 = document.querySelector('h3');
+      h3.innerHTML = `Theme name: ${themeName}, &lt;CodeSnippetHolder id="${codeSnippetId}"`;
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      const CodeSnippetHolder = document.querySelector('CodeSnippetHolder');
+      applyH3innerHTML(CodeSnippetHolder.classList.item(1), CodeSnippetHolder.id);
+
+      CssCodeSnippetHelpers.linesNumbersTextToConsole( glob_LinesNumbersToProduce_Amount );
+    });
+  </script>
+</head>
+
+<body>
+  <main>
+    <h1>Code snippet css tool</h1>
+    <h3>Theme name: salad, CodeSnippetHolder id="code-snippet-example"</h3>
+
+    <nav>
+      <ul>
+        <li>
+          <a href="javascript: applyIdAndTheme('rosa', 'code-snippet-example')" title="rosa id=code-snippet-example">Rosa fit size</a>
+        </li>
+        <li>
+          <a href="javascript: applyIdAndTheme('rosa', 'code-snippet-example-thin')" title="rosa id=code-snippet-example02">Rosa thin</a>
+        </li>
+        <li>
+          <a href="javascript: applyIdAndTheme('salad', 'code-snippet-example')" title="salad id=code-snippet-example">Salad fit size</a>
+        </li>
+        <li>
+          <a href="javascript: applyIdAndTheme('salad', 'code-snippet-example-thin')" title="salad id=code-snippet-example02">Salad thin</a>
+        </li>
+        <li>
+          <a href="javascript: applyIdAndTheme('blue', 'code-snippet-example')" title="theme-example id=code-snippet-example">Sky Blue fit size</a>
+        </li>
+        <li>
+          <a href="javascript: applyIdAndTheme('blue', 'code-snippet-example-thin')" title="theme-example id=code-snippet-example02">Sky Blue thin</a>
+        </li>
+      </ul>
+    </nav>
+
+    <nav>
+      <ul>
+        <li>
+          <a href="javascript: applyIdAndTheme('salad large', 'code-snippet-example')" title="salad id=code-snippet-example">Salad fit size, large</a>
+        </li>
+        <li>
+          <a href="javascript: applyIdAndTheme('salad little', 'code-snippet-example-thin')" title="salad id=code-snippet-example02">Salad thin, little</a>
+        </li>
+      </ul>
+    </nav>
+
+
+      <CodeSnippetHolder id="code-snippet-example-thin" class="CodeSnippetHolder salad">
+          <pre class="CodeSnippetArea">
+import { TestBed } from '@angular/core/testing';
+import { AppComponent } from './app.component';
+
+describe('AppComponent', () => {
+  beforeEach(async () => {
+    await TestBed.configureTestingModule({
+      imports: [AppComponent],
+    }).compileComponents();
+  });
+
+  it('should create the app', () => {
+    const fixture = TestBed.createComponent(AppComponent);
+    const app = fixture.componentInstance;
+    expect(app).toBeTruthy();
+  });
+
+  it(`should have the 'angular' title`, () => {
+    const fixture = TestBed.createComponent(AppComponent);
+    const app = fixture.componentInstance;
+    expect(app.title).toEqual('angular');
+  });
+
+  it('should render title', () => {
+    const fixture = TestBed.createComponent(AppComponent);
+    fixture.detectChanges();
+    const compiled = fixture.nativeElement as HTMLElement;
+    expect(compiled.querySelector('h1')?.textContent).toContain('Hello, angular');
+  });
+});
+          </pre>
+        </CodeSnippetHolder>
+
+    </main>
+</html>
+
+

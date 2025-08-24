@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="en" class="jsx theme_visible_height">
+<head>
+
+  <title>CssCodeSnippet</title>
+
+  <base href="./">
+
+  <meta charset="utf-8" />
+  <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+
+
+
+    <!--# FAVICON -->
+    <!-- <link
+      rel="icon"
+      type="image/x-icon"
+      href="https://sandbox.brightday.email/cdn/www/media/images/favicon/Icon_Jaisocx.ico"
+      href-fallback="favicon/Icon_Jaisocx.ico"
+      onerror="javascript: ( () => { console.log( this ); this.onerror = null; this.href = this.getAttribute( 'href-fallback' ); } )();"
+    /> -->
+
+    <link
+      rel="icon"
+      type="image/x-icon"
+      href="https://sandbox.brightday.email/cdn/www/media/images/favicon/Icon_Sandbox_Brightday.ico"
+      href-fallback="favicon/Icon_Sandbox_Brightday.ico"
+      onerror="javascript: ( () => { console.log( this ); this.onerror = null; this.href = this.getAttribute( 'href-fallback' ); } )();"
+    />
+
+
+
+    <!--# FONTS PRELOAD WITHOUT JAVASCRIPT CALL -->
+    <link
+      fetchpriority="high"
+      rel="preload"
+      as="font"
+      type="font/ttf"
+      href="https://sandbox.brightday.email/cdn/www/fonts/LibreFranklin/static/LibreFranklin-SemiBold.ttf"
+    />
+
+    <link
+      fetchpriority="high"
+      rel="preload"
+      as="font"
+      type="font/ttf"
+      href="https://sandbox.brightday.email/cdn/www/fonts/LibreFranklin/static/LibreFranklin-Regular.ttf"
+    />
+
+    <!--# CSS FOR FONTS -->
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://sandbox.brightday.email/cdn/www/fonts_css/font_LibreFranklin_cdn.css"
+    />
+
+
+
+    <!--# CSS CLEAN START 2: html & css WHEN STARTING A SITE FROM SCRATCH -->
+
+    <!--# importing @jaisocx/css-clean-start-2 IN DEV MODE, TO RESEARCH THE .css STYLES IN BROWSER'S DEV TOOLS IN NETWORKS TAB  -->
+    <!-- <link
+      rel="stylesheet"
+      type="text/css"
+      charset="utf-8"
+      href="../css-clean-start-2/MediaAndStyles/CssCleanStart_2_main_relative.css"
+      href-fallback="node_modules/@jaisocx/css-clean-start-2/MediaAndStyles/CssCleanStart_2_main_relative.css"
+      onerror="javascript: ( () => { console.log( this ); this.onerror = null; this.href = this.getAttribute( 'href-fallback' ); } )();"
+    /> -->
+
+    <!--# THE SAME importing @jaisocx/css-clean-start-2 IN PROD MODE, PACKED BY @jaisocx/css-importer TOOL  -->
+    <link
+      rel="stylesheet"
+      type="text/css"
+      charset="utf-8"
+      href="../css-clean-start-2/MediaAndStyles/CssCleanStart_2_main_resolved_minimal.css"
+      href-fallback="node_modules/@jaisocx/css-clean-start-2/MediaAndStyles/CssCleanStart_2_main_resolved_minimal.css"
+      onerror="javascript: ( () => { console.log( this ); this.onerror = null; this.href = this.getAttribute( 'href-fallback' ); } )();"
+    />
+
+
+
+
+
+    <!--# STYLES CssCodeSnippet and theme_base -->
+    <link
+      fetchpriority="medium"
+      rel="stylesheet"
+      type="text/css"
+      charset="utf-8"
+      href="MediaAndStyles/CssCodeSnippet_main_relative.css"
+    />
+
+
+
+    <!-- <style>
+      /* .jsx {
+
+      }
+
+      .jsx .CssCodeSnippet {
+
+      } */
+
+    </style> -->
+
+
+
+    <style>
+
+      .jsx {
+        --jsx--css-clean-start-2--site--padding: 2rem 0 0 0;
+
+        --jsx--css-clean-start-2--h1--font-size: 1.05rem;
+        --jsx--css-clean-start-2--h2--font-size: 0.9rem;
+        --jsx--css-clean-start-2--h3--font-size: 0.83rem;
+
+        --jsx--css-clean-start-2--h2--font-weight: 500;
+
+        --theme-button-width: fit-content;
+      }
+
+      .jsx themebuttons {
+        width: fit-content;
+        display: grid;
+        grid-auto-flow: column;
+        column-gap: 3rem;
+        margin: 0.9rem 0px 1.6rem 0px;
+      }
+
+      .jsx themebuttons button {
+        width: var(--theme-button-width);
+      }
+
+      .current::after {
+        content: "";
+        position: absolute;
+        bottom: -0.3rem;
+        left: 0;
+        width: 100%;
+        height: 0;
+        max-height: 0;
+        overflow-y: hidden;
+        border-bottom-width: 0.14rem;
+        border-bottom-style: solid;
+        border-bottom-color: var(--clean-start__text-color);
+      }
+
+      .jsx button {
+        background-color: transparent;
+        text-align: left;
+      }
+
+      #tooltip-button {
+        font-family: fantasy;
+      }
+
+
+
+      .jsx.theme_visible_height body > main > content {
+        padding: 0 1rem 0 1rem;
+
+        overflow-y: hidden;
+
+        min-height: unset;
+        height: unset;
+
+        flex-grow: 1;
+        flex-shrink: 1;
+
+        display: flex;
+        flex-direction: column;
+        flex-basis: auto;
+        justify-content: stretch;
+        align-items: stretch;
+      }
+
+      .jsx.theme_visible_height > body > main > content > * {
+        flex-grow:       0;
+        flex-shrink:     1;
+      }
+
+      .jsx.theme_visible_height .CodeSnippetHolder {
+        --code-snippet-tool--overflow-y: auto;
+        --code-snippet-tool--height: unset;
+
+        min-height: 0;
+        max-height: unset;
+        height: unset;
+
+        flex-grow: 1;
+        flex-shrink: 1;
+      }
+
+      .jsx.theme_visible_height > body > main > page_signed {
+        flex-shrink:     1;
+
+        display:         flex;
+        flex-direction:  row;
+        justify-content: flex-start;
+        align-items:     center;
+
+        padding:    2rem 0 0 0;
+
+        height:     6rem;
+        min-height: 6rem;
+        max-height: 6rem;
+        width:      100%;
+      }
+
+      .jsx.theme_visible_height > body > main > page_signed text {
+        display:         flex;
+        flex-direction:  row;
+        justify-content: flex-start;
+        align-items:     center;
+
+        height:     100%;
+        min-height: 100%;
+        max-height: 100%;
+
+        width:      100%;
+
+        padding:    0 1rem 0 1rem;
+
+        color:            whitesmoke;
+        background-color: green;
+      }
+
+    </style>
+
+
+
+    <style>
+
+      .jsx .CodeSnippetHolder#code-snippet-example,
+      .jsx .CodeSnippetHolder#code-snippet-example-thin {
+        /* when a .css is loaded with hardcoded lines numbers in code-snippet-lines-numbers-99.css
+        on path MediaAndStyles/lines-numbers-variables/code-snippet-lines-numbers-99.css */
+        --lines-numbers--content: var(--lines-numbers--content--99);
+
+        --lines-number: 29;
+      }
+
+      .jsx .CodeSnippetHolder#code-snippet-example {
+        --code-snippet-tool--width:  max-content;
+      }
+
+      .jsx .CodeSnippetHolder#code-snippet-example-thin {
+        --code-snippet-tool--width:  28rem;
+        --code-snippet-tool--height: 22rem;
+        --overflow-y: auto;
+      }
+
+    </style>
+
+  </head>
+
+  <body>
+
+    <main>
+
+      <content>
+
+        <h1>Css Code Snippet</h1>
+        <h2>@jaisocx/css-code-snippet</h2>
+        <h3>css_code_snippet.example.html</h3>
+        <description>Css sites tool rendering code blocks with numbered code rows</description>
+
+
+
+        <ThemeButtons>
+          <button id="button-turn-on-base-theme" data-theme="">Base Theme</button>
+          <button id="button-turn-on-daymode" data-theme="theme_lightmode">Day Mode</button>
+          <button id="button-turn-on-nightmode" data-theme="theme_darkmode">Night Mode</button>
+        </ThemeButtons>
+
+
+
+        <CodeSnippetHolder id="code-snippet-example" class="CodeSnippetHolder css_clean_start_2__color_theme little">
+          <pre class="CodeSnippetArea">
+import { TestBed } from '@angular/core/testing';
+import { AppComponent } from './app.component';
+
+describe('AppComponent', () => {
+  beforeEach(async () => {
+    await TestBed.configureTestingModule({
+      imports: [AppComponent],
+    }).compileComponents();
+  });
+
+  it('should create the app', () => {
+    const fixture = TestBed.createComponent(AppComponent);
+    const app = fixture.componentInstance;
+    expect(app).toBeTruthy();
+  });
+
+  it(`should have the 'angular' title`, () => {
+    const fixture = TestBed.createComponent(AppComponent);
+    const app = fixture.componentInstance;
+    expect(app.title).toEqual('angular');
+  });
+
+  it('should render title', () => {
+    const fixture = TestBed.createComponent(AppComponent);
+    fixture.detectChanges();
+    const compiled = fixture.nativeElement as HTMLElement;
+    expect(compiled.querySelector('h1')?.textContent).toContain('Hello, angular');
+  });
+});
+          </pre>
+        </CodeSnippetHolder>
+
+
+      </content>
+
+
+
+      <page_signed>
+        <text>CSS Code Snippet 1.2.7 2025</text>
+      </page_signed>
+
+    </main>
+
+  </body>
+
+
+
+  <script
+    async="true"
+    defer="true"
+    charset="utf-8"
+    type="text/javascript"
+  >
+
+    let currentButtonNodeClicked = null;
+
+    let cssClassesNames = [
+      "jsx",
+      "theme_visible_height"
+    ];
+
+
+
+    // declaring the function, this is used in the event handler of the theme turning button when clicked on this button.
+    function turnOnTheme ( buttonNodeClicked ) {
+
+      if ( currentButtonNodeClicked !==  null ) {
+        currentButtonNodeClicked.classList.remove( "current" );
+      }
+
+      const htmlNode = document.getElementsByTagName("html")[0];
+      const htmlNodeClassList = htmlNode.classList;
+
+      const themeCssClassPrefix = "theme";
+
+      htmlNodeClassList.forEach (
+        (cssClassName) => {
+          if ( cssClassesNames.includes( cssClassName ) ) {
+            return;
+          }
+
+          if ( cssClassName.startsWith( themeCssClassPrefix ) === true ) {
+            htmlNodeClassList.remove( cssClassName );
+          }
+        }
+      );
+
+      const themeName = buttonNodeClicked.dataset.theme;
+      if ( themeName && ( themeName.length !== 0 ) ) {
+        htmlNode.classList.add( themeName );
+      }
+
+      currentButtonNodeClicked = buttonNodeClicked;
+      currentButtonNodeClicked.classList.add( "current" );
+
+    }
+
+    // declaring the function, this adds to buttons the event handler to turn on the theme.
+    // this function is invoked when the site loads in the browser,
+    // in the event handler for the event DOMContentLoaded
+    function addThemeButtonsEventHandlers() {
+
+      const buttonsIDs = [
+        "button-turn-on-base-theme",
+        "button-turn-on-daymode",
+        "button-turn-on-nightmode"
+      ];
+
+      for ( let buttonId of buttonsIDs ) {
+
+        let buttonNode = document.getElementById( buttonId );
+
+        buttonNode.addEventListener (
+          "click",
+          (evt) => {
+            let buttonNodeClicked = evt.target;
+            turnOnTheme ( buttonNodeClicked );
+          }
+        );
+
+      }
+    }
+
+
+
+    // DOCUMENT ONLOAD, INVOKES THE FUNCTION TO PRELOAD THEME FONTS
+    document.addEventListener('DOMContentLoaded', () => {
+
+      // adding to buttons the event handler to turn on the theme.
+      addThemeButtonsEventHandlers();
+
+    });
+
+  </script>
+
+</html>
+
+

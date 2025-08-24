@@ -1,7 +1,7 @@
 {
   "name": "@jaisocx/css-tool-template",
-  "version": "2.1.0",
-  "description": "The template for a visual css sites tool without js (just for importing styles to the produced by The Webpack bundle.js), however with responsive files set, themes examples, custom font from cdn example, and .html example for the preview after npm or yarn install",
+  "version": "2.1.2",
+  "description": "The template for a css sites tool without js (just for importing styles to the produced by The Webpack bundle.js), however with responsive files set, themes examples, custom font from cdn example, and .html example for the preview after npm or yarn install",
   "author": "Jaisocx Company",
   "keywords": [
     "css"

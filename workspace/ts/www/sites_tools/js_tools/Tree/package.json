@@ -1,6 +1,6 @@
 {
   "name": "@jaisocx/tree",
-  "version": "1.5.37",
+  "version": "1.5.40",
   "author": "Jaisocx",
   "private": false,
   "description": "",
@@ -19,15 +19,22 @@
     }
   },
   "files": [
+    "index.example.html",
+    "tree.example.html",
+
     "transpiled/CommonJS",
     "transpiled/ESNext",
     "transpiled/Simple",
-    "MediaAndStyles/",
+
+    "MediaAndStyles",
+
     "webpack.aliases.json",
+
     "README.md",
     "README_WEBPACK.md"
   ],
   "optionalDependencies": {
+    "@jaisocx/css-clean-start-2": "~1.1.4",
     "@jaisocx/event-emitter": "^1.4.2",
     "@jaisocx/template-renderer": "^1.5.8"
   },

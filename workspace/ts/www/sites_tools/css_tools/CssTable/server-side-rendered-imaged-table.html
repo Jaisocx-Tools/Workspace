@@ -1,26 +1,103 @@
 <!DOCTYPE html>
-<html lang="en" class="jsx theme_visible_height theme_darkmode">
+<html lang="en" class="jsx theme_visible_height">
 <head>
 
-  <title>Server Side Rendered Imaged Table</title>
+  <title>Css Table</title>
+
+  <base href="./">
 
   <meta charset="utf-8" />
   <meta content="width=device-width, initial-scale=1.0" name="viewport" />
 
 
 
-  <!-- <link rel="icon" href="favicon/Icon_Jaisocx.ico" /> -->
-  <link rel="icon" href="favicon/sandbox_brightday.ico" />
+    <!--# FAVICON -->
+    <!-- <link
+      rel="icon"
+      type="image/x-icon"
+      href="https://sandbox.brightday.email/cdn/www/media/images/favicon/Icon_Jaisocx.ico"
+      href-fallback="favicon/Icon_Jaisocx.ico"
+      onerror="javascript: ( () => { console.log( this ); this.onerror = null; this.href = this.getAttribute( 'href-fallback' ); } )();"
+    /> -->
+
+    <link
+      rel="icon"
+      type="image/x-icon"
+      href="https://sandbox.brightday.email/cdn/www/media/images/favicon/Icon_Sandbox_Brightday.ico"
+      href-fallback="favicon/Icon_Sandbox_Brightday.ico"
+      onerror="javascript: ( () => { console.log( this ); this.onerror = null; this.href = this.getAttribute( 'href-fallback' ); } )();"
+    />
 
 
 
-  <!-- importing styles of @jaisocx/css-clean-start -->
-  <link rel="stylesheet" href="node_modules/@jaisocx/css-clean-start-2/MediaAndStyles/CssCleanStart_2_main_resolved_minimal.css">
+    <!--# FONTS PRELOAD WITHOUT JAVASCRIPT CALL -->
+    <link
+      fetchpriority="high"
+      rel="preload"
+      as="font"
+      type="font/ttf"
+      href="https://sandbox.brightday.email/cdn/www/fonts/LibreFranklin/static/LibreFranklin-SemiBold.ttf"
+    />
+
+    <link
+      fetchpriority="high"
+      rel="preload"
+      as="font"
+      type="font/ttf"
+      href="https://sandbox.brightday.email/cdn/www/fonts/LibreFranklin/static/LibreFranklin-Regular.ttf"
+    />
+
+    <!--# CSS FOR FONTS -->
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://sandbox.brightday.email/cdn/www/fonts_css/font_LibreFranklin_cdn.css"
+    />
 
 
-  <!-- importing styles of @jaisocx/css-table installable like this: npm install @jaisocx/css-table -->
-  <!-- <link rel="stylesheet" href="MediaAndStyles/CssTable_main_relative.css" /> -->
-  <link rel="stylesheet" href="MediaAndStyles/CssTable_main_resolved_minimal.css" />
+
+    <!--# CSS CLEAN START 2: html & css WHEN STARTING A SITE FROM SCRATCH -->
+
+    <!--# importing @jaisocx/css-clean-start-2 IN DEV MODE, TO RESEARCH THE .css STYLES IN BROWSER'S DEV TOOLS IN NETWORKS TAB  -->
+    <!-- <link
+      rel="stylesheet"
+      type="text/css"
+      charset="utf-8"
+      href="../css-clean-start-2/MediaAndStyles/CssCleanStart_2_main_relative.css"
+      href-fallback="node_modules/@jaisocx/css-clean-start-2/MediaAndStyles/CssCleanStart_2_main_relative.css"
+      onerror="javascript: ( () => { console.log( this ); this.onerror = null; this.href = this.getAttribute( 'href-fallback' ); } )();"
+    /> -->
+
+    <!--# THE SAME importing @jaisocx/css-clean-start-2 IN PROD MODE, PACKED BY @jaisocx/css-importer TOOL  -->
+    <link
+      rel="stylesheet"
+      type="text/css"
+      charset="utf-8"
+      href="../css-clean-start-2/MediaAndStyles/CssCleanStart_2_main_resolved_minimal.css"
+      href-fallback="node_modules/@jaisocx/css-clean-start-2/MediaAndStyles/CssCleanStart_2_main_resolved_minimal.css"
+      onerror="javascript: ( () => { console.log( this ); this.onerror = null; this.href = this.getAttribute( 'href-fallback' ); } )();"
+    />
+
+
+
+    <!--# CSS TABLE: css FOR THE SERVER SIDE PRODUCED TABLE MARKUP -->
+
+    <!--# importing @jaisocx/css-table IN DEV MODE, TO RESEARCH THE .css STYLES IN BROWSER'S DEV TOOLS IN NETWORKS TAB -->
+    <!-- <link
+      rel="stylesheet"
+      type="text/css"
+      charset="utf-8"
+      href="MediaAndStyles/CssCleanStart_2_main_relative.css"
+    /> -->
+
+    <!--# THE SAME importing @jaisocx/css-table IN PROD MODE, PACKED BY @jaisocx/css-importer TOOL  -->
+    <link
+      rel="stylesheet"
+      type="text/css"
+      charset="utf-8"
+      href="MediaAndStyles/CssTable_main_resolved_minimal.css"
+    />
+
 
 
   <!-- <link rel="stylesheet" href="js_tools/CssTableOrdered/MediaAndStyles/themes/theme_jaisocx_folder_listing/CssTable_theme_jaisocx_folder_listing_Relative.css" /> -->

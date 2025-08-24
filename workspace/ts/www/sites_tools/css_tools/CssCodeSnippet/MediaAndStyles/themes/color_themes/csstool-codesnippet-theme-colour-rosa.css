@@ -1,0 +1,20 @@
+/* tool variables */
+.jsx.rosa,
+.jsx .rosa,
+.CodeSnippetHolder.rosa {
+
+  --code-snippet--theme-color: #fff;
+
+  /* code snippet tool borders */
+  /* by color */
+  --code-snippet-tool--border-color: #fcc;
+
+  /* code snippet theme Colors variables */
+  --code-snippet--text-color: #444;
+  --code-snippet--background-color: #fee;
+
+  /* column theme Colors variables */
+  --code_snippet__column_numbers__text-color: #fdd;
+  --code_snippet__column_numbers__background-color: white;
+
+}

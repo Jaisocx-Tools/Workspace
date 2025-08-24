@@ -1,0 +1,20 @@
+/* tool variables */
+.jsx.blue,
+.jsx .blue,
+.CodeSnippetHolder.blue {
+
+  --code-snippet--theme-color: #f8fdff;
+
+  /* code snippet tool borders */
+  /* by color */
+  --code-snippet-tool--border-color: cornsilk;
+
+  /* code snippet theme Colors variables */
+  --code-snippet--text-color: darkblue;
+  --code-snippet--background-color: #fffffa;
+
+  /* column theme Colors variables */
+  --code_snippet__column_numbers__text-color: #09f;
+  --code_snippet__column_numbers__background-color: #cef;
+
+}

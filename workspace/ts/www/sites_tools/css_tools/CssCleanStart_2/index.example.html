@@ -1,22 +1,78 @@
 <!DOCTYPE html>
 <html lang="en" class="jsx example">
+<head>
 
-  <head>
+  <title>CssToolTemplate</title>
 
-    <!-- <link rel="icon" href="favicon/Icon_Jaisocx.ico" /> -->
-    <link rel="icon" href="favicon/sandbox_brightday.ico" />
+  <base href="./">
 
-
-    <title>CssCleanStart_2</title>
-
-    <meta content="width=device-width, initial-scale=1.0" name="viewport">
-    <meta charset="utf-8">
-
-    <base href=".">
+  <meta charset="utf-8" />
+  <meta content="width=device-width, initial-scale=1.0" name="viewport" />
 
 
 
-    <link rel="stylesheet" href="MediaAndStyles/CssCleanStart_2_main_resolved_minimal.css">
+    <!--# FAVICON -->
+    <!-- <link
+      rel="icon"
+      type="image/x-icon"
+      href="https://sandbox.brightday.email/cdn/www/media/images/favicon/Icon_Jaisocx.ico"
+      href-fallback="favicon/Icon_Jaisocx.ico"
+      onerror="javascript: ( () => { console.log( this ); this.onerror = null; this.href = this.getAttribute( 'href-fallback' ); } )();"
+    /> -->
+
+    <link
+      rel="icon"
+      type="image/x-icon"
+      href="https://sandbox.brightday.email/cdn/www/media/images/favicon/Icon_Sandbox_Brightday.ico"
+      href-fallback="favicon/Icon_Sandbox_Brightday.ico"
+      onerror="javascript: ( () => { console.log( this ); this.onerror = null; this.href = this.getAttribute( 'href-fallback' ); } )();"
+    />
+
+
+
+    <!--# FONTS PRELOAD WITHOUT JAVASCRIPT CALL -->
+    <link
+      fetchpriority="high"
+      rel="preload"
+      as="font"
+      type="font/ttf"
+      href="https://sandbox.brightday.email/cdn/www/fonts/LibreFranklin/static/LibreFranklin-SemiBold.ttf"
+    />
+
+    <link
+      fetchpriority="high"
+      rel="preload"
+      as="font"
+      type="font/ttf"
+      href="https://sandbox.brightday.email/cdn/www/fonts/LibreFranklin/static/LibreFranklin-Regular.ttf"
+    />
+
+    <!--# CSS FOR FONTS -->
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://sandbox.brightday.email/cdn/www/fonts_css/font_LibreFranklin_cdn.css"
+    />
+
+
+
+    <!--# CSS CLEAN START 2: html & css WHEN STARTING A SITE FROM SCRATCH -->
+
+    <!--# importing @jaisocx/css-clean-start-2 IN DEV MODE, TO RESEARCH THE .css STYLES IN BROWSER'S DEV TOOLS IN NETWORKS TAB  -->
+    <!-- <link
+      rel="stylesheet"
+      type="text/css"
+      charset="utf-8"
+      href="MediaAndStyles/CssCleanStart_2_main_relative.css"
+    /> -->
+
+    <!--# THE SAME importing @jaisocx/css-clean-start-2 IN PROD MODE, PACKED BY @jaisocx/css-importer TOOL  -->
+    <link
+      rel="stylesheet"
+      type="text/css"
+      charset="utf-8"
+      href="MediaAndStyles/CssCleanStart_2_main_resolved_minimal.css"
+    />
 
 
 
@@ -44,11 +100,13 @@
 
     </style>
 
+
+
   <head>
-<body>
 
-  <main>
+  <body>
 
+    <main>
 
     <h1>Css Clean Start 2. examples</h1>
 

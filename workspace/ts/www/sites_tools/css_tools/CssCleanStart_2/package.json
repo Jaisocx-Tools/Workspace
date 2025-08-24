@@ -1,6 +1,6 @@
 {
   "name": "@jaisocx/css-clean-start-2",
-  "version": "1.1.4",
+  "version": "1.1.5",
   "description": "",
   "author": "Jaisocx",
   "keywords": [
@@ -13,7 +13,6 @@
 
     "MediaAndStyles/*.css",
     "MediaAndStyles/themes",
-    "MediaAndStyles/fonts",
 
     "transpiled/CommonJS",
     "transpiled/ESNext",

@@ -1,4 +1,5 @@
 {
-  "@jaisocx-css-clean-start-MediaAndStyles": "${packageRoot}/MediaAndStyles/"
+  "@jaisocx-css-clean-start-MediaAndStyles": "${packageRoot}/MediaAndStyles/",
+  "@cdn_sandbox_fonts/": "https://sandbox.brightday.email/cdn/www/fonts/"
 }
 
