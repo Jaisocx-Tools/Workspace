@@ -1,6 +1,6 @@
 {
   "name": "@jaisocx/css-tool-template",
-  "version": "2.1.3",
+  "version": "2.1.4",
   "description": "Two simple html blocks styles with base template and example for responsive styling and color themes. The infrastructure files are here for the webpack, typescript and publications on npm.",
   "author": "Jaisocx Company",
   "keywords": [
