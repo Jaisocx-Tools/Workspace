@@ -174,10 +174,11 @@
     {
       "path": "sites_tools/css_tools/CssCodeSnippet",
       "name": "css-code-snippet",
+      "update-published": "Mon Aug 25 23:59:36 CEST 2025",
       "build": false,
       "build-simple-enable": true,
       "css-importer": {
-        "build": true,
+        "build": false,
         "cssFilePath": "MediaAndStyles/CssCodeSnippet_main_Webpack.css",
         "cssTargetFilePath": "MediaAndStyles/CssCodeSnippet_main_resolved.css"
       },
@@ -204,17 +205,12 @@
       "build": false,
       "build-simple-enable": false,
       "css-importer": {
-        "build": false,
-        "cssFilePath": "MediaAndStyles/CssTable_main_Webpack_minimal.css",
-        "cssTargetFilePath": "MediaAndStyles/CssTable_main_resolved_minimal.css"
+        "build": true,
+        "cssFilePath": "MediaAndStyles/CssTable_main_Webpack.css",
+        "cssTargetFilePath": "MediaAndStyles/CssTable_main_resolved.css"
       },
       "dependencies": [],
-      "build-files": [
-        "index.js",
-        "webpackAliases.js",
-        "webpack.aliases.mjs",
-        "webpack.aliases.cjs"
-      ]
+      "build-files": []
     },
     {
       "path": "packages/TemplateRenderer",
@@ -279,7 +275,7 @@
     {
       "path": "sites_tools/css_tools/CssCleanStart_2",
       "name": "css-clean-start-2",
-      "update-published": "Wed Aug 20 01:18:59 UTC 2025",
+      "update-published": "Mon Aug 25 23:59:36 CEST 2025",
       "build": false,
       "build-simple-enable": false,
       "css-importer": {

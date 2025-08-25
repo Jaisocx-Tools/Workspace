@@ -13,8 +13,8 @@
     "css_table.theme_imaged.example.html",
 
     "MediaAndStyles/*.css",
-    "MediaAndStyles/presets",
     "MediaAndStyles/columns",
+    "MediaAndStyles/presets",
     "MediaAndStyles/themes",
 
     "transpiled/CommonJS",

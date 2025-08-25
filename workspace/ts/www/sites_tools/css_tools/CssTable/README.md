@@ -3,7 +3,7 @@
 ## npm
 
 ```
-npm install @jaisocx/css-table@3.2.5
+npm install @jaisocx/css-table@3.3.1
 ```
 
 ## Themes in the .css files, webpack and resolved
@@ -55,15 +55,19 @@ the theme .css file with css variables to use the @jaisocx/css-table in an email
 
 
 
-## The latest .tgz archive (v.3.2.7 17th of August 2025)
+## The latest .tgz archive (v.3.3.1 25th of August 2025)
 
-[sandbox.brightday.email/sites_tools/css_tools/CssTable/jaisocx-css-table-3.2.7.tgz](https://sandbox.brightday.email/sites_tools/css_tools/CssTable/jaisocx-css-table-3.2.7.tgz)
+[sandbox.brightday.email/sites_tools/css_tools/CssTable/jaisocx-css-table-3.3.1.tgz](https://sandbox.brightday.email/sites_tools/css_tools/CssTable/jaisocx-css-table-3.3.1.tgz)
 
 
 
 ## Watch site in action
 
 [sandbox.brightday.email/sites_tools/css_tools/CssTable/index.example.html](https://sandbox.brightday.email/sites_tools/css_tools/CssTable/index.example.html)
+
+[sandbox.brightday.email/sites_tools/css_tools/CssTable/css_table.theme_imaged.example.html](https://sandbox.brightday.email/sites_tools/css_tools/CssTable/css_table.theme_imaged.example.html)
+
+
 
 [sandbox.brightday.email/ExampleCss_CssTable_4fields.html](https://sandbox.brightday.email/ExampleCss_CssTable_4fields.html)
 
