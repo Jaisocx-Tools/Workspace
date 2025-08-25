@@ -5,8 +5,7 @@ Jaisocx Company
 
 ## see in action
 
-[https://sandbox.brightday.email/sites_tools/css_tools/CssCodeSnippet/index.example.html)](https://sandbox.brightday.email/sites_tools/css_tools/CssCodeSnippet/index.example.html](https://sandbox.brightday.email/sites_tools/css_tools/CssCodeSnippet/index.example.html)](https://sandbox.brightday.email/sites_tools/css_tools/CssCodeSnippet/index.example.html)
-
+[https://sandbox.brightday.email/sites_tools/css_tools/CssCodeSnippet/index.example.html](https://sandbox.brightday.email/sites_tools/css_tools/CssCodeSnippet/index.example.html)
 
 
 ## github
