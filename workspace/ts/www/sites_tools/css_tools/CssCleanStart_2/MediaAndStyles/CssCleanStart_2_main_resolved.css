@@ -205,11 +205,12 @@
 
   --jsx--css-clean-start-2--all-tags--margin: 0 0 0 0;
   --jsx--css-clean-start-2--h--margin: 0 0 0 0;
+  --jsx--css-clean-start-2--ul--margin-left: 2rem;
   --jsx--css-clean-start-2--p--margin: 0.9rem 0 0.9rem 0;
 
   --jsx--css-clean-start-2--all-tags--color: black;
 
-  --jsx--css-clean-start-2--all-tags--font-family: "Franklin Gothic Medium", Verdana, sans-serif;
+  --jsx--css-clean-start-2--all-tags--font-family: LibreFranklin, Tahoma, Verdana;
   --jsx--css-clean-start-2--pre--font-family: "Courier New", Courier, monospace;
 
   --jsx--css-clean-start-2--all-tags--font-size: 0.85rem;
@@ -8658,11 +8659,18 @@ html.jsx body main {
   list-style: decimal inside;
 }
 
+.jsx ul ul,
+.jsx ul ol,
+.jsx ol ul,
+.jsx ol ol {
+  margin-left: var(--jsx--css-clean-start-2--ul--margin-left);
+}
+
 
 
 .jsx ul li,
 .jsx ol li {
-  display:         list-item;
+  display:   list-item;
 }
 
 
@@ -8677,6 +8685,7 @@ html.jsx body main {
 
   list-style-type: none;
   display:         var(--jsx--css-clean-start-2--block-tags--display, block);
+  margin-left:     var(--jsx--css-clean-start-2--all-tags--margin);
 
 }
 

@@ -30,9 +30,9 @@ several .css files will be loaded with size of very few KB.
 
 
 
-## The latest .tgz archive (v.1.1.0 17th of August 2025)
+## The latest .tgz archive (v.1.1.5 25th of August 2025)
 
-[https://sandbox.brightday.email/sites_tools/css_tools/CssCleanStart_2/jaisocx-css-clean-start-2-1.1.0.tgz](https://sandbox.brightday.email/sites_tools/css_tools/CssCleanStart_2/jaisocx-css-clean-start-2-1.1.0.tgz)
+[https://sandbox.brightday.email/sites_tools/css_tools/CssCleanStart_2/jaisocx-css-clean-start-2-1.1.5.tgz](https://sandbox.brightday.email/sites_tools/css_tools/CssCleanStart_2/jaisocx-css-clean-start-2-1.1.5.tgz)
 
 
 

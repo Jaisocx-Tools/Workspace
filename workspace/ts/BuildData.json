@@ -177,7 +177,7 @@
       "build": false,
       "build-simple-enable": true,
       "css-importer": {
-        "build": true,
+        "build": false,
         "cssFilePath": "MediaAndStyles/CssCodeSnippet_main_Webpack_minimal.css",
         "cssTargetFilePath": "MediaAndStyles/CssCodeSnippet_main_resolved_minimal.css"
       },
@@ -284,8 +284,8 @@
       "build-simple-enable": false,
       "css-importer": {
         "build": false,
-        "cssFilePath": "MediaAndStyles/CssCleanStart_2_main_Webpack.css",
-        "cssTargetFilePath": "MediaAndStyles/CssCleanStart_2_main_resolved.css"
+        "cssFilePath": "MediaAndStyles/CssCleanStart_2_main_Webpack_minimal.css",
+        "cssTargetFilePath": "MediaAndStyles/CssCleanStart_2_main_resolved_minimal.css"
       },
       "dependencies": [],
       "build-files": []
