@@ -73,7 +73,7 @@
 
 `BuildData.example.json` The template of a json config for building a sites tool. You may use to copy paste to BuildData.json for a new sites tool.
 
-`index.example.html` the sites tool preview, locally and when installed with the new command `./cmd/sitesTool_MediaAndStyles.sh`.
+`index.example.html` the sites tool preview, locally and when installed with the new command `./cmd/install_and_view_sites_tool.sh`.
 
 `package-lock.json` npm system file.
 
