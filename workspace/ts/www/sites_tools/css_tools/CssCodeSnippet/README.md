@@ -4,10 +4,10 @@
 Jaisocx Company
 
 ## see in action
-1. [https://sandbox.brightday.email/ExampleCss_CssCodeSnippet_minimal.html](https://sandbox.brightday.email/ExampleCss_CssCodeSnippet_minimal.html)
+
+[https://sandbox.brightday.email/sites_tools/css_tools/CssCodeSnippet/index.example.html)](https://sandbox.brightday.email/sites_tools/css_tools/CssCodeSnippet/index.example.html](https://sandbox.brightday.email/sites_tools/css_tools/CssCodeSnippet/index.example.html)](https://sandbox.brightday.email/sites_tools/css_tools/CssCodeSnippet/index.example.html)
 
 
-2. [https://sandbox.brightday.email/ExampleCss_CssCodeSnippet.html](https://sandbox.brightday.email/ExampleCss_CssCodeSnippet.html)
 
 ## github
 

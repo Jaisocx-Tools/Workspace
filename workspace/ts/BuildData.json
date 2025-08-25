@@ -177,9 +177,9 @@
       "build": false,
       "build-simple-enable": true,
       "css-importer": {
-        "build": false,
-        "cssFilePath": "MediaAndStyles/CssCodeSnippet_main_Webpack_minimal.css",
-        "cssTargetFilePath": "MediaAndStyles/CssCodeSnippet_main_resolved_minimal.css"
+        "build": true,
+        "cssFilePath": "MediaAndStyles/CssCodeSnippet_main_Webpack.css",
+        "cssTargetFilePath": "MediaAndStyles/CssCodeSnippet_main_resolved.css"
       },
       "dependencies": [],
       "build-files": [
