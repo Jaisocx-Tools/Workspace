@@ -1,7 +1,7 @@
 # CSS Code Snippet
 
 ## Author, Owner
-Illia Polianskyi
+Jaisocx Company
 
 ## see in action
 1. [https://sandbox.brightday.email/ExampleCss_CssCodeSnippet_minimal.html](https://sandbox.brightday.email/ExampleCss_CssCodeSnippet_minimal.html)

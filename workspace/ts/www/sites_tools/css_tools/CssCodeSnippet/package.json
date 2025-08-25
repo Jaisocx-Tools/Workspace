@@ -1,7 +1,7 @@
 {
   "name": "@jaisocx/css-code-snippet",
-  "version": "1.2.7",
-  "description": "",
+  "version": "1.3.1",
+  "description": "Css sites tool rendering code blocks with numbered code rows",
   "author": "Jaisocx Company",
   "keywords": [
     "css",
@@ -40,7 +40,7 @@
     }
   },
   "dependencies": {
-    "@jaisocx/css-clean-start-2": "~1.1.4"
+    "@jaisocx/css-clean-start-2": "~1.1.5"
   }
 }
 
