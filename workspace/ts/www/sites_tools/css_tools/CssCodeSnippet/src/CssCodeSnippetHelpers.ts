@@ -1,12 +1,14 @@
 export class CssCodeSnippetHelpers {
 
   public static linesNumbersTextToConsole(linesNumber: number): undefined {
-    console.log ( 
-      `Custom lines numbers ( ${linesNumber} ) text generated to use with lines-numbers-variables`, 
-      { "linesNumbers": CssCodeSnippetHelpers.getLinesNumbersString( linesNumber ) } 
+    console.log (
+      `Custom lines numbers ( ${linesNumber} ) text generated to use with lines-numbers-variables`,
+      { "linesNumbers": CssCodeSnippetHelpers.getLinesNumbersString( linesNumber ) }
     );
   }
-  
+
+
+
   public static getLinesNumbersString(linesNumber: number): any {
     const numberToUnicode: any = {
       "0": "\\0030",
@@ -22,9 +24,10 @@ export class CssCodeSnippetHelpers {
     };
 
     const whiteSpaceEncoded: string = "\\00a";
-    
+
     let retValue: string = "";
     const numbers: number[] = [];
+
     for (let i=1; i <= linesNumber; i++ ) {
       numbers.push(i);
     }
@@ -33,15 +36,19 @@ export class CssCodeSnippetHelpers {
         (previousVaue, currentValue) => {
           let lineNumberString: string = "" + currentValue;
           let lineNumberStringEncoded: string = "";
+
           for (let i=0; i < lineNumberString.length; i++) {
             lineNumberStringEncoded += numberToUnicode[lineNumberString[i]];
           }
           previousVaue += lineNumberStringEncoded + whiteSpaceEncoded;
+
+
           return previousVaue;
         },
         ""
       );
-      
+
+
     return (retValue);
   }
 
