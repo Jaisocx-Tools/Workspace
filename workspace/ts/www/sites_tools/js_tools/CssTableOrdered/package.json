@@ -1,6 +1,6 @@
 {
   "name": "@jaisocx/css-table-ordered",
-  "version": "2.3.1",
+  "version": "2.3.2",
   "description": "Css sites tool styling a server side rendered database table data to a grid view, with solutions for sticky scroll and order by on columns via browser's js engine",
   "author": "Jaisocx",
   "keywords": [
