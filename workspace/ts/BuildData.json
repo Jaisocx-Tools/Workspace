@@ -448,8 +448,8 @@
       "build-simple-enable": false,
       "css-importer": {
         "build": false,
-        "cssFilePath": "MediaAndStyles/CssTableOrdered_main_Webpack.css",
-        "cssTargetFilePath": "MediaAndStyles/CssTableOrdered_main_resolved.css"
+        "cssFilePath": "MediaAndStyles/CssTableOrdered_main_Webpack_minimal.css",
+        "cssTargetFilePath": "MediaAndStyles/CssTableOrdered_main_resolved_minimal.css"
       },
       "dependencies": [
         {

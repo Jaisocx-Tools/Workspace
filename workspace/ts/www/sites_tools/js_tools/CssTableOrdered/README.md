@@ -15,9 +15,9 @@ The jaisocx templates for files listing, https exceptions and others will be ava
 
 
 
-## The latest .tgz archive (v.2.2.2 20th of month August 2025)
+## The latest .tgz archive (v.2.3.1 26th of month August 2025)
 
-[https://sandbox.brightday.email/sites_tools/js_tools/CssTableOrdered/jaisocx-css-table-ordered-2.2.2.tgz](https://sandbox.brightday.email/sites_tools/js_tools/CssTableOrdered/jaisocx-css-table-ordered-2.2.2.tgz)
+[https://sandbox.brightday.email/sites_tools/js_tools/CssTableOrdered/jaisocx-css-table-ordered-2.3.1.tgz](https://sandbox.brightday.email/sites_tools/js_tools/CssTableOrdered/jaisocx-css-table-ordered-2.3.1.tgz)
 
 
 
@@ -30,7 +30,15 @@ The jaisocx templates for files listing, https exceptions and others will be ava
 [https://sandbox.brightday.email/sites_tools/js_tools/CssTableOrdered/index.example.html](https://sandbox.brightday.email/sites_tools/js_tools/CssTableOrdered/index.example.html)
 
 
-[https://sandbox.brightday.email/sites_tools/js_tools/CssTableOrdered/index.example_3_records.html](https://sandbox.brightday.email/sites_tools/js_tools/CssTableOrdered/index.example_3_records.html)
+[https://sandbox.brightday.email/sites_tools/js_tools/CssTableOrdered/css_table_ordered_3_records.example.html](https://sandbox.brightday.email/sites_tools/js_tools/CssTableOrdered/css_table_ordered_3_records.example.html)
+
+
+[https://sandbox.brightday.email/sites_tools/js_tools/CssTableOrdered/css_table_ordered.example.html](https://sandbox.brightday.email/sites_tools/js_tools/CssTableOrdered/css_table_ordered.example.html)
+
+
+[https://sandbox.brightday.email/sites_tools/js_tools/CssTableOrdered/css_table_ordered.jaisocx_folder_listing.example.html](https://sandbox.brightday.email/sites_tools/js_tools/CssTableOrdered/css_table_ordered.jaisocx_folder_listing.example.html)
+
+
 
 
 

@@ -107,11 +107,23 @@
   <style>
 
     .jsx {
+      --jsx--css-clean-start-2--site--padding: 2rem 1rem 3rem 1rem;
+
       --jsx--css-clean-start-2--h1--font-size: 1.05rem;
       --jsx--css-clean-start-2--h2--font-size: 0.9rem;
+      --jsx--css-clean-start-2--h3--font-size: 0.83rem;
+
+      --jsx--css-clean-start-2--h2--font-weight: 500;
 
       --theme-button-width: fit-content;
     }
+
+    @media screen and (orientation: portrait) {
+      .jsx description {
+        display: none;
+      }
+    }
+
 
     .jsx themebuttons {
       width: fit-content;
@@ -1767,7 +1779,7 @@
 
   <script>
 
-    currentButtonNodeClicked = null;
+    let currentButtonNodeClicked = null;
 
 
     let cssClassesNames = [
