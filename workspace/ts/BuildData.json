@@ -392,8 +392,8 @@
       "build-simple-enable": true,
       "css-importer": {
         "build": true,
-        "cssFilePath": "MediaAndStyles/Tree_main_Webpack_minimal.css",
-        "cssTargetFilePath": "MediaAndStyles/Tree_main_resolved_minimal.css"
+        "cssFilePath": "MediaAndStyles/Tree_main_Webpack.css",
+        "cssTargetFilePath": "MediaAndStyles/Tree_main_resolved.css"
       },
       "build-files": [
         "typescript/ArrayOrObjectPackage.js",

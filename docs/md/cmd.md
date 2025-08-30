@@ -24,7 +24,6 @@ on line 55 set path to file in the ts dockerized service like this:
 ./cmd/linkedResourceHash.sh
 ```
 
-![Linked Resources Hash](./images/cmd/LinkedResourceHash.png)
 
 3. Improve quality of the linked resources on Your sites
 

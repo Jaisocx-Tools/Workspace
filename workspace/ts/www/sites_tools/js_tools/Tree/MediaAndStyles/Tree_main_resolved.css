@@ -635,21 +635,21 @@
 
 .tree > ul > li > pre > pre.jstree-html-node-holder-icon.icon-show
 {
-  --datatype-array--image-url: url('./themes/theme_base/mini_images/data-types/icons8-json-96.png');
-  --datatype-object--image-url: url('./themes/theme_base/mini_images/data-types/icons8-json-96.png');
+  --datatype-array--image-url:               url('./themes/theme_base/mini_images/data-types/icons8-json-96.png');
+  --datatype-object--image-url:              url('./themes/theme_base/mini_images/data-types/icons8-json-96.png');
 }
 
 .tree {
 
-  --open-button-animated--image-url: url('./themes/theme_base/mini_images/button-open/button-animated.gif');
-  --open-button-opened--image-url: url('./themes/theme_base/mini_images/button-open/button-opened.png');
-  --open-button-without-subtree--image-url: url('./themes/theme_base/mini_images/button-open/button-without-subtree.svg');
+  --open-button-animated--image-url:         url('./themes/theme_base/mini_images/button-open/button-animated.gif');
+  --open-button-opened--image-url:           url('./themes/theme_base/mini_images/button-open/button-opened.png');
+  --open-button-without-subtree--image-url:  url('./themes/theme_base/mini_images/button-open/button-without-subtree.svg');
 
-  --datatype-array--image-url: url('./themes/theme_base/mini_images/data-types/icons8-view-array-96.png');
-  --datatype-object--image-url: url('.themes/theme_base/mini_images/data-types/icons8-static-view-level2-80.png');
-  --datatype-number--image-url: url('.themes/theme_base/mini_images/data-types/icons8-3-100.png');
-  --datatype-string--image-url: url('./themes/theme_base/mini_images/data-types/icons8-font-style-formatting-96.png');
-  --datatype-boolean--image-url: url('./themes/theme_base/mini_images/data-types/icons8-true-false-96.png');
+  --datatype-array--image-url:               url('./themes/theme_base/mini_images/data-types/icons8-view-array-96.png');
+  --datatype-object--image-url:              url('.themes/theme_base/mini_images/data-types/icons8-static-view-level2-80.png');
+  --datatype-number--image-url:              url('.themes/theme_base/mini_images/data-types/icons8-3-100.png');
+  --datatype-string--image-url:              url('./themes/theme_base/mini_images/data-types/icons8-font-style-formatting-96.png');
+  --datatype-boolean--image-url:             url('./themes/theme_base/mini_images/data-types/icons8-true-false-96.png');
 }
 
 

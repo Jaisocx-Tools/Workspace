@@ -12,8 +12,6 @@ import { TreeAdapterModeConf } from "./TreeAdapterModeConf.js";
 import { TreeAdapterModeEase } from "./TreeAdapterModeEase.js";
 import { ArrayOrObjectPackage } from "./ArrayOrObjectPackage.js";
 
-import "@jaisocx-tree-MediaAndStyles/tree-styles-main-webpack.css";
-
 
 // Tree main class
 export class Tree extends ImprovedRenderEventEmitter {
