@@ -24,7 +24,7 @@
 
       let loadingStopOnTimeout = ( idsObject ) => {
 
-        console.log( "Script on timout started" );
+        console.log( "Script on timeout started" );
 
         let ids = Object.keys( idsObject );
         let idsNumber = ids.length;
@@ -870,12 +870,12 @@
 
       scriptsLoader.onload = () => {
 
-        const preloader = new Preloader();
-        preloader
-          .setThemesPreloads( themesPreloads )
-          .setWebpackAlias( "" )
-          .setWebpackAliasReplace( "" )
-          .init();
+        // const preloader = new Preloader();
+        // preloader
+        //   .setThemesPreloads( themesPreloads )
+        //   .setWebpackAlias( "" )
+        //   .setWebpackAliasReplace( "" )
+        //   .init();
 
         renderJsonTreeExamples();
       };
