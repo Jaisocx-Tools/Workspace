@@ -12,6 +12,7 @@ class TreeConf {
     NODE__ART;
 
 
+
     constructor() {
         this.NODE_ICON__SRC = "icon";
         this.NODE_LABEL__TEXT = "label";

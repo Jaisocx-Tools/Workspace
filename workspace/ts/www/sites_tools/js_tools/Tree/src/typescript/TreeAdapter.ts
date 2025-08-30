@@ -1,6 +1,8 @@
 import { TreeConstants } from "./TreeConstants.js";
 import { TreeConf } from "./TreeConf.js";
 
+
+
 export class TreeAdapter {
   conf: TreeConf;
 
@@ -9,6 +11,8 @@ export class TreeAdapter {
   nodesOpenedMode: number;
 
   dataTypesCssClassesEnabled: boolean;
+
+
 
   constructor() {
     this.conf = new TreeConf();

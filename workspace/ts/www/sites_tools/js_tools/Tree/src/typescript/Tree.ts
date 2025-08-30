@@ -14,6 +14,7 @@ import { ArrayOrObjectPackage } from "./ArrayOrObjectPackage.js";
 
 import "@jaisocx-tree-MediaAndStyles/tree-styles-main-webpack.css";
 
+
 // Tree main class
 export class Tree extends ImprovedRenderEventEmitter {
   debug: boolean;
@@ -48,6 +49,8 @@ export class Tree extends ImprovedRenderEventEmitter {
 
   adapter: ITreeAdapter;
 
+
+
   constructor() {
     super();
 
@@ -65,6 +68,7 @@ export class Tree extends ImprovedRenderEventEmitter {
     this.subtreeLengthDeep = 0;
 
     this.templateRenderer = new TemplateRenderer();
+
 
     /* this.templateRenderer
             .addThisClassEventListener (
@@ -86,6 +90,7 @@ export class Tree extends ImprovedRenderEventEmitter {
 
     this.contextMenuJSClass = null;
 
+
     // DEFAULT VALUES ARE FROM CONSTANTS CLASS
     this.setDebug(TreeConstants.Defaults.debug);
     this.renderingMode = TreeConstants.Defaults.renderingMode;
@@ -96,60 +101,106 @@ export class Tree extends ImprovedRenderEventEmitter {
     this.adapter = new TreeAdapterModeEase();
   }
 
+
+
   setDebug(debug: boolean): Tree {
+
     // optional method
     super.setDebug(debug);
     this.templateRenderer.setDebug(debug);
     this.debug = debug;
+
+
     return this;
   }
+
+
 
   setNodesWithIcons(withIcons: boolean): Tree {
+
     // optional method
     this.nodesWithIcons = withIcons;
+
+
     return this;
   }
+
+
 
   setNodesOpenedMode(openedMode: number): Tree {
+
     // optional method
     this.nodesOpenedMode = openedMode;
+
+
     return this;
   }
+
+
 
   setUrl(url: any|null): Tree {
+
     // optional method
     this.url = url;
+
+
     return this;
   }
+
+
 
   setMainHtmlNodeId(mainHtmlNodeId: any): Tree {
+
     // required method
     this.mainHtmlNodeId = mainHtmlNodeId;
+
+
     return this;
   }
+
+
 
   setConf(conf: TreeConf): Tree {
+
     // optional method
     this.conf = conf;
+
+
     return this;
   }
+
+
 
   setModifiable(isModifiable: boolean): Tree {
+
     // optional method
     this.isModifiable = isModifiable;
+
+
     return this;
   }
 
+
+
   setRenderingMode(mode: number): Tree {
+
     // optional method
     this.renderingMode = mode;
+
+
     return this;
   }
+
+
 
   setDataTypesCssClassesEnabled(dataTypesCssEnabled: boolean): Tree {
     this.dataTypesCssClassesEnabled = dataTypesCssEnabled;
+
+
     return this;
   }
+
+
 
   load(url: any|null): Tree {
     if (url && url.length) {
@@ -166,8 +217,11 @@ export class Tree extends ImprovedRenderEventEmitter {
         this.render(json);
       });
 
+
     return this;
   }
+
+
 
   adaptRenderingModeSubcalls(): void {
     if (this.renderingMode === TreeConstants.RenderingMode.Conf) {
@@ -184,6 +238,7 @@ export class Tree extends ImprovedRenderEventEmitter {
       if (this.dataTypesCssClassesEnabled === true) {
         this.getTreeNodeCssClasses = this.adapter.getTreeNodeCssClasses__dataTypesCssClassesEnabled.bind(this);
       } else {
+
         // this.getTreeNodeCssClasses = this.getTreeNodeCssClasses__dataTypesCssClassesDisabled__renderingModeConf.bind(this);
       }
     }
@@ -192,10 +247,16 @@ export class Tree extends ImprovedRenderEventEmitter {
     this.getDataForRendering = this.adapter.getDataForRendering.bind(this);
   }
 
+
+
   reRender(): Tree {
     this.render(this.data);
+
+
     return this;
   }
+
+
 
   render(nodes: any): Tree {
     if (nodes) {
@@ -217,6 +278,7 @@ export class Tree extends ImprovedRenderEventEmitter {
 
     this.adaptRenderingModeSubcalls();
 
+
     // set main css class name to the main tree holder html node
     if (
       this.mainHolderHtmlNode.classList
@@ -235,9 +297,11 @@ export class Tree extends ImprovedRenderEventEmitter {
       this.mainHolderHtmlNode.classList.remove(TreeConstants.TreeCssClassNames.CLASS_NAME_WITH_ICONS);
     }
 
+
     // add an html holder node for subtree html nodes
     const ul = document.createElement("UL");
     this.mainHolderHtmlNode.append(ul);
+
 
     // get datatype of the main json data node
     const dataType: number = ArrayOrObjectPackage.getDataType(nodes);
@@ -250,12 +314,14 @@ export class Tree extends ImprovedRenderEventEmitter {
       throw new Error("Arrays or Objects supported. This JSON Data is not iterable.");
     }
 
+
     // get info on subtree nodes amount
     const { itemsAmount, objectKeys } = ArrayOrObjectPackage.getArrayOrObjectItemsAmount(
       isArray,
       this.data
     );
     const subtreeNodesCount: number = itemsAmount;
+
 
     // exit throwing exception, if the tree json data is empty
     if (subtreeNodesCount === 0) {
@@ -264,6 +330,7 @@ export class Tree extends ImprovedRenderEventEmitter {
 
     const flatNodeHolderClone: any = { _pathArray: ["this.data"] };
     let subtreeRenderResult: any;
+
     if (this.renderingMode === TreeConstants.RenderingMode.Conf) {
       if (isArray === 1) {
         subtreeRenderResult = this.renderSubtree(
@@ -274,12 +341,16 @@ export class Tree extends ImprovedRenderEventEmitter {
           ul
         );
 
+
         // @ts-ignore
         this.subtreeLength = subtreeNodesCount;
+
+
         // @ts-ignore
         this.subtreeLengthDeep = subtreeRenderResult;
       } else if (isArray === 0) {
         const isTreeItem: boolean = this.getInModeConfDataNodeIsTreeItem(this.data);
+
 
         // the root json data node is the tree item data node
         if (isTreeItem) {
@@ -292,11 +363,16 @@ export class Tree extends ImprovedRenderEventEmitter {
           );
           const { currentNodeSubtreeLength } = renderResult;
           this.data = renderResult.node;
+
+
           // @ts-ignore
           this.subtreeLength = subtreeNodesCount;
+
+
           // @ts-ignore
           this.subtreeLengthDeep = currentNodeSubtreeLength;
         } else {
+
           // the root json data node is the associative array of tree item data nodes, suggested, if not so, then will not be rendered.
           subtreeRenderResult = this.renderSubtree(
             isArray,
@@ -306,8 +382,11 @@ export class Tree extends ImprovedRenderEventEmitter {
             ul
           );
 
+
           // @ts-ignore
           this.subtreeLength = subtreeNodesCount;
+
+
           // @ts-ignore
           this.subtreeLengthDeep = subtreeRenderResult;
         }
@@ -321,10 +400,13 @@ export class Tree extends ImprovedRenderEventEmitter {
         ul
       );
       const { currentNodeSubtreeLength } = renderResult;
-      // this.data = renderResult.node[0];
 
+
+      // this.data = renderResult.node[0];
       // @ts-ignore
       this.subtreeLength = subtreeNodesCount;
+
+
       // @ts-ignore
       this.subtreeLengthDeep = currentNodeSubtreeLength;
     }
@@ -336,12 +418,16 @@ export class Tree extends ImprovedRenderEventEmitter {
       );
     }
 
+
     // all eventsHandlers, assigned with addJSTreeEventListener,
     // here will be attached to one DOM event listener
     this.addJSTreeEventListeners();
 
+
     return this;
   }
+
+
 
   checkDataNodeSubtree(
     node: any
@@ -356,6 +442,7 @@ export class Tree extends ImprovedRenderEventEmitter {
     let hasSubtree: boolean = false;
 
     let subtreeJsonNodes: any = null;
+
     if (this.renderingMode === TreeConstants.RenderingMode.Conf) {
       subtreeJsonNodes = node[this.conf.SUBTREE];
     } else if (this.renderingMode === TreeConstants.RenderingMode.Ease) {
@@ -364,6 +451,7 @@ export class Tree extends ImprovedRenderEventEmitter {
 
     const { dataTypeString, dataType } = ArrayOrObjectPackage.getDataTypeStringAndConst(subtreeJsonNodes);
     const isArray: number = ((dataType === ArrayOrObjectPackage.JsonDataType.ARRAY) ? 1 : 0);
+
     if (
       (!subtreeJsonNodes)
       || (subtreeJsonNodes.length === 0)
@@ -388,6 +476,7 @@ export class Tree extends ImprovedRenderEventEmitter {
 
     hasSubtree = (itemsAmount !== 0);
 
+
     return {
       isArray,
       subtreeNodeDataType: dataType,
@@ -397,6 +486,8 @@ export class Tree extends ImprovedRenderEventEmitter {
       objectKeys
     };
   }
+
+
 
   renderSubtree(
     isArray: number,
@@ -416,8 +507,11 @@ export class Tree extends ImprovedRenderEventEmitter {
       objectKeys
     );
 
+
     return renderSubtreeResult;
   }
+
+
 
   renderSubtreeCallback(
     _isArray: number,
@@ -436,6 +530,7 @@ export class Tree extends ImprovedRenderEventEmitter {
       loopPropertyKey
     );
 
+
     // RENDERING ONE TREE NODE
     const renderResult: ITreeRenderRetValue = this.renderOneTreeNode(
       subtreeJsonNode,
@@ -447,8 +542,11 @@ export class Tree extends ImprovedRenderEventEmitter {
 
     currentNodeSubtreeLength += renderResult.currentNodeSubtreeLength;
 
+
     return currentNodeSubtreeLength;
   }
+
+
 
   renderOneTreeNode(
     node: any,
@@ -480,6 +578,7 @@ export class Tree extends ImprovedRenderEventEmitter {
           objectKeys: any[]|null;
         } = this.checkDataNodeSubtree(node);
 
+
     // TODO: EXTENSIBILITY FEATURE
     const dataForRendering: IRenderTemplateRendererData|null = this.getDataForRendering(
       node,
@@ -490,6 +589,8 @@ export class Tree extends ImprovedRenderEventEmitter {
 
     const nodeHtml: any = this.templateRenderer
       .setTemplate(TreeConstants.TEMPLATE__TREE_HTML_NODE)
+
+
     // @ts-ignore
       .setData(dataForRendering)
       .render();
@@ -499,9 +600,11 @@ export class Tree extends ImprovedRenderEventEmitter {
       nodeHtml
     );
 
+
     // @ts-ignore
     const holderLiItems: HTMLCollection = holder.getElementsByTagName("LI");
     const li: HTMLElement|null = holderLiItems.item(holderLiItems.length - 1) as HTMLElement;
+
     if (li === null) {
       throw new Error("Rendiring broken, wrong html structure built.");
     }
@@ -518,6 +621,7 @@ export class Tree extends ImprovedRenderEventEmitter {
         eventAfterRenderOneNodePayload
       );
 
+
       return {
         currentNodeSubtreeLength: 0,
         node: nodeClone
@@ -525,6 +629,7 @@ export class Tree extends ImprovedRenderEventEmitter {
     }
 
     const ul: HTMLElement|null = li.getElementsByTagName("UL")[0] as HTMLElement;
+
 
     // @ts-ignore
     if (this.nodesOpenedMode === TreeConstants.NodesOpenedMode.ALL_HIDE) {
@@ -556,11 +661,16 @@ export class Tree extends ImprovedRenderEventEmitter {
       eventAfterRenderOneNodePayload
     );
 
+
     return {
       currentNodeSubtreeLength: subtreeRenderResult.currentNodeSubtreeLength,
-      node: null // CHECK OUT WHETHER BOKEN WHEN NOW NULL
+      node: null
+
+
+      // CHECK OUT WHETHER BOKEN WHEN NOW NULL
     };
   }
+
 
   // TEMPORARY IMPL TO KEEP POINTERS TO JSON DATA NODES IN HTML TREE NODES IN HTML NODE DATA ATTRIBUTES
   updateDataNodeIdAndPath(
@@ -575,20 +685,27 @@ export class Tree extends ImprovedRenderEventEmitter {
     const flatCloneHolderId: any = flatNodeHolderClone._flatClone ? flatNodeHolderClone._flatClone[this.conf.NODE__ID] : null;
 
     const pathInJsonOfNodeHolder: any[] = flatNodeHolderClone._pathArray ?? ["ROOT-unhandled"];
-    // let pathKeyInNodeHolder = JSON.stringify(nodeKey);
 
+
+    // let pathKeyInNodeHolder = JSON.stringify(nodeKey);
     let pathInJsonArray: any[] = [
       ...pathInJsonOfNodeHolder
     ];
+
     if ((pathInJsonOfNodeHolder.length > 1) && this.renderingMode === TreeConstants.RenderingMode.Conf) {
+
       // const subtreePropName: any = JSON.stringify(this.conf.SUBTREE);
       pathInJsonArray.push(this.conf.SUBTREE);
       pathInJsonArray.push(nodeKey);
+
+
       //pathKeyInNodeHolder = `[${subtreePropName}][${pathKeyInNodeHolder}]`;
     } else if (this.renderingMode === TreeConstants.RenderingMode.Ease) {
+
       //pathKeyInNodeHolder = `[${pathKeyInNodeHolder}]`;
       pathInJsonArray.push(nodeKey);
     } else {
+
       //pathKeyInNodeHolder = `[${pathKeyInNodeHolder}]`;
       pathInJsonArray.push(nodeKey);
     }
@@ -599,14 +716,18 @@ export class Tree extends ImprovedRenderEventEmitter {
         index: number
       ) => {
         const jPathIndexText: any = JSON.stringify( jPathIndex );
+
+
         return (index === 0) ? jPathIndex : `[${jPathIndexText}]`;
       })
       .join("");
 
     const flatNodeClone: any = {};
+
     for (const propName in node) {
       const propValue: any = node[propName];
       const dataType: any = (typeof propValue);
+
       if (dataType === "object") {
         continue;
       }
@@ -625,8 +746,11 @@ export class Tree extends ImprovedRenderEventEmitter {
       _path: pathInJsonString
     };
 
+
     return nodeClone;
   }
+
+
 
   getTreeDataNodeByJsonnodePathArray ( jPathArray: any[] ): any {
 
@@ -634,6 +758,8 @@ export class Tree extends ImprovedRenderEventEmitter {
     // and modeEase was built from item at index 2, since it has array item at index 1 "Top": this.data["Top"], and modeConf does not have this array item.
     // modeConf was built recursively already from item at index 1.
     const startingIndexValidJpath: number = ( this.renderingMode === TreeConstants.RenderingMode.Conf ) ? 1 : 2;
+
+
     return jPathArray
       .reduce (
         (
@@ -646,6 +772,8 @@ export class Tree extends ImprovedRenderEventEmitter {
         this.data
       );
   }
+
+
 
   getByJPath(
     data: any,
@@ -663,6 +791,7 @@ export class Tree extends ImprovedRenderEventEmitter {
       );
   }
 
+
   // ADAPTIVE PLACEHOLDERS
   getSubtreeNodeToRender(
     _loopPropertyValue: any,
@@ -670,6 +799,8 @@ export class Tree extends ImprovedRenderEventEmitter {
   ): any {
     return null;
   }
+
+
 
   getDataForRendering(
     _node: any,
@@ -692,6 +823,8 @@ export class Tree extends ImprovedRenderEventEmitter {
     };
   }
 
+
+
   getTreeNodeCssClasses(
     _dataType: any,
     _node: any
@@ -699,18 +832,20 @@ export class Tree extends ImprovedRenderEventEmitter {
     return "";
   }
 
-  // FINISH BLOCK ADAPTIVE PLACEHOLDERS
 
+  // FINISH BLOCK ADAPTIVE PLACEHOLDERS
   // EVENTS BLOCK
   addJSTreeEventListener (
     eventName: any,
     eventHandler: (eventName: any, payload: any) => EventHandlerReturnValue|null|undefined|void
   ): Tree {
+
     // the holder class LargeDomEventListenersOverheadOptimizer method call
     this.addThisClassEventListener (
       eventName,
       eventHandler
     );
+
 
     return this;
   }
@@ -718,6 +853,7 @@ export class Tree extends ImprovedRenderEventEmitter {
 
   // the predefined events handlers
   addJSTreeEventListeners(): Tree {
+
     // the holder class LargeDomEventListenersOverheadOptimizer method call
     // Here is the predefined open button handler,
     // In Your custom code, this way You can define event handlers for heavy tree json data,
@@ -740,6 +876,7 @@ export class Tree extends ImprovedRenderEventEmitter {
       )
     );
 
+
     /* if (this.isModifiable) {
       this.addDomEventListener(
         "dblclick",
@@ -748,8 +885,10 @@ export class Tree extends ImprovedRenderEventEmitter {
       );
     } */
 
+
     // the holder class LargeDomEventListenersOverheadOptimizer method call
     this.addDomEventListeners();
+
 
     return this;
   }
@@ -760,12 +899,11 @@ export class Tree extends ImprovedRenderEventEmitter {
     jsTreeEventName: any,
     customEventHandler: any
   ) {
-
     return ( eventPayload: any ) => {
-
       const treeHtmlNode = eventPayload.eventTarget.closest(".jstree-html-node");
 
       const jsonNode = JSON.parse(this.unescapeHTMLFromAttribute(treeHtmlNode.dataset.json));
+
       if (this.debug === true) {
         console.log(
           eventPayload.event.type,
@@ -793,9 +931,11 @@ export class Tree extends ImprovedRenderEventEmitter {
     };
   }
 
+
   // the predefined events handlers
   openButtonClickHandler(eventPayload: any) {
     const toggleButton = eventPayload.eventTarget;
+
     if (
       toggleButton.classList.contains(TreeConstants.TreeCssClassNames.CLASS_WITHOUT_SUBTREE)
     ) {
@@ -804,6 +944,7 @@ export class Tree extends ImprovedRenderEventEmitter {
 
     const subtreeContainer = toggleButton.closest("li").getElementsByTagName("ul")[0];
     const isOpened = toggleButton.classList.contains(TreeConstants.TreeCssClassNames.CLASS_OPENED);
+
     if (isOpened) {
       toggleButton.classList.remove(TreeConstants.TreeCssClassNames.CLASS_OPENED);
       subtreeContainer.style.display = "none";
@@ -813,45 +954,85 @@ export class Tree extends ImprovedRenderEventEmitter {
     }
   }
 
+
   // the predefined events handlers
   treeNodeLableClickHandler(_eventPayload: any) {
+
     // example for custom event handler, the placeholder
   }
-  // END EVENTS BLOCK
 
+
+  // END EVENTS BLOCK
   getInModeConfDataNodeIsTreeItem(node: object): boolean {
+
     // @ts-ignore
     const nodeLabelTextPropertyValue: any = node[this.conf.NODE_LABEL__TEXT];
+
 
     // the main conf required dsts json field is label text. and it cannot be an object, but a string or number.
     const isTreeItem: boolean = (nodeLabelTextPropertyValue && ((nodeLabelTextPropertyValue) !== "object"));
 
+
     return isTreeItem;
   }
 
+
+
   escapeHTMLForAttribute(str: any): any {
     return str
-      .replace( /"/g, "&quot;" ) // Replace double quotes
-      .replace( /'/g, "&#39;" ) // Replace single quotes
-      .replace( /</g, "&lt;" ) // Replace <
-      .replace( />/g, "&gt;" ); // Replace >
+      .replace( /"/g, "&quot;" )
+
+
+    // Replace double quotes
+      .replace( /'/g, "&#39;" )
+
+
+    // Replace single quotes
+      .replace( /</g, "&lt;" )
+
+
+    // Replace <
+      .replace( />/g, "&gt;" );
+
+
+    // Replace >
   }
+
+
 
   unescapeHTMLFromAttribute(str: any|undefined): any {
     if (!str) {
       return "";
     }
+
+
     return str
-      .replace( /&quot;/g, "\"" ) // Replace double quotes
-      .replace( /&#39;/g, "'" ) // Replace single quotes
-      .replace( /&lt;/g, "<" ) // Replace <
-      .replace( /&gt;/g, ">" ); // Replace >
+      .replace( /&quot;/g, "\"" )
+
+
+    // Replace double quotes
+      .replace( /&#39;/g, "'" )
+
+
+    // Replace single quotes
+      .replace( /&lt;/g, "<" )
+
+
+    // Replace <
+      .replace( /&gt;/g, ">" );
+
+
+    // Replace >
   }
+
+
 
   getTreeHtmlNodeDatasetJson(htmlNode: HTMLElement|null): any {
     if (htmlNode === null) {
       return "";
     }
+
+
     return JSON.parse(this.unescapeHTMLFromAttribute(htmlNode.dataset.json));
   }
 }

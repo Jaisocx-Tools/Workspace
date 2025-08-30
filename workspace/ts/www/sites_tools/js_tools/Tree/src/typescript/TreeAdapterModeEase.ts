@@ -2,15 +2,21 @@ import { TreeAdapter } from "./TreeAdapter.js";
 import { TreeConstants } from "./TreeConstants.js";
 import { IRenderTemplateRendererData, ITreeAdapter } from "./Types.js";
 
+
+
 export class TreeAdapterModeEase extends TreeAdapter implements ITreeAdapter {
+
   getSubtreeNodeToRender(
     loopPropertyValue: any,
     loopPropertyKey: any
   ): any {
     const subtreeJsonNode: object = { [loopPropertyKey]: loopPropertyValue };
 
+
     return subtreeJsonNode;
   }
+
+
 
   getDataForRendering(
     node: any,
@@ -51,8 +57,11 @@ export class TreeAdapterModeEase extends TreeAdapter implements ITreeAdapter {
       hasSubtree: nodeHasSubtree
     };
 
+
     return dataForRendering;
   }
+
+
 
   getTreeNodeCssClasses__dataTypesCssClassesEnabled(
     _dataTypeString: any,
@@ -67,8 +76,11 @@ export class TreeAdapterModeEase extends TreeAdapter implements ITreeAdapter {
 
     const cssClasses: any = cssClassesArray.join("");
 
+
     return cssClasses;
   }
+
+
 
   getTreeNodeCssClasses__dataTypesCssClassesDisabled(
     _dataTypeString: any,
@@ -77,10 +89,13 @@ export class TreeAdapterModeEase extends TreeAdapter implements ITreeAdapter {
     throw new Error("Method not implemented.");
   }
 
+
   // dummy placeholders
   escapeHTMLForAttribute(_arg: any): any {
     throw new Error("Method not implemented.");
   }
+
+
 
   getTreeNodeCssClasses(
     _dataTypeString: any,
@@ -88,5 +103,7 @@ export class TreeAdapterModeEase extends TreeAdapter implements ITreeAdapter {
   ): any {
     throw new Error("Method not implemented.");
   }
+
+
   // finish dummy placeholders
 }

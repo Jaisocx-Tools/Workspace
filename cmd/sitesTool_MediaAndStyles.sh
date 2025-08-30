@@ -52,8 +52,8 @@ fi
 "${jsInvokePath}" "$commandLineArgs" \
   --packagePath="www/packages/SitesToolAutomation" \
   --script="main/produceSitesTool_MediaAndStyles.js" \
-      --cssOrJsTool="css" \
-      --sitesToolName="CssCodeSnippet" \
+      --cssOrJsTool="js" \
+      --sitesToolName="Tree" \
       --sitesTool_ThemeName="theme_base" \
       --templatePath="data/templates/css/responsive/responsive_size__mini.css.template" \
       --withSizesCssConstants="no" \

@@ -364,19 +364,14 @@
     {
       "path": "sites_tools/js_tools/Tree",
       "name": "tree",
-      "update-published": "Mon Jun 02 22:02:01 GMT 2025",
+      "update-published": "",
       "build": false,
-      "build-simple-enable": true,
-      "dependencies": [
-        {
-          "name": "@jaisocx/event-emitter",
-          "path": "packages/EventEmitter"
-        },
-        {
-          "name": "@jaisocx/template-renderer",
-          "path": "packages/TemplateRenderer"
-        }
-      ],
+      "build-simple-enable": false,
+      "css-importer": {
+        "build": true,
+        "cssFilePath": "MediaAndStyles/Tree_main_Webpack.css",
+        "cssTargetFilePath": "MediaAndStyles/Tree_main_resolved.css"
+      },
       "build-files": [
         "typescript/ArrayOrObjectPackage.js",
         "typescript/Tree.js",
@@ -389,6 +384,16 @@
         "webpackAliases.js",
         "webpack.aliases.mjs",
         "webpack.aliases.cjs"
+      ],
+      "dependencies": [
+        {
+          "name": "@jaisocx/event-emitter",
+          "path": "packages/EventEmitter"
+        },
+        {
+          "name": "@jaisocx/template-renderer",
+          "path": "packages/TemplateRenderer"
+        }
       ]
     },
     {

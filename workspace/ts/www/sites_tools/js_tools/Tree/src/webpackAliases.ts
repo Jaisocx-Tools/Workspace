@@ -1,9 +1,10 @@
+// the hardcoded copy of .ts file
+
 import * as path from "node:path";
 import * as fs from "node:fs";
 
 
 export function getWebpackAliases( packageRoot: any ): any {
-
   const PROJECT_ROOT_PLACEHOLDER: any = "${packageRoot}/";
   const WEBPACK_ALIASES_JSON__FILENAME: any = "webpack.aliases.json";
   const WEBPACK_ALIASES_JSON__CHARSET: any = "utf8";
@@ -28,7 +29,6 @@ export function getWebpackAliases( packageRoot: any ): any {
   const webpackAliasesResolved: any = {};
 
   for (const propName in aliases) {
-
     const aliasPath: any = aliases[propName];
 
     const pathReplaced: any = aliasPath.replace(

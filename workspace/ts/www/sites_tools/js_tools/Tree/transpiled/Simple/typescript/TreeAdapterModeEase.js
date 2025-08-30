@@ -6,8 +6,10 @@ class TreeAdapterModeEase extends TreeAdapter {
     ) {
         const subtreeJsonNode = { [loopPropertyKey]: loopPropertyValue };
 
+
         return subtreeJsonNode;
     }
+
 
 
     getDataForRendering(
@@ -44,8 +46,10 @@ class TreeAdapterModeEase extends TreeAdapter {
             hasSubtree: nodeHasSubtree
         };
 
+
         return dataForRendering;
     }
+
 
 
     getTreeNodeCssClasses__dataTypesCssClassesEnabled(_dataTypeString, _node) {
@@ -57,8 +61,10 @@ class TreeAdapterModeEase extends TreeAdapter {
         ];
         const cssClasses = cssClassesArray.join("");
 
+
         return cssClasses;
     }
+
 
 
     getTreeNodeCssClasses__dataTypesCssClassesDisabled(_dataTypeString, _node) {
@@ -70,6 +76,7 @@ class TreeAdapterModeEase extends TreeAdapter {
     escapeHTMLForAttribute(_arg) {
         throw new Error("Method not implemented.");
     }
+
 
 
     getTreeNodeCssClasses(_dataTypeString, _value) {

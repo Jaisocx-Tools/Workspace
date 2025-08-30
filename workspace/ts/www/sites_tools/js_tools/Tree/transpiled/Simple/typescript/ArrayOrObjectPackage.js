@@ -9,9 +9,11 @@ class ArrayOrObjectPackage {
     };
 
 
+
     static getDataTypeStringAndConst(value) {
         const dataTypeString = Array.isArray(value) ? "array" : (typeof value);
         const dataType = ArrayOrObjectPackage.JsonDataType[dataTypeString.toUpperCase()];
+
 
         return {
             dataTypeString,
@@ -20,12 +22,15 @@ class ArrayOrObjectPackage {
     }
 
 
+
     static getDataType(value) {
         const dataTypeString = Array.isArray(value) ? "array" : (typeof value);
         const dataType = ArrayOrObjectPackage.JsonDataType[dataTypeString.toUpperCase()];
 
+
         return dataType;
     }
+
 
 
     static getArrayOrObjectItemsAmount(isArray, arrayOrObject) {
@@ -40,11 +45,13 @@ class ArrayOrObjectPackage {
             itemsAmount = objectKeys.length;
         }
 
+
         return {
             itemsAmount,
             objectKeys
         };
     }
+
 
 
     static iterateOverArrayOrObject(
@@ -63,8 +70,10 @@ class ArrayOrObjectPackage {
             objectKeys
         );
 
+
         return callbackResult;
     }
+
 
 
     static iterateOverArrayOrObjectDefined(
@@ -125,6 +134,7 @@ class ArrayOrObjectPackage {
                 );
             }
         }
+
 
         return callbackResult;
     }

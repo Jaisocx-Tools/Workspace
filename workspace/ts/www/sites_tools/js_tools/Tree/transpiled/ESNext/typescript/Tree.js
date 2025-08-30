@@ -346,7 +346,8 @@ export class Tree extends ImprovedRenderEventEmitter {
         this.emitEvent(TreeConstants.TreeEventsNames.EVENT_NAME__AFTER_RENDER_ONE_NODE, eventAfterRenderOneNodePayload);
         return {
             currentNodeSubtreeLength: subtreeRenderResult.currentNodeSubtreeLength,
-            node: null // CHECK OUT WHETHER BOKEN WHEN NOW NULL
+            node: null
+            // CHECK OUT WHETHER BOKEN WHEN NOW NULL
         };
     }
     // TEMPORARY IMPL TO KEEP POINTERS TO JSON DATA NODES IN HTML TREE NODES IN HTML NODE DATA ATTRIBUTES
@@ -513,20 +514,28 @@ export class Tree extends ImprovedRenderEventEmitter {
     }
     escapeHTMLForAttribute(str) {
         return str
-            .replace(/"/g, "&quot;") // Replace double quotes
-            .replace(/'/g, "&#39;") // Replace single quotes
-            .replace(/</g, "&lt;") // Replace <
-            .replace(/>/g, "&gt;"); // Replace >
+            .replace(/"/g, "&quot;")
+            // Replace double quotes
+            .replace(/'/g, "&#39;")
+            // Replace single quotes
+            .replace(/</g, "&lt;")
+            // Replace <
+            .replace(/>/g, "&gt;");
+        // Replace >
     }
     unescapeHTMLFromAttribute(str) {
         if (!str) {
             return "";
         }
         return str
-            .replace(/&quot;/g, "\"") // Replace double quotes
-            .replace(/&#39;/g, "'") // Replace single quotes
-            .replace(/&lt;/g, "<") // Replace <
-            .replace(/&gt;/g, ">"); // Replace >
+            .replace(/&quot;/g, "\"")
+            // Replace double quotes
+            .replace(/&#39;/g, "'")
+            // Replace single quotes
+            .replace(/&lt;/g, "<")
+            // Replace <
+            .replace(/&gt;/g, ">");
+        // Replace >
     }
     getTreeHtmlNodeDatasetJson(htmlNode) {
         if (htmlNode === null) {

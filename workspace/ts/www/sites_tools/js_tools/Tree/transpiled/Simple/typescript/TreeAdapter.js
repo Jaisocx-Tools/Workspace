@@ -5,6 +5,7 @@ class TreeAdapter {
     dataTypesCssClassesEnabled;
 
 
+
     constructor() {
         this.conf = new TreeConf();
         this.nodesWithIcons = TreeConstants.Defaults.nodesWithIcons;

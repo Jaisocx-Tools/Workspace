@@ -2,13 +2,18 @@ import { TreeAdapter } from "./TreeAdapter.js";
 import { TreeConstants } from "./TreeConstants.js";
 import { IRenderTemplateRendererData, ITreeAdapter } from "./Types.js";
 
+
+
 export class TreeAdapterModeConf extends TreeAdapter implements ITreeAdapter {
+
   getSubtreeNodeToRender(
     _loopPropertyValue: any,
     _loopPropertyKey: any
   ): any {
     return _loopPropertyValue;
   }
+
+
 
   getDataForRendering(
     node: any,
@@ -20,6 +25,7 @@ export class TreeAdapterModeConf extends TreeAdapter implements ITreeAdapter {
 
     if (!hasSubtree) {
       openButtonClassName = TreeConstants.TreeCssClassNames.CLASS_WITHOUT_SUBTREE;
+
 
       // @ts-ignore
     } else if (
@@ -52,8 +58,11 @@ export class TreeAdapterModeConf extends TreeAdapter implements ITreeAdapter {
       hasSubtree
     };
 
+
     return dataForRendering;
   }
+
+
 
   getTreeNodeCssClasses__dataTypesCssClassesEnabled(
     dataTypeString: any,
@@ -72,8 +81,11 @@ export class TreeAdapterModeConf extends TreeAdapter implements ITreeAdapter {
 
     const cssClasses: any = cssClassesArray.join("");
 
+
     return cssClasses;
   }
+
+
 
   getTreeNodeCssClasses__dataTypesCssClassesDisabled(
     _dataTypeString: any,
@@ -89,13 +101,17 @@ export class TreeAdapterModeConf extends TreeAdapter implements ITreeAdapter {
 
     const cssClasses: any = cssClassesArray.join("");
 
+
     return cssClasses;
   }
+
 
   // dummy placeholders
   escapeHTMLForAttribute(_arg: any): any {
     throw new Error("Method not implemented.");
   }
+
+
 
   getTreeNodeCssClasses(
     _dataTypeString: any,
@@ -103,5 +119,7 @@ export class TreeAdapterModeConf extends TreeAdapter implements ITreeAdapter {
   ): any {
     throw new Error("Method not implemented.");
   }
+
+
   // finish dummy placeholders
 }

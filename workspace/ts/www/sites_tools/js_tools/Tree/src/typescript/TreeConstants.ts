@@ -3,6 +3,8 @@ import {
   INodesOpenedMode
 } from "./Types.js";
 
+
+
 export class TreeConstants {
   static RenderingMode: IRenderingMode = {
     Ease: 1,

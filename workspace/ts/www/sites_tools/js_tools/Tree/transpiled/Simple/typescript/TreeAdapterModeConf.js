@@ -8,6 +8,7 @@ class TreeAdapterModeConf extends TreeAdapter {
     }
 
 
+
     getDataForRendering(
         node,
         flatNodeClone,
@@ -44,8 +45,10 @@ class TreeAdapterModeConf extends TreeAdapter {
             hasSubtree
         };
 
+
         return dataForRendering;
     }
+
 
 
     getTreeNodeCssClasses__dataTypesCssClassesEnabled(dataTypeString, node) {
@@ -60,8 +63,10 @@ class TreeAdapterModeConf extends TreeAdapter {
         ];
         const cssClasses = cssClassesArray.join("");
 
+
         return cssClasses;
     }
+
 
 
     getTreeNodeCssClasses__dataTypesCssClassesDisabled(_dataTypeString, _node) {
@@ -73,6 +78,7 @@ class TreeAdapterModeConf extends TreeAdapter {
         ];
         const cssClasses = cssClassesArray.join("");
 
+
         return cssClasses;
     }
 
@@ -81,6 +87,7 @@ class TreeAdapterModeConf extends TreeAdapter {
     escapeHTMLForAttribute(_arg) {
         throw new Error("Method not implemented.");
     }
+
 
 
     getTreeNodeCssClasses(_dataTypeString, _value) {

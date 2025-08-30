@@ -11,6 +11,8 @@ export class TreeConf {
   NODE__CSS_CLASS_NAME: any;
   NODE__ART: any;
 
+
+
   constructor() {
     this.NODE_ICON__SRC = "icon";
     this.NODE_LABEL__TEXT = "label";

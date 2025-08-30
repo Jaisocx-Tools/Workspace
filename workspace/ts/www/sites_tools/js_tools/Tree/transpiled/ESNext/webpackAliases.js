@@ -1,3 +1,4 @@
+// the hardcoded copy of .ts file
 import * as path from "node:path";
 import * as fs from "node:fs";
 export function getWebpackAliases(packageRoot) {

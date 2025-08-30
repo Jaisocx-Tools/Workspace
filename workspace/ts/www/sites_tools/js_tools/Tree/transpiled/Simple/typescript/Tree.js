@@ -17,6 +17,7 @@ class Tree extends ImprovedRenderEventEmitter {
     adapter;
 
 
+
     constructor() {
         super();
         this.debug = TreeConstants.Defaults.debug;
@@ -61,6 +62,7 @@ class Tree extends ImprovedRenderEventEmitter {
     }
 
 
+
     setDebug(debug) {
 
         // optional method
@@ -68,8 +70,10 @@ class Tree extends ImprovedRenderEventEmitter {
         this.templateRenderer.setDebug(debug);
         this.debug = debug;
 
+
         return this;
     }
+
 
 
     setNodesWithIcons(withIcons) {
@@ -77,8 +81,10 @@ class Tree extends ImprovedRenderEventEmitter {
         // optional method
         this.nodesWithIcons = withIcons;
 
+
         return this;
     }
+
 
 
     setNodesOpenedMode(openedMode) {
@@ -86,8 +92,10 @@ class Tree extends ImprovedRenderEventEmitter {
         // optional method
         this.nodesOpenedMode = openedMode;
 
+
         return this;
     }
+
 
 
     setUrl(url) {
@@ -95,8 +103,10 @@ class Tree extends ImprovedRenderEventEmitter {
         // optional method
         this.url = url;
 
+
         return this;
     }
+
 
 
     setMainHtmlNodeId(mainHtmlNodeId) {
@@ -104,8 +114,10 @@ class Tree extends ImprovedRenderEventEmitter {
         // required method
         this.mainHtmlNodeId = mainHtmlNodeId;
 
+
         return this;
     }
+
 
 
     setConf(conf) {
@@ -113,8 +125,10 @@ class Tree extends ImprovedRenderEventEmitter {
         // optional method
         this.conf = conf;
 
+
         return this;
     }
+
 
 
     setModifiable(isModifiable) {
@@ -122,8 +136,10 @@ class Tree extends ImprovedRenderEventEmitter {
         // optional method
         this.isModifiable = isModifiable;
 
+
         return this;
     }
+
 
 
     setRenderingMode(mode) {
@@ -131,15 +147,19 @@ class Tree extends ImprovedRenderEventEmitter {
         // optional method
         this.renderingMode = mode;
 
+
         return this;
     }
+
 
 
     setDataTypesCssClassesEnabled(dataTypesCssEnabled) {
         this.dataTypesCssClassesEnabled = dataTypesCssEnabled;
 
+
         return this;
     }
+
 
 
     load(url) {
@@ -157,8 +177,10 @@ class Tree extends ImprovedRenderEventEmitter {
                 this.render(json);
             });
 
+
         return this;
     }
+
 
 
     adaptRenderingModeSubcalls() {
@@ -189,11 +211,14 @@ class Tree extends ImprovedRenderEventEmitter {
     }
 
 
+
     reRender() {
         this.render(this.data);
 
+
         return this;
     }
+
 
 
     render(nodes) {
@@ -353,8 +378,10 @@ class Tree extends ImprovedRenderEventEmitter {
         // here will be attached to one DOM event listener
         this.addJSTreeEventListeners();
 
+
         return this;
     }
+
 
 
     checkDataNodeSubtree(node) {
@@ -386,6 +413,7 @@ class Tree extends ImprovedRenderEventEmitter {
         const { itemsAmount, objectKeys } = ArrayOrObjectPackage.getArrayOrObjectItemsAmount(isArray, subtreeJsonNodes);
         hasSubtree = (itemsAmount !== 0);
 
+
         return {
             isArray,
             subtreeNodeDataType: dataType,
@@ -395,6 +423,7 @@ class Tree extends ImprovedRenderEventEmitter {
             objectKeys
         };
     }
+
 
 
     renderSubtree(
@@ -415,8 +444,10 @@ class Tree extends ImprovedRenderEventEmitter {
             objectKeys
         );
 
+
         return renderSubtreeResult;
     }
+
 
 
     renderSubtreeCallback(
@@ -446,8 +477,10 @@ class Tree extends ImprovedRenderEventEmitter {
         );
         currentNodeSubtreeLength += renderResult.currentNodeSubtreeLength;
 
+
         return currentNodeSubtreeLength;
     }
+
 
 
     renderOneTreeNode(
@@ -507,6 +540,7 @@ class Tree extends ImprovedRenderEventEmitter {
                 eventAfterRenderOneNodePayload
             );
 
+
             return {
                 currentNodeSubtreeLength: 0,
                 node: nodeClone
@@ -541,6 +575,7 @@ class Tree extends ImprovedRenderEventEmitter {
             TreeConstants.TreeEventsNames.EVENT_NAME__AFTER_RENDER_ONE_NODE,
             eventAfterRenderOneNodePayload
         );
+
 
         return {
             currentNodeSubtreeLength: subtreeRenderResult.currentNodeSubtreeLength,
@@ -594,6 +629,7 @@ class Tree extends ImprovedRenderEventEmitter {
             .map((jPathIndex, index) => {
                 const jPathIndexText = JSON.stringify(jPathIndex);
 
+
                 return (index === 0) ? jPathIndex : `[${jPathIndexText}]`;
             })
             .join("");
@@ -619,8 +655,10 @@ class Tree extends ImprovedRenderEventEmitter {
             _path: pathInJsonString
         };
 
+
         return nodeClone;
     }
+
 
 
     getTreeDataNodeByJsonnodePathArray(jPathArray) {
@@ -630,6 +668,7 @@ class Tree extends ImprovedRenderEventEmitter {
         // modeConf was built recursively already from item at index 1.
         const startingIndexValidJpath = (this.renderingMode === TreeConstants.RenderingMode.Conf) ? 1 : 2;
 
+
         return jPathArray
             .reduce(
                 (reducedRetValue, arrayItem, arrayItemIndex) => {
@@ -638,6 +677,7 @@ class Tree extends ImprovedRenderEventEmitter {
                 this.data
             );
     }
+
 
 
     getByJPath(data, jPathArray) {
@@ -658,6 +698,7 @@ class Tree extends ImprovedRenderEventEmitter {
     ) {
         return null;
     }
+
 
 
     getDataForRendering(
@@ -682,6 +723,7 @@ class Tree extends ImprovedRenderEventEmitter {
     }
 
 
+
     getTreeNodeCssClasses(_dataType, _node) {
         return "";
     }
@@ -693,6 +735,7 @@ class Tree extends ImprovedRenderEventEmitter {
 
         // the holder class LargeDomEventListenersOverheadOptimizer method call
         this.addThisClassEventListener(eventName, eventHandler);
+
 
         return this;
     }
@@ -734,6 +777,7 @@ class Tree extends ImprovedRenderEventEmitter {
 
         // the holder class LargeDomEventListenersOverheadOptimizer method call
         this.addDomEventListeners();
+
 
         return this;
     }
@@ -805,8 +849,10 @@ class Tree extends ImprovedRenderEventEmitter {
         // the main conf required dsts json field is label text. and it cannot be an object, but a string or number.
         const isTreeItem = (nodeLabelTextPropertyValue && ((nodeLabelTextPropertyValue) !== "object"));
 
+
         return isTreeItem;
     }
+
 
 
     escapeHTMLForAttribute(str) {
@@ -814,20 +860,21 @@ class Tree extends ImprovedRenderEventEmitter {
             .replace(/"/g, "&quot;")
 
 
-        // Replace double quotes
+            // Replace double quotes
             .replace(/'/g, "&#39;")
 
 
-        // Replace single quotes
+            // Replace single quotes
             .replace(/</g, "&lt;")
 
 
-        // Replace <
+            // Replace <
             .replace(/>/g, "&gt;");
 
 
         // Replace >
     }
+
 
 
     unescapeHTMLFromAttribute(str) {
@@ -836,19 +883,20 @@ class Tree extends ImprovedRenderEventEmitter {
             return "";
         }
 
+
         return str
             .replace(/&quot;/g, "\"")
 
 
-        // Replace double quotes
+            // Replace double quotes
             .replace(/&#39;/g, "'")
 
 
-        // Replace single quotes
+            // Replace single quotes
             .replace(/&lt;/g, "<")
 
 
-        // Replace <
+            // Replace <
             .replace(/&gt;/g, ">");
 
 
@@ -856,11 +904,13 @@ class Tree extends ImprovedRenderEventEmitter {
     }
 
 
+
     getTreeHtmlNodeDatasetJson(htmlNode) {
 
         if (htmlNode === null) {
             return "";
         }
+
 
         return JSON.parse(this.unescapeHTMLFromAttribute(htmlNode.dataset.json));
     }

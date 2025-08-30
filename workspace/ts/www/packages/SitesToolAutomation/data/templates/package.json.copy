@@ -41,7 +41,7 @@
     }
   },
   "dependencies": {
-    "@jaisocx/css-clean-start-2": "~1.1.4"
+    "@jaisocx/css-clean-start-2": "~1.1.5"
   }
 }
 

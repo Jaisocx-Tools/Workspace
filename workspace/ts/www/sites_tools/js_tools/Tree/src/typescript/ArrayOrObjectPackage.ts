@@ -9,6 +9,8 @@ export interface IJsonDataType {
   [key: string]: number;
 }
 
+
+
 export class ArrayOrObjectPackage {
   static readonly JsonDataType: IJsonDataType = {
     ARRAY: 1,
@@ -19,9 +21,12 @@ export class ArrayOrObjectPackage {
     NO_SUBTREE: 6
   };
 
+
+
   public static getDataTypeStringAndConst(value: any): { dataTypeString: any, dataType: number } {
     const dataTypeString: any = Array.isArray(value) ? "array" : (typeof value);
     const dataType: number = ArrayOrObjectPackage.JsonDataType[dataTypeString.toUpperCase()];
+
 
     return {
       dataTypeString,
@@ -29,12 +34,17 @@ export class ArrayOrObjectPackage {
     };
   }
 
+
+
   public static getDataType(value: any): number {
     const dataTypeString: any = Array.isArray(value) ? "array" : (typeof value);
     const dataType: number = ArrayOrObjectPackage.JsonDataType[dataTypeString.toUpperCase()];
 
+
     return dataType;
   }
+
+
 
   public static getArrayOrObjectItemsAmount(
     isArray: number,
@@ -50,11 +60,14 @@ export class ArrayOrObjectPackage {
       itemsAmount = objectKeys.length;
     }
 
+
     return {
       itemsAmount,
       objectKeys
     };
   }
+
+
 
   public static iterateOverArrayOrObject(
     dataType: number,
@@ -72,8 +85,11 @@ export class ArrayOrObjectPackage {
       objectKeys
     );
 
+
     return callbackResult;
   }
+
+
 
   public static iterateOverArrayOrObjectDefined(
     isArray: number,
@@ -82,8 +98,8 @@ export class ArrayOrObjectPackage {
     callbackPayload: any,
     objectKeys: any[]|null
   ): any {
-    // expects isArray = 1 true
 
+    // expects isArray = 1 true
     let loopCounter: number = 0;
     let arrayElement: any = {};
 
@@ -97,10 +113,11 @@ export class ArrayOrObjectPackage {
     let callbackResult: any = null;
 
     if (isArray === 1) {
-      // subtree type is array
 
+      // subtree type is array
       loopPropertyName = "";
       arrayOrObjectItemsAmount = arrayOrObject.length;
+
       for (loopCounter = 0; loopCounter < arrayOrObjectItemsAmount; loopCounter++) {
         arrayElement = arrayOrObject[loopCounter];
 
@@ -115,12 +132,13 @@ export class ArrayOrObjectPackage {
         );
       }
     } else {
-      // subtree type is object
 
+      // subtree type is object
       subtreeKeys = (objectKeys !== null) ? objectKeys : Object.keys(arrayOrObject);
       subtreeValues = Object.values(arrayOrObject);
 
       arrayOrObjectItemsAmount = subtreeKeys.length;
+
       for (loopCounter = 0; loopCounter < arrayOrObjectItemsAmount; loopCounter++) {
         loopPropertyName = subtreeKeys[loopCounter];
         loopPropertyValue = subtreeValues[loopCounter];
@@ -136,6 +154,7 @@ export class ArrayOrObjectPackage {
         );
       }
     }
+
 
     return callbackResult;
   }

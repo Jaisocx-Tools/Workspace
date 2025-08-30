@@ -1,23 +1,12 @@
 {
   "name": "@jaisocx/tree",
-  "version": "1.5.40",
-  "author": "Jaisocx",
-  "private": false,
-  "description": "",
-  "type": "module",
-  "main": "./transpiled/CommonJS/index.js",
-  "types": "./transpiled/ESNext/index.d.ts",
-  "module": "./transpiled/ESNext/index.js",
-  "exports": {
-    ".": {
-      "import": "./transpiled/ESNext/index.js",
-      "require": "./transpiled/CommonJS/index.js"
-    },
-    "./WebpackAliases": {
-      "import": "./transpiled/ESNext/webpack.aliases.mjs",
-      "require": "./transpiled/CommonJS/webpack.aliases.cjs"
-    }
-  },
+  "version": "2.1.0",
+  "description": "Sites tool, styling json",
+  "author": "Jaisocx Company",
+  "keywords": [
+    "json",
+    "tree"
+  ],
   "files": [
     "index.example.html",
     "tree.example.html",
@@ -33,18 +22,31 @@
     "README.md",
     "README_WEBPACK.md"
   ],
-  "optionalDependencies": {
-    "@jaisocx/css-clean-start-2": "~1.1.4",
-    "@jaisocx/event-emitter": "^1.4.2",
-    "@jaisocx/template-renderer": "^1.5.8"
-  },
-  "keywords": [
-    "json",
-    "tree"
-  ],
+  "private": false,
   "publishConfig": {
     "access": "public"
   },
-  "license": "ISC"
+  "type": "module",
+  "main": "./transpiled/CommonJS/index.js",
+  "types": "./transpiled/ESNext/index.d.ts",
+  "module": "./transpiled/ESNext/index.js",
+  "exports": {
+    ".": {
+      "import": "./transpiled/ESNext/index.js",
+      "require": "./transpiled/CommonJS/index.js"
+    },
+    "./WebpackAliases": {
+      "import": "./transpiled/ESNext/webpack.aliases.mjs",
+      "require": "./transpiled/CommonJS/webpack.aliases.cjs"
+    }
+  },
+  "optionalDependencies": {
+    "@jaisocx/css-clean-start-2": "~1.1.5",
+    "@jaisocx/event-emitter": "~1.4.2",
+    "@jaisocx/tokens-parser": "~1.2.2",
+    "@jaisocx/template-renderer": "~1.5.8"
+  }
 }
+
+
 
