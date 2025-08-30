@@ -1,0 +1,37 @@
+{
+  "name": "@jaisocx/linked-resources-integrity",
+  "version": "1.0.1",
+  "author": "Jaisocx",
+  "keywords": [
+    "link",
+    "integrity",
+    "checksum",
+    "font",
+    "image",
+    "quality"
+  ],
+  "private": false,
+  "description": "",
+  "type": "module",
+  "main": "./transpiled/CommonJS/index.js",
+  "types": "./transpiled/ESNext/index.d.ts",
+  "module": "./transpiled/ESNext/index.js",
+  "exports": {
+    "require": "./transpiled/CommonJS/index.js",
+    "import": "./transpiled/ESNext/index.js"
+  },
+  "files": [
+    "transpiled/CommonJS",
+    "transpiled/ESNext",
+
+    "README.md"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "optionalDependencies": {
+    "@jaisocx/command-line": "~1.0.3"
+  }
+}
+
+

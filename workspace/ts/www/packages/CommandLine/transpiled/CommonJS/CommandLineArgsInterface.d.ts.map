@@ -1,0 +1,1 @@
+{"version":3,"file":"CommandLineArgsInterface.d.ts","sourceRoot":"","sources":["../../src/CommandLineArgsInterface.ts"],"names":[],"mappings":"AAAA,OAAO,EAAE,eAAe,EAAE,MAAM,sBAAsB,CAAC;AAGvD,MAAM,WAAW,wBAAwB;IAEvC,kBAAkB,IAAI,MAAM,CAAC;IAE7B,mBAAmB,IAAI,eAAe,CAAC;IAcvC,wBAAwB,IAAI,eAAe,CAAC;CAE7C"}

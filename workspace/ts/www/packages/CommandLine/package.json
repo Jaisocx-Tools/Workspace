@@ -1,0 +1,32 @@
+{
+  "name": "@jaisocx/command-line",
+  "version": "1.0.3",
+  "author": "Jaisocx",
+  "keywords": [
+    "command",
+    "script",
+    "console",
+    "terminal"
+  ],
+  "private": false,
+  "description": "",
+  "type": "module",
+  "main": "./transpiled/CommonJS/index.js",
+  "types": "./transpiled/ESNext/index.d.ts",
+  "module": "./transpiled/ESNext/index.js",
+  "exports": {
+    "require": "./transpiled/CommonJS/index.js",
+    "import": "./transpiled/ESNext/index.js"
+  },
+  "files": [
+    "transpiled/CommonJS",
+    "transpiled/ESNext",
+
+    "README.md"
+  ],
+  "publishConfig": {
+    "access": "public"
+  }
+}
+
+

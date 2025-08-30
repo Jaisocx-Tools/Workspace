@@ -2,11 +2,9 @@
 /* @import url("@Tree_MediaAndStyles/themes/theme_base/responsive_size_Imports_Tree_theme_base_Webpack_minimal.css"); */
 @import url("@Tree_MediaAndStyles/themes/theme_base/responsive_size_Imports_Tree_theme_base_Webpack.css");
 
-/* @import url("@Tree_MediaAndStyles/themes/theme_base/Tree_theme_base_Imports_fonts_cdn.css"); */
-@import url("@Tree_MediaAndStyles/themes/theme_base/Tree_theme_base_Imports_fonts_Webpack.css");
+@import url("@Tree_MediaAndStyles/themes/theme_base/Tree_theme_base_Imports_fonts_cdn.css");
 
-/* @import url("@Tree_MediaAndStyles/themes/theme_base/Tree_theme_base_Imports_mini_images_Relative.css"); */
-@import url("@Tree_MediaAndStyles/themes/theme_base/Tree_theme_base_Imports_mini_images_Webpack.css");
+@import url("@Tree_MediaAndStyles/themes/theme_base/Tree_theme_base_Imports_mini_images_Relative.css");
 
 @import url("@Tree_MediaAndStyles/themes/theme_base/Tree_theme_base_main.css");
 

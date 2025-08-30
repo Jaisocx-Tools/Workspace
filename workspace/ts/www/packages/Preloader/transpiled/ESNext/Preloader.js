@@ -52,7 +52,6 @@ export class Preloader {
         let linkTagName = "link";
         let rel = "preload";
         let as = inDataType;
-        let crossOrigin = "anonimous";
         let themeName = "";
         let webpackAliasedURL = "";
         let href = "";
@@ -78,7 +77,6 @@ export class Preloader {
                 link.as = as;
                 link.href = href;
                 link.rel = rel;
-                link.crossOrigin = crossOrigin;
                 document.head.append(link);
             }
         }

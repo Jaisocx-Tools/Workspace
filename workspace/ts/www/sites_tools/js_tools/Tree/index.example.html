@@ -15,17 +15,19 @@
     <!-- <link
       rel="icon"
       type="image/x-icon"
+      integrity="sha384-zNY0K7EHh+daVesg2pjB6q3RCyJQzp6q25iQw3cXh+Od+LhyMbHCAVNt0Ts11JXD"
       href="https://sandbox.brightday.email/cdn/www/media/images/favicon/Icon_Jaisocx.ico"
       href-fallback="favicon/Icon_Jaisocx.ico"
-      onerror="javascript: ( () => { console.log( this ); this.onerror = null; this.href = this.getAttribute( 'href-fallback' ); } )();"
+      onerror="javascript: ( () => { this.onerror = null; this.href = this.getAttribute( 'href-fallback' ); } )();"
     /> -->
 
     <link
       rel="icon"
       type="image/x-icon"
+      integrity="Z5B+Wx6BzK8W1doS9UDDLx/AV1M1gbU74Y+Q+dTDFBB6VJ3f8UqGz0EuKgBORyH5"
       href="https://sandbox.brightday.email/cdn/www/media/images/favicon/Icon_Sandbox_Brightday.ico"
       href-fallback="favicon/Icon_Sandbox_Brightday.ico"
-      onerror="javascript: ( () => { console.log( this ); this.onerror = null; this.href = this.getAttribute( 'href-fallback' ); } )();"
+      onerror="javascript: ( () => { this.onerror = null; this.href = this.getAttribute( 'href-fallback' ); } )();"
     />
 
 
@@ -36,6 +38,7 @@
       rel="preload"
       as="font"
       type="font/ttf"
+      integrity="4KQU1ZRjhuwnJIdZfp79HxQ1wrr4ou0MSfZPBpfM7XZ7RGmS1wpf74YrEDoX3G5O"
       href="https://sandbox.brightday.email/cdn/www/fonts/LibreFranklin/static/LibreFranklin-SemiBold.ttf"
     />
 
@@ -44,6 +47,7 @@
       rel="preload"
       as="font"
       type="font/ttf"
+      integrity="QCAWp98BTz3c7GgDn1vhEqHQOxMoyTMcF0LVN5YVF+W5LznGhzy+KDWVj9fanm9r"
       href="https://sandbox.brightday.email/cdn/www/fonts/LibreFranklin/static/LibreFranklin-Regular.ttf"
     />
 
@@ -51,6 +55,7 @@
     <link
       rel="stylesheet"
       type="text/css"
+      integrity="+XsX72G2L+qP2eBY1zHkGSfq3DUgZoEJso9kISEgI5sah1MgI+pkOovrQRR3g5jx"
       href="https://sandbox.brightday.email/cdn/www/fonts_css/font_LibreFranklin_cdn.css"
     />
 
@@ -65,7 +70,7 @@
       charset="utf-8"
       href="../css-clean-start-2/MediaAndStyles/CssCleanStart_2_main_relative.css"
       href-fallback="node_modules/@jaisocx/css-clean-start-2/MediaAndStyles/CssCleanStart_2_main_relative.css"
-      onerror="javascript: ( () => { console.log( this ); this.onerror = null; this.href = this.getAttribute( 'href-fallback' ); } )();"
+      onerror="javascript: ( () => { this.onerror = null; this.href = this.getAttribute( 'href-fallback' ); } )();"
     /> -->
 
     <!--# THE SAME importing @jaisocx/css-clean-start-2 IN PROD MODE, PACKED BY @jaisocx/css-importer TOOL  -->
@@ -73,9 +78,10 @@
       rel="stylesheet"
       type="text/css"
       charset="utf-8"
+      integrity="D4tcZS6gdcvA/HaSEe9sajZUaW2gorzJt1uvGiCJmCWqHsIVVr6q3gN5lvhLQR/C"
       href="../css-clean-start-2/MediaAndStyles/CssCleanStart_2_main_resolved_minimal.css"
       href-fallback="node_modules/@jaisocx/css-clean-start-2/MediaAndStyles/CssCleanStart_2_main_resolved_minimal.css"
-      onerror="javascript: ( () => { console.log( this ); this.onerror = null; this.href = this.getAttribute( 'href-fallback' ); } )();"
+      onerror="javascript: ( () => { this.onerror = null; this.href = this.getAttribute( 'href-fallback' ); } )();"
     />
 
 
@@ -87,7 +93,8 @@
       rel="stylesheet"
       type="text/css"
       charset="utf-8"
-      href="MediaAndStyles/Tree_main_Relative.css"
+      integrity="IQb80v5xaJ3EW7abmxLjqbt7UeDqStZuSA8DS/AODBK2McgEw+3PhRTFxhCeltnm"
+      href="MediaAndStyles/Tree_main_resolved_minimal.css"
     />
 
 
@@ -98,6 +105,7 @@
       rel="stylesheet"
       type="text/css"
       charset="utf-8"
+      integrity="4o4vflXQBkXCeNytUAMFgezweNFmnmeEGkqQbeLjvc4qtDqWPn7EqboOW3kZomSE"
       href="MediaAndStyles/themes/theme-funny/theme-funny.css"
     />
 
@@ -166,12 +174,11 @@
 
     <content>
 
-      <h1>Css Table Ordered</h1>
-      <h2>@jaisocx/css-table-ordered</h2>
-      <h3>css_table_ordered.example.html</h3>
+      <h1>Tree styling JSON Data</h1>
+      <h2>@jaisocx/tree</h2>
+      <h3>index.example.html</h3>
       <description>
-        Css sites tool styling a server side rendered database table data to a grid view,
-        with solutions for sticky scroll and order by on columns via browser's js engine
+        Css sites tool styling json data to a tree view
       </description>
 
 
@@ -191,7 +198,7 @@
     <h2>json subtree type object</h2>
     <div id="example-tree-holder_SubtreeLikeObjects" class="theme-funny"></div>
 
-    <h2>load by url (should work only when published at an http server)</h2>
+    <h2>load by url ( works only when published by an http server )</h2>
     <div id="example-tree-holder_load_by_url"></div>
 
 
@@ -201,9 +208,222 @@
 
 
 
+
+
+  <!-- <script src="node_modules/@jaisocx/event-emitter/transpiled/Simple/EventEmitter.js"></script> -->
+
+  <!-- <script src="node_modules/@jaisocx/event-emitter/transpiled/Simple/ImprovedRenderEventEmitter.js"></script> -->
+
+  <!-- <script src="node_modules/@jaisocx/tokens-parser/transpiled/Simple/TokensParser.js"></script> -->
+
+  <!-- <script src="node_modules/@jaisocx/template-renderer/transpiled/Simple/TemplateRenderer.js"></script> -->
+
+
+
+  <!-- TREE -->
+  <!-- <script src="transpiled/Simple/typescript/ArrayOrObjectPackage.js"></script> -->
+
+  <!-- <script src="transpiled/Simple/typescript/TreeConstants.js"></script> -->
+
+  <!-- <script src="transpiled/Simple/typescript/TreeConf.js"></script> -->
+
+
+
+  <!--
+    ADAPTERS ARE FOR EFFICIENT RENDER IN LOOPS.
+    FOR MODE EASE IN LOOP NEITHER CHECKOUTS ARE MADE, NOR COMPARISONS,
+    ALWAYS EASE ADAPTER USED FOR OVERRIDDEN METHODS INVOKED IN LOOP.
+  -->
+  <!-- <script src="transpiled/Simple/typescript/TreeAdapter.js"></script> -->
+
+  <!-- <script src="transpiled/Simple/typescript/TreeAdapterModeEase.js"></script> -->
+
+  <!-- <script src="transpiled/Simple/typescript/TreeAdapterModeConf.js"></script> -->
+
+  <!-- TREE MAIN CLASS -->
+  <!-- <script src="transpiled/Simple/typescript/Tree.js"></script> -->
+
+
+
+
+
   <script>
 
+    // in this json structure for Tree,
+    // the subtree is of type JSON array,
+    // where each array item is the object,
+    // having data for a Tree node rendering to html,
+    // e.g. label text, Tree node html holding element css classes names, and similar.
+
+
+
+    // -------------------
+    // START  CONF DATA
+    const treeJson_SubtreeArrayOfObjects = [
+      {
+        "icon": "https://sandbox.brightday.email/cdn/www/media/images/mini-images/sites_tools/tree/home_tree_mode_conf/house.png",
+        "label": "Main",
+        "opened": false,
+        "text": "<h3>Main tree elem</h3>",
+        "subtree": [
+          {
+            "icon": "https://sandbox.brightday.email/cdn/www/media/images/mini-images/sites_tools/tree/home_tree_mode_conf/google.png",
+            "label": "A Link to Google",
+            "href": "https://google.com/",
+            "cssClassName": "hyperlink"
+          },
+          {
+            "icon": "https://sandbox.brightday.email/cdn/www/media/images/mini-images/sites_tools/tree/home_tree_mode_conf/github.png",
+            "label": "A Link to GitHub",
+            "href": "https://github.com/orgs/Jaisocx-Tools/repositories",
+            "cssClassName": "hyperlink"
+          },
+          {
+            "icon": "https://sandbox.brightday.email/cdn/www/media/images/mini-images/sites_tools/tree/home_tree_mode_conf/catalog.png",
+            "label": "echo html",
+            "opened": false,
+            "subtree": [
+              {
+                "icon": "https://sandbox.brightday.email/cdn/www/media/images/mini-images/sites_tools/tree/home_tree_mode_conf/html.png",
+                "label": "html 1",
+                "href": "javascript: void(0);",
+                "text": "<h3>Hello World!</h3><p style=\"color:#26d;\">Have fun with styling and using JSTree tool.</p>"
+              },
+              {
+                "icon": "https://sandbox.brightday.email/cdn/www/media/images/mini-images/sites_tools/tree/home_tree_mode_conf/html.png",
+                "label": "html 2",
+                "href": "javascript: void(0);",
+                "text": "<h3>Hello World!</h3><p style=\"color:#d83;\">You can edit code easily, JSTree class is lightweight.</p>"
+              },
+              {
+                "icon": "https://sandbox.brightday.email/cdn/www/media/images/mini-images/sites_tools/tree/home_tree_mode_conf/html.png",
+                "label": "html 3",
+                "href": "javascript: void(0);",
+                "text": "<h3>Hello World!</h3><p style=\"color:#00bb00;\">Have a nice day.</p>"
+              }
+            ]
+          }
+        ]
+      }
+    ];
+
+    // in this json structure the subtree node for sublevel tree nodes is not the array,
+    // but the associative array, the object with keys, being not rendered in the Tree,
+    // and object values all of type object, containing Tree node data, like label text, link address, and others.
+    const treeJson_SubtreeLikeObjects = {
+      "fgfgf": {
+        "icon": "https://sandbox.brightday.email/cdn/www/media/images/mini-images/sites_tools/tree/home_tree_mode_conf/house.png",
+        "label": "Main",
+        "opened": true,
+        "text": "<h3>Main tree elem</h3>",
+        "subtree": {
+          "frnynyr": {
+            "icon": "https://sandbox.brightday.email/cdn/www/media/images/mini-images/sites_tools/tree/home_tree_mode_conf/google.png",
+            "label": "A Link to Google",
+            "href": "https://google.com/",
+            "cssClassName": "hyperlink"
+          },
+          "rnyrny": {
+            "icon": "https://sandbox.brightday.email/cdn/www/media/images/mini-images/sites_tools/tree/home_tree_mode_conf/github.png",
+            "label": "A Link to GitHub",
+            "href": "https://github.com/orgs/Jaisocx-Tools/repositories",
+            "cssClassName": "hyperlink"
+          },
+          "rynrnyrn": {
+            "icon": "https://sandbox.brightday.email/cdn/www/media/images/mini-images/sites_tools/tree/home_tree_mode_conf/catalog.png",
+            "label": "echo html",
+            "opened": false,
+            "subtree": {
+              "rnynry": {
+                "icon": "https://sandbox.brightday.email/cdn/www/media/images/mini-images/sites_tools/tree/home_tree_mode_conf/html.png",
+                "label": "html 1",
+                "href": "javascript: void(0);",
+                "text": "<h3>Hello World!</h3><p style=\"color:#26d;\">Have fun with styling and using JSTree tool.</p>"
+              },
+              "rynynry": {
+                "icon": "https://sandbox.brightday.email/cdn/www/media/images/mini-images/sites_tools/tree/home_tree_mode_conf/html.png",
+                "label": "html 2",
+                "href": "javascript: void(0);",
+                "text": "<h3>Hello World!</h3><p style=\"color:#d83;\">You can edit code easily, JSTree class is lightweight.</p>"
+              },
+              "ghnghn": {
+                "icon": "https://sandbox.brightday.email/cdn/www/media/images/mini-images/sites_tools/tree/home_tree_mode_conf/html.png",
+                "label": "html 3",
+                "href": "javascript: void(0);",
+                "text": "<h3>Hello World!</h3><p style=\"color:#00bb00;\">Have a nice day.</p>"
+              }
+            }
+          }
+        }
+      }
+    };
+    // -------------------
+    // END  CONF DATA
+
+
+
+    function renderTree( holderElemId, data, modeShownNodes ) {
+
+        const tree_SubtreeArrayOfObjects = new Tree();
+        tree_SubtreeArrayOfObjects
+          .setDebug( false )
+          .setMainHtmlNodeId( holderElemId )
+          .setNodesWithIcons( true )
+          .setNodesOpenedMode( modeShownNodes )
+          .setModifiable( false )
+          .setRenderingMode( TreeConstants.RenderingMode.Conf )
+          .addJSTreeEventListener (
+            TreeConstants.TreeEventsNames.EVENT_NAME__TREE_NODE_LABEL__CLICK,
+            ( eventName, eventPayload ) => {
+              console.log( eventName, eventPayload );
+
+              // on click payload has the ref to the tree.data json, and here we show in console it's value:
+              console.log( tree_SubtreeArrayOfObjects.getTreeDataNodeByJsonnodePathArray( eventPayload.jsonNode._pathArray ) );
+            }
+          )
+          .render( data );
+
+    }
+
+
+
+    function loadDataAndRenderTree( holderElemId, dataUrl ) {
+
+        // example to load by url
+        const tree_load_by_url = new Tree();
+        tree_load_by_url
+            .setMainHtmlNodeId("example-tree-holder_load_by_url")
+            .setRenderingMode(TreeConstants.RenderingMode.Conf)
+            .load( dataUrl );
+
+    }
+
+
+
+    let themesPreloads = {
+      "image": null,
+      "font": {
+        "theme_font_Baloo_Paaji_2": [
+          "https://sandbox.brightday.email/cdn/www/fonts/Baloo_Paaji_2/static/BalooPaaji2-SemiBold.ttf",
+          "https://sandbox.brightday.email/cdn/www/fonts/Baloo_Paaji_2/static/BalooPaaji2-Regular.ttf",
+        ],
+        "theme_font_LibreFranklin": [
+          "https://sandbox.brightday.email/cdn/www/fonts/LibreFranklin/static/LibreFranklin-SemiBold.ttf",
+          "https://sandbox.brightday.email/cdn/www/fonts/LibreFranklin/static/LibreFranklin-Regular.ttf",
+        ],
+        "theme_font_Niconne": [
+          "https://sandbox.brightday.email/cdn/www/fonts/Niconne/Niconne-Regular.ttf",
+        ],
+      }
+    };
+
     let simpleScriptsPaths = {
+      "preloader": {
+        "node_modules": true,
+        "scripts": [
+          "Preloader"
+        ]
+      },
       "event-emitter": {
         "node_modules": true,
         "scripts": [
@@ -260,7 +480,7 @@
         let npmLibId             = 0;
         let scriptId             = 0;
         let hasNext_true         = true;
-        let isWithFallback_true  = true;
+        let isFallback_false     = false;
 
         if ( chained ) {
           this.loadOneScript (
@@ -269,7 +489,7 @@
             npmLibId,
             scriptId,
             hasNext_true,
-            isWithFallback_true
+            isFallback_false
           );
 
           return;
@@ -394,7 +614,9 @@
         tagScript.setAttribute ( "data-script_id", scriptId );
         tagScript.setAttribute ( "data-npmlib_id", npmLibId );
 
-        let tagScriptId = `script_${npmLibName}_` + Date.now();
+        let jsFileReplaced = jsFilepath.replace ( "/", "_" );
+        let numIsFallback = ( isFallback  && isWithFallbackSrc ) ? 1 : 0;
+        let tagScriptId = `script_${npmLibName}_${jsFileReplaced}_${numIsFallback}_` + Date.now();
         tagScript.id = tagScriptId;
         document.body.append ( tagScript );
         tagScript = document.getElementById( tagScriptId );
@@ -410,9 +632,8 @@
           fallbackScriptSrc = scriptSrcArray.join("");
         }
 
-        let onloadFunc = () => { scriptLoaderInstance.scriptOnload( scriptLoaderInstance, tagScript ); };
-        tagScript.onload = onloadFunc.bind( tagScript );
-
+        let onload = () => { scriptLoaderInstance.scriptOnload ( scriptLoaderInstance, tagScript ); };
+        tagScript.onload = onload.bind ( tagScript );
 
         try {
 
@@ -437,6 +658,10 @@
         let scriptId          = +currentTagScript.getAttribute ( "data-script_id" );
         let npmLibId          = +currentTagScript.getAttribute ( "data-npmlib_id" );
         let hasNext           = true;
+
+        currentTagScript.removeAttribute ( "data-scripts_data_object" );
+
+
 
         let npmLibsNames      = Object.keys ( scriptsDataObject );
         let npmLibsNumber     = npmLibsNames.length;
@@ -498,6 +723,10 @@
         let npmLibId          = +currentTagScript.getAttribute ( "data-npmlib_id" );
         let hasNext           = true;
 
+        currentTagScript.removeAttribute ( "data-scripts_data_object" );
+
+
+
         let npmLibsNames      = Object.keys ( scriptsDataObject );
         let npmLibsNumber     = npmLibsNames.length;
 
@@ -518,7 +747,8 @@
           isFallback_true
         );
 
-        currentTagScript.onerror = null;
+
+        currentTagScript.remove();
 
       }
 
@@ -528,227 +758,57 @@
 
 
 
-    // in this json structure for Tree,
-    // the subtree is of type JSON array,
-    // where each array item is the object,
-    // having data for a Tree node rendering to html,
-    // e.g. label text, Tree node html holding element css classes names, and similar.
+    function renderJsonTreeExamples() {
 
+      renderTree (
+        "example-tree-holder_SubtreeArrayOfObjects",
+        treeJson_SubtreeArrayOfObjects,
+        TreeConstants.NodesOpenedMode.ALL_SHOWN
+      );
 
+      renderTree (
+        "example-tree-holder_SubtreeLikeObjects",
+        treeJson_SubtreeLikeObjects,
+        TreeConstants.NodesOpenedMode.JSON_DATA_DEFINED
+      );
 
-    // -------------------
-    // START  CONF DATA
-    const treeJson_SubtreeArrayOfObjects = [
-      {
-        "icon": "https://sandbox.brightday.email/cdn/www/media/images/mini-images/sites_tools/tree/home_tree_mode_conf/house.png",
-        "label": "Main",
-        "opened": false,
-        "text": "<h3>Main tree elem</h3>",
-        "subtree": [
-          {
-            "icon": "https://sandbox.brightday.email/cdn/www/media/images/mini-images/sites_tools/tree/home_tree_mode_conf/google.png",
-            "label": "A Link to Google",
-            "href": "https://google.com/",
-            "cssClassName": "hyperlink"
-          },
-          {
-            "icon": "https://sandbox.brightday.email/cdn/www/media/images/mini-images/sites_tools/tree/home_tree_mode_conf/github.png",
-            "label": "A Link to GitHub",
-            "href": "https://github.com/orgs/Jaisocx-Tools/repositories",
-            "cssClassName": "hyperlink"
-          },
-          {
-            "icon": "https://sandbox.brightday.email/cdn/www/media/images/mini-images/sites_tools/tree/home_tree_mode_conf/catalog.png",
-            "label": "echo html",
-            "opened": false,
-            "subtree": [
-              {
-                "icon": "https://sandbox.brightday.email/cdn/www/media/images/mini-images/sites_tools/tree/home_tree_mode_conf/html.png",
-                "label": "html 1",
-                "href": "javascript: void(0);",
-                "text": "<h3>Hello World!</h3><p style=\"color:#26d;\">Have fun with styling and using JSTree tool.</p>"
-              },
-              {
-                "icon": "https://sandbox.brightday.email/cdn/www/media/images/mini-images/sites_tools/tree/home_tree_mode_conf/html.png",
-                "label": "html 2",
-                "href": "javascript: void(0);",
-                "text": "<h3>Hello World!</h3><p style=\"color:#d83;\">You can edit code easily, JSTree class is lightweight.</p>"
-              },
-              {
-                "icon": "https://sandbox.brightday.email/cdn/www/media/images/mini-images/sites_tools/tree/home_tree_mode_conf/html.png",
-                "label": "html 3",
-                "href": "javascript: void(0);",
-                "text": "<h3>Hello World!</h3><p style=\"color:#00bb00;\">Have a nice day.</p>"
-              }
-            ]
-          }
-        ]
-      }
-    ];
-
-    // in this json structure the subtree node for sublevel tree nodes is not the array,
-    // but the associative array, the object with keys, being not rendered in the Tree,
-    // and object values all of type object, containing Tree node data, like label text, link address, and others.
-    const treeJson_SubtreeLikeObjects = {
-      "fgfgf": {
-        "icon": "https://sandbox.brightday.email/cdn/www/media/images/mini-images/sites_tools/tree/home_tree_mode_conf/house.png",
-        "label": "Main",
-        "opened": true,
-        "text": "<h3>Main tree elem</h3>",
-        "subtree": {
-          "frnynyr": {
-            "icon": "https://sandbox.brightday.email/cdn/www/media/images/mini-images/sites_tools/tree/home_tree_mode_conf/google.png",
-            "label": "A Link to Google",
-            "href": "https://google.com/",
-            "cssClassName": "hyperlink"
-          },
-          "rnyrny": {
-            "icon": "https://sandbox.brightday.email/cdn/www/media/images/mini-images/sites_tools/tree/home_tree_mode_conf/github.png",
-            "label": "A Link to GitHub",
-            "href": "https://github.com/orgs/Jaisocx-Tools/repositories",
-            "cssClassName": "hyperlink"
-          },
-          "rynrnyrn": {
-            "icon": "https://sandbox.brightday.email/cdn/www/media/images/mini-images/sites_tools/tree/home_tree_mode_conf/catalog.png",
-            "label": "echo html",
-            "opened": false,
-            "subtree": {
-              "rnynry": {
-                "icon": "https://sandbox.brightday.email/cdn/www/media/images/mini-images/sites_tools/tree/home_tree_mode_conf/html.png",
-                "label": "html 1",
-                "href": "javascript: void(0);",
-                "text": "<h3>Hello World!</h3><p style=\"color:#26d;\">Have fun with styling and using JSTree tool.</p>"
-              },
-              "rynynry": {
-                "icon": "https://sandbox.brightday.email/cdn/www/media/images/mini-images/sites_tools/tree/home_tree_mode_conf/html.png",
-                "label": "html 2",
-                "href": "javascript: void(0);",
-                "text": "<h3>Hello World!</h3><p style=\"color:#d83;\">You can edit code easily, JSTree class is lightweight.</p>"
-              },
-              "ghnghn": {
-                "icon": "https://sandbox.brightday.email/cdn/www/media/images/mini-images/sites_tools/tree/home_tree_mode_conf/html.png",
-                "label": "html 3",
-                "href": "javascript: void(0);",
-                "text": "<h3>Hello World!</h3><p style=\"color:#00bb00;\">Have a nice day.</p>"
-              }
-            }
-          }
-        }
-      }
-    };
-    // -------------------
-    // END  CONF DATA
-
-
-    function renderTree( holderElemId, data, modeShownNodes ) {
-
-        const tree_SubtreeArrayOfObjects = new Tree();
-        tree_SubtreeArrayOfObjects
-          .setDebug( false )
-          .setMainHtmlNodeId( holderElemId )
-          .setNodesWithIcons( true )
-          .setNodesOpenedMode( modeShownNodes )
-          .setModifiable( false )
-          .setRenderingMode( TreeConstants.RenderingMode.Conf )
-          .addJSTreeEventListener (
-            TreeConstants.TreeEventsNames.EVENT_NAME__TREE_NODE_LABEL__CLICK,
-            ( eventName, eventPayload ) => {
-              console.log( eventName, eventPayload );
-
-              // on click payload has the ref to the tree.data json, and here we show in console it's value:
-              console.log( tree_SubtreeArrayOfObjects.getTreeDataNodeByJsonnodePathArray( eventPayload.jsonNode._pathArray ) );
-            }
-          )
-          .render( data );
+      loadDataAndRenderTree (
+        "example-tree-holder_SubtreeArrayOfObjects",
+        "https://sandbox.brightday.email/cdn/www/data_public/json/tree-data/tree-data-to-use-with-conf.json"
+      );
 
     }
 
 
 
-    function loadDataAndRenderTree( holderElemId, dataUrl ) {
-
-        // example to load by url
-        const tree_load_by_url = new Tree();
-        tree_load_by_url
-            .setMainHtmlNodeId("example-tree-holder_load_by_url")
-            .setRenderingMode(TreeConstants.RenderingMode.Conf)
-            .load( dataUrl );
-
-    }
-
-
-
-    document.addEventListener ( 'DOMContentLoaded', () => {
+    function loadTreeScriptsAndRenderTree() {
 
       let scriptsLoader = new ScriptsLoader();
 
       scriptsLoader.onload = () => {
 
-        renderTree (
-          "example-tree-holder_SubtreeArrayOfObjects",
-          treeJson_SubtreeArrayOfObjects,
-          TreeConstants.NodesOpenedMode.ALL_SHOWN
-        );
+        const preloader = new Preloader();
+        preloader
+          .setThemesPreloads( themesPreloads )
+          .setWebpackAlias( "" )
+          .setWebpackAliasReplace( "" )
+          .init();
 
-        renderTree (
-          "example-tree-holder_SubtreeLikeObjects",
-          treeJson_SubtreeLikeObjects,
-          TreeConstants.NodesOpenedMode.JSON_DATA_DEFINED
-        );
-
-        loadDataAndRenderTree (
-          "example-tree-holder_SubtreeArrayOfObjects",
-          "https://sandbox.brightday.email/cdn/www/data_public/json/tree-data/tree-data-to-use-with-conf.json"
-        );
-
+        renderJsonTreeExamples();
       };
 
       scriptsLoader.load ( simpleScriptsPaths, true );
+    }
 
+
+
+    document.addEventListener ( 'DOMContentLoaded', () => {
+      loadTreeScriptsAndRenderTree();
     });
 
   </script>
 
 
-
-<!--
-
-  <script id="script_event_emitter"
-    src="../event-emitter/transpiled/Simple/EventEmitter.js"
-    src-fallback="node_modules/@jaisocx/event-emitter/transpiled/Simple/EventEmitter.js"
-    onerror="javascript: ( () => { console.log( this ); this.onerror = null; let src = this.getAttribute( 'src-fallback' ); let tagScript = document.createElement( 'script' ); tagScript.setAttribute( 'src', src ); document.head.appendChild( tagScript ); } )();"></script>
-
-  <script
-    src="../event-emitter/transpiled/Simple/ImprovedRenderEventEmitter.js"
-    src-fallback="node_modules/@jaisocx/event-emitter/transpiled/Simple/ImprovedRenderEventEmitter.js"
-    onerror="javascript: ( () => { console.log( this ); this.onerror = null; let src = this.getAttribute( 'src-fallback' ); let tagScript = document.createElement( 'script' ); tagScript.setAttribute( 'src', src ); document.head.appendChild( tagScript ); } )();"></script>
-
-  <script
-    src="../tokens-parser/transpiled/Simple/TokensParser.js"
-    src-fallback="node_modules/@jaisocx/tokens-parser/transpiled/Simple/TokensParser.js"
-    onerror="javascript: ( () => { console.log( this ); this.onerror = null; let src = this.getAttribute( 'src-fallback' ); let tagScript = document.createElement( 'script' ); tagScript.setAttribute( 'src', src ); document.head.appendChild( tagScript ); } )();"></script>
-
-  <script
-    src="../template-renderer/transpiled/Simple/TemplateRenderer.js"
-    src-fallback="node_modules/@jaisocx/template-renderer/transpiled/Simple/TemplateRenderer.js"
-    onerror="javascript: ( () => { console.log( this ); this.onerror = null; let src = this.getAttribute( 'src-fallback' ); let tagScript = document.createElement( 'script' ); tagScript.setAttribute( 'src', src ); document.head.appendChild( tagScript ); } )();"></script>
-
-
-
-  <script src="transpiled/Simple/typescript/ArrayOrObjectPackage.js"></script>
-
-  <script src="transpiled/Simple/typescript/TreeConstants.js"></script>
-
-  <script src="transpiled/Simple/typescript/TreeConf.js"></script>
-
-  <script src="transpiled/Simple/typescript/TreeAdapter.js"></script>
-
-  <script src="transpiled/Simple/typescript/TreeAdapterModeEase.js"></script>
-
-  <script src="transpiled/Simple/typescript/TreeAdapterModeConf.js"></script>
-
-  <script src="transpiled/Simple/typescript/Tree.js"></script>
- -->
 
 
 

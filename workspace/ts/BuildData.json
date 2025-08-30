@@ -3,6 +3,29 @@
   "prettify-typescript": true,
   "packages": [
     {
+      "path": "packages/CommandLine",
+      "name": "command-line",
+      "update-published": "Sat Aug 30 18:16:38 CEST 2025",
+      "build": false,
+      "build-simple-enable": false,
+      "dependencies": [],
+      "build-files": []
+    },
+    {
+      "path": "packages/LinkedResourcesIntegrity",
+      "name": "linked-resources-integrity",
+      "update-published": "Sat Aug 30 18:20:26 CEST 2025",
+      "build": false,
+      "build-simple-enable": false,
+      "dependencies": [
+        {
+          "name": "@jaisocx/command-line",
+          "path": "packages/CommandLine"
+        }
+      ],
+      "build-files": []
+    },
+    {
       "path": "packages/TokensParser",
       "name": "tokens-parser",
       "update-published": "Mon Jun 02 22:02:01 GMT 2025",
@@ -366,7 +389,7 @@
       "name": "tree",
       "update-published": "",
       "build": false,
-      "build-simple-enable": false,
+      "build-simple-enable": true,
       "css-importer": {
         "build": true,
         "cssFilePath": "MediaAndStyles/Tree_main_Webpack.css",

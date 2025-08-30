@@ -18,8 +18,8 @@ npm_package_name_and_ver="${npm_package_name}@${npm_package_ver}"
 cd "${to_place_npm_package_folder_path}"
 npm install "${npm_package_name_and_ver}"
 
-# cd "node_modules/${npm_package_name}"
-# npm install --save-optional
+cd "node_modules/${npm_package_name}"
+npm install --save
 
 
 
