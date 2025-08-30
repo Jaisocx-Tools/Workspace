@@ -32,7 +32,16 @@
         let id = "";
         let i = 0;
         let tag = new Object();
-        while ( i < idsNumber ) {
+
+        let secureCounter = 1;
+        let secureMaxCounter = 10;
+
+        marker1: while ( i < idsNumber ) {
+          secureCounter++;
+          if ( secureCounter >= secureMaxCounter ) {
+            break marker1;
+          }
+
           id = ids[i];
           if ( idsObject[id] === 1 ) {
 
@@ -56,10 +65,12 @@
             } catch (e) {}
 
           }
+
+          i++;
         }
       }
 
-      setTimeout( ( () => { loadingStopOnTimeout( linkTagsPreloading ); } ), 500 );
+      setTimeout( ( () => { loadingStopOnTimeout( linkTagsPreloading ); } ), 1000 );
 
     </script>
 
