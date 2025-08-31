@@ -1,21 +1,9 @@
 import { TextEncoder, TextDecoder } from "node:util";
 import { EventEmitter } from "@jaisocx/event-emitter";
 import { TokensParser } from "@jaisocx/tokens-parser";
-export type TemplateRendererDataRecord = {
-    id: number;
-    isOptimized: boolean;
-    textTemplate: string;
-    dataForRendering: object;
-    bitsbufTemplate: Uint8Array;
-    optimizedBitsbufTemplate: Uint8Array[];
-    optimizedPlaceholdersEntries: any;
-    optimizedTemplate: OptimizedTemplateRecord[];
-};
-export type OptimizedTemplateRecord = {
-    placeholderName: string;
-    range: number[];
-};
-export declare class TemplateRenderer extends EventEmitter {
+import { OptimizedTemplateRecord, TemplateRendererDataRecord } from "./types/TemplateRendererTypes.js";
+import { TemplateRendererInterface } from "./TemplateRendererInterface.js";
+export declare class TemplateRenderer extends EventEmitter implements TemplateRendererInterface {
     #private;
     EVENT_NAME__AFTER_RENDER: any;
     tokensParser: TokensParser;
@@ -30,16 +18,16 @@ export declare class TemplateRenderer extends EventEmitter {
     getDataRecordById(id: number): TemplateRendererDataRecord;
     setActiveRecordId(id: number): TemplateRendererDataRecord;
     setActiveDataRecord(dataRecord: TemplateRendererDataRecord): number;
-    setDebug(debug: boolean): TemplateRenderer;
-    setTemplate(template: string): TemplateRenderer;
-    setData(dataForRendering: object): TemplateRenderer;
+    setDebug(debug: boolean): TemplateRendererInterface;
+    setTemplate(template: string): TemplateRendererInterface;
+    setData(dataForRendering: object): TemplateRendererInterface;
     render(): any;
     renderOptimizedDataBitsbufs(templateDataRecordId: number, dataForRendering: any): Uint8Array[];
     renderOptimizedToStringDataText(templateDataRecordId: number, dataForRendering: any): string;
     renderOptimizedToStringDataBitsbufs(templateDataRecordId: number, dataForRendering: any): string;
     renderOptimizedTextBlocks(templateDataRecordId: number, dataForRendering: any): string[];
     optimize(templateDataRecordId: number): number;
-    protected orderedRecords(inRecords: OptimizedTemplateRecord[]): OptimizedTemplateRecord[];
+    orderedRecords(inRecords: OptimizedTemplateRecord[]): OptimizedTemplateRecord[];
     replaceTemplateRendererWithDataForRendering(): any;
 }
 //# sourceMappingURL=TemplateRenderer.d.ts.map

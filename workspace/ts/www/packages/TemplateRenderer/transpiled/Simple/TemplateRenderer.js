@@ -7,6 +7,7 @@ class TemplateRenderer extends EventEmitter {
     textDecoder;
 
 
+
     constructor() {
         super();
         this.EVENT_NAME__AFTER_RENDER = "afterRender";
@@ -16,6 +17,7 @@ class TemplateRenderer extends EventEmitter {
         this.textEncoder = new TextEncoder();
         this.textDecoder = new TextDecoder("utf8");
     }
+
 
 
     initDataRecord() {
@@ -28,8 +30,10 @@ class TemplateRenderer extends EventEmitter {
         dataRecord.optimizedPlaceholdersEntries = new Object();
         dataRecord.optimizedTemplate = new Array();
 
+
         return dataRecord;
     }
+
 
 
     addNewDataRecord() {
@@ -38,8 +42,10 @@ class TemplateRenderer extends EventEmitter {
         this.#activeDataRecordId = (this.dataRecords.length - 1);
         this.dataRecords[this.#activeDataRecordId].id = this.#activeDataRecordId;
 
+
         return this.dataRecords[this.#activeDataRecordId];
     }
+
 
 
     getActiveDataRecord() {
@@ -54,8 +60,10 @@ class TemplateRenderer extends EventEmitter {
             dataRecord = this.dataRecords[this.#activeDataRecordId];
         }
 
+
         return dataRecord;
     }
+
 
 
     getActiveDataRecordId() {
@@ -63,16 +71,20 @@ class TemplateRenderer extends EventEmitter {
     }
 
 
+
     getDataRecordById(id) {
         return this.dataRecords[id];
     }
 
 
+
     setActiveRecordId(id) {
         this.#activeDataRecordId = id;
 
+
         return this.dataRecords[id];
     }
+
 
 
     setActiveDataRecord(dataRecord) {
@@ -94,31 +106,39 @@ class TemplateRenderer extends EventEmitter {
         }
         this.#activeDataRecordId = id;
 
+
         return id;
     }
+
 
 
     setDebug(debug) {
         this.debug = debug;
 
+
         return this;
     }
+
 
 
     setTemplate(template) {
         let dataRecord = this.getActiveDataRecord();
         dataRecord.textTemplate = template;
 
+
         return this;
     }
+
 
 
     setData(dataForRendering) {
         let dataRecord = this.getActiveDataRecord();
         dataRecord.dataForRendering = dataForRendering;
 
+
         return this;
     }
+
 
 
     render() {
@@ -181,6 +201,7 @@ class TemplateRenderer extends EventEmitter {
             console.log("afterRender event did not change html");
         }
 
+
         return renderedHtml;
     }
 
@@ -206,8 +227,10 @@ class TemplateRenderer extends EventEmitter {
             }
         }
 
+
         return bitsbufsArray;
     }
+
 
 
     renderOptimizedToStringDataText(
@@ -222,8 +245,10 @@ class TemplateRenderer extends EventEmitter {
         );
         let renderedText = textBlocks.join("");
 
+
         return renderedText;
     }
+
 
 
     renderOptimizedToStringDataBitsbufs(
@@ -251,6 +276,7 @@ class TemplateRenderer extends EventEmitter {
             }
         }
         let renderedText = textBlocks.join("");
+
 
         return renderedText;
     }
@@ -288,8 +314,10 @@ class TemplateRenderer extends EventEmitter {
             }
         }
 
+
         return textBlocks;
     }
+
 
 
     optimize(templateDataRecordId) {
@@ -304,6 +332,7 @@ class TemplateRenderer extends EventEmitter {
         let placeholdersNames = Object.keys(dataRecord.dataForRendering);
         let severalTokensSets = placeholdersNames.map((placeholderName) => {
             let placeholderMarkup = ["{{ ", placeholderName, " }}"].join("");
+
 
             return [placeholderMarkup];
         });
@@ -374,8 +403,10 @@ class TemplateRenderer extends EventEmitter {
         dataRecord.optimizedTemplate = [...optimizedRecords];
         dataRecord.isOptimized = true;
 
+
         return numberOfPlaceholdersMatched;
     }
+
 
 
     orderedRecords(inRecords) {
@@ -393,6 +424,7 @@ class TemplateRenderer extends EventEmitter {
                 return (-1);
             }
         });
+
 
         return [...records];
     }
@@ -415,11 +447,9 @@ class TemplateRenderer extends EventEmitter {
             if (!valueToSet) {
                 valueToSet = "";
             }
-            renderedHtml_2 = renderedHtml_1.replace(
-                stringToReplace,
-                valueToSet
-            );
+            renderedHtml_2 = renderedHtml_1.replace(stringToReplace, valueToSet);
         }
+
 
         return renderedHtml_2;
     }

@@ -3,30 +3,12 @@ import { TextEncoder, TextDecoder } from "node:util";
 import { EventEmitter, EventEmitResult } from "@jaisocx/event-emitter";
 import { TokensParser } from "@jaisocx/tokens-parser";
 
-
-
-export type TemplateRendererDataRecord = {
-  id: number;
-  isOptimized: boolean;
-  textTemplate: string;
-  dataForRendering: object;
-
-  bitsbufTemplate: Uint8Array;
-  optimizedBitsbufTemplate: Uint8Array[];
-  optimizedPlaceholdersEntries: any;
-  optimizedTemplate: OptimizedTemplateRecord[];
-}
+import { OptimizedTemplateRecord, TemplateRendererDataRecord } from "./types/TemplateRendererTypes.js";
+import { TemplateRendererInterface } from "./TemplateRendererInterface.js";
 
 
 
-export type OptimizedTemplateRecord  = {
-  placeholderName: string;
-  range: number[];
-}
-
-
-
-export class TemplateRenderer extends EventEmitter {
+export class TemplateRenderer extends EventEmitter implements TemplateRendererInterface {
   EVENT_NAME__AFTER_RENDER: any;
 
   tokensParser: TokensParser;
@@ -36,6 +18,7 @@ export class TemplateRenderer extends EventEmitter {
 
   textEncoder: TextEncoder;
   textDecoder: TextDecoder;
+
 
 
   constructor() {
@@ -53,6 +36,7 @@ export class TemplateRenderer extends EventEmitter {
   }
 
 
+
   initDataRecord(): TemplateRendererDataRecord {
     let dataRecord: TemplateRendererDataRecord = new Object() as TemplateRendererDataRecord;
 
@@ -65,8 +49,10 @@ export class TemplateRenderer extends EventEmitter {
     dataRecord.optimizedPlaceholdersEntries = new Object();
     dataRecord.optimizedTemplate = new Array() as OptimizedTemplateRecord[];
 
+
     return dataRecord;
   }
+
 
 
   addNewDataRecord(): TemplateRendererDataRecord {
@@ -75,8 +61,10 @@ export class TemplateRenderer extends EventEmitter {
     this.#activeDataRecordId = ( this.dataRecords.length - 1 );
     this.dataRecords[this.#activeDataRecordId].id = this.#activeDataRecordId;
 
+
     return this.dataRecords[this.#activeDataRecordId];
   }
+
 
 
   getActiveDataRecord(): TemplateRendererDataRecord {
@@ -91,8 +79,10 @@ export class TemplateRenderer extends EventEmitter {
       dataRecord = this.dataRecords[this.#activeDataRecordId];
     }
 
+
     return dataRecord;
   }
+
 
 
   getActiveDataRecordId(): number {
@@ -100,20 +90,23 @@ export class TemplateRenderer extends EventEmitter {
   }
 
 
-  getDataRecordById( id: number ) {
+
+  getDataRecordById( id: number ): TemplateRendererDataRecord {
     return this.dataRecords[id];
   }
+
 
 
   setActiveRecordId( id: number ): TemplateRendererDataRecord {
     this.#activeDataRecordId = id;
 
+
     return this.dataRecords[id];
   }
 
 
-  setActiveDataRecord( dataRecord: TemplateRendererDataRecord ): number {
 
+  setActiveDataRecord( dataRecord: TemplateRendererDataRecord ): number {
     if ( this.#activeDataRecordId === 0 ) {
       let obj: TemplateRendererDataRecord = new Object() as TemplateRendererDataRecord;
       this.dataRecords.push( obj );
@@ -134,34 +127,43 @@ export class TemplateRenderer extends EventEmitter {
 
     this.#activeDataRecordId = id;
 
+
     return id;
   }
 
 
-  setDebug(debug: boolean): TemplateRenderer {
+
+  setDebug(debug: boolean): TemplateRendererInterface {
     this.debug = debug;
+
 
     return this;
   }
 
 
-  setTemplate( template: string ): TemplateRenderer {
+
+  setTemplate( template: string ): TemplateRendererInterface {
     let dataRecord: TemplateRendererDataRecord = this.getActiveDataRecord();
     dataRecord.textTemplate = template;
 
+
     return this;
   }
 
 
-  setData( dataForRendering: object ): TemplateRenderer {
+
+  setData( dataForRendering: object ): TemplateRendererInterface {
     let dataRecord: TemplateRendererDataRecord = this.getActiveDataRecord();
     dataRecord.dataForRendering = dataForRendering;
 
+
     return this;
   }
 
 
+
   render(): any {
+
     if ( this.#activeDataRecordId === 0 ) {
       throw new Error( "No template neither data were set." );
     }
@@ -223,6 +225,7 @@ export class TemplateRenderer extends EventEmitter {
       console.log("afterRender event did not change html");
     }
 
+
     return renderedHtml;
   }
 
@@ -249,8 +252,10 @@ export class TemplateRenderer extends EventEmitter {
       }
     }
 
+
     return bitsbufsArray;
   }
+
 
 
   renderOptimizedToStringDataText (
@@ -267,8 +272,10 @@ export class TemplateRenderer extends EventEmitter {
 
     let renderedText: any = textBlocks.join("");
 
+
     return renderedText;
   }
+
 
 
   renderOptimizedToStringDataBitsbufs (
@@ -298,6 +305,7 @@ export class TemplateRenderer extends EventEmitter {
     }
 
     let renderedText: any = textBlocks.join("");
+
 
     return renderedText;
   }
@@ -337,8 +345,10 @@ export class TemplateRenderer extends EventEmitter {
       }
     }
 
+
     return textBlocks;
   }
+
 
 
   optimize ( templateDataRecordId: number ): number {
@@ -358,6 +368,7 @@ export class TemplateRenderer extends EventEmitter {
     let severalTokensSets: string[][] = placeholdersNames.map(
       ( placeholderName: string ) => {
         let placeholderMarkup: string = [ "{{ ", placeholderName, " }}" ].join("");
+
 
         return [ placeholderMarkup ];
       }
@@ -439,11 +450,13 @@ export class TemplateRenderer extends EventEmitter {
     dataRecord.optimizedTemplate = [...optimizedRecords];
     dataRecord.isOptimized = true;
 
+
     return numberOfPlaceholdersMatched;
   }
 
 
-  protected orderedRecords( inRecords: OptimizedTemplateRecord[] ): OptimizedTemplateRecord[] {
+
+  orderedRecords( inRecords: OptimizedTemplateRecord[] ): OptimizedTemplateRecord[] {
     let records: OptimizedTemplateRecord[] = inRecords.sort (
       (recordA: OptimizedTemplateRecord, recordB: OptimizedTemplateRecord) => {
         let startA: number = recordA.range[0];
@@ -458,6 +471,7 @@ export class TemplateRenderer extends EventEmitter {
         }
       }
     );
+
 
     return [...records];
   }
@@ -488,6 +502,7 @@ export class TemplateRenderer extends EventEmitter {
         valueToSet
       );
     }
+
 
     return renderedHtml_2;
   }

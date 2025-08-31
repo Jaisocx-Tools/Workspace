@@ -18,5 +18,24 @@ export interface PreloaderInterface {
     inDataType: string
   ): void;
 
+
+
+  // preventing browser requests waiting and blocking when a cdn is not responding.
+  extractUrlsFromHarBrowserReport (
+    harBrowserReportFilepath: string
+  ): string[];
+
+  addScriptLoadingStopOnTimeout (
+    linkTagsText: string,
+    scriptText: string,
+    timeoutNumberOfMilliseconds: number
+  ): void;
+
+  produceLinkTagsPreloading (
+    idsOfLinkTags: string[]
+  ): string;
+
+  produceScriptLoadingStopOnTimeout(): string;
+
 }
 

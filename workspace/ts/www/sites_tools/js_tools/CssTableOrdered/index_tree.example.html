@@ -1,0 +1,987 @@
+<!DOCTYPE html>
+<html lang="en" class="jsx">
+<head>
+
+  <title>Tree</title>
+
+  <base href="./" />
+
+  <meta charset="utf-8" />
+  <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+
+
+
+    <script>
+
+      let linkTagsPreloading = {
+        "icon_brightday": 1,
+        "font_LibreFranklin_SemiBold": 1,
+        "font_LibreFranklin_Regular": 1,
+        "stylesheet_cdn_fonts": 1
+      };
+
+
+
+      let loadingStopOnTimeout = ( idsObject ) => {
+
+        console.log( "Script on timeout started" );
+
+        let ids = Object.keys( idsObject );
+        let idsNumber = ids.length;
+        let id = "";
+        let i = 0;
+        let tag = new Object();
+
+        let secureCounter = 1;
+        let secureMaxCounter = 10;
+
+        marker1: while ( i < idsNumber ) {
+          secureCounter++;
+          if ( secureCounter >= secureMaxCounter ) {
+            break marker1;
+          }
+
+          id = ids[i];
+          i++;
+
+          if ( idsObject[id] === 3 ) {
+            continue marker1;
+          }
+
+
+
+          try {
+            tag = document.getElementById( id );
+          } catch (e) {}
+          try {
+            tag.onerror = null;
+          } catch (e) {}
+          try {
+            tag.setAttribute( "fetchpriority", "low" );
+          } catch (e) {}
+          try {
+            tag.setAttribute( "rel", "stylesheet" );
+          } catch (e) {}
+          try {
+            tag.removeAttribute( "href" );
+          } catch (e) {}
+          try {
+            tag.remove();
+          } catch (e) {}
+
+
+
+          i++;
+        }
+      }
+
+
+
+      setTimeout (
+        () => {
+          loadingStopOnTimeout( linkTagsPreloading );
+        },
+        1600
+      );
+
+    </script>
+
+
+
+    <!--# FAVICON -->
+    <!-- <link
+      rel="icon"
+      type="image/x-icon"
+      href="https://sandbox.brightday.email/cdn/www/media/images/favicon/Icon_Jaisocx.ico"
+      href-fallback="favicon/Icon_Jaisocx.ico"
+      onerror="javascript: ( () => { this.onerror = null; this.href = this.getAttribute( 'href-fallback' ); } )();"
+    /> -->
+
+    <link
+      id="icon_brightday"
+      rel="icon"
+      type="image/x-icon"
+      href="https://sandbox.brightday.email/cdn/www/media/images/favicon/Icon_Sandbox_Brightday.ico"
+      href-fallback="./favicon/Icon_Sandbox_Brightday.ico"
+      onload="javascript: ( () => { this.onerror = null; const id = this.id; linkTagsPreloading[id] = 3; } )();"
+      onerror="javascript: ( () => { this.href = this.getAttribute( 'href-fallback' ); } )();"
+    />
+
+
+
+    <!--# FONTS PRELOAD WITHOUT JAVASCRIPT CALL -->
+    <link
+      id="font_LibreFranklin_SemiBold"
+      fetchpriority="high"
+      rel="preload"
+      as="font"
+      type="font/ttf"
+      href="https://sandbox.brightday.email/cdn/www/fonts/LibreFranklin/static/LibreFranklin-SemiBold.ttf"
+      onload="javascript: ( () => { const id = this.id; linkTagsPreloading[id] = 3; } )();"
+    />
+
+    <link
+      id="font_LibreFranklin_Regular"
+      fetchpriority="high"
+      rel="preload"
+      as="font"
+      type="font/ttf"
+      href="https://sandbox.brightday.email/cdn/www/fonts/LibreFranklin/static/LibreFranklin-Regular.ttf"
+      onload="javascript: ( () => { const id = this.id; linkTagsPreloading[id] = 3; } )();"
+    />
+
+    <!--# CSS FOR FONTS -->
+    <link
+      id="stylesheet_cdn_fonts"
+      rel="stylesheet"
+      type="text/css"
+      href="https://sandbox.brightday.email/cdn/www/fonts_css/font_LibreFranklin_cdn.css"
+      onload="javascript: ( () => { const id = this.id; linkTagsPreloading[id] = 3; } )();"
+    />
+
+
+
+    <!--# CSS CLEAN START 2: html & css WHEN STARTING A SITE FROM SCRATCH -->
+
+    <!--# importing @jaisocx/css-clean-start-2 IN DEV MODE, TO RESEARCH THE .css STYLES IN BROWSER'S DEV TOOLS IN NETWORKS TAB  -->
+    <!-- <link
+      rel="stylesheet"
+      type="text/css"
+      charset="utf-8"
+      href="../css-clean-start-2/MediaAndStyles/CssCleanStart_2_main_relative.css"
+      href-fallback="node_modules/@jaisocx/css-clean-start-2/MediaAndStyles/CssCleanStart_2_main_relative.css"
+      onerror="javascript: ( () => { this.onerror = null; this.href = this.getAttribute( 'href-fallback' ); } )();"
+    /> -->
+
+    <!--# THE SAME importing @jaisocx/css-clean-start-2 IN PROD MODE, PACKED BY @jaisocx/css-importer TOOL  -->
+    <link
+      rel="stylesheet"
+      type="text/css"
+      charset="utf-8"
+      href="../css-clean-start-2/MediaAndStyles/CssCleanStart_2_main_resolved_minimal.css"
+      href-fallback="node_modules/@jaisocx/css-clean-start-2/MediaAndStyles/CssCleanStart_2_main_resolved_minimal.css"
+      onerror="javascript: ( () => { this.href = this.getAttribute( 'href-fallback' ); this.onerror = null; } )();"
+    />
+
+
+
+
+
+    <!--# STYLES Tree and theme_base -->
+    <link
+      rel="stylesheet"
+      type="text/css"
+      charset="utf-8"
+      href="MediaAndStyles/Tree_main_resolved_minimal.css"
+    />
+
+
+
+    <!--# Theme funny -->
+    <!--# importing theme  in this @jaisocx/tree npm package -->
+    <link
+      rel="stylesheet"
+      type="text/css"
+      charset="utf-8"
+      href="MediaAndStyles/themes/theme-funny/tree_theme-funny_fonts.css"
+    />
+
+    <link
+      rel="stylesheet"
+      type="text/css"
+      charset="utf-8"
+      href="MediaAndStyles/themes/theme-funny/tree_theme-funny.css"
+    />
+
+
+  <style>
+
+    .jsx {
+      --jsx--css-clean-start-2--site--padding: 2rem 1rem 3rem 1rem;
+
+      --jsx--css-clean-start-2--h1--font-size: 1.05rem;
+      --jsx--css-clean-start-2--h2--font-size: 0.9rem;
+      --jsx--css-clean-start-2--h3--font-size: 0.83rem;
+
+      --jsx--css-clean-start-2--h2--font-weight: 500;
+
+      --theme-button-width: fit-content;
+    }
+
+    @media screen and (orientation: portrait) {
+      .jsx description {
+        display: none;
+      }
+    }
+
+    .jsx themebuttons {
+      width: fit-content;
+      display: grid;
+      grid-auto-flow: column;
+      column-gap: 3rem;
+      margin: 0.9rem 0px 1.6rem 0px;
+    }
+
+    .jsx themebuttons button {
+      width: var(--theme-button-width);
+    }
+
+    .current::after {
+      content: "";
+      position: absolute;
+      bottom: -0.3rem;
+      left: 0;
+      width: 100%;
+      height: 0;
+      max-height: 0;
+      overflow-y: hidden;
+      border-bottom-width: 0.14rem;
+      border-bottom-style: solid;
+      border-bottom-color: var(--clean-start__text-color);
+    }
+
+    .jsx button {
+      background-color: transparent;
+      text-align: left;
+    }
+
+    #tooltip-button {
+      font-family: fantasy;
+    }
+
+  </style>
+</head>
+<body>
+
+  <main>
+
+    <content>
+
+      <h1>Tree styling JSON Data</h1>
+      <h2>@jaisocx/tree</h2>
+      <h3>index.example.html</h3>
+      <description>
+        Css sites tool styling json data to a tree view
+      </description>
+
+
+
+      <ThemeButtons>
+        <button id="button-turn-on-base-theme" data-theme="">Base Theme</button>
+        <button id="button-turn-on-daymode" data-theme="theme_lightmode">Day Mode</button>
+        <button id="button-turn-on-nightmode" data-theme="theme_darkmode">Night Mode</button>
+      </ThemeButtons>
+
+    </content>
+
+
+    <h2>json subtree type array</h2>
+    <div id="example-tree-holder_SubtreeArrayOfObjects"></div>
+
+    <h2>json subtree type object</h2>
+    <div id="example-tree-holder_SubtreeLikeObjects" class="theme-funny"></div>
+
+    <h2>load by url ( works only when published by an http server )</h2>
+    <div id="example-tree-holder_load_by_url"></div>
+
+
+    </main>
+
+  </body>
+
+
+
+
+
+  <!-- <script src="node_modules/@jaisocx/event-emitter/transpiled/Simple/EventEmitter.js"></script> -->
+
+  <!-- <script src="node_modules/@jaisocx/event-emitter/transpiled/Simple/ImprovedRenderEventEmitter.js"></script> -->
+
+  <!-- <script src="node_modules/@jaisocx/tokens-parser/transpiled/Simple/TokensParser.js"></script> -->
+
+  <!-- <script src="node_modules/@jaisocx/template-renderer/transpiled/Simple/TemplateRenderer.js"></script> -->
+
+
+
+  <!-- TREE -->
+  <!-- <script src="transpiled/Simple/typescript/ArrayOrObjectPackage.js"></script> -->
+
+  <!-- <script src="transpiled/Simple/typescript/TreeConstants.js"></script> -->
+
+  <!-- <script src="transpiled/Simple/typescript/TreeConf.js"></script> -->
+
+
+
+  <!--
+    ADAPTERS ARE FOR EFFICIENT RENDER IN LOOPS.
+    FOR MODE EASE IN LOOP NEITHER CHECKOUTS ARE MADE, NOR COMPARISONS,
+    ALWAYS EASE ADAPTER USED FOR OVERRIDDEN METHODS INVOKED IN LOOP.
+  -->
+  <!-- <script src="transpiled/Simple/typescript/TreeAdapter.js"></script> -->
+
+  <!-- <script src="transpiled/Simple/typescript/TreeAdapterModeEase.js"></script> -->
+
+  <!-- <script src="transpiled/Simple/typescript/TreeAdapterModeConf.js"></script> -->
+
+  <!-- TREE MAIN CLASS -->
+  <!-- <script src="transpiled/Simple/typescript/Tree.js"></script> -->
+
+
+
+
+
+  <script>
+
+    // in this json structure for Tree,
+    // the subtree is of type JSON array,
+    // where each array item is the object,
+    // having data for a Tree node rendering to html,
+    // e.g. label text, Tree node html holding element css classes names, and similar.
+
+
+
+    // -------------------
+    // START  CONF DATA
+    const treeJson_SubtreeArrayOfObjects = [
+      {
+        "icon": "MediaAndStyles/themes/theme_base/mini_images/home_tree_mode_conf/house.png",
+        "label": "Main",
+        "opened": false,
+        "text": "<h3>Main tree elem</h3>",
+        "subtree": [
+          {
+            "icon": "MediaAndStyles/themes/theme_base/mini_images/home_tree_mode_conf/google.png",
+            "label": "A Link to Google",
+            "href": "https://google.com/",
+            "cssClassName": "hyperlink"
+          },
+          {
+            "icon": "MediaAndStyles/themes/theme_base/mini_images/home_tree_mode_conf/github.png",
+            "label": "A Link to GitHub",
+            "href": "https://github.com/orgs/Jaisocx-Tools/repositories",
+            "cssClassName": "hyperlink"
+          },
+          {
+            "icon": "MediaAndStyles/themes/theme_base/mini_images/home_tree_mode_conf/catalog.png",
+            "label": "echo html",
+            "opened": false,
+            "subtree": [
+              {
+                "icon": "MediaAndStyles/themes/theme_base/mini_images/home_tree_mode_conf/html.png",
+                "label": "html 1",
+                "href": "javascript: void(0);",
+                "text": "<h3>Hello World!</h3><p style=\"color:#26d;\">Have fun with styling and using JSTree tool.</p>"
+              },
+              {
+                "icon": "MediaAndStyles/themes/theme_base/mini_images/home_tree_mode_conf/html.png",
+                "label": "html 2",
+                "href": "javascript: void(0);",
+                "text": "<h3>Hello World!</h3><p style=\"color:#d83;\">You can edit code easily, JSTree class is lightweight.</p>"
+              },
+              {
+                "icon": "MediaAndStyles/themes/theme_base/mini_images/home_tree_mode_conf/html.png",
+                "label": "html 3",
+                "href": "javascript: void(0);",
+                "text": "<h3>Hello World!</h3><p style=\"color:#00bb00;\">Have a nice day.</p>"
+              }
+            ]
+          }
+        ]
+      }
+    ];
+
+    // in this json structure the subtree node for sublevel tree nodes is not the array,
+    // but the associative array, the object with keys, being not rendered in the Tree,
+    // and object values all of type object, containing Tree node data, like label text, link address, and others.
+    const treeJson_SubtreeLikeObjects = {
+      "fgfgf": {
+        "icon": "MediaAndStyles/themes/theme_base/mini_images/home_tree_mode_conf/house.png",
+        "label": "Main",
+        "opened": true,
+        "text": "<h3>Main tree elem</h3>",
+        "subtree": {
+          "frnynyr": {
+            "icon": "MediaAndStyles/themes/theme_base/mini_images/home_tree_mode_conf/google.png",
+            "label": "A Link to Google",
+            "href": "https://google.com/",
+            "cssClassName": "hyperlink"
+          },
+          "rnyrny": {
+            "icon": "MediaAndStyles/themes/theme_base/mini_images/home_tree_mode_conf/github.png",
+            "label": "A Link to GitHub",
+            "href": "https://github.com/orgs/Jaisocx-Tools/repositories",
+            "cssClassName": "hyperlink"
+          },
+          "rynrnyrn": {
+            "icon": "MediaAndStyles/themes/theme_base/mini_images/home_tree_mode_conf/catalog.png",
+            "label": "echo html",
+            "opened": false,
+            "subtree": {
+              "rnynry": {
+                "icon": "MediaAndStyles/themes/theme_base/mini_images/home_tree_mode_conf/html.png",
+                "label": "html 1",
+                "href": "javascript: void(0);",
+                "text": "<h3>Hello World!</h3><p style=\"color:#26d;\">Have fun with styling and using JSTree tool.</p>"
+              },
+              "rynynry": {
+                "icon": "MediaAndStyles/themes/theme_base/mini_images/home_tree_mode_conf/html.png",
+                "label": "html 2",
+                "href": "javascript: void(0);",
+                "text": "<h3>Hello World!</h3><p style=\"color:#d83;\">You can edit code easily, JSTree class is lightweight.</p>"
+              },
+              "ghnghn": {
+                "icon": "MediaAndStyles/themes/theme_base/mini_images/home_tree_mode_conf/html.png",
+                "label": "html 3",
+                "href": "javascript: void(0);",
+                "text": "<h3>Hello World!</h3><p style=\"color:#00bb00;\">Have a nice day.</p>"
+              }
+            }
+          }
+        }
+      }
+    };
+    // -------------------
+    // END  CONF DATA
+
+
+
+    function renderTree( holderElemId, data, modeShownNodes ) {
+
+        const tree_SubtreeArrayOfObjects = new Tree();
+        tree_SubtreeArrayOfObjects
+          .setDebug( false )
+          .setMainHtmlNodeId( holderElemId )
+          .setNodesWithIcons( true )
+          .setNodesOpenedMode( modeShownNodes )
+          .setModifiable( false )
+          .setRenderingMode( TreeConstants.RenderingMode.Conf )
+          .addJSTreeEventListener (
+            TreeConstants.TreeEventsNames.EVENT_NAME__TREE_NODE_LABEL__CLICK,
+            ( eventName, eventPayload ) => {
+              console.log( eventName, eventPayload );
+
+              // on click payload has the ref to the tree.data json, and here we show in console it's value:
+              console.log( tree_SubtreeArrayOfObjects.getTreeDataNodeByJsonnodePathArray( eventPayload.jsonNode._pathArray ) );
+            }
+          )
+          .render( data );
+
+    }
+
+
+
+    function loadDataAndRenderTree( holderElemId, dataUrl ) {
+
+        // example to load by url
+        const tree_load_by_url = new Tree();
+        tree_load_by_url
+            .setMainHtmlNodeId("example-tree-holder_load_by_url")
+            .setRenderingMode(TreeConstants.RenderingMode.Conf)
+            .load( dataUrl );
+
+    }
+
+
+
+    let themesPreloads = {
+      "image": null,
+      "font": {
+        "theme_font_Baloo_Paaji_2": [
+          "https://sandbox.brightday.email/cdn/www/fonts/Baloo_Paaji_2/static/BalooPaaji2-SemiBold.ttf",
+          "https://sandbox.brightday.email/cdn/www/fonts/Baloo_Paaji_2/static/BalooPaaji2-Regular.ttf",
+        ],
+        "theme_font_LibreFranklin": [
+          "https://sandbox.brightday.email/cdn/www/fonts/LibreFranklin/static/LibreFranklin-SemiBold.ttf",
+          "https://sandbox.brightday.email/cdn/www/fonts/LibreFranklin/static/LibreFranklin-Regular.ttf",
+        ],
+        "theme_font_Niconne": [
+          "https://sandbox.brightday.email/cdn/www/fonts/Niconne/Niconne-Regular.ttf",
+        ],
+      }
+    };
+
+    let simpleScriptsPaths = {
+      "preloader": {
+        "node_modules": true,
+        "scripts": [
+          "Preloader"
+        ]
+      },
+      "event-emitter": {
+        "node_modules": true,
+        "scripts": [
+          "EventEmitter",
+          "ImprovedRenderEventEmitter"
+        ]
+      },
+      "tokens-parser": {
+        "node_modules": true,
+        "scripts": [
+          "TokensParser"
+        ]
+      },
+      "template-renderer": {
+        "node_modules": true,
+        "scripts": [
+          "TemplateRenderer"
+        ]
+      },
+      "tree": {
+        "scripts": [
+          "typescript/ArrayOrObjectPackage",
+          "typescript/TreeConstants",
+          "typescript/TreeConf",
+          "typescript/TreeAdapter",
+          "typescript/TreeAdapterModeEase",
+          "typescript/TreeAdapterModeConf",
+          "typescript/Tree"
+        ]
+      }
+    };
+
+
+
+    class ScriptsLoader {
+
+      costructor() {
+
+      }
+
+
+
+      onload() {}
+
+
+
+      load (
+        scriptsDataObject,
+        chained
+      ) {
+
+        let scriptLoaderInstance = this;
+
+        let npmLibId             = 0;
+        let scriptId             = 0;
+        let hasNext_true         = true;
+        let isFallback_false     = false;
+
+        if ( chained ) {
+          this.loadOneScript (
+            scriptLoaderInstance,
+            scriptsDataObject,
+            npmLibId,
+            scriptId,
+            hasNext_true,
+            isFallback_false
+          );
+
+          return;
+        }
+
+
+
+        let scriptsObject     = new Object();
+        let scriptsArray      = new Array();
+        let npmLibName        = "";
+        let jsFilepath        = "";
+        let isWithFallbackSrc = true;
+
+        let npmLibsNames      = Object.keys ( scriptsDataObject );
+        let npmLibsNumber     = npmLibsNames.length;
+        let nextNpmLibId      = 0;
+
+        let nextNpmLibName    = "";
+        let nextJsFilepath    = "";
+        let hasNext           = true;
+
+        let scriptsNumber     = 0;
+
+        let nextScriptId        = 0;
+        let nextScriptsObject   = new Object();
+
+        let npmlibSecureCounter = 1;
+        let scriptSecureCounter = 1;
+
+        let npmlibSecureMaxCounter = 20;
+        let scriptSecureMaxCounter = 20;
+
+
+
+        hasNext        = false;
+        nextNpmLibName = "";
+        nextJsFilepath = "";
+
+        while ( npmLibId < npmLibsNumber ) {
+
+          npmlibSecureCounter++;
+          if ( npmlibSecureCounter === npmlibSecureMaxCounter ) {
+            break;
+          }
+
+
+
+          npmLibName        = npmLibsNames[ npmLibId ];
+          scriptsObject     = scriptsDataObject[ npmLibName ];
+          scriptsArray      = scriptsObject[ "scripts" ];
+          isWithFallbackSrc = scriptsObject[ "node_modules" ];
+          scriptsNumber     = scriptsArray.length;
+
+          scriptId = 0;
+          scriptSecureCounter = 1;
+
+          while ( scriptId < scriptsNumber ) {
+
+            scriptSecureCounter++;
+            if ( scriptSecureCounter === scriptSecureMaxCounter ) {
+              break;
+            }
+
+            this.loadOneScript (
+              scriptLoaderInstance,
+              scriptsDataObject,
+              npmLibId,
+              scriptId,
+              hasNext,
+              false
+            );
+
+            scriptId++;
+          }
+
+          npmLibId++;
+        }
+      }
+
+
+
+      loadOneScript (
+        scriptLoaderInstance,
+        scriptsDataObject,
+        npmLibId,
+        scriptId,
+        hasNext,
+        isFallback
+      ) {
+
+        let npmLibsNames       = Object.keys ( scriptsDataObject );
+        let npmLibsNumber      = npmLibsNames.length;
+
+        let npmLibName         = npmLibsNames[ npmLibId ];
+        let scriptsObject      = scriptsDataObject[ npmLibName ];
+        let scriptsArray       = scriptsObject[ "scripts" ];
+        let isWithFallbackSrc  = scriptsObject[ "node_modules" ];
+        let scriptsNumber      = scriptsArray.length;
+        let jsFilepath         = scriptsArray[ scriptId ];
+
+        let scriptSrc          = "";
+        let fallbackScriptSrc  = "";
+
+        let dynamicPathArrayId = 0;
+
+        let scriptSrcArray = [
+          "< dynamicPathArrayId >",
+          npmLibName,
+          "/transpiled/Simple/",
+          jsFilepath,
+          ".js"
+        ];
+
+        scriptSrcArray[ dynamicPathArrayId ] = "../";
+        scriptSrc = scriptSrcArray.join("");
+
+
+
+        let tagScript = document.createElement ( "script" );
+
+        tagScript.setAttribute ( "data-scripts_data_object", JSON.stringify ( scriptsDataObject ) );
+        tagScript.setAttribute ( "data-script_id", scriptId );
+        tagScript.setAttribute ( "data-npmlib_id", npmLibId );
+
+        let jsFileReplaced = jsFilepath.replace ( "/", "_" );
+        let numIsFallback = ( isFallback  && isWithFallbackSrc ) ? 1 : 0;
+        let tagScriptId = `script_${npmLibName}_${jsFileReplaced}_${numIsFallback}_` + Date.now();
+        tagScript.id = tagScriptId;
+        document.body.append ( tagScript );
+        tagScript = document.getElementById( tagScriptId );
+
+
+        if ( isFallback === false && isWithFallbackSrc ) {
+          let onerr = () => { scriptLoaderInstance.scriptOnerror( scriptLoaderInstance, tagScript ); };
+          tagScript.onerror = onerr.bind ( tagScript );
+        }
+
+        if ( isFallback ) {
+          scriptSrcArray[ dynamicPathArrayId ] = "node_modules/@jaisocx/";
+          fallbackScriptSrc = scriptSrcArray.join("");
+        }
+
+        let onload = () => { scriptLoaderInstance.scriptOnload ( scriptLoaderInstance, tagScript ); };
+        tagScript.onload = onload.bind ( tagScript );
+
+        try {
+
+          if ( isFallback ) {
+            tagScript.setAttribute ( "src", fallbackScriptSrc );
+          } else {
+            tagScript.setAttribute ( "src", scriptSrc );
+          }
+
+        } catch ( e ) {}
+
+      }
+
+
+
+      scriptOnload (
+        scriptLoaderInstance,
+        currentTagScript
+      ) {
+
+        let scriptsDataObject = JSON.parse( currentTagScript.getAttribute ( "data-scripts_data_object" ) );
+        let scriptId          = +currentTagScript.getAttribute ( "data-script_id" );
+        let npmLibId          = +currentTagScript.getAttribute ( "data-npmlib_id" );
+        let hasNext           = true;
+
+        currentTagScript.removeAttribute ( "data-scripts_data_object" );
+
+
+
+        let npmLibsNames      = Object.keys ( scriptsDataObject );
+        let npmLibsNumber     = npmLibsNames.length;
+
+
+
+        let npmLibName        = npmLibsNames[ npmLibId ];
+        let scriptsObject     = scriptsDataObject[ npmLibName ];
+        let scriptsArray      = scriptsObject[ "scripts" ];
+        let isWithFallbackSrc = scriptsObject[ "node_modules" ];
+        let scriptsNumber     = scriptsArray.length;
+        let jsFilepath        = scriptsArray[ scriptId ];
+
+
+
+        let nextNpmLibId      = npmLibId;
+        let nextScriptId      = ( scriptId + 1 );
+
+        let nextScriptsObject = new Object();
+        let nextScriptsArray  = new Array();
+
+        let nextNpmLibName    = "";
+        let nextJsFilepath    = "";
+
+        if ( nextScriptId >= scriptsNumber ) {
+          nextNpmLibId = ( npmLibId + 1 );
+          nextScriptId = 0;
+        }
+
+        if ( nextNpmLibId >= npmLibsNumber ) {
+          hasNext = false;
+        }
+
+        if ( hasNext === false ) {
+          scriptLoaderInstance.onload();
+          return;
+        }
+
+        scriptLoaderInstance.loadOneScript (
+          scriptLoaderInstance,
+          scriptsDataObject,
+          nextNpmLibId,
+          nextScriptId,
+          hasNext,
+          false
+        );
+
+      }
+
+
+
+      scriptOnerror (
+        scriptLoaderInstance,
+        currentTagScript
+      ) {
+
+        let scriptsDataObject = JSON.parse( currentTagScript.getAttribute ( "data-scripts_data_object" ) );
+        let scriptId          = +currentTagScript.getAttribute ( "data-script_id" );
+        let npmLibId          = +currentTagScript.getAttribute ( "data-npmlib_id" );
+        let hasNext           = true;
+
+        currentTagScript.removeAttribute ( "data-scripts_data_object" );
+
+
+
+        let npmLibsNames      = Object.keys ( scriptsDataObject );
+        let npmLibsNumber     = npmLibsNames.length;
+
+        let npmLibName        = npmLibsNames[ npmLibId ];
+        let scriptsObject     = scriptsDataObject[ npmLibName ];
+        let scriptsArray      = scriptsObject[ "scripts" ];
+        let isWithFallbackSrc = scriptsObject[ "node_modules" ];
+        let scriptsNumber     = scriptsArray.length;
+
+        let isFallback_true   = true;
+
+        scriptLoaderInstance.loadOneScript (
+          scriptLoaderInstance,
+          scriptsDataObject,
+          npmLibId,
+          scriptId,
+          hasNext,
+          isFallback_true
+        );
+
+
+        currentTagScript.remove();
+
+      }
+
+    }
+
+
+
+
+
+    function renderJsonTreeExamples() {
+
+      renderTree (
+        "example-tree-holder_SubtreeArrayOfObjects",
+        treeJson_SubtreeArrayOfObjects,
+        TreeConstants.NodesOpenedMode.ALL_SHOWN
+      );
+
+      renderTree (
+        "example-tree-holder_SubtreeLikeObjects",
+        treeJson_SubtreeLikeObjects,
+        TreeConstants.NodesOpenedMode.JSON_DATA_DEFINED
+      );
+
+      loadDataAndRenderTree (
+        "example-tree-holder_SubtreeArrayOfObjects",
+        "https://sandbox.brightday.email/cdn/www/data_public/json/tree-data/tree-data-to-use-with-conf.json"
+      );
+
+    }
+
+
+
+    function loadTreeScriptsAndRenderTree() {
+
+      let scriptsLoader = new ScriptsLoader();
+
+      scriptsLoader.onload = () => {
+
+        // const preloader = new Preloader();
+        // preloader
+        //   .setThemesPreloads( themesPreloads )
+        //   .setWebpackAlias( "" )
+        //   .setWebpackAliasReplace( "" )
+        //   .init();
+
+        renderJsonTreeExamples();
+      };
+
+      scriptsLoader.load ( simpleScriptsPaths, true );
+    }
+
+
+
+    document.addEventListener ( 'DOMContentLoaded', () => {
+      loadTreeScriptsAndRenderTree();
+    });
+
+  </script>
+
+
+
+
+
+  <script>
+
+    let currentButtonNodeClicked = null;
+
+    let cssClassesNames = [
+      "jsx"
+    ];
+
+
+
+    // declaring the function, this is used in the event handler of the theme turning button when clicked on this button.
+    function turnOnTheme ( buttonNodeClicked ) {
+
+      if ( currentButtonNodeClicked !==  null ) {
+        currentButtonNodeClicked.classList.remove( "current" );
+      }
+
+      const htmlNode = document.getElementsByTagName( "html" )[0];
+      const htmlNodeClassList = htmlNode.classList;
+
+      const themeCssClassPrefix = "theme";
+
+      htmlNodeClassList.forEach (
+        (cssClassName) => {
+          if ( cssClassesNames.includes( cssClassName ) ) {
+            return;
+          }
+
+          if ( cssClassName.startsWith( themeCssClassPrefix ) === true ) {
+            htmlNodeClassList.remove( cssClassName );
+          }
+        }
+      );
+
+      const themeName = buttonNodeClicked.dataset.theme;
+      if ( themeName && ( themeName.length !== 0 ) ) {
+        htmlNode.classList.add( themeName );
+      }
+
+      currentButtonNodeClicked = buttonNodeClicked;
+      currentButtonNodeClicked.classList.add( "current" );
+
+    }
+
+
+
+    // declaring the function, this adds to buttons the event handler to turn on the theme.
+    // this function is invoked when the site loads in the browser,
+    // in the event handler for the event DOMContentLoaded
+    function addThemeButtonsEventHandlers() {
+
+      const buttonsIDs = [
+        "button-turn-on-base-theme",
+        "button-turn-on-daymode",
+        "button-turn-on-nightmode"
+      ];
+
+      for ( let buttonId of buttonsIDs ) {
+
+        let buttonNode = document.getElementById( buttonId );
+
+        buttonNode.addEventListener (
+          "click",
+          (evt) => {
+            let buttonNodeClicked = evt.target;
+            turnOnTheme ( buttonNodeClicked );
+          }
+        );
+
+      }
+    }
+
+
+
+    // DOCUMENT ONLOAD, INVOKES THE FUNCTION TO PRELOAD THEME FONTS
+    document.addEventListener( 'DOMContentLoaded', () => {
+
+      // adding to buttons the event handler to turn on the theme.
+      addThemeButtonsEventHandlers();
+
+    });
+
+  </script>
+
+</html>
+
+
+
+
+

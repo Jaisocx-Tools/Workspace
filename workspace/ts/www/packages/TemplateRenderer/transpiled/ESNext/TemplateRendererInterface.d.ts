@@ -1,16 +1,6 @@
-import { TextEncoder, TextDecoder } from "node:util";
 import { EventEmitter } from "@jaisocx/event-emitter";
-import { TokensParser } from "@jaisocx/tokens-parser";
 import { OptimizedTemplateRecord, TemplateRendererDataRecord } from "./types/TemplateRendererTypes.js";
-import { TemplateRendererInterface } from "./TemplateRendererInterface.js";
-export declare class TemplateRenderer extends EventEmitter implements TemplateRendererInterface {
-    #private;
-    EVENT_NAME__AFTER_RENDER: any;
-    tokensParser: TokensParser;
-    dataRecords: TemplateRendererDataRecord[];
-    textEncoder: TextEncoder;
-    textDecoder: TextDecoder;
-    constructor();
+export interface TemplateRendererInterface extends EventEmitter {
     initDataRecord(): TemplateRendererDataRecord;
     addNewDataRecord(): TemplateRendererDataRecord;
     getActiveDataRecord(): TemplateRendererDataRecord;
@@ -30,4 +20,4 @@ export declare class TemplateRenderer extends EventEmitter implements TemplateRe
     orderedRecords(inRecords: OptimizedTemplateRecord[]): OptimizedTemplateRecord[];
     replaceTemplateRendererWithDataForRendering(): any;
 }
-//# sourceMappingURL=TemplateRenderer.d.ts.map
+//# sourceMappingURL=TemplateRendererInterface.d.ts.map

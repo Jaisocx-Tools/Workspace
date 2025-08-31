@@ -1,6 +1,6 @@
 {
   "name": "@jaisocx/preloader",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "author": "Jaisocx",
   "keywords": [],
   "private": false,
@@ -25,6 +25,9 @@
   ],
   "publishConfig": {
     "access": "public"
+  },
+  "optionalDependencies": {
+    "@jaisocx/template-renderer": "~1.5.8"
   }
 }
 

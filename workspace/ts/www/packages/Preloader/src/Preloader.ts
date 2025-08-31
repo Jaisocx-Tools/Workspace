@@ -1,8 +1,14 @@
+import { PreloaderConstantsInterface } from "./PreloaderConstantsInterface.js";
+import { PreloaderConstants } from "./PreloaderConstants.js";
+
 import { PreloaderInterface } from "./PreloaderInterface.js";
 
 
 
 export class Preloader {
+
+  preloaderConstantsInstance: PreloaderConstantsInterface;
+  templateRenderer: TemplateRenderer;
 
   themesPreloads: object = {};
 
@@ -12,6 +18,9 @@ export class Preloader {
 
 
   constructor() {
+    this.preloaderConstantsInstance = new PreloaderConstants();
+
+
     this.themesPreloads = {};
   }
 
@@ -150,5 +159,41 @@ export class Preloader {
     }
 
   }
+
+
+
+
+
+  // preventing browser requests waiting and blocking when a cdn is not responding.
+  extractUrlsFromHarBrowserReport (
+    harBrowserReportFilepath: string
+  ): string[] {
+    throw new Error( "Not implemented" );
+    return [];
+  }
+
+  addScriptLoadingStopOnTimeout (
+    linkTagsText: string,
+    scriptText: string,
+    timeoutNumberOfMilliseconds: number
+  ): void {
+    throw new Error( "Not implemented" );
+    return;
+  }
+
+  produceLinkTagsPreloading (
+    idsOfLinkTags: string[]
+  ): string {
+    throw new Error( "Not implemented" );
+    return "";
+  }
+
+  produceScriptLoadingStopOnTimeout(): string {
+    throw new Error( "Not implemented" );
+    return "";
+  }
+
 }
+
+
 

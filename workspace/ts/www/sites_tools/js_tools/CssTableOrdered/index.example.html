@@ -2,12 +2,89 @@
 <html lang="en" class="jsx theme_visible_height">
 <head>
 
-  <title>Css Table Ordered</title>
+  <title>Tree</title>
 
-  <base href="./">
+  <base href="./" />
 
   <meta charset="utf-8" />
   <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+
+
+
+    <script>
+
+      let linkTagsPreloading = {
+        "icon_brightday": 1,
+        "font_LibreFranklin_SemiBold": 1,
+        "font_LibreFranklin_Regular": 1,
+        "stylesheet_cdn_fonts": 1
+      };
+
+
+
+      let loadingStopOnTimeout = ( idsObject ) => {
+
+        console.log( "Script on timeout started" );
+
+        let ids = Object.keys( idsObject );
+        let idsNumber = ids.length;
+        let id = "";
+        let i = 0;
+        let tag = new Object();
+
+        let secureCounter = 1;
+        let secureMaxCounter = 10;
+
+        marker1: while ( i < idsNumber ) {
+          secureCounter++;
+          if ( secureCounter >= secureMaxCounter ) {
+            break marker1;
+          }
+
+          id = ids[i];
+          i++;
+
+          if ( idsObject[id] === 3 ) {
+            continue marker1;
+          }
+
+
+
+          try {
+            tag = document.getElementById( id );
+          } catch (e) {}
+          try {
+            tag.onerror = null;
+          } catch (e) {}
+          try {
+            tag.setAttribute( "fetchpriority", "low" );
+          } catch (e) {}
+          try {
+            tag.setAttribute( "rel", "stylesheet" );
+          } catch (e) {}
+          try {
+            tag.removeAttribute( "href" );
+          } catch (e) {}
+          try {
+            tag.remove();
+          } catch (e) {}
+
+
+
+          i++;
+        }
+      }
+
+
+
+      setTimeout (
+        () => {
+          loadingStopOnTimeout( linkTagsPreloading );
+        },
+        1600
+      );
+
+    </script>
 
 
 
@@ -17,41 +94,49 @@
       type="image/x-icon"
       href="https://sandbox.brightday.email/cdn/www/media/images/favicon/Icon_Jaisocx.ico"
       href-fallback="favicon/Icon_Jaisocx.ico"
-      onerror="javascript: ( () => { console.log( this ); this.onerror = null; this.href = this.getAttribute( 'href-fallback' ); } )();"
+      onerror="javascript: ( () => { this.onerror = null; this.href = this.getAttribute( 'href-fallback' ); } )();"
     /> -->
 
     <link
+      id="icon_brightday"
       rel="icon"
       type="image/x-icon"
       href="https://sandbox.brightday.email/cdn/www/media/images/favicon/Icon_Sandbox_Brightday.ico"
-      href-fallback="favicon/Icon_Sandbox_Brightday.ico"
-      onerror="javascript: ( () => { console.log( this ); this.onerror = null; this.href = this.getAttribute( 'href-fallback' ); } )();"
+      href-fallback="./favicon/Icon_Sandbox_Brightday.ico"
+      onload="javascript: ( () => { this.onerror = null; const id = this.id; linkTagsPreloading[id] = 3; } )();"
+      onerror="javascript: ( () => { this.href = this.getAttribute( 'href-fallback' ); } )();"
     />
 
 
 
     <!--# FONTS PRELOAD WITHOUT JAVASCRIPT CALL -->
     <link
+      id="font_LibreFranklin_SemiBold"
       fetchpriority="high"
       rel="preload"
       as="font"
       type="font/ttf"
       href="https://sandbox.brightday.email/cdn/www/fonts/LibreFranklin/static/LibreFranklin-SemiBold.ttf"
+      onload="javascript: ( () => { const id = this.id; linkTagsPreloading[id] = 3; } )();"
     />
 
     <link
+      id="font_LibreFranklin_Regular"
       fetchpriority="high"
       rel="preload"
       as="font"
       type="font/ttf"
       href="https://sandbox.brightday.email/cdn/www/fonts/LibreFranklin/static/LibreFranklin-Regular.ttf"
+      onload="javascript: ( () => { const id = this.id; linkTagsPreloading[id] = 3; } )();"
     />
 
     <!--# CSS FOR FONTS -->
     <link
+      id="stylesheet_cdn_fonts"
       rel="stylesheet"
       type="text/css"
       href="https://sandbox.brightday.email/cdn/www/fonts_css/font_LibreFranklin_cdn.css"
+      onload="javascript: ( () => { const id = this.id; linkTagsPreloading[id] = 3; } )();"
     />
 
 
@@ -65,7 +150,7 @@
       charset="utf-8"
       href="../css-clean-start-2/MediaAndStyles/CssCleanStart_2_main_relative.css"
       href-fallback="node_modules/@jaisocx/css-clean-start-2/MediaAndStyles/CssCleanStart_2_main_relative.css"
-      onerror="javascript: ( () => { console.log( this ); this.onerror = null; this.href = this.getAttribute( 'href-fallback' ); } )();"
+      onerror="javascript: ( () => { this.onerror = null; this.href = this.getAttribute( 'href-fallback' ); } )();"
     /> -->
 
     <!--# THE SAME importing @jaisocx/css-clean-start-2 IN PROD MODE, PACKED BY @jaisocx/css-importer TOOL  -->
@@ -75,8 +160,9 @@
       charset="utf-8"
       href="../css-clean-start-2/MediaAndStyles/CssCleanStart_2_main_resolved_minimal.css"
       href-fallback="node_modules/@jaisocx/css-clean-start-2/MediaAndStyles/CssCleanStart_2_main_resolved_minimal.css"
-      onerror="javascript: ( () => { console.log( this ); this.onerror = null; this.href = this.getAttribute( 'href-fallback' ); } )();"
+      onerror="javascript: ( () => { this.href = this.getAttribute( 'href-fallback' ); this.onerror = null; } )();"
     />
+
 
 
 
@@ -100,7 +186,7 @@
       charset="utf-8"
       href="../css-table/MediaAndStyles/CssTable_main_resolved_minimal.css"
       href-fallback="node_modules/@jaisocx/css-table/MediaAndStyles/CssTable_main_resolved_minimal.css"
-      onerror="javascript: ( () => { console.log( this ); this.onerror = null; this.href = this.getAttribute( 'href-fallback' ); } )();"
+      onerror="javascript: ( () => { this.href = this.getAttribute( 'href-fallback' ); this.onerror = null; } )();"
     />
 
 
