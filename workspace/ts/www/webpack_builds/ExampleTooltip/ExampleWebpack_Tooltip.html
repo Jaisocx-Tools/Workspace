@@ -1,11 +1,18 @@
-<html>
+<!DOCTYPE html>
+<html lang="en" class="workspace">
   <head>
     <title>Tooltip Example</title>
 
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
 
     <!-- The built by webpack bundle.js -->
-    <script src="transpiled/webpack/example-tooltip-bundle.js"></script>
+    <script src="webpack_builds/ExampleTooltip/transpiled/webpack/example-tooltip-bundle.js"></script>
+
+
+    <!-- a temporary theme to test a dynamic size context menu -->
+    <link rel="stylesheet" href="sites_tools/js_tools/Tooltip/MediaAndStyles/themes/theme-context/tooltip-theme-context.css" />
 
     <style>
 
@@ -23,9 +30,9 @@
     html {
       --mini-image-size: 1.6rem;
 
-      --background-image-1: url('media/images/background-6804432_1280.jpg');
-      --background-image-2: url('media/images/flowers-7935944_1920.jpg');
-      --background-image-3: url('media/images/flowers-4818861_1920.jpg');
+      --background-image-1: url("webpack_builds/ExampleTooltip/media/images/background-6804432_1280.jpg");
+      --background-image-2: url("webpack_builds/ExampleTooltip/media/images/flowers-7935944_1920.jpg");
+      --background-image-3: url("webpack_builds/ExampleTooltip/media/images/flowers-4818861_1920.jpg");
 
       box-sizing: border-box;
 
@@ -115,7 +122,7 @@
 
       border: 0 solid white;
 
-      background-image: url('media/mini-images/icons8-notiz-pulsar-gradient/icons8-notiz-96.png');
+      background-image: url("webpack_builds/ExampleTooltip/media/mini-images/icons8-notiz-pulsar-gradient/icons8-notiz-96.png");
       background-repeat: no-repeat;
       background-size: contain;
       background-position: center;
@@ -155,7 +162,7 @@
 
       min-width: 100%;
       width: 100%;
-      height: 83rem;
+      height: 93rem;
 
       padding-bottom: 2rem;
       margin-bottom: 3rem;
@@ -239,6 +246,11 @@
         <div class="static-overflow-scroll">
           <div class="event-targets-holder static-overflow-scroll">
 
+            <p style="margin-bottom: 14rem;">
+              <label title="Theme Context">context</label>
+              <button id="tooltip-show-button-context" class="mini-image-event-target">i</button>
+            </p>
+
             <p style="margin-bottom: 2rem;">
               <label title="Theme Base">base theme</label>
               <button id="tooltip-show-button-base" class="mini-image-event-target">i</button>
@@ -297,6 +309,41 @@
             <p>Tooltip with minimal required properties set. All default values applied.</p>
             ` )
           .render();
+
+
+
+        const tooltipContext = new Tooltip();
+        tooltipContext
+          .setTooltipHideBehaviour( tooltipHideBehaviour )
+          .setTimeoutToCloseMillis( tooltipHideTimoutMilliseconds )
+          .setEventTargetHtmlNodeId( "tooltip-show-button-context" )
+          .setCssClasses( "theme-context shown_effect_fadeIn with-transition" )
+          .setHtml (
+            `
+            <ul class="context">
+              <li>Context Item 1</li>
+              <li>Context Item 2</li>
+              <li>Context Item 3</li>
+              <li>Context Item 4</li>
+              <li>Context Item 5</li>
+            </ul>
+            `
+           )
+          .setAlignDimensionOneValueOrder (
+            [
+              Constants.AlignDimensionOne.BROWSER_TAB_BORDER_RIGHT,
+              Constants.AlignDimensionOne.BROWSER_TAB_BORDER_BOTTOM,
+              Constants.AlignDimensionOne.BROWSER_TAB_BORDER_LEFT,
+              Constants.AlignDimensionOne.BROWSER_TAB_BORDER_BOTTOM,
+            ]
+          )
+          .setTooltipAlignDimensionTwo(Constants.AlignDimensionTwo.EVENT_TARGET_START)
+          .setTooltipPaddingAlignDimensionTwo (
+            0.6,
+            Constants.CssSizeDim.REM
+          )
+          .render();
+
 
 
         const tooltipDarkmode = new Tooltip();

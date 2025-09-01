@@ -1,0 +1,648 @@
+<!DOCTYPE html>
+<html lang="en" class="jsx theme_lightmode">
+<head>
+
+  <title>TreeWalker Example</title>
+
+  <base href="./" />
+
+  <meta charset="utf-8" />
+  <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+
+
+
+  <!--# CSS CLEAN START 2: html & css WHEN STARTING A SITE FROM SCRATCH -->
+
+  <!-- DEV MODE -->
+  <!--
+    IN THE DEV CONSOLE YOU SEE
+    39 CSS FILES,
+      css-clean-start and the responsive css files set
+    easier to review one css file, for example with one media query.
+    Best in development mode.
+  -->
+  <link rel="stylesheet" href="sites_tools/css_tools/CssCleanStart_2/MediaAndStyles/CssCleanStart_2_main_relative.css" />
+
+
+
+  <!-- PROD MODE -->
+  <!--
+    ALTERNATIVELY,
+    ONE .CSS FILE (1615 lines of size 46.7 KB),
+      PACKED WITH CSS IMPORTER CSS FILES OF THE RESPONSIVE CSS FILES SET,
+      SAME TRAFFIC, HOWEVER IN THE DEV CONSOLE JUST ONE CSS FILE IS SEEN.
+  -->
+  <!-- <link rel="stylesheet" href="sites_tools/css_tools/CssCleanStart_2/MediaAndStyles/CssCleanStart_2_main_resolved.css" /> -->
+
+
+
+
+
+
+    <link rel="stylesheet" href="sites_tools/css_tools/CssCodeSnippet/MediaAndStyles/themes/rosa.css">
+    <link rel="stylesheet" href="sites_tools/css_tools/CssCodeSnippet/MediaAndStyles/themes/sky-blue.css">
+    <link rel="stylesheet" href="sites_tools/css_tools/CssCodeSnippet/MediaAndStyles/themes/salad.css">
+
+    <link rel="stylesheet" href="sites_tools/css_tools/CssCodeSnippet/MediaAndStyles/css-code-snippet-styles-main.css">
+    <link rel="stylesheet" href="sites_tools/css_tools/CssCodeSnippet/MediaAndStyles/lines-numbers-variables/code-snippet-lines-numbers-99.css">
+
+
+
+    <style>
+
+      .jsx {
+        --jsx--css-clean-start-2--site--padding: 2rem 1rem 3rem 1rem;
+
+        --jsx--css-clean-start-2--h1--font-size: 1.05rem;
+        --jsx--css-clean-start-2--h2--font-size: 0.9rem;
+        --jsx--css-clean-start-2--h3--font-size: 0.83rem;
+
+        --jsx--css-clean-start-2--h2--font-weight: 500;
+
+        --theme-button-width: fit-content;
+      }
+
+      @media screen and (orientation: portrait) {
+        .jsx description {
+          display: none;
+        }
+      }
+
+      .jsx themebuttons {
+        width: fit-content;
+        display: grid;
+        grid-auto-flow: column;
+        column-gap: 3rem;
+        margin: 0.9rem 0px 1.6rem 0px;
+      }
+
+      .jsx themebuttons button {
+        width: var(--theme-button-width);
+      }
+
+      .current::after {
+        content: "";
+        position: absolute;
+        bottom: -0.3rem;
+        left: 0;
+        width: 100%;
+        height: 0;
+        max-height: 0;
+        overflow-y: hidden;
+        border-bottom-width: 0.14rem;
+        border-bottom-style: solid;
+        border-bottom-color: var(--clean-start__text-color);
+      }
+
+      .jsx button {
+        background-color: transparent;
+        text-align: left;
+      }
+
+      #tooltip-button {
+        font-family: fantasy;
+      }
+
+
+      #info {
+        color: var(--jsx--css-clean-start-2--all-tags--color);
+        background-color: var(--jsx--css-clean-start-2--body-tag--background);
+      }
+    </style>
+
+
+    <style>
+
+  .CodeSnippetHolder.salad.TreeWalkerPage {
+
+    --code-snippet-tool--width: max-content;
+    --code-snippet-tool--height: max-content;
+    --overflow-y: visible;
+
+    --code-snippet--padding-top: 1rem;
+    --code-snippet--padding-bottom: 1rem;
+
+    --code-snippet--line-height: 1.25rem;
+    --code-snippet--font-size: 0.925rem;
+    --code_snippet__font_family: Courier;
+  }
+
+  #code-snippet-walkFlatRepeatingDataset {
+    --lines-number: 16;
+  }
+  #code-snippet-walkFlatRepeatingCallback {
+    --lines-number: 30;
+  }
+  #code-snippet-walkFlatRepeatingExample {
+    --lines-number: 25;
+  }
+  #code-snippet-walkFlatRepeatingTreeRender {
+    --lines-number: 23;
+  }
+  #code-snippet-walkFlatRepeatingInit {
+    --lines-number: 8;
+  }
+
+/*
+  .CodeSnippetHolder#code-snippet-example-thin {
+    --lines-number: 33;
+    --code-snippet-tool--width: 28rem;
+    --code-snippet-tool--height: 22rem;
+    --overflow-y: auto;
+    --code_snippet__font_family: Arial;
+
+    --code-snippet--line-height: 1.2rem;
+    --code-snippet--font-size: 0.775rem;
+  } */
+    </style>
+
+
+  </head>
+  <body>
+
+    <main>
+
+      <content>
+
+
+        <h1>WorkspaceTreeWalker</h1>
+        <h2>tested method .walkFlatRepeating</h2>
+        <p>However the .walkFlatRepeating() method is developed for repeating some data nodes by amount and rules of other datasets while the flat dataset recursive callback invokes.</p>
+
+
+        <ThemeButtons>
+          <button id="button-turn-on-base-theme" data-theme="">Base Theme</button>
+          <button id="button-turn-on-daymode" data-theme="theme_lightmode">Day Mode</button>
+          <button id="button-turn-on-nightmode" data-theme="theme_darkmode">Night Mode</button>
+        </ThemeButtons>
+
+
+
+
+
+
+    <h2>Flat recursive dataset example</h2>
+    <h3>Looks like this when rendered with Tree()</h3>
+    <div id="tree-holder-flat-dataset"></div>
+
+
+    <h3>This flat dataset was processed by WorkspaceTreeWalker callback with iterationsData, and rendered with Tree()</h3>
+    <div id="tree-holder-tree-dataset-with-iterations"></div>
+
+
+    <h3>The same flat dataset was processed by WorkspaceTreeWalker callback `WorkspaceTreeWalker.callbackWalkFlatTransformToMultilevel`, and rendered with Tree()</h3>
+    <div id="tree-holder-tree-dataset"></div>
+
+
+    <h3>And here is the json text of the same dataset:</h3>
+    <CodeSnippetHolder id="code-snippet-walkFlatRepeatingDataset" class="CodeSnippetHolder salad TreeWalkerPage">
+<pre class="CodeSnippetArea">
+  const flatRecursionDataset = [
+  { parentId: "main", id: 1, text: "Hello 1" },
+  { parentId: "main", id: 2, text: "Hello 2" },
+  { parentId: "main", id: 3, text: "Hello 3" },
+  { parentId: 3, id: 4, text: "Hello 4" },
+  { parentId: 3, id: 5, text: "Hello 5" },
+  { parentId: 3, id: 6, text: "Hello 6" },
+  { parentId: 5, id: 7, text: "Hello 7" },
+  { parentId: 5, id: 8, text: "Hello 8" },
+  { parentId: 8, id: 9, text: "Hello 9" },
+  { parentId: 9, id: 10, text: "Hello 10" },
+  { parentId: 9, id: 11, text: "Hello 11" },
+  { parentId: 9, id: 12, text: "Hello 12" },
+];
+</pre>
+</CodeSnippetHolder>
+
+<h2>Callback example, used to customize TreeWalker actions.</h2>
+<CodeSnippetHolder id="code-snippet-walkFlatRepeatingCallback" class="CodeSnippetHolder salad TreeWalkerPage">
+      <pre class="CodeSnippetArea">
+
+let treeDataset = {};
+
+function workspaceTreeWalkerCallback (
+  inOutPayload
+) {
+
+  const jpathData = inOutPayload.jpathData.getJPath();
+
+  let elem = treeDataset;
+  let jpathDataLen = jpathData.length;
+  let jpathDataLastIx = jpathDataLen - 1;
+  let keyLevel = 0;
+
+  for ( let key of jpathData ) {
+
+    const keyText = "" + key;
+
+    if ( !elem[keyText] && ( keyLevel !== jpathDataLastIx ) ) {
+      elem[keyText] = {};
+    } else if ( !elem[keyText] && ( keyLevel === jpathDataLastIx ) ) {
+      elem[keyText] = { ...inOutPayload.dataElem };
+    }
+
+    elem = elem[keyText];
+    keyLevel++;
+
+  }
+
+  console.log( inOutPayload, treeDataset );
+}
+</pre>
+</CodeSnippetHolder>
+
+<h2>Workspace TreeWalker example with a Flat recursive dataset</h2>
+<CodeSnippetHolder id="code-snippet-walkFlatRepeatingExample" class="CodeSnippetHolder salad TreeWalkerPage">
+  <pre class="CodeSnippetArea">
+function exampleUseWorkspaceTreeWalkerFlatData() {
+
+  const inOutPayload = new WorkspaceTreeWalkerPayload();
+
+  inOutPayload.dataset = flatRecursionDataset;
+  inOutPayload.transformedDataset = treeDataset;
+
+  inOutPayload.holderId = "data";
+  inOutPayload.id = "main";
+  inOutPayload.nameHolderId = "parentId";
+  inOutPayload.nameId = "id";
+  inOutPayload.branchName = "branch";
+
+  const treeWalker = new WorkspaceTreeWalker();
+  treeWalker.walk (
+    // WorkspaceTreeWalker.WALK_MODE.WALK_MODE_FLAT_REPEATING,
+    WorkspaceTreeWalker.WALK_MODE.WALK_MODE_FLAT,
+    inOutPayload,
+    WorkspaceTreeWalker.callbackWalkFlatTransformToMultilevel
+  );
+
+  console.log( "this .html file, \nfunction exampleUseWorkspaceTreWalker(). \nThis test func finished at it's last js code line." );
+
+}
+</pre>
+</CodeSnippetHolder>
+
+<h2>JS code of this .html page, how the datasets are rendered here with Tree()</h2>
+
+<CodeSnippetHolder id="code-snippet-walkFlatRepeatingTreeRender" class="CodeSnippetHolder salad TreeWalkerPage">
+  <pre class="CodeSnippetArea">
+function renderFlatDataset() {
+  const tree = new Tree();
+  tree
+    .setDebug(false)
+    .setMainHtmlNodeId("tree-holder-flat-dataset")
+    .setDataTypesCssClassesEnabled(true)
+    .setNodesWithIcons(true)
+    .setNodesOpenedMode(TreeConstants.NodesOpenedMode.ALL_SHOWN)
+    .setRenderingMode(TreeConstants.RenderingMode.Ease)
+    .render( flatRecursionDataset);
+}
+
+function renderTreeDataset() {
+  const tree = new Tree();
+  tree
+    .setDebug(false)
+    .setMainHtmlNodeId("tree-holder-tree-dataset")
+    .setDataTypesCssClassesEnabled(true)
+    .setNodesWithIcons(true)
+    .setNodesOpenedMode(TreeConstants.NodesOpenedMode.ALL_SHOWN)
+    .setRenderingMode(TreeConstants.RenderingMode.Ease)
+    .render( treeDataset );
+}
+</pre>
+</CodeSnippetHolder>
+
+
+<h3>Set these functions work the right way on the .html page.</h3>
+<CodeSnippetHolder id="code-snippet-walkFlatRepeatingInit" class="CodeSnippetHolder salad TreeWalkerPage">
+  <pre class="CodeSnippetArea">
+document.addEventListener (
+  'DOMContentLoaded',
+  () => {
+    exampleUseWorkspaceTreeWalkerFlatData();
+    renderFlatDataset();
+    renderTreeDataset();
+  }
+);
+      </pre>
+    </CodeSnippetHolder>
+
+
+      </content>
+
+    </main>
+
+  </body>
+
+
+
+
+
+
+
+
+    <script src="packages/WorkspaceTreeWalker/transpiled/Simple/types/WorkspaceTreeWalkerPayload.js"></script>
+    <script src="packages/WorkspaceTreeWalker/transpiled/Simple/types/JPathData.js"></script>
+    <script src="packages/WorkspaceTreeWalker/transpiled/Simple/types/IterableInfo.js"></script>
+    <script src="packages/WorkspaceTreeWalker/transpiled/Simple/lib/JPath.js"></script>
+    <script src="packages/WorkspaceTreeWalker/transpiled/Simple/WorkspaceTreeWalker.js"></script>
+
+    <script src="webpack_builds/ExampleTree/transpiled/webpack/example-tree-bundle.js"></script>
+
+
+    <script>
+
+      const flatRecursiveDataset = [
+        { parentId: "main", id: 1, text: "Hello 1" },
+        { parentId: "main", id: 2, text: "Hello 2" },
+        { parentId: "main", id: 3, text: "Hello 3" },
+        { parentId: 3, id: 4, text: "Hello 4" },
+        { parentId: 3, id: 5, text: "Hello 5" },
+        { parentId: 3, id: 6, text: "Hello 6" },
+        { parentId: 5, id: 7, text: "Hello 7" },
+        { parentId: 5, id: 8, text: "Hello 8" },
+        { parentId: 8, id: 9, text: "Hello 9" },
+        { parentId: 9, id: 10, text: "Hello 10" },
+        { parentId: 9, id: 11, text: "Hello 11" },
+        { parentId: 9, id: 12, text: "Hello 12" },
+      ];
+
+      let treeDataset = {};
+
+      let transformedDatasetWithIterations = {id: "main"}; // used with the under construction method
+
+
+
+      function workspaceTreeWalkerCallback ( // under construction
+        inOutPayload
+      ) {
+
+        let transformedDatasetNode = inOutPayload.transformedDataset;
+        const value = inOutPayload.data;
+        const nameHolderId = inOutPayload.nameHolderId;
+        const nameId = inOutPayload.nameId;
+        const branchName = inOutPayload.branchName;
+        const jpath = inOutPayload.jpathData.getJPath();
+        const jpathLen = jpath.length;
+        let jpathIx;
+        let jpathLastIx = jpathLen - 1;
+        let id = null;
+        let holderId = jpath[0];
+        let foundNode = null;
+        let newItem = null;
+
+        id = jpath[0];
+
+        console.log( "start", inOutPayload );
+
+        if ( ( jpathLen > 1 ) && ( jpath[jpathLastIx] === 3 ) ) {
+
+          inOutPayload.iterationsDataset = [
+            { "text2": "Hallo 3.1", },
+            { "text2": "Hallo 3.2", },
+            { "text2": "Hallo 3.3", }
+          ];
+
+          inOutPayload.iterationsNumber = inOutPayload.iterationsDataset.length;
+
+        }
+
+
+        // the jpath can be like this: [main, 3, 5, 8, 12]
+        // these are the keys in the object, where the TreeWalker walks.
+        // we append to the TransformedDataset the node,
+        // if does not exist, and in the most cases,
+        // in the last iteration, where jpathIx === jpathLastIx.
+        for ( jpathIx = 1; jpathIx < jpathLen; jpathIx++ ) {
+
+          id = jpath[jpathIx];
+
+          foundNode = false;
+
+          let toGetById = [];
+
+          if ( Array.isArray( transformedDatasetNode ) ) {
+            toGetById = transformedDatasetNode;
+
+          } else if ( transformedDatasetNode[branchName] ) {
+            toGetById = transformedDatasetNode[branchName];
+
+          } else if ( !transformedDatasetNode[branchName] ) {
+            transformedDatasetNode[branchName] = new Array();
+            toGetById = transformedDatasetNode[branchName];
+
+          }
+
+          foundNode = toGetById.find (
+            ( node ) => {
+              const matches = node && ( node[nameId] === id );
+              return matches;
+            }
+          );
+
+          newItem = null;
+          if (
+            (
+              ( !foundNode ) ||
+              ( inOutPayload.iterationsData )
+            ) &&
+            ( jpathIx === jpathLastIx )
+          ) {
+
+            newItem = {
+              ...value,
+              ...inOutPayload.iterationsData,
+              [nameId]: id,
+              [nameHolderId]: holderId,
+            };
+
+            delete( inOutPayload.iterationsData );
+            inOutPayload.iterationsNumber = 0;
+
+            toGetById.push( newItem );
+            transformedDatasetNode[nameId] = holderId;
+            break;
+
+          } else if (
+            ( !foundNode ) &&
+            ( jpathIx < jpathLastIx )
+          ) {
+
+            newItem = {
+              [nameId]: id,
+              [nameHolderId]: holderId,
+            };
+
+          }
+
+          if ( newItem !== null ) {
+
+            toGetById.push( newItem );
+            transformedDatasetNode[nameId] = holderId;
+
+            const lastIx = ( toGetById.length - 1 );
+            foundNode = toGetById[lastIx];
+
+          }
+
+          transformedDatasetNode = foundNode;
+          holderId = id;
+
+        }
+
+        console.log( "finish", inOutPayload, transformedDatasetWithIterations );
+
+      }
+
+
+      function exampleFlatDataWithIterationsData() {
+
+        const inOutPayload = new WorkspaceTreeWalkerPayload();
+
+        inOutPayload.dataset = [...flatRecursiveDataset];
+        inOutPayload.transformedDataset = transformedDatasetWithIterations;
+
+        inOutPayload.holderId = "data";
+        inOutPayload.id = "main";
+        inOutPayload.nameHolderId = "parentId";
+        inOutPayload.nameId = "id";
+        inOutPayload.branchName = "branch";
+
+        const treeWalker = new WorkspaceTreeWalker();
+        treeWalker.walk (
+          // WorkspaceTreeWalker.WALK_MODE.WALK_MODE_FLAT_REPEATING,
+          WorkspaceTreeWalker.WALK_MODE.WALK_MODE_FLAT,
+          inOutPayload,
+          workspaceTreeWalkerCallback
+        );
+
+        console.log( "this .html file, \nfunction exampleUseWorkspaceTreWalker(). \nThis test func finished at it's last js code line." );
+
+      }
+
+
+
+      function exampleUseWorkspaceTreeWalkerFlatData() {
+
+        const inOutPayload = new WorkspaceTreeWalkerPayload();
+
+        inOutPayload.dataset = [...flatRecursiveDataset];
+        inOutPayload.transformedDataset = treeDataset;
+
+        inOutPayload.holderId = "data";
+        inOutPayload.id = "main";
+        inOutPayload.nameHolderId = "parentId";
+        inOutPayload.nameId = "id";
+        inOutPayload.branchName = "branch";
+
+        const treeWalker = new WorkspaceTreeWalker();
+        treeWalker.walk (
+          // WorkspaceTreeWalker.WALK_MODE.WALK_MODE_FLAT_REPEATING,
+          WorkspaceTreeWalker.WALK_MODE.WALK_MODE_FLAT,
+          inOutPayload,
+          WorkspaceTreeWalker.callbackWalkFlatTransformToMultilevel
+        );
+
+        console.log( "this .html file, \nfunction exampleUseWorkspaceTreWalker(). \nThis test func finished at it's last js code line." );
+
+      }
+
+      function renderFlatDataset() {
+        const tree = new Tree();
+        tree
+          .setDebug(false)
+          .setMainHtmlNodeId("tree-holder-flat-dataset")
+          .setDataTypesCssClassesEnabled(true)
+          .setNodesWithIcons(true)
+          .setNodesOpenedMode( TreeConstants.NodesOpenedMode.ALL_SHOWN )
+          .setRenderingMode( TreeConstants.RenderingMode.Ease )
+          .render( [...flatRecursiveDataset] );
+      }
+
+      function renderTreeDatasetWithIterationsData() { // under construction
+        const tree = new Tree();
+        tree
+          .setDebug(false)
+          .setMainHtmlNodeId("tree-holder-tree-dataset-with-iterations")
+          .setDataTypesCssClassesEnabled(true)
+          .setNodesWithIcons(true)
+          .setNodesOpenedMode( TreeConstants.NodesOpenedMode.ALL_SHOWN )
+          .setRenderingMode( TreeConstants.RenderingMode.Ease )
+          .render( transformedDatasetWithIterations );
+      }
+
+      function renderTreeDataset() {
+        const tree = new Tree();
+        tree
+          .setDebug(false)
+          .setMainHtmlNodeId("tree-holder-tree-dataset")
+          .setDataTypesCssClassesEnabled(true)
+          .setNodesWithIcons(true)
+          .setNodesOpenedMode( TreeConstants.NodesOpenedMode.ALL_SHOWN )
+          .setRenderingMode( TreeConstants.RenderingMode.Ease )
+          .render( treeDataset );
+      }
+
+      document.addEventListener (
+        'DOMContentLoaded',
+        () => {
+
+          //# render flat data as is, with @jaisocx/tree
+          renderFlatDataset();
+
+
+
+          //# process data with @jaisocx/tree-walker
+          // exampleFlatDataWithIterationsData();
+          //# process data with @jaisocx/tree-walker
+          // renderTreeDatasetWithIterationsData();
+
+
+          //# process flat data with @jaisocx/tree-walker
+          exampleUseWorkspaceTreeWalkerFlatData();
+          //# render processed data with @jaisocx/tree
+          renderTreeDataset();
+
+        }
+      );
+
+    </script>
+  </body>
+
+
+
+
+
+
+
+  <script src="packages/ThemeTurnOn/transpiled/Simple/constants/ThemeTurnOnConstants.js"></script>
+  <script src="packages/ThemeTurnOn/transpiled/Simple/theme_turn_on/ThemeTurnOn.js"></script>
+
+  <script>
+
+    let cssClassesNames = [
+      "jsx"
+    ];
+
+    let buttonsQuerySelectors = [
+      "themebuttons button"
+    ];
+
+    document.addEventListener( 'DOMContentLoaded', () => {
+
+      // adding to buttons the event handler to turn on the theme.
+      let themeTurnOn = new ThemeTurnOn();
+      themeTurnOn
+        .setKeptCssClassnames( cssClassesNames )
+        .addThemeButtonsEventHandlers( buttonsQuerySelectors );
+
+    });
+
+  </script>
+
+
+</html>
+
+
+
+
+

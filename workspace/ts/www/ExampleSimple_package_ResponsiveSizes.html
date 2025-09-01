@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en" class="jsx theme_lightmode">
+<head>
+
+  <title>Responsive Sizes</title>
+
+  <base href="./" />
+
+  <meta charset="utf-8" />
+  <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+
+
+
+  <!--# CSS CLEAN START 2: html & css WHEN STARTING A SITE FROM SCRATCH -->
+
+  <!-- DEV MODE -->
+  <!--
+    IN THE DEV CONSOLE YOU SEE
+    39 CSS FILES,
+      css-clean-start and the responsive css files set
+    easier to review one css file, for example with one media query.
+    Best in development mode.
+  -->
+  <link rel="stylesheet" href="sites_tools/css_tools/CssCleanStart_2/MediaAndStyles/CssCleanStart_2_main_relative.css" />
+
+
+
+  <!-- PROD MODE -->
+  <!--
+    ALTERNATIVELY,
+    ONE .CSS FILE (1615 lines of size 46.7 KB),
+      PACKED WITH CSS IMPORTER CSS FILES OF THE RESPONSIVE CSS FILES SET,
+      SAME TRAFFIC, HOWEVER IN THE DEV CONSOLE JUST ONE CSS FILE IS SEEN.
+  -->
+  <!-- <link rel="stylesheet" href="sites_tools/css_tools/CssCleanStart_2/MediaAndStyles/CssCleanStart_2_main_resolved.css" /> -->
+
+
+
+    <style>
+
+      .jsx {
+        --jsx--css-clean-start-2--site--padding: 2rem 1rem 3rem 1rem;
+
+        --jsx--css-clean-start-2--h1--font-size: 1.05rem;
+        --jsx--css-clean-start-2--h2--font-size: 0.9rem;
+        --jsx--css-clean-start-2--h3--font-size: 0.83rem;
+
+        --jsx--css-clean-start-2--h2--font-weight: 500;
+
+        --theme-button-width: fit-content;
+      }
+
+      @media screen and (orientation: portrait) {
+        .jsx description {
+          display: none;
+        }
+      }
+
+      .jsx themebuttons {
+        width: fit-content;
+        display: grid;
+        grid-auto-flow: column;
+        column-gap: 3rem;
+        margin: 0.9rem 0px 1.6rem 0px;
+      }
+
+      .jsx themebuttons button {
+        width: var(--theme-button-width);
+      }
+
+      .current::after {
+        content: "";
+        position: absolute;
+        bottom: -0.3rem;
+        left: 0;
+        width: 100%;
+        height: 0;
+        max-height: 0;
+        overflow-y: hidden;
+        border-bottom-width: 0.14rem;
+        border-bottom-style: solid;
+        border-bottom-color: var(--clean-start__text-color);
+      }
+
+      .jsx button {
+        background-color: transparent;
+        text-align: left;
+      }
+
+      #tooltip-button {
+        font-family: fantasy;
+      }
+
+
+      #info {
+        color: var(--jsx--css-clean-start-2--all-tags--color);
+        background-color: var(--jsx--css-clean-start-2--body-tag--background);
+      }
+    </style>
+
+
+  </head>
+  <body>
+
+    <main>
+
+      <content>
+
+      <h1>@jaisocx/responsive-sizes</h1>
+
+        <ThemeButtons>
+          <button id="button-turn-on-base-theme" data-theme="">Base Theme</button>
+          <button id="button-turn-on-daymode" data-theme="theme_lightmode">Day Mode</button>
+          <button id="button-turn-on-nightmode" data-theme="theme_darkmode">Night Mode</button>
+        </ThemeButtons>
+
+
+        <pre id="info" style="width: auto; max-width: 100%; height: auto; overflow-y: visible; overflow-x: scroll; padding: 2rem;"></pre>
+
+
+      </content>
+
+    </main>
+
+  </body>
+
+
+
+  <script src="packages/ResponsiveSizes/transpiled/Simple/ResponsiveSizesConstants.js"></script>
+  <script src="packages/ResponsiveSizes/transpiled/Simple/ResponsiveSizes.js"></script>
+
+  <script>
+    let responsiveSizesConstants = new Object();
+    let responsiveSizesInstance = new Object();
+
+
+
+    // responsive sizes usage example
+    function responsiveSizesTest( force ) {
+      // responsiveSizesInstance = new ResponsiveSizes();
+
+      let responsiveSizeName = responsiveSizesInstance.getResponsiveSizeName( force );
+
+      let foreceUpdateSizesInfo_false = false;
+      let mobile = responsiveSizesInstance.mobile( foreceUpdateSizesInfo_false );
+      let tablet = responsiveSizesInstance.tablet( foreceUpdateSizesInfo_false );
+      let desktop = responsiveSizesInstance.desktop( foreceUpdateSizesInfo_false );
+      let orientationPortrait = responsiveSizesInstance.orientationPortrait( foreceUpdateSizesInfo_false );
+      let orientationLandscape = responsiveSizesInstance.orientationLandscape( foreceUpdateSizesInfo_false );
+
+      let lines = {
+        "responsiveSizeName": responsiveSizeName,
+        "mobile": mobile,
+        "tablet": tablet,
+        "desktop": desktop,
+        "orientationPortrait": orientationPortrait,
+        "orientationLandscape": orientationLandscape
+      };
+      let locHtml = JSON.stringify(lines, null, 2);
+
+      addOnSite( responsiveSizeName );
+
+      addOnSite( locHtml );
+    }
+
+    function responsiveSizeNameTestJson( force ) {
+      // responsiveSizesInstance = new ResponsiveSizes();
+
+      let responsiveSizeJson = responsiveSizesInstance.toJson( force );
+
+      setOnSite( JSON.stringify( responsiveSizeJson, null, 2 ) );
+
+    }
+
+    function addResizeEventHandler() {
+      window.addEventListener('resize', () => {
+        let refreshDataForce_true = true;
+        responsiveSizeNameTestJson( refreshDataForce_true );
+      });
+    }
+
+    function assignEventsHandlers() {
+      addResizeEventHandler();
+    }
+
+
+
+    function addOnSite( html ) {
+      let info = document.getElementById('info');
+
+      let locHtml = html + "\n\n";
+
+      info.insertAdjacentHTML( 'beforeEnd', locHtml );
+    }
+
+    function setOnSite( html ) {
+      let info = document.getElementById('info');
+
+      info.innerHTML = html;
+    }
+
+
+
+    // Call the function to load remote data when the DOM is fully loaded
+    // This ensures that the function is called after the HTML content is loaded
+    // and the DOM is ready for manipulation
+    document.addEventListener('DOMContentLoaded', () => {
+      responsiveSizesConstants = new ResponsiveSizesConstants();
+      responsiveSizesInstance = new ResponsiveSizes();
+      responsiveSizesInstance.setResponsiveSizeSelector( ".jsx body main" );
+
+      assignEventsHandlers();
+
+      let refreshDataForce_true = true;
+      responsiveSizeNameTestJson( refreshDataForce_true );
+    });
+
+  </script>
+
+
+
+
+
+
+  <script src="packages/ThemeTurnOn/transpiled/Simple/constants/ThemeTurnOnConstants.js"></script>
+  <script src="packages/ThemeTurnOn/transpiled/Simple/theme_turn_on/ThemeTurnOn.js"></script>
+
+  <script>
+
+    let cssClassesNames = [
+      "jsx"
+    ];
+
+    let buttonsQuerySelectors = [
+      "themebuttons button"
+    ];
+
+    document.addEventListener( 'DOMContentLoaded', () => {
+
+      // adding to buttons the event handler to turn on the theme.
+      let themeTurnOn = new ThemeTurnOn();
+      themeTurnOn
+        .setKeptCssClassnames( cssClassesNames )
+        .addThemeButtonsEventHandlers( buttonsQuerySelectors );
+
+    });
+
+  </script>
+
+
+
+</html>
+

@@ -1,20 +1,59 @@
+
+/**
+ * Quick usage examples
+ *
+ * const cc = new CaseConverter();
+ * cc.toCamel('  parse XML HTTP request  '); // => 'parseXmlHttpRequest'
+ * cc.toSnake('Make HTTP/2 GREAT-again!');   // => 'make_http_2_great_again'
+ * CaseConverter.constant('fooBarBaz');      // => 'FOO_BAR_BAZ'
+ * CaseConverter.title('a tale of two cities'); // => 'A Tale of Two Cities'
+*/
+
 /**
  * CaseConverter — robust text case transformations in TypeScript
  *
  * Features
  * - Handles camelCase/PascalCase/snake_case/kebab-case/CONSTANT_CASE/Train-Case/dot.case/path/case
- * - Unicode-aware tokenization (letters & numbers), optional diacritic stripping
- * - Sensible acronym handling (e.g., "parseXMLHttpRequest" -> ["parse", "XML", "Http", "Request"])
- * - Configurable locale for casing and options per call
- */
+*/
 
-import { CaseOptions } from "./CaseOptions.js";
 import { CaseConverterInterface } from "./CaseConverterInterface.js";
 
 
 
-export class CaseConverter {
-  private readonly opts: Required<CaseOptions>;
+export class DataRecordMatches {
+
+  backgroundCharPositions: number[];
+  capsStartedPositions:    number[];
+  lowerStartedPositions:   number[];
+  numsStartedPositions:    number[];
+  wasNumber: boolean;
+  isNumber:  boolean;
+  wasCaps:   boolean;
+  isCaps:    boolean;
+
+
+
+  constructor() {
+
+    this.backgroundCharPositions = new Array() as number[];
+    this.capsStartedPositions    = new Array() as number[];
+    this.lowerStartedPositions   = new Array() as number[];
+    this.numsStartedPositions    = new Array() as number[];
+
+    this.wasNumber  = false;
+    this.isNumber   = false;
+
+    this.wasCaps    = false;
+    this.isCaps     = false;
+
+  }
+}
+
+
+
+export class CaseConverter implements CaseConverterInterface {
+
+  _debug: boolean;
 
   #symbolZero: number;
   #symbolNine: number;
@@ -25,9 +64,13 @@ export class CaseConverter {
 
   protected rangesANumLatin: number[][];
 
+  static clsInstance: CaseConverterInterface;
+
 
 
   constructor() {
+    this._debug = false;
+
 
     this.#symbolZero = 48;
     this.#symbolNine = 57;
@@ -39,132 +82,361 @@ export class CaseConverter {
     this.rangesANumLatin = [
       [ this.#symbolZero, this.#symbolNine ],
       [ this.#symbolA, this.#symbolZ ],
-      [ this.#symbolAlower, this.#symbolZlower ],
+      [ this.#symbolAlower, this.#symbolZlower ]
     ];
   }
 
 
 
-  /** Core public API (static convenience) */
-  static camel(input: string, options?: CaseOptions): string {
-    return new CaseConverter(options).toCamel(input);
-  }
-  static pascal(input: string, options?: CaseOptions): string {
-    return new CaseConverter(options).toPascal(input);
-  }
-  static snake(input: string, options?: CaseOptions): string {
-    return new CaseConverter(options).toSnake(input);
-  }
-  static kebab(input: string, options?: CaseOptions): string {
-    return new CaseConverter(options).toKebab(input);
-  }
-  static constant(input: string, options?: CaseOptions): string {
-    return new CaseConverter(options).toConstant(input);
-  }
-  static title(input: string, options?: CaseOptions): string {
-    return new CaseConverter(options).toTitle(input);
-  }
-  static sentence(input: string, options?: CaseOptions): string {
-    return new CaseConverter(options).toSentence(input);
-  }
-  static dot(input: string, options?: CaseOptions): string {
-    return new CaseConverter(options).toDelimited(input, ".");
-  }
-  static path(input: string, options?: CaseOptions): string {
-    return new CaseConverter(options).toDelimited(input, "/");
-  }
-  static train(input: string, options?: CaseOptions): string {
-    return new CaseConverter(options).toTrain(input);
+  public static getInstance(): CaseConverterInterface {
+
+    if ( CaseConverter.clsInstance === null ) {
+      CaseConverter.clsInstance = new CaseConverter();
+    }
+
+
+    return CaseConverter.clsInstance;
   }
 
+
+
+  public setDebug( inDebug: boolean ): CaseConverterInterface {
+    this._debug = inDebug;
+
+
+    return this;
+  }
+
+
+  /** Core public API (static convenience) */
+
+
+
+  static camel(input: string): string {
+    return CaseConverter.getInstance().toCamel(input);
+  }
+
+
+
+  static pascal(input: string): string {
+    return CaseConverter.getInstance().toPascal(input);
+  }
+
+
+
+  static snake(input: string): string {
+    return CaseConverter.getInstance().toSnake(input);
+  }
+
+
+
+  static kebab(input: string): string {
+    return CaseConverter.getInstance().toKebab(input);
+  }
+
+
+
+  static constant(input: string): string {
+    return CaseConverter.getInstance().toConstant(input);
+  }
+
+
+
+  static title(input: string): string {
+    return CaseConverter.getInstance().toTitle(input);
+  }
+
+
+
+  static sentence(input: string): string {
+    return CaseConverter.getInstance().toSentence(input);
+  }
+
+
+
+  static dot(input: string): string {
+    return CaseConverter.getInstance().toDelimited(input, ".");
+  }
+
+
+
+  static path(input: string): string {
+    return CaseConverter.getInstance().toDelimited(input, "/");
+  }
+
+
+
+  static train(input: string): string {
+    return CaseConverter.getInstance().toTrain(input);
+  }
 
 
   /** Instance methods */
+
+
+
   toCamel(input: string): string {
     const t = this.tokens(input);
-    if (t.length === 0) return "";
+
+    if (t.length === 0)
+
+
+      return "";
     const [head, ...tail] = t;
-    return head.toLocaleLowerCase(this.opts.locale) +
+
+
+    return head.toLowerCase() +
       tail.map(this.cap.bind(this)).join("");
   }
+
+
 
   toPascal(input: string): string {
     return this.tokens(input).map(this.cap.bind(this)).join("");
   }
 
+
+
   toSnake(input: string): string {
     return this.toDelimited(input, "_");
   }
+
+
 
   toKebab(input: string): string {
     return this.toDelimited(input, "-");
   }
 
+
+
   toConstant(input: string): string {
-    return this.tokens(input).map(t => t.toLocaleUpperCase(this.opts.locale)).join("_");
+    return this.tokens(input).map(t => t.toUpperCase()).join("_");
   }
+
+
 
   toTitle (input: string): string {
     const SMALL = new Set([
       "a","an","and","as","at","but","by","for","in","nor","of","on","or","per","the","to","vs","via"
     ]);
     const toks = this.tokens(input);
+
+
     return toks.map((t, i) => {
-      const lower = t.toLocaleLowerCase(this.opts.locale);
-      if (i !== 0 && i !== toks.length - 1 && SMALL.has(lower)) return lower;
+      const lower = t.toLowerCase();
+
+      if (i !== 0 && i !== toks.length - 1 && SMALL.has(lower))
+
+
+        return lower;
+
+
       return this.cap(t);
     }).join(" ");
   }
 
+
+
   toSentence (input: string): string {
     const s = this.tokens(input).join(" ");
-    if (!s) return "";
-    return this.cap(s.toLocaleLowerCase(this.opts.locale));
+
+    if (!s)
+
+
+      return "";
+
+
+    return this.cap(s.toLowerCase());
   }
+
+
 
   toTrain (input: string): string {
     return this.tokens(input).map(this.cap.bind(this)).join("-");
   }
 
-  toDelimited (input: string, delimiter: string): string {
-    return this.tokens(input).map(t => t.toLocaleLowerCase(this.opts.locale)).join(delimiter);
+
+
+  toDelimited (
+    input: string,
+    delimiter: string
+  ): string {
+    return this.tokens(input).map(t => t.toLowerCase()).join(delimiter);
   }
 
 
 
-  protected transform ( inp: string ): string[] {
+  cap( t: string ): string {
+    if ( (!t) || ( t.length === 0 ) ) {
+      return "";
+    }
 
-    let transformed: string[] = new Array() as string[];
+    const lower = t.toLowerCase();
+
+
+    return lower.charAt(0).toUpperCase() + lower.slice(1);
+  }
+
+
+  transformations variants:
+    . by delimiter:
+        with delimiter
+        without delimiter
+    . letter case
+        as is
+        to caps
+        to small
+        first cap
+    . first letter case other
+    . number groups separate
+    . extended Latin chars replace with similar base chars no separate group
+    .
+
+
+
+  toLC( inText: string ): string {
+    let locText: string = inText;
+    if ( (!locText) || ( locText.length === 0 ) ) {
+      return "";
+    }
+
+    let retVal_transformed: string = locText.toLowerCase();
+
+    return retVal_transformed;
+  }
+
+  toUC( inText: string ): string {
+    let locText: string = inText;
+    if ( (!locText) || ( locText.length === 0 ) ) {
+      return "";
+    }
+
+    let retVal_transformed: string = locText.toLowerCase();
+
+    return retVal_transformed;
+  }
+
+  toFirstCap( inText: string ): string {
+    let locText: string = inText;
+
+    if ( (!locText) || ( locText.length === 0 ) ) {
+      return "";
+    }
+
+    let locTextLen: number = locText.length;
+
+    let firstCharToUC: string = locText.charAt(0).toUpperCase();
+    let locTextAfterFirstChar: string = locText.slice( 1, locTextLen );
+
+    let retVal_transformed: string = ( firstCharToUC + locTextAfterFirstChar );
+
+    return retVal_transformed;
+  }
+
+
+  caseTransform( inp: string[], inTransformFirstFunc: CallableFunction|null, inTransformFunc: CallableFunction|null ): string[] {
+
+    let locTextsArray: string[] = inp;
+
+    let inpLength: number = inp.length;
+    let retVal_transformed: string[] = new Array( inpLength ) as string[];
+
+    let locTextItemId: number = 0;
+    let locTextItem_AsIs: string = "";
+    let locItem_transformed: string = "";
+
+    let secureCounter: number = 1;
+    let secureMaxCounter: number = 124;
+
+    let locIsTextItemFirst: boolean = true;
+    let locTransformFunc: CallableFunction|null = inTransformFirstFunc;
+
+    marker1: while ( locTextItemId < inpLength ) {
+      secureCounter++;
+
+      if ( secureCounter > secureMaxCounter ) {
+        locTextItemId = ( inpLength + 128 );
+        secureCounter = ( secureMaxCounter + 128 );
+
+        break marker1;
+      }
+
+      locTextItem_AsIs = locTextsArray[ locTextItemId ];
+
+      if ( locTransformFunc !== null ) {
+        locItem_transformed = locTransformFunc ( locTextItem_AsIs );
+        retVal_transformed[ locTextItemId ] = locItem_transformed;
+      } else {
+        retVal_transformed[ locTextItemId ] = locTextItem_AsIs;
+      }
+
+
+      if ( locIsTextItemFirst === true ) {
+        locTransformFunc = inTransformFunc;
+        locIsTextItemFirst = false;
+      }
+
+
+      locTextItemId++;
+    }
+
+    return retVal_transformed;
+  }
+
+
+
+  tokens ( inp: string ): string[] {
+    let retVal_splitted: string[] = new Array() as string[];
+
     let bitsbuf: Uint8Array = ( new TextEncoder() ).encode ( inp );
+    let inpLength: number = bitsbuf.byteLength;
+    let bitsbufReplaced: Uint8Array = new Uint8Array( inpLength );
 
     let aChar: number = 0;
     let charPos: number = 0;
-    let inpLength: number = bitsbuf.byteLength;
     let isAlphaNum_aChar: boolean = true;
 
     let char_BACKGROUND_SPACE: number = (" ").charCodeAt(0);
 
-    let bitsbufTransformed: ArrayBufferLike = new ArrayBuffer( inpLength ) as ArrayBufferLike;
     let backgroundSpacesPositions: number[] = new Array() as number[];
 
     let secureCounter: number = 1;
     let secureMaxCounter: number = 256;
 
-
-
     marker1: while ( charPos < inpLength ) {
       secureCounter++;
+
       if ( secureCounter > secureMaxCounter ) {
+        charPos = ( inpLength + 128 );
+        secureCounter = ( secureMaxCounter + 128 );
+
         break marker1;
       }
 
       aChar = bitsbuf[ charPos ];
       isAlphaNum_aChar = this.isAlphaNumLatin ( aChar );
 
+      if ( this._debug === true ) {
+        console.log (
+          "charCodeAt",
+          inp.charAt( charPos ),
+          charPos,
+          aChar,
+          isAlphaNum_aChar
+        );
+      }
+
       if ( isAlphaNum_aChar ) {
-        bitsbufTransformed[ charPos ] = aChar;
+
+        //@ts-ignore
+        bitsbufReplaced.set( [aChar], charPos );
       } else {
-        bitsbufTransformed[ charPos ] = char_BACKGROUND_SPACE;
+
+        //@ts-ignore
+        bitsbufReplaced.set(
+          [char_BACKGROUND_SPACE],
+          charPos
+        );
         backgroundSpacesPositions.push ( charPos );
       }
 
@@ -173,57 +445,62 @@ export class CaseConverter {
 
 
 
-    let trimmedBitsbuf: ArrayBufferLike = new ArrayBuffer() as ArrayBufferLike;
+    let buf: Uint8Array = new Uint8Array(0);
     secureCounter = 1;
     let backgroundSpacePos: number = 0;
     let spacesArrayLen: number = backgroundSpacesPositions.length;
 
     let prevCharPos: number = 0;
     let charPosA: number = 0;
-    let charPosB: number = 0;
-
 
 
     backgroundSpacePos = (-1);
+
     marker2: while ( backgroundSpacePos < spacesArrayLen ) {
       secureCounter++;
+
       if ( secureCounter > secureMaxCounter ) {
+        backgroundSpacePos = ( spacesArrayLen + 128 );
+        secureCounter = ( secureMaxCounter + 128 );
+
         break marker2;
       }
 
-      prevCharPos = charPosB;
+      prevCharPos = charPosA;
 
 
 
       backgroundSpacePos++;
       charPosA = backgroundSpacesPositions[ backgroundSpacePos ];
 
-      trimmedBitsbuf = bitsbufTransformed.slice ( prevCharPos, charPosA );
+      buf = bitsbufReplaced.slice ( prevCharPos, charPosA );
+      retVal_splitted.push ( ( new TextDecoder() ).decode( buf ) );
+      charPosA++;
 
-
-      backgroundSpacePos++;
-      if ( backgroundSpacePos >= spacesArrayLen ) {
-
-        trimmedBitsbuf = bitsbufTransformed.slice ( ( charPosA + 1 ), bitsbufTransformed.byteLength );
-
-        break marker2;
-      }
-
-      charPosB = backgroundSpacesPositions[ backgroundSpacePos ];
 
     }
 
 
-    bitsbufTransformed
+    // if ( this._debug === true ) {
+    console.log (
+      {
+        retVal_splitted,
+        backgroundSpacesPositions
+      }
+    );
 
-    return transformed;
+
+    // }
+    return retVal_splitted;
 
   }
 
 
 
-  protected matchesRanges ( aNum: number, inRanges: number[][] ): boolean {
-
+  matchesRanges (
+    aNum: number,
+    inRanges: number[][]
+  ): boolean {
     let retVal_didMatch: boolean = true;
 
     let numRanges: number = inRanges.length;
@@ -235,15 +512,36 @@ export class CaseConverter {
 
     marker1: while ( rangeId < numRanges ) {
       secureCounter++;
+
       if ( secureCounter > secureMaxCounter ) {
+        rangeId = ( numRanges + 128 );
+        secureCounter = ( secureMaxCounter + 128 );
+
         break marker1;
       }
 
       aRange = inRanges[rangeId];
 
-      retVal_didMatch = ( ( aRange[0] <= aNum) && ( aNum <= aRange[1] ) );
+      retVal_didMatch = ( ( aRange[0] <= aNum ) && ( aNum <= aRange[1] ) );
 
-      if ( retVal_didMatch === false ) {
+      if ( this._debug === true ) {
+        console.log (
+          "matchingRanges",
+          {
+            inRanges,
+            aRange,
+            aNum,
+            less: ( aRange[0] <= aNum ),
+            more: ( aNum <= aRange[1] ),
+            retVal_didMatch
+          }
+        );
+      }
+
+      if ( retVal_didMatch === true ) {
+        rangeId = ( numRanges + 128 );
+        secureCounter = ( secureMaxCounter + 128 );
+
         break marker1;
       }
 
@@ -251,82 +549,28 @@ export class CaseConverter {
     }
 
 
-
     return retVal_didMatch;
   }
 
-  protected isAlphaNumLatin ( charCode: number ): boolean {
+
+
+  isAlphaNumLatin ( charCode: number ): boolean {
     let retVal_didMatch: boolean = true;
 
-    retVal_didMatch = this.matchesRanges( charCode, this.rangesANumLatin );
+    retVal_didMatch = this.matchesRanges (
+      charCode,
+      this.rangesANumLatin
+    );
+
 
     return retVal_didMatch;
   }
 
-
-
-  /**
-   * Tokenize an input string into words, honoring acronyms and numbers.
-   * Example: "parseXMLHttp2Response" => ["parse","XML","Http","2","Response"]
-   */
-  tokens(input: string): string[] {
-    if (!input) return [];
-    let s = this.normalize(input);
-
-    // Replace all non-letter/number with spaces
-    s = s.replace(/[^\p{L}\p{N}]+/gu, " ");
-
-    // Split boundaries: lower->upper (fooBar), digit<->letter (v2ray, RFC7231)
-    s = s
-      .replace(/(\p{Ll})(\p{Lu})/gu, "$1 $2")
-      .replace(/(\p{L})(\p{N})/gu, "$1 $2")
-      .replace(/(\p{N})(\p{L})/gu, "$1 $2");
-
-    // Acronym boundary: XMLHttp => XML Http (but keep XML contiguous as token)
-    if (this.opts.preserveAcronyms) {
-      s = s.replace(/(\p{Lu})(\p{Lu})(\p{Ll})/gu, "$1$2 $3");
-    } else {
-      s = s.replace(/(\p{Lu})(\p{Lu})(\p{Ll})/gu, "$1 $2$3");
-    }
-
-    const raw = s.trim().split(/\s+/u).filter(Boolean);
-    return raw.map(tok => tok);
-  }
-
-  /** Normalize string, optionally strip diacritics */
-  protected normalize(input: string): string {
-    let s = this.opts.trim ? input.trim() : input;
-    s = s.normalize("NFKD");
-    if (!this.opts.keepDiacritics) {
-      s = s.replace(/[\u0300-\u036f]/g, "");
-    }
-    return s;
-  }
-
-  protected cap(t: string): string {
-    if (!t) return t;
-    const lower = t.toLocaleLowerCase(this.opts.locale);
-    return lower.charAt(0).toLocaleUpperCase(this.opts.locale) + lower.slice(1);
-  }
 }
 
-/**
- * Quick usage examples
- *
- * const cc = new CaseConverter();
- * cc.toCamel('  parse XML HTTP request  '); // => 'parseXmlHttpRequest'
- * cc.toSnake('Make HTTP/2 GREAT-again!');   // => 'make_http_2_great_again'
- * CaseConverter.constant('fooBarBaz');      // => 'FOO_BAR_BAZ'
- * CaseConverter.title('a tale of two cities'); // => 'A Tale of Two Cities'
- */
-/**
- * CaseConverter — robust text case transformations in TypeScript
- *
- * Features
- * - Handles camelCase/PascalCase/snake_case/kebab-case/CONSTANT_CASE/Train-Case/dot.case/path/case
- * - Unicode-aware tokenization (letters & numbers), optional diacritic stripping
- * - Sensible acronym handling (e.g., "parseXMLHttpRequest" -> ["parse", "XML", "Http", "Request"])
- * - Configurable locale for casing and options per call
- */
+
+
+
+
 
 

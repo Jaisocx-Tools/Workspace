@@ -74,7 +74,8 @@
       "build-simple-enable": true,
       "dependencies": [],
       "build-files": [
-        "Trimmer.js"
+        "trimmer/Trimmer.js",
+        "case_converter/CaseConverter.js"
       ]
     },
     {
@@ -686,6 +687,18 @@
       "dependencies": [],
       "build-files": [
         "EngineDataRecordsBase.js"
+      ]
+    },
+    {
+      "path": "packages/ThemeTurnOn",
+      "name": "theme-turn-on",
+      "update-published": "",
+      "build": true,
+      "build-simple-enable": true,
+      "dependencies": [],
+      "build-files": [
+        "constants/ThemeTurnOnConstants.js",
+        "theme_turn_on/ThemeTurnOn.js"
       ]
     }
   ]

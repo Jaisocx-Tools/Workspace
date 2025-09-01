@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en" class="jsx">
+<head>
+
+  <title>Tree</title>
+
+  <base href="./" />
+
+  <meta charset="utf-8" />
+  <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+
+
+
+    <!--# CSS CLEAN START 2: html & css WHEN STARTING A SITE FROM SCRATCH -->
+
+    <!--# THE SAME importing @jaisocx/css-clean-start-2 IN PROD MODE, PACKED BY @jaisocx/css-importer TOOL  -->
+    <link
+      rel="stylesheet"
+      type="text/css"
+      charset="utf-8"
+      href="sites_tools/css_tools/CssCleanStart_2/MediaAndStyles/CssCleanStart_2_main_resolved_minimal.css"
+      href-fallback="node_modules/@jaisocx/css-clean-start-2/MediaAndStyles/CssCleanStart_2_main_resolved_minimal.css"
+      onerror="javascript: ( () => { this.href = this.getAttribute( 'href-fallback' ); this.onerror = null; } )();"
+    />
+
+
+
+
+
+    <!--# STYLES Tree and theme_base -->
+    <link
+      rel="stylesheet"
+      type="text/css"
+      charset="utf-8"
+      href="sites_tools/js_tools/Tree/MediaAndStyles/Tree_main_resolved_minimal.css"
+    />
+
+
+
+    <!--# Theme funny -->
+    <!--# importing theme  in this @jaisocx/tree npm package -->
+    <link
+      rel="stylesheet"
+      type="text/css"
+      charset="utf-8"
+      href="sites_tools/js_tools/Tree/MediaAndStyles/themes/theme-funny/tree_theme-funny_fonts.css"
+    />
+
+    <link
+      rel="stylesheet"
+      type="text/css"
+      charset="utf-8"
+      href="sites_tools/js_tools/Tree/MediaAndStyles/themes/theme-funny/tree_theme-funny.css"
+    />
+
+
+    <style>
+
+      .jsx {
+        --jsx--css-clean-start-2--site--padding: 2rem 1rem 3rem 1rem;
+
+        --jsx--css-clean-start-2--h1--font-size: 1.05rem;
+        --jsx--css-clean-start-2--h2--font-size: 0.9rem;
+        --jsx--css-clean-start-2--h3--font-size: 0.83rem;
+
+        --jsx--css-clean-start-2--h2--font-weight: 500;
+
+        --theme-button-width: fit-content;
+      }
+
+      @media screen and (orientation: portrait) {
+        .jsx description {
+          display: none;
+        }
+      }
+
+      .jsx themebuttons {
+        width: fit-content;
+        display: grid;
+        grid-auto-flow: column;
+        column-gap: 3rem;
+        margin: 0.9rem 0px 1.6rem 0px;
+      }
+
+      .jsx themebuttons button {
+        width: var(--theme-button-width);
+      }
+
+      .current::after {
+        content: "";
+        position: absolute;
+        bottom: -0.3rem;
+        left: 0;
+        width: 100%;
+        height: 0;
+        max-height: 0;
+        overflow-y: hidden;
+        border-bottom-width: 0.14rem;
+        border-bottom-style: solid;
+        border-bottom-color: var(--clean-start__text-color);
+      }
+
+      .jsx button {
+        background-color: transparent;
+        text-align: left;
+      }
+
+      #tooltip-button {
+        font-family: fantasy;
+      }
+
+    </style>
+
+
+  </head>
+  <body>
+
+    <main>
+
+      <content>
+
+        <h1>Charsets Preview Data</h1>
+
+        <ThemeButtons>
+          <button id="button-turn-on-base-theme" data-theme="">Base Theme</button>
+          <button id="button-turn-on-daymode" data-theme="theme_lightmode">Day Mode</button>
+          <button id="button-turn-on-nightmode" data-theme="theme_darkmode">Night Mode</button>
+        </ThemeButtons>
+
+      </content>
+
+
+    </main>
+
+  </body>
+
+
+
+
+
+  <script src="packages/EventEmitter/transpiled/Simple/EventEmitter.js"></script>
+  <script src="packages/EventEmitter/transpiled/Simple/ImprovedRenderEventEmitter.js"></script>
+  <script src="packages/TokensParser/transpiled/Simple/TokensParser.js"></script>
+  <script src="packages/TemplateRenderer/transpiled/Simple/TemplateRenderer.js"></script>
+
+
+
+
+  <script src="sites_tools/js_tools/Tree/transpiled/Simple/typescript/ArrayOrObjectPackage.js"></script>
+
+  <script src="sites_tools/js_tools/Tree/transpiled/Simple/typescript/TreeConstants.js"></script>
+  <script src="sites_tools/js_tools/Tree/transpiled/Simple/typescript/TreeConf.js"></script>
+
+  <script src="sites_tools/js_tools/Tree/transpiled/Simple/typescript/TreeAdapter.js"></script>
+  <script src="sites_tools/js_tools/Tree/transpiled/Simple/typescript/TreeAdapterModeEase.js"></script>
+  <script src="sites_tools/js_tools/Tree/transpiled/Simple/typescript/TreeAdapterModeConf.js"></script>
+
+  <script src="sites_tools/js_tools/Tree/transpiled/Simple/typescript/Tree.js"></script>
+
+
+  <script src="packages/JPath/transpiled/Simple/JPath.js"></script>
+  <script src="packages/CdnDatasetsBase/transpiled/Simple/JsonWriter.js"></script>
+  <script src="packages/CdnDatasetsBase/transpiled/Simple/DatasetBase.js"></script>
+
+
+
+
+  <script src="packages/CharcodeConverter/transpiled/Simple/Countries.js"></script>
+  <script src="packages/CharcodeConverter/transpiled/Simple/CountriesCodes.js"></script>
+  <script src="packages/CharcodeConverter/transpiled/Simple/LanguagesCodes.js"></script>
+  <script src="packages/CharcodeConverter/transpiled/Simple/WriteAllDataSetsCommand.js"></script>
+
+
+
+  <script>
+    let turnOnDebuggingInfos = false;
+
+    let datasetsBaseUrl = "https://sandbox.brightday.email/packages/CharcodeConverter/cdn_data/";
+
+    let rawUrlsRenderedLabelText = "Urls of rawdata";
+    let rawUrlsRenderedTreeId = "url_tree";
+
+    let datasetsFileNames = [
+      {
+        "label_text": "Countries names",
+        "fileName": "countriesNames"
+      },
+      {
+        "label_text": "UTF-16 CharsGroups for Alphabeths Preview til 64 symbols",
+        "fileName": "unicode_chars_groups_with_keys"
+      },
+      {
+        "label_text": "Language Name => language code, countries (codes and names)",
+        "fileName": "languagesCodesIndexedByLanguageName"
+      },
+      {
+        "label_text": "Country Name => country code, languages ( codes and names )",
+        "fileName": "countriesCodesIndexedByCountryName"
+      },
+      {
+        "label_text": "Language code => language name, countries (codes and names)",
+        "fileName": "languagesCodesIndexedByLanguageCode"
+      },
+      {
+        "label_text": "Country code => country name, languages ( codes and names )",
+        "fileName": "countriesCodesIndexedByCountryCode"
+      },
+      {
+        "label_text": "Numeric keys, UTF-16 CharsGroups for Alphabeths Preview til 64 symbols",
+        "fileName": "unicode_chars_groups"
+      },
+      {
+        "label_text": "Numeric keys, Languages codes and countries",
+        "fileName": "languagesCodesAsArray"
+      },
+      {
+        "label_text": "Numeric keys, Countries codes and languages",
+        "fileName": "countriesCodesAsArray"
+      },
+      {
+        "label_text": "Numeric keys, Numeric Chars Ranges Lookup of Alphabeths",
+        "fileName": "alphabeths"
+      },
+    ];
+
+    async function utf16PreviewToNamedKeysDataset() {
+      let url = [ datasetsBaseUrl, "unicode_chars_groups.json" ].join( "" );
+      let response = await fetch( url );
+      let data = await response.json();
+
+      let datsetWithNamedKeys = new Object();
+      for ( let charsGroupInfo of data ) {
+        let charsetGroupName = charsGroupInfo["blk"];
+        if ( charsetGroupName === null ) {
+          continue;
+        }
+
+        if ( datsetWithNamedKeys[charsetGroupName] === undefined ) {
+          datsetWithNamedKeys[charsetGroupName] = new Array();
+        }
+
+        datsetWithNamedKeys[charsetGroupName].push( charsGroupInfo );
+      }
+
+      return datsetWithNamedKeys;
+    }
+
+
+    function loadAndRenderTree( url, treeId ) {
+
+      const tree = new Tree();
+      tree
+        .setMainHtmlNodeId( treeId )
+        .setNodesOpenedMode( TreeConstants.NodesOpenedMode.ALL_HIDE )
+        .setRenderingMode( TreeConstants.RenderingMode.Ease )
+        .setNodesWithIcons( true )
+        .setDebug( turnOnDebuggingInfos )
+        .load( url );
+
+    }
+
+    function renderTree( inTreeData, inTreeId ) {
+
+      const tree = new Tree();
+      tree
+        .setMainHtmlNodeId( inTreeId )
+        .setNodesOpenedMode( TreeConstants.NodesOpenedMode.JSON_DATA_DEFINED )
+        .setRenderingMode( TreeConstants.RenderingMode.Conf )
+        .setNodesWithIcons( true )
+        .setDebug( turnOnDebuggingInfos )
+        .addJSTreeEventListener (
+          TreeConstants.TreeEventsNames.EVENT_NAME__TREE_NODE_LABEL__CLICK,
+          ( eventName, payload ) => {
+            if ( tree.debug == true ) {
+              console.log( { eventName, payload } );
+            }
+            tree.openButtonClickHandler.call( tree, payload );
+          }
+        )
+        .render( inTreeData );
+
+    }
+
+    function genDatasetsTree( conf, baseUrl ) {
+
+      let treeData = {
+        "label": rawUrlsRenderedLabelText,
+        "opened": true,
+        "subtree": [],
+      };
+
+      let subtree = treeData["subtree"];
+
+      for ( let confObj of conf ) {
+        let labelText = confObj["label_text"];
+        let fileNameBase = confObj["fileName"];
+        let url = [ baseUrl, fileNameBase, ".json" ].join( "" );
+
+        let treeNode = new Object();
+
+        treeNode["label"] = labelText;
+        treeNode["opened"] = false;
+        treeNode["subtree"] = [
+          {
+            "label": url,
+            "href": url,
+            "opened": false
+          }
+        ];
+
+        subtree.push( treeNode );
+      }
+
+      return treeData;
+    }
+
+    function renderUrlsOfRawDatasets( inLabelText, inTreeId, conf, baseUrl ) {
+      let mainHtmlNode = this.document.querySelector("main");
+
+      let nodeOuterHTML = `<div><h2>${inLabelText}</h2><div id="${inTreeId}"></div></div>\n\n\n`;
+      mainHtmlNode.insertAdjacentHTML( "beforeEnd", nodeOuterHTML );
+
+      let locTreeData = genDatasetsTree( conf, baseUrl );
+      renderTree( locTreeData, inTreeId );
+    }
+
+    function loadAllPreviewDatasets( conf, baseUrl ) {
+
+      let getTreeIdFunc = ( inFileNameBase ) => {
+        let treeId = [ inFileNameBase, "_tree" ].join( "" );
+        return treeId;
+      };
+
+      let mainHtmlNode = this.document.querySelector("main");
+
+      for ( let confObj of conf ) {
+
+        let labelText = confObj["label_text"];
+        let fileNameBase = confObj["fileName"];
+        let treeId = getTreeIdFunc( fileNameBase );
+
+        let nodeOuterHTML = `<div><h2>${labelText}</h2><div id="${treeId}"></div></div>\n\n\n`;
+
+        mainHtmlNode.insertAdjacentHTML( "beforeEnd", nodeOuterHTML );
+
+      }
+
+      for ( let confObj of conf ) {
+
+        let fileNameBase = confObj["fileName"];
+        let treeId = getTreeIdFunc( fileNameBase );
+
+        let url = [ baseUrl, fileNameBase, ".json" ].join( "" );
+
+        loadAndRenderTree( url, treeId );
+
+      }
+
+    }
+
+
+    document.addEventListener(
+      'DOMContentLoaded',
+      async () => {
+
+      loadAllPreviewDatasets( datasetsFileNames, datasetsBaseUrl );
+      renderUrlsOfRawDatasets( rawUrlsRenderedLabelText, rawUrlsRenderedTreeId, datasetsFileNames, datasetsBaseUrl );
+
+      // WriteAllDataSetsCommand.write( "since the node:fs.writeFileSync is not allowed im browsers, the json datasets are logged in the browser's dev console" );
+    });
+
+  </script>
+
+
+
+
+
+
+
+  <script src="packages/ThemeTurnOn/transpiled/Simple/constants/ThemeTurnOnConstants.js"></script>
+  <script src="packages/ThemeTurnOn/transpiled/Simple/theme_turn_on/ThemeTurnOn.js"></script>
+
+  <script>
+
+    let cssClassesNames = [
+      "jsx"
+    ];
+
+    let buttonsQuerySelectors = [
+      "themebuttons button"
+    ];
+
+    document.addEventListener( 'DOMContentLoaded', () => {
+
+      // adding to buttons the event handler to turn on the theme.
+      let themeTurnOn = new ThemeTurnOn();
+      themeTurnOn
+        .setKeptCssClassnames( cssClassesNames )
+        .addThemeButtonsEventHandlers( buttonsQuerySelectors );
+
+    });
+
+  </script>
+
+</html>
+
+
+
+
+

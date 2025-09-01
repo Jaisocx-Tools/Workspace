@@ -1,63 +1,48 @@
-<html>
+<!DOCTYPE html>
+<html lang="en" class="workspace">
   <head>
     <title>Tree Example</title>
 
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+
+    <link rel="stylesheet" href="sites_tools/css_tools/CssCleanStart/MediaAndStyles/themes/theme-darkmode/clean-start-theme-darkmode-relative.css">
+
+    <!-- CSS CLEAN START THE MAIN .CSS FILE -->
+    <link rel="stylesheet" href="sites_tools/css_tools/CssCleanStart/MediaAndStyles/css_clean_start_main_relative.css">
 
     <!-- Task: to check out the css rules applied -->
-    <script src="transpiled/webpack/example-tree-bundle.js"></script>
+    <script src="webpack_builds/ExampleTree/transpiled/webpack/example-tree-bundle.js"></script>
 
   </head>
   <body>
 
-    <h1>Tree example</h1>
+    <main>
+
+      <h1>Tree example</h1>
+
+      <h2>load by url (should work only when published at an http server)</h2>
+      <div id="tree-holder" class="theme-funny"></div>
+
+      <div id="tree-holder-configured" class="theme-base"></div>
+
+    </main>
 
 
-    <h2>load by url (should work only when published at an http server)</h2>
-    <div id="tree-holder-conf" class="theme-base"></div>
-    
-    <div id="tree-holder-example-js-class" class="theme-funny"></div>
-
-    <div id="tree-holder-advanced-props-ease" class="theme-base"></div>
 
     <script>
       document.addEventListener('DOMContentLoaded', () => {
 
-        const treeConf = new Tree();
-        treeConf
-          .setDebug( true )
-          .setMainHtmlNodeId("tree-holder-conf")
-          .setDataTypesCssClassesEnabled(true)
-          .setNodesWithIcons(true)
-          .setNodesOpenedMode(TreeConstants.NodesOpenedMode.ALL_SHOWN)
-          .setRenderingMode(TreeConstants.RenderingMode.Conf)
-          .setModifiable(false)
-          .addJSTreeEventListener(
-            TreeConstants.TreeEventsNames.EVENT_NAME__TREE_NODE_LABEL__CLICK,
-            (eventName, eventPayload) => {
-              console.log(eventName, eventPayload);
-
-              // on click payload has the ref to the tree.data json, and here we show in console it's value:
-              console.log( tree.getTreeDataNodeByJsonnodePathArray( eventPayload.jsonNode._pathArray ) );
-            }
-          )
-          //.load('json/tree-data.json'); // relative url to this .html file. works too.
-          .load('/webpack_builds/ExampleTree/json/tree-data.json'); // absolute url in this published https endpoint
-        
-
-        
-        const exampleTree = new ExampleTree (
-          'tree-holder-example-js-class', 
-          'https://api.artic.edu/api/v1/artworks'
-        );
+        const exampleTree = new ExampleTree('tree-holder', 'https://api.artic.edu/api/v1/artworks');
 
         const tree = new Tree();
         tree
           .setDebug(false)
-          .setMainHtmlNodeId("tree-holder-advanced-props-ease")
+          .setMainHtmlNodeId("tree-holder-configured")
           .setDataTypesCssClassesEnabled(true)
           .setNodesWithIcons(true)
-          .setNodesOpenedMode(TreeConstants.NodesOpenedMode.ALL_SHOWN)
+          .setNodesOpenedMode(TreeConstants.NodesOpenedMode.ALL_HIDE)
           .setRenderingMode(TreeConstants.RenderingMode.Ease)
           .setModifiable(false)
           .addJSTreeEventListener(

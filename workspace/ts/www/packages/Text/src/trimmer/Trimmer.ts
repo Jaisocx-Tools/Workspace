@@ -18,6 +18,7 @@ export class Trimmer implements TrimmerInterface {
   SYMBOL_FIGURED_BRACE_CLOSE: string = "}";
 
 
+
   constructor() {
     this.SYMBOL_DOUBLE_QUOTE = "\"";
     this.SYMBOL_SINGLE_QUOTE = "'";
@@ -32,6 +33,7 @@ export class Trimmer implements TrimmerInterface {
     this.SYMBOL_FIGURED_BRACE_OPEN = "{";
     this.SYMBOL_FIGURED_BRACE_CLOSE = "}";
   }
+
 
 
   trimSurroundingChars (
@@ -109,8 +111,10 @@ export class Trimmer implements TrimmerInterface {
       return matched;
     }
 
+
     return trimmed;
   }
+
 
 
   trimQuotes( inText: string ): string|false {
@@ -122,8 +126,10 @@ export class Trimmer implements TrimmerInterface {
       ]
     );
 
+
     return retVal;
   }
+
 
 
   trimRoundBraces( inText: string ): string|false {
@@ -134,8 +140,10 @@ export class Trimmer implements TrimmerInterface {
       ]
     );
 
+
     return retVal;
   }
+
 
 
   trimRoundBracesAndQuotesInside( inText: string ): string|false {
@@ -148,8 +156,10 @@ export class Trimmer implements TrimmerInterface {
       ]
     );
 
+
     return retVal;
   }
+
 
 
   trimSquareBraces( inText: string ): string|false {
@@ -160,8 +170,10 @@ export class Trimmer implements TrimmerInterface {
       ]
     );
 
+
     return retVal;
   }
+
 
 
   trimSquareBracesAndQuotesInside( inText: string ): string|false {
@@ -174,8 +186,10 @@ export class Trimmer implements TrimmerInterface {
       ]
     );
 
+
     return retVal;
   }
+
 
 
   trimFiguredBraces( inText: string ): string|false {
@@ -186,8 +200,10 @@ export class Trimmer implements TrimmerInterface {
       ]
     );
 
+
     return retVal;
   }
+
 
 
   trimFiguredBracesAndQuotesInside( inText: string ): string|false {
@@ -199,6 +215,7 @@ export class Trimmer implements TrimmerInterface {
         [this.SYMBOL_SINGLE_QUOTE]
       ]
     );
+
 
     return retVal;
   }

@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en" class="jsx">
+<head>
+
+  <title>Tree</title>
+
+  <base href="./" />
+
+  <meta charset="utf-8" />
+  <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+
+
+
+    <!--# CSS CLEAN START 2: html & css WHEN STARTING A SITE FROM SCRATCH -->
+
+    <!--# THE SAME importing @jaisocx/css-clean-start-2 IN PROD MODE, PACKED BY @jaisocx/css-importer TOOL  -->
+    <link
+      rel="stylesheet"
+      type="text/css"
+      charset="utf-8"
+      href="sites_tools/css_tools/CssCleanStart_2/MediaAndStyles/CssCleanStart_2_main_resolved_minimal.css"
+      href-fallback="node_modules/@jaisocx/css-clean-start-2/MediaAndStyles/CssCleanStart_2_main_resolved_minimal.css"
+      onerror="javascript: ( () => { this.href = this.getAttribute( 'href-fallback' ); this.onerror = null; } )();"
+    />
+
+
+
+
+
+    <!--# STYLES Tree and theme_base -->
+    <link
+      rel="stylesheet"
+      type="text/css"
+      charset="utf-8"
+      href="sites_tools/js_tools/Tree/MediaAndStyles/Tree_main_resolved_minimal.css"
+    />
+
+
+
+    <!--# Theme funny -->
+    <!--# importing theme  in this @jaisocx/tree npm package -->
+    <link
+      rel="stylesheet"
+      type="text/css"
+      charset="utf-8"
+      href="sites_tools/js_tools/Tree/MediaAndStyles/themes/theme-funny/tree_theme-funny_fonts.css"
+    />
+
+    <link
+      rel="stylesheet"
+      type="text/css"
+      charset="utf-8"
+      href="sites_tools/js_tools/Tree/MediaAndStyles/themes/theme-funny/tree_theme-funny.css"
+    />
+
+
+    <style>
+
+      .jsx {
+        --jsx--css-clean-start-2--site--padding: 2rem 1rem 3rem 1rem;
+
+        --jsx--css-clean-start-2--h1--font-size: 1.05rem;
+        --jsx--css-clean-start-2--h2--font-size: 0.9rem;
+        --jsx--css-clean-start-2--h3--font-size: 0.83rem;
+
+        --jsx--css-clean-start-2--h2--font-weight: 500;
+
+        --theme-button-width: fit-content;
+      }
+
+      @media screen and (orientation: portrait) {
+        .jsx description {
+          display: none;
+        }
+      }
+
+      .jsx themebuttons {
+        width: fit-content;
+        display: grid;
+        grid-auto-flow: column;
+        column-gap: 3rem;
+        margin: 0.9rem 0px 1.6rem 0px;
+      }
+
+      .jsx themebuttons button {
+        width: var(--theme-button-width);
+      }
+
+      .current::after {
+        content: "";
+        position: absolute;
+        bottom: -0.3rem;
+        left: 0;
+        width: 100%;
+        height: 0;
+        max-height: 0;
+        overflow-y: hidden;
+        border-bottom-width: 0.14rem;
+        border-bottom-style: solid;
+        border-bottom-color: var(--clean-start__text-color);
+      }
+
+      .jsx button {
+        background-color: transparent;
+        text-align: left;
+      }
+
+      #tooltip-button {
+        font-family: fantasy;
+      }
+
+    </style>
+
+
+  </head>
+  <body>
+
+    <main>
+
+      <content>
+
+      <h1>@jaisocx/objdata produced by PHP</h1>
+      <h3>The ObjData bitsbuffer obtained from an Https endpoint, serialized by PHP v8.4.4 composer lib jaisocx/objdata</h3>
+
+        <ThemeButtons>
+          <button id="button-turn-on-base-theme" data-theme="">Base Theme</button>
+          <button id="button-turn-on-daymode" data-theme="theme_lightmode">Day Mode</button>
+          <button id="button-turn-on-nightmode" data-theme="theme_darkmode">Night Mode</button>
+        </ThemeButtons>
+
+      </content>
+
+
+      <tree id="tree-holder"></tree>
+
+    </main>
+
+  </body>
+
+
+
+    <script src="packages/ObjData/transpiled/Simple/ObjDataConstants.js"></script>
+    <script src="packages/ObjData/transpiled/Simple/ObjDataTypes.js"></script>
+    <script src="packages/ObjData/transpiled/Simple/ObjDataPackage.js"></script>
+    <script src="packages/ObjData/transpiled/Simple/ObjDataParser.js"></script>
+    <script src="packages/ObjData/transpiled/Simple/ObjDataSerializer.js"></script>
+    <script src="packages/ObjData/transpiled/Simple/ObjData.js"></script>
+
+    <script src="packages/Api/transpiled/Simple/Api.js"></script>
+    <script src="webpack_builds/ExampleTree/transpiled/webpack/example-tree-bundle.js"></script>
+
+    <script>
+
+  function getNsTimestamp() {
+    const now = performance.timeOrigin + performance.now(); // Combine the origin and high-res time
+    return BigInt(Math.floor(now * 1_000_000)); // Convert milliseconds to nanoseconds
+  }
+
+  async function testObjDataFromPhpEndpoint() {
+
+    let url = "";
+    // url = "/cdn/www/data_public/objdata/objdata-example.od";
+    url = "/php/objdata_example/objdata.php";
+
+    let api = new Api();
+    let objectFromPhpEndpoint = await api
+      .setDebug(true)
+      .fetchObjData(
+        ( window.location.origin + url ),
+        "GET",
+        []
+      );
+
+    console.log( "From PHP ObjData", objectFromPhpEndpoint );
+
+    const tree = new Tree();
+    tree
+      .setDebug(false)
+      .setMainHtmlNodeId("tree-holder")
+      .setNodesOpenedMode( TreeConstants.NodesOpenedMode.ALL_SHOWN )
+      .render( objectFromPhpEndpoint );
+
+  }
+
+  function testCustomHttpRequestMethod( url, method ) {
+    fetch (
+      url,
+      {
+        method
+      }
+    )
+      .then( response => response.text() )
+      .then( text => {
+        let node = document.createElement("main");
+        node.innerHTML = text;
+
+        document.getElementsByTagName("BODY")[0]
+          .append( node );
+
+      }
+    );
+  }
+
+  document.addEventListener('DOMContentLoaded', async () => {
+
+    // testCustomHttpRequestMethod(
+    //   "https://sandbox.brightday.email/php/info.php",
+    //   "GET"
+    // );
+    // return;
+
+    const timestamp1 = getNsTimestamp();
+    await testObjDataFromPhpEndpoint();
+    const timestamp2 = getNsTimestamp();
+
+    console.log(
+      "ObjData obtained, parsed and rendered with Tree() time in ns",
+      ( timestamp2 - timestamp1 )
+    );
+
+  });
+    </script>
+
+
+
+
+
+
+
+  <script src="packages/ThemeTurnOn/transpiled/Simple/constants/ThemeTurnOnConstants.js"></script>
+  <script src="packages/ThemeTurnOn/transpiled/Simple/theme_turn_on/ThemeTurnOn.js"></script>
+
+  <script>
+
+    let cssClassesNames = [
+      "jsx"
+    ];
+
+    let buttonsQuerySelectors = [
+      "themebuttons button"
+    ];
+
+    document.addEventListener( 'DOMContentLoaded', () => {
+
+      // adding to buttons the event handler to turn on the theme.
+      let themeTurnOn = new ThemeTurnOn();
+      themeTurnOn
+        .setKeptCssClassnames( cssClassesNames )
+        .addThemeButtonsEventHandlers( buttonsQuerySelectors );
+
+    });
+
+  </script>
+
+
+
+</html>
+
+
+
+
+

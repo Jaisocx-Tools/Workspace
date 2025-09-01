@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en" class="jsx">
+  <head>
+    <title>@jaisocx/objdata Example</title>
+
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+
+    <link rel="stylesheet" href="sites_tools/css_tools/CssCleanStart_2/MediaAndStyles/CssCleanStart_2_main_resolved_minimal.css" />
+
+
+
+    <script src="packages/ObjData/transpiled/Simple/ObjDataConstants.js"></script>
+    <script src="packages/ObjData/transpiled/Simple/ObjDataTypes.js"></script>
+    <script src="packages/ObjData/transpiled/Simple/ObjDataPackage.js"></script>
+    <script src="packages/ObjData/transpiled/Simple/ObjDataParser.js"></script>
+    <script src="packages/ObjData/transpiled/Simple/ObjDataSerializer.js"></script>
+    <script src="packages/ObjData/transpiled/Simple/ObjData.js"></script>
+
+    <script src="packages/Api/transpiled/Simple/Api.js"></script>
+    <script src="webpack_builds/ExampleTree/transpiled/webpack/example-tree-bundle.js"></script>
+
+  </head>
+  <body>
+
+    <h1>ObjData Example</h1>
+
+    <p>This example is to research in the browser's dev console. Here is no output in the browser's window.</p>
+
+    <script>
+    const jsObjectOriginal = [
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "Jaisocx",
+      "url": "https://jaisocx.com/",
+      "logo": "https://jaisocx.com/img/logo-skyblue-icon.jpg"
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "Jaisocx Web Server",
+      "operatingSystem": "Windows,Linux,MacOS",
+      "applicationCategory": "PHP Web Server",
+      "offers": {
+        "@type": "Offer",
+        "price": "0"
+      }
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "NewsArticle",
+      "headline": "Latest HTTP Protocol HTTP/3",
+      "description": "Now the latest version of protocol for web sites publishing, HTTP/3 is built-in. You get it out-of-the-box!",
+      "datePublished": "2024-05-12",
+      "keywords": ["upgrade", "http/3", "quic"],
+      "articleSection": "Update",
+      "author": {
+        "@type": "Organization",
+        "name": "Jaisocx"
+      },
+      "image": {
+        "@type": "ImageObject",
+        "url": "https://jaisocx.com/img/logo-skyblue-little.jpg",
+        "height": 206,
+        "width": 300
+      }
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "NewsArticle",
+      "headline": "Free TLS Certificate by Certbot",
+      "description": "There is a script in the downloaded package, that issues free TLS certificate in the format, suitable for Your Jaisocx.",
+      "datePublished": "2024-05-01",
+      "keywords": ["free", "TLS", "HTTPS", "certificate", "security", "encryption"],
+      "articleSection": "Update",
+      "author": {
+        "@type": "Organization",
+        "name": "Jaisocx"
+      },
+        "image": {
+        "@type": "ImageObject",
+        "url": "https://jaisocx.com/img/logo-skyblue-little.jpg",
+        "height": 206,
+        "width": 300
+      }
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "NewsArticle",
+      "headline": "Proxy Endpoints",
+      "description": "Just add an alias tag with art=\"proxy\". This will proxy Your host to desired another host.",
+      "datePublished": "2024-04-19",
+      "keywords": ["new-alias", "proxy"],
+      "articleSection": "Update",
+      "author": {
+        "@type": "Organization",
+        "name": "Jaisocx"
+      },
+      "image": {
+        "@type": "ImageObject",
+        "url": "https://jaisocx.com/img/logo-skyblue-little.jpg",
+        "height": 206,
+        "width": 300
+      }
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "NewsArticle",
+      "headline": "Security JSON Web Token",
+      "description": "Easily in few minutes after diving into JWT documentation block, restrict access to Your sensitive endpoints with JWT, allow only to trusted users. The up-to-date authorization technology.",
+      "datePublished": "2024-04-05",
+      "keywords": ["security", "authorization", "JWT"],
+      "articleSection": "Update",
+      "author": {
+        "@type": "Organization",
+        "name": "Jaisocx"
+      },
+      "image": {
+        "@type": "ImageObject",
+        "url": "https://jaisocx.com/img/logo-skyblue-little.jpg",
+        "height": 206,
+        "width": 300
+      }
+    }
+  ];
+
+  function getNsTimestamp() {
+    const now = performance.timeOrigin + performance.now(); // Combine the origin and high-res time
+    return BigInt(Math.floor(now * 1_000_000)); // Convert milliseconds to nanoseconds
+  }
+
+  document.addEventListener('DOMContentLoaded', async () => {
+
+    const response = await fetch('/webpack_builds/ExampleTree/json/big_test_data.json');
+    const jsonText = await response.text();
+
+    const timestamp1 = getNsTimestamp();
+    const jsObjectOriginal = JSON.parse( jsonText );
+    const timestamp2 = getNsTimestamp();
+
+
+
+    const jsonTextOriginal = JSON.stringify( jsObjectOriginal );
+
+    const serializedObjDataByteBuf = ObjData.serialize( jsObjectOriginal );
+    const textual = (new TextDecoder()).decode( serializedObjDataByteBuf );
+
+    const timestamp3 = getNsTimestamp();
+    const jsObjectByObjDataParser = ObjData.parse( serializedObjDataByteBuf );
+    const timestamp4 = getNsTimestamp();
+
+    const timestamp5 = getNsTimestamp();
+    const jsObjectByJSONNative = JSON.parse( jsonTextOriginal );
+    const timestamp6 = getNsTimestamp();
+
+
+    const jsonTextByObjData = JSON.stringify( jsObjectByObjDataParser );
+
+    console.log( 'Equal', ( jsonTextOriginal === jsonTextByObjData ) );
+
+    console.log( serializedObjDataByteBuf );
+    console.log( textual );
+
+    console.log( jsObjectOriginal, jsObjectByObjDataParser );
+
+    console.log(
+      "parsing time ns JSON",
+      ( timestamp2 - timestamp1 )
+    );
+
+    console.log(
+      "parsing time ns ObjData by buteBuf ObjData format",
+      ( timestamp4 - timestamp3 )
+    );
+
+    console.log(
+      "parsing time ns JSON",
+      ( timestamp6 - timestamp5 )
+    );
+
+
+  });
+    </script>
+  </body>
+</html>
+
+
+
+
+
