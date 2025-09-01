@@ -1,7 +1,6 @@
 import { PreloaderConstantsInterface } from "./PreloaderConstantsInterface.js";
 
 
-
 // returns string templates to use with @jaisocx/template-renderer or any other with placeholders markup like this: {{ var }}
 export class PreloaderConstants implements PreloaderConstantsInterface {
 
@@ -12,7 +11,6 @@ export class PreloaderConstants implements PreloaderConstantsInterface {
 
 
   constructor() {
-
     this.#linkTagsPreloading = `
       let linkTagsPreloading = {{ idsObjectOf_LinkTagsPreloading }};
     `;
@@ -87,13 +85,19 @@ export class PreloaderConstants implements PreloaderConstantsInterface {
 
   }
 
+
+
   getLinkTagsPreloading (): string {
     return this.#linkTagsPreloading;
   }
 
+
+
   getScriptLoadingStopOnTimeout (): string {
     return this.#scriptLoadingStopOnTimeout;
   }
+
+
 
   getCodeblockInvoke_ScriptLoadingStopOnTimeout (): string {
     return this.#codeblockInvoke_ScriptLoadingStopOnTimeout;

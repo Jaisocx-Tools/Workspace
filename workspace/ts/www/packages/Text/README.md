@@ -20,9 +20,11 @@ The aim of the setup is to keep the package little and reusable, installing via 
 ## Classes available
 1. Trimmer
 
+2. CaseConverter
+
 ## Usage
 
-### 1. Trimmer 
+### 1. Trimmer
 
 ```
 import { Trimmer } from "@jaisocx/text";
@@ -42,6 +44,9 @@ console.log( trimmedText );
 //> Hello World!
 ```
 
+### 2. CaseConverter
 
+
+Unicode-aware case transformations for TypeScript/JavaScript.
 
 

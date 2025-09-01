@@ -6,18 +6,21 @@ export interface PreloaderInterface {
 
   setWebpackAliasReplace ( alias: string ): PreloaderInterface;
 
-  init (): void;
-
-  addDocumentLoadedEventHandler(): void;
-
-  htmlDocumentAppendPreloadingLinkTags_Images(): void;
-
-  htmlDocumentAppendPreloadingLinkTags_Fonts(): void;
-
-  htmlDocumentAppendPreloadingLinkTags(
-    inDataType: string
+  init (
+    isWithStopOnLoadTimeout: boolean
   ): void;
 
+  addDocumentLoadedEventHandler(
+    isWithStopOnLoadTimeout: boolean
+  ): void;
+
+  htmlDocumentAppendPreloadingLinkTags_Images(): string[];
+
+  htmlDocumentAppendPreloadingLinkTags_Fonts(): string[];
+
+  htmlDocumentAppendPreloadingLinkTags (
+    inDataType: string
+  ): string[];
 
 
   // preventing browser requests waiting and blocking when a cdn is not responding.
@@ -26,8 +29,7 @@ export interface PreloaderInterface {
   ): string[];
 
   addScriptLoadingStopOnTimeout (
-    linkTagsText: string,
-    scriptText: string,
+    idsOfLinkTags: string[],
     timeoutNumberOfMilliseconds: number
   ): void;
 
@@ -35,7 +37,12 @@ export interface PreloaderInterface {
     idsOfLinkTags: string[]
   ): string;
 
-  produceScriptLoadingStopOnTimeout(): string;
+  produceScriptLoadingStopOnTimeout (): string;
+
+  produceCodeblockInvoke_ScriptLoadingStopOnTimeout (
+    timeoutNumberOfMilliseconds: number
+  ): string;
 
 }
+
 

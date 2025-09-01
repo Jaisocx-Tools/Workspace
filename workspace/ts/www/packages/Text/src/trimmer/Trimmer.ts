@@ -1,4 +1,8 @@
-export class Trimmer {
+import { TrimmerInterface } from "./TrimmerInterface.js";
+
+
+
+export class Trimmer implements TrimmerInterface {
 
   SYMBOL_DOUBLE_QUOTE: string = "\"";
   SYMBOL_SINGLE_QUOTE: string = "'";

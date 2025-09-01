@@ -1,3 +1,7 @@
+import { TemplateRenderer, TemplateRendererDataRecord } from "@jaisocx/template-renderer";
+
+
+
 import { PreloaderConstantsInterface } from "./PreloaderConstantsInterface.js";
 import { PreloaderConstants } from "./PreloaderConstants.js";
 
@@ -5,7 +9,7 @@ import { PreloaderInterface } from "./PreloaderInterface.js";
 
 
 
-export class Preloader {
+export class Preloader implements PreloaderInterface {
 
   preloaderConstantsInstance: PreloaderConstantsInterface;
   templateRenderer: TemplateRenderer;
@@ -19,8 +23,6 @@ export class Preloader {
 
   constructor() {
     this.preloaderConstantsInstance = new PreloaderConstants();
-
-
     this.themesPreloads = {};
   }
 
@@ -53,13 +55,17 @@ export class Preloader {
 
 
 
-  init (): void {
-    this.addDocumentLoadedEventHandler();
+  init (
+    isWithStopOnLoadTimeout: boolean = true
+  ): void {
+    this.addDocumentLoadedEventHandler( isWithStopOnLoadTimeout );
   }
 
 
 
-  addDocumentLoadedEventHandler(): void {
+  addDocumentLoadedEventHandler (
+    isWithStopOnLoadTimeout: boolean = true
+  ): void {
     const methodLinksImages: CallableFunction = this.htmlDocumentAppendPreloadingLinkTags_Images.bind(this);
     const methodLinksFonts: CallableFunction = this.htmlDocumentAppendPreloadingLinkTags_Fonts.bind(this);
 
@@ -84,21 +90,23 @@ export class Preloader {
 
 
 
-  htmlDocumentAppendPreloadingLinkTags_Images(): void {
-    this.htmlDocumentAppendPreloadingLinkTags( "image" );
+  htmlDocumentAppendPreloadingLinkTags_Images(): string[] {
+    return this.htmlDocumentAppendPreloadingLinkTags( "image" );
   }
 
 
 
-  htmlDocumentAppendPreloadingLinkTags_Fonts(): void {
-    this.htmlDocumentAppendPreloadingLinkTags( "font" );
+  htmlDocumentAppendPreloadingLinkTags_Fonts(): string[] {
+    return this.htmlDocumentAppendPreloadingLinkTags( "font" );
   }
 
 
 
   htmlDocumentAppendPreloadingLinkTags (
     inDataType: string
-  ): void {
+  ): string[] {
+    let idsOf_LinkTags: string[] = new Array() as string[];
+
 
     //@ts-ignore
     let preloadsByDatatype: object = this.themesPreloads[inDataType];
@@ -108,7 +116,7 @@ export class Preloader {
       ( preloadsByDatatype === null ) ||
       ( Object.values ( preloadsByDatatype ).length === 0 )
     ) {
-      return;
+      return idsOf_LinkTags;
     }
 
 
@@ -158,10 +166,10 @@ export class Preloader {
       }
     }
 
+
+    return idsOf_LinkTags;
+
   }
-
-
-
 
 
   // preventing browser requests waiting and blocking when a cdn is not responding.
@@ -169,30 +177,117 @@ export class Preloader {
     harBrowserReportFilepath: string
   ): string[] {
     throw new Error( "Not implemented" );
+
+
     return [];
   }
 
+
+
   addScriptLoadingStopOnTimeout (
-    linkTagsText: string,
-    scriptText: string,
+    idsOfLinkTags: string[],
     timeoutNumberOfMilliseconds: number
   ): void {
-    throw new Error( "Not implemented" );
+
+    // let tagScript: HTMLScriptElement = document.createElement( "SCRIPT" ) as HTMLScriptElement;
+    let firstTagLink: HTMLLinkElement|null = document.head.querySelector( "link" );
+
+    let innerHTMLof_TagScript_Array: string[] = new Array(5) as string[];
+
+    innerHTMLof_TagScript_Array[0] = "\n  <script>\n";
+
+    innerHTMLof_TagScript_Array[1] = this.produceLinkTagsPreloading ( idsOfLinkTags );
+
+    innerHTMLof_TagScript_Array[2] = this.preloaderConstantsInstance.getScriptLoadingStopOnTimeout();
+
+    innerHTMLof_TagScript_Array[3] = this.produceCodeblockInvoke_ScriptLoadingStopOnTimeout ( timeoutNumberOfMilliseconds );
+
+    innerHTMLof_TagScript_Array[4] = "\n  </script>\n";
+
+
+
+    let tagScriptOuterHTML: string = innerHTMLof_TagScript_Array.join("");
+
+    if ( firstTagLink === null ) {
+      document.head.insertAdjacentHTML (
+        "afterbegin",
+        tagScriptOuterHTML
+      );
+    } else {
+      firstTagLink.insertAdjacentHTML (
+        "beforebegin",
+        tagScriptOuterHTML
+      );
+    }
+
+
     return;
   }
+
+
 
   produceLinkTagsPreloading (
     idsOfLinkTags: string[]
   ): string {
-    throw new Error( "Not implemented" );
-    return "";
+
+    //@ts-ignore
+    let trDataRecord: TemplateRendererDataRecord = this.templateRenderer.addNewDataRecord();
+    let templateText: string = this.preloaderConstantsInstance.getLinkTagsPreloading();
+    this.templateRenderer.setTemplate ( templateText );
+
+    let inOutArgof_reduceMethod: any = new Object();
+    let templateDataValueAsObject: object = idsOfLinkTags.reduce (
+      ( _prev: any, curr: any, currentIndex: number, thisArray: string[] ): any => {
+        let currValueOfArray: string = thisArray[ currentIndex ];
+        curr[ currValueOfArray ] = 1;
+      },
+      inOutArgof_reduceMethod
+    );
+    let templateDataValueAsText: string = JSON.stringify (
+      templateDataValueAsObject,
+      null,
+      2
+    );
+    let templateData: object = { "idsObjectOf_LinkTagsPreloading": templateDataValueAsText };
+    this.templateRenderer.setData ( templateData );
+
+    let textof_varLinkTagsPreloading: string = this.templateRenderer.render();
+
+
+    return textof_varLinkTagsPreloading;
+
   }
+
+
 
   produceScriptLoadingStopOnTimeout(): string {
-    throw new Error( "Not implemented" );
-    return "";
+    let textof_ScriptLoadingStopOnTimeout: string = this.preloaderConstantsInstance.getScriptLoadingStopOnTimeout();
+
+
+    return textof_ScriptLoadingStopOnTimeout;
+
   }
 
+
+
+  produceCodeblockInvoke_ScriptLoadingStopOnTimeout (
+    timeoutNumberOfMilliseconds: number
+  ): string {
+
+    //@ts-ignore
+    let trDataRecord: TemplateRendererDataRecord = this.templateRenderer.addNewDataRecord();
+    let templateText: string = this.preloaderConstantsInstance.getCodeblockInvoke_ScriptLoadingStopOnTimeout();
+    this.templateRenderer.setTemplate ( templateText );
+
+    let templateData: object = { "timeoutNumberOfMilliseconds": timeoutNumberOfMilliseconds };
+    this.templateRenderer.setData ( templateData );
+
+    let textof_ScriptLoadingStopOnTimeout: string = this.templateRenderer.render();
+
+
+    return textof_ScriptLoadingStopOnTimeout;
+
+  }
 }
 
 

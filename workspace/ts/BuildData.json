@@ -216,7 +216,12 @@
       "update-published": "",
       "build": false,
       "build-simple-enable": true,
-      "dependencies": [],
+      "dependencies": [
+        {
+          "name": "@jaisocx/template-renderer",
+          "path": "packages/TemplateRenderer"
+        }
+      ],
       "build-files": [
         "Preloader.js"
       ]
@@ -238,8 +243,8 @@
     {
       "path": "packages/TemplateRenderer",
       "name": "template-renderer",
-      "update-published": "Mon Jun 02 22:02:01 GMT 2025",
-      "build": true,
+      "update-published": "",
+      "build": false,
       "build-simple-enable": true,
       "dependencies": [
         {
@@ -257,8 +262,8 @@
     },
     {
       "path": "packages/FileProducerByTemplate",
-      "name": "template-renderer",
-      "update-published": "file-producer-by-template",
+      "name": "file-producer-by-template",
+      "update-published": "",
       "build": false,
       "build-simple-enable": false,
       "dependencies": [
@@ -670,6 +675,17 @@
         "webpackAliases.js",
         "webpack.aliases.mjs",
         "webpack.aliases.cjs"
+      ]
+    },
+    {
+      "path": "patterns/EngineAndDataRecords",
+      "name": "engine-and-data-records",
+      "update-published": "",
+      "build": false,
+      "build-simple-enable": true,
+      "dependencies": [],
+      "build-files": [
+        "EngineDataRecordsBase.js"
       ]
     }
   ]
