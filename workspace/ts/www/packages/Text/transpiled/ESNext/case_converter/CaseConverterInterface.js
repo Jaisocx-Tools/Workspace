@@ -7,5 +7,11 @@
  * CaseConverter.constant('fooBarBaz');      // => 'FOO_BAR_BAZ'
  * CaseConverter.title('a tale of two cities'); // => 'A Tale of Two Cities'
  */
-export {};
+export var CapsOrSmallTransformVariants;
+(function (CapsOrSmallTransformVariants) {
+    CapsOrSmallTransformVariants["caps"] = "caps";
+    CapsOrSmallTransformVariants["small"] = "small";
+    CapsOrSmallTransformVariants["asIs"] = "as-is";
+    CapsOrSmallTransformVariants["firstCaps"] = "firstCaps";
+})(CapsOrSmallTransformVariants || (CapsOrSmallTransformVariants = {}));
 //# sourceMappingURL=CaseConverterInterface.js.map

@@ -9,6 +9,8 @@
  * CaseConverter.title('a tale of two cities'); // => 'A Tale of Two Cities'
  */
 
+import { DataRecordMatches } from "./CaseConverter";
+
 
 /**
  * CaseConverter — robust text case transformations in TypeScript
@@ -16,6 +18,30 @@
  * Features
  * - Handles camelCase/PascalCase/snake_case/kebab-case/CONSTANT_CASE/Train-Case/dot.case/path/case
  */
+
+
+
+
+
+export type ParseTimeGrouppingVariants = {
+  numGrups: boolean,
+  UcLcGroups: boolean,
+  firstCapsGroups: boolean,
+};
+
+export enum CapsOrSmallTransformVariants {
+  caps = "caps",
+  small = "small",
+  asIs = "as-is",
+  firstCaps = "firstCaps"
+}
+
+export type TransformVariants = {
+  delimiter: string,
+  UcLcTransform: CapsOrSmallTransformVariants
+};
+
+
 
 export interface CaseConverterInterface {
 
@@ -36,17 +62,39 @@ export interface CaseConverterInterface {
 
   toTrain (input: string): string;
 
-  toDelimited (input: string, delimiter: string): string;
+  toAsPath (input: string): string;
 
 
 
-  cap(t: string): string;
+  toUC( inText: string ): string;
+  toFirstCap( inText: string ): string;
+  toLC( inText: string ): string;
 
-  tokens ( inp: string ): string[];
+  toDelimited (
+    inText: string,
+    delimiter: string,
+    capsOrSmallFirst_TransformVariants: number,
+    capsOrSmallOther_TransformVariants: number
+  ): string;
+
+
+
+
+
+  transform ( inp: string[], inTransformFirstFunc: CallableFunction|null, inTransformFunc: CallableFunction|null ): string[]
+
+
+  parse (
+    inp: string,
+    grouppingVariants: ParseTimeGrouppingVariants
+  ): DataRecordMatches;
 
   matchesRanges ( aNum: number, inRanges: number[][] ): boolean;
 
+  isNumLatin ( charCode: number ): boolean;
   isAlphaNumLatin ( charCode: number ): boolean;
+  isUC ( charCode: number ): boolean;
+  isLC ( charCode: number ): boolean;
 
 }
 

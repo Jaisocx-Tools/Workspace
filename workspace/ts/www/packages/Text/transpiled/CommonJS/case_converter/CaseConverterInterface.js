@@ -9,4 +9,12 @@
  * CaseConverter.title('a tale of two cities'); // => 'A Tale of Two Cities'
  */
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.CapsOrSmallTransformVariants = void 0;
+var CapsOrSmallTransformVariants;
+(function (CapsOrSmallTransformVariants) {
+    CapsOrSmallTransformVariants["caps"] = "caps";
+    CapsOrSmallTransformVariants["small"] = "small";
+    CapsOrSmallTransformVariants["asIs"] = "as-is";
+    CapsOrSmallTransformVariants["firstCaps"] = "firstCaps";
+})(CapsOrSmallTransformVariants || (exports.CapsOrSmallTransformVariants = CapsOrSmallTransformVariants = {}));
 //# sourceMappingURL=CaseConverterInterface.js.map

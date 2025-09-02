@@ -70,7 +70,7 @@
       "path": "packages/Text",
       "name": "text",
       "update-published": "Mon Jun 02 22:02:01 GMT 2025",
-      "build": false,
+      "build": true,
       "build-simple-enable": true,
       "dependencies": [],
       "build-files": [
@@ -693,7 +693,7 @@
       "path": "packages/ThemeTurnOn",
       "name": "theme-turn-on",
       "update-published": "",
-      "build": true,
+      "build": false,
       "build-simple-enable": true,
       "dependencies": [],
       "build-files": [

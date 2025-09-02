@@ -13,6 +13,21 @@
  * Features
  * - Handles camelCase/PascalCase/snake_case/kebab-case/CONSTANT_CASE/Train-Case/dot.case/path/case
  */
+export type ParseTimeGrouppingVariants = {
+    numGrups: boolean;
+    UcLcGroups: boolean;
+    firstCapsGroups: boolean;
+};
+export declare enum CapsOrSmallTransformVariants {
+    caps = "caps",
+    small = "small",
+    asIs = "as-is",
+    firstCaps = "firstCaps"
+}
+export type TransformVariants = {
+    delimiter: string;
+    UcLcTransform: CapsOrSmallTransformVariants;
+};
 export interface CaseConverterInterface {
     /** Instance methods */
     toCamel(input: string): string;
@@ -23,10 +38,17 @@ export interface CaseConverterInterface {
     toTitle(input: string): string;
     toSentence(input: string): string;
     toTrain(input: string): string;
-    toDelimited(input: string, delimiter: string): string;
-    cap(t: string): string;
-    tokens(inp: string): string[];
+    toAsPath(input: string): string;
+    toUC(inText: string): string;
+    toFirstCap(inText: string): string;
+    toLC(inText: string): string;
+    toDelimited(inText: string, delimiter: string, capsOrSmallFirst_TransformVariants: number, capsOrSmallOther_TransformVariants: number): string;
+    transform(inp: string[], inTransformFirstFunc: CallableFunction | null, inTransformFunc: CallableFunction | null): string[];
+    parse(inp: string, grouppingVariants: ParseTimeGrouppingVariants): string[];
     matchesRanges(aNum: number, inRanges: number[][]): boolean;
+    isNumLatin(charCode: number): boolean;
     isAlphaNumLatin(charCode: number): boolean;
+    isUC(charCode: number): boolean;
+    isLC(charCode: number): boolean;
 }
 //# sourceMappingURL=CaseConverterInterface.d.ts.map
