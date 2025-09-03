@@ -56,7 +56,8 @@ export interface CaseConverterInterface {
 
   toConstant(input: string): string;
 
-  toTitle (input: string): string;
+
+  // toTitle (input: string): string;
 
   toSentence (input: string): string;
 
@@ -67,27 +68,39 @@ export interface CaseConverterInterface {
 
 
   toUC( inText: string ): string;
-  toFirstCap( inText: string ): string;
+  toFirstCapsAndSmall( inText: string ): string;
+  toFirstCapsAsIs( inText: string ): string;
   toLC( inText: string ): string;
 
   toDelimited (
     inText: string,
     delimiter: string,
     capsOrSmallFirst_TransformVariants: number,
-    capsOrSmallOther_TransformVariants: number
+    capsOrSmallOther_TransformVariants: number,
+    joinDelimiterVariant: number
   ): string;
 
+  transformBitsbuf (
+    inMarkedBitsbuf: Uint8Array,
+    parseTimeDataRecord: DataRecordMatches,
+    delimiter: string,
+    inTransformFirstFunc: CallableFunction|false,
+    inTransformFunc: CallableFunction|false
+  ): string[];
 
-
-
-
-  transform ( inp: string[], inTransformFirstFunc: CallableFunction|null, inTransformFunc: CallableFunction|null ): string[]
-
-
-  parse (
-    inp: string,
-    grouppingVariants: ParseTimeGrouppingVariants
+  transformDataRecords (
+    inParseTimeDataRecord: DataRecordMatches,
+    joinDelimiterVariant: number
   ): DataRecordMatches;
+
+  parseBitsbuf (
+    inBitsbuf: Uint8Array
+  ): DataRecordMatches;
+
+  tasksParseTimeDataRecord (
+    inOutDataRecord: DataRecordMatches,
+    charPos: number
+  ): void;
 
   matchesRanges ( aNum: number, inRanges: number[][] ): boolean;
 

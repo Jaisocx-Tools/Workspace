@@ -17,14 +17,23 @@ import { CaseConverterInterface } from "./CaseConverterInterface.js";
 export declare enum CapsOrSmallTransformVariants {
     caps = 1,
     small = 2,
-    firstCaps = 3,
-    asIs = 4
+    firstCapsAndSmall = 3,
+    firstCapsAsIs = 4,
+    asIs = 5
 }
 export declare enum CharTypeEnum {
     caps = 1,
     small = 2,
     num = 3,
-    omitted = 4
+    omitted = 4,
+    delimiter = 5
+}
+export declare enum JoinDelimiterVariants {
+    everyGroup = 3,
+    beforeNumbersNoDelimiter = 4,
+    afterNumbersNoDelimiter = 5,
+    neverNumbersDelimiter = 6,
+    delimitersReplaced = 7
 }
 export type ParseTimeGrouppingVariants = {
     numGrups: boolean;
@@ -49,8 +58,6 @@ export declare class CaseConverter implements CaseConverterInterface {
     protected rangesANumLatin: number[][];
     protected rangesUC: number[][];
     protected rangesLC: number[][];
-    protected parseTimeGrouppingVariants: ParseTimeGrouppingVariants;
-    protected transformVariants: TransformVariants;
     static clsInstance: CaseConverterInterface;
     constructor();
     static getInstance(): CaseConverterInterface;
@@ -61,7 +68,6 @@ export declare class CaseConverter implements CaseConverterInterface {
     static snake(inText: string): string;
     static kebab(inText: string): string;
     static constant(inText: string): string;
-    static title(inText: string): string;
     static sentence(inText: string): string;
     static dot(inText: string): string;
     static path(inText: string): string;
@@ -72,17 +78,18 @@ export declare class CaseConverter implements CaseConverterInterface {
     toSnake(inText: string): string;
     toKebab(inText: string): string;
     toConstant(inText: string): string;
-    toTitle(inText: string): string;
     toSentence(inText: string): string;
     toTrain(inText: string): string;
     toAsPath(inText: string): string;
     toUC(inText: string): string;
-    toFirstCap(inText: string): string;
+    toFirstCapsAndSmall(inText: string): string;
+    toFirstCapsAsIs(inText: string): string;
     toLC(inText: string): string;
-    toDelimited(inText: string, delimiter: string, capsOrSmallFirst_TransformVariants: number, capsOrSmallOther_TransformVariants: number): string;
-    transform(inp: string[], inTransformFirstFunc: CallableFunction | null, inTransformFunc: CallableFunction | null): string[];
+    toDelimited(inText: string, delimiter: string, capsOrSmallFirst_TransformVariants: number, capsOrSmallOther_TransformVariants: number, joinDelimiterVariant: number): string;
+    transformBitsbuf(inMarkedBitsbuf: Uint8Array, parseTimeDataRecord: DataRecordMatches, delimiter: string, inTransformFirstFunc: CallableFunction | false, inTransformFunc: CallableFunction | false): string[];
+    transformDataRecords(inParseTimeDataRecord: DataRecordMatches, joinDelimiterVariant: number): DataRecordMatches;
+    parseBitsbuf(inBitsbuf: Uint8Array): DataRecordMatches;
     tasksParseTimeDataRecord(inOutDataRecord: DataRecordMatches, charPos: number): void;
-    parse(inp: string, _grouppingVariants: ParseTimeGrouppingVariants): string[];
     matchesRanges(aNum: number, inRanges: number[][]): boolean;
     getCharTypeEnum(charCode: number): number;
     isNumLatin(charCode: number): boolean;
