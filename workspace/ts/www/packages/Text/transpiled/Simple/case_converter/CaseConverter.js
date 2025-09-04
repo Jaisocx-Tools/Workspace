@@ -10,11 +10,7 @@ class CaseConverter {
     rangesANumLatin;
     rangesUC;
     rangesLC;
-
-
-    //  protected parseTimeGrouppingVariants: ParseTimeGrouppingVariants;
-    //  protected transformVariants: TransformVariants;
-    static clsInstance;
+    static clsInstance = false;
 
 
 
@@ -40,21 +36,12 @@ class CaseConverter {
         this.rangesLC = [
             [this.#symbolAlower, this.#symbolZlower]
         ];
-
-
-        // this.parseTimeGrouppingVariants = new Object() as ParseTimeGrouppingVariants;
-        // this.parseTimeGrouppingVariants.UcLcGroups      = true;
-        // this.parseTimeGrouppingVariants.firstCapsGroups = true;
-        // this.parseTimeGrouppingVariants.numGrups        = true;
-        // this.transformVariants = new Object() as TransformVariants;
-        // this.transformVariants.delimiter = "_";
-        // this.transformVariants.UcLcTransform = CapsOrSmallTransformVariants.asIs;
     }
 
 
 
     static getInstance() {
-        if (CaseConverter.clsInstance === null) {
+        if (CaseConverter.clsInstance === false) {
             CaseConverter.clsInstance = new CaseConverter();
         }
 
@@ -200,7 +187,7 @@ class CaseConverter {
     }
 
 
-    // toTitle ( inText: string ): string {
+    // title ( inText: string ): string {
     //   const SMALL = new Set([
     //     "a","an","and","as","at","but","by","for","in","nor","of","on","or","per","the","to","vs","via"
     //   ]);
@@ -221,7 +208,7 @@ class CaseConverter {
             " ",
             CapsOrSmallTransformVariants.firstCapsAndSmall,
             CapsOrSmallTransformVariants.small,
-            JoinDelimiterVariants.delimitersReplaced
+            JoinDelimiterVariants.everyGroup
         );
     }
 
@@ -320,6 +307,7 @@ class CaseConverter {
             locParsedDataRecords,
             joinDelimiterVariant
         );
+        console.log({ locTransformedDataRecords });
         let locTransformFirstFunc = false;
         let locTransformFunc = false;
         let transformResolvingObject = {
@@ -348,16 +336,22 @@ class CaseConverter {
             locTransformFirstFunc,
             locTransformFunc
         );
+        let retValTransformedText = locTransformedTexts.join("");
+
+        if (this._debug === true) {
+            console.log({ "in": inText,
+                "ret": retValTransformedText });
+        }
 
 
-        return locTransformedTexts.join("");
+        return retValTransformedText;
     }
 
 
 
     transformBitsbuf(
         inMarkedBitsbuf,
-        parseTimeDataRecord,
+        afterTransform_parseTimeDataRecord,
         delimiter,
         inTransformFirstFunc,
         inTransformFunc
@@ -365,7 +359,7 @@ class CaseConverter {
         let retVal_transformed = new Array();
         let locTextDecoder = new TextDecoder();
         let locTmpBitsbuf = new Uint8Array(0);
-        let groupsMultidimPosArray = parseTimeDataRecord.groups_positions;
+        let groupsMultidimPosArray = afterTransform_parseTimeDataRecord.groups_positions;
         let groupsArrayLen = groupsMultidimPosArray.length;
         let locTmpGroupRanges = new Array(3);
         let locCurrentCharsGroupType = 0;
@@ -435,15 +429,14 @@ class CaseConverter {
             groupOfChars_Id++;
         }
 
+        if (this._debug === true) {
+            console.log({
+                retVal_transformed,
+                groupsMultidimPosArray
+            });
+        }
 
-        // if ( this._debug === true ) {
-        console.log({
-            retVal_transformed,
-            groupsMultidimPosArray
-        });
 
-
-        // }
         return retVal_transformed;
     }
 
@@ -463,12 +456,14 @@ class CaseConverter {
         let locCurrentCharsGroupType = 0;
         let locPreviousCharsGroupType = 0;
         let locNextCharsGroupType = 0;
-        let transformedGroupsMultidimPosArray = new Array();
-        transformedDataRecods.groups_positions = transformedGroupsMultidimPosArray;
+        transformedDataRecods.groups_positions = new Array();
+        let transformedGroupsMultidimPosArray = transformedDataRecods.groups_positions;
         let locTmp_ofTypeDelimiter_TransformedGroupRanges = new Array(3);
         let locTmp_ofTypeCurrent_TransformedGroupRanges = new Array(3);
         let secureCounter = 1;
         let secureMaxCounter = 62;
+        locTmp_ofTypeDelimiter_TransformedGroupRanges[0] = (-1);
+        locTmp_ofTypeDelimiter_TransformedGroupRanges[1] = (-1);
         locTmp_ofTypeDelimiter_TransformedGroupRanges[2] = CharTypeEnum.delimiter;
 
         markerJ: while (groupOfChars_Id < groupsArrayLen) {
@@ -512,11 +507,12 @@ class CaseConverter {
                 groupOfChars_Id++;
                 continue markerJ;
             }
+            let transformedArrayLength = transformedGroupsMultidimPosArray.length;
+            let transformedCharsGroup_DataRecord_lastId = (transformedArrayLength - 1);
+            let lastTransformedCharsGroup_charType = 0;
 
-            if ((locPreviousCharsGroupType === CharTypeEnum.omitted)) {
-                transformedGroupsMultidimPosArray.push(locTmp_ofTypeCurrent_TransformedGroupRanges);
-                groupOfChars_Id++;
-                continue markerJ;
+            if (transformedCharsGroup_DataRecord_lastId >= 0) {
+                lastTransformedCharsGroup_charType = transformedGroupsMultidimPosArray[transformedCharsGroup_DataRecord_lastId][2];
             }
 
             if ((locCurrentCharsGroupType === CharTypeEnum.caps) &&
@@ -530,14 +526,31 @@ class CaseConverter {
                 groupsMultidimPosArray[nextGroupOfChars_Id][0] = nextSmallGroupStartPos;
 
                 if (currentCapsGroupCharsNumber === 1) {
+
+                    // if ( locPreviousCharsGroupType === CharTypeEnum.omitted ) {
+                    // }
+                    // else {
+                    // }
                     groupsMultidimPosArray[groupOfChars_Id][2] = CharTypeEnum.omitted;
-                    groupOfChars_Id++;
-                    continue markerJ;
                 }
                 else {
                     currentCapsGroupEndPos--;
                     locTmp_ofTypeCurrent_TransformedGroupRanges[1] = currentCapsGroupEndPos;
+                    transformedGroupsMultidimPosArray.push(locTmp_ofTypeCurrent_TransformedGroupRanges);
                 }
+                groupOfChars_Id++;
+                continue markerJ;
+            }
+            transformedCharsGroup_DataRecord_lastId = (transformedArrayLength - 1);
+
+            if (transformedCharsGroup_DataRecord_lastId >= 0) {
+                lastTransformedCharsGroup_charType = transformedGroupsMultidimPosArray[transformedCharsGroup_DataRecord_lastId][2];
+            }
+
+            if ((locPreviousCharsGroupType === CharTypeEnum.omitted) && (lastTransformedCharsGroup_charType === CharTypeEnum.delimiter)) {
+                transformedGroupsMultidimPosArray.push(locTmp_ofTypeCurrent_TransformedGroupRanges);
+                groupOfChars_Id++;
+                continue markerJ;
             }
 
             if (joinDelimiterVariant === JoinDelimiterVariants.everyGroup) {
@@ -561,12 +574,6 @@ class CaseConverter {
             transformedGroupsMultidimPosArray.push(locTmp_ofTypeCurrent_TransformedGroupRanges);
             groupOfChars_Id++;
         }
-
-
-        // if ( this._debug === true ) {
-        console.log({
-            transformedDataRecods
-        });
 
 
         return transformedDataRecods;
@@ -681,20 +688,20 @@ class CaseConverter {
             aRange = inRanges[rangeId];
             retVal_didMatch = ((aRange[0] <= aNum) && (aNum <= aRange[1]));
 
-            if (this._debug === true) {
-                console.log(
-                    "matchingRanges",
-                    {
-                        inRanges,
-                        aRange,
-                        aNum,
-                        less: (aRange[0] <= aNum),
-                        more: (aNum <= aRange[1]),
-                        retVal_didMatch
-                    }
-                );
-            }
 
+            // if ( this._debug === true ) {
+            //   console.log (
+            //     "matchingRanges",
+            //     {
+            //       inRanges,
+            //       aRange,
+            //       aNum,
+            //       less: ( aRange[0] <= aNum ),
+            //       more: ( aNum <= aRange[1] ),
+            //       retVal_didMatch
+            //     }
+            //   );
+            // }
             if (retVal_didMatch === true) {
                 rangeId = (numRanges + 128);
                 secureCounter = (secureMaxCounter + 128);

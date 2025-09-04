@@ -58,7 +58,7 @@ export declare class CaseConverter implements CaseConverterInterface {
     protected rangesANumLatin: number[][];
     protected rangesUC: number[][];
     protected rangesLC: number[][];
-    static clsInstance: CaseConverterInterface;
+    static clsInstance: CaseConverterInterface | false;
     constructor();
     static getInstance(): CaseConverterInterface;
     setDebug(inDebug: boolean): CaseConverterInterface;
@@ -86,7 +86,7 @@ export declare class CaseConverter implements CaseConverterInterface {
     toFirstCapsAsIs(inText: string): string;
     toLC(inText: string): string;
     toDelimited(inText: string, delimiter: string, capsOrSmallFirst_TransformVariants: number, capsOrSmallOther_TransformVariants: number, joinDelimiterVariant: number): string;
-    transformBitsbuf(inMarkedBitsbuf: Uint8Array, parseTimeDataRecord: DataRecordMatches, delimiter: string, inTransformFirstFunc: CallableFunction | false, inTransformFunc: CallableFunction | false): string[];
+    transformBitsbuf(inMarkedBitsbuf: Uint8Array, afterTransform_parseTimeDataRecord: DataRecordMatches, delimiter: string, inTransformFirstFunc: CallableFunction | false, inTransformFunc: CallableFunction | false): string[];
     transformDataRecords(inParseTimeDataRecord: DataRecordMatches, joinDelimiterVariant: number): DataRecordMatches;
     parseBitsbuf(inBitsbuf: Uint8Array): DataRecordMatches;
     tasksParseTimeDataRecord(inOutDataRecord: DataRecordMatches, charPos: number): void;

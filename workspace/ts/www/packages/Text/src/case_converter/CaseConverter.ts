@@ -73,6 +73,8 @@ export type ParseTimeGrouppingVariants = {
   firstCapsGroups: boolean
 };
 
+
+
 export type TransformVariants = {
   delimiter: string,
   UcLcTransform: number
@@ -152,13 +154,7 @@ export class CaseConverter implements CaseConverterInterface {
   protected rangesUC: number[][];
   protected rangesLC: number[][];
 
-
-  //  protected parseTimeGrouppingVariants: ParseTimeGrouppingVariants;
-  //  protected transformVariants: TransformVariants;
-
-
-
-  static clsInstance: CaseConverterInterface;
+  static clsInstance: CaseConverterInterface|false = false;
 
 
 
@@ -191,20 +187,13 @@ export class CaseConverter implements CaseConverterInterface {
       [ this.#symbolAlower, this.#symbolZlower ]
     ];
 
-
-    // this.parseTimeGrouppingVariants = new Object() as ParseTimeGrouppingVariants;
-    // this.parseTimeGrouppingVariants.UcLcGroups      = true;
-    // this.parseTimeGrouppingVariants.firstCapsGroups = true;
-    // this.parseTimeGrouppingVariants.numGrups        = true;
-    // this.transformVariants = new Object() as TransformVariants;
-    // this.transformVariants.delimiter = "_";
-    // this.transformVariants.UcLcTransform = CapsOrSmallTransformVariants.asIs;
   }
 
 
 
   public static getInstance(): CaseConverterInterface {
-    if ( CaseConverter.clsInstance === null ) {
+
+    if ( CaseConverter.clsInstance === false ) {
       CaseConverter.clsInstance = new CaseConverter();
     }
 
@@ -355,7 +344,7 @@ export class CaseConverter implements CaseConverterInterface {
   }
 
 
-  // toTitle ( inText: string ): string {
+  // title ( inText: string ): string {
   //   const SMALL = new Set([
   //     "a","an","and","as","at","but","by","for","in","nor","of","on","or","per","the","to","vs","via"
   //   ]);
@@ -376,7 +365,7 @@ export class CaseConverter implements CaseConverterInterface {
       " ",
       CapsOrSmallTransformVariants.firstCapsAndSmall,
       CapsOrSmallTransformVariants.small,
-      JoinDelimiterVariants.delimitersReplaced
+      JoinDelimiterVariants.everyGroup
     );
 
   }
@@ -488,6 +477,8 @@ export class CaseConverter implements CaseConverterInterface {
       joinDelimiterVariant
     );
 
+    console.log( { locTransformedDataRecords } );
+
     let locTransformFirstFunc:       CallableFunction|false = false;
     let locTransformFunc:            CallableFunction|false = false;
 
@@ -525,14 +516,22 @@ export class CaseConverter implements CaseConverterInterface {
     );
 
 
-    return locTransformedTexts.join( "" );
+    let retValTransformedText: string = locTransformedTexts.join( "" );
+
+    if ( this._debug === true ) {
+      console.log( { "in": inText,
+        "ret": retValTransformedText } );
+    }
+
+
+    return retValTransformedText;
   }
 
 
 
   transformBitsbuf (
     inMarkedBitsbuf: Uint8Array,
-    parseTimeDataRecord: DataRecordMatches,
+    afterTransform_parseTimeDataRecord: DataRecordMatches,
     delimiter: string,
     inTransformFirstFunc: CallableFunction|false,
     inTransformFunc: CallableFunction|false
@@ -543,7 +542,7 @@ export class CaseConverter implements CaseConverterInterface {
 
     let locTmpBitsbuf: Uint8Array = new Uint8Array(0);
 
-    let groupsMultidimPosArray: number[][] = parseTimeDataRecord.groups_positions;
+    let groupsMultidimPosArray: number[][] = afterTransform_parseTimeDataRecord.groups_positions;
     let groupsArrayLen: number = groupsMultidimPosArray.length;
     let locTmpGroupRanges: number[] = new Array(3) as number[];
     let locCurrentCharsGroupType:  number = 0;
@@ -582,6 +581,7 @@ export class CaseConverter implements CaseConverterInterface {
       locCurrentCharsGroupType = locTmpGroupRanges[2];
 
       if ( locCurrentCharsGroupType === CharTypeEnum.delimiter ) {
+
         if ( ( locIsDelimiter === true ) && ( groupOfChars_Id !== 0 )  ) {
           retVal_transformed.push( delimiter );
         }
@@ -627,17 +627,17 @@ export class CaseConverter implements CaseConverterInterface {
 
     }
 
+    if ( this._debug === true ) {
+      console.log (
+        {
+          retVal_transformed,
+          groupsMultidimPosArray
+        }
+      );
 
-    // if ( this._debug === true ) {
-    console.log (
-      {
-        retVal_transformed,
-        groupsMultidimPosArray
-      }
-    );
+    }
 
 
-    // }
     return retVal_transformed;
   }
 
@@ -663,8 +663,9 @@ export class CaseConverter implements CaseConverterInterface {
 
 
     let locNextCharsGroupType:     number = 0;
-    let transformedGroupsMultidimPosArray: number[][] = new Array() as number[][];
-    transformedDataRecods.groups_positions = transformedGroupsMultidimPosArray;
+
+    transformedDataRecods.groups_positions = new Array() as number[][];
+    let transformedGroupsMultidimPosArray: number[][] = transformedDataRecods.groups_positions;
 
     let locTmp_ofTypeDelimiter_TransformedGroupRanges: number[] = new Array(3) as number[];
     let locTmp_ofTypeCurrent_TransformedGroupRanges: number[] = new Array(3) as number[];
@@ -673,6 +674,8 @@ export class CaseConverter implements CaseConverterInterface {
     let secureMaxCounter: number = 62;
 
 
+    locTmp_ofTypeDelimiter_TransformedGroupRanges[0] = (-1);
+    locTmp_ofTypeDelimiter_TransformedGroupRanges[1] = (-1);
     locTmp_ofTypeDelimiter_TransformedGroupRanges[2] = CharTypeEnum.delimiter;
 
     markerJ: while ( groupOfChars_Id < groupsArrayLen ) {
@@ -718,23 +721,21 @@ export class CaseConverter implements CaseConverterInterface {
 
       if ( locCurrentCharsGroupType === CharTypeEnum.omitted ) {
         transformedGroupsMultidimPosArray.push ( locTmp_ofTypeDelimiter_TransformedGroupRanges );
-
         groupOfChars_Id++;
         continue markerJ;
       }
 
-      if (
-        ( locPreviousCharsGroupType === CharTypeEnum.omitted )
-      ) {
-        transformedGroupsMultidimPosArray.push ( locTmp_ofTypeCurrent_TransformedGroupRanges );
+      let transformedArrayLength: number = transformedGroupsMultidimPosArray.length;
+      let transformedCharsGroup_DataRecord_lastId: number = ( transformedArrayLength - 1 );
+      let lastTransformedCharsGroup_charType: number = 0;
 
-        groupOfChars_Id++;
-        continue markerJ;
+      if ( transformedCharsGroup_DataRecord_lastId >= 0 ) {
+        lastTransformedCharsGroup_charType = transformedGroupsMultidimPosArray[ transformedCharsGroup_DataRecord_lastId ][2];
       }
 
       if (
         ( locCurrentCharsGroupType === CharTypeEnum.caps ) &&
-        ( locNextCharsGroupType  === CharTypeEnum.small )
+          ( locNextCharsGroupType === CharTypeEnum.small )
       ) {
         let currentCapsGroupStartPos: number = locTmp_ofTypeCurrent_TransformedGroupRanges[0];
         let currentCapsGroupEndPos: number = locTmp_ofTypeCurrent_TransformedGroupRanges[1];
@@ -747,28 +748,50 @@ export class CaseConverter implements CaseConverterInterface {
         groupsMultidimPosArray[ nextGroupOfChars_Id ][0] = nextSmallGroupStartPos;
 
         if ( currentCapsGroupCharsNumber === 1 ) {
-          groupsMultidimPosArray[ groupOfChars_Id ][2] = CharTypeEnum.omitted;
 
-          groupOfChars_Id++;
-          continue markerJ;
+          // if ( locPreviousCharsGroupType === CharTypeEnum.omitted ) {
+          // }
+          // else {
+          // }
+          groupsMultidimPosArray[ groupOfChars_Id ][2] = CharTypeEnum.omitted;
 
         } else {
           currentCapsGroupEndPos--;
           locTmp_ofTypeCurrent_TransformedGroupRanges[1] = currentCapsGroupEndPos;
 
+          transformedGroupsMultidimPosArray.push ( locTmp_ofTypeCurrent_TransformedGroupRanges );
+
         }
 
+        groupOfChars_Id++;
+        continue markerJ;
+
+      }
+
+      transformedCharsGroup_DataRecord_lastId = ( transformedArrayLength - 1 );
+
+      if ( transformedCharsGroup_DataRecord_lastId >= 0 ) {
+        lastTransformedCharsGroup_charType = transformedGroupsMultidimPosArray[ transformedCharsGroup_DataRecord_lastId ][2];
+      }
+
+      if ( ( locPreviousCharsGroupType === CharTypeEnum.omitted ) && ( lastTransformedCharsGroup_charType === CharTypeEnum.delimiter ) ) {
+        transformedGroupsMultidimPosArray.push ( locTmp_ofTypeCurrent_TransformedGroupRanges );
+
+        groupOfChars_Id++;
+        continue markerJ;
       }
 
       if ( joinDelimiterVariant === JoinDelimiterVariants.everyGroup ) {
         transformedGroupsMultidimPosArray.push ( locTmp_ofTypeDelimiter_TransformedGroupRanges );
 
       } else if ( joinDelimiterVariant === JoinDelimiterVariants.beforeNumbersNoDelimiter ) {
+
         if ( locCurrentCharsGroupType !== CharTypeEnum.num ) {
           transformedGroupsMultidimPosArray.push ( locTmp_ofTypeDelimiter_TransformedGroupRanges );
         }
 
       } else if ( joinDelimiterVariant === JoinDelimiterVariants.afterNumbersNoDelimiter ) {
+
         if (
           ( locPreviousCharsGroupType !== CharTypeEnum.num )
         ) {
@@ -776,27 +799,18 @@ export class CaseConverter implements CaseConverterInterface {
         }
 
       } else if ( joinDelimiterVariant === JoinDelimiterVariants.neverNumbersDelimiter ) {
+
         if ( ( locPreviousCharsGroupType !== CharTypeEnum.num ) && ( locCurrentCharsGroupType !== CharTypeEnum.num ) ) {
           transformedGroupsMultidimPosArray.push ( locTmp_ofTypeDelimiter_TransformedGroupRanges );
         }
 
       }
 
-
-
       transformedGroupsMultidimPosArray.push ( locTmp_ofTypeCurrent_TransformedGroupRanges );
 
       groupOfChars_Id++;
 
     }
-
-
-    // if ( this._debug === true ) {
-    console.log (
-      {
-        transformedDataRecods
-      }
-    );
 
 
     return transformedDataRecods;
@@ -941,20 +955,20 @@ export class CaseConverter implements CaseConverterInterface {
 
       retVal_didMatch = ( ( aRange[0] <= aNum ) && ( aNum <= aRange[1] ) );
 
-      if ( this._debug === true ) {
-        console.log (
-          "matchingRanges",
-          {
-            inRanges,
-            aRange,
-            aNum,
-            less: ( aRange[0] <= aNum ),
-            more: ( aNum <= aRange[1] ),
-            retVal_didMatch
-          }
-        );
-      }
 
+      // if ( this._debug === true ) {
+      //   console.log (
+      //     "matchingRanges",
+      //     {
+      //       inRanges,
+      //       aRange,
+      //       aNum,
+      //       less: ( aRange[0] <= aNum ),
+      //       more: ( aNum <= aRange[1] ),
+      //       retVal_didMatch
+      //     }
+      //   );
+      // }
       if ( retVal_didMatch === true ) {
         rangeId = ( numRanges + 128 );
         secureCounter = ( secureMaxCounter + 128 );

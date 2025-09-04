@@ -33,7 +33,7 @@ That is why I shall not name the folders starting with dot. This way of folders 
 
 *This Project is with a dockerized MYSQL DATABASE Instance. Before every git pull to update this project, even without checking whether Docker settings were changed, first do **MySQL db dump** and db dump **backup**. The dockerized db services sometimes can recreate a fresh and clean db instance, when some Docker config file was changed, and after "git pull && docker compose restart", too.*
 
-*I leave the above warnng here for good for js developers, first learned docker and databases.*
+*I leave the above warning here for good for js developers, first learned docker and databases.*
 
 This ver of the Project does not rely on examples obtaining data from "database" docker service here. **No worries for now**. I knew once this docker option, and still work with databases.
 
@@ -64,62 +64,93 @@ Why already published: the several js tools are ready, nevertheless.
 
 ## Navigation
 
-#### Aim Of The Setup
+### A) Aim Of The Setup
 
 [docs/md/aim_of_the_setup.md](./docs/md/aim_of_the_setup.md)
 
 
 
+### B) Watch in Action
 
-#### URL of this Project deployed on https endpoint
+#### Addresses of Sites Tools Examples
+
+[docs/md/watch_in_action.md](./docs/md/watch_in_action.md)
+
+
+#### This Project Deployed on HTTPS Server
 
 [https://sandbox.brightday.email](https://sandbox.brightday.email/)
 
 
 
-
-#### Watch in Action
-
-Watch The Sites Tools Examples, developed in this Project, in Action
-
-
-[docs/md/watch_in_action.md](./docs/md/watch_in_action.md)
-
-
-
-
-#### News
+### C) News
 
 [docs/md/news.md](./docs/md/news.md)
 
 
 
-#### Features
+### D) Features
 
 [docs/md/features.md](./docs/md/features.md)
 
 
-#### This Project's HOW TO
+
+### E) Infrastructure How To
+
+#### E1) Project Builder and Code Prettifier
 
 [docs/md/howto.md](./docs/md/howto.md)
 
 
+#### E2) Code prettifier lib Eslint
 
-#### NPM
-
-[docs/md/npm.md](./docs/md/npm.md)
-
+[docs/md/eslint.md](./docs/md/eslint.md)
 
 
-#### Webpack
+
+
+### F) Webpack
 
 [docs/md/webpack.md](./docs/md/webpack.md)
 
 
 
+#### F1) CDN When Building A Sites Tool with Webpack
+
+[docs/md/workaround_npm_github_webpack_cdn_explained.md](./docs/md/workaround_npm_github_webpack_cdn_explained.md)
+
+
+#### F2) setup in a Javascript lib for usage later with webpack
+
+[docs/md/enable_webpack_feature_in_a_package.md](./docs/md/enable_webpack_feature_in_a_package.md)
 
 
 
+
+
+### G) Command Line
+
+#### G1) Scripts in the cmd folder
+
+[docs/md/cmd.md](./docs/md/cmd.md)
+
+
+
+#### G2) Npm Install a Sites Tool with Preview
+
+[docs/md/install_sites_tool_with_preview.md](./docs/md/install_sites_tool_with_preview.md)
+
+
+
+#### G3) Debug .ts or .js scripts
+
+[docs/md/debug_node_js.md](./docs/md/debug_node_js.md)
+
+
+
+#### G4) NPM
+
+[docs/md/npm.md](./docs/md/npm.md)
 
 
 

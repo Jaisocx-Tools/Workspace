@@ -1,49 +1,26 @@
 <!DOCTYPE html>
-<html lang="en" class="workspace long theme-emailed-thin">
+<html lang="en" class="jsx email">
 <!-- <html> -->
 <head>
 
   <title>Application to Job</title>
 
-  <base href="./../../../..">
+  <base href="https://sandbox.brightday.email/">
 
-  <meta charset="UTF-8">
-
-
-
-  <link rel="stylesheet" href="sites_tools/js_tools/EmailHtmlInliner/letter_example/css/fonts.css">
-  <link rel="stylesheet" href="sites_tools/js_tools/EmailHtmlInliner/letter_example/css/main.css">
+  <meta charset="UTF-8" />
 
 
-
-  <script src="packages/Text/transpiled/Simple/Trimmer.js"></script>
-  <script src="packages/CssHtml/transpiled/Simple/CssHtml.js"></script>
-  <script src="packages/CssHtml/transpiled/Simple/CssSelectorWeight.js"></script>
-
-  <script src="sites_tools/js_tools/EmailHtmlInliner/transpiled/Simple/EmailHtmlInlinerConstants.js"></script>
-  <script src="sites_tools/js_tools/EmailHtmlInliner/transpiled/Simple/EmailHtmlInliner.js"></script>
-
-
-
-
-  <link rel="stylesheet" href="sites_tools/css_tools/CssCleanStart/MediaAndStyles/themes/theme_base/css_clean_start_theme_base.css">
-  <link rel="stylesheet" href="sites_tools/css_tools/CssCleanStart/MediaAndStyles/css_clean_start_main.css">
-
-
-
-
+  <link rel="stylesheet" href="sites_tools/css_tools/CssCleanStart_2/MediaAndStyles/CssCleanStart_2_main_resolved_minimal.css" />
 
   <!-- CssCodeSnippet -->
-  <link rel="stylesheet" href="sites_tools/css_tools/CssCodeSnippet/MediaAndStyles/themes/csstool-codesnippet-theme-colour-rosa.css">
-  <link rel="stylesheet" href="sites_tools/css_tools/CssCodeSnippet/MediaAndStyles/themes/csstool-codesnippet-theme-colour-blue.css">
-  <link rel="stylesheet" href="sites_tools/css_tools/CssCodeSnippet/MediaAndStyles/themes/csstool-codesnippet-theme-colour-salad.css">
-  <link rel="stylesheet" href="sites_tools/css_tools/CssCodeSnippet/MediaAndStyles/themes/csstool-codesnippet-theme-size-little.css">
-  <link rel="stylesheet" href="sites_tools/css_tools/CssCodeSnippet/MediaAndStyles/themes/csstool-codesnippet-theme-size-large.css">
-  <link rel="stylesheet" href="sites_tools/css_tools/CssCodeSnippet/MediaAndStyles/themes/csstool-codesnippet-theme-base.css">
-  <link rel="stylesheet" href="sites_tools/css_tools/CssCodeSnippet/MediaAndStyles/csstool-codesnippet-theme-styles-main.css">
-  <link rel="stylesheet" href="sites_tools/css_tools/CssCodeSnippet/MediaAndStyles/lines-numbers-variables/code-snippet-lines-numbers-300.css">
+  <link rel="stylesheet" href="sites_tools/css_tools/CssCodeSnippet/MediaAndStyles/CssCodeSnippet_main_resolved.css" />
+  <link rel="stylesheet" href="sites_tools/css_tools/CssCodeSnippet/MediaAndStyles/lines-numbers-variables/code-snippet-lines-numbers-300.css" />
   <!-- <link rel="stylesheet" href="sites_tools/js_tools/EmailHtmlInliner/MediaAndStyles/CssCodeSnippet/code-snippet-lines-numbers-999.css"> -->
   <!-- <link rel="stylesheet" href="sites_tools/js_tools/EmailHtmlInliner/MediaAndStyles/CssCodeSnippet/code-snippet-lines-numbers-2999.css"> -->
+
+  <link rel="stylesheet" href="sites_tools/js_tools/EmailHtmlInliner/letter_example/css/fonts.css" />
+  <link rel="stylesheet" href="sites_tools/js_tools/EmailHtmlInliner/letter_example/css/main.css" />
+
 
 
 
@@ -65,17 +42,16 @@
 
 <style name="inliner-ui-tool">
 
-  .workspace.long.theme-emailed-thin .CodeSnippetHolder#code-snippet-inlinetext {
+  .jsx.email .CodeSnippetHolder#code-snippet-inlinetext {
     --lines-numbers--content: var(--lines-numbers--content--300);
     --lines-number: 300;
 
-    --code-snippet-tool--width: 29rem;
+    --code-snippet-tool--width:  28rem;
     --code-snippet-tool--height: 32rem;
-    --overflow-y: auto;
-    --overflow-x: auto;
+
   }
 
-  .workspace.long.theme-emailed-thin s {
+  .jsx.email s {
     text-decoration: none;
 
     display: block;
@@ -89,10 +65,12 @@
     top: 2rem;
     right: 1rem;
 
-    height: auto;
-    width: auto;
+    height: 40rem;
 
-    overflow: visible;
+    width: auto;
+    min-width: 28rem;
+
+    overflow: auto;
     z-index: 1000;
   }
 
@@ -181,7 +159,7 @@
         <button id="btn-inline-text-in-new-tab">Show In New Tab</button>
       </nav>
 
-      <CodeSnippetHolder id="code-snippet-inlinetext" class="CodeSnippetHolder little blue">
+      <CodeSnippetHolder id="code-snippet-inlinetext" class="CodeSnippetHolder little css_clean_start_2__color_theme">
         <pre class="CodeSnippetArea" id="inlinetext"></pre>
       </CodeSnippetHolder>
 
@@ -284,6 +262,19 @@
       </div>
 
     </main>
+
+  </body>
+
+
+
+  <script src="packages/Text/transpiled/Simple/trimmer/Trimmer.js"></script>
+  <script src="packages/CssHtml/transpiled/Simple/CssHtml.js"></script>
+  <script src="packages/CssHtml/transpiled/Simple/CssSelectorWeight.js"></script>
+
+  <script src="sites_tools/js_tools/EmailHtmlInliner/transpiled/Simple/EmailHtmlInlinerConstants.js"></script>
+  <script src="sites_tools/js_tools/EmailHtmlInliner/transpiled/Simple/EmailHtmlInliner.js"></script>
+
+
 
   <script>
 
@@ -414,7 +405,6 @@
 
   </script>
 
-</body>
 </html>
 
 

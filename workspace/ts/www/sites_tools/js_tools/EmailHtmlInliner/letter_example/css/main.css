@@ -11,14 +11,14 @@
 */
 
 :root {
-  --clean-start__box-sizing: padding-box;
-  --clean-start__custom-tags__display: var(--clean-start__inline-tags__display);
+  --jsx--css-clean-start-2--all-tags--box-sizing: padding-box;
+  --jsx--css-clean-start-2--custom-tags--display: var(--jsx--css-clean-start-2--inline-tags--display);
 }
 
 
 
 /* tasks 2, 3, 5 via css-clean-start css variables: box-sizing, font styles, width */
-.workspace.long.theme-emailed-thin {
+.jsx.email {
 
   /* --main-font-family: Raleway; */
   /* --main-font-family: LilitaOne; */
@@ -34,41 +34,41 @@
 
 
 
-  --clean-start__box-sizing: padding-box;
-  --clean-start__custom-tags__display: var(--clean-start__inline-tags__display);
+  --jsx--css-clean-start-2--all-tags--box-sizing: padding-box;
+  --jsx--css-clean-start-2--custom-tags--display: var(--jsx--css-clean-start-2--inline-tags--display);
 
-  --clean-start__site__background: #ffffff;
-
-
-
-  --clean-start__tag_body__height: auto;
-  --clean-start__tag_body__height_max: unset;
-  --clean-start__tag_body__height_min: auto;
-
-  --clean-start__tag_body__width: 100%;
-  --clean-start__tag_body__overflow-x: hidden;
+  --jsx--css-clean-start-2--site--background: #ffffff;
 
 
+/*
+  --jsx--css-clean-start-2--body-tag--height: auto;
+  --jsx--css-clean-start-2--body-tag--max-height: unset;
+  --jsx--css-clean-start-2--body-tag--min-height: auto; */
 
-  --clean-start__site__height: auto;
-  --clean-start__site__height_max: fit-content;
-  --clean-start__site__height_min: fit-content;
+  /* --jsx--css-clean-start-2--body-tag--width: 100%;
+  --jsx--css-clean-start-2--body-tag--overflow-x: hidden; */
 
-  --clean-start__site__width: 60rem;
-  --clean-start__site__max_width: 100%;
-  --clean-start__site__min_width: 320px;
 
-  --clean-start__site__padding: 1px 1px 1px 1px;
+
+  --jsx--css-clean-start-2--site--height: auto;
+  --jsx--css-clean-start-2--site--max-height: fit-content;
+  --jsx--css-clean-start-2--site--min-height: fit-content;
+
+  --jsx--css-clean-start-2--site--width: 60rem;
+  --jsx--css-clean-start-2--site--max-width: 100%;
+  --jsx--css-clean-start-2--site--min-width: 320px;
+
+  --jsx--css-clean-start-2--site--padding: 1px 1px 1px 1px;
 
 
 
   /* --clean-start__font-family: var(--main-font-family); */
-  --clean-start__font-size:   0.95rem;
-  --clean-start__line-height: 1.35rem;
+  --jsx--css-clean-start-2--all-tags--font-size:   0.95rem;
+  --jsx--css-clean-start-2--all-tags--line-height: 1.35rem;
 
-  --clean-start__anchor__text-color: #37b;
-  --clean-start__anchor__text-color-hover: var(--clean-start__anchor__text-color);
-  --clean-start__anchor__text-color-visited: var(--clean-start__anchor__text-color);
+  --jsx--css-clean-start-2--anchor--color: #37b;
+  --jsx--css-clean-start-2--anchor-hover--color: var(--jsx--css-clean-start-2--anchor--color);
+  --jsx--css-clean-start-2--anchor-visited--color: var(--jsx--css-clean-start-2--anchor--color);
 
 
 
@@ -109,11 +109,11 @@ div.header .address-col {
   margin: var(--address-col--margin);
 }
 
-.workspace.long.theme-emailed-thin img {
+.jsx.email img {
   display: block;
 }
 
-.workspace.long.theme-emailed-thin div.header .address-col {
+.jsx.email div.header .address-col {
   display: inline-block;
 }
 
@@ -245,7 +245,7 @@ div.header .address-col .email a {
 }
 
 
-.workspace.long.theme-emailed-thin main .in_main {
+.jsx.email main .in_main {
   display: block;
   overflow-x: hidden;
   overflow-y: visible;
@@ -256,7 +256,7 @@ div.header .address-col .email a {
 }
 
 
-.workspace.long.theme-emailed-thin main .in_main_2 {
+.jsx.email main .in_main_2 {
   display: block;
   overflow-x: hidden;
   overflow-y: visible;
@@ -267,11 +267,11 @@ div.header .address-col .email a {
 }
 
 
-.workspace.long.theme-emailed-thin main .date-and-place {
+.jsx.email main .date-and-place {
   margin: 2rem 0 0 0;
 }
 
-.workspace.long.theme-emailed-thin main .date-and-place > span {
+.jsx.email main .date-and-place > span {
   display: inline-block;
 
   margin-right: 2rem;
@@ -280,7 +280,7 @@ div.header .address-col .email a {
 
 
 
-.workspace.long.theme-emailed-thin main .paragraph.theme {
+.jsx.email main .paragraph.theme {
   font-family:  var(--theme-font-family);
   font-size:    var(--theme-font-size);
   font-weight:  var(--theme-font-weight);
@@ -291,42 +291,42 @@ div.header .address-col .email a {
   margin: 6rem 0 1rem 0;
 }
 
-.workspace.long.theme-emailed-thin main .text {
+.jsx.email main .text {
   display: block;
   width: 100%;
 }
 
-.workspace.long.theme-emailed-thin main .text .paragraph {
+.jsx.email main .text .paragraph {
   display: block;
   width: 100%;
 
   margin: 0 0 1rem 0;
 }
 
-.workspace.long.theme-emailed-thin main .text {
+.jsx.email main .text {
   margin-bottom: 2.5rem;
 }
 
 
 
-.workspace.long.theme-emailed-thin main .line {
+.jsx.email main .line {
   display: block;
   width: 100%;
 }
 
 
-.workspace.long.theme-emailed-thin main .line.regards,
-.workspace.long.theme-emailed-thin main .line.name {
+.jsx.email main .line.regards,
+.jsx.email main .line.name {
 }
 
 
 
-.workspace.long.theme-emailed-thin main .signature .signature-img-parent {
+.jsx.email main .signature .signature-img-parent {
   height: 2.3rem;
   width: auto;
 }
 
-.workspace.long.theme-emailed-thin main .signature .signature-img-parent img {
+.jsx.email main .signature .signature-img-parent img {
   display: block;
   height: 100%;
   width: auto;
