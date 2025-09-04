@@ -1,6 +1,6 @@
 {
   "name": "@jaisocx/text",
-  "version": "2.1.1",
+  "version": "2.1.3",
   "author": "Jaisocx",
   "private": false,
   "description": "",
@@ -18,6 +18,7 @@
     "transpiled/CommonJS",
     "transpiled/ESNext",
     "transpiled/Simple",
+    "test",
     "README.md"
   ],
   "keywords": [

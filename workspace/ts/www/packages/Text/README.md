@@ -22,11 +22,15 @@ The aim of the setup is to keep the package little and reusable, installing via 
 
 2. CaseConverter
 
+
+
+
+
 ## Usage
 
 ### 1. Trimmer
 
-```
+```javascript
 import { Trimmer } from "@jaisocx/text";
 
 
@@ -41,12 +45,80 @@ let trimmedText = trimmer.trimRoundBracesAndQuotesInside( strToTrim );
 
 
 console.log( trimmedText );
-//> Hello World!
+// $> Hello World!
 ```
+
+
+
 
 ### 2. CaseConverter
 
 
 Unicode-aware case transformations for TypeScript/JavaScript.
+
+Examples
+
+### JavaScript
+
+#### new class instance
+
+```javascript
+import { CaseConverter } from "@jaisocx/text";
+
+const caseConverter = new CaseConverter();
+let PascalCaseToSentenceCase = caseConverter.toSentence( "XMLHttpRequest" );
+
+console.log( PascalCaseToSentenceCase );
+// $> Xml http request
+```
+
+#### static call
+
+```javascript
+import { CaseConverter } from "@jaisocx/text";
+
+let PascalCaseToSentenceCase = CaseConverter.getInstance().toSentence( "XMLHttpRequest" );
+
+// or like this:
+PascalCaseToSentenceCase = CaseConverter.sentence( "XMLHttpRequest" );
+
+
+console.log( PascalCaseToSentenceCase );
+// $> Xml http request
+```
+
+
+
+### TypeScript
+
+#### new class instance
+
+```typescript
+import { CaseConverter } from "@jaisocx/text";
+
+const caseConverter: CaseConverter = new CaseConverter();
+let PascalCaseToSentenceCase: string = caseConverter.toSentence( "XMLHttpRequest" );
+
+console.log( PascalCaseToSentenceCase );
+// $> Xml http request
+```
+
+
+#### static call
+
+```typescript
+import { CaseConverter } from "@jaisocx/text";
+
+let PascalCaseToSentenceCase: string = CaseConverter.getInstance().toSentence( "XMLHttpRequest" );
+
+// or like this:
+PascalCaseToSentenceCase = CaseConverter.sentence( "XMLHttpRequest" );
+
+console.log( PascalCaseToSentenceCase );
+// $> Xml http request
+```
+
+
+
 
 

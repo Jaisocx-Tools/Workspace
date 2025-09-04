@@ -53,6 +53,10 @@ describe('CaseConverter basics', () => {
     expect(CaseConverter.train('train case test')).toBe('Train-Case-Test');
   });
 
+  it('camelCase to Sentence case', () => {
+    expect(cc.toSentence('XMLHttpRequest')).toBe('Xml http request');
+  });
+
   it('dot.case and path/case', () => {
     expect( CaseConverter.dot('One TWO three')).toBe('one.two.three');
     expect( CaseConverter.path('A/B\\C')).toBe('a/b/c');
