@@ -191,12 +191,7 @@
     href="MediaAndStyles/themes/theme-funny/tree_theme-funny.css"
   />
 
-  <script
-    type="text/javascript"
-    src="node_modules/@jaisocx/preloader/transpiled/Simple/scripts_chained_loader/ScriptsChainedLoader.js"
-    src-fallback="../preloader/transpiled/Simple/scripts_chained_loader/ScriptsChainedLoader.js"
-    onerror="javascript: ( () => { let tagScript = document.createElement( 'script' ); tagScript.src = this.getAttribute( 'src-fallback' ); document.body.append( tagScript ); this.onerror = null; } )();">
-  </script>
+
 
   <style>
 
@@ -295,10 +290,18 @@
 
 
 
+  <script
+    type="text/javascript"
+    src="node_modules/@jaisocx/preloader/transpiled/Simple/scripts_chained_loader/ScriptsChainedLoader.js"
+    src-fallback="../preloader/transpiled/Simple/scripts_chained_loader/ScriptsChainedLoader.js"
+    onload="javascipt: ( () => { if ( treeExamplesClassInstance.wasOnceRendered === true ) { return; }; treeExamplesClassInstance = new TreeExamples(); treeExamplesClassInstance.onDOMContentLoadedEventHandler(); } )();"
+    onerror="javascript: ( () => { let tagScript = document.createElement( 'script' ); tagScript.onload = this.onload.bind( tagScript ); tagScript.src = this.getAttribute( 'src-fallback' ); document.body.insertAdjacentElement( 'afterend', tagScript ); this.remove(); } )();">
+  </script>
+
+
   <script>
 
     let treeExamplesClassInstance = new Object();
-
 
 
     let cssClassesNames = [
@@ -493,6 +496,8 @@
 
     class TreeExamples {
 
+      wasOnceRendered = false;
+
       themeTurnOn   = new Object();
       scriptsLoader = new Object();
       preloader     = new Object();
@@ -501,6 +506,8 @@
       tree_load_by_url           = new Object();
 
       constructor() {
+        this.wasOnceRendered = false;
+
         this.themeTurnOn   = new Object();
         this.scriptsLoader = new Object();
         this.preloader     = new Object();
@@ -607,12 +614,26 @@
             this.addThemeButtonsEventHandlers();
           } catch (e) {}
 
+          this.wasOnceRendered = true;
+
         };
 
         this.scriptsLoader.load ( data_ScriptsChainedLoader, true );
 
       }
 
+      onDOMContentLoadedEventHandler() {
+
+        try {
+          let loaderInstance = typeof ScriptsChainedLoader;
+
+          if ( loaderInstance ) {
+            this.loadScriptsAndRenderTree();
+            console.log ( "Scripts loader started ..." );
+          }
+        } catch ( e ) {}
+
+      }
     }
 
 
@@ -620,7 +641,7 @@
     document.addEventListener ( 'DOMContentLoaded', () => {
 
       treeExamplesClassInstance = new TreeExamples();
-      treeExamplesClassInstance.loadScriptsAndRenderTree();
+      treeExamplesClassInstance.onDOMContentLoadedEventHandler();
 
     });
 
