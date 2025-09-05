@@ -8,7 +8,6 @@ const TreeConf_js_1 = require("./TreeConf.js");
 const TreeAdapterModeConf_js_1 = require("./TreeAdapterModeConf.js");
 const TreeAdapterModeEase_js_1 = require("./TreeAdapterModeEase.js");
 const ArrayOrObjectPackage_js_1 = require("./ArrayOrObjectPackage.js");
-require("@jaisocx-tree-MediaAndStyles/tree-styles-main-webpack.css");
 // Tree main class
 class Tree extends event_emitter_1.ImprovedRenderEventEmitter {
     constructor() {

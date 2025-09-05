@@ -54,7 +54,7 @@ projectPath=""
 
 
 
-  "${tsconfigVersion}" "${tsServicePathInDockerVolume}"
+  # "${tsconfigVersion}" "${tsServicePathInDockerVolume}"
 
   # echo "jsInvokePath: ${jsInvokePath}"
 

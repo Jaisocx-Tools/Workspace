@@ -2,7 +2,6 @@ import { ImprovedRenderEventEmitter, EventHandlerReturnValue } from "@jaisocx/ev
 import { TemplateRenderer } from "@jaisocx/template-renderer";
 import { ITreeRenderRetValue, IRenderTemplateRendererData, ITreeAdapter } from "./Types.js";
 import { TreeConf } from "./TreeConf.js";
-import "@jaisocx-tree-MediaAndStyles/tree-styles-main-webpack.css";
 export declare class Tree extends ImprovedRenderEventEmitter {
     debug: boolean;
     mainHtmlNodeId: any;

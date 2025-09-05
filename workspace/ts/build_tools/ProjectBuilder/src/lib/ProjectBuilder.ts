@@ -28,6 +28,7 @@ export class ProjectBuilder {
   buildSimpleCatalogName: any;
 
 
+
   constructor() {
     this.isLocalDevelopment = 1;
 
@@ -50,29 +51,36 @@ export class ProjectBuilder {
   }
 
 
+
   getIsLocalDevelopment(): number {
     return this.isLocalDevelopment;
   }
 
 
+
   setIsLocalDevelopment(isLocalDevelopment: number): ProjectBuilder {
     this.isLocalDevelopment = isLocalDevelopment;
 
+
     return this;
   }
+
 
 
   setAbsolutePathToProjectRoot(projectRoot: any): ProjectBuilder {
     this.absolutePathToProjectRoot = projectRoot;
 
+
     return this;
   }
+
 
 
   setAbsolutePath(
     propertyName: any,
     relativePath: any
   ): ProjectBuilder {
+
     if (!this.absolutePathToProjectRoot) {
       throw new Error("The Absolute Path to Project root is not specified!!!");
     }
@@ -83,8 +91,10 @@ export class ProjectBuilder {
       this.absolutePathToProjectRoot + "/" + relativePath
     );
 
+
     return this;
   }
+
 
 
   setRelativePathFromRootTsConfigCatalogPath(relativePath: any): ProjectBuilder {
@@ -94,8 +104,10 @@ export class ProjectBuilder {
       relativePath
     );
 
+
     return this;
   }
+
 
 
   setRelativePathFromRootLintCatalog(relativePath: any): ProjectBuilder {
@@ -105,8 +117,10 @@ export class ProjectBuilder {
       relativePath
     );
 
+
     return this;
   }
+
 
 
   setRelativePathFromRootWww(relativePath: any): ProjectBuilder {
@@ -116,32 +130,41 @@ export class ProjectBuilder {
       relativePath
     );
 
+
     return this;
   }
+
 
 
   setBuildCjsCatalogName(catalogName: any): ProjectBuilder {
     this.buildCjsCatalogName = catalogName;
 
+
     return this;
   }
+
 
 
   setBuildEsmCatalogName(catalogName: any): ProjectBuilder {
     this.buildEsmCatalogName = catalogName;
 
+
     return this;
   }
+
 
 
   setBuildSimpleCatalogName(catalogName: any): ProjectBuilder {
     this.buildSimpleCatalogName = catalogName;
 
+
     return this;
   }
 
 
+
   build(dataJson: any): any {
+
     if (!dataJson.packages || 0 === dataJson.packages.length) {
       throw new Error("no packages array set in BuildData.json");
     }
@@ -156,6 +179,7 @@ export class ProjectBuilder {
             ( cssImporterConf !== undefined ) &&
             ( cssImporterConf.build === true )
           );
+
 
           return filterBy;
         }
@@ -173,6 +197,7 @@ export class ProjectBuilder {
       );
     }
   }
+
 
 
   buildPackage (
@@ -278,8 +303,10 @@ export class ProjectBuilder {
       );
     }
 
+
     return 2;
   }
+
 
 
   installPackageDependencies(
@@ -334,6 +361,7 @@ export class ProjectBuilder {
       console.log(`Package [ ${packageJson.name} ]: No dependencies were set in BuildData.json`);
     }
   }
+
 
 
   buildSimple(
@@ -412,6 +440,7 @@ export class ProjectBuilder {
    */
 
 
+
   cssImporterRun(
     confNodeCss: any,
     packagePath: any
@@ -440,17 +469,20 @@ export class ProjectBuilder {
   }
 
 
+
   transpileTypeScriptSources (
     tsconfigCatalogPath: any,
     tsconfigFileName: any
   ): any {
     const consoleCommand: any = `cd "${tsconfigCatalogPath}" && tsc -p "${tsconfigFileName}"`;
 
+
     return this.runCommandLine(
       tsconfigCatalogPath,
       consoleCommand
     );
   }
+
 
 
   transpileTypescriptSourcesWithPath (
@@ -493,6 +525,7 @@ export class ProjectBuilder {
       const absPath: any = `${packagePath}/src/${filePath}`;
       let isFiltered: boolean = fs.lstatSync(absPath).isFile();
 
+
       return isFiltered;
     });
 
@@ -508,11 +541,13 @@ export class ProjectBuilder {
     // cd packagePath ensures usage of package.json installed deps for this exact subpackage.
     const transpileCommand: any = `cd "${packagePath}" && npx tsc ${filesListJoinedString} ${transpileOptionsString}`;
 
+
     return this.runCommandLine(
       `${packagePath}`,
       transpileCommand
     );
   }
+
 
 
   prettifyWithEslint(
@@ -521,11 +556,13 @@ export class ProjectBuilder {
   ): any {
     const consoleCommand: any = `cd "${packagePath}" && npx eslint --fix "${pathToPrettify}"`;
 
+
     return this.runCommandLine(
       packagePath,
       consoleCommand
     );
   }
+
 
 
   runCommandLine(
@@ -542,8 +579,10 @@ export class ProjectBuilder {
       result = e;
     }
 
+
     return result;
   }
+
 
 
   getSpawnSyncPayload(contextRoot: any): any {

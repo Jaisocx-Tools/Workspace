@@ -26,10 +26,11 @@ argv.forEach( ( arg ) => {
   // Remove quotes if any
 });
 
-console.log(
-  "commandArgs",
-  commandArgs
-);
+
+// console.log(
+//   "commandArgs",
+//   commandArgs
+// );
 
 const buildDataPath: any = path.resolve(
   commandArgs.ProjectRoot,
@@ -59,19 +60,19 @@ const buildDataJson: any = fs.readFileSync(
 
 const buildData: any = JSON.parse(buildDataJson);
 
-console.log(
-  "buildDataPath",
-  buildDataPath
-);
-console.log(
-  "buildData",
-  buildData
-);
 
-console.log(
-  "packagesPath",
-  packagesPath
-);
+// console.log(
+//   "buildDataPath",
+//   buildDataPath
+// );
+// console.log(
+//   "buildData",
+//   buildData
+// );
+// console.log(
+//   "packagesPath",
+//   packagesPath
+// );
 
 
 const builder = new ProjectBuilder();

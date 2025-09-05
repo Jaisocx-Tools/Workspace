@@ -14,7 +14,10 @@ argv.forEach((arg) => {
     commandArgs[key] = value ? value.replace(/(^"|"$)/g, "") : "";
     // Remove quotes if any
 });
-console.log("commandArgs", commandArgs);
+// console.log(
+//   "commandArgs",
+//   commandArgs
+// );
 const buildDataPath = path.resolve(commandArgs.ProjectRoot, commandArgs.BuildData);
 if (false === fs.existsSync(buildDataPath)) {
     throw new Error(`BuildData.json not available at path: ${buildDataPath}`);
@@ -25,9 +28,18 @@ if (false === fs.existsSync(packagesPath)) {
 }
 const buildDataJson = fs.readFileSync(path.resolve(commandArgs.ProjectRoot, commandArgs.BuildData), "utf8");
 const buildData = JSON.parse(buildDataJson);
-console.log("buildDataPath", buildDataPath);
-console.log("buildData", buildData);
-console.log("packagesPath", packagesPath);
+// console.log(
+//   "buildDataPath",
+//   buildDataPath
+// );
+// console.log(
+//   "buildData",
+//   buildData
+// );
+// console.log(
+//   "packagesPath",
+//   packagesPath
+// );
 const builder = new ProjectBuilder();
 builder
     .setIsLocalDevelopment(1)

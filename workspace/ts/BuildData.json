@@ -70,7 +70,7 @@
       "path": "packages/Text",
       "name": "text",
       "update-published": "Mon Jun 02 22:02:01 GMT 2025",
-      "build": true,
+      "build": false,
       "build-simple-enable": true,
       "dependencies": [],
       "build-files": [
@@ -224,7 +224,9 @@
         }
       ],
       "build-files": [
-        "Preloader.js"
+        "media_preloader/media_preloader_constants/PreloaderConstants.js",
+        "media_preloader/preloader/Preloader.js",
+        "scripts_chained_loader/ScriptsChainedLoader.js"
       ]
     },
     {
@@ -394,7 +396,7 @@
       "path": "sites_tools/js_tools/Tree",
       "name": "tree",
       "update-published": "",
-      "build": false,
+      "build": true,
       "build-simple-enable": true,
       "css-importer": {
         "build": false,
@@ -422,6 +424,10 @@
         {
           "name": "@jaisocx/template-renderer",
           "path": "packages/TemplateRenderer"
+        },
+        {
+          "name": "@jaisocx/theme-turn-on",
+          "path": "packages/ThemeTurnOn"
         }
       ]
     },
