@@ -287,7 +287,21 @@ class Tree extends event_emitter_1.ImprovedRenderEventEmitter {
         const nodeClone = this.updateDataNodeIdAndPath(node, nodePosition, nodeKey, flatNodeHolderClone, holder);
         const { isArray, subtreeNodeDataTypeString, hasSubtree, subtreeJsonNodes, objectKeys } = this.checkDataNodeSubtree(node);
         // TODO: EXTENSIBILITY FEATURE
-        const dataForRendering = this.getDataForRendering(node, nodeClone, subtreeNodeDataTypeString, hasSubtree);
+        let dataForRendering = this.getDataForRendering(node, nodeClone, subtreeNodeDataTypeString, hasSubtree);
+        const eventBeforeRenderOneNodePayload = {
+            "eventName": TreeConstants_js_1.TreeConstants.TreeEventsNames.EVENT_NAME__BEFORE_RENDER_ONE_NODE,
+            "dataForRendering": dataForRendering
+        };
+        const eventBeforeRenderResult = this.emitEvent(TreeConstants_js_1.TreeConstants.TreeEventsNames.EVENT_NAME__BEFORE_RENDER_ONE_NODE, eventBeforeRenderOneNodePayload);
+        const eventResultsLength = eventBeforeRenderResult.length;
+        let lastEventRenderResultId = 0;
+        let lastEventResult = new Object();
+        if ((eventResultsLength >= 1) && lastEventResult && lastEventResult.result) {
+            lastEventRenderResultId = (eventResultsLength - 1);
+            lastEventResult = eventBeforeRenderResult[lastEventRenderResultId];
+            //@ts-ignore
+            dataForRendering = lastEventResult.result.value;
+        }
         const nodeHtml = this.templateRenderer
             .setTemplate(TreeConstants_js_1.TreeConstants.TEMPLATE__TREE_HTML_NODE)
             // @ts-ignore
@@ -301,9 +315,9 @@ class Tree extends event_emitter_1.ImprovedRenderEventEmitter {
             throw new Error("Rendiring broken, wrong html structure built.");
         }
         const eventAfterRenderOneNodePayload = {
-            eventName: TreeConstants_js_1.TreeConstants.TreeEventsNames.EVENT_NAME__AFTER_RENDER_ONE_NODE,
-            treeHtmlNode: li,
-            treeItemJson: nodeClone
+            "eventName": TreeConstants_js_1.TreeConstants.TreeEventsNames.EVENT_NAME__AFTER_RENDER_ONE_NODE,
+            "treeHtmlNode": li,
+            "treeItemJson": nodeClone
         };
         if (!hasSubtree) {
             this.emitEvent(TreeConstants_js_1.TreeConstants.TreeEventsNames.EVENT_NAME__AFTER_RENDER_ONE_NODE, eventAfterRenderOneNodePayload);

@@ -1,5 +1,6 @@
 import {
-  ImprovedRenderEventEmitter, EventHandlerReturnValue
+  ImprovedRenderEventEmitter, EventHandlerReturnValue,
+  EventEmitResult
 } from "@jaisocx/event-emitter";
 import { TemplateRenderer } from "@jaisocx/template-renderer";
 
@@ -578,12 +579,38 @@ export class Tree extends ImprovedRenderEventEmitter {
 
 
     // TODO: EXTENSIBILITY FEATURE
-    const dataForRendering: IRenderTemplateRendererData|null = this.getDataForRendering(
+    let dataForRendering: IRenderTemplateRendererData|null = this.getDataForRendering(
       node,
       nodeClone,
       subtreeNodeDataTypeString,
       hasSubtree
     );
+
+
+    const eventBeforeRenderOneNodePayload: object = {
+      "eventName": TreeConstants.TreeEventsNames.EVENT_NAME__BEFORE_RENDER_ONE_NODE,
+      "dataForRendering": dataForRendering
+    };
+
+    const eventBeforeRenderResult: EventEmitResult[] = this.emitEvent (
+      TreeConstants.TreeEventsNames.EVENT_NAME__BEFORE_RENDER_ONE_NODE,
+      eventBeforeRenderOneNodePayload
+    );
+
+    const eventResultsLength: number = eventBeforeRenderResult.length;
+    let lastEventRenderResultId: number = 0;
+    let lastEventResult: EventEmitResult = new Object() as EventEmitResult;
+
+    if ( ( eventResultsLength >= 1 ) && lastEventResult && lastEventResult.result ) {
+      lastEventRenderResultId = ( eventResultsLength - 1 );
+      lastEventResult = eventBeforeRenderResult[ lastEventRenderResultId ] as EventEmitResult;
+
+
+      //@ts-ignore
+      dataForRendering = lastEventResult.result.value;
+    }
+
+
 
     const nodeHtml: any = this.templateRenderer
       .setTemplate(TreeConstants.TEMPLATE__TREE_HTML_NODE)
@@ -608,9 +635,9 @@ export class Tree extends ImprovedRenderEventEmitter {
     }
 
     const eventAfterRenderOneNodePayload: object = {
-      eventName: TreeConstants.TreeEventsNames.EVENT_NAME__AFTER_RENDER_ONE_NODE,
-      treeHtmlNode: li,
-      treeItemJson: nodeClone
+      "eventName": TreeConstants.TreeEventsNames.EVENT_NAME__AFTER_RENDER_ONE_NODE,
+      "treeHtmlNode": li,
+      "treeItemJson": nodeClone
     };
 
     if (!hasSubtree) {

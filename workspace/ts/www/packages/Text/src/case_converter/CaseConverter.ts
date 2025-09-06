@@ -16,125 +16,19 @@
  * Features
  * - Handles camelCase/PascalCase/snake_case/kebab-case/CONSTANT_CASE/Train-Case/dot.case/path/case
 */
+
+
+// import {
+//   ICapsOrSmallTransformVariants,
+//   ICharTypeEnum,
+//   IJoinDelimiterVariants,
+//   IParseTimeGrouppingVariants,
+//   ITransformVariants
+// } from "./types/CaseConverterTypes.js";
+
+import { DataRecordMatches } from "./types/DataRecordMatches.js";
+import { CaseConverterConstants } from "./case_converter_constants/CaseConverterConstants.js";
 import { CaseConverterInterface } from "./CaseConverterInterface.js";
-
-
-/*
-  transformations variants:
-    . by delimiter:
-        with delimiter
-        without delimiter
-    . letter case
-        as is
-        to caps
-        to small
-        first cap
-    . first letter case other
-    . UC/LC chars groups separate
-    . number groups separate
-    extended Latin chars replace with similar base chars no separate group
-*/
-
-
-
-export enum CapsOrSmallTransformVariants {
-  caps = 1,
-  small = 2,
-  firstCapsAndSmall = 3,
-  firstCapsAsIs = 4,
-  asIs = 5
-}
-
-
-// char type enum
-export enum CharTypeEnum {
-  caps = 1,
-  small = 2,
-  num = 3,
-  omitted = 4,
-  delimiter = 5
-}
-
-
-
-export enum JoinDelimiterVariants {
-  everyGroup = 3,
-  beforeNumbersNoDelimiter = 4,
-  afterNumbersNoDelimiter = 5,
-  neverNumbersDelimiter = 6,
-  delimitersReplaced = 7
-}
-
-
-
-export type ParseTimeGrouppingVariants = {
-  numGrups: boolean,
-  UcLcGroups: boolean,
-  firstCapsGroups: boolean
-};
-
-
-
-export type TransformVariants = {
-  delimiter: string,
-  UcLcTransform: number
-};
-
-
-
-export class DataRecordMatches {
-
-  groups_positions:            number[][];
-
-  prev_CharTypeEnum:           number;
-  current_CharTypeEnum:        number;
-
-  currentGroupOfCharType_charsAmount: number;
-
-
-  // groupNumber_positions:       number[][];
-  // groupCaps_positions:         number[][];
-  // groupSmall_positions:        number[][];
-  // groupFirstCap_positions:     number[][];
-  // groupOmittedChars_positions: number[][];
-  // wasNumber: boolean;
-  // isNumber:  boolean;
-  // groupNumber_length: number;
-  // wasCaps:   boolean;
-  // isCaps:    boolean;
-  // wasSmall:  boolean;
-  // isSmall:   boolean;
-  // wasOmitted: boolean;
-  // isOmitted: boolean;
-  // groupSameCase_length: number;
-  // groupOmittedChars_length: number;
-  constructor() {
-    this.groups_positions          = new Array() as number[][];
-
-    this.prev_CharTypeEnum         = 0;
-    this.current_CharTypeEnum      = 0;
-
-    this.currentGroupOfCharType_charsAmount = 0;
-
-
-    // this.groupNumber_positions     = new Array() as number[][];
-    // this.groupCaps_positions       = new Array() as number[][];
-    // this.groupSmall_positions      = new Array() as number[][];
-    // this.groupFirstCap_positions   = new Array() as number[][];
-    // this.groupOmittedChars_positions = new Array() as number[][];
-    // this.wasNumber  = false;
-    // this.isNumber   = false;
-    // this.groupNumber_length = 0;
-    // this.wasCaps    = false;
-    // this.isCaps     = false;
-    // this.wasSmall   = false;
-    // this.isSmall    = false;
-    // this.wasOmitted = false;
-    // this.isOmitted  = false;
-    // this.groupSameCase_length = 0;
-    // this.groupOmittedChars_length = 0;
-  }
-}
 
 
 
@@ -257,9 +151,9 @@ export class CaseConverter implements CaseConverterInterface {
     return CaseConverter.getInstance().toDelimited (
       inText,
       ".",
-      CapsOrSmallTransformVariants.small,
-      CapsOrSmallTransformVariants.small,
-      JoinDelimiterVariants.everyGroup
+      CaseConverterConstants.CapsOrSmallTransformVariants.small,
+      CaseConverterConstants.CapsOrSmallTransformVariants.small,
+      CaseConverterConstants.JoinDelimiterVariants.everyGroup
     );
   }
 
@@ -284,9 +178,9 @@ export class CaseConverter implements CaseConverterInterface {
     return this.toDelimited (
       inText,
       "",
-      CapsOrSmallTransformVariants.small,
-      CapsOrSmallTransformVariants.firstCapsAndSmall,
-      JoinDelimiterVariants.delimitersReplaced
+      CaseConverterConstants.CapsOrSmallTransformVariants.small,
+      CaseConverterConstants.CapsOrSmallTransformVariants.firstCapsAndSmall,
+      CaseConverterConstants.JoinDelimiterVariants.delimitersReplaced
     );
 
   }
@@ -297,9 +191,9 @@ export class CaseConverter implements CaseConverterInterface {
     return this.toDelimited (
       inText,
       "",
-      CapsOrSmallTransformVariants.firstCapsAndSmall,
-      CapsOrSmallTransformVariants.firstCapsAndSmall,
-      JoinDelimiterVariants.delimitersReplaced
+      CaseConverterConstants.CapsOrSmallTransformVariants.firstCapsAndSmall,
+      CaseConverterConstants.CapsOrSmallTransformVariants.firstCapsAndSmall,
+      CaseConverterConstants.JoinDelimiterVariants.delimitersReplaced
     );
 
   }
@@ -310,9 +204,9 @@ export class CaseConverter implements CaseConverterInterface {
     return this.toDelimited (
       inText,
       "_",
-      CapsOrSmallTransformVariants.small,
-      CapsOrSmallTransformVariants.small,
-      JoinDelimiterVariants.everyGroup
+      CaseConverterConstants.CapsOrSmallTransformVariants.small,
+      CaseConverterConstants.CapsOrSmallTransformVariants.small,
+      CaseConverterConstants.JoinDelimiterVariants.everyGroup
     );
 
   }
@@ -323,9 +217,9 @@ export class CaseConverter implements CaseConverterInterface {
     return this.toDelimited (
       inText,
       "-",
-      CapsOrSmallTransformVariants.small,
-      CapsOrSmallTransformVariants.small,
-      JoinDelimiterVariants.beforeNumbersNoDelimiter
+      CaseConverterConstants.CapsOrSmallTransformVariants.small,
+      CaseConverterConstants.CapsOrSmallTransformVariants.small,
+      CaseConverterConstants.JoinDelimiterVariants.beforeNumbersNoDelimiter
     );
 
   }
@@ -336,9 +230,9 @@ export class CaseConverter implements CaseConverterInterface {
     return this.toDelimited (
       inText,
       "_",
-      CapsOrSmallTransformVariants.caps,
-      CapsOrSmallTransformVariants.caps,
-      JoinDelimiterVariants.everyGroup
+      CaseConverterConstants.CapsOrSmallTransformVariants.caps,
+      CaseConverterConstants.CapsOrSmallTransformVariants.caps,
+      CaseConverterConstants.JoinDelimiterVariants.everyGroup
     );
 
   }
@@ -363,9 +257,9 @@ export class CaseConverter implements CaseConverterInterface {
     return this.toDelimited (
       inText,
       " ",
-      CapsOrSmallTransformVariants.firstCapsAndSmall,
-      CapsOrSmallTransformVariants.small,
-      JoinDelimiterVariants.everyGroup
+      CaseConverterConstants.CapsOrSmallTransformVariants.firstCapsAndSmall,
+      CaseConverterConstants.CapsOrSmallTransformVariants.small,
+      CaseConverterConstants.JoinDelimiterVariants.everyGroup
     );
 
   }
@@ -376,9 +270,9 @@ export class CaseConverter implements CaseConverterInterface {
     return this.toDelimited (
       inText,
       "-",
-      CapsOrSmallTransformVariants.firstCapsAndSmall,
-      CapsOrSmallTransformVariants.firstCapsAndSmall,
-      JoinDelimiterVariants.everyGroup
+      CaseConverterConstants.CapsOrSmallTransformVariants.firstCapsAndSmall,
+      CaseConverterConstants.CapsOrSmallTransformVariants.firstCapsAndSmall,
+      CaseConverterConstants.JoinDelimiterVariants.everyGroup
     );
   }
 
@@ -388,9 +282,9 @@ export class CaseConverter implements CaseConverterInterface {
     return this.toDelimited (
       inText,
       "/",
-      CapsOrSmallTransformVariants.small,
-      CapsOrSmallTransformVariants.small,
-      JoinDelimiterVariants.delimitersReplaced
+      CaseConverterConstants.CapsOrSmallTransformVariants.small,
+      CaseConverterConstants.CapsOrSmallTransformVariants.small,
+      CaseConverterConstants.JoinDelimiterVariants.delimitersReplaced
     );
 
   }
@@ -483,11 +377,11 @@ export class CaseConverter implements CaseConverterInterface {
     let locTransformFunc:            CallableFunction|false = false;
 
     let transformResolvingObject: any = {
-      [CapsOrSmallTransformVariants.caps]: this.toUC,
-      [CapsOrSmallTransformVariants.small]: this.toLC,
-      [CapsOrSmallTransformVariants.firstCapsAndSmall]: this.toFirstCapsAndSmall,
-      [CapsOrSmallTransformVariants.firstCapsAsIs]: this.toFirstCapsAsIs,
-      [CapsOrSmallTransformVariants.asIs]: false
+      [CaseConverterConstants.CapsOrSmallTransformVariants.caps]: this.toUC,
+      [CaseConverterConstants.CapsOrSmallTransformVariants.small]: this.toLC,
+      [CaseConverterConstants.CapsOrSmallTransformVariants.firstCapsAndSmall]: this.toFirstCapsAndSmall,
+      [CaseConverterConstants.CapsOrSmallTransformVariants.firstCapsAsIs]: this.toFirstCapsAsIs,
+      [CaseConverterConstants.CapsOrSmallTransformVariants.asIs]: false
     };
 
     let valueTransformFirst_ResolvingObject: CallableFunction|false = false;
@@ -580,7 +474,7 @@ export class CaseConverter implements CaseConverterInterface {
       locTmpGroupRanges = groupsMultidimPosArray[ groupOfChars_Id ];
       locCurrentCharsGroupType = locTmpGroupRanges[2];
 
-      if ( locCurrentCharsGroupType === CharTypeEnum.delimiter ) {
+      if ( locCurrentCharsGroupType === CaseConverterConstants.CharTypeEnum.delimiter ) {
 
         if ( ( locIsDelimiter === true ) && ( groupOfChars_Id !== 0 )  ) {
           retVal_transformed.push( delimiter );
@@ -676,7 +570,7 @@ export class CaseConverter implements CaseConverterInterface {
 
     locTmp_ofTypeDelimiter_TransformedGroupRanges[0] = (-1);
     locTmp_ofTypeDelimiter_TransformedGroupRanges[1] = (-1);
-    locTmp_ofTypeDelimiter_TransformedGroupRanges[2] = CharTypeEnum.delimiter;
+    locTmp_ofTypeDelimiter_TransformedGroupRanges[2] = CaseConverterConstants.CharTypeEnum.delimiter;
 
     markerJ: while ( groupOfChars_Id < groupsArrayLen ) {
 
@@ -712,14 +606,14 @@ export class CaseConverter implements CaseConverterInterface {
       locTmp_ofTypeCurrent_TransformedGroupRanges = [ ...locTmpGroupRanges ];
 
       if (
-        ( locPreviousCharsGroupType === CharTypeEnum.omitted ) &&
-        ( locCurrentCharsGroupType  === CharTypeEnum.omitted )
+        ( locPreviousCharsGroupType === CaseConverterConstants.CharTypeEnum.omitted ) &&
+        ( locCurrentCharsGroupType  === CaseConverterConstants.CharTypeEnum.omitted )
       ) {
         groupOfChars_Id++;
         continue markerJ;
       }
 
-      if ( locCurrentCharsGroupType === CharTypeEnum.omitted ) {
+      if ( locCurrentCharsGroupType === CaseConverterConstants.CharTypeEnum.omitted ) {
         transformedGroupsMultidimPosArray.push ( locTmp_ofTypeDelimiter_TransformedGroupRanges );
         groupOfChars_Id++;
         continue markerJ;
@@ -734,8 +628,8 @@ export class CaseConverter implements CaseConverterInterface {
       }
 
       if (
-        ( locCurrentCharsGroupType === CharTypeEnum.caps ) &&
-          ( locNextCharsGroupType === CharTypeEnum.small )
+        ( locCurrentCharsGroupType === CaseConverterConstants.CharTypeEnum.caps ) &&
+          ( locNextCharsGroupType === CaseConverterConstants.CharTypeEnum.small )
       ) {
         let currentCapsGroupStartPos: number = locTmp_ofTypeCurrent_TransformedGroupRanges[0];
         let currentCapsGroupEndPos: number = locTmp_ofTypeCurrent_TransformedGroupRanges[1];
@@ -749,11 +643,11 @@ export class CaseConverter implements CaseConverterInterface {
 
         if ( currentCapsGroupCharsNumber === 1 ) {
 
-          // if ( locPreviousCharsGroupType === CharTypeEnum.omitted ) {
+          // if ( locPreviousCharsGroupType === CaseConverterConstants.CharTypeEnum.omitted ) {
           // }
           // else {
           // }
-          groupsMultidimPosArray[ groupOfChars_Id ][2] = CharTypeEnum.omitted;
+          groupsMultidimPosArray[ groupOfChars_Id ][2] = CaseConverterConstants.CharTypeEnum.omitted;
 
         } else {
           currentCapsGroupEndPos--;
@@ -774,33 +668,33 @@ export class CaseConverter implements CaseConverterInterface {
         lastTransformedCharsGroup_charType = transformedGroupsMultidimPosArray[ transformedCharsGroup_DataRecord_lastId ][2];
       }
 
-      if ( ( locPreviousCharsGroupType === CharTypeEnum.omitted ) && ( lastTransformedCharsGroup_charType === CharTypeEnum.delimiter ) ) {
+      if ( ( locPreviousCharsGroupType === CaseConverterConstants.CharTypeEnum.omitted ) && ( lastTransformedCharsGroup_charType === CaseConverterConstants.CharTypeEnum.delimiter ) ) {
         transformedGroupsMultidimPosArray.push ( locTmp_ofTypeCurrent_TransformedGroupRanges );
 
         groupOfChars_Id++;
         continue markerJ;
       }
 
-      if ( joinDelimiterVariant === JoinDelimiterVariants.everyGroup ) {
+      if ( joinDelimiterVariant === CaseConverterConstants.JoinDelimiterVariants.everyGroup ) {
         transformedGroupsMultidimPosArray.push ( locTmp_ofTypeDelimiter_TransformedGroupRanges );
 
-      } else if ( joinDelimiterVariant === JoinDelimiterVariants.beforeNumbersNoDelimiter ) {
+      } else if ( joinDelimiterVariant === CaseConverterConstants.JoinDelimiterVariants.beforeNumbersNoDelimiter ) {
 
-        if ( locCurrentCharsGroupType !== CharTypeEnum.num ) {
+        if ( locCurrentCharsGroupType !== CaseConverterConstants.CharTypeEnum.num ) {
           transformedGroupsMultidimPosArray.push ( locTmp_ofTypeDelimiter_TransformedGroupRanges );
         }
 
-      } else if ( joinDelimiterVariant === JoinDelimiterVariants.afterNumbersNoDelimiter ) {
+      } else if ( joinDelimiterVariant === CaseConverterConstants.JoinDelimiterVariants.afterNumbersNoDelimiter ) {
 
         if (
-          ( locPreviousCharsGroupType !== CharTypeEnum.num )
+          ( locPreviousCharsGroupType !== CaseConverterConstants.CharTypeEnum.num )
         ) {
           transformedGroupsMultidimPosArray.push ( locTmp_ofTypeDelimiter_TransformedGroupRanges );
         }
 
-      } else if ( joinDelimiterVariant === JoinDelimiterVariants.neverNumbersDelimiter ) {
+      } else if ( joinDelimiterVariant === CaseConverterConstants.JoinDelimiterVariants.neverNumbersDelimiter ) {
 
-        if ( ( locPreviousCharsGroupType !== CharTypeEnum.num ) && ( locCurrentCharsGroupType !== CharTypeEnum.num ) ) {
+        if ( ( locPreviousCharsGroupType !== CaseConverterConstants.CharTypeEnum.num ) && ( locCurrentCharsGroupType !== CaseConverterConstants.CharTypeEnum.num ) ) {
           transformedGroupsMultidimPosArray.push ( locTmp_ofTypeDelimiter_TransformedGroupRanges );
         }
 
@@ -875,13 +769,13 @@ export class CaseConverter implements CaseConverterInterface {
 
       // isAlphaNum_aChar = ( parseTimeDataRecord.isNumber || parseTimeDataRecord.isCaps || parseTimeDataRecord.isSmall );
       if ( isNum_aChar ) {
-        parseTimeDataRecord.current_CharTypeEnum = CharTypeEnum.num;
+        parseTimeDataRecord.current_CharTypeEnum = CaseConverterConstants.CharTypeEnum.num;
       } else if ( is_UC_aChar ) {
-        parseTimeDataRecord.current_CharTypeEnum = CharTypeEnum.caps;
+        parseTimeDataRecord.current_CharTypeEnum = CaseConverterConstants.CharTypeEnum.caps;
       } else if ( is_LC_aChar ) {
-        parseTimeDataRecord.current_CharTypeEnum = CharTypeEnum.small;
+        parseTimeDataRecord.current_CharTypeEnum = CaseConverterConstants.CharTypeEnum.small;
       } else if ( isAlphaNum_aChar === false ) {
-        parseTimeDataRecord.current_CharTypeEnum = CharTypeEnum.omitted;
+        parseTimeDataRecord.current_CharTypeEnum = CaseConverterConstants.CharTypeEnum.omitted;
       }
 
       this.tasksParseTimeDataRecord ( parseTimeDataRecord, charPos );
@@ -990,10 +884,10 @@ export class CaseConverter implements CaseConverterInterface {
     let isOfCharType: boolean = true;
 
     let charTypeDetectionMethods: any = {
-      [CharTypeEnum.caps]:    this.isUC,
-      [CharTypeEnum.small]:   this.isLC,
-      [CharTypeEnum.num]:     this.isNumLatin,
-      [CharTypeEnum.omitted]: this.isAlphaNumLatin
+      [CaseConverterConstants.CharTypeEnum.caps]:    this.isUC,
+      [CaseConverterConstants.CharTypeEnum.small]:   this.isLC,
+      [CaseConverterConstants.CharTypeEnum.num]:     this.isNumLatin,
+      [CaseConverterConstants.CharTypeEnum.omitted]: this.isAlphaNumLatin
     };
 
     let i: number = 0;

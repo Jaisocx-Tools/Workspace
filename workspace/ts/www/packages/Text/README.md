@@ -256,54 +256,113 @@ export interface CaseConverterInterface {
 ```
 
 
+## Constants
+
+```typescript
+export class CaseConverterConstants {
+
+  static CapsOrSmallTransformVariants: ICapsOrSmallTransformVariants = {
+    caps: 1,
+    small: 2,
+    firstCapsAndSmall: 3,
+    firstCapsAsIs: 4,
+    asIs: 5
+  };
+
+
+
+  static CharTypeEnum: ICharTypeEnum = {
+    caps: 1,
+    small: 2,
+    num: 3,
+    omitted: 4,
+    delimiter: 5
+  };
+
+
+
+  static JoinDelimiterVariants: IJoinDelimiterVariants = {
+    everyGroup: 3,
+    beforeNumbersNoDelimiter: 4,
+    afterNumbersNoDelimiter: 5,
+    neverNumbersDelimiter: 6,
+    delimitersReplaced: 7
+  };
+
+
+
+  static ParseTimeGrouppingVariants: IParseTimeGrouppingVariants = {
+    numGrups: true,
+    UcLcGroups: true,
+    firstCapsGroups: true
+  };
+
+
+
+  static TransformVariants: ITransformVariants = {
+    delimiter: "_",
+    UcLcTransform: 5
+  };
+
+}
+```
+
+
+
 ## Enums and types
 
 ```typescript
-
-
-export enum CapsOrSmallTransformVariants {
-  caps = 1,
-  small = 2,
-  firstCapsAndSmall = 3,
-  firstCapsAsIs = 4,
-  asIs = 5
+export type ICapsOrSmallTransformVariants = {
+  caps: number,
+  small: number,
+  firstCapsAndSmall: number,
+  firstCapsAsIs: number,
+  asIs: number
 }
 
 
 // char type enum
-export enum CharTypeEnum {
-  caps = 1,
-  small = 2,
-  num = 3,
-  omitted = 4,
-  delimiter = 5
+export type ICharTypeEnum = {
+  caps: number,
+  small: number,
+  num: number,
+  omitted: number,
+  delimiter: number
 }
 
 
-
-export enum JoinDelimiterVariants {
-  everyGroup = 3,
-  beforeNumbersNoDelimiter = 4,
-  afterNumbersNoDelimiter = 5,
-  neverNumbersDelimiter = 6,
-  delimitersReplaced = 7
+export type IJoinDelimiterVariants = {
+  everyGroup: number,
+  beforeNumbersNoDelimiter: number,
+  afterNumbersNoDelimiter: number,
+  neverNumbersDelimiter: number,
+  delimitersReplaced: number
 }
 
 
-
-export type ParseTimeGrouppingVariants = {
+export type IParseTimeGrouppingVariants = {
   numGrups: boolean,
   UcLcGroups: boolean,
   firstCapsGroups: boolean
 };
 
 
-
-export type TransformVariants = {
+export type ITransformVariants = {
   delimiter: string,
   UcLcTransform: number
 };
 
+
+export type IDataRecordMatches = {
+
+  groups_positions:            number[][],
+
+  prev_CharTypeEnum:           number,
+  current_CharTypeEnum:        number,
+
+  currentGroupOfCharType_charsAmount: number
+
+}
 ```
 
 

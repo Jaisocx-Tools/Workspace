@@ -1,6 +1,6 @@
 {
   "name": "@jaisocx/preloader",
-  "version": "2.1.0",
+  "version": "2.2.0",
   "author": "Jaisocx",
   "keywords": [],
   "private": false,
@@ -27,6 +27,7 @@
     "access": "public"
   },
   "optionalDependencies": {
+    "@jaisocx/text": "~2.2.2",
     "@jaisocx/template-renderer": "~1.6.1"
   }
 }

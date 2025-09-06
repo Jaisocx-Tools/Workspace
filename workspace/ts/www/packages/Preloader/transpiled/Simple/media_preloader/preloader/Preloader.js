@@ -44,28 +44,72 @@ class Preloader {
 
 
 
-    init(isWithStopOnLoadTimeout = true) {
-        this.addDocumentLoadedEventHandler(isWithStopOnLoadTimeout);
+    init(
+        isWithStopOnLoadTimeout,
+        inTimeoutMillis
+    ) {
+        this.addDocumentLoadedEventHandler(
+            isWithStopOnLoadTimeout,
+            inTimeoutMillis
+        );
     }
 
 
     // @tasks: _isWithStopOnLoadTimeout impl stop on load timeout
-    addDocumentLoadedEventHandler(_isWithStopOnLoadTimeout = true) {
+    addDocumentLoadedEventHandler(
+        isWithStopOnLoadTimeout,
+        inTimeoutMillis
+    ) {
         const methodLinksImages = this.htmlDocumentAppendPreloadingLinkTags_Images.bind(this);
         const methodLinksFonts = this.htmlDocumentAppendPreloadingLinkTags_Fonts.bind(this);
+        let linkTags = new Array();
+        let tmpLinkTags = new Array();
+        let linkTagsNumber = 0;
+        let idsOfTagsLink = new Array();
+        let locOnloadFunc = () => {
+            tmpLinkTags = methodLinksImages(isWithStopOnLoadTimeout);
+            linkTags = [...tmpLinkTags];
+            tmpLinkTags = methodLinksFonts(isWithStopOnLoadTimeout);
+            linkTags = [...linkTags, ...tmpLinkTags];
+            linkTagsNumber = linkTags.length;
+            let i = 0;
+
+            while (i < linkTagsNumber) {
+                idsOfTagsLink.push(linkTags[i].id);
+                i++;
+            }
+
+            if (isWithStopOnLoadTimeout) {
+                this.addScriptLoadingStopOnTimeout(
+                    idsOfTagsLink,
+                    inTimeoutMillis
+                );
+            }
+            setTimeout(
+                () => {
+                    i = 0;
+
+                    while (i < linkTagsNumber) {
+                        document.head.append(linkTags[i]);
+                        i++;
+                    }
+                },
+                100
+            );
+        };
 
         if (document.readyState !== "loading") {
 
             // If already loaded, invokes immediately
-            methodLinksImages();
-            methodLinksFonts();
+            locOnloadFunc();
         }
         else {
             document.addEventListener(
                 "DOMContentLoaded",
                 () => {
-                    methodLinksImages();
-                    methodLinksFonts();
+
+                    // invokes on event DOMContentLoaded
+                    locOnloadFunc();
                 },
                 { once: true }
             );
@@ -74,20 +118,35 @@ class Preloader {
 
 
 
-    htmlDocumentAppendPreloadingLinkTags_Images() {
-        return this.htmlDocumentAppendPreloadingLinkTags("image");
+    htmlDocumentAppendPreloadingLinkTags_Images(isWithStopOnLoadTimeout) {
+        let linkTags = this.htmlDocumentAppendPreloadingLinkTags(
+            "image",
+            isWithStopOnLoadTimeout
+        );
+
+
+        return linkTags;
     }
 
 
 
-    htmlDocumentAppendPreloadingLinkTags_Fonts() {
-        return this.htmlDocumentAppendPreloadingLinkTags("font");
+    htmlDocumentAppendPreloadingLinkTags_Fonts(isWithStopOnLoadTimeout) {
+        let linkTags = this.htmlDocumentAppendPreloadingLinkTags(
+            "font",
+            isWithStopOnLoadTimeout
+        );
+
+
+        return linkTags;
     }
 
 
 
-    htmlDocumentAppendPreloadingLinkTags(inDataType) {
-        let idsOf_LinkTags = new Array();
+    htmlDocumentAppendPreloadingLinkTags(
+        inDataType,
+        isWithStopOnLoadTimeout
+    ) {
+        let linkTags = new Array();
 
 
         //@ts-ignore
@@ -96,11 +155,13 @@ class Preloader {
         if ((preloadsByDatatype === undefined) ||
             (preloadsByDatatype === null) ||
             (Object.values(preloadsByDatatype).length === 0)) {
-            return idsOf_LinkTags;
+            return linkTags;
         }
         let linkTagName = "link";
         let rel = "preload";
         let as = inDataType;
+        let linkId = "";
+        let linkTagOnloadCode = this.preloaderConstantsInstance.getLinkTagOnloadCode();
         let themeName = "";
         let webpackAliasedURL = "";
         let href = "";
@@ -127,18 +188,30 @@ class Preloader {
                 else {
                     href = webpackAliasedURL;
                 }
+                let filenameExtension = href.substring(href.lastIndexOf(".") + 1);
+                let filename = href.substring(href.lastIndexOf("/") + 1);
+                let filenameToId = [themeName, filename].join("_");
+                linkId = CaseConverter.snake(filenameToId);
+                link.setAttribute("id", linkId);
+                link.setAttribute("as", as);
+                link.setAttribute("href", href);
+                link.setAttribute("rel", rel);
+                link.setAttribute("fetchpriority", "high");
+                link.setAttribute(
+                    "type",
+                    `${inDataType}/${filenameExtension}`
+                );
+                link.setAttribute("crossorigin", "");
 
-
-                // link.type = "font/woff2";
-                link.as = as;
-                link.href = href;
-                link.rel = rel;
-                document.head.append(link);
+                if (isWithStopOnLoadTimeout) {
+                    link.setAttribute("onload", linkTagOnloadCode);
+                }
+                linkTags.push(link);
             }
         }
 
 
-        return idsOf_LinkTags;
+        return linkTags;
     }
 
 
@@ -194,9 +267,12 @@ class Preloader {
         this.templateRenderer.setTemplate(templateText);
         let inOutArgof_reduceMethod = new Object();
         let templateDataValueAsObject = idsOfLinkTags.reduce(
-            (_prev, curr, currentIndex, thisArray) => {
+            (prev, _curr, currentIndex, thisArray) => {
                 let currValueOfArray = thisArray[currentIndex];
-                curr[currValueOfArray] = 1;
+                prev[currValueOfArray] = 1;
+
+
+                return prev;
             },
             inOutArgof_reduceMethod
         );

@@ -13,18 +13,19 @@
 
   <script>
 
-    let linkTagsPreloading = {
+    let statLinkTagsPreloading = {
       "icon_brightday": 1,
-      "font_LibreFranklin_SemiBold": 1,
+      "font_LibreFranklin_Medium": 1,
       "font_LibreFranklin_Regular": 1,
+      "font_LibreFranklin_SemiBold": 1,
       "stylesheet_cdn_fonts": 1
     };
 
 
 
-    let loadingStopOnTimeout = ( idsObject ) => {
+    let statLinksLoadingStopOnTimeout = ( idsObject ) => {
 
-      console.log( "Script on timeout started" );
+      console.log( "Started script, cleaning up hanging hard preloads links, if cdn doesn't respond, in order to prevent blocked render in the browser." );
 
       let ids = Object.keys( idsObject );
       let idsNumber = ids.length;
@@ -49,9 +50,10 @@
         }
 
 
-
+        let url = "";
         try {
           tag = document.getElementById( id );
+          url = tag.getAttribute( "href" );
         } catch (e) {}
         try {
           tag.onerror = null;
@@ -67,8 +69,8 @@
         } catch (e) {}
         try {
           tag.remove();
+          console.log( "Cleaned up, after timeout, the hanging hard preload url:", url );
         } catch (e) {}
-
 
 
         i++;
@@ -79,9 +81,9 @@
 
     setTimeout (
       () => {
-        loadingStopOnTimeout( linkTagsPreloading );
+        statLinksLoadingStopOnTimeout( statLinkTagsPreloading );
       },
-      1600
+      800
     );
 
   </script>
@@ -94,7 +96,8 @@
     type="image/x-icon"
     href="https://sandbox.brightday.email/cdn/www/media/images/favicon/Icon_Jaisocx.ico"
     href-fallback="favicon/Icon_Jaisocx.ico"
-    onerror="javascript: ( () => { this.onerror = null; this.href = this.getAttribute( 'href-fallback' ); } )();"
+    onload="javascript: ( () => { this.onerror = null; const id = this.id; statLinkTagsPreloading[id] = 3; } )();"
+    onerror="javascript: ( () => { this.href = this.getAttribute( 'href-fallback' ); } )();"
   /> -->
 
   <link
@@ -102,20 +105,26 @@
     rel="icon"
     type="image/x-icon"
     href="https://sandbox.brightday.email/cdn/www/media/images/favicon/Icon_Sandbox_Brightday.ico"
-    href-fallback="./favicon/Icon_Sandbox_Brightday.ico"
-    onload="javascript: ( () => { this.onerror = null; const id = this.id; linkTagsPreloading[id] = 3; } )();"
+    href-fallback="favicon/Icon_Sandbox_Brightday.ico"
+    onload="javascript: ( () => { this.onerror = null; const id = this.id; statLinkTagsPreloading[id] = 3; } )();"
     onerror="javascript: ( () => { this.href = this.getAttribute( 'href-fallback' ); } )();"
   />
 
+
+
   <!--# FONTS PRELOAD WITHOUT JAVASCRIPT CALL -->
+  <!-- the crossorigin attribute prevents loading fonts twice.
+          The fonts are loaded twice, even if the urls matches exactly in the @font-face src url and tag <link href="" />
+  -->
   <link
-    id="font_LibreFranklin_SemiBold"
+    id="font_LibreFranklin_Medium"
     fetchpriority="high"
     rel="preload"
     as="font"
     type="font/ttf"
-    href="https://sandbox.brightday.email/cdn/www/fonts/LibreFranklin/static/LibreFranklin-SemiBold.ttf"
-    onload="javascript: ( () => { const id = this.id; linkTagsPreloading[id] = 3; } )();"
+    crossorigin
+    href="https://sandbox.brightday.email/cdn/www/fonts/LibreFranklin/static/LibreFranklin-Medium.ttf"
+    onload="javascript: ( () => { const id = this.id; statLinkTagsPreloading[id] = 3; } )();"
   />
 
   <link
@@ -124,17 +133,30 @@
     rel="preload"
     as="font"
     type="font/ttf"
+    crossorigin
     href="https://sandbox.brightday.email/cdn/www/fonts/LibreFranklin/static/LibreFranklin-Regular.ttf"
-    onload="javascript: ( () => { const id = this.id; linkTagsPreloading[id] = 3; } )();"
+    onload="javascript: ( () => { const id = this.id; statLinkTagsPreloading[id] = 3; } )();"
+  />
+
+  <link
+    id="font_LibreFranklin_SemiBold"
+    fetchpriority="high"
+    rel="preload"
+    as="font"
+    type="font/ttf"
+    crossorigin
+    href="https://sandbox.brightday.email/cdn/www/fonts/LibreFranklin/static/LibreFranklin-SemiBold.ttf"
+    onload="javascript: ( () => { const id = this.id; statLinkTagsPreloading[id] = 3; } )();"
   />
 
   <!--# CSS FOR FONTS -->
+  <!-- when opened .html file locally, the requested by this .css file fonts are blocked by browsers' CORS. The response headers of a cdn server needed. -->
   <link
     id="stylesheet_cdn_fonts"
     rel="stylesheet"
     type="text/css"
     href="https://sandbox.brightday.email/cdn/www/fonts_css/font_LibreFranklin_cdn.css"
-    onload="javascript: ( () => { const id = this.id; linkTagsPreloading[id] = 3; } )();"
+    onload="javascript: ( () => { const id = this.id; statLinkTagsPreloading[id] = 3; } )();"
   />
 
 
@@ -146,8 +168,8 @@
     rel="stylesheet"
     type="text/css"
     charset="utf-8"
-    href="../css-clean-start-2/MediaAndStyles/CssCleanStart_2_main_relative.css"
-    href-fallback="node_modules/@jaisocx/css-clean-start-2/MediaAndStyles/CssCleanStart_2_main_relative.css"
+    href="node_modules/@jaisocx/css-clean-start-2/MediaAndStyles/CssCleanStart_2_main_relative.css"
+    href-fallback="../css-clean-start-2/MediaAndStyles/CssCleanStart_2_main_relative.css"
     onerror="javascript: ( () => { this.onerror = null; this.href = this.getAttribute( 'href-fallback' ); } )();"
   /> -->
 
@@ -203,6 +225,8 @@
       --jsx--css-clean-start-2--h3--font-size: 0.83rem;
 
       --jsx--css-clean-start-2--h2--font-weight: 500;
+
+      --jsx--css-clean-start-2--all-tags--font-family: LibreFranklin;
 
       --theme-button-width: fit-content;
     }
@@ -284,369 +308,426 @@
     <div id="example-tree-holder_load_by_url"></div>
 
 
-    </main>
+  </main>
 
-  </body>
-
-
-
-  <script
-    type="text/javascript"
-    src="node_modules/@jaisocx/preloader/transpiled/Simple/scripts_chained_loader/ScriptsChainedLoader.js"
-    src-fallback="../preloader/transpiled/Simple/scripts_chained_loader/ScriptsChainedLoader.js"
-    onload="javascipt: ( () => { if ( treeExamplesClassInstance.wasOnceRendered === true ) { return; }; treeExamplesClassInstance = new TreeExamples(); treeExamplesClassInstance.onDOMContentLoadedEventHandler(); } )();"
-    onerror="javascript: ( () => { let tagScript = document.createElement( 'script' ); tagScript.onload = this.onload.bind( tagScript ); tagScript.src = this.getAttribute( 'src-fallback' ); document.body.insertAdjacentElement( 'afterend', tagScript ); this.remove(); } )();">
-  </script>
-
-
-  <script>
-
-    let treeExamplesClassInstance = new Object();
-
-
-    let cssClassesNames = [
-      "jsx"
-    ];
-
-    let buttonsQuerySelectors = [
-      "themebuttons button"
-    ];
-
-    let preloadFontsCDNData = {
-      "image": null,
-      "font": {
-        "theme_font_LibreFranklin": [
-          "https://sandbox.brightday.email/cdn/www/fonts/LibreFranklin/static/LibreFranklin-SemiBold.ttf",
-          "https://sandbox.brightday.email/cdn/www/fonts/LibreFranklin/static/LibreFranklin-Regular.ttf",
-        ],
-        "theme_font_Baloo_Paaji_2": [
-          "https://sandbox.brightday.email/cdn/www/fonts/Baloo_Paaji_2/static/BalooPaaji2-SemiBold.ttf",
-          "https://sandbox.brightday.email/cdn/www/fonts/Baloo_Paaji_2/static/BalooPaaji2-Regular.ttf",
-        ],
-        "theme_font_Niconne": [
-          "https://sandbox.brightday.email/cdn/www/fonts/Niconne/Niconne-Regular.ttf",
-        ],
-      }
-    };
-
-    let data_ScriptsChainedLoader = {
-      "preloader": {
-        "node_modules": true,
-        "npm_namespace": "@jaisocx",
-        "scripts": [
-          "media_preloader/media_preloader_constants/PreloaderConstants",
-          "media_preloader/preloader/Preloader"
-        ]
-      },
-      "theme-turn-on": {
-        "node_modules": true,
-        "npm_namespace": "@jaisocx",
-        "scripts": [
-          "constants/ThemeTurnOnConstants",
-          "theme_turn_on/ThemeTurnOn"
-        ]
-      },
-      "event-emitter": {
-        "node_modules": true,
-        "npm_namespace": "@jaisocx",
-        "scripts": [
-          "EventEmitter",
-          "ImprovedRenderEventEmitter"
-        ]
-      },
-      "tokens-parser": {
-        "node_modules": true,
-        "npm_namespace": "@jaisocx",
-        "scripts": [
-          "TokensParser"
-        ]
-      },
-      "template-renderer": {
-        "node_modules": true,
-        "npm_namespace": "@jaisocx",
-        "scripts": [
-          "TemplateRenderer"
-        ]
-      },
-      "tree": {
-        "scripts": [
-          "typescript/ArrayOrObjectPackage",
-          "typescript/TreeConstants",
-          "typescript/TreeConf",
-          "typescript/TreeAdapter",
-          "typescript/TreeAdapterModeEase",
-          "typescript/TreeAdapterModeConf",
-          "typescript/Tree"
-        ]
-      }
-    };
+</body>
 
 
 
-    // in this json structure for Tree,
-    // the subtree is of type JSON array,
-    // where each array item is the object,
-    // having data for a Tree node rendering to html,
-    // e.g. label text, Tree node html holding element css classes names, and similar.
+<script>
 
-    // -------------------
-    // START TREE CONF DATA
-    let treeJson_SubtreeArrayOfObjects = [
-      {
-        "icon": "MediaAndStyles/themes/theme_base/mini_images/home_tree_mode_conf/house.png",
-        "label": "Main",
-        "opened": false,
-        "text": "<h3>Main tree elem</h3>",
-        "subtree": [
-          {
-            "icon": "MediaAndStyles/themes/theme_base/mini_images/home_tree_mode_conf/google.png",
-            "label": "A Link to Google",
-            "href": "https://google.com/",
-            "cssClassName": "hyperlink"
-          },
-          {
-            "icon": "MediaAndStyles/themes/theme_base/mini_images/home_tree_mode_conf/github.png",
-            "label": "A Link to GitHub",
-            "href": "https://github.com/orgs/Jaisocx-Tools/repositories",
-            "cssClassName": "hyperlink"
-          },
-          {
-            "icon": "MediaAndStyles/themes/theme_base/mini_images/home_tree_mode_conf/catalog.png",
-            "label": "echo html",
-            "opened": false,
-            "subtree": [
-              {
-                "icon": "MediaAndStyles/themes/theme_base/mini_images/home_tree_mode_conf/html.png",
-                "label": "html 1",
-                "href": "javascript: void(0);",
-                "text": "<h3>Hello World!</h3><p style=\"color:#26d;\">Have fun with styling and using JSTree tool.</p>"
-              },
-              {
-                "icon": "MediaAndStyles/themes/theme_base/mini_images/home_tree_mode_conf/html.png",
-                "label": "html 2",
-                "href": "javascript: void(0);",
-                "text": "<h3>Hello World!</h3><p style=\"color:#d83;\">You can edit code easily, JSTree class is lightweight.</p>"
-              },
-              {
-                "icon": "MediaAndStyles/themes/theme_base/mini_images/home_tree_mode_conf/html.png",
-                "label": "html 3",
-                "href": "javascript: void(0);",
-                "text": "<h3>Hello World!</h3><p style=\"color:#00bb00;\">Have a nice day.</p>"
-              }
-            ]
-          }
-        ]
-      }
-    ];
+  let treeExamplesClassInstance = new Object();
 
-    // in this json structure the subtree node for sublevel tree nodes is not the array,
-    // but the associative array, the object with keys, being not rendered in the Tree,
-    // and object values all of type object, containing Tree node data, like label text, link address, and others.
-    let treeJson_SubtreeLikeObjects = {
-      "fgfgf": {
-        "icon": "MediaAndStyles/themes/theme_base/mini_images/home_tree_mode_conf/house.png",
-        "label": "Main",
-        "opened": true,
-        "text": "<h3>Main tree elem</h3>",
-        "subtree": {
-          "frnynyr": {
-            "icon": "MediaAndStyles/themes/theme_base/mini_images/home_tree_mode_conf/google.png",
-            "label": "A Link to Google",
-            "href": "https://google.com/",
-            "cssClassName": "hyperlink"
-          },
-          "rnyrny": {
-            "icon": "MediaAndStyles/themes/theme_base/mini_images/home_tree_mode_conf/github.png",
-            "label": "A Link to GitHub",
-            "href": "https://github.com/orgs/Jaisocx-Tools/repositories",
-            "cssClassName": "hyperlink"
-          },
-          "rynrnyrn": {
-            "icon": "MediaAndStyles/themes/theme_base/mini_images/home_tree_mode_conf/catalog.png",
-            "label": "echo html",
-            "opened": false,
-            "subtree": {
-              "rnynry": {
-                "icon": "MediaAndStyles/themes/theme_base/mini_images/home_tree_mode_conf/html.png",
-                "label": "html 1",
-                "href": "javascript: void(0);",
-                "text": "<h3>Hello World!</h3><p style=\"color:#26d;\">Have fun with styling and using JSTree tool.</p>"
-              },
-              "rynynry": {
-                "icon": "MediaAndStyles/themes/theme_base/mini_images/home_tree_mode_conf/html.png",
-                "label": "html 2",
-                "href": "javascript: void(0);",
-                "text": "<h3>Hello World!</h3><p style=\"color:#d83;\">You can edit code easily, JSTree class is lightweight.</p>"
-              },
-              "ghnghn": {
-                "icon": "MediaAndStyles/themes/theme_base/mini_images/home_tree_mode_conf/html.png",
-                "label": "html 3",
-                "href": "javascript: void(0);",
-                "text": "<h3>Hello World!</h3><p style=\"color:#00bb00;\">Have a nice day.</p>"
-              }
+
+  let cssClassesNames = [
+    "jsx"
+  ];
+
+  let buttonsQuerySelectors = [
+    "themebuttons button"
+  ];
+
+
+  let isPreloadWithStopOnLoadTimeout = false;
+
+  let preloaderStopTimeoutMillis = 1200;
+
+
+  let preloadFontsCDNData = {
+    "image": null,
+    "font": {
+      "theme_font_Baloo_Paaji_2": [
+        "https://sandbox.brightday.email/cdn/www/fonts/Baloo_Paaji_2/static/BalooPaaji2-Medium.ttf",
+        "https://sandbox.brightday.email/cdn/www/fonts/Baloo_Paaji_2/static/BalooPaaji2-Regular.ttf",
+        "https://sandbox.brightday.email/cdn/www/fonts/Baloo_Paaji_2/static/BalooPaaji2-SemiBold.ttf",
+      ],
+      "theme_font_Niconne": [
+        "https://sandbox.brightday.email/cdn/www/fonts/Niconne/Niconne-Regular.ttf",
+      ],
+    }
+  };
+
+  let data_ScriptsChainedLoader = {
+    "text": {
+      "node_modules": true,
+      "npm_namespace": "@jaisocx",
+      "scripts": [
+        "case_converter/types/DataRecordMatches",
+        "case_converter/case_converter_constants/CaseConverterConstants",
+        "case_converter/CaseConverter"
+      ],
+    },
+    "preloader": {
+      "node_modules": true,
+      "npm_namespace": "@jaisocx",
+      "scripts": [
+        "media_preloader/media_preloader_constants/PreloaderConstants",
+        "media_preloader/preloader/Preloader"
+      ]
+    },
+    "theme-turn-on": {
+      "node_modules": true,
+      "npm_namespace": "@jaisocx",
+      "scripts": [
+        "constants/ThemeTurnOnConstants",
+        "theme_turn_on/ThemeTurnOn"
+      ]
+    },
+    "event-emitter": {
+      "node_modules": true,
+      "npm_namespace": "@jaisocx",
+      "scripts": [
+        "EventEmitter",
+        "ImprovedRenderEventEmitter"
+      ]
+    },
+    "tokens-parser": {
+      "node_modules": true,
+      "npm_namespace": "@jaisocx",
+      "scripts": [
+        "TokensParser"
+      ]
+    },
+    "template-renderer": {
+      "node_modules": true,
+      "npm_namespace": "@jaisocx",
+      "scripts": [
+        "TemplateRenderer"
+      ]
+    },
+    "tree": {
+      "scripts": [
+        "typescript/ArrayOrObjectPackage",
+        "typescript/TreeConstants",
+        "typescript/TreeConf",
+        "typescript/TreeAdapter",
+        "typescript/TreeAdapterModeEase",
+        "typescript/TreeAdapterModeConf",
+        "typescript/Tree"
+      ]
+    }
+  };
+
+
+
+  // in this json structure for Tree,
+  // the subtree is of type JSON array,
+  // where each array item is the object,
+  // having data for a Tree node rendering to html,
+  // e.g. label text, Tree node html holding element css classes names, and similar.
+
+  // -------------------
+  // START TREE CONF DATA
+  let treeJson_SubtreeArrayOfObjects = [
+    {
+      "icon": "MediaAndStyles/themes/theme_base/mini_images/home_tree_mode_conf/house.png",
+      "label": "Main",
+      "opened": false,
+      "text": "<h3>Main tree elem</h3>",
+      "subtree": [
+        {
+          "icon": "MediaAndStyles/themes/theme_base/mini_images/home_tree_mode_conf/google.png",
+          "label": "A Link to Google",
+          "href": "https://google.com/",
+          "cssClassName": "hyperlink"
+        },
+        {
+          "icon": "MediaAndStyles/themes/theme_base/mini_images/home_tree_mode_conf/github.png",
+          "label": "A Link to GitHub",
+          "href": "https://github.com/orgs/Jaisocx-Tools/repositories",
+          "cssClassName": "hyperlink"
+        },
+        {
+          "icon": "MediaAndStyles/themes/theme_base/mini_images/home_tree_mode_conf/catalog.png",
+          "label": "echo html",
+          "opened": false,
+          "subtree": [
+            {
+              "icon": "MediaAndStyles/themes/theme_base/mini_images/home_tree_mode_conf/html.png",
+              "label": "html 1",
+              "href": "javascript: void(0);",
+              "text": "<h3>Hello World!</h3><p style=\"color:#26d;\">Have fun with styling and using JSTree tool.</p>"
+            },
+            {
+              "icon": "MediaAndStyles/themes/theme_base/mini_images/home_tree_mode_conf/html.png",
+              "label": "html 2",
+              "href": "javascript: void(0);",
+              "text": "<h3>Hello World!</h3><p style=\"color:#d83;\">You can edit code easily, JSTree class is lightweight.</p>"
+            },
+            {
+              "icon": "MediaAndStyles/themes/theme_base/mini_images/home_tree_mode_conf/html.png",
+              "label": "html 3",
+              "href": "javascript: void(0);",
+              "text": "<h3>Hello World!</h3><p style=\"color:#00bb00;\">Have a nice day.</p>"
+            }
+          ]
+        }
+      ]
+    }
+  ];
+
+  // in this json structure the subtree node for sublevel tree nodes is not the array,
+  // but the associative array, the object with keys, being not rendered in the Tree,
+  // and object values all of type object, containing Tree node data, like label text, link address, and others.
+  let treeJson_SubtreeLikeObjects = {
+    "fgfgf": {
+      "icon": "MediaAndStyles/themes/theme_base/mini_images/home_tree_mode_conf/house.png",
+      "label": "Main",
+      "opened": true,
+      "text": "<h3>Main tree elem</h3>",
+      "subtree": {
+        "frnynyr": {
+          "icon": "MediaAndStyles/themes/theme_base/mini_images/home_tree_mode_conf/google.png",
+          "label": "A Link to Google",
+          "href": "https://google.com/",
+          "cssClassName": "hyperlink"
+        },
+        "rnyrny": {
+          "icon": "MediaAndStyles/themes/theme_base/mini_images/home_tree_mode_conf/github.png",
+          "label": "A Link to GitHub",
+          "href": "https://github.com/orgs/Jaisocx-Tools/repositories",
+          "cssClassName": "hyperlink"
+        },
+        "rynrnyrn": {
+          "icon": "MediaAndStyles/themes/theme_base/mini_images/home_tree_mode_conf/catalog.png",
+          "label": "echo html",
+          "opened": false,
+          "subtree": {
+            "rnynry": {
+              "icon": "MediaAndStyles/themes/theme_base/mini_images/home_tree_mode_conf/html.png",
+              "label": "html 1",
+              "href": "javascript: void(0);",
+              "text": "<h3>Hello World!</h3><p style=\"color:#26d;\">Have fun with styling and using JSTree tool.</p>"
+            },
+            "rynynry": {
+              "icon": "MediaAndStyles/themes/theme_base/mini_images/home_tree_mode_conf/html.png",
+              "label": "html 2",
+              "href": "javascript: void(0);",
+              "text": "<h3>Hello World!</h3><p style=\"color:#d83;\">You can edit code easily, JSTree class is lightweight.</p>"
+            },
+            "ghnghn": {
+              "icon": "MediaAndStyles/themes/theme_base/mini_images/home_tree_mode_conf/html.png",
+              "label": "html 3",
+              "href": "javascript: void(0);",
+              "text": "<h3>Hello World!</h3><p style=\"color:#00bb00;\">Have a nice day.</p>"
             }
           }
         }
       }
-    };
-    // -------------------
-    // END TREE CONF DATA
+    }
+  };
+  // -------------------
+  // END TREE CONF DATA
 
 
 
-    class TreeExamples {
+  class TreeExamples {
 
-      wasOnceRendered = false;
+    wasOnceRendered = false;
 
-      themeTurnOn   = new Object();
-      scriptsLoader = new Object();
-      preloader     = new Object();
+    themeTurnOn   = new Object();
+    scriptsLoader = new Object();
+    preloader     = new Object();
 
-      tree_SubtreeArrayOfObjects = new Object();
-      tree_load_by_url           = new Object();
+    tree_SubtreeArrayOfObjects = new Object();
+    tree_load_by_url           = new Object();
 
-      constructor() {
-        this.wasOnceRendered = false;
+    constructor() {
+      this.wasOnceRendered = false;
 
-        this.themeTurnOn   = new Object();
-        this.scriptsLoader = new Object();
-        this.preloader     = new Object();
+      this.themeTurnOn   = new Object();
+      this.scriptsLoader = new Object();
+      this.preloader     = new Object();
 
-        this.tree_SubtreeArrayOfObjects = new Object();
-        this.tree_load_by_url           = new Object();
-      }
-
-
-
-      renderTree( holderElemId, data, modeShownNodes ) {
-
-          this.tree_SubtreeArrayOfObjects = new Tree();
-
-          this.tree_SubtreeArrayOfObjects
-            .setDebug( false )
-            .setMainHtmlNodeId( holderElemId )
-            .setNodesWithIcons( true )
-            .setNodesOpenedMode( modeShownNodes )
-            .setModifiable( false )
-            .setRenderingMode( TreeConstants.RenderingMode.Conf )
-            .addJSTreeEventListener (
-              TreeConstants.TreeEventsNames.EVENT_NAME__TREE_NODE_LABEL__CLICK,
-              ( eventName, eventPayload ) => {
-                console.log( eventName, eventPayload );
-
-                // on click payload has the ref to the tree.data json, and here we show in console it's value:
-                console.log( this.tree_SubtreeArrayOfObjects.getTreeDataNodeByJsonnodePathArray( eventPayload.jsonNode._pathArray ) );
-              }
-            )
-            .render( data );
-
-      }
-
-      loadDataAndRenderTree( holderElemId, dataUrl ) {
-
-          // example to load by url
-          this.tree_load_by_url = new Tree();
-
-          this.tree_load_by_url
-              .setMainHtmlNodeId("example-tree-holder_load_by_url")
-              .setRenderingMode(TreeConstants.RenderingMode.Conf)
-              .load( dataUrl );
-
-      }
-
-      renderJsonTreeExamples() {
-
-        this.renderTree (
-          "example-tree-holder_SubtreeArrayOfObjects",
-          treeJson_SubtreeArrayOfObjects,
-          TreeConstants.NodesOpenedMode.ALL_SHOWN
-        );
-
-        this.renderTree (
-          "example-tree-holder_SubtreeLikeObjects",
-          treeJson_SubtreeLikeObjects,
-          TreeConstants.NodesOpenedMode.JSON_DATA_DEFINED
-        );
-
-        this.loadDataAndRenderTree (
-          "example-tree-holder_SubtreeArrayOfObjects",
-          "https://sandbox.brightday.email/cdn/www/data_public/json/tree-data/tree-data-to-use-with-conf.json"
-        );
-
-      }
-
-
-
-      preloadFonts() {
-
-        this.preloader = new Preloader();
-        this.preloader
-          .setThemesPreloads( preloadFontsCDNData )
-          .setWebpackAlias( "" )
-          .setWebpackAliasReplace( "" )
-          .init();
-
-      }
-
-      addThemeButtonsEventHandlers() {
-        this.themeTurnOn = new ThemeTurnOn();
-        this.themeTurnOn
-          .setKeptCssClassnames( cssClassesNames )
-          .addThemeButtonsEventHandlers( buttonsQuerySelectors );
-
-      }
-
-      loadScriptsAndRenderTree() {
-
-        this.scriptsLoader = new ScriptsChainedLoader();
-
-        this.scriptsLoader.onload = () => {
-
-          try {
-            this.preloadFonts();
-          } catch (e) {}
-
-          try {
-            this.renderJsonTreeExamples();
-          } catch (e) {}
-
-          try {
-            this.addThemeButtonsEventHandlers();
-          } catch (e) {}
-
-          this.wasOnceRendered = true;
-
-        };
-
-        this.scriptsLoader.load ( data_ScriptsChainedLoader, true );
-
-      }
-
-      onDOMContentLoadedEventHandler() {
-
-        try {
-          let loaderInstance = typeof ScriptsChainedLoader;
-
-          if ( loaderInstance ) {
-            this.loadScriptsAndRenderTree();
-            console.log ( "Scripts loader started ..." );
-          }
-        } catch ( e ) {}
-
-      }
+      this.tree_SubtreeArrayOfObjects = new Object();
+      this.tree_load_by_url           = new Object();
     }
 
 
 
-    document.addEventListener ( 'DOMContentLoaded', () => {
+    renderTree( holderElemId, data, modeShownNodes ) {
 
-      treeExamplesClassInstance = new TreeExamples();
-      treeExamplesClassInstance.onDOMContentLoadedEventHandler();
+        let baseHtmlElem = document.getElementsByTagName("base")[0];
 
-    });
+        this.tree_SubtreeArrayOfObjects = new Tree();
 
-  </script>
+        this.tree_SubtreeArrayOfObjects
+          .setDebug( false )
+          .setMainHtmlNodeId( holderElemId )
+          .setNodesWithIcons( true )
+          .setNodesOpenedMode( modeShownNodes )
+          .setModifiable( false )
+          .setRenderingMode( TreeConstants.RenderingMode.Conf )
+          .addThisClassEventListener (
+            TreeConstants.TreeEventsNames.EVENT_NAME__BEFORE_RENDER_ONE_NODE,
+            ( eventName, eventPayload ) => {
 
+              console.log( eventName, eventPayload );
+
+              let iconSrc = eventPayload.dataForRendering.iconSrc;
+
+              if ( baseHtmlElem.getAttribute("href").startsWith( "https://" ) ) {
+                eventPayload.dataForRendering.iconSrc = [ "sites_tools/js_tools/Tree/", iconSrc ].join("");
+              }
+
+              return { "value": eventPayload.dataForRendering };
+            }
+          ).addJSTreeEventListener (
+            TreeConstants.TreeEventsNames.EVENT_NAME__TREE_NODE_LABEL__CLICK,
+            ( eventName, eventPayload ) => {
+              console.log( eventName, eventPayload );
+
+              // on click payload has the ref to the tree.data json, and here we show in console it's value:
+              console.log( this.tree_SubtreeArrayOfObjects.getTreeDataNodeByJsonnodePathArray( eventPayload.jsonNode._pathArray ) );
+            }
+          )
+          .render( data );
+
+    }
+
+    loadDataAndRenderTree( holderElemId, dataUrl ) {
+
+        // example to load by url
+        this.tree_load_by_url = new Tree();
+
+        this.tree_load_by_url
+            .setMainHtmlNodeId("example-tree-holder_load_by_url")
+            .setRenderingMode(TreeConstants.RenderingMode.Conf)
+            .load( dataUrl );
+
+    }
+
+    renderJsonTreeExamples() {
+
+      this.renderTree (
+        "example-tree-holder_SubtreeArrayOfObjects",
+        treeJson_SubtreeArrayOfObjects,
+        TreeConstants.NodesOpenedMode.ALL_SHOWN
+      );
+
+      this.renderTree (
+        "example-tree-holder_SubtreeLikeObjects",
+        treeJson_SubtreeLikeObjects,
+        TreeConstants.NodesOpenedMode.JSON_DATA_DEFINED
+      );
+
+      this.loadDataAndRenderTree (
+        "example-tree-holder_SubtreeArrayOfObjects",
+        "https://sandbox.brightday.email/cdn/www/data_public/json/tree-data/tree-data-to-use-with-conf.json"
+      );
+
+    }
+
+
+
+    preloadFonts( isWithStopOnLoadTimeout, inTimeoutMillis ) {
+
+      this.preloader = new Preloader();
+      this.preloader
+        .setThemesPreloads( preloadFontsCDNData )
+        .setWebpackAlias( "" )
+        .setWebpackAliasReplace( "" )
+        .init( isWithStopOnLoadTimeout, inTimeoutMillis );
+
+    }
+
+    addThemeButtonsEventHandlers() {
+      this.themeTurnOn = new ThemeTurnOn();
+      this.themeTurnOn
+        .setKeptCssClassnames( cssClassesNames )
+        .addThemeButtonsEventHandlers( buttonsQuerySelectors );
+
+    }
+
+
+    loadScriptsAndRenderTree() {
+
+      this.scriptsLoader = new ScriptsChainedLoader();
+      this.scriptsLoader.onload = this.onDOMContentLoadedEventHandler.bind( this );
+      this.scriptsLoader.load ( data_ScriptsChainedLoader, true );
+
+    }
+
+    onChainedDOMContentLoadedEventHandler() {
+
+      try {
+        let loaderInstance = typeof ScriptsChainedLoader;
+
+        if ( loaderInstance ) {
+          this.loadScriptsAndRenderTree();
+          console.log ( "Scripts loader started ..." );
+        }
+      } catch ( e ) {
+        console.error( e );
+      }
+
+    }
+
+    onDOMContentLoadedEventHandler() {
+
+        console.log ( "Scripts are loaded, starting TreeExamples.onDOMContentLoadedEventHandler() ..." );
+
+        try {
+          this.preloadFonts( isPreloadWithStopOnLoadTimeout, preloaderStopTimeoutMillis );
+        } catch (e) {}
+
+        try {
+          this.renderJsonTreeExamples();
+        } catch (e) {}
+
+        try {
+          this.addThemeButtonsEventHandlers();
+        } catch (e) {}
+
+        this.wasOnceRendered = true;
+
+        console.log ( "End: ScriptsChainedLoader.load(), TreeExamples.onDOMContentLoadedEventHandler()" );
+    }
+
+  }
+
+
+
+  document.addEventListener ( 'DOMContentLoaded', () => {
+
+    treeExamplesClassInstance = new TreeExamples();
+
+    //# dev mode: without js preloads and no fallback urls.
+    // treeExamplesClassInstance.onDOMContentLoadedEventHandler();
+
+    /* in prod mode,
+        You need to set conf json objects like in tree.prod_mode.html:
+          Preloader to improve performance when LazyLoad is on ( .ico, images, fonts ) to be available before, when a css classname applies.
+          ScriptsChainedLoader to develop and publish for npm or yarn the index.example.html
+            with fallback urls feature, due to multiple npm install strategies,
+            since with fallback urls, the "onload" event is emitted in the unforeseen timestamp, and after the "DOMContentLoaded" event.
+
+            <!-- <script
+              type="text/javascript"
+              src="node_modules/@jaisocx/preloader/transpiled/Simple/scripts_chained_loader/ScriptsChainedLoader.js"
+              src-fallback="../preloader/transpiled/Simple/scripts_chained_loader/ScriptsChainedLoader.js"
+              onload="javascipt: ( () => { if ( treeExamplesClassInstance.wasOnceRendered === true ) { return; }; treeExamplesClassInstance = new TreeExamples(); treeExamplesClassInstance.onDOMContentLoadedEventHandler(); } )();"
+              onerror="javascript: ( () => { let tagScript = document.createElement( 'script' ); tagScript.onload = this.onload.bind( tagScript ); tagScript.src = this.getAttribute( 'src-fallback' ); document.body.insertAdjacentElement( 'afterend', tagScript ); this.remove(); } )();">
+            </script> ->
+
+
+        The onChainedDOMContentLoadedEventHandler method invokes ScripsChainedLoader the right way,
+          and then ScripsChainedLoader.onload() invokes set of methods,
+          planned for DOMContentLoaded like normally when in dev mode or prod mode without fallback urls.
+    */
+    treeExamplesClassInstance.onChainedDOMContentLoadedEventHandler();
+
+  });
+
+</script>
+
+<script
+  type="text/javascript"
+  src="node_modules/@jaisocx/preloader/transpiled/Simple/scripts_chained_loader/ScriptsChainedLoader.js"
+  src-fallback="../preloader/transpiled/Simple/scripts_chained_loader/ScriptsChainedLoader.js"
+  onload="javascipt: ( () => { if ( treeExamplesClassInstance.wasOnceRendered === true ) { return; }; treeExamplesClassInstance = new TreeExamples(); treeExamplesClassInstance.onDOMContentLoadedEventHandler(); } )();"
+  onerror="javascript: ( () => { let tagScript = document.createElement( 'script' ); tagScript.onload = this.onload.bind( tagScript ); tagScript.src = this.getAttribute( 'src-fallback' ); document.body.insertAdjacentElement( 'afterend', tagScript ); this.remove(); } )();">
+</script>
 
 </html>
 

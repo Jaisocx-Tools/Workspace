@@ -80,12 +80,15 @@ For the optimization, You can watch the font files loaded in browser's developer
     // DOCUMENT ONLOAD, INVOKES THE FUNCTION TO PRELOAD THEME FONTS
     document.addEventListener('DOMContentLoaded', () => {
 
+      let isPreloadWithStopOnLoadTimeout = true;
+      let preloaderStopTimeoutMillis = 1800;
+
       const preloader = new Preloader();
         preloader
           .setThemesPreloads( themesPreloads )
           .setWebpackAlias( "@SandboxFontsCdn" )
           .setWebpackAliasReplace( "https://sandbox.brightday.email/cdn/www/fonts" )
-          .init();
+          .init( isWithStopOnLoadTimeout, inTimeoutMillis );
 
     });
 
@@ -104,17 +107,45 @@ export interface PreloaderInterface {
 
   setWebpackAliasReplace ( alias: string ): PreloaderInterface;
 
-  init (): void;
-
-  addDocumentLoadedEventHandler(): void;
-
-  htmlDocumentAppendPreloadingLinkTags_Images(): void;
-
-  htmlDocumentAppendPreloadingLinkTags_Fonts(): void;
-
-  htmlDocumentAppendPreloadingLinkTags(
-    inDataType: string
+  init (
+    isWithStopOnLoadTimeout: boolean,
+    inTimeoutMillis: number
   ): void;
+
+  addDocumentLoadedEventHandler (
+    isWithStopOnLoadTimeout: boolean,
+    inTimeoutMillis: number
+  ): void;
+
+  htmlDocumentAppendPreloadingLinkTags_Images( isWithStopOnLoadTimeout: boolean ): HTMLLinkElement[];
+
+  htmlDocumentAppendPreloadingLinkTags_Fonts( isWithStopOnLoadTimeout: boolean ): HTMLLinkElement[];
+
+  htmlDocumentAppendPreloadingLinkTags (
+    inDataType: string,
+    isWithStopOnLoadTimeout: boolean
+  ): HTMLLinkElement[];
+
+
+  // preventing browser requests waiting and blocking when a cdn is not responding.
+  extractUrlsFromHarBrowserReport (
+    harBrowserReportFilepath: string
+  ): string[];
+
+  addScriptLoadingStopOnTimeout (
+    idsOfLinkTags: string[],
+    timeoutNumberOfMilliseconds: number
+  ): void;
+
+  produceLinkTagsPreloading (
+    idsOfLinkTags: string[]
+  ): string;
+
+  produceScriptLoadingStopOnTimeout (): string;
+
+  produceCodeblockInvoke_ScriptLoadingStopOnTimeout (
+    timeoutNumberOfMilliseconds: number
+  ): string;
 
 }
 ```

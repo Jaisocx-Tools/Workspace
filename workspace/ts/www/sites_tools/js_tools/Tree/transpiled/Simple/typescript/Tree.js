@@ -505,12 +505,32 @@ class Tree extends ImprovedRenderEventEmitter {
 
 
         // TODO: EXTENSIBILITY FEATURE
-        const dataForRendering = this.getDataForRendering(
+        let dataForRendering = this.getDataForRendering(
             node,
             nodeClone,
             subtreeNodeDataTypeString,
             hasSubtree
         );
+        const eventBeforeRenderOneNodePayload = {
+            "eventName": TreeConstants.TreeEventsNames.EVENT_NAME__BEFORE_RENDER_ONE_NODE,
+            "dataForRendering": dataForRendering
+        };
+        const eventBeforeRenderResult = this.emitEvent(
+            TreeConstants.TreeEventsNames.EVENT_NAME__BEFORE_RENDER_ONE_NODE,
+            eventBeforeRenderOneNodePayload
+        );
+        const eventResultsLength = eventBeforeRenderResult.length;
+        let lastEventRenderResultId = 0;
+        let lastEventResult = new Object();
+
+        if ((eventResultsLength >= 1) && lastEventResult && lastEventResult.result) {
+            lastEventRenderResultId = (eventResultsLength - 1);
+            lastEventResult = eventBeforeRenderResult[lastEventRenderResultId];
+
+
+            //@ts-ignore
+            dataForRendering = lastEventResult.result.value;
+        }
         const nodeHtml = this.templateRenderer
             .setTemplate(TreeConstants.TEMPLATE__TREE_HTML_NODE)
 
@@ -529,9 +549,9 @@ class Tree extends ImprovedRenderEventEmitter {
             throw new Error("Rendiring broken, wrong html structure built.");
         }
         const eventAfterRenderOneNodePayload = {
-            eventName: TreeConstants.TreeEventsNames.EVENT_NAME__AFTER_RENDER_ONE_NODE,
-            treeHtmlNode: li,
-            treeItemJson: nodeClone
+            "eventName": TreeConstants.TreeEventsNames.EVENT_NAME__AFTER_RENDER_ONE_NODE,
+            "treeHtmlNode": li,
+            "treeItemJson": nodeClone
         };
 
         if (!hasSubtree) {

@@ -1,6 +1,16 @@
 import { TemplateRenderer, TemplateRendererDataRecord } from "@jaisocx/template-renderer";
 
 
+// import {
+//   CapsOrSmallTransformVariants,
+//   CharTypeEnum,
+//   JoinDelimiterVariants,
+//   ParseTimeGrouppingVariants,
+//   TransformVariants
+// } from "@jaisocx/text";
+
+import { CaseConverter } from "@jaisocx/text";
+
 
 import { PreloaderConstantsInterface } from "../media_preloader_constants/PreloaderConstantsInterface.js";
 import { PreloaderConstants } from "../media_preloader_constants/PreloaderConstants.js";
@@ -59,31 +69,81 @@ export class Preloader implements PreloaderInterface {
 
 
   init (
-    isWithStopOnLoadTimeout: boolean = true
+    isWithStopOnLoadTimeout: boolean,
+    inTimeoutMillis: number
   ): void {
-    this.addDocumentLoadedEventHandler( isWithStopOnLoadTimeout );
+    this.addDocumentLoadedEventHandler(
+      isWithStopOnLoadTimeout,
+      inTimeoutMillis
+    );
   }
 
 
   // @tasks: _isWithStopOnLoadTimeout impl stop on load timeout
   addDocumentLoadedEventHandler (
-    _isWithStopOnLoadTimeout: boolean = true
+    isWithStopOnLoadTimeout: boolean,
+    inTimeoutMillis: number
   ): void {
     const methodLinksImages: CallableFunction = this.htmlDocumentAppendPreloadingLinkTags_Images.bind(this);
     const methodLinksFonts: CallableFunction = this.htmlDocumentAppendPreloadingLinkTags_Fonts.bind(this);
 
+    let linkTags: HTMLLinkElement[] = new Array() as HTMLLinkElement[];
+    let tmpLinkTags: HTMLLinkElement[] = new Array() as HTMLLinkElement[];
+    let linkTagsNumber: number = 0;
+    let idsOfTagsLink: string[] = new Array() as string[];
+
+    let locOnloadFunc: CallableFunction = () => {
+      tmpLinkTags = methodLinksImages( isWithStopOnLoadTimeout );
+      linkTags = [ ...tmpLinkTags ];
+
+      tmpLinkTags = methodLinksFonts( isWithStopOnLoadTimeout );
+      linkTags = [ ...linkTags, ...tmpLinkTags ];
+
+      linkTagsNumber = linkTags.length;
+
+      let i: number = 0;
+
+      while( i < linkTagsNumber ) {
+        idsOfTagsLink.push( linkTags[i].id );
+        i++;
+      }
+
+      if ( isWithStopOnLoadTimeout ) {
+        this.addScriptLoadingStopOnTimeout(
+          idsOfTagsLink,
+          inTimeoutMillis
+        );
+      }
+
+      setTimeout(
+        () => {
+          i = 0;
+
+          while( i < linkTagsNumber ) {
+            document.head.append( linkTags[i] );
+            i++;
+          }
+        },
+        100
+      );
+
+
+
+    };
+
     if (document.readyState !== "loading") {
 
       // If already loaded, invokes immediately
-      methodLinksImages();
-      methodLinksFonts();
+      locOnloadFunc();
 
     } else {
       document.addEventListener (
         "DOMContentLoaded",
         () => {
-          methodLinksImages();
-          methodLinksFonts();
+
+          // invokes on event DOMContentLoaded
+          locOnloadFunc();
+
         },
         { once: true }
       );
@@ -93,22 +153,35 @@ export class Preloader implements PreloaderInterface {
 
 
 
-  htmlDocumentAppendPreloadingLinkTags_Images(): string[] {
-    return this.htmlDocumentAppendPreloadingLinkTags( "image" );
+  htmlDocumentAppendPreloadingLinkTags_Images ( isWithStopOnLoadTimeout: boolean ): HTMLLinkElement[] {
+    let linkTags: HTMLLinkElement[] = this.htmlDocumentAppendPreloadingLinkTags(
+      "image",
+      isWithStopOnLoadTimeout
+    );
+
+
+    return linkTags;
   }
 
 
 
-  htmlDocumentAppendPreloadingLinkTags_Fonts(): string[] {
-    return this.htmlDocumentAppendPreloadingLinkTags( "font" );
+  htmlDocumentAppendPreloadingLinkTags_Fonts ( isWithStopOnLoadTimeout: boolean ): HTMLLinkElement[] {
+    let linkTags: HTMLLinkElement[] = this.htmlDocumentAppendPreloadingLinkTags(
+      "font",
+      isWithStopOnLoadTimeout
+    );
+
+
+    return linkTags;
   }
 
 
 
   htmlDocumentAppendPreloadingLinkTags (
-    inDataType: string
-  ): string[] {
-    let idsOf_LinkTags: string[] = new Array() as string[];
+    inDataType: string,
+    isWithStopOnLoadTimeout: boolean
+  ): HTMLLinkElement[] {
+    let linkTags: HTMLLinkElement[] = new Array() as HTMLLinkElement[];
 
 
     //@ts-ignore
@@ -119,7 +192,7 @@ export class Preloader implements PreloaderInterface {
       ( preloadsByDatatype === null ) ||
       ( Object.values ( preloadsByDatatype ).length === 0 )
     ) {
-      return idsOf_LinkTags;
+      return linkTags;
     }
 
 
@@ -127,7 +200,8 @@ export class Preloader implements PreloaderInterface {
     let linkTagName: any = "link";
     let rel: any = "preload";
     let as: any = inDataType;
-
+    let linkId: string = "";
+    let linkTagOnloadCode: string = this.preloaderConstantsInstance.getLinkTagOnloadCode();
     let themeName: string = "";
     let webpackAliasedURL: string = "";
     let href: string = "";
@@ -159,18 +233,32 @@ export class Preloader implements PreloaderInterface {
           href = webpackAliasedURL;
         }
 
+        let filenameExtension: string = href.substring( href.lastIndexOf( "." ) + 1 );
+        let filename: string = href.substring( href.lastIndexOf( "/" ) + 1 );
+        let filenameToId: string = [ themeName, filename ].join("_");
+        linkId = CaseConverter.snake( filenameToId );
 
-        // link.type = "font/woff2";
-        link.as = as;
-        link.href = href;
-        link.rel = rel;
+        link.setAttribute( "id", linkId );
+        link.setAttribute( "as", as );
+        link.setAttribute( "href", href );
+        link.setAttribute( "rel", rel );
+        link.setAttribute( "fetchpriority", "high" );
+        link.setAttribute(
+          "type",
+          `${inDataType}/${filenameExtension}`
+        );
+        link.setAttribute( "crossorigin", "" );
 
-        document.head.append( link );
+        if ( isWithStopOnLoadTimeout ) {
+          link.setAttribute( "onload", linkTagOnloadCode );
+        }
+
+        linkTags.push( link );
       }
     }
 
 
-    return idsOf_LinkTags;
+    return linkTags;
 
   }
 
@@ -240,9 +328,13 @@ export class Preloader implements PreloaderInterface {
 
     let inOutArgof_reduceMethod: any = new Object();
     let templateDataValueAsObject: object = idsOfLinkTags.reduce (
-      ( _prev: any, curr: any, currentIndex: number, thisArray: string[] ): any => {
+      ( prev: any, _curr: any, currentIndex: number, thisArray: string[] ): any => {
         let currValueOfArray: string = thisArray[ currentIndex ];
-        curr[ currValueOfArray ] = 1;
+
+        prev[ currValueOfArray ] = 1;
+
+
+        return prev;
       },
       inOutArgof_reduceMethod
     );

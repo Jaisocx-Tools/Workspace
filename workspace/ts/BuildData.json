@@ -69,12 +69,14 @@
     {
       "path": "packages/Text",
       "name": "text",
-      "update-published": "Mon Jun 02 22:02:01 GMT 2025",
+      "update-published": "Sat Sep  6 04:14:24 CEST 2025",
       "build": false,
       "build-simple-enable": true,
       "dependencies": [],
       "build-files": [
         "trimmer/Trimmer.js",
+        "case_converter/types/DataRecordMatches.js",
+        "case_converter/case_converter_constants/CaseConverterConstants.js",
         "case_converter/CaseConverter.js"
       ]
     },
@@ -218,6 +220,10 @@
       "build": false,
       "build-simple-enable": true,
       "dependencies": [
+        {
+          "name": "@jaisocx/text",
+          "path": "packages/Text"
+        },
         {
           "name": "@jaisocx/template-renderer",
           "path": "packages/TemplateRenderer"
@@ -428,6 +434,14 @@
         {
           "name": "@jaisocx/theme-turn-on",
           "path": "packages/ThemeTurnOn"
+        },
+        {
+          "name": "@jaisocx/text",
+          "path": "packages/Text"
+        },
+        {
+          "name": "@jaisocx/preloader",
+          "path": "packages/Preloader"
         }
       ]
     },

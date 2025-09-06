@@ -7,90 +7,21 @@
  * CaseConverter.constant('fooBarBaz');      // => 'FOO_BAR_BAZ'
  * CaseConverter.title('a tale of two cities'); // => 'A Tale of Two Cities'
 */
-/*
-  transformations variants:
-    . by delimiter:
-        with delimiter
-        without delimiter
-    . letter case
-        as is
-        to caps
-        to small
-        first cap
-    . first letter case other
-    . UC/LC chars groups separate
-    . number groups separate
-    extended Latin chars replace with similar base chars no separate group
+/**
+ * CaseConverter — robust text case transformations in TypeScript
+ *
+ * Features
+ * - Handles camelCase/PascalCase/snake_case/kebab-case/CONSTANT_CASE/Train-Case/dot.case/path/case
 */
-export var CapsOrSmallTransformVariants;
-(function (CapsOrSmallTransformVariants) {
-    CapsOrSmallTransformVariants[CapsOrSmallTransformVariants["caps"] = 1] = "caps";
-    CapsOrSmallTransformVariants[CapsOrSmallTransformVariants["small"] = 2] = "small";
-    CapsOrSmallTransformVariants[CapsOrSmallTransformVariants["firstCapsAndSmall"] = 3] = "firstCapsAndSmall";
-    CapsOrSmallTransformVariants[CapsOrSmallTransformVariants["firstCapsAsIs"] = 4] = "firstCapsAsIs";
-    CapsOrSmallTransformVariants[CapsOrSmallTransformVariants["asIs"] = 5] = "asIs";
-})(CapsOrSmallTransformVariants || (CapsOrSmallTransformVariants = {}));
-// char type enum
-export var CharTypeEnum;
-(function (CharTypeEnum) {
-    CharTypeEnum[CharTypeEnum["caps"] = 1] = "caps";
-    CharTypeEnum[CharTypeEnum["small"] = 2] = "small";
-    CharTypeEnum[CharTypeEnum["num"] = 3] = "num";
-    CharTypeEnum[CharTypeEnum["omitted"] = 4] = "omitted";
-    CharTypeEnum[CharTypeEnum["delimiter"] = 5] = "delimiter";
-})(CharTypeEnum || (CharTypeEnum = {}));
-export var JoinDelimiterVariants;
-(function (JoinDelimiterVariants) {
-    JoinDelimiterVariants[JoinDelimiterVariants["everyGroup"] = 3] = "everyGroup";
-    JoinDelimiterVariants[JoinDelimiterVariants["beforeNumbersNoDelimiter"] = 4] = "beforeNumbersNoDelimiter";
-    JoinDelimiterVariants[JoinDelimiterVariants["afterNumbersNoDelimiter"] = 5] = "afterNumbersNoDelimiter";
-    JoinDelimiterVariants[JoinDelimiterVariants["neverNumbersDelimiter"] = 6] = "neverNumbersDelimiter";
-    JoinDelimiterVariants[JoinDelimiterVariants["delimitersReplaced"] = 7] = "delimitersReplaced";
-})(JoinDelimiterVariants || (JoinDelimiterVariants = {}));
-export class DataRecordMatches {
-    groups_positions;
-    prev_CharTypeEnum;
-    current_CharTypeEnum;
-    currentGroupOfCharType_charsAmount;
-    // groupNumber_positions:       number[][];
-    // groupCaps_positions:         number[][];
-    // groupSmall_positions:        number[][];
-    // groupFirstCap_positions:     number[][];
-    // groupOmittedChars_positions: number[][];
-    // wasNumber: boolean;
-    // isNumber:  boolean;
-    // groupNumber_length: number;
-    // wasCaps:   boolean;
-    // isCaps:    boolean;
-    // wasSmall:  boolean;
-    // isSmall:   boolean;
-    // wasOmitted: boolean;
-    // isOmitted: boolean;
-    // groupSameCase_length: number;
-    // groupOmittedChars_length: number;
-    constructor() {
-        this.groups_positions = new Array();
-        this.prev_CharTypeEnum = 0;
-        this.current_CharTypeEnum = 0;
-        this.currentGroupOfCharType_charsAmount = 0;
-        // this.groupNumber_positions     = new Array() as number[][];
-        // this.groupCaps_positions       = new Array() as number[][];
-        // this.groupSmall_positions      = new Array() as number[][];
-        // this.groupFirstCap_positions   = new Array() as number[][];
-        // this.groupOmittedChars_positions = new Array() as number[][];
-        // this.wasNumber  = false;
-        // this.isNumber   = false;
-        // this.groupNumber_length = 0;
-        // this.wasCaps    = false;
-        // this.isCaps     = false;
-        // this.wasSmall   = false;
-        // this.isSmall    = false;
-        // this.wasOmitted = false;
-        // this.isOmitted  = false;
-        // this.groupSameCase_length = 0;
-        // this.groupOmittedChars_length = 0;
-    }
-}
+// import {
+//   ICapsOrSmallTransformVariants,
+//   ICharTypeEnum,
+//   IJoinDelimiterVariants,
+//   IParseTimeGrouppingVariants,
+//   ITransformVariants
+// } from "./types/CaseConverterTypes.js";
+import { DataRecordMatches } from "./types/DataRecordMatches.js";
+import { CaseConverterConstants } from "./case_converter_constants/CaseConverterConstants.js";
 export class CaseConverter {
     _debug;
     #symbolZero;
@@ -160,7 +91,7 @@ export class CaseConverter {
         return CaseConverter.getInstance().toSentence(inText);
     }
     static dot(inText) {
-        return CaseConverter.getInstance().toDelimited(inText, ".", CapsOrSmallTransformVariants.small, CapsOrSmallTransformVariants.small, JoinDelimiterVariants.everyGroup);
+        return CaseConverter.getInstance().toDelimited(inText, ".", CaseConverterConstants.CapsOrSmallTransformVariants.small, CaseConverterConstants.CapsOrSmallTransformVariants.small, CaseConverterConstants.JoinDelimiterVariants.everyGroup);
     }
     static path(inText) {
         return CaseConverter.getInstance().toAsPath(inText);
@@ -170,19 +101,19 @@ export class CaseConverter {
     }
     /** Instance methods */
     toCamel(inText) {
-        return this.toDelimited(inText, "", CapsOrSmallTransformVariants.small, CapsOrSmallTransformVariants.firstCapsAndSmall, JoinDelimiterVariants.delimitersReplaced);
+        return this.toDelimited(inText, "", CaseConverterConstants.CapsOrSmallTransformVariants.small, CaseConverterConstants.CapsOrSmallTransformVariants.firstCapsAndSmall, CaseConverterConstants.JoinDelimiterVariants.delimitersReplaced);
     }
     toPascal(inText) {
-        return this.toDelimited(inText, "", CapsOrSmallTransformVariants.firstCapsAndSmall, CapsOrSmallTransformVariants.firstCapsAndSmall, JoinDelimiterVariants.delimitersReplaced);
+        return this.toDelimited(inText, "", CaseConverterConstants.CapsOrSmallTransformVariants.firstCapsAndSmall, CaseConverterConstants.CapsOrSmallTransformVariants.firstCapsAndSmall, CaseConverterConstants.JoinDelimiterVariants.delimitersReplaced);
     }
     toSnake(inText) {
-        return this.toDelimited(inText, "_", CapsOrSmallTransformVariants.small, CapsOrSmallTransformVariants.small, JoinDelimiterVariants.everyGroup);
+        return this.toDelimited(inText, "_", CaseConverterConstants.CapsOrSmallTransformVariants.small, CaseConverterConstants.CapsOrSmallTransformVariants.small, CaseConverterConstants.JoinDelimiterVariants.everyGroup);
     }
     toKebab(inText) {
-        return this.toDelimited(inText, "-", CapsOrSmallTransformVariants.small, CapsOrSmallTransformVariants.small, JoinDelimiterVariants.beforeNumbersNoDelimiter);
+        return this.toDelimited(inText, "-", CaseConverterConstants.CapsOrSmallTransformVariants.small, CaseConverterConstants.CapsOrSmallTransformVariants.small, CaseConverterConstants.JoinDelimiterVariants.beforeNumbersNoDelimiter);
     }
     toConstant(inText) {
-        return this.toDelimited(inText, "_", CapsOrSmallTransformVariants.caps, CapsOrSmallTransformVariants.caps, JoinDelimiterVariants.everyGroup);
+        return this.toDelimited(inText, "_", CaseConverterConstants.CapsOrSmallTransformVariants.caps, CaseConverterConstants.CapsOrSmallTransformVariants.caps, CaseConverterConstants.JoinDelimiterVariants.everyGroup);
     }
     // title ( inText: string ): string {
     //   const SMALL = new Set([
@@ -200,13 +131,13 @@ export class CaseConverter {
     //   }).join(" ");
     // }
     toSentence(inText) {
-        return this.toDelimited(inText, " ", CapsOrSmallTransformVariants.firstCapsAndSmall, CapsOrSmallTransformVariants.small, JoinDelimiterVariants.everyGroup);
+        return this.toDelimited(inText, " ", CaseConverterConstants.CapsOrSmallTransformVariants.firstCapsAndSmall, CaseConverterConstants.CapsOrSmallTransformVariants.small, CaseConverterConstants.JoinDelimiterVariants.everyGroup);
     }
     toTrain(inText) {
-        return this.toDelimited(inText, "-", CapsOrSmallTransformVariants.firstCapsAndSmall, CapsOrSmallTransformVariants.firstCapsAndSmall, JoinDelimiterVariants.everyGroup);
+        return this.toDelimited(inText, "-", CaseConverterConstants.CapsOrSmallTransformVariants.firstCapsAndSmall, CaseConverterConstants.CapsOrSmallTransformVariants.firstCapsAndSmall, CaseConverterConstants.JoinDelimiterVariants.everyGroup);
     }
     toAsPath(inText) {
-        return this.toDelimited(inText, "/", CapsOrSmallTransformVariants.small, CapsOrSmallTransformVariants.small, JoinDelimiterVariants.delimitersReplaced);
+        return this.toDelimited(inText, "/", CaseConverterConstants.CapsOrSmallTransformVariants.small, CaseConverterConstants.CapsOrSmallTransformVariants.small, CaseConverterConstants.JoinDelimiterVariants.delimitersReplaced);
     }
     toUC(inText) {
         let locText = inText;
@@ -249,11 +180,11 @@ export class CaseConverter {
         let locTransformFirstFunc = false;
         let locTransformFunc = false;
         let transformResolvingObject = {
-            [CapsOrSmallTransformVariants.caps]: this.toUC,
-            [CapsOrSmallTransformVariants.small]: this.toLC,
-            [CapsOrSmallTransformVariants.firstCapsAndSmall]: this.toFirstCapsAndSmall,
-            [CapsOrSmallTransformVariants.firstCapsAsIs]: this.toFirstCapsAsIs,
-            [CapsOrSmallTransformVariants.asIs]: false
+            [CaseConverterConstants.CapsOrSmallTransformVariants.caps]: this.toUC,
+            [CaseConverterConstants.CapsOrSmallTransformVariants.small]: this.toLC,
+            [CaseConverterConstants.CapsOrSmallTransformVariants.firstCapsAndSmall]: this.toFirstCapsAndSmall,
+            [CaseConverterConstants.CapsOrSmallTransformVariants.firstCapsAsIs]: this.toFirstCapsAsIs,
+            [CaseConverterConstants.CapsOrSmallTransformVariants.asIs]: false
         };
         let valueTransformFirst_ResolvingObject = false;
         let valueTransformOther_ResolvingObject = false;
@@ -303,7 +234,7 @@ export class CaseConverter {
             // get start and end pos of chars in the current group of similar chars
             locTmpGroupRanges = groupsMultidimPosArray[groupOfChars_Id];
             locCurrentCharsGroupType = locTmpGroupRanges[2];
-            if (locCurrentCharsGroupType === CharTypeEnum.delimiter) {
+            if (locCurrentCharsGroupType === CaseConverterConstants.CharTypeEnum.delimiter) {
                 if ((locIsDelimiter === true) && (groupOfChars_Id !== 0)) {
                     retVal_transformed.push(delimiter);
                 }
@@ -357,7 +288,7 @@ export class CaseConverter {
         let secureMaxCounter = 62;
         locTmp_ofTypeDelimiter_TransformedGroupRanges[0] = (-1);
         locTmp_ofTypeDelimiter_TransformedGroupRanges[1] = (-1);
-        locTmp_ofTypeDelimiter_TransformedGroupRanges[2] = CharTypeEnum.delimiter;
+        locTmp_ofTypeDelimiter_TransformedGroupRanges[2] = CaseConverterConstants.CharTypeEnum.delimiter;
         markerJ: while (groupOfChars_Id < groupsArrayLen) {
             // start secure check
             secureCounter++;
@@ -383,12 +314,12 @@ export class CaseConverter {
                 locNextCharsGroupType = 0;
             }
             locTmp_ofTypeCurrent_TransformedGroupRanges = [...locTmpGroupRanges];
-            if ((locPreviousCharsGroupType === CharTypeEnum.omitted) &&
-                (locCurrentCharsGroupType === CharTypeEnum.omitted)) {
+            if ((locPreviousCharsGroupType === CaseConverterConstants.CharTypeEnum.omitted) &&
+                (locCurrentCharsGroupType === CaseConverterConstants.CharTypeEnum.omitted)) {
                 groupOfChars_Id++;
                 continue markerJ;
             }
-            if (locCurrentCharsGroupType === CharTypeEnum.omitted) {
+            if (locCurrentCharsGroupType === CaseConverterConstants.CharTypeEnum.omitted) {
                 transformedGroupsMultidimPosArray.push(locTmp_ofTypeDelimiter_TransformedGroupRanges);
                 groupOfChars_Id++;
                 continue markerJ;
@@ -399,8 +330,8 @@ export class CaseConverter {
             if (transformedCharsGroup_DataRecord_lastId >= 0) {
                 lastTransformedCharsGroup_charType = transformedGroupsMultidimPosArray[transformedCharsGroup_DataRecord_lastId][2];
             }
-            if ((locCurrentCharsGroupType === CharTypeEnum.caps) &&
-                (locNextCharsGroupType === CharTypeEnum.small)) {
+            if ((locCurrentCharsGroupType === CaseConverterConstants.CharTypeEnum.caps) &&
+                (locNextCharsGroupType === CaseConverterConstants.CharTypeEnum.small)) {
                 let currentCapsGroupStartPos = locTmp_ofTypeCurrent_TransformedGroupRanges[0];
                 let currentCapsGroupEndPos = locTmp_ofTypeCurrent_TransformedGroupRanges[1];
                 let currentCapsGroupCharsNumber = ((currentCapsGroupEndPos - currentCapsGroupStartPos) + 1);
@@ -409,11 +340,11 @@ export class CaseConverter {
                 nextSmallGroupStartPos--;
                 groupsMultidimPosArray[nextGroupOfChars_Id][0] = nextSmallGroupStartPos;
                 if (currentCapsGroupCharsNumber === 1) {
-                    // if ( locPreviousCharsGroupType === CharTypeEnum.omitted ) {
+                    // if ( locPreviousCharsGroupType === CaseConverterConstants.CharTypeEnum.omitted ) {
                     // }
                     // else {
                     // }
-                    groupsMultidimPosArray[groupOfChars_Id][2] = CharTypeEnum.omitted;
+                    groupsMultidimPosArray[groupOfChars_Id][2] = CaseConverterConstants.CharTypeEnum.omitted;
                 }
                 else {
                     currentCapsGroupEndPos--;
@@ -427,26 +358,26 @@ export class CaseConverter {
             if (transformedCharsGroup_DataRecord_lastId >= 0) {
                 lastTransformedCharsGroup_charType = transformedGroupsMultidimPosArray[transformedCharsGroup_DataRecord_lastId][2];
             }
-            if ((locPreviousCharsGroupType === CharTypeEnum.omitted) && (lastTransformedCharsGroup_charType === CharTypeEnum.delimiter)) {
+            if ((locPreviousCharsGroupType === CaseConverterConstants.CharTypeEnum.omitted) && (lastTransformedCharsGroup_charType === CaseConverterConstants.CharTypeEnum.delimiter)) {
                 transformedGroupsMultidimPosArray.push(locTmp_ofTypeCurrent_TransformedGroupRanges);
                 groupOfChars_Id++;
                 continue markerJ;
             }
-            if (joinDelimiterVariant === JoinDelimiterVariants.everyGroup) {
+            if (joinDelimiterVariant === CaseConverterConstants.JoinDelimiterVariants.everyGroup) {
                 transformedGroupsMultidimPosArray.push(locTmp_ofTypeDelimiter_TransformedGroupRanges);
             }
-            else if (joinDelimiterVariant === JoinDelimiterVariants.beforeNumbersNoDelimiter) {
-                if (locCurrentCharsGroupType !== CharTypeEnum.num) {
+            else if (joinDelimiterVariant === CaseConverterConstants.JoinDelimiterVariants.beforeNumbersNoDelimiter) {
+                if (locCurrentCharsGroupType !== CaseConverterConstants.CharTypeEnum.num) {
                     transformedGroupsMultidimPosArray.push(locTmp_ofTypeDelimiter_TransformedGroupRanges);
                 }
             }
-            else if (joinDelimiterVariant === JoinDelimiterVariants.afterNumbersNoDelimiter) {
-                if ((locPreviousCharsGroupType !== CharTypeEnum.num)) {
+            else if (joinDelimiterVariant === CaseConverterConstants.JoinDelimiterVariants.afterNumbersNoDelimiter) {
+                if ((locPreviousCharsGroupType !== CaseConverterConstants.CharTypeEnum.num)) {
                     transformedGroupsMultidimPosArray.push(locTmp_ofTypeDelimiter_TransformedGroupRanges);
                 }
             }
-            else if (joinDelimiterVariant === JoinDelimiterVariants.neverNumbersDelimiter) {
-                if ((locPreviousCharsGroupType !== CharTypeEnum.num) && (locCurrentCharsGroupType !== CharTypeEnum.num)) {
+            else if (joinDelimiterVariant === CaseConverterConstants.JoinDelimiterVariants.neverNumbersDelimiter) {
+                if ((locPreviousCharsGroupType !== CaseConverterConstants.CharTypeEnum.num) && (locCurrentCharsGroupType !== CaseConverterConstants.CharTypeEnum.num)) {
                     transformedGroupsMultidimPosArray.push(locTmp_ofTypeDelimiter_TransformedGroupRanges);
                 }
             }
@@ -488,16 +419,16 @@ export class CaseConverter {
             is_LC_aChar = this.isLC(aChar);
             // isAlphaNum_aChar = ( parseTimeDataRecord.isNumber || parseTimeDataRecord.isCaps || parseTimeDataRecord.isSmall );
             if (isNum_aChar) {
-                parseTimeDataRecord.current_CharTypeEnum = CharTypeEnum.num;
+                parseTimeDataRecord.current_CharTypeEnum = CaseConverterConstants.CharTypeEnum.num;
             }
             else if (is_UC_aChar) {
-                parseTimeDataRecord.current_CharTypeEnum = CharTypeEnum.caps;
+                parseTimeDataRecord.current_CharTypeEnum = CaseConverterConstants.CharTypeEnum.caps;
             }
             else if (is_LC_aChar) {
-                parseTimeDataRecord.current_CharTypeEnum = CharTypeEnum.small;
+                parseTimeDataRecord.current_CharTypeEnum = CaseConverterConstants.CharTypeEnum.small;
             }
             else if (isAlphaNum_aChar === false) {
-                parseTimeDataRecord.current_CharTypeEnum = CharTypeEnum.omitted;
+                parseTimeDataRecord.current_CharTypeEnum = CaseConverterConstants.CharTypeEnum.omitted;
             }
             this.tasksParseTimeDataRecord(parseTimeDataRecord, charPos);
             charPos++;
@@ -565,10 +496,10 @@ export class CaseConverter {
         let charGroupType = 0;
         let isOfCharType = true;
         let charTypeDetectionMethods = {
-            [CharTypeEnum.caps]: this.isUC,
-            [CharTypeEnum.small]: this.isLC,
-            [CharTypeEnum.num]: this.isNumLatin,
-            [CharTypeEnum.omitted]: this.isAlphaNumLatin
+            [CaseConverterConstants.CharTypeEnum.caps]: this.isUC,
+            [CaseConverterConstants.CharTypeEnum.small]: this.isLC,
+            [CaseConverterConstants.CharTypeEnum.num]: this.isNumLatin,
+            [CaseConverterConstants.CharTypeEnum.omitted]: this.isAlphaNumLatin
         };
         let i = 0;
         let mKey = 0;

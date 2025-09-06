@@ -3,14 +3,13 @@ export class PreloaderConstants {
     #linkTagsPreloading;
     #scriptLoadingStopOnTimeout;
     #codeblockInvoke_ScriptLoadingStopOnTimeout;
+    #linkTagOnloadCode;
     constructor() {
-        this.#linkTagsPreloading = `
-      let linkTagsPreloading = {{ idsObjectOf_LinkTagsPreloading }};
-    `;
+        this.#linkTagsPreloading = "let linkTagsPreloading = {{ idsObjectOf_LinkTagsPreloading }};\n\n\n";
         this.#scriptLoadingStopOnTimeout = `
       let loadingStopOnTimeout = ( idsObject ) => {
 
-        console.log( "Script on timeout started" );
+      console.log( "Started script, cleaning up hanging hard preloads links, if cdn doesn't respond, in order to prevent blocked render in the browser." );
 
         let ids = Object.keys( idsObject );
         let idsNumber = ids.length;
@@ -20,6 +19,8 @@ export class PreloaderConstants {
 
         let secureCounter = 1;
         let secureMaxCounter = 10;
+
+        let linkUrl = "";
 
         marker1: while ( i < idsNumber ) {
           secureCounter++;
@@ -35,9 +36,10 @@ export class PreloaderConstants {
           }
 
 
-
+          linkUrl = "";
           try {
             tag = document.getElementById( id );
+            linkUrl = tag.getAttribute( "href" );
           } catch (e) {}
           try {
             tag.onerror = null;
@@ -53,6 +55,7 @@ export class PreloaderConstants {
           } catch (e) {}
           try {
             tag.remove();
+            console.log( "Cleaned up, after timeout, the hanging hard preload url:", linkUrl );
           } catch (e) {}
 
 
@@ -69,6 +72,7 @@ export class PreloaderConstants {
         {{ timeoutNumberOfMilliseconds }}
       );
     `;
+        this.#linkTagOnloadCode = "javascript: ( () => { const id = this.id; linkTagsPreloading[id] = 3; } )();";
     }
     getLinkTagsPreloading() {
         return this.#linkTagsPreloading;
@@ -78,6 +82,9 @@ export class PreloaderConstants {
     }
     getCodeblockInvoke_ScriptLoadingStopOnTimeout() {
         return this.#codeblockInvoke_ScriptLoadingStopOnTimeout;
+    }
+    getLinkTagOnloadCode() {
+        return this.#linkTagOnloadCode;
     }
 }
 //# sourceMappingURL=PreloaderConstants.js.map

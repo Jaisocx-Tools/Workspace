@@ -67,6 +67,7 @@ export interface ITreeCssClassNames {
 }
 
 export interface ITreeEventsNames {
+  EVENT_NAME__BEFORE_RENDER_ONE_NODE: any;
   EVENT_NAME__AFTER_RENDER_ONE_NODE: any;
   EVENT_NAME__TREE_NODE_EXPAND_BUTTON__CLICK: any;
   EVENT_NAME__TREE_NODE_LABEL__CLICK: any;

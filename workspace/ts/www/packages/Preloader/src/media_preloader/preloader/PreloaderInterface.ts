@@ -7,20 +7,23 @@ export interface PreloaderInterface {
   setWebpackAliasReplace ( alias: string ): PreloaderInterface;
 
   init (
-    isWithStopOnLoadTimeout: boolean
+    isWithStopOnLoadTimeout: boolean,
+    inTimeoutMillis: number
   ): void;
 
-  addDocumentLoadedEventHandler(
-    isWithStopOnLoadTimeout: boolean
+  addDocumentLoadedEventHandler (
+    isWithStopOnLoadTimeout: boolean,
+    inTimeoutMillis: number
   ): void;
 
-  htmlDocumentAppendPreloadingLinkTags_Images(): string[];
+  htmlDocumentAppendPreloadingLinkTags_Images( isWithStopOnLoadTimeout: boolean ): HTMLLinkElement[];
 
-  htmlDocumentAppendPreloadingLinkTags_Fonts(): string[];
+  htmlDocumentAppendPreloadingLinkTags_Fonts( isWithStopOnLoadTimeout: boolean ): HTMLLinkElement[];
 
   htmlDocumentAppendPreloadingLinkTags (
-    inDataType: string
-  ): string[];
+    inDataType: string,
+    isWithStopOnLoadTimeout: boolean
+  ): HTMLLinkElement[];
 
 
   // preventing browser requests waiting and blocking when a cdn is not responding.

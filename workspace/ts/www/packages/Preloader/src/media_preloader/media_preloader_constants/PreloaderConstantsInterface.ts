@@ -7,6 +7,8 @@ export interface PreloaderConstantsInterface {
 
   getCodeblockInvoke_ScriptLoadingStopOnTimeout (): string;
 
+  getLinkTagOnloadCode (): string;
+
 }
 
 

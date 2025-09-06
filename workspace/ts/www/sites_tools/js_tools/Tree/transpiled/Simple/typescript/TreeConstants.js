@@ -24,14 +24,15 @@ class TreeConstants {
         PREFIX__CLASS_DATATYPE: "holder-datatype--"
     };
     static TreeEventsNames = {
+        EVENT_NAME__BEFORE_RENDER_ONE_NODE: "beforeRenderOneNode",
         EVENT_NAME__AFTER_RENDER_ONE_NODE: "afterRenderOneNode",
         EVENT_NAME__TREE_NODE_EXPAND_BUTTON__CLICK: "openButtonClick",
         EVENT_NAME__TREE_NODE_LABEL__CLICK: "treeNodeLabelClick"
     };
     static TEMPLATE__TREE_HTML_NODE = `
-<li 
-    data-id="{{ dataId }}" 
-    data-holder-id="{{ dataHolderId }}" 
+<li
+    data-id="{{ dataId }}"
+    data-holder-id="{{ dataHolderId }}"
     data-order="{{ dataOrder }}"
     {{ cssClasses }}>
 
@@ -49,9 +50,9 @@ class TreeConstants {
 
         <a href="{{ hyperlink }}" class="jstree-html-node-label">{{ labelText }}</a>
     </pre>
-    
+
     <ul></ul>
-</li>        
+</li>
         `;
     static Defaults = {
         debug: false,

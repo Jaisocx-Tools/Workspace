@@ -1,6 +1,6 @@
 {
   "name": "@jaisocx/tree",
-  "version": "2.2.3",
+  "version": "2.2.6",
   "description": "Sites tool, styling json",
   "author": "Jaisocx Company",
   "keywords": [
@@ -9,7 +9,8 @@
   ],
   "files": [
     "index.example.html",
-    "tree.example.html",
+    "tree.prod_mode.html",
+    "tree.dev_mode.html",
 
     "transpiled/CommonJS",
     "transpiled/ESNext",
@@ -43,7 +44,8 @@
   "optionalDependencies": {
     "@jaisocx/css-clean-start-2": "~1.1.5",
     "@jaisocx/theme-turn-on": "~1.0.1",
-    "@jaisocx/preloader": "~2.1.0",
+    "@jaisocx/text": "~2.2.2",
+    "@jaisocx/preloader": "~2.2.0",
     "@jaisocx/event-emitter": "~1.4.2",
     "@jaisocx/tokens-parser": "~1.2.2",
     "@jaisocx/template-renderer": "~1.5.8"

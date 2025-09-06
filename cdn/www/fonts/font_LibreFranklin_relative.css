@@ -1,0 +1,128 @@
+@font-face {
+  font-family: LibreFranklin;
+  src: url("./LibreFranklin/static/LibreFranklin-Black.ttf") format("truetype");
+  font-weight: 900;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: LibreFranklin;
+  src: url("./LibreFranklin/static/LibreFranklin-BlackItalic.ttf") format("truetype");
+  font-weight: 900;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: LibreFranklin;
+  src: url("./LibreFranklin/static/LibreFranklin-Bold.ttf") format("truetype");
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: LibreFranklin;
+  src: url("./LibreFranklin/static/LibreFranklin-BoldItalic.ttf") format("truetype");
+  font-weight: 700;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: LibreFranklin;
+  src: url("./LibreFranklin/static/LibreFranklin-ExtraBold.ttf") format("truetype");
+  font-weight: 800;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: LibreFranklin;
+  src: url("./LibreFranklin/static/LibreFranklin-ExtraBoldItalic.ttf") format("truetype");
+  font-weight: 800;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: LibreFranklin;
+  src: url("./LibreFranklin/static/LibreFranklin-ExtraLight.ttf") format("truetype");
+  font-weight: 200;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: LibreFranklin;
+  src: url("./LibreFranklin/static/LibreFranklin-ExtraLightItalic.ttf") format("truetype");
+  font-weight: 200;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: LibreFranklin;
+  src: url("./LibreFranklin/static/LibreFranklin-Italic.ttf") format("truetype");
+  font-weight: 400;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: LibreFranklin;
+  src: url("./LibreFranklin/static/LibreFranklin-Light.ttf") format("truetype");
+  font-weight: 300;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: LibreFranklin;
+  src: url("./LibreFranklin/static/LibreFranklin-LightItalic.ttf") format("truetype");
+  font-weight: 300;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: LibreFranklin;
+  src: url("./LibreFranklin/static/LibreFranklin-Medium.ttf") format("truetype");
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: LibreFranklin;
+  src: url("./LibreFranklin/static/LibreFranklin-MediumItalic.ttf") format("truetype");
+  font-weight: 500;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: LibreFranklin;
+  src: url("./LibreFranklin/static/LibreFranklin-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: LibreFranklin;
+  src: url("./LibreFranklin/static/LibreFranklin-SemiBold.ttf") format("truetype");
+  font-weight: 600;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: LibreFranklin;
+  src: url("./LibreFranklin/static/LibreFranklin-SemiBoldItalic.ttf") format("truetype");
+  font-weight: 600;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: LibreFranklin;
+  src: url("./LibreFranklin/static/LibreFranklin-Thin.ttf") format("truetype");
+  font-weight: 100;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: LibreFranklin;
+  src: url("./LibreFranklin/static/LibreFranklin-ThinItalic.ttf") format("truetype");
+  font-weight: 100;
+  font-style: italic;
+}
+
+
+

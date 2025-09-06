@@ -13,44 +13,8 @@
  * Features
  * - Handles camelCase/PascalCase/snake_case/kebab-case/CONSTANT_CASE/Train-Case/dot.case/path/case
 */
+import { DataRecordMatches } from "./types/DataRecordMatches.js";
 import { CaseConverterInterface } from "./CaseConverterInterface.js";
-export declare enum CapsOrSmallTransformVariants {
-    caps = 1,
-    small = 2,
-    firstCapsAndSmall = 3,
-    firstCapsAsIs = 4,
-    asIs = 5
-}
-export declare enum CharTypeEnum {
-    caps = 1,
-    small = 2,
-    num = 3,
-    omitted = 4,
-    delimiter = 5
-}
-export declare enum JoinDelimiterVariants {
-    everyGroup = 3,
-    beforeNumbersNoDelimiter = 4,
-    afterNumbersNoDelimiter = 5,
-    neverNumbersDelimiter = 6,
-    delimitersReplaced = 7
-}
-export type ParseTimeGrouppingVariants = {
-    numGrups: boolean;
-    UcLcGroups: boolean;
-    firstCapsGroups: boolean;
-};
-export type TransformVariants = {
-    delimiter: string;
-    UcLcTransform: number;
-};
-export declare class DataRecordMatches {
-    groups_positions: number[][];
-    prev_CharTypeEnum: number;
-    current_CharTypeEnum: number;
-    currentGroupOfCharType_charsAmount: number;
-    constructor();
-}
 export declare class CaseConverter implements CaseConverterInterface {
     #private;
     _debug: boolean;

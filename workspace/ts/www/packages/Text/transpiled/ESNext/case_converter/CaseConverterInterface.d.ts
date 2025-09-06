@@ -1,4 +1,4 @@
-import { DataRecordMatches } from "./CaseConverter";
+import { DataRecordMatches } from "./types/DataRecordMatches.js";
 export interface CaseConverterInterface {
     /** Instance methods */
     toCamel(input: string): string;

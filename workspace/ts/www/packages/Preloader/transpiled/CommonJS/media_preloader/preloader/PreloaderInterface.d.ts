@@ -2,11 +2,11 @@ export interface PreloaderInterface {
     setThemesPreloads(preloads: object): PreloaderInterface;
     setWebpackAlias(alias: string): PreloaderInterface;
     setWebpackAliasReplace(alias: string): PreloaderInterface;
-    init(isWithStopOnLoadTimeout: boolean): void;
-    addDocumentLoadedEventHandler(isWithStopOnLoadTimeout: boolean): void;
-    htmlDocumentAppendPreloadingLinkTags_Images(): string[];
-    htmlDocumentAppendPreloadingLinkTags_Fonts(): string[];
-    htmlDocumentAppendPreloadingLinkTags(inDataType: string): string[];
+    init(isWithStopOnLoadTimeout: boolean, inTimeoutMillis: number): void;
+    addDocumentLoadedEventHandler(isWithStopOnLoadTimeout: boolean, inTimeoutMillis: number): void;
+    htmlDocumentAppendPreloadingLinkTags_Images(isWithStopOnLoadTimeout: boolean): HTMLLinkElement[];
+    htmlDocumentAppendPreloadingLinkTags_Fonts(isWithStopOnLoadTimeout: boolean): HTMLLinkElement[];
+    htmlDocumentAppendPreloadingLinkTags(inDataType: string, isWithStopOnLoadTimeout: boolean): HTMLLinkElement[];
     extractUrlsFromHarBrowserReport(harBrowserReportFilepath: string): string[];
     addScriptLoadingStopOnTimeout(idsOfLinkTags: string[], timeoutNumberOfMilliseconds: number): void;
     produceLinkTagsPreloading(idsOfLinkTags: string[]): string;
