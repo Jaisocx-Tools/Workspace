@@ -328,9 +328,9 @@
   ];
 
 
-  let isPreloadWithStopOnLoadTimeout = false;
+  let isPreloadWithStopOnLoadTimeout = true;
 
-  let preloaderStopTimeoutMillis = 1200;
+  let preloaderStopTimeoutMillis = 600;
 
 
   let preloadFontsCDNData = {
@@ -657,9 +657,7 @@
           this.loadScriptsAndRenderTree();
           console.log ( "Scripts loader started ..." );
         }
-      } catch ( e ) {
-        console.error( e );
-      }
+      } catch ( e ) {}
 
     }
 
@@ -725,8 +723,8 @@
   type="text/javascript"
   src="node_modules/@jaisocx/preloader/transpiled/Simple/scripts_chained_loader/ScriptsChainedLoader.js"
   src-fallback="../preloader/transpiled/Simple/scripts_chained_loader/ScriptsChainedLoader.js"
-  onload="javascipt: ( () => { if ( treeExamplesClassInstance.wasOnceRendered === true ) { return; }; treeExamplesClassInstance = new TreeExamples(); treeExamplesClassInstance.onDOMContentLoadedEventHandler(); } )();"
-  onerror="javascript: ( () => { let tagScript = document.createElement( 'script' ); tagScript.onload = this.onload.bind( tagScript ); tagScript.src = this.getAttribute( 'src-fallback' ); document.body.insertAdjacentElement( 'afterend', tagScript ); this.remove(); } )();">
+  onload="javascipt: ( () => { if ( treeExamplesClassInstance.wasOnceRendered === true ) { return; }; treeExamplesClassInstance = new TreeExamples(); treeExamplesClassInstance.onChainedDOMContentLoadedEventHandler(); } )();"
+  onerror="javascript: ( () => { let newTagScript = document.createElement( 'script' ); newTagScript.onload = this.onload.bind( newTagScript ); newTagScript.src = this.getAttribute( 'src-fallback' ); document.body.insertAdjacentElement( 'afterend', newTagScript ); this.remove(); } )();">
 </script>
 
 </html>
