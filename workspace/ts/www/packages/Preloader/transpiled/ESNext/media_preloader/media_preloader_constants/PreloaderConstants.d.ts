@@ -6,5 +6,6 @@ export declare class PreloaderConstants implements PreloaderConstantsInterface {
     getScriptLoadingStopOnTimeout(): string;
     getCodeblockInvoke_ScriptLoadingStopOnTimeout(): string;
     getLinkTagOnloadCode(): string;
+    getLinkTagOnerrorCode(): string;
 }
 //# sourceMappingURL=PreloaderConstants.d.ts.map

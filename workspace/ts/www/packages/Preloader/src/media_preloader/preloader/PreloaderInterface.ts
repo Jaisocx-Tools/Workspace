@@ -31,6 +31,16 @@ export interface PreloaderInterface {
     harBrowserReportFilepath: string
   ): string[];
 
+  getScriptLoadingStopOnTimeout (
+    idsOfLinkTags: string[],
+    timeoutNumberOfMilliseconds: number
+  ): string[];
+
+  applyScriptLoadingStopOnTimeout (
+    idsOfLinkTags: string[],
+    timeoutNumberOfMilliseconds: number
+  ): void;
+
   addScriptLoadingStopOnTimeout (
     idsOfLinkTags: string[],
     timeoutNumberOfMilliseconds: number

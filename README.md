@@ -95,6 +95,26 @@ Why already published: the several js tools are ready, nevertheless.
 
 
 
+
+
+
+### E) Workarounds for sites and sites quality improvals
+
+
+
+#### E2) Fonts like set by designer in tasks, and minimizing traffic.
+
+[docs/md/preloads.md](./docs/md/preloads.md)
+
+
+
+
+
+
+
+
+
+
 ### E) Infrastructure How To
 
 #### E1) Project Builder and Code Prettifier
@@ -148,13 +168,12 @@ Why already published: the several js tools are ready, nevertheless.
 
 
 
-#### G4) NPM
+### H) NPM
 
 [docs/md/npm.md](./docs/md/npm.md)
 
 
 
-
-
+### H1) Npm index.example.html
 
 

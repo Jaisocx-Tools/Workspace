@@ -9,6 +9,7 @@ export interface PreloaderConstantsInterface {
 
   getLinkTagOnloadCode (): string;
 
+  getLinkTagOnerrorCode (): string;
 }
 
 

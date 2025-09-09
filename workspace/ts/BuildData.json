@@ -217,7 +217,7 @@
       "path": "packages/Preloader",
       "name": "preloader",
       "update-published": "",
-      "build": false,
+      "build": true,
       "build-simple-enable": true,
       "dependencies": [
         {
@@ -402,12 +402,12 @@
       "path": "sites_tools/js_tools/Tree",
       "name": "tree",
       "update-published": "",
-      "build": true,
+      "build": false,
       "build-simple-enable": true,
       "css-importer": {
         "build": false,
-        "cssFilePath": "MediaAndStyles/Tree_main_Webpack.css",
-        "cssTargetFilePath": "MediaAndStyles/Tree_main_resolved.css"
+        "cssFilePath": "MediaAndStyles/Tree_main_Webpack_minimal.css",
+        "cssTargetFilePath": "MediaAndStyles/Tree_main_resolved_minimal.css"
       },
       "build-files": [
         "typescript/ArrayOrObjectPackage.js",

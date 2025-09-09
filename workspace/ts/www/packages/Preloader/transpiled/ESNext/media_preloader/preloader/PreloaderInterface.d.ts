@@ -8,6 +8,8 @@ export interface PreloaderInterface {
     htmlDocumentAppendPreloadingLinkTags_Fonts(isWithStopOnLoadTimeout: boolean): HTMLLinkElement[];
     htmlDocumentAppendPreloadingLinkTags(inDataType: string, isWithStopOnLoadTimeout: boolean): HTMLLinkElement[];
     extractUrlsFromHarBrowserReport(harBrowserReportFilepath: string): string[];
+    getScriptLoadingStopOnTimeout(idsOfLinkTags: string[], timeoutNumberOfMilliseconds: number): string[];
+    applyScriptLoadingStopOnTimeout(idsOfLinkTags: string[], timeoutNumberOfMilliseconds: number): void;
     addScriptLoadingStopOnTimeout(idsOfLinkTags: string[], timeoutNumberOfMilliseconds: number): void;
     produceLinkTagsPreloading(idsOfLinkTags: string[]): string;
     produceScriptLoadingStopOnTimeout(): string;

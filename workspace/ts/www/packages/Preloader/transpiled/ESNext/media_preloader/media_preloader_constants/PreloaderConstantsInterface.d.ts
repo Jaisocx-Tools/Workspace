@@ -3,5 +3,6 @@ export interface PreloaderConstantsInterface {
     getScriptLoadingStopOnTimeout(): string;
     getCodeblockInvoke_ScriptLoadingStopOnTimeout(): string;
     getLinkTagOnloadCode(): string;
+    getLinkTagOnerrorCode(): string;
 }
 //# sourceMappingURL=PreloaderConstantsInterface.d.ts.map

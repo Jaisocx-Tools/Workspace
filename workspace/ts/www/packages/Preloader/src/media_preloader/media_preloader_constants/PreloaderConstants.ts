@@ -8,6 +8,7 @@ export class PreloaderConstants implements PreloaderConstantsInterface {
   #scriptLoadingStopOnTimeout: string;
   #codeblockInvoke_ScriptLoadingStopOnTimeout: string;
   #linkTagOnloadCode: string;
+  #linkTagOnerrorCode: string;
 
 
 
@@ -17,60 +18,56 @@ export class PreloaderConstants implements PreloaderConstantsInterface {
 
 
     this.#scriptLoadingStopOnTimeout = `
-      let loadingStopOnTimeout = ( idsObject ) => {
+      function loadingStopOnTimeout ( idsObject ) {
 
-      console.log( "Started script, cleaning up hanging hard preloads links, if cdn doesn't respond, in order to prevent blocked render in the browser." );
+        console.log( "Started script, cleaning up hanging hard preloads links, if cdn doesn't respond, in order to prevent blocked render in the browser." );
 
         let ids = Object.keys( idsObject );
         let idsNumber = ids.length;
         let id = "";
-        let i = 0;
+        let i = ( idsNumber - 1 );
         let tag = new Object();
 
         let secureCounter = 1;
-        let secureMaxCounter = 10;
+        let secureMaxCounter = 14;
 
-        let linkUrl = "";
-
-        marker1: while ( i < idsNumber ) {
+        marker1: while ( i >= 0 ) {
           secureCounter++;
           if ( secureCounter >= secureMaxCounter ) {
             break marker1;
           }
 
+
           id = ids[i];
-          i++;
 
           if ( idsObject[id] === 3 ) {
+            i--;
             continue marker1;
           }
 
 
-          linkUrl = "";
+          let url = "";
           try {
             tag = document.getElementById( id );
-            linkUrl = tag.getAttribute( "href" );
+            url = tag.getAttribute( "href" );
           } catch (e) {}
           try {
             tag.onerror = null;
           } catch (e) {}
           try {
-            tag.setAttribute( "fetchpriority", "low" );
-          } catch (e) {}
-          try {
             tag.setAttribute( "rel", "stylesheet" );
           } catch (e) {}
           try {
-            tag.removeAttribute( "href" );
+            tag.setAttribute( "href", "javascript: void(0);" );
           } catch (e) {}
           try {
             tag.remove();
-            console.log( "Cleaned up, after timeout, the hanging hard preload url:", linkUrl );
+            console.log( "Cleaned up, after timeout, the hanging hard preload url:", url );
           } catch (e) {}
 
+          tag = null;
 
-
-          i++;
+          i--;
         }
       }
     `;
@@ -87,6 +84,7 @@ export class PreloaderConstants implements PreloaderConstantsInterface {
     `;
 
     this.#linkTagOnloadCode = "javascript: ( () => { const id = this.id; linkTagsPreloading[id] = 3; } )();";
+    this.#linkTagOnerrorCode = "javascript: ( () => { this.remove(); this.onerror = null; } )();";
 
   }
 
@@ -112,6 +110,12 @@ export class PreloaderConstants implements PreloaderConstantsInterface {
 
   getLinkTagOnloadCode (): string {
     return this.#linkTagOnloadCode;
+  }
+
+
+
+  getLinkTagOnerrorCode (): string {
+    return this.#linkTagOnerrorCode;
   }
 
 }

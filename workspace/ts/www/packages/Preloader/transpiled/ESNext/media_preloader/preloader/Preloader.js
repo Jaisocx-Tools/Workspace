@@ -56,15 +56,13 @@ export class Preloader {
                 i++;
             }
             if (isWithStopOnLoadTimeout) {
-                this.addScriptLoadingStopOnTimeout(idsOfTagsLink, inTimeoutMillis);
+                this.applyScriptLoadingStopOnTimeout(idsOfTagsLink, inTimeoutMillis);
             }
-            setTimeout(() => {
-                i = 0;
-                while (i < linkTagsNumber) {
-                    document.head.append(linkTags[i]);
-                    i++;
-                }
-            }, 100);
+            i = 0;
+            while (i < linkTagsNumber) {
+                document.head.append(linkTags[i]);
+                i++;
+            }
         };
         if (document.readyState !== "loading") {
             // If already loaded, invokes immediately
@@ -99,6 +97,7 @@ export class Preloader {
         let as = inDataType;
         let linkId = "";
         let linkTagOnloadCode = this.preloaderConstantsInstance.getLinkTagOnloadCode();
+        let linkTagOnerrorCode = this.preloaderConstantsInstance.getLinkTagOnerrorCode();
         let themeName = "";
         let webpackAliasedURL = "";
         let href = "";
@@ -125,15 +124,16 @@ export class Preloader {
                 let filenameToId = [themeName, filename].join("_");
                 linkId = CaseConverter.snake(filenameToId);
                 link.setAttribute("id", linkId);
-                link.setAttribute("as", as);
-                link.setAttribute("href", href);
+                link.setAttribute("fetchpriority", "low");
                 link.setAttribute("rel", rel);
-                link.setAttribute("fetchpriority", "high");
+                link.setAttribute("as", as);
                 link.setAttribute("type", `${inDataType}/${filenameExtension}`);
                 link.setAttribute("crossorigin", "");
+                link.setAttribute("href", href);
                 if (isWithStopOnLoadTimeout) {
                     link.setAttribute("onload", linkTagOnloadCode);
                 }
+                link.setAttribute("onerror", linkTagOnerrorCode);
                 linkTags.push(link);
             }
         }
@@ -144,14 +144,27 @@ export class Preloader {
         throw new Error("Not implemented");
         return [];
     }
-    addScriptLoadingStopOnTimeout(idsOfLinkTags, timeoutNumberOfMilliseconds) {
-        // let tagScript: HTMLScriptElement = document.createElement( "SCRIPT" ) as HTMLScriptElement;
-        let firstTagLink = document.head.querySelector("link");
+    getScriptLoadingStopOnTimeout(idsOfLinkTags, timeoutNumberOfMilliseconds) {
         let innerHTMLof_TagScript_Array = new Array(5);
-        innerHTMLof_TagScript_Array[0] = "\n  <script>\n";
+        innerHTMLof_TagScript_Array[0] = "";
         innerHTMLof_TagScript_Array[1] = this.produceLinkTagsPreloading(idsOfLinkTags);
         innerHTMLof_TagScript_Array[2] = this.preloaderConstantsInstance.getScriptLoadingStopOnTimeout();
         innerHTMLof_TagScript_Array[3] = this.produceCodeblockInvoke_ScriptLoadingStopOnTimeout(timeoutNumberOfMilliseconds);
+        innerHTMLof_TagScript_Array[4] = "";
+        return innerHTMLof_TagScript_Array;
+    }
+    applyScriptLoadingStopOnTimeout(idsOfLinkTags, timeoutNumberOfMilliseconds) {
+        let innerHTMLof_TagScript_Array = this
+            .getScriptLoadingStopOnTimeout(idsOfLinkTags, timeoutNumberOfMilliseconds)
+            .slice(1, 4);
+        let scriptSourceCode = innerHTMLof_TagScript_Array.join("");
+        eval(scriptSourceCode);
+        return;
+    }
+    addScriptLoadingStopOnTimeout(idsOfLinkTags, timeoutNumberOfMilliseconds) {
+        let firstTagLink = document.head.querySelector("link");
+        let innerHTMLof_TagScript_Array = this.getScriptLoadingStopOnTimeout(idsOfLinkTags, timeoutNumberOfMilliseconds);
+        innerHTMLof_TagScript_Array[0] = "\n  <script>\n";
         innerHTMLof_TagScript_Array[4] = "\n  </script>\n";
         let tagScriptOuterHTML = innerHTMLof_TagScript_Array.join("");
         if (firstTagLink === null) {

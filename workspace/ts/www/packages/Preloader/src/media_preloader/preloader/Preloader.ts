@@ -109,25 +109,19 @@ export class Preloader implements PreloaderInterface {
       }
 
       if ( isWithStopOnLoadTimeout ) {
-        this.addScriptLoadingStopOnTimeout(
+        this.applyScriptLoadingStopOnTimeout (
           idsOfTagsLink,
           inTimeoutMillis
         );
       }
 
-      setTimeout(
-        () => {
-          i = 0;
 
-          while( i < linkTagsNumber ) {
-            document.head.append( linkTags[i] );
-            i++;
-          }
-        },
-        100
-      );
+      i = 0;
 
-
+      while( i < linkTagsNumber ) {
+        document.head.append( linkTags[i] );
+        i++;
+      }
 
     };
 
@@ -202,6 +196,7 @@ export class Preloader implements PreloaderInterface {
     let as: any = inDataType;
     let linkId: string = "";
     let linkTagOnloadCode: string = this.preloaderConstantsInstance.getLinkTagOnloadCode();
+    let linkTagOnerrorCode: string = this.preloaderConstantsInstance.getLinkTagOnerrorCode();
     let themeName: string = "";
     let webpackAliasedURL: string = "";
     let href: string = "";
@@ -239,19 +234,21 @@ export class Preloader implements PreloaderInterface {
         linkId = CaseConverter.snake( filenameToId );
 
         link.setAttribute( "id", linkId );
-        link.setAttribute( "as", as );
-        link.setAttribute( "href", href );
+        link.setAttribute( "fetchpriority", "low" );
         link.setAttribute( "rel", rel );
-        link.setAttribute( "fetchpriority", "high" );
+        link.setAttribute( "as", as );
         link.setAttribute(
           "type",
           `${inDataType}/${filenameExtension}`
         );
         link.setAttribute( "crossorigin", "" );
+        link.setAttribute( "href", href );
 
         if ( isWithStopOnLoadTimeout ) {
           link.setAttribute( "onload", linkTagOnloadCode );
         }
+
+        link.setAttribute( "onerror", linkTagOnerrorCode );
 
         linkTags.push( link );
       }
@@ -259,7 +256,6 @@ export class Preloader implements PreloaderInterface {
 
 
     return linkTags;
-
   }
 
 
@@ -275,17 +271,13 @@ export class Preloader implements PreloaderInterface {
 
 
 
-  addScriptLoadingStopOnTimeout (
+  getScriptLoadingStopOnTimeout (
     idsOfLinkTags: string[],
     timeoutNumberOfMilliseconds: number
-  ): void {
-
-    // let tagScript: HTMLScriptElement = document.createElement( "SCRIPT" ) as HTMLScriptElement;
-    let firstTagLink: HTMLLinkElement|null = document.head.querySelector( "link" );
-
+  ): string[] {
     let innerHTMLof_TagScript_Array: string[] = new Array(5) as string[];
 
-    innerHTMLof_TagScript_Array[0] = "\n  <script>\n";
+    innerHTMLof_TagScript_Array[0] = "";
 
     innerHTMLof_TagScript_Array[1] = this.produceLinkTagsPreloading ( idsOfLinkTags );
 
@@ -293,6 +285,48 @@ export class Preloader implements PreloaderInterface {
 
     innerHTMLof_TagScript_Array[3] = this.produceCodeblockInvoke_ScriptLoadingStopOnTimeout ( timeoutNumberOfMilliseconds );
 
+    innerHTMLof_TagScript_Array[4] = "";
+
+
+    return innerHTMLof_TagScript_Array;
+
+  }
+
+
+
+  applyScriptLoadingStopOnTimeout (
+    idsOfLinkTags: string[],
+    timeoutNumberOfMilliseconds: number
+  ): void {
+    let innerHTMLof_TagScript_Array: string[] = this
+      .getScriptLoadingStopOnTimeout(
+        idsOfLinkTags,
+        timeoutNumberOfMilliseconds
+      )
+      .slice( 1, 4 );
+
+    let scriptSourceCode: string = innerHTMLof_TagScript_Array.join("");
+
+    eval ( scriptSourceCode );
+
+
+    return;
+  }
+
+
+
+  addScriptLoadingStopOnTimeout (
+    idsOfLinkTags: string[],
+    timeoutNumberOfMilliseconds: number
+  ): void {
+    let firstTagLink: HTMLLinkElement|null = document.head.querySelector( "link" );
+
+    let innerHTMLof_TagScript_Array: string[] = this.getScriptLoadingStopOnTimeout(
+      idsOfLinkTags,
+      timeoutNumberOfMilliseconds
+    );
+
+    innerHTMLof_TagScript_Array[0] = "\n  <script>\n";
     innerHTMLof_TagScript_Array[4] = "\n  </script>\n";
 
 
@@ -360,7 +394,6 @@ export class Preloader implements PreloaderInterface {
 
 
     return textof_ScriptLoadingStopOnTimeout;
-
   }
 
 
@@ -381,7 +414,6 @@ export class Preloader implements PreloaderInterface {
 
 
     return textof_ScriptLoadingStopOnTimeout;
-
   }
 }
 

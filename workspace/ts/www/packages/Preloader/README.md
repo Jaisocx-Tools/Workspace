@@ -5,6 +5,11 @@
 
 fine tuning of look and feel themes turning on.
 
+Another README on minimizing same font loads. The best way just once. [README_preloader_font_loading_once.md](README_preloader_font_loading_once.md)
+
+
+
+
 ### The Improvals
 
 1. Site's elems get positions, as defined and managed by the task authors, ux/ui designers and sites devs.
@@ -94,6 +99,8 @@ For the optimization, You can watch the font files loaded in browser's developer
 
   </script>
 ```
+
+
 
 
 ### The Interface for the main class
