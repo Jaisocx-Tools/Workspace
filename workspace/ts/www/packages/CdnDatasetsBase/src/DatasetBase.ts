@@ -8,6 +8,8 @@ export class DatasetBase extends JsonWriter {
 
   _data: any[];
   _dataAsObject: any;
+  _filePath: string;
+
 
 
   constructor() {
@@ -18,8 +20,9 @@ export class DatasetBase extends JsonWriter {
     this._data = new Array();
     this._dataAsObject = new Object();
 
-    this.filePath = "";
+    this._filePath = "";
   }
+
 
 
   getData(): any[] {
@@ -27,8 +30,9 @@ export class DatasetBase extends JsonWriter {
   }
 
 
+
   getDataIndexedByKeys( jpathExpression: string ): any[] {
-    let jpathName: string = JPath.getJPathName(
+    let jpathName: string = JPath.getJPathName (
       jpathExpression,
       this.JPATH_NAME_DELIMITER
     );
@@ -37,8 +41,10 @@ export class DatasetBase extends JsonWriter {
       this._dataAsObject[jpathName] = this.initDataAsObject( jpathExpression );
     }
 
+
     return this._dataAsObject[jpathName];
   }
+
 
 
   saveDataIndexedByKeys(
@@ -50,8 +56,10 @@ export class DatasetBase extends JsonWriter {
       this.getDataIndexedByKeys( jpathExpression )
     );
 
+
     return locSaved;
   }
+
 
 
   initDataAsObject( jpathExpression: string ): any {
@@ -73,6 +81,7 @@ export class DatasetBase extends JsonWriter {
           return 0;
         }
 
+
         return ( aValue > bValue ) ? (1) : (-1);
       }
     );
@@ -89,6 +98,7 @@ export class DatasetBase extends JsonWriter {
       }
       locDataAsObject[keyValue].push( arrayItem );
     }
+
 
     return locDataAsObject;
   }

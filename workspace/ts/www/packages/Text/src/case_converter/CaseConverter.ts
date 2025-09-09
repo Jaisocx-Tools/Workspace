@@ -86,7 +86,6 @@ export class CaseConverter implements CaseConverterInterface {
 
 
   public static getInstance(): CaseConverterInterface {
-
     if ( CaseConverter.clsInstance === false ) {
       CaseConverter.clsInstance = new CaseConverter();
     }
@@ -371,8 +370,8 @@ export class CaseConverter implements CaseConverterInterface {
       joinDelimiterVariant
     );
 
-    console.log( { locTransformedDataRecords } );
 
+    // console.log( { locTransformedDataRecords } );
     let locTransformFirstFunc:       CallableFunction|false = false;
     let locTransformFunc:            CallableFunction|false = false;
 
@@ -475,7 +474,6 @@ export class CaseConverter implements CaseConverterInterface {
       locCurrentCharsGroupType = locTmpGroupRanges[2];
 
       if ( locCurrentCharsGroupType === CaseConverterConstants.CharTypeEnum.delimiter ) {
-
         if ( ( locIsDelimiter === true ) && ( groupOfChars_Id !== 0 )  ) {
           retVal_transformed.push( delimiter );
         }
@@ -679,13 +677,11 @@ export class CaseConverter implements CaseConverterInterface {
         transformedGroupsMultidimPosArray.push ( locTmp_ofTypeDelimiter_TransformedGroupRanges );
 
       } else if ( joinDelimiterVariant === CaseConverterConstants.JoinDelimiterVariants.beforeNumbersNoDelimiter ) {
-
         if ( locCurrentCharsGroupType !== CaseConverterConstants.CharTypeEnum.num ) {
           transformedGroupsMultidimPosArray.push ( locTmp_ofTypeDelimiter_TransformedGroupRanges );
         }
 
       } else if ( joinDelimiterVariant === CaseConverterConstants.JoinDelimiterVariants.afterNumbersNoDelimiter ) {
-
         if (
           ( locPreviousCharsGroupType !== CaseConverterConstants.CharTypeEnum.num )
         ) {
@@ -693,7 +689,6 @@ export class CaseConverter implements CaseConverterInterface {
         }
 
       } else if ( joinDelimiterVariant === CaseConverterConstants.JoinDelimiterVariants.neverNumbersDelimiter ) {
-
         if ( ( locPreviousCharsGroupType !== CaseConverterConstants.CharTypeEnum.num ) && ( locCurrentCharsGroupType !== CaseConverterConstants.CharTypeEnum.num ) ) {
           transformedGroupsMultidimPosArray.push ( locTmp_ofTypeDelimiter_TransformedGroupRanges );
         }

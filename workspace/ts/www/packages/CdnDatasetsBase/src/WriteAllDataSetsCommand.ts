@@ -34,13 +34,14 @@ export class WriteAllDataSetsCommand {
       )
     );
 
+
     return 1;
   }
 
 }
 
-let commandPayload: string[] = process.argv.slice(2);
-let folderPathFromCommandPayload: string = commandPayload[0];
 
-WriteAllDataSetsCommand.exampleWriteMethod( folderPathFromCommandPayload );
+// let commandPayload: string[] = process.argv.slice(2);
+// let folderPathFromCommandPayload: string = commandPayload[0];
+// WriteAllDataSetsCommand.exampleWriteMethod( folderPathFromCommandPayload );
 

@@ -176,7 +176,7 @@ export class CaseConverter {
         let locBitsbufBeingTransformed = (new TextEncoder()).encode(inText);
         let locParsedDataRecords = this.parseBitsbuf(locBitsbufBeingTransformed);
         let locTransformedDataRecords = this.transformDataRecords(locParsedDataRecords, joinDelimiterVariant);
-        console.log({ locTransformedDataRecords });
+        // console.log( { locTransformedDataRecords } );
         let locTransformFirstFunc = false;
         let locTransformFunc = false;
         let transformResolvingObject = {

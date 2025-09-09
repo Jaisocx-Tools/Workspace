@@ -1,15 +1,16 @@
-import { JsonWriter } from "./JsonWriter.js";
+import { JsonWriter } from "@jaisocx/file-writer";
 import { JPath } from "@jaisocx/jpath";
 export class DatasetBase extends JsonWriter {
     JPATH_NAME_DELIMITER;
     _data;
     _dataAsObject;
+    _filePath;
     constructor() {
         super();
         this.JPATH_NAME_DELIMITER = "_";
         this._data = new Array();
         this._dataAsObject = new Object();
-        this.filePath = "";
+        this._filePath = "";
     }
     getData() {
         return this._data;

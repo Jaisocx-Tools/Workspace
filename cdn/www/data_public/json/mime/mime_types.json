@@ -1,5 +1,4 @@
 {
-  "@this_doc_url": "https://github.com/micnic/mime.json/blob/master/index.json",
   "123": "application/vnd.lotus-1-2-3",
   "1km": "application/vnd.1000minds.decision-model+xml",
   "3dml": "text/vnd.in3d.3dml",

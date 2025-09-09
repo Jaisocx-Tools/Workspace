@@ -83,8 +83,10 @@ export class FileWriterQueue extends EventEmitter {
   setDebug( inDebug: boolean ): FileWriterQueue {
     this.debug = inDebug;
 
+
     return this;
   }
+
 
 
   setHasToStop( toStop: boolean ): FileWriterQueue {
@@ -94,6 +96,7 @@ export class FileWriterQueue extends EventEmitter {
       console.log( `FileWriterQueue.setHasToStop( ${toStop} )` );
     }
 
+
     return this;
   }
 
@@ -101,6 +104,7 @@ export class FileWriterQueue extends EventEmitter {
   // fine tuning mehod
   setQueueSizeExtendBy( extendBy: number ): FileWriterQueue {
     this.queueSizeExtendBy = extendBy;
+
 
     return this;
   }
@@ -117,6 +121,7 @@ export class FileWriterQueue extends EventEmitter {
    * @param extendBy
    * @returns
    */
+
 
 
   extendQueue( extendBy: number ): number {
@@ -141,14 +146,17 @@ export class FileWriterQueue extends EventEmitter {
     this.queue = null;
     this.queue = extendedQueue;
 
+
     return this.queue.length;
   }
+
 
 
   cleanupQueue(
     start: number,
     end: number
   ): void {
+
     if ( start < 0 ) {
       start = 0;
     }
@@ -173,13 +181,14 @@ export class FileWriterQueue extends EventEmitter {
   }
 
 
+
   validateOnEnqueueTask (
     bitsbuf: Uint8Array,
     range: number[]
   ): void {
-
     if ( range[0] === range[1] ) {
       console.error("Range start and end are the same. Skipping enqueueing and writing of this range...");
+
 
       return;
     }
@@ -202,6 +211,7 @@ export class FileWriterQueue extends EventEmitter {
     }
 
   }
+
 
 
   enqueue (
@@ -256,6 +266,7 @@ export class FileWriterQueue extends EventEmitter {
   }
 
 
+
   processQueue(): void {
 
     // @ts-ignore
@@ -301,6 +312,7 @@ export class FileWriterQueue extends EventEmitter {
                 );
             }
 
+
             return 1;
           }
 
@@ -311,13 +323,14 @@ export class FileWriterQueue extends EventEmitter {
   }
 
 
-  filehandleClose(): void {
 
+  filehandleClose(): void {
     if ( this.isWriting === true ) {
       this.setHasToStop ( true );
     }
 
     if ( ( this.workingQueueId > this.enqueuedId ) === false ) {
+
       if ( this.debug === true ) {
         console.error(
           "FileWriterQueue.filehandleClose(): ",
@@ -326,6 +339,7 @@ export class FileWriterQueue extends EventEmitter {
           this.enqueuedId
         );
       }
+
 
       return;
     }
@@ -341,6 +355,7 @@ export class FileWriterQueue extends EventEmitter {
           );
         }
       );
+
 
     return;
   }

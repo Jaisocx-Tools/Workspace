@@ -4,7 +4,9 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.FileWriter = void 0;
+//@ts-ignore
 const node_fs_1 = __importDefault(require("node:fs"));
+//@ts-ignore
 const util_1 = require("util");
 const FileWriterConstants_js_1 = require("./FileWriterConstants.js");
 class FileWriter {

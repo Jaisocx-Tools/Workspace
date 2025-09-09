@@ -18,12 +18,7 @@
       "font_LibreFranklin_Medium": 1,
       "font_LibreFranklin_Regular": 1,
       "font_LibreFranklin_SemiBold": 1,
-      "font_Niconne_Regular": 1,
-      "font_BalooPaaji2_Regular": 1,
-      "stylesheet_cdn_fonts": 1,
-      "theme_base_styles_tree_loading_cdn_fonts": 1,
-      "theme_funny_styles_tree_loading_cdn_fonts": 1,
-      "theme_funny_styles_tree": 1
+      "stylesheet_cdn_fontsLibreFranklin": 1
     };
 
 
@@ -87,7 +82,7 @@
       () => {
         statLinksLoadingStopOnTimeout( statLinkTagsPreloading );
       },
-      600
+      500
     );
 
   </script>
@@ -156,6 +151,7 @@
     onerror="javascript: ( () => { this.remove(); } )();"
   />
 
+  <!--
   <link
     id="font_Niconne_Regular"
     fetchpriority="low"
@@ -178,13 +174,13 @@
     href="https://sandbox.brightday.email/cdn/www/fonts/Baloo_Paaji_2/static/BalooPaaji2-Regular.ttf"
     onload="javascript: ( () => { const id = this.id; statLinkTagsPreloading[id] = 3; } )();"
     onerror="javascript: ( () => { this.remove(); } )();"
-  />
+  /> -->
 
 
   <!--# CSS FOR FONTS -->
   <!-- when opened .html file locally, the requested by this .css file fonts are blocked by browsers' CORS. The response headers of a cdn server needed. -->
   <link
-    id="stylesheet_cdn_fonts"
+    id="stylesheet_cdn_fontsLibreFranklin"
     rel="stylesheet"
     type="text/css"
     href="https://sandbox.brightday.email/cdn/www/fonts_css/font_LibreFranklin_cdn.css"
@@ -221,10 +217,18 @@
 
 
 
-
   <!--# STYLES Tree and theme_base -->
+  <!-- <link
+    id="styles_loading_fonts_tree_theme_base_BalooPaaji2"
+    rel="stylesheet"
+    type="text/css"
+    charset="utf-8"
+    href="MediaAndStyles/themes/theme_base/Tree_theme_base_Imports_fonts_cdn.css"
+    onload="javascript: ( () => { const id = this.id; statLinkTagsPreloading[id] = 3; } )();"
+  /> -->
+
   <link
-    id="theme_base_styles_tree_loading_cdn_fonts"
+    id="tree_theme_base_styles"
     rel="stylesheet"
     type="text/css"
     charset="utf-8"
@@ -236,14 +240,14 @@
 
   <!--# Theme funny -->
   <!--# importing theme  in this @jaisocx/tree npm package -->
-  <link
+  <!-- <link
     id="theme_funny_styles_tree_loading_cdn_fonts"
     rel="stylesheet"
     type="text/css"
     charset="utf-8"
     href="MediaAndStyles/themes/theme-funny/tree_theme-funny_fonts.css"
     onload="javascript: ( () => { const id = this.id; statLinkTagsPreloading[id] = 3; } )();"
-  />
+  /> -->
 
   <link
     id="theme_funny_styles_tree"
@@ -371,19 +375,24 @@
 
   let isPreloadWithStopOnLoadTimeout = true;
 
-  let preloaderStopTimeoutMillis = 600;
+  let preloaderStopTimeoutMillis = 1200;
 
 
   let preloadFontsCDNData = {
     "image": null,
     "font": {
+      "json_data": [
+        "https://sandbox.brightday.email/cdn/www/data_public/json/tree-data/tree-data-to-use-with-conf.json"
+      ],
+      "theme_font_Niconne": [
+        "https://sandbox.brightday.email/cdn/www/fonts/Niconne/Niconne-Regular.ttf",
+        "https://sandbox.brightday.email/cdn/www/fonts_css/font_Niconne_cdn.css"
+      ],
       "theme_font_Baloo_Paaji_2": [
         "https://sandbox.brightday.email/cdn/www/fonts/Baloo_Paaji_2/static/BalooPaaji2-Medium.ttf",
         "https://sandbox.brightday.email/cdn/www/fonts/Baloo_Paaji_2/static/BalooPaaji2-Regular.ttf",
         "https://sandbox.brightday.email/cdn/www/fonts/Baloo_Paaji_2/static/BalooPaaji2-SemiBold.ttf",
-      ],
-      "theme_font_Niconne": [
-        "https://sandbox.brightday.email/cdn/www/fonts/Niconne/Niconne-Regular.ttf",
+        "https://sandbox.brightday.email/cdn/www/fonts_css/font_Baloo_Paaji_2_cdn.css"
       ],
     }
   };
@@ -706,9 +715,9 @@
 
         console.log ( "Scripts are loaded, starting TreeExamples.onDOMContentLoadedEventHandler() ..." );
 
-        //try {
-        //  this.preloadFonts( isPreloadWithStopOnLoadTimeout, preloaderStopTimeoutMillis );
-        //} catch (e) {}
+        try {
+          this.preloadFonts( isPreloadWithStopOnLoadTimeout, preloaderStopTimeoutMillis );
+        } catch (e) {}
 
         try {
           this.renderJsonTreeExamples();

@@ -2,6 +2,8 @@ class DatasetBase extends JsonWriter {
     JPATH_NAME_DELIMITER;
     _data;
     _dataAsObject;
+    _filePath;
+
 
 
     constructor() {
@@ -9,13 +11,15 @@ class DatasetBase extends JsonWriter {
         this.JPATH_NAME_DELIMITER = "_";
         this._data = new Array();
         this._dataAsObject = new Object();
-        this.filePath = "";
+        this._filePath = "";
     }
+
 
 
     getData() {
         return this._data;
     }
+
 
 
     getDataIndexedByKeys(jpathExpression) {
@@ -28,21 +32,22 @@ class DatasetBase extends JsonWriter {
             this._dataAsObject[jpathName] = this.initDataAsObject(jpathExpression);
         }
 
+
         return this._dataAsObject[jpathName];
     }
 
 
-    saveDataIndexedByKeys(
-        jpathExpression,
-        inFilePath
-    ) {
+
+    saveDataIndexedByKeys(jpathExpression, inFilePath) {
         let locSaved = this.saveData(
             inFilePath,
             this.getDataIndexedByKeys(jpathExpression)
         );
 
+
         return locSaved;
     }
+
 
 
     initDataAsObject(jpathExpression) {
@@ -60,21 +65,20 @@ class DatasetBase extends JsonWriter {
                 return 0;
             }
 
+
             return (aValue > bValue) ? (1) : (-1);
         });
 
         for (arrayItemId = 0; arrayItemId < arrayLen; arrayItemId++) {
             arrayItem = orderedDatasetByKey[arrayItemId];
-            keyValue = JPath.getByJPath(
-                jpath,
-                arrayItem
-            );
+            keyValue = JPath.getByJPath(jpath, arrayItem);
 
             if (locDataAsObject[keyValue] === undefined) {
                 locDataAsObject[keyValue] = new Array();
             }
             locDataAsObject[keyValue].push(arrayItem);
         }
+
 
         return locDataAsObject;
     }

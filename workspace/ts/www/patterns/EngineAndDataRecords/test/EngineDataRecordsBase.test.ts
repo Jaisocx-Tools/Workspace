@@ -23,9 +23,9 @@ test (
     dataRecord_B.data = 123;
     dataRecord_C.data = [ 1, 2, 3 ];
 
-    console.info ( { dataRecord_A } );
-    console.info ( { dataRecord_B } );
-    console.info ( { dataRecord_C } );
+    // console.info ( { dataRecord_A } );
+    // console.info ( { dataRecord_B } );
+    // console.info ( { dataRecord_C } );
 
 
     expect( dataRecord_C.recordLabel.id ).toBe( engineDataRecords.getActiveRecordId() );

@@ -59,7 +59,7 @@ class WriteAllDataSetsCommand {
     }
 }
 exports.WriteAllDataSetsCommand = WriteAllDataSetsCommand;
-let commandPayload = process.argv.slice(2);
-let folderPathFromCommandPayload = commandPayload[0];
-WriteAllDataSetsCommand.exampleWriteMethod(folderPathFromCommandPayload);
+// let commandPayload: string[] = process.argv.slice(2);
+// let folderPathFromCommandPayload: string = commandPayload[0];
+// WriteAllDataSetsCommand.exampleWriteMethod( folderPathFromCommandPayload );
 //# sourceMappingURL=WriteAllDataSetsCommand.js.map

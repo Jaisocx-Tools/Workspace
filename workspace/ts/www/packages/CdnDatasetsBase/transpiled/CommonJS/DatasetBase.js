@@ -1,15 +1,15 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.DatasetBase = void 0;
-const JsonWriter_js_1 = require("./JsonWriter.js");
+const file_writer_1 = require("@jaisocx/file-writer");
 const jpath_1 = require("@jaisocx/jpath");
-class DatasetBase extends JsonWriter_js_1.JsonWriter {
+class DatasetBase extends file_writer_1.JsonWriter {
     constructor() {
         super();
         this.JPATH_NAME_DELIMITER = "_";
         this._data = new Array();
         this._dataAsObject = new Object();
-        this.filePath = "";
+        this._filePath = "";
     }
     getData() {
         return this._data;

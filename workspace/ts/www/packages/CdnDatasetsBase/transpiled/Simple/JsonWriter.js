@@ -2,16 +2,14 @@ class JsonWriter {
     filePath;
 
 
+
     constructor() {
         this.filePath = "";
     }
 
 
     // in browsers logs to console, doesn't save to file.
-    saveData(
-        inFilePath,
-        data
-    ) {
+    saveData(inFilePath, data) {
         let json = JSON.stringify(data, null, 2);
         let isFsDefined = true;
         try {
@@ -27,11 +25,9 @@ class JsonWriter {
         }
 
         if (isFsDefined === false) {
-            console.log(
-                inFilePath,
-                json
-            );
+            console.log(inFilePath, json);
         }
+
 
         return 1;
     }

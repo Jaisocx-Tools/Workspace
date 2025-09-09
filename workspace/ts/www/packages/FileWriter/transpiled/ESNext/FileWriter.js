@@ -1,4 +1,6 @@
+//@ts-ignore
 import fs from "node:fs";
+//@ts-ignore
 import { TextEncoder, TextDecoder } from "util";
 import { FileWriterConstants } from "./FileWriterConstants.js";
 export class FileWriter {

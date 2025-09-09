@@ -7,6 +7,7 @@ export class JsonWriter {
   filePath: string;
 
 
+
   constructor() {
     this.filePath = "";
   }
@@ -41,6 +42,7 @@ export class JsonWriter {
       );
 
     }
+
 
     return 1;
   }

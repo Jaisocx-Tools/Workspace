@@ -3,6 +3,7 @@ export class TaskFileWritingQueue {
   #range: number[];
 
 
+
   constructor(
     inBitsbuf: Uint8Array,
     inRange: number[]
@@ -12,9 +13,11 @@ export class TaskFileWritingQueue {
   }
 
 
+
   getBitsbuf(): Uint8Array {
     return this.#bitsbuf;
   }
+
 
 
   getRange(): number[] {
@@ -22,9 +25,11 @@ export class TaskFileWritingQueue {
   }
 
 
+
   getStart(): number {
     return this.#range[0];
   }
+
 
 
   getEnd(): number {
@@ -32,10 +37,12 @@ export class TaskFileWritingQueue {
   }
 
 
+
   toObject(): object {
     return { "bitsbuf": this.#bitsbuf,
       "range": this.#range };
   }
+
 
 
   toString(): string {
@@ -46,6 +53,7 @@ export class TaskFileWritingQueue {
     taskAsObject["range"] = this.#range;
 
     const taskAsJson: string = JSON.stringify( taskAsObject );
+
 
     return taskAsJson;
   }

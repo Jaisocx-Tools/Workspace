@@ -154,6 +154,24 @@
       ]
     },
     {
+      "path": "packages/MimeType",
+      "name": "mime-type",
+      "update-published": "",
+      "build": false,
+      "build-simple-enable": true,
+      "dependencies": [
+        {
+          "name": "@jaisocx/cdn-datasets-base",
+          "path": "packages/CdnDatasetsBase"
+        }
+      ],
+      "build-files": [
+        "MimeType.js",
+        "mime_type_constants/MimeTypeConstants.js",
+        "mime_type_constants/SitesPreloaderMimeTypeConstants.js"
+      ]
+    },
+    {
       "path": "packages/CharcodeConverter",
       "name": "charcode-converter",
       "update-published": "Mon Jun 02 22:02:01 GMT 2025",
@@ -217,7 +235,7 @@
       "path": "packages/Preloader",
       "name": "preloader",
       "update-published": "",
-      "build": true,
+      "build": false,
       "build-simple-enable": true,
       "dependencies": [
         {

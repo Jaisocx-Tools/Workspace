@@ -23,7 +23,7 @@
   ],
   "optionalDependencies": {
     "@jaisocx/jpath": "^1.2.3",
-    "@jaisocx/file-writer": "^1.2.5"
+    "@jaisocx/file-writer": "~1.2.7"
   },
   "publishConfig": {
     "access": "public"

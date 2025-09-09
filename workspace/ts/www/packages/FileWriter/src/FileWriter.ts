@@ -1,11 +1,14 @@
 //@ts-ignore
 import fs from "node:fs";
 
+
 //@ts-ignore
 import { Stats } from "node:fs";
 
+
 //@ts-ignore
 import { FileHandle } from "node:fs/promises";
+
 
 //@ts-ignore
 import { TextEncoder, TextDecoder } from "util";
@@ -27,6 +30,7 @@ export class FileWriter {
   textEncoder: TextEncoder;
 
 
+
   constructor() {
     this.debug = false;
     this.fileWriterConstants = new FileWriterConstants();
@@ -38,18 +42,20 @@ export class FileWriter {
   }
 
 
+
   setDebug( inDebug: boolean ): FileWriter {
     this.debug = inDebug;
 
+
     return this;
   }
+
 
 
   async initFileHandleToExistingFile (
     inFilePath: string,
     mode: string
   ): Promise<number> {
-
     if ( fs.existsSync( inFilePath ) === false ) {
       throw new Error( `File not found: ${inFilePath}` );
     }
@@ -69,8 +75,10 @@ export class FileWriter {
 
     this.fileHandle = locFileHandle;
 
+
     return 1;
   }
+
 
 
   async cleanupFileAndGetNewFileHandle(
@@ -104,6 +112,7 @@ export class FileWriter {
       mode
     );
 
+
     return opened;
   }
 
@@ -115,8 +124,10 @@ export class FileWriter {
       this.fileWriterConstants.getFHandleModeAdd()
     );
 
+
     return opened;
   }
+
 
 
   async rewriteFileWithBitsbuf (
@@ -138,8 +149,10 @@ export class FileWriter {
     //@ts-ignore
     let closed: number = await this.filehandleClose();
 
+
     return 1;
   }
+
 
 
   async rewriteFileWithBitsbufByRange (
@@ -165,8 +178,10 @@ export class FileWriter {
     //@ts-ignore
     let closed: number = await this.filehandleClose();
 
+
     return 1;
   }
+
 
 
   async rewriteFileWithMixedArray (
@@ -184,6 +199,7 @@ export class FileWriter {
 
     //@ts-ignore
     let closed: number = await this.filehandleClose();
+
 
     return 1;
   }
@@ -208,8 +224,10 @@ export class FileWriter {
       await this.appendBitsbufToFile( content );
     }
 
+
     return 1;
   }
+
 
 
   async appendMixedArrayToFile (
@@ -246,8 +264,10 @@ export class FileWriter {
       await this.appendBitsbufToFile( joinedArray );
     }
 
+
     return 1;
   }
+
 
 
   async appendTextArrayToFile (
@@ -268,8 +288,10 @@ export class FileWriter {
 
     }
 
+
     return 1;
   }
+
 
 
   async appendTextToFile (
@@ -286,8 +308,10 @@ export class FileWriter {
       range
     );
 
+
     return retVal;
   }
+
 
 
   async appendBitsbufToFile (
@@ -302,8 +326,10 @@ export class FileWriter {
       range
     );
 
+
     return retVal;
   }
+
 
 
   async appendToFile (
@@ -363,11 +389,14 @@ export class FileWriter {
 
     this.offsetInFile += ( range[1] - range[0] );
 
+
     return 1;
   }
 
 
+
   async filehandleClose(): Promise<number> {
+
     if ( this.fileHandle === null ) {
       return 0;
     }
@@ -386,8 +415,10 @@ export class FileWriter {
       );
     }
 
+
     return 1;
   }
+
 
 
   concatUint8Arrays(arrays: Uint8Array[]): Uint8Array {
@@ -409,6 +440,7 @@ export class FileWriter {
       result.set([...arr], offset);
       offset += arr.length;
     }
+
 
     return result;
   }

@@ -308,7 +308,9 @@ class CaseConverter {
             locParsedDataRecords,
             joinDelimiterVariant
         );
-        console.log({ locTransformedDataRecords });
+
+
+        // console.log( { locTransformedDataRecords } );
         let locTransformFirstFunc = false;
         let locTransformFunc = false;
         let transformResolvingObject = {
