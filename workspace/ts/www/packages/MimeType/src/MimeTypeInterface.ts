@@ -8,9 +8,9 @@ export interface MimeTypeInterface {
 
   getFilenameExtension ( filename: string, maxDots: number ): string;
 
-  getMimeTypeByFilenameExtension ( filenameExtension: string ): string|undefined;
+  getMimeTypeByFilenameExtension ( filenameExtension: string ): string;
 
-  getMimeTypeByFilename ( filename: string, maxDots: number ): string|undefined;
+  getMimeTypeByFilename ( filename: string, maxDots: number ): string;
 
 }
 

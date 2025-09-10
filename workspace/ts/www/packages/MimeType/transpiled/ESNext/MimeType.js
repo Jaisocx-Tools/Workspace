@@ -22,7 +22,12 @@ export class MimeType {
         return filenameExtension;
     }
     getMimeTypeByFilenameExtension(filenameExtension) {
-        return this._dataset[filenameExtension];
+        let mimeType = "";
+        mimeType = this._dataset[filenameExtension];
+        if (mimeType === undefined) {
+            mimeType = "";
+        }
+        return mimeType;
     }
     getMimeTypeByFilename(filename, maxDots) {
         let filenameExtension = "";

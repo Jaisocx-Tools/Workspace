@@ -165,6 +165,14 @@ class Preloader {
         const alias = this.webpackAlias;
         const aliasReplace = this.webpackAliasReplace;
         const toReplaceWebpackAlias = ((alias !== undefined) && (alias !== null) && (alias.length !== 0));
+        let mConstants = new SitesPreloaderMimeTypeConstants();
+        let mimeTypesInstance = new MimeType();
+        mimeTypesInstance
+            .setMimeTypesConstants(mConstants);
+        let filename = "";
+        let filenameExtension = "";
+        let mimeType = "";
+        let filenameToId = "";
 
         for (themeName in preloadsByDatatype) {
 
@@ -184,18 +192,16 @@ class Preloader {
                 else {
                     href = webpackAliasedURL;
                 }
-                let filenameExtension = href.substring(href.lastIndexOf(".") + 1);
-                let filename = href.substring(href.lastIndexOf("/") + 1);
-                let filenameToId = [themeName, filename].join("_");
+                filename = href.substring(href.lastIndexOf("/") + 1);
+                filenameExtension = mimeTypesInstance.getFilenameExtension(filename, 2);
+                mimeType = mimeTypesInstance.getMimeTypeByFilename(filename, 2);
+                filenameToId = [themeName, filename].join("_");
                 linkId = CaseConverter.snake(filenameToId);
                 link.setAttribute("id", linkId);
                 link.setAttribute("fetchpriority", "low");
                 link.setAttribute("rel", rel);
                 link.setAttribute("as", as);
-                link.setAttribute(
-                    "type",
-                    `${inDataType}/${filenameExtension}`
-                );
+                link.setAttribute("type", mimeType);
                 link.setAttribute("crossorigin", "");
                 link.setAttribute("href", href);
 

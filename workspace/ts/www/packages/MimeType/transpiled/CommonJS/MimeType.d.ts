@@ -6,7 +6,7 @@ export declare class MimeType implements MimeTypeInterface {
     constructor();
     setMimeTypesConstants(inConstantsInstance: MimeTypeConstantsInterface): MimeTypeInterface;
     getFilenameExtension(filename: string, maxDots: number): string;
-    getMimeTypeByFilenameExtension(filenameExtension: string): string | undefined;
-    getMimeTypeByFilename(filename: string, maxDots: number): string | undefined;
+    getMimeTypeByFilenameExtension(filenameExtension: string): string;
+    getMimeTypeByFilename(filename: string, maxDots: number): string;
 }
 //# sourceMappingURL=MimeType.d.ts.map

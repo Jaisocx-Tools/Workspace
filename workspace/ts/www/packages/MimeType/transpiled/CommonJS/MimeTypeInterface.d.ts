@@ -2,7 +2,7 @@ import { MimeTypeConstantsInterface } from "./mime_type_constants/MimeTypeConsta
 export interface MimeTypeInterface {
     setMimeTypesConstants(inConstantsInstance: MimeTypeConstantsInterface): MimeTypeInterface;
     getFilenameExtension(filename: string, maxDots: number): string;
-    getMimeTypeByFilenameExtension(filenameExtension: string): string | undefined;
-    getMimeTypeByFilename(filename: string, maxDots: number): string | undefined;
+    getMimeTypeByFilenameExtension(filenameExtension: string): string;
+    getMimeTypeByFilename(filename: string, maxDots: number): string;
 }
 //# sourceMappingURL=MimeTypeInterface.d.ts.map

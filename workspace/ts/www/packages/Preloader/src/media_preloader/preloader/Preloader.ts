@@ -1,16 +1,16 @@
 import { TemplateRenderer, TemplateRendererDataRecord } from "@jaisocx/template-renderer";
 
-
-// import {
-//   CapsOrSmallTransformVariants,
-//   CharTypeEnum,
-//   JoinDelimiterVariants,
-//   ParseTimeGrouppingVariants,
-//   TransformVariants
-// } from "@jaisocx/text";
-
 import { CaseConverter } from "@jaisocx/text";
 
+import {
+  MimeTypeConstantsInterface,
+  SitesPreloaderMimeTypeConstants,
+
+
+  // MimeTypeConstants,
+  // MimeTypeInterface,
+  MimeType
+} from "@jaisocx/mime-type";
 
 import { PreloaderConstantsInterface } from "../media_preloader_constants/PreloaderConstantsInterface.js";
 import { PreloaderConstants } from "../media_preloader_constants/PreloaderConstants.js";
@@ -207,6 +207,17 @@ export class Preloader implements PreloaderInterface {
     const aliasReplace: string = this.webpackAliasReplace;
     const toReplaceWebpackAlias: boolean = ( ( alias !== undefined ) && ( alias !== null ) && ( alias.length !== 0 ) );
 
+    let mConstants: MimeTypeConstantsInterface = new SitesPreloaderMimeTypeConstants();
+    let mimeTypesInstance: MimeType = new MimeType();
+    mimeTypesInstance
+      .setMimeTypesConstants( mConstants );
+
+
+    let filename: string = "";
+    let filenameExtension: string = "";
+    let mimeType: string = "";
+    let filenameToId: string = "";
+
     for ( themeName in preloadsByDatatype ) {
 
       //@ts-ignore
@@ -228,19 +239,18 @@ export class Preloader implements PreloaderInterface {
           href = webpackAliasedURL;
         }
 
-        let filenameExtension: string = href.substring( href.lastIndexOf( "." ) + 1 );
-        let filename: string = href.substring( href.lastIndexOf( "/" ) + 1 );
-        let filenameToId: string = [ themeName, filename ].join("_");
-        linkId = CaseConverter.snake( filenameToId );
+        filename = href.substring( href.lastIndexOf ( "/" ) + 1 );
+        filenameExtension = mimeTypesInstance.getFilenameExtension ( filename, 2 );
+        mimeType = mimeTypesInstance.getMimeTypeByFilename ( filename, 2 );
+
+        filenameToId = [ themeName, filename ].join ( "_" );
+        linkId = CaseConverter.snake ( filenameToId );
 
         link.setAttribute( "id", linkId );
         link.setAttribute( "fetchpriority", "low" );
         link.setAttribute( "rel", rel );
         link.setAttribute( "as", as );
-        link.setAttribute(
-          "type",
-          `${inDataType}/${filenameExtension}`
-        );
+        link.setAttribute( "type", mimeType );
         link.setAttribute( "crossorigin", "" );
         link.setAttribute( "href", href );
 

@@ -39,7 +39,15 @@ class MimeType {
 
 
     getMimeTypeByFilenameExtension(filenameExtension) {
-        return this._dataset[filenameExtension];
+        let mimeType = "";
+        mimeType = this._dataset[filenameExtension];
+
+        if (mimeType === undefined) {
+            mimeType = "";
+        }
+
+
+        return mimeType;
     }
 
 

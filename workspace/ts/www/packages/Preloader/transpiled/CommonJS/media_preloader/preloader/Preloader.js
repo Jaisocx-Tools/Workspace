@@ -2,14 +2,8 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Preloader = void 0;
 const template_renderer_1 = require("@jaisocx/template-renderer");
-// import {
-//   CapsOrSmallTransformVariants,
-//   CharTypeEnum,
-//   JoinDelimiterVariants,
-//   ParseTimeGrouppingVariants,
-//   TransformVariants
-// } from "@jaisocx/text";
 const text_1 = require("@jaisocx/text");
+const mime_type_1 = require("@jaisocx/mime-type");
 const PreloaderConstants_js_1 = require("../media_preloader_constants/PreloaderConstants.js");
 class Preloader {
     constructor() {
@@ -103,6 +97,14 @@ class Preloader {
         const alias = this.webpackAlias;
         const aliasReplace = this.webpackAliasReplace;
         const toReplaceWebpackAlias = ((alias !== undefined) && (alias !== null) && (alias.length !== 0));
+        let mConstants = new mime_type_1.SitesPreloaderMimeTypeConstants();
+        let mimeTypesInstance = new mime_type_1.MimeType();
+        mimeTypesInstance
+            .setMimeTypesConstants(mConstants);
+        let filename = "";
+        let filenameExtension = "";
+        let mimeType = "";
+        let filenameToId = "";
         for (themeName in preloadsByDatatype) {
             //@ts-ignore
             urls = preloadsByDatatype[themeName];
@@ -117,15 +119,16 @@ class Preloader {
                 else {
                     href = webpackAliasedURL;
                 }
-                let filenameExtension = href.substring(href.lastIndexOf(".") + 1);
-                let filename = href.substring(href.lastIndexOf("/") + 1);
-                let filenameToId = [themeName, filename].join("_");
+                filename = href.substring(href.lastIndexOf("/") + 1);
+                filenameExtension = mimeTypesInstance.getFilenameExtension(filename, 2);
+                mimeType = mimeTypesInstance.getMimeTypeByFilename(filename, 2);
+                filenameToId = [themeName, filename].join("_");
                 linkId = text_1.CaseConverter.snake(filenameToId);
                 link.setAttribute("id", linkId);
                 link.setAttribute("fetchpriority", "low");
                 link.setAttribute("rel", rel);
                 link.setAttribute("as", as);
-                link.setAttribute("type", `${inDataType}/${filenameExtension}`);
+                link.setAttribute("type", mimeType);
                 link.setAttribute("crossorigin", "");
                 link.setAttribute("href", href);
                 if (isWithStopOnLoadTimeout) {

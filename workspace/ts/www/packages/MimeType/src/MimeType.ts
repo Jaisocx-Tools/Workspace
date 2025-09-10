@@ -52,8 +52,16 @@ export class MimeType implements MimeTypeInterface {
 
   public getMimeTypeByFilenameExtension (
     filenameExtension: string
-  ): string|undefined {
-    return this._dataset[ filenameExtension ];
+  ): string {
+    let mimeType: string = "";
+    mimeType = this._dataset[ filenameExtension ];
+
+    if ( mimeType === undefined ) {
+      mimeType = "";
+    }
+
+
+    return mimeType;
   }
 
 
@@ -61,9 +69,9 @@ export class MimeType implements MimeTypeInterface {
   public getMimeTypeByFilename (
     filename: string,
     maxDots: number
-  ): string|undefined {
+  ): string {
     let filenameExtension: string = "";
-    let mimeType: string|undefined = "";
+    let mimeType: string = "";
 
     let i: number = 0;
     let secureCounter: number = 0;
