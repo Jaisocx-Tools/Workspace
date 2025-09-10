@@ -156,15 +156,10 @@
     {
       "path": "packages/MimeType",
       "name": "mime-type",
-      "update-published": "Wed Sep 10 01:46:10 CEST 2025",
+      "update-published": "",
       "build": true,
       "build-simple-enable": true,
-      "dependencies": [
-        {
-          "name": "@jaisocx/cdn-datasets-base",
-          "path": "packages/CdnDatasetsBase"
-        }
-      ],
+      "dependencies": [],
       "build-files": [
         "MimeType.js",
         "mime_type_constants/MimeTypeConstants.js",
