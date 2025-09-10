@@ -156,8 +156,8 @@
     {
       "path": "packages/MimeType",
       "name": "mime-type",
-      "update-published": "",
-      "build": false,
+      "update-published": "Wed Sep 10 01:46:10 CEST 2025",
+      "build": true,
       "build-simple-enable": true,
       "dependencies": [
         {

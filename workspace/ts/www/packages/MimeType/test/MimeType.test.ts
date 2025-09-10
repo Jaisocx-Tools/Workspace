@@ -34,6 +34,48 @@ test(
     );
     expect ( mimeType ).toBe( "font/ttf" );
 
+    filename = "pack.tar.gz";
+    mimeType = mimeTypesInstance.getMimeTypeByFilename( filename, 2 );
+    console.log (
+      { "bib": "@jaisocx/mime-type", filename, mimeType }
+    );
+    expect ( mimeType ).toBe( "application/x-gtar" );
+
+    filename = "pack.tgz";
+    mimeType = mimeTypesInstance.getMimeTypeByFilename( filename, 2 );
+    console.log (
+      { "bib": "@jaisocx/mime-type", filename, mimeType }
+    );
+    expect ( mimeType ).toBe( "application/x-gtar" );
+
+    filename = "pack.tar.bz2";
+    mimeType = mimeTypesInstance.getMimeTypeByFilename( filename, 2 );
+    console.log (
+      { "bib": "@jaisocx/mime-type", filename, mimeType }
+    );
+    expect ( mimeType ).toBe( "application/x-tbzip2" );
+
+    filename = "pack.tbz2";
+    mimeType = mimeTypesInstance.getMimeTypeByFilename( filename, 2 );
+    console.log (
+      { "bib": "@jaisocx/mime-type", filename, mimeType }
+    );
+    expect ( mimeType ).toBe( "application/x-tbzip2" );
+
+    filename = "styles.css";
+    mimeType = mimeTypesInstance.getMimeTypeByFilename( filename, 1 );
+    console.log (
+      { "bib": "@jaisocx/mime-type", filename, mimeType }
+    );
+    expect ( mimeType ).toBe( "text/css" );
+
+    filename = "theme_media_and_fonts_bundle.js";
+    mimeType = mimeTypesInstance.getMimeTypeByFilename( filename, 1 );
+    console.log (
+      { "bib": "@jaisocx/mime-type", filename, mimeType }
+    );
+    expect ( mimeType ).toBe( "text/javascript" );
+
     filename = "data.json";
     mimeType = mimeTypesInstance.getMimeTypeByFilename( filename, 1 );
     console.log (
