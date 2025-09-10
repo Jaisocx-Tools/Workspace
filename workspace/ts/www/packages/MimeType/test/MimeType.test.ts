@@ -18,7 +18,7 @@ test(
 
 
     let filename: string = "";
-    let mimeType: string|undefined = "";
+    let mimeType: string = "";
 
     filename = "favicon.ico";
     mimeType = mimeTypesInstance.getMimeTypeByFilename( filename, 1 );
