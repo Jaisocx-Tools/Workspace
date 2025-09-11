@@ -6,7 +6,7 @@ export class PreloaderConstants {
     #linkTagOnloadCode;
     #linkTagOnerrorCode;
     constructor() {
-        this.#linkTagsPreloading = "let linkTagsPreloading = {{ idsObjectOf_LinkTagsPreloading }};\n\n\n";
+        this.#linkTagsPreloading = "window.linkTagsPreloading = {{ idsObjectOf_LinkTagsPreloading }};\n\n\n";
         this.#scriptLoadingStopOnTimeout = `
       function loadingStopOnTimeout ( idsObject ) {
 
@@ -64,12 +64,12 @@ export class PreloaderConstants {
         this.#codeblockInvoke_ScriptLoadingStopOnTimeout = `
       setTimeout (
         () => {
-          loadingStopOnTimeout( linkTagsPreloading );
+          loadingStopOnTimeout( window.linkTagsPreloading );
         },
         {{ timeoutNumberOfMilliseconds }}
       );
     `;
-        this.#linkTagOnloadCode = "javascript: ( () => { const id = this.id; linkTagsPreloading[id] = 3; } )();";
+        this.#linkTagOnloadCode = "javascript: ( () => { const id = this.id; try{ window.linkTagsPreloading[id] = 3; }catch(e){} } )();";
         this.#linkTagOnerrorCode = "javascript: ( () => { this.remove(); this.onerror = null; } )();";
     }
     getLinkTagsPreloading() {

@@ -1,4 +1,15 @@
 
+
+.jsx.theme-funny .tree,
+.jsx .theme-funny .tree,
+.jsx .theme-funny.tree,
+.theme-funny .tree,
+.theme-funny.tree {
+  --node-label--font-family: Niconne;
+}
+
+
+
 .theme-funny .tree > ul > li > pre > pre.jstree-html-node-holder-icon.icon-show,
 .tree.theme-funny > ul > li > pre > pre.jstree-html-node-holder-icon.icon-show
 {
@@ -8,9 +19,6 @@
 
 .theme-funny .tree,
 .tree.theme-funny {
-
-  --node-label--font-family: Niconne;
-
   --datatype-array--image-url: url('./themes/theme-funny/mini-images/data-types/house.png');
   --datatype-object--image-url: url('./themes/theme-funny/mini-images/data-types/house.png');
   --datatype-number--image-url: url('./themes/theme-funny/mini-images/data-types/track.png');

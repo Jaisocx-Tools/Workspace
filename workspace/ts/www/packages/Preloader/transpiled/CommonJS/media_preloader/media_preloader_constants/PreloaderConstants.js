@@ -21,7 +21,7 @@ class PreloaderConstants {
         _PreloaderConstants_codeblockInvoke_ScriptLoadingStopOnTimeout.set(this, void 0);
         _PreloaderConstants_linkTagOnloadCode.set(this, void 0);
         _PreloaderConstants_linkTagOnerrorCode.set(this, void 0);
-        __classPrivateFieldSet(this, _PreloaderConstants_linkTagsPreloading, "let linkTagsPreloading = {{ idsObjectOf_LinkTagsPreloading }};\n\n\n", "f");
+        __classPrivateFieldSet(this, _PreloaderConstants_linkTagsPreloading, "window.linkTagsPreloading = {{ idsObjectOf_LinkTagsPreloading }};\n\n\n", "f");
         __classPrivateFieldSet(this, _PreloaderConstants_scriptLoadingStopOnTimeout, `
       function loadingStopOnTimeout ( idsObject ) {
 
@@ -79,12 +79,12 @@ class PreloaderConstants {
         __classPrivateFieldSet(this, _PreloaderConstants_codeblockInvoke_ScriptLoadingStopOnTimeout, `
       setTimeout (
         () => {
-          loadingStopOnTimeout( linkTagsPreloading );
+          loadingStopOnTimeout( window.linkTagsPreloading );
         },
         {{ timeoutNumberOfMilliseconds }}
       );
     `, "f");
-        __classPrivateFieldSet(this, _PreloaderConstants_linkTagOnloadCode, "javascript: ( () => { const id = this.id; linkTagsPreloading[id] = 3; } )();", "f");
+        __classPrivateFieldSet(this, _PreloaderConstants_linkTagOnloadCode, "javascript: ( () => { const id = this.id; try{ window.linkTagsPreloading[id] = 3; }catch(e){} } )();", "f");
         __classPrivateFieldSet(this, _PreloaderConstants_linkTagOnerrorCode, "javascript: ( () => { this.remove(); this.onerror = null; } )();", "f");
     }
     getLinkTagsPreloading() {

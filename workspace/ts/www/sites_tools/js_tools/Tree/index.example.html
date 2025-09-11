@@ -11,6 +11,7 @@
 
 
 
+
   <script>
 
     let statLinkTagsPreloading = {
@@ -18,7 +19,9 @@
       "font_LibreFranklin_Medium": 1,
       "font_LibreFranklin_Regular": 1,
       "font_LibreFranklin_SemiBold": 1,
-      "stylesheet_cdn_fontsLibreFranklin": 1
+      "stylesheet_cdn_fontLibreFranklin": 1,
+      "stylesheet_cdn_fontNiconne": 1,
+      "stylesheet_cdn_fontBalooPaaji2": 1
     };
 
 
@@ -151,7 +154,7 @@
     onerror="javascript: ( () => { this.remove(); } )();"
   />
 
-  <!--
+
   <link
     id="font_Niconne_Regular"
     fetchpriority="low"
@@ -174,19 +177,34 @@
     href="https://sandbox.brightday.email/cdn/www/fonts/Baloo_Paaji_2/static/BalooPaaji2-Regular.ttf"
     onload="javascript: ( () => { const id = this.id; statLinkTagsPreloading[id] = 3; } )();"
     onerror="javascript: ( () => { this.remove(); } )();"
-  /> -->
+  />
 
 
   <!--# CSS FOR FONTS -->
   <!-- when opened .html file locally, the requested by this .css file fonts are blocked by browsers' CORS. The response headers of a cdn server needed. -->
   <link
-    id="stylesheet_cdn_fontsLibreFranklin"
+    id="stylesheet_cdn_fontLibreFranklin"
     rel="stylesheet"
     type="text/css"
     href="https://sandbox.brightday.email/cdn/www/fonts_css/font_LibreFranklin_cdn.css"
     onload="javascript: ( () => { const id = this.id; statLinkTagsPreloading[id] = 3; } )();"
   />
 
+  <link
+    id="stylesheet_cdn_fontNiconne"
+    rel="stylesheet"
+    type="text/css"
+    href="https://sandbox.brightday.email/cdn/www/fonts_css/font_Niconne_cdn.css"
+    onload="javascript: ( () => { const id = this.id; statLinkTagsPreloading[id] = 3; } )();"
+  />
+
+  <link
+    id="stylesheet_cdn_fontBalooPaaji2"
+    rel="stylesheet"
+    type="text/css"
+    href="https://sandbox.brightday.email/cdn/www/fonts_css/font_Baloo_Paaji_2_cdn.css"
+    onload="javascript: ( () => { const id = this.id; statLinkTagsPreloading[id] = 3; } )();"
+  />
 
   <!--# CSS CLEAN START 2: html & css WHEN STARTING A SITE FROM SCRATCH -->
 
@@ -199,7 +217,7 @@
     href="node_modules/@jaisocx/css-clean-start-2/MediaAndStyles/CssCleanStart_2_main_relative.css"
     href-fallback="../css-clean-start-2/MediaAndStyles/CssCleanStart_2_main_relative.css"
     onload="javascript: ( () => { const id = this.id; statLinkTagsPreloading[id] = 3; } )();"
-    onerror="javascript: ( () => { this.onerror = null; this.href = this.getAttribute( 'href-fallback' ); } )();"
+    onerror="javascript: ( () => { this.onerror = null; this.href = this.getAttribute( 'href-fallback' ); this.onerror = null; } )();"
   /> -->
 
   <!--# THE SAME importing @jaisocx/css-clean-start-2 IN PROD MODE, PACKED BY @jaisocx/css-importer TOOL  -->
@@ -218,6 +236,8 @@
 
 
   <!--# STYLES Tree and theme_base -->
+
+  <!-- here encommented, and loaded with the tag link higher via a cdn url for the same font: BalooPaaji2 -->
   <!-- <link
     id="styles_loading_fonts_tree_theme_base_BalooPaaji2"
     rel="stylesheet"
@@ -240,6 +260,8 @@
 
   <!--# Theme funny -->
   <!--# importing theme  in this @jaisocx/tree npm package -->
+
+  <!-- here encommented, and loaded with the tag link higher via a cdn url for the same font: Niconne -->
   <!-- <link
     id="theme_funny_styles_tree_loading_cdn_fonts"
     rel="stylesheet"
@@ -373,30 +395,6 @@
   ];
 
 
-  let isPreloadWithStopOnLoadTimeout = true;
-
-  let preloaderStopTimeoutMillis = 1200;
-
-
-  let preloadFontsCDNData = {
-    "image": null,
-    "font": {
-      "json_data": [
-        "https://sandbox.brightday.email/cdn/www/data_public/json/tree-data/tree-data-to-use-with-conf.json"
-      ],
-      "theme_font_Niconne": [
-        "https://sandbox.brightday.email/cdn/www/fonts/Niconne/Niconne-Regular.ttf",
-        "https://sandbox.brightday.email/cdn/www/fonts_css/font_Niconne_cdn.css"
-      ],
-      "theme_font_Baloo_Paaji_2": [
-        "https://sandbox.brightday.email/cdn/www/fonts/Baloo_Paaji_2/static/BalooPaaji2-Medium.ttf",
-        "https://sandbox.brightday.email/cdn/www/fonts/Baloo_Paaji_2/static/BalooPaaji2-Regular.ttf",
-        "https://sandbox.brightday.email/cdn/www/fonts/Baloo_Paaji_2/static/BalooPaaji2-SemiBold.ttf",
-        "https://sandbox.brightday.email/cdn/www/fonts_css/font_Baloo_Paaji_2_cdn.css"
-      ],
-    }
-  };
-
   let data_ScriptsChainedLoader = {
     "text": {
       "node_modules": true,
@@ -406,14 +404,6 @@
         "case_converter/case_converter_constants/CaseConverterConstants",
         "case_converter/CaseConverter"
       ],
-    },
-    "preloader": {
-      "node_modules": true,
-      "npm_namespace": "@jaisocx",
-      "scripts": [
-        "media_preloader/media_preloader_constants/PreloaderConstants",
-        "media_preloader/preloader/Preloader"
-      ]
     },
     "theme-turn-on": {
       "node_modules": true,
@@ -670,16 +660,16 @@
 
 
 
-    preloadFonts( isWithStopOnLoadTimeout, inTimeoutMillis ) {
+    // preloadFonts( isWithStopOnLoadTimeout, inTimeoutMillis ) {
 
-      this.preloader = new Preloader();
-      this.preloader
-        .setThemesPreloads( preloadFontsCDNData )
-        .setWebpackAlias( "" )
-        .setWebpackAliasReplace( "" )
-        .init( isWithStopOnLoadTimeout, inTimeoutMillis );
+    //   this.preloader = new Preloader();
+    //   this.preloader
+    //     .setThemesPreloads( preloadFontsCDNData )
+    //     .setWebpackAlias( "" )
+    //     .setWebpackAliasReplace( "" )
+    //     .init( isWithStopOnLoadTimeout, inTimeoutMillis );
 
-    }
+    // }
 
     addThemeButtonsEventHandlers() {
       this.themeTurnOn = new ThemeTurnOn();
@@ -715,9 +705,9 @@
 
         console.log ( "Scripts are loaded, starting TreeExamples.onDOMContentLoadedEventHandler() ..." );
 
-        try {
-          this.preloadFonts( isPreloadWithStopOnLoadTimeout, preloaderStopTimeoutMillis );
-        } catch (e) {}
+        // try {
+        //   this.preloadFonts( isPreloadWithStopOnLoadTimeout, preloaderStopTimeoutMillis );
+        // } catch (e) {}
 
         try {
           this.renderJsonTreeExamples();
@@ -727,45 +717,10 @@
           this.addThemeButtonsEventHandlers();
         } catch (e) {}
 
-        this.wasOnceRendered = true;
-
         console.log ( "End: ScriptsChainedLoader.load(), TreeExamples.onDOMContentLoadedEventHandler()" );
     }
 
   }
-
-
-
-  document.addEventListener ( 'DOMContentLoaded', () => {
-
-    treeExamplesClassInstance = new TreeExamples();
-
-    //# dev mode: without js preloads and no fallback urls.
-    // treeExamplesClassInstance.onDOMContentLoadedEventHandler();
-
-    /* in prod mode,
-        You need to set conf json objects like in tree.prod_mode.html:
-          Preloader to improve performance when LazyLoad is on ( .ico, images, fonts ) to be available before, when a css classname applies.
-          ScriptsChainedLoader to develop and publish for npm or yarn the index.example.html
-            with fallback urls feature, due to multiple npm install strategies,
-            since with fallback urls, the "onload" event is emitted in the unforeseen timestamp, and after the "DOMContentLoaded" event.
-
-            <!-- <script
-              type="text/javascript"
-              src="node_modules/@jaisocx/preloader/transpiled/Simple/scripts_chained_loader/ScriptsChainedLoader.js"
-              src-fallback="../preloader/transpiled/Simple/scripts_chained_loader/ScriptsChainedLoader.js"
-              onload="javascipt: ( () => { if ( treeExamplesClassInstance.wasOnceRendered === true ) { return; }; treeExamplesClassInstance = new TreeExamples(); treeExamplesClassInstance.onDOMContentLoadedEventHandler(); } )();"
-              onerror="javascript: ( () => { let tagScript = document.createElement( 'script' ); tagScript.onload = this.onload.bind( tagScript ); tagScript.src = this.getAttribute( 'src-fallback' ); document.body.insertAdjacentElement( 'afterend', tagScript ); this.remove(); } )();">
-            </script> ->
-
-
-        The onChainedDOMContentLoadedEventHandler method invokes ScripsChainedLoader the right way,
-          and then ScripsChainedLoader.onload() invokes set of methods,
-          planned for DOMContentLoaded like normally when in dev mode or prod mode without fallback urls.
-    */
-    treeExamplesClassInstance.onChainedDOMContentLoadedEventHandler();
-
-  });
 
 </script>
 

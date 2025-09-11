@@ -43,17 +43,9 @@
     href="https://sandbox.brightday.email/cdn/www/fonts/LibreFranklin/static/LibreFranklin-Regular.ttf"
   />
 
-  <!--# CSS FOR LibreFranklin FONTS -->
-  <link
-    id="stylesheet_cdn_fonts"
-    rel="stylesheet"
-    type="text/css"
-    href="https://sandbox.brightday.email/cdn/www/fonts_css/font_LibreFranklin_cdn.css"
-  />
 
 
-
-  <!-- TREE THEME FUNNY FONT FAMILY -->
+  <!-- FONT FAMILY FOR TREE THEME FUNNY -->
   <link
     id="font_Niconne"
     rel="preload"
@@ -64,7 +56,7 @@
 
 
 
-  <!-- TREE THEME BASE FONT FAMILY -->
+  <!-- FONT FAMILY FOR TREE THEME BASE -->
   <link
     id="font_BalooPaaji2_SemiBold"
     rel="preload"
@@ -83,45 +75,76 @@
 
 
 
+  <!--# CSS FOR LibreFranklin FONTS -->
+  <link
+    id="stylesheet_cdn_fontLibreFranklin"
+    rel="stylesheet"
+    type="text/css"
+    href="https://sandbox.brightday.email/cdn/www/fonts_css/font_LibreFranklin_cdn.css"
+  />
+
+  <!--# CSS FOR Niconne FONTS -->
+  <link
+    id="stylesheet_cdn_fontNiconne"
+    rel="stylesheet"
+    type="text/css"
+    href="https://sandbox.brightday.email/cdn/www/fonts_css/font_Niconne_cdn.css"
+  />
+
+  <!--# CSS FOR BalooPaaji2 FONTS -->
+  <link
+    id="stylesheet_cdn_fontBalooPaaji2"
+    rel="stylesheet"
+    type="text/css"
+    href="https://sandbox.brightday.email/cdn/www/fonts_css/font_Baloo_Paaji_2_cdn.css"
+    onload="javascript: ( () => { const id = this.id; statLinkTagsPreloading[id] = 3; } )();"
+  />
+
+
+
+
+
   <!--# CSS CLEAN START 2: html & css WHEN STARTING A SITE FROM SCRATCH -->
 
   <!--# importing @jaisocx/css-clean-start-2 IN DEV MODE, TO RESEARCH THE .css STYLES IN BROWSER'S DEV TOOLS IN NETWORKS TAB  -->
-  <!-- <link
+  <link
     rel="stylesheet"
     type="text/css"
     charset="utf-8"
     href="sites_tools/css_tools/CssCleanStart_2/MediaAndStyles/CssCleanStart_2_main_relative.css"
-  /> -->
+  />
 
   <!--# THE SAME importing @jaisocx/css-clean-start-2 IN PROD MODE, PACKED BY @jaisocx/css-importer TOOL  -->
-  <link
+  <!-- <link
     rel="stylesheet"
     type="text/css"
     charset="utf-8"
     href="sites_tools/css_tools/CssCleanStart_2/MediaAndStyles/CssCleanStart_2_main_resolved_minimal.css"
-  />
+  /> -->
 
 
 
   <!--# STYLES Tree and theme_base -->
+  <!-- DEV MODE -->
   <link
     rel="stylesheet"
     type="text/css"
     charset="utf-8"
-    href="sites_tools/js_tools/Tree/MediaAndStyles/Tree_main_resolved_minimal.css"
+    href="sites_tools/js_tools/Tree/MediaAndStyles/Tree_main_Relative.css"
   />
+
+  <!-- PROD MODE -->
+  <!-- <link
+    rel="stylesheet"
+    type="text/css"
+    charset="utf-8"
+    href="sites_tools/js_tools/Tree/MediaAndStyles/Tree_main_resolved_minimal.css"
+  /> -->
 
 
 
   <!--# Theme funny -->
   <!--# importing theme  in this @jaisocx/tree npm package -->
-  <link
-    rel="stylesheet"
-    type="text/css"
-    charset="utf-8"
-    href="sites_tools/js_tools/Tree/MediaAndStyles/themes/theme-funny/tree_theme-funny_fonts.css"
-  />
-
   <link
     rel="stylesheet"
     type="text/css"
@@ -265,11 +288,6 @@
   let buttonsQuerySelectors = [
     "themebuttons button"
   ];
-
-  let isPreloadWithStopOnLoadTimeout = true;
-
-  let preloaderStopTimeoutMillis = 600;
-
 
 
 
@@ -531,9 +549,9 @@
 
         console.log ( "Scripts are loaded, starting TreeExamples.onDOMContentLoadedEventHandler() ..." );
 
-        try {
-          this.preloadFonts( isPreloadWithStopOnLoadTimeout, preloaderStopTimeoutMillis );
-        } catch (e) {}
+        // try {
+        //   this.preloadFonts( isPreloadWithStopOnLoadTimeout, preloaderStopTimeoutMillis );
+        // } catch (e) {}
 
         try {
           this.renderJsonTreeExamples();
@@ -542,8 +560,6 @@
         try {
           this.addThemeButtonsEventHandlers();
         } catch (e) {}
-
-        this.wasOnceRendered = true;
 
         console.log ( "End: ScriptsChainedLoader.load(), TreeExamples.onDOMContentLoadedEventHandler()" );
     }
@@ -556,30 +572,8 @@
 
     treeExamplesClassInstance = new TreeExamples();
 
-    //# dev mode: without js preloads and no fallback urls.
+    //# dev mode: without ScriptsChainedLoader, fonts preloads, neither fallback urls.
     treeExamplesClassInstance.onDOMContentLoadedEventHandler();
-
-    /* in prod mode,
-        You need to set conf json objects like in tree.prod_mode.html:
-          Preloader to improve performance when LazyLoad is on ( .ico, images, fonts ) to be available before, when a css classname applies.
-          ScriptsChainedLoader to develop and publish for npm or yarn the index.example.html
-            with fallback urls feature, due to multiple npm install strategies,
-            since with fallback urls, the "onload" event is emitted in the unforeseen timestamp, and after the "DOMContentLoaded" event.
-
-            <!-- <script
-              type="text/javascript"
-              src="node_modules/@jaisocx/preloader/transpiled/Simple/scripts_chained_loader/ScriptsChainedLoader.js"
-              src-fallback="../preloader/transpiled/Simple/scripts_chained_loader/ScriptsChainedLoader.js"
-              onload="javascipt: ( () => { if ( treeExamplesClassInstance.wasOnceRendered === true ) { return; }; treeExamplesClassInstance = new TreeExamples(); treeExamplesClassInstance.onDOMContentLoadedEventHandler(); } )();"
-              onerror="javascript: ( () => { let tagScript = document.createElement( 'script' ); tagScript.onload = this.onload.bind( tagScript ); tagScript.src = this.getAttribute( 'src-fallback' ); document.body.insertAdjacentElement( 'afterend', tagScript ); this.remove(); } )();">
-            </script> ->
-
-
-        The onChainedDOMContentLoadedEventHandler method invokes ScripsChainedLoader the right way,
-          and then ScripsChainedLoader.onload() invokes set of methods,
-          planned for DOMContentLoaded like normally when in dev mode or prod mode without fallback urls.
-    */
-    // treeExamplesClassInstance.onChainedDOMContentLoadedEventHandler();
 
   });
 

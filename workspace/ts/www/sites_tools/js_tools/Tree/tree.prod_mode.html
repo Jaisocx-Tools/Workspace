@@ -14,11 +14,7 @@
   <script>
 
     let statLinkTagsPreloading = {
-      "icon_brightday": 1,
-      "font_LibreFranklin_Medium": 1,
-      "font_LibreFranklin_Regular": 1,
-      "font_LibreFranklin_SemiBold": 1,
-      "stylesheet_cdn_fontsLibreFranklin": 1
+      "icon_brightday": 1
     };
 
 
@@ -111,151 +107,53 @@
 
 
 
-  <!--# FONTS PRELOAD WITHOUT JAVASCRIPT CALL -->
-  <!-- the crossorigin attribute prevents loading fonts twice.
-          The fonts are loaded twice, even if the urls matches exactly in the @font-face src url and tag <link href="" />
-  -->
-  <link
-    id="font_LibreFranklin_Medium"
-    fetchpriority="low"
-    rel="preload"
-    as="font"
-    type="font/ttf"
-    crossorigin
-    href="https://sandbox.brightday.email/cdn/www/fonts/LibreFranklin/static/LibreFranklin-Medium.ttf"
-    onload="javascript: ( () => { const id = this.id; statLinkTagsPreloading[id] = 3; } )();"
-    onerror="javascript: ( () => { this.remove(); this.onerror = null; } )();"
-  />
-
-  <link
-    id="font_LibreFranklin_Regular"
-    fetchpriority="low"
-    rel="preload"
-    as="font"
-    type="font/ttf"
-    crossorigin
-    href="https://sandbox.brightday.email/cdn/www/fonts/LibreFranklin/static/LibreFranklin-Regular.ttf"
-    onload="javascript: ( () => { const id = this.id; statLinkTagsPreloading[id] = 3; } )();"
-    onerror="javascript: ( () => { this.remove(); this.onerror = null; } )();"
-  />
-
-  <link
-    id="font_LibreFranklin_SemiBold"
-    fetchpriority="low"
-    rel="preload"
-    as="font"
-    type="font/ttf"
-    crossorigin
-    href="https://sandbox.brightday.email/cdn/www/fonts/LibreFranklin/static/LibreFranklin-SemiBold.ttf"
-    onload="javascript: ( () => { const id = this.id; statLinkTagsPreloading[id] = 3; } )();"
-    onerror="javascript: ( () => { this.remove(); } )();"
-  />
-
-  <!--
-  <link
-    id="font_Niconne_Regular"
-    fetchpriority="low"
-    rel="preload"
-    as="font"
-    type="font/ttf"
-    crossorigin
-    href="https://sandbox.brightday.email/cdn/www/fonts/Niconne/Niconne-Regular.ttf"
-    onload="javascript: ( () => { const id = this.id; statLinkTagsPreloading[id] = 3; } )();"
-    onerror="javascript: ( () => { this.remove(); } )();"
-  />
-
-  <link
-    id="font_BalooPaaji2_Regular"
-    fetchpriority="low"
-    rel="preload"
-    as="font"
-    type="font/ttf"
-    crossorigin
-    href="https://sandbox.brightday.email/cdn/www/fonts/Baloo_Paaji_2/static/BalooPaaji2-Regular.ttf"
-    onload="javascript: ( () => { const id = this.id; statLinkTagsPreloading[id] = 3; } )();"
-    onerror="javascript: ( () => { this.remove(); } )();"
-  /> -->
-
-
-  <!--# CSS FOR FONTS -->
-  <!-- when opened .html file locally, the requested by this .css file fonts are blocked by browsers' CORS. The response headers of a cdn server needed. -->
-  <link
-    id="stylesheet_cdn_fontsLibreFranklin"
-    rel="stylesheet"
-    type="text/css"
-    href="https://sandbox.brightday.email/cdn/www/fonts_css/font_LibreFranklin_cdn.css"
-    onload="javascript: ( () => { const id = this.id; statLinkTagsPreloading[id] = 3; } )();"
-  />
-
-
   <!--# CSS CLEAN START 2: html & css WHEN STARTING A SITE FROM SCRATCH -->
 
   <!--# importing @jaisocx/css-clean-start-2 IN DEV MODE, TO RESEARCH THE .css STYLES IN BROWSER'S DEV TOOLS IN NETWORKS TAB  -->
   <!-- <link
-    id="styles_loading_fonts_cssCleanStart2_relative"
     rel="stylesheet"
     type="text/css"
     charset="utf-8"
     href="node_modules/@jaisocx/css-clean-start-2/MediaAndStyles/CssCleanStart_2_main_relative.css"
     href-fallback="../css-clean-start-2/MediaAndStyles/CssCleanStart_2_main_relative.css"
-    onload="javascript: ( () => { const id = this.id; statLinkTagsPreloading[id] = 3; } )();"
-    onerror="javascript: ( () => { this.onerror = null; this.href = this.getAttribute( 'href-fallback' ); } )();"
+    onerror="javascript: ( () => { this.onerror = null; this.href = this.getAttribute( 'href-fallback' ); this.onerror = null; } )();"
   /> -->
 
   <!--# THE SAME importing @jaisocx/css-clean-start-2 IN PROD MODE, PACKED BY @jaisocx/css-importer TOOL  -->
   <link
-    id="styles_loading_fonts_cssCleanStart2_minimal"
     rel="stylesheet"
     type="text/css"
     charset="utf-8"
     href="node_modules/@jaisocx/css-clean-start-2/MediaAndStyles/CssCleanStart_2_main_resolved_minimal.css"
     href-fallback="../css-clean-start-2/MediaAndStyles/CssCleanStart_2_main_resolved_minimal.css"
-    onload="javascript: ( () => { const id = this.id; statLinkTagsPreloading[id] = 3; } )();"
     onerror="javascript: ( () => { this.href = this.getAttribute( 'href-fallback' ); this.onerror = null; } )();"
   />
 
 
 
-
   <!--# STYLES Tree and theme_base -->
+  <!-- DEV MODE -->
   <!-- <link
-    id="styles_loading_fonts_tree_theme_base_BalooPaaji2"
     rel="stylesheet"
     type="text/css"
     charset="utf-8"
-    href="MediaAndStyles/themes/theme_base/Tree_theme_base_Imports_fonts_cdn.css"
-    onload="javascript: ( () => { const id = this.id; statLinkTagsPreloading[id] = 3; } )();"
+    href="MediaAndStyles/Tree_main_Relative.css"
   /> -->
 
+  <!-- PROD MODE -->
   <link
-    id="tree_theme_base_styles"
     rel="stylesheet"
     type="text/css"
     charset="utf-8"
     href="MediaAndStyles/Tree_main_resolved_minimal.css"
-    onload="javascript: ( () => { const id = this.id; statLinkTagsPreloading[id] = 3; } )();"
   />
 
-
-
   <!--# Theme funny -->
-  <!--# importing theme  in this @jaisocx/tree npm package -->
-  <!-- <link
-    id="theme_funny_styles_tree_loading_cdn_fonts"
-    rel="stylesheet"
-    type="text/css"
-    charset="utf-8"
-    href="MediaAndStyles/themes/theme-funny/tree_theme-funny_fonts.css"
-    onload="javascript: ( () => { const id = this.id; statLinkTagsPreloading[id] = 3; } )();"
-  /> -->
-
   <link
-    id="theme_funny_styles_tree"
     rel="stylesheet"
     type="text/css"
     charset="utf-8"
     href="MediaAndStyles/themes/theme-funny/tree_theme-funny.css"
-    onload="javascript: ( () => { const id = this.id; statLinkTagsPreloading[id] = 3; } )();"
   />
 
 
@@ -381,8 +279,11 @@
   let preloadFontsCDNData = {
     "image": null,
     "font": {
-      "json_data": [
-        "https://sandbox.brightday.email/cdn/www/data_public/json/tree-data/tree-data-to-use-with-conf.json"
+      "theme_font_LibreFranklin": [
+        "https://sandbox.brightday.email/cdn/www/fonts/LibreFranklin/static/LibreFranklin-Regular.ttf",
+        "https://sandbox.brightday.email/cdn/www/fonts/LibreFranklin/static/LibreFranklin-Medium.ttf",
+        "https://sandbox.brightday.email/cdn/www/fonts/LibreFranklin/static/LibreFranklin-SemiBold.ttf",
+        "https://sandbox.brightday.email/cdn/www/fonts_css/font_LibreFranklin_cdn.css"
       ],
       "theme_font_Niconne": [
         "https://sandbox.brightday.email/cdn/www/fonts/Niconne/Niconne-Regular.ttf",
@@ -393,7 +294,7 @@
         "https://sandbox.brightday.email/cdn/www/fonts/Baloo_Paaji_2/static/BalooPaaji2-Regular.ttf",
         "https://sandbox.brightday.email/cdn/www/fonts/Baloo_Paaji_2/static/BalooPaaji2-SemiBold.ttf",
         "https://sandbox.brightday.email/cdn/www/fonts_css/font_Baloo_Paaji_2_cdn.css"
-      ],
+      ]
     }
   };
 
@@ -405,7 +306,15 @@
         "case_converter/types/DataRecordMatches",
         "case_converter/case_converter_constants/CaseConverterConstants",
         "case_converter/CaseConverter"
-      ],
+      ]
+    },
+    "mime-type": {
+      "node_modules": true,
+      "npm_namespace": "@jaisocx",
+      "scripts": [
+        "mime_type_constants/SitesPreloaderMimeTypeConstants",
+        "MimeType"
+      ]
     },
     "preloader": {
       "node_modules": true,
@@ -727,45 +636,23 @@
           this.addThemeButtonsEventHandlers();
         } catch (e) {}
 
-        this.wasOnceRendered = true;
-
         console.log ( "End: ScriptsChainedLoader.load(), TreeExamples.onDOMContentLoadedEventHandler()" );
     }
 
   }
 
 
+  /* in prod mode,
+      You need to set conf json objects like in tree.prod_mode.html:
+        Preloader to improve performance when LazyLoad is on ( .ico, images, fonts ) to be available before, when a css classname applies.
+        ScriptsChainedLoader to develop and publish for npm or yarn the index.example.html
+          with fallback urls feature, due to multiple npm install strategies,
+          since with fallback urls, the "onload" event is emitted in the unforeseen timestamp, and after the "DOMContentLoaded" event.
 
-  document.addEventListener ( 'DOMContentLoaded', () => {
-
-    treeExamplesClassInstance = new TreeExamples();
-
-    //# dev mode: without js preloads and no fallback urls.
-    // treeExamplesClassInstance.onDOMContentLoadedEventHandler();
-
-    /* in prod mode,
-        You need to set conf json objects like in tree.prod_mode.html:
-          Preloader to improve performance when LazyLoad is on ( .ico, images, fonts ) to be available before, when a css classname applies.
-          ScriptsChainedLoader to develop and publish for npm or yarn the index.example.html
-            with fallback urls feature, due to multiple npm install strategies,
-            since with fallback urls, the "onload" event is emitted in the unforeseen timestamp, and after the "DOMContentLoaded" event.
-
-            <!-- <script
-              type="text/javascript"
-              src="node_modules/@jaisocx/preloader/transpiled/Simple/scripts_chained_loader/ScriptsChainedLoader.js"
-              src-fallback="../preloader/transpiled/Simple/scripts_chained_loader/ScriptsChainedLoader.js"
-              onload="javascipt: ( () => { if ( treeExamplesClassInstance.wasOnceRendered === true ) { return; }; treeExamplesClassInstance = new TreeExamples(); treeExamplesClassInstance.onDOMContentLoadedEventHandler(); } )();"
-              onerror="javascript: ( () => { let tagScript = document.createElement( 'script' ); tagScript.onload = this.onload.bind( tagScript ); tagScript.src = this.getAttribute( 'src-fallback' ); document.body.insertAdjacentElement( 'afterend', tagScript ); this.remove(); } )();">
-            </script> ->
-
-
-        The onChainedDOMContentLoadedEventHandler method invokes ScripsChainedLoader the right way,
-          and then ScripsChainedLoader.onload() invokes set of methods,
-          planned for DOMContentLoaded like normally when in dev mode or prod mode without fallback urls.
-    */
-    treeExamplesClassInstance.onChainedDOMContentLoadedEventHandler();
-
-  });
+      The onChainedDOMContentLoadedEventHandler method invokes ScripsChainedLoader the right way,
+        and then ScripsChainedLoader.onload() invokes set of methods,
+        planned for DOMContentLoaded like normally when in dev mode or prod mode without fallback urls.
+  */
 
 </script>
 
@@ -773,7 +660,7 @@
   type="text/javascript"
   src="node_modules/@jaisocx/preloader/transpiled/Simple/scripts_chained_loader/ScriptsChainedLoader.js"
   src-fallback="../preloader/transpiled/Simple/scripts_chained_loader/ScriptsChainedLoader.js"
-  onload="javascipt: ( () => { if ( treeExamplesClassInstance.wasOnceRendered === true ) { return; }; treeExamplesClassInstance = new TreeExamples(); treeExamplesClassInstance.onChainedDOMContentLoadedEventHandler(); } )();"
+  onload="javascipt: ( () => { if ( treeExamplesClassInstance.wasOnceRendered === true ) { return; }; treeExamplesClassInstance = new TreeExamples(); treeExamplesClassInstance.wasOnceRendered = true; treeExamplesClassInstance.onChainedDOMContentLoadedEventHandler(); } )();"
   onerror="javascript: ( () => { let newTagScript = document.createElement( 'script' ); newTagScript.onload = this.onload.bind( newTagScript ); newTagScript.src = this.getAttribute( 'src-fallback' ); document.body.insertAdjacentElement( 'afterend', newTagScript ); this.remove(); } )();">
 </script>
 

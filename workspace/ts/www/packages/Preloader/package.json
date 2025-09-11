@@ -1,6 +1,6 @@
 {
   "name": "@jaisocx/preloader",
-  "version": "2.2.2",
+  "version": "2.2.5",
   "author": "Jaisocx",
   "keywords": [],
   "private": false,
@@ -30,7 +30,7 @@
   "optionalDependencies": {
     "@jaisocx/text": "~2.2.2",
     "@jaisocx/template-renderer": "~1.6.1",
-    "@jaiscx/mime-type": "~1.0.5"
+    "@jaisocx/mime-type": "~1.0.7"
   }
 }
 

@@ -157,7 +157,7 @@
       "path": "packages/MimeType",
       "name": "mime-type",
       "update-published": "Wed Sep 10 01:59:37 UTC 2025",
-      "build": true,
+      "build": false,
       "build-simple-enable": true,
       "dependencies": [],
       "build-files": [
@@ -230,7 +230,7 @@
       "path": "packages/Preloader",
       "name": "preloader",
       "update-published": "",
-      "build": false,
+      "build": true,
       "build-simple-enable": true,
       "dependencies": [
         {
@@ -451,6 +451,10 @@
         {
           "name": "@jaisocx/theme-turn-on",
           "path": "packages/ThemeTurnOn"
+        },
+        {
+          "name": "@jaisocx/mime-type",
+          "path": "packages/MimeType"
         },
         {
           "name": "@jaisocx/text",

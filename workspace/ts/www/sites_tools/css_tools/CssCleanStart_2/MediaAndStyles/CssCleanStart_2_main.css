@@ -114,8 +114,7 @@ html.jsx body {
 
 
 html.jsx body main {
-  /* display:      var(--jsx--css-clean-start-2--block-tags--display);
-  box-sizing:   var(--jsx--css-clean-start-2--all-tags--box-sizing); */
+
   margin:       var(--jsx--css-clean-start-2--site--margin);
   padding:      var(--jsx--css-clean-start-2--site--padding);
 
