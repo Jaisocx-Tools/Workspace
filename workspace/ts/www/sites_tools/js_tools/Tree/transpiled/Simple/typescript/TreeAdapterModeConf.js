@@ -15,6 +15,7 @@ class TreeAdapterModeConf extends TreeAdapter {
         dataTypeString,
         hasSubtree
     ) {
+        const SYMBOL_BACKGROUND_SPACE = String.fromCharCode(32);
         let openButtonClassName = "";
 
         if (!hasSubtree) {
@@ -31,6 +32,24 @@ class TreeAdapterModeConf extends TreeAdapter {
             openButtonClassName = TreeConstants.TreeCssClassNames.CLASS_OPENED;
         }
         const cssClasses = this.getTreeNodeCssClasses(dataTypeString, node);
+        let confImageSrc = node[this.conf.NODE_ICON__SRC] || "";
+        let isMiniImagesTagShown = this.nodesWithIcons;
+        let isConfImageSrc = (confImageSrc.length !== 0);
+        confImageSrc = (isMiniImagesTagShown && isConfImageSrc) ? confImageSrc : "";
+        isConfImageSrc = (isMiniImagesTagShown && isConfImageSrc);
+        let isMiniImageTagImg = (isMiniImagesTagShown && isConfImageSrc);
+        let tagImageCssClassnames = new Array();
+
+        if (isMiniImagesTagShown) {
+            tagImageCssClassnames.push(TreeConstants.TreeCssClassNames.CLASS_ICON_SHOW);
+        }
+        else {
+            tagImageCssClassnames.push(TreeConstants.TreeCssClassNames.CLASS_ICON_HIDE);
+        }
+
+        if (isMiniImageTagImg) {
+            tagImageCssClassnames.push(TreeConstants.TreeCssClassNames.CLASS_ICON_TAG_IMG);
+        }
         const dataForRendering = {
             dataId: node[this.conf.NODE__ID],
             dataHolderId: node[this.conf.NODE__HOLDER_ID],
@@ -38,8 +57,8 @@ class TreeAdapterModeConf extends TreeAdapter {
             dataJson: this.escapeHTMLForAttribute(JSON.stringify(flatNodeClone)),
             openButtonStateClassName: openButtonClassName,
             cssClasses,
-            iconSrc: node[this.conf.NODE_ICON__SRC],
-            iconShowClassName: (this.nodesWithIcons || node[this.conf.NODE_ICON__SRC]) ? "icon-show" : "icon-hide",
+            iconSrc: confImageSrc,
+            iconShowClassName: tagImageCssClassnames.join(SYMBOL_BACKGROUND_SPACE),
             labelText: node[this.conf.NODE_LABEL__TEXT],
             hyperlink: node[this.conf.NODE__HYPERLINK] ?? "javascript: void(0);",
             hasSubtree

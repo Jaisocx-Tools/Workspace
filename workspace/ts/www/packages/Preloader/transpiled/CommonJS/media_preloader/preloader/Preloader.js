@@ -25,46 +25,80 @@ class Preloader {
         this.webpackAliasReplace = alias;
         return this;
     }
-    init(isWithStopOnLoadTimeout, inTimeoutMillis) {
-        this.addDocumentLoadedEventHandler(isWithStopOnLoadTimeout, inTimeoutMillis);
+    init(inTimeoutMillis, isWithStopOnLoadTimeout) {
+        this.addDocumentLoadedEventHandler(inTimeoutMillis, isWithStopOnLoadTimeout);
     }
-    // @tasks: _isWithStopOnLoadTimeout impl stop on load timeout
-    addDocumentLoadedEventHandler(isWithStopOnLoadTimeout, inTimeoutMillis) {
-        const methodLinksImages = this.htmlDocumentAppendPreloadingLinkTags_Images.bind(this);
-        const methodLinksFonts = this.htmlDocumentAppendPreloadingLinkTags_Fonts.bind(this);
-        let linkTags = new Array();
-        let tmpLinkTags = new Array();
-        let linkTagsNumber = 0;
-        let idsOfTagsLink = new Array();
-        let locOnloadFunc = () => {
-            tmpLinkTags = methodLinksImages(isWithStopOnLoadTimeout);
-            linkTags = [...tmpLinkTags];
-            tmpLinkTags = methodLinksFonts(isWithStopOnLoadTimeout);
-            linkTags = [...linkTags, ...tmpLinkTags];
-            linkTagsNumber = linkTags.length;
-            let i = 0;
-            while (i < linkTagsNumber) {
-                idsOfTagsLink.push(linkTags[i].id);
-                i++;
-            }
-            if (isWithStopOnLoadTimeout) {
-                this.applyScriptLoadingStopOnTimeout(idsOfTagsLink, inTimeoutMillis);
-            }
-            i = 0;
-            while (i < linkTagsNumber) {
-                document.head.append(linkTags[i]);
-                i++;
-            }
-        };
+    addDocumentLoadedEventHandler(inTimeoutMillis, isWithStopOnLoadTimeout) {
         if (document.readyState !== "loading") {
             // If already loaded, invokes immediately
-            locOnloadFunc();
+            this.preload(inTimeoutMillis, isWithStopOnLoadTimeout);
         }
         else {
             document.addEventListener("DOMContentLoaded", () => {
                 // invokes on event DOMContentLoaded
-                locOnloadFunc();
+                this.preload(inTimeoutMillis, isWithStopOnLoadTimeout);
             }, { once: true });
+        }
+    }
+    preload(inTimeoutMillis, isWithStopOnLoadTimeout) {
+        let preloadsByDatatypesKeys = Object.keys(this.themesPreloads);
+        let aLinkTag = new Object();
+        let linkTagsArray = new Array();
+        let tmpLinkTagsArray = new Array();
+        let keysNumber = preloadsByDatatypesKeys.length;
+        let linkTagsNumber = 0;
+        let idsInLinkTagsArray = new Array();
+        let linkId = "";
+        let secureCounter = 0;
+        let secureMaxCounter = 8;
+        let keyIx = 0;
+        let key = "";
+        markerA: while (keyIx < keysNumber) {
+            secureCounter++;
+            if (secureCounter > secureMaxCounter) {
+                keyIx = (keysNumber + 5);
+                break markerA;
+            }
+            key = preloadsByDatatypesKeys[keyIx];
+            //@sence line
+            tmpLinkTagsArray = this.htmlDocumentAppendPreloadingLinkTags(key, isWithStopOnLoadTimeout);
+            // push to array with ids of the produced tags <link rel=preload.
+            // need later for the preventing render block script
+            linkTagsArray = [...linkTagsArray, ...tmpLinkTagsArray];
+            keyIx++;
+        }
+        linkTagsNumber = linkTagsArray.length;
+        let linkTagIx = 0;
+        secureCounter = 0;
+        secureMaxCounter = 124;
+        markerB: while (linkTagIx < linkTagsNumber) {
+            secureCounter++;
+            if (secureCounter > secureMaxCounter) {
+                linkTagIx = (linkTagsNumber + 5);
+                break markerB;
+            }
+            aLinkTag = linkTagsArray[linkTagIx];
+            linkId = aLinkTag.id;
+            //@sence line
+            idsInLinkTagsArray.push(linkId);
+            linkTagIx++;
+        }
+        if (isWithStopOnLoadTimeout) {
+            this.applyScriptLoadingStopOnTimeout(idsInLinkTagsArray, inTimeoutMillis);
+        }
+        linkTagIx = 0;
+        secureCounter = 0;
+        secureMaxCounter = 124;
+        markerC: while (linkTagIx < linkTagsNumber) {
+            secureCounter++;
+            if (secureCounter > secureMaxCounter) {
+                linkTagIx = (linkTagsNumber + 5);
+                break markerC;
+            }
+            aLinkTag = linkTagsArray[linkTagIx];
+            //@sence line
+            document.head.append(aLinkTag);
+            linkTagIx++;
         }
     }
     htmlDocumentAppendPreloadingLinkTags_Images(isWithStopOnLoadTimeout) {
@@ -123,17 +157,18 @@ class Preloader {
                 filenameToId = [themeName, filename].join("_");
                 linkId = text_1.CaseConverter.snake(filenameToId);
                 link.setAttribute("id", linkId);
-                link.setAttribute("fetchpriority", "low");
-                link.setAttribute("type", mimeType);
-                link.setAttribute("href", href);
-                if (mimeType === "text/css") {
-                    link.setAttribute("rel", "stylesheet");
-                    link.setAttribute("charset", "utf-8");
-                    link.setAttribute("crossorigin", "");
-                }
-                else {
+                if (mimeType.startsWith("font/") || mimeType.startsWith("image/")) {
+                    link.setAttribute("fetchpriority", "low");
                     link.setAttribute("rel", rel);
                     link.setAttribute("as", as);
+                }
+                else if (mimeType === "text/css") {
+                    link.setAttribute("rel", "stylesheet");
+                    link.setAttribute("charset", "utf-8");
+                }
+                link.setAttribute("type", mimeType);
+                link.setAttribute("href", href);
+                if (mimeType.startsWith("font/")) {
                     link.setAttribute("crossorigin", "");
                     link.setAttribute("onerror", linkTagOnerrorCode);
                 }

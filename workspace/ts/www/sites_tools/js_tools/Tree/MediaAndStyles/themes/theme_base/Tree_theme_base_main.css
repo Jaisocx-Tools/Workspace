@@ -10,7 +10,7 @@
   --text-color--dark: #000000;
 
   --size--jstree-html-node: 1.2rem;
-  --node-label--font-family: 'Baloo Paaji 2';
+  --node-label--font-family: LibreFranklin, Arial, system-ui, sans-serif;
   --node-label--font-size: 0.9rem;
   --node-label--line-height: var(--size--jstree-html-node);
   --node-label--text-color: unset;

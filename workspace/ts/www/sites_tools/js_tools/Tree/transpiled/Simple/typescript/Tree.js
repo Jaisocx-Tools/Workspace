@@ -258,7 +258,6 @@ class Tree extends ImprovedRenderEventEmitter {
 
         // add an html holder node for subtree html nodes
         const ul = document.createElement("UL");
-        this.mainHolderHtmlNode.append(ul);
 
 
         // get datatype of the main json data node
@@ -372,6 +371,7 @@ class Tree extends ImprovedRenderEventEmitter {
         if (this.debug) {
             console.log("Tree.data", this.data);
         }
+        this.mainHolderHtmlNode.append(ul);
 
 
         // all eventsHandlers, assigned with addJSTreeEventListener,
@@ -515,17 +515,17 @@ class Tree extends ImprovedRenderEventEmitter {
             "eventName": TreeConstants.TreeEventsNames.EVENT_NAME__BEFORE_RENDER_ONE_NODE,
             "dataForRendering": dataForRendering
         };
-        const eventBeforeRenderResult = this.emitEvent(
+        const eventBeforeRenderResultsArray = this.emitEvent(
             TreeConstants.TreeEventsNames.EVENT_NAME__BEFORE_RENDER_ONE_NODE,
             eventBeforeRenderOneNodePayload
         );
-        const eventResultsLength = eventBeforeRenderResult.length;
+        const eventResultsLength = eventBeforeRenderResultsArray.length;
         let lastEventRenderResultId = 0;
         let lastEventResult = new Object();
 
         if ((eventResultsLength >= 1) && lastEventResult && lastEventResult.result) {
             lastEventRenderResultId = (eventResultsLength - 1);
-            lastEventResult = eventBeforeRenderResult[lastEventRenderResultId];
+            lastEventResult = eventBeforeRenderResultsArray[lastEventRenderResultId];
 
 
             //@ts-ignore
@@ -681,33 +681,20 @@ class Tree extends ImprovedRenderEventEmitter {
 
 
 
-    getTreeDataNodeByJsonnodePathArray(jPathArray) {
+    getTreeDataByJPath(jPathArray) {
 
         // since complexity of building jPath array in modeEase and modeConf, the JPathArray is not the same,
         // and modeEase was built from item at index 2, since it has array item at index 1 "Top": this.data["Top"], and modeConf does not have this array item.
         // modeConf was built recursively already from item at index 1.
-        const startingIndexValidJpath = (this.renderingMode === TreeConstants.RenderingMode.Conf) ? 1 : 2;
+        const startingIndexValidJPath = (this.renderingMode === TreeConstants.RenderingMode.Conf) ? 1 : 2;
+        let retVal = new Object();
+        retVal = JPath.getByJPath(
+            jPathArray.slice(startingIndexValidJPath),
+            this.data
+        );
 
 
-        return jPathArray
-            .reduce(
-                (reducedRetValue, arrayItem, arrayItemIndex) => {
-                    return (arrayItemIndex < startingIndexValidJpath) ? reducedRetValue : reducedRetValue[arrayItem];
-                },
-                this.data
-            );
-    }
-
-
-
-    getByJPath(data, jPathArray) {
-        return jPathArray
-            .reduce(
-                (reducedRetValue, arrayItem) => {
-                    return reducedRetValue[arrayItem];
-                },
-                data
-            );
+        return retVal;
     }
 
 

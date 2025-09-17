@@ -2,7 +2,8 @@ import { ImprovedRenderEventEmitter, EventHandlerReturnValue } from "@jaisocx/ev
 import { TemplateRenderer } from "@jaisocx/template-renderer";
 import { ITreeRenderRetValue, IRenderTemplateRendererData, ITreeAdapter } from "./Types.js";
 import { TreeConf } from "./TreeConf.js";
-export declare class Tree extends ImprovedRenderEventEmitter {
+import { TreeInterface } from "./TreeInterface.js";
+export declare class Tree extends ImprovedRenderEventEmitter implements TreeInterface {
     debug: boolean;
     mainHtmlNodeId: any;
     mainHolderHtmlNode: HTMLElement | null;
@@ -45,8 +46,7 @@ export declare class Tree extends ImprovedRenderEventEmitter {
     renderSubtreeCallback(_isArray: number, loopCounter: number, loopPropertyValue: any, loopPropertyKey: any, _arrayOrObject: any, previousCallbackResult: number | null, callbackPayload: any): number;
     renderOneTreeNode(node: any, nodePosition: number, nodeKey: any, flatNodeHolderClone: any, holder: HTMLElement): ITreeRenderRetValue;
     updateDataNodeIdAndPath(node: any, nodePosition: number, nodeKey: any, flatNodeHolderClone: any, _holder: HTMLElement): any;
-    getTreeDataNodeByJsonnodePathArray(jPathArray: any[]): any;
-    getByJPath(data: any, jPathArray: any[]): any;
+    getTreeDataByJPath(jPathArray: any[]): any;
     getSubtreeNodeToRender(_loopPropertyValue: any, _loopPropertyKey: any): any;
     getDataForRendering(_node: any, _flatNodeClone: any, _dataTypeString: any, _hasSubtree: boolean): IRenderTemplateRendererData;
     getTreeNodeCssClasses(_dataType: any, _node: any): any;

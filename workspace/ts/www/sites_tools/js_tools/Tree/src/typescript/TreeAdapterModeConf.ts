@@ -21,6 +21,8 @@ export class TreeAdapterModeConf extends TreeAdapter implements ITreeAdapter {
     dataTypeString: any,
     hasSubtree: boolean
   ): IRenderTemplateRendererData {
+    const SYMBOL_BACKGROUND_SPACE: string = String.fromCharCode( 32 );
+
     let openButtonClassName: any = "";
 
     if (!hasSubtree) {
@@ -39,10 +41,32 @@ export class TreeAdapterModeConf extends TreeAdapter implements ITreeAdapter {
       openButtonClassName = TreeConstants.TreeCssClassNames.CLASS_OPENED;
     }
 
-    const cssClasses: any = this.getTreeNodeCssClasses(
+    const cssClasses: any = this.getTreeNodeCssClasses (
       dataTypeString,
       node
     );
+
+
+
+    let confImageSrc: string = node[this.conf.NODE_ICON__SRC] || "";
+    let isMiniImagesTagShown: boolean = this.nodesWithIcons;
+    let isConfImageSrc: boolean = ( confImageSrc.length !== 0 );
+
+    confImageSrc = ( isMiniImagesTagShown && isConfImageSrc ) ? confImageSrc : "";
+    isConfImageSrc = ( isMiniImagesTagShown && isConfImageSrc );
+
+    let isMiniImageTagImg: boolean = ( isMiniImagesTagShown && isConfImageSrc );
+    let tagImageCssClassnames: string[] = new Array() as string[];
+
+    if ( isMiniImagesTagShown ) {
+      tagImageCssClassnames.push( TreeConstants.TreeCssClassNames.CLASS_ICON_SHOW );
+    } else {
+      tagImageCssClassnames.push( TreeConstants.TreeCssClassNames.CLASS_ICON_HIDE );
+    }
+
+    if ( isMiniImageTagImg ) {
+      tagImageCssClassnames.push( TreeConstants.TreeCssClassNames.CLASS_ICON_TAG_IMG );
+    }
 
     const dataForRendering: IRenderTemplateRendererData = {
       dataId: node[this.conf.NODE__ID],
@@ -51,8 +75,8 @@ export class TreeAdapterModeConf extends TreeAdapter implements ITreeAdapter {
       dataJson: this.escapeHTMLForAttribute(JSON.stringify(flatNodeClone)),
       openButtonStateClassName: openButtonClassName,
       cssClasses,
-      iconSrc: node[this.conf.NODE_ICON__SRC],
-      iconShowClassName: (this.nodesWithIcons || node[this.conf.NODE_ICON__SRC]) ? "icon-show" : "icon-hide",
+      iconSrc: confImageSrc,
+      iconShowClassName: tagImageCssClassnames.join( SYMBOL_BACKGROUND_SPACE ),
       labelText: node[this.conf.NODE_LABEL__TEXT],
       hyperlink: node[this.conf.NODE__HYPERLINK] ?? "javascript: void(0);",
       hasSubtree
@@ -64,7 +88,7 @@ export class TreeAdapterModeConf extends TreeAdapter implements ITreeAdapter {
 
 
 
-  getTreeNodeCssClasses__dataTypesCssClassesEnabled(
+  getTreeNodeCssClasses__dataTypesCssClassesEnabled (
     dataTypeString: any,
     node: any
   ): any {

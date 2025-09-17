@@ -21,7 +21,7 @@ export class TreeAdapterModeEase extends TreeAdapter {
         const cssClasses = (this.dataTypesCssClassesEnabled === true) ? this.getTreeNodeCssClasses(dataTypeString, value) : "";
         const dataForRendering = {
             iconSrc: "",
-            iconShowClassName: this.nodesWithIcons ? "icon-show" : "icon-hide",
+            iconShowClassName: this.nodesWithIcons ? "icon-show mode-ease" : "icon-hide",
             labelText,
             hyperlink: "javascript: void(0);",
             cssClasses,

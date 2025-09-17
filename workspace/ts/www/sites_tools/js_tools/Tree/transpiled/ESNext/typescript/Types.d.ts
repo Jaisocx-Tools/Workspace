@@ -43,6 +43,7 @@ export interface ITreeCssClassNames {
     CLASS_WITHOUT_SUBTREE: any;
     CLASS_ICON_SHOW: any;
     CLASS_ICON_HIDE: any;
+    CLASS_ICON_TAG_IMG: any;
     CLASS_AND_ID__CONTEXT_MENU: any;
     CLASS_DATATYPE_OBJECT: any;
     CLASS_DATATYPE_ARRAY: any;

@@ -13,76 +13,76 @@
 
     <script>
 
-      let linkTagsPreloading = {
-        "icon_brightday": 1,
-        "font_LibreFranklin_SemiBold": 1,
-        "font_LibreFranklin_Regular": 1,
-        "stylesheet_cdn_fonts": 1
-      };
+        let statLinkTagsPreloading = {
+            "icon_brightday": 1,
+            "font_LibreFranklin_SemiBold": 1,
+            "font_LibreFranklin_Regular": 1,
+            "stylesheet_cdn_fonts": 1
+        };
 
 
 
-      let loadingStopOnTimeout = ( idsObject ) => {
+        let statLinksLoadingStopOnTimeout = ( idsObject ) => {
 
-        console.log( "Script on timeout started" );
+          console.log( "Started script, cleaning up hanging hard preloads links, if cdn doesn't respond, in order to prevent blocked render in the browser." );
 
-        let ids = Object.keys( idsObject );
-        let idsNumber = ids.length;
-        let id = "";
-        let i = 0;
-        let tag = new Object();
+          let ids = Object.keys( idsObject );
+          let idsNumber = ids.length;
+          let id = "";
+          let i = ( idsNumber - 1 );
+          let tag = new Object();
 
-        let secureCounter = 1;
-        let secureMaxCounter = 10;
+          let secureCounter = 1;
+          let secureMaxCounter = 14;
 
-        marker1: while ( i < idsNumber ) {
-          secureCounter++;
-          if ( secureCounter >= secureMaxCounter ) {
-            break marker1;
+          marker1: while ( i >= 0 ) {
+            secureCounter++;
+            if ( secureCounter >= secureMaxCounter ) {
+              break marker1;
+            }
+
+
+            id = ids[i];
+
+            if ( idsObject[id] === 3 ) {
+              i--;
+              continue marker1;
+            }
+
+
+            let url = "";
+            try {
+              tag = document.getElementById( id );
+              url = tag.getAttribute( "href" );
+            } catch (e) {}
+            try {
+              tag.onerror = null;
+            } catch (e) {}
+            try {
+              tag.setAttribute( "rel", "stylesheet" );
+            } catch (e) {}
+            try {
+              tag.setAttribute( "href", "javascript: void(0);" );
+            } catch (e) {}
+            try {
+              tag.remove();
+              console.log( "Cleaned up, after timeout, the hanging hard preload url:", url );
+            } catch (e) {}
+
+            tag = null;
+
+            i--;
           }
-
-          id = ids[i];
-          i++;
-
-          if ( idsObject[id] === 3 ) {
-            continue marker1;
-          }
-
-
-
-          try {
-            tag = document.getElementById( id );
-          } catch (e) {}
-          try {
-            tag.onerror = null;
-          } catch (e) {}
-          try {
-            tag.setAttribute( "fetchpriority", "low" );
-          } catch (e) {}
-          try {
-            tag.setAttribute( "rel", "stylesheet" );
-          } catch (e) {}
-          try {
-            tag.removeAttribute( "href" );
-          } catch (e) {}
-          try {
-            tag.remove();
-          } catch (e) {}
-
-
-
-          i++;
         }
-      }
 
 
 
-      setTimeout (
-        () => {
-          loadingStopOnTimeout( linkTagsPreloading );
-        },
-        1600
-      );
+        setTimeout (
+          () => {
+            statLinksLoadingStopOnTimeout( statLinkTagsPreloading );
+          },
+          500
+        );
 
     </script>
 

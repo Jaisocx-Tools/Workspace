@@ -84,7 +84,7 @@ class PreloaderConstants {
         {{ timeoutNumberOfMilliseconds }}
       );
     `, "f");
-        __classPrivateFieldSet(this, _PreloaderConstants_linkTagOnloadCode, "javascript: ( () => { const id = this.id; try{ window.linkTagsPreloading[id] = 3; }catch(e){} } )();", "f");
+        __classPrivateFieldSet(this, _PreloaderConstants_linkTagOnloadCode, "javascript: ( () => { const id = this.id; try{ window.linkTagsPreloading[id] = 3; } catch (e){} } )();", "f");
         __classPrivateFieldSet(this, _PreloaderConstants_linkTagOnerrorCode, "javascript: ( () => { this.remove(); this.onerror = null; } )();", "f");
     }
     getLinkTagsPreloading() {

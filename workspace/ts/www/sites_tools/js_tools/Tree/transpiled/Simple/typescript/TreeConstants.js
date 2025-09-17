@@ -15,6 +15,7 @@ class TreeConstants {
         CLASS_WITHOUT_SUBTREE: "toggle-without-subtree",
         CLASS_ICON_SHOW: "icon-show",
         CLASS_ICON_HIDE: "icon-hide",
+        CLASS_ICON_TAG_IMG: "icon-tag-img",
         CLASS_AND_ID__CONTEXT_MENU: "context-menu-container",
         CLASS_DATATYPE_OBJECT: "holder-datatype--object",
         CLASS_DATATYPE_ARRAY: "holder-datatype--array",
@@ -45,7 +46,7 @@ class TreeConstants {
         </pre>
 
         <pre class="jstree-html-node-holder-icon {{ iconShowClassName }}">
-            <img src="{{ iconSrc }}" />
+            <img src="{{ iconSrc }}" alt="Mini image {{ dataId }}" />
         </pre>
 
         <a href="{{ hyperlink }}" class="jstree-html-node-label">{{ labelText }}</a>

@@ -71,7 +71,7 @@ class PreloaderConstants {
         {{ timeoutNumberOfMilliseconds }}
       );
     `;
-        this.#linkTagOnloadCode = "javascript: ( () => { const id = this.id; try{ window.linkTagsPreloading[id] = 3; }catch(e){} } )();";
+        this.#linkTagOnloadCode = "javascript: ( () => { const id = this.id; try{ window.linkTagsPreloading[id] = 3; } catch (e){} } )();";
         this.#linkTagOnerrorCode = "javascript: ( () => { this.remove(); this.onerror = null; } )();";
     }
 

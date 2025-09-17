@@ -646,8 +646,8 @@
   --open-button-without-subtree--image-url:  url('./themes/theme_base/mini_images/button-open/button-without-subtree.svg');
 
   --datatype-array--image-url:               url('./themes/theme_base/mini_images/data-types/icons8-view-array-96.png');
-  --datatype-object--image-url:              url('.themes/theme_base/mini_images/data-types/icons8-static-view-level2-80.png');
-  --datatype-number--image-url:              url('.themes/theme_base/mini_images/data-types/icons8-3-100.png');
+  --datatype-object--image-url:              url('./themes/theme_base/mini_images/data-types/icons8-static-view-level2-80.png');
+  --datatype-number--image-url:              url('./themes/theme_base/mini_images/data-types/icons8-3-100.png');
   --datatype-string--image-url:              url('./themes/theme_base/mini_images/data-types/icons8-font-style-formatting-96.png');
   --datatype-boolean--image-url:             url('./themes/theme_base/mini_images/data-types/icons8-true-false-96.png');
 }
@@ -665,7 +665,7 @@
   --text-color--dark: #000000;
 
   --size--jstree-html-node: 1.2rem;
-  --node-label--font-family: 'Baloo Paaji 2';
+  --node-label--font-family: LibreFranklin, Arial, system-ui, sans-serif;
   --node-label--font-size: 0.9rem;
   --node-label--line-height: var(--size--jstree-html-node);
   --node-label--text-color: unset;
@@ -765,46 +765,33 @@
     margin: var(--icon-margin);
 }
 
-.tree ul li.holder-datatype--array > .jstree-html-node > .jstree-html-node-holder-icon.icon-show {
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: contain;
-    background-image: var(--datatype-array--image-url);
-}
-.tree ul li.holder-datatype--object > .jstree-html-node > .jstree-html-node-holder-icon.icon-show {
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: contain;
-    background-image: var(--datatype-object--image-url);
-}
-.tree ul li.holder-datatype--string > .jstree-html-node > .jstree-html-node-holder-icon.icon-show {
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: contain;
-    background-image: var(--datatype-string--image-url);
-}
-.tree ul li.holder-datatype--number > .jstree-html-node > .jstree-html-node-holder-icon.icon-show {
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: contain;
-    background-image: var(--datatype-number--image-url);
-}
-.tree ul li.holder-datatype--boolean > .jstree-html-node > .jstree-html-node-holder-icon.icon-show {
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: contain;
-    background-image: var(--datatype-boolean--image-url);
+
+.tree .jstree-html-node-holder-icon.icon-hide {
+    display: none;
 }
 
 .tree .jstree-html-node-holder-icon.icon-show {
     display: flex;
 }
 
-.tree .jstree-html-node-holder-icon.icon-hide {
+.tree .jstree-html-node-holder-icon.icon-show.icon-tag-img {
+    background-size:     0;
+    background-image:    unset;
+    background-position: unset;
+    background-repeat:   unset;
+}
+
+.tree .jstree-html-node-holder-icon.icon-show:not(.icon-tag-img) {
+    background-position: center;
+    background-repeat:   no-repeat;
+    background-size:     contain;
+}
+
+.tree .jstree-html-node-holder-icon.icon-show:not(.icon-tag-img) img {
     display: none;
 }
 
-.tree .jstree-html-node-holder-icon img {
+.tree .jstree-html-node-holder-icon.icon-show.icon-tag-img img {
     display: block;
 
     max-width: 100%;
@@ -815,6 +802,23 @@
 
     overflow: hidden;
 }
+
+.tree ul li.holder-datatype--array  > .jstree-html-node > .jstree-html-node-holder-icon.icon-show:not(.icon-tag-img) {
+    background-image:    var(--datatype-array--image-url);
+}
+.tree ul li.holder-datatype--object  > .jstree-html-node > .jstree-html-node-holder-icon.icon-show:not(.icon-tag-img) {
+    background-image:    var(--datatype-object--image-url);
+}
+.tree ul li.holder-datatype--string  > .jstree-html-node > .jstree-html-node-holder-icon.icon-show:not(.icon-tag-img) {
+    background-image:    var(--datatype-string--image-url);
+}
+.tree ul li.holder-datatype--number  > .jstree-html-node > .jstree-html-node-holder-icon.icon-show:not(.icon-tag-img) {
+    background-image:    var(--datatype-number--image-url);
+}
+.tree ul li.holder-datatype--boolean > .jstree-html-node > .jstree-html-node-holder-icon.icon-show:not(.icon-tag-img) {
+    background-image:    var(--datatype-boolean--image-url);
+}
+
 
 .tree .jstree-html-node-label {
     border: var(--border--jstree-html-node);

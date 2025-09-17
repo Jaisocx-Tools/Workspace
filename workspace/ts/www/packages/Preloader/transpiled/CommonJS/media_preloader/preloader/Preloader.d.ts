@@ -11,8 +11,9 @@ export declare class Preloader implements PreloaderInterface {
     setThemesPreloads(preloads: object): PreloaderInterface;
     setWebpackAlias(alias: string): PreloaderInterface;
     setWebpackAliasReplace(alias: string): PreloaderInterface;
-    init(isWithStopOnLoadTimeout: boolean, inTimeoutMillis: number): void;
-    addDocumentLoadedEventHandler(isWithStopOnLoadTimeout: boolean, inTimeoutMillis: number): void;
+    init(inTimeoutMillis: number, isWithStopOnLoadTimeout: boolean): void;
+    addDocumentLoadedEventHandler(inTimeoutMillis: number, isWithStopOnLoadTimeout: boolean): void;
+    preload(inTimeoutMillis: number, isWithStopOnLoadTimeout: boolean): void;
     htmlDocumentAppendPreloadingLinkTags_Images(isWithStopOnLoadTimeout: boolean): HTMLLinkElement[];
     htmlDocumentAppendPreloadingLinkTags_Fonts(isWithStopOnLoadTimeout: boolean): HTMLLinkElement[];
     htmlDocumentAppendPreloadingLinkTags(inDataType: string, isWithStopOnLoadTimeout: boolean): HTMLLinkElement[];

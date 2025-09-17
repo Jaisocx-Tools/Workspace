@@ -7,14 +7,15 @@
 
 ## Watch In Action:
 
-[https://sandbox.brightday.email/sites_tools/js_tools/Tree/tree.example.html](https://sandbox.brightday.email/sites_tools/js_tools/Tree/tree.example.html)
+[https://sandbox.brightday.email/tree.html](https://sandbox.brightday.email/tree.html)
+
+
+## tarball
+
+[https://sandbox.brightday.email/sites_tools/js_tools/Tree/jaisocx-tree-2.2.16.tgz](https://sandbox.brightday.email/sites_tools/js_tools/Tree/jaisocx-tree-2.2.16.tgz)
 
 
 
-
-
-## a little outdated version of .ts code here:
-[https://github.com/Jaisocx-Tools/Workspace/tree/893773a85e33f103d8b0b838bf4004bd45a4e164/workspace/ts/www/sites_tools/js_tools/Tree](https://github.com/Jaisocx-Tools/Workspace/tree/893773a85e33f103d8b0b838bf4004bd45a4e164/workspace/ts/www/sites_tools/js_tools/Tree)
 
 In Project "Workspace"
 [https://github.com/Jaisocx-Tools/Workspace](https://github.com/Jaisocx-Tools/Workspace)
@@ -34,23 +35,37 @@ at relative path `workspace/ts/www/sites_tools/js_tools/Tree`
 The js site ui tool to render a multilevel nested objects json.
 
 
+
 ## How to use in ts code
 
+### 1. Need to import js code first on html page.
+
+#### 1.1. Webpack bundle.js
+
+Need first webpack bundle.js, and to reference in tag script in html page.
+
+#### 1.2. Like in tree preview example
+
+[https://sandbox.brightday.email/tree.html](https://sandbox.brightday.email/tree.html)
+
+
+### 2. then instantiate Tree class in html page in DOMContentLoaded event handler like here:
+
 ```
-    <h1>Tree examples</h1>
+    <h1>Tree example</h1>
 
-    <h2>json subtree type array</h2>
-    <div id="example-tree-holder_SubtreeArrayOfObjects"></div>
+    <div id="example-tree-holder"></div>
 
-    <h2>json subtree type object</h2>
-    <div id="example-tree-holder_SubtreeLikeObjects" class="theme-funny"></div>
 
-    <h2>load by url (should work only when published at an http server)</h2>
-    <div id="example-tree-holder_load_by_url"></div>
 
+    <!-- SCRIPT TO RENDER JSON IN TREE VIEW -->
     <script>
+    
+    let glob_TreeClassInstance = new Object();
 
-    const treeJson_SubtreeArrayOfObjects = [
+
+    // JS VARIABLE JSON TO RENDER IN TREE VIEW
+    const treeJsonData = [
     {
       "icon": "webpack_builds/ExampleTree/home_tree_mode_conf/house.png",
       "label": "Main",
@@ -98,43 +113,37 @@ The js site ui tool to render a multilevel nested objects json.
     }
   ];
 
+
+
       document.addEventListener('DOMContentLoaded', () => {
-        const tree_SubtreeArrayOfObjects = new Tree();
-        tree_SubtreeArrayOfObjects
-          .setDebug(false)
-          .setMainHtmlNodeId("example-tree-holder_SubtreeArrayOfObjects")
-          .setNodesWithIcons(true)
-          .setNodesOpenedMode(TreeConstants.NodesOpenedMode.ALL_SHOWN)
-          .setModifiable(false)
-          .setRenderingMode(TreeConstants.RenderingMode.Conf)
-          .addJSTreeEventListener (
+        glob_TreeClassInstance = new Tree();
+        
+        glob_TreeClassInstance
+          .setMainHtmlNodeId ( "example-tree-holder" )
+          .render ( treeJsonData );
+          
+          
+          
+        /* 
+        Another example with several methods to configure the Tree.
+        glob_TreeClassInstance
+          .setDebug ( true ) // turns on extended infos in browser's developer tools
+          .setMainHtmlNodeId ( "example-tree-holder" )
+          .setNodesWithIcons ( true ) // turns on mini images when in json data icon prop is set, or shows in mode ease icons of data types.
+          .setNodesOpenedMode ( TreeConstants.NodesOpenedMode.ALL_SHOWN ) // .ALL_HIDE .JSON_DATA_DEFINED ( "opened": true )
+          .setRenderingMode ( TreeConstants.RenderingMode.Conf ) // .Ease
+          .addJSTreeEventListener ( // tree click example event handler
             TreeConstants.TreeEventsNames.EVENT_NAME__TREE_NODE_LABEL__CLICK,
-            (eventName, eventPayload) => {
+            ( eventName, eventPayload ) => {
               console.log(eventName, eventPayload);
             }
           )
-          .render(treeJson_SubtreeArrayOfObjects);
-
-
-        // minimum setters amount required
-        const tree_SubtreeLikeObjects = new Tree();
-        tree_SubtreeLikeObjects
-          .setMainHtmlNodeId("example-tree-holder_SubtreeLikeObjects")
-          .setNodesOpenedMode(TreeConstants.NodesOpenedMode.JSON_DATA_DEFINED)
-          .setNodesWithIcons(true)
-          .setRenderingMode(TreeConstants.RenderingMode.Conf)
-          .render(treeJson_SubtreeLikeObjects);
-
-        // example to load by url
-        const tree_load_by_url = new Tree();
-        tree_load_by_url
-            .setMainHtmlNodeId("example-tree-holder_load_by_url")
-            .setRenderingMode(TreeConstants.RenderingMode.Conf)
-            .load("webpack_builds/ExampleTree/json/tree-data.json");
+          .render ( treeJsonData ); */
 
       });
     </script>
 ```
+
 
 
 ## Constants

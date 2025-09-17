@@ -43,6 +43,7 @@ to override the few styles, already set in the theme_base.
   margin:       var(--jsx--css-clean-start-2--all-tags--margin);
 
   font-family:  var(--jsx--css-clean-start-2--all-tags--font-family);
+  font-size:  var(--jsx--css-clean-start-2--all-tags--font-size);
   line-height:  var(--jsx--css-clean-start-2--all-tags--line-height);
 
 }

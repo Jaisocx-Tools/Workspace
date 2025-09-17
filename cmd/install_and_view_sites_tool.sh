@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-NPMLIB_EXAMPLE_HTML_FILENAME="index.example.html"
+NPMLIB_EXAMPLE_HTML_FILENAME="index.preview.html"
 
 
 
@@ -11,6 +11,14 @@ thisPath="$(realpath "$(dirname "$(realpath "$0")")")"
 npm_package_name="$1"
 npm_package_ver="$2"
 to_place_npm_package_folder_path="$(realpath "$3")"
+
+
+if [[ "$#" == 4 ]]; then
+
+  NPMLIB_EXAMPLE_HTML_FILENAME="$4"
+
+fi
+
 
 npm_package_name_and_ver="${npm_package_name}@${npm_package_ver}"
 

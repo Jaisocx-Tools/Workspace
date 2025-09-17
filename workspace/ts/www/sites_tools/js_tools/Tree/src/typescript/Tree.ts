@@ -1,3 +1,6 @@
+
+import { JPath } from "@jaisocx/jpath";
+
 import {
   ImprovedRenderEventEmitter, EventHandlerReturnValue,
   EventEmitResult
@@ -14,8 +17,12 @@ import { TreeAdapterModeEase } from "./TreeAdapterModeEase.js";
 import { ArrayOrObjectPackage } from "./ArrayOrObjectPackage.js";
 
 
+import { TreeInterface } from "./TreeInterface.js";
+
+
 // Tree main class
-export class Tree extends ImprovedRenderEventEmitter {
+export class Tree extends ImprovedRenderEventEmitter implements TreeInterface {
+
   debug: boolean;
 
   mainHtmlNodeId: any;
@@ -202,6 +209,7 @@ export class Tree extends ImprovedRenderEventEmitter {
 
 
   load(url: any|null): Tree {
+
     if (url && url.length) {
       this.url = url;
     }
@@ -223,6 +231,7 @@ export class Tree extends ImprovedRenderEventEmitter {
 
 
   adaptRenderingModeSubcalls(): void {
+
     if (this.renderingMode === TreeConstants.RenderingMode.Conf) {
       this.adapter = new TreeAdapterModeConf();
 
@@ -258,6 +267,7 @@ export class Tree extends ImprovedRenderEventEmitter {
 
 
   render(nodes: any): Tree {
+
     if (nodes) {
       this.data = nodes;
     }
@@ -299,7 +309,6 @@ export class Tree extends ImprovedRenderEventEmitter {
 
     // add an html holder node for subtree html nodes
     const ul = document.createElement("UL");
-    this.mainHolderHtmlNode.append(ul);
 
 
     // get datatype of the main json data node
@@ -331,6 +340,7 @@ export class Tree extends ImprovedRenderEventEmitter {
     let subtreeRenderResult: any;
 
     if (this.renderingMode === TreeConstants.RenderingMode.Conf) {
+
       if (isArray === 1) {
         subtreeRenderResult = this.renderSubtree(
           isArray,
@@ -416,6 +426,9 @@ export class Tree extends ImprovedRenderEventEmitter {
         this.data
       );
     }
+
+
+    this.mainHolderHtmlNode.append(ul);
 
 
     // all eventsHandlers, assigned with addJSTreeEventListener,
@@ -554,6 +567,7 @@ export class Tree extends ImprovedRenderEventEmitter {
     flatNodeHolderClone: any,
     holder: HTMLElement
   ): ITreeRenderRetValue {
+
     if (this.debug) {
       console.log(node);
     }
@@ -592,18 +606,18 @@ export class Tree extends ImprovedRenderEventEmitter {
       "dataForRendering": dataForRendering
     };
 
-    const eventBeforeRenderResult: EventEmitResult[] = this.emitEvent (
+    const eventBeforeRenderResultsArray: EventEmitResult[] = this.emitEvent (
       TreeConstants.TreeEventsNames.EVENT_NAME__BEFORE_RENDER_ONE_NODE,
       eventBeforeRenderOneNodePayload
     );
 
-    const eventResultsLength: number = eventBeforeRenderResult.length;
+    const eventResultsLength: number = eventBeforeRenderResultsArray.length;
     let lastEventRenderResultId: number = 0;
     let lastEventResult: EventEmitResult = new Object() as EventEmitResult;
 
     if ( ( eventResultsLength >= 1 ) && lastEventResult && lastEventResult.result ) {
       lastEventRenderResultId = ( eventResultsLength - 1 );
-      lastEventResult = eventBeforeRenderResult[ lastEventRenderResultId ] as EventEmitResult;
+      lastEventResult = eventBeforeRenderResultsArray[ lastEventRenderResultId ] as EventEmitResult;
 
 
       //@ts-ignore
@@ -777,43 +791,22 @@ export class Tree extends ImprovedRenderEventEmitter {
 
 
 
-  getTreeDataNodeByJsonnodePathArray ( jPathArray: any[] ): any {
+  getTreeDataByJPath ( jPathArray: any[] ): any {
 
     // since complexity of building jPath array in modeEase and modeConf, the JPathArray is not the same,
     // and modeEase was built from item at index 2, since it has array item at index 1 "Top": this.data["Top"], and modeConf does not have this array item.
     // modeConf was built recursively already from item at index 1.
-    const startingIndexValidJpath: number = ( this.renderingMode === TreeConstants.RenderingMode.Conf ) ? 1 : 2;
+    const startingIndexValidJPath: number = ( this.renderingMode === TreeConstants.RenderingMode.Conf ) ? 1 : 2;
+
+    let retVal: any = new Object();
+    retVal = JPath.getByJPath(
+      jPathArray.slice( startingIndexValidJPath ),
+      this.data
+    );
 
 
-    return jPathArray
-      .reduce (
-        (
-          reducedRetValue: any,
-          arrayItem: any,
-          arrayItemIndex: number
-        ) => {
-          return ( arrayItemIndex < startingIndexValidJpath ) ? reducedRetValue : reducedRetValue[arrayItem];
-        },
-        this.data
-      );
-  }
+    return retVal;
 
-
-
-  getByJPath(
-    data: any,
-    jPathArray: any[]
-  ): any {
-    return jPathArray
-      .reduce (
-        (
-          reducedRetValue: any,
-          arrayItem: any
-        ) => {
-          return reducedRetValue[arrayItem];
-        },
-        data
-      );
   }
 
 
@@ -1026,6 +1019,7 @@ export class Tree extends ImprovedRenderEventEmitter {
 
 
   unescapeHTMLFromAttribute(str: any|undefined): any {
+
     if (!str) {
       return "";
     }
@@ -1053,6 +1047,7 @@ export class Tree extends ImprovedRenderEventEmitter {
 
 
   getTreeHtmlNodeDatasetJson(htmlNode: HTMLElement|null): any {
+
     if (htmlNode === null) {
       return "";
     }

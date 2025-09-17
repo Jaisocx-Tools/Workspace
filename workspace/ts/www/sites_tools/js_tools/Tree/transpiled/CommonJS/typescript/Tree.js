@@ -1,6 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Tree = void 0;
+const jpath_1 = require("@jaisocx/jpath");
 const event_emitter_1 = require("@jaisocx/event-emitter");
 const template_renderer_1 = require("@jaisocx/template-renderer");
 const TreeConstants_js_1 = require("./TreeConstants.js");
@@ -163,7 +164,6 @@ class Tree extends event_emitter_1.ImprovedRenderEventEmitter {
         }
         // add an html holder node for subtree html nodes
         const ul = document.createElement("UL");
-        this.mainHolderHtmlNode.append(ul);
         // get datatype of the main json data node
         const dataType = ArrayOrObjectPackage_js_1.ArrayOrObjectPackage.getDataType(nodes);
         let isArray = 0;
@@ -224,6 +224,7 @@ class Tree extends event_emitter_1.ImprovedRenderEventEmitter {
         if (this.debug) {
             console.log("Tree.data", this.data);
         }
+        this.mainHolderHtmlNode.append(ul);
         // all eventsHandlers, assigned with addJSTreeEventListener,
         // here will be attached to one DOM event listener
         this.addJSTreeEventListeners();
@@ -292,13 +293,13 @@ class Tree extends event_emitter_1.ImprovedRenderEventEmitter {
             "eventName": TreeConstants_js_1.TreeConstants.TreeEventsNames.EVENT_NAME__BEFORE_RENDER_ONE_NODE,
             "dataForRendering": dataForRendering
         };
-        const eventBeforeRenderResult = this.emitEvent(TreeConstants_js_1.TreeConstants.TreeEventsNames.EVENT_NAME__BEFORE_RENDER_ONE_NODE, eventBeforeRenderOneNodePayload);
-        const eventResultsLength = eventBeforeRenderResult.length;
+        const eventBeforeRenderResultsArray = this.emitEvent(TreeConstants_js_1.TreeConstants.TreeEventsNames.EVENT_NAME__BEFORE_RENDER_ONE_NODE, eventBeforeRenderOneNodePayload);
+        const eventResultsLength = eventBeforeRenderResultsArray.length;
         let lastEventRenderResultId = 0;
         let lastEventResult = new Object();
         if ((eventResultsLength >= 1) && lastEventResult && lastEventResult.result) {
             lastEventRenderResultId = (eventResultsLength - 1);
-            lastEventResult = eventBeforeRenderResult[lastEventRenderResultId];
+            lastEventResult = eventBeforeRenderResultsArray[lastEventRenderResultId];
             //@ts-ignore
             dataForRendering = lastEventResult.result.value;
         }
@@ -402,21 +403,14 @@ class Tree extends event_emitter_1.ImprovedRenderEventEmitter {
         };
         return nodeClone;
     }
-    getTreeDataNodeByJsonnodePathArray(jPathArray) {
+    getTreeDataByJPath(jPathArray) {
         // since complexity of building jPath array in modeEase and modeConf, the JPathArray is not the same,
         // and modeEase was built from item at index 2, since it has array item at index 1 "Top": this.data["Top"], and modeConf does not have this array item.
         // modeConf was built recursively already from item at index 1.
-        const startingIndexValidJpath = (this.renderingMode === TreeConstants_js_1.TreeConstants.RenderingMode.Conf) ? 1 : 2;
-        return jPathArray
-            .reduce((reducedRetValue, arrayItem, arrayItemIndex) => {
-            return (arrayItemIndex < startingIndexValidJpath) ? reducedRetValue : reducedRetValue[arrayItem];
-        }, this.data);
-    }
-    getByJPath(data, jPathArray) {
-        return jPathArray
-            .reduce((reducedRetValue, arrayItem) => {
-            return reducedRetValue[arrayItem];
-        }, data);
+        const startingIndexValidJPath = (this.renderingMode === TreeConstants_js_1.TreeConstants.RenderingMode.Conf) ? 1 : 2;
+        let retVal = new Object();
+        retVal = jpath_1.JPath.getByJPath(jPathArray.slice(startingIndexValidJPath), this.data);
+        return retVal;
     }
     // ADAPTIVE PLACEHOLDERS
     getSubtreeNodeToRender(_loopPropertyValue, _loopPropertyKey) {

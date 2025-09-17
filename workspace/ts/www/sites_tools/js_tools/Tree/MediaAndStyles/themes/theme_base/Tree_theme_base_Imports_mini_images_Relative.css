@@ -32,8 +32,8 @@ sends http request paths normally resolved. the browser doesn't ask a server to 
   --open-button-without-subtree--image-url:  url('./themes/theme_base/mini_images/button-open/button-without-subtree.svg');
 
   --datatype-array--image-url:               url('./themes/theme_base/mini_images/data-types/icons8-view-array-96.png');
-  --datatype-object--image-url:              url('.themes/theme_base/mini_images/data-types/icons8-static-view-level2-80.png');
-  --datatype-number--image-url:              url('.themes/theme_base/mini_images/data-types/icons8-3-100.png');
+  --datatype-object--image-url:              url('./themes/theme_base/mini_images/data-types/icons8-static-view-level2-80.png');
+  --datatype-number--image-url:              url('./themes/theme_base/mini_images/data-types/icons8-3-100.png');
   --datatype-string--image-url:              url('./themes/theme_base/mini_images/data-types/icons8-font-style-formatting-96.png');
   --datatype-boolean--image-url:             url('./themes/theme_base/mini_images/data-types/icons8-true-false-96.png');
 }

@@ -29,7 +29,44 @@
                            list="true"
                            each-folder-content-file-name="root.html" />
               </domain>
-              <domain
+                <domain
+                        name="preview.brightday.email"
+                        jks-path="/usr/lib/jaisocx-http/ssl/brightday.email.jks"
+                        jks-alias="brightday.email"
+                        jks-passphrase="JW5MYPKHbdqetvr4yfshiFwwjvr4fakE43qJUtgh7A2hNEW"
+                        publish-charset="UTF-8" src-charset="UTF-8">
+                    <alias comment="typescript code"
+                           art="folder"
+                           url="/"
+                           path="/var/www/workspace/ts/www/"
+                           cache="update"
+                           list="true"
+                           each-folder-content-file-name="root.html" />
+                    <alias comment="php code"
+                           art="folder"
+                           url="/php/"
+                           path="/var/www/workspace/php/"
+                           cache="update"
+                           list="true"
+                           each-folder-content-file-name="index.php" />
+
+                    <alias comment="cdn for data, fonts and media"
+                           art="folder"
+                           url="/cdn/www/"
+                           path="/var/www/cdn/www/"
+                           cache="update"
+                           list="true"
+                           each-folder-content-file-name="root.html" />
+
+                    <alias comment="cdn for the entire node_modules subfolder. the fast to declare url, however not preferred, since node_modules can have very a lot of dependencies. then can't set cache mode, since many GB of RAM used. Here are @jaisocx/ sites js and css tools, installed via yarn install or npm install"
+                           art="folder"
+                           url="/cdn/jaisocx-tools-all/"
+                           path="/var/www/cdn/SitesTools/node_modules/@jaisocx/"
+                           cache="update"
+                           list="true"
+                           each-folder-content-file-name="root.html" />
+                </domain>
+                <domain
                     name="cdn.sandbox.brightday.email"
                     jks-path="/usr/lib/jaisocx-http/ssl/brightday.email.jks"
                     jks-alias="brightday.email"

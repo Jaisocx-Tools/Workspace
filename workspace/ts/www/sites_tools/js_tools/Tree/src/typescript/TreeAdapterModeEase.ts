@@ -45,7 +45,7 @@ export class TreeAdapterModeEase extends TreeAdapter implements ITreeAdapter {
 
     const dataForRendering: IRenderTemplateRendererData = {
       iconSrc: "",
-      iconShowClassName: this.nodesWithIcons ? "icon-show" : "icon-hide",
+      iconShowClassName: this.nodesWithIcons ? "icon-show mode-ease" : "icon-hide",
       labelText,
       hyperlink: "javascript: void(0);",
       cssClasses,

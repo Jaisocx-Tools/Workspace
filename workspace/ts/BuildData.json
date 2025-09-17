@@ -26,6 +26,20 @@
       "build-files": []
     },
     {
+      "path": "sites_tools/theme_tools/ResourcesPackage",
+      "name": "resources-package",
+      "update-published": "",
+      "build": false,
+      "build-simple-enable": false,
+      "css-importer": {
+        "build": false,
+        "cssFilePath": "MediaAndStyles/ResourcesPackage_main_Webpack.css",
+        "cssTargetFilePath": "MediaAndStyles/ResourcesPackage_main_resolved.css"
+      },
+      "dependencies": [],
+      "build-files": []
+    },
+    {
       "path": "packages/TokensParser",
       "name": "tokens-parser",
       "update-published": "Mon Jun 02 22:02:01 GMT 2025",
@@ -230,7 +244,7 @@
       "path": "packages/Preloader",
       "name": "preloader",
       "update-published": "",
-      "build": true,
+      "build": false,
       "build-simple-enable": true,
       "dependencies": [
         {
@@ -422,7 +436,7 @@
       "build": false,
       "build-simple-enable": true,
       "css-importer": {
-        "build": false,
+        "build": true,
         "cssFilePath": "MediaAndStyles/Tree_main_Webpack_minimal.css",
         "cssTargetFilePath": "MediaAndStyles/Tree_main_resolved_minimal.css"
       },
@@ -440,6 +454,14 @@
         "webpack.aliases.cjs"
       ],
       "dependencies": [
+        {
+          "name": "@jaisocx/css-clean-start-2",
+          "path": "packages/CssCleanStart_2"
+        },
+        {
+          "name": "@jaisocx/jpath",
+          "path": "packages/JPath"
+        },
         {
           "name": "@jaisocx/event-emitter",
           "path": "packages/EventEmitter"

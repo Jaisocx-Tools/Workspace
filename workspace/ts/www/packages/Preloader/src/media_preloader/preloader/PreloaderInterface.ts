@@ -7,13 +7,18 @@ export interface PreloaderInterface {
   setWebpackAliasReplace ( alias: string ): PreloaderInterface;
 
   init (
-    isWithStopOnLoadTimeout: boolean,
-    inTimeoutMillis: number
+    inTimeoutMillis: number,
+    isWithStopOnLoadTimeout: boolean
   ): void;
 
   addDocumentLoadedEventHandler (
-    isWithStopOnLoadTimeout: boolean,
-    inTimeoutMillis: number
+    inTimeoutMillis: number,
+    isWithStopOnLoadTimeout: boolean
+  ): void;
+
+  preload (
+    inTimeoutMillis: number,
+    isWithStopOnLoadTimeout: boolean
   ): void;
 
   htmlDocumentAppendPreloadingLinkTags_Images( isWithStopOnLoadTimeout: boolean ): HTMLLinkElement[];

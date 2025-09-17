@@ -69,66 +69,28 @@ export class Preloader implements PreloaderInterface {
 
 
   init (
-    isWithStopOnLoadTimeout: boolean,
-    inTimeoutMillis: number
+    inTimeoutMillis: number,
+    isWithStopOnLoadTimeout: boolean
   ): void {
-    this.addDocumentLoadedEventHandler(
-      isWithStopOnLoadTimeout,
-      inTimeoutMillis
+    this.addDocumentLoadedEventHandler (
+      inTimeoutMillis,
+      isWithStopOnLoadTimeout
     );
   }
 
 
-  // @tasks: _isWithStopOnLoadTimeout impl stop on load timeout
+
   addDocumentLoadedEventHandler (
-    isWithStopOnLoadTimeout: boolean,
-    inTimeoutMillis: number
+    inTimeoutMillis: number,
+    isWithStopOnLoadTimeout: boolean
   ): void {
-    const methodLinksImages: CallableFunction = this.htmlDocumentAppendPreloadingLinkTags_Images.bind(this);
-    const methodLinksFonts: CallableFunction = this.htmlDocumentAppendPreloadingLinkTags_Fonts.bind(this);
-
-    let linkTags: HTMLLinkElement[] = new Array() as HTMLLinkElement[];
-    let tmpLinkTags: HTMLLinkElement[] = new Array() as HTMLLinkElement[];
-    let linkTagsNumber: number = 0;
-    let idsOfTagsLink: string[] = new Array() as string[];
-
-    let locOnloadFunc: CallableFunction = () => {
-      tmpLinkTags = methodLinksImages( isWithStopOnLoadTimeout );
-      linkTags = [ ...tmpLinkTags ];
-
-      tmpLinkTags = methodLinksFonts( isWithStopOnLoadTimeout );
-      linkTags = [ ...linkTags, ...tmpLinkTags ];
-
-      linkTagsNumber = linkTags.length;
-
-      let i: number = 0;
-
-      while( i < linkTagsNumber ) {
-        idsOfTagsLink.push( linkTags[i].id );
-        i++;
-      }
-
-      if ( isWithStopOnLoadTimeout ) {
-        this.applyScriptLoadingStopOnTimeout (
-          idsOfTagsLink,
-          inTimeoutMillis
-        );
-      }
-
-
-      i = 0;
-
-      while( i < linkTagsNumber ) {
-        document.head.append( linkTags[i] );
-        i++;
-      }
-
-    };
-
     if (document.readyState !== "loading") {
 
       // If already loaded, invokes immediately
-      locOnloadFunc();
+      this.preload (
+        inTimeoutMillis,
+        isWithStopOnLoadTimeout
+      );
 
     } else {
       document.addEventListener (
@@ -136,7 +98,10 @@ export class Preloader implements PreloaderInterface {
         () => {
 
           // invokes on event DOMContentLoaded
-          locOnloadFunc();
+          this.preload (
+            inTimeoutMillis,
+            isWithStopOnLoadTimeout
+          );
 
         },
         { once: true }
@@ -147,8 +112,110 @@ export class Preloader implements PreloaderInterface {
 
 
 
+  preload (
+    inTimeoutMillis: number,
+    isWithStopOnLoadTimeout: boolean
+  ): void {
+    let preloadsByDatatypesKeys: string[] = Object.keys( this.themesPreloads );
+    let aLinkTag: HTMLLinkElement = new Object() as HTMLLinkElement;
+    let linkTagsArray: HTMLLinkElement[] = new Array() as HTMLLinkElement[];
+    let tmpLinkTagsArray: HTMLLinkElement[] = new Array() as HTMLLinkElement[];
+    let keysNumber: number = preloadsByDatatypesKeys.length;
+    let linkTagsNumber: number = 0;
+    let idsInLinkTagsArray: string[] = new Array() as string[];
+    let linkId: string = "";
+    let secureCounter: number = 0;
+    let secureMaxCounter: number = 8;
+    let keyIx: number = 0;
+    let key: string = "";
+
+    markerA: while ( keyIx < keysNumber ) {
+      secureCounter++;
+
+      if ( secureCounter > secureMaxCounter ) {
+        keyIx = ( keysNumber + 5 );
+        break markerA;
+      }
+
+      key = preloadsByDatatypesKeys[ keyIx ];
+
+
+      //@sence line
+      tmpLinkTagsArray = this.htmlDocumentAppendPreloadingLinkTags (
+        key,
+        isWithStopOnLoadTimeout
+      );
+
+
+      // push to array with ids of the produced tags <link rel=preload.
+      // need later for the preventing render block script
+      linkTagsArray = [ ...linkTagsArray, ...tmpLinkTagsArray ];
+
+
+      keyIx++;
+    }
+
+
+
+    linkTagsNumber = linkTagsArray.length;
+    let linkTagIx: number = 0;
+    secureCounter = 0;
+    secureMaxCounter = 124;
+
+    markerB: while ( linkTagIx < linkTagsNumber ) {
+      secureCounter++;
+
+      if ( secureCounter > secureMaxCounter ) {
+        linkTagIx = ( linkTagsNumber + 5 );
+        break markerB;
+      }
+
+      aLinkTag = linkTagsArray[ linkTagIx ];
+      linkId = aLinkTag.id;
+
+
+      //@sence line
+      idsInLinkTagsArray.push( linkId );
+
+      linkTagIx++;
+    }
+
+    if ( isWithStopOnLoadTimeout ) {
+      this.applyScriptLoadingStopOnTimeout (
+        idsInLinkTagsArray,
+        inTimeoutMillis
+      );
+    }
+
+
+
+    linkTagIx = 0;
+    secureCounter = 0;
+    secureMaxCounter = 124;
+
+    markerC: while( linkTagIx < linkTagsNumber ) {
+      secureCounter++;
+
+      if ( secureCounter > secureMaxCounter ) {
+        linkTagIx = ( linkTagsNumber + 5 );
+        break markerC;
+      }
+
+      aLinkTag = linkTagsArray[ linkTagIx ];
+
+
+      //@sence line
+      document.head.append( aLinkTag );
+
+      linkTagIx++;
+    }
+
+  }
+
+
+
   htmlDocumentAppendPreloadingLinkTags_Images ( isWithStopOnLoadTimeout: boolean ): HTMLLinkElement[] {
-    let linkTags: HTMLLinkElement[] = this.htmlDocumentAppendPreloadingLinkTags(
+    let linkTags: HTMLLinkElement[] = this.htmlDocumentAppendPreloadingLinkTags (
       "image",
       isWithStopOnLoadTimeout
     );
@@ -244,17 +311,20 @@ export class Preloader implements PreloaderInterface {
         linkId = CaseConverter.snake ( filenameToId );
 
         link.setAttribute( "id", linkId );
-        link.setAttribute( "fetchpriority", "low" );
+
+        if ( mimeType.startsWith( "font/" ) || mimeType.startsWith( "image/" ) ) {
+          link.setAttribute( "fetchpriority", "low" );
+          link.setAttribute( "rel", rel );
+          link.setAttribute( "as", as );
+        } else if ( mimeType === "text/css" ) {
+          link.setAttribute( "rel", "stylesheet" );
+          link.setAttribute( "charset", "utf-8" );
+        }
+
         link.setAttribute( "type", mimeType );
         link.setAttribute( "href", href );
 
-        if ( mimeType === "text/css" ) {
-          link.setAttribute( "rel", "stylesheet" );
-          link.setAttribute( "charset", "utf-8" );
-          link.setAttribute( "crossorigin", "" );
-        } else {
-          link.setAttribute( "rel", rel );
-          link.setAttribute( "as", as );
+        if ( mimeType.startsWith( "font/" ) ) {
           link.setAttribute( "crossorigin", "" );
           link.setAttribute( "onerror", linkTagOnerrorCode );
         }
