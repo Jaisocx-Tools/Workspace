@@ -1,6 +1,6 @@
 {
   "name": "@jaisocx/preloader",
-  "version": "2.3.1",
+  "version": "2.3.2",
   "author": "Jaisocx",
   "keywords": [],
   "private": false,
@@ -21,8 +21,8 @@
     "transpiled/ESNext",
     "transpiled/Simple",
 
-    "README.md",
-    "README_preloader_font_loading_once.md"
+    "docs",
+    "README.md"
   ],
   "publishConfig": {
     "access": "public"
