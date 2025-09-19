@@ -5,7 +5,8 @@
 
 fine tuning of look and feel themes turning on.
 
-Another README on minimizing same font loads. The best way just once. [README_preloader_font_loading_once.md](README_preloader_font_loading_once.md)
+Another README on minimizing same font loads. The best way just once.
+[README_preloader_font_loading_once.md](README_preloader_font_loading_once.md)
 
 
 
@@ -13,7 +14,8 @@ Another README on minimizing same font loads. The best way just once. [README_pr
 
 ## Preface
 
-The simpliest browser technologies I turn on here were implemented 15 years ago and earlier, and with CSS2 even. 
+The simpliest browser technologies I turn on here were implemented 15 years ago and earlier, 
+and with CSS2 even. 
 In my jobs experience the fine-tuning of sites 
 is never done in every task of fine-tuning features available since long ago.
 
@@ -31,6 +33,34 @@ thanks to Your Companie's Site's improvals of features like:
 1. first load user experience and impression,
 2. load performance, 
 3. Networking and Hardware usage costs save-up.
+
+
+
+## Preloading overrides the unforeseen lazy load setting on clients' browsers
+
+When styles were loaded, and no html elems on site use a font,
+referenced in styles, or an image,
+referenced in styles as `background-image` css prop,
+then these font and image are not loaded.
+this is the very nice optimization and saving up network traffic technology.
+
+When turning on other look and feel theme with browser's js event handler method,
+for example, when the new css classnames set,
+the browser may start to load images and fonts,
+referenced in the .css files of this theme.
+
+Then, unfortunately, not all styles of the new theme are set at once.
+And, when several fonts, they are shown in browser at the unforeseen timestaps one after some another.
+
+The timeout of the loaded images and fonts, if any,
+is not to foresee in a browser's engine,
+since it's relevant to a site server and a network,
+binding sites server and a computer, where a browser shows a site.
+
+These optimization tasks in the browser's engine, nevertheless,
+were done the best way as I could notice,
+however the @jaisocx/preloader lib may do easily for Your site
+the tasks for quality assurance and fine-tuning of look and feel themes turning on.
 
 
 
@@ -109,15 +139,29 @@ With Preloader, when You've tapped the theme butten, You notice in index.example
 
 ### 2. preventing interactivity layout jumps.
 
-When styles were loaded, and no html elems on site use a font, referenced in styles, or an image, referenced in styles as `background-image` css prop, then these font and image are not loaded. this is the very nice optimization and saving up network traffic technology.
+When styles were loaded, and no html elems on site use a font, 
+referenced in styles, or an image, 
+referenced in styles as `background-image` css prop, 
+then these font and image are not loaded. 
+this is the very nice optimization and saving up network traffic technology.
 
-When turrning on other look and feel theme with browser's js event handler method,
+When turning on other look and feel theme with browser's js event handler method,
+for example, when the new css classnames set, 
+the browser may start to load images and fonts, 
+referenced in the .css files of this theme. 
 
-for example, when the new css classnames set, the browser may start to load images and fonts, referenced in the .css files of this theme. Then, undfortunately, not all styles of the new theme are set at once. And, when several fonts, they are shown in browser at the unforeseen timestaps one after some another.
+Then, unfortunately, not all styles of the new theme are set at once. 
+And, when several fonts, they are shown in browser at the unforeseen timestaps one after some another.
 
-The timeout of the loaded images and fonts, if any, is not to foresee in a browser's engine, since it's relevant to a site server and a network, binding sites server and a computer, where a browser shows a site.
+The timeout of the loaded images and fonts, if any, 
+is not to foresee in a browser's engine, 
+since it's relevant to a site server and a network, 
+binding sites server and a computer, where a browser shows a site.
 
-These optimization tasks in the browser's engine, nevertheless, were done the best way as I could notice, however the @jaisocx/preloader lib may do easily for Your site the tasks for quality assurance and fine tuning of look and feel themes turning on.
+These optimization tasks in the browser's engine, nevertheless, 
+were done the best way as I could notice, 
+however the @jaisocx/preloader lib may do easily for Your site 
+the tasks for quality assurance and fine-tuning of look and feel themes turning on.
 
 
 
@@ -188,19 +232,49 @@ the position varies, whether one sites tool is installed
 or several sites tools (two levels inside or one level above three levels inside).
 
 
+The fallback urls for cdn urls vs. urls of local optional npm deps,
+have to be implemented later,
+since if cdn urls are set, nevertheless,
+with npm optional deps for theme resources hardcopies,
+a developer | tester may save on demand hardcopies of fonts inside a sites tool node_modules locally,
+via `npm i <sites tool> --save-optional=true`
+
+
+The `@jaisocx/preloader` ScriptsChainedLoader js class starts loading other scripts,
+resolving `node_modules` fallback urls,
+having bugfixed trouble in js transpiled ( legacy legacy ) Simple mode,
+that some js class might be not loaded,
+when the currently loaded script is being verified by a browser's js engine.
+
+
+
 
 ### 5. Event DOMContentLoaded overrides with The Fallback Urls Feature turned on.
 
-When a cdn, where preloading media was published, is not responding, 
-the cleanup script stops waiting for responses from cdn. 
+With The Fallback Urls Resolval Feature,
+on event DOMContentLoaded,
+one can not be sure,
+all scripts have been loaded,
+since on DOMContentLoaded all resources are loaded, 
+started to load after have parsed the hardcoded html tags like link and script.
 
-The fallback urls for optional npm deps have to be implemented later, 
-since cdn urls are set in order to save up npm repos registry harddrive free space, 
-and local machine harddrive free space having cdn resources saved on harddrive once.
+
+when loading scripts with the @jaisocx/preloader ScriptsChainedLoader js class,
+the method `.onload()` 
+overrides js event handler on event emitted,
+after the last .js script, of json array of scripts urls, was loaded.
+
+
+
 
 
 
 ### 6. CDN not responding blocks prevented.
+
+When a cdn, where preloading media was published, is not responding,
+the cleanup script stops waiting for responses from cdn.
+
+
 
 #### 6.1. When a site is blocked:
     1. when a cdn is a remote machine,
@@ -284,13 +358,25 @@ For the optimization, You can watch the font files loaded in browser's developer
 
 ### 3. loading resources just once.
 
+The workaround to set the exact url of a font in the preloading link tag and @font-face style,
+hardcoded in Your html page or with the Preloader class, this does this dynamique,
+by set of urls in a json, set as incoming arg of the Preloader method `.setThemesPreloads( json );`
+
+
+
 ### 4. Fallback urls of npm deps.
+
+Solved
+
+
 
 ### 5. Event DOMContentLoaded overrides with The Fallback Urls Feature turned on.
 
+Solved
+
 ### 6. CDN not responding blocks prevented.
 
-
+Solved
 
 
 

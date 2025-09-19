@@ -48,7 +48,7 @@
     "@jaisocx/jpath": "~1.2.3",
     "@jaisocx/event-emitter": "~1.4.2",
     "@jaisocx/mime-type": "~1.0.7",
-    "@jaisocx/preloader": "~2.3.1",
+    "@jaisocx/preloader": "~2.3.2",
     "@jaisocx/template-renderer": "~1.5.8",
     "@jaisocx/text": "~2.2.2",
     "@jaisocx/theme-turn-on": "~1.0.1",

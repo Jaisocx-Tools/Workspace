@@ -244,7 +244,7 @@
       "path": "packages/Preloader",
       "name": "preloader",
       "update-published": "",
-      "build": false,
+      "build": true,
       "build-simple-enable": true,
       "dependencies": [
         {
@@ -436,7 +436,7 @@
       "build": false,
       "build-simple-enable": true,
       "css-importer": {
-        "build": true,
+        "build": false,
         "cssFilePath": "MediaAndStyles/Tree_main_Webpack_minimal.css",
         "cssTargetFilePath": "MediaAndStyles/Tree_main_resolved_minimal.css"
       },

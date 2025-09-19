@@ -10,7 +10,7 @@ var __classPrivateFieldGet = (this && this.__classPrivateFieldGet) || function (
     if (typeof state === "function" ? receiver !== state || !f : !state.has(receiver)) throw new TypeError("Cannot read private member from an object whose class did not declare it");
     return kind === "m" ? f : kind === "a" ? f.call(receiver) : f ? f.value : state.get(receiver);
 };
-var _ScriptsChainedLoader_confKey__scripts, _ScriptsChainedLoader_confKey__node_modules, _ScriptsChainedLoader_confKey__npm_namespace, _ScriptsChainedLoader_path_SimpleBuild, _ScriptsChainedLoader_tagname_script, _ScriptsChainedLoader_scriptAttr_data, _ScriptsChainedLoader_scriptAttr_scriptId, _ScriptsChainedLoader_scriptAttr_npmPackageId, _ScriptsChainedLoader_scriptAttr_src, _ScriptsChainedLoader_npmNamespace;
+var _ScriptsChainedLoader_confKey__scripts, _ScriptsChainedLoader_confKey__node_modules, _ScriptsChainedLoader_confKey__npm_namespace, _ScriptsChainedLoader_path_SimpleBuild, _ScriptsChainedLoader_tagname_script, _ScriptsChainedLoader_scriptAttr_data, _ScriptsChainedLoader_scriptAttr_scriptId, _ScriptsChainedLoader_scriptAttr_npmPackageId, _ScriptsChainedLoader_scriptAttr_src, _ScriptsChainedLoader_npmNamespace, _ScriptsChainedLoader_scriptSrcArray, _ScriptsChainedLoader_offset_dynamicPathArrayId_ScriptSrcArray, _ScriptsChainedLoader_offset_npmPackageName_ScriptSrcArray, _ScriptsChainedLoader_offset_jsFilepath_ScriptSrcArray;
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.ScriptsChainedLoader = void 0;
 class ScriptsChainedLoader {
@@ -25,6 +25,10 @@ class ScriptsChainedLoader {
         _ScriptsChainedLoader_scriptAttr_npmPackageId.set(this, void 0);
         _ScriptsChainedLoader_scriptAttr_src.set(this, void 0);
         _ScriptsChainedLoader_npmNamespace.set(this, void 0);
+        _ScriptsChainedLoader_scriptSrcArray.set(this, void 0);
+        _ScriptsChainedLoader_offset_dynamicPathArrayId_ScriptSrcArray.set(this, void 0);
+        _ScriptsChainedLoader_offset_npmPackageName_ScriptSrcArray.set(this, void 0);
+        _ScriptsChainedLoader_offset_jsFilepath_ScriptSrcArray.set(this, void 0);
         this._SYMBOL_ZEROLEN_CHAR = "";
         this._SYMBOL_UNDERSCRORE_CHAR = "_";
         __classPrivateFieldSet(this, _ScriptsChainedLoader_confKey__scripts, "scripts", "f");
@@ -37,6 +41,17 @@ class ScriptsChainedLoader {
         __classPrivateFieldSet(this, _ScriptsChainedLoader_scriptAttr_npmPackageId, "data-npmpackage_id", "f");
         __classPrivateFieldSet(this, _ScriptsChainedLoader_scriptAttr_src, "src", "f");
         __classPrivateFieldSet(this, _ScriptsChainedLoader_npmNamespace, "@jaisocx", "f");
+        __classPrivateFieldSet(this, _ScriptsChainedLoader_scriptSrcArray, [
+            "< dynamicPathArrayId >",
+            "< npmPackageName >",
+            "/",
+            __classPrivateFieldGet(this, _ScriptsChainedLoader_path_SimpleBuild, "f"),
+            "< jsFilepath >",
+            ".js"
+        ], "f");
+        __classPrivateFieldSet(this, _ScriptsChainedLoader_offset_dynamicPathArrayId_ScriptSrcArray, 0, "f");
+        __classPrivateFieldSet(this, _ScriptsChainedLoader_offset_npmPackageName_ScriptSrcArray, 1, "f");
+        __classPrivateFieldSet(this, _ScriptsChainedLoader_offset_jsFilepath_ScriptSrcArray, 4, "f");
         this._debug = false;
     }
     setDebug(inDebug) {
@@ -100,27 +115,37 @@ class ScriptsChainedLoader {
         let npmPackageName = npmPackagesNames[npmPackageId];
         let scriptsObject = scriptsDataObject[npmPackageName];
         let scriptsArray = scriptsObject[__classPrivateFieldGet(this, _ScriptsChainedLoader_confKey__scripts, "f")];
-        let isInNodeModules = scriptsObject[__classPrivateFieldGet(this, _ScriptsChainedLoader_confKey__node_modules, "f")];
+        let isInNodeModules = (scriptsObject[__classPrivateFieldGet(this, _ScriptsChainedLoader_confKey__node_modules, "f")] === true);
         let isWithFallbackSrc = isInNodeModules;
         let locNpmNamespace = (_a = scriptsObject[__classPrivateFieldGet(this, _ScriptsChainedLoader_confKey__npm_namespace, "f")]) !== null && _a !== void 0 ? _a : __classPrivateFieldGet(this, _ScriptsChainedLoader_npmNamespace, "f");
         let jsFilepath = scriptsArray[scriptId];
         let scriptSrc = this._SYMBOL_ZEROLEN_CHAR;
         let fallbackScriptSrc = this._SYMBOL_ZEROLEN_CHAR;
-        let dynamicPathArrayId = 0;
-        let scriptSrcArray = [
-            "< dynamicPathArrayId >",
-            npmPackageName,
-            "/",
-            __classPrivateFieldGet(this, _ScriptsChainedLoader_path_SimpleBuild, "f"),
-            jsFilepath,
-            ".js"
-        ];
-        if (isInNodeModules) {
-            scriptSrcArray[dynamicPathArrayId] = ["node_modules/", locNpmNamespace, "/"].join("");
-            scriptSrc = scriptSrcArray.join(this._SYMBOL_ZEROLEN_CHAR);
+        let offset_dynamicPathArrayId = __classPrivateFieldGet(this, _ScriptsChainedLoader_offset_dynamicPathArrayId_ScriptSrcArray, "f");
+        let offset_npmPackageName = __classPrivateFieldGet(this, _ScriptsChainedLoader_offset_npmPackageName_ScriptSrcArray, "f");
+        let offset_jsFilepath = __classPrivateFieldGet(this, _ScriptsChainedLoader_offset_jsFilepath_ScriptSrcArray, "f");
+        // the more efficient workaround, building strings, than simultaneous .replace() or the simultaneous concatenation:
+        // the array building url or fallback url
+        // obtains 3 values on array offsets,
+        // in order to join to url of datatype string later.
+        if ((isInNodeModules === true) && (isFallback === true)) {
+            __classPrivateFieldGet(this, _ScriptsChainedLoader_scriptSrcArray, "f")[offset_dynamicPathArrayId] = "../";
         }
-        else {
-            scriptSrc = scriptSrcArray.slice(3).join(this._SYMBOL_ZEROLEN_CHAR);
+        else if ((isInNodeModules === true) && (isFallback === false)) {
+            __classPrivateFieldGet(this, _ScriptsChainedLoader_scriptSrcArray, "f")[offset_dynamicPathArrayId] = ["node_modules/", locNpmNamespace, "/"].join("");
+        }
+        __classPrivateFieldGet(this, _ScriptsChainedLoader_scriptSrcArray, "f")[offset_npmPackageName] = npmPackageName;
+        __classPrivateFieldGet(this, _ScriptsChainedLoader_scriptSrcArray, "f")[offset_jsFilepath] = jsFilepath;
+        let locScriptSrcArray = __classPrivateFieldGet(this, _ScriptsChainedLoader_scriptSrcArray, "f");
+        if (isInNodeModules === false) {
+            locScriptSrcArray = __classPrivateFieldGet(this, _ScriptsChainedLoader_scriptSrcArray, "f").slice(3);
+        }
+        // the url or fallback url
+        // is joined from the array of strings,
+        // having set values on offsets before.
+        scriptSrc = locScriptSrcArray.join(this._SYMBOL_ZEROLEN_CHAR);
+        if (isInNodeModules && isFallback) {
+            fallbackScriptSrc = scriptSrc;
         }
         let tagScriptCreated = document.createElement(__classPrivateFieldGet(this, _ScriptsChainedLoader_tagname_script, "f"));
         tagScriptCreated.setAttribute(__classPrivateFieldGet(this, _ScriptsChainedLoader_scriptAttr_data, "f"), JSON.stringify(scriptsDataObject));
@@ -145,16 +170,12 @@ class ScriptsChainedLoader {
             };
             tagScript.onerror = locOnerrorFunc.bind(tagScript);
         }
-        if (isFallback) {
-            scriptSrcArray[dynamicPathArrayId] = "../";
-            fallbackScriptSrc = scriptSrcArray.join(this._SYMBOL_ZEROLEN_CHAR);
-        }
         let locOnloadFunc = () => {
             scriptLoaderInstance.scriptOnload(scriptLoaderInstance, tagScript);
         };
         tagScript.onload = locOnloadFunc.bind(tagScript);
         try {
-            if (isFallback) {
+            if (isInNodeModules && isFallback) {
                 tagScript.setAttribute(__classPrivateFieldGet(this, _ScriptsChainedLoader_scriptAttr_src, "f"), fallbackScriptSrc);
             }
             else {
@@ -228,5 +249,5 @@ class ScriptsChainedLoader {
     }
 }
 exports.ScriptsChainedLoader = ScriptsChainedLoader;
-_ScriptsChainedLoader_confKey__scripts = new WeakMap(), _ScriptsChainedLoader_confKey__node_modules = new WeakMap(), _ScriptsChainedLoader_confKey__npm_namespace = new WeakMap(), _ScriptsChainedLoader_path_SimpleBuild = new WeakMap(), _ScriptsChainedLoader_tagname_script = new WeakMap(), _ScriptsChainedLoader_scriptAttr_data = new WeakMap(), _ScriptsChainedLoader_scriptAttr_scriptId = new WeakMap(), _ScriptsChainedLoader_scriptAttr_npmPackageId = new WeakMap(), _ScriptsChainedLoader_scriptAttr_src = new WeakMap(), _ScriptsChainedLoader_npmNamespace = new WeakMap();
+_ScriptsChainedLoader_confKey__scripts = new WeakMap(), _ScriptsChainedLoader_confKey__node_modules = new WeakMap(), _ScriptsChainedLoader_confKey__npm_namespace = new WeakMap(), _ScriptsChainedLoader_path_SimpleBuild = new WeakMap(), _ScriptsChainedLoader_tagname_script = new WeakMap(), _ScriptsChainedLoader_scriptAttr_data = new WeakMap(), _ScriptsChainedLoader_scriptAttr_scriptId = new WeakMap(), _ScriptsChainedLoader_scriptAttr_npmPackageId = new WeakMap(), _ScriptsChainedLoader_scriptAttr_src = new WeakMap(), _ScriptsChainedLoader_npmNamespace = new WeakMap(), _ScriptsChainedLoader_scriptSrcArray = new WeakMap(), _ScriptsChainedLoader_offset_dynamicPathArrayId_ScriptSrcArray = new WeakMap(), _ScriptsChainedLoader_offset_npmPackageName_ScriptSrcArray = new WeakMap(), _ScriptsChainedLoader_offset_jsFilepath_ScriptSrcArray = new WeakMap();
 //# sourceMappingURL=ScriptsChainedLoader.js.map

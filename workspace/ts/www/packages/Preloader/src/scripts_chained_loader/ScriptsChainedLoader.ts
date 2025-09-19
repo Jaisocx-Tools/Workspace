@@ -17,6 +17,11 @@ export class ScriptsChainedLoader implements ScriptsChainedLoaderInterface {
   #scriptAttr_npmPackageId: string;
   #scriptAttr_src: string;
   #npmNamespace: string;
+  #scriptSrcArray: string[];
+
+  #offset_dynamicPathArrayId_ScriptSrcArray: number;
+  #offset_npmPackageName_ScriptSrcArray: number;
+  #offset_jsFilepath_ScriptSrcArray: number;
 
   _debug: boolean;
 
@@ -36,6 +41,19 @@ export class ScriptsChainedLoader implements ScriptsChainedLoaderInterface {
     this.#scriptAttr_npmPackageId   = "data-npmpackage_id";
     this.#scriptAttr_src            = "src";
     this.#npmNamespace              = "@jaisocx";
+
+    this.#scriptSrcArray            = [
+      "< dynamicPathArrayId >",
+      "< npmPackageName >",
+      "/",
+      this.#path_SimpleBuild,
+      "< jsFilepath >",
+      ".js"
+    ];
+
+    this.#offset_dynamicPathArrayId_ScriptSrcArray = 0;
+    this.#offset_npmPackageName_ScriptSrcArray = 1;
+    this.#offset_jsFilepath_ScriptSrcArray = 4;
 
     this._debug                     = false;
   }
@@ -156,30 +174,47 @@ export class ScriptsChainedLoader implements ScriptsChainedLoaderInterface {
     let npmPackageName: string       = npmPackagesNames[ npmPackageId ];
     let scriptsObject: any           = scriptsDataObject[ npmPackageName ];
     let scriptsArray: any[]          = scriptsObject[ this.#confKey__scripts ];
-    let isInNodeModules: boolean     = scriptsObject[ this.#confKey__node_modules ];
+    let isInNodeModules: boolean     = ( scriptsObject[ this.#confKey__node_modules ] === true );
     let isWithFallbackSrc: boolean   = isInNodeModules;
     let locNpmNamespace: any         = scriptsObject[ this.#confKey__npm_namespace ] ?? this.#npmNamespace;
     let jsFilepath: string           = scriptsArray[ scriptId ];
     let scriptSrc: string            = this._SYMBOL_ZEROLEN_CHAR;
     let fallbackScriptSrc: string    = this._SYMBOL_ZEROLEN_CHAR;
-    let dynamicPathArrayId: number   = 0;
 
-    let scriptSrcArray: string[] = [
-      "< dynamicPathArrayId >",
-      npmPackageName,
-      "/",
-      this.#path_SimpleBuild,
-      jsFilepath,
-      ".js"
-    ];
 
-    if ( isInNodeModules ) {
-      scriptSrcArray[ dynamicPathArrayId ] = [ "node_modules/", locNpmNamespace, "/" ].join("");
-      scriptSrc = scriptSrcArray.join(this._SYMBOL_ZEROLEN_CHAR);
 
-    } else {
-      scriptSrc = scriptSrcArray.slice( 3 ).join(this._SYMBOL_ZEROLEN_CHAR);
+    let offset_dynamicPathArrayId: number = this.#offset_dynamicPathArrayId_ScriptSrcArray;
+    let offset_npmPackageName: number     = this.#offset_npmPackageName_ScriptSrcArray;
+    let offset_jsFilepath: number         = this.#offset_jsFilepath_ScriptSrcArray;
 
+
+    // the more efficient workaround, building strings, than simultaneous .replace() or the simultaneous concatenation:
+    // the array building url or fallback url
+    // obtains 3 values on array offsets,
+    // in order to join to url of datatype string later.
+    if ( ( isInNodeModules === true ) && ( isFallback === true ) ) {
+      this.#scriptSrcArray[ offset_dynamicPathArrayId ] = "../";
+    } else if ( ( isInNodeModules === true ) && ( isFallback === false )) {
+      this.#scriptSrcArray[ offset_dynamicPathArrayId ] = [ "node_modules/", locNpmNamespace, "/" ].join("");
+    }
+
+    this.#scriptSrcArray[ offset_npmPackageName ] = npmPackageName;
+    this.#scriptSrcArray[ offset_jsFilepath ]     = jsFilepath;
+
+    let locScriptSrcArray: string[] =  this.#scriptSrcArray;
+
+    if ( isInNodeModules === false ) {
+      locScriptSrcArray = this.#scriptSrcArray.slice( 3 );
+    }
+
+
+    // the url or fallback url
+    // is joined from the array of strings,
+    // having set values on offsets before.
+    scriptSrc = locScriptSrcArray.join(this._SYMBOL_ZEROLEN_CHAR);
+
+    if ( isInNodeModules && isFallback ) {
+      fallbackScriptSrc = scriptSrc;
     }
 
 
@@ -231,11 +266,6 @@ export class ScriptsChainedLoader implements ScriptsChainedLoaderInterface {
 
     }
 
-    if ( isFallback ) {
-      scriptSrcArray[ dynamicPathArrayId ] = "../";
-      fallbackScriptSrc = scriptSrcArray.join(this._SYMBOL_ZEROLEN_CHAR);
-    }
-
     let locOnloadFunc: ( (this: GlobalEventHandlers, ev: Event) => any ) =
       () => {
         scriptLoaderInstance.scriptOnload (
@@ -246,7 +276,7 @@ export class ScriptsChainedLoader implements ScriptsChainedLoaderInterface {
     tagScript.onload = locOnloadFunc.bind ( tagScript );
 
     try {
-      if ( isFallback ) {
+      if ( isInNodeModules && isFallback ) {
         tagScript.setAttribute (
           this.#scriptAttr_src,
           fallbackScriptSrc
