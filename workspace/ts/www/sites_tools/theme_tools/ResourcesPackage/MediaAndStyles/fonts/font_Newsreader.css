@@ -10,7 +10,7 @@
 }
 
 @font-face { 
-    font-family: "Newsreader_9pt-ExtraLight";
+    font-family: Newsreader_9pt_ExtraLight;
     src: url("./Newsreader/static/Newsreader_9pt-ExtraLight.ttf") format("truetype");
     font-weight: 200;
     font-optical-sizing: 9;
@@ -26,7 +26,7 @@
 }
 
 @font-face { 
-    font-family: "Newsreader_9pt-ExtraLightItalic";
+    font-family: Newsreader_9pt_ExtraLightItalic;
     src: url("./Newsreader/static/Newsreader_9pt-ExtraLightItalic.ttf") format("truetype");
     font-weight: 200;
     font-optical-sizing: 9;
@@ -42,7 +42,7 @@
 }
 
 @font-face { 
-    font-family: "Newsreader_9pt-Light";
+    font-family: Newsreader_9pt_Light;
     src: url("./Newsreader/static/Newsreader_9pt-Light.ttf") format("truetype");
     font-weight: 300;
     font-optical-sizing: 9;
@@ -58,7 +58,7 @@
 }
 
 @font-face { 
-    font-family: "Newsreader_9pt-LightItalic";
+    font-family: Newsreader_9pt_LightItalic;
     src: url("./Newsreader/static/Newsreader_9pt-LightItalic.ttf") format("truetype");
     font-weight: 300;
     font-optical-sizing: 9;
@@ -74,7 +74,7 @@
 }
 
 @font-face { 
-    font-family: "Newsreader_9pt-Regular";
+    font-family: Newsreader_9pt_Regular;
     src: url("./Newsreader/static/Newsreader_9pt-Regular.ttf") format("truetype");
     font-weight: 400;
     font-optical-sizing: 9;
@@ -90,7 +90,7 @@
 }
 
 @font-face { 
-    font-family: "Newsreader_9pt-Italic";
+    font-family: Newsreader_9pt_Italic;
     src: url("./Newsreader/static/Newsreader_9pt-Italic.ttf") format("truetype");
     font-weight: 400;
     font-optical-sizing: 9;
@@ -106,7 +106,7 @@
 }
 
 @font-face { 
-    font-family: "Newsreader_9pt-Medium";
+    font-family: Newsreader_9pt_Medium;
     src: url("./Newsreader/static/Newsreader_9pt-Medium.ttf") format("truetype");
     font-weight: 500;
     font-optical-sizing: 9;
@@ -122,7 +122,7 @@
 }
 
 @font-face { 
-    font-family: "Newsreader_9pt-MediumItalic";
+    font-family: Newsreader_9pt_MediumItalic;
     src: url("./Newsreader/static/Newsreader_9pt-MediumItalic.ttf") format("truetype");
     font-weight: 500;
     font-optical-sizing: 9;
@@ -138,7 +138,7 @@
 }
 
 @font-face { 
-    font-family: "Newsreader_9pt-SemiBold";
+    font-family: Newsreader_9pt_SemiBold;
     src: url("./Newsreader/static/Newsreader_9pt-SemiBold.ttf") format("truetype");
     font-weight: 600;
     font-optical-sizing: 9;
@@ -154,7 +154,7 @@
 }
 
 @font-face { 
-    font-family: "Newsreader_9pt-SemiBoldItalic";
+    font-family: Newsreader_9pt_SemiBoldItalic;
     src: url("./Newsreader/static/Newsreader_9pt-SemiBoldItalic.ttf") format("truetype");
     font-weight: 600;
     font-optical-sizing: 9;
@@ -170,7 +170,7 @@
 }
 
 @font-face { 
-    font-family: "Newsreader_9pt-Bold";
+    font-family: Newsreader_9pt_Bold;
     src: url("./Newsreader/static/Newsreader_9pt-Bold.ttf") format("truetype");
     font-weight: 700;
     font-optical-sizing: 9;
@@ -186,7 +186,7 @@
 }
 
 @font-face { 
-    font-family: "Newsreader_9pt-BoldItalic";
+    font-family: Newsreader_9pt_BoldItalic;
     src: url("./Newsreader/static/Newsreader_9pt-BoldItalic.ttf") format("truetype");
     font-weight: 700;
     font-optical-sizing: 9;
@@ -202,7 +202,7 @@
 }
 
 @font-face { 
-    font-family: "Newsreader_9pt-ExtraBold";
+    font-family: Newsreader_9pt_ExtraBold;
     src: url("./Newsreader/static/Newsreader_9pt-ExtraBold.ttf") format("truetype");
     font-weight: 800;
     font-optical-sizing: 9;
@@ -218,7 +218,7 @@
 }
 
 @font-face { 
-    font-family: "Newsreader_9pt-ExtraBoldItalic";
+    font-family: Newsreader_9pt_ExtraBoldItalic;
     src: url("./Newsreader/static/Newsreader_9pt-ExtraBoldItalic.ttf") format("truetype");
     font-weight: 800;
     font-optical-sizing: 9;
@@ -237,7 +237,7 @@
 }
 
 @font-face { 
-    font-family: "Newsreader_14pt-ExtraLight";
+    font-family: Newsreader_14pt_ExtraLight;
     src: url("./Newsreader/static/Newsreader_14pt-ExtraLight.ttf") format("truetype");
     font-weight: 200;
     font-optical-sizing: 14;
@@ -253,7 +253,7 @@
 }
 
 @font-face { 
-    font-family: "Newsreader_14pt-ExtraLightItalic";
+    font-family: Newsreader_14pt_ExtraLightItalic;
     src: url("./Newsreader/static/Newsreader_14pt-ExtraLightItalic.ttf") format("truetype");
     font-weight: 200;
     font-optical-sizing: 14;
@@ -269,7 +269,7 @@
 }
 
 @font-face { 
-    font-family: "Newsreader_14pt-Light";
+    font-family: Newsreader_14pt_Light;
     src: url("./Newsreader/static/Newsreader_14pt-Light.ttf") format("truetype");
     font-weight: 300;
     font-optical-sizing: 14;
@@ -285,7 +285,7 @@
 }
 
 @font-face { 
-    font-family: "Newsreader_14pt-LightItalic";
+    font-family: Newsreader_14pt_LightItalic;
     src: url("./Newsreader/static/Newsreader_14pt-LightItalic.ttf") format("truetype");
     font-weight: 300;
     font-optical-sizing: 14;
@@ -301,7 +301,7 @@
 }
 
 @font-face { 
-    font-family: "Newsreader_14pt-Regular";
+    font-family: Newsreader_14pt_Regular;
     src: url("./Newsreader/static/Newsreader_14pt-Regular.ttf") format("truetype");
     font-weight: 400;
     font-optical-sizing: 14;
@@ -317,7 +317,7 @@
 }
 
 @font-face { 
-    font-family: "Newsreader_14pt-Italic";
+    font-family: Newsreader_14pt_Italic;
     src: url("./Newsreader/static/Newsreader_14pt-Italic.ttf") format("truetype");
     font-weight: 400;
     font-optical-sizing: 14;
@@ -333,7 +333,7 @@
 }
 
 @font-face { 
-    font-family: "Newsreader_14pt-Medium";
+    font-family: Newsreader_14pt_Medium;
     src: url("./Newsreader/static/Newsreader_14pt-Medium.ttf") format("truetype");
     font-weight: 500;
     font-optical-sizing: 14;
@@ -349,7 +349,7 @@
 }
 
 @font-face { 
-    font-family: "Newsreader_14pt-MediumItalic";
+    font-family: Newsreader_14pt_MediumItalic;
     src: url("./Newsreader/static/Newsreader_14pt-MediumItalic.ttf") format("truetype");
     font-weight: 500;
     font-optical-sizing: 14;
@@ -365,7 +365,7 @@
 }
 
 @font-face { 
-    font-family: "Newsreader_14pt-SemiBold";
+    font-family: Newsreader_14pt_SemiBold;
     src: url("./Newsreader/static/Newsreader_14pt-SemiBold.ttf") format("truetype");
     font-weight: 600;
     font-optical-sizing: 14;
@@ -381,7 +381,7 @@
 }
 
 @font-face { 
-    font-family: "Newsreader_14pt-SemiBoldItalic";
+    font-family: Newsreader_14pt_SemiBoldItalic;
     src: url("./Newsreader/static/Newsreader_14pt-SemiBoldItalic.ttf") format("truetype");
     font-weight: 600;
     font-optical-sizing: 14;
@@ -397,7 +397,7 @@
 }
 
 @font-face { 
-    font-family: "Newsreader_14pt-Bold";
+    font-family: Newsreader_14pt_Bold;
     src: url("./Newsreader/static/Newsreader_14pt-Bold.ttf") format("truetype");
     font-weight: 700;
     font-optical-sizing: 14;
@@ -413,7 +413,7 @@
 }
 
 @font-face { 
-    font-family: "Newsreader_14pt-BoldItalic";
+    font-family: Newsreader_14pt_BoldItalic;
     src: url("./Newsreader/static/Newsreader_14pt-BoldItalic.ttf") format("truetype");
     font-weight: 700;
     font-optical-sizing: 14;
@@ -429,7 +429,7 @@
 }
 
 @font-face { 
-    font-family: "Newsreader_14pt-ExtraBold";
+    font-family: Newsreader_14pt_ExtraBold;
     src: url("./Newsreader/static/Newsreader_14pt-ExtraBold.ttf") format("truetype");
     font-weight: 800;
     font-optical-sizing: 14;
@@ -445,7 +445,7 @@
 }
 
 @font-face { 
-    font-family: "Newsreader_14pt-ExtraBoldItalic";
+    font-family: Newsreader_14pt_ExtraBoldItalic;
     src: url("./Newsreader/static/Newsreader_14pt-ExtraBoldItalic.ttf") format("truetype");
     font-weight: 800;
     font-optical-sizing: 14;
@@ -464,7 +464,7 @@
 }
 
 @font-face { 
-    font-family: "Newsreader_24pt-ExtraLight";
+    font-family: Newsreader_24pt_ExtraLight;
     src: url("./Newsreader/static/Newsreader_24pt-ExtraLight.ttf") format("truetype");
     font-weight: 200;
     font-optical-sizing: 24;
@@ -480,7 +480,7 @@
 }
 
 @font-face { 
-    font-family: "Newsreader_24pt-ExtraLightItalic";
+    font-family: Newsreader_24pt_ExtraLightItalic;
     src: url("./Newsreader/static/Newsreader_24pt-ExtraLightItalic.ttf") format("truetype");
     font-weight: 200;
     font-optical-sizing: 24;
@@ -496,7 +496,7 @@
 }
 
 @font-face { 
-    font-family: "Newsreader_24pt-Light";
+    font-family: Newsreader_24pt_Light;
     src: url("./Newsreader/static/Newsreader_24pt-Light.ttf") format("truetype");
     font-weight: 300;
     font-optical-sizing: 24;
@@ -512,7 +512,7 @@
 }
 
 @font-face { 
-    font-family: "Newsreader_24pt-LightItalic";
+    font-family: Newsreader_24pt_LightItalic;
     src: url("./Newsreader/static/Newsreader_24pt-LightItalic.ttf") format("truetype");
     font-weight: 300;
     font-optical-sizing: 24;
@@ -528,7 +528,7 @@
 }
 
 @font-face { 
-    font-family: "Newsreader_24pt-Regular";
+    font-family: Newsreader_24pt_Regular;
     src: url("./Newsreader/static/Newsreader_24pt-Regular.ttf") format("truetype");
     font-weight: 400;
     font-optical-sizing: 24;
@@ -544,7 +544,7 @@
 }
 
 @font-face { 
-    font-family: "Newsreader_24pt-Italic";
+    font-family: Newsreader_24pt_Italic;
     src: url("./Newsreader/static/Newsreader_24pt-Italic.ttf") format("truetype");
     font-weight: 400;
     font-optical-sizing: 24;
@@ -560,7 +560,7 @@
 }
 
 @font-face { 
-    font-family: "Newsreader_24pt-Medium";
+    font-family: Newsreader_24pt_Medium;
     src: url("./Newsreader/static/Newsreader_24pt-Medium.ttf") format("truetype");
     font-weight: 500;
     font-optical-sizing: 24;
@@ -576,7 +576,7 @@
 }
 
 @font-face { 
-    font-family: "Newsreader_24pt-MediumItalic";
+    font-family: Newsreader_24pt_MediumItalic;
     src: url("./Newsreader/static/Newsreader_24pt-MediumItalic.ttf") format("truetype");
     font-weight: 500;
     font-optical-sizing: 24;
@@ -592,7 +592,7 @@
 }
 
 @font-face { 
-    font-family: "Newsreader_24pt-SemiBold";
+    font-family: Newsreader_24pt_SemiBold;
     src: url("./Newsreader/static/Newsreader_24pt-SemiBold.ttf") format("truetype");
     font-weight: 600;
     font-optical-sizing: 24;
@@ -608,7 +608,7 @@
 }
 
 @font-face { 
-    font-family: "Newsreader_24pt-SemiBoldItalic";
+    font-family: Newsreader_24pt_SemiBoldItalic;
     src: url("./Newsreader/static/Newsreader_24pt-SemiBoldItalic.ttf") format("truetype");
     font-weight: 600;
     font-optical-sizing: 24;
@@ -624,7 +624,7 @@
 }
 
 @font-face { 
-    font-family: "Newsreader_24pt-Bold";
+    font-family: Newsreader_24pt_Bold;
     src: url("./Newsreader/static/Newsreader_24pt-Bold.ttf") format("truetype");
     font-weight: 700;
     font-optical-sizing: 24;
@@ -640,7 +640,7 @@
 }
 
 @font-face { 
-    font-family: "Newsreader_24pt-BoldItalic";
+    font-family: Newsreader_24pt_BoldItalic;
     src: url("./Newsreader/static/Newsreader_24pt-BoldItalic.ttf") format("truetype");
     font-weight: 700;
     font-optical-sizing: 24;
@@ -656,7 +656,7 @@
 }
 
 @font-face { 
-    font-family: "Newsreader_24pt-ExtraBold";
+    font-family: Newsreader_24pt_ExtraBold;
     src: url("./Newsreader/static/Newsreader_24pt-ExtraBold.ttf") format("truetype");
     font-weight: 800;
     font-optical-sizing: 24;
@@ -672,7 +672,7 @@
 }
 
 @font-face { 
-    font-family: "Newsreader_24pt-ExtraBoldItalic";
+    font-family: Newsreader_24pt_ExtraBoldItalic;
     src: url("./Newsreader/static/Newsreader_24pt-ExtraBoldItalic.ttf") format("truetype");
     font-weight: 800;
     font-optical-sizing: 24;
@@ -691,7 +691,7 @@
 }
 
 @font-face { 
-    font-family: "Newsreader_36pt-ExtraLight";
+    font-family: Newsreader_36pt_ExtraLight;
     src: url("./Newsreader/static/Newsreader_36pt-ExtraLight.ttf") format("truetype");
     font-weight: 200;
     font-optical-sizing: 36;
@@ -707,7 +707,7 @@
 }
 
 @font-face { 
-    font-family: "Newsreader_36pt-ExtraLightItalic";
+    font-family: Newsreader_36pt_ExtraLightItalic;
     src: url("./Newsreader/static/Newsreader_36pt-ExtraLightItalic.ttf") format("truetype");
     font-weight: 200;
     font-optical-sizing: 36;
@@ -723,7 +723,7 @@
 }
 
 @font-face { 
-    font-family: "Newsreader_36pt-Light";
+    font-family: Newsreader_36pt_Light;
     src: url("./Newsreader/static/Newsreader_36pt-Light.ttf") format("truetype");
     font-weight: 300;
     font-optical-sizing: 36;
@@ -739,7 +739,7 @@
 }
 
 @font-face { 
-    font-family: "Newsreader_36pt-LightItalic";
+    font-family: Newsreader_36pt_LightItalic;
     src: url("./Newsreader/static/Newsreader_36pt-LightItalic.ttf") format("truetype");
     font-weight: 300;
     font-optical-sizing: 36;
@@ -755,7 +755,7 @@
 }
 
 @font-face { 
-    font-family: "Newsreader_36pt-Regular";
+    font-family: Newsreader_36pt_Regular;
     src: url("./Newsreader/static/Newsreader_36pt-Regular.ttf") format("truetype");
     font-weight: 400;
     font-optical-sizing: 36;
@@ -771,7 +771,7 @@
 }
 
 @font-face { 
-    font-family: "Newsreader_36pt-Italic";
+    font-family: Newsreader_36pt_Italic;
     src: url("./Newsreader/static/Newsreader_36pt-Italic.ttf") format("truetype");
     font-weight: 400;
     font-optical-sizing: 36;
@@ -787,7 +787,7 @@
 }
 
 @font-face { 
-    font-family: "Newsreader_36pt-Medium";
+    font-family: Newsreader_36pt_Medium;
     src: url("./Newsreader/static/Newsreader_36pt-Medium.ttf") format("truetype");
     font-weight: 500;
     font-optical-sizing: 36;
@@ -803,7 +803,7 @@
 }
 
 @font-face { 
-    font-family: "Newsreader_36pt-MediumItalic";
+    font-family: Newsreader_36pt_MediumItalic;
     src: url("./Newsreader/static/Newsreader_36pt-MediumItalic.ttf") format("truetype");
     font-weight: 500;
     font-optical-sizing: 36;
@@ -819,7 +819,7 @@
 }
 
 @font-face { 
-    font-family: "Newsreader_36pt-SemiBold";
+    font-family: Newsreader_36pt_SemiBold;
     src: url("./Newsreader/static/Newsreader_36pt-SemiBold.ttf") format("truetype");
     font-weight: 600;
     font-optical-sizing: 36;
@@ -835,7 +835,7 @@
 }
 
 @font-face { 
-    font-family: "Newsreader_36pt-SemiBoldItalic";
+    font-family: Newsreader_36pt_SemiBoldItalic;
     src: url("./Newsreader/static/Newsreader_36pt-SemiBoldItalic.ttf") format("truetype");
     font-weight: 600;
     font-optical-sizing: 36;
@@ -851,7 +851,7 @@
 }
 
 @font-face { 
-    font-family: "Newsreader_36pt-Bold";
+    font-family: Newsreader_36pt_Bold;
     src: url("./Newsreader/static/Newsreader_36pt-Bold.ttf") format("truetype");
     font-weight: 700;
     font-optical-sizing: 36;
@@ -867,7 +867,7 @@
 }
 
 @font-face { 
-    font-family: "Newsreader_36pt-BoldItalic";
+    font-family: Newsreader_36pt_BoldItalic;
     src: url("./Newsreader/static/Newsreader_36pt-BoldItalic.ttf") format("truetype");
     font-weight: 700;
     font-optical-sizing: 36;
@@ -883,7 +883,7 @@
 }
 
 @font-face { 
-    font-family: "Newsreader_36pt-ExtraBold";
+    font-family: Newsreader_36pt_ExtraBold;
     src: url("./Newsreader/static/Newsreader_36pt-ExtraBold.ttf") format("truetype");
     font-weight: 800;
     font-optical-sizing: 36;
@@ -899,7 +899,7 @@
 }
 
 @font-face { 
-    font-family: "Newsreader_36pt-ExtraBoldItalic";
+    font-family: Newsreader_36pt_ExtraBoldItalic;
     src: url("./Newsreader/static/Newsreader_36pt-ExtraBoldItalic.ttf") format("truetype");
     font-weight: 800;
     font-optical-sizing: 36;
@@ -918,7 +918,7 @@
 }
 
 @font-face { 
-    font-family: "Newsreader_60pt-ExtraLight";
+    font-family: Newsreader_60pt_ExtraLight;
     src: url("./Newsreader/static/Newsreader_60pt-ExtraLight.ttf") format("truetype");
     font-weight: 200;
     font-optical-sizing: 60;
@@ -934,7 +934,7 @@
 }
 
 @font-face { 
-    font-family: "Newsreader_60pt-ExtraLightItalic";
+    font-family: Newsreader_60pt_ExtraLightItalic;
     src: url("./Newsreader/static/Newsreader_60pt-ExtraLightItalic.ttf") format("truetype");
     font-weight: 200;
     font-optical-sizing: 60;
@@ -950,7 +950,7 @@
 }
 
 @font-face { 
-    font-family: "Newsreader_60pt-Light";
+    font-family: Newsreader_60pt_Light;
     src: url("./Newsreader/static/Newsreader_60pt-Light.ttf") format("truetype");
     font-weight: 300;
     font-optical-sizing: 60;
@@ -966,7 +966,7 @@
 }
 
 @font-face { 
-    font-family: "Newsreader_60pt-LightItalic";
+    font-family: Newsreader_60pt_LightItalic;
     src: url("./Newsreader/static/Newsreader_60pt-LightItalic.ttf") format("truetype");
     font-weight: 300;
     font-optical-sizing: 60;
@@ -982,7 +982,7 @@
 }
 
 @font-face { 
-    font-family: "Newsreader_60pt-Regular";
+    font-family: Newsreader_60pt_Regular;
     src: url("./Newsreader/static/Newsreader_60pt-Regular.ttf") format("truetype");
     font-weight: 400;
     font-optical-sizing: 60;
@@ -998,7 +998,7 @@
 }
 
 @font-face { 
-    font-family: "Newsreader_60pt-Italic";
+    font-family: Newsreader_60pt_Italic;
     src: url("./Newsreader/static/Newsreader_60pt-Italic.ttf") format("truetype");
     font-weight: 400;
     font-optical-sizing: 60;
@@ -1014,7 +1014,7 @@
 }
 
 @font-face { 
-    font-family: "Newsreader_60pt-Medium";
+    font-family: Newsreader_60pt_Medium;
     src: url("./Newsreader/static/Newsreader_60pt-Medium.ttf") format("truetype");
     font-weight: 500;
     font-optical-sizing: 60;
@@ -1030,7 +1030,7 @@
 }
 
 @font-face { 
-    font-family: "Newsreader_60pt-MediumItalic";
+    font-family: Newsreader_60pt_MediumItalic;
     src: url("./Newsreader/static/Newsreader_60pt-MediumItalic.ttf") format("truetype");
     font-weight: 500;
     font-optical-sizing: 60;
@@ -1046,7 +1046,7 @@
 }
 
 @font-face { 
-    font-family: "Newsreader_60pt-SemiBold";
+    font-family: Newsreader_60pt_SemiBold;
     src: url("./Newsreader/static/Newsreader_60pt-SemiBold.ttf") format("truetype");
     font-weight: 600;
     font-optical-sizing: 60;
@@ -1062,7 +1062,7 @@
 }
 
 @font-face { 
-    font-family: "Newsreader_60pt-SemiBoldItalic";
+    font-family: Newsreader_60pt_SemiBoldItalic;
     src: url("./Newsreader/static/Newsreader_60pt-SemiBoldItalic.ttf") format("truetype");
     font-weight: 600;
     font-optical-sizing: 60;
@@ -1078,7 +1078,7 @@
 }
 
 @font-face { 
-    font-family: "Newsreader_60pt-Bold";
+    font-family: Newsreader_60pt_Bold;
     src: url("./Newsreader/static/Newsreader_60pt-Bold.ttf") format("truetype");
     font-weight: 700;
     font-optical-sizing: 60;
@@ -1094,7 +1094,7 @@
 }
 
 @font-face { 
-    font-family: "Newsreader_60pt-BoldItalic";
+    font-family: Newsreader_60pt_BoldItalic;
     src: url("./Newsreader/static/Newsreader_60pt-BoldItalic.ttf") format("truetype");
     font-weight: 700;
     font-optical-sizing: 60;
@@ -1110,7 +1110,7 @@
 }
 
 @font-face { 
-    font-family: "Newsreader_60pt-ExtraBold";
+    font-family: Newsreader_60pt_ExtraBold;
     src: url("./Newsreader/static/Newsreader_60pt-ExtraBold.ttf") format("truetype");
     font-weight: 800;
     font-optical-sizing: 60;
@@ -1126,7 +1126,7 @@
 }
 
 @font-face { 
-    font-family: "Newsreader_60pt-ExtraBoldItalic";
+    font-family: Newsreader_60pt_ExtraBoldItalic;
     src: url("./Newsreader/static/Newsreader_60pt-ExtraBoldItalic.ttf") format("truetype");
     font-weight: 800;
     font-optical-sizing: 60;

@@ -91,8 +91,17 @@
 removed fonts, that may be set via @font-face, since hardcoded font file loaded required and .css with @font-face
 the fallback font names improved according to documentation, however not tested with multiplatform and multibrowser testing tools.
 */
-  --jsx--css-clean-start-2--all-tags--font-family: Tahoma, system-ui, -apple-system, BlinkMacSystemFont, Roboto, Oxygen;
-  --jsx--css-clean-start-2--pre--font-family: 'Courier New', Courier, Menlo, Consolas, 'Liberation Mono', monospace;
+  --css-clean-start-2--sans--font-family: Tahoma, system-ui, -apple-system, BlinkMacSystemFont, Roboto, Oxygen;
+  --css-clean-start-2--serif--font-family: 'Times New Roman', system-ui, -apple-system, BlinkMacSystemFont;
+  --css-clean-start-2--monospace--font-family: Courier, 'Courier New', Menlo, Consolas, 'Liberation Mono';
+
+  --jsx--css-clean-start-2--all-tags--font-family: var(--css-clean-start-2--sans--font-family);
+  --jsx--css-clean-start-2--pre--font-family: var(--css-clean-start-2--monospace--font-family);
+
+/*  --jsx--css-clean-start-2--all-tags--font-family: Tahoma, system-ui, -apple-system, BlinkMacSystemFont, Roboto, Oxygen; */
+/*  --jsx--css-clean-start-2--pre--font-family: 'Courier New', Courier, Menlo, Consolas, 'Liberation Mono', monospace; */
+
+
 
   --jsx--css-clean-start-2--all-tags--font-size: 0.85rem;
   --jsx--css-clean-start-2--all-tags--line-height: 1rem;

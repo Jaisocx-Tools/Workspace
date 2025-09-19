@@ -33,24 +33,24 @@
     <!--# CSS CLEAN START 2: html & css WHEN STARTING A SITE FROM SCRATCH -->
 
     <!--# importing @jaisocx/css-clean-start-2 IN DEV MODE, TO RESEARCH THE .css STYLES IN BROWSER'S DEV TOOLS IN NETWORKS TAB  -->
-    <link
-      rel="stylesheet"
-      type="text/css"
-      charset="utf-8"
-      href="node_modules/@jaisocx/css-clean-start-2/MediaAndStyles/CssCleanStart_2_main_relative.css"
-      href-fallback="../css-clean-start-2/MediaAndStyles/CssCleanStart_2_main_relative.css"
-      onerror="javascript: ( () => { this.onerror = null; this.href = this.getAttribute( 'href-fallback' ); this.onerror = null; } )();"
-    />
+<!--    <link-->
+<!--      rel="stylesheet"-->
+<!--      type="text/css"-->
+<!--      charset="utf-8"-->
+<!--      href="node_modules/@jaisocx/css-clean-start-2/MediaAndStyles/CssCleanStart_2_main_relative.css"-->
+<!--      href-fallback="../css-clean-start-2/MediaAndStyles/CssCleanStart_2_main_relative.css"-->
+<!--      onerror="javascript: ( () => { this.onerror = null; this.href = this.getAttribute( 'href-fallback' ); this.onerror = null; } )();"-->
+<!--    />-->
 
     <!--# THE SAME importing @jaisocx/css-clean-start-2 IN PROD MODE, PACKED BY @jaisocx/css-importer TOOL  -->
-<!--    <link-->
-<!--            rel="stylesheet"-->
-<!--            type="text/css"-->
-<!--            charset="utf-8"-->
-<!--            href="node_modules/@jaisocx/css-clean-start-2/MediaAndStyles/CssCleanStart_2_main_resolved_minimal.css"-->
-<!--            href-fallback="../css-clean-start-2/MediaAndStyles/CssCleanStart_2_main_resolved_minimal.css"-->
-<!--            onerror="javascript: ( () => { this.href = this.getAttribute( 'href-fallback' ); this.onerror = null; } )();"-->
-<!--    />-->
+    <link
+            rel="stylesheet"
+            type="text/css"
+            charset="utf-8"
+            href="node_modules/@jaisocx/css-clean-start-2/MediaAndStyles/CssCleanStart_2_main_resolved_minimal.css"
+            href-fallback="../css-clean-start-2/MediaAndStyles/CssCleanStart_2_main_resolved_minimal.css"
+            onerror="javascript: ( () => { this.href = this.getAttribute( 'href-fallback' ); this.onerror = null; } )();"
+    />
 
     <link
             rel="stylesheet"
@@ -66,25 +66,12 @@
     <style>
 
         .jsc.font_overrides {
-            --jsx--css-clean-start-2--all-tags--font-family: var(--css-clean-start-2--serif--font-family);
+            --jsx--css-clean-start-2--all-tags--font-family: var(--css-clean-start-2--sans--font-family);
         }
 
         .jsc.font_overrides .testing_fonts {
-            font-family: var(--css-clean-start-2--serif--font-family);
+            font-family: var(--css-clean-start-2--sans--font-family);
         }
-
-
-
-        .jsx {
-          --jsx--css-clean-start-2--body-tag--background: white;
-          --jsx--css-clean-start-2--site--background: #fff5f0;
-
-          --jsx--css-clean-start-2--site--padding: 2rem 1rem 3rem 1rem;
-
-          --jsx--css-clean-start-2--custom-tags--display: block;
-        }
-
-
 
         .jsc .testing_fonts.Newsreader {
 
@@ -96,9 +83,9 @@
 
         }
 
-        .jsc .testing_fonts.Newsreader_v {
+        .jsc .testing_fonts.v_Newsreader {
 
-            font-family: Newsreader_v;
+            font-family: v_Newsreader;
             line-height: 5.9rem;
             font-size: 5.6rem;
 
@@ -107,18 +94,31 @@
         }
 
         .jsc .testing_fonts {
-
-            font-family: var(--css-clean-start-2--sans--font-family);
             line-height: 1.6rem;
             font-size: 1.4rem;
-
             font-weight: 300;
-
         }
 
     </style>
 
 
+
+
+
+
+
+  <style>
+
+    .jsx {
+      --jsx--css-clean-start-2--body-tag--background: white;
+      --jsx--css-clean-start-2--site--background: #fff5f0;
+
+      --jsx--css-clean-start-2--site--padding: 2rem 1rem 3rem 1rem;
+
+      --jsx--css-clean-start-2--custom-tags--display: block;
+    }
+
+  </style>
 
 </head>
 <body>

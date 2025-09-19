@@ -1,6 +1,6 @@
 {
   "name": "@jaisocx/tree",
-  "version": "2.2.16",
+  "version": "2.2.17",
   "description": "Sites tool, styling json",
   "author": "Jaisocx Company",
   "keywords": [
@@ -9,19 +9,14 @@
   ],
   "files": [
     "favicon",
-
     "index.preview.html",
     "tree_preview_prod.html",
     "tree_preview_dev.html",
-
     "transpiled/CommonJS",
     "transpiled/ESNext",
     "transpiled/Simple",
-
     "MediaAndStyles",
-
     "webpack.aliases.json",
-
     "docs",
     "README.md"
   ],
@@ -44,9 +39,9 @@
     }
   },
   "optionalDependencies": {
-    "@jaisocx/css-clean-start-2": "~1.1.7",
-    "@jaisocx/jpath": "~1.2.3",
+    "@jaisocx/css-clean-start-2": "~1.1.8",
     "@jaisocx/event-emitter": "~1.4.2",
+    "@jaisocx/jpath": "~1.2.3",
     "@jaisocx/mime-type": "~1.0.7",
     "@jaisocx/preloader": "~2.3.2",
     "@jaisocx/template-renderer": "~1.5.8",
