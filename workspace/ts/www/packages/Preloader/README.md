@@ -181,34 +181,88 @@ These optimization tasks in the browser's engine, nevertheless, were done the be
 
 ### 4. Fallback urls of npm deps.
 
-Fallback urls for loading styles and scripts of npm dependencies in `node_modules`, since when npm install --install-strategy=hoisted is set for the very foreseen position of node_modules in project, the position varies, whether one sites tool is installed or several sites tools (two levels inside or one level above three levels inside).
+Fallback urls for loading styles and scripts of npm dependencies in `node_modules`, 
+since when npm install --install-strategy=hoisted 
+is set for the very foreseen position of node_modules in project, 
+the position varies, whether one sites tool is installed 
+or several sites tools (two levels inside or one level above three levels inside).
 
 
 
 ### 5. Event DOMContentLoaded overrides with The Fallback Urls Feature turned on.
 
-When a cdn, where preloading media was published, is not responding, the cleanup script stops waiting for responses from cdn. The fallback urls for optional npm deps have to be implemented later, since cdn urls are set in order to save up npm repos registry harddrive free space, and local machine harddrive free space having cdn resources saved on harddrive once.
+When a cdn, where preloading media was published, is not responding, 
+the cleanup script stops waiting for responses from cdn. 
+
+The fallback urls for optional npm deps have to be implemented later, 
+since cdn urls are set in order to save up npm repos registry harddrive free space, 
+and local machine harddrive free space having cdn resources saved on harddrive once.
 
 
 
 ### 6. CDN not responding blocks prevented.
 
+#### 6.1. When a site is blocked:
+    1. when a cdn is a remote machine,
+    2. and may not be accessed by the site admin, 
+    3. and when a cdn is not responding, 
+    the preloading link tag `<link rel="preload" href="url-on-this-cdn" .>` 
+    blocks rendering of a site,
+    and the browser's tab is blank 
+    and waits for good.
 
+
+
+#### 6.2. The worst case with cdn, the site rendering is blocked
+
+Every of these have place:
+
+    1. browser on a client machine is in online mode;
+    2. cdn domain name references to the IP of a valid working machine;
+    3. this machine, has port 443 open;
+    4. the https service on this machine port 443 is not responding, 
+         for example, the https service was turned off.
+    5. if before, the https service response headers relevant to cache were set,
+         in update mode: just navigating to a site,
+         in cache mode: after have had navigated to a site, then the site hard reload in browser.
+
+The `fetchpriority=high` blocks our script solution, aimed to prevent the rendering block)).
+
+    1. `<link fetchpriority="high" ... />`
+
+#### 6.3. Advise when navigated to a blocked site
+
+    1. tap|click browser's stop loading X button, 
+    2. close browser's tab(s).
+    3. navigate to other sites of other domains.
+
+#### 6.3.2. Advise if still the browser hangs.
+
+    1. turn off cable internet, mobile internet, WiFi, eventually BlueTooth,
+    2. close browser's tab(s).
+    3. ensure the temporary blocked site is NOT Your browser's start page,
+    4. turn on internet again,
+    5. navigate to other sites of other domains.
 
 
 
 
 ## How The Trouble Was Solved
 
-### 1. What was solved
+
+### 1. Texts rendering quality due to hard loaded font file
+
+The advise implemented in index.preview.html, the hardcoded preloading link tag to url of a font.
+
+
+### 2. preventing interactivity layout jumps.
 
 1. Site's elems get positions, as defined and managed by the task authors, ux/ui designers and sites devs.
 
 2. Fonts on a site are loaded before they are shown on a site via js method call, preventing later interactivity layout jumps. You can see the timestamp of the font load in the browser's developer tools.
 
 
-
-### How was solved
+#### 2.2. How was solved
 
 Even without the Preloader, to bugfix not planned repositioning of elems on site when other font set ( very often other glyphs size, h nd v ) for a text after the font load timeout, the workaround is to bugfix in styles with the line-height css prop in a css class, set for this text node.
 
@@ -225,6 +279,21 @@ In this example, the keys of the object `themesPreloads.font` are thought just t
 In order to adjust the site for the Preloader, that it works properly, You will need, that all styles, referencing a font, use the exact one url to this font on Your cdn. Otherwise, the font file may be loaded several times in browser, even on same site, even after the Preloader has loaded this font the first time from the url set in the object, passed as in arg to method `preloader.setThemesPreloads( themesPreloads )`, for example, `themesPreloads.font.theme_lightmode`.
 
 For the optimization, You can watch the font files loaded in browser's developer tools, if there are dynamic assignments of css classnames and link tags creation, when optimizing a site on a certain url.
+
+
+
+### 3. loading resources just once.
+
+### 4. Fallback urls of npm deps.
+
+### 5. Event DOMContentLoaded overrides with The Fallback Urls Feature turned on.
+
+### 6. CDN not responding blocks prevented.
+
+
+
+
+
 
 
 
