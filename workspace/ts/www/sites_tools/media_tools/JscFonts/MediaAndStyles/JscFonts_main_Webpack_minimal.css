@@ -1,0 +1,22 @@
+
+@import url("@JscFonts_MediaAndStyles/fonts/font_v_LibreFranklin.css");
+/* @import url("@JscFonts_MediaAndStyles/fonts/font_LibreFranklin.css");  */
+
+@import url("@JscFonts_MediaAndStyles/fonts/font_v_PlayfairDisplay.css");
+/* @import url("@JscFonts_MediaAndStyles/fonts/font_PlayfairDisplay.css"); */
+
+/* @import url("@JscFonts_MediaAndStyles/fonts/font_v_Newsreader.css"); */
+/* @import url("@JscFonts_MediaAndStyles/fonts/font_Newsreader.css"); */
+
+/* @import url("@JscFonts_MediaAndStyles/fonts/font_v_Orbitron.css"); */
+/* @import url("@JscFonts_MediaAndStyles/fonts/font_Orbitron.css"); */
+
+@import url("@JscFonts_MediaAndStyles/fonts/font_v_Source_Code_Pro.css");
+/* @import url("@JscFonts_MediaAndStyles/fonts/font_Source_Code_Pro.css"); */
+
+
+
+/* main css file, css logics with rules set via variables in the theme .css files imported above */
+@import url("@JscFonts_MediaAndStyles/JscFonts_main.css");
+
+

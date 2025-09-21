@@ -26,15 +26,15 @@
       "build-files": []
     },
     {
-      "path": "sites_tools/theme_tools/ResourcesPackage",
-      "name": "resources-package",
+      "path": "sites_tools/media_tools/JscFonts",
+      "name": "fonts",
       "update-published": "",
       "build": false,
       "build-simple-enable": false,
       "css-importer": {
-        "build": false,
-        "cssFilePath": "MediaAndStyles/ResourcesPackage_main_Webpack.css",
-        "cssTargetFilePath": "MediaAndStyles/ResourcesPackage_main_resolved.css"
+        "build": true,
+        "cssFilePath": "MediaAndStyles/JscFonts_main_Webpack_minimal.css",
+        "cssTargetFilePath": "MediaAndStyles/JscFonts_main_resolved_minimal.css"
       },
       "dependencies": [],
       "build-files": []

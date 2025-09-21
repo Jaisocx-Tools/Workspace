@@ -1,0 +1,14 @@
+    {
+      "path": "sites_tools/media_tools/JscImages_mini_mimetypes_base",
+      "name": "img-mini-mimetypes-base",
+      "update-published": "",
+      "build": false,
+      "build-simple-enable": false,
+      "css-importer": {
+        "build": false,
+        "cssFilePath": "MediaAndStyles/JscImages_mini_mimetypes_base_main_Webpack.css",
+        "cssTargetFilePath": "MediaAndStyles/JscImages_mini_mimetypes_base_main_resolved.css"
+      },
+      "dependencies": [],
+      "build-files": []
+    }

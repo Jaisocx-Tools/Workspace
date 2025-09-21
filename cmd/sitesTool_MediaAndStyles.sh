@@ -49,11 +49,12 @@ fi
 
 
 
+
 "${jsInvokePath}" "$commandLineArgs" \
   --packagePath="www/packages/SitesToolAutomation" \
   --script="main/produceSitesTool_MediaAndStyles.js" \
-      --cssOrJsTool="theme" \
-      --sitesToolName="ResourcesPackage" \
+      --cssOrJsTool="media" \
+      --sitesToolName="JscImages_mini_freepic_kawaii" \
       --sitesTool_ThemeName="theme_base" \
       --templatePath="data/templates/css/responsive/responsive_size__mini.css.template" \
       --withSizesCssConstants="no" \

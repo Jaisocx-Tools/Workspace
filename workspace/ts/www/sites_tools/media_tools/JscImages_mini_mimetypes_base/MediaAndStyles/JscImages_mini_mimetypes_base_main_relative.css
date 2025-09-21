@@ -1,0 +1,13 @@
+
+/* @import url("./responsive_size_Constants.css"); */
+
+/* base theme: constants and @media queries */
+@import url("./themes/theme_base/JscImages_mini_mimetypes_base_theme_base_main.css");
+@import url("./themes/theme_base/responsive_size_Imports_JscImages_mini_mimetypes_base_theme_base_Relative.css");
+
+
+
+/* main css file, css logics with rules set via variables in the theme .css files imported above */
+@import url("./JscImages_mini_mimetypes_base_main.css");
+
+
