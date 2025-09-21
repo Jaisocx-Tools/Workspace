@@ -5,6 +5,7 @@ export class ParsedResultDTO {
   rangesOrDtoOfImport: (ParsedResultDTO|number[])[];
 
 
+
   constructor() {
     this.cssFilePath = "";
     this.cssFileContents = new Uint8Array();
@@ -12,9 +13,11 @@ export class ParsedResultDTO {
   }
 
 
+
   addParsedResult(importParseResultDTO: ParsedResultDTO) {
     this.rangesOrDtoOfImport.push(importParseResultDTO);
   }
+
 
 
   addRange(range: number[]) {
@@ -22,9 +25,11 @@ export class ParsedResultDTO {
   }
 
 
+
   getRangesOrDtoOfImport(): (ParsedResultDTO|number[])[] {
     return this.rangesOrDtoOfImport;
   }
+
 
 
   toJson(): string {
@@ -37,7 +42,6 @@ export class ParsedResultDTO {
     let rangesArrayToString: any[] = [];
 
     for ( let elem of this.rangesOrDtoOfImport ) {
-
       if ( elem instanceof ParsedResultDTO ) {
         rangesArrayToString.push( elem.toJson() );
       } else {
@@ -46,6 +50,7 @@ export class ParsedResultDTO {
     }
 
     retVal["rangesOrDtoOfImport"] = rangesArrayToString;
+
 
     return retVal;
   }

@@ -31,6 +31,7 @@ export class CssImporter implements CssImporterInterface {
   textDecoder: TextDecoder;
 
 
+
   constructor() {
     this.debug = false;
 
@@ -59,18 +60,23 @@ export class CssImporter implements CssImporterInterface {
   }
 
 
+
   setDebug( inDebug: boolean ): CssImporter {
     this.debug = inDebug;
 
+
     return this;
   }
+
 
 
   setPackagePath( packagePath: string ): CssImporter {
     this.packagePath = packagePath;
 
+
     return this;
   }
+
 
 
   getPackagePath(): string {
@@ -78,11 +84,14 @@ export class CssImporter implements CssImporterInterface {
   }
 
 
+
   setCssFilePath( cssFilePath: string ): CssImporter {
     this.cssFilePath = cssFilePath;
 
+
     return this;
   }
+
 
 
   getCssFilePath(): string {
@@ -90,16 +99,20 @@ export class CssImporter implements CssImporterInterface {
   }
 
 
+
   setCssTargetFilePath( cssTargetFilePath: string ): CssImporter {
     this.cssTargetFilePath = cssTargetFilePath;
+
 
     return this;
   }
 
 
+
   getCssTargetFilePath(): string {
     return this.cssTargetFilePath;
   }
+
 
 
   readJsonFile( filePath: string ): any {
@@ -109,12 +122,13 @@ export class CssImporter implements CssImporterInterface {
     );
     let aliasesObj: object = JSON.parse( contents );
 
+
     return aliasesObj;
   }
 
 
-  getWebpackAliases(): object|false {
 
+  getWebpackAliases(): object|false {
     if ( (this.webpackAliases !== "") || (this.webpackAliases === false) ) {
       return this.webpackAliases;
     }
@@ -138,8 +152,10 @@ export class CssImporter implements CssImporterInterface {
 
     this.webpackAliases = aliasesObj;
 
+
     return this.webpackAliases;
   }
+
 
 
   public setWebpackAliases(
@@ -162,6 +178,7 @@ export class CssImporter implements CssImporterInterface {
       this.webpackAliases[alias] = aliasValue;
     }
 
+
     return this;
   }
 
@@ -173,6 +190,7 @@ export class CssImporter implements CssImporterInterface {
    * @param webpackAliases the object, read from the file webpack.aliases.json
    * @returns
    */
+
 
 
   public resolveUrlBitsbufWithWebpackAlias (
@@ -198,7 +216,6 @@ export class CssImporter implements CssImporterInterface {
     }
 
     for ( alias in webpackAliases ) {
-
       if ( filePathAliased.startsWith( alias + "/" ) === false ) {
         continue;
       }
@@ -234,8 +251,10 @@ export class CssImporter implements CssImporterInterface {
       throw new Error( errMsg );
     }
 
+
     return filePathResolved;
   }
+
 
 
   async build(): Promise<number> {
@@ -330,6 +349,7 @@ export class CssImporter implements CssImporterInterface {
       );
     }
 
+
     return opened;
   }
 
@@ -337,6 +357,7 @@ export class CssImporter implements CssImporterInterface {
   /**
    * @info based on methods call .validBitsbufRefsRefine(), .resolveUrlBitsbufWithWebpackAlias(), fs.read and fs.write files.
    */
+
 
 
   public cssBundleMake (
@@ -361,7 +382,7 @@ export class CssImporter implements CssImporterInterface {
 
     let cssTokens: any = this.cssImporterConstants.getCssTokens();
     let commentsTokens: any = cssTokens["comment"];
-    let importsTokens: any = cssTokens["import"];
+    let importsTokens: any = cssTokens["url"];
 
 
     this.tokensParser
@@ -468,6 +489,7 @@ export class CssImporter implements CssImporterInterface {
       resultDTO.cssFileContents = new Uint8Array();
       inParsedResultDTO.addParsedResult( resultDTO );
 
+
       return resultDTO;
 
     } else {
@@ -518,6 +540,7 @@ export class CssImporter implements CssImporterInterface {
       }
 
       if ( bitsBufRefs_ImportURLs_Inner[latestImportsIx][0] > rangeStart ) {
+
         if ( rangeStart === rangeEnd ) {
           continue;
         }
@@ -552,8 +575,10 @@ export class CssImporter implements CssImporterInterface {
 
     inParsedResultDTO.addParsedResult( resultDTO );
 
+
     return resultDTO;
   }
+
 
 
   compareRanges (
@@ -610,6 +635,7 @@ export class CssImporter implements CssImporterInterface {
 
       inResultDTO.addParsedResult( importParseResultDTO );
     }
+
 
     return lastRangeIx;
   }

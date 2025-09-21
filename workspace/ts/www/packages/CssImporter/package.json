@@ -1,9 +1,9 @@
 {
   "name": "@jaisocx/css-importer",
-  "version": "1.3.3",
-  "author": "Jaisocx",
+  "version": "1.3.4",
+  "author": "Jaisocx Company",
   "private": false,
-  "description": "",
+  "description": "Like the Webpack, builds a bundle of several sources, however just with .css stylesheets, and also very fast, in milliseconds.",
   "type": "module",
   "main": "./transpiled/CommonJS/index.js",
   "types": "./transpiled/ESNext/index.d.ts",
