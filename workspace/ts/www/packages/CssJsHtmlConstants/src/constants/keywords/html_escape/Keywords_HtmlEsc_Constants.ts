@@ -50,7 +50,6 @@ export class Keywords_HtmlEsc_Constants extends CharcodeSymbolConstants {
 
 
   constructor() {
-
     super();
 
     this.#HTMLESC__SYMBOL__QUOTE_DOUBLE               = this.getHtmlEscapedSymbol_byCharcode ( this.getCharcode_QuoteDouble() );
@@ -83,7 +82,7 @@ export class Keywords_HtmlEsc_Constants extends CharcodeSymbolConstants {
 
     this.#HTMLESC__SYMBOL__DOLLAR                     = this.getHtmlEscapedSymbol_byCharcode ( this.getCharcode_Dollar() );
     this.#HTMLESC__SYMBOL__HASH                       = this.getHtmlEscapedSymbol_byCharcode ( this.getCharcode_Hash() );
-    this.#HTMLESC__SYMBOL__PERCENTS                   = this.getHtmlEscapedSymbol_byCharcode ( this.() );
+    this.#HTMLESC__SYMBOL__PERCENTS                   = this.getHtmlEscapedSymbol_byCharcode ( this.getCharcode_Symbol_PERCENTS() );
 
     this.#HTMLESC__SYMBOL__AMPERSAND                  = this.getHtmlEscapedSymbol_byCharcode ( this.getCharcode_Ampersand() );
     this.#HTMLESC__SYMBOL__TILDE                      = this.getHtmlEscapedSymbol_byCharcode ( this.getCharcode_Tilde() );
@@ -100,7 +99,6 @@ export class Keywords_HtmlEsc_Constants extends CharcodeSymbolConstants {
 
 
   public getHtmlEscapedSymbol_byCharcode ( inChar: number ): string {
-
     let locCharcode: number = inChar;
     let asStringSymbolCharcode: string = ( "" + locCharcode );
 
@@ -109,72 +107,180 @@ export class Keywords_HtmlEsc_Constants extends CharcodeSymbolConstants {
     let locPos_2_SymbolNumber_0_Zero: string = this.getSymbolNumber_0_Zero();
     let locPos_Last_Semicolon: string        = this.getSemicolon();
 
-    let htmlSymbolEscapedArray: string = [
-        locPos_0_Ampersand,
-        locPos_1_SymbolHashtag,
-        locPos_2_SymbolNumber_0_Zero,
-        asStringSymbolCharcode,
-        locPos_Last_Semicolon
+    let htmlSymbolEscapedArray: string[] = [
+      locPos_0_Ampersand,
+      locPos_1_SymbolHashtag,
+      locPos_2_SymbolNumber_0_Zero,
+      asStringSymbolCharcode,
+      locPos_Last_Semicolon
     ];
 
     let retVal_htmlEscapedSymbol: string = htmlSymbolEscapedArray.join( "" );
 
+
     return retVal_htmlEscapedSymbol;
 
   }
 
-  public getHtmlEscapedSymbol_bySymbol ( inSymbol: string ): string {
 
+
+  public getHtmlEscapedSymbol_bySymbol ( inSymbol: string ): string {
     let locSymbolCharcode: number = this.getCharcodeSymbol( inSymbol );
     let retVal_htmlEscapedSymbol: string = this.getHtmlEscapedSymbol_byCharcode ( locSymbolCharcode );
 
+
     return retVal_htmlEscapedSymbol;
   }
 
 
 
-  public getHtmlEsc_QuoteDouble():        string { return this.#HTMLESC__SYMBOL__QUOTE_DOUBLE; }
-  public getHtmlEsc_QuoteSingle():        string { return this.#HTMLESC__SYMBOL__QUOTE_SINGLE; }
-  public getHtmlEsc_QuoteAlt():           string { return this.#HTMLESC__SYMBOL__QUOTE_ALT; }
+  public getHtmlEsc_QuoteDouble():        string {
+    return this.#HTMLESC__SYMBOL__QUOTE_DOUBLE; }
 
-  public getHtmlEsc_BraceRoundOpen():     string { return this.#HTMLESC__SYMBOL__BRACE_ROUND_OPEN; }
-  public getHtmlEsc_BraceRoundClose():    string { return this.#HTMLESC__SYMBOL__BRACE_ROUND_CLOSE; }
 
-  public getHtmlEsc_BraceTriangleOpen():  string { return this.#HTMLESC__SYMBOL__BRACE_TRIANGLE_OPEN; }
-  public getHtmlEsc_BraceTriangleClose(): string { return this.#HTMLESC__SYMBOL__BRACE_TRIANGLE_CLOSE; }
 
-  public getHtmlEsc_BraceSquareOpen():    string { return this.#HTMLESC__SYMBOL__BRACE_SQUARE_OPEN; }
-  public getHtmlEsc_BraceSquareClose():   string { return this.#HTMLESC__SYMBOL__BRACE_SQUARE_CLOSE; }
+  public getHtmlEsc_QuoteSingle():        string {
+    return this.#HTMLESC__SYMBOL__QUOTE_SINGLE; }
 
-  public getHtmlEsc_BraceFigureOpen():    string { return this.#HTMLESC__SYMBOL__BRACE_FIGURE_OPEN; }
-  public getHtmlEsc_BraceFigureClose():   string { return this.#HTMLESC__SYMBOL__BRACE_FIGURE_CLOSE; }
 
-  public getHtmlEsc_Colon():              string { return this.#HTMLESC__SYMBOL__COLON; }
-  public getHtmlEsc_Semicolon():          string { return this.#HTMLESC__SYMBOL__SEMICOLON; }
 
-  public getHtmlEsc_Point():              string { return this.#HTMLESC__SYMBOL__POINT; }
-  public getHtmlEsc_Comma():              string { return this.#HTMLESC__SYMBOL__COMMA; }
+  public getHtmlEsc_QuoteAlt():           string {
+    return this.#HTMLESC__SYMBOL__QUOTE_ALT; }
 
-  public getHtmlEsc_Dash():               string { return this.#HTMLESC__SYMBOL__DASH; }
-  public getHtmlEsc_Underscore():         string { return this.#HTMLESC__SYMBOL__UNDERSORE; }
 
-  public getHtmlEsc_Slash():              string { return this.#HTMLESC__SYMBOL__SLASH; }
-  public getHtmlEsc_SlashUpwards():       string { return this.#HTMLESC__SYMBOL__SLASH_UPWARDS; }
 
-  public getHtmlEsc_Dollar():             string { return this.#HTMLESC__SYMBOL__DOLLAR; }
-  public getHtmlEsc_Hash():               string { return this.#HTMLESC__SYMBOL__HASH; }
-  public getHtmlEsc_Symbol_PERCENTS():    string { return this.#HTMLESC__SYMBOL__PERCENTS; }
+  public getHtmlEsc_BraceRoundOpen():     string {
+    return this.#HTMLESC__SYMBOL__BRACE_ROUND_OPEN; }
 
-  public getHtmlEsc_Ampersand():          string { return this.#HTMLESC__SYMBOL__AMPERSAND; }
-  public getHtmlEsc_Tilde():              string { return this.#HTMLESC__SYMBOL__TILDE; }
-  public getHtmlEsc_Dach():               string { return this.#HTMLESC__SYMBOL__DACH; }
-  public getHtmlEsc_Equality():           string { return this.#HTMLESC__SYMBOL__EQUALITY; }
-  public getHtmlEsc_Addition():           string { return this.#HTMLESC__SYMBOL__ADDITION; }
 
-  public getHtmlEsc_Exclamation():        string { return this.#HTMLESC__SYMBOL__EXCLAMATION; }
-  public getHtmlEsc_Question():           string { return this.#HTMLESC__SYMBOL__QUESTION; }
 
-  public getHtmlEsc_SymbolBackgroundColor(): string { return this.#HTMLESC__SYMBOL__BACKGROUNDCOLOR_CHAR; }
+  public getHtmlEsc_BraceRoundClose():    string {
+    return this.#HTMLESC__SYMBOL__BRACE_ROUND_CLOSE; }
+
+
+
+  public getHtmlEsc_BraceTriangleOpen():  string {
+    return this.#HTMLESC__SYMBOL__BRACE_TRIANGLE_OPEN; }
+
+
+
+  public getHtmlEsc_BraceTriangleClose(): string {
+    return this.#HTMLESC__SYMBOL__BRACE_TRIANGLE_CLOSE; }
+
+
+
+  public getHtmlEsc_BraceSquareOpen():    string {
+    return this.#HTMLESC__SYMBOL__BRACE_SQUARE_OPEN; }
+
+
+
+  public getHtmlEsc_BraceSquareClose():   string {
+    return this.#HTMLESC__SYMBOL__BRACE_SQUARE_CLOSE; }
+
+
+
+  public getHtmlEsc_BraceFigureOpen():    string {
+    return this.#HTMLESC__SYMBOL__BRACE_FIGURE_OPEN; }
+
+
+
+  public getHtmlEsc_BraceFigureClose():   string {
+    return this.#HTMLESC__SYMBOL__BRACE_FIGURE_CLOSE; }
+
+
+
+  public getHtmlEsc_Colon():              string {
+    return this.#HTMLESC__SYMBOL__COLON; }
+
+
+
+  public getHtmlEsc_Semicolon():          string {
+    return this.#HTMLESC__SYMBOL__SEMICOLON; }
+
+
+
+  public getHtmlEsc_Point():              string {
+    return this.#HTMLESC__SYMBOL__POINT; }
+
+
+
+  public getHtmlEsc_Comma():              string {
+    return this.#HTMLESC__SYMBOL__COMMA; }
+
+
+
+  public getHtmlEsc_Dash():               string {
+    return this.#HTMLESC__SYMBOL__DASH; }
+
+
+
+  public getHtmlEsc_Underscore():         string {
+    return this.#HTMLESC__SYMBOL__UNDERSORE; }
+
+
+
+  public getHtmlEsc_Slash():              string {
+    return this.#HTMLESC__SYMBOL__SLASH; }
+
+
+
+  public getHtmlEsc_SlashUpwards():       string {
+    return this.#HTMLESC__SYMBOL__SLASH_UPWARDS; }
+
+
+
+  public getHtmlEsc_Dollar():             string {
+    return this.#HTMLESC__SYMBOL__DOLLAR; }
+
+
+
+  public getHtmlEsc_Hash():               string {
+    return this.#HTMLESC__SYMBOL__HASH; }
+
+
+
+  public getHtmlEsc_Symbol_PERCENTS():    string {
+    return this.#HTMLESC__SYMBOL__PERCENTS; }
+
+
+
+  public getHtmlEsc_Ampersand():          string {
+    return this.#HTMLESC__SYMBOL__AMPERSAND; }
+
+
+
+  public getHtmlEsc_Tilde():              string {
+    return this.#HTMLESC__SYMBOL__TILDE; }
+
+
+
+  public getHtmlEsc_Dach():               string {
+    return this.#HTMLESC__SYMBOL__DACH; }
+
+
+
+  public getHtmlEsc_Equality():           string {
+    return this.#HTMLESC__SYMBOL__EQUALITY; }
+
+
+
+  public getHtmlEsc_Addition():           string {
+    return this.#HTMLESC__SYMBOL__ADDITION; }
+
+
+
+  public getHtmlEsc_Exclamation():        string {
+    return this.#HTMLESC__SYMBOL__EXCLAMATION; }
+
+
+
+  public getHtmlEsc_Question():           string {
+    return this.#HTMLESC__SYMBOL__QUESTION; }
+
+
+
+  public getHtmlEsc_SymbolBackgroundColor(): string {
+    return this.#HTMLESC__SYMBOL__BACKGROUNDCOLOR_CHAR; }
 
 }
 

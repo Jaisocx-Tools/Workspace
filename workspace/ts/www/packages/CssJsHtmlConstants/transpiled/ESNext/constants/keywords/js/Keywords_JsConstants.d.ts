@@ -1,0 +1,48 @@
+import { SymbolConstants } from "../../symbols/SymbolConstants.js";
+export declare class Keywords_JsConstants extends SymbolConstants {
+    #private;
+    constructor();
+    getJs_Keyword_Import(): string;
+    getJs_Keyword_Export(): string;
+    getJs_Keyword_From(): string;
+    getJs_Keyword_Default(): string;
+    getJs_Keyword_Const(): string;
+    getJs_Keyword_Let(): string;
+    getJs_Keyword_Var(): string;
+    getJs_Keyword_Function(): string;
+    getJs_Keyword_Return(): string;
+    getJs_Keyword_If(): string;
+    getJs_Keyword_Else(): string;
+    getJs_Keyword_For(): string;
+    getJs_Keyword_While(): string;
+    getJs_Keyword_Try(): string;
+    getJs_Keyword_Catch(): string;
+    getJs_Keyword_Finally(): string;
+    getJs_Keyword_New(): string;
+    getJs_Keyword_Class(): string;
+    getJs_Keyword_Extends(): string;
+    getJs_Keyword_Super(): string;
+    getJs_Keyword_This(): string;
+    getJs_Keyword_Null(): string;
+    getJs_Keyword_True(): string;
+    getJs_Keyword_False(): string;
+    getJs_Token_StatementFinish(): string;
+    getJs_Token_Block_Open(): string;
+    getJs_Token_Block_Close(): string;
+    getJs_Token_Paren_Open(): string;
+    getJs_Token_Paren_Close(): string;
+    getJs_Token_Array_Open(): string;
+    getJs_Token_Array_Close(): string;
+    getJs_Token_Object_Open(): string;
+    getJs_Token_Object_Close(): string;
+    getJs_Token_MethodArgs_Start(): string;
+    getJs_Token_MethodArgs_Finish(): string;
+    getJs_Token_MethodArgs_Delimiter(): string;
+    getJs_Token_Assign(): string;
+    getJs_Token_Arrow(): string;
+    getJs_Token_ArrowFunction_Delimiter(): string;
+    getJs_Token_ClassAndProperty_Delimiter(): string;
+    getJs_Token_ClassAndMethod_Delimiter(): string;
+    getJs_Token_Typescript_Datatype_Delimiter(): string;
+}
+//# sourceMappingURL=Keywords_JsConstants.d.ts.map

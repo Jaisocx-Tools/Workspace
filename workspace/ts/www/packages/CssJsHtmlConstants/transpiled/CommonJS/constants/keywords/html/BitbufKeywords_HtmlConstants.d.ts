@@ -1,0 +1,43 @@
+import { TextEncoder } from "util";
+import { Keywords_HtmlConstants } from "./Keywords_HtmlConstants.js";
+export declare class BitbufKeywords_HtmlConstants extends Keywords_HtmlConstants {
+    #private;
+    _textEncoder: TextEncoder;
+    constructor();
+    getBitbuf_Html_Token_HtmldocStarts(): Uint8Array;
+    getBitbuf_Html_Token_Tag_Starttag_Open(): Uint8Array;
+    getBitbuf_Html_Token_Tag_Starttag_Close(): Uint8Array;
+    getBitbuf_Html_Token_Tag_Selfopen_Open(): Uint8Array;
+    getBitbuf_Html_Token_Tag_Selfopen_Close(): Uint8Array;
+    getBitbuf_Html_Token_Tag_Closetag_Open(): Uint8Array;
+    getBitbuf_Html_Token_Tag_Closetag_Close(): Uint8Array;
+    getBitbuf_Html_Token_Attr_NameValueJoiner(): Uint8Array;
+    getBitbuf_Html_Token_Attr_Open(): Uint8Array;
+    getBitbuf_Html_Token_Attr_Close(): Uint8Array;
+    getBitbuf_Html_Token_Attr_Delimiter(): Uint8Array;
+    getBitbuf_Html_Token_Comment_Open(): Uint8Array;
+    getBitbuf_Html_Token_Comment_Close(): Uint8Array;
+    getBitbuf_Html_Token_Cdata_Open(): Uint8Array;
+    getBitbuf_Html_Token_Cdata_Close(): Uint8Array;
+    getBitbuf_Html_Tagname_HTML_UC(): Uint8Array;
+    getBitbuf_Html_Tagname_HEAD_UC(): Uint8Array;
+    getBitbuf_Html_Tagname_TITLE_UC(): Uint8Array;
+    getBitbuf_Html_Tagname_META_UC(): Uint8Array;
+    getBitbuf_Html_Tagname_SCRIPT_UC(): Uint8Array;
+    getBitbuf_Html_Tagname_LINK_UC(): Uint8Array;
+    getBitbuf_Html_Tagname_STYLE_UC(): Uint8Array;
+    getBitbuf_Html_Tagname_BODY_UC(): Uint8Array;
+    getBitbuf_Html_Tagname_MAIN_UC(): Uint8Array;
+    getBitbuf_Html_Tagname_FOOTER_UC(): Uint8Array;
+    getBitbuf_Html_Tagname_HTML_LC(): Uint8Array;
+    getBitbuf_Html_Tagname_HEAD_LC(): Uint8Array;
+    getBitbuf_Html_Tagname_TITLE_LC(): Uint8Array;
+    getBitbuf_Html_Tagname_META_LC(): Uint8Array;
+    getBitbuf_Html_Tagname_SCRIPT_LC(): Uint8Array;
+    getBitbuf_Html_Tagname_LINK_LC(): Uint8Array;
+    getBitbuf_Html_Tagname_STYLE_LC(): Uint8Array;
+    getBitbuf_Html_Tagname_BODY_LC(): Uint8Array;
+    getBitbuf_Html_Tagname_MAIN_LC(): Uint8Array;
+    getBitbuf_Html_Tagname_FOOTER_LC(): Uint8Array;
+}
+//# sourceMappingURL=BitbufKeywords_HtmlConstants.d.ts.map

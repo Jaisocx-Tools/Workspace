@@ -30,7 +30,9 @@ export class SymbolConstants {
   #SYMBOL__UNDERSORE:     string;
 
   #SYMBOL__SLASH:         string;
-//  #SYMBOL__SLASH_:        string;
+
+
+  //  #SYMBOL__SLASH_:        string;
   #SYMBOL__SLASH_UPWARDS: string;
 
   #SYMBOL__DOLLAR:        string;
@@ -113,7 +115,9 @@ export class SymbolConstants {
     this.#SYMBOL__UNDERSORE         = "_";
 
     this.#SYMBOL__SLASH             = "/";
-//    this.#SYMBOL__SLASH_            = "";
+
+
+    //    this.#SYMBOL__SLASH_            = "";
     this.#SYMBOL__SLASH_UPWARDS     = "|";
 
     this.#SYMBOL__DOLLAR            = "$";
@@ -165,64 +169,258 @@ export class SymbolConstants {
 
 
 
-  public getCharcodeSymbol ( inSymbol: string ): number { return inSymbol.charCodeAt ( this.#POSITION_OF_FIRST_CHAR ); }
+  public getCharcodeSymbol ( inSymbol: string ): number {
+    return inSymbol.charCodeAt ( this.#POSITION_OF_FIRST_CHAR ); }
 
 
 
-  public getQuoteDouble(): string { return this.#SYMBOL__QUOTE_DOUBLE; }
-  public getQuoteSingle(): string { return this.#SYMBOL__QUOTE_SINGLE; }
-  public getQuoteAlt():    string { return this.#SYMBOL__QUOTE_ALT; }
+  public getQuoteDouble(): string {
+    return this.#SYMBOL__QUOTE_DOUBLE; }
 
-  public getBraceRoundOpen():      string { return this.#SYMBOL__BRACE_ROUND_OPEN; }
-  public getBraceRoundClose():     string { return this.#SYMBOL__BRACE_ROUND_CLOSE; }
-  public getBraceTriangleOpen():   string { return this.#SYMBOL__BRACE_TRIANGLE_OPEN; }
-  public getBraceTriangleClose():  string { return this.#SYMBOL__BRACE_TRIANGLE_CLOSE; }
-  public getBraceSquareOpen():     string { return this.#SYMBOL__BRACE_SQUARE_OPEN; }
-  public getBraceSquareClose():    string { return this.#SYMBOL__BRACE_SQUARE_CLOSE; }
-  public getBraceFigureOpen():     string { return this.#SYMBOL__BRACE_FIGURE_OPEN; }
-  public getBraceFigureClose():    string { return this.#SYMBOL__BRACE_FIGURE_CLOSE; }
 
-  public getColon():           string { return this.#SYMBOL__COLON; }
-  public getSemicolon():       string { return this.#SYMBOL__SEMICOLON; }
-  public getPoint():           string { return this.#SYMBOL__POINT; }
-  public getComma():           string { return this.#SYMBOL__COMMA; }
-  public getDash():            string { return this.#SYMBOL__DASH; }
-  public getUnderscore():      string { return this.#SYMBOL__UNDERSORE; }
-  public getSlash():           string { return this.#SYMBOL__SLASH; }
-  public getSlashUpwards():    string { return this.#SYMBOL__SLASH_UPWARDS; }
-  public getDollar():          string { return this.#SYMBOL__DOLLAR; }
-  public getSymbol_Hashtag():  string { return this.#SYMBOL__HASH; }
-  public getSymbol_PERCENTS(): string { return this.#SYMBOL__PERCENTS; }
-  public getAmpersand():       string { return this.#SYMBOL__AMPERSAND; }
-  public getTilde():           string { return this.#SYMBOL__TILDE; }
-  public getDach():            string { return this.#SYMBOL__DACH; }
-  public getEquality():        string { return this.#SYMBOL__EQUALITY; }
-  public getAddition():        string { return this.#SYMBOL__ADDITION; }
-  public getExclamation():     string { return this.#SYMBOL__EXCLAMATION; }
-  public getQuestion():        string { return this.#SYMBOL__QUESTION; }
-  public getSymbolBackgroundColor(): string { return this.#SYMBOL__BACKGROUNDCOLOR_CHAR; }
 
-  public getSymbolNumber_0_Zero():   string { return this.#SYMBOL__NUMBER__0_ZERO; }
-  public getSymbolNumber_1_One():    string { return this.#SYMBOL__NUMBER__1_ONE; }
-  public getSymbolNumber_2_Two():    string { return this.#SYMBOL__NUMBER__2_TWO; }
-  public getSymbolNumber_3_Three():  string { return this.#SYMBOL__NUMBER__3_THREE; }
-  public getSymbolNumber_4_Four():   string { return this.#SYMBOL__NUMBER__4_FOUR; }
-  public getSymbolNumber_5_Five():   string { return this.#SYMBOL__NUMBER__5_FIVE; }
-  public getSymbolNumber_6_Six():    string { return this.#SYMBOL__NUMBER__6_SIX; }
-  public getSymbolNumber_7_Seven():  string { return this.#SYMBOL__NUMBER__7_SEVEN; }
-  public getSymbolNumber_8_Eight():  string { return this.#SYMBOL__NUMBER__8_EIGHT; }
-  public getSymbolNumber_9_Nine():   string { return this.#SYMBOL__NUMBER__9_NINE; }
+  public getQuoteSingle(): string {
+    return this.#SYMBOL__QUOTE_SINGLE; }
 
-  public getNumber_0_Zero():    number { return this.#NUMBER__0_ZERO; }
-  public getNumber_1_One():     number { return this.#NUMBER__1_ONE; }
-  public getNumber_2_Two():     number { return this.#NUMBER__2_TWO; }
-  public getNumber_3_Three():   number { return this.#NUMBER__3_THREE; }
-  public getNumber_4_Four():    number { return this.#NUMBER__4_FOUR; }
-  public getNumber_5_Five():    number { return this.#NUMBER__5_FIVE; }
-  public getNumber_6_Six():     number { return this.#NUMBER__6_SIX; }
-  public getNumber_7_Seven():   number { return this.#NUMBER__7_SEVEN; }
-  public getNumber_8_Eight():   number { return this.#NUMBER__8_EIGHT; }
-  public getNumber_9_Nine():    number { return this.#NUMBER__9_NINE; }
+
+
+  public getQuoteAlt():    string {
+    return this.#SYMBOL__QUOTE_ALT; }
+
+
+
+  public getBraceRoundOpen():      string {
+    return this.#SYMBOL__BRACE_ROUND_OPEN; }
+
+
+
+  public getBraceRoundClose():     string {
+    return this.#SYMBOL__BRACE_ROUND_CLOSE; }
+
+
+
+  public getBraceTriangleOpen():   string {
+    return this.#SYMBOL__BRACE_TRIANGLE_OPEN; }
+
+
+
+  public getBraceTriangleClose():  string {
+    return this.#SYMBOL__BRACE_TRIANGLE_CLOSE; }
+
+
+
+  public getBraceSquareOpen():     string {
+    return this.#SYMBOL__BRACE_SQUARE_OPEN; }
+
+
+
+  public getBraceSquareClose():    string {
+    return this.#SYMBOL__BRACE_SQUARE_CLOSE; }
+
+
+
+  public getBraceFigureOpen():     string {
+    return this.#SYMBOL__BRACE_FIGURE_OPEN; }
+
+
+
+  public getBraceFigureClose():    string {
+    return this.#SYMBOL__BRACE_FIGURE_CLOSE; }
+
+
+
+  public getColon():           string {
+    return this.#SYMBOL__COLON; }
+
+
+
+  public getSemicolon():       string {
+    return this.#SYMBOL__SEMICOLON; }
+
+
+
+  public getPoint():           string {
+    return this.#SYMBOL__POINT; }
+
+
+
+  public getComma():           string {
+    return this.#SYMBOL__COMMA; }
+
+
+
+  public getDash():            string {
+    return this.#SYMBOL__DASH; }
+
+
+
+  public getUnderscore():      string {
+    return this.#SYMBOL__UNDERSORE; }
+
+
+
+  public getSlash():           string {
+    return this.#SYMBOL__SLASH; }
+
+
+
+  public getSlashUpwards():    string {
+    return this.#SYMBOL__SLASH_UPWARDS; }
+
+
+
+  public getDollar():          string {
+    return this.#SYMBOL__DOLLAR; }
+
+
+
+  public getSymbol_Hashtag():  string {
+    return this.#SYMBOL__HASH; }
+
+
+
+  public getSymbol_PERCENTS(): string {
+    return this.#SYMBOL__PERCENTS; }
+
+
+
+  public getAmpersand():       string {
+    return this.#SYMBOL__AMPERSAND; }
+
+
+
+  public getTilde():           string {
+    return this.#SYMBOL__TILDE; }
+
+
+
+  public getDach():            string {
+    return this.#SYMBOL__DACH; }
+
+
+
+  public getEquality():        string {
+    return this.#SYMBOL__EQUALITY; }
+
+
+
+  public getAddition():        string {
+    return this.#SYMBOL__ADDITION; }
+
+
+
+  public getExclamation():     string {
+    return this.#SYMBOL__EXCLAMATION; }
+
+
+
+  public getQuestion():        string {
+    return this.#SYMBOL__QUESTION; }
+
+
+
+  public getSymbolBackgroundColor(): string {
+    return this.#SYMBOL__BACKGROUNDCOLOR_CHAR; }
+
+
+
+  public getSymbolNumber_0_Zero():   string {
+    return this.#SYMBOL__NUMBER__0_ZERO; }
+
+
+
+  public getSymbolNumber_1_One():    string {
+    return this.#SYMBOL__NUMBER__1_ONE; }
+
+
+
+  public getSymbolNumber_2_Two():    string {
+    return this.#SYMBOL__NUMBER__2_TWO; }
+
+
+
+  public getSymbolNumber_3_Three():  string {
+    return this.#SYMBOL__NUMBER__3_THREE; }
+
+
+
+  public getSymbolNumber_4_Four():   string {
+    return this.#SYMBOL__NUMBER__4_FOUR; }
+
+
+
+  public getSymbolNumber_5_Five():   string {
+    return this.#SYMBOL__NUMBER__5_FIVE; }
+
+
+
+  public getSymbolNumber_6_Six():    string {
+    return this.#SYMBOL__NUMBER__6_SIX; }
+
+
+
+  public getSymbolNumber_7_Seven():  string {
+    return this.#SYMBOL__NUMBER__7_SEVEN; }
+
+
+
+  public getSymbolNumber_8_Eight():  string {
+    return this.#SYMBOL__NUMBER__8_EIGHT; }
+
+
+
+  public getSymbolNumber_9_Nine():   string {
+    return this.#SYMBOL__NUMBER__9_NINE; }
+
+
+
+  public getNumber_0_Zero():    number {
+    return this.#NUMBER__0_ZERO; }
+
+
+
+  public getNumber_1_One():     number {
+    return this.#NUMBER__1_ONE; }
+
+
+
+  public getNumber_2_Two():     number {
+    return this.#NUMBER__2_TWO; }
+
+
+
+  public getNumber_3_Three():   number {
+    return this.#NUMBER__3_THREE; }
+
+
+
+  public getNumber_4_Four():    number {
+    return this.#NUMBER__4_FOUR; }
+
+
+
+  public getNumber_5_Five():    number {
+    return this.#NUMBER__5_FIVE; }
+
+
+
+  public getNumber_6_Six():     number {
+    return this.#NUMBER__6_SIX; }
+
+
+
+  public getNumber_7_Seven():   number {
+    return this.#NUMBER__7_SEVEN; }
+
+
+
+  public getNumber_8_Eight():   number {
+    return this.#NUMBER__8_EIGHT; }
+
+
+
+  public getNumber_9_Nine():    number {
+    return this.#NUMBER__9_NINE; }
 
 }
 

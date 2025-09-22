@@ -1,4 +1,4 @@
-import { SymbolConstants } from "./SymbolConstants.js";
+import { SymbolConstants } from "../../symbols/SymbolConstants.js";
 
 
 
@@ -31,12 +31,9 @@ export class Keywords_CssConstants extends SymbolConstants {
   #CSS__SELECTOR__ATTRIBUTE_OPEN: string;
   #CSS__SELECTOR__ATTRIBUTE_CLOSE: string;
 
-//  #CSS__: string;
 
-
-
+  //  #CSS__: string;
   constructor() {
-
     super();
 
     this.#CSS_KEYWORD__IMPORT        = "@import";
@@ -70,33 +67,103 @@ export class Keywords_CssConstants extends SymbolConstants {
 
 
 
-  public getCss_Keyword_Import(): string { return this.#CSS_KEYWORD__IMPORT; }
-  public getCss_Keyword_Src(): string { return this.#CSS_KEYWORD__SRC; }
-  public getCss_Keyword_Var(): string { return this.#CSS_KEYWORD__VAR; }
+  public getCss_Keyword_Import(): string {
+    return this.#CSS_KEYWORD__IMPORT; }
 
-  public getCss_SizeUnit_Px(): string { return this.#CSS_SIZE_UNIT__PX; }
-  public getCss_SizeUnit_Rem(): string { return this.#CSS_SIZE_UNIT__REM; }
-  public getCss_SizeUnit_Pt(): string { return this.#CSS_SIZE_UNIT__PT; }
-  public getCss_SizeUnit_Percents(): string { return this.#CSS_SIZE_UNIT__PERCENTS; }
-  public getCss_SizeUnit_Vh(): string { return this.#CSS_SIZE_UNIT__VH; }
-  public getCss_SizeUnit_Vw(): string { return this.#CSS_SIZE_UNIT__VW; }
 
-  public getCss_Size_HundredPercents(): string { return this.#CSS_SIZE__HUNDRED_PERCENTS; }
-  public getCss_Size_HundredVh(): string { return this.#CSS_SIZE__HUNDRED_VH; }
-  public getCss_Size_HundredVw(): string { return this.#CSS_SIZE__HUNDRED_VW; }
-  public getCss_Size_HundredWv(): string { return this.#CSS_SIZE__HUNDRED_WV; }
 
-  public getCss_NameValueJoiner(): string { return this.#CSS__NAME_VALUE_JOINER; }
-  public getCss_LineFinish(): string { return this.#CSS__LINE_FINISH; }
+  public getCss_Keyword_Src(): string {
+    return this.#CSS_KEYWORD__SRC; }
 
-  public getCss_StyleValue_Open(): string { return this.#CSS__STYLE_VALUE__OPEN; }
-  public getCss_StyleValue_Close(): string { return this.#CSS__STYLE_VALUE__CLOSE; }
 
-  public getCss_Selector_Id(): string { return this.#CSS__SELECTOR__ID; }
-  public getCss_Selector_Class(): string { return this.#CSS__SELECTOR__CLASS; }
 
-  public getCss_Selector_Attribute_Open(): string { return this.#CSS__SELECTOR__ATTRIBUTE_OPEN; }
-  public getCss_Selector_Attribute_Close(): string { return this.#CSS__SELECTOR__ATTRIBUTE_CLOSE; }
+  public getCss_Keyword_Var(): string {
+    return this.#CSS_KEYWORD__VAR; }
+
+
+
+  public getCss_SizeUnit_Px(): string {
+    return this.#CSS_SIZE_UNIT__PX; }
+
+
+
+  public getCss_SizeUnit_Rem(): string {
+    return this.#CSS_SIZE_UNIT__REM; }
+
+
+
+  public getCss_SizeUnit_Pt(): string {
+    return this.#CSS_SIZE_UNIT__PT; }
+
+
+
+  public getCss_SizeUnit_Percents(): string {
+    return this.#CSS_SIZE_UNIT__PERCENTS; }
+
+
+
+  public getCss_SizeUnit_Vh(): string {
+    return this.#CSS_SIZE_UNIT__VH; }
+
+
+
+  public getCss_SizeUnit_Vw(): string {
+    return this.#CSS_SIZE_UNIT__VW; }
+
+
+
+  public getCss_Size_HundredPercents(): string {
+    return this.#CSS_SIZE__HUNDRED_PERCENTS; }
+
+
+
+  public getCss_Size_HundredVh(): string {
+    return this.#CSS_SIZE__HUNDRED_VH; }
+
+
+
+  public getCss_Size_HundredVw(): string {
+    return this.#CSS_SIZE__HUNDRED_VW; }
+
+
+
+  public getCss_NameValueJoiner(): string {
+    return this.#CSS__NAME_VALUE_JOINER; }
+
+
+
+  public getCss_LineFinish(): string {
+    return this.#CSS__LINE_FINISH; }
+
+
+
+  public getCss_StyleValue_Open(): string {
+    return this.#CSS__STYLE_VALUE__OPEN; }
+
+
+
+  public getCss_StyleValue_Close(): string {
+    return this.#CSS__STYLE_VALUE__CLOSE; }
+
+
+
+  public getCss_Selector_Id(): string {
+    return this.#CSS__SELECTOR__ID; }
+
+
+
+  public getCss_Selector_Class(): string {
+    return this.#CSS__SELECTOR__CLASS; }
+
+
+
+  public getCss_Selector_Attribute_Open(): string {
+    return this.#CSS__SELECTOR__ATTRIBUTE_OPEN; }
+
+
+
+  public getCss_Selector_Attribute_Close(): string {
+    return this.#CSS__SELECTOR__ATTRIBUTE_CLOSE; }
 
 }
 

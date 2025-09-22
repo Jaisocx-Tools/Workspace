@@ -50,13 +50,13 @@ export class BitbufKeywords_HtmlEsc_Constants extends Keywords_HtmlEsc_Constants
   #BITBUF__HTMLESC__SYMBOL__HTMLESC__SYMBOL__BACKGROUNDCOLOR_CHAR: Uint8Array;
 
 
+
   constructor() {
-    
     super();
 
     this._textEncoder = new TextEncoder();
 
-    
+
 
     this.#BITBUF__HTMLESC__SYMBOL__QUOTE_DOUBLE               = this._textEncoder.encode( this.getHtmlEsc_QuoteDouble() );
     this.#BITBUF__HTMLESC__SYMBOL__QUOTE_SINGLE               = this._textEncoder.encode( this.getHtmlEsc_QuoteSingle() );
@@ -105,47 +105,153 @@ export class BitbufKeywords_HtmlEsc_Constants extends Keywords_HtmlEsc_Constants
 
 
 
-  public getBitbuf_HtmlEsc_QuoteDouble():        Uint8Array { return this.#BITBUF__HTMLESC__SYMBOL__QUOTE_DOUBLE; }
-  public getBitbuf_HtmlEsc_QuoteSingle():        Uint8Array { return this.#BITBUF__HTMLESC__SYMBOL__QUOTE_SINGLE; }
-  public getBitbuf_HtmlEsc_QuoteAlt():           Uint8Array { return this.#BITBUF__HTMLESC__SYMBOL__QUOTE_ALT; }
+  public getBitbuf_HtmlEsc_QuoteDouble():        Uint8Array {
+    return this.#BITBUF__HTMLESC__SYMBOL__QUOTE_DOUBLE; }
 
-  public getBitbuf_HtmlEsc_BraceRoundOpen():     Uint8Array { return this.#BITBUF__HTMLESC__SYMBOL__BRACE_ROUND_OPEN; }
-  public getBitbuf_HtmlEsc_BraceRoundClose():    Uint8Array { return this.#BITBUF__HTMLESC__SYMBOL__BRACE_ROUND_CLOSE; }
 
-  public getBitbuf_HtmlEsc_BraceTriangleOpen():  Uint8Array { return this.#BITBUF__HTMLESC__SYMBOL__BRACE_TRIANGLE_OPEN; }
-  public getBitbuf_HtmlEsc_BraceTriangleClose(): Uint8Array { return this.#BITBUF__HTMLESC__SYMBOL__BRACE_TRIANGLE_CLOSE; }
 
-  public getBitbuf_HtmlEsc_BraceSquareOpen():    Uint8Array { return this.#BITBUF__HTMLESC__SYMBOL__BRACE_SQUARE_OPEN; }
-  public getBitbuf_HtmlEsc_BraceSquareClose():   Uint8Array { return this.#BITBUF__HTMLESC__SYMBOL__BRACE_SQUARE_CLOSE; }
+  public getBitbuf_HtmlEsc_QuoteSingle():        Uint8Array {
+    return this.#BITBUF__HTMLESC__SYMBOL__QUOTE_SINGLE; }
 
-  public getBitbuf_HtmlEsc_BraceFigureOpen():    Uint8Array { return this.#BITBUF__HTMLESC__SYMBOL__BRACE_FIGURE_OPEN; }
-  public getBitbuf_HtmlEsc_BraceFigureClose():   Uint8Array { return this.#BITBUF__HTMLESC__SYMBOL__BRACE_FIGURE_CLOSE; }
 
-  public getBitbuf_HtmlEsc_Colon():              Uint8Array { return this.#BITBUF__HTMLESC__SYMBOL__COLON; }
-  public getBitbuf_HtmlEsc_Semicolon():          Uint8Array { return this.#BITBUF__HTMLESC__SYMBOL__SEMICOLON; }
 
-  public getBitbuf_HtmlEsc_Point():              Uint8Array { return this.#BITBUF__HTMLESC__SYMBOL__POINT; }
-  public getBitbuf_HtmlEsc_Comma():              Uint8Array { return this.#BITBUF__HTMLESC__SYMBOL__COMMA; }
+  public getBitbuf_HtmlEsc_QuoteAlt():           Uint8Array {
+    return this.#BITBUF__HTMLESC__SYMBOL__QUOTE_ALT; }
 
-  public getBitbuf_HtmlEsc_Dash():               Uint8Array { return this.#BITBUF__HTMLESC__SYMBOL__DASH; }
-  public getBitbuf_HtmlEsc_Underscore():         Uint8Array { return this.#BITBUF__HTMLESC__SYMBOL__UNDERSORE; }
 
-  public getBitbuf_HtmlEsc_Slash():              Uint8Array { return this.#BITBUF__HTMLESC__SYMBOL__SLASH; }
-  public getBitbuf_HtmlEsc_SlashUpwards():       Uint8Array { return this.#BITBUF__HTMLESC__SYMBOL__SLASH_UPWARDS; }
 
-  public getBitbuf_HtmlEsc_Dollar():             Uint8Array { return this.#BITBUF__HTMLESC__SYMBOL__DOLLAR; }
-  public getBitbuf_HtmlEsc_Hash():               Uint8Array { return this.#BITBUF__HTMLESC__SYMBOL__HASH; }
-  public getBitbuf_HtmlEsc_Symbol_PERCENTS():    Uint8Array { return this.#BITBUF__HTMLESC__SYMBOL__PERCENTS; }
+  public getBitbuf_HtmlEsc_BraceRoundOpen():     Uint8Array {
+    return this.#BITBUF__HTMLESC__SYMBOL__BRACE_ROUND_OPEN; }
 
-  public getBitbuf_HtmlEsc_Ampersand():          Uint8Array { return this.#BITBUF__HTMLESC__SYMBOL__AMPERSAND; }
-  public getBitbuf_HtmlEsc_Tilde():              Uint8Array { return this.#BITBUF__HTMLESC__SYMBOL__TILDE; }
-  public getBitbuf_HtmlEsc_Dach():               Uint8Array { return this.#BITBUF__HTMLESC__SYMBOL__DACH; }
-  public getBitbuf_HtmlEsc_Equality():           Uint8Array { return this.#BITBUF__HTMLESC__SYMBOL__EQUALITY; }
-  public getBitbuf_HtmlEsc_Addition():           Uint8Array { return this.#BITBUF__HTMLESC__SYMBOL__ADDITION; }
 
-  public getBitbuf_HtmlEsc_Exclamation():        Uint8Array { return this.#BITBUF__HTMLESC__SYMBOL__EXCLAMATION; }
-  public getBitbuf_HtmlEsc_Question():           Uint8Array { return this.#BITBUF__HTMLESC__SYMBOL__QUESTION; }
-  public getBitbuf_HtmlEsc_SymbolBackgroundColor(): Uint8Array { return this.#BITBUF__HTMLESC__SYMBOL__HTMLESC__SYMBOL__BACKGROUNDCOLOR_CHAR; }
+
+  public getBitbuf_HtmlEsc_BraceRoundClose():    Uint8Array {
+    return this.#BITBUF__HTMLESC__SYMBOL__BRACE_ROUND_CLOSE; }
+
+
+
+  public getBitbuf_HtmlEsc_BraceTriangleOpen():  Uint8Array {
+    return this.#BITBUF__HTMLESC__SYMBOL__BRACE_TRIANGLE_OPEN; }
+
+
+
+  public getBitbuf_HtmlEsc_BraceTriangleClose(): Uint8Array {
+    return this.#BITBUF__HTMLESC__SYMBOL__BRACE_TRIANGLE_CLOSE; }
+
+
+
+  public getBitbuf_HtmlEsc_BraceSquareOpen():    Uint8Array {
+    return this.#BITBUF__HTMLESC__SYMBOL__BRACE_SQUARE_OPEN; }
+
+
+
+  public getBitbuf_HtmlEsc_BraceSquareClose():   Uint8Array {
+    return this.#BITBUF__HTMLESC__SYMBOL__BRACE_SQUARE_CLOSE; }
+
+
+
+  public getBitbuf_HtmlEsc_BraceFigureOpen():    Uint8Array {
+    return this.#BITBUF__HTMLESC__SYMBOL__BRACE_FIGURE_OPEN; }
+
+
+
+  public getBitbuf_HtmlEsc_BraceFigureClose():   Uint8Array {
+    return this.#BITBUF__HTMLESC__SYMBOL__BRACE_FIGURE_CLOSE; }
+
+
+
+  public getBitbuf_HtmlEsc_Colon():              Uint8Array {
+    return this.#BITBUF__HTMLESC__SYMBOL__COLON; }
+
+
+
+  public getBitbuf_HtmlEsc_Semicolon():          Uint8Array {
+    return this.#BITBUF__HTMLESC__SYMBOL__SEMICOLON; }
+
+
+
+  public getBitbuf_HtmlEsc_Point():              Uint8Array {
+    return this.#BITBUF__HTMLESC__SYMBOL__POINT; }
+
+
+
+  public getBitbuf_HtmlEsc_Comma():              Uint8Array {
+    return this.#BITBUF__HTMLESC__SYMBOL__COMMA; }
+
+
+
+  public getBitbuf_HtmlEsc_Dash():               Uint8Array {
+    return this.#BITBUF__HTMLESC__SYMBOL__DASH; }
+
+
+
+  public getBitbuf_HtmlEsc_Underscore():         Uint8Array {
+    return this.#BITBUF__HTMLESC__SYMBOL__UNDERSORE; }
+
+
+
+  public getBitbuf_HtmlEsc_Slash():              Uint8Array {
+    return this.#BITBUF__HTMLESC__SYMBOL__SLASH; }
+
+
+
+  public getBitbuf_HtmlEsc_SlashUpwards():       Uint8Array {
+    return this.#BITBUF__HTMLESC__SYMBOL__SLASH_UPWARDS; }
+
+
+
+  public getBitbuf_HtmlEsc_Dollar():             Uint8Array {
+    return this.#BITBUF__HTMLESC__SYMBOL__DOLLAR; }
+
+
+
+  public getBitbuf_HtmlEsc_Hash():               Uint8Array {
+    return this.#BITBUF__HTMLESC__SYMBOL__HASH; }
+
+
+
+  public getBitbuf_HtmlEsc_Symbol_PERCENTS():    Uint8Array {
+    return this.#BITBUF__HTMLESC__SYMBOL__PERCENTS; }
+
+
+
+  public getBitbuf_HtmlEsc_Ampersand():          Uint8Array {
+    return this.#BITBUF__HTMLESC__SYMBOL__AMPERSAND; }
+
+
+
+  public getBitbuf_HtmlEsc_Tilde():              Uint8Array {
+    return this.#BITBUF__HTMLESC__SYMBOL__TILDE; }
+
+
+
+  public getBitbuf_HtmlEsc_Dach():               Uint8Array {
+    return this.#BITBUF__HTMLESC__SYMBOL__DACH; }
+
+
+
+  public getBitbuf_HtmlEsc_Equality():           Uint8Array {
+    return this.#BITBUF__HTMLESC__SYMBOL__EQUALITY; }
+
+
+
+  public getBitbuf_HtmlEsc_Addition():           Uint8Array {
+    return this.#BITBUF__HTMLESC__SYMBOL__ADDITION; }
+
+
+
+  public getBitbuf_HtmlEsc_Exclamation():        Uint8Array {
+    return this.#BITBUF__HTMLESC__SYMBOL__EXCLAMATION; }
+
+
+
+  public getBitbuf_HtmlEsc_Question():           Uint8Array {
+    return this.#BITBUF__HTMLESC__SYMBOL__QUESTION; }
+
+
+
+  public getBitbuf_HtmlEsc_SymbolBackgroundColor(): Uint8Array {
+    return this.#BITBUF__HTMLESC__SYMBOL__HTMLESC__SYMBOL__BACKGROUNDCOLOR_CHAR; }
 
 }
 

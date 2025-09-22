@@ -1,0 +1,46 @@
+import { SymbolConstants } from "./SymbolConstants.js";
+export declare class CharcodeSymbolConstants extends SymbolConstants {
+    #private;
+    constructor();
+    getCharcode_QuoteDouble(): number;
+    getCharcode_QuoteSingle(): number;
+    getCharcode_QuoteAlt(): number;
+    getCharcode_BraceRoundOpen(): number;
+    getCharcode_BraceRoundClose(): number;
+    getCharcode_BraceTriangleOpen(): number;
+    getCharcode_BraceTriangleClose(): number;
+    getCharcode_BraceSquareOpen(): number;
+    getCharcode_BraceSquareClose(): number;
+    getCharcode_BraceFigureOpen(): number;
+    getCharcode_BraceFigureClose(): number;
+    getCharcode_Colon(): number;
+    getCharcode_Semicolon(): number;
+    getCharcode_Point(): number;
+    getCharcode_Comma(): number;
+    getCharcode_Dash(): number;
+    getCharcode_Underscore(): number;
+    getCharcode_Slash(): number;
+    getCharcode_SlashUpwards(): number;
+    getCharcode_Dollar(): number;
+    getCharcode_Hash(): number;
+    getCharcode_Symbol_PERCENTS(): number;
+    getCharcode_Ampersand(): number;
+    getCharcode_Tilde(): number;
+    getCharcode_Dach(): number;
+    getCharcode_Equality(): number;
+    getCharcode_Addition(): number;
+    getCharcode_Exclamation(): number;
+    getCharcode_Question(): number;
+    getCharcode_SymbolBackgroundColor(): number;
+    getCharcode_SymbolNumber_0_Zero(): number;
+    getCharcode_SymbolNumber_1_One(): number;
+    getCharcode_SymbolNumber_2_Two(): number;
+    getCharcode_SymbolNumber_3_Three(): number;
+    getCharcode_SymbolNumber_4_Four(): number;
+    getCharcode_SymbolNumber_5_Five(): number;
+    getCharcode_SymbolNumber_6_Six(): number;
+    getCharcode_SymbolNumber_7_Seven(): number;
+    getCharcode_SymbolNumber_8_Eight(): number;
+    getCharcode_SymbolNumber_9_Nine(): number;
+}
+//# sourceMappingURL=CharcodeSymbolConstants.d.ts.map

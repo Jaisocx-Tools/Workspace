@@ -1,6 +1,4 @@
 
-
-
 export { SymbolConstants } from "./constants/symbols/SymbolConstants.js";
 export { CharcodeSymbolConstants } from "./constants/symbols/CharcodeSymbolConstants.js";
 

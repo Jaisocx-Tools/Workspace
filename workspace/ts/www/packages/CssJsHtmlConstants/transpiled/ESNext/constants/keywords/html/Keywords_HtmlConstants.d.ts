@@ -1,0 +1,41 @@
+import { SymbolConstants } from "../../symbols/SymbolConstants.js";
+export declare class Keywords_HtmlConstants extends SymbolConstants {
+    #private;
+    constructor();
+    getHtml_Token_HtmldocStarts(): string;
+    getHtml_Token_Tag_Starttag_Open(): string;
+    getHtml_Token_Tag_Starttag_Close(): string;
+    getHtml_Token_Tag_Selfopen_Open(): string;
+    getHtml_Token_Tag_Selfopen_Close(): string;
+    getHtml_Token_Tag_Closetag_Open(): string;
+    getHtml_Token_Tag_Closetag_Close(): string;
+    getHtml_Token_Attr_NameValueJoiner(): string;
+    getHtml_Token_Attr_Open(): string;
+    getHtml_Token_Attr_Close(): string;
+    getHtml_Token_Attr_Delimiter(): string;
+    getHtml_Token_Comment_Open(): string;
+    getHtml_Token_Comment_Close(): string;
+    getHtml_Token_Cdata_Open(): string;
+    getHtml_Token_Cdata_Close(): string;
+    getHtml_Tagname_HTML_UC(): string;
+    getHtml_Tagname_HEAD_UC(): string;
+    getHtml_Tagname_TITLE_UC(): string;
+    getHtml_Tagname_META_UC(): string;
+    getHtml_Tagname_SCRIPT_UC(): string;
+    getHtml_Tagname_LINK_UC(): string;
+    getHtml_Tagname_STYLE_UC(): string;
+    getHtml_Tagname_BODY_UC(): string;
+    getHtml_Tagname_MAIN_UC(): string;
+    getHtml_Tagname_FOOTER_UC(): string;
+    getHtml_Tagname_HTML_LC(): string;
+    getHtml_Tagname_HEAD_LC(): string;
+    getHtml_Tagname_TITLE_LC(): string;
+    getHtml_Tagname_META_LC(): string;
+    getHtml_Tagname_SCRIPT_LC(): string;
+    getHtml_Tagname_LINK_LC(): string;
+    getHtml_Tagname_STYLE_LC(): string;
+    getHtml_Tagname_BODY_LC(): string;
+    getHtml_Tagname_MAIN_LC(): string;
+    getHtml_Tagname_FOOTER_LC(): string;
+}
+//# sourceMappingURL=Keywords_HtmlConstants.d.ts.map
