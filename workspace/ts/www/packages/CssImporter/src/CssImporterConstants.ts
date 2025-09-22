@@ -22,10 +22,13 @@ export class CssImporterConstants {
       },
       "url": {
         "setBegin": [
+          [ "@import", ":" ],
           "url",
-          "("
+          "(",
+          [ "\""", "'" ]
         ],
         "setEnd": [
+          [ "\""", "'" ],
           ")",
           ";"
         ]

@@ -1,0 +1,32 @@
+{
+  "name": "@jaisocx/css-js-html-constants",
+  "version": "1.0.1",
+  "author": "Jaisocx Company",
+  "private": false,
+  "description": "",
+  "type": "module",
+  "main": "./transpiled/CommonJS/index.js",
+  "types": "./transpiled/ESNext/index.d.ts",
+  "module": "./transpiled/ESNext/index.js",
+  "exports": {
+    "require": "./transpiled/CommonJS/index.js",
+    "import": "./transpiled/ESNext/index.js"
+  },
+  "files": [
+    "transpiled/CommonJS",
+    "transpiled/ESNext",
+    "README.md"
+  ],
+  "keywords": [
+    "css",
+    "css import",
+    "import resolver",
+    "bundler"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "optionalDependencies": {}
+}
+
+
