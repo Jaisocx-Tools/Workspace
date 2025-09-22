@@ -5,8 +5,8 @@
     {
       "path": "packages/CssJsHtmlConstants",
       "name": "css-js-html-constants",
-      "update-published": "",
-      "build": true,
+      "update-published": "Mon Sep 22 08:06:10 CEST 2025",
+      "build": false,
       "build-simple-enable": true,
       "dependencies": [],
       "build-files": [
