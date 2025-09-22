@@ -32,7 +32,7 @@ export class SymbolConstants {
   #SYMBOL__SLASH:         string;
 
 
-  //  #SYMBOL__SLASH_:        string;
+
   #SYMBOL__SLASH_UPWARDS: string;
 
   #SYMBOL__DOLLAR:        string;
@@ -117,7 +117,7 @@ export class SymbolConstants {
     this.#SYMBOL__SLASH             = "/";
 
 
-    //    this.#SYMBOL__SLASH_            = "";
+
     this.#SYMBOL__SLASH_UPWARDS     = "|";
 
     this.#SYMBOL__DOLLAR            = "$";

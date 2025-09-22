@@ -1,6 +1,6 @@
 {
   "name": "@jaisocx/css-js-html-constants",
-  "version": "1.0.1",
+  "version": "1.0.3",
   "author": "Jaisocx Company",
   "private": false,
   "description": "",
@@ -20,10 +20,6 @@
     "README.md"
   ],
   "keywords": [
-    "css",
-    "css import",
-    "import resolver",
-    "bundler"
   ],
   "publishConfig": {
     "access": "public"

@@ -17,7 +17,6 @@ export class SymbolConstants {
     #SYMBOL__DASH;
     #SYMBOL__UNDERSORE;
     #SYMBOL__SLASH;
-    //  #SYMBOL__SLASH_:        string;
     #SYMBOL__SLASH_UPWARDS;
     #SYMBOL__DOLLAR;
     #SYMBOL__HASH;
@@ -71,7 +70,6 @@ export class SymbolConstants {
         this.#SYMBOL__DASH = "-";
         this.#SYMBOL__UNDERSORE = "_";
         this.#SYMBOL__SLASH = "/";
-        //    this.#SYMBOL__SLASH_            = "";
         this.#SYMBOL__SLASH_UPWARDS = "|";
         this.#SYMBOL__DOLLAR = "$";
         this.#SYMBOL__HASH = "#";

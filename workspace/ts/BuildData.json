@@ -6,7 +6,7 @@
       "path": "packages/CssJsHtmlConstants",
       "name": "css-js-html-constants",
       "update-published": "",
-      "build": false,
+      "build": true,
       "build-simple-enable": true,
       "dependencies": [],
       "build-files": [

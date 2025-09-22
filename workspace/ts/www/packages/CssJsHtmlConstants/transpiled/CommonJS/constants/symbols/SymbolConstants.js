@@ -33,7 +33,6 @@ class SymbolConstants {
         _SymbolConstants_SYMBOL__DASH.set(this, void 0);
         _SymbolConstants_SYMBOL__UNDERSORE.set(this, void 0);
         _SymbolConstants_SYMBOL__SLASH.set(this, void 0);
-        //  #SYMBOL__SLASH_:        string;
         _SymbolConstants_SYMBOL__SLASH_UPWARDS.set(this, void 0);
         _SymbolConstants_SYMBOL__DOLLAR.set(this, void 0);
         _SymbolConstants_SYMBOL__HASH.set(this, void 0);
@@ -86,7 +85,6 @@ class SymbolConstants {
         __classPrivateFieldSet(this, _SymbolConstants_SYMBOL__DASH, "-", "f");
         __classPrivateFieldSet(this, _SymbolConstants_SYMBOL__UNDERSORE, "_", "f");
         __classPrivateFieldSet(this, _SymbolConstants_SYMBOL__SLASH, "/", "f");
-        //    this.#SYMBOL__SLASH_            = "";
         __classPrivateFieldSet(this, _SymbolConstants_SYMBOL__SLASH_UPWARDS, "|", "f");
         __classPrivateFieldSet(this, _SymbolConstants_SYMBOL__DOLLAR, "$", "f");
         __classPrivateFieldSet(this, _SymbolConstants_SYMBOL__HASH, "#", "f");
