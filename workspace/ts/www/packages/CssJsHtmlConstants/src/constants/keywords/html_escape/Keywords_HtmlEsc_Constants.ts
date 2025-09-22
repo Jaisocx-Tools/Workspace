@@ -34,6 +34,7 @@ export class Keywords_HtmlEsc_Constants extends CharcodeSymbolConstants {
 
   #HTMLESC__SYMBOL__DOLLAR:                          string;
   #HTMLESC__SYMBOL__HASH:                            string;
+  #HTMLESC__SYMBOL__PERCENTS:                        string;
 
   #HTMLESC__SYMBOL__AMPERSAND:                       string;
   #HTMLESC__SYMBOL__TILDE:                           string;
@@ -43,6 +44,8 @@ export class Keywords_HtmlEsc_Constants extends CharcodeSymbolConstants {
 
   #HTMLESC__SYMBOL__EXCLAMATION:                     string;
   #HTMLESC__SYMBOL__QUESTION:                        string;
+
+  #HTMLESC__SYMBOL__BACKGROUNDCOLOR_CHAR:            string;
 
 
 
@@ -80,6 +83,7 @@ export class Keywords_HtmlEsc_Constants extends CharcodeSymbolConstants {
 
     this.#HTMLESC__SYMBOL__DOLLAR                     = this.getHtmlEscapedSymbol_byCharcode ( this.getCharcode_Dollar() );
     this.#HTMLESC__SYMBOL__HASH                       = this.getHtmlEscapedSymbol_byCharcode ( this.getCharcode_Hash() );
+    this.#HTMLESC__SYMBOL__PERCENTS                   = this.getHtmlEscapedSymbol_byCharcode ( this.() );
 
     this.#HTMLESC__SYMBOL__AMPERSAND                  = this.getHtmlEscapedSymbol_byCharcode ( this.getCharcode_Ampersand() );
     this.#HTMLESC__SYMBOL__TILDE                      = this.getHtmlEscapedSymbol_byCharcode ( this.getCharcode_Tilde() );
@@ -90,6 +94,7 @@ export class Keywords_HtmlEsc_Constants extends CharcodeSymbolConstants {
     this.#HTMLESC__SYMBOL__EXCLAMATION                = this.getHtmlEscapedSymbol_byCharcode ( this.getCharcode_Exclamation() );
     this.#HTMLESC__SYMBOL__QUESTION                   = this.getHtmlEscapedSymbol_byCharcode ( this.getCharcode_Question() );
 
+    this.#HTMLESC__SYMBOL__BACKGROUNDCOLOR_CHAR       = this.getHtmlEscapedSymbol_byCharcode ( this.getCharcode_SymbolBackgroundColor() );
   }
 
 
@@ -158,6 +163,7 @@ export class Keywords_HtmlEsc_Constants extends CharcodeSymbolConstants {
 
   public getHtmlEsc_Dollar():             string { return this.#HTMLESC__SYMBOL__DOLLAR; }
   public getHtmlEsc_Hash():               string { return this.#HTMLESC__SYMBOL__HASH; }
+  public getHtmlEsc_Symbol_PERCENTS():    string { return this.#HTMLESC__SYMBOL__PERCENTS; }
 
   public getHtmlEsc_Ampersand():          string { return this.#HTMLESC__SYMBOL__AMPERSAND; }
   public getHtmlEsc_Tilde():              string { return this.#HTMLESC__SYMBOL__TILDE; }
@@ -167,6 +173,8 @@ export class Keywords_HtmlEsc_Constants extends CharcodeSymbolConstants {
 
   public getHtmlEsc_Exclamation():        string { return this.#HTMLESC__SYMBOL__EXCLAMATION; }
   public getHtmlEsc_Question():           string { return this.#HTMLESC__SYMBOL__QUESTION; }
+
+  public getHtmlEsc_SymbolBackgroundColor(): string { return this.#HTMLESC__SYMBOL__BACKGROUNDCOLOR_CHAR; }
 
 }
 

@@ -74,6 +74,7 @@ export class Keywords_HtmlConstants extends SymbolConstants {
     this.#TOKEN__COMMENT_OPEN                    = "<!--";
     this.#TOKEN__COMMENT_CLOSE                   = "-->";
 
+// XML RELATED
     this.#TOKEN__CDATA_OPEN                      = "<![CDATA[";
     this.#TOKEN__CDATA_CLOSE                     = "]]>";
 
@@ -122,6 +123,7 @@ export class Keywords_HtmlConstants extends SymbolConstants {
   public getHtml_Token_Comment_Open():          string { return this.#TOKEN__COMMENT_OPEN; }
   public getHtml_Token_Comment_Close():         string { return this.#TOKEN__COMMENT_CLOSE; }
 
+// XML RELATED
   public getHtml_Token_Cdata_Open():            string { return this.#TOKEN__CDATA_OPEN; }
   public getHtml_Token_Cdata_Close():           string { return this.#TOKEN__CDATA_CLOSE; }
 

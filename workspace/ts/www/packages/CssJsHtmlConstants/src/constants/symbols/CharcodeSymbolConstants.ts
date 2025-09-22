@@ -38,6 +38,7 @@ export class CharcodeSymbolConstants extends SymbolConstants {
 
   #CHARCODE__SYMBOL__DOLLAR:                          number;
   #CHARCODE__SYMBOL__HASH:                            number;
+  #CHARCODE__SYMBOL__PERCENTS:                        number;
 
   #CHARCODE__SYMBOL__AMPERSAND:                       number;
   #CHARCODE__SYMBOL__TILDE:                           number;
@@ -99,6 +100,7 @@ export class CharcodeSymbolConstants extends SymbolConstants {
 
     this.#CHARCODE__SYMBOL__DOLLAR                     = this.getCharcodeSymbol( this.getDollar() );
     this.#CHARCODE__SYMBOL__HASH                       = this.getCharcodeSymbol( this.getSymbol_Hashtag() );
+    this.#CHARCODE__SYMBOL__PERCENTS                   = this.getCharcodeSymbol( this.getSymbol_PERCENTS() );
 
     this.#CHARCODE__SYMBOL__AMPERSAND                  = this.getCharcodeSymbol( this.getAmpersand() );
     this.#CHARCODE__SYMBOL__TILDE                      = this.getCharcodeSymbol( this.getTilde() );
@@ -160,6 +162,7 @@ export class CharcodeSymbolConstants extends SymbolConstants {
 
   public getCharcode_Dollar():             number { return this.#CHARCODE__SYMBOL__DOLLAR; }
   public getCharcode_Hash():               number { return this.#CHARCODE__SYMBOL__HASH; }
+  public getCharcode_Symbol_PERCENTS():    number { return this.#CHARCODE__SYMBOL__PERCENTS; }
 
   public getCharcode_Ampersand():          number { return this.#CHARCODE__SYMBOL__AMPERSAND; }
   public getCharcode_Tilde():              number { return this.#CHARCODE__SYMBOL__TILDE; }

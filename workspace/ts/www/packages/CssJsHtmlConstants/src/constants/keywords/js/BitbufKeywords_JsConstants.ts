@@ -3,23 +3,17 @@
 
 export class BitbufKeywords_JsConstants {
 
-  #SYMBOL__QUOTE_DOUBLE: string;
-  #SYMBOL__QUOTE_SINGLE: string;
+  _textEncoder: TextEncoder;
+
+  #BITBUF_SYMBOL__A: Uint8Array;
 
 
 
   constructor() {
+    this._textEncoder = new TextEncoder();
 
-    this.#SYMBOL__QUOTE_DOUBLE          = "\"";
-    this.#SYMBOL__QUOTE_SINGLE          = "'";
+    this.#BITBUF_SYMBOL__A = this._textEncoder.encode( "123456" );
   }
-
-
-
-  public getWebpackAliasesJsonPath(): string {
-    return this.#PATH__WEBPACK_ALIASES_JSON;
-  }
-
 
 }
 

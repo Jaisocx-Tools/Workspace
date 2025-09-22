@@ -1,6 +1,3 @@
-
-
-
 export class SymbolConstants {
 
   #SYMBOL__QUOTE_DOUBLE: string;
@@ -168,6 +165,10 @@ export class SymbolConstants {
 
 
 
+  public getCharcodeSymbol ( inSymbol: string ): number { return inSymbol.charCodeAt ( this.#POSITION_OF_FIRST_CHAR ); }
+
+
+
   public getQuoteDouble(): string { return this.#SYMBOL__QUOTE_DOUBLE; }
   public getQuoteSingle(): string { return this.#SYMBOL__QUOTE_SINGLE; }
   public getQuoteAlt():    string { return this.#SYMBOL__QUOTE_ALT; }
@@ -222,8 +223,6 @@ export class SymbolConstants {
   public getNumber_7_Seven():   number { return this.#NUMBER__7_SEVEN; }
   public getNumber_8_Eight():   number { return this.#NUMBER__8_EIGHT; }
   public getNumber_9_Nine():    number { return this.#NUMBER__9_NINE; }
-
-  public getCharcodeSymbol ( inSymbol: string ): number { return inSymbol.charCodeAt ( this.#POSITION_OF_FIRST_CHAR ); }
 
 }
 
