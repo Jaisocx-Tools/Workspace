@@ -32,14 +32,38 @@
 
 ## Resolving Relative URLs
 
-When Chrome obtains a resource from an HTTPS server,
-it resolves relative URLs differently depending on
-the context:
+When a sites browser loads a site and styles from a sites server,
+then the relative URLs in these files
+are resolved with this logique:
 
 ### 1. In HTML Pages
 
 - For URLs in HTML files:
   Relative URLs are resolved relative to the HTML file's location
+
+Page URL on site:
+```
+https://site.com/application/first-page.html
+```
+
+Relative URL of an image in the `first-page.html`:
+```html
+<img src="images/image.webp" />
+```
+
+
+Absolute URL of the image 
+is relative to the `first-page.html`.
+
+The base url where `first-page.html` is published:
+```
+https://site.com/application/
+```
+
+And the Absolute URL of the image:
+```
+https://site.com/application/images/image.webp
+```
 
 
 ### 1. In CSS Stylesheets
@@ -50,6 +74,28 @@ the context:
   then the relative URLs within the CSS are
   resolved relative to the CSS file's location
 
+
+Page URL on site:
+```
+https://site.com/application/first-page.html
+```
+
+Relative URL of a stylesheet in the `first-page.html`:
+```html
+<link rel="stylesheet" href="styles/sites-tool-5.css" />
+```
+
+In the `sites-tool-5.css`, another stylesheet 
+is referenced via a relative URL:
+```css
+@import url("fonts/fonts-imports.css");
+```
+
+The Absolute URL of `fonts-imports.css` 
+is relative to `sites-tool-5.css`:
+```
+https://site.com/application/styles/fonts/fonts-imports.css
+```
 
 
 ### Sites Server Response Headers
