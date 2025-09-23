@@ -8,6 +8,14 @@ In development
 
 ## News
 
+`Tue Sep 23 09:01:28 CEST 2025`
+
+1. NO Links in `Watch In Action` examples working in the moment. Reconstruction...
+
+2. The preview domain `sandbox.brightday.email` was suspended by a provider.
+
+
+
 **Updated**: Satturday, the 21st of June 2025
 
 
@@ -47,7 +55,7 @@ We for sure will have here nice examples published, rendering data from database
 
 In development
 
-Updated: June 2025
+Updated: September 2025
 
 
 
