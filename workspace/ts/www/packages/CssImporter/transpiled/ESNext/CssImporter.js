@@ -190,7 +190,7 @@ export class CssImporter {
         let bitsBufRefs_ImportURLs_Inner = [];
         let cssTokens = this.cssImporterConstants.getCssTokens();
         let commentsTokens = cssTokens["comment"];
-        let importsTokens = cssTokens["url"];
+        let importsTokens = cssTokens["import"];
         this.tokensParser
             .parseWithStartAndEndTokensSets(fileContentsBuffer, bitsBufRefs_ReadFile, 
         // datatype explained: [ [startRef: number, endRef: number], [startRef: number, endRef: number], ... ];

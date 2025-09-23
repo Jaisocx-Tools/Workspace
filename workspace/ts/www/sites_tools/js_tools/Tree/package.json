@@ -1,6 +1,6 @@
 {
   "name": "@jaisocx/tree",
-  "version": "2.2.17",
+  "version": "2.2.18",
   "description": "Sites tool, styling json",
   "author": "Jaisocx Company",
   "keywords": [
@@ -39,14 +39,14 @@
     }
   },
   "optionalDependencies": {
-    "@jaisocx/css-clean-start-2": "~1.1.8",
+    "@jaisocx/css-clean-start-2": "~1.1.10",
     "@jaisocx/event-emitter": "~1.4.2",
     "@jaisocx/jpath": "~1.2.3",
     "@jaisocx/mime-type": "~1.0.7",
     "@jaisocx/preloader": "~2.3.2",
-    "@jaisocx/template-renderer": "~1.5.8",
+    "@jaisocx/template-renderer": "~1.6.1",
     "@jaisocx/text": "~2.2.2",
-    "@jaisocx/theme-turn-on": "~1.0.1",
+    "@jaisocx/theme-turn-on": "~1.0.2",
     "@jaisocx/tokens-parser": "~1.2.2"
   }
 }

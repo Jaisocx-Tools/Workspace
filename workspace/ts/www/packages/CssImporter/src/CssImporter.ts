@@ -382,7 +382,7 @@ export class CssImporter implements CssImporterInterface {
 
     let cssTokens: any = this.cssImporterConstants.getCssTokens();
     let commentsTokens: any = cssTokens["comment"];
-    let importsTokens: any = cssTokens["url"];
+    let importsTokens: any = cssTokens["import"];
 
 
     this.tokensParser

@@ -1,6 +1,6 @@
 {
   "name": "@jaisocx/theme-turn-on",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "",
   "author": "Jaisocx",
   "keywords": [
@@ -35,8 +35,8 @@
     }
   },
   "optionalDependencies": {
-    "@jaisocx/css-clean-start-2": "~1.1.5",
-    "@jaisocx/preloader": "~1.0.2"
+    "@jaisocx/css-clean-start-2": "~1.1.10",
+    "@jaisocx/preloader": "~2.3.2"
   }
 }
 

@@ -37,7 +37,7 @@
     }
   },
   "dependencies": {
-    "@jaisocx/css-clean-start-2": "~1.1.9"
+    "@jaisocx/css-clean-start-2": "~1.1.10"
   }
 }
 

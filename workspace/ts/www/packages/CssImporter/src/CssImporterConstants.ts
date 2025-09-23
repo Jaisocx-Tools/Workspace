@@ -20,15 +20,13 @@ export class CssImporterConstants {
           "*/"
         ]
       },
-      "url": {
+      "import": {
         "setBegin": [
-          [ "@import", ":" ],
+          "@import",
           "url",
-          "(",
-          [ "\""", "'" ]
+          "("
         ],
         "setEnd": [
-          [ "\""", "'" ],
           ")",
           ";"
         ]

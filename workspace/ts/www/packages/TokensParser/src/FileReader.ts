@@ -11,16 +11,20 @@ export class FileReader {
   textEncoder: TextEncoder;
 
 
+
   constructor() {
     this.textEncoder = new TextEncoder();
   }
 
 
+
   public readFileContentsAsBitsBuf( filePath: string ): Uint8Array {
     let fileContentsBitsBuf: Uint8Array = fs.readFileSync( filePath );
 
+
     return fileContentsBitsBuf;
   }
+
 
 
   public readFileContentsAsString(
@@ -42,8 +46,10 @@ export class FileReader {
     // console.log( fileContentsBuffer );
     console.log( fileContents );
 
+
     return fileContents;
   }
+
 
 
   public async readFileToBuffer( filePath: string ): Promise<Uint8Array> {
@@ -62,6 +68,7 @@ export class FileReader {
     try {
       await fileToImportFilehandle.close();
     } catch (err) {}
+
 
     return new Uint8Array( importedFileBuf.buffer, importedFileBuf.byteOffset, importedFileBuf.byteLength );
 

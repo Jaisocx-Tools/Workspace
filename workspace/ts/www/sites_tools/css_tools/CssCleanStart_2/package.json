@@ -1,6 +1,6 @@
 {
   "name": "@jaisocx/css-clean-start-2",
-  "version": "1.1.9",
+  "version": "1.1.10",
   "description": "Css sites resetting default styles with main.css of few hundereds css code lines, and the very nice infrastructure for responsive sites bugfixing and fine-tuning",
   "author": "Jaisocx Company",
   "keywords": [

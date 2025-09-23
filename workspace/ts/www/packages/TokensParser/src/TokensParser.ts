@@ -8,9 +8,11 @@ export class TokensParser implements TokensParserInterface {
   textEncoder: TextEncoder;
 
 
+
   constructor() {
     this.textEncoder = new TextEncoder();
   }
+
 
 
   public trimQuotes(str: string): string {
@@ -19,6 +21,7 @@ export class TokensParser implements TokensParserInterface {
       ""
     );
   }
+
 
 
   contentPreviewByRange (
@@ -61,6 +64,7 @@ export class TokensParser implements TokensParserInterface {
    * @param inOutRanges_TokensSetsMatched : number[][][]
    * @param maxIterationsNumber : number
    */
+
 
 
   parseAroundSeveralTokensSets (
@@ -110,6 +114,7 @@ export class TokensParser implements TokensParserInterface {
     }
 
     tokens: for ( tokensSetId = 0; tokensSetId < severalTokensSets_AsUint8Array.length; tokensSetId++ ) {
+
       if ( !inOutRanges_TokensSetsMatched[tokensSetId] ) {
         inOutRanges_TokensSetsMatched[tokensSetId] = new Array() as number[][];
       }
@@ -166,6 +171,7 @@ export class TokensParser implements TokensParserInterface {
             return (-1);
           }
 
+
           return 0;
         }
       );
@@ -174,6 +180,7 @@ export class TokensParser implements TokensParserInterface {
     range_WithoutTokenizedAreas[0] = 0;
 
     lookupRanges: for ( let lookupRange of inBitsbufRanges ) {
+
       for ( let range of orderedMatchedRanges ) {
         range_WithoutTokenizedAreas[1] = range[0];
         inOutRanges_WithoutTokenizedAreas.push( range_WithoutTokenizedAreas );
@@ -187,6 +194,7 @@ export class TokensParser implements TokensParserInterface {
     }
 
     numberOfTokensSetsMatched = orderedMatchedRanges.length;
+
 
     return numberOfTokensSetsMatched;
   }
@@ -203,6 +211,7 @@ export class TokensParser implements TokensParserInterface {
    * @param inOutRanges_EnbracedByTokens_Inner : number[][]
    * @param maximalIterationsNumber : number
    */
+
 
 
   parseWithStartAndEndTokensSets (
@@ -388,6 +397,7 @@ export class TokensParser implements TokensParserInterface {
 
     }
 
+
     return numberOfTokenizedAreasFound;
   }
 
@@ -407,6 +417,7 @@ export class TokensParser implements TokensParserInterface {
    * @param lookupStartPos
    * @returns
    */
+
 
 
   getRangeOfTokensSetMatch (
@@ -526,6 +537,7 @@ export class TokensParser implements TokensParserInterface {
     // the lposition in the inBitsbuf, where the last char of the tokens set matched.
     let inBitsbufTokensLastCharPos: number = tokenMatched_LastChar_Pos;
 
+
     return inBitsbufTokensLastCharPos;
   }
 
@@ -548,6 +560,7 @@ export class TokensParser implements TokensParserInterface {
    *          The return value Number 0 is not the same as the return value "false" of datatype boolean.
    *          The return value "false" means, there was no text, exact as the token, in the inBitsBuf.
    */
+
 
 
   firstIndexOf (

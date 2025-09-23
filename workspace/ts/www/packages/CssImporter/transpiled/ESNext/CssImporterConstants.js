@@ -14,8 +14,9 @@ export class CssImporterConstants {
                     "*/"
                 ]
             },
-            "url": {
+            "import": {
                 "setBegin": [
+                    "@import",
                     "url",
                     "("
                 ],
