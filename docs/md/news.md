@@ -4,7 +4,7 @@
 
 
 
-## News: 21st of September 2025
+## News: 23rd of September 2025
 
 
 ### 1. Preview feature refined for The JS Sites Tool Tree

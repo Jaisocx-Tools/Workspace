@@ -8,7 +8,7 @@ In development
 
 ## News
 
-`Tue Sep 23 09:01:28 CEST 2025`
+`Tue Sep 23 09:39:28 CEST 2025`
 
 1. NO Links in `Watch In Action` examples working in the moment. Reconstruction...
 
@@ -16,7 +16,7 @@ In development
 
 
 
-**Updated**: Satturday, the 21st of June 2025
+**Updated**: Tuesday, the 23rd of September 2025
 
 
 [docs/md/news.md](./docs/md/news.md)
