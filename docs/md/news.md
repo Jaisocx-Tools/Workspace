@@ -4,15 +4,47 @@
 
 
 
+## News: 21st of September 2025
+
+
+### 1. Preview feature refined for The JS Sites Tool Tree
+
+`@jaisocx/tree@2.2.18`
+
+
+
+### 2. new doc on harddrive space and traffic save-up
+
+- [preloader_font_loading_once.md](./preloader_font_loading_once.md)
+
+
+
+### 3. new doc on URLs theory. 
+
+Of great use for Webpack and @jaisocx/css-importer
+
+- [urls.md](./urls.md)
+
+
+
+
+
+
 
 
 ## News: 21st of August 2025
 
-### 1. new bash script to install with npm and preview in browser a sites tool's index.example.html
+
+### 1. Sites Tools Preview Command Line Tool
+
+The new bash script to install with npm 
+and preview in browser a sites tool's index.preview.html
 
 #### Read docs
 
-[Docs are here: install_sites_tool_with_preview.md](./install_sites_tool_with_preview.md)
+- [cmd.md](./cmd.md)
+
+- [Docs are here: install_sites_tool_with_preview.md](./install_sites_tool_with_preview.md)
 
 
 #### Try

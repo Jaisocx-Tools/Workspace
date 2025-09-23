@@ -182,6 +182,14 @@ Why already published: the several js tools are ready, nevertheless.
 
 
 
-### H1) Npm index.example.html
+### H1) Npm index.preview.html
+
+
+## Theory
+
+### URLs
+
+[docs/md/urls.md](./docs/md/urls.md)
+
 
 
