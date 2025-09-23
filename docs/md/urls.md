@@ -26,7 +26,7 @@
     
        3.2.1. Slash Started
     
-       3.2.2. Protocol and Domain Started
+       3.2.2. Protocol and DomainName Started
 
 
 
@@ -208,7 +208,7 @@ Image
 ```
 
 
-##### 3.2.2. Protocol and Domain Started Absolute URL
+##### 3.2.2. Protocol and DomainName Started Absolute URL
 
 Image
 
