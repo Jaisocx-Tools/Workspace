@@ -4,7 +4,7 @@
 
 
 
-## News: 23rd of September 2025
+## News: 24th of September 2025
 
 
 ### 1. Preview feature refined for The JS Sites Tool Tree
@@ -27,8 +27,9 @@ Of great use for Webpack and @jaisocx/css-importer
 
 
 
+### 4. new doc on the Timeline of the Protocol HTTP for Sites Browsers and Servers
 
-
+- [http_timeline.md](./http_timeline.md)
 
 
 

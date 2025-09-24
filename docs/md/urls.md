@@ -98,24 +98,27 @@ https://site.com/application/styles/fonts/fonts-imports.css
 ```
 
 
-### Sites Server Response Headers
+## Sites Server Response Headers
 
-1.  Origin
+  [http_timeline.md](./http_timeline.md)
 
-The Origin header typically contains:
+### 1. HTTP/1.1
 
-- The protocol (https://)
-- The hostname (domain.com)
-- The port number if not default (e.g. :443)
-
-Example: https://domain.com
-
+The first request line sent by a sites browser:
+```http/1.1
+GET /sites_tools/js_tools/Tree/tree_preview_dev.html HTTP/1.1
+```
 
 
 
-2.  Referrer
+### 2. HTTP/2, HTTP/3
 
-
+The request headers, relevant to a url, sent by a sites browser:
+```http/2
+:method = "GET"
+:authority = "site.com"
+:path = "/sites_tools/js_tools/Tree/tree_preview_dev.html"
+```
 
 
 

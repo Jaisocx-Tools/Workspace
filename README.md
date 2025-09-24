@@ -8,7 +8,7 @@ In development
 
 ## News
 
-`Tue Sep 23 09:39:28 CEST 2025`
+`Wed Sep 24 06:43:29 CEST 2025`
 
 1. NO Links in `Watch In Action` examples working in the moment. Reconstruction...
 
@@ -16,36 +16,34 @@ In development
 
 
 
-**Updated**: Tuesday, the 23rd of September 2025
+**Updated**: Wednesday, the 24th of September 2025
 
 
 [docs/md/news.md](./docs/md/news.md)
 
 
-### WARNING renamed folders
-
-*Docker rebuild all services required.*
-
-
-The workaround to name infrastructure folders stating with dot in this project did hide the folders,
-and made not easy to copy the project folders and files.
-
-
-That is why I shall not name the folders starting with dot. This way of folders naming is used by the well known system software for infrastructure files.
-
-
-
-
 
 ###  WARNING about "Database Lost Unattended" when runs under Docker and then Docker conf was updated.
 
-*This Project is with a dockerized MYSQL DATABASE Instance. Before every git pull to update this project, even without checking whether Docker settings were changed, first do **MySQL db dump** and db dump **backup**. The dockerized db services sometimes can recreate a fresh and clean db instance, when some Docker config file was changed, and after "git pull && docker compose restart", too.*
+*This Project is with a dockerized MYSQL DATABASE Instance. 
+Before every git pull to update this project, 
+even without checking whether Docker settings were changed, 
+first do **MySQL db dump** and db dump **backup**. 
+The dockerized db services sometimes 
+can recreate a fresh and clean db instance, 
+when some Docker config file was changed, 
+and after "git pull && docker compose restart", too.*
 
-*I leave the above warning here for good for js developers, first learned docker and databases.*
+*I leave the above warning here for good 
+for js developers, first learned docker and databases.*
 
-This ver of the Project does not rely on examples obtaining data from "database" docker service here. **No worries for now**. I knew once this docker option, and still work with databases.
+This ver of the Project does not rely 
+on examples obtaining data from "database" docker service here. 
+**No worries for now**. 
+I knew once this docker option, and still work with databases.
 
-We for sure will have here nice examples published, rendering data from database with our Sites Tools.
+We for sure will have here nice examples published, 
+rendering data from database with our Sites Tools.
 
 
 
@@ -190,6 +188,10 @@ Why already published: the several js tools are ready, nevertheless.
 ### URLs
 
 [docs/md/urls.md](./docs/md/urls.md)
+
+### Timeline of the Protocol HTTP for Sites Browsers and Servers
+
+- [http_timeline.md](./http_timeline.md)
 
 
 
