@@ -14,8 +14,10 @@
     "fonts_preview_prod.html",
     "fonts_preview_dev.html",
 
-    "MediaAndStyles/*.css",
     "MediaAndStyles/fonts",
+    "MediaAndStyles/css_importer_relative",
+    "MediaAndStyles/webpack_styles",
+    "MediaAndStyles/*.css",
 
     "transpiled/CommonJS",
     "transpiled/ESNext",
