@@ -1,9 +1,0 @@
-
-@import url("@JscFonts_Newsreader_MediaAndStyles/webpack_styles/font_v_Newsreader_webpack.css");
-/* @import url("@JscFonts_Newsreader_MediaAndStyles/webpack_styles/font_Newsreader_webpack.css"); */
-
-/* main css file, css logics with rules set via variables in the theme .css files imported above */
-
-@import url("@JscFonts_Newsreader_MediaAndStyles/JscFonts_Newsreader_main.css");
-
-
