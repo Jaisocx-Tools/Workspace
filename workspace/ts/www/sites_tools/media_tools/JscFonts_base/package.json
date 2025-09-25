@@ -8,6 +8,10 @@
     "styles"
   ],
   "files": [
+    "index.preview.html",
+    "fonts_preview_prod.html",
+    "fonts_preview_dev.html",
+
     "MediaAndStyles/*.css",
     "MediaAndStyles/fonts",
 

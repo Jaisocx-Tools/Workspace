@@ -1,14 +1,8 @@
-/* Main .css file for the sites tool: ResourcesPackage */
+/* Main .css file for the sites tool: media_tools_fonts_base */
 .jsc {
     --css-clean-start-2--sans--font-family: LibreFranklin, v_LibreFranklin, Tahoma, system-ui, -apple-system, BlinkMacSystemFont, Roboto, Oxygen;
-
     --css-clean-start-2--serif--font-family: PlayfairDisplay, v_PlayfairDisplay, 'Times New Roman', system-ui, -apple-system, BlinkMacSystemFont;
-    /* --css-clean-start-2--serif--font-family: Newsreader_9pt, 'Times New Roman', system-ui, -apple-system, BlinkMacSystemFont; */
-    /* --css-clean-start-2--serif--font-family: Newsreader_v, 'Times New Roman', system-ui, -apple-system, BlinkMacSystemFont; */
-
     --css-clean-start-2--monospace--font-family: Source_Code_Pro, v_Source_Code_Pro, Courier, "Courier New", Menlo, Consolas, 'Liberation Mono';
-
-
 
     --jsx--css-clean-start-2--all-tags--font-family: var(--css-clean-start-2--sans--font-family);
     --jsx--css-clean-start-2--pre--font-family: var(--css-clean-start-2--monospace--font-family);
