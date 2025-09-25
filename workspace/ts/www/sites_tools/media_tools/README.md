@@ -13,7 +13,7 @@ Every filesset small and for one theme the one smaller files pack in one new npm
 
 ### Fonts and Images
 
-The hardcopies of fonts and images, 
+The fonts and images, 
 later smaller videos and audios either, 
 used in example .html pages for sites tools preview.
 
