@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html lang="en" class="jsx jsc theme_darkmode font_overrides">
+<html lang="en" class="jsx theme_lightmode jsc JscFonts_Newsreader font_overrides">
 <head>
 
-  <title>Jsc Fonts Preview</title>
+  <title>Jsc Fonts Preview Newsreader</title>
 
   <base href="./" />
 
@@ -56,7 +56,16 @@
       rel="stylesheet"
       type="text/css"
       charset="utf-8"
-      href="MediaAndStyles/JscFonts_main_resolved.css"
+      href="node_modules/@jaisocx/media_tools_fonts_base/MediaAndStyles/JscFonts_main_resolved_minimal.css"
+      href-fallback="../media_tools_fonts_base/MediaAndStyles/JscFonts_main_resolved_minimal.css"
+      onerror="javascript: ( () => { this.href = this.getAttribute( 'href-fallback' ); this.onerror = null; } )();"
+  />
+
+  <link
+      rel="stylesheet"
+      type="text/css"
+      charset="utf-8"
+      href="MediaAndStyles/JscFonts_Newsreader_main_resolved_minimal.css"
   />
 
 
@@ -66,37 +75,19 @@
   <style>
 
     .jsc.font_overrides {
-        /* --jsx--css-clean-start-2--all-tags--font-family: Orbitron; */
         --jsx--css-clean-start-2--all-tags--font-family: var(--css-clean-start-2--sans--font-family);
         /* --jsx--css-clean-start-2--all-tags--font-family: var(--css-clean-start-2--serif--font-family); */
         /* --jsx--css-clean-start-2--all-tags--font-family: var(--css-clean-start-2--monospace--font-family); */
     }
 
     .jsc.font_overrides .testing_fonts {
-        /* font-family: Orbitron; */
-        font-family: var(--css-clean-start-2--sans--font-family);
+        font-family: v_Newsreader;
+        font-variation-settings: "opsz" 9, "wght" 400;
+
+        /* font-family: var(--css-clean-start-2--main--font-family); */ /* static 9pt Newsreader */
+        /* font-family: var(--css-clean-start-2--sans--font-family); */
         /* font-family: var(--css-clean-start-2--serif--font-family); */
         /* font-family: var(--css-clean-start-2--monospace--font-family); */
-    }
-
-    .jsc .testing_fonts.Newsreader {
-
-        font-family: Newsreader_24pt;
-        line-height: 1.6rem;
-        font-size: 1.4rem;
-
-        font-weight: 300;
-
-    }
-
-    .jsc .testing_fonts.v_Newsreader {
-
-        font-family: v_Newsreader;
-        line-height: 5.9rem;
-        font-size: 5.6rem;
-
-        font-variation-settings: "wght" 430, "opsz" 60;
-
     }
 
     .jsc .testing_fonts {
@@ -131,10 +122,10 @@
 
 <main>
 
-  <text>@jaisocx/fonts</text>
+  <text>@jaisocx/media_tools_fonts_Newsreader</text>
   <text>index.preview.html</text>
 
-  <h1>Fonts</h1>
+  <h1>Fonts Preview</h1>
 
   <textblock class="testing_fonts"> The one npm package for the Jaisocx Sites Tools with fonts and styles importing fonts, for the sites tools preview. To install on demand, if not relaying on the cdn. </textblock>
 

@@ -3,7 +3,7 @@
    =========================== */
 @font-face {
     font-family: Newsreader_9pt;
-    src: url("@JscFonts_MediaAndStyles/fonts/Newsreader/static/Newsreader_9pt-ExtraLight.ttf") format("truetype");
+    src: url("@JscFonts_Newsreader_MediaAndStyles/fonts/Newsreader/static/Newsreader_9pt-ExtraLight.ttf") format("truetype");
     font-weight: 200;
     font-optical-sizing: 9;
     font-style: normal;
@@ -11,7 +11,7 @@
 
 @font-face { 
     font-family: Newsreader_9pt_ExtraLight;
-    src: url("@JscFonts_MediaAndStyles/fonts/Newsreader/static/Newsreader_9pt-ExtraLight.ttf") format("truetype");
+    src: url("@JscFonts_Newsreader_MediaAndStyles/fonts/Newsreader/static/Newsreader_9pt-ExtraLight.ttf") format("truetype");
     font-weight: 200;
     font-optical-sizing: 9;
     font-style: normal;
@@ -19,7 +19,7 @@
 
 @font-face { 
     font-family: Newsreader_9pt;
-    src: url("@JscFonts_MediaAndStyles/fonts/Newsreader/static/Newsreader_9pt-ExtraLightItalic.ttf") format("truetype");
+    src: url("@JscFonts_Newsreader_MediaAndStyles/fonts/Newsreader/static/Newsreader_9pt-ExtraLightItalic.ttf") format("truetype");
     font-weight: 200;
     font-optical-sizing: 9;
     font-style: italic;
@@ -27,7 +27,7 @@
 
 @font-face { 
     font-family: Newsreader_9pt_ExtraLightItalic;
-    src: url("@JscFonts_MediaAndStyles/fonts/Newsreader/static/Newsreader_9pt-ExtraLightItalic.ttf") format("truetype");
+    src: url("@JscFonts_Newsreader_MediaAndStyles/fonts/Newsreader/static/Newsreader_9pt-ExtraLightItalic.ttf") format("truetype");
     font-weight: 200;
     font-optical-sizing: 9;
     font-style: italic;
@@ -35,7 +35,7 @@
 
 @font-face { 
     font-family: Newsreader_9pt;
-    src: url("@JscFonts_MediaAndStyles/fonts/Newsreader/static/Newsreader_9pt-Light.ttf") format("truetype");
+    src: url("@JscFonts_Newsreader_MediaAndStyles/fonts/Newsreader/static/Newsreader_9pt-Light.ttf") format("truetype");
     font-weight: 300;
     font-optical-sizing: 9;
     font-style: normal;
@@ -43,7 +43,7 @@
 
 @font-face { 
     font-family: Newsreader_9pt_Light;
-    src: url("@JscFonts_MediaAndStyles/fonts/Newsreader/static/Newsreader_9pt-Light.ttf") format("truetype");
+    src: url("@JscFonts_Newsreader_MediaAndStyles/fonts/Newsreader/static/Newsreader_9pt-Light.ttf") format("truetype");
     font-weight: 300;
     font-optical-sizing: 9;
     font-style: normal;
@@ -51,7 +51,7 @@
 
 @font-face { 
     font-family: Newsreader_9pt;
-    src: url("@JscFonts_MediaAndStyles/fonts/Newsreader/static/Newsreader_9pt-LightItalic.ttf") format("truetype");
+    src: url("@JscFonts_Newsreader_MediaAndStyles/fonts/Newsreader/static/Newsreader_9pt-LightItalic.ttf") format("truetype");
     font-weight: 300;
     font-optical-sizing: 9;
     font-style: italic;
@@ -59,7 +59,7 @@
 
 @font-face { 
     font-family: Newsreader_9pt_LightItalic;
-    src: url("@JscFonts_MediaAndStyles/fonts/Newsreader/static/Newsreader_9pt-LightItalic.ttf") format("truetype");
+    src: url("@JscFonts_Newsreader_MediaAndStyles/fonts/Newsreader/static/Newsreader_9pt-LightItalic.ttf") format("truetype");
     font-weight: 300;
     font-optical-sizing: 9;
     font-style: italic;
@@ -67,7 +67,7 @@
 
 @font-face { 
     font-family: Newsreader_9pt;
-    src: url("@JscFonts_MediaAndStyles/fonts/Newsreader/static/Newsreader_9pt-Regular.ttf") format("truetype");
+    src: url("@JscFonts_Newsreader_MediaAndStyles/fonts/Newsreader/static/Newsreader_9pt-Regular.ttf") format("truetype");
     font-weight: 400;
     font-optical-sizing: 9;
     font-style: normal;
@@ -75,7 +75,7 @@
 
 @font-face { 
     font-family: Newsreader_9pt_Regular;
-    src: url("@JscFonts_MediaAndStyles/fonts/Newsreader/static/Newsreader_9pt-Regular.ttf") format("truetype");
+    src: url("@JscFonts_Newsreader_MediaAndStyles/fonts/Newsreader/static/Newsreader_9pt-Regular.ttf") format("truetype");
     font-weight: 400;
     font-optical-sizing: 9;
     font-style: normal;
@@ -83,7 +83,7 @@
 
 @font-face { 
     font-family: Newsreader_9pt;
-    src: url("@JscFonts_MediaAndStyles/fonts/Newsreader/static/Newsreader_9pt-Italic.ttf") format("truetype");
+    src: url("@JscFonts_Newsreader_MediaAndStyles/fonts/Newsreader/static/Newsreader_9pt-Italic.ttf") format("truetype");
     font-weight: 400;
     font-optical-sizing: 9;
     font-style: italic;
@@ -91,7 +91,7 @@
 
 @font-face { 
     font-family: Newsreader_9pt_Italic;
-    src: url("@JscFonts_MediaAndStyles/fonts/Newsreader/static/Newsreader_9pt-Italic.ttf") format("truetype");
+    src: url("@JscFonts_Newsreader_MediaAndStyles/fonts/Newsreader/static/Newsreader_9pt-Italic.ttf") format("truetype");
     font-weight: 400;
     font-optical-sizing: 9;
     font-style: italic;
@@ -99,7 +99,7 @@
 
 @font-face { 
     font-family: Newsreader_9pt;
-    src: url("@JscFonts_MediaAndStyles/fonts/Newsreader/static/Newsreader_9pt-Medium.ttf") format("truetype");
+    src: url("@JscFonts_Newsreader_MediaAndStyles/fonts/Newsreader/static/Newsreader_9pt-Medium.ttf") format("truetype");
     font-weight: 500;
     font-optical-sizing: 9;
     font-style: normal;
@@ -107,7 +107,7 @@
 
 @font-face { 
     font-family: Newsreader_9pt_Medium;
-    src: url("@JscFonts_MediaAndStyles/fonts/Newsreader/static/Newsreader_9pt-Medium.ttf") format("truetype");
+    src: url("@JscFonts_Newsreader_MediaAndStyles/fonts/Newsreader/static/Newsreader_9pt-Medium.ttf") format("truetype");
     font-weight: 500;
     font-optical-sizing: 9;
     font-style: normal;
@@ -115,7 +115,7 @@
 
 @font-face { 
     font-family: Newsreader_9pt;
-    src: url("@JscFonts_MediaAndStyles/fonts/Newsreader/static/Newsreader_9pt-MediumItalic.ttf") format("truetype");
+    src: url("@JscFonts_Newsreader_MediaAndStyles/fonts/Newsreader/static/Newsreader_9pt-MediumItalic.ttf") format("truetype");
     font-weight: 500;
     font-optical-sizing: 9;
     font-style: italic;
@@ -123,7 +123,7 @@
 
 @font-face { 
     font-family: Newsreader_9pt_MediumItalic;
-    src: url("@JscFonts_MediaAndStyles/fonts/Newsreader/static/Newsreader_9pt-MediumItalic.ttf") format("truetype");
+    src: url("@JscFonts_Newsreader_MediaAndStyles/fonts/Newsreader/static/Newsreader_9pt-MediumItalic.ttf") format("truetype");
     font-weight: 500;
     font-optical-sizing: 9;
     font-style: italic;
@@ -131,7 +131,7 @@
 
 @font-face { 
     font-family: Newsreader_9pt;
-    src: url("@JscFonts_MediaAndStyles/fonts/Newsreader/static/Newsreader_9pt-SemiBold.ttf") format("truetype");
+    src: url("@JscFonts_Newsreader_MediaAndStyles/fonts/Newsreader/static/Newsreader_9pt-SemiBold.ttf") format("truetype");
     font-weight: 600;
     font-optical-sizing: 9;
     font-style: normal;
@@ -139,7 +139,7 @@
 
 @font-face { 
     font-family: Newsreader_9pt_SemiBold;
-    src: url("@JscFonts_MediaAndStyles/fonts/Newsreader/static/Newsreader_9pt-SemiBold.ttf") format("truetype");
+    src: url("@JscFonts_Newsreader_MediaAndStyles/fonts/Newsreader/static/Newsreader_9pt-SemiBold.ttf") format("truetype");
     font-weight: 600;
     font-optical-sizing: 9;
     font-style: normal;
@@ -147,7 +147,7 @@
 
 @font-face { 
     font-family: Newsreader_9pt;
-    src: url("@JscFonts_MediaAndStyles/fonts/Newsreader/static/Newsreader_9pt-SemiBoldItalic.ttf") format("truetype");
+    src: url("@JscFonts_Newsreader_MediaAndStyles/fonts/Newsreader/static/Newsreader_9pt-SemiBoldItalic.ttf") format("truetype");
     font-weight: 600;
     font-optical-sizing: 9;
     font-style: italic;
@@ -155,7 +155,7 @@
 
 @font-face { 
     font-family: Newsreader_9pt_SemiBoldItalic;
-    src: url("@JscFonts_MediaAndStyles/fonts/Newsreader/static/Newsreader_9pt-SemiBoldItalic.ttf") format("truetype");
+    src: url("@JscFonts_Newsreader_MediaAndStyles/fonts/Newsreader/static/Newsreader_9pt-SemiBoldItalic.ttf") format("truetype");
     font-weight: 600;
     font-optical-sizing: 9;
     font-style: italic;
@@ -163,7 +163,7 @@
 
 @font-face { 
     font-family: Newsreader_9pt;
-    src: url("@JscFonts_MediaAndStyles/fonts/Newsreader/static/Newsreader_9pt-Bold.ttf") format("truetype");
+    src: url("@JscFonts_Newsreader_MediaAndStyles/fonts/Newsreader/static/Newsreader_9pt-Bold.ttf") format("truetype");
     font-weight: 700;
     font-optical-sizing: 9;
     font-style: normal;
@@ -171,7 +171,7 @@
 
 @font-face { 
     font-family: Newsreader_9pt_Bold;
-    src: url("@JscFonts_MediaAndStyles/fonts/Newsreader/static/Newsreader_9pt-Bold.ttf") format("truetype");
+    src: url("@JscFonts_Newsreader_MediaAndStyles/fonts/Newsreader/static/Newsreader_9pt-Bold.ttf") format("truetype");
     font-weight: 700;
     font-optical-sizing: 9;
     font-style: normal;
@@ -179,7 +179,7 @@
 
 @font-face { 
     font-family: Newsreader_9pt;
-    src: url("@JscFonts_MediaAndStyles/fonts/Newsreader/static/Newsreader_9pt-BoldItalic.ttf") format("truetype");
+    src: url("@JscFonts_Newsreader_MediaAndStyles/fonts/Newsreader/static/Newsreader_9pt-BoldItalic.ttf") format("truetype");
     font-weight: 700;
     font-optical-sizing: 9;
     font-style: italic;
@@ -187,7 +187,7 @@
 
 @font-face { 
     font-family: Newsreader_9pt_BoldItalic;
-    src: url("@JscFonts_MediaAndStyles/fonts/Newsreader/static/Newsreader_9pt-BoldItalic.ttf") format("truetype");
+    src: url("@JscFonts_Newsreader_MediaAndStyles/fonts/Newsreader/static/Newsreader_9pt-BoldItalic.ttf") format("truetype");
     font-weight: 700;
     font-optical-sizing: 9;
     font-style: italic;
@@ -195,7 +195,7 @@
 
 @font-face { 
     font-family: Newsreader_9pt;
-    src: url("@JscFonts_MediaAndStyles/fonts/Newsreader/static/Newsreader_9pt-ExtraBold.ttf") format("truetype");
+    src: url("@JscFonts_Newsreader_MediaAndStyles/fonts/Newsreader/static/Newsreader_9pt-ExtraBold.ttf") format("truetype");
     font-weight: 800;
     font-optical-sizing: 9;
     font-style: normal;
@@ -203,7 +203,7 @@
 
 @font-face { 
     font-family: Newsreader_9pt_ExtraBold;
-    src: url("@JscFonts_MediaAndStyles/fonts/Newsreader/static/Newsreader_9pt-ExtraBold.ttf") format("truetype");
+    src: url("@JscFonts_Newsreader_MediaAndStyles/fonts/Newsreader/static/Newsreader_9pt-ExtraBold.ttf") format("truetype");
     font-weight: 800;
     font-optical-sizing: 9;
     font-style: normal;
@@ -211,7 +211,7 @@
 
 @font-face { 
     font-family: Newsreader_9pt;
-    src: url("@JscFonts_MediaAndStyles/fonts/Newsreader/static/Newsreader_9pt-ExtraBoldItalic.ttf") format("truetype");
+    src: url("@JscFonts_Newsreader_MediaAndStyles/fonts/Newsreader/static/Newsreader_9pt-ExtraBoldItalic.ttf") format("truetype");
     font-weight: 800;
     font-optical-sizing: 9;
     font-style: italic;
@@ -219,7 +219,7 @@
 
 @font-face { 
     font-family: Newsreader_9pt_ExtraBoldItalic;
-    src: url("@JscFonts_MediaAndStyles/fonts/Newsreader/static/Newsreader_9pt-ExtraBoldItalic.ttf") format("truetype");
+    src: url("@JscFonts_Newsreader_MediaAndStyles/fonts/Newsreader/static/Newsreader_9pt-ExtraBoldItalic.ttf") format("truetype");
     font-weight: 800;
     font-optical-sizing: 9;
     font-style: italic;
@@ -230,7 +230,7 @@
    =========================== */
 @font-face { 
     font-family: Newsreader_14pt;
-    src: url("@JscFonts_MediaAndStyles/fonts/Newsreader/static/Newsreader_14pt-ExtraLight.ttf") format("truetype");
+    src: url("@JscFonts_Newsreader_MediaAndStyles/fonts/Newsreader/static/Newsreader_14pt-ExtraLight.ttf") format("truetype");
     font-weight: 200;
     font-optical-sizing: 14;
     font-style: normal;
@@ -238,7 +238,7 @@
 
 @font-face { 
     font-family: Newsreader_14pt_ExtraLight;
-    src: url("@JscFonts_MediaAndStyles/fonts/Newsreader/static/Newsreader_14pt-ExtraLight.ttf") format("truetype");
+    src: url("@JscFonts_Newsreader_MediaAndStyles/fonts/Newsreader/static/Newsreader_14pt-ExtraLight.ttf") format("truetype");
     font-weight: 200;
     font-optical-sizing: 14;
     font-style: normal;
@@ -246,7 +246,7 @@
 
 @font-face { 
     font-family: Newsreader_14pt;
-    src: url("@JscFonts_MediaAndStyles/fonts/Newsreader/static/Newsreader_14pt-ExtraLightItalic.ttf") format("truetype");
+    src: url("@JscFonts_Newsreader_MediaAndStyles/fonts/Newsreader/static/Newsreader_14pt-ExtraLightItalic.ttf") format("truetype");
     font-weight: 200;
     font-optical-sizing: 14;
     font-style: italic;
@@ -254,7 +254,7 @@
 
 @font-face { 
     font-family: Newsreader_14pt_ExtraLightItalic;
-    src: url("@JscFonts_MediaAndStyles/fonts/Newsreader/static/Newsreader_14pt-ExtraLightItalic.ttf") format("truetype");
+    src: url("@JscFonts_Newsreader_MediaAndStyles/fonts/Newsreader/static/Newsreader_14pt-ExtraLightItalic.ttf") format("truetype");
     font-weight: 200;
     font-optical-sizing: 14;
     font-style: italic;
@@ -262,7 +262,7 @@
 
 @font-face { 
     font-family: Newsreader_14pt;
-    src: url("@JscFonts_MediaAndStyles/fonts/Newsreader/static/Newsreader_14pt-Light.ttf") format("truetype");
+    src: url("@JscFonts_Newsreader_MediaAndStyles/fonts/Newsreader/static/Newsreader_14pt-Light.ttf") format("truetype");
     font-weight: 300;
     font-optical-sizing: 14;
     font-style: normal;
@@ -270,7 +270,7 @@
 
 @font-face { 
     font-family: Newsreader_14pt_Light;
-    src: url("@JscFonts_MediaAndStyles/fonts/Newsreader/static/Newsreader_14pt-Light.ttf") format("truetype");
+    src: url("@JscFonts_Newsreader_MediaAndStyles/fonts/Newsreader/static/Newsreader_14pt-Light.ttf") format("truetype");
     font-weight: 300;
     font-optical-sizing: 14;
     font-style: normal;
@@ -278,7 +278,7 @@
 
 @font-face { 
     font-family: Newsreader_14pt;
-    src: url("@JscFonts_MediaAndStyles/fonts/Newsreader/static/Newsreader_14pt-LightItalic.ttf") format("truetype");
+    src: url("@JscFonts_Newsreader_MediaAndStyles/fonts/Newsreader/static/Newsreader_14pt-LightItalic.ttf") format("truetype");
     font-weight: 300;
     font-optical-sizing: 14;
     font-style: italic;
@@ -286,7 +286,7 @@
 
 @font-face { 
     font-family: Newsreader_14pt_LightItalic;
-    src: url("@JscFonts_MediaAndStyles/fonts/Newsreader/static/Newsreader_14pt-LightItalic.ttf") format("truetype");
+    src: url("@JscFonts_Newsreader_MediaAndStyles/fonts/Newsreader/static/Newsreader_14pt-LightItalic.ttf") format("truetype");
     font-weight: 300;
     font-optical-sizing: 14;
     font-style: italic;
@@ -294,7 +294,7 @@
 
 @font-face { 
     font-family: Newsreader_14pt;
-    src: url("@JscFonts_MediaAndStyles/fonts/Newsreader/static/Newsreader_14pt-Regular.ttf") format("truetype");
+    src: url("@JscFonts_Newsreader_MediaAndStyles/fonts/Newsreader/static/Newsreader_14pt-Regular.ttf") format("truetype");
     font-weight: 400;
     font-optical-sizing: 14;
     font-style: normal;
@@ -302,7 +302,7 @@
 
 @font-face { 
     font-family: Newsreader_14pt_Regular;
-    src: url("@JscFonts_MediaAndStyles/fonts/Newsreader/static/Newsreader_14pt-Regular.ttf") format("truetype");
+    src: url("@JscFonts_Newsreader_MediaAndStyles/fonts/Newsreader/static/Newsreader_14pt-Regular.ttf") format("truetype");
     font-weight: 400;
     font-optical-sizing: 14;
     font-style: normal;
@@ -310,7 +310,7 @@
 
 @font-face { 
     font-family: Newsreader_14pt;
-    src: url("@JscFonts_MediaAndStyles/fonts/Newsreader/static/Newsreader_14pt-Italic.ttf") format("truetype");
+    src: url("@JscFonts_Newsreader_MediaAndStyles/fonts/Newsreader/static/Newsreader_14pt-Italic.ttf") format("truetype");
     font-weight: 400;
     font-optical-sizing: 14;
     font-style: italic;
@@ -318,7 +318,7 @@
 
 @font-face { 
     font-family: Newsreader_14pt_Italic;
-    src: url("@JscFonts_MediaAndStyles/fonts/Newsreader/static/Newsreader_14pt-Italic.ttf") format("truetype");
+    src: url("@JscFonts_Newsreader_MediaAndStyles/fonts/Newsreader/static/Newsreader_14pt-Italic.ttf") format("truetype");
     font-weight: 400;
     font-optical-sizing: 14;
     font-style: italic;
@@ -326,7 +326,7 @@
 
 @font-face { 
     font-family: Newsreader_14pt;
-    src: url("@JscFonts_MediaAndStyles/fonts/Newsreader/static/Newsreader_14pt-Medium.ttf") format("truetype");
+    src: url("@JscFonts_Newsreader_MediaAndStyles/fonts/Newsreader/static/Newsreader_14pt-Medium.ttf") format("truetype");
     font-weight: 500;
     font-optical-sizing: 14;
     font-style: normal;
@@ -334,7 +334,7 @@
 
 @font-face { 
     font-family: Newsreader_14pt_Medium;
-    src: url("@JscFonts_MediaAndStyles/fonts/Newsreader/static/Newsreader_14pt-Medium.ttf") format("truetype");
+    src: url("@JscFonts_Newsreader_MediaAndStyles/fonts/Newsreader/static/Newsreader_14pt-Medium.ttf") format("truetype");
     font-weight: 500;
     font-optical-sizing: 14;
     font-style: normal;
@@ -342,7 +342,7 @@
 
 @font-face { 
     font-family: Newsreader_14pt;
-    src: url("@JscFonts_MediaAndStyles/fonts/Newsreader/static/Newsreader_14pt-MediumItalic.ttf") format("truetype");
+    src: url("@JscFonts_Newsreader_MediaAndStyles/fonts/Newsreader/static/Newsreader_14pt-MediumItalic.ttf") format("truetype");
     font-weight: 500;
     font-optical-sizing: 14;
     font-style: italic;
@@ -350,7 +350,7 @@
 
 @font-face { 
     font-family: Newsreader_14pt_MediumItalic;
-    src: url("@JscFonts_MediaAndStyles/fonts/Newsreader/static/Newsreader_14pt-MediumItalic.ttf") format("truetype");
+    src: url("@JscFonts_Newsreader_MediaAndStyles/fonts/Newsreader/static/Newsreader_14pt-MediumItalic.ttf") format("truetype");
     font-weight: 500;
     font-optical-sizing: 14;
     font-style: italic;
@@ -358,7 +358,7 @@
 
 @font-face { 
     font-family: Newsreader_14pt;
-    src: url("@JscFonts_MediaAndStyles/fonts/Newsreader/static/Newsreader_14pt-SemiBold.ttf") format("truetype");
+    src: url("@JscFonts_Newsreader_MediaAndStyles/fonts/Newsreader/static/Newsreader_14pt-SemiBold.ttf") format("truetype");
     font-weight: 600;
     font-optical-sizing: 14;
     font-style: normal;
@@ -366,7 +366,7 @@
 
 @font-face { 
     font-family: Newsreader_14pt_SemiBold;
-    src: url("@JscFonts_MediaAndStyles/fonts/Newsreader/static/Newsreader_14pt-SemiBold.ttf") format("truetype");
+    src: url("@JscFonts_Newsreader_MediaAndStyles/fonts/Newsreader/static/Newsreader_14pt-SemiBold.ttf") format("truetype");
     font-weight: 600;
     font-optical-sizing: 14;
     font-style: normal;
@@ -374,7 +374,7 @@
 
 @font-face { 
     font-family: Newsreader_14pt;
-    src: url("@JscFonts_MediaAndStyles/fonts/Newsreader/static/Newsreader_14pt-SemiBoldItalic.ttf") format("truetype");
+    src: url("@JscFonts_Newsreader_MediaAndStyles/fonts/Newsreader/static/Newsreader_14pt-SemiBoldItalic.ttf") format("truetype");
     font-weight: 600;
     font-optical-sizing: 14;
     font-style: italic;
@@ -382,7 +382,7 @@
 
 @font-face { 
     font-family: Newsreader_14pt_SemiBoldItalic;
-    src: url("@JscFonts_MediaAndStyles/fonts/Newsreader/static/Newsreader_14pt-SemiBoldItalic.ttf") format("truetype");
+    src: url("@JscFonts_Newsreader_MediaAndStyles/fonts/Newsreader/static/Newsreader_14pt-SemiBoldItalic.ttf") format("truetype");
     font-weight: 600;
     font-optical-sizing: 14;
     font-style: italic;
@@ -390,7 +390,7 @@
 
 @font-face { 
     font-family: Newsreader_14pt;
-    src: url("@JscFonts_MediaAndStyles/fonts/Newsreader/static/Newsreader_14pt-Bold.ttf") format("truetype");
+    src: url("@JscFonts_Newsreader_MediaAndStyles/fonts/Newsreader/static/Newsreader_14pt-Bold.ttf") format("truetype");
     font-weight: 700;
     font-optical-sizing: 14;
     font-style: normal;
@@ -398,7 +398,7 @@
 
 @font-face { 
     font-family: Newsreader_14pt_Bold;
-    src: url("@JscFonts_MediaAndStyles/fonts/Newsreader/static/Newsreader_14pt-Bold.ttf") format("truetype");
+    src: url("@JscFonts_Newsreader_MediaAndStyles/fonts/Newsreader/static/Newsreader_14pt-Bold.ttf") format("truetype");
     font-weight: 700;
     font-optical-sizing: 14;
     font-style: normal;
@@ -406,7 +406,7 @@
 
 @font-face { 
     font-family: Newsreader_14pt;
-    src: url("@JscFonts_MediaAndStyles/fonts/Newsreader/static/Newsreader_14pt-BoldItalic.ttf") format("truetype");
+    src: url("@JscFonts_Newsreader_MediaAndStyles/fonts/Newsreader/static/Newsreader_14pt-BoldItalic.ttf") format("truetype");
     font-weight: 700;
     font-optical-sizing: 14;
     font-style: italic;
@@ -414,7 +414,7 @@
 
 @font-face { 
     font-family: Newsreader_14pt_BoldItalic;
-    src: url("@JscFonts_MediaAndStyles/fonts/Newsreader/static/Newsreader_14pt-BoldItalic.ttf") format("truetype");
+    src: url("@JscFonts_Newsreader_MediaAndStyles/fonts/Newsreader/static/Newsreader_14pt-BoldItalic.ttf") format("truetype");
     font-weight: 700;
     font-optical-sizing: 14;
     font-style: italic;
@@ -422,7 +422,7 @@
 
 @font-face { 
     font-family: Newsreader_14pt;
-    src: url("@JscFonts_MediaAndStyles/fonts/Newsreader/static/Newsreader_14pt-ExtraBold.ttf") format("truetype");
+    src: url("@JscFonts_Newsreader_MediaAndStyles/fonts/Newsreader/static/Newsreader_14pt-ExtraBold.ttf") format("truetype");
     font-weight: 800;
     font-optical-sizing: 14;
     font-style: normal;
@@ -430,7 +430,7 @@
 
 @font-face { 
     font-family: Newsreader_14pt_ExtraBold;
-    src: url("@JscFonts_MediaAndStyles/fonts/Newsreader/static/Newsreader_14pt-ExtraBold.ttf") format("truetype");
+    src: url("@JscFonts_Newsreader_MediaAndStyles/fonts/Newsreader/static/Newsreader_14pt-ExtraBold.ttf") format("truetype");
     font-weight: 800;
     font-optical-sizing: 14;
     font-style: normal;
@@ -438,7 +438,7 @@
 
 @font-face { 
     font-family: Newsreader_14pt;
-    src: url("@JscFonts_MediaAndStyles/fonts/Newsreader/static/Newsreader_14pt-ExtraBoldItalic.ttf") format("truetype");
+    src: url("@JscFonts_Newsreader_MediaAndStyles/fonts/Newsreader/static/Newsreader_14pt-ExtraBoldItalic.ttf") format("truetype");
     font-weight: 800;
     font-optical-sizing: 14;
     font-style: italic;
@@ -446,7 +446,7 @@
 
 @font-face { 
     font-family: Newsreader_14pt_ExtraBoldItalic;
-    src: url("@JscFonts_MediaAndStyles/fonts/Newsreader/static/Newsreader_14pt-ExtraBoldItalic.ttf") format("truetype");
+    src: url("@JscFonts_Newsreader_MediaAndStyles/fonts/Newsreader/static/Newsreader_14pt-ExtraBoldItalic.ttf") format("truetype");
     font-weight: 800;
     font-optical-sizing: 14;
     font-style: italic;
@@ -457,7 +457,7 @@
    =========================== */
 @font-face { 
     font-family: Newsreader_24pt;
-    src: url("@JscFonts_MediaAndStyles/fonts/Newsreader/static/Newsreader_24pt-ExtraLight.ttf") format("truetype");
+    src: url("@JscFonts_Newsreader_MediaAndStyles/fonts/Newsreader/static/Newsreader_24pt-ExtraLight.ttf") format("truetype");
     font-weight: 200;
     font-optical-sizing: 24;
     font-style: normal;
@@ -465,7 +465,7 @@
 
 @font-face { 
     font-family: Newsreader_24pt_ExtraLight;
-    src: url("@JscFonts_MediaAndStyles/fonts/Newsreader/static/Newsreader_24pt-ExtraLight.ttf") format("truetype");
+    src: url("@JscFonts_Newsreader_MediaAndStyles/fonts/Newsreader/static/Newsreader_24pt-ExtraLight.ttf") format("truetype");
     font-weight: 200;
     font-optical-sizing: 24;
     font-style: normal;
@@ -473,7 +473,7 @@
 
 @font-face { 
     font-family: Newsreader_24pt;
-    src: url("@JscFonts_MediaAndStyles/fonts/Newsreader/static/Newsreader_24pt-ExtraLightItalic.ttf") format("truetype");
+    src: url("@JscFonts_Newsreader_MediaAndStyles/fonts/Newsreader/static/Newsreader_24pt-ExtraLightItalic.ttf") format("truetype");
     font-weight: 200;
     font-optical-sizing: 24;
     font-style: italic;
@@ -481,7 +481,7 @@
 
 @font-face { 
     font-family: Newsreader_24pt_ExtraLightItalic;
-    src: url("@JscFonts_MediaAndStyles/fonts/Newsreader/static/Newsreader_24pt-ExtraLightItalic.ttf") format("truetype");
+    src: url("@JscFonts_Newsreader_MediaAndStyles/fonts/Newsreader/static/Newsreader_24pt-ExtraLightItalic.ttf") format("truetype");
     font-weight: 200;
     font-optical-sizing: 24;
     font-style: italic;
@@ -489,7 +489,7 @@
 
 @font-face { 
     font-family: Newsreader_24pt;
-    src: url("@JscFonts_MediaAndStyles/fonts/Newsreader/static/Newsreader_24pt-Light.ttf") format("truetype");
+    src: url("@JscFonts_Newsreader_MediaAndStyles/fonts/Newsreader/static/Newsreader_24pt-Light.ttf") format("truetype");
     font-weight: 300;
     font-optical-sizing: 24;
     font-style: normal;
@@ -497,7 +497,7 @@
 
 @font-face { 
     font-family: Newsreader_24pt_Light;
-    src: url("@JscFonts_MediaAndStyles/fonts/Newsreader/static/Newsreader_24pt-Light.ttf") format("truetype");
+    src: url("@JscFonts_Newsreader_MediaAndStyles/fonts/Newsreader/static/Newsreader_24pt-Light.ttf") format("truetype");
     font-weight: 300;
     font-optical-sizing: 24;
     font-style: normal;
@@ -505,7 +505,7 @@
 
 @font-face { 
     font-family: Newsreader_24pt;
-    src: url("@JscFonts_MediaAndStyles/fonts/Newsreader/static/Newsreader_24pt-LightItalic.ttf") format("truetype");
+    src: url("@JscFonts_Newsreader_MediaAndStyles/fonts/Newsreader/static/Newsreader_24pt-LightItalic.ttf") format("truetype");
     font-weight: 300;
     font-optical-sizing: 24;
     font-style: italic;
@@ -513,7 +513,7 @@
 
 @font-face { 
     font-family: Newsreader_24pt_LightItalic;
-    src: url("@JscFonts_MediaAndStyles/fonts/Newsreader/static/Newsreader_24pt-LightItalic.ttf") format("truetype");
+    src: url("@JscFonts_Newsreader_MediaAndStyles/fonts/Newsreader/static/Newsreader_24pt-LightItalic.ttf") format("truetype");
     font-weight: 300;
     font-optical-sizing: 24;
     font-style: italic;
@@ -521,7 +521,7 @@
 
 @font-face { 
     font-family: Newsreader_24pt;
-    src: url("@JscFonts_MediaAndStyles/fonts/Newsreader/static/Newsreader_24pt-Regular.ttf") format("truetype");
+    src: url("@JscFonts_Newsreader_MediaAndStyles/fonts/Newsreader/static/Newsreader_24pt-Regular.ttf") format("truetype");
     font-weight: 400;
     font-optical-sizing: 24;
     font-style: normal;
@@ -529,7 +529,7 @@
 
 @font-face { 
     font-family: Newsreader_24pt_Regular;
-    src: url("@JscFonts_MediaAndStyles/fonts/Newsreader/static/Newsreader_24pt-Regular.ttf") format("truetype");
+    src: url("@JscFonts_Newsreader_MediaAndStyles/fonts/Newsreader/static/Newsreader_24pt-Regular.ttf") format("truetype");
     font-weight: 400;
     font-optical-sizing: 24;
     font-style: normal;
@@ -537,7 +537,7 @@
 
 @font-face { 
     font-family: Newsreader_24pt;
-    src: url("@JscFonts_MediaAndStyles/fonts/Newsreader/static/Newsreader_24pt-Italic.ttf") format("truetype");
+    src: url("@JscFonts_Newsreader_MediaAndStyles/fonts/Newsreader/static/Newsreader_24pt-Italic.ttf") format("truetype");
     font-weight: 400;
     font-optical-sizing: 24;
     font-style: italic;
@@ -545,7 +545,7 @@
 
 @font-face { 
     font-family: Newsreader_24pt_Italic;
-    src: url("@JscFonts_MediaAndStyles/fonts/Newsreader/static/Newsreader_24pt-Italic.ttf") format("truetype");
+    src: url("@JscFonts_Newsreader_MediaAndStyles/fonts/Newsreader/static/Newsreader_24pt-Italic.ttf") format("truetype");
     font-weight: 400;
     font-optical-sizing: 24;
     font-style: italic;
@@ -553,7 +553,7 @@
 
 @font-face { 
     font-family: Newsreader_24pt;
-    src: url("@JscFonts_MediaAndStyles/fonts/Newsreader/static/Newsreader_24pt-Medium.ttf") format("truetype");
+    src: url("@JscFonts_Newsreader_MediaAndStyles/fonts/Newsreader/static/Newsreader_24pt-Medium.ttf") format("truetype");
     font-weight: 500;
     font-optical-sizing: 24;
     font-style: normal;
@@ -561,7 +561,7 @@
 
 @font-face { 
     font-family: Newsreader_24pt_Medium;
-    src: url("@JscFonts_MediaAndStyles/fonts/Newsreader/static/Newsreader_24pt-Medium.ttf") format("truetype");
+    src: url("@JscFonts_Newsreader_MediaAndStyles/fonts/Newsreader/static/Newsreader_24pt-Medium.ttf") format("truetype");
     font-weight: 500;
     font-optical-sizing: 24;
     font-style: normal;
@@ -569,7 +569,7 @@
 
 @font-face { 
     font-family: Newsreader_24pt;
-    src: url("@JscFonts_MediaAndStyles/fonts/Newsreader/static/Newsreader_24pt-MediumItalic.ttf") format("truetype");
+    src: url("@JscFonts_Newsreader_MediaAndStyles/fonts/Newsreader/static/Newsreader_24pt-MediumItalic.ttf") format("truetype");
     font-weight: 500;
     font-optical-sizing: 24;
     font-style: italic;
@@ -577,7 +577,7 @@
 
 @font-face { 
     font-family: Newsreader_24pt_MediumItalic;
-    src: url("@JscFonts_MediaAndStyles/fonts/Newsreader/static/Newsreader_24pt-MediumItalic.ttf") format("truetype");
+    src: url("@JscFonts_Newsreader_MediaAndStyles/fonts/Newsreader/static/Newsreader_24pt-MediumItalic.ttf") format("truetype");
     font-weight: 500;
     font-optical-sizing: 24;
     font-style: italic;
@@ -585,7 +585,7 @@
 
 @font-face { 
     font-family: Newsreader_24pt;
-    src: url("@JscFonts_MediaAndStyles/fonts/Newsreader/static/Newsreader_24pt-SemiBold.ttf") format("truetype");
+    src: url("@JscFonts_Newsreader_MediaAndStyles/fonts/Newsreader/static/Newsreader_24pt-SemiBold.ttf") format("truetype");
     font-weight: 600;
     font-optical-sizing: 24;
     font-style: normal;
@@ -593,7 +593,7 @@
 
 @font-face { 
     font-family: Newsreader_24pt_SemiBold;
-    src: url("@JscFonts_MediaAndStyles/fonts/Newsreader/static/Newsreader_24pt-SemiBold.ttf") format("truetype");
+    src: url("@JscFonts_Newsreader_MediaAndStyles/fonts/Newsreader/static/Newsreader_24pt-SemiBold.ttf") format("truetype");
     font-weight: 600;
     font-optical-sizing: 24;
     font-style: normal;
@@ -601,7 +601,7 @@
 
 @font-face { 
     font-family: Newsreader_24pt;
-    src: url("@JscFonts_MediaAndStyles/fonts/Newsreader/static/Newsreader_24pt-SemiBoldItalic.ttf") format("truetype");
+    src: url("@JscFonts_Newsreader_MediaAndStyles/fonts/Newsreader/static/Newsreader_24pt-SemiBoldItalic.ttf") format("truetype");
     font-weight: 600;
     font-optical-sizing: 24;
     font-style: italic;
@@ -609,7 +609,7 @@
 
 @font-face { 
     font-family: Newsreader_24pt_SemiBoldItalic;
-    src: url("@JscFonts_MediaAndStyles/fonts/Newsreader/static/Newsreader_24pt-SemiBoldItalic.ttf") format("truetype");
+    src: url("@JscFonts_Newsreader_MediaAndStyles/fonts/Newsreader/static/Newsreader_24pt-SemiBoldItalic.ttf") format("truetype");
     font-weight: 600;
     font-optical-sizing: 24;
     font-style: italic;
@@ -617,7 +617,7 @@
 
 @font-face { 
     font-family: Newsreader_24pt;
-    src: url("@JscFonts_MediaAndStyles/fonts/Newsreader/static/Newsreader_24pt-Bold.ttf") format("truetype");
+    src: url("@JscFonts_Newsreader_MediaAndStyles/fonts/Newsreader/static/Newsreader_24pt-Bold.ttf") format("truetype");
     font-weight: 700;
     font-optical-sizing: 24;
     font-style: normal;
@@ -625,7 +625,7 @@
 
 @font-face { 
     font-family: Newsreader_24pt_Bold;
-    src: url("@JscFonts_MediaAndStyles/fonts/Newsreader/static/Newsreader_24pt-Bold.ttf") format("truetype");
+    src: url("@JscFonts_Newsreader_MediaAndStyles/fonts/Newsreader/static/Newsreader_24pt-Bold.ttf") format("truetype");
     font-weight: 700;
     font-optical-sizing: 24;
     font-style: normal;
@@ -633,7 +633,7 @@
 
 @font-face { 
     font-family: Newsreader_24pt;
-    src: url("@JscFonts_MediaAndStyles/fonts/Newsreader/static/Newsreader_24pt-BoldItalic.ttf") format("truetype");
+    src: url("@JscFonts_Newsreader_MediaAndStyles/fonts/Newsreader/static/Newsreader_24pt-BoldItalic.ttf") format("truetype");
     font-weight: 700;
     font-optical-sizing: 24;
     font-style: italic;
@@ -641,7 +641,7 @@
 
 @font-face { 
     font-family: Newsreader_24pt_BoldItalic;
-    src: url("@JscFonts_MediaAndStyles/fonts/Newsreader/static/Newsreader_24pt-BoldItalic.ttf") format("truetype");
+    src: url("@JscFonts_Newsreader_MediaAndStyles/fonts/Newsreader/static/Newsreader_24pt-BoldItalic.ttf") format("truetype");
     font-weight: 700;
     font-optical-sizing: 24;
     font-style: italic;
@@ -649,7 +649,7 @@
 
 @font-face { 
     font-family: Newsreader_24pt;
-    src: url("@JscFonts_MediaAndStyles/fonts/Newsreader/static/Newsreader_24pt-ExtraBold.ttf") format("truetype");
+    src: url("@JscFonts_Newsreader_MediaAndStyles/fonts/Newsreader/static/Newsreader_24pt-ExtraBold.ttf") format("truetype");
     font-weight: 800;
     font-optical-sizing: 24;
     font-style: normal;
@@ -657,7 +657,7 @@
 
 @font-face { 
     font-family: Newsreader_24pt_ExtraBold;
-    src: url("@JscFonts_MediaAndStyles/fonts/Newsreader/static/Newsreader_24pt-ExtraBold.ttf") format("truetype");
+    src: url("@JscFonts_Newsreader_MediaAndStyles/fonts/Newsreader/static/Newsreader_24pt-ExtraBold.ttf") format("truetype");
     font-weight: 800;
     font-optical-sizing: 24;
     font-style: normal;
@@ -665,7 +665,7 @@
 
 @font-face { 
     font-family: Newsreader_24pt;
-    src: url("@JscFonts_MediaAndStyles/fonts/Newsreader/static/Newsreader_24pt-ExtraBoldItalic.ttf") format("truetype");
+    src: url("@JscFonts_Newsreader_MediaAndStyles/fonts/Newsreader/static/Newsreader_24pt-ExtraBoldItalic.ttf") format("truetype");
     font-weight: 800;
     font-optical-sizing: 24;
     font-style: italic;
@@ -673,7 +673,7 @@
 
 @font-face { 
     font-family: Newsreader_24pt_ExtraBoldItalic;
-    src: url("@JscFonts_MediaAndStyles/fonts/Newsreader/static/Newsreader_24pt-ExtraBoldItalic.ttf") format("truetype");
+    src: url("@JscFonts_Newsreader_MediaAndStyles/fonts/Newsreader/static/Newsreader_24pt-ExtraBoldItalic.ttf") format("truetype");
     font-weight: 800;
     font-optical-sizing: 24;
     font-style: italic;
@@ -684,7 +684,7 @@
    =========================== */
 @font-face { 
     font-family: Newsreader_36pt;
-    src: url("@JscFonts_MediaAndStyles/fonts/Newsreader/static/Newsreader_36pt-ExtraLight.ttf") format("truetype");
+    src: url("@JscFonts_Newsreader_MediaAndStyles/fonts/Newsreader/static/Newsreader_36pt-ExtraLight.ttf") format("truetype");
     font-weight: 200;
     font-optical-sizing: 36;
     font-style: normal;
@@ -692,7 +692,7 @@
 
 @font-face { 
     font-family: Newsreader_36pt_ExtraLight;
-    src: url("@JscFonts_MediaAndStyles/fonts/Newsreader/static/Newsreader_36pt-ExtraLight.ttf") format("truetype");
+    src: url("@JscFonts_Newsreader_MediaAndStyles/fonts/Newsreader/static/Newsreader_36pt-ExtraLight.ttf") format("truetype");
     font-weight: 200;
     font-optical-sizing: 36;
     font-style: normal;
@@ -700,7 +700,7 @@
 
 @font-face { 
     font-family: Newsreader_36pt;
-    src: url("@JscFonts_MediaAndStyles/fonts/Newsreader/static/Newsreader_36pt-ExtraLightItalic.ttf") format("truetype");
+    src: url("@JscFonts_Newsreader_MediaAndStyles/fonts/Newsreader/static/Newsreader_36pt-ExtraLightItalic.ttf") format("truetype");
     font-weight: 200;
     font-optical-sizing: 36;
     font-style: italic;
@@ -708,7 +708,7 @@
 
 @font-face { 
     font-family: Newsreader_36pt_ExtraLightItalic;
-    src: url("@JscFonts_MediaAndStyles/fonts/Newsreader/static/Newsreader_36pt-ExtraLightItalic.ttf") format("truetype");
+    src: url("@JscFonts_Newsreader_MediaAndStyles/fonts/Newsreader/static/Newsreader_36pt-ExtraLightItalic.ttf") format("truetype");
     font-weight: 200;
     font-optical-sizing: 36;
     font-style: italic;
@@ -716,7 +716,7 @@
 
 @font-face { 
     font-family: Newsreader_36pt;
-    src: url("@JscFonts_MediaAndStyles/fonts/Newsreader/static/Newsreader_36pt-Light.ttf") format("truetype");
+    src: url("@JscFonts_Newsreader_MediaAndStyles/fonts/Newsreader/static/Newsreader_36pt-Light.ttf") format("truetype");
     font-weight: 300;
     font-optical-sizing: 36;
     font-style: normal;
@@ -724,7 +724,7 @@
 
 @font-face { 
     font-family: Newsreader_36pt_Light;
-    src: url("@JscFonts_MediaAndStyles/fonts/Newsreader/static/Newsreader_36pt-Light.ttf") format("truetype");
+    src: url("@JscFonts_Newsreader_MediaAndStyles/fonts/Newsreader/static/Newsreader_36pt-Light.ttf") format("truetype");
     font-weight: 300;
     font-optical-sizing: 36;
     font-style: normal;
@@ -732,7 +732,7 @@
 
 @font-face { 
     font-family: Newsreader_36pt;
-    src: url("@JscFonts_MediaAndStyles/fonts/Newsreader/static/Newsreader_36pt-LightItalic.ttf") format("truetype");
+    src: url("@JscFonts_Newsreader_MediaAndStyles/fonts/Newsreader/static/Newsreader_36pt-LightItalic.ttf") format("truetype");
     font-weight: 300;
     font-optical-sizing: 36;
     font-style: italic;
@@ -740,7 +740,7 @@
 
 @font-face { 
     font-family: Newsreader_36pt_LightItalic;
-    src: url("@JscFonts_MediaAndStyles/fonts/Newsreader/static/Newsreader_36pt-LightItalic.ttf") format("truetype");
+    src: url("@JscFonts_Newsreader_MediaAndStyles/fonts/Newsreader/static/Newsreader_36pt-LightItalic.ttf") format("truetype");
     font-weight: 300;
     font-optical-sizing: 36;
     font-style: italic;
@@ -748,7 +748,7 @@
 
 @font-face { 
     font-family: Newsreader_36pt;
-    src: url("@JscFonts_MediaAndStyles/fonts/Newsreader/static/Newsreader_36pt-Regular.ttf") format("truetype");
+    src: url("@JscFonts_Newsreader_MediaAndStyles/fonts/Newsreader/static/Newsreader_36pt-Regular.ttf") format("truetype");
     font-weight: 400;
     font-optical-sizing: 36;
     font-style: normal;
@@ -756,7 +756,7 @@
 
 @font-face { 
     font-family: Newsreader_36pt_Regular;
-    src: url("@JscFonts_MediaAndStyles/fonts/Newsreader/static/Newsreader_36pt-Regular.ttf") format("truetype");
+    src: url("@JscFonts_Newsreader_MediaAndStyles/fonts/Newsreader/static/Newsreader_36pt-Regular.ttf") format("truetype");
     font-weight: 400;
     font-optical-sizing: 36;
     font-style: normal;
@@ -764,7 +764,7 @@
 
 @font-face { 
     font-family: Newsreader_36pt;
-    src: url("@JscFonts_MediaAndStyles/fonts/Newsreader/static/Newsreader_36pt-Italic.ttf") format("truetype");
+    src: url("@JscFonts_Newsreader_MediaAndStyles/fonts/Newsreader/static/Newsreader_36pt-Italic.ttf") format("truetype");
     font-weight: 400;
     font-optical-sizing: 36;
     font-style: italic;
@@ -772,7 +772,7 @@
 
 @font-face { 
     font-family: Newsreader_36pt_Italic;
-    src: url("@JscFonts_MediaAndStyles/fonts/Newsreader/static/Newsreader_36pt-Italic.ttf") format("truetype");
+    src: url("@JscFonts_Newsreader_MediaAndStyles/fonts/Newsreader/static/Newsreader_36pt-Italic.ttf") format("truetype");
     font-weight: 400;
     font-optical-sizing: 36;
     font-style: italic;
@@ -780,7 +780,7 @@
 
 @font-face { 
     font-family: Newsreader_36pt;
-    src: url("@JscFonts_MediaAndStyles/fonts/Newsreader/static/Newsreader_36pt-Medium.ttf") format("truetype");
+    src: url("@JscFonts_Newsreader_MediaAndStyles/fonts/Newsreader/static/Newsreader_36pt-Medium.ttf") format("truetype");
     font-weight: 500;
     font-optical-sizing: 36;
     font-style: normal;
@@ -788,7 +788,7 @@
 
 @font-face { 
     font-family: Newsreader_36pt_Medium;
-    src: url("@JscFonts_MediaAndStyles/fonts/Newsreader/static/Newsreader_36pt-Medium.ttf") format("truetype");
+    src: url("@JscFonts_Newsreader_MediaAndStyles/fonts/Newsreader/static/Newsreader_36pt-Medium.ttf") format("truetype");
     font-weight: 500;
     font-optical-sizing: 36;
     font-style: normal;
@@ -796,7 +796,7 @@
 
 @font-face { 
     font-family: Newsreader_36pt;
-    src: url("@JscFonts_MediaAndStyles/fonts/Newsreader/static/Newsreader_36pt-MediumItalic.ttf") format("truetype");
+    src: url("@JscFonts_Newsreader_MediaAndStyles/fonts/Newsreader/static/Newsreader_36pt-MediumItalic.ttf") format("truetype");
     font-weight: 500;
     font-optical-sizing: 36;
     font-style: italic;
@@ -804,7 +804,7 @@
 
 @font-face { 
     font-family: Newsreader_36pt_MediumItalic;
-    src: url("@JscFonts_MediaAndStyles/fonts/Newsreader/static/Newsreader_36pt-MediumItalic.ttf") format("truetype");
+    src: url("@JscFonts_Newsreader_MediaAndStyles/fonts/Newsreader/static/Newsreader_36pt-MediumItalic.ttf") format("truetype");
     font-weight: 500;
     font-optical-sizing: 36;
     font-style: italic;
@@ -812,7 +812,7 @@
 
 @font-face { 
     font-family: Newsreader_36pt;
-    src: url("@JscFonts_MediaAndStyles/fonts/Newsreader/static/Newsreader_36pt-SemiBold.ttf") format("truetype");
+    src: url("@JscFonts_Newsreader_MediaAndStyles/fonts/Newsreader/static/Newsreader_36pt-SemiBold.ttf") format("truetype");
     font-weight: 600;
     font-optical-sizing: 36;
     font-style: normal;
@@ -820,7 +820,7 @@
 
 @font-face { 
     font-family: Newsreader_36pt_SemiBold;
-    src: url("@JscFonts_MediaAndStyles/fonts/Newsreader/static/Newsreader_36pt-SemiBold.ttf") format("truetype");
+    src: url("@JscFonts_Newsreader_MediaAndStyles/fonts/Newsreader/static/Newsreader_36pt-SemiBold.ttf") format("truetype");
     font-weight: 600;
     font-optical-sizing: 36;
     font-style: normal;
@@ -828,7 +828,7 @@
 
 @font-face { 
     font-family: Newsreader_36pt;
-    src: url("@JscFonts_MediaAndStyles/fonts/Newsreader/static/Newsreader_36pt-SemiBoldItalic.ttf") format("truetype");
+    src: url("@JscFonts_Newsreader_MediaAndStyles/fonts/Newsreader/static/Newsreader_36pt-SemiBoldItalic.ttf") format("truetype");
     font-weight: 600;
     font-optical-sizing: 36;
     font-style: italic;
@@ -836,7 +836,7 @@
 
 @font-face { 
     font-family: Newsreader_36pt_SemiBoldItalic;
-    src: url("@JscFonts_MediaAndStyles/fonts/Newsreader/static/Newsreader_36pt-SemiBoldItalic.ttf") format("truetype");
+    src: url("@JscFonts_Newsreader_MediaAndStyles/fonts/Newsreader/static/Newsreader_36pt-SemiBoldItalic.ttf") format("truetype");
     font-weight: 600;
     font-optical-sizing: 36;
     font-style: italic;
@@ -844,7 +844,7 @@
 
 @font-face { 
     font-family: Newsreader_36pt;
-    src: url("@JscFonts_MediaAndStyles/fonts/Newsreader/static/Newsreader_36pt-Bold.ttf") format("truetype");
+    src: url("@JscFonts_Newsreader_MediaAndStyles/fonts/Newsreader/static/Newsreader_36pt-Bold.ttf") format("truetype");
     font-weight: 700;
     font-optical-sizing: 36;
     font-style: normal;
@@ -852,7 +852,7 @@
 
 @font-face { 
     font-family: Newsreader_36pt_Bold;
-    src: url("@JscFonts_MediaAndStyles/fonts/Newsreader/static/Newsreader_36pt-Bold.ttf") format("truetype");
+    src: url("@JscFonts_Newsreader_MediaAndStyles/fonts/Newsreader/static/Newsreader_36pt-Bold.ttf") format("truetype");
     font-weight: 700;
     font-optical-sizing: 36;
     font-style: normal;
@@ -860,7 +860,7 @@
 
 @font-face { 
     font-family: Newsreader_36pt;
-    src: url("@JscFonts_MediaAndStyles/fonts/Newsreader/static/Newsreader_36pt-BoldItalic.ttf") format("truetype");
+    src: url("@JscFonts_Newsreader_MediaAndStyles/fonts/Newsreader/static/Newsreader_36pt-BoldItalic.ttf") format("truetype");
     font-weight: 700;
     font-optical-sizing: 36;
     font-style: italic;
@@ -868,7 +868,7 @@
 
 @font-face { 
     font-family: Newsreader_36pt_BoldItalic;
-    src: url("@JscFonts_MediaAndStyles/fonts/Newsreader/static/Newsreader_36pt-BoldItalic.ttf") format("truetype");
+    src: url("@JscFonts_Newsreader_MediaAndStyles/fonts/Newsreader/static/Newsreader_36pt-BoldItalic.ttf") format("truetype");
     font-weight: 700;
     font-optical-sizing: 36;
     font-style: italic;
@@ -876,7 +876,7 @@
 
 @font-face { 
     font-family: Newsreader_36pt;
-    src: url("@JscFonts_MediaAndStyles/fonts/Newsreader/static/Newsreader_36pt-ExtraBold.ttf") format("truetype");
+    src: url("@JscFonts_Newsreader_MediaAndStyles/fonts/Newsreader/static/Newsreader_36pt-ExtraBold.ttf") format("truetype");
     font-weight: 800;
     font-optical-sizing: 36;
     font-style: normal;
@@ -884,7 +884,7 @@
 
 @font-face { 
     font-family: Newsreader_36pt_ExtraBold;
-    src: url("@JscFonts_MediaAndStyles/fonts/Newsreader/static/Newsreader_36pt-ExtraBold.ttf") format("truetype");
+    src: url("@JscFonts_Newsreader_MediaAndStyles/fonts/Newsreader/static/Newsreader_36pt-ExtraBold.ttf") format("truetype");
     font-weight: 800;
     font-optical-sizing: 36;
     font-style: normal;
@@ -892,7 +892,7 @@
 
 @font-face { 
     font-family: Newsreader_36pt;
-    src: url("@JscFonts_MediaAndStyles/fonts/Newsreader/static/Newsreader_36pt-ExtraBoldItalic.ttf") format("truetype");
+    src: url("@JscFonts_Newsreader_MediaAndStyles/fonts/Newsreader/static/Newsreader_36pt-ExtraBoldItalic.ttf") format("truetype");
     font-weight: 800;
     font-optical-sizing: 36;
     font-style: italic;
@@ -900,7 +900,7 @@
 
 @font-face { 
     font-family: Newsreader_36pt_ExtraBoldItalic;
-    src: url("@JscFonts_MediaAndStyles/fonts/Newsreader/static/Newsreader_36pt-ExtraBoldItalic.ttf") format("truetype");
+    src: url("@JscFonts_Newsreader_MediaAndStyles/fonts/Newsreader/static/Newsreader_36pt-ExtraBoldItalic.ttf") format("truetype");
     font-weight: 800;
     font-optical-sizing: 36;
     font-style: italic;
@@ -911,7 +911,7 @@
    =========================== */
 @font-face { 
     font-family: Newsreader_60pt;
-    src: url("@JscFonts_MediaAndStyles/fonts/Newsreader/static/Newsreader_60pt-ExtraLight.ttf") format("truetype");
+    src: url("@JscFonts_Newsreader_MediaAndStyles/fonts/Newsreader/static/Newsreader_60pt-ExtraLight.ttf") format("truetype");
     font-weight: 200;
     font-optical-sizing: 60;
     font-style: normal;
@@ -919,7 +919,7 @@
 
 @font-face { 
     font-family: Newsreader_60pt_ExtraLight;
-    src: url("@JscFonts_MediaAndStyles/fonts/Newsreader/static/Newsreader_60pt-ExtraLight.ttf") format("truetype");
+    src: url("@JscFonts_Newsreader_MediaAndStyles/fonts/Newsreader/static/Newsreader_60pt-ExtraLight.ttf") format("truetype");
     font-weight: 200;
     font-optical-sizing: 60;
     font-style: normal;
@@ -927,7 +927,7 @@
 
 @font-face { 
     font-family: Newsreader_60pt;
-    src: url("@JscFonts_MediaAndStyles/fonts/Newsreader/static/Newsreader_60pt-ExtraLightItalic.ttf") format("truetype");
+    src: url("@JscFonts_Newsreader_MediaAndStyles/fonts/Newsreader/static/Newsreader_60pt-ExtraLightItalic.ttf") format("truetype");
     font-weight: 200;
     font-optical-sizing: 60;
     font-style: italic;
@@ -935,7 +935,7 @@
 
 @font-face { 
     font-family: Newsreader_60pt_ExtraLightItalic;
-    src: url("@JscFonts_MediaAndStyles/fonts/Newsreader/static/Newsreader_60pt-ExtraLightItalic.ttf") format("truetype");
+    src: url("@JscFonts_Newsreader_MediaAndStyles/fonts/Newsreader/static/Newsreader_60pt-ExtraLightItalic.ttf") format("truetype");
     font-weight: 200;
     font-optical-sizing: 60;
     font-style: italic;
@@ -943,7 +943,7 @@
 
 @font-face { 
     font-family: Newsreader_60pt;
-    src: url("@JscFonts_MediaAndStyles/fonts/Newsreader/static/Newsreader_60pt-Light.ttf") format("truetype");
+    src: url("@JscFonts_Newsreader_MediaAndStyles/fonts/Newsreader/static/Newsreader_60pt-Light.ttf") format("truetype");
     font-weight: 300;
     font-optical-sizing: 60;
     font-style: normal;
@@ -951,7 +951,7 @@
 
 @font-face { 
     font-family: Newsreader_60pt_Light;
-    src: url("@JscFonts_MediaAndStyles/fonts/Newsreader/static/Newsreader_60pt-Light.ttf") format("truetype");
+    src: url("@JscFonts_Newsreader_MediaAndStyles/fonts/Newsreader/static/Newsreader_60pt-Light.ttf") format("truetype");
     font-weight: 300;
     font-optical-sizing: 60;
     font-style: normal;
@@ -959,7 +959,7 @@
 
 @font-face { 
     font-family: Newsreader_60pt;
-    src: url("@JscFonts_MediaAndStyles/fonts/Newsreader/static/Newsreader_60pt-LightItalic.ttf") format("truetype");
+    src: url("@JscFonts_Newsreader_MediaAndStyles/fonts/Newsreader/static/Newsreader_60pt-LightItalic.ttf") format("truetype");
     font-weight: 300;
     font-optical-sizing: 60;
     font-style: italic;
@@ -967,7 +967,7 @@
 
 @font-face { 
     font-family: Newsreader_60pt_LightItalic;
-    src: url("@JscFonts_MediaAndStyles/fonts/Newsreader/static/Newsreader_60pt-LightItalic.ttf") format("truetype");
+    src: url("@JscFonts_Newsreader_MediaAndStyles/fonts/Newsreader/static/Newsreader_60pt-LightItalic.ttf") format("truetype");
     font-weight: 300;
     font-optical-sizing: 60;
     font-style: italic;
@@ -975,7 +975,7 @@
 
 @font-face { 
     font-family: Newsreader_60pt;
-    src: url("@JscFonts_MediaAndStyles/fonts/Newsreader/static/Newsreader_60pt-Regular.ttf") format("truetype");
+    src: url("@JscFonts_Newsreader_MediaAndStyles/fonts/Newsreader/static/Newsreader_60pt-Regular.ttf") format("truetype");
     font-weight: 400;
     font-optical-sizing: 60;
     font-style: normal;
@@ -983,7 +983,7 @@
 
 @font-face { 
     font-family: Newsreader_60pt_Regular;
-    src: url("@JscFonts_MediaAndStyles/fonts/Newsreader/static/Newsreader_60pt-Regular.ttf") format("truetype");
+    src: url("@JscFonts_Newsreader_MediaAndStyles/fonts/Newsreader/static/Newsreader_60pt-Regular.ttf") format("truetype");
     font-weight: 400;
     font-optical-sizing: 60;
     font-style: normal;
@@ -991,7 +991,7 @@
 
 @font-face { 
     font-family: Newsreader_60pt;
-    src: url("@JscFonts_MediaAndStyles/fonts/Newsreader/static/Newsreader_60pt-Italic.ttf") format("truetype");
+    src: url("@JscFonts_Newsreader_MediaAndStyles/fonts/Newsreader/static/Newsreader_60pt-Italic.ttf") format("truetype");
     font-weight: 400;
     font-optical-sizing: 60;
     font-style: italic;
@@ -999,7 +999,7 @@
 
 @font-face { 
     font-family: Newsreader_60pt_Italic;
-    src: url("@JscFonts_MediaAndStyles/fonts/Newsreader/static/Newsreader_60pt-Italic.ttf") format("truetype");
+    src: url("@JscFonts_Newsreader_MediaAndStyles/fonts/Newsreader/static/Newsreader_60pt-Italic.ttf") format("truetype");
     font-weight: 400;
     font-optical-sizing: 60;
     font-style: italic;
@@ -1007,7 +1007,7 @@
 
 @font-face { 
     font-family: Newsreader_60pt;
-    src: url("@JscFonts_MediaAndStyles/fonts/Newsreader/static/Newsreader_60pt-Medium.ttf") format("truetype");
+    src: url("@JscFonts_Newsreader_MediaAndStyles/fonts/Newsreader/static/Newsreader_60pt-Medium.ttf") format("truetype");
     font-weight: 500;
     font-optical-sizing: 60;
     font-style: normal;
@@ -1015,7 +1015,7 @@
 
 @font-face { 
     font-family: Newsreader_60pt_Medium;
-    src: url("@JscFonts_MediaAndStyles/fonts/Newsreader/static/Newsreader_60pt-Medium.ttf") format("truetype");
+    src: url("@JscFonts_Newsreader_MediaAndStyles/fonts/Newsreader/static/Newsreader_60pt-Medium.ttf") format("truetype");
     font-weight: 500;
     font-optical-sizing: 60;
     font-style: normal;
@@ -1023,7 +1023,7 @@
 
 @font-face { 
     font-family: Newsreader_60pt;
-    src: url("@JscFonts_MediaAndStyles/fonts/Newsreader/static/Newsreader_60pt-MediumItalic.ttf") format("truetype");
+    src: url("@JscFonts_Newsreader_MediaAndStyles/fonts/Newsreader/static/Newsreader_60pt-MediumItalic.ttf") format("truetype");
     font-weight: 500;
     font-optical-sizing: 60;
     font-style: italic;
@@ -1031,7 +1031,7 @@
 
 @font-face { 
     font-family: Newsreader_60pt_MediumItalic;
-    src: url("@JscFonts_MediaAndStyles/fonts/Newsreader/static/Newsreader_60pt-MediumItalic.ttf") format("truetype");
+    src: url("@JscFonts_Newsreader_MediaAndStyles/fonts/Newsreader/static/Newsreader_60pt-MediumItalic.ttf") format("truetype");
     font-weight: 500;
     font-optical-sizing: 60;
     font-style: italic;
@@ -1039,7 +1039,7 @@
 
 @font-face { 
     font-family: Newsreader_60pt;
-    src: url("@JscFonts_MediaAndStyles/fonts/Newsreader/static/Newsreader_60pt-SemiBold.ttf") format("truetype");
+    src: url("@JscFonts_Newsreader_MediaAndStyles/fonts/Newsreader/static/Newsreader_60pt-SemiBold.ttf") format("truetype");
     font-weight: 600;
     font-optical-sizing: 60;
     font-style: normal;
@@ -1047,7 +1047,7 @@
 
 @font-face { 
     font-family: Newsreader_60pt_SemiBold;
-    src: url("@JscFonts_MediaAndStyles/fonts/Newsreader/static/Newsreader_60pt-SemiBold.ttf") format("truetype");
+    src: url("@JscFonts_Newsreader_MediaAndStyles/fonts/Newsreader/static/Newsreader_60pt-SemiBold.ttf") format("truetype");
     font-weight: 600;
     font-optical-sizing: 60;
     font-style: normal;
@@ -1055,7 +1055,7 @@
 
 @font-face { 
     font-family: Newsreader_60pt;
-    src: url("@JscFonts_MediaAndStyles/fonts/Newsreader/static/Newsreader_60pt-SemiBoldItalic.ttf") format("truetype");
+    src: url("@JscFonts_Newsreader_MediaAndStyles/fonts/Newsreader/static/Newsreader_60pt-SemiBoldItalic.ttf") format("truetype");
     font-weight: 600;
     font-optical-sizing: 60;
     font-style: italic;
@@ -1063,7 +1063,7 @@
 
 @font-face { 
     font-family: Newsreader_60pt_SemiBoldItalic;
-    src: url("@JscFonts_MediaAndStyles/fonts/Newsreader/static/Newsreader_60pt-SemiBoldItalic.ttf") format("truetype");
+    src: url("@JscFonts_Newsreader_MediaAndStyles/fonts/Newsreader/static/Newsreader_60pt-SemiBoldItalic.ttf") format("truetype");
     font-weight: 600;
     font-optical-sizing: 60;
     font-style: italic;
@@ -1071,7 +1071,7 @@
 
 @font-face { 
     font-family: Newsreader_60pt;
-    src: url("@JscFonts_MediaAndStyles/fonts/Newsreader/static/Newsreader_60pt-Bold.ttf") format("truetype");
+    src: url("@JscFonts_Newsreader_MediaAndStyles/fonts/Newsreader/static/Newsreader_60pt-Bold.ttf") format("truetype");
     font-weight: 700;
     font-optical-sizing: 60;
     font-style: normal;
@@ -1079,7 +1079,7 @@
 
 @font-face { 
     font-family: Newsreader_60pt_Bold;
-    src: url("@JscFonts_MediaAndStyles/fonts/Newsreader/static/Newsreader_60pt-Bold.ttf") format("truetype");
+    src: url("@JscFonts_Newsreader_MediaAndStyles/fonts/Newsreader/static/Newsreader_60pt-Bold.ttf") format("truetype");
     font-weight: 700;
     font-optical-sizing: 60;
     font-style: normal;
@@ -1087,7 +1087,7 @@
 
 @font-face { 
     font-family: Newsreader_60pt;
-    src: url("@JscFonts_MediaAndStyles/fonts/Newsreader/static/Newsreader_60pt-BoldItalic.ttf") format("truetype");
+    src: url("@JscFonts_Newsreader_MediaAndStyles/fonts/Newsreader/static/Newsreader_60pt-BoldItalic.ttf") format("truetype");
     font-weight: 700;
     font-optical-sizing: 60;
     font-style: italic;
@@ -1095,7 +1095,7 @@
 
 @font-face { 
     font-family: Newsreader_60pt_BoldItalic;
-    src: url("@JscFonts_MediaAndStyles/fonts/Newsreader/static/Newsreader_60pt-BoldItalic.ttf") format("truetype");
+    src: url("@JscFonts_Newsreader_MediaAndStyles/fonts/Newsreader/static/Newsreader_60pt-BoldItalic.ttf") format("truetype");
     font-weight: 700;
     font-optical-sizing: 60;
     font-style: italic;
@@ -1103,7 +1103,7 @@
 
 @font-face { 
     font-family: Newsreader_60pt;
-    src: url("@JscFonts_MediaAndStyles/fonts/Newsreader/static/Newsreader_60pt-ExtraBold.ttf") format("truetype");
+    src: url("@JscFonts_Newsreader_MediaAndStyles/fonts/Newsreader/static/Newsreader_60pt-ExtraBold.ttf") format("truetype");
     font-weight: 800;
     font-optical-sizing: 60;
     font-style: normal;
@@ -1111,7 +1111,7 @@
 
 @font-face { 
     font-family: Newsreader_60pt_ExtraBold;
-    src: url("@JscFonts_MediaAndStyles/fonts/Newsreader/static/Newsreader_60pt-ExtraBold.ttf") format("truetype");
+    src: url("@JscFonts_Newsreader_MediaAndStyles/fonts/Newsreader/static/Newsreader_60pt-ExtraBold.ttf") format("truetype");
     font-weight: 800;
     font-optical-sizing: 60;
     font-style: normal;
@@ -1119,7 +1119,7 @@
 
 @font-face { 
     font-family: Newsreader_60pt;
-    src: url("@JscFonts_MediaAndStyles/fonts/Newsreader/static/Newsreader_60pt-ExtraBoldItalic.ttf") format("truetype");
+    src: url("@JscFonts_Newsreader_MediaAndStyles/fonts/Newsreader/static/Newsreader_60pt-ExtraBoldItalic.ttf") format("truetype");
     font-weight: 800;
     font-optical-sizing: 60;
     font-style: italic;
@@ -1127,7 +1127,7 @@
 
 @font-face { 
     font-family: Newsreader_60pt_ExtraBoldItalic;
-    src: url("@JscFonts_MediaAndStyles/fonts/Newsreader/static/Newsreader_60pt-ExtraBoldItalic.ttf") format("truetype");
+    src: url("@JscFonts_Newsreader_MediaAndStyles/fonts/Newsreader/static/Newsreader_60pt-ExtraBoldItalic.ttf") format("truetype");
     font-weight: 800;
     font-optical-sizing: 60;
     font-style: italic;

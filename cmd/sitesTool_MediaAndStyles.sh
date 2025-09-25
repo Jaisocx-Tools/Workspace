@@ -54,7 +54,7 @@ fi
   --packagePath="www/packages/SitesToolAutomation" \
   --script="main/produceSitesTool_MediaAndStyles.js" \
       --cssOrJsTool="media" \
-      --sitesToolName="JscFonts_Orbitron" \
+      --sitesToolName="JscFonts_Newsreader" \
       --sitesTool_ThemeName="theme_base" \
       --templatePath="data/templates/css/responsive/responsive_size__mini.css.template" \
       --withSizesCssConstants="no" \
