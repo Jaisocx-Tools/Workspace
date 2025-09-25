@@ -42,7 +42,7 @@
       "require": "./transpiled/CommonJS/webpack.aliases.cjs"
     }
   },
-  "dependencies": {
+  "optionalDependencies": {
     "@jaisocx/css-clean-start-2": "~1.1.10"
   }
 }

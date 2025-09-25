@@ -166,8 +166,8 @@
 
                 <alias comment="caching fonts hardcoded in order to set caching response headers so that browsers don't request fonts more than once, saving up megabytes of traffic on each load or reload of all pages, having fine-tuned font-family styles, by @font-face styles and link preload for fonts))."
                        art="folder"
-                       url="/sites_tools/media_tools/JscFonts/MediaAndStyles/fonts/"
-                       path="/var/www/workspace/ts/www/sites_tools/media_tools/JscFonts/MediaAndStyles/fonts"
+                       url="/sites_tools/media_tools/JscFonts_base/MediaAndStyles/fonts/"
+                       path="/var/www/workspace/ts/www/sites_tools/media_tools/JscFonts_base/MediaAndStyles/fonts"
                        cache="cache"
                        list="true"
                        each-folder-content-file-name="root.html" />

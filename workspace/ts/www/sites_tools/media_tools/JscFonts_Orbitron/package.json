@@ -1,13 +1,19 @@
 {
-  "name": "@jaisocx/media_tools_fonts_base",
-  "version": "1.0.1",
+  "name": "@jaisocx/media_tools_fonts_Orbitron",
+  "version": "1.0.4",
   "description": "The one npm package for the Jaisocx Sites Tools with fonts and styles importing fonts, for the sites tools preview. To install on demand, if not relaying on the cdn.",
   "author": "Jaisocx Company",
   "keywords": [
-    "css",
-    "styles"
+    "imports",
+    "fonts",
+    "styles",
+    "css"
   ],
   "files": [
+    "index.preview.html",
+    "fonts_preview_prod.html",
+    "fonts_preview_dev.html",
+
     "MediaAndStyles/*.css",
     "MediaAndStyles/fonts",
 
@@ -36,8 +42,9 @@
       "require": "./transpiled/CommonJS/webpack.aliases.cjs"
     }
   },
-  "dependencies": {
-    "@jaisocx/css-clean-start-2": "~1.1.10"
+  "optionalDependencies": {
+    "@jaisocx/css-clean-start-2": "~1.1.10",
+    "@jaisocx/media_tools_fonts_base": "~1.0.3"
   }
 }
 

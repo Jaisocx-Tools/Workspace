@@ -1,0 +1,7 @@
+/* Main .css file for the sites media: JscFonts_Orbitron */
+.jsc.JscFonts_Orbitron {
+    --css-clean-start-2--main--font-family: Orbitron, v_Orbitron;
+
+    --jsx--css-clean-start-2--all-tags--font-family: var(--css-clean-start-2--main--font-family);
+}
+
