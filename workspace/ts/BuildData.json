@@ -52,8 +52,8 @@
       "build-files": []
     },
     {
-      "path": "sites_tools/media_tools/JscFonts",
-      "name": "fonts",
+      "path": "sites_tools/media_tools/JscFonts_base",
+      "name": "media_tools_fonts_base",
       "update-published": "",
       "build": false,
       "build-simple-enable": false,
