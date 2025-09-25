@@ -58,9 +58,9 @@
       "build": false,
       "build-simple-enable": false,
       "css-importer": {
-        "build": false,
-        "cssFilePath": "MediaAndStyles/JscFonts_main_Webpack.css",
-        "cssTargetFilePath": "MediaAndStyles/JscFonts_main_resolved.css"
+        "build": true,
+        "cssFilePath": "MediaAndStyles/JscFonts_main_CssImporterRelative_minimal.css",
+        "cssTargetFilePath": "MediaAndStyles/JscFonts_main_resolved_minimal.css"
       },
       "dependencies": [],
       "build-files": []

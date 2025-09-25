@@ -39,6 +39,16 @@ class CssImporterConstants {
                     ")",
                     ";"
                 ]
+            },
+            "url": {
+                "setBegin": [
+                    "url",
+                    "("
+                ],
+                "setEnd": [
+                    ")",
+                    ";"
+                ]
             }
         }, "f");
     }

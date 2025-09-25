@@ -80,7 +80,6 @@ export class ProjectBuilder {
     propertyName: any,
     relativePath: any
   ): ProjectBuilder {
-
     if (!this.absolutePathToProjectRoot) {
       throw new Error("The Absolute Path to Project root is not specified!!!");
     }
@@ -164,7 +163,6 @@ export class ProjectBuilder {
 
 
   build(dataJson: any): any {
-
     if (!dataJson.packages || 0 === dataJson.packages.length) {
       throw new Error("no packages array set in BuildData.json");
     }
@@ -452,6 +450,7 @@ export class ProjectBuilder {
     // );
     let cssImporter: CssImporter = new CssImporter();
     cssImporter
+      .setDebug( false )
       .setPackagePath( packagePath )
       .setCssFilePath( path.resolve(
         packagePath,

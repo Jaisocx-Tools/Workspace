@@ -227,6 +227,7 @@ export class ProjectBuilder {
         // );
         let cssImporter = new CssImporter();
         cssImporter
+            .setDebug(false)
             .setPackagePath(packagePath)
             .setCssFilePath(path.resolve(packagePath, confNodeCss.cssFilePath))
             .setCssTargetFilePath(path.resolve(packagePath, confNodeCss.cssTargetFilePath))
