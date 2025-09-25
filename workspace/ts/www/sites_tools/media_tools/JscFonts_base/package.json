@@ -1,11 +1,13 @@
 {
   "name": "@jaisocx/media_tools_fonts_base",
-  "version": "1.0.1",
+  "version": "1.0.3",
   "description": "The one npm package for the Jaisocx Sites Tools with fonts and styles importing fonts, for the sites tools preview. To install on demand, if not relaying on the cdn.",
   "author": "Jaisocx Company",
   "keywords": [
-    "css",
-    "styles"
+    "imports",
+    "fonts",
+    "styles",
+    "css"
   ],
   "files": [
     "index.preview.html",
