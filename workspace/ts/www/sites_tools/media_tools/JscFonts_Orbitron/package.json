@@ -1,6 +1,6 @@
 {
-  "name": "@jaisocx/media_tools_fonts_Orbitron",
-  "version": "1.0.4",
+  "name": "@jaisocx/media_tools_fonts_orbitron",
+  "version": "1.0.7",
   "description": "The one npm package for the Jaisocx Sites Tools with fonts and styles importing fonts, for the sites tools preview. To install on demand, if not relaying on the cdn.",
   "author": "Jaisocx Company",
   "keywords": [

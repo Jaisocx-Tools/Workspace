@@ -66,10 +66,10 @@
       "build-files": []
     },
     {
-      "path": "sites_tools/media_tools/JscFonts_Orbitron",
+      "path": "sites_tools/media_tools/JscFonts_orbitron",
       "name": "media_tools_fonts_Orbitron",
       "update-published": "Thu Sep 25 11:40:28 CEST 2025",
-      "build": false,
+      "build": true,
       "build-simple-enable": false,
       "css-importer": {
         "build": false,
