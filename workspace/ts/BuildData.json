@@ -73,9 +73,9 @@
       "build-simple-enable": false,
       "css-importer": {
         "build": false,
-        "cssFilePath": "MediaAndStyles/JscFonts_Orbitron_main_CssImporterRelative_minimal.css",
+        "cssFilePath": "MediaAndStyles/JscFonts_Orbitron_main_css_importer_relative_minimal.css",
         "cssTargetFilePath": "MediaAndStyles/JscFonts_Orbitron_main_resolved_minimal.css"
-      },
+      },css_importer_relative
       "dependencies": [],
       "build-files": []
     },
