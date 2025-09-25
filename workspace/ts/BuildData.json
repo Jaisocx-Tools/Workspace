@@ -54,11 +54,11 @@
     {
       "path": "sites_tools/media_tools/JscFonts_base",
       "name": "media_tools_fonts_base",
-      "update-published": "Thu Sep 25 05:34:01 UTC 2025",
+      "update-published": "Thu Sep 25 11:40:28 CEST 2025",
       "build": false,
       "build-simple-enable": false,
       "css-importer": {
-        "build": true,
+        "build": false,
         "cssFilePath": "MediaAndStyles/JscFonts_main_CssImporterRelative_minimal.css",
         "cssTargetFilePath": "MediaAndStyles/JscFonts_main_resolved_minimal.css"
       },
@@ -68,12 +68,12 @@
     {
       "path": "sites_tools/media_tools/JscFonts_Orbitron",
       "name": "media_tools_fonts_Orbitron",
-      "update-published": "Thu Sep 25 07:11:08 UTC 2025",
+      "update-published": "Thu Sep 25 11:40:28 CEST 2025",
       "build": false,
       "build-simple-enable": false,
       "css-importer": {
         "build": false,
-        "cssFilePath": "MediaAndStyles/JscFonts_Orbitron_main_css_importer_relative_minimal.css",
+        "cssFilePath": "MediaAndStyles/JscFonts_Orbitron_main_CssImporterRelative_minimal.css",
         "cssTargetFilePath": "MediaAndStyles/JscFonts_Orbitron_main_resolved_minimal.css"
       },
       "dependencies": [],
