@@ -1,13 +1,32 @@
-
-/* @import url("./responsive_size_Constants.css"); */
-
-/* base theme: constants and @media queries */
-@import url("./themes/theme_base/JscImages_mini_datatypes_base_theme_base_main.css");
-@import url("./themes/theme_base/responsive_size_Imports_JscImages_mini_datatypes_base_theme_base_Relative.css");
-
-
-
-/* main css file, css logics with rules set via variables in the theme .css files imported above */
 @import url("./JscImages_mini_datatypes_base_main.css");
 
+
+
+.jsc .JscImages_mini_datatypes_base .mini-image.datatype {
+  background-image: url("./images/icons8-static-view-level2-80.png");
+}
+
+.jsc .JscImages_mini_datatypes_base .mini-image.datatype.object {
+  background-image: url("./images/icons8-static-view-level2-80.png");
+}
+
+.jsc .JscImages_mini_datatypes_base .mini-image.datatype.array {
+  background-image: url("./images/icons8-view-array-96.png");
+}
+
+.jsc .JscImages_mini_datatypes_base .mini-image.datatype.json {
+  background-image: url("./images/icons8-json-96.png");
+}
+
+.jsc .JscImages_mini_datatypes_base .mini-image.datatype.string {
+  background-image: url("./images/icons8-font-style-formatting-96.png");
+}
+
+.jsc .JscImages_mini_datatypes_base .mini-image.datatype.number {
+  background-image: url("./images/icons8-3-100.png");
+}
+
+.jsc .JscImages_mini_datatypes_base .mini-image.datatype.boolean {
+  background-image: url("./images/icons8-true-false-96.png");
+}
 

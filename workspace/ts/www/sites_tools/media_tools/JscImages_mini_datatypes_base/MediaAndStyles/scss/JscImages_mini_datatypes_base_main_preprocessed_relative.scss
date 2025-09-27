@@ -1,0 +1,44 @@
+@use "./variables__mini-images-urls" as urls_variables;
+@use "../JscImages_mini_datatypes_base_main";
+
+$base_url: #{urls_variables.$relative_base_url}#{urls_variables.$relative_path};
+
+
+
+$image-url: #{$base_url}#{urls_variables.$mini-image-datatype--object--url--relative};
+.jsc .JscImages_mini_datatypes_base .mini-image.datatype {
+    background-image: url("#{$image-url}");
+}
+
+
+
+.jsc .JscImages_mini_datatypes_base .mini-image.datatype.object {
+    background-image: url("#{$image-url}");
+}
+
+$image-url: #{$base_url}#{urls_variables.$mini-image-datatype--array--url--relative};
+.jsc .JscImages_mini_datatypes_base .mini-image.datatype.array {
+    background-image: url("#{$image-url}");
+}
+
+$image-url: #{$base_url}#{urls_variables.$mini-image-datatype--json--url--relative};
+.jsc .JscImages_mini_datatypes_base .mini-image.datatype.json {
+    background-image: url("#{$image-url}");
+}
+
+$image-url: #{$base_url}#{urls_variables.$mini-image-datatype--string--url--relative};
+.jsc .JscImages_mini_datatypes_base .mini-image.datatype.string {
+    background-image: url("#{$image-url}");
+}
+
+$image-url: #{$base_url}#{urls_variables.$mini-image-datatype--number--url--relative};
+.jsc .JscImages_mini_datatypes_base .mini-image.datatype.number {
+    background-image: url("#{$image-url}");
+}
+
+$image-url: #{$base_url}#{urls_variables.$mini-image-datatype--boolean--url--relative};
+.jsc .JscImages_mini_datatypes_base .mini-image.datatype.boolean {
+    background-image: url("#{$image-url}");
+}
+
+

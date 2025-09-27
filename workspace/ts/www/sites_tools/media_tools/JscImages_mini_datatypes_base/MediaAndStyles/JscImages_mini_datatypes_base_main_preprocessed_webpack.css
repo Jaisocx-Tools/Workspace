@@ -1,9 +1,27 @@
-/* mini-images */
+.jsc images-block.JscImages_mini_datatypes_base,
+.jsc .JscImages_mini_datatypes_base images-block {
+  --jsc--images-mini--datatypes--base--gap: 0.9rem;
+  --jsc--images-mini--datatypes--base--size: 4rem;
+  --jsc--images-mini--datatypes--base--width: var(--jsc--images-mini--datatypes--base--size);
+  --jsc--images-mini--datatypes--base--height: var(--jsc--images-mini--datatypes--base--size);
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: var(--jsc--images-mini--datatypes--base--gap);
+  justify-content: flex-start;
+  align-items: flex-start;
+  align-content: flex-start;
+}
 
-@import url("@JscImages_mini_datatypes_base_MediaAndStyles/JscImages_mini_datatypes_base_main.css");
-
-
-/* mini-images */
+.jsc .JscImages_mini_datatypes_base .mini-image.datatype {
+  width: var(--jsc--images-mini--datatypes--base--width);
+  height: var(--jsc--images-mini--datatypes--base--height);
+  background-repeat: no-repeat;
+  background-clip: border-box;
+  background-origin: border-box;
+  background-position: 0 0;
+  background-size: var(--jsc--images-mini--datatypes--base--width) var(--jsc--images-mini--datatypes--base--height);
+}
 
 .jsc .JscImages_mini_datatypes_base .mini-image.datatype {
   background-image: url("@JscImages_mini_datatypes_base_MediaAndStyles/images/icons8-static-view-level2-80.png");
@@ -32,4 +50,3 @@
 .jsc .JscImages_mini_datatypes_base .mini-image.datatype.boolean {
   background-image: url("@JscImages_mini_datatypes_base_MediaAndStyles/images/icons8-true-false-96.png");
 }
-
