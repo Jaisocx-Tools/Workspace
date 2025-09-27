@@ -2,6 +2,7 @@ import { CssImporter } from "./CssImporter.js";
 import { ParsedResultDTO } from "./ParsedResultDTO.js";
 
 
+
 export interface CssImporterInterface {
 
   setDebug( inDebug: boolean ): CssImporter;
@@ -32,22 +33,11 @@ export interface CssImporterInterface {
   cssBundleMake (
     inParsedResultDTO: ParsedResultDTO,
     inFilePath: string,
-    bitsbufName: string,
     counterStop: number
-  ): ParsedResultDTO;
-
-  compareRanges (
-    fileContentsBuffer: Uint8Array,
-    bitsbufName: string,
-    ranges: number[][],
-    inResultDTO: ParsedResultDTO,
-    mainRangeStart: number,
-    inLastRangeIx: number,
-    counterStop: number,
-    isRangeImportUrl: boolean
   ): number;
 
 }
+
 
 
 

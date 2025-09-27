@@ -1,5 +1,5 @@
 {
-  "name": "@jaisocx/image-mini-datatypes-base",
+  "name": "@jaisocx/images-mini-datatypes-base",
   "version": "1.0.1",
   "description": "",
   "author": "Jaisocx Company",
@@ -12,11 +12,12 @@
   ],
   "files": [
     "index.preview.html",
-    "jsc_img_mini_datatypes_base__preview_dev.html",
-    "jsc_img_mini_datatypes_base__preview_prod.html",
+    "prod_jsc_img_mini_datatypes_base__preview.html",
+    "dev_jsc_img_mini_datatypes_base__preview.html",
 
     "MediaAndStyles/*.css",
     "MediaAndStyles/images",
+    "MediaAndStyles/scss",
 
     "transpiled/CommonJS",
     "transpiled/ESNext",

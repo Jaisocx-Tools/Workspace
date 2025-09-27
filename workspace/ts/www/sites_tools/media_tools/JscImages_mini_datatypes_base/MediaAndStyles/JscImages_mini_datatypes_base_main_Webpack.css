@@ -1,9 +1,4 @@
-/* mini-images */
-
 @import url("@JscImages_mini_datatypes_base_MediaAndStyles/JscImages_mini_datatypes_base_main.css");
-
-
-/* mini-images */
 
 .jsc .JscImages_mini_datatypes_base .mini-image.datatype {
   background-image: url("@JscImages_mini_datatypes_base_MediaAndStyles/images/icons8-static-view-level2-80.png");
@@ -32,4 +27,6 @@
 .jsc .JscImages_mini_datatypes_base .mini-image.datatype.boolean {
   background-image: url("@JscImages_mini_datatypes_base_MediaAndStyles/images/icons8-true-false-96.png");
 }
+
+
 

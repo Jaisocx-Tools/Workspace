@@ -1,6 +1,6 @@
 {
   "name": "@jaisocx/project-builder",
-  "version": "1.3.2",
+  "version": "1.3.3",
   "author": "Jaisocx",
   "private": false,
   "type": "module",
@@ -22,7 +22,7 @@
     "watch": "tsc -w -p ./tsconfig.ESNext.overrides.json"
   },
   "dependencies": {
-    "@jaisocx/css-importer": "^1.3.3",
+    "@jaisocx/css-importer": "^1.4.1",
     "@jaisocx/eslint-plugins": "^1.3.2",
     "@jaisocx/file-writer": "^1.2.2",
     "json5": "^2.2.3"
@@ -31,5 +31,3 @@
     "@types/json5": "^0.0.30"
   }
 }
-
-

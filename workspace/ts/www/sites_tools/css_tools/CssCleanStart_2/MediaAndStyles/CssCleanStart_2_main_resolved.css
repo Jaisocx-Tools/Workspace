@@ -1,140 +1,29 @@
 
-.jsx {
-
-  
-  --responsive_size_e02_mobile_xs_portrait_min_width: 240px;
-  --responsive_size_e02_mobile_xs_portrait_max_width: 320px;
-
-  --responsive_size_e02_mobile_xs_landscape_min_width: 320px;
-  --responsive_size_e02_mobile_xs_landscape_max_width: 500px;
 
 
 
-  
-  --responsive_size_e04_mobile_s_portrait_min_width: 321px;
-  --responsive_size_e04_mobile_s_portrait_max_width: 374px;
-
-  --responsive_size_e04_mobile_s_landscape_min_width: 501px;
-  --responsive_size_e04_mobile_s_landscape_max_width: 667px;
 
 
 
-  
-  --responsive_size_e06_mobile_sm_portrait_min_width: 375px;
-  --responsive_size_e06_mobile_sm_portrait_max_width: 430px;
-
-  --responsive_size_e06_mobile_sm_landscape_min_width: 668px;
-  --responsive_size_e06_mobile_sm_landscape_max_width: 736px;
 
 
 
-  
-  --responsive_size_e08_mobile_md_portrait_min_width: 431px;
-  --responsive_size_e08_mobile_md_portrait_max_width: 480px;
-
-  --responsive_size_e08_mobile_md_landscape_min_width: 737px;
-  --responsive_size_e08_mobile_md_landscape_max_width: 812px;
 
 
 
-  
-  --responsive_size_h03_tablet_sm_portrait_min_width: 481px;
-  --responsive_size_h03_tablet_sm_portrait_max_width: 767px;
-
-  --responsive_size_h03_tablet_sm_landscape_min_width: 813px;
-  --responsive_size_h03_tablet_sm_landscape_max_width: 960px;
 
 
 
-  
-  --responsive_size_h05_tablet_md_portrait_min_width: 768px;
-  --responsive_size_h05_tablet_md_portrait_max_width: 1024px;
-
-  --responsive_size_h05_tablet_md_landscape_min_width: 961px;
-  --responsive_size_h05_tablet_md_landscape_max_width: 1024px;
 
 
 
-  
-  --responsive_size_l03_laptop_sm_portrait_min_width: 1025px;
-  --responsive_size_l03_laptop_sm_portrait_max_width: 1080px;
-
-  --responsive_size_l03_laptop_sm_landscape_min_width: 1025px;
-  --responsive_size_l03_laptop_sm_landscape_max_width: 1279px;
 
 
 
-  
-  --responsive_size_l05_laptop_md_portrait_min_width: 1081px;
-  --responsive_size_l05_laptop_md_portrait_max_width: 1200px;
-
-  --responsive_size_l05_laptop_md_landscape_min_width: 1280px;
-  --responsive_size_l05_laptop_md_landscape_max_width: 1439px;
 
 
 
-  
-  --responsive_size_l07_laptop_lg_portrait_min_width: 1201px;
-  --responsive_size_l07_laptop_lg_portrait_max_width: 1440px;
 
-  --responsive_size_l07_laptop_lg_landscape_min_width: 1440px;
-  --responsive_size_l07_laptop_lg_landscape_max_width: 1600px;
-
-
-
-  
-  --responsive_size_s02_display_xl_portrait_min_width: 1441px;
-  --responsive_size_s02_display_xl_portrait_max_width: 1600px;
-
-  --responsive_size_s02_display_xl_landscape_min_width: 1601px;
-  --responsive_size_s02_display_xl_landscape_max_width: 1920px;
-
-
-
-  
-  --responsive_size_s04_display_xxl_portrait_min_width: 1601px;
-  --responsive_size_s04_display_xxl_portrait_max_width: 2160px;
-
-  --responsive_size_s04_display_xxl_landscape_min_width: 1921px;
-  --responsive_size_s04_display_xxl_landscape_max_width: 2560px;
-
-
-
-  
-  --responsive_size_s08_display_qhd_portrait_min_width: 2161px;
-  --responsive_size_s08_display_qhd_portrait_max_width: 2160px;
-
-  --responsive_size_s08_display_qhd_landscape_min_width: 2561px;
-  --responsive_size_s08_display_qhd_landscape_max_width: 3840px;
-
-
-
-  
-  --responsive_size_t04_tv_4k_portrait_min_width: 2161px;
-  --responsive_size_t04_tv_4k_portrait_max_width: 4320px;
-
-  --responsive_size_t04_tv_4k_landscape_min_width: 3841px;
-  --responsive_size_t04_tv_4k_landscape_max_width: 7680px;
-
-
-
-  
-  --responsive_size_t08_tv_8k_portrait_min_width: 4321px;
-  --responsive_size_t08_tv_8k_portrait_max_width: 8640px;
-
-  --responsive_size_t08_tv_8k_landscape_min_width: 7681px;
-  --responsive_size_t08_tv_8k_landscape_max_width: 15360px;
-
-
-
-  
-  --responsive_size_t16_tv_16k_portrait_min_width: 8641px;
-  --responsive_size_t16_tv_16k_portrait_max_width: 9999px;
-
-  --responsive_size_t16_tv_16k_landscape_min_width: 15361px;
-  --responsive_size_t16_tv_16k_landscape_max_width: 25360px;
-
-}
 
 
 .jsx {
@@ -328,208 +217,101 @@
 
 
 
-@media only screen and (min-width: 2px) and (max-width: 239px) and (min-height: 2px) and (max-height: 99999px) and (orientation: portrait) {
 
-  .jsx {
-    --theme_name: CssCleanStart_2__theme_base;
-    --theme_name__CssCleanStart_2: theme_base;
 
-    --responsive_size: responsive_size_d05_very_small_xxs_portrait;
 
-    --responsive_size__min-width: 2px;
-    --responsive_size__max-width: 239px;
 
-    --responsive_size__min-height: 2px;
-    --responsive_size__max-height: 99999px;
 
 
 
-    --responsive_size__CssCleanStart_2__theme_base: responsive_size_d05_very_small_xxs_portrait__CssCleanStart_2__theme_base;
 
-    --responsive_size__CssCleanStart_2__theme_base__min-width: 2px;
-    --responsive_size__CssCleanStart_2__theme_base__max-width: 239px;
 
-    --responsive_size__CssCleanStart_2__theme_base__min-height: 2px;
-    --responsive_size__CssCleanStart_2__theme_base__max-height: 99999px;
 
 
 
 
 
-    
-    
-    
 
 
-    
-    
-    
 
 
 
-    
-    
-    
-    
 
-    
-    
-    
 
-    
-    
 
 
 
-    
-    
-    
-    
 
-    
-    
 
-    --jsx--css-clean-start-2--site--width: 100%;
-    
-    --jsx--css-clean-start-2--site--min-width: 100%;
 
 
 
-    
-    
 
-    
-    
-    
-    
-    
 
 
-    
-    
-    
 
 
 
-    
-    
-    
 
-    
-    
-    
 
-    
-    
 
-    
-    
-    
 
-    
 
-    
-    
 
-    --jsx--css-clean-start-2--all-tags--font-size: 1rem;
-    --jsx--css-clean-start-2--all-tags--line-height: 1.29rem;
 
-    
-    
-    
 
 
 
-    
-    
-    
-    
-    
 
 
 
-    
-    
 
-    
-    
 
-    
-    
 
-    
-    
 
-    
-    
 
-    
-    
 
 
 
-    
-    
-    
-    
 
-    
-    
-    
-    
 
-    
-    
-    
-    
 
-    
-    
-    
-    
 
-    
-    
-    
-    
 
-    
-    
-    
-    
 
 
 
-    
-    
-    
 
-    
-    
 
-    
-    
 
 
 
-    
-    
-    
 
-    
-    
 
-    
-    
 
 
 
-    
-    
 
-  }
 
-}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -739,6 +521,8 @@
 
 
 
+
+
 @media only screen and (min-width: 240px) and (max-width: 320px) and (min-height: 240px) and (max-height: 99999px) and (orientation: portrait) {
 
   .jsx {
@@ -941,6 +725,9 @@
   }
 
 }
+
+
+
 
 
 
@@ -1150,6 +937,8 @@
 
 
 
+
+
 @media only screen and (min-width: 321px) and (max-width: 375px) and (min-height: 321px) and (max-height: 99999px) and (orientation: portrait) {
 
   .jsx {
@@ -1352,6 +1141,9 @@
   }
 
 }
+
+
+
 
 
 
@@ -1561,6 +1353,8 @@
 
 
 
+
+
 @media only screen and (min-width: 376px) and (max-width: 430px) and (min-height: 376px) and (max-height: 99999px) and (orientation: portrait) {
 
   .jsx {
@@ -1763,6 +1557,9 @@
   }
 
 }
+
+
+
 
 
 
@@ -1972,6 +1769,8 @@
 
 
 
+
+
 @media only screen and (min-width: 431px) and (max-width: 480px) and (min-height: 431px) and (max-height: 99999px) and (orientation: portrait) {
 
   .jsx {
@@ -2174,6 +1973,9 @@
   }
 
 }
+
+
+
 
 
 
@@ -2383,6 +2185,8 @@
 
 
 
+
+
 @media only screen and (min-width: 481px) and (max-width: 767px) and (min-height: 481px) and (max-height: 99999px) and (orientation: portrait) {
 
   .jsx {
@@ -2585,6 +2389,9 @@
   }
 
 }
+
+
+
 
 
 
@@ -2794,6 +2601,8 @@
 
 
 
+
+
 @media only screen and (min-width: 768px) and (max-width: 1024px) and (min-height: 768px) and (max-height: 1024px) and (orientation: portrait) {
 
   .jsx {
@@ -2996,6 +2805,9 @@
   }
 
 }
+
+
+
 
 
 
@@ -3205,6 +3017,8 @@
 
 
 
+
+
 @media only screen and (min-width: 768px) and (max-width: 1024px) and (min-height: 1025px) and (max-height: 1194px) and (orientation: portrait) {
 
   .jsx {
@@ -3407,6 +3221,9 @@
   }
 
 }
+
+
+
 
 
 
@@ -3616,6 +3433,8 @@
 
 
 
+
+
 @media only screen and (min-width: 768px) and (max-width: 1024px) and (min-height: 1195px) and (max-height: 99999px) and (orientation: portrait) {
 
   .jsx {
@@ -3818,6 +3637,9 @@
   }
 
 }
+
+
+
 
 
 
@@ -4027,6 +3849,8 @@
 
 
 
+
+
 @media only screen and (min-width: 1025px) and (max-width: 1365px) and (min-height: 1025px) and (max-height: 1365px) and (orientation: portrait) {
 
   .jsx {
@@ -4229,6 +4053,9 @@
   }
 
 }
+
+
+
 
 
 
@@ -4438,6 +4265,8 @@
 
 
 
+
+
 @media only screen and (min-width: 1025px) and (max-width: 1440px) and (min-height: 1366px) and (max-height: 1440px) and (orientation: portrait) {
 
   .jsx {
@@ -4640,6 +4469,9 @@
   }
 
 }
+
+
+
 
 
 
@@ -4849,6 +4681,8 @@
 
 
 
+
+
 @media only screen and (min-width: 1025px) and (max-width: 1600px) and (min-height: 1441px) and (max-height: 1600px) and (orientation: portrait) {
 
   .jsx {
@@ -5051,6 +4885,9 @@
   }
 
 }
+
+
+
 
 
 
@@ -5260,6 +5097,8 @@
 
 
 
+
+
 @media only screen and (min-width: 1025px) and (max-width: 1920px) and (min-height: 1601px) and (max-height: 1920px) and (orientation: portrait) {
 
   .jsx {
@@ -5462,6 +5301,9 @@
   }
 
 }
+
+
+
 
 
 
@@ -5671,6 +5513,8 @@
 
 
 
+
+
 @media only screen and (min-width: 1025px) and (max-width: 2560px) and (min-height: 1921px) and (max-height: 2560px) and (orientation: portrait) {
 
   .jsx {
@@ -5873,6 +5717,9 @@
   }
 
 }
+
+
+
 
 
 
@@ -6082,6 +5929,8 @@
 
 
 
+
+
 @media only screen and (min-width: 1025px) and (max-width: 3840px) and (min-height: 2561px) and (max-height: 3840px) and (orientation: portrait) {
 
   .jsx {
@@ -6284,6 +6133,9 @@
   }
 
 }
+
+
+
 
 
 
@@ -6493,6 +6345,8 @@
 
 
 
+
+
 @media only screen and (min-width: 1025px) and (max-width: 7680px) and (min-height: 3841px) and (max-height: 7680px) and (orientation: portrait) {
 
   .jsx {
@@ -6695,6 +6549,9 @@
   }
 
 }
+
+
+
 
 
 
@@ -6904,6 +6761,8 @@
 
 
 
+
+
 @media only screen and (min-width: 1025px) and (max-width: 15360px) and (min-height: 7681px) and (max-height: 15360px) and (orientation: portrait) {
 
   .jsx {
@@ -7106,6 +6965,9 @@
   }
 
 }
+
+
+
 
 
 
@@ -7315,6 +7177,8 @@
 
 
 
+
+
 @media only screen and (min-width: 1025px) and (max-width: 25360px) and (min-height: 15361px) and (max-height: 25360px) and (orientation: portrait) {
 
   .jsx {
@@ -7517,6 +7381,9 @@
   }
 
 }
+
+
+
 
 
 
@@ -7726,6 +7593,8 @@
 
 
 
+
+
 @media only screen and (min-width: 1025px) and (max-width: 999999px) and (min-height: 25361px) and (max-height: 999999px) and (orientation: portrait) {
 
   .jsx {
@@ -7928,6 +7797,9 @@
   }
 
 }
+
+
+
 
 
 
@@ -8138,6 +8010,12 @@
 
 
 
+
+
+
+
+
+
 .jsx.theme_visible_height {
 
   --jsx--css-clean-start-2--body-tag--height: 100vh;
@@ -8189,6 +8067,10 @@
 
 
 
+
+
+
+
 .jsx.small {
   --jsx--css-clean-start-2--body-tag--height: 100vh;
   --jsx--css-clean-start-2--body-tag--max-height: unset;
@@ -8218,6 +8100,10 @@
 
   --jsx--css-clean-start-2--site--overflow-x: hidden;
 }
+
+
+
+
 
 
 
@@ -8260,6 +8146,10 @@
 }
 
 
+
+
+
+
 .jsx.theme_darkmode,
 .jsx .theme_darkmode {
 
@@ -8297,6 +8187,9 @@
   --jsx--css-clean-start-2--tfoot--background-color: #456;
 
 }
+
+
+
 
 
 
@@ -8706,5 +8599,9 @@ html.jsx body main {
 .jsx .ul-reset li {
   display:         var(--jsx--css-clean-start-2--inline-tags--display, inline-block);
 }
+
+
+
+
 
 

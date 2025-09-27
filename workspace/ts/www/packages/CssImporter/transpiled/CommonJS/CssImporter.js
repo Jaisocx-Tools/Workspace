@@ -171,11 +171,10 @@ class CssImporter {
                     payload });
             });
         }
-        let inOutResultDTO = new ParsedResultDTO_js_1.ParsedResultDTO();
-        let resultDTO = new ParsedResultDTO_js_1.ParsedResultDTO();
+        let locInOutResultDTO = new ParsedResultDTO_js_1.ParsedResultDTO();
         try {
             this.setWebpackAliases(webpackAliases, this.packagePath);
-            resultDTO = this.cssBundleMake(inOutResultDTO, this.cssFilePath, this.cssFilePath, counterStop);
+            this.cssBundleMake(locInOutResultDTO, this.cssFilePath, counterStop);
         }
         catch (error) {
             console.error(error);
@@ -189,8 +188,7 @@ class CssImporter {
         }
         if (this.debug === true) {
             console.log("All files enqueued", this.cssTargetFilePath);
-            fs.writeFileSync("inOutResultDTO", JSON.stringify(inOutResultDTO.toJson(), null, 2));
-            fs.writeFileSync("resultDTO", JSON.stringify(resultDTO.toJson(), null, 2));
+            fs.writeFileSync("locInOutResultDTO", JSON.stringify(locInOutResultDTO.toJson(), null, 2));
         }
         this.fileWriterQueue.setHasToStop(true);
         this.fileWriterQueue.filehandleClose();
@@ -199,10 +197,7 @@ class CssImporter {
         }
         return opened;
     }
-    /**
-     * @info based on methods call .validBitsbufRefsRefine(), .resolveUrlBitsbufWithWebpackAlias(), fs.read and fs.write files.
-     */
-    cssBundleMake(inParsedResultDTO, inFilePath, bitsbufName, counterStop) {
+    cssBundleMake(inOutParsedResultDTO, inFilePath, counterStop) {
         let fileContentsBuffer = this.fileReader.readFileContentsAsBitsBuf(inFilePath);
         let fileSize = fileContentsBuffer.length;
         let fileLastIx = fileSize - 1;
@@ -217,9 +212,7 @@ class CssImporter {
         let commentsTokens = cssTokens["comment"];
         let importsTokens = cssTokens["import"];
         this.tokensParser
-            .parseWithStartAndEndTokensSets(fileContentsBuffer, bitsBufRefs_ReadFile, 
-        // datatype explained: [ [startRef: number, endRef: number], [startRef: number, endRef: number], ... ];
-        commentsTokens, bitsBufRefs_NoComments, bitsBufRefs_Comments_Outer, bitsBufRefs_Comments_Inner, counterStop);
+            .parseWithStartAndEndTokensSets(fileContentsBuffer, bitsBufRefs_ReadFile, commentsTokens, bitsBufRefs_NoComments, bitsBufRefs_Comments_Outer, bitsBufRefs_Comments_Inner, counterStop);
         if (this.debug === true) {
             console.log("Comments:\n");
             this.tokensParser.contentPreviewByRange(fileContentsBuffer, bitsBufRefs_Comments_Inner);
@@ -227,9 +220,7 @@ class CssImporter {
             this.tokensParser.contentPreviewByRange(fileContentsBuffer, bitsBufRefs_NoComments);
         }
         this.tokensParser
-            .parseWithStartAndEndTokensSets(fileContentsBuffer, bitsBufRefs_NoComments, 
-        // datatype explained: [ [startRef: number, endRef: number], [startRef: number, endRef: number], ... ];
-        importsTokens, bitsBufRefs_NoImports, bitsBufRefs_ImportURLs_Outer, bitsBufRefs_ImportURLs_Inner, counterStop);
+            .parseWithStartAndEndTokensSets(fileContentsBuffer, bitsBufRefs_NoComments, importsTokens, bitsBufRefs_NoImports, bitsBufRefs_ImportURLs_Outer, bitsBufRefs_ImportURLs_Inner, counterStop);
         if (this.debug === true) {
             console.log("\n\nImports:\n");
             this.tokensParser.contentPreviewByRange(fileContentsBuffer, bitsBufRefs_ImportURLs_Inner);
@@ -237,7 +228,7 @@ class CssImporter {
             this.tokensParser.contentPreviewByRange(fileContentsBuffer, bitsBufRefs_NoImports);
         }
         let refsIx = 0;
-        let numberOfRanges = bitsBufRefs_NoImports.length;
+        let numberOf_NoImportsRanges = bitsBufRefs_NoImports.length;
         let range = [];
         let rangeStart = 0;
         let rangeEnd = 0;
@@ -245,17 +236,16 @@ class CssImporter {
         resultDTO.cssFilePath = inFilePath;
         resultDTO.cssFileContents = fileContentsBuffer;
         this.fileWriterQueue.namedBitsbufs[resultDTO.cssFilePath] = fileContentsBuffer;
-        let firstRange = bitsBufRefs_NoImports[0];
-        let firstRangeStart = firstRange[0];
-        let firstRangeEnd = firstRange[1];
-        rangeStart = firstRangeStart;
-        rangeEnd = firstRangeEnd;
-        let latestImportsIx = 0;
+        let firstRange_NoImports = bitsBufRefs_NoImports[0];
+        let firstRange_NoImports_Start = firstRange_NoImports[0];
+        let firstRange_NoImports_End = firstRange_NoImports[1];
+        rangeStart = firstRange_NoImports_Start;
+        rangeEnd = firstRange_NoImports_End;
         // here we handle the css file when no import urls were found in the file.
         // just writing all ranges to target file.
         if (bitsBufRefs_ImportURLs_Inner.length === 0) {
             resultDTO.rangesOrDtoOfImport = [...bitsBufRefs_NoImports];
-            for (refsIx = 0; refsIx < numberOfRanges; refsIx++) {
+            for (refsIx = 0; refsIx < numberOf_NoImportsRanges; refsIx++) {
                 range = [...bitsBufRefs_NoImports[refsIx]];
                 rangeStart = range[0];
                 rangeEnd = range[1];
@@ -266,71 +256,57 @@ class CssImporter {
                 this.fileWriterQueue.enqueue(resultDTO.cssFilePath, range);
             }
             resultDTO.cssFileContents = new Uint8Array();
-            inParsedResultDTO.addParsedResult(resultDTO);
-            return resultDTO;
+            inOutParsedResultDTO.addParsedResult(resultDTO);
+            return 1;
         }
-        else {
-            let firstImportRange = bitsBufRefs_ImportURLs_Inner[0];
-            // may be undefined
-            let firstImportRangeStart = firstImportRange[0];
-            if (firstImportRangeStart < firstRangeStart) {
-                latestImportsIx = this.compareRanges(fileContentsBuffer, bitsbufName, bitsBufRefs_ImportURLs_Inner, resultDTO, firstRangeStart, latestImportsIx, counterStop, true);
+        let aNumberRanges_Imports = bitsBufRefs_ImportURLs_Inner.length;
+        let bNumberRanges_NoImports = bitsBufRefs_NoImports.length;
+        let aRange_Imports;
+        let bRange_NoImports;
+        let aRange_Imports_Start = 0;
+        // let aRange_Imports_End: number = 0;
+        let bRange_NoImports_Start = 0;
+        // let bRange_NoImports_End: number = 0;
+        let aImportsIx = 0;
+        let bNoImportsIx = 0;
+        bitsBufRefs_NoImports = bitsBufRefs_NoImports.filter((range) => {
+            return (range[0] !== range[1]);
+        });
+        bitsBufRefs_ImportURLs_Inner = bitsBufRefs_ImportURLs_Inner.filter((range) => {
+            return (range[0] !== range[1]);
+        });
+        let latest_bNoImportsIx = 0;
+        let max_aNumberRanges_Imports = (aNumberRanges_Imports - 1);
+        markerA: for (aImportsIx = 0; aImportsIx < aNumberRanges_Imports; aImportsIx++) {
+            aRange_Imports = [...bitsBufRefs_ImportURLs_Inner[aImportsIx]];
+            aRange_Imports_Start = aRange_Imports[0];
+            // aRange_Imports_End = aRange_Imports[1];
+            bRange_NoImports = [...bitsBufRefs_NoImports[latest_bNoImportsIx]];
+            bRange_NoImports_Start = bRange_NoImports[0];
+            if (aRange_Imports_Start < bRange_NoImports_Start) {
+                let locToImportFilePath = this.resolveUrlBitsbufWithWebpackAlias(fileContentsBuffer, aRange_Imports, this.webpackAliases);
+                //@ts-ignore
+                let cssBundleResult = this.cssBundleMake(inOutParsedResultDTO, locToImportFilePath, counterStop);
             }
-        }
-        for (refsIx = 0; refsIx < numberOfRanges; refsIx++) {
-            range = [...bitsBufRefs_NoImports[refsIx]];
-            rangeStart = range[0];
-            rangeEnd = range[1];
-            // in this condition code applies, when all css import url lines were already done.
-            // just writing the bitsbuf of the main range and skip to the next range.
-            if (latestImportsIx === bitsBufRefs_ImportURLs_Inner.length) {
-                // when the range is of zero size, skip to the next range.
-                if (rangeStart === rangeEnd) {
-                    continue;
-                }
-                resultDTO.addRange(range);
-                this.fileWriterQueue.enqueue(resultDTO.cssFilePath, range);
-                continue;
+            if ((aRange_Imports_Start < bRange_NoImports_Start) && (aRange_Imports_Start < max_aNumberRanges_Imports)) {
+                continue markerA;
             }
-            if (bitsBufRefs_ImportURLs_Inner[latestImportsIx][0] > rangeStart) {
-                if (rangeStart === rangeEnd) {
-                    continue;
+            markerB: for (bNoImportsIx = latest_bNoImportsIx; bNoImportsIx < bNumberRanges_NoImports; bNoImportsIx++) {
+                bRange_NoImports = [...bitsBufRefs_NoImports[bNoImportsIx]];
+                bRange_NoImports_Start = bRange_NoImports[0];
+                // bRange_NoImports_End = bRange_NoImports[1];
+                latest_bNoImportsIx = bNoImportsIx;
+                if ((aRange_Imports_Start < bRange_NoImports_Start) && (aRange_Imports_Start < max_aNumberRanges_Imports)) {
+                    continue markerA;
                 }
-                resultDTO.addRange(range);
-                this.fileWriterQueue.enqueue(resultDTO.cssFilePath, range);
-                if (refsIx !== (numberOfRanges - 1)) {
-                    continue;
-                }
+                resultDTO.addRange(bRange_NoImports);
+                this.fileWriterQueue.enqueue(resultDTO.cssFilePath, bRange_NoImports);
+                continue markerB;
             }
-            latestImportsIx = this.compareRanges(fileContentsBuffer, bitsbufName, bitsBufRefs_ImportURLs_Inner, resultDTO, rangeStart, latestImportsIx, counterStop, true);
         }
         resultDTO.cssFileContents = new Uint8Array();
-        inParsedResultDTO.addParsedResult(resultDTO);
-        return resultDTO;
-    }
-    compareRanges(fileContentsBuffer, bitsbufName, ranges, inResultDTO, mainRangeStart, inLastRangeIx, counterStop, isRangeImportUrl) {
-        let importsIx = 0;
-        let lastRangeIx = inLastRangeIx;
-        let numberOfRanges = ranges.length;
-        for (importsIx = lastRangeIx; importsIx < numberOfRanges; importsIx++) {
-            lastRangeIx = importsIx;
-            let importRange = ranges[importsIx];
-            let importRangeStart = importRange[0];
-            if (importRangeStart > mainRangeStart) {
-                break;
-            }
-            if (isRangeImportUrl === false) {
-                inResultDTO.addRange(importRange);
-                this.fileWriterQueue.enqueue(bitsbufName, importRange);
-                continue;
-            }
-            let cssFileToImport_Path = this.resolveUrlBitsbufWithWebpackAlias(fileContentsBuffer, ranges[importsIx], this.webpackAliases);
-            // temp workaround, the inp file bitsbuf's name has t o be a number, or a description text or file path for debugging purposes.
-            let bitsbufNameSubcall = cssFileToImport_Path;
-            let importParseResultDTO = this.cssBundleMake(inResultDTO, cssFileToImport_Path, bitsbufNameSubcall, counterStop);
-            inResultDTO.addParsedResult(importParseResultDTO);
-        }
-        return lastRangeIx;
+        inOutParsedResultDTO.addParsedResult(resultDTO);
+        return 2;
     }
 }
 exports.CssImporter = CssImporter;

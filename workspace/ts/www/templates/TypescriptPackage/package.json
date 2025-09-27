@@ -1,10 +1,10 @@
 {
-  "name": "@jaisocx/template-tspackage",
-  "version": "1.2.1",
-  "author": "Jaisocx",
+  "name": "namespace/package-name",
+  "version": "1.0.1",
+  "author": "<Author's Name>",
   "keywords": [],
   "private": false,
-  "description": "",
+  "description": "The @jaisocx template for a Typescript Package with The Vitest ts test example.",
   "type": "module",
   "main": "./transpiled/CommonJS/index.js",
   "types": "./transpiled/ESNext/index.d.ts",
@@ -21,7 +21,11 @@
   ],
   "publishConfig": {
     "access": "public"
+  },
+  "peerDependencies": {
+    "axios": "^1.12.2",
+    "chalk": "^5.6.2",
+    "lodash": "^4.17.21",
+    "vitest": "^3.2.4"
   }
 }
-
-

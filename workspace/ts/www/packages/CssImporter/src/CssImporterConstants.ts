@@ -30,16 +30,6 @@ export class CssImporterConstants {
           ")",
           ";"
         ]
-      },
-      "url": {
-        "setBegin": [
-          "url",
-          "("
-        ],
-        "setEnd": [
-          ")",
-          ";"
-        ]
       }
     };
   }

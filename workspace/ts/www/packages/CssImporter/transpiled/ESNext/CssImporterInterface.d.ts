@@ -13,7 +13,6 @@ export interface CssImporterInterface {
     setWebpackAliases(aliasesObject: any, packageRoot: string): CssImporter;
     resolveUrlBitsbufWithWebpackAlias(inBitsbuf: Uint8Array, filePathTextRefs: number[], webpackAliases: any): string;
     build(): Promise<number>;
-    cssBundleMake(inParsedResultDTO: ParsedResultDTO, inFilePath: string, bitsbufName: string, counterStop: number): ParsedResultDTO;
-    compareRanges(fileContentsBuffer: Uint8Array, bitsbufName: string, ranges: number[][], inResultDTO: ParsedResultDTO, mainRangeStart: number, inLastRangeIx: number, counterStop: number, isRangeImportUrl: boolean): number;
+    cssBundleMake(inParsedResultDTO: ParsedResultDTO, inFilePath: string, counterStop: number): number;
 }
 //# sourceMappingURL=CssImporterInterface.d.ts.map

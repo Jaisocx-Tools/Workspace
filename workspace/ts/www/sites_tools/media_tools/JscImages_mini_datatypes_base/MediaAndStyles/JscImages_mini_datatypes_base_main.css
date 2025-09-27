@@ -28,7 +28,7 @@
   background-repeat:   no-repeat;
   background-clip:     border-box;
   background-origin:   border-box;
-  background-position: 0 0;
+  background-position: cover;
   background-size:     var(--jsc--images-mini--datatypes--base--width) var(--jsc--images-mini--datatypes--base--height);
 }
 
