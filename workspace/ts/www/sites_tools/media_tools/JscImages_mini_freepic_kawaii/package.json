@@ -1,27 +1,40 @@
 {
-  "name": "@jaisocx/img-mini-freepic-kawaii",
+  "name": "@jaisocx/image-mini-freepic-kawaii",
   "version": "1.0.1",
   "description": "",
-  "author": "<Your Name>",
+  "author": "Jaisocx Company",
   "keywords": [
     "css",
-    "styles"
+    "styles",
+    "themes",
+    "images",
+    "mini-images"
   ],
   "files": [
-    "index.example.html",
+    "index.preview.html",
+    "prod_jsc_img_mini_freepic_kawaii__preview.html",
+    "dev_jsc_img_mini_freepic_kawaii__preview.html",
 
     "MediaAndStyles/*.css",
-    "MediaAndStyles/themes/",
-    "MediaAndStyles/fonts/",
+    "MediaAndStyles/images",
+    "MediaAndStyles/scss",
 
     "transpiled/CommonJS",
     "transpiled/ESNext",
-    "transpiled/Simple",
 
     "webpack.aliases.json",
 
     "README.md"
   ],
+  "scripts": {
+    "build:sass": "/var/www/workspace/ts/node_modules/.bin/sass --no-source-map ./MediaAndStyles/scss/:./MediaAndStyles/"
+  },
+  "peerDependencies": {
+    "sass": "^1.89.2"
+  },
+  "optionalDependencies": {
+    "@jaisocx/css-clean-start-2": "~1.1.10"
+  },
   "private": false,
   "publishConfig": {
     "access": "public"
@@ -39,9 +52,6 @@
       "import": "./transpiled/ESNext/webpack.aliases.mjs",
       "require": "./transpiled/CommonJS/webpack.aliases.cjs"
     }
-  },
-  "dependencies": {
-    "@jaisocx/css-clean-start-2": "~1.1.5"
   }
 }
 

@@ -4,11 +4,6 @@
       "update-published": "",
       "build": true,
       "build-simple-enable": false,
-      "css-importer": {
-        "build": false,
-        "cssFilePath": "MediaAndStyles/JscImages_mini_datatypes_base_main_Webpack.css",
-        "cssTargetFilePath": "MediaAndStyles/JscImages_mini_datatypes_base_main_resolved.css"
-      },
       "dependencies": [],
       "build-files": []
     }

@@ -1,0 +1,40 @@
+@use "./variables__mini-images-urls" as urls_variables;
+@use "../JscImages_mini_freepic_kawaii_main";
+
+$base_url: #{urls_variables.$aliased_base_url}#{urls_variables.$relative_path};
+
+
+
+$image-url: #{$base_url}#{urls_variables.$mini-image-freepic-kawaii--html--url--relative};
+.jsc .JscImages_mini_freepic_kawaii .mini-image.freepic_kawaii {
+    background-image: url("#{$image-url}");
+}
+
+$image-url: #{$base_url}#{urls_variables.$mini-image-freepic-kawaii--house--url--relative};
+.jsc .JscImages_mini_freepic_kawaii .mini-image.freepic_kawaii.house {
+    background-image: url("#{$image-url}");
+}
+
+$image-url: #{$base_url}#{urls_variables.$mini-image-freepic-kawaii--html-intence--url--relative};
+.jsc .JscImages_mini_freepic_kawaii .mini-image.freepic_kawaii.html-intence {
+    background-image: url("#{$image-url}");
+}
+
+$image-url: #{$base_url}#{urls_variables.$mini-image-freepic-kawaii--html--url--relative};
+.jsc .JscImages_mini_freepic_kawaii .mini-image.freepic_kawaii.html {
+    background-image: url("#{$image-url}");
+}
+
+$image-url: #{$base_url}#{urls_variables.$mini-image-freepic-kawaii--money-transfer--url--relative};
+.jsc .JscImages_mini_freepic_kawaii .mini-image.freepic_kawaii.money-transfer {
+    background-image: url("#{$image-url}");
+}
+
+$image-url: #{$base_url}#{urls_variables.$mini-image-freepic-kawaii--truck--url--relative};
+.jsc .JscImages_mini_freepic_kawaii .mini-image.freepic_kawaii.truck {
+    background-image: url("#{$image-url}");
+}
+
+
+
+

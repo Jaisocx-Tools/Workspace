@@ -1,14 +1,9 @@
     {
       "path": "sites_tools/media_tools/JscImages_mini_freepic_kawaii",
-      "name": "img-mini-freepic-kawaii",
+      "name": "image-mini-freepic-kawaii",
       "update-published": "",
-      "build": false,
+      "build": true,
       "build-simple-enable": false,
-      "css-importer": {
-        "build": false,
-        "cssFilePath": "MediaAndStyles/JscImages_mini_freepic_kawaii_main_Webpack.css",
-        "cssTargetFilePath": "MediaAndStyles/JscImages_mini_freepic_kawaii_main_resolved.css"
-      },
       "dependencies": [],
       "build-files": []
     }

@@ -1,14 +1,27 @@
-
-/* @import url("@JscImages_mini_freepic_kawaii_MediaAndStyles/responsive_size_Constants.css"); */
-
-/* base theme: constants and @media queries */
-@import url("@JscImages_mini_freepic_kawaii_MediaAndStyles/themes/theme_base/JscImages_mini_freepic_kawaii_theme_base_main.css");
-@import url("@JscImages_mini_freepic_kawaii_MediaAndStyles/themes/theme_base/responsive_size_Imports_JscImages_mini_freepic_kawaii_theme_base_Webpack.css");
-
-
-
-/* main css file, css logics with rules set via variables in the theme .css files imported above */
 @import url("@JscImages_mini_freepic_kawaii_MediaAndStyles/JscImages_mini_freepic_kawaii_main.css");
 
 
 
+.jsc .JscImages_mini_freepic_kawaii .mini-image.freepic_kawaii {
+  background-image: url("@JscImages_mini_freepic_kawaii_MediaAndStyles/images/html.png");
+}
+
+.jsc .JscImages_mini_freepic_kawaii .mini-image.freepic_kawaii.house {
+  background-image: url("@JscImages_mini_freepic_kawaii_MediaAndStyles/images/house.png");
+}
+
+.jsc .JscImages_mini_freepic_kawaii .mini-image.freepic_kawaii.html-intence {
+  background-image: url("@JscImages_mini_freepic_kawaii_MediaAndStyles/images/html-intence.png");
+}
+
+.jsc .JscImages_mini_freepic_kawaii .mini-image.freepic_kawaii.html {
+  background-image: url("@JscImages_mini_freepic_kawaii_MediaAndStyles/images/html.png");
+}
+
+.jsc .JscImages_mini_freepic_kawaii .mini-image.freepic_kawaii.money-transfer {
+  background-image: url("@JscImages_mini_freepic_kawaii_MediaAndStyles/images/money-transfer.png");
+}
+
+.jsc .JscImages_mini_freepic_kawaii .mini-image.freepic_kawaii.truck {
+  background-image: url("@JscImages_mini_freepic_kawaii_MediaAndStyles/images/truck.png");
+}

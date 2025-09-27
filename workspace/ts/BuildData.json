@@ -85,11 +85,15 @@
       "update-published": "Sat Sep 27 14:14:17 UTC 2025",
       "build": false,
       "build-simple-enable": false,
-      "css-importer": {
-        "build": false,
-        "cssFilePath": "MediaAndStyles/JscImages_mini_datatypes_base_main_Webpack.css",
-        "cssTargetFilePath": "MediaAndStyles/JscImages_mini_datatypes_base_main_resolved.css"
-      },
+      "dependencies": [],
+      "build-files": []
+    },
+    {
+      "path": "sites_tools/media_tools/JscImages_mini_freepic_kawaii",
+      "name": "image-mini-freepic-kawaii",
+      "update-published": "Sat Sep 27 16:57:02 CEST 2025",
+      "build": false,
+      "build-simple-enable": false,
       "dependencies": [],
       "build-files": []
     },
