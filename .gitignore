@@ -8,6 +8,7 @@
 
 /docker/database/volumes/
 /docker/https/logs
+/docker/https/conf/idm-conf.xml
 /docker/php/logs
 
 
