@@ -1,6 +1,7 @@
-class Countries extends JsonWriter {
+class Countries extends DatasetBase {
     _data;
     static _singletonInstance;
+
 
 
     constructor() {
@@ -10,14 +11,17 @@ class Countries extends JsonWriter {
     }
 
 
+
     static getSingletonInstance() {
 
         if (Countries._singletonInstance === undefined) {
             Countries._singletonInstance = new Countries();
         }
 
+
         return Countries._singletonInstance;
     }
+
 
 
     getCountriesNames() {
@@ -25,14 +29,14 @@ class Countries extends JsonWriter {
     }
 
 
+
     saveCountriesNames(inFilePath) {
-        let locSaved = this.saveData(
-            inFilePath,
-            this._data
-        );
+        let locSaved = this.saveData(inFilePath, this._data);
+
 
         return locSaved;
     }
+
 
 
     initData() {
@@ -236,8 +240,10 @@ class Countries extends JsonWriter {
                 return 0;
             }
 
+
             return (a > b) ? (1) : (-1);
         });
+
 
         return orderedAlphabeticData;
     }

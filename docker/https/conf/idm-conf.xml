@@ -1,7 +1,8 @@
 <conf-idm>
   <user id="User" password="password" granted-roles="READER" />
-  <user id="DataReader" password="password" granted-roles="READER_DATA_SECURED" />
-  
+  <user id="oEgPsmjUeekNh77QEww2Md5Nm7vLUNgHP4iQ3m" password="oKJ2Q4V4Y4XnJPRvpqpnWUkyti2QKX9dXQYUmY" granted-roles="READER_DATA_SECURED" />
+  <user id="ENQXHCWS4ePtcQtpVHE3oHCaw9CnkjDDvhtwNX" password="oaCJkk3qdRXFECtvPAfKLqLpuWwXSunmDviH74" granted-roles="READER_EMAIL" />
+
   <role id="READER">
     <!-- with docker, here should be the port, set in the http-conf.xml (:443), and not the outer docker container port, when another, for example (:2291) -->
     <granted-alias url="sandbox.brightday.email:443/" methods="GET" />
@@ -15,6 +16,15 @@
     <granted-alias url="sandbox.brightday.email:443/cdn/data_secured/" methods="GET" />
     <granted-alias url="sandbox.brightday.email:443/cdn/data_secured/${any}" methods="GET" />
   </role>
+
+  <role id="READER_EMAIL">
+    <!-- with docker, here should be the port, set in the http-conf.xml (:443), and not the outer docker container port, when another, for example (:2291) -->
+    <granted-alias url="preview.brightday.email:443/examples_html/emails/temp/" methods="GET" />
+    <granted-alias url="preview.brightday.email:443/examples_html/emails/temp/${any}" methods="GET" />
+  </role>
+
 </conf-idm>
+
+
 
 

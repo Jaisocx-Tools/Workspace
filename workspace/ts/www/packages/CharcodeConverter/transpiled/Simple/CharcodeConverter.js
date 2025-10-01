@@ -29,6 +29,7 @@ class CharcodeConverter {
     static _instance = null;
 
 
+
     constructor() {
         this._charToNum_AlignedSymbolsCodes = [];
         this._charToNum_AlignedSymbols = [];
@@ -45,14 +46,17 @@ class CharcodeConverter {
     }
 
 
+
     static getInstance() {
 
         if (!CharcodeConverter._instance) {
             CharcodeConverter._instance = new CharcodeConverter();
         }
 
+
         return CharcodeConverter._instance;
     }
+
 
 
     _init() {
@@ -60,8 +64,10 @@ class CharcodeConverter {
     }
 
 
+
     setDebug(inDebug) {
         this._debug = inDebug;
+
 
         return this;
     }
@@ -73,8 +79,10 @@ class CharcodeConverter {
     setLookupIterationsMax(iterationsMax) {
         this._lookupIterationsMax = iterationsMax;
 
+
         return this;
     }
+
 
 
     log(key, data) {
@@ -176,10 +184,7 @@ class CharcodeConverter {
     //   summary.html = summary.resultStringArray.join(EMPTY_STRING);
     //   return summary;
     // }
-    stringToArray(
-        text,
-        autoload
-    ) {
+    stringToArray(text, autoload) {
         const resultArrayLength = text.length;
         const resultArray = new Uint16Array(resultArrayLength);
         let implGetCharcode = autoload ? this.getCharcodeAndAutoload.bind(this) : this.getCharcode.bind(this);
@@ -216,10 +221,8 @@ class CharcodeConverter {
     }
 
 
-    arrayToString(
-        buf,
-        autoload
-    ) {
+
+    arrayToString(buf, autoload) {
         const resultStringLength = buf.length;
         const resultStringArray = new Array(resultStringLength);
         let implGetChar = autoload ? this.getCharAndAutoload.bind(this) : this.getChar.bind(this);
@@ -246,8 +249,10 @@ class CharcodeConverter {
         const EMPTY_STRING = (new String("")).valueOf();
         const resultString = resultStringArray.join(EMPTY_STRING);
 
+
         return resultString;
     }
+
 
 
     getChar(charcode) {
@@ -263,6 +268,7 @@ class CharcodeConverter {
         // );
         return this._numToChar[charcode];
     }
+
 
 
     getCharcode(target) {
@@ -466,6 +472,7 @@ class CharcodeConverter {
     }
 
 
+
     getCharAndAutoload(charcode) {
 
         if ((charcode >= this._numToChar.length)) {
@@ -478,8 +485,10 @@ class CharcodeConverter {
         }
         char = this._numToChar[charcode] || "";
 
+
         return char;
     }
+
 
 
     getCharcodeAndAutoload(target) {
@@ -490,14 +499,17 @@ class CharcodeConverter {
         }
         charcode = this.getCharcode(target);
 
+
         return charcode ?? CharcodeConverter.CHAR_NOT_FOUND;
     }
+
 
 
     loadCharsetByChar(char) {
         const charcode = char.charCodeAt(0);
         this.loadCharsetByCharcode(charcode);
     }
+
 
 
     loadCharsetByCharcode(charcode) {
@@ -512,10 +524,7 @@ class CharcodeConverter {
             for (const range of data.unicode_ranges) {
                 const [start, end] = range
                     .split("-")
-                    .map((base16number) => parseInt(
-                        base16number,
-                        16
-                    ));
+                    .map((base16number) => parseInt(base16number, 16));
 
                 if (charcode >= start && charcode <= end) {
 
@@ -523,6 +532,7 @@ class CharcodeConverter {
                     //   "loadCharset, alphabet ${alphabet}",
                     //   alphabet );
                     this.loadCharset(alphabet);
+
 
                     return;
                 }
@@ -560,9 +570,11 @@ class CharcodeConverter {
     }
 
 
+
     detectSiteCountry() {
         return (navigator.language.split("-")[1] || "US").toUpperCase();
     }
+
 
 
     detectBrowserAcceptLanguage() {
@@ -574,6 +586,7 @@ class CharcodeConverter {
     loadCharset(charsetKey) {
 
         if (this._loadedRanges.has(charsetKey))
+
 
             return;
         const charset = this._charcodes.alphabets[charsetKey];
@@ -599,10 +612,7 @@ class CharcodeConverter {
         // for each unicode range in this charset,
         // fills array of chars, to lookup by charcode of datatype number.
         for (charcodeRange of ranges) {
-            [charcodeRangeFirstCharcode, charcodeRangeHighestCharcode] = charcodeRange.split("-").map(base16number => parseInt(
-                base16number,
-                16
-            ));
+            [charcodeRangeFirstCharcode, charcodeRangeHighestCharcode] = charcodeRange.split("-").map(base16number => parseInt(base16number, 16));
             charcodeRangeHighestCharcode++;
 
             for (charcode = charcodeRangeFirstCharcode; charcode < charcodeRangeHighestCharcode; charcode++) {
@@ -624,6 +634,7 @@ class CharcodeConverter {
                 const charA = charsElemA[0];
                 const charB = charsElemB[0];
                 const comparisonValue = (charA >= charB) ? 1 : (-1);
+
 
                 return comparisonValue;
             });

@@ -45,8 +45,10 @@ class CssSelectorWeight {
         // > ~ +
         f += (selector.match(/[>+~]+/g) || []).length;
 
+
         return [a, b, c, d, e, f];
     }
+
 
 
     updateSpecifityByCssProperty(
@@ -62,8 +64,10 @@ class CssSelectorWeight {
         let a = (propertyPriority === "important") ? 1 : 0;
         locSpecifity[0] = a;
 
+
         return locSpecifity;
     }
+
 
 
     compareSpecificity(specificity1, specificity2) {
@@ -82,6 +86,7 @@ class CssSelectorWeight {
                 break loop;
             }
         }
+
 
         return comparisonValue;
     }
@@ -126,6 +131,7 @@ class CssSelectorWeight {
                 specifitiesAndSelectors.push(obj);
             }
         }
+
 
         return specifitiesAndSelectors;
     }

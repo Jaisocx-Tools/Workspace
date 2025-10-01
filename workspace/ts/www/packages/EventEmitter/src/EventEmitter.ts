@@ -10,6 +10,7 @@ export class EventEmitter {
   EventArtJSEvent: any;
 
 
+
   constructor() {
     this.eventsHandlersSetThisClass = {};
     this.debug = true;
@@ -18,11 +19,14 @@ export class EventEmitter {
   }
 
 
+
   setDebug(inDebug: boolean): EventEmitter {
     this.debug = inDebug;
 
+
     return this;
   }
+
 
 
   isObjectEmpty(obj: object): boolean {
@@ -58,11 +62,13 @@ export class EventEmitter {
     eventName: any,
     eventHandler: (eventName: any, payload: any) => EventHandlerReturnValue|null|undefined|void
   ): EventEmitter {
+
     if (!this.eventsHandlersSetThisClass[eventName]) {
       this.eventsHandlersSetThisClass[eventName] = [];
     }
 
     this.eventsHandlersSetThisClass[eventName].push(eventHandler);
+
 
     return this;
   }
@@ -90,6 +96,7 @@ export class EventEmitter {
     const eventHandlers = this.eventsHandlersSetThisClass[eventName];
 
     if (!eventHandlers || eventHandlers.length === 0) {
+
       if (this.debug) {
         console.log(
           "no event handler for this event",
@@ -97,10 +104,12 @@ export class EventEmitter {
         );
       }
 
+
       return eventEmitResults;
     }
 
     for (const eventHandler of eventHandlers) {
+
       if (this.debug) {
         console.log(
           "got event handler",
@@ -109,6 +118,7 @@ export class EventEmitter {
       }
 
       if (!eventHandler || typeof eventHandler !== "function") {
+
         if (this.debug) {
           console.log(
             "event handler is not a function",
@@ -150,6 +160,7 @@ export class EventEmitter {
         payload = eventHandlerResult.payloadReturned;
       }
     }
+
 
     return eventEmitResults;
   }

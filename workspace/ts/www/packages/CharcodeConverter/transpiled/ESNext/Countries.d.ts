@@ -1,5 +1,5 @@
-import { JsonWriter } from "@jaisocx/cdn-datasets-base";
-export declare class Countries extends JsonWriter {
+import { DatasetBase } from "@jaisocx/cdn-datasets-base";
+export declare class Countries extends DatasetBase {
     _data: string[];
     static _singletonInstance: Countries;
     constructor();

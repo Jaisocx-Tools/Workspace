@@ -11,6 +11,7 @@ export class CssHtml {
   CSS_FONT_SIZE: string;
 
 
+
   constructor () {
     this.KEYWORD_HTML_UC = "HTML";
     this.KEYWORD_HTML_LC = "html";
@@ -25,6 +26,7 @@ export class CssHtml {
   }
 
 
+
   escapeHTML(str: string): string {
     return str
       .replace( /&/g, "&amp;" )
@@ -33,6 +35,7 @@ export class CssHtml {
       .replace( /"/g, "&quot;" )
       .replace( /'/g, "&#039;" );
   }
+
 
 
   unescapeHTML(str: string): string {
@@ -45,12 +48,14 @@ export class CssHtml {
   }
 
 
+
   concatClassNames(
     node: HTMLElement,
     delimiter: string
   ): string {
     return node.className.split(" ").join( delimiter );
   }
+
 
 
   getRemBasePxValue(): number {
@@ -78,8 +83,10 @@ export class CssHtml {
       ) );
     }
 
+
     return remBasePxValueNumber;
   }
+
 
 
   remToPx(
@@ -104,12 +111,13 @@ export class CssHtml {
     // `${remValToPxNumber}px`
     let pxValue: string = [remValToPxNumber, this.KEYWORD_PX].join( "" );
 
+
     return pxValue;
   }
 
 
-  remToPxAllValues( cssPropertyValue: string ): string|false {
 
+  remToPxAllValues( cssPropertyValue: string ): string|false {
     if ( cssPropertyValue.includes( this.KEYWORD_REM ) === false ) {
       return false;
     }
@@ -138,8 +146,10 @@ export class CssHtml {
 
     let remToPxStyles: string = values.join( " " );
 
+
     return remToPxStyles;
   }
+
 
 
   getVariableValue(
@@ -148,14 +158,17 @@ export class CssHtml {
   ): string {
     let cssVariableValue: string = window.getComputedStyle( element ).getPropertyValue( variableName );
 
+
     return cssVariableValue;
   }
+
 
 
   resolveCssValueIfVariable(
     element: HTMLElement,
     cssValue: string
   ): string|false {
+
     if ( cssValue.startsWith( this.KEYWORD_CSS_VARIABLE_START ) === false ) {
       return false;
     }
@@ -171,8 +184,10 @@ export class CssHtml {
       variableName
     );
 
+
     return cssVariableValue;
   }
+
 
 
   getCssPropertiesNames_ofCSSStyleRule( cssStyleRule: CSSStyleRule ): string[] {
@@ -201,6 +216,7 @@ export class CssHtml {
       cssPropsAvailable[cssPropId] = cssPropName;
     }
 
+
     return cssPropsAvailable;
 
   }
@@ -212,6 +228,7 @@ export class CssHtml {
       width: window.innerWidth,
       height: window.innerHeight
     };
+
 
     return dimensions;
   }

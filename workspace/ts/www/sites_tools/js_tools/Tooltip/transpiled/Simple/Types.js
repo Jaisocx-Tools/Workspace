@@ -7,6 +7,7 @@ class Dimensions {
     width;
 
 
+
     constructor() {
         this.top = 0;
         this.right = 0;

@@ -221,6 +221,7 @@ export class Tooltip extends EventEmitter implements TooltipInterface {
       ...TooltipConstants.EventsEmitted
     ];
 
+
     return eventsNamesEmitted;
   }
 
@@ -241,12 +242,14 @@ export class Tooltip extends EventEmitter implements TooltipInterface {
   }
 
 
+
   setHtml( html: any ): TooltipInterface {
     this.html = html;
     this.setTemplate (
       TooltipConstants.Defaults.templateTooltipContent
     )
       .setTemplateData ( { html } );
+
 
     return this;
   }
@@ -256,6 +259,7 @@ export class Tooltip extends EventEmitter implements TooltipInterface {
   setTemplate( template: any ): TooltipInterface {
     this.templateRenderer.setTemplate( template );
 
+
     return this;
   }
 
@@ -264,6 +268,7 @@ export class Tooltip extends EventEmitter implements TooltipInterface {
   setTemplateData( data: any ): TooltipInterface {
     this.templateRenderer.setData( data );
 
+
     return this;
   }
 
@@ -271,6 +276,7 @@ export class Tooltip extends EventEmitter implements TooltipInterface {
   // setCssClasses is used to set the tooltip html node attr class="" values, like this class="tooltip theme-beta"
   setCssClasses( cssClasses: any ): TooltipInterface {
     this.cssClasses = cssClasses;
+
 
     return this;
   }
@@ -284,6 +290,7 @@ export class Tooltip extends EventEmitter implements TooltipInterface {
     this.paddingEventTarget = padding;
     this.paddingDimEventTarget = paddingDim;
 
+
     return this;
   }
 
@@ -292,6 +299,7 @@ export class Tooltip extends EventEmitter implements TooltipInterface {
   // e.g. above the event target, TooltipLib.getInstance().BROWSER_TAB_BORDER_TOP with number value 2.
   setTooltipAlignDimensionOne( tooltipAlignDimensionOne: number ): TooltipInterface {
     this.tooltipAlignDimensionOne = tooltipAlignDimensionOne;
+
 
     return this;
   }
@@ -302,8 +310,10 @@ export class Tooltip extends EventEmitter implements TooltipInterface {
   setTooltipAlignDimensionTwo( tooltipAlignDimensionTwo: number ): TooltipInterface {
     this.tooltipAlignDimensionTwo = tooltipAlignDimensionTwo;
 
+
     return this;
   }
+
 
 
   setTooltipPaddingAlignDimensionTwo (
@@ -313,6 +323,7 @@ export class Tooltip extends EventEmitter implements TooltipInterface {
     this.tooltipPaddingAlignDimensionTwo = tooltipPaddingAlignDimensionTwo;
     this.tooltipPaddingSizeDimAlignDimensionTwo = tooltipPaddingSizeDimAlignDimensionTwo;
 
+
     return this;
   }
 
@@ -321,12 +332,15 @@ export class Tooltip extends EventEmitter implements TooltipInterface {
   setEventTargetHtmlNodeId( id: any ): TooltipInterface {
     this.eventTargetHtmlNodeId = id;
 
+
     return this;
   }
 
 
+
   setEventTargetSelector ( cssSelector: any ) : TooltipInterface {
     this.eventTargetSelector = cssSelector;
+
 
     return this;
   }
@@ -336,6 +350,7 @@ export class Tooltip extends EventEmitter implements TooltipInterface {
   setEventTargetHtmlNode( eventTarget: HTMLElement ): TooltipInterface {
     this.eventTargetHtmlNode = eventTarget;
 
+
     return this;
   }
 
@@ -343,6 +358,7 @@ export class Tooltip extends EventEmitter implements TooltipInterface {
   // setEventName: method to set the event name, when on the eventTarget the tooltip is shown.
   setEventName( eventName: any ): TooltipInterface {
     this.eventName = eventName;
+
 
     return this;
   }
@@ -352,6 +368,7 @@ export class Tooltip extends EventEmitter implements TooltipInterface {
   setAlignDimensionOneValueOrder( alternativeTabBorderSides: number[] ): TooltipInterface {
     this.alternativeTabBorderSides = alternativeTabBorderSides;
 
+
     return this;
   }
 
@@ -360,8 +377,10 @@ export class Tooltip extends EventEmitter implements TooltipInterface {
   setIsWithArrow( withArrow: number ): TooltipInterface {
     this.withArrow = withArrow;
 
+
     return this;
   }
+
 
 
   setArrowSize (
@@ -371,12 +390,15 @@ export class Tooltip extends EventEmitter implements TooltipInterface {
     this.arrowSize = arrowSize;
     this.arrowSizeDim = arrowSizeDim;
 
+
     return this;
   }
 
 
+
   setTimeoutToCloseMillis ( timeoutMillis: number ): TooltipInterface {
     this.timeoutToCloseMillis = timeoutMillis;
+
 
     return this;
 
@@ -384,8 +406,10 @@ export class Tooltip extends EventEmitter implements TooltipInterface {
   }
 
 
+
   setTooltipHideBehaviour( tooltipHideBehaviour: any ): TooltipInterface {
     this.tooltipHideBehaviour = tooltipHideBehaviour;
+
 
     return this;
   }
@@ -395,6 +419,7 @@ export class Tooltip extends EventEmitter implements TooltipInterface {
   // however doesn't show the tooltip.
   // to show the tooltip, the event target html node has to be clicked.
   render(): TooltipInterface {
+
     if ( this.debug ) {
       console.info (
         "JS class Tooltip emits Events:",
@@ -403,6 +428,7 @@ export class Tooltip extends EventEmitter implements TooltipInterface {
     }
 
     if ( !this.eventTargetHtmlNode ) {
+
       if ( this.eventTargetHtmlNodeId ) {
         this.eventTargetHtmlNode = document.getElementById( this.eventTargetHtmlNodeId );
 
@@ -500,8 +526,10 @@ export class Tooltip extends EventEmitter implements TooltipInterface {
     // TODO: rewrite, using improved DOM events hanlder
     this.addEventListeners();
 
+
     return this;
   }
+
 
 
   renderTooltipArrowHtmlNode(): TooltipInterface {
@@ -518,8 +546,10 @@ export class Tooltip extends EventEmitter implements TooltipInterface {
       TooltipConstants.CssClassNames.TOOLTIP_ARROW
     )[0] as HTMLElement;
 
+
     return this;
   }
+
 
 
   getLocalStorageArray(): TooltipShownSettings|null|undefined {
@@ -542,8 +572,10 @@ export class Tooltip extends EventEmitter implements TooltipInterface {
         ( tooltipSetting: TooltipShownSettings ) => tooltipSetting.tooltipHtmlNodeId === this.mainHtmlNodeId
       );
 
+
     return tooltipShownSettings;
   }
+
 
 
   addToLocalStorageArray (
@@ -567,8 +599,10 @@ export class Tooltip extends EventEmitter implements TooltipInterface {
       JSON.stringify( localStorageTooltipsArray )
     );
 
+
     return this;
   }
+
 
 
   removeFromLocalStorageArray (
@@ -597,6 +631,7 @@ export class Tooltip extends EventEmitter implements TooltipInterface {
 
           toRemove = ( prop === jPathMatchingValue );
 
+
           return !toRemove;
         }
       );
@@ -610,8 +645,10 @@ export class Tooltip extends EventEmitter implements TooltipInterface {
       JSON.stringify( localStorageTooltipsArrayFiltered )
     );
 
+
     return this;
   }
+
 
 
   addCleanupEventHandler(): Tooltip {
@@ -630,8 +667,10 @@ export class Tooltip extends EventEmitter implements TooltipInterface {
       }
     );
 
+
     return this;
   }
+
 
 
   addClickCurrentTooltipCloseEventHandler(): Tooltip {
@@ -697,8 +736,10 @@ export class Tooltip extends EventEmitter implements TooltipInterface {
       "true"
     );
 
+
     return this;
   }
+
 
 
   addEventTriggerTooltipShowEventHandler(): Tooltip {
@@ -707,7 +748,6 @@ export class Tooltip extends EventEmitter implements TooltipInterface {
     this.eventTargetHtmlNode.addEventListener (
       this.eventName,
       ( evt: Event ) => {
-
         if ( this.debug ) {
           console.log(
             evt
@@ -729,14 +769,17 @@ export class Tooltip extends EventEmitter implements TooltipInterface {
       }
     );
 
+
     return this;
   }
+
 
 
   addWindowResizeEventListener(): Tooltip {
     window.addEventListener (
       TooltipConstants.EventsNames.RESIZE,
       (evt: Event) => {
+
         if ( this.debug ) {
           console.log(
             evt
@@ -751,6 +794,7 @@ export class Tooltip extends EventEmitter implements TooltipInterface {
         this.calculateTooltipHtmlNodeDimensions();
       }
     );
+
 
     return this;
   }
@@ -771,6 +815,7 @@ export class Tooltip extends EventEmitter implements TooltipInterface {
       scrollableHolderNode.node.addEventListener (
         TooltipConstants.EventsNames.SCROLL,
         ( evt: Event ) => {
+
           if ( this.debug ) {
             console.log(
               `${TooltipConstants.EventsNames.SCROLL} event emitted`,
@@ -796,6 +841,7 @@ export class Tooltip extends EventEmitter implements TooltipInterface {
     window.addEventListener (
       TooltipConstants.EventsNames.RESIZE,
       (evt: Event) => {
+
         if ( this.debug ) {
           console.log(
             evt
@@ -811,6 +857,7 @@ export class Tooltip extends EventEmitter implements TooltipInterface {
       }
     );
 
+
     return this;
   }
 
@@ -824,8 +871,10 @@ export class Tooltip extends EventEmitter implements TooltipInterface {
       .addScrollEventListeners()
       .addWindowResizeEventListener();
 
+
     return this;
   }
+
 
 
   showTooltip (
@@ -967,8 +1016,10 @@ export class Tooltip extends EventEmitter implements TooltipInterface {
       }
     }
 
+
     return this;
   }
+
 
 
   hideAllTooltips(): undefined {
@@ -1031,6 +1082,7 @@ export class Tooltip extends EventEmitter implements TooltipInterface {
     let hideBehaviourFound: any = "";
 
     for ( tooltipShownSettings of registeredShownTooltips ) {
+
       for ( let hideBehaviuorTimeoutVal of hideBehaviourTooltipConstantsRelevantToTimeout ) {
 
         // finds match in input arg array of hideBehabiourTooltipConstants to hide in this method call,
@@ -1083,7 +1135,6 @@ export class Tooltip extends EventEmitter implements TooltipInterface {
         );
 
       } catch ( e ) {
-
         if ( this.debug ) {
           console.log (
             `No such Tooltip with this id, click event tried to hide JaisocxTooltip id="${tooltipShownSettings.tooltipHtmlNodeId}"`
@@ -1250,6 +1301,7 @@ export class Tooltip extends EventEmitter implements TooltipInterface {
   }
 
 
+
   setStandardCssClassAndGetDimensions (
     htmlNode: HTMLElement|null
   ): Dimensions {
@@ -1283,6 +1335,7 @@ export class Tooltip extends EventEmitter implements TooltipInterface {
       this._show( htmlNode );
       const htmlNodeDimensions: Dimensions = this.lib.getHtmlNodeDimensions( htmlNode );
       this._hide( htmlNode );
+
 
       return htmlNodeDimensions;
 
@@ -1348,6 +1401,7 @@ export class Tooltip extends EventEmitter implements TooltipInterface {
         4
       );
     }
+
 
     return htmlNodeDimensions;
   }

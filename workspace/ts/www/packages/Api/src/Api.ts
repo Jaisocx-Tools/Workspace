@@ -8,17 +8,21 @@ export class Api {
   protected _timestamps: any;
 
 
+
   constructor() {
     this._debug = false;
     this._timestamps = new Object();
   }
 
 
+
   public setDebug( inDebug: boolean ): Api {
     this._debug = inDebug;
 
+
     return this;
   }
+
 
 
   public getNsTimestamp(): BigInt {
@@ -33,6 +37,7 @@ export class Api {
   }
 
 
+
   public fetchObjData (
     url: string,
 
@@ -44,14 +49,15 @@ export class Api {
     //@ts-ignore
     requestHeaders: any[]
   ): Promise<any> {
-
     if ( this._debug ) {
       this._timestamps["1Request"] = new Object();
       this._timestamps["1Request"]["start"] = this.getNsTimestamp();
     }
 
+
     return fetch(url)
       .then( ( response: Response ): Promise<ArrayBuffer> => {
+
         if ( this._debug ) {
           this._timestamps["1Request"]["end"] = this.getNsTimestamp();
         }
@@ -65,9 +71,11 @@ export class Api {
           this._timestamps["2ObtainedArrayBuffer"]["start"] = this.getNsTimestamp();
         }
 
+
         return response.arrayBuffer();
       })
       .then( ( buf: ArrayBuffer ): any => {
+
         if ( this._debug ) {
           this._timestamps["2ObtainedArrayBuffer"]["end"] = this.getNsTimestamp();
         }
@@ -119,13 +127,16 @@ export class Api {
           this.consoleLogTimestamps();
         }
 
+
         return obj;
       });
 
   }
 
 
+
   protected consoleLogTimestamps(): undefined {
+
     if ( this._debug === false ) {
       return;
     }

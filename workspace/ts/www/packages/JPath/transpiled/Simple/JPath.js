@@ -5,6 +5,7 @@ class JPath {
     _jpathExpressionMaxSize;
 
 
+
     constructor() {
         this._jpath = [];
         this._jpathExpression = "";
@@ -12,11 +13,8 @@ class JPath {
     }
 
 
-    static setByJPath(
-        obj,
-        jpath,
-        value
-    ) {
+
+    static setByJPath(obj, jpath, value) {
         const jpathLen = jpath.length;
         let jpathLastIx = jpathLen - 1;
         let datatypeNode = "";
@@ -41,6 +39,7 @@ class JPath {
         //@ts-ignore
         obj[jpathLastIx] = value;
     }
+
 
 
     static setByJPathWalkFlatRebuild(
@@ -79,6 +78,7 @@ class JPath {
             foundNode = toGetById.find((node) => {
                 const matches = (node[nameId] === id);
 
+
                 return matches;
             });
 
@@ -108,16 +108,12 @@ class JPath {
     }
 
 
-    static getByJPathExpression(
-        jpathExpression,
-        value
-    ) {
+
+    static getByJPathExpression(jpathExpression, value) {
         const jpath = JPath.parse(jpathExpression);
 
-        return JPath.getByJPath(
-            jpath,
-            value
-        );
+
+        return JPath.getByJPath(jpath, value);
     }
 
 
@@ -130,10 +126,7 @@ class JPath {
     //    let valueFound = JPath.getByJPath( jpath, obj );
     //    console.log( valueFound );
     //    prints out => true
-    static getByJPath(
-        jpath,
-        value
-    ) {
+    static getByJPath(jpath, value) {
 
         if (!value) {
             return null;
@@ -172,6 +165,7 @@ class JPath {
                 targetValue = jpathValueFound;
             }
         }
+
 
         return targetValue;
     }
@@ -221,10 +215,7 @@ class JPath {
                 // when the next step is done,
                 // .indexOf searches from the rightBracePosition,
                 // matched in the previous while iteration.
-                leftBracePosition = jpathSplitted.indexOf(
-                    "[",
-                    rightBracePosition
-                );
+                leftBracePosition = jpathSplitted.indexOf("[", rightBracePosition);
 
 
                 // if an opening brace was not matched,
@@ -237,10 +228,7 @@ class JPath {
                     jpath.push(jpathSplitted);
                     continue loopSplittedByPoints;
                 }
-                rightBracePosition = jpathSplitted.indexOf(
-                    "]",
-                    leftBracePosition
-                );
+                rightBracePosition = jpathSplitted.indexOf("]", leftBracePosition);
 
 
                 // here means,
@@ -256,10 +244,7 @@ class JPath {
                 // the property name before opening square brace [ is being pushed to jpath array
                 //  when the opening square brace [ is found first time.
                 if (matchedFirstTime === false) {
-                    jpathKey = jpathSplitted.slice(
-                        0,
-                        leftBracePosition
-                    );
+                    jpathKey = jpathSplitted.slice(0, leftBracePosition);
                     jpath.push(jpathKey);
                     matchedFirstTime = true;
                 }
@@ -283,29 +268,37 @@ class JPath {
             }
         }
 
+
         return jpath;
     }
+
 
 
     setJPathExpression(jpathExpression) {
         this._jpathExpression = jpathExpression;
 
+
         return this;
     }
+
 
 
     setJPathExpressionMaxSize(maxSize) {
         this._jpathExpressionMaxSize = maxSize;
 
+
         return this;
     }
+
 
 
     setJPath(jpath) {
         this._jpath = jpath;
 
+
         return this;
     }
+
 
 
     getJPath() {
@@ -315,16 +308,16 @@ class JPath {
             this._jpath = JPath.parse(this._jpathExpression);
         }
 
+
         return this._jpath;
     }
 
 
-    static getJPathName(
-        jpathExpression,
-        delimiter
-    ) {
+
+    static getJPathName(jpathExpression, delimiter) {
         let jpath = JPath.parse(jpathExpression);
         let jpathName = jpath.join(delimiter);
+
 
         return jpathName;
     }

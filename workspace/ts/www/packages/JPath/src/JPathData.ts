@@ -5,6 +5,7 @@ export class JPathData {
   protected _isPlaceholderValue: number;
 
 
+
   constructor() {
     this._jpath = [];
     this._jpathExpression = "";
@@ -12,21 +13,26 @@ export class JPathData {
   }
 
 
+
   public isPlaceholderValue(): number {
     return this._isPlaceholderValue;
   }
 
 
+
   public setIsPlaceholderValue( isPlaceholder: number ): JPathData {
     this._isPlaceholderValue = isPlaceholder;
+
 
     return this;
   }
 
 
+
   public getJPath(): (string|number)[] {
     return this._jpath;
   }
+
 
 
   public setJPath( jpath: (string|number)[] ): JPathData {
@@ -40,8 +46,10 @@ export class JPathData {
 
     }
 
+
     return this;
   }
+
 
 
   public getJPathExpression(): string {
@@ -49,8 +57,10 @@ export class JPathData {
   }
 
 
+
   public setJPathExpression( jpathExpression: string ): JPathData {
     this._jpathExpression = jpathExpression;
+
 
     return this;
   }

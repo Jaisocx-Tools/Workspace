@@ -17,8 +17,10 @@ export class ObjDataPackage {
       offset += arr.length;
     }
 
+
     return result;
   }
+
 
 
   static parseByteBufToNumber (
@@ -35,8 +37,10 @@ export class ObjDataPackage {
       result |= (byteBuf[byteBufOffset] << ( ( len - 1 - loopCounter ) << 3 ));
     }
 
+
     return result;
   }
+
 
 
   static parseByteBufToText (
@@ -52,11 +56,13 @@ export class ObjDataPackage {
   }
 
 
+
   static serializeTextToByteBuf (
     text: any
   ): Uint8Array {
     return  new TextEncoder().encode(text);
   }
+
 
 
   static serializeNumberToByteBuf (

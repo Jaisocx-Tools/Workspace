@@ -7,6 +7,7 @@ export class CountriesCodes extends DatasetBase {
   static _singletonInstance: CountriesCodes;
 
 
+
   constructor() {
     super();
 
@@ -14,14 +15,16 @@ export class CountriesCodes extends DatasetBase {
   }
 
 
-  static getSingletonInstance(): CountriesCodes {
 
+  static getSingletonInstance(): CountriesCodes {
     if ( CountriesCodes._singletonInstance === undefined ) {
       CountriesCodes._singletonInstance = new CountriesCodes();
     }
 
+
     return CountriesCodes._singletonInstance;
   }
+
 
 
   getCountriesCodes(): any[] {
@@ -29,9 +32,11 @@ export class CountriesCodes extends DatasetBase {
   }
 
 
+
   getCountriesCodesIndexedByKeys( key: string ): any[] {
     return this.getDataIndexedByKeys( key );
   }
+
 
 
   saveCountriesCodes( inFilePath: string ): number {
@@ -40,8 +45,10 @@ export class CountriesCodes extends DatasetBase {
       this._data
     );
 
+
     return locSaved;
   }
+
 
 
   saveCountriesCodesIndexedByKeys(
@@ -53,8 +60,10 @@ export class CountriesCodes extends DatasetBase {
       inFilePath
     );
 
+
     return locSaved;
   }
+
 
 
   initData(): any[] {
@@ -3201,13 +3210,16 @@ export class CountriesCodes extends DatasetBase {
 
     let orderedByCountryNameRewrittenData = locData.sort(
       (a: any, b: any) => {
+
         if ( a.country_name === b.country_name ) {
           return 0;
         }
 
+
         return ( a.country_name > b.country_name ) ? (1) : (-1);
       }
     );
+
 
     return orderedByCountryNameRewrittenData;
 

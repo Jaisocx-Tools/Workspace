@@ -4,6 +4,7 @@ class EventEmitter {
     EventArtJSEvent;
 
 
+
     constructor() {
         this.eventsHandlersSetThisClass = {};
         this.debug = true;
@@ -11,11 +12,14 @@ class EventEmitter {
     }
 
 
+
     setDebug(inDebug) {
         this.debug = inDebug;
 
+
         return this;
     }
+
 
 
     isObjectEmpty(obj) {
@@ -47,15 +51,13 @@ class EventEmitter {
     // and then all event handlers are executed on this.emitEvent method call.
     // this.emitEvent method call You can place inside Your js code,
     // where You wish to provide the interface of optional adding a custom event listener in Your JS class.
-    addThisClassEventListener(
-        eventName,
-        eventHandler
-    ) {
+    addThisClassEventListener(eventName, eventHandler) {
 
         if (!this.eventsHandlersSetThisClass[eventName]) {
             this.eventsHandlersSetThisClass[eventName] = [];
         }
         this.eventsHandlersSetThisClass[eventName].push(eventHandler);
+
 
         return this;
     }
@@ -63,17 +65,11 @@ class EventEmitter {
 
     // this.emitEvent method call You can place inside Your js code,
     // where You wish to provide the interface of optional adding a custom event listener in Your JS class.
-    emitEvent(
-        eventName,
-        payload
-    ) {
+    emitEvent(eventName, payload) {
         const eventEmitResults = [];
 
         if (this.debug) {
-            console.log(
-                "event emitted",
-                eventName
-            );
+            console.log("event emitted", eventName);
         }
 
         if (this.isObjectEmpty(this.eventsHandlersSetThisClass)) {
@@ -89,6 +85,7 @@ class EventEmitter {
                     eventName
                 );
             }
+
 
             return eventEmitResults;
         }
@@ -121,11 +118,7 @@ class EventEmitter {
                     eventHandler
                 );
             }
-            const eventHandlerResult = eventHandler.call(
-                this,
-                eventName,
-                payload
-            );
+            const eventHandlerResult = eventHandler.call(this, eventName, payload);
             const thisClass = this;
             const eventEmitResult = new class {
                 eventArt = thisClass.EventArtJSEvent;
@@ -142,6 +135,7 @@ class EventEmitter {
                 payload = eventHandlerResult.payloadReturned;
             }
         }
+
 
         return eventEmitResults;
     }

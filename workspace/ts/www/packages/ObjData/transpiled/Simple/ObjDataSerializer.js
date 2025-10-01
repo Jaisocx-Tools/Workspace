@@ -1,17 +1,12 @@
 class ObjDataSerializer {
 
     static serialize(anyValue) {
-        return ObjDataSerializer.serializeProperty(
-            "Root",
-            anyValue
-        );
+        return ObjDataSerializer.serializeProperty("Root", anyValue);
     }
 
 
-    static serializeProperty(
-        propName,
-        propValue
-    ) {
+
+    static serializeProperty(propName, propValue) {
         let propertyNameSerialized = new Uint8Array();
         let propertyValueSerialized = new Uint8Array();
         let dataHelper = new ObjDataHelpingProps();
@@ -61,10 +56,7 @@ class ObjDataSerializer {
 
             for (let subPropName of objectKeys) {
                 const subPropValue = propValue[subPropName];
-                const subPropValueSerialized = ObjDataSerializer.serializeProperty(
-                    subPropName,
-                    subPropValue
-                );
+                const subPropValueSerialized = ObjDataSerializer.serializeProperty(subPropName, subPropValue);
                 byteBufs.push(subPropValueSerialized);
             }
             propertyValueSerialized = ObjDataPackage.concatByteArrays(byteBufs);
@@ -76,10 +68,7 @@ class ObjDataSerializer {
 
             for (let i = 0; i < dataHelper.propsAmount; i++) {
                 const subPropValue = propValue[i];
-                const subPropValueSerialized = ObjDataSerializer.serializeProperty(
-                    i,
-                    subPropValue
-                );
+                const subPropValueSerialized = ObjDataSerializer.serializeProperty(i, subPropValue);
                 byteBufs.push(subPropValueSerialized);
             }
             propertyValueSerialized = ObjDataPackage.concatByteArrays(byteBufs);
@@ -97,12 +86,14 @@ class ObjDataSerializer {
             + (dataHelper.propertyValueLength));
         const headers = ObjDataSerializer.serializePropHeaders(dataHelper);
 
+
         return ObjDataPackage.concatByteArrays([
             headers,
             propertyNameSerialized,
             propertyValueSerialized
         ]);
     }
+
 
 
     static serializePropHeaders(dataHelper) {
@@ -137,6 +128,7 @@ class ObjDataSerializer {
             ObjDataConstants.FIELDS_POINTERS.PROPERTY_NAME_LENGTH,
             headersBuf
         );
+
 
         return headersBuf;
     }

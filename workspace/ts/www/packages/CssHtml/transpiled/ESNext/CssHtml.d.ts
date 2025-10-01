@@ -18,5 +18,9 @@ export declare class CssHtml {
     getVariableValue(element: HTMLElement, variableName: string): string;
     resolveCssValueIfVariable(element: HTMLElement, cssValue: string): string | false;
     getCssPropertiesNames_ofCSSStyleRule(cssStyleRule: CSSStyleRule): string[];
+    getBrowserTabDimensions(): {
+        width: number;
+        height: number;
+    };
 }
 //# sourceMappingURL=CssHtml.d.ts.map

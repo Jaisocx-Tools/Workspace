@@ -142,6 +142,7 @@ class ObjDataConstants {
     };
 
 
+
     static exportConstants() {
         let objDataConstants = {
             FIELDS_POINTERS: ObjDataConstants.FIELDS_POINTERS,
@@ -150,11 +151,7 @@ class ObjDataConstants {
         };
         writeFileSync(
             "ObjDataConstants.json",
-            JSON.stringify(
-                objDataConstants,
-                null,
-                2
-            )
+            JSON.stringify(objDataConstants, null, 2)
         );
     }
 }

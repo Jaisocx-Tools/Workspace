@@ -2,8 +2,10 @@ class TooltipLib {
     static instance;
 
 
+
     constructor() {
     }
+
 
 
     static getInstance() {
@@ -12,8 +14,10 @@ class TooltipLib {
             TooltipLib.instance = new TooltipLib();
         }
 
+
         return TooltipLib.instance;
     }
+
 
 
     setTooltipDimensions(
@@ -35,6 +39,7 @@ class TooltipLib {
         //@ts-ignore
         tooltipHtmlNode.style.left = `${tooltipHtmlNodeDimensions.left}px`;
     }
+
 
 
     calculateTooltipDimensions(
@@ -87,8 +92,10 @@ class TooltipLib {
         retVal.right = retVal.left + retVal.width;
         retVal.bottom = retVal.top + retVal.height;
 
+
         return retVal;
     }
+
 
 
     calculateTooltipDimensionTwo(
@@ -143,8 +150,10 @@ class TooltipLib {
             }
         }
 
+
         return tooltipHtmlNodeDimensions;
     }
+
 
 
     doesTooltipSuitsTilBrowserTabBorder(
@@ -185,8 +194,10 @@ class TooltipLib {
             }
         }
 
+
         return retVal;
     }
+
 
 
     setTooltipArrowDimensions(
@@ -202,6 +213,7 @@ class TooltipLib {
         arrowHtmlNode.style.top = `${arrowDimensions.top}px`;
         arrowHtmlNode.style.left = `${arrowDimensions.left}px`;
     }
+
 
 
     calculateTooltipArrowDimensions(
@@ -255,14 +267,17 @@ class TooltipLib {
     }
 
 
+
     getBrowserTabDimensions() {
 
         // const zero: number = 0;
         const htmlNodeHtml = document.getElementsByTagName("HTML")[0];
         let browserTabDimensions = this.getHtmlNodeDimensions(htmlNodeHtml);
 
+
         return browserTabDimensions;
     }
+
 
 
     getHtmlNodeDimensions(htmlNode) {
@@ -278,8 +293,10 @@ class TooltipLib {
         dimensions.left = Math.floor(rect.left) + Math.floor(window.scrollX);
         dimensions.bottom = Math.floor(rect.bottom);
 
+
         return dimensions;
     }
+
 
 
     getRectSideSizeByMidTilConerLineSize(midTilCornerLineSize) {
@@ -296,8 +313,10 @@ class TooltipLib {
         // retVal = m / sin45
         retVal = Math.floor(midTilCornerLineSize / Math.sin((45 * (Math.PI / 180))));
 
+
         return retVal;
     }
+
 
 
     adjustHeight(
@@ -323,10 +342,12 @@ class TooltipLib {
         if (cssOverflowYValue !== "visible") {
             resultingHtmlNodeDimensions = { ...htmlNodeDimensions };
 
+
             return resultingHtmlNodeDimensions;
         }
         htmlNode.style.height = `${htmlNodeDimensions.height}px`;
         resultingHtmlNodeDimensions = { ...htmlNodeDimensions };
+
 
         return resultingHtmlNodeDimensions;
     }
@@ -423,8 +444,10 @@ class TooltipLib {
             }
         }
 
+
         return pixelSize;
     }
+
 
 
     translateToPixelValue(sizeNumeric, sizeUnit) {
@@ -442,8 +465,10 @@ class TooltipLib {
             pixelValue = (sizeNumeric * remRelativePixelValue);
         }
 
+
         return pixelValue;
     }
+
 
 
     translateCssDimToPixelValue(sizeCssValue) {
@@ -453,8 +478,10 @@ class TooltipLib {
         const sizeUnit = sizeCssValue.substring(sizeNumericAsText.length);
         pixelValue = this.translateToPixelValue(sizeNumeric, sizeUnit);
 
+
         return pixelValue;
     }
+
 
 
     getRemRelativePixelValue() {
@@ -464,8 +491,10 @@ class TooltipLib {
         const fontSize = window.getComputedStyle(htmlNodeHtml).getPropertyValue(CssRemRuleName);
         const remRelativePixelValue = Math.floor(parseFloat(fontSize));
 
+
         return remRelativePixelValue;
     }
+
 
 
     validateCssSizeDim(cssSizeDimInputArg) {
@@ -490,8 +519,10 @@ class TooltipLib {
             throw new Error(`Arrow Size dim ${cssSizeDimInputArg} not supported, supported are: (${sizeDimsSupported})`);
         }
 
+
         return isValid;
     }
+
 
 
     getCssVariableForNode(htmlNode, cssVariableName) {
@@ -500,10 +531,12 @@ class TooltipLib {
             throw new Error("htmlNode is null or undefined");
         }
 
+
         return window
             .getComputedStyle(htmlNode)
             .getPropertyValue(cssVariableName);
     }
+
 
 
     getScrollableHolderNodes(eventTarget) {
@@ -549,6 +582,7 @@ class TooltipLib {
                 break;
             }
         }
+
 
         return scrollableHolderNodes;
     }

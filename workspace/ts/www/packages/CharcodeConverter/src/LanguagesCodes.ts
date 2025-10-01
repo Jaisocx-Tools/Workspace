@@ -7,6 +7,7 @@ export class LanguagesCodes extends DatasetBase {
   static _singletonInstance: LanguagesCodes;
 
 
+
   constructor() {
     super();
 
@@ -14,14 +15,16 @@ export class LanguagesCodes extends DatasetBase {
   }
 
 
-  static getSingletonInstance(): LanguagesCodes {
 
+  static getSingletonInstance(): LanguagesCodes {
     if ( LanguagesCodes._singletonInstance === undefined ) {
       LanguagesCodes._singletonInstance = new LanguagesCodes();
     }
 
+
     return LanguagesCodes._singletonInstance;
   }
+
 
 
   getLanguagesCodes(): any[] {
@@ -29,9 +32,11 @@ export class LanguagesCodes extends DatasetBase {
   }
 
 
+
   getLanguagesCodesIndexedByKeys( key: string ): any[] {
     return this.getDataIndexedByKeys( key );
   }
+
 
 
   saveLanguagesCodes( inFilePath: string ): number {
@@ -40,8 +45,10 @@ export class LanguagesCodes extends DatasetBase {
       this._data
     );
 
+
     return locSaved;
   }
+
 
 
   saveLanguagesCodesIndexedByKeys(
@@ -53,8 +60,10 @@ export class LanguagesCodes extends DatasetBase {
       inFilePath
     );
 
+
     return locSaved;
   }
+
 
 
   initData(): any[] {
@@ -3728,13 +3737,16 @@ export class LanguagesCodes extends DatasetBase {
 
     let orderedByLanguageCodeRewrittenData = locData.sort(
       (a: any, b: any) => {
+
         if ( a.language_code === b.language_code ) {
           return 0;
         }
 
+
         return ( a.language_code > b.language_code ) ? (1) : (-1);
       }
     );
+
 
     return orderedByLanguageCodeRewrittenData;
 

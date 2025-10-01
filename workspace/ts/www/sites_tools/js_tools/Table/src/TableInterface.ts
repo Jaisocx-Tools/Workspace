@@ -12,9 +12,9 @@ export interface TableInterface {
   renderTable(): undefined;
   addEventListenersOrderBy(): undefined;
   renderHeader(): string;
-  renderRecord ( 
-    record: any, 
-    rowCounter: number 
+  renderRecord (
+    record: any,
+    rowCounter: number
   ): string;
   applyColumnsWidths(): undefined;
   generateGridTemplateColumnsStyle(): string;
@@ -22,7 +22,7 @@ export interface TableInterface {
   getScrollbarWidth( element: HTMLElement|null ): number;
   sort ( columnName: string|undefined ): undefined;
   sortBy (
-    field: string|undefined, 
+    field: string|undefined,
     order: string
   ): undefined;
 

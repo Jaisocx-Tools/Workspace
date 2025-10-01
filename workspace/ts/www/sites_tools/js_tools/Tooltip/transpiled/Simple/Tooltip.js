@@ -180,6 +180,7 @@ class Tooltip extends EventEmitter {
             ...TooltipConstants.EventsEmitted
         ];
 
+
         return eventsNamesEmitted;
     }
 
@@ -200,10 +201,12 @@ class Tooltip extends EventEmitter {
     }
 
 
+
     setHtml(html) {
         this.html = html;
         this.setTemplate(TooltipConstants.Defaults.templateTooltipContent)
             .setTemplateData({ html });
+
 
         return this;
     }
@@ -213,6 +216,7 @@ class Tooltip extends EventEmitter {
     setTemplate(template) {
         this.templateRenderer.setTemplate(template);
 
+
         return this;
     }
 
@@ -221,6 +225,7 @@ class Tooltip extends EventEmitter {
     setTemplateData(data) {
         this.templateRenderer.setData(data);
 
+
         return this;
     }
 
@@ -228,6 +233,7 @@ class Tooltip extends EventEmitter {
     // setCssClasses is used to set the tooltip html node attr class="" values, like this class="tooltip theme-beta"
     setCssClasses(cssClasses) {
         this.cssClasses = cssClasses;
+
 
         return this;
     }
@@ -238,6 +244,7 @@ class Tooltip extends EventEmitter {
         this.paddingEventTarget = padding;
         this.paddingDimEventTarget = paddingDim;
 
+
         return this;
     }
 
@@ -246,6 +253,7 @@ class Tooltip extends EventEmitter {
     // e.g. above the event target, TooltipLib.getInstance().BROWSER_TAB_BORDER_TOP with number value 2.
     setTooltipAlignDimensionOne(tooltipAlignDimensionOne) {
         this.tooltipAlignDimensionOne = tooltipAlignDimensionOne;
+
 
         return this;
     }
@@ -256,8 +264,10 @@ class Tooltip extends EventEmitter {
     setTooltipAlignDimensionTwo(tooltipAlignDimensionTwo) {
         this.tooltipAlignDimensionTwo = tooltipAlignDimensionTwo;
 
+
         return this;
     }
+
 
 
     setTooltipPaddingAlignDimensionTwo(
@@ -267,6 +277,7 @@ class Tooltip extends EventEmitter {
         this.tooltipPaddingAlignDimensionTwo = tooltipPaddingAlignDimensionTwo;
         this.tooltipPaddingSizeDimAlignDimensionTwo = tooltipPaddingSizeDimAlignDimensionTwo;
 
+
         return this;
     }
 
@@ -275,12 +286,15 @@ class Tooltip extends EventEmitter {
     setEventTargetHtmlNodeId(id) {
         this.eventTargetHtmlNodeId = id;
 
+
         return this;
     }
 
 
+
     setEventTargetSelector(cssSelector) {
         this.eventTargetSelector = cssSelector;
+
 
         return this;
     }
@@ -290,6 +304,7 @@ class Tooltip extends EventEmitter {
     setEventTargetHtmlNode(eventTarget) {
         this.eventTargetHtmlNode = eventTarget;
 
+
         return this;
     }
 
@@ -297,6 +312,7 @@ class Tooltip extends EventEmitter {
     // setEventName: method to set the event name, when on the eventTarget the tooltip is shown.
     setEventName(eventName) {
         this.eventName = eventName;
+
 
         return this;
     }
@@ -306,6 +322,7 @@ class Tooltip extends EventEmitter {
     setAlignDimensionOneValueOrder(alternativeTabBorderSides) {
         this.alternativeTabBorderSides = alternativeTabBorderSides;
 
+
         return this;
     }
 
@@ -314,28 +331,35 @@ class Tooltip extends EventEmitter {
     setIsWithArrow(withArrow) {
         this.withArrow = withArrow;
 
+
         return this;
     }
+
 
 
     setArrowSize(arrowSize, arrowSizeDim) {
         this.arrowSize = arrowSize;
         this.arrowSizeDim = arrowSizeDim;
 
+
         return this;
     }
 
 
+
     setTimeoutToCloseMillis(timeoutMillis) {
         this.timeoutToCloseMillis = timeoutMillis;
+
 
         return this;
         this.tooltipHideBehaviour;
     }
 
 
+
     setTooltipHideBehaviour(tooltipHideBehaviour) {
         this.tooltipHideBehaviour = tooltipHideBehaviour;
+
 
         return this;
     }
@@ -439,8 +463,10 @@ class Tooltip extends EventEmitter {
         // TODO: rewrite, using improved DOM events hanlder
         this.addEventListeners();
 
+
         return this;
     }
+
 
 
     renderTooltipArrowHtmlNode() {
@@ -455,8 +481,10 @@ class Tooltip extends EventEmitter {
         //@ts-ignore
         this.arrowHtmlNode = this.mainHtmlNode.getElementsByClassName(TooltipConstants.CssClassNames.TOOLTIP_ARROW)[0];
 
+
         return this;
     }
+
 
 
     getLocalStorageArray() {
@@ -473,8 +501,10 @@ class Tooltip extends EventEmitter {
         const tooltipShownSettings = localStorageTooltipsArray
             .find((tooltipSetting) => tooltipSetting.tooltipHtmlNodeId === this.mainHtmlNodeId);
 
+
         return tooltipShownSettings;
     }
+
 
 
     addToLocalStorageArray(key, value) {
@@ -491,8 +521,10 @@ class Tooltip extends EventEmitter {
             JSON.stringify(localStorageTooltipsArray)
         );
 
+
         return this;
     }
+
 
 
     removeFromLocalStorageArray(key, jPath, jPathMatchingValue) {
@@ -513,6 +545,7 @@ class Tooltip extends EventEmitter {
                 }
                 toRemove = (prop === jPathMatchingValue);
 
+
                 return !toRemove;
             });
         localStorage.removeItem(key);
@@ -521,8 +554,10 @@ class Tooltip extends EventEmitter {
             JSON.stringify(localStorageTooltipsArrayFiltered)
         );
 
+
         return this;
     }
+
 
 
     addCleanupEventHandler() {
@@ -534,8 +569,10 @@ class Tooltip extends EventEmitter {
             }
         );
 
+
         return this;
     }
+
 
 
     addClickCurrentTooltipCloseEventHandler() {
@@ -559,7 +596,7 @@ class Tooltip extends EventEmitter {
             (evt) => {
 
                 // console writes the current event payload
-            if (this.debug) {
+                if (this.debug) {
                     console.log(evt);
                 }
 
@@ -572,7 +609,7 @@ class Tooltip extends EventEmitter {
 
 
                 //@ts-ignore
-            if (holderTooltip) {
+                if (holderTooltip) {
                     return;
                 }
 
@@ -596,8 +633,10 @@ class Tooltip extends EventEmitter {
             "true"
         );
 
+
         return this;
     }
+
 
 
     addEventTriggerTooltipShowEventHandler() {
@@ -620,8 +659,10 @@ class Tooltip extends EventEmitter {
             }
         );
 
+
         return this;
     }
+
 
 
     addWindowResizeEventListener() {
@@ -639,6 +680,7 @@ class Tooltip extends EventEmitter {
                 this.calculateTooltipHtmlNodeDimensions();
             }
         );
+
 
         return this;
     }
@@ -667,7 +709,7 @@ class Tooltip extends EventEmitter {
                         );
                     }
 
-                if (!this.getLocalStorageArray()) {
+                    if (!this.getLocalStorageArray()) {
                         return;
                     }
                     this.emitEvent(
@@ -693,6 +735,7 @@ class Tooltip extends EventEmitter {
             }
         );
 
+
         return this;
     }
 
@@ -706,8 +749,10 @@ class Tooltip extends EventEmitter {
             .addScrollEventListeners()
             .addWindowResizeEventListener();
 
+
         return this;
     }
+
 
 
     showTooltip(
@@ -828,8 +873,10 @@ class Tooltip extends EventEmitter {
             }
         }
 
+
         return this;
     }
+
 
 
     hideAllTooltips() {
@@ -1084,6 +1131,7 @@ class Tooltip extends EventEmitter {
     }
 
 
+
     setStandardCssClassAndGetDimensions(htmlNode) {
 
         //const dim: Dimensions = new Dimensions();
@@ -1114,6 +1162,7 @@ class Tooltip extends EventEmitter {
             this._show(htmlNode);
             const htmlNodeDimensions = this.lib.getHtmlNodeDimensions(htmlNode);
             this._hide(htmlNode);
+
 
             return htmlNodeDimensions;
         }
@@ -1155,6 +1204,7 @@ class Tooltip extends EventEmitter {
                 4
             );
         }
+
 
         return htmlNodeDimensions;
     }

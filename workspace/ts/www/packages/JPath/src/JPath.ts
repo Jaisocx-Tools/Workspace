@@ -7,11 +7,13 @@ export class JPath {
   protected _jpathExpressionMaxSize: number;
 
 
+
   constructor() {
     this._jpath = [];
     this._jpathExpression = "";
     this._jpathExpressionMaxSize = JPath.JPATH_EXPRESSION_MAX_SIZE;
   }
+
 
 
   public static setByJPath (
@@ -28,6 +30,7 @@ export class JPath {
       datatypeNode = typeof key;
 
       if ( !obj[key] ) {
+
         if ( datatypeNode === "number" ) {
           obj[key] = new Array();
         } else {
@@ -45,6 +48,7 @@ export class JPath {
     obj[jpathLastIx] = value;
 
   }
+
 
 
   public static setByJPathWalkFlatRebuild (
@@ -89,11 +93,13 @@ export class JPath {
         ( node: any ) => {
           const matches: boolean = ( node[nameId] === id );
 
+
           return matches;
         }
       );
 
       if ( !foundNode ) {
+
         if ( jpathIx === jpathLastIx ) {
           newItem = {
             ...value,
@@ -123,11 +129,13 @@ export class JPath {
   }
 
 
+
   public static getByJPathExpression (
     jpathExpression: string,
     value: any
   ): any {
     const jpath: (string|number)[] = JPath.parse( jpathExpression );
+
 
     return JPath.getByJPath(
       jpath,
@@ -149,6 +157,7 @@ export class JPath {
     jpath: (string|number)[],
     value: any
   ): any {
+
     if ( !value ) {
       return null;
     }
@@ -168,6 +177,7 @@ export class JPath {
     );
 
     for ( jpathPropLevel = 0; jpathPropLevel < jpathLevelMax; jpathPropLevel++ ) {
+
       if ( !targetValue ) {
         break;
       }
@@ -176,6 +186,7 @@ export class JPath {
       jpathValueFound = targetValue[jpathPropertyKey];
 
       if ( typeof jpathValueFound === "object" ) {
+
         if ( Array.isArray( jpathValueFound ) === true ) {
           targetValue = [...jpathValueFound];
         } else {
@@ -187,6 +198,7 @@ export class JPath {
       }
 
     }
+
 
     return targetValue;
 
@@ -311,32 +323,41 @@ export class JPath {
 
     }
 
+
     return jpath;
   }
+
 
 
   public setJPathExpression( jpathExpression: string ): JPath {
     this._jpathExpression = jpathExpression;
 
+
     return this;
   }
+
 
 
   public setJPathExpressionMaxSize( maxSize: number ): JPath {
     this._jpathExpressionMaxSize = maxSize;
 
+
     return this;
   }
+
 
 
   public setJPath( jpath: (string|number)[] ): JPath {
     this._jpath = jpath;
 
+
     return this;
   }
 
 
+
   public getJPath(): (string|number)[] {
+
     if (
       (
         ( this._jpathExpression !== null ) && ( this._jpathExpression.length !== 0 )
@@ -346,8 +367,10 @@ export class JPath {
       this._jpath = JPath.parse( this._jpathExpression );
     }
 
+
     return this._jpath;
   }
+
 
 
   public static getJPathName (
@@ -356,6 +379,7 @@ export class JPath {
   ): string {
     let jpath: (string|number)[] = JPath.parse( jpathExpression );
     let jpathName: string = jpath.join( delimiter );
+
 
     return jpathName;
   }

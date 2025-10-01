@@ -4,6 +4,7 @@ class TooltipShownSettings {
     tooltipHideTimoutId;
 
 
+
     constructor(
         id,
         hideBehaviour,

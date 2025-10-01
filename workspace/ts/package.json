@@ -2,7 +2,7 @@
   "name": "@jaisocx/ts-tools",
   "version": "1.3.1",
   "private": false,
-  "description": "The Root ctalog of the project, with central config files, package.json devDependencies and node_modules catalog, keeping central devDependencies files hard copies.",
+  "description": "The Root catalog of the project, with central config files, package.json devDependencies and node_modules catalog, keeping central devDependencies files hard copies.",
   "type": "module",
   "main": "./transpiled/CommonJS/index.js",
   "types": "./transpiled/ESNext/index.d.ts",
@@ -23,7 +23,7 @@
     "test": "vitest run",
     "test-watch": "vitest",
     "build": "vite build",
-    "server": "http-server ./www -p 8083 -o"
+    "server": "http-server ./www/sites_tools -p 8083 -o"
   },
   "keywords": [],
   "author": "",

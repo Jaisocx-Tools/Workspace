@@ -10,6 +10,7 @@ class CssHtml {
     CSS_FONT_SIZE;
 
 
+
     constructor() {
         this.KEYWORD_HTML_UC = "HTML";
         this.KEYWORD_HTML_LC = "html";
@@ -23,6 +24,7 @@ class CssHtml {
     }
 
 
+
     escapeHTML(str) {
         return str
             .replace(/&/g, "&amp;")
@@ -31,6 +33,7 @@ class CssHtml {
             .replace(/"/g, "&quot;")
             .replace(/'/g, "&#039;");
     }
+
 
 
     unescapeHTML(str) {
@@ -43,9 +46,11 @@ class CssHtml {
     }
 
 
+
     concatClassNames(node, delimiter) {
         return node.className.split(" ").join(delimiter);
     }
+
 
 
     getRemBasePxValue() {
@@ -68,8 +73,10 @@ class CssHtml {
             remBasePxValueNumber = +(remPxValue.substring(0, substringEndPos));
         }
 
+
         return remBasePxValueNumber;
     }
+
 
 
     remToPx(remValue, inRemBasePxValue) {
@@ -86,8 +93,10 @@ class CssHtml {
         // `${remValToPxNumber}px`
         let pxValue = [remValToPxNumber, this.KEYWORD_PX].join("");
 
+
         return pxValue;
     }
+
 
 
     remToPxAllValues(cssPropertyValue) {
@@ -114,15 +123,19 @@ class CssHtml {
         }
         let remToPxStyles = values.join(" ");
 
+
         return remToPxStyles;
     }
+
 
 
     getVariableValue(element, variableName) {
         let cssVariableValue = window.getComputedStyle(element).getPropertyValue(variableName);
 
+
         return cssVariableValue;
     }
+
 
 
     resolveCssValueIfVariable(element, cssValue) {
@@ -138,8 +151,10 @@ class CssHtml {
         );
         let cssVariableValue = this.getVariableValue(element, variableName);
 
+
         return cssVariableValue;
     }
+
 
 
     getCssPropertiesNames_ofCSSStyleRule(cssStyleRule) {
@@ -165,7 +180,20 @@ class CssHtml {
             cssPropsAvailable[cssPropId] = cssPropName;
         }
 
+
         return cssPropsAvailable;
+    }
+
+
+    // browser tab width and height not including scrollbars width and height
+    getBrowserTabDimensions() {
+        let dimensions = {
+            width: window.innerWidth,
+            height: window.innerHeight
+        };
+
+
+        return dimensions;
     }
 }
 

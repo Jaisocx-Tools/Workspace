@@ -14,6 +14,7 @@ export class ObjDataParser {
       0
     );
 
+
     return ObjDataParser.parseProperty (
       objDataByteBuf,
       0,
@@ -21,6 +22,7 @@ export class ObjDataParser {
       null
     );
   }
+
 
 
   static parseProperty (
@@ -35,6 +37,7 @@ export class ObjDataParser {
       ( dataHelper.datatype === ObjDataConstants.DATA_TYPES.ARRAY )
       || ( dataHelper.datatype === ObjDataConstants.DATA_TYPES.OBJECT )
     ) {
+
       if ( dataHelper.datatype === ObjDataConstants.DATA_TYPES.ARRAY ) {
         retValue = [];
       } else {
@@ -115,9 +118,11 @@ export class ObjDataParser {
       parentObject[propName] = retValue;
     }
 
+
     return retValue;
 
   }
+
 
 
   static parsePropHeaders (
@@ -174,6 +179,7 @@ export class ObjDataParser {
       dataHelper.lengthAll
       - dataHelper.propertyValueStart
     );
+
 
     return dataHelper;
   }

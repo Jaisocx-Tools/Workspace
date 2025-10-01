@@ -2,10 +2,12 @@ class LanguagesCodes extends DatasetBase {
     static _singletonInstance;
 
 
+
     constructor() {
         super();
         this._data = this.initData();
     }
+
 
 
     static getSingletonInstance() {
@@ -14,8 +16,10 @@ class LanguagesCodes extends DatasetBase {
             LanguagesCodes._singletonInstance = new LanguagesCodes();
         }
 
+
         return LanguagesCodes._singletonInstance;
     }
+
 
 
     getLanguagesCodes() {
@@ -23,32 +27,29 @@ class LanguagesCodes extends DatasetBase {
     }
 
 
+
     getLanguagesCodesIndexedByKeys(key) {
         return this.getDataIndexedByKeys(key);
     }
 
 
+
     saveLanguagesCodes(inFilePath) {
-        let locSaved = this.saveData(
-            inFilePath,
-            this._data
-        );
+        let locSaved = this.saveData(inFilePath, this._data);
+
 
         return locSaved;
     }
 
 
-    saveLanguagesCodesIndexedByKeys(
-        key,
-        inFilePath
-    ) {
-        let locSaved = this.saveDataIndexedByKeys(
-            key,
-            inFilePath
-        );
+
+    saveLanguagesCodesIndexedByKeys(key, inFilePath) {
+        let locSaved = this.saveDataIndexedByKeys(key, inFilePath);
+
 
         return locSaved;
     }
+
 
 
     initData() {
@@ -3725,8 +3726,10 @@ class LanguagesCodes extends DatasetBase {
                 return 0;
             }
 
+
             return (a.language_code > b.language_code) ? (1) : (-1);
         });
+
 
         return orderedByLanguageCodeRewrittenData;
     }

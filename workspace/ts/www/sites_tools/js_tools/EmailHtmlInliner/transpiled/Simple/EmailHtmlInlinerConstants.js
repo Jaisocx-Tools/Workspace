@@ -8,6 +8,7 @@ class EmailHtmlInlinerConstants {
     renamedTags;
 
 
+
     constructor() {
         this.stylesPropsDefaults = {
             "padding": ["0", "0px", "0 0 0 0"],

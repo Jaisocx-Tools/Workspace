@@ -8,25 +8,27 @@ export class TooltipLib {
   static instance: TooltipLib|undefined;
 
 
+
   constructor() {
   }
 
 
-  static getInstance(): TooltipLib {
 
+  static getInstance(): TooltipLib {
     if ( !TooltipLib.instance ) {
       TooltipLib.instance = new TooltipLib();
     }
 
+
     return TooltipLib.instance;
   }
+
 
 
   setTooltipDimensions (
     tooltipHtmlNode: HTMLElement|null,
     tooltipHtmlNodeDimensions: Dimensions
   ): void {
-
     if ( !tooltipHtmlNode ) {
       throw new Error("the first input arg tooltipHtmlNode has null value");
     }
@@ -41,6 +43,7 @@ export class TooltipLib {
     //@ts-ignore
     tooltipHtmlNode.style.left = `${tooltipHtmlNodeDimensions.left}px`;
   }
+
 
 
   calculateTooltipDimensions (
@@ -100,8 +103,10 @@ export class TooltipLib {
     retVal.right = retVal.left + retVal.width;
     retVal.bottom = retVal.top + retVal.height;
 
+
     return retVal;
   }
+
 
 
   calculateTooltipDimensionTwo (
@@ -112,10 +117,12 @@ export class TooltipLib {
     tooltipPaddingAlignDimensionTwo: number,
     _arrowPixelSize: number
   ): Dimensions {
+
     if (
       ( browserTabBorderSide === TooltipConstants.AlignDimensionOne.BROWSER_TAB_BORDER_TOP ) ||
       ( browserTabBorderSide === TooltipConstants.AlignDimensionOne.BROWSER_TAB_BORDER_BOTTOM )
     ) {
+
       if ( tooltipAlignDimensionTwo === TooltipConstants.AlignDimensionTwo.EVENT_TARGET_START ) {
         tooltipHtmlNodeDimensions.left = eventTargetHtmlNodeDimensions.left
           - tooltipPaddingAlignDimensionTwo;
@@ -139,6 +146,7 @@ export class TooltipLib {
       ( browserTabBorderSide === TooltipConstants.AlignDimensionOne.BROWSER_TAB_BORDER_RIGHT ) ||
       ( browserTabBorderSide === TooltipConstants.AlignDimensionOne.BROWSER_TAB_BORDER_LEFT )
     ) {
+
       if ( tooltipAlignDimensionTwo === TooltipConstants.AlignDimensionTwo.EVENT_TARGET_START ) {
         tooltipHtmlNodeDimensions.top = eventTargetHtmlNodeDimensions.top
           - tooltipPaddingAlignDimensionTwo;
@@ -161,8 +169,10 @@ export class TooltipLib {
 
     }
 
+
     return tooltipHtmlNodeDimensions;
   }
+
 
 
   doesTooltipSuitsTilBrowserTabBorder (
@@ -175,7 +185,6 @@ export class TooltipLib {
     let retVal: number = 0;
 
     if ( browserTabBorderSide === TooltipConstants.AlignDimensionOne.BROWSER_TAB_BORDER_TOP ) {
-
       if (
         ( browserTabDimensions.top < tooltipHtmlNodeDimensions.top ) &&
         ( browserTabDimensions.left < tooltipHtmlNodeDimensions.left ) &&
@@ -185,7 +194,6 @@ export class TooltipLib {
       }
 
     } else if ( browserTabBorderSide === TooltipConstants.AlignDimensionOne.BROWSER_TAB_BORDER_RIGHT ) {
-
       if (
         ( tooltipHtmlNodeDimensions.right < browserTabDimensions.right )
       ) {
@@ -193,7 +201,6 @@ export class TooltipLib {
       }
 
     } else if ( browserTabBorderSide === TooltipConstants.AlignDimensionOne.BROWSER_TAB_BORDER_LEFT ) {
-
       if (
         ( browserTabDimensions.left < tooltipHtmlNodeDimensions.left )
       ) {
@@ -201,7 +208,6 @@ export class TooltipLib {
       }
 
     } else if ( browserTabBorderSide === TooltipConstants.AlignDimensionOne.BROWSER_TAB_BORDER_BOTTOM ) {
-
       if (
         ( tooltipHtmlNodeDimensions.bottom < browserTabDimensions.bottom ) &&
         ( browserTabDimensions.left < tooltipHtmlNodeDimensions.left ) &&
@@ -212,15 +218,16 @@ export class TooltipLib {
 
     }
 
+
     return retVal;
   }
+
 
 
   setTooltipArrowDimensions (
     arrowHtmlNode: HTMLElement|null|undefined,
     arrowDimensions: Dimensions
   ): undefined {
-
     if (!arrowHtmlNode) {
       throw new Error("arrowHtmlNode is null or undefined");
     }
@@ -231,6 +238,7 @@ export class TooltipLib {
     arrowHtmlNode.style.left = `${arrowDimensions.left}px`;
 
   }
+
 
 
   calculateTooltipArrowDimensions (
@@ -299,6 +307,7 @@ export class TooltipLib {
   }
 
 
+
   getBrowserTabDimensions (): Dimensions {
 
     // const zero: number = 0;
@@ -306,8 +315,10 @@ export class TooltipLib {
 
     let browserTabDimensions: Dimensions = this.getHtmlNodeDimensions( htmlNodeHtml );
 
+
     return browserTabDimensions;
   }
+
 
 
   getHtmlNodeDimensions (
@@ -327,8 +338,10 @@ export class TooltipLib {
     dimensions.left = Math.floor( rect.left ) + Math.floor( window.scrollX );
     dimensions.bottom = Math.floor( rect.bottom );
 
+
     return dimensions;
   }
+
 
 
   getRectSideSizeByMidTilConerLineSize (
@@ -347,8 +360,10 @@ export class TooltipLib {
     // retVal = m / sin45
     retVal = Math.floor( midTilCornerLineSize / Math.sin ( ( 45 * ( Math.PI / 180 ) ) ) );
 
+
     return retVal;
   }
+
 
 
   adjustHeight (
@@ -357,7 +372,6 @@ export class TooltipLib {
     _cssVaraibleNameHeight: any,
     cssVaraibleNameOverflowY: any
   ): Dimensions {
-
     if ( !htmlNode ) {
       throw new Error("Html node has no value");
     }
@@ -376,11 +390,13 @@ export class TooltipLib {
     if ( cssOverflowYValue !== "visible" ) {
       resultingHtmlNodeDimensions = {...( htmlNodeDimensions as any )} as Dimensions;
 
+
       return resultingHtmlNodeDimensions;
     }
 
     htmlNode.style.height = `${htmlNodeDimensions.height}px`;
     resultingHtmlNodeDimensions = {...( htmlNodeDimensions as any )} as Dimensions;
+
 
     return resultingHtmlNodeDimensions;
   }
@@ -414,7 +430,6 @@ export class TooltipLib {
     jsPropNameSize: any,
     jsPropNameDim: any
   ): number {
-
     if ( !htmlNode ) {
       throw new Error("the first input arg htmlNode has no HTMLElement value");
     }
@@ -491,8 +506,10 @@ export class TooltipLib {
 
     }
 
+
     return pixelSize;
   }
+
 
 
   translateToPixelValue (
@@ -514,8 +531,10 @@ export class TooltipLib {
 
     }
 
+
     return pixelValue;
   }
+
 
 
   translateCssDimToPixelValue (
@@ -532,8 +551,10 @@ export class TooltipLib {
       sizeUnit
     );
 
+
     return pixelValue;
   }
+
 
 
   getRemRelativePixelValue(): number {
@@ -544,8 +565,10 @@ export class TooltipLib {
     const fontSize: any = window.getComputedStyle(htmlNodeHtml).getPropertyValue(CssRemRuleName);
     const remRelativePixelValue: number = Math.floor( parseFloat(fontSize) );
 
+
     return remRelativePixelValue;
   }
+
 
 
   validateCssSizeDim( cssSizeDimInputArg: any ): number {
@@ -570,18 +593,20 @@ export class TooltipLib {
       throw new Error( `Arrow Size dim ${cssSizeDimInputArg} not supported, supported are: (${sizeDimsSupported})` );
     }
 
+
     return isValid;
   }
+
 
 
   getCssVariableForNode (
     htmlNode: HTMLElement|Element|null|undefined,
     cssVariableName: any
   ): any {
-
     if ( !htmlNode ) {
       throw new Error("htmlNode is null or undefined");
     }
+
 
     return window
       .getComputedStyle( htmlNode as Element )
@@ -589,6 +614,7 @@ export class TooltipLib {
         cssVariableName
       );
   }
+
 
 
   getScrollableHolderNodes( eventTarget: HTMLElement ): any[] {
@@ -605,6 +631,7 @@ export class TooltipLib {
     let overflowValue: any = "";
 
     while (node) {
+
       for ( cssPropOverflow of cssPropsOverflowArray ) {
 
         //@ts-ignore
@@ -645,6 +672,7 @@ export class TooltipLib {
         break;
       }
     }
+
 
     return scrollableHolderNodes;
   }

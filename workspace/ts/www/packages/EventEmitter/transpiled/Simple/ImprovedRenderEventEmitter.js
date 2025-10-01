@@ -4,6 +4,7 @@ class ImprovedRenderEventEmitter extends EventEmitter {
     EventArtDOMEventOptimized;
 
 
+
     constructor() {
         super();
         this.eventsHandlersSetDom = {};
@@ -12,11 +13,14 @@ class ImprovedRenderEventEmitter extends EventEmitter {
     }
 
 
+
     setDebug(debug) {
         this.debug = debug;
 
+
         return this;
     }
+
 
 
     addDomEventListeners() {
@@ -38,6 +42,7 @@ class ImprovedRenderEventEmitter extends EventEmitter {
                 this.optimizedDomEventHandler.bind(this)
             );
         }
+
 
         return this;
     }
@@ -63,15 +68,13 @@ class ImprovedRenderEventEmitter extends EventEmitter {
         }
         this.eventsHandlersSetDom[eventName][selector].push(eventHandler);
 
+
         return this;
     }
 
 
     // Don't edit here, please
-    emitDomEvent(
-        eventName,
-        payload
-    ) {
+    emitDomEvent(eventName, payload) {
         const results = [];
         const eventHandlersBySelectors = this.eventsHandlersSetDom[eventName];
 
@@ -97,10 +100,7 @@ class ImprovedRenderEventEmitter extends EventEmitter {
                 if (!eventHandler || (typeof eventHandler) !== "function") {
                     continue;
                 }
-                const result = eventHandler.call(
-                    this,
-                    payload
-                );
+                const result = eventHandler.call(this, payload);
                 results.push({
                     eventArt: this.EventArtDOMEventOptimized,
                     eventName,
@@ -115,8 +115,10 @@ class ImprovedRenderEventEmitter extends EventEmitter {
             }
         }
 
+
         return results;
     }
+
 
 
     optimizedDomEventHandler(event) {
@@ -143,10 +145,7 @@ class ImprovedRenderEventEmitter extends EventEmitter {
         if (this.debug === true) {
             console.log("optimized event handler");
         }
-        this.emitDomEvent(
-            eventName,
-            { event }
-        );
+        this.emitDomEvent(eventName, { event });
     }
 }
 

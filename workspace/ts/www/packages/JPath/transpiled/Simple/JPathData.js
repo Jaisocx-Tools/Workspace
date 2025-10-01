@@ -4,6 +4,7 @@ class JPathData {
     _isPlaceholderValue;
 
 
+
     constructor() {
         this._jpath = [];
         this._jpathExpression = "";
@@ -11,21 +12,26 @@ class JPathData {
     }
 
 
+
     isPlaceholderValue() {
         return this._isPlaceholderValue;
     }
 
 
+
     setIsPlaceholderValue(isPlaceholder) {
         this._isPlaceholderValue = isPlaceholder;
+
 
         return this;
     }
 
 
+
     getJPath() {
         return this._jpath;
     }
+
 
 
     setJPath(jpath) {
@@ -38,8 +44,10 @@ class JPathData {
             this._isPlaceholderValue = 0;
         }
 
+
         return this;
     }
+
 
 
     getJPathExpression() {
@@ -47,8 +55,10 @@ class JPathData {
     }
 
 
+
     setJPathExpression(jpathExpression) {
         this._jpathExpression = jpathExpression;
+
 
         return this;
     }

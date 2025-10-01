@@ -2,10 +2,12 @@ class CountriesCodes extends DatasetBase {
     static _singletonInstance;
 
 
+
     constructor() {
         super();
         this._data = this.initData();
     }
+
 
 
     static getSingletonInstance() {
@@ -14,8 +16,10 @@ class CountriesCodes extends DatasetBase {
             CountriesCodes._singletonInstance = new CountriesCodes();
         }
 
+
         return CountriesCodes._singletonInstance;
     }
+
 
 
     getCountriesCodes() {
@@ -23,32 +27,29 @@ class CountriesCodes extends DatasetBase {
     }
 
 
+
     getCountriesCodesIndexedByKeys(key) {
         return this.getDataIndexedByKeys(key);
     }
 
 
+
     saveCountriesCodes(inFilePath) {
-        let locSaved = this.saveData(
-            inFilePath,
-            this._data
-        );
+        let locSaved = this.saveData(inFilePath, this._data);
+
 
         return locSaved;
     }
 
 
-    saveCountriesCodesIndexedByKeys(
-        key,
-        inFilePath
-    ) {
-        let locSaved = this.saveDataIndexedByKeys(
-            key,
-            inFilePath
-        );
+
+    saveCountriesCodesIndexedByKeys(key, inFilePath) {
+        let locSaved = this.saveDataIndexedByKeys(key, inFilePath);
+
 
         return locSaved;
     }
+
 
 
     initData() {
@@ -3197,8 +3198,10 @@ class CountriesCodes extends DatasetBase {
                 return 0;
             }
 
+
             return (a.country_name > b.country_name) ? (1) : (-1);
         });
+
 
         return orderedByCountryNameRewrittenData;
     }

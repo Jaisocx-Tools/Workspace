@@ -1,10 +1,8 @@
 class ObjDataParser {
 
     static parse(objDataByteBuf) {
-        const dataHelper = ObjDataParser.parsePropHeaders(
-            objDataByteBuf,
-            0
-        );
+        const dataHelper = ObjDataParser.parsePropHeaders(objDataByteBuf, 0);
+
 
         return ObjDataParser.parseProperty(
             objDataByteBuf,
@@ -13,6 +11,7 @@ class ObjDataParser {
             null
         );
     }
+
 
 
     static parseProperty(
@@ -96,14 +95,13 @@ class ObjDataParser {
             parentObject[propName] = retValue;
         }
 
+
         return retValue;
     }
 
 
-    static parsePropHeaders(
-        byteBuf,
-        offset
-    ) {
+
+    static parsePropHeaders(byteBuf, offset) {
         const dataHelper = new ObjDataHelpingProps();
         let fieldOffset = offset;
         dataHelper.lengthAll = ObjDataPackage.parseByteBufToNumber(
@@ -139,6 +137,7 @@ class ObjDataParser {
             + dataHelper.propertyNameLength);
         dataHelper.propertyValueLength = (dataHelper.lengthAll
             - dataHelper.propertyValueStart);
+
 
         return dataHelper;
     }

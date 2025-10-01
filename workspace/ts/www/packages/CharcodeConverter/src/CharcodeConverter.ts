@@ -33,6 +33,7 @@ export class CharcodeConverter {
   protected static _instance: CharcodeConverter | null = null;
 
 
+
   constructor() {
     this._charToNum_AlignedSymbolsCodes = [];
     this._charToNum_AlignedSymbols = [];
@@ -52,15 +53,17 @@ export class CharcodeConverter {
   }
 
 
-  public static getInstance(): CharcodeConverter {
 
+  public static getInstance(): CharcodeConverter {
     if (!CharcodeConverter._instance) {
       CharcodeConverter._instance = new CharcodeConverter();
     }
 
+
     return CharcodeConverter._instance;
 
   }
+
 
 
   protected _init(): undefined {
@@ -68,8 +71,10 @@ export class CharcodeConverter {
   }
 
 
+
   setDebug( inDebug: boolean ): CharcodeConverter {
     this._debug = inDebug;
+
 
     return this;
   }
@@ -81,15 +86,16 @@ export class CharcodeConverter {
   setLookupIterationsMax( iterationsMax: number ): CharcodeConverter {
     this._lookupIterationsMax = iterationsMax;
 
+
     return this;
   }
+
 
 
   log(
     key: any,
     data: any
   ): undefined {
-
     if ( !this._debug ) {
       return;
     }
@@ -241,6 +247,7 @@ export class CharcodeConverter {
   }
 
 
+
   arrayToString(
     buf: Uint16Array,
     autoload: number
@@ -278,8 +285,10 @@ export class CharcodeConverter {
     const EMPTY_STRING: string = (new String("")).valueOf();
     const resultString: string = resultStringArray.join(EMPTY_STRING);
 
+
     return resultString;
   }
+
 
 
   getChar( charcode: number ): string {
@@ -295,6 +304,7 @@ export class CharcodeConverter {
     // );
     return this._numToChar[charcode];
   }
+
 
 
   getCharcode ( target: string ): number {
@@ -517,7 +527,9 @@ export class CharcodeConverter {
   }
 
 
+
   getCharAndAutoload( charcode: number ): string {
+
     if (
       ( charcode >= this._numToChar.length )
     ) {
@@ -532,8 +544,10 @@ export class CharcodeConverter {
 
     char = this._numToChar[charcode] || "";
 
+
     return char;
   }
+
 
 
   getCharcodeAndAutoload( target: string ): number {
@@ -545,14 +559,17 @@ export class CharcodeConverter {
 
     charcode = this.getCharcode( target );
 
+
     return charcode ?? CharcodeConverter.CHAR_NOT_FOUND;
   }
+
 
 
   loadCharsetByChar(char: string): void {
     const charcode = char.charCodeAt(0);
     this.loadCharsetByCharcode(charcode);
   }
+
 
 
   loadCharsetByCharcode(charcode: number): void {
@@ -580,6 +597,7 @@ export class CharcodeConverter {
           //   "loadCharset, alphabet ${alphabet}",
           //   alphabet );
           this.loadCharset(alphabet);
+
 
           return;
         }
@@ -621,9 +639,11 @@ export class CharcodeConverter {
   }
 
 
+
   public detectSiteCountry(): string {
     return (navigator.language.split("-")[1] || "US").toUpperCase();
   }
+
 
 
   public detectBrowserAcceptLanguage(): string {
@@ -633,8 +653,8 @@ export class CharcodeConverter {
 
   // Load character set based on range
   public loadCharset(charsetKey: string): undefined {
-
     if (this._loadedRanges.has(charsetKey))
+
 
       return;
 
@@ -702,6 +722,7 @@ export class CharcodeConverter {
           const charB: string = charsElemB[0] as string;
 
           const comparisonValue: number = ( charA >= charB ) ? 1 : (-1);
+
 
           return comparisonValue;
         }

@@ -1,1 +1,1 @@
-{"version":3,"file":"ObjDataConstants.d.ts","sourceRoot":"","sources":["../../src/ObjDataConstants.ts"],"names":[],"mappings":"AAIA,qBAAa,gBAAgB;IAG3B,MAAM,CAAC,eAAe,EAAE,GAAG,CA+BzB;IAEF,MAAM,CAAC,KAAK,EAAE,GAAG,CAwEf;IAGF,MAAM,CAAC,UAAU,EAAE,GAAG,CA+CpB;WAGY,eAAe;CAiB9B"}
+{"version":3,"file":"ObjDataConstants.d.ts","sourceRoot":"","sources":["../../src/ObjDataConstants.ts"],"names":[],"mappings":"AAIA,qBAAa,gBAAgB;IAG3B,MAAM,CAAC,eAAe,EAAE,GAAG,CA+BzB;IAEF,MAAM,CAAC,KAAK,EAAE,GAAG,CAwEf;IAGF,MAAM,CAAC,UAAU,EAAE,GAAG,CA+CpB;WAIY,eAAe;CAiB9B"}

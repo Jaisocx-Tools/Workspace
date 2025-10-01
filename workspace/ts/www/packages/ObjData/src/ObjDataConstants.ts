@@ -163,6 +163,7 @@ export class ObjDataConstants {
   };
 
 
+
   public static exportConstants() {
     let objDataConstants: object = {
       FIELDS_POINTERS: ObjDataConstants.FIELDS_POINTERS,

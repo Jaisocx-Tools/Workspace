@@ -26,7 +26,7 @@ class Table {
         // <div class="{{ cssClasses }}">
         //   <div class="table-columns-labels">{{ tableColumnsLabels }}</div>
         //   <div class="table-records">{{ tableRecords }}</div>
-        // </div>        
+        // </div>
         //         `
         //       )
         //       .setData(
@@ -51,7 +51,7 @@ class Table {
     getHtmlHolderNodeSelector() {
         return this.htmlHolderNodeSelector;
     }
-    // the html rendered the table, 
+    // the html rendered the table,
     // this html node class="table" is the first and single html node
     getHtmlTableNodeSelector() {
         return `${this.htmlHolderNodeSelector} .table`;

@@ -2,7 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Countries = void 0;
 const cdn_datasets_base_1 = require("@jaisocx/cdn-datasets-base");
-class Countries extends cdn_datasets_base_1.JsonWriter {
+class Countries extends cdn_datasets_base_1.DatasetBase {
     constructor() {
         super();
         this._data = this.initData();

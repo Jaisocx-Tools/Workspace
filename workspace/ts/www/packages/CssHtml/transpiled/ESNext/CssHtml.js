@@ -123,5 +123,13 @@ export class CssHtml {
         }
         return cssPropsAvailable;
     }
+    // browser tab width and height not including scrollbars width and height
+    getBrowserTabDimensions() {
+        let dimensions = {
+            width: window.innerWidth,
+            height: window.innerHeight
+        };
+        return dimensions;
+    }
 }
 //# sourceMappingURL=CssHtml.js.map

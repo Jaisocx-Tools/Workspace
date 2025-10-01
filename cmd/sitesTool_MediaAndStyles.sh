@@ -53,13 +53,17 @@ fi
 "${jsInvokePath}" "$commandLineArgs" \
   --packagePath="www/packages/SitesToolAutomation" \
   --script="main/produceSitesTool_MediaAndStyles.js" \
-      --cssOrJsTool="media" \
-      --sitesToolName="JscFonts_Newsreader" \
+      --cssOrJsTool="css" \
+      --sitesToolName="Test123" \
       --sitesTool_ThemeName="theme_base" \
       --templatePath="data/templates/css/responsive/responsive_size__mini.css.template" \
       --withSizesCssConstants="no" \
       --justTheme="no" \
       --justThemeResponsiveDataset="no"
+
+
+
+
 
 
 

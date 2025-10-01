@@ -9,6 +9,7 @@ class ObjDataHelpingProps {
     propertyValueStart;
 
 
+
     constructor() {
         this.lengthAll = 0;
         this.datatype = 0;

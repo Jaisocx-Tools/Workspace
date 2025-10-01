@@ -1,11 +1,12 @@
-import { JsonWriter } from "@jaisocx/cdn-datasets-base";
+import { DatasetBase } from "@jaisocx/cdn-datasets-base";
 
 
 
-export class Countries extends JsonWriter {
+export class Countries extends DatasetBase {
   _data: string[];
 
   static _singletonInstance: Countries;
+
 
 
   constructor() {
@@ -16,19 +17,22 @@ export class Countries extends JsonWriter {
   }
 
 
-  static getSingletonInstance(): Countries {
 
+  static getSingletonInstance(): Countries {
     if ( Countries._singletonInstance === undefined ) {
       Countries._singletonInstance = new Countries();
     }
+
 
     return Countries._singletonInstance;
   }
 
 
+
   getCountriesNames(): string[] {
     return this._data;
   }
+
 
 
   saveCountriesNames( inFilePath: string ): number {
@@ -37,8 +41,10 @@ export class Countries extends JsonWriter {
       this._data
     );
 
+
     return locSaved;
   }
+
 
 
   initData(): string[] {
@@ -239,13 +245,16 @@ export class Countries extends JsonWriter {
 
     let orderedAlphabeticData = locData.sort (
       ( a: string, b: string ): number => {
+
         if ( a === b ) {
           return 0;
         }
 
+
         return ( a > b ) ? (1) : (-1);
       }
     );
+
 
     return orderedAlphabeticData;
   }

@@ -12,6 +12,7 @@ export class ObjData {
   }
 
 
+
   static serialize( anyValue: any ): Uint8Array {
     return ObjDataSerializer.serialize (
       anyValue

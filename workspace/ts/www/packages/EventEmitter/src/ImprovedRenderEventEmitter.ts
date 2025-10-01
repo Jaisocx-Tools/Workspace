@@ -11,6 +11,7 @@ export class ImprovedRenderEventEmitter extends EventEmitter {
   EventArtDOMEventOptimized: any;
 
 
+
   constructor() {
     super();
 
@@ -21,11 +22,14 @@ export class ImprovedRenderEventEmitter extends EventEmitter {
   }
 
 
+
   setDebug(debug: boolean): ImprovedRenderEventEmitter {
     this.debug = debug;
 
+
     return this;
   }
+
 
 
   addDomEventListeners(): ImprovedRenderEventEmitter {
@@ -48,6 +52,7 @@ export class ImprovedRenderEventEmitter extends EventEmitter {
       );
     }
 
+
     return this;
   }
 
@@ -62,7 +67,6 @@ export class ImprovedRenderEventEmitter extends EventEmitter {
     selector: any,
     eventHandler: CallableFunction
   ): ImprovedRenderEventEmitter {
-
     if (!this.eventsHandlersSetDom[eventName]) {
       this.eventsHandlersSetDom[eventName] = {};
     }
@@ -72,6 +76,7 @@ export class ImprovedRenderEventEmitter extends EventEmitter {
     }
 
     this.eventsHandlersSetDom[eventName][selector].push(eventHandler);
+
 
     return this;
   }
@@ -106,7 +111,6 @@ export class ImprovedRenderEventEmitter extends EventEmitter {
       payload.eventTarget = eventTarget;
 
       for (const eventHandler of eventHandlers) {
-
         if (!eventHandler || (typeof eventHandler) !== "function") {
           continue;
         }
@@ -129,8 +133,10 @@ export class ImprovedRenderEventEmitter extends EventEmitter {
       }
     }
 
+
     return results;
   }
+
 
 
   optimizedDomEventHandler(event: Event): void {

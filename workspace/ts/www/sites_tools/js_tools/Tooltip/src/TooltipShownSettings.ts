@@ -4,6 +4,7 @@ export class TooltipShownSettings {
   tooltipHideTimoutId:  null | ReturnType<typeof setTimeout>;
 
 
+
   constructor(
     id: any,
     hideBehaviour: any,

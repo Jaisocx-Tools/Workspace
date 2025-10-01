@@ -15,6 +15,7 @@ export class ObjDataHelpingProps {
   propertyValueStart: number;
 
 
+
   constructor() {
     this.lengthAll = 0;
     this.datatype = 0;

@@ -13,15 +13,13 @@ class ObjDataPackage {
             offset += arr.length;
         }
 
+
         return result;
     }
 
 
-    static parseByteBufToNumber(
-        byteBuf,
-        offset,
-        len
-    ) {
+
+    static parseByteBufToNumber(byteBuf, offset, len) {
         let result = 0;
         let loopCounter = 0;
         let byteBufOffset = 0;
@@ -31,21 +29,16 @@ class ObjDataPackage {
             result |= (byteBuf[byteBufOffset] << ((len - 1 - loopCounter) << 3));
         }
 
+
         return result;
     }
 
 
-    static parseByteBufToText(
-        byteBuf,
-        offset,
-        len,
-        charsetName
-    ) {
-        return new TextDecoder(charsetName).decode(byteBuf.slice(
-            offset,
-            offset + len
-        ));
+
+    static parseByteBufToText(byteBuf, offset, len, charsetName) {
+        return new TextDecoder(charsetName).decode(byteBuf.slice(offset, offset + len));
     }
+
 
 
     static serializeTextToByteBuf(text) {
@@ -53,12 +46,8 @@ class ObjDataPackage {
     }
 
 
-    static serializeNumberToByteBuf(
-        num,
-        len,
-        offset,
-        byteBuf
-    ) {
+
+    static serializeNumberToByteBuf(num, len, offset, byteBuf) {
         let loopCounter = 0;
         let byteBufOffset = offset;
 

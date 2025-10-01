@@ -7,6 +7,7 @@ export class TooltipMainTemplateData {
   tooltipContent: any;
 
 
+
   constructor() {
     this.id = TooltipMainTemplateData.produceId();
     this.cssClasses = "";
@@ -14,11 +15,14 @@ export class TooltipMainTemplateData {
   }
 
 
+
   static produceId(): any {
     const id: any = "jaisocx_tooltip_" + Math.random() + (new Date()).getTime();
 
+
     return id;
   }
+
 
 
   getId(): any {
@@ -26,11 +30,14 @@ export class TooltipMainTemplateData {
   }
 
 
+
   setId( id: any ): any {
     this.id = id;
 
+
     return this;
   }
+
 
 
   getCssClasses(): any {
@@ -38,11 +45,14 @@ export class TooltipMainTemplateData {
   }
 
 
+
   setCssClasses( cssClasses: any ): TooltipMainTemplateData {
     this.cssClasses = cssClasses;
 
+
     return this;
   }
+
 
 
   getTooltipContent(): any {
@@ -50,8 +60,10 @@ export class TooltipMainTemplateData {
   }
 
 
+
   setTooltipContent( tooltipContent: any ): TooltipMainTemplateData {
     this.tooltipContent = tooltipContent;
+
 
     return this;
   }

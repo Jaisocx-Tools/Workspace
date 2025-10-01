@@ -58,8 +58,10 @@ export class CssSelectorWeight {
     // > ~ +
     f += (selector.match(/[>+~]+/g) || []).length;
 
+
     return [a, b, c, d, e, f];
   }
+
 
 
   updateSpecifityByCssProperty (
@@ -76,8 +78,10 @@ export class CssSelectorWeight {
 
     locSpecifity[0] = a;
 
+
     return locSpecifity;
   }
+
 
 
   compareSpecificity (
@@ -100,6 +104,7 @@ export class CssSelectorWeight {
         break loop;
       }
     }
+
 
     return comparisonValue;
   }
@@ -153,6 +158,7 @@ export class CssSelectorWeight {
       }
 
     }
+
 
     return specifitiesAndSelectors;
   }

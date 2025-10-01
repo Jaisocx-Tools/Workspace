@@ -14,6 +14,7 @@ export class ObjDataSerializer {
   }
 
 
+
   static serializeProperty(
     propName: any,
     propValue: any
@@ -117,6 +118,7 @@ export class ObjDataSerializer {
       dataHelper
     );
 
+
     return ObjDataPackage.concatByteArrays (
       [
         headers,
@@ -125,6 +127,7 @@ export class ObjDataSerializer {
       ]
     );
   }
+
 
 
   static serializePropHeaders (
@@ -166,6 +169,7 @@ export class ObjDataSerializer {
       ObjDataConstants.FIELDS_POINTERS.PROPERTY_NAME_LENGTH,
       headersBuf
     );
+
 
     return headersBuf;
   }

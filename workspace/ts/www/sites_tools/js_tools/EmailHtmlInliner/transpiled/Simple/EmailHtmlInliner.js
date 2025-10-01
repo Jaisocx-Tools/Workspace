@@ -11,6 +11,7 @@ class EmailHtmlInliner {
     numberBackgroundSpacesBefore_styleStart;
 
 
+
     constructor() {
         this.htmlDocument = undefined;
         this.debug = true;
@@ -25,32 +26,41 @@ class EmailHtmlInliner {
     }
 
 
+
     setDebug(inDebug) {
         this.debug = inDebug;
 
+
         return this;
     }
+
 
 
     setNumberBackgroundSpacesBefore_tagStart(num) {
         this.numberBackgroundSpacesBefore_tagStart = num;
 
+
         return this;
     }
+
 
 
     setNumberBackgroundSpacesBefore_attrStart(num) {
         this.numberBackgroundSpacesBefore_attrStart = num;
 
+
         return this;
     }
+
 
 
     setNumberBackgroundSpacesBefore_styleStart(num) {
         this.numberBackgroundSpacesBefore_styleStart = num;
 
+
         return this;
     }
+
 
 
     inline(
@@ -209,8 +219,10 @@ class EmailHtmlInliner {
                 );
         }
 
+
         return inlineStyledHtml;
     }
+
 
 
     inlineStyleAllNodes(
@@ -376,6 +388,7 @@ class EmailHtmlInliner {
             newNodesWithClassesAfter = this.getConcatenatedClassNames(newElem);
         }
 
+
         return newNodeNumber;
     }
 
@@ -388,6 +401,7 @@ class EmailHtmlInliner {
      * @param inArrayRulesMatchingPropsAndMedia : RuleAndSpecifities[] filtered for current media query matching
      * @param inObjectFilteredRulesAndSpecifitiesByCssPropname : Object with key = css prop name => RuleAndSpecifities[] filtered for current media query matching and relevant css props
      */
+
 
 
     copyAllStyles(
@@ -499,6 +513,7 @@ class EmailHtmlInliner {
     }
 
 
+
     getDeclaredCSSValue(
         cssStyleRulesMatchingNode,
         node,
@@ -585,6 +600,7 @@ class EmailHtmlInliner {
             );
         }
 
+
         return matchedValue;
     }
 
@@ -631,6 +647,7 @@ class EmailHtmlInliner {
             // Override previous if more recent in cascade
         }
 
+
         return matchedValue;
     }
 
@@ -655,6 +672,7 @@ class EmailHtmlInliner {
             sheet = styleSheets[key];
             this.calculateSpecifitiesForAllRules(sheet.cssRules, rulesMatching);
         }
+
 
         return rulesMatching;
     }
@@ -790,6 +808,7 @@ class EmailHtmlInliner {
      */
 
 
+
     filterMatchesNode(
         node,
         inArrayRulesMatchingPropsAndMedia,
@@ -847,6 +866,7 @@ class EmailHtmlInliner {
                 let valNum = +(v0.substring(0, v0.length - 2));
                 let valInteger = Math.floor(valNum);
                 v0 = [valInteger, "px"].join("");
+
 
                 return v0;
             });
@@ -910,6 +930,7 @@ class EmailHtmlInliner {
             // name = `${node.nodeName}.${classes}`;
             mainNodesWithClasses[nodeNumber] = [node.nodeName, ".", classes].join("");
         }
+
 
         return mainNodesWithClasses;
     }

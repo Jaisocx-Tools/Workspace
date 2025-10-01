@@ -5,6 +5,7 @@ class ObjData {
     }
 
 
+
     static serialize(anyValue) {
         return ObjDataSerializer.serialize(anyValue);
     }

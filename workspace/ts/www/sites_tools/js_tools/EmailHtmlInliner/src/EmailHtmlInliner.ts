@@ -21,6 +21,7 @@ export class EmailHtmlInliner implements EmailHtmlInlinerInterface {
   numberBackgroundSpacesBefore_styleStart: number;
 
 
+
   constructor () {
     this.htmlDocument = undefined;
     this.debug = true;
@@ -36,32 +37,41 @@ export class EmailHtmlInliner implements EmailHtmlInlinerInterface {
   }
 
 
+
   setDebug( inDebug: boolean ): EmailHtmlInliner {
     this.debug = inDebug;
 
+
     return this;
   }
+
 
 
   setNumberBackgroundSpacesBefore_tagStart( num: number ): EmailHtmlInliner {
     this.numberBackgroundSpacesBefore_tagStart = num;
 
+
     return this;
   }
+
 
 
   setNumberBackgroundSpacesBefore_attrStart( num: number ): EmailHtmlInliner {
     this.numberBackgroundSpacesBefore_attrStart = num;
 
+
     return this;
   }
+
 
 
   setNumberBackgroundSpacesBefore_styleStart( num: number ): EmailHtmlInliner {
     this.numberBackgroundSpacesBefore_styleStart = num;
 
+
     return this;
   }
+
 
 
   inline (
@@ -234,8 +244,10 @@ export class EmailHtmlInliner implements EmailHtmlInlinerInterface {
         );
     }
 
+
     return inlineStyledHtml;
   }
+
 
 
   inlineStyleAllNodes (
@@ -290,7 +302,6 @@ export class EmailHtmlInliner implements EmailHtmlInlinerInterface {
       if ( node.nodeType === 1 && !this.constants.allowedTags.includes(node.nodeName) ) {
         continue;
       } else if ( node.nodeType === 3 ) {
-
         if ( !node.nodeValue || node.nodeValue.trim().length === 0 ) {
           continue;
         }
@@ -360,6 +371,7 @@ export class EmailHtmlInliner implements EmailHtmlInlinerInterface {
         continue;
 
       } else if ( node.nodeType === 3 ) {
+
         if ( node.nodeValue && node.nodeValue.trim().length !== 0 ) {
           newNodeNumber++;
         }
@@ -412,6 +424,7 @@ export class EmailHtmlInliner implements EmailHtmlInlinerInterface {
       newNodesWithClassesAfter = this.getConcatenatedClassNames( newElem );
     }
 
+
     return newNodeNumber;
   }
 
@@ -424,6 +437,7 @@ export class EmailHtmlInliner implements EmailHtmlInlinerInterface {
    * @param inArrayRulesMatchingPropsAndMedia : RuleAndSpecifities[] filtered for current media query matching
    * @param inObjectFilteredRulesAndSpecifitiesByCssPropname : Object with key = css prop name => RuleAndSpecifities[] filtered for current media query matching and relevant css props
    */
+
 
 
   copyAllStyles (
@@ -551,6 +565,7 @@ export class EmailHtmlInliner implements EmailHtmlInlinerInterface {
   }
 
 
+
   getDeclaredCSSValue (
     cssStyleRulesMatchingNode: RuleAndSpecifities[],
     node: HTMLElement,
@@ -652,6 +667,7 @@ export class EmailHtmlInliner implements EmailHtmlInlinerInterface {
       );
     }
 
+
     return matchedValue;
   }
 
@@ -704,6 +720,7 @@ export class EmailHtmlInliner implements EmailHtmlInlinerInterface {
       // Override previous if more recent in cascade
     }
 
+
     return matchedValue;
   }
 
@@ -731,6 +748,7 @@ export class EmailHtmlInliner implements EmailHtmlInlinerInterface {
         rulesMatching
       );
     }
+
 
     return rulesMatching;
   }
@@ -767,8 +785,8 @@ export class EmailHtmlInliner implements EmailHtmlInlinerInterface {
         continue;
 
       } else if (rule instanceof CSSMediaRule ) {
-        if ( window.matchMedia(rule.conditionText).matches === false ) {
 
+        if ( window.matchMedia(rule.conditionText).matches === false ) {
           if ( this.debug === true ) {
             console.warn(
               "Did not match @media query:",
@@ -794,6 +812,7 @@ export class EmailHtmlInliner implements EmailHtmlInlinerInterface {
         continue;
 
       } else if (rule instanceof CSSImportRule) {
+
         if ( this.debug === true ) {
           console.info ( "Imported rule:", rule );
         }
@@ -812,7 +831,6 @@ export class EmailHtmlInliner implements EmailHtmlInlinerInterface {
         continue;
 
       } else {
-
         if ( this.debug === true ) {
           console.warn(
             "Unprocessed, other rule type",
@@ -882,6 +900,7 @@ export class EmailHtmlInliner implements EmailHtmlInlinerInterface {
    */
 
 
+
   filterMatchesNode (
     node: HTMLElement,
     inArrayRulesMatchingPropsAndMedia: RuleAndSpecifities[],
@@ -926,6 +945,7 @@ export class EmailHtmlInliner implements EmailHtmlInlinerInterface {
     valueByBrowser: string,
     valueByInliner: string
   ): undefined {
+
     if ( valueByBrowser.includes("px") === true ) {
       let vals = valueByBrowser.split( " " );
       let rounded = vals.map(
@@ -943,6 +963,7 @@ export class EmailHtmlInliner implements EmailHtmlInlinerInterface {
           let valNum: number = +( v0.substring( 0, v0.length - 2 ) );
           let valInteger: number = Math.floor( valNum );
           v0 = [ valInteger, "px" ].join( "" );
+
 
           return v0;
         }
@@ -963,7 +984,6 @@ export class EmailHtmlInliner implements EmailHtmlInlinerInterface {
     };
 
     if ( ( valueByInliner.length !== 0 ) && ( valueByInliner !== valueByBrowser ) ) {
-
       if (
         !(
           ( valueByInliner === "inherit" ) ||
@@ -1013,6 +1033,7 @@ export class EmailHtmlInliner implements EmailHtmlInlinerInterface {
       // name = `${node.nodeName}.${classes}`;
       mainNodesWithClasses[nodeNumber] = [ node.nodeName, ".", classes ].join("");
     }
+
 
     return mainNodesWithClasses;
   }

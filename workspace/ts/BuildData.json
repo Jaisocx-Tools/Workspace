@@ -81,7 +81,7 @@
     },
     {
       "path": "sites_tools/media_tools/JscImages_mini_datatypes_base",
-      "name": "images-mini-datatypes-base",
+      "name": "media_tools_images_mini_datatypes_base",
       "update-published": "Sat Sep 27 14:14:17 UTC 2025",
       "build": false,
       "build-simple-enable": false,
@@ -90,7 +90,7 @@
     },
     {
       "path": "sites_tools/media_tools/JscImages_mini_freepic_kawaii",
-      "name": "image-mini-freepic-kawaii",
+      "name": "media_tools_images_mini_freepic_kawaii",
       "update-published": "Sat Sep 27 16:57:02 CEST 2025",
       "build": false,
       "build-simple-enable": false,
@@ -155,7 +155,7 @@
     {
       "path": "packages/CssHtml",
       "name": "css-html",
-      "update-published": "Mon Jun 02 22:02:01 GMT 2025",
+      "update-published": "Wed Oct  1 01:37:16 CEST 2025",
       "build": false,
       "build-simple-enable": true,
       "dependencies": [],
@@ -379,7 +379,7 @@
     {
       "path": "packages/SitesToolAutomation",
       "name": "sites-tool-automation",
-      "update-published": "Mon Jul 21 02:16:34 UTC 2025",
+      "update-published": "Wed Oct  1 01:32:57 UTC 2025",
       "build": false,
       "build-simple-enable": false,
       "dependencies": [
@@ -600,7 +600,7 @@
       "name": "css-table-ordered",
       "update-published": "Wed Aug 20 03:19:33 UTC 2025",
       "build": false,
-      "build-simple-enable": false,
+      "build-simple-enable": true,
       "css-importer": {
         "build": false,
         "cssFilePath": "MediaAndStyles/CssTableOrdered_main_Webpack_minimal.css",
@@ -803,7 +803,7 @@
       "path": "patterns/EngineAndDataRecords",
       "name": "engine-and-data-records",
       "update-published": "",
-      "build": false,
+      "build": true,
       "build-simple-enable": true,
       "dependencies": [],
       "build-files": [
