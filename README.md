@@ -12,7 +12,7 @@ In development
 
 1. NO Links in `Watch In Action` examples working in the moment. Reconstruction...
 
-2. The preview domain `sandbox.brightday.email` was suspended by a provider.
+2. Temporary maintenance on the preview domain `sandbox.brightday.email`.
 
 
 

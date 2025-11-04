@@ -19,19 +19,19 @@ services:
     extra_hosts:
       - "host.docker.internal:host-gateway"
 
-  cypress:
-    build:
-      context: ./docker/cypress
-    volumes:
-      - ./workspace/ts/www/:/var/www/workspace/ts/www/
-      - "./cdn/:${tsServicePathCdn}/"
-      - "./cypress/:/var/cypress/"
-    environment:
-      - CYPRESS_baseUrl=https://sandbox.brightday.email/
-    networks:
-      - workspace_network
-    extra_hosts:
-      - "sandbox.brightday.email:host-gateway"
+#  cypress:
+#    build:
+#      context: ./docker/cypress
+#    volumes:
+#      - ./workspace/ts/www/:/var/www/workspace/ts/www/
+#      - "./cdn/:${tsServicePathCdn}/"
+#      - "./cypress/:/var/cypress/"
+#    environment:
+#      - CYPRESS_baseUrl=https://sandbox.brightday.email/
+#    networks:
+#      - workspace_network
+#    extra_hosts:
+#      - "sandbox.brightday.email:host-gateway"
 
   # the dockerized php-fpm service for server side scripts,
   # e.g. in this project to produce json data from database.
@@ -75,28 +75,28 @@ services:
       - workspace_network
     environment:
       PHP_FPM_HOST: "php:9000"
-      JAVA_XMS: "2g"
-      JAVA_XMX: "2g"
+      JAVA_XMS: "200m"
+      JAVA_XMX: "200m"
   #      php hostname like php service name="php", port from docker/php/conf/php-fpm.d/www.conf "listen" directive (listen = 127.0.0.1:9000)
 
-  database:
-    image: mysql:8.0
-    command: --default-authentication-plugin=mysql_native_password
-    restart: always
-    ports:
-      - "${MYSQL_PORT}:3306"
-    volumes:
-      - ./docker/database/data/:/var/lib/mysq/
-      - ./docker/database/docker-entrypoint-initdb.d/:/docker-entrypoint-initdb.d/
-      - ./docker/database/conf/:/etc/mysql/mysql.conf.d/
-    environment:
-      MYSQL_DATABASE: "${MYSQL_DATABASE}"
-      MYSQL_USER: "${MYSQL_USER}"
-      MYSQL_PASSWORD: "${MYSQL_PASSWORD}"
-      MYSQL_ROOT_PASSWORD: "${MYSQL_ROOT_PASSWORD}"
-      MYSQL_PORT: "${MYSQL_PORT}"
-    networks:
-      - workspace_network
+#  database:
+#    image: mysql:8.0
+#    command: --default-authentication-plugin=mysql_native_password
+#    restart: always
+#    ports:
+#      - "${MYSQL_PORT}:3306"
+#    volumes:
+#      - ./docker/database/data/:/var/lib/mysq/
+#      - ./docker/database/docker-entrypoint-initdb.d/:/docker-entrypoint-initdb.d/
+#      - ./docker/database/conf/:/etc/mysql/mysql.conf.d/
+#    environment:
+#      MYSQL_DATABASE: "${MYSQL_DATABASE}"
+#      MYSQL_USER: "${MYSQL_USER}"
+#      MYSQL_PASSWORD: "${MYSQL_PASSWORD}"
+#      MYSQL_ROOT_PASSWORD: "${MYSQL_ROOT_PASSWORD}"
+#      MYSQL_PORT: "${MYSQL_PORT}"
+#    networks:
+#      - workspace_network
 
 networks:
   workspace_network:
